@@ -403,6 +403,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchAddFeishuUsersWithOptions(_ request: BatchAddFeishuUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchAddFeishuUsersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.feishuUsers)) {
+            query["FeishuUsers"] = request.feishuUsers ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAdmin)) {
+            query["IsAdmin"] = request.isAdmin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isAuthAdmin)) {
+            query["IsAuthAdmin"] = request.isAuthAdmin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userGroupIds)) {
+            query["UserGroupIds"] = request.userGroupIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userType)) {
+            query["UserType"] = request.userType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchAddFeishuUsers",
+            "version": "2022-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchAddFeishuUsersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchAddFeishuUsers(_ request: BatchAddFeishuUsersRequest) async throws -> BatchAddFeishuUsersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchAddFeishuUsersWithOptions(request as! BatchAddFeishuUsersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelAuthorizationMenuWithOptions(_ request: CancelAuthorizationMenuRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelAuthorizationMenuResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

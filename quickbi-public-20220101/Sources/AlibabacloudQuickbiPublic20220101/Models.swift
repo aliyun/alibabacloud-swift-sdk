@@ -1597,6 +1597,296 @@ public class AuthorizeMenuResponse : Tea.TeaModel {
     }
 }
 
+public class BatchAddFeishuUsersRequest : Tea.TeaModel {
+    public var feishuUsers: String?
+
+    public var isAdmin: Bool?
+
+    public var isAuthAdmin: Bool?
+
+    public var userGroupIds: String?
+
+    public var userType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.feishuUsers != nil {
+            map["FeishuUsers"] = self.feishuUsers!
+        }
+        if self.isAdmin != nil {
+            map["IsAdmin"] = self.isAdmin!
+        }
+        if self.isAuthAdmin != nil {
+            map["IsAuthAdmin"] = self.isAuthAdmin!
+        }
+        if self.userGroupIds != nil {
+            map["UserGroupIds"] = self.userGroupIds!
+        }
+        if self.userType != nil {
+            map["UserType"] = self.userType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FeishuUsers") {
+            self.feishuUsers = dict["FeishuUsers"] as! String
+        }
+        if dict.keys.contains("IsAdmin") {
+            self.isAdmin = dict["IsAdmin"] as! Bool
+        }
+        if dict.keys.contains("IsAuthAdmin") {
+            self.isAuthAdmin = dict["IsAuthAdmin"] as! Bool
+        }
+        if dict.keys.contains("UserGroupIds") {
+            self.userGroupIds = dict["UserGroupIds"] as! String
+        }
+        if dict.keys.contains("UserType") {
+            self.userType = dict["UserType"] as! Int32
+        }
+    }
+}
+
+public class BatchAddFeishuUsersResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class FailResults : Tea.TeaModel {
+            public class FailInfos : Tea.TeaModel {
+                public var code: String?
+
+                public var codeDesc: String?
+
+                public var input: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.code != nil {
+                        map["Code"] = self.code!
+                    }
+                    if self.codeDesc != nil {
+                        map["CodeDesc"] = self.codeDesc!
+                    }
+                    if self.input != nil {
+                        map["Input"] = self.input!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Code") {
+                        self.code = dict["Code"] as! String
+                    }
+                    if dict.keys.contains("CodeDesc") {
+                        self.codeDesc = dict["CodeDesc"] as! String
+                    }
+                    if dict.keys.contains("Input") {
+                        self.input = dict["Input"] as! String
+                    }
+                }
+            }
+            public var failInfos: [BatchAddFeishuUsersResponseBody.Result.FailResults.FailInfos]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.failInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.failInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FailInfos"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FailInfos") {
+                    self.failInfos = dict["FailInfos"] as! [BatchAddFeishuUsersResponseBody.Result.FailResults.FailInfos]
+                }
+            }
+        }
+        public var failCount: Int32?
+
+        public var failResults: [BatchAddFeishuUsersResponseBody.Result.FailResults]?
+
+        public var okCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.failCount != nil {
+                map["FailCount"] = self.failCount!
+            }
+            if self.failResults != nil {
+                var tmp : [Any] = []
+                for k in self.failResults! {
+                    tmp.append(k.toMap())
+                }
+                map["FailResults"] = tmp
+            }
+            if self.okCount != nil {
+                map["OkCount"] = self.okCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("FailCount") {
+                self.failCount = dict["FailCount"] as! Int32
+            }
+            if dict.keys.contains("FailResults") {
+                self.failResults = dict["FailResults"] as! [BatchAddFeishuUsersResponseBody.Result.FailResults]
+            }
+            if dict.keys.contains("OkCount") {
+                self.okCount = dict["OkCount"] as! Int32
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: BatchAddFeishuUsersResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            var model = BatchAddFeishuUsersResponseBody.Result()
+            model.fromMap(dict["Result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class BatchAddFeishuUsersResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchAddFeishuUsersResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = BatchAddFeishuUsersResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CancelAuthorizationMenuRequest : Tea.TeaModel {
     public var dataPortalId: String?
 
