@@ -2150,6 +2150,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func countSpeechBroadcastHourWithOptions(_ request: CountSpeechBroadcastHourRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CountSpeechBroadcastHourResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.queryDateTimeHour)) {
+            query["QueryDateTimeHour"] = request.queryDateTimeHour ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            body["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shareTaskCode)) {
+            body["ShareTaskCode"] = request.shareTaskCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CountSpeechBroadcastHour",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CountSpeechBroadcastHourResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func countSpeechBroadcastHour(_ request: CountSpeechBroadcastHourRequest) async throws -> CountSpeechBroadcastHourResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await countSpeechBroadcastHourWithOptions(request as! CountSpeechBroadcastHourRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createConsumerGroupWithOptions(_ request: CreateConsumerGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateConsumerGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8642,6 +8681,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func pageQuerySharedSpeechOpen(_ request: PageQuerySharedSpeechOpenRequest) async throws -> PageQuerySharedSpeechOpenResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await pageQuerySharedSpeechOpenWithOptions(request as! PageQuerySharedSpeechOpenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pageQuerySpeechBroadcastHourWithOptions(_ request: PageQuerySpeechBroadcastHourRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PageQuerySpeechBroadcastHourResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.queryDateTimeHour)) {
+            query["QueryDateTimeHour"] = request.queryDateTimeHour ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            body["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageToken)) {
+            body["PageToken"] = request.pageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shareTaskCode)) {
+            body["ShareTaskCode"] = request.shareTaskCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PageQuerySpeechBroadcastHour",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PageQuerySpeechBroadcastHourResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func pageQuerySpeechBroadcastHour(_ request: PageQuerySpeechBroadcastHourRequest) async throws -> PageQuerySpeechBroadcastHourResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await pageQuerySpeechBroadcastHourWithOptions(request as! PageQuerySpeechBroadcastHourRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
