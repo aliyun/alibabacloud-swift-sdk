@@ -1641,6 +1641,8 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
 
     public var output: String?
 
+    public var params: String?
+
     public var url: String?
 
     public override init() {
@@ -1669,6 +1671,9 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
         if self.output != nil {
             map["Output"] = self.output!
         }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
         if self.url != nil {
             map["Url"] = self.url!
         }
@@ -1687,6 +1692,9 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Output") {
             self.output = dict["Output"] as! String
+        }
+        if dict.keys.contains("Params") {
+            self.params = dict["Params"] as! String
         }
         if dict.keys.contains("Url") {
             self.url = dict["Url"] as! String

@@ -396,6 +396,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.output)) {
             body["Output"] = request.output ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["Params"] = request.params ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             body["Url"] = request.url ?? "";
         }
