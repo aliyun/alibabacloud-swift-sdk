@@ -2266,6 +2266,8 @@ public class ListCardInfoRequest : Tea.TeaModel {
 
     public var maxFlow: String?
 
+    public var maxRestFlowPercentage: Double?
+
     public var minFlow: String?
 
     public var msisdn: String?
@@ -2351,6 +2353,9 @@ public class ListCardInfoRequest : Tea.TeaModel {
         }
         if self.maxFlow != nil {
             map["MaxFlow"] = self.maxFlow!
+        }
+        if self.maxRestFlowPercentage != nil {
+            map["MaxRestFlowPercentage"] = self.maxRestFlowPercentage!
         }
         if self.minFlow != nil {
             map["MinFlow"] = self.minFlow!
@@ -2439,6 +2444,9 @@ public class ListCardInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MaxFlow") {
             self.maxFlow = dict["MaxFlow"] as! String
+        }
+        if dict.keys.contains("MaxRestFlowPercentage") {
+            self.maxRestFlowPercentage = dict["MaxRestFlowPercentage"] as! Double
         }
         if dict.keys.contains("MinFlow") {
             self.minFlow = dict["MinFlow"] as! String

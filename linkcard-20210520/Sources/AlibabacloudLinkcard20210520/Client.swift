@@ -346,6 +346,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maxFlow)) {
             query["MaxFlow"] = request.maxFlow ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxRestFlowPercentage)) {
+            query["MaxRestFlowPercentage"] = request.maxRestFlowPercentage!;
+        }
         if (!TeaUtils.Client.isUnset(request.minFlow)) {
             query["MinFlow"] = request.minFlow ?? "";
         }
