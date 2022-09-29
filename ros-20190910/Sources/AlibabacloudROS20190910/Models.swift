@@ -6795,6 +6795,75 @@ public class GetStackResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class OperationInfo : Tea.TeaModel {
+        public var action: String?
+
+        public var code: String?
+
+        public var logicalResourceId: String?
+
+        public var message: String?
+
+        public var requestId: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.logicalResourceId != nil {
+                map["LogicalResourceId"] = self.logicalResourceId!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.requestId != nil {
+                map["RequestId"] = self.requestId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("Code") {
+                self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("LogicalResourceId") {
+                self.logicalResourceId = dict["LogicalResourceId"] as! String
+            }
+            if dict.keys.contains("Message") {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("RequestId") {
+                self.requestId = dict["RequestId"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
     public class Parameters : Tea.TeaModel {
         public var parameterKey: String?
 
@@ -7011,6 +7080,8 @@ public class GetStackResponseBody : Tea.TeaModel {
 
     public var notificationURLs: [String]?
 
+    public var operationInfo: GetStackResponseBody.OperationInfo?
+
     public var outputs: [[String: Any]]?
 
     public var parameters: [GetStackResponseBody.Parameters]?
@@ -7072,6 +7143,7 @@ public class GetStackResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.log?.validate()
+        try self.operationInfo?.validate()
         try self.resourceProgress?.validate()
     }
 
@@ -7100,6 +7172,9 @@ public class GetStackResponseBody : Tea.TeaModel {
         }
         if self.notificationURLs != nil {
             map["NotificationURLs"] = self.notificationURLs!
+        }
+        if self.operationInfo != nil {
+            map["OperationInfo"] = self.operationInfo?.toMap()
         }
         if self.outputs != nil {
             map["Outputs"] = self.outputs!
@@ -7213,6 +7288,11 @@ public class GetStackResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("NotificationURLs") {
             self.notificationURLs = dict["NotificationURLs"] as! [String]
+        }
+        if dict.keys.contains("OperationInfo") {
+            var model = GetStackResponseBody.OperationInfo()
+            model.fromMap(dict["OperationInfo"] as! [String: Any])
+            self.operationInfo = model
         }
         if dict.keys.contains("Outputs") {
             self.outputs = dict["Outputs"] as! [[String: Any]]
@@ -10031,6 +10111,10 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
 
         public var behaviorReason: String?
 
+        public var illegalValueByParameterConstraints: [Any]?
+
+        public var illegalValueByRules: [Any]?
+
         public var parameterKey: String?
 
         public var type: String?
@@ -10061,6 +10145,12 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             if self.behaviorReason != nil {
                 map["BehaviorReason"] = self.behaviorReason!
             }
+            if self.illegalValueByParameterConstraints != nil {
+                map["IllegalValueByParameterConstraints"] = self.illegalValueByParameterConstraints!
+            }
+            if self.illegalValueByRules != nil {
+                map["IllegalValueByRules"] = self.illegalValueByRules!
+            }
             if self.parameterKey != nil {
                 map["ParameterKey"] = self.parameterKey!
             }
@@ -10082,6 +10172,12 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BehaviorReason") {
                 self.behaviorReason = dict["BehaviorReason"] as! String
+            }
+            if dict.keys.contains("IllegalValueByParameterConstraints") {
+                self.illegalValueByParameterConstraints = dict["IllegalValueByParameterConstraints"] as! [Any]
+            }
+            if dict.keys.contains("IllegalValueByRules") {
+                self.illegalValueByRules = dict["IllegalValueByRules"] as! [Any]
             }
             if dict.keys.contains("ParameterKey") {
                 self.parameterKey = dict["ParameterKey"] as! String
@@ -13824,6 +13920,75 @@ public class ListStacksRequest : Tea.TeaModel {
 
 public class ListStacksResponseBody : Tea.TeaModel {
     public class Stacks : Tea.TeaModel {
+        public class OperationInfo : Tea.TeaModel {
+            public var action: String?
+
+            public var code: String?
+
+            public var logicalResourceId: String?
+
+            public var message: String?
+
+            public var requestId: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.logicalResourceId != nil {
+                    map["LogicalResourceId"] = self.logicalResourceId!
+                }
+                if self.message != nil {
+                    map["Message"] = self.message!
+                }
+                if self.requestId != nil {
+                    map["RequestId"] = self.requestId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("Code") {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("LogicalResourceId") {
+                    self.logicalResourceId = dict["LogicalResourceId"] as! String
+                }
+                if dict.keys.contains("Message") {
+                    self.message = dict["Message"] as! String
+                }
+                if dict.keys.contains("RequestId") {
+                    self.requestId = dict["RequestId"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -13867,6 +14032,8 @@ public class ListStacksResponseBody : Tea.TeaModel {
 
         public var driftDetectionTime: String?
 
+        public var operationInfo: ListStacksResponseBody.Stacks.OperationInfo?
+
         public var parentStackId: String?
 
         public var regionId: String?
@@ -13905,6 +14072,7 @@ public class ListStacksResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.operationInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -13917,6 +14085,9 @@ public class ListStacksResponseBody : Tea.TeaModel {
             }
             if self.driftDetectionTime != nil {
                 map["DriftDetectionTime"] = self.driftDetectionTime!
+            }
+            if self.operationInfo != nil {
+                map["OperationInfo"] = self.operationInfo?.toMap()
             }
             if self.parentStackId != nil {
                 map["ParentStackId"] = self.parentStackId!
@@ -13976,6 +14147,11 @@ public class ListStacksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DriftDetectionTime") {
                 self.driftDetectionTime = dict["DriftDetectionTime"] as! String
+            }
+            if dict.keys.contains("OperationInfo") {
+                var model = ListStacksResponseBody.Stacks.OperationInfo()
+                model.fromMap(dict["OperationInfo"] as! [String: Any])
+                self.operationInfo = model
             }
             if dict.keys.contains("ParentStackId") {
                 self.parentStackId = dict["ParentStackId"] as! String
@@ -20092,6 +20268,51 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Resources : Tea.TeaModel {
+        public var logicalResourceIdPattern: String?
+
+        public var resourcePath: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.logicalResourceIdPattern != nil {
+                map["LogicalResourceIdPattern"] = self.logicalResourceIdPattern!
+            }
+            if self.resourcePath != nil {
+                map["ResourcePath"] = self.resourcePath!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LogicalResourceIdPattern") {
+                self.logicalResourceIdPattern = dict["LogicalResourceIdPattern"] as! String
+            }
+            if dict.keys.contains("ResourcePath") {
+                self.resourcePath = dict["ResourcePath"] as! String
+            }
+            if dict.keys.contains("ResourceType") {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+        }
+    }
     public var description_: String?
 
     public var outputs: [ValidateTemplateResponseBody.Outputs]?
@@ -20101,6 +20322,8 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var resourceTypes: ValidateTemplateResponseBody.ResourceTypes?
+
+    public var resources: [ValidateTemplateResponseBody.Resources]?
 
     public override init() {
         super.init()
@@ -20136,6 +20359,13 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
         if self.resourceTypes != nil {
             map["ResourceTypes"] = self.resourceTypes?.toMap()
         }
+        if self.resources != nil {
+            var tmp : [Any] = []
+            for k in self.resources! {
+                tmp.append(k.toMap())
+            }
+            map["Resources"] = tmp
+        }
         return map
     }
 
@@ -20156,6 +20386,9 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             var model = ValidateTemplateResponseBody.ResourceTypes()
             model.fromMap(dict["ResourceTypes"] as! [String: Any])
             self.resourceTypes = model
+        }
+        if dict.keys.contains("Resources") {
+            self.resources = dict["Resources"] as! [ValidateTemplateResponseBody.Resources]
         }
     }
 }
