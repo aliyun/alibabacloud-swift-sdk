@@ -24,6 +24,123 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func beeBotAssociateWithOptions(_ tmpReq: BeeBotAssociateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BeeBotAssociateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BeeBotAssociateShrinkRequest = BeeBotAssociateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.perspective)) {
+            request.perspectiveShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.perspective, "Perspective", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chatBotInstnaceId)) {
+            body["ChatBotInstnaceId"] = request.chatBotInstnaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvCode)) {
+            body["IsvCode"] = request.isvCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.perspectiveShrink)) {
+            body["Perspective"] = request.perspectiveShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recommendNum)) {
+            body["RecommendNum"] = request.recommendNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.utterance)) {
+            body["Utterance"] = request.utterance ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BeeBotAssociate",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BeeBotAssociateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func beeBotAssociate(_ request: BeeBotAssociateRequest) async throws -> BeeBotAssociateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await beeBotAssociateWithOptions(request as! BeeBotAssociateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func beeBotChatWithOptions(_ tmpReq: BeeBotChatRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BeeBotChatResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BeeBotChatShrinkRequest = BeeBotChatShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.perspective)) {
+            request.perspectiveShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.perspective, "Perspective", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.vendorParam)) {
+            request.vendorParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vendorParam, "VendorParam", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.chatBotInstnaceId)) {
+            body["ChatBotInstnaceId"] = request.chatBotInstnaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.intentName)) {
+            body["IntentName"] = request.intentName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvCode)) {
+            body["IsvCode"] = request.isvCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.knowledgeId)) {
+            body["KnowledgeId"] = request.knowledgeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.perspectiveShrink)) {
+            body["Perspective"] = request.perspectiveShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.senderId)) {
+            body["SenderId"] = request.senderId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.senderNick)) {
+            body["SenderNick"] = request.senderNick ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.utterance)) {
+            body["Utterance"] = request.utterance ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vendorParamShrink)) {
+            body["VendorParam"] = request.vendorParamShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BeeBotChat",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BeeBotChatResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func beeBotChat(_ request: BeeBotChatRequest) async throws -> BeeBotChatResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await beeBotChatWithOptions(request as! BeeBotChatRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createChatappTemplateWithOptions(_ tmpReq: CreateChatappTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateChatappTemplateResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateChatappTemplateShrinkRequest = CreateChatappTemplateShrinkRequest([:])
@@ -209,6 +326,60 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listChatappTemplate(_ request: ListChatappTemplateRequest) async throws -> ListChatappTemplateResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listChatappTemplateWithOptions(request as! ListChatappTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyChatappTemplateWithOptions(_ tmpReq: ModifyChatappTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyChatappTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyChatappTemplateShrinkRequest = ModifyChatappTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.components)) {
+            request.componentsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.components, "Components", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.example)) {
+            request.exampleShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.example, "Example", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
+            body["Components"] = request.componentsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custWabaId)) {
+            body["CustWabaId"] = request.custWabaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.exampleShrink)) {
+            body["Example"] = request.exampleShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvCode)) {
+            body["IsvCode"] = request.isvCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            body["TemplateCode"] = request.templateCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyChatappTemplate",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyChatappTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyChatappTemplate(_ request: ModifyChatappTemplateRequest) async throws -> ModifyChatappTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyChatappTemplateWithOptions(request as! ModifyChatappTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
