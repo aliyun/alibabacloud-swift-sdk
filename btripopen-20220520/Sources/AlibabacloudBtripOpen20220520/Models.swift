@@ -2292,7 +2292,7 @@ public class ApplyApproveResponseBody : Tea.TeaModel {
             map["success"] = self.success!
         }
         if self.traceId != nil {
-            map["trace_id"] = self.traceId!
+            map["traceId"] = self.traceId!
         }
         return map
     }
@@ -2313,8 +2313,8 @@ public class ApplyApproveResponseBody : Tea.TeaModel {
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
         }
-        if dict.keys.contains("trace_id") {
-            self.traceId = dict["trace_id"] as! String
+        if dict.keys.contains("traceId") {
+            self.traceId = dict["traceId"] as! String
         }
     }
 }
@@ -6735,13 +6735,13 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var requestId: String?
-
     public var applyList: [CarApplyQueryResponseBody.ApplyList]?
 
     public var code: Int32?
 
     public var message: String?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -6763,9 +6763,6 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.applyList != nil {
             var tmp : [Any] = []
             for k in self.applyList! {
@@ -6778,6 +6775,9 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
         }
         if self.success != nil {
             map["success"] = self.success!
@@ -6792,9 +6792,6 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
         if dict.keys.contains("apply_list") {
             self.applyList = dict["apply_list"] as! [CarApplyQueryResponseBody.ApplyList]
         }
@@ -6803,6 +6800,9 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -12008,13 +12008,13 @@ public class ExceedApplySyncRequest : Tea.TeaModel {
 }
 
 public class ExceedApplySyncResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
     public var code: Int32?
 
     public var message: String?
 
     public var module: Bool?
+
+    public var requestId: String?
 
     public var success: Bool?
 
@@ -12034,9 +12034,6 @@ public class ExceedApplySyncResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.code != nil {
             map["code"] = self.code!
         }
@@ -12045,6 +12042,9 @@ public class ExceedApplySyncResponseBody : Tea.TeaModel {
         }
         if self.module != nil {
             map["module"] = self.module!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
         }
         if self.success != nil {
             map["success"] = self.success!
@@ -12056,9 +12056,6 @@ public class ExceedApplySyncResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
         if dict.keys.contains("code") {
             self.code = dict["code"] as! Int32
         }
@@ -12067,6 +12064,9 @@ public class ExceedApplySyncResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("module") {
             self.module = dict["module"] as! Bool
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
