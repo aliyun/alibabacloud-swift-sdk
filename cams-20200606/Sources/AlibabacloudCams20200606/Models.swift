@@ -6,7 +6,7 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class BeeBotAssociateRequest : Tea.TeaModel {
-    public var chatBotInstnaceId: String?
+    public var chatBotInstanceId: String?
 
     public var isvCode: String?
 
@@ -32,8 +32,8 @@ public class BeeBotAssociateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.chatBotInstnaceId != nil {
-            map["ChatBotInstnaceId"] = self.chatBotInstnaceId!
+        if self.chatBotInstanceId != nil {
+            map["ChatBotInstanceId"] = self.chatBotInstanceId!
         }
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
@@ -54,8 +54,8 @@ public class BeeBotAssociateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ChatBotInstnaceId") {
-            self.chatBotInstnaceId = dict["ChatBotInstnaceId"] as! String
+        if dict.keys.contains("ChatBotInstanceId") {
+            self.chatBotInstanceId = dict["ChatBotInstanceId"] as! String
         }
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
@@ -76,7 +76,7 @@ public class BeeBotAssociateRequest : Tea.TeaModel {
 }
 
 public class BeeBotAssociateShrinkRequest : Tea.TeaModel {
-    public var chatBotInstnaceId: String?
+    public var chatBotInstanceId: String?
 
     public var isvCode: String?
 
@@ -102,8 +102,8 @@ public class BeeBotAssociateShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.chatBotInstnaceId != nil {
-            map["ChatBotInstnaceId"] = self.chatBotInstnaceId!
+        if self.chatBotInstanceId != nil {
+            map["ChatBotInstanceId"] = self.chatBotInstanceId!
         }
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
@@ -124,8 +124,8 @@ public class BeeBotAssociateShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ChatBotInstnaceId") {
-            self.chatBotInstnaceId = dict["ChatBotInstnaceId"] as! String
+        if dict.keys.contains("ChatBotInstanceId") {
+            self.chatBotInstanceId = dict["ChatBotInstanceId"] as! String
         }
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
@@ -341,7 +341,7 @@ public class BeeBotAssociateResponse : Tea.TeaModel {
 }
 
 public class BeeBotChatRequest : Tea.TeaModel {
-    public var chatBotInstnaceId: String?
+    public var chatBotInstanceId: String?
 
     public var intentName: String?
 
@@ -375,8 +375,8 @@ public class BeeBotChatRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.chatBotInstnaceId != nil {
-            map["ChatBotInstnaceId"] = self.chatBotInstnaceId!
+        if self.chatBotInstanceId != nil {
+            map["ChatBotInstanceId"] = self.chatBotInstanceId!
         }
         if self.intentName != nil {
             map["IntentName"] = self.intentName!
@@ -409,8 +409,8 @@ public class BeeBotChatRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ChatBotInstnaceId") {
-            self.chatBotInstnaceId = dict["ChatBotInstnaceId"] as! String
+        if dict.keys.contains("ChatBotInstanceId") {
+            self.chatBotInstanceId = dict["ChatBotInstanceId"] as! String
         }
         if dict.keys.contains("IntentName") {
             self.intentName = dict["IntentName"] as! String
@@ -443,7 +443,7 @@ public class BeeBotChatRequest : Tea.TeaModel {
 }
 
 public class BeeBotChatShrinkRequest : Tea.TeaModel {
-    public var chatBotInstnaceId: String?
+    public var chatBotInstanceId: String?
 
     public var intentName: String?
 
@@ -477,8 +477,8 @@ public class BeeBotChatShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.chatBotInstnaceId != nil {
-            map["ChatBotInstnaceId"] = self.chatBotInstnaceId!
+        if self.chatBotInstanceId != nil {
+            map["ChatBotInstanceId"] = self.chatBotInstanceId!
         }
         if self.intentName != nil {
             map["IntentName"] = self.intentName!
@@ -511,8 +511,8 @@ public class BeeBotChatShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ChatBotInstnaceId") {
-            self.chatBotInstnaceId = dict["ChatBotInstnaceId"] as! String
+        if dict.keys.contains("ChatBotInstanceId") {
+            self.chatBotInstanceId = dict["ChatBotInstanceId"] as! String
         }
         if dict.keys.contains("IntentName") {
             self.intentName = dict["IntentName"] as! String

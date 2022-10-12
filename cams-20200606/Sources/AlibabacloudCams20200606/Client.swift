@@ -32,8 +32,8 @@ open class Client : AlibabacloudOpenApi.Client {
             request.perspectiveShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.perspective, "Perspective", "json")
         }
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.chatBotInstnaceId)) {
-            body["ChatBotInstnaceId"] = request.chatBotInstnaceId ?? "";
+        if (!TeaUtils.Client.isUnset(request.chatBotInstanceId)) {
+            body["ChatBotInstanceId"] = request.chatBotInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.isvCode)) {
             body["IsvCode"] = request.isvCode ?? "";
@@ -86,8 +86,8 @@ open class Client : AlibabacloudOpenApi.Client {
             request.vendorParamShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vendorParam, "VendorParam", "json")
         }
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.chatBotInstnaceId)) {
-            body["ChatBotInstnaceId"] = request.chatBotInstnaceId ?? "";
+        if (!TeaUtils.Client.isUnset(request.chatBotInstanceId)) {
+            body["ChatBotInstanceId"] = request.chatBotInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.intentName)) {
             body["IntentName"] = request.intentName ?? "";
