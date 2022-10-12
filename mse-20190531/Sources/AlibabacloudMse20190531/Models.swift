@@ -795,6 +795,12 @@ public class AddBlackWhiteListRequest : Tea.TeaModel {
 
     public var mseSessionId: String?
 
+    public var name: String?
+
+    public var note: String?
+
+    public var resourceIdJsonList: String?
+
     public var resourceType: String?
 
     public var status: String?
@@ -830,6 +836,15 @@ public class AddBlackWhiteListRequest : Tea.TeaModel {
         if self.mseSessionId != nil {
             map["MseSessionId"] = self.mseSessionId!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.note != nil {
+            map["Note"] = self.note!
+        }
+        if self.resourceIdJsonList != nil {
+            map["ResourceIdJsonList"] = self.resourceIdJsonList!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -857,6 +872,15 @@ public class AddBlackWhiteListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MseSessionId") {
             self.mseSessionId = dict["MseSessionId"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Note") {
+            self.note = dict["Note"] as! String
+        }
+        if dict.keys.contains("ResourceIdJsonList") {
+            self.resourceIdJsonList = dict["ResourceIdJsonList"] as! String
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -993,6 +1017,43 @@ public class AddBlackWhiteListResponse : Tea.TeaModel {
 }
 
 public class AddGatewayRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var enableHardwareAcceleration: Bool?
@@ -1016,6 +1077,8 @@ public class AddGatewayRequest : Tea.TeaModel {
     public var slbSpec: String?
 
     public var spec: String?
+
+    public var tag: [AddGatewayRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -1075,6 +1138,13 @@ public class AddGatewayRequest : Tea.TeaModel {
         if self.spec != nil {
             map["Spec"] = self.spec!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -1126,6 +1196,9 @@ public class AddGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Spec") {
             self.spec = dict["Spec"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! [AddGatewayRequest.Tag]
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -5310,6 +5383,43 @@ public class CreateApplicationResponse : Tea.TeaModel {
 }
 
 public class CreateClusterRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var clusterSpecification: String?
@@ -5343,6 +5453,8 @@ public class CreateClusterRequest : Tea.TeaModel {
     public var requestPars: String?
 
     public var resourceGroupId: String?
+
+    public var tag: [CreateClusterRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -5413,6 +5525,13 @@ public class CreateClusterRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -5473,6 +5592,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! [CreateClusterRequest.Tag]
         }
         if dict.keys.contains("VSwitchId") {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -13522,6 +13644,8 @@ public class GetGatewayResponseBody : Tea.TeaModel {
 
         public var logConfigDetails: GetGatewayResponseBody.Data.LogConfigDetails?
 
+        public var mseTag: String?
+
         public var name: String?
 
         public var primaryUser: String?
@@ -13585,6 +13709,9 @@ public class GetGatewayResponseBody : Tea.TeaModel {
             }
             if self.logConfigDetails != nil {
                 map["LogConfigDetails"] = self.logConfigDetails?.toMap()
+            }
+            if self.mseTag != nil {
+                map["MseTag"] = self.mseTag!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -13651,6 +13778,9 @@ public class GetGatewayResponseBody : Tea.TeaModel {
                 var model = GetGatewayResponseBody.Data.LogConfigDetails()
                 model.fromMap(dict["LogConfigDetails"] as! [String: Any])
                 self.logConfigDetails = model
+            }
+            if dict.keys.contains("MseTag") {
+                self.mseTag = dict["MseTag"] as! String
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
@@ -14556,6 +14686,8 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
 
             public var serviceName: String?
 
+            public var servicePort: Int32?
+
             public var sourceType: String?
 
             public var version: String?
@@ -14595,6 +14727,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 if self.serviceName != nil {
                     map["ServiceName"] = self.serviceName!
                 }
+                if self.servicePort != nil {
+                    map["ServicePort"] = self.servicePort!
+                }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
                 }
@@ -14625,6 +14760,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ServiceName") {
                     self.serviceName = dict["ServiceName"] as! String
+                }
+                if dict.keys.contains("ServicePort") {
+                    self.servicePort = dict["ServicePort"] as! Int32
                 }
                 if dict.keys.contains("SourceType") {
                     self.sourceType = dict["SourceType"] as! String
@@ -15109,6 +15247,8 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
 
             public var serviceName: String?
 
+            public var servicePort: Int32?
+
             public var sourceType: String?
 
             public var version: String?
@@ -15148,6 +15288,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 if self.serviceName != nil {
                     map["ServiceName"] = self.serviceName!
                 }
+                if self.servicePort != nil {
+                    map["ServicePort"] = self.servicePort!
+                }
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
                 }
@@ -15178,6 +15321,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ServiceName") {
                     self.serviceName = dict["ServiceName"] as! String
+                }
+                if dict.keys.contains("ServicePort") {
+                    self.servicePort = dict["ServicePort"] as! Int32
                 }
                 if dict.keys.contains("SourceType") {
                     self.sourceType = dict["SourceType"] as! String
@@ -15741,6 +15887,86 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class PortTrafficPolicyList : Tea.TeaModel {
+            public var gatewayUniqueId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var serviceId: Int64?
+
+            public var servicePort: Int32?
+
+            public var trafficPolicy: TrafficPolicy?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.trafficPolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.serviceId != nil {
+                    map["ServiceId"] = self.serviceId!
+                }
+                if self.servicePort != nil {
+                    map["ServicePort"] = self.servicePort!
+                }
+                if self.trafficPolicy != nil {
+                    map["TrafficPolicy"] = self.trafficPolicy?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("GatewayUniqueId") {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("GmtCreate") {
+                    self.gmtCreate = dict["GmtCreate"] as! String
+                }
+                if dict.keys.contains("GmtModified") {
+                    self.gmtModified = dict["GmtModified"] as! String
+                }
+                if dict.keys.contains("Id") {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("ServiceId") {
+                    self.serviceId = dict["ServiceId"] as! Int64
+                }
+                if dict.keys.contains("ServicePort") {
+                    self.servicePort = dict["ServicePort"] as! Int32
+                }
+                if dict.keys.contains("TrafficPolicy") {
+                    var model = TrafficPolicy()
+                    model.fromMap(dict["TrafficPolicy"] as! [String: Any])
+                    self.trafficPolicy = model
+                }
+            }
+        }
         public class VersionDetails : Tea.TeaModel {
             public class ServiceVersion : Tea.TeaModel {
                 public class Labels : Tea.TeaModel {
@@ -15940,6 +16166,10 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
 
         public var namespace: String?
 
+        public var portTrafficPolicyList: [GetGatewayServiceDetailResponseBody.Data.PortTrafficPolicyList]?
+
+        public var ports: [Int32]?
+
         public var serviceNameInRegistry: String?
 
         public var serviceProtocol: String?
@@ -16012,6 +16242,16 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
             }
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
+            }
+            if self.portTrafficPolicyList != nil {
+                var tmp : [Any] = []
+                for k in self.portTrafficPolicyList! {
+                    tmp.append(k.toMap())
+                }
+                map["PortTrafficPolicyList"] = tmp
+            }
+            if self.ports != nil {
+                map["Ports"] = self.ports!
             }
             if self.serviceNameInRegistry != nil {
                 map["ServiceNameInRegistry"] = self.serviceNameInRegistry!
@@ -16086,6 +16326,12 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Namespace") {
                 self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("PortTrafficPolicyList") {
+                self.portTrafficPolicyList = dict["PortTrafficPolicyList"] as! [GetGatewayServiceDetailResponseBody.Data.PortTrafficPolicyList]
+            }
+            if dict.keys.contains("Ports") {
+                self.ports = dict["Ports"] as! [Int32]
             }
             if dict.keys.contains("ServiceNameInRegistry") {
                 self.serviceNameInRegistry = dict["ServiceNameInRegistry"] as! String
@@ -24581,6 +24827,8 @@ public class ListGatewayRequest : Tea.TeaModel {
 
         public var instanceId: String?
 
+        public var mseTag: String?
+
         public var name: String?
 
         public var vpc: String?
@@ -24608,6 +24856,9 @@ public class ListGatewayRequest : Tea.TeaModel {
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
+            if self.mseTag != nil {
+                map["MseTag"] = self.mseTag!
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -24626,6 +24877,9 @@ public class ListGatewayRequest : Tea.TeaModel {
             }
             if dict.keys.contains("InstanceId") {
                 self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("MseTag") {
+                self.mseTag = dict["MseTag"] as! String
             }
             if dict.keys.contains("Name") {
                 self.name = dict["Name"] as! String
@@ -25043,6 +25297,8 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
             public var latestVersion: String?
 
+            public var mseTag: String?
+
             public var mustUpgrade: Bool?
 
             public var name: String?
@@ -25137,6 +25393,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 }
                 if self.latestVersion != nil {
                     map["LatestVersion"] = self.latestVersion!
+                }
+                if self.mseTag != nil {
+                    map["MseTag"] = self.mseTag!
                 }
                 if self.mustUpgrade != nil {
                     map["MustUpgrade"] = self.mustUpgrade!
@@ -25237,6 +25496,9 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("LatestVersion") {
                     self.latestVersion = dict["LatestVersion"] as! String
+                }
+                if dict.keys.contains("MseTag") {
+                    self.mseTag = dict["MseTag"] as! String
                 }
                 if dict.keys.contains("MustUpgrade") {
                     self.mustUpgrade = dict["MustUpgrade"] as! Bool
@@ -26143,6 +26405,8 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
 
                 public var serviceName: String?
 
+                public var servicePort: Int32?
+
                 public var sourceType: String?
 
                 public var version: String?
@@ -26182,6 +26446,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     if self.serviceName != nil {
                         map["ServiceName"] = self.serviceName!
                     }
+                    if self.servicePort != nil {
+                        map["ServicePort"] = self.servicePort!
+                    }
                     if self.sourceType != nil {
                         map["SourceType"] = self.sourceType!
                     }
@@ -26212,6 +26479,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("ServiceName") {
                         self.serviceName = dict["ServiceName"] as! String
+                    }
+                    if dict.keys.contains("ServicePort") {
+                        self.servicePort = dict["ServicePort"] as! Int32
                     }
                     if dict.keys.contains("SourceType") {
                         self.sourceType = dict["SourceType"] as! String
@@ -26657,6 +26927,8 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
 
                 public var serviceName: String?
 
+                public var servicePort: Int32?
+
                 public var sourceType: String?
 
                 public var version: String?
@@ -26700,6 +26972,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     if self.serviceName != nil {
                         map["ServiceName"] = self.serviceName!
                     }
+                    if self.servicePort != nil {
+                        map["ServicePort"] = self.servicePort!
+                    }
                     if self.sourceType != nil {
                         map["SourceType"] = self.sourceType!
                     }
@@ -26735,6 +27010,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("ServiceName") {
                         self.serviceName = dict["ServiceName"] as! String
+                    }
+                    if dict.keys.contains("ServicePort") {
+                        self.servicePort = dict["ServicePort"] as! Int32
                     }
                     if dict.keys.contains("SourceType") {
                         self.sourceType = dict["SourceType"] as! String
@@ -27816,6 +28094,8 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
 
             public var namespace: String?
 
+            public var ports: [Int32]?
+
             public var serviceNameInRegistry: String?
 
             public var servicePort: Int64?
@@ -27890,6 +28170,9 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
                 }
                 if self.namespace != nil {
                     map["Namespace"] = self.namespace!
+                }
+                if self.ports != nil {
+                    map["Ports"] = self.ports!
                 }
                 if self.serviceNameInRegistry != nil {
                     map["ServiceNameInRegistry"] = self.serviceNameInRegistry!
@@ -27968,6 +28251,9 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Namespace") {
                     self.namespace = dict["Namespace"] as! String
+                }
+                if dict.keys.contains("Ports") {
+                    self.ports = dict["Ports"] as! [Int32]
                 }
                 if dict.keys.contains("ServiceNameInRegistry") {
                     self.serviceNameInRegistry = dict["ServiceNameInRegistry"] as! String
@@ -38450,6 +38736,12 @@ public class UpdateBlackWhiteListRequest : Tea.TeaModel {
 
     public var mseSessionId: String?
 
+    public var name: String?
+
+    public var note: String?
+
+    public var resourceIdJsonList: String?
+
     public var resourceType: String?
 
     public var status: String?
@@ -38488,6 +38780,15 @@ public class UpdateBlackWhiteListRequest : Tea.TeaModel {
         if self.mseSessionId != nil {
             map["MseSessionId"] = self.mseSessionId!
         }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.note != nil {
+            map["Note"] = self.note!
+        }
+        if self.resourceIdJsonList != nil {
+            map["ResourceIdJsonList"] = self.resourceIdJsonList!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
@@ -38518,6 +38819,15 @@ public class UpdateBlackWhiteListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MseSessionId") {
             self.mseSessionId = dict["MseSessionId"] as! String
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Note") {
+            self.note = dict["Note"] as! String
+        }
+        if dict.keys.contains("ResourceIdJsonList") {
+            self.resourceIdJsonList = dict["ResourceIdJsonList"] as! String
         }
         if dict.keys.contains("ResourceType") {
             self.resourceType = dict["ResourceType"] as! String
@@ -38718,6 +39028,8 @@ public class UpdateClusterRequest : Tea.TeaModel {
 public class UpdateClusterResponseBody : Tea.TeaModel {
     public var errorCode: String?
 
+    public var httpStatusCode: String?
+
     public var message: String?
 
     public var requestId: String?
@@ -38741,6 +39053,9 @@ public class UpdateClusterResponseBody : Tea.TeaModel {
         if self.errorCode != nil {
             map["ErrorCode"] = self.errorCode!
         }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -38756,6 +39071,9 @@ public class UpdateClusterResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ErrorCode") {
             self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") {
+            self.httpStatusCode = dict["HttpStatusCode"] as! String
         }
         if dict.keys.contains("Message") {
             self.message = dict["Message"] as! String
