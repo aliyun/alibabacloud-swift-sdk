@@ -1458,6 +1458,8 @@ public class ApplyAddRequest : Tea.TeaModel {
 
     public var thirdpartBusinessId: String?
 
+    public var thirdpartDepartId: String?
+
     public var togetherBookRule: Int32?
 
     public var trainBudget: Int64?
@@ -1563,6 +1565,9 @@ public class ApplyAddRequest : Tea.TeaModel {
         }
         if self.thirdpartBusinessId != nil {
             map["thirdpart_business_id"] = self.thirdpartBusinessId!
+        }
+        if self.thirdpartDepartId != nil {
+            map["thirdpart_depart_id"] = self.thirdpartDepartId!
         }
         if self.togetherBookRule != nil {
             map["together_book_rule"] = self.togetherBookRule!
@@ -1670,6 +1675,9 @@ public class ApplyAddRequest : Tea.TeaModel {
         if dict.keys.contains("thirdpart_business_id") {
             self.thirdpartBusinessId = dict["thirdpart_business_id"] as! String
         }
+        if dict.keys.contains("thirdpart_depart_id") {
+            self.thirdpartDepartId = dict["thirdpart_depart_id"] as! String
+        }
         if dict.keys.contains("together_book_rule") {
             self.togetherBookRule = dict["together_book_rule"] as! Int32
         }
@@ -1745,6 +1753,8 @@ public class ApplyAddShrinkRequest : Tea.TeaModel {
     public var thirdpartApplyId: String?
 
     public var thirdpartBusinessId: String?
+
+    public var thirdpartDepartId: String?
 
     public var togetherBookRule: Int32?
 
@@ -1837,6 +1847,9 @@ public class ApplyAddShrinkRequest : Tea.TeaModel {
         }
         if self.thirdpartBusinessId != nil {
             map["thirdpart_business_id"] = self.thirdpartBusinessId!
+        }
+        if self.thirdpartDepartId != nil {
+            map["thirdpart_depart_id"] = self.thirdpartDepartId!
         }
         if self.togetherBookRule != nil {
             map["together_book_rule"] = self.togetherBookRule!
@@ -1931,6 +1944,9 @@ public class ApplyAddShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("thirdpart_business_id") {
             self.thirdpartBusinessId = dict["thirdpart_business_id"] as! String
+        }
+        if dict.keys.contains("thirdpart_depart_id") {
+            self.thirdpartDepartId = dict["thirdpart_depart_id"] as! String
         }
         if dict.keys.contains("together_book_rule") {
             self.togetherBookRule = dict["together_book_rule"] as! Int32
@@ -3957,6 +3973,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
 
     public var thirdpartBusinessId: String?
 
+    public var thirdpartDepartId: String?
+
     public var togetherBookRule: Int32?
 
     public var trainBudget: Int64?
@@ -4058,6 +4076,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
         if self.thirdpartBusinessId != nil {
             map["thirdpart_business_id"] = self.thirdpartBusinessId!
         }
+        if self.thirdpartDepartId != nil {
+            map["thirdpart_depart_id"] = self.thirdpartDepartId!
+        }
         if self.togetherBookRule != nil {
             map["together_book_rule"] = self.togetherBookRule!
         }
@@ -4158,6 +4179,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
         if dict.keys.contains("thirdpart_business_id") {
             self.thirdpartBusinessId = dict["thirdpart_business_id"] as! String
         }
+        if dict.keys.contains("thirdpart_depart_id") {
+            self.thirdpartDepartId = dict["thirdpart_depart_id"] as! String
+        }
         if dict.keys.contains("together_book_rule") {
             self.togetherBookRule = dict["together_book_rule"] as! Int32
         }
@@ -4228,6 +4252,8 @@ public class ApplyModifyShrinkRequest : Tea.TeaModel {
     public var thirdpartApplyId: String?
 
     public var thirdpartBusinessId: String?
+
+    public var thirdpartDepartId: String?
 
     public var togetherBookRule: Int32?
 
@@ -4316,6 +4342,9 @@ public class ApplyModifyShrinkRequest : Tea.TeaModel {
         if self.thirdpartBusinessId != nil {
             map["thirdpart_business_id"] = self.thirdpartBusinessId!
         }
+        if self.thirdpartDepartId != nil {
+            map["thirdpart_depart_id"] = self.thirdpartDepartId!
+        }
         if self.togetherBookRule != nil {
             map["together_book_rule"] = self.togetherBookRule!
         }
@@ -4403,6 +4432,9 @@ public class ApplyModifyShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("thirdpart_business_id") {
             self.thirdpartBusinessId = dict["thirdpart_business_id"] as! String
+        }
+        if dict.keys.contains("thirdpart_depart_id") {
+            self.thirdpartDepartId = dict["thirdpart_depart_id"] as! String
         }
         if dict.keys.contains("together_book_rule") {
             self.togetherBookRule = dict["together_book_rule"] as! Int32

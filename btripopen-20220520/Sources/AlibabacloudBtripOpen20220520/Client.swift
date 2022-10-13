@@ -243,6 +243,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.thirdpartBusinessId)) {
             body["thirdpart_business_id"] = request.thirdpartBusinessId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.thirdpartDepartId)) {
+            body["thirdpart_depart_id"] = request.thirdpartDepartId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.togetherBookRule)) {
             body["together_book_rule"] = request.togetherBookRule!;
         }
@@ -515,6 +518,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.thirdpartBusinessId)) {
             body["thirdpart_business_id"] = request.thirdpartBusinessId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.thirdpartDepartId)) {
+            body["thirdpart_depart_id"] = request.thirdpartDepartId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.togetherBookRule)) {
             body["together_book_rule"] = request.togetherBookRule!;
