@@ -1718,6 +1718,10 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidNotificationChannel: String?
 
+        public var androidNotificationGroup: String?
+
+        public var androidNotificationHonorChannel: String?
+
         public var androidNotificationHuaweiChannel: String?
 
         public var androidNotificationNotifyId: Int32?
@@ -1862,6 +1866,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidNotificationChannel != nil {
                 map["AndroidNotificationChannel"] = self.androidNotificationChannel!
+            }
+            if self.androidNotificationGroup != nil {
+                map["AndroidNotificationGroup"] = self.androidNotificationGroup!
+            }
+            if self.androidNotificationHonorChannel != nil {
+                map["AndroidNotificationHonorChannel"] = self.androidNotificationHonorChannel!
             }
             if self.androidNotificationHuaweiChannel != nil {
                 map["AndroidNotificationHuaweiChannel"] = self.androidNotificationHuaweiChannel!
@@ -2043,6 +2053,12 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if dict.keys.contains("AndroidNotificationChannel") {
                 self.androidNotificationChannel = dict["AndroidNotificationChannel"] as! String
+            }
+            if dict.keys.contains("AndroidNotificationGroup") {
+                self.androidNotificationGroup = dict["AndroidNotificationGroup"] as! String
+            }
+            if dict.keys.contains("AndroidNotificationHonorChannel") {
+                self.androidNotificationHonorChannel = dict["AndroidNotificationHonorChannel"] as! String
             }
             if dict.keys.contains("AndroidNotificationHuaweiChannel") {
                 self.androidNotificationHuaweiChannel = dict["AndroidNotificationHuaweiChannel"] as! String
@@ -2374,6 +2390,10 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidNotificationChannel: String?
 
+    public var androidNotificationGroup: String?
+
+    public var androidNotificationHonorChannel: String?
+
     public var androidNotificationHuaweiChannel: String?
 
     public var androidNotificationNotifyId: Int32?
@@ -2530,6 +2550,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidNotificationChannel != nil {
             map["AndroidNotificationChannel"] = self.androidNotificationChannel!
+        }
+        if self.androidNotificationGroup != nil {
+            map["AndroidNotificationGroup"] = self.androidNotificationGroup!
+        }
+        if self.androidNotificationHonorChannel != nil {
+            map["AndroidNotificationHonorChannel"] = self.androidNotificationHonorChannel!
         }
         if self.androidNotificationHuaweiChannel != nil {
             map["AndroidNotificationHuaweiChannel"] = self.androidNotificationHuaweiChannel!
@@ -2729,6 +2755,12 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidNotificationChannel") {
             self.androidNotificationChannel = dict["AndroidNotificationChannel"] as! String
+        }
+        if dict.keys.contains("AndroidNotificationGroup") {
+            self.androidNotificationGroup = dict["AndroidNotificationGroup"] as! String
+        }
+        if dict.keys.contains("AndroidNotificationHonorChannel") {
+            self.androidNotificationHonorChannel = dict["AndroidNotificationHonorChannel"] as! String
         }
         if dict.keys.contains("AndroidNotificationHuaweiChannel") {
             self.androidNotificationHuaweiChannel = dict["AndroidNotificationHuaweiChannel"] as! String

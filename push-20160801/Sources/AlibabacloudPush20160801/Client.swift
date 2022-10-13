@@ -534,6 +534,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidNotificationChannel)) {
             query["AndroidNotificationChannel"] = request.androidNotificationChannel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.androidNotificationGroup)) {
+            query["AndroidNotificationGroup"] = request.androidNotificationGroup ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.androidNotificationHonorChannel)) {
+            query["AndroidNotificationHonorChannel"] = request.androidNotificationHonorChannel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.androidNotificationHuaweiChannel)) {
             query["AndroidNotificationHuaweiChannel"] = request.androidNotificationHuaweiChannel ?? "";
         }
