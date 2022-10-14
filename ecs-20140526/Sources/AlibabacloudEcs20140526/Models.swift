@@ -51061,6 +51061,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public var GPUAmount: Int32?
 
+            public var GPUMemorySize: Double?
+
             public var GPUSpec: String?
 
             public var initialCredit: Int32?
@@ -51157,6 +51159,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if self.GPUAmount != nil {
                     map["GPUAmount"] = self.GPUAmount!
+                }
+                if self.GPUMemorySize != nil {
+                    map["GPUMemorySize"] = self.GPUMemorySize!
                 }
                 if self.GPUSpec != nil {
                     map["GPUSpec"] = self.GPUSpec!
@@ -51266,6 +51271,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("GPUAmount") {
                     self.GPUAmount = dict["GPUAmount"] as! Int32
+                }
+                if dict.keys.contains("GPUMemorySize") {
+                    self.GPUMemorySize = dict["GPUMemorySize"] as! Double
                 }
                 if dict.keys.contains("GPUSpec") {
                     self.GPUSpec = dict["GPUSpec"] as! String
