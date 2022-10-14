@@ -81,11 +81,58 @@ public class AccessTokenResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Module : Tea.TeaModel {
+        public var expire: Int64?
+
+        public var start: Int64?
+
+        public var token: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expire != nil {
+                map["expire"] = self.expire!
+            }
+            if self.start != nil {
+                map["start"] = self.start!
+            }
+            if self.token != nil {
+                map["token"] = self.token!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("expire") {
+                self.expire = dict["expire"] as! Int64
+            }
+            if dict.keys.contains("start") {
+                self.start = dict["start"] as! Int64
+            }
+            if dict.keys.contains("token") {
+                self.token = dict["token"] as! String
+            }
+        }
+    }
     public var code: String?
 
     public var data: AccessTokenResponseBody.Data?
 
     public var message: String?
+
+    public var module: AccessTokenResponseBody.Module?
 
     public var requestId: String?
 
@@ -102,6 +149,7 @@ public class AccessTokenResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.data?.validate()
+        try self.module?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -114,6 +162,9 @@ public class AccessTokenResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -135,6 +186,11 @@ public class AccessTokenResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") {
+            var model = AccessTokenResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
@@ -9489,11 +9545,58 @@ public class CorpTokenResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class Module : Tea.TeaModel {
+        public var expire: Int64?
+
+        public var start: Int64?
+
+        public var token: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expire != nil {
+                map["expire"] = self.expire!
+            }
+            if self.start != nil {
+                map["start"] = self.start!
+            }
+            if self.token != nil {
+                map["token"] = self.token!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("expire") {
+                self.expire = dict["expire"] as! Int64
+            }
+            if dict.keys.contains("start") {
+                self.start = dict["start"] as! Int64
+            }
+            if dict.keys.contains("token") {
+                self.token = dict["token"] as! String
+            }
+        }
+    }
     public var code: String?
 
     public var data: CorpTokenResponseBody.Data?
 
     public var message: String?
+
+    public var module: CorpTokenResponseBody.Module?
 
     public var requestId: String?
 
@@ -9510,6 +9613,7 @@ public class CorpTokenResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.data?.validate()
+        try self.module?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -9522,6 +9626,9 @@ public class CorpTokenResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -9543,6 +9650,11 @@ public class CorpTokenResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") {
+            var model = CorpTokenResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
