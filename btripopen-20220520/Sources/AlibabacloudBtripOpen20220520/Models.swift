@@ -383,7 +383,7 @@ public class AddressGetResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -433,7 +433,7 @@ public class AddressGetResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -678,7 +678,7 @@ public class AirportSearchResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -728,7 +728,7 @@ public class AirportSearchResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -2089,7 +2089,7 @@ public class ApplyAddResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -2139,7 +2139,7 @@ public class ApplyAddResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -2322,7 +2322,7 @@ public class ApplyApproveRequest : Tea.TeaModel {
 }
 
 public class ApplyApproveResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -2371,7 +2371,7 @@ public class ApplyApproveResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -3194,7 +3194,7 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -3247,7 +3247,7 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -4574,7 +4574,7 @@ public class ApplyModifyResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -4624,7 +4624,7 @@ public class ApplyModifyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -5723,7 +5723,7 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -5773,7 +5773,7 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -6028,7 +6028,7 @@ public class CarApplyAddRequest : Tea.TeaModel {
 }
 
 public class CarApplyAddResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -6077,7 +6077,7 @@ public class CarApplyAddResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -6250,7 +6250,7 @@ public class CarApplyModifyRequest : Tea.TeaModel {
 }
 
 public class CarApplyModifyResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -6299,7 +6299,7 @@ public class CarApplyModifyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -6825,7 +6825,7 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
     }
     public var applyList: [CarApplyQueryResponseBody.ApplyList]?
 
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -6884,7 +6884,7 @@ public class CarApplyQueryResponseBody : Tea.TeaModel {
             self.applyList = dict["apply_list"] as! [CarApplyQueryResponseBody.ApplyList]
         }
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -7599,7 +7599,7 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -7649,7 +7649,7 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -8476,7 +8476,7 @@ public class CarOrderListQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -8535,7 +8535,7 @@ public class CarOrderListQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -8759,7 +8759,7 @@ public class CitySearchResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -8809,7 +8809,7 @@ public class CitySearchResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -9077,7 +9077,7 @@ public class CommonApplyQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -9127,7 +9127,7 @@ public class CommonApplyQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -9310,7 +9310,7 @@ public class CommonApplySyncRequest : Tea.TeaModel {
 }
 
 public class CommonApplySyncResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -9359,7 +9359,7 @@ public class CommonApplySyncResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -9786,7 +9786,7 @@ public class CostCenterDeleteRequest : Tea.TeaModel {
 }
 
 public class CostCenterDeleteResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -9830,7 +9830,7 @@ public class CostCenterDeleteResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -10000,7 +10000,7 @@ public class CostCenterModifyRequest : Tea.TeaModel {
 }
 
 public class CostCenterModifyResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -10044,7 +10044,7 @@ public class CostCenterModifyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -10364,7 +10364,7 @@ public class CostCenterQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -10422,7 +10422,7 @@ public class CostCenterQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -10627,7 +10627,7 @@ public class CostCenterSaveResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -10677,7 +10677,7 @@ public class CostCenterSaveResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -10931,7 +10931,7 @@ public class DepartmentSaveShrinkRequest : Tea.TeaModel {
 }
 
 public class DepartmentSaveResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -10980,7 +10980,7 @@ public class DepartmentSaveResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -11245,7 +11245,7 @@ public class EntityAddResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -11295,7 +11295,7 @@ public class EntityAddResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -11578,7 +11578,7 @@ public class EntityDeleteResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -11633,7 +11633,7 @@ public class EntityDeleteResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -11911,7 +11911,7 @@ public class EntitySetResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -11966,7 +11966,7 @@ public class EntitySetResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -12152,7 +12152,7 @@ public class ExceedApplySyncRequest : Tea.TeaModel {
 }
 
 public class ExceedApplySyncResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -12201,7 +12201,7 @@ public class ExceedApplySyncResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -13028,7 +13028,7 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -13078,7 +13078,7 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -13466,7 +13466,7 @@ public class FlightExceedApplyQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -13516,7 +13516,7 @@ public class FlightExceedApplyQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -14416,7 +14416,7 @@ public class FlightOrderListQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -14475,7 +14475,7 @@ public class FlightOrderListQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -15665,7 +15665,7 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -15715,7 +15715,7 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -16400,7 +16400,7 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -16450,7 +16450,7 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -16790,7 +16790,7 @@ public class HotelExceedApplyQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -16840,7 +16840,7 @@ public class HotelExceedApplyQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -17643,7 +17643,7 @@ public class HotelOrderListQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -17702,7 +17702,7 @@ public class HotelOrderListQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -18542,7 +18542,7 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -18597,7 +18597,7 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -18799,7 +18799,7 @@ public class InvoiceAddRequest : Tea.TeaModel {
 }
 
 public class InvoiceAddResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -18843,7 +18843,7 @@ public class InvoiceAddResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -18981,7 +18981,7 @@ public class InvoiceDeleteRequest : Tea.TeaModel {
 }
 
 public class InvoiceDeleteResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -19025,7 +19025,7 @@ public class InvoiceDeleteResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -19219,7 +19219,7 @@ public class InvoiceModifyRequest : Tea.TeaModel {
 }
 
 public class InvoiceModifyResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -19263,7 +19263,7 @@ public class InvoiceModifyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -19549,7 +19549,7 @@ public class InvoiceRuleSaveResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -19599,7 +19599,7 @@ public class InvoiceRuleSaveResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -19795,7 +19795,7 @@ public class InvoiceSearchResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -19848,7 +19848,7 @@ public class InvoiceSearchResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -20148,7 +20148,7 @@ public class IsvUserSaveShrinkRequest : Tea.TeaModel {
 }
 
 public class IsvUserSaveResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -20197,7 +20197,7 @@ public class IsvUserSaveResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -20383,7 +20383,7 @@ public class MonthBillGetResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -20436,7 +20436,7 @@ public class MonthBillGetResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -20609,7 +20609,7 @@ public class ProjectAddRequest : Tea.TeaModel {
 }
 
 public class ProjectAddResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -20663,7 +20663,7 @@ public class ProjectAddResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -20807,7 +20807,7 @@ public class ProjectDeleteRequest : Tea.TeaModel {
 }
 
 public class ProjectDeleteResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -20856,7 +20856,7 @@ public class ProjectDeleteResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -21029,7 +21029,7 @@ public class ProjectModifyRequest : Tea.TeaModel {
 }
 
 public class ProjectModifyResponseBody : Tea.TeaModel {
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -21078,7 +21078,7 @@ public class ProjectModifyResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -21729,7 +21729,7 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -21779,7 +21779,7 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -22167,7 +22167,7 @@ public class TrainExceedApplyQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -22217,7 +22217,7 @@ public class TrainExceedApplyQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -23076,7 +23076,7 @@ public class TrainOrderListQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -23135,7 +23135,7 @@ public class TrainOrderListQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -24243,13 +24243,13 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var code: String?
+
+    public var message: String?
+
     public var module: TrainOrderQueryResponseBody.Module?
 
     public var requestId: String?
-
-    public var resultCode: Int32?
-
-    public var resultMsg: String?
 
     public var success: Bool?
 
@@ -24270,17 +24270,17 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
         if self.module != nil {
             map["module"] = self.module?.toMap()
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
-        }
-        if self.resultCode != nil {
-            map["result_code"] = self.resultCode!
-        }
-        if self.resultMsg != nil {
-            map["result_msg"] = self.resultMsg!
         }
         if self.success != nil {
             map["success"] = self.success!
@@ -24292,6 +24292,12 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
         if dict.keys.contains("module") {
             var model = TrainOrderQueryResponseBody.Module()
             model.fromMap(dict["module"] as! [String: Any])
@@ -24299,12 +24305,6 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") {
             self.requestId = dict["requestId"] as! String
-        }
-        if dict.keys.contains("result_code") {
-            self.resultCode = dict["result_code"] as! Int32
-        }
-        if dict.keys.contains("result_msg") {
-            self.resultMsg = dict["result_msg"] as! String
         }
         if dict.keys.contains("success") {
             self.success = dict["success"] as! Bool
@@ -24506,7 +24506,7 @@ public class TrainStationSearchResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -24556,7 +24556,7 @@ public class TrainStationSearchResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
@@ -24825,7 +24825,7 @@ public class UserQueryResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: Int32?
+    public var code: String?
 
     public var message: String?
 
@@ -24875,7 +24875,7 @@ public class UserQueryResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("code") {
-            self.code = dict["code"] as! Int32
+            self.code = dict["code"] as! String
         }
         if dict.keys.contains("message") {
             self.message = dict["message"] as! String
