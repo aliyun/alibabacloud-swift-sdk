@@ -339,6 +339,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.output)) {
             body["Output"] = request.output ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["Params"] = request.params ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             body["StartTime"] = request.startTime!;
         }
@@ -384,9 +387,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitImageCopyrightWithOptions(_ request: SubmitImageCopyrightRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitImageCopyrightResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.input)) {
-            body["Input"] = request.input ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.level)) {
             body["Level"] = request.level!;
         }
@@ -398,9 +398,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.params)) {
             body["Params"] = request.params ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.url)) {
-            body["Url"] = request.url ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

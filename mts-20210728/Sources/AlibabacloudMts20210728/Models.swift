@@ -1397,6 +1397,8 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
 
     public var output: String?
 
+    public var params: String?
+
     public var startTime: Int64?
 
     public var totalTime: Int64?
@@ -1439,6 +1441,9 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
         if self.output != nil {
             map["Output"] = self.output!
         }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -1475,6 +1480,9 @@ public class SubmitCopyrightJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Output") {
             self.output = dict["Output"] as! String
+        }
+        if dict.keys.contains("Params") {
+            self.params = dict["Params"] as! String
         }
         if dict.keys.contains("StartTime") {
             self.startTime = dict["StartTime"] as! Int64
@@ -1633,8 +1641,6 @@ public class SubmitCopyrightJobResponse : Tea.TeaModel {
 }
 
 public class SubmitImageCopyrightRequest : Tea.TeaModel {
-    public var input: String?
-
     public var level: Int64?
 
     public var message: String?
@@ -1642,8 +1648,6 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
     public var output: String?
 
     public var params: String?
-
-    public var url: String?
 
     public override init() {
         super.init()
@@ -1659,9 +1663,6 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.input != nil {
-            map["Input"] = self.input!
-        }
         if self.level != nil {
             map["Level"] = self.level!
         }
@@ -1674,16 +1675,10 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
         if self.params != nil {
             map["Params"] = self.params!
         }
-        if self.url != nil {
-            map["Url"] = self.url!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Input") {
-            self.input = dict["Input"] as! String
-        }
         if dict.keys.contains("Level") {
             self.level = dict["Level"] as! Int64
         }
@@ -1695,9 +1690,6 @@ public class SubmitImageCopyrightRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Params") {
             self.params = dict["Params"] as! String
-        }
-        if dict.keys.contains("Url") {
-            self.url = dict["Url"] as! String
         }
     }
 }

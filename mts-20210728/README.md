@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudMts20210728` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudMts20210728', '~> 3.3.8'
+pod 'AlibabacloudMts20210728', '~> 3.3.9'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudMts20210728', '~> 3.3.8'
 To integrate `AlibabacloudMts20210728` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/mts-20210728" "3.3.8"
+github "alibabacloud-sdk-swift/mts-20210728" "3.3.9"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudMts20210728` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/mts-20210728.git", from: "3.3.8")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/mts-20210728.git", from: "3.3.9")
 ]
 ```
 
