@@ -20436,6 +20436,8 @@ public class ListJobsResponse : Tea.TeaModel {
 }
 
 public class ListJobsWithFiltersRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var createTimeEnd: String?
@@ -20478,6 +20480,9 @@ public class ListJobsWithFiltersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -20524,6 +20529,9 @@ public class ListJobsWithFiltersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -21518,6 +21526,8 @@ public class ListNodesResponse : Tea.TeaModel {
 }
 
 public class ListNodesByQueueRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var pageNumber: Int32?
@@ -21540,6 +21550,9 @@ public class ListNodesByQueueRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -21556,6 +21569,9 @@ public class ListNodesByQueueRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -22641,6 +22657,8 @@ public class ListPreferredEcsTypesResponse : Tea.TeaModel {
 }
 
 public class ListQueuesRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public override init() {
@@ -22657,6 +22675,9 @@ public class ListQueuesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -22664,6 +22685,9 @@ public class ListQueuesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -24654,6 +24678,287 @@ public class ListUsersResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListUsersResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListUsersAsyncRequest : Tea.TeaModel {
+    public var asyncId: String?
+
+    public var clusterId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.asyncId != nil {
+            map["AsyncId"] = self.asyncId!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AsyncId") {
+            self.asyncId = dict["AsyncId"] as! String
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class ListUsersAsyncResponseBody : Tea.TeaModel {
+    public class Users : Tea.TeaModel {
+        public class UserInfo : Tea.TeaModel {
+            public var addTime: String?
+
+            public var group: String?
+
+            public var groupId: String?
+
+            public var name: String?
+
+            public var userId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.addTime != nil {
+                    map["AddTime"] = self.addTime!
+                }
+                if self.group != nil {
+                    map["Group"] = self.group!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.userId != nil {
+                    map["UserId"] = self.userId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AddTime") {
+                    self.addTime = dict["AddTime"] as! String
+                }
+                if dict.keys.contains("Group") {
+                    self.group = dict["Group"] as! String
+                }
+                if dict.keys.contains("GroupId") {
+                    self.groupId = dict["GroupId"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("UserId") {
+                    self.userId = dict["UserId"] as! String
+                }
+            }
+        }
+        public var userInfo: [ListUsersAsyncResponseBody.Users.UserInfo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.userInfo != nil {
+                var tmp : [Any] = []
+                for k in self.userInfo! {
+                    tmp.append(k.toMap())
+                }
+                map["UserInfo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("UserInfo") {
+                self.userInfo = dict["UserInfo"] as! [ListUsersAsyncResponseBody.Users.UserInfo]
+            }
+        }
+    }
+    public var asyncId: String?
+
+    public var asyncStatus: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var users: ListUsersAsyncResponseBody.Users?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.users?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.asyncId != nil {
+            map["AsyncId"] = self.asyncId!
+        }
+        if self.asyncStatus != nil {
+            map["AsyncStatus"] = self.asyncStatus!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.users != nil {
+            map["Users"] = self.users?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AsyncId") {
+            self.asyncId = dict["AsyncId"] as! String
+        }
+        if dict.keys.contains("AsyncStatus") {
+            self.asyncStatus = dict["AsyncStatus"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("Users") {
+            var model = ListUsersAsyncResponseBody.Users()
+            model.fromMap(dict["Users"] as! [String: Any])
+            self.users = model
+        }
+    }
+}
+
+public class ListUsersAsyncResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListUsersAsyncResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListUsersAsyncResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
