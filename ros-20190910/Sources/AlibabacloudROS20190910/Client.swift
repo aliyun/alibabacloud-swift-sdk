@@ -79,6 +79,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ramRoleName)) {
             query["RamRoleName"] = request.ramRoleName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.recreatingOptions)) {
+            query["RecreatingOptions"] = request.recreatingOptions ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.recreatingResources)) {
             query["RecreatingResources"] = request.recreatingResources ?? [];
         }
@@ -357,6 +360,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.stackGroupName)) {
             query["StackGroupName"] = request.stackGroupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             query["TemplateBody"] = request.templateBody ?? "";
         }
@@ -477,6 +483,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             query["TemplateBody"] = request.templateBody ?? "";
@@ -2138,6 +2147,18 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.stackId)) {
             query["StackId"] = request.stackId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateBody)) {
+            query["TemplateBody"] = request.templateBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateURL)) {
+            query["TemplateURL"] = request.templateURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateVersion)) {
+            query["TemplateVersion"] = request.templateVersion ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

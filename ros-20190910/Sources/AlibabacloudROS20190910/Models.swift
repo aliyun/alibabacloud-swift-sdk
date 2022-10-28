@@ -181,6 +181,8 @@ public class ContinueCreateStackRequest : Tea.TeaModel {
 
     public var ramRoleName: String?
 
+    public var recreatingOptions: [String]?
+
     public var recreatingResources: [String]?
 
     public var regionId: String?
@@ -228,6 +230,9 @@ public class ContinueCreateStackRequest : Tea.TeaModel {
         if self.ramRoleName != nil {
             map["RamRoleName"] = self.ramRoleName!
         }
+        if self.recreatingOptions != nil {
+            map["RecreatingOptions"] = self.recreatingOptions!
+        }
         if self.recreatingResources != nil {
             map["RecreatingResources"] = self.recreatingResources!
         }
@@ -267,6 +272,9 @@ public class ContinueCreateStackRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RamRoleName") {
             self.ramRoleName = dict["RamRoleName"] as! String
+        }
+        if dict.keys.contains("RecreatingOptions") {
+            self.recreatingOptions = dict["RecreatingOptions"] as! [String]
         }
         if dict.keys.contains("RecreatingResources") {
             self.recreatingResources = dict["RecreatingResources"] as! [String]
@@ -1229,6 +1237,43 @@ public class CreateStackGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var administrationRoleName: String?
 
     public var autoDeployment: CreateStackGroupRequest.AutoDeployment?
@@ -1248,6 +1293,8 @@ public class CreateStackGroupRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var stackGroupName: String?
+
+    public var tags: [CreateStackGroupRequest.Tags]?
 
     public var templateBody: String?
 
@@ -1306,6 +1353,13 @@ public class CreateStackGroupRequest : Tea.TeaModel {
         if self.stackGroupName != nil {
             map["StackGroupName"] = self.stackGroupName!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -1353,6 +1407,9 @@ public class CreateStackGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StackGroupName") {
             self.stackGroupName = dict["StackGroupName"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tags = dict["Tags"] as! [CreateStackGroupRequest.Tags]
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -1407,6 +1464,43 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var administrationRoleName: String?
 
     public var autoDeploymentShrink: String?
@@ -1426,6 +1520,8 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var stackGroupName: String?
+
+    public var tags: [CreateStackGroupShrinkRequest.Tags]?
 
     public var templateBody: String?
 
@@ -1483,6 +1579,13 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
         if self.stackGroupName != nil {
             map["StackGroupName"] = self.stackGroupName!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -1528,6 +1631,9 @@ public class CreateStackGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StackGroupName") {
             self.stackGroupName = dict["StackGroupName"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tags = dict["Tags"] as! [CreateStackGroupShrinkRequest.Tags]
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -2059,9 +2165,48 @@ public class CreateStackInstancesResponse : Tea.TeaModel {
 }
 
 public class CreateTemplateRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var description_: String?
 
     public var resourceGroupId: String?
+
+    public var tags: [CreateTemplateRequest.Tags]?
 
     public var templateBody: String?
 
@@ -2089,6 +2234,13 @@ public class CreateTemplateRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -2107,6 +2259,9 @@ public class CreateTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Tags") {
+            self.tags = dict["Tags"] as! [CreateTemplateRequest.Tags]
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -6300,6 +6455,61 @@ public class GetServiceProvisionsResponseBody : Tea.TeaModel {
     public class ServiceProvisions : Tea.TeaModel {
         public class RoleProvision : Tea.TeaModel {
             public class Roles : Tea.TeaModel {
+                public class ApiForCreation : Tea.TeaModel {
+                    public var apiName: String?
+
+                    public var apiProductId: String?
+
+                    public var apiType: String?
+
+                    public var parameters: [String: Any]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.apiName != nil {
+                            map["ApiName"] = self.apiName!
+                        }
+                        if self.apiProductId != nil {
+                            map["ApiProductId"] = self.apiProductId!
+                        }
+                        if self.apiType != nil {
+                            map["ApiType"] = self.apiType!
+                        }
+                        if self.parameters != nil {
+                            map["Parameters"] = self.parameters!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ApiName") {
+                            self.apiName = dict["ApiName"] as! String
+                        }
+                        if dict.keys.contains("ApiProductId") {
+                            self.apiProductId = dict["ApiProductId"] as! String
+                        }
+                        if dict.keys.contains("ApiType") {
+                            self.apiType = dict["ApiType"] as! String
+                        }
+                        if dict.keys.contains("Parameters") {
+                            self.parameters = dict["Parameters"] as! [String: Any]
+                        }
+                    }
+                }
+                public var apiForCreation: GetServiceProvisionsResponseBody.ServiceProvisions.RoleProvision.Roles.ApiForCreation?
+
                 public var created: Bool?
 
                 public var function: String?
@@ -6316,10 +6526,14 @@ public class GetServiceProvisionsResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.apiForCreation?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.apiForCreation != nil {
+                        map["ApiForCreation"] = self.apiForCreation?.toMap()
+                    }
                     if self.created != nil {
                         map["Created"] = self.created!
                     }
@@ -6333,6 +6547,11 @@ public class GetServiceProvisionsResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ApiForCreation") {
+                        var model = GetServiceProvisionsResponseBody.ServiceProvisions.RoleProvision.Roles.ApiForCreation()
+                        model.fromMap(dict["ApiForCreation"] as! [String: Any])
+                        self.apiForCreation = model
+                    }
                     if dict.keys.contains("Created") {
                         self.created = dict["Created"] as! Bool
                     }
@@ -12970,6 +13189,14 @@ public class ListStackOperationRisksRequest : Tea.TeaModel {
 
     public var stackId: String?
 
+    public var templateBody: String?
+
+    public var templateId: String?
+
+    public var templateURL: String?
+
+    public var templateVersion: String?
+
     public override init() {
         super.init()
     }
@@ -13005,6 +13232,18 @@ public class ListStackOperationRisksRequest : Tea.TeaModel {
         if self.stackId != nil {
             map["StackId"] = self.stackId!
         }
+        if self.templateBody != nil {
+            map["TemplateBody"] = self.templateBody!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateURL != nil {
+            map["TemplateURL"] = self.templateURL!
+        }
+        if self.templateVersion != nil {
+            map["TemplateVersion"] = self.templateVersion!
+        }
         return map
     }
 
@@ -13029,6 +13268,18 @@ public class ListStackOperationRisksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StackId") {
             self.stackId = dict["StackId"] as! String
+        }
+        if dict.keys.contains("TemplateBody") {
+            self.templateBody = dict["TemplateBody"] as! String
+        }
+        if dict.keys.contains("TemplateId") {
+            self.templateId = dict["TemplateId"] as! String
+        }
+        if dict.keys.contains("TemplateURL") {
+            self.templateURL = dict["TemplateURL"] as! String
+        }
+        if dict.keys.contains("TemplateVersion") {
+            self.templateVersion = dict["TemplateVersion"] as! String
         }
     }
 }
@@ -13119,6 +13370,8 @@ public class ListStackOperationRisksResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var missingPolicyActions: [String]?
+
     public var requestId: String?
 
     public var riskResources: [ListStackOperationRisksResponseBody.RiskResources]?
@@ -13137,6 +13390,9 @@ public class ListStackOperationRisksResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.missingPolicyActions != nil {
+            map["MissingPolicyActions"] = self.missingPolicyActions!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -13151,6 +13407,9 @@ public class ListStackOperationRisksResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MissingPolicyActions") {
+            self.missingPolicyActions = dict["MissingPolicyActions"] as! [String]
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
