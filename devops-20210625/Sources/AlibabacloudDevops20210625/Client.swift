@@ -130,6 +130,59 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createFile(_ repositoryId: String, _ request: CreateFileRequest) async throws -> CreateFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createFileWithOptions(repositoryId as! String, request as! CreateFileRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createFileWithOptions(_ repositoryId: String, _ request: CreateFileRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.branchName)) {
+            body["branchName"] = request.branchName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commitMessage)) {
+            body["commitMessage"] = request.commitMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.encoding)) {
+            body["encoding"] = request.encoding ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            body["filePath"] = request.filePath ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateFile",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/files",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createFlowTag(_ organizationId: String, _ request: CreateFlowTagRequest) async throws -> CreateFlowTagResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
@@ -756,6 +809,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFile(_ repositoryId: String, _ request: DeleteFileRequest) async throws -> DeleteFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteFileWithOptions(repositoryId as! String, request as! DeleteFileRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFileWithOptions(_ repositoryId: String, _ request: DeleteFileRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.branchName)) {
+            query["branchName"] = request.branchName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commitMessage)) {
+            query["commitMessage"] = request.commitMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["filePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteFile",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/files/delete",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteFlowTag(_ organizationId: String, _ id: String) async throws -> DeleteFlowTagResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
@@ -924,6 +1022,47 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRepository(_ repositoryId: String, _ request: DeleteRepositoryRequest) async throws -> DeleteRepositoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteRepositoryWithOptions(repositoryId as! String, request as! DeleteRepositoryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteRepositoryWithOptions(_ repositoryId: String, _ request: DeleteRepositoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRepositoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            body["reason"] = request.reason ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteRepository",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/remove",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteRepositoryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteResourceMember(_ organizationId: String, _ resourceType: String, _ resourceId: String, _ accountId: String) async throws -> DeleteResourceMemberResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
@@ -1077,6 +1216,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFileBlobs(_ repositoryId: String, _ request: GetFileBlobsRequest) async throws -> GetFileBlobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getFileBlobsWithOptions(repositoryId as! String, request as! GetFileBlobsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFileBlobsWithOptions(_ repositoryId: String, _ request: GetFileBlobsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFileBlobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            query["filePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.from)) {
+            query["from"] = request.from!;
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ref)) {
+            query["ref"] = request.ref ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.to)) {
+            query["to"] = request.to!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFileBlobs",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/files/blobs",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFileBlobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getFileLastCommit(_ repositoryId: String, _ request: GetFileLastCommitRequest) async throws -> GetFileLastCommitResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
@@ -1098,6 +1285,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sha)) {
             query["sha"] = request.sha ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.showSignature)) {
+            query["showSignature"] = request.showSignature!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -2412,6 +2602,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRepositoryTree(_ repositoryId: String, _ request: ListRepositoryTreeRequest) async throws -> ListRepositoryTreeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listRepositoryTreeWithOptions(repositoryId as! String, request as! ListRepositoryTreeRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listRepositoryTreeWithOptions(_ repositoryId: String, _ request: ListRepositoryTreeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRepositoryTreeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            query["path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.refName)) {
+            query["refName"] = request.refName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListRepositoryTree",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/files/tree",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListRepositoryTreeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listRepositoryWebhook(_ repositoryId: String, _ request: ListRepositoryWebhookRequest) async throws -> ListRepositoryWebhookResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
@@ -3269,6 +3504,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFile(_ repositoryId: String, _ request: UpdateFileRequest) async throws -> UpdateFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateFileWithOptions(repositoryId as! String, request as! UpdateFileRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFileWithOptions(_ repositoryId: String, _ request: UpdateFileRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFileResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.branchName)) {
+            body["branchName"] = request.branchName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commitMessage)) {
+            body["commitMessage"] = request.commitMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.encoding)) {
+            body["encoding"] = request.encoding ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.newPath)) {
+            body["newPath"] = request.newPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.oldPath)) {
+            body["oldPath"] = request.oldPath ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateFile",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/files/update",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateFlowTag(_ organizationId: String, _ id: String, _ request: UpdateFlowTagRequest) async throws -> UpdateFlowTagResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
@@ -3577,6 +3868,95 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UpdateProtectedBranchesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRepository(_ repositoryId: String, _ request: UpdateRepositoryRequest) async throws -> UpdateRepositoryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateRepositoryWithOptions(repositoryId as! String, request as! UpdateRepositoryRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateRepositoryWithOptions(_ repositoryId: String, _ request: UpdateRepositoryRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRepositoryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adminSettingLanguage)) {
+            body["adminSettingLanguage"] = request.adminSettingLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.avatar)) {
+            body["avatar"] = request.avatar ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buildsEnabled)) {
+            body["buildsEnabled"] = request.buildsEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.checkEmail)) {
+            body["checkEmail"] = request.checkEmail!;
+        }
+        if (!TeaUtils.Client.isUnset(request.defaultBranch)) {
+            body["defaultBranch"] = request.defaultBranch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["id"] = request.id!;
+        }
+        if (!TeaUtils.Client.isUnset(request.issuesEnabled)) {
+            body["issuesEnabled"] = request.issuesEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.mergeRequestsEnabled)) {
+            body["mergeRequestsEnabled"] = request.mergeRequestsEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.openCloneDownloadControl)) {
+            body["openCloneDownloadControl"] = request.openCloneDownloadControl!;
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            body["path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.projectCloneDownloadMethodList)) {
+            body["projectCloneDownloadMethodList"] = request.projectCloneDownloadMethodList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.projectCloneDownloadRoleList)) {
+            body["projectCloneDownloadRoleList"] = request.projectCloneDownloadRoleList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.snippetsEnabled)) {
+            body["snippetsEnabled"] = request.snippetsEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.visibilityLevel)) {
+            body["visibilityLevel"] = request.visibilityLevel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wikiEnabled)) {
+            body["wikiEnabled"] = request.wikiEnabled!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateRepository",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/repository/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateRepositoryResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
