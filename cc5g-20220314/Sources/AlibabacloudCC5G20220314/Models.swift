@@ -173,6 +173,318 @@ public class AddDNSAuthorizationRuleResponse : Tea.TeaModel {
     }
 }
 
+public class AddGroupDnsAuthorizationRuleRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var description_: String?
+
+    public var destinationIp: String?
+
+    public var dryRun: Bool?
+
+    public var name: String?
+
+    public var sourceDNSIp: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.destinationIp != nil {
+            map["DestinationIp"] = self.destinationIp!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.sourceDNSIp != nil {
+            map["SourceDNSIp"] = self.sourceDNSIp!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DestinationIp") {
+            self.destinationIp = dict["DestinationIp"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SourceDNSIp") {
+            self.sourceDNSIp = dict["SourceDNSIp"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class AddGroupDnsAuthorizationRuleResponseBody : Tea.TeaModel {
+    public var authorizationRuleId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizationRuleId != nil {
+            map["AuthorizationRuleId"] = self.authorizationRuleId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthorizationRuleId") {
+            self.authorizationRuleId = dict["AuthorizationRuleId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AddGroupDnsAuthorizationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddGroupDnsAuthorizationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AddGroupDnsAuthorizationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class AddWirelessCloudConnectorToGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var regionId: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public var wirelessCloudConnectorIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        if self.wirelessCloudConnectorIds != nil {
+            map["WirelessCloudConnectorIds"] = self.wirelessCloudConnectorIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorIds") {
+            self.wirelessCloudConnectorIds = dict["WirelessCloudConnectorIds"] as! [String]
+        }
+    }
+}
+
+public class AddWirelessCloudConnectorToGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class AddWirelessCloudConnectorToGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddWirelessCloudConnectorToGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AddWirelessCloudConnectorToGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AttachVpcToNetLinkRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -741,6 +1053,206 @@ public class CreateBatchOperateCardsTaskResponse : Tea.TeaModel {
     }
 }
 
+public class CreateGroupAuthorizationRuleRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var description_: String?
+
+    public var destination: String?
+
+    public var destinationPort: String?
+
+    public var destinationType: String?
+
+    public var dryRun: Bool?
+
+    public var name: String?
+
+    public var policy: String?
+
+    public var protocol_: String?
+
+    public var sourceCidr: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.destination != nil {
+            map["Destination"] = self.destination!
+        }
+        if self.destinationPort != nil {
+            map["DestinationPort"] = self.destinationPort!
+        }
+        if self.destinationType != nil {
+            map["DestinationType"] = self.destinationType!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.policy != nil {
+            map["Policy"] = self.policy!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.sourceCidr != nil {
+            map["SourceCidr"] = self.sourceCidr!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Destination") {
+            self.destination = dict["Destination"] as! String
+        }
+        if dict.keys.contains("DestinationPort") {
+            self.destinationPort = dict["DestinationPort"] as! String
+        }
+        if dict.keys.contains("DestinationType") {
+            self.destinationType = dict["DestinationType"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Policy") {
+            self.policy = dict["Policy"] as! String
+        }
+        if dict.keys.contains("Protocol") {
+            self.protocol_ = dict["Protocol"] as! String
+        }
+        if dict.keys.contains("SourceCidr") {
+            self.sourceCidr = dict["SourceCidr"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class CreateGroupAuthorizationRuleResponseBody : Tea.TeaModel {
+    public var authorizationRuleId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizationRuleId != nil {
+            map["AuthorizationRuleId"] = self.authorizationRuleId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthorizationRuleId") {
+            self.authorizationRuleId = dict["AuthorizationRuleId"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateGroupAuthorizationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGroupAuthorizationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateGroupAuthorizationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateIoTCloudConnectorBackhaulRouteRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -1118,6 +1630,158 @@ public class CreateWirelessCloudConnectorResponse : Tea.TeaModel {
     }
 }
 
+public class CreateWirelessCloudConnectorGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var description_: String?
+
+    public var dryRun: Bool?
+
+    public var name: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class CreateWirelessCloudConnectorGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class CreateWirelessCloudConnectorGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateWirelessCloudConnectorGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateWirelessCloudConnectorGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteAuthorizationRuleRequest : Tea.TeaModel {
     public var authorizationRuleId: String?
 
@@ -1390,6 +2054,142 @@ public class DeleteBatchOperateCardsTaskResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteGroupAuthorizationRuleRequest : Tea.TeaModel {
+    public var authorizationRuleId: String?
+
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizationRuleId != nil {
+            map["AuthorizationRuleId"] = self.authorizationRuleId!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthorizationRuleId") {
+            self.authorizationRuleId = dict["AuthorizationRuleId"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class DeleteGroupAuthorizationRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteGroupAuthorizationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteGroupAuthorizationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteGroupAuthorizationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteIoTCloudConnectorBackhaulRouteRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -1648,6 +2448,134 @@ public class DeleteWirelessCloudConnectorResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DeleteWirelessCloudConnectorResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteWirelessCloudConnectorGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class DeleteWirelessCloudConnectorGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteWirelessCloudConnectorGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteWirelessCloudConnectorGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteWirelessCloudConnectorGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -2952,6 +3880,8 @@ public class GetWirelessCloudConnectorResponseBody : Tea.TeaModel {
 
     public var useCase: String?
 
+    public var wirelessCloudConnectorGroupId: String?
+
     public var wirelessCloudConnectorId: String?
 
     public override init() {
@@ -3014,6 +3944,9 @@ public class GetWirelessCloudConnectorResponseBody : Tea.TeaModel {
         if self.useCase != nil {
             map["UseCase"] = self.useCase!
         }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
         if self.wirelessCloudConnectorId != nil {
             map["WirelessCloudConnectorId"] = self.wirelessCloudConnectorId!
         }
@@ -3062,6 +3995,9 @@ public class GetWirelessCloudConnectorResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("UseCase") {
             self.useCase = dict["UseCase"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
         }
         if dict.keys.contains("WirelessCloudConnectorId") {
             self.wirelessCloudConnectorId = dict["WirelessCloudConnectorId"] as! String
@@ -5200,6 +6136,375 @@ public class ListDiagnoseInfoForSingleCardResponse : Tea.TeaModel {
     }
 }
 
+public class ListGroupAuthorizationRulesRequest : Tea.TeaModel {
+    public var authorizationRuleIds: [String]?
+
+    public var destination: String?
+
+    public var destinationPort: String?
+
+    public var destinationType: String?
+
+    public var dns: Bool?
+
+    public var maxResults: Int64?
+
+    public var names: [String]?
+
+    public var nextToken: String?
+
+    public var policy: String?
+
+    public var protocol_: String?
+
+    public var statuses: [String]?
+
+    public var type: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizationRuleIds != nil {
+            map["AuthorizationRuleIds"] = self.authorizationRuleIds!
+        }
+        if self.destination != nil {
+            map["Destination"] = self.destination!
+        }
+        if self.destinationPort != nil {
+            map["DestinationPort"] = self.destinationPort!
+        }
+        if self.destinationType != nil {
+            map["DestinationType"] = self.destinationType!
+        }
+        if self.dns != nil {
+            map["Dns"] = self.dns!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.names != nil {
+            map["Names"] = self.names!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.policy != nil {
+            map["Policy"] = self.policy!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.statuses != nil {
+            map["Statuses"] = self.statuses!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthorizationRuleIds") {
+            self.authorizationRuleIds = dict["AuthorizationRuleIds"] as! [String]
+        }
+        if dict.keys.contains("Destination") {
+            self.destination = dict["Destination"] as! String
+        }
+        if dict.keys.contains("DestinationPort") {
+            self.destinationPort = dict["DestinationPort"] as! String
+        }
+        if dict.keys.contains("DestinationType") {
+            self.destinationType = dict["DestinationType"] as! String
+        }
+        if dict.keys.contains("Dns") {
+            self.dns = dict["Dns"] as! Bool
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("Names") {
+            self.names = dict["Names"] as! [String]
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("Policy") {
+            self.policy = dict["Policy"] as! String
+        }
+        if dict.keys.contains("Protocol") {
+            self.protocol_ = dict["Protocol"] as! String
+        }
+        if dict.keys.contains("Statuses") {
+            self.statuses = dict["Statuses"] as! [String]
+        }
+        if dict.keys.contains("Type") {
+            self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class ListGroupAuthorizationRulesResponseBody : Tea.TeaModel {
+    public class GroupAuthorizationRules : Tea.TeaModel {
+        public var authorizationRuleId: String?
+
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var destination: String?
+
+        public var destinationPort: String?
+
+        public var destinationType: String?
+
+        public var dns: Bool?
+
+        public var name: String?
+
+        public var policy: String?
+
+        public var protocol_: String?
+
+        public var sourceCidr: String?
+
+        public var status: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authorizationRuleId != nil {
+                map["AuthorizationRuleId"] = self.authorizationRuleId!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.destination != nil {
+                map["Destination"] = self.destination!
+            }
+            if self.destinationPort != nil {
+                map["DestinationPort"] = self.destinationPort!
+            }
+            if self.destinationType != nil {
+                map["DestinationType"] = self.destinationType!
+            }
+            if self.dns != nil {
+                map["Dns"] = self.dns!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.policy != nil {
+                map["Policy"] = self.policy!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            if self.sourceCidr != nil {
+                map["SourceCidr"] = self.sourceCidr!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthorizationRuleId") {
+                self.authorizationRuleId = dict["AuthorizationRuleId"] as! String
+            }
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Destination") {
+                self.destination = dict["Destination"] as! String
+            }
+            if dict.keys.contains("DestinationPort") {
+                self.destinationPort = dict["DestinationPort"] as! String
+            }
+            if dict.keys.contains("DestinationType") {
+                self.destinationType = dict["DestinationType"] as! String
+            }
+            if dict.keys.contains("Dns") {
+                self.dns = dict["Dns"] as! Bool
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Policy") {
+                self.policy = dict["Policy"] as! String
+            }
+            if dict.keys.contains("Protocol") {
+                self.protocol_ = dict["Protocol"] as! String
+            }
+            if dict.keys.contains("SourceCidr") {
+                self.sourceCidr = dict["SourceCidr"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var groupAuthorizationRules: [ListGroupAuthorizationRulesResponseBody.GroupAuthorizationRules]?
+
+    public var maxResults: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupAuthorizationRules != nil {
+            var tmp : [Any] = []
+            for k in self.groupAuthorizationRules! {
+                tmp.append(k.toMap())
+            }
+            map["GroupAuthorizationRules"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GroupAuthorizationRules") {
+            self.groupAuthorizationRules = dict["GroupAuthorizationRules"] as! [ListGroupAuthorizationRulesResponseBody.GroupAuthorizationRules]
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! String
+        }
+    }
+}
+
+public class ListGroupAuthorizationRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGroupAuthorizationRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListGroupAuthorizationRulesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListIoTCloudConnectorBackhaulRouteRequest : Tea.TeaModel {
     public var netLinkId: String?
 
@@ -5925,6 +7230,392 @@ public class ListRegionsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ListRegionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListWirelessCloudConnectorGroupsRequest : Tea.TeaModel {
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var wirelessCloudConnectorGroupIds: [String]?
+
+    public var wirelessCloudConnectorGroupNames: [String]?
+
+    public var wirelessCloudConnectorGroupStatus: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.wirelessCloudConnectorGroupIds != nil {
+            map["WirelessCloudConnectorGroupIds"] = self.wirelessCloudConnectorGroupIds!
+        }
+        if self.wirelessCloudConnectorGroupNames != nil {
+            map["WirelessCloudConnectorGroupNames"] = self.wirelessCloudConnectorGroupNames!
+        }
+        if self.wirelessCloudConnectorGroupStatus != nil {
+            map["WirelessCloudConnectorGroupStatus"] = self.wirelessCloudConnectorGroupStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupIds") {
+            self.wirelessCloudConnectorGroupIds = dict["WirelessCloudConnectorGroupIds"] as! [String]
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupNames") {
+            self.wirelessCloudConnectorGroupNames = dict["WirelessCloudConnectorGroupNames"] as! [String]
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupStatus") {
+            self.wirelessCloudConnectorGroupStatus = dict["WirelessCloudConnectorGroupStatus"] as! [String]
+        }
+    }
+}
+
+public class ListWirelessCloudConnectorGroupsResponseBody : Tea.TeaModel {
+    public class WirelessCloudConnectorGroups : Tea.TeaModel {
+        public class WirelessCloudConnectors : Tea.TeaModel {
+            public var businessType: String?
+
+            public var cardCount: String?
+
+            public var createTime: String?
+
+            public var dataPackageId: String?
+
+            public var dataPackageType: String?
+
+            public var description_: String?
+
+            public var name: String?
+
+            public var regionId: String?
+
+            public var serviceType: String?
+
+            public var status: String?
+
+            public var useCase: String?
+
+            public var wirelessCloudConnectorId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.businessType != nil {
+                    map["BusinessType"] = self.businessType!
+                }
+                if self.cardCount != nil {
+                    map["CardCount"] = self.cardCount!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.dataPackageId != nil {
+                    map["DataPackageId"] = self.dataPackageId!
+                }
+                if self.dataPackageType != nil {
+                    map["DataPackageType"] = self.dataPackageType!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.serviceType != nil {
+                    map["ServiceType"] = self.serviceType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.useCase != nil {
+                    map["UseCase"] = self.useCase!
+                }
+                if self.wirelessCloudConnectorId != nil {
+                    map["WirelessCloudConnectorId"] = self.wirelessCloudConnectorId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BusinessType") {
+                    self.businessType = dict["BusinessType"] as! String
+                }
+                if dict.keys.contains("CardCount") {
+                    self.cardCount = dict["CardCount"] as! String
+                }
+                if dict.keys.contains("CreateTime") {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("DataPackageId") {
+                    self.dataPackageId = dict["DataPackageId"] as! String
+                }
+                if dict.keys.contains("DataPackageType") {
+                    self.dataPackageType = dict["DataPackageType"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("RegionId") {
+                    self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ServiceType") {
+                    self.serviceType = dict["ServiceType"] as! String
+                }
+                if dict.keys.contains("Status") {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("UseCase") {
+                    self.useCase = dict["UseCase"] as! String
+                }
+                if dict.keys.contains("WirelessCloudConnectorId") {
+                    self.wirelessCloudConnectorId = dict["WirelessCloudConnectorId"] as! String
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var name: String?
+
+        public var regionId: String?
+
+        public var status: String?
+
+        public var wirelessCloudConnectorGroupId: String?
+
+        public var wirelessCloudConnectors: [ListWirelessCloudConnectorGroupsResponseBody.WirelessCloudConnectorGroups.WirelessCloudConnectors]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.wirelessCloudConnectorGroupId != nil {
+                map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+            }
+            if self.wirelessCloudConnectors != nil {
+                var tmp : [Any] = []
+                for k in self.wirelessCloudConnectors! {
+                    tmp.append(k.toMap())
+                }
+                map["WirelessCloudConnectors"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Description") {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("Status") {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("WirelessCloudConnectorGroupId") {
+                self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+            }
+            if dict.keys.contains("WirelessCloudConnectors") {
+                self.wirelessCloudConnectors = dict["WirelessCloudConnectors"] as! [ListWirelessCloudConnectorGroupsResponseBody.WirelessCloudConnectorGroups.WirelessCloudConnectors]
+            }
+        }
+    }
+    public var maxResults: String?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: String?
+
+    public var wirelessCloudConnectorGroups: [ListWirelessCloudConnectorGroupsResponseBody.WirelessCloudConnectorGroups]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.wirelessCloudConnectorGroups != nil {
+            var tmp : [Any] = []
+            for k in self.wirelessCloudConnectorGroups! {
+                tmp.append(k.toMap())
+            }
+            map["WirelessCloudConnectorGroups"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! String
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroups") {
+            self.wirelessCloudConnectorGroups = dict["WirelessCloudConnectorGroups"] as! [ListWirelessCloudConnectorGroupsResponseBody.WirelessCloudConnectorGroups]
+        }
+    }
+}
+
+public class ListWirelessCloudConnectorGroupsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListWirelessCloudConnectorGroupsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ListWirelessCloudConnectorGroupsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6815,6 +8506,150 @@ public class OpenCc5gServiceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = OpenCc5gServiceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RemoveWirelessCloudConnectorFromGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var regionId: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public var wirelessCloudConnectorIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        if self.wirelessCloudConnectorIds != nil {
+            map["WirelessCloudConnectorIds"] = self.wirelessCloudConnectorIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorIds") {
+            self.wirelessCloudConnectorIds = dict["WirelessCloudConnectorIds"] as! [String]
+        }
+    }
+}
+
+public class RemoveWirelessCloudConnectorFromGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RemoveWirelessCloudConnectorFromGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RemoveWirelessCloudConnectorFromGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RemoveWirelessCloudConnectorFromGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -8373,6 +10208,366 @@ public class UpdateDNSAuthorizationRuleResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateGroupAuthorizationRuleRequest : Tea.TeaModel {
+    public var authorizationRuleId: String?
+
+    public var clientToken: String?
+
+    public var description_: String?
+
+    public var destination: String?
+
+    public var destinationPort: String?
+
+    public var dryRun: Bool?
+
+    public var name: String?
+
+    public var policy: String?
+
+    public var protocol_: String?
+
+    public var sourceCidr: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizationRuleId != nil {
+            map["AuthorizationRuleId"] = self.authorizationRuleId!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.destination != nil {
+            map["Destination"] = self.destination!
+        }
+        if self.destinationPort != nil {
+            map["DestinationPort"] = self.destinationPort!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.policy != nil {
+            map["Policy"] = self.policy!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.sourceCidr != nil {
+            map["SourceCidr"] = self.sourceCidr!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthorizationRuleId") {
+            self.authorizationRuleId = dict["AuthorizationRuleId"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Destination") {
+            self.destination = dict["Destination"] as! String
+        }
+        if dict.keys.contains("DestinationPort") {
+            self.destinationPort = dict["DestinationPort"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Policy") {
+            self.policy = dict["Policy"] as! String
+        }
+        if dict.keys.contains("Protocol") {
+            self.protocol_ = dict["Protocol"] as! String
+        }
+        if dict.keys.contains("SourceCidr") {
+            self.sourceCidr = dict["SourceCidr"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class UpdateGroupAuthorizationRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateGroupAuthorizationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGroupAuthorizationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateGroupAuthorizationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateGroupDnsAuthorizationRuleRequest : Tea.TeaModel {
+    public var authorizationRuleId: String?
+
+    public var clientToken: String?
+
+    public var description_: String?
+
+    public var destinationIp: String?
+
+    public var dryRun: Bool?
+
+    public var name: String?
+
+    public var sourceDNSIp: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.authorizationRuleId != nil {
+            map["AuthorizationRuleId"] = self.authorizationRuleId!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.destinationIp != nil {
+            map["DestinationIp"] = self.destinationIp!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.sourceDNSIp != nil {
+            map["SourceDNSIp"] = self.sourceDNSIp!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AuthorizationRuleId") {
+            self.authorizationRuleId = dict["AuthorizationRuleId"] as! String
+        }
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DestinationIp") {
+            self.destinationIp = dict["DestinationIp"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SourceDNSIp") {
+            self.sourceDNSIp = dict["SourceDNSIp"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class UpdateGroupDnsAuthorizationRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateGroupDnsAuthorizationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGroupDnsAuthorizationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateGroupDnsAuthorizationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateWirelessCloudConnectorRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -8511,6 +10706,150 @@ public class UpdateWirelessCloudConnectorResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = UpdateWirelessCloudConnectorResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateWirelessCloudConnectorGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var description_: String?
+
+    public var dryRun: Bool?
+
+    public var name: String?
+
+    public var wirelessCloudConnectorGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.wirelessCloudConnectorGroupId != nil {
+            map["WirelessCloudConnectorGroupId"] = self.wirelessCloudConnectorGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Description") {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("WirelessCloudConnectorGroupId") {
+            self.wirelessCloudConnectorGroupId = dict["WirelessCloudConnectorGroupId"] as! String
+        }
+    }
+}
+
+public class UpdateWirelessCloudConnectorGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateWirelessCloudConnectorGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateWirelessCloudConnectorGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpdateWirelessCloudConnectorGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

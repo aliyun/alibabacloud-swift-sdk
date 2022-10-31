@@ -73,6 +73,98 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addGroupDnsAuthorizationRuleWithOptions(_ request: AddGroupDnsAuthorizationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGroupDnsAuthorizationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationIp)) {
+            query["DestinationIp"] = request.destinationIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDNSIp)) {
+            query["SourceDNSIp"] = request.sourceDNSIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddGroupDnsAuthorizationRule",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddGroupDnsAuthorizationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addGroupDnsAuthorizationRule(_ request: AddGroupDnsAuthorizationRuleRequest) async throws -> AddGroupDnsAuthorizationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addGroupDnsAuthorizationRuleWithOptions(request as! AddGroupDnsAuthorizationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addWirelessCloudConnectorToGroupWithOptions(_ request: AddWirelessCloudConnectorToGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddWirelessCloudConnectorToGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorIds)) {
+            query["WirelessCloudConnectorIds"] = request.wirelessCloudConnectorIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddWirelessCloudConnectorToGroup",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddWirelessCloudConnectorToGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addWirelessCloudConnectorToGroup(_ request: AddWirelessCloudConnectorToGroupRequest) async throws -> AddWirelessCloudConnectorToGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addWirelessCloudConnectorToGroupWithOptions(request as! AddWirelessCloudConnectorToGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachVpcToNetLinkWithOptions(_ request: AttachVpcToNetLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachVpcToNetLinkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -244,6 +336,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGroupAuthorizationRuleWithOptions(_ request: CreateGroupAuthorizationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGroupAuthorizationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destination)) {
+            query["Destination"] = request.destination ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationPort)) {
+            query["DestinationPort"] = request.destinationPort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationType)) {
+            query["DestinationType"] = request.destinationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            query["Policy"] = request.policy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            query["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCidr)) {
+            query["SourceCidr"] = request.sourceCidr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGroupAuthorizationRule",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGroupAuthorizationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGroupAuthorizationRule(_ request: CreateGroupAuthorizationRuleRequest) async throws -> CreateGroupAuthorizationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGroupAuthorizationRuleWithOptions(request as! CreateGroupAuthorizationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createIoTCloudConnectorBackhaulRouteWithOptions(_ request: CreateIoTCloudConnectorBackhaulRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIoTCloudConnectorBackhaulRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -339,6 +492,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWirelessCloudConnectorGroupWithOptions(_ request: CreateWirelessCloudConnectorGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWirelessCloudConnectorGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWirelessCloudConnectorGroup",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWirelessCloudConnectorGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWirelessCloudConnectorGroup(_ request: CreateWirelessCloudConnectorGroupRequest) async throws -> CreateWirelessCloudConnectorGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWirelessCloudConnectorGroupWithOptions(request as! CreateWirelessCloudConnectorGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAuthorizationRuleWithOptions(_ request: DeleteAuthorizationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAuthorizationRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -419,6 +615,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGroupAuthorizationRuleWithOptions(_ request: DeleteGroupAuthorizationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGroupAuthorizationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorizationRuleId)) {
+            query["AuthorizationRuleId"] = request.authorizationRuleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGroupAuthorizationRule",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGroupAuthorizationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGroupAuthorizationRule(_ request: DeleteGroupAuthorizationRuleRequest) async throws -> DeleteGroupAuthorizationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGroupAuthorizationRuleWithOptions(request as! DeleteGroupAuthorizationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteIoTCloudConnectorBackhaulRouteWithOptions(_ request: DeleteIoTCloudConnectorBackhaulRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteIoTCloudConnectorBackhaulRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -493,6 +729,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteWirelessCloudConnector(_ request: DeleteWirelessCloudConnectorRequest) async throws -> DeleteWirelessCloudConnectorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteWirelessCloudConnectorWithOptions(request as! DeleteWirelessCloudConnectorRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWirelessCloudConnectorGroupWithOptions(_ request: DeleteWirelessCloudConnectorGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWirelessCloudConnectorGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWirelessCloudConnectorGroup",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWirelessCloudConnectorGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWirelessCloudConnectorGroup(_ request: DeleteWirelessCloudConnectorGroupRequest) async throws -> DeleteWirelessCloudConnectorGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteWirelessCloudConnectorGroupWithOptions(request as! DeleteWirelessCloudConnectorGroupRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -954,6 +1227,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGroupAuthorizationRulesWithOptions(_ request: ListGroupAuthorizationRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGroupAuthorizationRulesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGroupAuthorizationRules",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGroupAuthorizationRulesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGroupAuthorizationRules(_ request: ListGroupAuthorizationRulesRequest) async throws -> ListGroupAuthorizationRulesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGroupAuthorizationRulesWithOptions(request as! ListGroupAuthorizationRulesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listIoTCloudConnectorBackhaulRouteWithOptions(_ request: ListIoTCloudConnectorBackhaulRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListIoTCloudConnectorBackhaulRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -1035,6 +1336,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listRegions(_ request: ListRegionsRequest) async throws -> ListRegionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listRegionsWithOptions(request as! ListRegionsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWirelessCloudConnectorGroupsWithOptions(_ request: ListWirelessCloudConnectorGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWirelessCloudConnectorGroupsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListWirelessCloudConnectorGroups",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListWirelessCloudConnectorGroupsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWirelessCloudConnectorGroups(_ request: ListWirelessCloudConnectorGroupsRequest) async throws -> ListWirelessCloudConnectorGroupsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listWirelessCloudConnectorGroupsWithOptions(request as! ListWirelessCloudConnectorGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1205,6 +1534,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func openCc5gService(_ request: OpenCc5gServiceRequest) async throws -> OpenCc5gServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await openCc5gServiceWithOptions(request as! OpenCc5gServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeWirelessCloudConnectorFromGroupWithOptions(_ request: RemoveWirelessCloudConnectorFromGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveWirelessCloudConnectorFromGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorIds)) {
+            query["WirelessCloudConnectorIds"] = request.wirelessCloudConnectorIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveWirelessCloudConnectorFromGroup",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveWirelessCloudConnectorFromGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeWirelessCloudConnectorFromGroup(_ request: RemoveWirelessCloudConnectorFromGroupRequest) async throws -> RemoveWirelessCloudConnectorFromGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeWirelessCloudConnectorFromGroupWithOptions(request as! RemoveWirelessCloudConnectorFromGroupRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1677,6 +2049,119 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGroupAuthorizationRuleWithOptions(_ request: UpdateGroupAuthorizationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGroupAuthorizationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorizationRuleId)) {
+            query["AuthorizationRuleId"] = request.authorizationRuleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destination)) {
+            query["Destination"] = request.destination ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationPort)) {
+            query["DestinationPort"] = request.destinationPort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            query["Policy"] = request.policy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            query["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceCidr)) {
+            query["SourceCidr"] = request.sourceCidr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGroupAuthorizationRule",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGroupAuthorizationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGroupAuthorizationRule(_ request: UpdateGroupAuthorizationRuleRequest) async throws -> UpdateGroupAuthorizationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGroupAuthorizationRuleWithOptions(request as! UpdateGroupAuthorizationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGroupDnsAuthorizationRuleWithOptions(_ request: UpdateGroupDnsAuthorizationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGroupDnsAuthorizationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.authorizationRuleId)) {
+            query["AuthorizationRuleId"] = request.authorizationRuleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.destinationIp)) {
+            query["DestinationIp"] = request.destinationIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDNSIp)) {
+            query["SourceDNSIp"] = request.sourceDNSIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGroupDnsAuthorizationRule",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGroupDnsAuthorizationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGroupDnsAuthorizationRule(_ request: UpdateGroupDnsAuthorizationRuleRequest) async throws -> UpdateGroupDnsAuthorizationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGroupDnsAuthorizationRuleWithOptions(request as! UpdateGroupDnsAuthorizationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateWirelessCloudConnectorWithOptions(_ request: UpdateWirelessCloudConnectorRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWirelessCloudConnectorResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1717,5 +2202,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateWirelessCloudConnector(_ request: UpdateWirelessCloudConnectorRequest) async throws -> UpdateWirelessCloudConnectorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateWirelessCloudConnectorWithOptions(request as! UpdateWirelessCloudConnectorRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWirelessCloudConnectorGroupWithOptions(_ request: UpdateWirelessCloudConnectorGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWirelessCloudConnectorGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.wirelessCloudConnectorGroupId)) {
+            query["WirelessCloudConnectorGroupId"] = request.wirelessCloudConnectorGroupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateWirelessCloudConnectorGroup",
+            "version": "2022-03-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateWirelessCloudConnectorGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWirelessCloudConnectorGroup(_ request: UpdateWirelessCloudConnectorGroupRequest) async throws -> UpdateWirelessCloudConnectorGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateWirelessCloudConnectorGroupWithOptions(request as! UpdateWirelessCloudConnectorGroupRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
