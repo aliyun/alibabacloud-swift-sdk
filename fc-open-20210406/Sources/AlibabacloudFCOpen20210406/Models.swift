@@ -268,6 +268,8 @@ public class CustomContainerConfig : Tea.TeaModel {
 
     public var instanceID: String?
 
+    public var webServerMode: Bool?
+
     public override init() {
         super.init()
     }
@@ -297,6 +299,9 @@ public class CustomContainerConfig : Tea.TeaModel {
         if self.instanceID != nil {
             map["instanceID"] = self.instanceID!
         }
+        if self.webServerMode != nil {
+            map["webServerMode"] = self.webServerMode!
+        }
         return map
     }
 
@@ -316,6 +321,9 @@ public class CustomContainerConfig : Tea.TeaModel {
         if dict.keys.contains("instanceID") {
             self.instanceID = dict["instanceID"] as! String
         }
+        if dict.keys.contains("webServerMode") {
+            self.webServerMode = dict["webServerMode"] as! Bool
+        }
     }
 }
 
@@ -331,6 +339,8 @@ public class CustomContainerConfigInfo : Tea.TeaModel {
     public var image: String?
 
     public var instanceID: String?
+
+    public var webServerMode: Bool?
 
     public override init() {
         super.init()
@@ -365,6 +375,9 @@ public class CustomContainerConfigInfo : Tea.TeaModel {
         if self.instanceID != nil {
             map["instanceID"] = self.instanceID!
         }
+        if self.webServerMode != nil {
+            map["webServerMode"] = self.webServerMode!
+        }
         return map
     }
 
@@ -388,6 +401,9 @@ public class CustomContainerConfigInfo : Tea.TeaModel {
         }
         if dict.keys.contains("instanceID") {
             self.instanceID = dict["instanceID"] as! String
+        }
+        if dict.keys.contains("webServerMode") {
+            self.webServerMode = dict["webServerMode"] as! Bool
         }
     }
 }
