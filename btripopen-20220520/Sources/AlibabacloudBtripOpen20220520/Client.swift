@@ -1090,6 +1090,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func corpTokenWithOptions(_ request: CorpTokenRequest, _ headers: CorpTokenHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CorpTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appSecret)) {
+            query["app_secret"] = request.appSecret ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.corpId)) {
             query["corp_id"] = request.corpId ?? "";
         }

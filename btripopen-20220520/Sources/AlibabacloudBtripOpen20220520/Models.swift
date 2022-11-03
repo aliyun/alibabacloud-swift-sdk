@@ -9470,6 +9470,8 @@ public class CorpTokenHeaders : Tea.TeaModel {
 }
 
 public class CorpTokenRequest : Tea.TeaModel {
+    public var appSecret: String?
+
     public var corpId: String?
 
     public var type: Int32?
@@ -9488,6 +9490,9 @@ public class CorpTokenRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appSecret != nil {
+            map["app_secret"] = self.appSecret!
+        }
         if self.corpId != nil {
             map["corp_id"] = self.corpId!
         }
@@ -9498,6 +9503,9 @@ public class CorpTokenRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("app_secret") {
+            self.appSecret = dict["app_secret"] as! String
+        }
         if dict.keys.contains("corp_id") {
             self.corpId = dict["corp_id"] as! String
         }
