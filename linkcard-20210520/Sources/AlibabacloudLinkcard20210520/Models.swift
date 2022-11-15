@@ -3781,6 +3781,10 @@ public class ListOrderResponseBody : Tea.TeaModel {
             }
             public var aliFee: String?
 
+            public var apnName: String?
+
+            public var apnRegion: String?
+
             public var billingCycle: String?
 
             public var buyNum: Int32?
@@ -3821,6 +3825,8 @@ public class ListOrderResponseBody : Tea.TeaModel {
 
             public var poolNo: String?
 
+            public var resourceQuantity: Int64?
+
             public var vendor: String?
 
             public override init() {
@@ -3840,6 +3846,12 @@ public class ListOrderResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.aliFee != nil {
                     map["AliFee"] = self.aliFee!
+                }
+                if self.apnName != nil {
+                    map["ApnName"] = self.apnName!
+                }
+                if self.apnRegion != nil {
+                    map["ApnRegion"] = self.apnRegion!
                 }
                 if self.billingCycle != nil {
                     map["BillingCycle"] = self.billingCycle!
@@ -3901,6 +3913,9 @@ public class ListOrderResponseBody : Tea.TeaModel {
                 if self.poolNo != nil {
                     map["PoolNo"] = self.poolNo!
                 }
+                if self.resourceQuantity != nil {
+                    map["ResourceQuantity"] = self.resourceQuantity!
+                }
                 if self.vendor != nil {
                     map["Vendor"] = self.vendor!
                 }
@@ -3910,6 +3925,12 @@ public class ListOrderResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AliFee") {
                     self.aliFee = dict["AliFee"] as! String
+                }
+                if dict.keys.contains("ApnName") {
+                    self.apnName = dict["ApnName"] as! String
+                }
+                if dict.keys.contains("ApnRegion") {
+                    self.apnRegion = dict["ApnRegion"] as! String
                 }
                 if dict.keys.contains("BillingCycle") {
                     self.billingCycle = dict["BillingCycle"] as! String
@@ -3972,6 +3993,9 @@ public class ListOrderResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PoolNo") {
                     self.poolNo = dict["PoolNo"] as! String
+                }
+                if dict.keys.contains("ResourceQuantity") {
+                    self.resourceQuantity = dict["ResourceQuantity"] as! Int64
                 }
                 if dict.keys.contains("Vendor") {
                     self.vendor = dict["Vendor"] as! String
@@ -4169,7 +4193,7 @@ public class ListOrderResponse : Tea.TeaModel {
 public class RebindResumeSingleCardRequest : Tea.TeaModel {
     public var iccid: String?
 
-    public var optMsisdns: [String: Any]?
+    public var optMsisdns: [String]?
 
     public override init() {
         super.init()
@@ -4199,7 +4223,7 @@ public class RebindResumeSingleCardRequest : Tea.TeaModel {
             self.iccid = dict["Iccid"] as! String
         }
         if dict.keys.contains("OptMsisdns") {
-            self.optMsisdns = dict["OptMsisdns"] as! [String: Any]
+            self.optMsisdns = dict["OptMsisdns"] as! [String]
         }
     }
 }
@@ -4607,7 +4631,7 @@ public class RenewResponse : Tea.TeaModel {
 public class ResumeSingleCardRequest : Tea.TeaModel {
     public var iccid: String?
 
-    public var optMsisdns: [String: Any]?
+    public var optMsisdns: [String]?
 
     public override init() {
         super.init()
@@ -4637,7 +4661,7 @@ public class ResumeSingleCardRequest : Tea.TeaModel {
             self.iccid = dict["Iccid"] as! String
         }
         if dict.keys.contains("OptMsisdns") {
-            self.optMsisdns = dict["OptMsisdns"] as! [String: Any]
+            self.optMsisdns = dict["OptMsisdns"] as! [String]
         }
     }
 }
@@ -4973,7 +4997,7 @@ public class SetCardStopRuleResponse : Tea.TeaModel {
 public class StopSingleCardRequest : Tea.TeaModel {
     public var iccid: String?
 
-    public var optMsisdns: [String: Any]?
+    public var optMsisdns: [String]?
 
     public override init() {
         super.init()
@@ -5003,7 +5027,7 @@ public class StopSingleCardRequest : Tea.TeaModel {
             self.iccid = dict["Iccid"] as! String
         }
         if dict.keys.contains("OptMsisdns") {
-            self.optMsisdns = dict["OptMsisdns"] as! [String: Any]
+            self.optMsisdns = dict["OptMsisdns"] as! [String]
         }
     }
 }
