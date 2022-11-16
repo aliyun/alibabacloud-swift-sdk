@@ -3637,6 +3637,43 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public class OpenldapPar : Tea.TeaModel {
+        public var baseDn: String?
+
+        public var ldapServerIp: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.baseDn != nil {
+                map["BaseDn"] = self.baseDn!
+            }
+            if self.ldapServerIp != nil {
+                map["LdapServerIp"] = self.ldapServerIp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BaseDn") {
+                self.baseDn = dict["BaseDn"] as! String
+            }
+            if dict.keys.contains("LdapServerIp") {
+                self.ldapServerIp = dict["LdapServerIp"] as! String
+            }
+        }
+    }
     public class PostInstallScript : Tea.TeaModel {
         public var args: String?
 
@@ -3671,6 +3708,59 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Url") {
                 self.url = dict["Url"] as! String
+            }
+        }
+    }
+    public class WinAdPar : Tea.TeaModel {
+        public var adDc: String?
+
+        public var adIp: String?
+
+        public var adUser: String?
+
+        public var adUserPasswd: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adDc != nil {
+                map["AdDc"] = self.adDc!
+            }
+            if self.adIp != nil {
+                map["AdIp"] = self.adIp!
+            }
+            if self.adUser != nil {
+                map["AdUser"] = self.adUser!
+            }
+            if self.adUserPasswd != nil {
+                map["AdUserPasswd"] = self.adUserPasswd!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdDc") {
+                self.adDc = dict["AdDc"] as! String
+            }
+            if dict.keys.contains("AdIp") {
+                self.adIp = dict["AdIp"] as! String
+            }
+            if dict.keys.contains("AdUser") {
+                self.adUser = dict["AdUser"] as! String
+            }
+            if dict.keys.contains("AdUserPasswd") {
+                self.adUserPasswd = dict["AdUserPasswd"] as! String
             }
         }
     }
@@ -3716,9 +3806,13 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
 
     public var onPremiseVolumeRemotePath: String?
 
+    public var openldapPar: CreateHybridClusterRequest.OpenldapPar?
+
     public var osTag: String?
 
     public var password: String?
+
+    public var plugin: String?
 
     public var postInstallScript: [CreateHybridClusterRequest.PostInstallScript]?
 
@@ -3744,6 +3838,8 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
 
     public var vpcId: String?
 
+    public var winAdPar: CreateHybridClusterRequest.WinAdPar?
+
     public var zoneId: String?
 
     public override init() {
@@ -3757,6 +3853,8 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.ecsOrder?.validate()
+        try self.openldapPar?.validate()
+        try self.winAdPar?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3832,11 +3930,17 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
         if self.onPremiseVolumeRemotePath != nil {
             map["OnPremiseVolumeRemotePath"] = self.onPremiseVolumeRemotePath!
         }
+        if self.openldapPar != nil {
+            map["OpenldapPar"] = self.openldapPar?.toMap()
+        }
         if self.osTag != nil {
             map["OsTag"] = self.osTag!
         }
         if self.password != nil {
             map["Password"] = self.password!
+        }
+        if self.plugin != nil {
+            map["Plugin"] = self.plugin!
         }
         if self.postInstallScript != nil {
             var tmp : [Any] = []
@@ -3877,6 +3981,9 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
         }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
+        }
+        if self.winAdPar != nil {
+            map["WinAdPar"] = self.winAdPar?.toMap()
         }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
@@ -3950,11 +4057,19 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
         if dict.keys.contains("OnPremiseVolumeRemotePath") {
             self.onPremiseVolumeRemotePath = dict["OnPremiseVolumeRemotePath"] as! String
         }
+        if dict.keys.contains("OpenldapPar") {
+            var model = CreateHybridClusterRequest.OpenldapPar()
+            model.fromMap(dict["OpenldapPar"] as! [String: Any])
+            self.openldapPar = model
+        }
         if dict.keys.contains("OsTag") {
             self.osTag = dict["OsTag"] as! String
         }
         if dict.keys.contains("Password") {
             self.password = dict["Password"] as! String
+        }
+        if dict.keys.contains("Plugin") {
+            self.plugin = dict["Plugin"] as! String
         }
         if dict.keys.contains("PostInstallScript") {
             self.postInstallScript = dict["PostInstallScript"] as! [CreateHybridClusterRequest.PostInstallScript]
@@ -3991,6 +4106,11 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VpcId") {
             self.vpcId = dict["VpcId"] as! String
+        }
+        if dict.keys.contains("WinAdPar") {
+            var model = CreateHybridClusterRequest.WinAdPar()
+            model.fromMap(dict["WinAdPar"] as! [String: Any])
+            self.winAdPar = model
         }
         if dict.keys.contains("ZoneId") {
             self.zoneId = dict["ZoneId"] as! String
