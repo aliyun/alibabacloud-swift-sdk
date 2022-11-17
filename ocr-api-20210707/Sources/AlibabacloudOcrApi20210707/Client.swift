@@ -1359,6 +1359,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeInternationalBusinessLicenseWithOptions(_ request: RecognizeInternationalBusinessLicenseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeInternationalBusinessLicenseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.country)) {
+            query["Country"] = request.country ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body!,
+            "stream": request.body!
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecognizeInternationalBusinessLicense",
+            "version": "2021-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecognizeInternationalBusinessLicenseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeInternationalBusinessLicense(_ request: RecognizeInternationalBusinessLicenseRequest) async throws -> RecognizeInternationalBusinessLicenseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recognizeInternationalBusinessLicenseWithOptions(request as! RecognizeInternationalBusinessLicenseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func recognizeInternationalIdcardWithOptions(_ request: RecognizeInternationalIdcardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeInternationalIdcardResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
