@@ -1855,6 +1855,10 @@ public class DescribeDiskReplicaGroupsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var regionId: String?
 
     public var site: String?
@@ -1882,6 +1886,12 @@ public class DescribeDiskReplicaGroupsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -1900,6 +1910,12 @@ public class DescribeDiskReplicaGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
@@ -2078,9 +2094,15 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
     }
     public var nextToken: String?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var replicaGroups: [DescribeDiskReplicaGroupsResponseBody.ReplicaGroups]?
 
     public var requestId: String?
+
+    public var totalCount: Int64?
 
     public override init() {
         super.init()
@@ -2099,6 +2121,12 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.replicaGroups != nil {
             var tmp : [Any] = []
             for k in self.replicaGroups! {
@@ -2109,6 +2137,9 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -2116,11 +2147,20 @@ public class DescribeDiskReplicaGroupsResponseBody : Tea.TeaModel {
         if dict.keys.contains("NextToken") {
             self.nextToken = dict["NextToken"] as! String
         }
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
         if dict.keys.contains("ReplicaGroups") {
             self.replicaGroups = dict["ReplicaGroups"] as! [DescribeDiskReplicaGroupsResponseBody.ReplicaGroups]
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int64
         }
     }
 }
