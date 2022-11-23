@@ -27554,6 +27554,8 @@ public class DescribeSubDomainRecordsResponseBody : Tea.TeaModel {
 
             public var recordId: String?
 
+            public var remark: String?
+
             public var status: String?
 
             public var TTL: Int64?
@@ -27596,6 +27598,9 @@ public class DescribeSubDomainRecordsResponseBody : Tea.TeaModel {
                 if self.recordId != nil {
                     map["RecordId"] = self.recordId!
                 }
+                if self.remark != nil {
+                    map["Remark"] = self.remark!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -27632,6 +27637,9 @@ public class DescribeSubDomainRecordsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RecordId") {
                     self.recordId = dict["RecordId"] as! String
+                }
+                if dict.keys.contains("Remark") {
+                    self.remark = dict["Remark"] as! String
                 }
                 if dict.keys.contains("Status") {
                     self.status = dict["Status"] as! String
