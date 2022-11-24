@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudOcrApi20210707"
-  spec.version      = "1.1.11"
+  spec.version      = "1.1.12"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ocr-api (20210707) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/ocr-api-20210707" 

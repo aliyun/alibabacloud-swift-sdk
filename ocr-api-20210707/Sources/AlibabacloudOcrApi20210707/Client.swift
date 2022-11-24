@@ -1329,6 +1329,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.outputFigure)) {
             query["OutputFigure"] = request.outputFigure!;
         }
+        if (!TeaUtils.Client.isUnset(request.outputQualityInfo)) {
+            query["OutputQualityInfo"] = request.outputQualityInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
         }
@@ -2558,5 +2561,85 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeWaybill(_ request: RecognizeWaybillRequest) async throws -> RecognizeWaybillResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await recognizeWaybillWithOptions(request as! RecognizeWaybillRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyBusinessLicenseWithOptions(_ request: VerifyBusinessLicenseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyBusinessLicenseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.companyName)) {
+            query["CompanyName"] = request.companyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.creditCode)) {
+            query["CreditCode"] = request.creditCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.legalPerson)) {
+            query["LegalPerson"] = request.legalPerson ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VerifyBusinessLicense",
+            "version": "2021-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VerifyBusinessLicenseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyBusinessLicense(_ request: VerifyBusinessLicenseRequest) async throws -> VerifyBusinessLicenseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await verifyBusinessLicenseWithOptions(request as! VerifyBusinessLicenseRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyVATInvoiceWithOptions(_ request: VerifyVATInvoiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyVATInvoiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.invoiceCode)) {
+            query["InvoiceCode"] = request.invoiceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.invoiceDate)) {
+            query["InvoiceDate"] = request.invoiceDate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.invoiceNo)) {
+            query["InvoiceNo"] = request.invoiceNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.invoiceSum)) {
+            query["InvoiceSum"] = request.invoiceSum ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verifyCode)) {
+            query["VerifyCode"] = request.verifyCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "VerifyVATInvoice",
+            "version": "2021-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(VerifyVATInvoiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func verifyVATInvoice(_ request: VerifyVATInvoiceRequest) async throws -> VerifyVATInvoiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await verifyVATInvoiceWithOptions(request as! VerifyVATInvoiceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
