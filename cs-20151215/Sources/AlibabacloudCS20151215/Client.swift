@@ -3946,4 +3946,43 @@ open class Client : AlibabacloudOpenApi.Client {
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UpgradeClusterAddonsResponse(), tmp)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradeClusterNodepool(_ ClusterId: String, _ NodepoolId: String, _ request: UpgradeClusterNodepoolRequest) async throws -> UpgradeClusterNodepoolResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await upgradeClusterNodepoolWithOptions(ClusterId as! String, NodepoolId as! String, request as! UpgradeClusterNodepoolRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func upgradeClusterNodepoolWithOptions(_ ClusterId: String, _ NodepoolId: String, _ request: UpgradeClusterNodepoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeClusterNodepoolResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            body["image_id"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kubernetesVersion)) {
+            body["kubernetes_version"] = request.kubernetesVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimeVersion)) {
+            body["runtime_version"] = request.runtimeVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpgradeClusterNodepool",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId) + "/nodepools/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(NodepoolId) + "/upgrade",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpgradeClusterNodepoolResponse(), tmp)
+    }
 }

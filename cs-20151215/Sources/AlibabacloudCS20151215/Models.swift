@@ -11115,6 +11115,8 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
 
             public var imageCategory: String?
 
+            public var architecture: String?
+
             public override init() {
                 super.init()
             }
@@ -11150,6 +11152,9 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
                 if self.imageCategory != nil {
                     map["image_category"] = self.imageCategory!
                 }
+                if self.architecture != nil {
+                    map["architecture"] = self.architecture!
+                }
                 return map
             }
 
@@ -11174,6 +11179,9 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
                 }
                 if dict.keys.contains("image_category") {
                     self.imageCategory = dict["image_category"] as! String
+                }
+                if dict.keys.contains("architecture") {
+                    self.architecture = dict["architecture"] as! String
                 }
             }
         }
@@ -13791,6 +13799,51 @@ public class DescribeUserPermissionResponse : Tea.TeaModel {
 }
 
 public class DescribeUserQuotaResponseBody : Tea.TeaModel {
+    public class EdgeImprovedNodepoolQuota : Tea.TeaModel {
+        public var bandwidth: Int32?
+
+        public var count: Int32?
+
+        public var period: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bandwidth != nil {
+                map["bandwidth"] = self.bandwidth!
+            }
+            if self.count != nil {
+                map["count"] = self.count!
+            }
+            if self.period != nil {
+                map["period"] = self.period!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("bandwidth") {
+                self.bandwidth = dict["bandwidth"] as! Int32
+            }
+            if dict.keys.contains("count") {
+                self.count = dict["count"] as! Int32
+            }
+            if dict.keys.contains("period") {
+                self.period = dict["period"] as! Int32
+            }
+        }
+    }
     public var amkClusterQuota: Int64?
 
     public var askClusterQuota: Int64?
@@ -13798,6 +13851,8 @@ public class DescribeUserQuotaResponseBody : Tea.TeaModel {
     public var clusterNodepoolQuota: Int64?
 
     public var clusterQuota: Int64?
+
+    public var edgeImprovedNodepoolQuota: DescribeUserQuotaResponseBody.EdgeImprovedNodepoolQuota?
 
     public var nodeQuota: Int64?
 
@@ -13811,6 +13866,7 @@ public class DescribeUserQuotaResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.edgeImprovedNodepoolQuota?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -13826,6 +13882,9 @@ public class DescribeUserQuotaResponseBody : Tea.TeaModel {
         }
         if self.clusterQuota != nil {
             map["cluster_quota"] = self.clusterQuota!
+        }
+        if self.edgeImprovedNodepoolQuota != nil {
+            map["edge_improved_nodepool_quota"] = self.edgeImprovedNodepoolQuota?.toMap()
         }
         if self.nodeQuota != nil {
             map["node_quota"] = self.nodeQuota!
@@ -13845,6 +13904,11 @@ public class DescribeUserQuotaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("cluster_quota") {
             self.clusterQuota = dict["cluster_quota"] as! Int64
+        }
+        if dict.keys.contains("edge_improved_nodepool_quota") {
+            var model = DescribeUserQuotaResponseBody.EdgeImprovedNodepoolQuota()
+            model.fromMap(dict["edge_improved_nodepool_quota"] as! [String: Any])
+            self.edgeImprovedNodepoolQuota = model
         }
         if dict.keys.contains("node_quota") {
             self.nodeQuota = dict["node_quota"] as! Int64
@@ -19853,6 +19917,134 @@ public class UpgradeClusterAddonsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+    }
+}
+
+public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
+    public var imageId: String?
+
+    public var kubernetesVersion: String?
+
+    public var runtimeVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageId != nil {
+            map["image_id"] = self.imageId!
+        }
+        if self.kubernetesVersion != nil {
+            map["kubernetes_version"] = self.kubernetesVersion!
+        }
+        if self.runtimeVersion != nil {
+            map["runtime_version"] = self.runtimeVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("image_id") {
+            self.imageId = dict["image_id"] as! String
+        }
+        if dict.keys.contains("kubernetes_version") {
+            self.kubernetesVersion = dict["kubernetes_version"] as! String
+        }
+        if dict.keys.contains("runtime_version") {
+            self.runtimeVersion = dict["runtime_version"] as! String
+        }
+    }
+}
+
+public class UpgradeClusterNodepoolResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpgradeClusterNodepoolResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpgradeClusterNodepoolResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = UpgradeClusterNodepoolResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
