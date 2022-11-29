@@ -3071,7 +3071,46 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class AvatarInfo : Tea.TeaModel {
+        public var angle: Int32?
+
+        public var locate: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.angle != nil {
+                map["Angle"] = self.angle!
+            }
+            if self.locate != nil {
+                map["Locate"] = self.locate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Angle") {
+                self.angle = dict["Angle"] as! Int32
+            }
+            if dict.keys.contains("Locate") {
+                self.locate = dict["Locate"] as! Int32
+            }
+        }
+    }
     public class VideoInfo : Tea.TeaModel {
+        public var alphaFormat: Int32?
+
         public var backgroundImageUrl: String?
 
         public var isAlpha: Bool?
@@ -3094,6 +3133,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alphaFormat != nil {
+                map["AlphaFormat"] = self.alphaFormat!
+            }
             if self.backgroundImageUrl != nil {
                 map["BackgroundImageUrl"] = self.backgroundImageUrl!
             }
@@ -3110,6 +3152,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AlphaFormat") {
+                self.alphaFormat = dict["AlphaFormat"] as! Int32
+            }
             if dict.keys.contains("BackgroundImageUrl") {
                 self.backgroundImageUrl = dict["BackgroundImageUrl"] as! String
             }
@@ -3125,6 +3170,8 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         }
     }
     public var app: SubmitTextTo3DAvatarVideoTaskRequest.App?
+
+    public var avatarInfo: SubmitTextTo3DAvatarVideoTaskRequest.AvatarInfo?
 
     public var tenantId: Int64?
 
@@ -3145,6 +3192,7 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.app?.validate()
+        try self.avatarInfo?.validate()
         try self.videoInfo?.validate()
     }
 
@@ -3152,6 +3200,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.app != nil {
             map["App"] = self.app?.toMap()
+        }
+        if self.avatarInfo != nil {
+            map["AvatarInfo"] = self.avatarInfo?.toMap()
         }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
@@ -3174,6 +3225,11 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             model.fromMap(dict["App"] as! [String: Any])
             self.app = model
         }
+        if dict.keys.contains("AvatarInfo") {
+            var model = SubmitTextTo3DAvatarVideoTaskRequest.AvatarInfo()
+            model.fromMap(dict["AvatarInfo"] as! [String: Any])
+            self.avatarInfo = model
+        }
         if dict.keys.contains("TenantId") {
             self.tenantId = dict["TenantId"] as! Int64
         }
@@ -3193,6 +3249,8 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
 public class SubmitTextTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public var appShrink: String?
+
+    public var avatarInfoShrink: String?
 
     public var tenantId: Int64?
 
@@ -3219,6 +3277,9 @@ public class SubmitTextTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         if self.appShrink != nil {
             map["App"] = self.appShrink!
         }
+        if self.avatarInfoShrink != nil {
+            map["AvatarInfo"] = self.avatarInfoShrink!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -3237,6 +3298,9 @@ public class SubmitTextTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("App") {
             self.appShrink = dict["App"] as! String
+        }
+        if dict.keys.contains("AvatarInfo") {
+            self.avatarInfoShrink = dict["AvatarInfo"] as! String
         }
         if dict.keys.contains("TenantId") {
             self.tenantId = dict["TenantId"] as! Int64
