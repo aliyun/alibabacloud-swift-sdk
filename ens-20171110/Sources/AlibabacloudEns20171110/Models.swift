@@ -357,6 +357,74 @@ public class HttpConfig : Tea.TeaModel {
     }
 }
 
+public class InstanceActiveOpsGroup : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+    }
+}
+
+public class InstanceActiveOpsTask : Tea.TeaModel {
+    public var instanceActiveOpsTaskId: String?
+
+    public var instanceActiveOpsTaskStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceActiveOpsTaskId != nil {
+            map["InstanceActiveOpsTaskId"] = self.instanceActiveOpsTaskId!
+        }
+        if self.instanceActiveOpsTaskStatus != nil {
+            map["InstanceActiveOpsTaskStatus"] = self.instanceActiveOpsTaskStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceActiveOpsTaskId") {
+            self.instanceActiveOpsTaskId = dict["InstanceActiveOpsTaskId"] as! String
+        }
+        if dict.keys.contains("InstanceActiveOpsTaskStatus") {
+            self.instanceActiveOpsTaskStatus = dict["InstanceActiveOpsTaskStatus"] as! String
+        }
+    }
+}
+
 public class SecurityGroupRule : Tea.TeaModel {
     public var description_: String?
 
@@ -4488,6 +4556,159 @@ public class CreateInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = CreateInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateInstanceActiveOpsTaskRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+    }
+}
+
+public class CreateInstanceActiveOpsTaskShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+    }
+}
+
+public class CreateInstanceActiveOpsTaskResponseBody : Tea.TeaModel {
+    public var instanceActiveOpsTask: InstanceActiveOpsTask?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.instanceActiveOpsTask?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceActiveOpsTask != nil {
+            map["InstanceActiveOpsTask"] = self.instanceActiveOpsTask?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceActiveOpsTask") {
+            var model = InstanceActiveOpsTask()
+            model.fromMap(dict["InstanceActiveOpsTask"] as! [String: Any])
+            self.instanceActiveOpsTask = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateInstanceActiveOpsTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateInstanceActiveOpsTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CreateInstanceActiveOpsTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -9562,9 +9783,15 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var requestId: String?
 
     public var servers: [DescribeARMServerInstancesResponseBody.Servers]?
+
+    public var totalCount: Int32?
 
     public override init() {
         super.init()
@@ -9580,6 +9807,12 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -9590,15 +9823,27 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
             }
             map["Servers"] = tmp
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Servers") {
             self.servers = dict["Servers"] as! [DescribeARMServerInstancesResponseBody.Servers]
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
         }
     }
 }
