@@ -685,9 +685,79 @@ public class CheckMobilesCardSupportRequest : Tea.TeaModel {
 }
 
 public class CheckMobilesCardSupportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class QueryResult : Tea.TeaModel {
+            public var mobile: String?
+
+            public var support: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mobile != nil {
+                    map["mobile"] = self.mobile!
+                }
+                if self.support != nil {
+                    map["support"] = self.support!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("mobile") {
+                    self.mobile = dict["mobile"] as! String
+                }
+                if dict.keys.contains("support") {
+                    self.support = dict["support"] as! Bool
+                }
+            }
+        }
+        public var queryResult: [CheckMobilesCardSupportResponseBody.Data.QueryResult]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.queryResult != nil {
+                var tmp : [Any] = []
+                for k in self.queryResult! {
+                    tmp.append(k.toMap())
+                }
+                map["queryResult"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("queryResult") {
+                self.queryResult = dict["queryResult"] as! [CheckMobilesCardSupportResponseBody.Data.QueryResult]
+            }
+        }
+    }
     public var code: String?
 
-    public var data: [[String: Any]]?
+    public var data: CheckMobilesCardSupportResponseBody.Data?
 
     public var requestId: String?
 
@@ -703,6 +773,7 @@ public class CheckMobilesCardSupportResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -711,7 +782,7 @@ public class CheckMobilesCardSupportResponseBody : Tea.TeaModel {
             map["Code"] = self.code!
         }
         if self.data != nil {
-            map["Data"] = self.data!
+            map["Data"] = self.data?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -727,7 +798,9 @@ public class CheckMobilesCardSupportResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [[String: Any]]
+            var model = CheckMobilesCardSupportResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -3152,9 +3225,38 @@ public class QueryCardSmsTemplateReportRequest : Tea.TeaModel {
 }
 
 public class QueryCardSmsTemplateReportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var model: [[String: Any]]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.model != nil {
+                map["model"] = self.model!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("model") {
+                self.model = dict["model"] as! [[String: Any]]
+            }
+        }
+    }
     public var code: String?
 
-    public var data: [[String: Any]]?
+    public var data: QueryCardSmsTemplateReportResponseBody.Data?
 
     public var requestId: String?
 
@@ -3170,6 +3272,7 @@ public class QueryCardSmsTemplateReportResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3178,7 +3281,7 @@ public class QueryCardSmsTemplateReportResponseBody : Tea.TeaModel {
             map["Code"] = self.code!
         }
         if self.data != nil {
-            map["Data"] = self.data!
+            map["Data"] = self.data?.toMap()
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -3194,7 +3297,9 @@ public class QueryCardSmsTemplateReportResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [[String: Any]]
+            var model = QueryCardSmsTemplateReportResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
@@ -3251,6 +3356,261 @@ public class QueryCardSmsTemplateReportResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = QueryCardSmsTemplateReportResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryMobilesCardSupportRequest : Tea.TeaModel {
+    public var mobiles: [[String: Any]]?
+
+    public var templateCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mobiles != nil {
+            map["Mobiles"] = self.mobiles!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Mobiles") {
+            self.mobiles = dict["Mobiles"] as! [[String: Any]]
+        }
+        if dict.keys.contains("TemplateCode") {
+            self.templateCode = dict["TemplateCode"] as! String
+        }
+    }
+}
+
+public class QueryMobilesCardSupportShrinkRequest : Tea.TeaModel {
+    public var mobilesShrink: String?
+
+    public var templateCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mobilesShrink != nil {
+            map["Mobiles"] = self.mobilesShrink!
+        }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Mobiles") {
+            self.mobilesShrink = dict["Mobiles"] as! String
+        }
+        if dict.keys.contains("TemplateCode") {
+            self.templateCode = dict["TemplateCode"] as! String
+        }
+    }
+}
+
+public class QueryMobilesCardSupportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class QueryResult : Tea.TeaModel {
+            public var mobile: String?
+
+            public var support: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mobile != nil {
+                    map["Mobile"] = self.mobile!
+                }
+                if self.support != nil {
+                    map["Support"] = self.support!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mobile") {
+                    self.mobile = dict["Mobile"] as! String
+                }
+                if dict.keys.contains("Support") {
+                    self.support = dict["Support"] as! Bool
+                }
+            }
+        }
+        public var queryResult: [QueryMobilesCardSupportResponseBody.Data.QueryResult]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.queryResult != nil {
+                var tmp : [Any] = []
+                for k in self.queryResult! {
+                    tmp.append(k.toMap())
+                }
+                map["QueryResult"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("QueryResult") {
+                self.queryResult = dict["QueryResult"] as! [QueryMobilesCardSupportResponseBody.Data.QueryResult]
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QueryMobilesCardSupportResponseBody.Data?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = QueryMobilesCardSupportResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryMobilesCardSupportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryMobilesCardSupportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryMobilesCardSupportResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -5204,6 +5564,10 @@ public class SendBatchCardSmsRequest : Tea.TeaModel {
 
     public var smsUpExtendCodeJson: String?
 
+    public var templateCode: String?
+
+    public var templateParamJson: String?
+
     public override init() {
         super.init()
     }
@@ -5251,6 +5615,12 @@ public class SendBatchCardSmsRequest : Tea.TeaModel {
         if self.smsUpExtendCodeJson != nil {
             map["SmsUpExtendCodeJson"] = self.smsUpExtendCodeJson!
         }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        if self.templateParamJson != nil {
+            map["TemplateParamJson"] = self.templateParamJson!
+        }
         return map
     }
 
@@ -5287,6 +5657,12 @@ public class SendBatchCardSmsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SmsUpExtendCodeJson") {
             self.smsUpExtendCodeJson = dict["SmsUpExtendCodeJson"] as! String
+        }
+        if dict.keys.contains("TemplateCode") {
+            self.templateCode = dict["TemplateCode"] as! String
+        }
+        if dict.keys.contains("TemplateParamJson") {
+            self.templateParamJson = dict["TemplateParamJson"] as! String
         }
     }
 }
@@ -5470,6 +5846,8 @@ public class SendBatchCardSmsResponse : Tea.TeaModel {
 }
 
 public class SendBatchSmsRequest : Tea.TeaModel {
+    public var outId: String?
+
     public var ownerId: Int64?
 
     public var phoneNumberJson: String?
@@ -5500,6 +5878,9 @@ public class SendBatchSmsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -5528,6 +5909,9 @@ public class SendBatchSmsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OutId") {
+            self.outId = dict["OutId"] as! String
+        }
         if dict.keys.contains("OwnerId") {
             self.ownerId = dict["OwnerId"] as! Int64
         }
@@ -5727,6 +6111,10 @@ public class SendCardSmsRequest : Tea.TeaModel {
 
     public var smsUpExtendCode: String?
 
+    public var templateCode: String?
+
+    public var templateParam: String?
+
     public override init() {
         super.init()
     }
@@ -5775,6 +6163,12 @@ public class SendCardSmsRequest : Tea.TeaModel {
         if self.smsUpExtendCode != nil {
             map["SmsUpExtendCode"] = self.smsUpExtendCode!
         }
+        if self.templateCode != nil {
+            map["TemplateCode"] = self.templateCode!
+        }
+        if self.templateParam != nil {
+            map["TemplateParam"] = self.templateParam!
+        }
         return map
     }
 
@@ -5808,6 +6202,12 @@ public class SendCardSmsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SmsUpExtendCode") {
             self.smsUpExtendCode = dict["SmsUpExtendCode"] as! String
+        }
+        if dict.keys.contains("TemplateCode") {
+            self.templateCode = dict["TemplateCode"] as! String
+        }
+        if dict.keys.contains("TemplateParam") {
+            self.templateParam = dict["TemplateParam"] as! String
         }
     }
 }

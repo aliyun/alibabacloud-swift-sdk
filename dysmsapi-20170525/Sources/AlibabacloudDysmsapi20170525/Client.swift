@@ -736,6 +736,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryMobilesCardSupportWithOptions(_ tmpReq: QueryMobilesCardSupportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryMobilesCardSupportResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryMobilesCardSupportShrinkRequest = QueryMobilesCardSupportShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.mobiles)) {
+            request.mobilesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.mobiles, "Mobiles", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mobilesShrink)) {
+            query["Mobiles"] = request.mobilesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            query["TemplateCode"] = request.templateCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryMobilesCardSupport",
+            "version": "2017-05-25",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryMobilesCardSupportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryMobilesCardSupport(_ request: QueryMobilesCardSupportRequest) async throws -> QueryMobilesCardSupportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryMobilesCardSupportWithOptions(request as! QueryMobilesCardSupportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func querySendDetailsWithOptions(_ request: QuerySendDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySendDetailsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1090,6 +1129,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.smsUpExtendCodeJson)) {
             query["SmsUpExtendCodeJson"] = request.smsUpExtendCodeJson ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            query["TemplateCode"] = request.templateCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateParamJson)) {
+            query["TemplateParamJson"] = request.templateParamJson ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1118,6 +1163,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendBatchSmsWithOptions(_ request: SendBatchSmsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendBatchSmsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }
@@ -1201,6 +1249,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.smsUpExtendCode)) {
             query["SmsUpExtendCode"] = request.smsUpExtendCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            query["TemplateCode"] = request.templateCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateParam)) {
+            query["TemplateParam"] = request.templateParam ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
