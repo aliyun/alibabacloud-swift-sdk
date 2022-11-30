@@ -301,6 +301,53 @@ public class ContinueCreateStackRequest : Tea.TeaModel {
 }
 
 public class ContinueCreateStackResponseBody : Tea.TeaModel {
+    public class DryRunResult : Tea.TeaModel {
+        public var parametersAllowedToBeModified: [String]?
+
+        public var parametersConditionallyAllowedToBeModified: [String]?
+
+        public var parametersNotAllowedToBeModified: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parametersAllowedToBeModified != nil {
+                map["ParametersAllowedToBeModified"] = self.parametersAllowedToBeModified!
+            }
+            if self.parametersConditionallyAllowedToBeModified != nil {
+                map["ParametersConditionallyAllowedToBeModified"] = self.parametersConditionallyAllowedToBeModified!
+            }
+            if self.parametersNotAllowedToBeModified != nil {
+                map["ParametersNotAllowedToBeModified"] = self.parametersNotAllowedToBeModified!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ParametersAllowedToBeModified") {
+                self.parametersAllowedToBeModified = dict["ParametersAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyAllowedToBeModified") {
+                self.parametersConditionallyAllowedToBeModified = dict["ParametersConditionallyAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersNotAllowedToBeModified") {
+                self.parametersNotAllowedToBeModified = dict["ParametersNotAllowedToBeModified"] as! [String]
+            }
+        }
+    }
+    public var dryRunResult: ContinueCreateStackResponseBody.DryRunResult?
+
     public var requestId: String?
 
     public var stackId: String?
@@ -315,10 +362,14 @@ public class ContinueCreateStackResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dryRunResult?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRunResult != nil {
+            map["DryRunResult"] = self.dryRunResult?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -329,6 +380,11 @@ public class ContinueCreateStackResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRunResult") {
+            var model = ContinueCreateStackResponseBody.DryRunResult()
+            model.fromMap(dict["DryRunResult"] as! [String: Any])
+            self.dryRunResult = model
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
