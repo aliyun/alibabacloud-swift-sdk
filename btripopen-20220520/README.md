@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudBtripOpen20220520` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudBtripOpen20220520', '~> 1.0.29'
+pod 'AlibabacloudBtripOpen20220520', '~> 1.0.30'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudBtripOpen20220520', '~> 1.0.29'
 To integrate `AlibabacloudBtripOpen20220520` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/btripopen-20220520" "1.0.29"
+github "alibabacloud-sdk-swift/btripopen-20220520" "1.0.30"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudBtripOpen20220520` into your Xcode project using [Swif
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/btripopen-20220520.git", from: "1.0.29")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/btripopen-20220520.git", from: "1.0.30")
 ]
 ```
 

@@ -802,6 +802,279 @@ public class AirportSearchResponse : Tea.TeaModel {
     }
 }
 
+public class AllBaseCityInfoQueryHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripAccessToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripAccessToken != nil {
+            map["x-acs-btrip-access-token"] = self.xAcsBtripAccessToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-access-token") {
+            self.xAcsBtripAccessToken = dict["x-acs-btrip-access-token"] as! String
+        }
+    }
+}
+
+public class AllBaseCityInfoQueryResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public class AllCityBaseInfoList : Tea.TeaModel {
+            public var adcode: String?
+
+            public var cityCode: String?
+
+            public var cityLevel: String?
+
+            public var cityName: String?
+
+            public var cnNameTree: String?
+
+            public var id: Int64?
+
+            public var otherNameList: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.adcode != nil {
+                    map["adcode"] = self.adcode!
+                }
+                if self.cityCode != nil {
+                    map["city_code"] = self.cityCode!
+                }
+                if self.cityLevel != nil {
+                    map["city_level"] = self.cityLevel!
+                }
+                if self.cityName != nil {
+                    map["city_name"] = self.cityName!
+                }
+                if self.cnNameTree != nil {
+                    map["cn_name_tree"] = self.cnNameTree!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.otherNameList != nil {
+                    map["other_name_list"] = self.otherNameList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("adcode") {
+                    self.adcode = dict["adcode"] as! String
+                }
+                if dict.keys.contains("city_code") {
+                    self.cityCode = dict["city_code"] as! String
+                }
+                if dict.keys.contains("city_level") {
+                    self.cityLevel = dict["city_level"] as! String
+                }
+                if dict.keys.contains("city_name") {
+                    self.cityName = dict["city_name"] as! String
+                }
+                if dict.keys.contains("cn_name_tree") {
+                    self.cnNameTree = dict["cn_name_tree"] as! String
+                }
+                if dict.keys.contains("id") {
+                    self.id = dict["id"] as! Int64
+                }
+                if dict.keys.contains("other_name_list") {
+                    self.otherNameList = dict["other_name_list"] as! [String]
+                }
+            }
+        }
+        public var allCityBaseInfoList: [AllBaseCityInfoQueryResponseBody.Module.AllCityBaseInfoList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allCityBaseInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.allCityBaseInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["all_city_base_info_list"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("all_city_base_info_list") {
+                self.allCityBaseInfoList = dict["all_city_base_info_list"] as! [AllBaseCityInfoQueryResponseBody.Module.AllCityBaseInfoList]
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: AllBaseCityInfoQueryResponseBody.Module?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") {
+            var model = AllBaseCityInfoQueryResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class AllBaseCityInfoQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AllBaseCityInfoQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AllBaseCityInfoQueryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ApplyAddHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 

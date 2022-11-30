@@ -155,6 +155,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func allBaseCityInfoQuery() async throws -> AllBaseCityInfoQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: AllBaseCityInfoQueryHeaders = AllBaseCityInfoQueryHeaders([:])
+        return try await allBaseCityInfoQueryWithOptions(headers as! AllBaseCityInfoQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func allBaseCityInfoQueryWithOptions(_ headers: AllBaseCityInfoQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> AllBaseCityInfoQueryResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripAccessToken)) {
+            realHeaders["x-acs-btrip-access-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripAccessToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AllBaseCityInfoQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/city/v1/code",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AllBaseCityInfoQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func applyAdd(_ request: ApplyAddRequest) async throws -> ApplyAddResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ApplyAddHeaders = ApplyAddHeaders([:])
