@@ -980,7 +980,7 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: String?
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -1031,7 +1031,7 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! String
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -2933,7 +2933,7 @@ public class SubmitTextTo2DAvatarVideoTaskResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: String?
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -2984,7 +2984,7 @@ public class SubmitTextTo2DAvatarVideoTaskResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! String
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -3355,7 +3355,7 @@ public class SubmitTextTo3DAvatarVideoTaskResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: String?
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -3406,7 +3406,7 @@ public class SubmitTextTo3DAvatarVideoTaskResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! String
+            self.success = dict["Success"] as! Bool
         }
     }
 }
