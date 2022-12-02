@@ -13491,13 +13491,13 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var arrDate: String?
+                public var arrDate: Int64?
 
                 public var btripType: Int32?
 
                 public var cheapest: EstimatedPriceQueryResponseBody.Module.TrafficFee.BtripRoutes.Cheapest?
 
-                public var depDate: String?
+                public var depDate: Int64?
 
                 public var destCity: String?
 
@@ -13567,7 +13567,7 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("arr_date") {
-                        self.arrDate = dict["arr_date"] as! String
+                        self.arrDate = dict["arr_date"] as! Int64
                     }
                     if dict.keys.contains("btrip_type") {
                         self.btripType = dict["btrip_type"] as! Int32
@@ -13578,7 +13578,7 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
                         self.cheapest = model
                     }
                     if dict.keys.contains("dep_date") {
-                        self.depDate = dict["dep_date"] as! String
+                        self.depDate = dict["dep_date"] as! Int64
                     }
                     if dict.keys.contains("dest_city") {
                         self.destCity = dict["dest_city"] as! String
@@ -23671,6 +23671,386 @@ public class ProjectModifyResponse : Tea.TeaModel {
     }
 }
 
+public class SyncSingleUserHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripSoCorpToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripSoCorpToken != nil {
+            map["x-acs-btrip-so-corp-token"] = self.xAcsBtripSoCorpToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-so-corp-token") {
+            self.xAcsBtripSoCorpToken = dict["x-acs-btrip-so-corp-token"] as! String
+        }
+    }
+}
+
+public class SyncSingleUserRequest : Tea.TeaModel {
+    public var email: String?
+
+    public var jobNo: String?
+
+    public var leaveStatus: Int32?
+
+    public var managerUserId: String?
+
+    public var phone: String?
+
+    public var position: String?
+
+    public var positionLevel: String?
+
+    public var realNameEn: String?
+
+    public var thirdDepartIdList: [String]?
+
+    public var userId: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.email != nil {
+            map["email"] = self.email!
+        }
+        if self.jobNo != nil {
+            map["job_no"] = self.jobNo!
+        }
+        if self.leaveStatus != nil {
+            map["leave_status"] = self.leaveStatus!
+        }
+        if self.managerUserId != nil {
+            map["manager_user_id"] = self.managerUserId!
+        }
+        if self.phone != nil {
+            map["phone"] = self.phone!
+        }
+        if self.position != nil {
+            map["position"] = self.position!
+        }
+        if self.positionLevel != nil {
+            map["position_level"] = self.positionLevel!
+        }
+        if self.realNameEn != nil {
+            map["real_name_en"] = self.realNameEn!
+        }
+        if self.thirdDepartIdList != nil {
+            map["third_depart_id_list"] = self.thirdDepartIdList!
+        }
+        if self.userId != nil {
+            map["user_id"] = self.userId!
+        }
+        if self.userName != nil {
+            map["user_name"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("email") {
+            self.email = dict["email"] as! String
+        }
+        if dict.keys.contains("job_no") {
+            self.jobNo = dict["job_no"] as! String
+        }
+        if dict.keys.contains("leave_status") {
+            self.leaveStatus = dict["leave_status"] as! Int32
+        }
+        if dict.keys.contains("manager_user_id") {
+            self.managerUserId = dict["manager_user_id"] as! String
+        }
+        if dict.keys.contains("phone") {
+            self.phone = dict["phone"] as! String
+        }
+        if dict.keys.contains("position") {
+            self.position = dict["position"] as! String
+        }
+        if dict.keys.contains("position_level") {
+            self.positionLevel = dict["position_level"] as! String
+        }
+        if dict.keys.contains("real_name_en") {
+            self.realNameEn = dict["real_name_en"] as! String
+        }
+        if dict.keys.contains("third_depart_id_list") {
+            self.thirdDepartIdList = dict["third_depart_id_list"] as! [String]
+        }
+        if dict.keys.contains("user_id") {
+            self.userId = dict["user_id"] as! String
+        }
+        if dict.keys.contains("user_name") {
+            self.userName = dict["user_name"] as! String
+        }
+    }
+}
+
+public class SyncSingleUserShrinkRequest : Tea.TeaModel {
+    public var email: String?
+
+    public var jobNo: String?
+
+    public var leaveStatus: Int32?
+
+    public var managerUserId: String?
+
+    public var phone: String?
+
+    public var position: String?
+
+    public var positionLevel: String?
+
+    public var realNameEn: String?
+
+    public var thirdDepartIdListShrink: String?
+
+    public var userId: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.email != nil {
+            map["email"] = self.email!
+        }
+        if self.jobNo != nil {
+            map["job_no"] = self.jobNo!
+        }
+        if self.leaveStatus != nil {
+            map["leave_status"] = self.leaveStatus!
+        }
+        if self.managerUserId != nil {
+            map["manager_user_id"] = self.managerUserId!
+        }
+        if self.phone != nil {
+            map["phone"] = self.phone!
+        }
+        if self.position != nil {
+            map["position"] = self.position!
+        }
+        if self.positionLevel != nil {
+            map["position_level"] = self.positionLevel!
+        }
+        if self.realNameEn != nil {
+            map["real_name_en"] = self.realNameEn!
+        }
+        if self.thirdDepartIdListShrink != nil {
+            map["third_depart_id_list"] = self.thirdDepartIdListShrink!
+        }
+        if self.userId != nil {
+            map["user_id"] = self.userId!
+        }
+        if self.userName != nil {
+            map["user_name"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("email") {
+            self.email = dict["email"] as! String
+        }
+        if dict.keys.contains("job_no") {
+            self.jobNo = dict["job_no"] as! String
+        }
+        if dict.keys.contains("leave_status") {
+            self.leaveStatus = dict["leave_status"] as! Int32
+        }
+        if dict.keys.contains("manager_user_id") {
+            self.managerUserId = dict["manager_user_id"] as! String
+        }
+        if dict.keys.contains("phone") {
+            self.phone = dict["phone"] as! String
+        }
+        if dict.keys.contains("position") {
+            self.position = dict["position"] as! String
+        }
+        if dict.keys.contains("position_level") {
+            self.positionLevel = dict["position_level"] as! String
+        }
+        if dict.keys.contains("real_name_en") {
+            self.realNameEn = dict["real_name_en"] as! String
+        }
+        if dict.keys.contains("third_depart_id_list") {
+            self.thirdDepartIdListShrink = dict["third_depart_id_list"] as! String
+        }
+        if dict.keys.contains("user_id") {
+            self.userId = dict["user_id"] as! String
+        }
+        if dict.keys.contains("user_name") {
+            self.userName = dict["user_name"] as! String
+        }
+    }
+}
+
+public class SyncSingleUserResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var module: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") {
+            self.module = dict["module"] as! String
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class SyncSingleUserResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SyncSingleUserResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = SyncSingleUserResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class TrainBillSettlementQueryHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
@@ -26036,6 +26416,10 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
 
             public var departName: String?
 
+            public var exceedApplyId: String?
+
+            public var exceedThirdPartApplyId: String?
+
             public var gmtCreate: String?
 
             public var gmtModify: String?
@@ -26091,6 +26475,12 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
                 if self.departName != nil {
                     map["depart_name"] = self.departName!
                 }
+                if self.exceedApplyId != nil {
+                    map["exceed_apply_id"] = self.exceedApplyId!
+                }
+                if self.exceedThirdPartApplyId != nil {
+                    map["exceed_third_part_apply_id"] = self.exceedThirdPartApplyId!
+                }
                 if self.gmtCreate != nil {
                     map["gmt_create"] = self.gmtCreate!
                 }
@@ -26145,6 +26535,12 @@ public class TrainOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("depart_name") {
                     self.departName = dict["depart_name"] as! String
+                }
+                if dict.keys.contains("exceed_apply_id") {
+                    self.exceedApplyId = dict["exceed_apply_id"] as! String
+                }
+                if dict.keys.contains("exceed_third_part_apply_id") {
+                    self.exceedThirdPartApplyId = dict["exceed_third_part_apply_id"] as! String
                 }
                 if dict.keys.contains("gmt_create") {
                     self.gmtCreate = dict["gmt_create"] as! String

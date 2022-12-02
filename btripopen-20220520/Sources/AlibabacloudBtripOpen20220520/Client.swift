@@ -2638,6 +2638,81 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncSingleUser(_ request: SyncSingleUserRequest) async throws -> SyncSingleUserResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SyncSingleUserHeaders = SyncSingleUserHeaders([:])
+        return try await syncSingleUserWithOptions(request as! SyncSingleUserRequest, headers as! SyncSingleUserHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func syncSingleUserWithOptions(_ tmpReq: SyncSingleUserRequest, _ headers: SyncSingleUserHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncSingleUserResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SyncSingleUserShrinkRequest = SyncSingleUserShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.thirdDepartIdList)) {
+            request.thirdDepartIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.thirdDepartIdList, "third_depart_id_list", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            body["email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobNo)) {
+            body["job_no"] = request.jobNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.leaveStatus)) {
+            body["leave_status"] = request.leaveStatus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.managerUserId)) {
+            body["manager_user_id"] = request.managerUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phone)) {
+            body["phone"] = request.phone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.position)) {
+            body["position"] = request.position ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.positionLevel)) {
+            body["position_level"] = request.positionLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.realNameEn)) {
+            body["real_name_en"] = request.realNameEn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.thirdDepartIdListShrink)) {
+            body["third_depart_id_list"] = request.thirdDepartIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["user_id"] = request.userId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userName)) {
+            body["user_name"] = request.userName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripSoCorpToken)) {
+            realHeaders["x-acs-btrip-so-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripSoCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SyncSingleUser",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/user/v1/single-user/action/sync",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SyncSingleUserResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func trainBillSettlementQuery(_ request: TrainBillSettlementQueryRequest) async throws -> TrainBillSettlementQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: TrainBillSettlementQueryHeaders = TrainBillSettlementQueryHeaders([:])
