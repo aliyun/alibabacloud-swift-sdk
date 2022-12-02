@@ -8818,6 +8818,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func pubWithOptions(_ request: PubRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PubResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contentType)) {
+            query["ContentType"] = request.contentType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.correlationData)) {
             query["CorrelationData"] = request.correlationData ?? "";
         }
@@ -8826,6 +8829,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
             query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.payloadFormatIndicator)) {
+            query["PayloadFormatIndicator"] = request.payloadFormatIndicator!;
         }
         if (!TeaUtils.Client.isUnset(request.productKey)) {
             query["ProductKey"] = request.productKey ?? "";
@@ -10736,6 +10742,119 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryDeviceTunnel(_ request: QueryDeviceTunnelRequest) async throws -> QueryDeviceTunnelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryDeviceTunnelWithOptions(request as! QueryDeviceTunnelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDevicesHotStorageDataWithOptions(_ request: QueryDevicesHotStorageDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDevicesHotStorageDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asc)) {
+            query["Asc"] = request.asc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.identifier)) {
+            query["Identifier"] = request.identifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextPageToken)) {
+            query["NextPageToken"] = request.nextPageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.userTopic)) {
+            query["UserTopic"] = request.userTopic ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryDevicesHotStorageData",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryDevicesHotStorageDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDevicesHotStorageData(_ request: QueryDevicesHotStorageDataRequest) async throws -> QueryDevicesHotStorageDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryDevicesHotStorageDataWithOptions(request as! QueryDevicesHotStorageDataRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDevicesHotStorageDataStatusWithOptions(_ request: QueryDevicesHotStorageDataStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDevicesHotStorageDataStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.asc)) {
+            query["Asc"] = request.asc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextPageToken)) {
+            query["NextPageToken"] = request.nextPageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userTopic)) {
+            query["UserTopic"] = request.userTopic ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryDevicesHotStorageDataStatus",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryDevicesHotStorageDataStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDevicesHotStorageDataStatus(_ request: QueryDevicesHotStorageDataStatusRequest) async throws -> QueryDevicesHotStorageDataStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryDevicesHotStorageDataStatusWithOptions(request as! QueryDevicesHotStorageDataStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -15959,5 +16078,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateThingScript(_ request: UpdateThingScriptRequest) async throws -> UpdateThingScriptResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateThingScriptWithOptions(request as! UpdateThingScriptRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func writeDevicesHotStorageDataWithOptions(_ request: WriteDevicesHotStorageDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> WriteDevicesHotStorageDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.items)) {
+            query["Items"] = request.items ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userTopic)) {
+            query["UserTopic"] = request.userTopic ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "WriteDevicesHotStorageData",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(WriteDevicesHotStorageDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func writeDevicesHotStorageData(_ request: WriteDevicesHotStorageDataRequest) async throws -> WriteDevicesHotStorageDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await writeDevicesHotStorageDataWithOptions(request as! WriteDevicesHotStorageDataRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
