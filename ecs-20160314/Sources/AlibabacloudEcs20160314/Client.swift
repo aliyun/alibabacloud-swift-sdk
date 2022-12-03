@@ -4978,6 +4978,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.demandPlan)) {
             query["DemandPlan"] = request.demandPlan ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
+            query["InstanceChargeType"] = request.instanceChargeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceFamily)) {
             query["InstanceFamily"] = request.instanceFamily ?? "";
         }
@@ -6049,6 +6052,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeSceneResourceRecommendWithOptions(_ request: DescribeSceneResourceRecommendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSceneResourceRecommendResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
+            query["InstanceChargeType"] = request.instanceChargeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -6072,6 +6081,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sceneId)) {
             query["SceneId"] = request.sceneId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.spotStrategy)) {
+            query["SpotStrategy"] = request.spotStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zoneId)) {
+            query["ZoneId"] = request.zoneId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -8647,6 +8662,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenewPeriod)) {
+            query["AutoRenewPeriod"] = request.autoRenewPeriod!;
         }
         if (!TeaUtils.Client.isUnset(request.businessInfo)) {
             query["BusinessInfo"] = request.businessInfo ?? "";

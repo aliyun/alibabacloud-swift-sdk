@@ -26831,6 +26831,35 @@ public class DescribePriceResponseBody : Tea.TeaModel {
         public class Order : Tea.TeaModel {
             public class Coupons : Tea.TeaModel {
                 public class Coupon : Tea.TeaModel {
+                    public class RuleIds : Tea.TeaModel {
+                        public var ruleId: [Int64]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.ruleId != nil {
+                                map["RuleId"] = self.ruleId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("RuleId") {
+                                self.ruleId = dict["RuleId"] as! [Int64]
+                            }
+                        }
+                    }
                     public var couponNo: String?
 
                     public var description_: String?
@@ -26840,6 +26869,10 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     public var isSelected: Bool?
 
                     public var name: String?
+
+                    public var optionCode: String?
+
+                    public var ruleIds: DescribePriceResponseBody.PriceInfo.Order.Coupons.Coupon.RuleIds?
 
                     public override init() {
                         super.init()
@@ -26851,6 +26884,7 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.ruleIds?.validate()
                     }
 
                     public override func toMap() -> [String : Any] {
@@ -26870,6 +26904,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                         if self.name != nil {
                             map["Name"] = self.name!
                         }
+                        if self.optionCode != nil {
+                            map["OptionCode"] = self.optionCode!
+                        }
+                        if self.ruleIds != nil {
+                            map["RuleIds"] = self.ruleIds?.toMap()
+                        }
                         return map
                     }
 
@@ -26888,6 +26928,14 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("Name") {
                             self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("OptionCode") {
+                            self.optionCode = dict["OptionCode"] as! String
+                        }
+                        if dict.keys.contains("RuleIds") {
+                            var model = DescribePriceResponseBody.PriceInfo.Order.Coupons.Coupon.RuleIds()
+                            model.fromMap(dict["RuleIds"] as! [String: Any])
+                            self.ruleIds = model
                         }
                     }
                 }
@@ -28967,6 +29015,8 @@ public class DescribeReservationDemandCommittedAmountRequest : Tea.TeaModel {
     }
     public var demandPlan: [DescribeReservationDemandCommittedAmountRequest.DemandPlan]?
 
+    public var instanceChargeType: String?
+
     public var instanceFamily: String?
 
     public var instanceFamilySet: String?
@@ -29012,6 +29062,9 @@ public class DescribeReservationDemandCommittedAmountRequest : Tea.TeaModel {
             }
             map["DemandPlan"] = tmp
         }
+        if self.instanceChargeType != nil {
+            map["InstanceChargeType"] = self.instanceChargeType!
+        }
         if self.instanceFamily != nil {
             map["InstanceFamily"] = self.instanceFamily!
         }
@@ -29054,6 +29107,9 @@ public class DescribeReservationDemandCommittedAmountRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DemandPlan") {
             self.demandPlan = dict["DemandPlan"] as! [DescribeReservationDemandCommittedAmountRequest.DemandPlan]
+        }
+        if dict.keys.contains("InstanceChargeType") {
+            self.instanceChargeType = dict["InstanceChargeType"] as! String
         }
         if dict.keys.contains("InstanceFamily") {
             self.instanceFamily = dict["InstanceFamily"] as! String
@@ -36525,6 +36581,10 @@ public class DescribeScenePurchaseRecommendResponse : Tea.TeaModel {
 }
 
 public class DescribeSceneResourceRecommendRequest : Tea.TeaModel {
+    public var instanceChargeType: String?
+
+    public var instanceType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -36541,6 +36601,10 @@ public class DescribeSceneResourceRecommendRequest : Tea.TeaModel {
 
     public var sceneId: Int32?
 
+    public var spotStrategy: String?
+
+    public var zoneId: String?
+
     public override init() {
         super.init()
     }
@@ -36555,6 +36619,12 @@ public class DescribeSceneResourceRecommendRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.instanceChargeType != nil {
+            map["InstanceChargeType"] = self.instanceChargeType!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -36579,10 +36649,22 @@ public class DescribeSceneResourceRecommendRequest : Tea.TeaModel {
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceChargeType") {
+            self.instanceChargeType = dict["InstanceChargeType"] as! String
+        }
+        if dict.keys.contains("InstanceType") {
+            self.instanceType = dict["InstanceType"] as! String
+        }
         if dict.keys.contains("OwnerAccount") {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -36607,12 +36689,104 @@ public class DescribeSceneResourceRecommendRequest : Tea.TeaModel {
         if dict.keys.contains("SceneId") {
             self.sceneId = dict["SceneId"] as! Int32
         }
+        if dict.keys.contains("SpotStrategy") {
+            self.spotStrategy = dict["SpotStrategy"] as! String
+        }
+        if dict.keys.contains("ZoneId") {
+            self.zoneId = dict["ZoneId"] as! String
+        }
     }
 }
 
 public class DescribeSceneResourceRecommendResponseBody : Tea.TeaModel {
     public class RecommendProducts : Tea.TeaModel {
         public class RecommendProduct : Tea.TeaModel {
+            public class RecommendImages : Tea.TeaModel {
+                public class RecommendImage : Tea.TeaModel {
+                    public var imageId: String?
+
+                    public var imageOwnerAlias: String?
+
+                    public var isPublic: Bool?
+
+                    public var priority: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.imageId != nil {
+                            map["ImageId"] = self.imageId!
+                        }
+                        if self.imageOwnerAlias != nil {
+                            map["ImageOwnerAlias"] = self.imageOwnerAlias!
+                        }
+                        if self.isPublic != nil {
+                            map["IsPublic"] = self.isPublic!
+                        }
+                        if self.priority != nil {
+                            map["Priority"] = self.priority!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ImageId") {
+                            self.imageId = dict["ImageId"] as! String
+                        }
+                        if dict.keys.contains("ImageOwnerAlias") {
+                            self.imageOwnerAlias = dict["ImageOwnerAlias"] as! String
+                        }
+                        if dict.keys.contains("IsPublic") {
+                            self.isPublic = dict["IsPublic"] as! Bool
+                        }
+                        if dict.keys.contains("Priority") {
+                            self.priority = dict["Priority"] as! Int32
+                        }
+                    }
+                }
+                public var recommendImage: [DescribeSceneResourceRecommendResponseBody.RecommendProducts.RecommendProduct.RecommendImages.RecommendImage]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.recommendImage != nil {
+                        var tmp : [Any] = []
+                        for k in self.recommendImage! {
+                            tmp.append(k.toMap())
+                        }
+                        map["RecommendImage"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RecommendImage") {
+                        self.recommendImage = dict["RecommendImage"] as! [DescribeSceneResourceRecommendResponseBody.RecommendProducts.RecommendProduct.RecommendImages.RecommendImage]
+                    }
+                }
+            }
             public class RecommendInstanceSpecs : Tea.TeaModel {
                 public class RecommendInstanceSpec : Tea.TeaModel {
                     public class InstanceTypes : Tea.TeaModel {
@@ -36772,6 +36946,8 @@ public class DescribeSceneResourceRecommendResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var recommendImages: DescribeSceneResourceRecommendResponseBody.RecommendProducts.RecommendProduct.RecommendImages?
+
             public var recommendInstanceSpecs: DescribeSceneResourceRecommendResponseBody.RecommendProducts.RecommendProduct.RecommendInstanceSpecs?
 
             public var recommendReason: String?
@@ -36792,11 +36968,15 @@ public class DescribeSceneResourceRecommendResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.recommendImages?.validate()
                 try self.recommendInstanceSpecs?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.recommendImages != nil {
+                    map["RecommendImages"] = self.recommendImages?.toMap()
+                }
                 if self.recommendInstanceSpecs != nil {
                     map["RecommendInstanceSpecs"] = self.recommendInstanceSpecs?.toMap()
                 }
@@ -36816,6 +36996,11 @@ public class DescribeSceneResourceRecommendResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("RecommendImages") {
+                    var model = DescribeSceneResourceRecommendResponseBody.RecommendProducts.RecommendProduct.RecommendImages()
+                    model.fromMap(dict["RecommendImages"] as! [String: Any])
+                    self.recommendImages = model
+                }
                 if dict.keys.contains("RecommendInstanceSpecs") {
                     var model = DescribeSceneResourceRecommendResponseBody.RecommendProducts.RecommendProduct.RecommendInstanceSpecs()
                     model.fromMap(dict["RecommendInstanceSpecs"] as! [String: Any])
@@ -49001,6 +49186,10 @@ public class PurchaseReservedInstancesOfferingRequest : Tea.TeaModel {
     }
     public var autoPay: Bool?
 
+    public var autoRenew: Bool?
+
+    public var autoRenewPeriod: Int32?
+
     public var businessInfo: String?
 
     public var chargeType: String?
@@ -49061,6 +49250,12 @@ public class PurchaseReservedInstancesOfferingRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.autoRenewPeriod != nil {
+            map["AutoRenewPeriod"] = self.autoRenewPeriod!
         }
         if self.businessInfo != nil {
             map["BusinessInfo"] = self.businessInfo!
@@ -49138,6 +49333,12 @@ public class PurchaseReservedInstancesOfferingRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AutoPay") {
             self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") {
+            self.autoRenew = dict["AutoRenew"] as! Bool
+        }
+        if dict.keys.contains("AutoRenewPeriod") {
+            self.autoRenewPeriod = dict["AutoRenewPeriod"] as! Int32
         }
         if dict.keys.contains("BusinessInfo") {
             self.businessInfo = dict["BusinessInfo"] as! String
