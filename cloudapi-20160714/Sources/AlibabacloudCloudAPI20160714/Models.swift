@@ -37608,7 +37608,7 @@ public class QueryRequestLogsResponseBody : Tea.TeaModel {
 
             public var apiName: String?
 
-            public var clientIp: Int32?
+            public var clientIp: String?
 
             public var clientNonce: String?
 
@@ -37804,7 +37804,7 @@ public class QueryRequestLogsResponseBody : Tea.TeaModel {
                     self.apiName = dict["ApiName"] as! String
                 }
                 if dict.keys.contains("ClientIp") {
-                    self.clientIp = dict["ClientIp"] as! Int32
+                    self.clientIp = dict["ClientIp"] as! String
                 }
                 if dict.keys.contains("ClientNonce") {
                     self.clientNonce = dict["ClientNonce"] as! String
