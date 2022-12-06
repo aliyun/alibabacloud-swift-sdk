@@ -25,6 +25,105 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addCardToDirectionalGroupWithOptions(_ tmpReq: AddCardToDirectionalGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddCardToDirectionalGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddCardToDirectionalGroupShrinkRequest = AddCardToDirectionalGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.iccidList)) {
+            request.iccidListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.iccidList, "IccidList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addType)) {
+            query["AddType"] = request.addType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iccidListShrink)) {
+            query["IccidList"] = request.iccidListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.msgNotify)) {
+            query["MsgNotify"] = request.msgNotify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serialNo)) {
+            query["SerialNo"] = request.serialNo ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiProduct)) {
+            body["ApiProduct"] = request.apiProduct ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddCardToDirectionalGroup",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddCardToDirectionalGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addCardToDirectionalGroup(_ request: AddCardToDirectionalGroupRequest) async throws -> AddCardToDirectionalGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addCardToDirectionalGroupWithOptions(request as! AddCardToDirectionalGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDirectionalAddressWithOptions(_ request: AddDirectionalAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddDirectionalAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.address)) {
+            query["Address"] = request.address ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressType)) {
+            query["AddressType"] = request.addressType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.msgNotify)) {
+            query["MsgNotify"] = request.msgNotify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serialNo)) {
+            query["SerialNo"] = request.serialNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddDirectionalAddress",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddDirectionalAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addDirectionalAddress(_ request: AddDirectionalAddressRequest) async throws -> AddDirectionalAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addDirectionalAddressWithOptions(request as! AddDirectionalAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addDirectionalCardWithOptions(_ tmpReq: AddDirectionalCardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddDirectionalCardResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddDirectionalCardShrinkRequest = AddDirectionalCardShrinkRequest([:])
@@ -150,6 +249,77 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchAddDirectionalAddress(_ request: BatchAddDirectionalAddressRequest) async throws -> BatchAddDirectionalAddressResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await batchAddDirectionalAddressWithOptions(request as! BatchAddDirectionalAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDirectionalAddressWithOptions(_ request: DeleteDirectionalAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDirectionalAddressResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.address)) {
+            query["Address"] = request.address ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.msgNotify)) {
+            query["MsgNotify"] = request.msgNotify!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serialNo)) {
+            query["SerialNo"] = request.serialNo ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDirectionalAddress",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDirectionalAddressResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDirectionalAddress(_ request: DeleteDirectionalAddressRequest) async throws -> DeleteDirectionalAddressResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDirectionalAddressWithOptions(request as! DeleteDirectionalAddressRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDirectionalGroupWithOptions(_ request: DeleteDirectionalGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDirectionalGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDirectionalGroup",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDirectionalGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDirectionalGroup(_ request: DeleteDirectionalGroupRequest) async throws -> DeleteDirectionalGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDirectionalGroupWithOptions(request as! DeleteDirectionalGroupRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

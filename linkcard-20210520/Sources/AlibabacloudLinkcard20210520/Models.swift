@@ -5,6 +5,500 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AddCardToDirectionalGroupRequest : Tea.TeaModel {
+    public var addType: String?
+
+    public var apiProduct: String?
+
+    public var groupId: String?
+
+    public var iccidList: [String]?
+
+    public var msgNotify: Bool?
+
+    public var serialNo: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addType != nil {
+            map["AddType"] = self.addType!
+        }
+        if self.apiProduct != nil {
+            map["ApiProduct"] = self.apiProduct!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.iccidList != nil {
+            map["IccidList"] = self.iccidList!
+        }
+        if self.msgNotify != nil {
+            map["MsgNotify"] = self.msgNotify!
+        }
+        if self.serialNo != nil {
+            map["SerialNo"] = self.serialNo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddType") {
+            self.addType = dict["AddType"] as! String
+        }
+        if dict.keys.contains("ApiProduct") {
+            self.apiProduct = dict["ApiProduct"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("IccidList") {
+            self.iccidList = dict["IccidList"] as! [String]
+        }
+        if dict.keys.contains("MsgNotify") {
+            self.msgNotify = dict["MsgNotify"] as! Bool
+        }
+        if dict.keys.contains("SerialNo") {
+            self.serialNo = dict["SerialNo"] as! String
+        }
+    }
+}
+
+public class AddCardToDirectionalGroupShrinkRequest : Tea.TeaModel {
+    public var addType: String?
+
+    public var apiProduct: String?
+
+    public var groupId: String?
+
+    public var iccidListShrink: String?
+
+    public var msgNotify: Bool?
+
+    public var serialNo: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.addType != nil {
+            map["AddType"] = self.addType!
+        }
+        if self.apiProduct != nil {
+            map["ApiProduct"] = self.apiProduct!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.iccidListShrink != nil {
+            map["IccidList"] = self.iccidListShrink!
+        }
+        if self.msgNotify != nil {
+            map["MsgNotify"] = self.msgNotify!
+        }
+        if self.serialNo != nil {
+            map["SerialNo"] = self.serialNo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddType") {
+            self.addType = dict["AddType"] as! String
+        }
+        if dict.keys.contains("ApiProduct") {
+            self.apiProduct = dict["ApiProduct"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("IccidList") {
+            self.iccidListShrink = dict["IccidList"] as! String
+        }
+        if dict.keys.contains("MsgNotify") {
+            self.msgNotify = dict["MsgNotify"] as! Bool
+        }
+        if dict.keys.contains("SerialNo") {
+            self.serialNo = dict["SerialNo"] as! String
+        }
+    }
+}
+
+public class AddCardToDirectionalGroupResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var result: Bool?
+
+        public var serialNo: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            if self.serialNo != nil {
+                map["SerialNo"] = self.serialNo!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Result") {
+                self.result = dict["Result"] as! Bool
+            }
+            if dict.keys.contains("SerialNo") {
+                self.serialNo = dict["SerialNo"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: AddCardToDirectionalGroupResponseBody.Data?
+
+    public var errorMessage: String?
+
+    public var localizedMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.localizedMessage != nil {
+            map["LocalizedMessage"] = self.localizedMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = AddCardToDirectionalGroupResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("LocalizedMessage") {
+            self.localizedMessage = dict["LocalizedMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class AddCardToDirectionalGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddCardToDirectionalGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AddCardToDirectionalGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class AddDirectionalAddressRequest : Tea.TeaModel {
+    public var address: String?
+
+    public var addressType: String?
+
+    public var groupId: String?
+
+    public var msgNotify: Bool?
+
+    public var serialNo: String?
+
+    public var source: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["Address"] = self.address!
+        }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.msgNotify != nil {
+            map["MsgNotify"] = self.msgNotify!
+        }
+        if self.serialNo != nil {
+            map["SerialNo"] = self.serialNo!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Address") {
+            self.address = dict["Address"] as! String
+        }
+        if dict.keys.contains("AddressType") {
+            self.addressType = dict["AddressType"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("MsgNotify") {
+            self.msgNotify = dict["MsgNotify"] as! Bool
+        }
+        if dict.keys.contains("SerialNo") {
+            self.serialNo = dict["SerialNo"] as! String
+        }
+        if dict.keys.contains("Source") {
+            self.source = dict["Source"] as! String
+        }
+    }
+}
+
+public class AddDirectionalAddressResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var errorMessage: String?
+
+    public var localizedMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.localizedMessage != nil {
+            map["LocalizedMessage"] = self.localizedMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("LocalizedMessage") {
+            self.localizedMessage = dict["LocalizedMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class AddDirectionalAddressResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddDirectionalAddressResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = AddDirectionalAddressResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AddDirectionalCardRequest : Tea.TeaModel {
     public var fileUri: String?
 
@@ -605,6 +1099,334 @@ public class BatchAddDirectionalAddressResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = BatchAddDirectionalAddressResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDirectionalAddressRequest : Tea.TeaModel {
+    public var address: String?
+
+    public var groupId: String?
+
+    public var msgNotify: Bool?
+
+    public var serialNo: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.address != nil {
+            map["Address"] = self.address!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.msgNotify != nil {
+            map["MsgNotify"] = self.msgNotify!
+        }
+        if self.serialNo != nil {
+            map["SerialNo"] = self.serialNo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Address") {
+            self.address = dict["Address"] as! String
+        }
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("MsgNotify") {
+            self.msgNotify = dict["MsgNotify"] as! Bool
+        }
+        if dict.keys.contains("SerialNo") {
+            self.serialNo = dict["SerialNo"] as! String
+        }
+    }
+}
+
+public class DeleteDirectionalAddressResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var errorMessage: String?
+
+    public var localizedMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.localizedMessage != nil {
+            map["LocalizedMessage"] = self.localizedMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("LocalizedMessage") {
+            self.localizedMessage = dict["LocalizedMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteDirectionalAddressResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDirectionalAddressResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteDirectionalAddressResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteDirectionalGroupRequest : Tea.TeaModel {
+    public var groupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GroupId") {
+            self.groupId = dict["GroupId"] as! String
+        }
+    }
+}
+
+public class DeleteDirectionalGroupResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var errorMessage: String?
+
+    public var localizedMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.localizedMessage != nil {
+            map["LocalizedMessage"] = self.localizedMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("ErrorMessage") {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("LocalizedMessage") {
+            self.localizedMessage = dict["LocalizedMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteDirectionalGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDirectionalGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DeleteDirectionalGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
