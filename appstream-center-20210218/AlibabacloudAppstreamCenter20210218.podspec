@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAppstreamCenter20210218"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud appstream-center (20210218) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/appstream-center-20210218" 
@@ -18,8 +18,9 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.0'
-  spec.dependency 'TeaUtils',  '~> 1.0.1'
+  spec.dependency 'TeaUtils',  '~> 1.0.2'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.1'
+  spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'
 
   spec.swift_version='5.6'
