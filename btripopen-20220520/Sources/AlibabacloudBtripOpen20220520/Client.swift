@@ -24,13 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func accessToken(_ request: AccessTokenRequest) async throws -> AccessTokenResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await accessTokenWithOptions(request as! AccessTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func accessTokenWithOptions(_ request: AccessTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AccessTokenResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -60,10 +53,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addressGet(_ request: AddressGetRequest) async throws -> AddressGetResponse {
+    public func accessToken(_ request: AccessTokenRequest) async throws -> AccessTokenResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: AddressGetHeaders = AddressGetHeaders([:])
-        return try await addressGetWithOptions(request as! AddressGetRequest, headers as! AddressGetHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: [String: String] = [:]
+        return try await accessTokenWithOptions(request as! AccessTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -112,10 +105,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func airportSearch(_ request: AirportSearchRequest) async throws -> AirportSearchResponse {
+    public func addressGet(_ request: AddressGetRequest) async throws -> AddressGetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: AirportSearchHeaders = AirportSearchHeaders([:])
-        return try await airportSearchWithOptions(request as! AirportSearchRequest, headers as! AirportSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: AddressGetHeaders = AddressGetHeaders([:])
+        return try await addressGetWithOptions(request as! AddressGetRequest, headers as! AddressGetHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -155,10 +148,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func allBaseCityInfoQuery() async throws -> AllBaseCityInfoQueryResponse {
+    public func airportSearch(_ request: AirportSearchRequest) async throws -> AirportSearchResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: AllBaseCityInfoQueryHeaders = AllBaseCityInfoQueryHeaders([:])
-        return try await allBaseCityInfoQueryWithOptions(headers as! AllBaseCityInfoQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: AirportSearchHeaders = AirportSearchHeaders([:])
+        return try await airportSearchWithOptions(request as! AirportSearchRequest, headers as! AirportSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -189,10 +182,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func applyAdd(_ request: ApplyAddRequest) async throws -> ApplyAddResponse {
+    public func allBaseCityInfoQuery() async throws -> AllBaseCityInfoQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ApplyAddHeaders = ApplyAddHeaders([:])
-        return try await applyAddWithOptions(request as! ApplyAddRequest, headers as! ApplyAddHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: AllBaseCityInfoQueryHeaders = AllBaseCityInfoQueryHeaders([:])
+        return try await allBaseCityInfoQueryWithOptions(headers as! AllBaseCityInfoQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -344,10 +337,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func applyApprove(_ request: ApplyApproveRequest) async throws -> ApplyApproveResponse {
+    public func applyAdd(_ request: ApplyAddRequest) async throws -> ApplyAddResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ApplyApproveHeaders = ApplyApproveHeaders([:])
-        return try await applyApproveWithOptions(request as! ApplyApproveRequest, headers as! ApplyApproveHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ApplyAddHeaders = ApplyAddHeaders([:])
+        return try await applyAddWithOptions(request as! ApplyAddRequest, headers as! ApplyAddHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -399,10 +392,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func applyListQuery(_ request: ApplyListQueryRequest) async throws -> ApplyListQueryResponse {
+    public func applyApprove(_ request: ApplyApproveRequest) async throws -> ApplyApproveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ApplyListQueryHeaders = ApplyListQueryHeaders([:])
-        return try await applyListQueryWithOptions(request as! ApplyListQueryRequest, headers as! ApplyListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ApplyApproveHeaders = ApplyApproveHeaders([:])
+        return try await applyApproveWithOptions(request as! ApplyApproveRequest, headers as! ApplyApproveHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -469,10 +462,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func applyModify(_ request: ApplyModifyRequest) async throws -> ApplyModifyResponse {
+    public func applyListQuery(_ request: ApplyListQueryRequest) async throws -> ApplyListQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ApplyModifyHeaders = ApplyModifyHeaders([:])
-        return try await applyModifyWithOptions(request as! ApplyModifyRequest, headers as! ApplyModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ApplyListQueryHeaders = ApplyListQueryHeaders([:])
+        return try await applyListQueryWithOptions(request as! ApplyListQueryRequest, headers as! ApplyListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -616,10 +609,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func applyQuery(_ request: ApplyQueryRequest) async throws -> ApplyQueryResponse {
+    public func applyModify(_ request: ApplyModifyRequest) async throws -> ApplyModifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ApplyQueryHeaders = ApplyQueryHeaders([:])
-        return try await applyQueryWithOptions(request as! ApplyQueryRequest, headers as! ApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ApplyModifyHeaders = ApplyModifyHeaders([:])
+        return try await applyModifyWithOptions(request as! ApplyModifyRequest, headers as! ApplyModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -665,10 +658,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func carApplyAdd(_ request: CarApplyAddRequest) async throws -> CarApplyAddResponse {
+    public func applyQuery(_ request: ApplyQueryRequest) async throws -> ApplyQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CarApplyAddHeaders = CarApplyAddHeaders([:])
-        return try await carApplyAddWithOptions(request as! CarApplyAddRequest, headers as! CarApplyAddHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ApplyQueryHeaders = ApplyQueryHeaders([:])
+        return try await applyQueryWithOptions(request as! ApplyQueryRequest, headers as! ApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -747,10 +740,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func carApplyModify(_ request: CarApplyModifyRequest) async throws -> CarApplyModifyResponse {
+    public func carApplyAdd(_ request: CarApplyAddRequest) async throws -> CarApplyAddResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CarApplyModifyHeaders = CarApplyModifyHeaders([:])
-        return try await carApplyModifyWithOptions(request as! CarApplyModifyRequest, headers as! CarApplyModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CarApplyAddHeaders = CarApplyAddHeaders([:])
+        return try await carApplyAddWithOptions(request as! CarApplyAddRequest, headers as! CarApplyAddHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -799,10 +792,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func carApplyQuery(_ request: CarApplyQueryRequest) async throws -> CarApplyQueryResponse {
+    public func carApplyModify(_ request: CarApplyModifyRequest) async throws -> CarApplyModifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CarApplyQueryHeaders = CarApplyQueryHeaders([:])
-        return try await carApplyQueryWithOptions(request as! CarApplyQueryRequest, headers as! CarApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CarApplyModifyHeaders = CarApplyModifyHeaders([:])
+        return try await carApplyModifyWithOptions(request as! CarApplyModifyRequest, headers as! CarApplyModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -854,10 +847,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func carBillSettlementQuery(_ request: CarBillSettlementQueryRequest) async throws -> CarBillSettlementQueryResponse {
+    public func carApplyQuery(_ request: CarApplyQueryRequest) async throws -> CarApplyQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CarBillSettlementQueryHeaders = CarBillSettlementQueryHeaders([:])
-        return try await carBillSettlementQueryWithOptions(request as! CarBillSettlementQueryRequest, headers as! CarBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CarApplyQueryHeaders = CarApplyQueryHeaders([:])
+        return try await carApplyQueryWithOptions(request as! CarApplyQueryRequest, headers as! CarApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -903,10 +896,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func carOrderListQuery(_ request: CarOrderListQueryRequest) async throws -> CarOrderListQueryResponse {
+    public func carBillSettlementQuery(_ request: CarBillSettlementQueryRequest) async throws -> CarBillSettlementQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CarOrderListQueryHeaders = CarOrderListQueryHeaders([:])
-        return try await carOrderListQueryWithOptions(request as! CarOrderListQueryRequest, headers as! CarOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CarBillSettlementQueryHeaders = CarBillSettlementQueryHeaders([:])
+        return try await carBillSettlementQueryWithOptions(request as! CarBillSettlementQueryRequest, headers as! CarBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -973,10 +966,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func carOrderQuery(_ request: CarOrderQueryRequest) async throws -> CarOrderQueryResponse {
+    public func carOrderListQuery(_ request: CarOrderListQueryRequest) async throws -> CarOrderListQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CarOrderQueryHeaders = CarOrderQueryHeaders([:])
-        return try await carOrderQueryWithOptions(request as! CarOrderQueryRequest, headers as! CarOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CarOrderListQueryHeaders = CarOrderListQueryHeaders([:])
+        return try await carOrderListQueryWithOptions(request as! CarOrderListQueryRequest, headers as! CarOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1016,10 +1009,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func citySearch(_ request: CitySearchRequest) async throws -> CitySearchResponse {
+    public func carOrderQuery(_ request: CarOrderQueryRequest) async throws -> CarOrderQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CitySearchHeaders = CitySearchHeaders([:])
-        return try await citySearchWithOptions(request as! CitySearchRequest, headers as! CitySearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CarOrderQueryHeaders = CarOrderQueryHeaders([:])
+        return try await carOrderQueryWithOptions(request as! CarOrderQueryRequest, headers as! CarOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1056,10 +1049,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func commonApplyQuery(_ request: CommonApplyQueryRequest) async throws -> CommonApplyQueryResponse {
+    public func citySearch(_ request: CitySearchRequest) async throws -> CitySearchResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CommonApplyQueryHeaders = CommonApplyQueryHeaders([:])
-        return try await commonApplyQueryWithOptions(request as! CommonApplyQueryRequest, headers as! CommonApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CitySearchHeaders = CitySearchHeaders([:])
+        return try await citySearchWithOptions(request as! CitySearchRequest, headers as! CitySearchHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1102,10 +1095,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func commonApplySync(_ request: CommonApplySyncRequest) async throws -> CommonApplySyncResponse {
+    public func commonApplyQuery(_ request: CommonApplyQueryRequest) async throws -> CommonApplyQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CommonApplySyncHeaders = CommonApplySyncHeaders([:])
-        return try await commonApplySyncWithOptions(request as! CommonApplySyncRequest, headers as! CommonApplySyncHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CommonApplyQueryHeaders = CommonApplyQueryHeaders([:])
+        return try await commonApplyQueryWithOptions(request as! CommonApplyQueryRequest, headers as! CommonApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1157,10 +1150,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func corpToken(_ request: CorpTokenRequest) async throws -> CorpTokenResponse {
+    public func commonApplySync(_ request: CommonApplySyncRequest) async throws -> CommonApplySyncResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CorpTokenHeaders = CorpTokenHeaders([:])
-        return try await corpTokenWithOptions(request as! CorpTokenRequest, headers as! CorpTokenHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CommonApplySyncHeaders = CommonApplySyncHeaders([:])
+        return try await commonApplySyncWithOptions(request as! CommonApplySyncRequest, headers as! CommonApplySyncHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1203,10 +1196,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func costCenterDelete(_ request: CostCenterDeleteRequest) async throws -> CostCenterDeleteResponse {
+    public func corpToken(_ request: CorpTokenRequest) async throws -> CorpTokenResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CostCenterDeleteHeaders = CostCenterDeleteHeaders([:])
-        return try await costCenterDeleteWithOptions(request as! CostCenterDeleteRequest, headers as! CostCenterDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CorpTokenHeaders = CorpTokenHeaders([:])
+        return try await corpTokenWithOptions(request as! CorpTokenRequest, headers as! CorpTokenHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1243,10 +1236,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func costCenterModify(_ request: CostCenterModifyRequest) async throws -> CostCenterModifyResponse {
+    public func costCenterDelete(_ request: CostCenterDeleteRequest) async throws -> CostCenterDeleteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CostCenterModifyHeaders = CostCenterModifyHeaders([:])
-        return try await costCenterModifyWithOptions(request as! CostCenterModifyRequest, headers as! CostCenterModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CostCenterDeleteHeaders = CostCenterDeleteHeaders([:])
+        return try await costCenterDeleteWithOptions(request as! CostCenterDeleteRequest, headers as! CostCenterDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1295,10 +1288,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func costCenterQuery(_ request: CostCenterQueryRequest) async throws -> CostCenterQueryResponse {
+    public func costCenterModify(_ request: CostCenterModifyRequest) async throws -> CostCenterModifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CostCenterQueryHeaders = CostCenterQueryHeaders([:])
-        return try await costCenterQueryWithOptions(request as! CostCenterQueryRequest, headers as! CostCenterQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CostCenterModifyHeaders = CostCenterModifyHeaders([:])
+        return try await costCenterModifyWithOptions(request as! CostCenterModifyRequest, headers as! CostCenterModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1344,10 +1337,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func costCenterSave(_ request: CostCenterSaveRequest) async throws -> CostCenterSaveResponse {
+    public func costCenterQuery(_ request: CostCenterQueryRequest) async throws -> CostCenterQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: CostCenterSaveHeaders = CostCenterSaveHeaders([:])
-        return try await costCenterSaveWithOptions(request as! CostCenterSaveRequest, headers as! CostCenterSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CostCenterQueryHeaders = CostCenterQueryHeaders([:])
+        return try await costCenterQueryWithOptions(request as! CostCenterQueryRequest, headers as! CostCenterQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1396,10 +1389,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func departmentSave(_ request: DepartmentSaveRequest) async throws -> DepartmentSaveResponse {
+    public func costCenterSave(_ request: CostCenterSaveRequest) async throws -> CostCenterSaveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: DepartmentSaveHeaders = DepartmentSaveHeaders([:])
-        return try await departmentSaveWithOptions(request as! DepartmentSaveRequest, headers as! DepartmentSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: CostCenterSaveHeaders = CostCenterSaveHeaders([:])
+        return try await costCenterSaveWithOptions(request as! CostCenterSaveRequest, headers as! CostCenterSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1441,10 +1434,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func entityAdd(_ request: EntityAddRequest) async throws -> EntityAddResponse {
+    public func departmentSave(_ request: DepartmentSaveRequest) async throws -> DepartmentSaveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: EntityAddHeaders = EntityAddHeaders([:])
-        return try await entityAddWithOptions(request as! EntityAddRequest, headers as! EntityAddHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: DepartmentSaveHeaders = DepartmentSaveHeaders([:])
+        return try await departmentSaveWithOptions(request as! DepartmentSaveRequest, headers as! DepartmentSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1489,10 +1482,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func entityDelete(_ request: EntityDeleteRequest) async throws -> EntityDeleteResponse {
+    public func entityAdd(_ request: EntityAddRequest) async throws -> EntityAddResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: EntityDeleteHeaders = EntityDeleteHeaders([:])
-        return try await entityDeleteWithOptions(request as! EntityDeleteRequest, headers as! EntityDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: EntityAddHeaders = EntityAddHeaders([:])
+        return try await entityAddWithOptions(request as! EntityAddRequest, headers as! EntityAddHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1542,10 +1535,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func entitySet(_ request: EntitySetRequest) async throws -> EntitySetResponse {
+    public func entityDelete(_ request: EntityDeleteRequest) async throws -> EntityDeleteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: EntitySetHeaders = EntitySetHeaders([:])
-        return try await entitySetWithOptions(request as! EntitySetRequest, headers as! EntitySetHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: EntityDeleteHeaders = EntityDeleteHeaders([:])
+        return try await entityDeleteWithOptions(request as! EntityDeleteRequest, headers as! EntityDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1590,10 +1583,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func estimatedPriceQuery(_ request: EstimatedPriceQueryRequest) async throws -> EstimatedPriceQueryResponse {
+    public func entitySet(_ request: EntitySetRequest) async throws -> EntitySetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: EstimatedPriceQueryHeaders = EstimatedPriceQueryHeaders([:])
-        return try await estimatedPriceQueryWithOptions(request as! EstimatedPriceQueryRequest, headers as! EstimatedPriceQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: EntitySetHeaders = EntitySetHeaders([:])
+        return try await entitySetWithOptions(request as! EntitySetRequest, headers as! EntitySetHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1648,10 +1641,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func exceedApplySync(_ request: ExceedApplySyncRequest) async throws -> ExceedApplySyncResponse {
+    public func estimatedPriceQuery(_ request: EstimatedPriceQueryRequest) async throws -> EstimatedPriceQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ExceedApplySyncHeaders = ExceedApplySyncHeaders([:])
-        return try await exceedApplySyncWithOptions(request as! ExceedApplySyncRequest, headers as! ExceedApplySyncHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: EstimatedPriceQueryHeaders = EstimatedPriceQueryHeaders([:])
+        return try await estimatedPriceQueryWithOptions(request as! EstimatedPriceQueryRequest, headers as! EstimatedPriceQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1703,10 +1696,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func flightBillSettlementQuery(_ request: FlightBillSettlementQueryRequest) async throws -> FlightBillSettlementQueryResponse {
+    public func exceedApplySync(_ request: ExceedApplySyncRequest) async throws -> ExceedApplySyncResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: FlightBillSettlementQueryHeaders = FlightBillSettlementQueryHeaders([:])
-        return try await flightBillSettlementQueryWithOptions(request as! FlightBillSettlementQueryRequest, headers as! FlightBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ExceedApplySyncHeaders = ExceedApplySyncHeaders([:])
+        return try await exceedApplySyncWithOptions(request as! ExceedApplySyncRequest, headers as! ExceedApplySyncHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1752,10 +1745,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func flightExceedApplyQuery(_ request: FlightExceedApplyQueryRequest) async throws -> FlightExceedApplyQueryResponse {
+    public func flightBillSettlementQuery(_ request: FlightBillSettlementQueryRequest) async throws -> FlightBillSettlementQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: FlightExceedApplyQueryHeaders = FlightExceedApplyQueryHeaders([:])
-        return try await flightExceedApplyQueryWithOptions(request as! FlightExceedApplyQueryRequest, headers as! FlightExceedApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: FlightBillSettlementQueryHeaders = FlightBillSettlementQueryHeaders([:])
+        return try await flightBillSettlementQueryWithOptions(request as! FlightBillSettlementQueryRequest, headers as! FlightBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1792,10 +1785,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func flightOrderListQuery(_ request: FlightOrderListQueryRequest) async throws -> FlightOrderListQueryResponse {
+    public func flightExceedApplyQuery(_ request: FlightExceedApplyQueryRequest) async throws -> FlightExceedApplyQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: FlightOrderListQueryHeaders = FlightOrderListQueryHeaders([:])
-        return try await flightOrderListQueryWithOptions(request as! FlightOrderListQueryRequest, headers as! FlightOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: FlightExceedApplyQueryHeaders = FlightExceedApplyQueryHeaders([:])
+        return try await flightExceedApplyQueryWithOptions(request as! FlightExceedApplyQueryRequest, headers as! FlightExceedApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1862,10 +1855,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func flightOrderQuery(_ request: FlightOrderQueryRequest) async throws -> FlightOrderQueryResponse {
+    public func flightOrderListQuery(_ request: FlightOrderListQueryRequest) async throws -> FlightOrderListQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: FlightOrderQueryHeaders = FlightOrderQueryHeaders([:])
-        return try await flightOrderQueryWithOptions(request as! FlightOrderQueryRequest, headers as! FlightOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: FlightOrderListQueryHeaders = FlightOrderListQueryHeaders([:])
+        return try await flightOrderListQueryWithOptions(request as! FlightOrderListQueryRequest, headers as! FlightOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1905,10 +1898,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func hotelBillSettlementQuery(_ request: HotelBillSettlementQueryRequest) async throws -> HotelBillSettlementQueryResponse {
+    public func flightOrderQuery(_ request: FlightOrderQueryRequest) async throws -> FlightOrderQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: HotelBillSettlementQueryHeaders = HotelBillSettlementQueryHeaders([:])
-        return try await hotelBillSettlementQueryWithOptions(request as! HotelBillSettlementQueryRequest, headers as! HotelBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: FlightOrderQueryHeaders = FlightOrderQueryHeaders([:])
+        return try await flightOrderQueryWithOptions(request as! FlightOrderQueryRequest, headers as! FlightOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1954,10 +1947,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func hotelExceedApplyQuery(_ request: HotelExceedApplyQueryRequest) async throws -> HotelExceedApplyQueryResponse {
+    public func hotelBillSettlementQuery(_ request: HotelBillSettlementQueryRequest) async throws -> HotelBillSettlementQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: HotelExceedApplyQueryHeaders = HotelExceedApplyQueryHeaders([:])
-        return try await hotelExceedApplyQueryWithOptions(request as! HotelExceedApplyQueryRequest, headers as! HotelExceedApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: HotelBillSettlementQueryHeaders = HotelBillSettlementQueryHeaders([:])
+        return try await hotelBillSettlementQueryWithOptions(request as! HotelBillSettlementQueryRequest, headers as! HotelBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1994,10 +1987,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func hotelOrderListQuery(_ request: HotelOrderListQueryRequest) async throws -> HotelOrderListQueryResponse {
+    public func hotelExceedApplyQuery(_ request: HotelExceedApplyQueryRequest) async throws -> HotelExceedApplyQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: HotelOrderListQueryHeaders = HotelOrderListQueryHeaders([:])
-        return try await hotelOrderListQueryWithOptions(request as! HotelOrderListQueryRequest, headers as! HotelOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: HotelExceedApplyQueryHeaders = HotelExceedApplyQueryHeaders([:])
+        return try await hotelExceedApplyQueryWithOptions(request as! HotelExceedApplyQueryRequest, headers as! HotelExceedApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2064,10 +2057,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func hotelOrderQuery(_ request: HotelOrderQueryRequest) async throws -> HotelOrderQueryResponse {
+    public func hotelOrderListQuery(_ request: HotelOrderListQueryRequest) async throws -> HotelOrderListQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: HotelOrderQueryHeaders = HotelOrderQueryHeaders([:])
-        return try await hotelOrderQueryWithOptions(request as! HotelOrderQueryRequest, headers as! HotelOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: HotelOrderListQueryHeaders = HotelOrderListQueryHeaders([:])
+        return try await hotelOrderListQueryWithOptions(request as! HotelOrderListQueryRequest, headers as! HotelOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2104,10 +2097,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func ieFlightBillSettlementQuery(_ request: IeFlightBillSettlementQueryRequest) async throws -> IeFlightBillSettlementQueryResponse {
+    public func hotelOrderQuery(_ request: HotelOrderQueryRequest) async throws -> HotelOrderQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: IeFlightBillSettlementQueryHeaders = IeFlightBillSettlementQueryHeaders([:])
-        return try await ieFlightBillSettlementQueryWithOptions(request as! IeFlightBillSettlementQueryRequest, headers as! IeFlightBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: HotelOrderQueryHeaders = HotelOrderQueryHeaders([:])
+        return try await hotelOrderQueryWithOptions(request as! HotelOrderQueryRequest, headers as! HotelOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2153,10 +2146,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func invoiceAdd(_ request: InvoiceAddRequest) async throws -> InvoiceAddResponse {
+    public func ieFlightBillSettlementQuery(_ request: IeFlightBillSettlementQueryRequest) async throws -> IeFlightBillSettlementQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: InvoiceAddHeaders = InvoiceAddHeaders([:])
-        return try await invoiceAddWithOptions(request as! InvoiceAddRequest, headers as! InvoiceAddHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: IeFlightBillSettlementQueryHeaders = IeFlightBillSettlementQueryHeaders([:])
+        return try await ieFlightBillSettlementQueryWithOptions(request as! IeFlightBillSettlementQueryRequest, headers as! IeFlightBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2214,10 +2207,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func invoiceDelete(_ request: InvoiceDeleteRequest) async throws -> InvoiceDeleteResponse {
+    public func invoiceAdd(_ request: InvoiceAddRequest) async throws -> InvoiceAddResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: InvoiceDeleteHeaders = InvoiceDeleteHeaders([:])
-        return try await invoiceDeleteWithOptions(request as! InvoiceDeleteRequest, headers as! InvoiceDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: InvoiceAddHeaders = InvoiceAddHeaders([:])
+        return try await invoiceAddWithOptions(request as! InvoiceAddRequest, headers as! InvoiceAddHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2254,10 +2247,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func invoiceModify(_ request: InvoiceModifyRequest) async throws -> InvoiceModifyResponse {
+    public func invoiceDelete(_ request: InvoiceDeleteRequest) async throws -> InvoiceDeleteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: InvoiceModifyHeaders = InvoiceModifyHeaders([:])
-        return try await invoiceModifyWithOptions(request as! InvoiceModifyRequest, headers as! InvoiceModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: InvoiceDeleteHeaders = InvoiceDeleteHeaders([:])
+        return try await invoiceDeleteWithOptions(request as! InvoiceDeleteRequest, headers as! InvoiceDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2315,10 +2308,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func invoiceRuleSave(_ request: InvoiceRuleSaveRequest) async throws -> InvoiceRuleSaveResponse {
+    public func invoiceModify(_ request: InvoiceModifyRequest) async throws -> InvoiceModifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: InvoiceRuleSaveHeaders = InvoiceRuleSaveHeaders([:])
-        return try await invoiceRuleSaveWithOptions(request as! InvoiceRuleSaveRequest, headers as! InvoiceRuleSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: InvoiceModifyHeaders = InvoiceModifyHeaders([:])
+        return try await invoiceModifyWithOptions(request as! InvoiceModifyRequest, headers as! InvoiceModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2366,10 +2359,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func invoiceSearch(_ request: InvoiceSearchRequest) async throws -> InvoiceSearchResponse {
+    public func invoiceRuleSave(_ request: InvoiceRuleSaveRequest) async throws -> InvoiceRuleSaveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: InvoiceSearchHeaders = InvoiceSearchHeaders([:])
-        return try await invoiceSearchWithOptions(request as! InvoiceSearchRequest, headers as! InvoiceSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: InvoiceRuleSaveHeaders = InvoiceRuleSaveHeaders([:])
+        return try await invoiceRuleSaveWithOptions(request as! InvoiceRuleSaveRequest, headers as! InvoiceRuleSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2409,10 +2402,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func isvUserSave(_ request: IsvUserSaveRequest) async throws -> IsvUserSaveResponse {
+    public func invoiceSearch(_ request: InvoiceSearchRequest) async throws -> InvoiceSearchResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: IsvUserSaveHeaders = IsvUserSaveHeaders([:])
-        return try await isvUserSaveWithOptions(request as! IsvUserSaveRequest, headers as! IsvUserSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: InvoiceSearchHeaders = InvoiceSearchHeaders([:])
+        return try await invoiceSearchWithOptions(request as! InvoiceSearchRequest, headers as! InvoiceSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2454,10 +2447,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func monthBillGet(_ request: MonthBillGetRequest) async throws -> MonthBillGetResponse {
+    public func isvUserSave(_ request: IsvUserSaveRequest) async throws -> IsvUserSaveResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: MonthBillGetHeaders = MonthBillGetHeaders([:])
-        return try await monthBillGetWithOptions(request as! MonthBillGetRequest, headers as! MonthBillGetHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: IsvUserSaveHeaders = IsvUserSaveHeaders([:])
+        return try await isvUserSaveWithOptions(request as! IsvUserSaveRequest, headers as! IsvUserSaveHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2494,10 +2487,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func projectAdd(_ request: ProjectAddRequest) async throws -> ProjectAddResponse {
+    public func monthBillGet(_ request: MonthBillGetRequest) async throws -> MonthBillGetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ProjectAddHeaders = ProjectAddHeaders([:])
-        return try await projectAddWithOptions(request as! ProjectAddRequest, headers as! ProjectAddHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: MonthBillGetHeaders = MonthBillGetHeaders([:])
+        return try await monthBillGetWithOptions(request as! MonthBillGetRequest, headers as! MonthBillGetHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2546,10 +2539,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func projectDelete(_ request: ProjectDeleteRequest) async throws -> ProjectDeleteResponse {
+    public func projectAdd(_ request: ProjectAddRequest) async throws -> ProjectAddResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ProjectDeleteHeaders = ProjectDeleteHeaders([:])
-        return try await projectDeleteWithOptions(request as! ProjectDeleteRequest, headers as! ProjectDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ProjectAddHeaders = ProjectAddHeaders([:])
+        return try await projectAddWithOptions(request as! ProjectAddRequest, headers as! ProjectAddHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2586,10 +2579,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func projectModify(_ request: ProjectModifyRequest) async throws -> ProjectModifyResponse {
+    public func projectDelete(_ request: ProjectDeleteRequest) async throws -> ProjectDeleteResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: ProjectModifyHeaders = ProjectModifyHeaders([:])
-        return try await projectModifyWithOptions(request as! ProjectModifyRequest, headers as! ProjectModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ProjectDeleteHeaders = ProjectDeleteHeaders([:])
+        return try await projectDeleteWithOptions(request as! ProjectDeleteRequest, headers as! ProjectDeleteHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2638,10 +2631,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func syncSingleUser(_ request: SyncSingleUserRequest) async throws -> SyncSingleUserResponse {
+    public func projectModify(_ request: ProjectModifyRequest) async throws -> ProjectModifyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: SyncSingleUserHeaders = SyncSingleUserHeaders([:])
-        return try await syncSingleUserWithOptions(request as! SyncSingleUserRequest, headers as! SyncSingleUserHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: ProjectModifyHeaders = ProjectModifyHeaders([:])
+        return try await projectModifyWithOptions(request as! ProjectModifyRequest, headers as! ProjectModifyHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2713,10 +2706,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func trainBillSettlementQuery(_ request: TrainBillSettlementQueryRequest) async throws -> TrainBillSettlementQueryResponse {
+    public func syncSingleUser(_ request: SyncSingleUserRequest) async throws -> SyncSingleUserResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: TrainBillSettlementQueryHeaders = TrainBillSettlementQueryHeaders([:])
-        return try await trainBillSettlementQueryWithOptions(request as! TrainBillSettlementQueryRequest, headers as! TrainBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: SyncSingleUserHeaders = SyncSingleUserHeaders([:])
+        return try await syncSingleUserWithOptions(request as! SyncSingleUserRequest, headers as! SyncSingleUserHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2762,10 +2755,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func trainExceedApplyQuery(_ request: TrainExceedApplyQueryRequest) async throws -> TrainExceedApplyQueryResponse {
+    public func trainBillSettlementQuery(_ request: TrainBillSettlementQueryRequest) async throws -> TrainBillSettlementQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: TrainExceedApplyQueryHeaders = TrainExceedApplyQueryHeaders([:])
-        return try await trainExceedApplyQueryWithOptions(request as! TrainExceedApplyQueryRequest, headers as! TrainExceedApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: TrainBillSettlementQueryHeaders = TrainBillSettlementQueryHeaders([:])
+        return try await trainBillSettlementQueryWithOptions(request as! TrainBillSettlementQueryRequest, headers as! TrainBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2802,10 +2795,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func trainOrderListQuery(_ request: TrainOrderListQueryRequest) async throws -> TrainOrderListQueryResponse {
+    public func trainExceedApplyQuery(_ request: TrainExceedApplyQueryRequest) async throws -> TrainExceedApplyQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: TrainOrderListQueryHeaders = TrainOrderListQueryHeaders([:])
-        return try await trainOrderListQueryWithOptions(request as! TrainOrderListQueryRequest, headers as! TrainOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: TrainExceedApplyQueryHeaders = TrainExceedApplyQueryHeaders([:])
+        return try await trainExceedApplyQueryWithOptions(request as! TrainExceedApplyQueryRequest, headers as! TrainExceedApplyQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2872,10 +2865,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func trainOrderQuery(_ request: TrainOrderQueryRequest) async throws -> TrainOrderQueryResponse {
+    public func trainOrderListQuery(_ request: TrainOrderListQueryRequest) async throws -> TrainOrderListQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: TrainOrderQueryHeaders = TrainOrderQueryHeaders([:])
-        return try await trainOrderQueryWithOptions(request as! TrainOrderQueryRequest, headers as! TrainOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: TrainOrderListQueryHeaders = TrainOrderListQueryHeaders([:])
+        return try await trainOrderListQueryWithOptions(request as! TrainOrderListQueryRequest, headers as! TrainOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2915,10 +2908,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func trainStationSearch(_ request: TrainStationSearchRequest) async throws -> TrainStationSearchResponse {
+    public func trainOrderQuery(_ request: TrainOrderQueryRequest) async throws -> TrainOrderQueryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: TrainStationSearchHeaders = TrainStationSearchHeaders([:])
-        return try await trainStationSearchWithOptions(request as! TrainStationSearchRequest, headers as! TrainStationSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: TrainOrderQueryHeaders = TrainOrderQueryHeaders([:])
+        return try await trainOrderQueryWithOptions(request as! TrainOrderQueryRequest, headers as! TrainOrderQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2955,10 +2948,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func userQuery(_ request: UserQueryRequest) async throws -> UserQueryResponse {
+    public func trainStationSearch(_ request: TrainStationSearchRequest) async throws -> TrainStationSearchResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: UserQueryHeaders = UserQueryHeaders([:])
-        return try await userQueryWithOptions(request as! UserQueryRequest, headers as! UserQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+        var headers: TrainStationSearchHeaders = TrainStationSearchHeaders([:])
+        return try await trainStationSearchWithOptions(request as! TrainStationSearchRequest, headers as! TrainStationSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3001,5 +2994,12 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UserQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func userQuery(_ request: UserQueryRequest) async throws -> UserQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UserQueryHeaders = UserQueryHeaders([:])
+        return try await userQueryWithOptions(request as! UserQueryRequest, headers as! UserQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 }

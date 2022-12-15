@@ -1199,6 +1199,8 @@ public class ApplyAddRequest : Tea.TeaModel {
 
         public var hotelCitys: [ApplyAddRequest.ExternalTravelerStandard.HotelCitys]?
 
+        public var premiumEconomyDiscount: Int32?
+
         public var reserveType: Int32?
 
         public var trainSeats: String?
@@ -1236,6 +1238,9 @@ public class ApplyAddRequest : Tea.TeaModel {
                 }
                 map["hotel_citys"] = tmp
             }
+            if self.premiumEconomyDiscount != nil {
+                map["premium_economy_discount"] = self.premiumEconomyDiscount!
+            }
             if self.reserveType != nil {
                 map["reserve_type"] = self.reserveType!
             }
@@ -1260,6 +1265,9 @@ public class ApplyAddRequest : Tea.TeaModel {
             }
             if dict.keys.contains("hotel_citys") {
                 self.hotelCitys = dict["hotel_citys"] as! [ApplyAddRequest.ExternalTravelerStandard.HotelCitys]
+            }
+            if dict.keys.contains("premium_economy_discount") {
+                self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
             }
             if dict.keys.contains("reserve_type") {
                 self.reserveType = dict["reserve_type"] as! Int32
@@ -1673,6 +1681,8 @@ public class ApplyAddRequest : Tea.TeaModel {
 
         public var hotelCitys: [ApplyAddRequest.TravelerStandard.HotelCitys]?
 
+        public var premiumEconomyDiscount: Int32?
+
         public var reserveType: Int32?
 
         public var trainSeats: String?
@@ -1712,6 +1722,9 @@ public class ApplyAddRequest : Tea.TeaModel {
                 }
                 map["hotel_citys"] = tmp
             }
+            if self.premiumEconomyDiscount != nil {
+                map["premium_economy_discount"] = self.premiumEconomyDiscount!
+            }
             if self.reserveType != nil {
                 map["reserve_type"] = self.reserveType!
             }
@@ -1739,6 +1752,9 @@ public class ApplyAddRequest : Tea.TeaModel {
             }
             if dict.keys.contains("hotel_citys") {
                 self.hotelCitys = dict["hotel_citys"] as! [ApplyAddRequest.TravelerStandard.HotelCitys]
+            }
+            if dict.keys.contains("premium_economy_discount") {
+                self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
             }
             if dict.keys.contains("reserve_type") {
                 self.reserveType = dict["reserve_type"] as! Int32
@@ -3716,6 +3732,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
 
         public var hotelCitys: [ApplyModifyRequest.ExternalTravelerStandard.HotelCitys]?
 
+        public var premiumEconomyDiscount: Int32?
+
         public var reserveType: Int32?
 
         public var trainSeats: String?
@@ -3753,6 +3771,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
                 }
                 map["hotel_citys"] = tmp
             }
+            if self.premiumEconomyDiscount != nil {
+                map["premium_economy_discount"] = self.premiumEconomyDiscount!
+            }
             if self.reserveType != nil {
                 map["reserve_type"] = self.reserveType!
             }
@@ -3777,6 +3798,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
             }
             if dict.keys.contains("hotel_citys") {
                 self.hotelCitys = dict["hotel_citys"] as! [ApplyModifyRequest.ExternalTravelerStandard.HotelCitys]
+            }
+            if dict.keys.contains("premium_economy_discount") {
+                self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
             }
             if dict.keys.contains("reserve_type") {
                 self.reserveType = dict["reserve_type"] as! Int32
@@ -4190,6 +4214,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
 
         public var hotelCitys: [ApplyModifyRequest.TravelerStandard.HotelCitys]?
 
+        public var premiumEconomyDiscount: Int32?
+
         public var reserveType: Int32?
 
         public var trainSeats: String?
@@ -4229,6 +4255,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
                 }
                 map["hotel_citys"] = tmp
             }
+            if self.premiumEconomyDiscount != nil {
+                map["premium_economy_discount"] = self.premiumEconomyDiscount!
+            }
             if self.reserveType != nil {
                 map["reserve_type"] = self.reserveType!
             }
@@ -4256,6 +4285,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
             }
             if dict.keys.contains("hotel_citys") {
                 self.hotelCitys = dict["hotel_citys"] as! [ApplyModifyRequest.TravelerStandard.HotelCitys]
+            }
+            if dict.keys.contains("premium_economy_discount") {
+                self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
             }
             if dict.keys.contains("reserve_type") {
                 self.reserveType = dict["reserve_type"] as! Int32
@@ -5198,6 +5230,8 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
 
             public var hotelCitys: [ApplyQueryResponseBody.Module.ExternalTravelerList.HotelCitys]?
 
+            public var premiumEconomyDiscount: Int32?
+
             public var reserveType: Int32?
 
             public var trainSeats: String?
@@ -5237,6 +5271,9 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                     }
                     map["hotel_citys"] = tmp
                 }
+                if self.premiumEconomyDiscount != nil {
+                    map["premium_economy_discount"] = self.premiumEconomyDiscount!
+                }
                 if self.reserveType != nil {
                     map["reserve_type"] = self.reserveType!
                 }
@@ -5264,6 +5301,9 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("hotel_citys") {
                     self.hotelCitys = dict["hotel_citys"] as! [ApplyQueryResponseBody.Module.ExternalTravelerList.HotelCitys]
+                }
+                if dict.keys.contains("premium_economy_discount") {
+                    self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
                 }
                 if dict.keys.contains("reserve_type") {
                     self.reserveType = dict["reserve_type"] as! Int32
@@ -5595,6 +5635,8 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
 
             public var hotelCitys: [ApplyQueryResponseBody.Module.TravelerList.HotelCitys]?
 
+            public var premiumEconomyDiscount: Int32?
+
             public var reserveType: Int32?
 
             public var trainSeats: String?
@@ -5636,6 +5678,9 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                     }
                     map["hotel_citys"] = tmp
                 }
+                if self.premiumEconomyDiscount != nil {
+                    map["premium_economy_discount"] = self.premiumEconomyDiscount!
+                }
                 if self.reserveType != nil {
                     map["reserve_type"] = self.reserveType!
                 }
@@ -5666,6 +5711,9 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("hotel_citys") {
                     self.hotelCitys = dict["hotel_citys"] as! [ApplyQueryResponseBody.Module.TravelerList.HotelCitys]
+                }
+                if dict.keys.contains("premium_economy_discount") {
+                    self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
                 }
                 if dict.keys.contains("reserve_type") {
                     self.reserveType = dict["reserve_type"] as! Int32
@@ -13491,25 +13539,21 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
                         }
                     }
                 }
-                public var arrDate: Int64?
+                public var arrCity: String?
 
-                public var btripType: Int32?
+                public var arrDate: Int64?
 
                 public var cheapest: EstimatedPriceQueryResponseBody.Module.TrafficFee.BtripRoutes.Cheapest?
 
-                public var depDate: Int64?
+                public var depCity: String?
 
-                public var destCity: String?
+                public var depDate: Int64?
 
                 public var errMsg: String?
 
                 public var itineraryId: String?
 
-                public var itineraryIndex: Int32?
-
                 public var mostExpensive: EstimatedPriceQueryResponseBody.Module.TrafficFee.BtripRoutes.MostExpensive?
-
-                public var orgCity: String?
 
                 public var success: Bool?
 
@@ -13529,20 +13573,20 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.arrCity != nil {
+                        map["arr_city"] = self.arrCity!
+                    }
                     if self.arrDate != nil {
                         map["arr_date"] = self.arrDate!
-                    }
-                    if self.btripType != nil {
-                        map["btrip_type"] = self.btripType!
                     }
                     if self.cheapest != nil {
                         map["cheapest"] = self.cheapest?.toMap()
                     }
+                    if self.depCity != nil {
+                        map["dep_city"] = self.depCity!
+                    }
                     if self.depDate != nil {
                         map["dep_date"] = self.depDate!
-                    }
-                    if self.destCity != nil {
-                        map["dest_city"] = self.destCity!
                     }
                     if self.errMsg != nil {
                         map["err_msg"] = self.errMsg!
@@ -13550,14 +13594,8 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
                     if self.itineraryId != nil {
                         map["itinerary_id"] = self.itineraryId!
                     }
-                    if self.itineraryIndex != nil {
-                        map["itinerary_index"] = self.itineraryIndex!
-                    }
                     if self.mostExpensive != nil {
                         map["most_expensive"] = self.mostExpensive?.toMap()
-                    }
-                    if self.orgCity != nil {
-                        map["org_city"] = self.orgCity!
                     }
                     if self.success != nil {
                         map["success"] = self.success!
@@ -13566,22 +13604,22 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("arr_city") {
+                        self.arrCity = dict["arr_city"] as! String
+                    }
                     if dict.keys.contains("arr_date") {
                         self.arrDate = dict["arr_date"] as! Int64
-                    }
-                    if dict.keys.contains("btrip_type") {
-                        self.btripType = dict["btrip_type"] as! Int32
                     }
                     if dict.keys.contains("cheapest") {
                         var model = EstimatedPriceQueryResponseBody.Module.TrafficFee.BtripRoutes.Cheapest()
                         model.fromMap(dict["cheapest"] as! [String: Any])
                         self.cheapest = model
                     }
+                    if dict.keys.contains("dep_city") {
+                        self.depCity = dict["dep_city"] as! String
+                    }
                     if dict.keys.contains("dep_date") {
                         self.depDate = dict["dep_date"] as! Int64
-                    }
-                    if dict.keys.contains("dest_city") {
-                        self.destCity = dict["dest_city"] as! String
                     }
                     if dict.keys.contains("err_msg") {
                         self.errMsg = dict["err_msg"] as! String
@@ -13589,16 +13627,10 @@ public class EstimatedPriceQueryResponseBody : Tea.TeaModel {
                     if dict.keys.contains("itinerary_id") {
                         self.itineraryId = dict["itinerary_id"] as! String
                     }
-                    if dict.keys.contains("itinerary_index") {
-                        self.itineraryIndex = dict["itinerary_index"] as! Int32
-                    }
                     if dict.keys.contains("most_expensive") {
                         var model = EstimatedPriceQueryResponseBody.Module.TrafficFee.BtripRoutes.MostExpensive()
                         model.fromMap(dict["most_expensive"] as! [String: Any])
                         self.mostExpensive = model
-                    }
-                    if dict.keys.contains("org_city") {
-                        self.orgCity = dict["org_city"] as! String
                     }
                     if dict.keys.contains("success") {
                         self.success = dict["success"] as! Bool
