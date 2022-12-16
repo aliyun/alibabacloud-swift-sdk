@@ -24,13 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createConsumerGroup(_ instanceId: String, _ consumerGroupId: String, _ request: CreateConsumerGroupRequest) async throws -> CreateConsumerGroupResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await createConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, request as! CreateConsumerGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createConsumerGroupWithOptions(_ instanceId: String, _ consumerGroupId: String, _ request: CreateConsumerGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateConsumerGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -63,10 +56,84 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createTopic(_ instanceId: String, _ topicName: String, _ request: CreateTopicRequest) async throws -> CreateTopicResponse {
+    public func createConsumerGroup(_ instanceId: String, _ consumerGroupId: String, _ request: CreateConsumerGroupRequest) async throws -> CreateConsumerGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createTopicWithOptions(instanceId as! String, topicName as! String, request as! CreateTopicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, request as! CreateConsumerGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInstanceWithOptions(_ request: CreateInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["clientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            body["autoRenew"] = request.autoRenew!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenewPeriod)) {
+            body["autoRenewPeriod"] = request.autoRenewPeriod!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            body["instanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkInfo)) {
+            body["networkInfo"] = request.networkInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.paymentType)) {
+            body["paymentType"] = request.paymentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            body["period"] = request.period!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodUnit)) {
+            body["periodUnit"] = request.periodUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productInfo)) {
+            body["productInfo"] = request.productInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.remark)) {
+            body["remark"] = request.remark ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.seriesCode)) {
+            body["seriesCode"] = request.seriesCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceCode)) {
+            body["serviceCode"] = request.serviceCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subSeriesCode)) {
+            body["subSeriesCode"] = request.subSeriesCode ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateInstance",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/instances",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateInstanceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createInstance(_ request: CreateInstanceRequest) async throws -> CreateInstanceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createInstanceWithOptions(request as! CreateInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -99,10 +166,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteConsumerGroup(_ instanceId: String, _ consumerGroupId: String) async throws -> DeleteConsumerGroupResponse {
+    public func createTopic(_ instanceId: String, _ topicName: String, _ request: CreateTopicRequest) async throws -> CreateTopicResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createTopicWithOptions(instanceId as! String, topicName as! String, request as! CreateTopicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -126,10 +193,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteInstance(_ instanceId: String) async throws -> DeleteInstanceResponse {
+    public func deleteConsumerGroup(_ instanceId: String, _ consumerGroupId: String) async throws -> DeleteConsumerGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteInstanceWithOptions(instanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -153,10 +220,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteTopic(_ instanceId: String, _ topicName: String) async throws -> DeleteTopicResponse {
+    public func deleteInstance(_ instanceId: String) async throws -> DeleteInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteTopicWithOptions(instanceId as! String, topicName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteInstanceWithOptions(instanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -180,10 +247,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getConsumerGroup(_ instanceId: String, _ consumerGroupId: String) async throws -> GetConsumerGroupResponse {
+    public func deleteTopic(_ instanceId: String, _ topicName: String) async throws -> DeleteTopicResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteTopicWithOptions(instanceId as! String, topicName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -207,10 +274,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getInstance(_ instanceId: String) async throws -> GetInstanceResponse {
+    public func getConsumerGroup(_ instanceId: String, _ consumerGroupId: String) async throws -> GetConsumerGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getInstanceWithOptions(instanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -234,10 +301,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getTopic(_ instanceId: String, _ topicName: String) async throws -> GetTopicResponse {
+    public func getInstance(_ instanceId: String) async throws -> GetInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getTopicWithOptions(instanceId as! String, topicName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getInstanceWithOptions(instanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -261,10 +328,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listConsumerGroups(_ instanceId: String, _ request: ListConsumerGroupsRequest) async throws -> ListConsumerGroupsResponse {
+    public func getTopic(_ instanceId: String, _ topicName: String) async throws -> GetTopicResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listConsumerGroupsWithOptions(instanceId as! String, request as! ListConsumerGroupsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getTopicWithOptions(instanceId as! String, topicName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -300,10 +367,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listInstances(_ request: ListInstancesRequest) async throws -> ListInstancesResponse {
+    public func listConsumerGroups(_ instanceId: String, _ request: ListConsumerGroupsRequest) async throws -> ListConsumerGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listInstancesWithOptions(request as! ListInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listConsumerGroupsWithOptions(instanceId as! String, request as! ListConsumerGroupsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -339,10 +406,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTopics(_ instanceId: String, _ request: ListTopicsRequest) async throws -> ListTopicsResponse {
+    public func listInstances(_ request: ListInstancesRequest) async throws -> ListInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listTopicsWithOptions(instanceId as! String, request as! ListTopicsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listInstancesWithOptions(request as! ListInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -378,10 +445,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateConsumerGroup(_ instanceId: String, _ consumerGroupId: String, _ request: UpdateConsumerGroupRequest) async throws -> UpdateConsumerGroupResponse {
+    public func listTopics(_ instanceId: String, _ request: ListTopicsRequest) async throws -> ListTopicsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, request as! UpdateConsumerGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listTopicsWithOptions(instanceId as! String, request as! ListTopicsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -417,24 +484,24 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateInstance(_ instanceId: String, _ request: UpdateInstanceRequest) async throws -> UpdateInstanceResponse {
+    public func updateConsumerGroup(_ instanceId: String, _ consumerGroupId: String, _ request: UpdateConsumerGroupRequest) async throws -> UpdateConsumerGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateInstanceWithOptions(instanceId as! String, request as! UpdateInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateConsumerGroupWithOptions(instanceId as! String, consumerGroupId as! String, request as! UpdateConsumerGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateInstanceWithOptions(_ instanceId: String, _ request: UpdateInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.extConfig)) {
-            body["extConfig"] = request.extConfig!;
-        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["instanceName"] = request.instanceName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.networkInfo)) {
             body["networkInfo"] = request.networkInfo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productInfo)) {
+            body["productInfo"] = request.productInfo!;
         }
         if (!TeaUtils.Client.isUnset(request.remark)) {
             body["remark"] = request.remark ?? "";
@@ -459,10 +526,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateTopic(_ instanceId: String, _ topicName: String, _ request: UpdateTopicRequest) async throws -> UpdateTopicResponse {
+    public func updateInstance(_ instanceId: String, _ request: UpdateInstanceRequest) async throws -> UpdateInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateTopicWithOptions(instanceId as! String, topicName as! String, request as! UpdateTopicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateInstanceWithOptions(instanceId as! String, request as! UpdateInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -489,5 +556,12 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UpdateTopicResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateTopic(_ instanceId: String, _ topicName: String, _ request: UpdateTopicRequest) async throws -> UpdateTopicResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateTopicWithOptions(instanceId as! String, topicName as! String, request as! UpdateTopicRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
