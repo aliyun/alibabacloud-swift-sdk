@@ -27676,6 +27676,8 @@ public class UserQueryResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var employeeNick: String?
 
+            public var leaveStatus: Int32?
+
             public var thirdPartEmployeeId: String?
 
             public var thirdPartJobNo: String?
@@ -27697,6 +27699,9 @@ public class UserQueryResponseBody : Tea.TeaModel {
                 if self.employeeNick != nil {
                     map["employee_nick"] = self.employeeNick!
                 }
+                if self.leaveStatus != nil {
+                    map["leave_status"] = self.leaveStatus!
+                }
                 if self.thirdPartEmployeeId != nil {
                     map["third_part_employee_id"] = self.thirdPartEmployeeId!
                 }
@@ -27709,6 +27714,9 @@ public class UserQueryResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("employee_nick") {
                     self.employeeNick = dict["employee_nick"] as! String
+                }
+                if dict.keys.contains("leave_status") {
+                    self.leaveStatus = dict["leave_status"] as! Int32
                 }
                 if dict.keys.contains("third_part_employee_id") {
                     self.thirdPartEmployeeId = dict["third_part_employee_id"] as! String
