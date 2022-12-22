@@ -142,6 +142,8 @@ public class CreateFlowRequest : Tea.TeaModel {
 
     public var flowSource: String?
 
+    public var resourceGroupId: String?
+
     public var templateId: String?
 
     public override init() {
@@ -170,6 +172,9 @@ public class CreateFlowRequest : Tea.TeaModel {
         if self.flowSource != nil {
             map["FlowSource"] = self.flowSource!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -188,6 +193,9 @@ public class CreateFlowRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FlowSource") {
             self.flowSource = dict["FlowSource"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("TemplateId") {
             self.templateId = dict["TemplateId"] as! String
@@ -694,7 +702,7 @@ public class GetFlowRequest : Tea.TeaModel {
 public class GetFlowResponseBody : Tea.TeaModel {
     public var createTime: String?
 
-    public var currentVersionId: Int32?
+    public var currentVersionId: String?
 
     public var definition: String?
 
@@ -713,6 +721,8 @@ public class GetFlowResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var requestId: String?
+
+    public var resourceGroupId: String?
 
     public var templateId: String?
 
@@ -765,6 +775,9 @@ public class GetFlowResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
@@ -779,7 +792,7 @@ public class GetFlowResponseBody : Tea.TeaModel {
             self.createTime = dict["CreateTime"] as! String
         }
         if dict.keys.contains("CurrentVersionId") {
-            self.currentVersionId = dict["CurrentVersionId"] as! Int32
+            self.currentVersionId = dict["CurrentVersionId"] as! String
         }
         if dict.keys.contains("Definition") {
             self.definition = dict["Definition"] as! String
@@ -807,6 +820,9 @@ public class GetFlowResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("TemplateId") {
             self.templateId = dict["TemplateId"] as! String
@@ -1638,6 +1654,8 @@ public class ListFlowsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -1664,6 +1682,9 @@ public class ListFlowsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -1679,6 +1700,9 @@ public class ListFlowsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ResourceGroupId") {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -1701,11 +1725,13 @@ public class ListFlowsResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var templateId: String?
 
         public var updateTime: String?
 
-        public var versionId: Int32?
+        public var versionId: String?
 
         public override init() {
             super.init()
@@ -1745,6 +1771,9 @@ public class ListFlowsResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.templateId != nil {
                 map["TemplateId"] = self.templateId!
             }
@@ -1782,6 +1811,9 @@ public class ListFlowsResponseBody : Tea.TeaModel {
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
             }
+            if dict.keys.contains("ResourceGroupId") {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
             if dict.keys.contains("TemplateId") {
                 self.templateId = dict["TemplateId"] as! String
             }
@@ -1789,7 +1821,7 @@ public class ListFlowsResponseBody : Tea.TeaModel {
                 self.updateTime = dict["UpdateTime"] as! String
             }
             if dict.keys.contains("VersionId") {
-                self.versionId = dict["VersionId"] as! Int32
+                self.versionId = dict["VersionId"] as! String
             }
         }
     }
@@ -2505,9 +2537,11 @@ public class ListVersionsResponseBody : Tea.TeaModel {
 
         public var versionId: String?
 
-        public var versionName: Int32?
+        public var versionName: String?
 
-        public var versionStatus: Int32?
+        public var versionNumber: Int32?
+
+        public var versionStatus: String?
 
         public override init() {
             super.init()
@@ -2538,6 +2572,9 @@ public class ListVersionsResponseBody : Tea.TeaModel {
             if self.versionName != nil {
                 map["VersionName"] = self.versionName!
             }
+            if self.versionNumber != nil {
+                map["VersionNumber"] = self.versionNumber!
+            }
             if self.versionStatus != nil {
                 map["VersionStatus"] = self.versionStatus!
             }
@@ -2558,10 +2595,13 @@ public class ListVersionsResponseBody : Tea.TeaModel {
                 self.versionId = dict["VersionId"] as! String
             }
             if dict.keys.contains("VersionName") {
-                self.versionName = dict["VersionName"] as! Int32
+                self.versionName = dict["VersionName"] as! String
+            }
+            if dict.keys.contains("VersionNumber") {
+                self.versionNumber = dict["VersionNumber"] as! Int32
             }
             if dict.keys.contains("VersionStatus") {
-                self.versionStatus = dict["VersionStatus"] as! Int32
+                self.versionStatus = dict["VersionStatus"] as! String
             }
         }
     }
