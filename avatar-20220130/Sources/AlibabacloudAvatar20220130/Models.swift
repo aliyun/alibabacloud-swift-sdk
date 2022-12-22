@@ -865,6 +865,8 @@ public class GetVideoTaskInfoShrinkRequest : Tea.TeaModel {
 public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class TaskResult : Tea.TeaModel {
+            public var failCode: String?
+
             public var failReason: String?
 
             public var subtitlesUrl: String?
@@ -885,6 +887,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.failCode != nil {
+                    map["FailCode"] = self.failCode!
+                }
                 if self.failReason != nil {
                     map["FailReason"] = self.failReason!
                 }
@@ -898,6 +903,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("FailCode") {
+                    self.failCode = dict["FailCode"] as! String
+                }
                 if dict.keys.contains("FailReason") {
                     self.failReason = dict["FailReason"] as! String
                 }
