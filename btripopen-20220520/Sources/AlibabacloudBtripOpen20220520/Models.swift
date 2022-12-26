@@ -10616,6 +10616,257 @@ public class CommonApplySyncResponse : Tea.TeaModel {
     }
 }
 
+public class CorpAuthLinkInfoQueryResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public class LinkCorps : Tea.TeaModel {
+            public var corpName: String?
+
+            public var openCorpId: String?
+
+            public var trueCorpId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.corpName != nil {
+                    map["corp_name"] = self.corpName!
+                }
+                if self.openCorpId != nil {
+                    map["open_corp_id"] = self.openCorpId!
+                }
+                if self.trueCorpId != nil {
+                    map["true_corp_id"] = self.trueCorpId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("corp_name") {
+                    self.corpName = dict["corp_name"] as! String
+                }
+                if dict.keys.contains("open_corp_id") {
+                    self.openCorpId = dict["open_corp_id"] as! String
+                }
+                if dict.keys.contains("true_corp_id") {
+                    self.trueCorpId = dict["true_corp_id"] as! String
+                }
+            }
+        }
+        public class OrgCorp : Tea.TeaModel {
+            public var corpName: String?
+
+            public var openCorpId: String?
+
+            public var trueCorpId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.corpName != nil {
+                    map["corp_name"] = self.corpName!
+                }
+                if self.openCorpId != nil {
+                    map["open_corp_id"] = self.openCorpId!
+                }
+                if self.trueCorpId != nil {
+                    map["true_corp_id"] = self.trueCorpId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("corp_name") {
+                    self.corpName = dict["corp_name"] as! String
+                }
+                if dict.keys.contains("open_corp_id") {
+                    self.openCorpId = dict["open_corp_id"] as! String
+                }
+                if dict.keys.contains("true_corp_id") {
+                    self.trueCorpId = dict["true_corp_id"] as! String
+                }
+            }
+        }
+        public var linkCorps: [CorpAuthLinkInfoQueryResponseBody.Module.LinkCorps]?
+
+        public var orgCorp: CorpAuthLinkInfoQueryResponseBody.Module.OrgCorp?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.orgCorp?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.linkCorps != nil {
+                var tmp : [Any] = []
+                for k in self.linkCorps! {
+                    tmp.append(k.toMap())
+                }
+                map["link_corps"] = tmp
+            }
+            if self.orgCorp != nil {
+                map["org_corp"] = self.orgCorp?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("link_corps") {
+                self.linkCorps = dict["link_corps"] as! [CorpAuthLinkInfoQueryResponseBody.Module.LinkCorps]
+            }
+            if dict.keys.contains("org_corp") {
+                var model = CorpAuthLinkInfoQueryResponseBody.Module.OrgCorp()
+                model.fromMap(dict["org_corp"] as! [String: Any])
+                self.orgCorp = model
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: CorpAuthLinkInfoQueryResponseBody.Module?
+
+    public var requestId: String?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") {
+            var model = CorpAuthLinkInfoQueryResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("requestId") {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("traceId") {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class CorpAuthLinkInfoQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CorpAuthLinkInfoQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CorpAuthLinkInfoQueryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CorpTokenHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
