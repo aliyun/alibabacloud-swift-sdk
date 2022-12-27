@@ -425,6 +425,52 @@ public class InstanceActiveOpsTask : Tea.TeaModel {
     }
 }
 
+public class InstanceOperateResponse : Tea.TeaModel {
+    public var code: Int64?
+
+    public var instanceId: String?
+
+    public var message: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+    }
+}
+
 public class SecurityGroupRule : Tea.TeaModel {
     public var description_: String?
 
@@ -25216,6 +25262,1103 @@ public class DescribeMountTargetsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeNCInformationRequest : Tea.TeaModel {
+    public var ensRegionId: String?
+
+    public var resourceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ensRegionId != nil {
+            map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnsRegionId") {
+            self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("ResourceId") {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+    }
+}
+
+public class DescribeNCInformationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Cpu : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Gpu : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Hdd : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Info : Tea.TeaModel {
+            public var ip: String?
+
+            public var name: String?
+
+            public var tag: [String]?
+
+            public var uuid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ip != nil {
+                    map["Ip"] = self.ip!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.tag != nil {
+                    map["Tag"] = self.tag!
+                }
+                if self.uuid != nil {
+                    map["Uuid"] = self.uuid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Ip") {
+                    self.ip = dict["Ip"] as! String
+                }
+                if dict.keys.contains("Name") {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Tag") {
+                    self.tag = dict["Tag"] as! [String]
+                }
+                if dict.keys.contains("Uuid") {
+                    self.uuid = dict["Uuid"] as! String
+                }
+            }
+        }
+        public class Memory : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Nvme : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Ssd : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public var cpu: DescribeNCInformationResponseBody.Data.Cpu?
+
+        public var gpu: DescribeNCInformationResponseBody.Data.Gpu?
+
+        public var hdd: DescribeNCInformationResponseBody.Data.Hdd?
+
+        public var info: DescribeNCInformationResponseBody.Data.Info?
+
+        public var memory: DescribeNCInformationResponseBody.Data.Memory?
+
+        public var nvme: DescribeNCInformationResponseBody.Data.Nvme?
+
+        public var online: Bool?
+
+        public var region: String?
+
+        public var ssd: DescribeNCInformationResponseBody.Data.Ssd?
+
+        public var virtual: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.cpu?.validate()
+            try self.gpu?.validate()
+            try self.hdd?.validate()
+            try self.info?.validate()
+            try self.memory?.validate()
+            try self.nvme?.validate()
+            try self.ssd?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu?.toMap()
+            }
+            if self.gpu != nil {
+                map["Gpu"] = self.gpu?.toMap()
+            }
+            if self.hdd != nil {
+                map["Hdd"] = self.hdd?.toMap()
+            }
+            if self.info != nil {
+                map["Info"] = self.info?.toMap()
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory?.toMap()
+            }
+            if self.nvme != nil {
+                map["Nvme"] = self.nvme?.toMap()
+            }
+            if self.online != nil {
+                map["Online"] = self.online!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.ssd != nil {
+                map["Ssd"] = self.ssd?.toMap()
+            }
+            if self.virtual != nil {
+                map["Virtual"] = self.virtual!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Cpu") {
+                var model = DescribeNCInformationResponseBody.Data.Cpu()
+                model.fromMap(dict["Cpu"] as! [String: Any])
+                self.cpu = model
+            }
+            if dict.keys.contains("Gpu") {
+                var model = DescribeNCInformationResponseBody.Data.Gpu()
+                model.fromMap(dict["Gpu"] as! [String: Any])
+                self.gpu = model
+            }
+            if dict.keys.contains("Hdd") {
+                var model = DescribeNCInformationResponseBody.Data.Hdd()
+                model.fromMap(dict["Hdd"] as! [String: Any])
+                self.hdd = model
+            }
+            if dict.keys.contains("Info") {
+                var model = DescribeNCInformationResponseBody.Data.Info()
+                model.fromMap(dict["Info"] as! [String: Any])
+                self.info = model
+            }
+            if dict.keys.contains("Memory") {
+                var model = DescribeNCInformationResponseBody.Data.Memory()
+                model.fromMap(dict["Memory"] as! [String: Any])
+                self.memory = model
+            }
+            if dict.keys.contains("Nvme") {
+                var model = DescribeNCInformationResponseBody.Data.Nvme()
+                model.fromMap(dict["Nvme"] as! [String: Any])
+                self.nvme = model
+            }
+            if dict.keys.contains("Online") {
+                self.online = dict["Online"] as! Bool
+            }
+            if dict.keys.contains("Region") {
+                self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("Ssd") {
+                var model = DescribeNCInformationResponseBody.Data.Ssd()
+                model.fromMap(dict["Ssd"] as! [String: Any])
+                self.ssd = model
+            }
+            if dict.keys.contains("Virtual") {
+                self.virtual = dict["Virtual"] as! String
+            }
+        }
+    }
+    public class Pager : Tea.TeaModel {
+        public var page: Int64?
+
+        public var size: Int64?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.page != nil {
+                map["Page"] = self.page!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Page") {
+                self.page = dict["Page"] as! Int64
+            }
+            if dict.keys.contains("Size") {
+                self.size = dict["Size"] as! Int64
+            }
+            if dict.keys.contains("Total") {
+                self.total = dict["Total"] as! Int64
+            }
+        }
+    }
+    public var currentPage: Int32?
+
+    public var data: [DescribeNCInformationResponseBody.Data]?
+
+    public var desc: String?
+
+    public var msg: String?
+
+    public var pager: DescribeNCInformationResponseBody.Pager?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pager?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.desc != nil {
+            map["Desc"] = self.desc!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.pager != nil {
+            map["Pager"] = self.pager?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CurrentPage") {
+            self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! [DescribeNCInformationResponseBody.Data]
+        }
+        if dict.keys.contains("Desc") {
+            self.desc = dict["Desc"] as! String
+        }
+        if dict.keys.contains("Msg") {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("Pager") {
+            var model = DescribeNCInformationResponseBody.Pager()
+            model.fromMap(dict["Pager"] as! [String: Any])
+            self.pager = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeNCInformationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeNCInformationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeNCInformationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeNatGatewaysRequest : Tea.TeaModel {
     public var ensRegionId: String?
 
@@ -27947,6 +29090,2185 @@ public class DescribeRegionIspsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeRegionResourceRequest : Tea.TeaModel {
+    public var ensRegionId: String?
+
+    public var ispType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ensRegionId != nil {
+            map["EnsRegionId"] = self.ensRegionId!
+        }
+        if self.ispType != nil {
+            map["IspType"] = self.ispType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnsRegionId") {
+            self.ensRegionId = dict["EnsRegionId"] as! String
+        }
+        if dict.keys.contains("IspType") {
+            self.ispType = dict["IspType"] as! String
+        }
+    }
+}
+
+public class DescribeRegionResourceResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ArmCard : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Bandwidth : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class BlockStorage : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Cpu : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Gpu : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Hdd : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Ipv4s : Tea.TeaModel {
+            public var display: String?
+
+            public var isp: String?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public var vlan: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.isp != nil {
+                    map["Isp"] = self.isp!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                if self.vlan != nil {
+                    map["Vlan"] = self.vlan!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Isp") {
+                    self.isp = dict["Isp"] as! String
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+                if dict.keys.contains("Vlan") {
+                    self.vlan = dict["Vlan"] as! String
+                }
+            }
+        }
+        public class Ipv6s : Tea.TeaModel {
+            public var display: String?
+
+            public var isp: String?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public var vlan: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.isp != nil {
+                    map["Isp"] = self.isp!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                if self.vlan != nil {
+                    map["Vlan"] = self.vlan!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! String
+                }
+                if dict.keys.contains("Isp") {
+                    self.isp = dict["Isp"] as! String
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+                if dict.keys.contains("Vlan") {
+                    self.vlan = dict["Vlan"] as! String
+                }
+            }
+        }
+        public class Memory : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Nvme : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class OssStorage : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Pangu : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class PcfarmNum : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public class Ssd : Tea.TeaModel {
+            public var display: Bool?
+
+            public var oversellRatio: Int64?
+
+            public var remain: Int64?
+
+            public var reserveDisable: Bool?
+
+            public var reserveDisableTotal: Int64?
+
+            public var reserved: Int64?
+
+            public var statusDisable: Bool?
+
+            public var statusDisableTotal: Int64?
+
+            public var total: Int64?
+
+            public var type: String?
+
+            public var used: Int64?
+
+            public var usedRatio: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.display != nil {
+                    map["Display"] = self.display!
+                }
+                if self.oversellRatio != nil {
+                    map["OversellRatio"] = self.oversellRatio!
+                }
+                if self.remain != nil {
+                    map["Remain"] = self.remain!
+                }
+                if self.reserveDisable != nil {
+                    map["ReserveDisable"] = self.reserveDisable!
+                }
+                if self.reserveDisableTotal != nil {
+                    map["ReserveDisableTotal"] = self.reserveDisableTotal!
+                }
+                if self.reserved != nil {
+                    map["Reserved"] = self.reserved!
+                }
+                if self.statusDisable != nil {
+                    map["StatusDisable"] = self.statusDisable!
+                }
+                if self.statusDisableTotal != nil {
+                    map["StatusDisableTotal"] = self.statusDisableTotal!
+                }
+                if self.total != nil {
+                    map["Total"] = self.total!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.used != nil {
+                    map["Used"] = self.used!
+                }
+                if self.usedRatio != nil {
+                    map["UsedRatio"] = self.usedRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Display") {
+                    self.display = dict["Display"] as! Bool
+                }
+                if dict.keys.contains("OversellRatio") {
+                    self.oversellRatio = dict["OversellRatio"] as! Int64
+                }
+                if dict.keys.contains("Remain") {
+                    self.remain = dict["Remain"] as! Int64
+                }
+                if dict.keys.contains("ReserveDisable") {
+                    self.reserveDisable = dict["ReserveDisable"] as! Bool
+                }
+                if dict.keys.contains("ReserveDisableTotal") {
+                    self.reserveDisableTotal = dict["ReserveDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Reserved") {
+                    self.reserved = dict["Reserved"] as! Int64
+                }
+                if dict.keys.contains("StatusDisable") {
+                    self.statusDisable = dict["StatusDisable"] as! Bool
+                }
+                if dict.keys.contains("StatusDisableTotal") {
+                    self.statusDisableTotal = dict["StatusDisableTotal"] as! Int64
+                }
+                if dict.keys.contains("Total") {
+                    self.total = dict["Total"] as! Int64
+                }
+                if dict.keys.contains("Type") {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Used") {
+                    self.used = dict["Used"] as! Int64
+                }
+                if dict.keys.contains("UsedRatio") {
+                    self.usedRatio = dict["UsedRatio"] as! Int64
+                }
+            }
+        }
+        public var areaCode: String?
+
+        public var areaName: String?
+
+        public var armCard: DescribeRegionResourceResponseBody.Data.ArmCard?
+
+        public var attributes: [String]?
+
+        public var bandwidth: DescribeRegionResourceResponseBody.Data.Bandwidth?
+
+        public var blockStorage: DescribeRegionResourceResponseBody.Data.BlockStorage?
+
+        public var countryCode: String?
+
+        public var countryName: String?
+
+        public var cpu: DescribeRegionResourceResponseBody.Data.Cpu?
+
+        public var gpu: DescribeRegionResourceResponseBody.Data.Gpu?
+
+        public var hdd: DescribeRegionResourceResponseBody.Data.Hdd?
+
+        public var houseId: String?
+
+        public var ipv4s: [DescribeRegionResourceResponseBody.Data.Ipv4s]?
+
+        public var ipv6s: [DescribeRegionResourceResponseBody.Data.Ipv6s]?
+
+        public var ispTypes: [String]?
+
+        public var memory: DescribeRegionResourceResponseBody.Data.Memory?
+
+        public var name: String?
+
+        public var nvme: DescribeRegionResourceResponseBody.Data.Nvme?
+
+        public var ossStorage: DescribeRegionResourceResponseBody.Data.OssStorage?
+
+        public var pangu: DescribeRegionResourceResponseBody.Data.Pangu?
+
+        public var pcfarmNum: DescribeRegionResourceResponseBody.Data.PcfarmNum?
+
+        public var poc: Bool?
+
+        public var provinceCode: String?
+
+        public var provinceName: String?
+
+        public var reserveDisable: Bool?
+
+        public var ssd: DescribeRegionResourceResponseBody.Data.Ssd?
+
+        public var statusDisable: Bool?
+
+        public var type: String?
+
+        public var uuid: String?
+
+        public var virtual: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.armCard?.validate()
+            try self.bandwidth?.validate()
+            try self.blockStorage?.validate()
+            try self.cpu?.validate()
+            try self.gpu?.validate()
+            try self.hdd?.validate()
+            try self.memory?.validate()
+            try self.nvme?.validate()
+            try self.ossStorage?.validate()
+            try self.pangu?.validate()
+            try self.pcfarmNum?.validate()
+            try self.ssd?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.areaCode != nil {
+                map["AreaCode"] = self.areaCode!
+            }
+            if self.areaName != nil {
+                map["AreaName"] = self.areaName!
+            }
+            if self.armCard != nil {
+                map["ArmCard"] = self.armCard?.toMap()
+            }
+            if self.attributes != nil {
+                map["Attributes"] = self.attributes!
+            }
+            if self.bandwidth != nil {
+                map["Bandwidth"] = self.bandwidth?.toMap()
+            }
+            if self.blockStorage != nil {
+                map["BlockStorage"] = self.blockStorage?.toMap()
+            }
+            if self.countryCode != nil {
+                map["CountryCode"] = self.countryCode!
+            }
+            if self.countryName != nil {
+                map["CountryName"] = self.countryName!
+            }
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu?.toMap()
+            }
+            if self.gpu != nil {
+                map["Gpu"] = self.gpu?.toMap()
+            }
+            if self.hdd != nil {
+                map["Hdd"] = self.hdd?.toMap()
+            }
+            if self.houseId != nil {
+                map["HouseId"] = self.houseId!
+            }
+            if self.ipv4s != nil {
+                var tmp : [Any] = []
+                for k in self.ipv4s! {
+                    tmp.append(k.toMap())
+                }
+                map["Ipv4s"] = tmp
+            }
+            if self.ipv6s != nil {
+                var tmp : [Any] = []
+                for k in self.ipv6s! {
+                    tmp.append(k.toMap())
+                }
+                map["Ipv6s"] = tmp
+            }
+            if self.ispTypes != nil {
+                map["IspTypes"] = self.ispTypes!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory?.toMap()
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.nvme != nil {
+                map["Nvme"] = self.nvme?.toMap()
+            }
+            if self.ossStorage != nil {
+                map["OssStorage"] = self.ossStorage?.toMap()
+            }
+            if self.pangu != nil {
+                map["Pangu"] = self.pangu?.toMap()
+            }
+            if self.pcfarmNum != nil {
+                map["PcfarmNum"] = self.pcfarmNum?.toMap()
+            }
+            if self.poc != nil {
+                map["Poc"] = self.poc!
+            }
+            if self.provinceCode != nil {
+                map["ProvinceCode"] = self.provinceCode!
+            }
+            if self.provinceName != nil {
+                map["ProvinceName"] = self.provinceName!
+            }
+            if self.reserveDisable != nil {
+                map["ReserveDisable"] = self.reserveDisable!
+            }
+            if self.ssd != nil {
+                map["Ssd"] = self.ssd?.toMap()
+            }
+            if self.statusDisable != nil {
+                map["StatusDisable"] = self.statusDisable!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            if self.uuid != nil {
+                map["Uuid"] = self.uuid!
+            }
+            if self.virtual != nil {
+                map["Virtual"] = self.virtual!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AreaCode") {
+                self.areaCode = dict["AreaCode"] as! String
+            }
+            if dict.keys.contains("AreaName") {
+                self.areaName = dict["AreaName"] as! String
+            }
+            if dict.keys.contains("ArmCard") {
+                var model = DescribeRegionResourceResponseBody.Data.ArmCard()
+                model.fromMap(dict["ArmCard"] as! [String: Any])
+                self.armCard = model
+            }
+            if dict.keys.contains("Attributes") {
+                self.attributes = dict["Attributes"] as! [String]
+            }
+            if dict.keys.contains("Bandwidth") {
+                var model = DescribeRegionResourceResponseBody.Data.Bandwidth()
+                model.fromMap(dict["Bandwidth"] as! [String: Any])
+                self.bandwidth = model
+            }
+            if dict.keys.contains("BlockStorage") {
+                var model = DescribeRegionResourceResponseBody.Data.BlockStorage()
+                model.fromMap(dict["BlockStorage"] as! [String: Any])
+                self.blockStorage = model
+            }
+            if dict.keys.contains("CountryCode") {
+                self.countryCode = dict["CountryCode"] as! String
+            }
+            if dict.keys.contains("CountryName") {
+                self.countryName = dict["CountryName"] as! String
+            }
+            if dict.keys.contains("Cpu") {
+                var model = DescribeRegionResourceResponseBody.Data.Cpu()
+                model.fromMap(dict["Cpu"] as! [String: Any])
+                self.cpu = model
+            }
+            if dict.keys.contains("Gpu") {
+                var model = DescribeRegionResourceResponseBody.Data.Gpu()
+                model.fromMap(dict["Gpu"] as! [String: Any])
+                self.gpu = model
+            }
+            if dict.keys.contains("Hdd") {
+                var model = DescribeRegionResourceResponseBody.Data.Hdd()
+                model.fromMap(dict["Hdd"] as! [String: Any])
+                self.hdd = model
+            }
+            if dict.keys.contains("HouseId") {
+                self.houseId = dict["HouseId"] as! String
+            }
+            if dict.keys.contains("Ipv4s") {
+                self.ipv4s = dict["Ipv4s"] as! [DescribeRegionResourceResponseBody.Data.Ipv4s]
+            }
+            if dict.keys.contains("Ipv6s") {
+                self.ipv6s = dict["Ipv6s"] as! [DescribeRegionResourceResponseBody.Data.Ipv6s]
+            }
+            if dict.keys.contains("IspTypes") {
+                self.ispTypes = dict["IspTypes"] as! [String]
+            }
+            if dict.keys.contains("Memory") {
+                var model = DescribeRegionResourceResponseBody.Data.Memory()
+                model.fromMap(dict["Memory"] as! [String: Any])
+                self.memory = model
+            }
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Nvme") {
+                var model = DescribeRegionResourceResponseBody.Data.Nvme()
+                model.fromMap(dict["Nvme"] as! [String: Any])
+                self.nvme = model
+            }
+            if dict.keys.contains("OssStorage") {
+                var model = DescribeRegionResourceResponseBody.Data.OssStorage()
+                model.fromMap(dict["OssStorage"] as! [String: Any])
+                self.ossStorage = model
+            }
+            if dict.keys.contains("Pangu") {
+                var model = DescribeRegionResourceResponseBody.Data.Pangu()
+                model.fromMap(dict["Pangu"] as! [String: Any])
+                self.pangu = model
+            }
+            if dict.keys.contains("PcfarmNum") {
+                var model = DescribeRegionResourceResponseBody.Data.PcfarmNum()
+                model.fromMap(dict["PcfarmNum"] as! [String: Any])
+                self.pcfarmNum = model
+            }
+            if dict.keys.contains("Poc") {
+                self.poc = dict["Poc"] as! Bool
+            }
+            if dict.keys.contains("ProvinceCode") {
+                self.provinceCode = dict["ProvinceCode"] as! String
+            }
+            if dict.keys.contains("ProvinceName") {
+                self.provinceName = dict["ProvinceName"] as! String
+            }
+            if dict.keys.contains("ReserveDisable") {
+                self.reserveDisable = dict["ReserveDisable"] as! Bool
+            }
+            if dict.keys.contains("Ssd") {
+                var model = DescribeRegionResourceResponseBody.Data.Ssd()
+                model.fromMap(dict["Ssd"] as! [String: Any])
+                self.ssd = model
+            }
+            if dict.keys.contains("StatusDisable") {
+                self.statusDisable = dict["StatusDisable"] as! Bool
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("Uuid") {
+                self.uuid = dict["Uuid"] as! String
+            }
+            if dict.keys.contains("Virtual") {
+                self.virtual = dict["Virtual"] as! String
+            }
+        }
+    }
+    public class Pager : Tea.TeaModel {
+        public var page: Int64?
+
+        public var size: Int64?
+
+        public var total: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.page != nil {
+                map["Page"] = self.page!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Page") {
+                self.page = dict["Page"] as! Int64
+            }
+            if dict.keys.contains("Size") {
+                self.size = dict["Size"] as! Int64
+            }
+            if dict.keys.contains("Total") {
+                self.total = dict["Total"] as! Int64
+            }
+        }
+    }
+    public var data: [DescribeRegionResourceResponseBody.Data]?
+
+    public var desc: String?
+
+    public var msg: String?
+
+    public var pager: DescribeRegionResourceResponseBody.Pager?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pager?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.desc != nil {
+            map["Desc"] = self.desc!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.pager != nil {
+            map["Pager"] = self.pager?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") {
+            self.data = dict["Data"] as! [DescribeRegionResourceResponseBody.Data]
+        }
+        if dict.keys.contains("Desc") {
+            self.desc = dict["Desc"] as! String
+        }
+        if dict.keys.contains("Msg") {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("Pager") {
+            var model = DescribeRegionResourceResponseBody.Pager()
+            model.fromMap(dict["Pager"] as! [String: Any])
+            self.pager = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeRegionResourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRegionResourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeRegionResourceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeReservedResourceRequest : Tea.TeaModel {
     public var version: String?
 
@@ -28311,6 +31633,410 @@ public class DescribeReservedResourceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeReservedResourceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeResourceTimelineRequest : Tea.TeaModel {
+    public var beginTime: String?
+
+    public var endTime: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.beginTime != nil {
+            map["BeginTime"] = self.beginTime!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BeginTime") {
+            self.beginTime = dict["BeginTime"] as! String
+        }
+        if dict.keys.contains("EndTime") {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Uuid") {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
+public class DescribeResourceTimelineResponseBody : Tea.TeaModel {
+    public class AvailableEvents : Tea.TeaModel {
+        public var name: String?
+
+        public var occurrenceTime: String?
+
+        public var reason: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.occurrenceTime != nil {
+                map["OccurrenceTime"] = self.occurrenceTime!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("OccurrenceTime") {
+                self.occurrenceTime = dict["OccurrenceTime"] as! String
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class BizEvents : Tea.TeaModel {
+        public var name: String?
+
+        public var occurrenceTime: String?
+
+        public var reason: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.occurrenceTime != nil {
+                map["OccurrenceTime"] = self.occurrenceTime!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("OccurrenceTime") {
+                self.occurrenceTime = dict["OccurrenceTime"] as! String
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class InventoryEvents : Tea.TeaModel {
+        public var name: String?
+
+        public var occurrenceTime: String?
+
+        public var reason: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.occurrenceTime != nil {
+                map["OccurrenceTime"] = self.occurrenceTime!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("OccurrenceTime") {
+                self.occurrenceTime = dict["OccurrenceTime"] as! String
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public class ReserveEvents : Tea.TeaModel {
+        public var name: String?
+
+        public var occurrenceTime: String?
+
+        public var reason: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.occurrenceTime != nil {
+                map["OccurrenceTime"] = self.occurrenceTime!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("OccurrenceTime") {
+                self.occurrenceTime = dict["OccurrenceTime"] as! String
+            }
+            if dict.keys.contains("Reason") {
+                self.reason = dict["Reason"] as! String
+            }
+            if dict.keys.contains("Type") {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var availableEvents: [DescribeResourceTimelineResponseBody.AvailableEvents]?
+
+    public var bizEvents: [DescribeResourceTimelineResponseBody.BizEvents]?
+
+    public var desc: String?
+
+    public var inventoryEvents: [DescribeResourceTimelineResponseBody.InventoryEvents]?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var reserveEvents: [DescribeResourceTimelineResponseBody.ReserveEvents]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.availableEvents != nil {
+            var tmp : [Any] = []
+            for k in self.availableEvents! {
+                tmp.append(k.toMap())
+            }
+            map["AvailableEvents"] = tmp
+        }
+        if self.bizEvents != nil {
+            var tmp : [Any] = []
+            for k in self.bizEvents! {
+                tmp.append(k.toMap())
+            }
+            map["BizEvents"] = tmp
+        }
+        if self.desc != nil {
+            map["Desc"] = self.desc!
+        }
+        if self.inventoryEvents != nil {
+            var tmp : [Any] = []
+            for k in self.inventoryEvents! {
+                tmp.append(k.toMap())
+            }
+            map["InventoryEvents"] = tmp
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.reserveEvents != nil {
+            var tmp : [Any] = []
+            for k in self.reserveEvents! {
+                tmp.append(k.toMap())
+            }
+            map["ReserveEvents"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AvailableEvents") {
+            self.availableEvents = dict["AvailableEvents"] as! [DescribeResourceTimelineResponseBody.AvailableEvents]
+        }
+        if dict.keys.contains("BizEvents") {
+            self.bizEvents = dict["BizEvents"] as! [DescribeResourceTimelineResponseBody.BizEvents]
+        }
+        if dict.keys.contains("Desc") {
+            self.desc = dict["Desc"] as! String
+        }
+        if dict.keys.contains("InventoryEvents") {
+            self.inventoryEvents = dict["InventoryEvents"] as! [DescribeResourceTimelineResponseBody.InventoryEvents]
+        }
+        if dict.keys.contains("Msg") {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ReserveEvents") {
+            self.reserveEvents = dict["ReserveEvents"] as! [DescribeResourceTimelineResponseBody.ReserveEvents]
+        }
+    }
+}
+
+public class DescribeResourceTimelineResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeResourceTimelineResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeResourceTimelineResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -33338,13 +37064,15 @@ public class ModifyImageSharePermissionResponse : Tea.TeaModel {
 }
 
 public class ModifyInstanceAttributeRequest : Tea.TeaModel {
+    public var hostName: String?
+
     public var instanceId: String?
 
     public var instanceName: String?
 
     public var password: String?
 
-    public var version: String?
+    public var userData: String?
 
     public override init() {
         super.init()
@@ -33360,6 +37088,9 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hostName != nil {
+            map["HostName"] = self.hostName!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -33369,13 +37100,16 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         if self.password != nil {
             map["Password"] = self.password!
         }
-        if self.version != nil {
-            map["Version"] = self.version!
+        if self.userData != nil {
+            map["UserData"] = self.userData!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("HostName") {
+            self.hostName = dict["HostName"] as! String
+        }
         if dict.keys.contains("InstanceId") {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -33385,8 +37119,8 @@ public class ModifyInstanceAttributeRequest : Tea.TeaModel {
         if dict.keys.contains("Password") {
             self.password = dict["Password"] as! String
         }
-        if dict.keys.contains("Version") {
-            self.version = dict["Version"] as! String
+        if dict.keys.contains("UserData") {
+            self.userData = dict["UserData"] as! String
         }
     }
 }
@@ -35234,6 +38968,160 @@ public class RebootInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class RebootInstancesRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+    }
+}
+
+public class RebootInstancesShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+    }
+}
+
+public class RebootInstancesResponseBody : Tea.TeaModel {
+    public var instanceResponses: [InstanceOperateResponse]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceResponses != nil {
+            var tmp : [Any] = []
+            for k in self.instanceResponses! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceResponses"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceResponses") {
+            self.instanceResponses = dict["InstanceResponses"] as! [InstanceOperateResponse]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RebootInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RebootInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = RebootInstancesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ReinitInstanceRequest : Tea.TeaModel {
     public var imageId: String?
 
@@ -35356,6 +39244,192 @@ public class ReinitInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = ReinitInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ReinitInstancesRequest : Tea.TeaModel {
+    public var imageId: String?
+
+    public var instanceIds: [String]?
+
+    public var password: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageId") {
+            self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+        if dict.keys.contains("Password") {
+            self.password = dict["Password"] as! String
+        }
+    }
+}
+
+public class ReinitInstancesShrinkRequest : Tea.TeaModel {
+    public var imageId: String?
+
+    public var instanceIdsShrink: String?
+
+    public var password: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        if self.password != nil {
+            map["Password"] = self.password!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageId") {
+            self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+        if dict.keys.contains("Password") {
+            self.password = dict["Password"] as! String
+        }
+    }
+}
+
+public class ReinitInstancesResponseBody : Tea.TeaModel {
+    public var instanceResponses: [InstanceOperateResponse]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceResponses != nil {
+            var tmp : [Any] = []
+            for k in self.instanceResponses! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceResponses"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceResponses") {
+            self.instanceResponses = dict["InstanceResponses"] as! [InstanceOperateResponse]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ReinitInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ReinitInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = ReinitInstancesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -40587,6 +44661,160 @@ public class StartInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class StartInstancesRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+    }
+}
+
+public class StartInstancesShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+    }
+}
+
+public class StartInstancesResponseBody : Tea.TeaModel {
+    public var instanceResponses: [InstanceOperateResponse]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceResponses != nil {
+            var tmp : [Any] = []
+            for k in self.instanceResponses! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceResponses"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceResponses") {
+            self.instanceResponses = dict["InstanceResponses"] as! [InstanceOperateResponse]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class StartInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = StartInstancesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class StartLoadBalancerListenerRequest : Tea.TeaModel {
     public var listenerPort: Int32?
 
@@ -40957,6 +45185,160 @@ public class StopInstanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = StopInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class StopInstancesRequest : Tea.TeaModel {
+    public var instanceIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIds != nil {
+            map["InstanceIds"] = self.instanceIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIds = dict["InstanceIds"] as! [String]
+        }
+    }
+}
+
+public class StopInstancesShrinkRequest : Tea.TeaModel {
+    public var instanceIdsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceIdsShrink != nil {
+            map["InstanceIds"] = self.instanceIdsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceIds") {
+            self.instanceIdsShrink = dict["InstanceIds"] as! String
+        }
+    }
+}
+
+public class StopInstancesResponseBody : Tea.TeaModel {
+    public var instanceResponses: [InstanceOperateResponse]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceResponses != nil {
+            var tmp : [Any] = []
+            for k in self.instanceResponses! {
+                tmp.append(k.toMap())
+            }
+            map["InstanceResponses"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceResponses") {
+            self.instanceResponses = dict["InstanceResponses"] as! [InstanceOperateResponse]
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class StopInstancesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StopInstancesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = StopInstancesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
