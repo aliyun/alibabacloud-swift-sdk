@@ -59,6 +59,289 @@ public class ClientNodeConfiguration : Tea.TeaModel {
     }
 }
 
+public class CollectorDeployMachine : Tea.TeaModel {
+    public class Machines : Tea.TeaModel {
+        public var agentStatus: String?
+
+        public var instanceId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentStatus != nil {
+                map["agentStatus"] = self.agentStatus!
+            }
+            if self.instanceId != nil {
+                map["instanceId"] = self.instanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("agentStatus") {
+                self.agentStatus = dict["agentStatus"] as! String
+            }
+            if dict.keys.contains("instanceId") {
+                self.instanceId = dict["instanceId"] as! String
+            }
+        }
+    }
+    public var configType: String?
+
+    public var groupId: String?
+
+    public var instanceId: String?
+
+    public var machines: [CollectorDeployMachine.Machines]?
+
+    public var successPodsCount: String?
+
+    public var totalPodsCount: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configType != nil {
+            map["configType"] = self.configType!
+        }
+        if self.groupId != nil {
+            map["groupId"] = self.groupId!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.machines != nil {
+            var tmp : [Any] = []
+            for k in self.machines! {
+                tmp.append(k.toMap())
+            }
+            map["machines"] = tmp
+        }
+        if self.successPodsCount != nil {
+            map["successPodsCount"] = self.successPodsCount!
+        }
+        if self.totalPodsCount != nil {
+            map["totalPodsCount"] = self.totalPodsCount!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("configType") {
+            self.configType = dict["configType"] as! String
+        }
+        if dict.keys.contains("groupId") {
+            self.groupId = dict["groupId"] as! String
+        }
+        if dict.keys.contains("instanceId") {
+            self.instanceId = dict["instanceId"] as! String
+        }
+        if dict.keys.contains("machines") {
+            self.machines = dict["machines"] as! [CollectorDeployMachine.Machines]
+        }
+        if dict.keys.contains("successPodsCount") {
+            self.successPodsCount = dict["successPodsCount"] as! String
+        }
+        if dict.keys.contains("totalPodsCount") {
+            self.totalPodsCount = dict["totalPodsCount"] as! String
+        }
+        if dict.keys.contains("type") {
+            self.type = dict["type"] as! String
+        }
+    }
+}
+
+public class CollectorKibanaInstance : Tea.TeaModel {
+    public var configType: String?
+
+    public var host: String?
+
+    public var instanceId: String?
+
+    public var kibanaHost: String?
+
+    public var password: String?
+
+    public var protocol_: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configType != nil {
+            map["configType"] = self.configType!
+        }
+        if self.host != nil {
+            map["host"] = self.host!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.kibanaHost != nil {
+            map["kibanaHost"] = self.kibanaHost!
+        }
+        if self.password != nil {
+            map["password"] = self.password!
+        }
+        if self.protocol_ != nil {
+            map["protocol"] = self.protocol_!
+        }
+        if self.userName != nil {
+            map["userName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("configType") {
+            self.configType = dict["configType"] as! String
+        }
+        if dict.keys.contains("host") {
+            self.host = dict["host"] as! String
+        }
+        if dict.keys.contains("instanceId") {
+            self.instanceId = dict["instanceId"] as! String
+        }
+        if dict.keys.contains("kibanaHost") {
+            self.kibanaHost = dict["kibanaHost"] as! String
+        }
+        if dict.keys.contains("password") {
+            self.password = dict["password"] as! String
+        }
+        if dict.keys.contains("protocol") {
+            self.protocol_ = dict["protocol"] as! String
+        }
+        if dict.keys.contains("userName") {
+            self.userName = dict["userName"] as! String
+        }
+    }
+}
+
+public class CollectorTargetInstance : Tea.TeaModel {
+    public var configType: String?
+
+    public var enableMonitoring: Bool?
+
+    public var hosts: [String]?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var password: String?
+
+    public var protocol_: String?
+
+    public var userName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configType != nil {
+            map["configType"] = self.configType!
+        }
+        if self.enableMonitoring != nil {
+            map["enableMonitoring"] = self.enableMonitoring!
+        }
+        if self.hosts != nil {
+            map["hosts"] = self.hosts!
+        }
+        if self.instanceId != nil {
+            map["instanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["instanceType"] = self.instanceType!
+        }
+        if self.password != nil {
+            map["password"] = self.password!
+        }
+        if self.protocol_ != nil {
+            map["protocol"] = self.protocol_!
+        }
+        if self.userName != nil {
+            map["userName"] = self.userName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("configType") {
+            self.configType = dict["configType"] as! String
+        }
+        if dict.keys.contains("enableMonitoring") {
+            self.enableMonitoring = dict["enableMonitoring"] as! Bool
+        }
+        if dict.keys.contains("hosts") {
+            self.hosts = dict["hosts"] as! [String]
+        }
+        if dict.keys.contains("instanceId") {
+            self.instanceId = dict["instanceId"] as! String
+        }
+        if dict.keys.contains("instanceType") {
+            self.instanceType = dict["instanceType"] as! String
+        }
+        if dict.keys.contains("password") {
+            self.password = dict["password"] as! String
+        }
+        if dict.keys.contains("protocol") {
+            self.protocol_ = dict["protocol"] as! String
+        }
+        if dict.keys.contains("userName") {
+            self.userName = dict["userName"] as! String
+        }
+    }
+}
+
 public class DictInfo : Tea.TeaModel {
     public var fileSize: Int64?
 
@@ -2085,8 +2368,6 @@ public class AddSnapshotRepoResponse : Tea.TeaModel {
 }
 
 public class CancelDeletionRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -2103,9 +2384,6 @@ public class CancelDeletionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -2113,9 +2391,6 @@ public class CancelDeletionRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -2213,8 +2488,6 @@ public class CancelDeletionResponse : Tea.TeaModel {
 }
 
 public class CancelLogstashDeletionRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -2231,9 +2504,6 @@ public class CancelLogstashDeletionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -2241,9 +2511,6 @@ public class CancelLogstashDeletionRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -2341,8 +2608,6 @@ public class CancelLogstashDeletionResponse : Tea.TeaModel {
 }
 
 public class CancelTaskRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public var taskType: String?
@@ -2361,9 +2626,6 @@ public class CancelTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -2374,9 +2636,6 @@ public class CancelTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -3073,8 +3332,6 @@ public class CloseDiagnosisResponse : Tea.TeaModel {
 }
 
 public class CloseHttpsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -3091,9 +3348,6 @@ public class CloseHttpsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -3101,9 +3355,6 @@ public class CloseHttpsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -3203,8 +3454,6 @@ public class CloseHttpsResponse : Tea.TeaModel {
 public class CloseManagedIndexRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -3222,18 +3471,12 @@ public class CloseManagedIndexRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -3329,7 +3572,58 @@ public class CloseManagedIndexResponse : Tea.TeaModel {
 }
 
 public class CreateCollectorRequest : Tea.TeaModel {
-    public var body: String?
+    public class Configs : Tea.TeaModel {
+        public var content: String?
+
+        public var fileName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.fileName != nil {
+                map["fileName"] = self.fileName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("content") {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("fileName") {
+                self.fileName = dict["fileName"] as! String
+            }
+        }
+    }
+    public var collectorPaths: [String]?
+
+    public var configs: [CreateCollectorRequest.Configs]?
+
+    public var dryRun: Bool?
+
+    public var extendConfigs: [[String: Any]]?
+
+    public var name: String?
+
+    public var resType: String?
+
+    public var resVersion: String?
+
+    public var vpcId: String?
 
     public var clientToken: String?
 
@@ -3347,8 +3641,33 @@ public class CreateCollectorRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
+        if self.collectorPaths != nil {
+            map["collectorPaths"] = self.collectorPaths!
+        }
+        if self.configs != nil {
+            var tmp : [Any] = []
+            for k in self.configs! {
+                tmp.append(k.toMap())
+            }
+            map["configs"] = tmp
+        }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
+        }
+        if self.extendConfigs != nil {
+            map["extendConfigs"] = self.extendConfigs!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.resType != nil {
+            map["resType"] = self.resType!
+        }
+        if self.resVersion != nil {
+            map["resVersion"] = self.resVersion!
+        }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
         }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
@@ -3357,8 +3676,29 @@ public class CreateCollectorRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
+        if dict.keys.contains("collectorPaths") {
+            self.collectorPaths = dict["collectorPaths"] as! [String]
+        }
+        if dict.keys.contains("configs") {
+            self.configs = dict["configs"] as! [CreateCollectorRequest.Configs]
+        }
+        if dict.keys.contains("dryRun") {
+            self.dryRun = dict["dryRun"] as! Bool
+        }
+        if dict.keys.contains("extendConfigs") {
+            self.extendConfigs = dict["extendConfigs"] as! [[String: Any]]
+        }
+        if dict.keys.contains("name") {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("resType") {
+            self.resType = dict["resType"] as! String
+        }
+        if dict.keys.contains("resVersion") {
+            self.resVersion = dict["resVersion"] as! String
+        }
+        if dict.keys.contains("vpcId") {
+            self.vpcId = dict["vpcId"] as! String
         }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
@@ -3825,9 +4165,270 @@ public class CreateDataStreamResponse : Tea.TeaModel {
 }
 
 public class CreateDataTasksRequest : Tea.TeaModel {
+    public class Body : Tea.TeaModel {
+        public class MigrateConfig : Tea.TeaModel {
+            public var sourceFilterParams: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.sourceFilterParams != nil {
+                    map["sourceFilterParams"] = self.sourceFilterParams!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("sourceFilterParams") {
+                    self.sourceFilterParams = dict["sourceFilterParams"] as! String
+                }
+            }
+        }
+        public class SinkCluster : Tea.TeaModel {
+            public var dataSourceType: String?
+
+            public var index: String?
+
+            public var mapping: String?
+
+            public var password: String?
+
+            public var routing: String?
+
+            public var settings: String?
+
+            public var type: String?
+
+            public var username: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataSourceType != nil {
+                    map["dataSourceType"] = self.dataSourceType!
+                }
+                if self.index != nil {
+                    map["index"] = self.index!
+                }
+                if self.mapping != nil {
+                    map["mapping"] = self.mapping!
+                }
+                if self.password != nil {
+                    map["password"] = self.password!
+                }
+                if self.routing != nil {
+                    map["routing"] = self.routing!
+                }
+                if self.settings != nil {
+                    map["settings"] = self.settings!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.username != nil {
+                    map["username"] = self.username!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("dataSourceType") {
+                    self.dataSourceType = dict["dataSourceType"] as! String
+                }
+                if dict.keys.contains("index") {
+                    self.index = dict["index"] as! String
+                }
+                if dict.keys.contains("mapping") {
+                    self.mapping = dict["mapping"] as! String
+                }
+                if dict.keys.contains("password") {
+                    self.password = dict["password"] as! String
+                }
+                if dict.keys.contains("routing") {
+                    self.routing = dict["routing"] as! String
+                }
+                if dict.keys.contains("settings") {
+                    self.settings = dict["settings"] as! String
+                }
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("username") {
+                    self.username = dict["username"] as! String
+                }
+            }
+        }
+        public class SourceCluster : Tea.TeaModel {
+            public var dataSourceType: String?
+
+            public var endpoint: String?
+
+            public var index: String?
+
+            public var password: String?
+
+            public var type: String?
+
+            public var username: String?
+
+            public var vpcId: String?
+
+            public var vpcInstanceId: String?
+
+            public var vpcInstancePort: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dataSourceType != nil {
+                    map["dataSourceType"] = self.dataSourceType!
+                }
+                if self.endpoint != nil {
+                    map["endpoint"] = self.endpoint!
+                }
+                if self.index != nil {
+                    map["index"] = self.index!
+                }
+                if self.password != nil {
+                    map["password"] = self.password!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.username != nil {
+                    map["username"] = self.username!
+                }
+                if self.vpcId != nil {
+                    map["vpcId"] = self.vpcId!
+                }
+                if self.vpcInstanceId != nil {
+                    map["vpcInstanceId"] = self.vpcInstanceId!
+                }
+                if self.vpcInstancePort != nil {
+                    map["vpcInstancePort"] = self.vpcInstancePort!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("dataSourceType") {
+                    self.dataSourceType = dict["dataSourceType"] as! String
+                }
+                if dict.keys.contains("endpoint") {
+                    self.endpoint = dict["endpoint"] as! String
+                }
+                if dict.keys.contains("index") {
+                    self.index = dict["index"] as! String
+                }
+                if dict.keys.contains("password") {
+                    self.password = dict["password"] as! String
+                }
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("username") {
+                    self.username = dict["username"] as! String
+                }
+                if dict.keys.contains("vpcId") {
+                    self.vpcId = dict["vpcId"] as! String
+                }
+                if dict.keys.contains("vpcInstanceId") {
+                    self.vpcInstanceId = dict["vpcInstanceId"] as! String
+                }
+                if dict.keys.contains("vpcInstancePort") {
+                    self.vpcInstancePort = dict["vpcInstancePort"] as! Int32
+                }
+            }
+        }
+        public var migrateConfig: CreateDataTasksRequest.Body.MigrateConfig?
+
+        public var sinkCluster: CreateDataTasksRequest.Body.SinkCluster?
+
+        public var sourceCluster: CreateDataTasksRequest.Body.SourceCluster?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.migrateConfig?.validate()
+            try self.sinkCluster?.validate()
+            try self.sourceCluster?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.migrateConfig != nil {
+                map["migrateConfig"] = self.migrateConfig?.toMap()
+            }
+            if self.sinkCluster != nil {
+                map["sinkCluster"] = self.sinkCluster?.toMap()
+            }
+            if self.sourceCluster != nil {
+                map["sourceCluster"] = self.sourceCluster?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("migrateConfig") {
+                var model = CreateDataTasksRequest.Body.MigrateConfig()
+                model.fromMap(dict["migrateConfig"] as! [String: Any])
+                self.migrateConfig = model
+            }
+            if dict.keys.contains("sinkCluster") {
+                var model = CreateDataTasksRequest.Body.SinkCluster()
+                model.fromMap(dict["sinkCluster"] as! [String: Any])
+                self.sinkCluster = model
+            }
+            if dict.keys.contains("sourceCluster") {
+                var model = CreateDataTasksRequest.Body.SourceCluster()
+                model.fromMap(dict["sourceCluster"] as! [String: Any])
+                self.sourceCluster = model
+            }
+        }
+    }
     public var clientToken: String?
 
-    public var body: String?
+    public var body: [CreateDataTasksRequest.Body]?
 
     public override init() {
         super.init()
@@ -3847,7 +4448,11 @@ public class CreateDataTasksRequest : Tea.TeaModel {
             map["ClientToken"] = self.clientToken!
         }
         if self.body != nil {
-            map["body"] = self.body!
+            var tmp : [Any] = []
+            for k in self.body! {
+                tmp.append(k.toMap())
+            }
+            map["body"] = tmp
         }
         return map
     }
@@ -3857,7 +4462,7 @@ public class CreateDataTasksRequest : Tea.TeaModel {
             self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
+            self.body = dict["body"] as! [CreateDataTasksRequest.Body]
         }
     }
 }
@@ -4330,9 +4935,64 @@ public class CreateILMPolicyResponse : Tea.TeaModel {
 }
 
 public class CreateIndexTemplateRequest : Tea.TeaModel {
+    public class Template : Tea.TeaModel {
+        public var aliases: String?
+
+        public var mappings: String?
+
+        public var settings: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliases != nil {
+                map["aliases"] = self.aliases!
+            }
+            if self.mappings != nil {
+                map["mappings"] = self.mappings!
+            }
+            if self.settings != nil {
+                map["settings"] = self.settings!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("aliases") {
+                self.aliases = dict["aliases"] as! String
+            }
+            if dict.keys.contains("mappings") {
+                self.mappings = dict["mappings"] as! String
+            }
+            if dict.keys.contains("settings") {
+                self.settings = dict["settings"] as! String
+            }
+        }
+    }
     public var clientToken: String?
 
-    public var body: String?
+    public var dataStream: Bool?
+
+    public var ilmPolicy: String?
+
+    public var indexPatterns: [String]?
+
+    public var indexTemplate: String?
+
+    public var priority: Int32?
+
+    public var template: CreateIndexTemplateRequest.Template?
 
     public override init() {
         super.init()
@@ -4344,6 +5004,7 @@ public class CreateIndexTemplateRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.template?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4351,8 +5012,23 @@ public class CreateIndexTemplateRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
+        if self.dataStream != nil {
+            map["dataStream"] = self.dataStream!
+        }
+        if self.ilmPolicy != nil {
+            map["ilmPolicy"] = self.ilmPolicy!
+        }
+        if self.indexPatterns != nil {
+            map["indexPatterns"] = self.indexPatterns!
+        }
+        if self.indexTemplate != nil {
+            map["indexTemplate"] = self.indexTemplate!
+        }
+        if self.priority != nil {
+            map["priority"] = self.priority!
+        }
+        if self.template != nil {
+            map["template"] = self.template?.toMap()
         }
         return map
     }
@@ -4361,8 +5037,25 @@ public class CreateIndexTemplateRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
         }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
+        if dict.keys.contains("dataStream") {
+            self.dataStream = dict["dataStream"] as! Bool
+        }
+        if dict.keys.contains("ilmPolicy") {
+            self.ilmPolicy = dict["ilmPolicy"] as! String
+        }
+        if dict.keys.contains("indexPatterns") {
+            self.indexPatterns = dict["indexPatterns"] as! [String]
+        }
+        if dict.keys.contains("indexTemplate") {
+            self.indexTemplate = dict["indexTemplate"] as! String
+        }
+        if dict.keys.contains("priority") {
+            self.priority = dict["priority"] as! Int32
+        }
+        if dict.keys.contains("template") {
+            var model = CreateIndexTemplateRequest.Template()
+            model.fromMap(dict["template"] as! [String: Any])
+            self.template = model
         }
     }
 }
@@ -5391,8 +6084,6 @@ public class DeactivateZonesResponse : Tea.TeaModel {
 public class DeleteCollectorRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -5410,18 +6101,12 @@ public class DeleteCollectorRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -5512,36 +6197,6 @@ public class DeleteCollectorResponse : Tea.TeaModel {
             var model = DeleteCollectorResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DeleteComponentIndexRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -5637,8 +6292,6 @@ public class DeleteComponentIndexResponse : Tea.TeaModel {
 }
 
 public class DeleteConnectedClusterRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public var connectedInstanceId: String?
@@ -5657,9 +6310,6 @@ public class DeleteConnectedClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -5670,9 +6320,6 @@ public class DeleteConnectedClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -5775,8 +6422,6 @@ public class DeleteConnectedClusterResponse : Tea.TeaModel {
 public class DeleteDataStreamRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -5794,18 +6439,12 @@ public class DeleteDataStreamRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -5903,8 +6542,6 @@ public class DeleteDataStreamResponse : Tea.TeaModel {
 public class DeleteDataTaskRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public var taskId: String?
 
     public override init() {
@@ -5924,9 +6561,6 @@ public class DeleteDataTaskRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.taskId != nil {
             map["taskId"] = self.taskId!
         }
@@ -5936,9 +6570,6 @@ public class DeleteDataTaskRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("taskId") {
             self.taskId = dict["taskId"] as! String
@@ -6036,36 +6667,6 @@ public class DeleteDataTaskResponse : Tea.TeaModel {
     }
 }
 
-public class DeleteDeprecatedTemplateRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class DeleteDeprecatedTemplateResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -6156,36 +6757,6 @@ public class DeleteDeprecatedTemplateResponse : Tea.TeaModel {
     }
 }
 
-public class DeleteILMPolicyRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class DeleteILMPolicyResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -6272,36 +6843,6 @@ public class DeleteILMPolicyResponse : Tea.TeaModel {
             var model = DeleteILMPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DeleteIndexTemplateRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -6397,8 +6938,6 @@ public class DeleteIndexTemplateResponse : Tea.TeaModel {
 }
 
 public class DeleteInstanceRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public var deleteType: String?
@@ -6417,9 +6956,6 @@ public class DeleteInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -6430,9 +6966,6 @@ public class DeleteInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -6525,8 +7058,6 @@ public class DeleteInstanceResponse : Tea.TeaModel {
 }
 
 public class DeleteLogstashRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public var deleteType: String?
@@ -6545,9 +7076,6 @@ public class DeleteLogstashRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -6558,9 +7086,6 @@ public class DeleteLogstashRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -6655,8 +7180,6 @@ public class DeleteLogstashResponse : Tea.TeaModel {
 public class DeletePipelinesRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public var pipelineIds: String?
 
     public override init() {
@@ -6676,9 +7199,6 @@ public class DeletePipelinesRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.pipelineIds != nil {
             map["pipelineIds"] = self.pipelineIds!
         }
@@ -6688,9 +7208,6 @@ public class DeletePipelinesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("pipelineIds") {
             self.pipelineIds = dict["pipelineIds"] as! String
@@ -6789,8 +7306,6 @@ public class DeletePipelinesResponse : Tea.TeaModel {
 }
 
 public class DeleteSnapshotRepoRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public var repoPath: String?
@@ -6809,9 +7324,6 @@ public class DeleteSnapshotRepoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -6822,9 +7334,6 @@ public class DeleteSnapshotRepoRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -6927,8 +7436,6 @@ public class DeleteSnapshotRepoResponse : Tea.TeaModel {
 public class DeleteVpcEndpointRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -6946,18 +7453,12 @@ public class DeleteVpcEndpointRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -7048,36 +7549,6 @@ public class DeleteVpcEndpointResponse : Tea.TeaModel {
             var model = DeleteVpcEndpointResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeAckOperatorRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -7208,36 +7679,6 @@ public class DescribeAckOperatorResponse : Tea.TeaModel {
             var model = DescribeAckOperatorResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeApmRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -7504,36 +7945,6 @@ public class DescribeApmResponse : Tea.TeaModel {
             var model = DescribeApmResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeCollectorRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -7975,36 +8386,6 @@ public class DescribeCollectorResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeComponentIndexRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class DescribeComponentIndexResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public class Template : Tea.TeaModel {
@@ -8186,8 +8567,6 @@ public class DescribeComponentIndexResponse : Tea.TeaModel {
 public class DescribeConnectableClustersRequest : Tea.TeaModel {
     public var alreadySetItems: Bool?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -8205,18 +8584,12 @@ public class DescribeConnectableClustersRequest : Tea.TeaModel {
         if self.alreadySetItems != nil {
             map["alreadySetItems"] = self.alreadySetItems!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("alreadySetItems") {
             self.alreadySetItems = dict["alreadySetItems"] as! Bool
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -8348,36 +8721,6 @@ public class DescribeConnectableClustersResponse : Tea.TeaModel {
             var model = DescribeConnectableClustersResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeDeprecatedTemplateRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -8593,8 +8936,6 @@ public class DescribeDeprecatedTemplateResponse : Tea.TeaModel {
 }
 
 public class DescribeDiagnoseReportRequest : Tea.TeaModel {
-    public var body: String?
-
     public var lang: String?
 
     public override init() {
@@ -8611,9 +8952,6 @@ public class DescribeDiagnoseReportRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.lang != nil {
             map["lang"] = self.lang!
         }
@@ -8621,9 +8959,6 @@ public class DescribeDiagnoseReportRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("lang") {
             self.lang = dict["lang"] as! String
         }
@@ -8914,8 +9249,6 @@ public class DescribeDiagnoseReportResponse : Tea.TeaModel {
 }
 
 public class DescribeDiagnosisSettingsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var lang: String?
 
     public override init() {
@@ -8932,9 +9265,6 @@ public class DescribeDiagnosisSettingsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.lang != nil {
             map["lang"] = self.lang!
         }
@@ -8942,9 +9272,6 @@ public class DescribeDiagnosisSettingsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("lang") {
             self.lang = dict["lang"] as! String
         }
@@ -9081,36 +9408,6 @@ public class DescribeDiagnosisSettingsResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeDynamicSettingsRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class DescribeDynamicSettingsResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -9197,36 +9494,6 @@ public class DescribeDynamicSettingsResponse : Tea.TeaModel {
             var model = DescribeDynamicSettingsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeElasticsearchHealthRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -9333,36 +9600,6 @@ public class DescribeElasticsearchHealthResponse : Tea.TeaModel {
             var model = DescribeElasticsearchHealthResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeILMPolicyRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -9493,36 +9730,6 @@ public class DescribeILMPolicyResponse : Tea.TeaModel {
             var model = DescribeILMPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeIndexTemplateRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -9733,36 +9940,6 @@ public class DescribeIndexTemplateResponse : Tea.TeaModel {
             var model = DescribeIndexTemplateResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeInstanceRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -10018,8 +10195,63 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class IkHotDicts : Tea.TeaModel {
+            public var fileSize: Int32?
+
+            public var name: String?
+
+            public var sourceType: String?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.fileSize != nil {
+                    map["fileSize"] = self.fileSize!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.sourceType != nil {
+                    map["sourceType"] = self.sourceType!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("fileSize") {
+                    self.fileSize = dict["fileSize"] as! Int32
+                }
+                if dict.keys.contains("name") {
+                    self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("sourceType") {
+                    self.sourceType = dict["sourceType"] as! String
+                }
+                if dict.keys.contains("type") {
+                    self.type = dict["type"] as! String
+                }
+            }
+        }
         public class KibanaConfiguration : Tea.TeaModel {
             public var amount: Int32?
+
+            public var disk: Int32?
 
             public var spec: String?
 
@@ -10040,6 +10272,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 if self.amount != nil {
                     map["amount"] = self.amount!
                 }
+                if self.disk != nil {
+                    map["disk"] = self.disk!
+                }
                 if self.spec != nil {
                     map["spec"] = self.spec!
                 }
@@ -10049,6 +10284,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("amount") {
                     self.amount = dict["amount"] as! Int32
+                }
+                if dict.keys.contains("disk") {
+                    self.disk = dict["disk"] as! Int32
                 }
                 if dict.keys.contains("spec") {
                     self.spec = dict["spec"] as! String
@@ -10225,6 +10463,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
             public var diskType: String?
 
+            public var performanceLevel: String?
+
             public var spec: String?
 
             public override init() {
@@ -10250,6 +10490,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 if self.diskType != nil {
                     map["diskType"] = self.diskType!
                 }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
                 if self.spec != nil {
                     map["spec"] = self.spec!
                 }
@@ -10265,6 +10508,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("diskType") {
                     self.diskType = dict["diskType"] as! String
+                }
+                if dict.keys.contains("performanceLevel") {
+                    self.performanceLevel = dict["performanceLevel"] as! String
                 }
                 if dict.keys.contains("spec") {
                     self.spec = dict["spec"] as! String
@@ -10499,6 +10745,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var haveKibana: Bool?
 
+        public var ikHotDicts: [DescribeInstanceResponseBody.Result.IkHotDicts]?
+
         public var instanceId: String?
 
         public var isNewDeployment: Bool?
@@ -10648,6 +10896,13 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if self.haveKibana != nil {
                 map["haveKibana"] = self.haveKibana!
+            }
+            if self.ikHotDicts != nil {
+                var tmp : [Any] = []
+                for k in self.ikHotDicts! {
+                    tmp.append(k.toMap())
+                }
+                map["ikHotDicts"] = tmp
             }
             if self.instanceId != nil {
                 map["instanceId"] = self.instanceId!
@@ -10820,6 +11075,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("haveKibana") {
                 self.haveKibana = dict["haveKibana"] as! Bool
+            }
+            if dict.keys.contains("ikHotDicts") {
+                self.ikHotDicts = dict["ikHotDicts"] as! [DescribeInstanceResponseBody.Result.IkHotDicts]
             }
             if dict.keys.contains("instanceId") {
                 self.instanceId = dict["instanceId"] as! String
@@ -11598,36 +11856,6 @@ public class DescribeLogstashResponse : Tea.TeaModel {
     }
 }
 
-public class DescribePipelineRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class DescribePipelineResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var batchDelay: Int32?
@@ -11839,8 +12067,6 @@ public class DescribePipelineResponse : Tea.TeaModel {
 }
 
 public class DescribePipelineManagementConfigRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -11857,9 +12083,6 @@ public class DescribePipelineManagementConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -11867,9 +12090,6 @@ public class DescribePipelineManagementConfigRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -12185,36 +12405,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeSnapshotSettingRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class DescribeSnapshotSettingResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var enable: Bool?
@@ -12341,36 +12531,6 @@ public class DescribeSnapshotSettingResponse : Tea.TeaModel {
             var model = DescribeSnapshotSettingResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeTemplatesRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -12502,36 +12662,6 @@ public class DescribeTemplatesResponse : Tea.TeaModel {
             var model = DescribeTemplatesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class DescribeXpackMonitorConfigRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -13458,36 +13588,6 @@ public class GetClusterDataInformationResponse : Tea.TeaModel {
     }
 }
 
-public class GetElastictaskRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class GetElastictaskResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public class ElasticExpansionTask : Tea.TeaModel {
@@ -14235,36 +14335,6 @@ public class GetEmonMonitorDataResponse : Tea.TeaModel {
     }
 }
 
-public class GetOpenStoreUsageRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class GetOpenStoreUsageResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var currentUsage: Int64?
@@ -14396,8 +14466,6 @@ public class GetOpenStoreUsageResponse : Tea.TeaModel {
 }
 
 public class GetRegionConfigurationRequest : Tea.TeaModel {
-    public var body: String?
-
     public var zoneId: String?
 
     public override init() {
@@ -14414,9 +14482,6 @@ public class GetRegionConfigurationRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.zoneId != nil {
             map["zoneId"] = self.zoneId!
         }
@@ -14424,9 +14489,6 @@ public class GetRegionConfigurationRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("zoneId") {
             self.zoneId = dict["zoneId"] as! String
         }
@@ -15621,8 +15683,6 @@ public class GetRegionConfigurationResponse : Tea.TeaModel {
 }
 
 public class GetSuggestShrinkableNodesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var count: Int32?
 
     public var ignoreStatus: Bool?
@@ -15643,9 +15703,6 @@ public class GetSuggestShrinkableNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.count != nil {
             map["count"] = self.count!
         }
@@ -15659,9 +15716,6 @@ public class GetSuggestShrinkableNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("count") {
             self.count = dict["count"] as! Int32
         }
@@ -15806,8 +15860,6 @@ public class GetSuggestShrinkableNodesResponse : Tea.TeaModel {
 }
 
 public class GetTransferableNodesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var count: Int32?
 
     public var nodeType: String?
@@ -15826,9 +15878,6 @@ public class GetTransferableNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.count != nil {
             map["count"] = self.count!
         }
@@ -15839,9 +15888,6 @@ public class GetTransferableNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("count") {
             self.count = dict["count"] as! Int32
         }
@@ -16743,8 +16789,6 @@ public class InstallUserPluginsResponse : Tea.TeaModel {
 }
 
 public class InterruptElasticsearchTaskRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -16761,9 +16805,6 @@ public class InterruptElasticsearchTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -16771,9 +16812,6 @@ public class InterruptElasticsearchTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -16887,8 +16925,6 @@ public class InterruptElasticsearchTaskResponse : Tea.TeaModel {
 }
 
 public class InterruptLogstashTaskRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -16905,9 +16941,6 @@ public class InterruptLogstashTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -16915,9 +16948,6 @@ public class InterruptLogstashTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -17031,8 +17061,6 @@ public class InterruptLogstashTaskResponse : Tea.TeaModel {
 }
 
 public class ListAckClustersRequest : Tea.TeaModel {
-    public var body: String?
-
     public var page: Int32?
 
     public var size: Int32?
@@ -17053,9 +17081,6 @@ public class ListAckClustersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.page != nil {
             map["page"] = self.page!
         }
@@ -17069,9 +17094,6 @@ public class ListAckClustersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("page") {
             self.page = dict["page"] as! Int32
         }
@@ -17232,8 +17254,6 @@ public class ListAckClustersResponse : Tea.TeaModel {
 }
 
 public class ListAckNamespacesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var page: Int32?
 
     public var size: Int32?
@@ -17252,9 +17272,6 @@ public class ListAckNamespacesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.page != nil {
             map["page"] = self.page!
         }
@@ -17265,9 +17282,6 @@ public class ListAckNamespacesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("page") {
             self.page = dict["page"] as! Int32
         }
@@ -17411,8 +17425,6 @@ public class ListAckNamespacesResponse : Tea.TeaModel {
 public class ListActionRecordsRequest : Tea.TeaModel {
     public var actionNames: String?
 
-    public var body: String?
-
     public var endTime: Int64?
 
     public var filter: String?
@@ -17444,9 +17456,6 @@ public class ListActionRecordsRequest : Tea.TeaModel {
         if self.actionNames != nil {
             map["actionNames"] = self.actionNames!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
@@ -17474,9 +17483,6 @@ public class ListActionRecordsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("actionNames") {
             self.actionNames = dict["actionNames"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("endTime") {
             self.endTime = dict["endTime"] as! Int64
@@ -17964,8 +17970,6 @@ public class ListActionRecordsResponse : Tea.TeaModel {
 }
 
 public class ListAllNodeRequest : Tea.TeaModel {
-    public var body: String?
-
     public var extended: Bool?
 
     public override init() {
@@ -17982,9 +17986,6 @@ public class ListAllNodeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.extended != nil {
             map["extended"] = self.extended!
         }
@@ -17992,9 +17993,6 @@ public class ListAllNodeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("extended") {
             self.extended = dict["extended"] as! Bool
         }
@@ -18191,8 +18189,6 @@ public class ListAllNodeResponse : Tea.TeaModel {
 public class ListAlternativeSnapshotReposRequest : Tea.TeaModel {
     public var alreadySetItems: Bool?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -18210,18 +18206,12 @@ public class ListAlternativeSnapshotReposRequest : Tea.TeaModel {
         if self.alreadySetItems != nil {
             map["alreadySetItems"] = self.alreadySetItems!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("alreadySetItems") {
             self.alreadySetItems = dict["alreadySetItems"] as! Bool
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -18358,8 +18348,6 @@ public class ListAlternativeSnapshotReposResponse : Tea.TeaModel {
 }
 
 public class ListApmRequest : Tea.TeaModel {
-    public var body: String?
-
     public var description_: String?
 
     public var instanceId: String?
@@ -18384,9 +18372,6 @@ public class ListApmRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
@@ -18406,9 +18391,6 @@ public class ListApmRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("description") {
             self.description_ = dict["description"] as! String
         }
@@ -18718,36 +18700,6 @@ public class ListApmResponse : Tea.TeaModel {
     }
 }
 
-public class ListAvailableEsInstanceIdsRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class ListAvailableEsInstanceIdsResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var description_: String?
@@ -18896,8 +18848,6 @@ public class ListAvailableEsInstanceIdsResponse : Tea.TeaModel {
 }
 
 public class ListCollectorsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var instanceId: String?
 
     public var name: String?
@@ -18924,9 +18874,6 @@ public class ListCollectorsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.instanceId != nil {
             map["instanceId"] = self.instanceId!
         }
@@ -18949,9 +18896,6 @@ public class ListCollectorsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("instanceId") {
             self.instanceId = dict["instanceId"] as! String
         }
@@ -19860,36 +19804,6 @@ public class ListComponentIndicesResponse : Tea.TeaModel {
     }
 }
 
-public class ListConnectedClustersRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class ListConnectedClustersResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public class Result : Tea.TeaModel {
@@ -20054,8 +19968,6 @@ public class ListConnectedClustersResponse : Tea.TeaModel {
 }
 
 public class ListDataStreamsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var isManaged: Bool?
 
     public var name: String?
@@ -20074,9 +19986,6 @@ public class ListDataStreamsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.isManaged != nil {
             map["isManaged"] = self.isManaged!
         }
@@ -20087,9 +19996,6 @@ public class ListDataStreamsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("isManaged") {
             self.isManaged = dict["isManaged"] as! Bool
         }
@@ -20387,36 +20293,6 @@ public class ListDataStreamsResponse : Tea.TeaModel {
             var model = ListDataStreamsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class ListDataTasksRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -20729,8 +20605,6 @@ public class ListDataTasksResponse : Tea.TeaModel {
 }
 
 public class ListDefaultCollectorConfigurationsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var resType: String?
 
     public var resVersion: String?
@@ -20751,9 +20625,6 @@ public class ListDefaultCollectorConfigurationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.resType != nil {
             map["resType"] = self.resType!
         }
@@ -20767,9 +20638,6 @@ public class ListDefaultCollectorConfigurationsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("resType") {
             self.resType = dict["resType"] as! String
         }
@@ -20914,8 +20782,6 @@ public class ListDefaultCollectorConfigurationsResponse : Tea.TeaModel {
 }
 
 public class ListDeprecatedTemplatesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var name: String?
 
     public var page: Int32?
@@ -20936,9 +20802,6 @@ public class ListDeprecatedTemplatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.name != nil {
             map["name"] = self.name!
         }
@@ -20952,9 +20815,6 @@ public class ListDeprecatedTemplatesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
         }
@@ -21219,8 +21079,6 @@ public class ListDeprecatedTemplatesResponse : Tea.TeaModel {
 }
 
 public class ListDiagnoseIndicesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var lang: String?
 
     public override init() {
@@ -21237,9 +21095,6 @@ public class ListDiagnoseIndicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.lang != nil {
             map["lang"] = self.lang!
         }
@@ -21247,9 +21102,6 @@ public class ListDiagnoseIndicesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("lang") {
             self.lang = dict["lang"] as! String
         }
@@ -21749,8 +21601,6 @@ public class ListDiagnoseReportResponse : Tea.TeaModel {
 }
 
 public class ListDiagnoseReportIdsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var endTime: Int64?
 
     public var lang: String?
@@ -21777,9 +21627,6 @@ public class ListDiagnoseReportIdsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
@@ -21802,9 +21649,6 @@ public class ListDiagnoseReportIdsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("endTime") {
             self.endTime = dict["endTime"] as! Int64
         }
@@ -21959,8 +21803,6 @@ public class ListDiagnoseReportIdsResponse : Tea.TeaModel {
 public class ListDictInformationRequest : Tea.TeaModel {
     public var analyzerType: String?
 
-    public var body: String?
-
     public var bucketName: String?
 
     public var key: String?
@@ -21982,9 +21824,6 @@ public class ListDictInformationRequest : Tea.TeaModel {
         if self.analyzerType != nil {
             map["analyzerType"] = self.analyzerType!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.bucketName != nil {
             map["bucketName"] = self.bucketName!
         }
@@ -21997,9 +21836,6 @@ public class ListDictInformationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("analyzerType") {
             self.analyzerType = dict["analyzerType"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("bucketName") {
             self.bucketName = dict["bucketName"] as! String
@@ -22199,8 +22035,6 @@ public class ListDictInformationResponse : Tea.TeaModel {
 public class ListDictsRequest : Tea.TeaModel {
     public var analyzerType: String?
 
-    public var body: String?
-
     public var name: String?
 
     public override init() {
@@ -22220,9 +22054,6 @@ public class ListDictsRequest : Tea.TeaModel {
         if self.analyzerType != nil {
             map["analyzerType"] = self.analyzerType!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.name != nil {
             map["name"] = self.name!
         }
@@ -22232,9 +22063,6 @@ public class ListDictsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("analyzerType") {
             self.analyzerType = dict["analyzerType"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("name") {
             self.name = dict["name"] as! String
@@ -22438,8 +22266,6 @@ public class ListDictsResponse : Tea.TeaModel {
 }
 
 public class ListEcsInstancesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var ecsInstanceIds: String?
 
     public var ecsInstanceName: String?
@@ -22466,9 +22292,6 @@ public class ListEcsInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.ecsInstanceIds != nil {
             map["ecsInstanceIds"] = self.ecsInstanceIds!
         }
@@ -22491,9 +22314,6 @@ public class ListEcsInstancesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("ecsInstanceIds") {
             self.ecsInstanceIds = dict["ecsInstanceIds"] as! String
         }
@@ -23091,36 +22911,6 @@ public class ListEcsInstancesResponse : Tea.TeaModel {
     }
 }
 
-public class ListExtendfilesRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class ListExtendfilesResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var filePath: String?
@@ -23269,8 +23059,6 @@ public class ListExtendfilesResponse : Tea.TeaModel {
 }
 
 public class ListILMPoliciesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var policyName: String?
 
     public override init() {
@@ -23287,9 +23075,6 @@ public class ListILMPoliciesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.policyName != nil {
             map["policyName"] = self.policyName!
         }
@@ -23297,9 +23082,6 @@ public class ListILMPoliciesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("policyName") {
             self.policyName = dict["policyName"] as! String
         }
@@ -23438,8 +23220,6 @@ public class ListILMPoliciesResponse : Tea.TeaModel {
 }
 
 public class ListIndexTemplatesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var indexTemplate: String?
 
     public var page: Int32?
@@ -23460,9 +23240,6 @@ public class ListIndexTemplatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.indexTemplate != nil {
             map["indexTemplate"] = self.indexTemplate!
         }
@@ -23476,9 +23253,6 @@ public class ListIndexTemplatesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("indexTemplate") {
             self.indexTemplate = dict["indexTemplate"] as! String
         }
@@ -24123,6 +23897,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
 
             public var diskType: String?
 
+            public var performanceLevel: String?
+
             public var spec: String?
 
             public override init() {
@@ -24148,6 +23924,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
                 if self.diskType != nil {
                     map["diskType"] = self.diskType!
                 }
+                if self.performanceLevel != nil {
+                    map["performanceLevel"] = self.performanceLevel!
+                }
                 if self.spec != nil {
                     map["spec"] = self.spec!
                 }
@@ -24163,6 +23942,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("diskType") {
                     self.diskType = dict["diskType"] as! String
+                }
+                if dict.keys.contains("performanceLevel") {
+                    self.performanceLevel = dict["performanceLevel"] as! String
                 }
                 if dict.keys.contains("spec") {
                     self.spec = dict["spec"] as! String
@@ -24249,6 +24031,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
         public var tags: [ListInstanceResponseBody.Result.Tags]?
 
         public var updatedAt: String?
+
+        public var vpcInstanceId: String?
 
         public override init() {
             super.init()
@@ -24340,6 +24124,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             if self.updatedAt != nil {
                 map["updatedAt"] = self.updatedAt!
             }
+            if self.vpcInstanceId != nil {
+                map["vpcInstanceId"] = self.vpcInstanceId!
+            }
             return map
         }
 
@@ -24421,6 +24208,9 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("updatedAt") {
                 self.updatedAt = dict["updatedAt"] as! String
+            }
+            if dict.keys.contains("vpcInstanceId") {
+                self.vpcInstanceId = dict["vpcInstanceId"] as! String
             }
         }
     }
@@ -25443,8 +25233,6 @@ public class ListInstanceIndicesResponse : Tea.TeaModel {
 }
 
 public class ListKibanaPluginsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var page: String?
 
     public var size: Int32?
@@ -25463,9 +25251,6 @@ public class ListKibanaPluginsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.page != nil {
             map["page"] = self.page!
         }
@@ -25476,9 +25261,6 @@ public class ListKibanaPluginsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("page") {
             self.page = dict["page"] as! String
         }
@@ -25684,13 +25466,9 @@ public class ListKibanaPluginsResponse : Tea.TeaModel {
 }
 
 public class ListLogstashRequest : Tea.TeaModel {
-    public var body: String?
-
     public var description_: String?
 
     public var instanceId: String?
-
-    public var ownerId: String?
 
     public var page: Int32?
 
@@ -25716,17 +25494,11 @@ public class ListLogstashRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.description_ != nil {
             map["description"] = self.description_!
         }
         if self.instanceId != nil {
             map["instanceId"] = self.instanceId!
-        }
-        if self.ownerId != nil {
-            map["ownerId"] = self.ownerId!
         }
         if self.page != nil {
             map["page"] = self.page!
@@ -25747,17 +25519,11 @@ public class ListLogstashRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("description") {
             self.description_ = dict["description"] as! String
         }
         if dict.keys.contains("instanceId") {
             self.instanceId = dict["instanceId"] as! String
-        }
-        if dict.keys.contains("ownerId") {
-            self.ownerId = dict["ownerId"] as! String
         }
         if dict.keys.contains("page") {
             self.page = dict["page"] as! Int32
@@ -26176,8 +25942,6 @@ public class ListLogstashResponse : Tea.TeaModel {
 public class ListLogstashLogRequest : Tea.TeaModel {
     public var beginTime: Int64?
 
-    public var body: String?
-
     public var endTime: Int64?
 
     public var page: Int32?
@@ -26205,9 +25969,6 @@ public class ListLogstashLogRequest : Tea.TeaModel {
         if self.beginTime != nil {
             map["beginTime"] = self.beginTime!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.endTime != nil {
             map["endTime"] = self.endTime!
         }
@@ -26229,9 +25990,6 @@ public class ListLogstashLogRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("beginTime") {
             self.beginTime = dict["beginTime"] as! Int64
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("endTime") {
             self.endTime = dict["endTime"] as! Int64
@@ -26616,8 +26374,6 @@ public class ListLogstashPluginsResponse : Tea.TeaModel {
 }
 
 public class ListNodesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var ecsInstanceIds: String?
 
     public var ecsInstanceName: String?
@@ -26642,9 +26398,6 @@ public class ListNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.ecsInstanceIds != nil {
             map["ecsInstanceIds"] = self.ecsInstanceIds!
         }
@@ -26664,9 +26417,6 @@ public class ListNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("ecsInstanceIds") {
             self.ecsInstanceIds = dict["ecsInstanceIds"] as! String
         }
@@ -26987,8 +26737,6 @@ public class ListNodesResponse : Tea.TeaModel {
 }
 
 public class ListPipelineRequest : Tea.TeaModel {
-    public var body: String?
-
     public var page: Int32?
 
     public var pipelineId: String?
@@ -27009,9 +26757,6 @@ public class ListPipelineRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.page != nil {
             map["page"] = self.page!
         }
@@ -27025,9 +26770,6 @@ public class ListPipelineRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("page") {
             self.page = dict["page"] as! Int32
         }
@@ -27929,8 +27671,6 @@ public class ListSearchLogResponse : Tea.TeaModel {
 public class ListShardRecoveriesRequest : Tea.TeaModel {
     public var activeOnly: Bool?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -27948,18 +27688,12 @@ public class ListShardRecoveriesRequest : Tea.TeaModel {
         if self.activeOnly != nil {
             map["activeOnly"] = self.activeOnly!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("activeOnly") {
             self.activeOnly = dict["activeOnly"] as! Bool
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -28171,36 +27905,6 @@ public class ListShardRecoveriesResponse : Tea.TeaModel {
             var model = ListShardRecoveriesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class ListSnapshotReposByInstanceIdRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -28819,8 +28523,6 @@ public class ListTagsResponse : Tea.TeaModel {
 }
 
 public class ListVpcEndpointsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var page: Int32?
 
     public var size: Int32?
@@ -28839,9 +28541,6 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.page != nil {
             map["page"] = self.page!
         }
@@ -28852,9 +28551,6 @@ public class ListVpcEndpointsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("page") {
             self.page = dict["page"] as! Int32
         }
@@ -30568,8 +30264,6 @@ public class MoveResourceGroupResponse : Tea.TeaModel {
 public class OpenDiagnosisRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public var lang: String?
 
     public override init() {
@@ -30589,9 +30283,6 @@ public class OpenDiagnosisRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.lang != nil {
             map["lang"] = self.lang!
         }
@@ -30601,9 +30292,6 @@ public class OpenDiagnosisRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("lang") {
             self.lang = dict["lang"] as! String
@@ -30702,8 +30390,6 @@ public class OpenDiagnosisResponse : Tea.TeaModel {
 }
 
 public class OpenHttpsRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -30720,9 +30406,6 @@ public class OpenHttpsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -30730,9 +30413,6 @@ public class OpenHttpsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -30966,8 +30646,6 @@ public class PostEmonTryAlarmRuleResponse : Tea.TeaModel {
 }
 
 public class RecommendTemplatesRequest : Tea.TeaModel {
-    public var body: String?
-
     public var usageScenario: String?
 
     public override init() {
@@ -30984,9 +30662,6 @@ public class RecommendTemplatesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.usageScenario != nil {
             map["usageScenario"] = self.usageScenario!
         }
@@ -30994,9 +30669,6 @@ public class RecommendTemplatesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("usageScenario") {
             self.usageScenario = dict["usageScenario"] as! String
         }
@@ -31258,36 +30930,6 @@ public class ReinstallCollectorResponse : Tea.TeaModel {
             var model = ReinstallCollectorResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
-        }
-    }
-}
-
-public class RemoveApmRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -31641,8 +31283,6 @@ public class RenewLogstashResponse : Tea.TeaModel {
 public class RestartCollectorRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -31660,18 +31300,12 @@ public class RestartCollectorRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -32580,8 +32214,6 @@ public class RestartLogstashResponse : Tea.TeaModel {
 }
 
 public class ResumeElasticsearchTaskRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -32598,9 +32230,6 @@ public class ResumeElasticsearchTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -32608,9 +32237,6 @@ public class ResumeElasticsearchTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -32708,8 +32334,6 @@ public class ResumeElasticsearchTaskResponse : Tea.TeaModel {
 }
 
 public class ResumeLogstashTaskRequest : Tea.TeaModel {
-    public var body: String?
-
     public var clientToken: String?
 
     public override init() {
@@ -32726,9 +32350,6 @@ public class ResumeLogstashTaskRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
@@ -32736,9 +32357,6 @@ public class ResumeLogstashTaskRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
         }
@@ -32854,8 +32472,6 @@ public class ResumeLogstashTaskResponse : Tea.TeaModel {
 public class RolloverDataStreamRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -32873,18 +32489,12 @@ public class RolloverDataStreamRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -33324,36 +32934,6 @@ public class ShrinkNodeResponse : Tea.TeaModel {
     }
 }
 
-public class StartApmRequest : Tea.TeaModel {
-    public var body: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
-        }
-    }
-}
-
 public class StartApmResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -33447,8 +33027,6 @@ public class StartApmResponse : Tea.TeaModel {
 public class StartCollectorRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -33466,18 +33044,12 @@ public class StartCollectorRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -33665,8 +33237,6 @@ public class StopApmResponse : Tea.TeaModel {
 public class StopCollectorRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public override init() {
         super.init()
     }
@@ -33684,18 +33254,12 @@ public class StopCollectorRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -34969,7 +34533,7 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateAdminPasswordRequest : Tea.TeaModel {
-    public var body: String?
+    public var esAdminPassword: String?
 
     public var clientToken: String?
 
@@ -34987,8 +34551,8 @@ public class UpdateAdminPasswordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
+        if self.esAdminPassword != nil {
+            map["esAdminPassword"] = self.esAdminPassword!
         }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
@@ -34997,8 +34561,8 @@ public class UpdateAdminPasswordRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
+        if dict.keys.contains("esAdminPassword") {
+            self.esAdminPassword = dict["esAdminPassword"] as! String
         }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
@@ -35008,6 +34572,8 @@ public class UpdateAdminPasswordRequest : Tea.TeaModel {
 
 public class UpdateAdminPasswordResponseBody : Tea.TeaModel {
     public var requestId: String?
+
+    public var result: Bool?
 
     public override init() {
         super.init()
@@ -35026,12 +34592,18 @@ public class UpdateAdminPasswordResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") {
+            self.result = dict["Result"] as! Bool
         }
     }
 }
@@ -38195,9 +37767,25 @@ public class UpdateIndexTemplateResponse : Tea.TeaModel {
 }
 
 public class UpdateInstanceRequest : Tea.TeaModel {
-    public var body: String?
+    public var clientNodeConfiguration: ClientNodeConfiguration?
+
+    public var elasticDataNodeConfiguration: ElasticDataNodeConfiguration?
+
+    public var instanceCategory: String?
+
+    public var kibanaConfiguration: KibanaNodeConfiguration?
+
+    public var masterConfiguration: MasterNodeConfiguration?
+
+    public var nodeAmount: Int32?
+
+    public var nodeSpec: NodeSpec?
+
+    public var warmNodeConfiguration: WarmNodeConfiguration?
 
     public var clientToken: String?
+
+    public var force: Bool?
 
     public var orderActionType: String?
 
@@ -38211,15 +37799,45 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.clientNodeConfiguration?.validate()
+        try self.elasticDataNodeConfiguration?.validate()
+        try self.kibanaConfiguration?.validate()
+        try self.masterConfiguration?.validate()
+        try self.nodeSpec?.validate()
+        try self.warmNodeConfiguration?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.body != nil {
-            map["body"] = self.body!
+        if self.clientNodeConfiguration != nil {
+            map["clientNodeConfiguration"] = self.clientNodeConfiguration?.toMap()
+        }
+        if self.elasticDataNodeConfiguration != nil {
+            map["elasticDataNodeConfiguration"] = self.elasticDataNodeConfiguration?.toMap()
+        }
+        if self.instanceCategory != nil {
+            map["instanceCategory"] = self.instanceCategory!
+        }
+        if self.kibanaConfiguration != nil {
+            map["kibanaConfiguration"] = self.kibanaConfiguration?.toMap()
+        }
+        if self.masterConfiguration != nil {
+            map["masterConfiguration"] = self.masterConfiguration?.toMap()
+        }
+        if self.nodeAmount != nil {
+            map["nodeAmount"] = self.nodeAmount!
+        }
+        if self.nodeSpec != nil {
+            map["nodeSpec"] = self.nodeSpec?.toMap()
+        }
+        if self.warmNodeConfiguration != nil {
+            map["warmNodeConfiguration"] = self.warmNodeConfiguration?.toMap()
         }
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
+        }
+        if self.force != nil {
+            map["force"] = self.force!
         }
         if self.orderActionType != nil {
             map["orderActionType"] = self.orderActionType!
@@ -38228,11 +37846,47 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
+        if dict.keys.contains("clientNodeConfiguration") {
+            var model = ClientNodeConfiguration()
+            model.fromMap(dict["clientNodeConfiguration"] as! [String: Any])
+            self.clientNodeConfiguration = model
+        }
+        if dict.keys.contains("elasticDataNodeConfiguration") {
+            var model = ElasticDataNodeConfiguration()
+            model.fromMap(dict["elasticDataNodeConfiguration"] as! [String: Any])
+            self.elasticDataNodeConfiguration = model
+        }
+        if dict.keys.contains("instanceCategory") {
+            self.instanceCategory = dict["instanceCategory"] as! String
+        }
+        if dict.keys.contains("kibanaConfiguration") {
+            var model = KibanaNodeConfiguration()
+            model.fromMap(dict["kibanaConfiguration"] as! [String: Any])
+            self.kibanaConfiguration = model
+        }
+        if dict.keys.contains("masterConfiguration") {
+            var model = MasterNodeConfiguration()
+            model.fromMap(dict["masterConfiguration"] as! [String: Any])
+            self.masterConfiguration = model
+        }
+        if dict.keys.contains("nodeAmount") {
+            self.nodeAmount = dict["nodeAmount"] as! Int32
+        }
+        if dict.keys.contains("nodeSpec") {
+            var model = NodeSpec()
+            model.fromMap(dict["nodeSpec"] as! [String: Any])
+            self.nodeSpec = model
+        }
+        if dict.keys.contains("warmNodeConfiguration") {
+            var model = WarmNodeConfiguration()
+            model.fromMap(dict["warmNodeConfiguration"] as! [String: Any])
+            self.warmNodeConfiguration = model
         }
         if dict.keys.contains("clientToken") {
             self.clientToken = dict["clientToken"] as! String
+        }
+        if dict.keys.contains("force") {
+            self.force = dict["force"] as! Bool
         }
         if dict.keys.contains("orderActionType") {
             self.orderActionType = dict["orderActionType"] as! String
@@ -42363,8 +42017,6 @@ public class ValidateShrinkNodesResponse : Tea.TeaModel {
 public class ValidateSlrPermissionRequest : Tea.TeaModel {
     public var clientToken: String?
 
-    public var body: String?
-
     public var rolename: String?
 
     public override init() {
@@ -42384,9 +42036,6 @@ public class ValidateSlrPermissionRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         if self.rolename != nil {
             map["rolename"] = self.rolename!
         }
@@ -42396,9 +42045,6 @@ public class ValidateSlrPermissionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") {
             self.clientToken = dict["ClientToken"] as! String
-        }
-        if dict.keys.contains("body") {
-            self.body = dict["body"] as! String
         }
         if dict.keys.contains("rolename") {
             self.rolename = dict["rolename"] as! String
