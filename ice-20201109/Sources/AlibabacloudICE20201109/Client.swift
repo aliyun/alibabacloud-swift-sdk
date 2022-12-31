@@ -185,40 +185,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addMediaMarksWithOptions(_ request: AddMediaMarksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddMediaMarksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.mediaId)) {
-            query["MediaId"] = request.mediaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mediaMarks)) {
-            query["MediaMarks"] = request.mediaMarks ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "AddMediaMarks",
-            "version": "2020-11-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(AddMediaMarksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addMediaMarks(_ request: AddMediaMarksRequest) async throws -> AddMediaMarksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await addMediaMarksWithOptions(request as! AddMediaMarksRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addTemplateWithOptions(_ request: AddTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1079,40 +1045,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteMediaInfos(_ request: DeleteMediaInfosRequest) async throws -> DeleteMediaInfosResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteMediaInfosWithOptions(request as! DeleteMediaInfosRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteMediaMarksWithOptions(_ request: DeleteMediaMarksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMediaMarksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.mediaId)) {
-            query["MediaId"] = request.mediaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mediaMarkIds)) {
-            query["MediaMarkIds"] = request.mediaMarkIds ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteMediaMarks",
-            "version": "2020-11-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteMediaMarksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteMediaMarks(_ request: DeleteMediaMarksRequest) async throws -> DeleteMediaMarksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await deleteMediaMarksWithOptions(request as! DeleteMediaMarksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2374,6 +2306,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.projectId)) {
             query["ProjectId"] = request.projectId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.requestSource)) {
+            query["RequestSource"] = request.requestSource ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2755,40 +2690,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getMediaMarksWithOptions(_ request: GetMediaMarksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMediaMarksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.mediaId)) {
-            query["MediaId"] = request.mediaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mediaMarkIds)) {
-            query["MediaMarkIds"] = request.mediaMarkIds ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetMediaMarks",
-            "version": "2020-11-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetMediaMarksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getMediaMarks(_ request: GetMediaMarksRequest) async throws -> GetMediaMarksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getMediaMarksWithOptions(request as! GetMediaMarksRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMediaProducingJobWithOptions(_ request: GetMediaProducingJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMediaProducingJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -2882,6 +2783,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPlayInfoWithOptions(_ request: GetPlayInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPlayInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.inputURL)) {
+            query["InputURL"] = request.inputURL ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.mediaId)) {
             query["MediaId"] = request.mediaId ?? "";
         }
@@ -3145,8 +3049,8 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getTranscodeJobWithOptions(_ request: GetTranscodeJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTranscodeJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId ?? "";
+        if (!TeaUtils.Client.isUnset(request.parentJobId)) {
+            query["ParentJobId"] = request.parentJobId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -3715,40 +3619,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listMediaMarksWithOptions(_ request: ListMediaMarksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMediaMarksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.mediaId)) {
-            query["MediaId"] = request.mediaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mediaMarkIds)) {
-            query["MediaMarkIds"] = request.mediaMarkIds ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListMediaMarks",
-            "version": "2020-11-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListMediaMarksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listMediaMarks(_ request: ListMediaMarksRequest) async throws -> ListMediaMarksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listMediaMarksWithOptions(request as! ListMediaMarksRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listPackageJobsWithOptions(_ request: ListPackageJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPackageJobsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4056,9 +3926,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endOfCreateTime)) {
             query["EndOfCreateTime"] = request.endOfCreateTime ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.jobId)) {
-            query["JobId"] = request.jobId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.nextPageToken)) {
             query["NextPageToken"] = request.nextPageToken ?? "";
         }
@@ -4067,6 +3934,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.parentJobId)) {
+            query["ParentJobId"] = request.parentJobId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startOfCreateTime)) {
             query["StartOfCreateTime"] = request.startOfCreateTime ?? "";
@@ -4096,49 +3966,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTranscodeJobs(_ request: ListTranscodeJobsRequest) async throws -> ListTranscodeJobsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listTranscodeJobsWithOptions(request as! ListTranscodeJobsRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCensorJobListWithOptions(_ request: QueryCensorJobListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCensorJobListResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.jobIds)) {
-            query["JobIds"] = request.jobIds ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "QueryCensorJobList",
-            "version": "2020-11-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(QueryCensorJobListResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCensorJobList(_ request: QueryCensorJobListRequest) async throws -> QueryCensorJobListResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await queryCensorJobListWithOptions(request as! QueryCensorJobListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4222,6 +4049,67 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryMediaCensorJobDetail(_ request: QueryMediaCensorJobDetailRequest) async throws -> QueryMediaCensorJobDetailResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryMediaCensorJobDetailWithOptions(request as! QueryMediaCensorJobDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryMediaCensorJobListWithOptions(_ request: QueryMediaCensorJobListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryMediaCensorJobListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endOfJobCreatedTimeRange)) {
+            query["EndOfJobCreatedTimeRange"] = request.endOfJobCreatedTimeRange ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobIds)) {
+            query["JobIds"] = request.jobIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maximumPageSize)) {
+            query["MaximumPageSize"] = request.maximumPageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextPageToken)) {
+            query["NextPageToken"] = request.nextPageToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pipelineId)) {
+            query["PipelineId"] = request.pipelineId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.startOfJobCreatedTimeRange)) {
+            query["StartOfJobCreatedTimeRange"] = request.startOfJobCreatedTimeRange ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["State"] = request.state ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryMediaCensorJobList",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryMediaCensorJobListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryMediaCensorJobList(_ request: QueryMediaCensorJobListRequest) async throws -> QueryMediaCensorJobListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryMediaCensorJobListWithOptions(request as! QueryMediaCensorJobListRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6096,40 +5984,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateMediaInfo(_ request: UpdateMediaInfoRequest) async throws -> UpdateMediaInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateMediaInfoWithOptions(request as! UpdateMediaInfoRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateMediaMarksWithOptions(_ request: UpdateMediaMarksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMediaMarksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.mediaId)) {
-            query["MediaId"] = request.mediaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.mediaMarks)) {
-            query["MediaMarks"] = request.mediaMarks ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpdateMediaMarks",
-            "version": "2020-11-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpdateMediaMarksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateMediaMarks(_ request: UpdateMediaMarksRequest) async throws -> UpdateMediaMarksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await updateMediaMarksWithOptions(request as! UpdateMediaMarksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
