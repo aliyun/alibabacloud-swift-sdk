@@ -3255,6 +3255,14 @@ public class QueryChatappPhoneNumbersRequest : Tea.TeaModel {
 
 public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
     public class PhoneNumbers : Tea.TeaModel {
+        public var codeVerificationStatus: String?
+
+        public var messagingLimitTier: String?
+
+        public var nameStatus: String?
+
+        public var newNameStatus: String?
+
         public var phoneNumber: String?
 
         public var qualityRating: String?
@@ -3285,6 +3293,18 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.codeVerificationStatus != nil {
+                map["CodeVerificationStatus"] = self.codeVerificationStatus!
+            }
+            if self.messagingLimitTier != nil {
+                map["MessagingLimitTier"] = self.messagingLimitTier!
+            }
+            if self.nameStatus != nil {
+                map["NameStatus"] = self.nameStatus!
+            }
+            if self.newNameStatus != nil {
+                map["NewNameStatus"] = self.newNameStatus!
+            }
             if self.phoneNumber != nil {
                 map["PhoneNumber"] = self.phoneNumber!
             }
@@ -3313,6 +3333,18 @@ public class QueryChatappPhoneNumbersResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CodeVerificationStatus") {
+                self.codeVerificationStatus = dict["CodeVerificationStatus"] as! String
+            }
+            if dict.keys.contains("MessagingLimitTier") {
+                self.messagingLimitTier = dict["MessagingLimitTier"] as! String
+            }
+            if dict.keys.contains("NameStatus") {
+                self.nameStatus = dict["NameStatus"] as! String
+            }
+            if dict.keys.contains("NewNameStatus") {
+                self.newNameStatus = dict["NewNameStatus"] as! String
+            }
             if dict.keys.contains("PhoneNumber") {
                 self.phoneNumber = dict["PhoneNumber"] as! String
             }
@@ -3828,6 +3860,8 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 
     public var content: String?
 
+    public var contextMessageId: String?
+
     public var custSpaceId: String?
 
     public var custWabaId: String?
@@ -3840,17 +3874,25 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 
     public var isvCode: String?
 
+    public var label: String?
+
     public var language: String?
 
     public var messageType: String?
 
     public var payload: [String]?
 
+    public var tag: String?
+
     public var templateCode: String?
 
     public var templateParams: [String: String]?
 
     public var to: String?
+
+    public var trackingData: String?
+
+    public var ttl: Int32?
 
     public var type: String?
 
@@ -3874,6 +3916,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.contextMessageId != nil {
+            map["ContextMessageId"] = self.contextMessageId!
+        }
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
@@ -3892,6 +3937,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -3901,6 +3949,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if self.payload != nil {
             map["Payload"] = self.payload!
         }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
         }
@@ -3909,6 +3960,12 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if self.to != nil {
             map["To"] = self.to!
+        }
+        if self.trackingData != nil {
+            map["TrackingData"] = self.trackingData!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -3922,6 +3979,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("ContextMessageId") {
+            self.contextMessageId = dict["ContextMessageId"] as! String
         }
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
@@ -3941,6 +4001,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
         }
+        if dict.keys.contains("Label") {
+            self.label = dict["Label"] as! String
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
@@ -3950,6 +4013,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if dict.keys.contains("Payload") {
             self.payload = dict["Payload"] as! [String]
         }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! String
+        }
         if dict.keys.contains("TemplateCode") {
             self.templateCode = dict["TemplateCode"] as! String
         }
@@ -3958,6 +4024,12 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("To") {
             self.to = dict["To"] as! String
+        }
+        if dict.keys.contains("TrackingData") {
+            self.trackingData = dict["TrackingData"] as! String
+        }
+        if dict.keys.contains("Ttl") {
+            self.ttl = dict["Ttl"] as! Int32
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
@@ -3970,6 +4042,8 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
 
     public var content: String?
 
+    public var contextMessageId: String?
+
     public var custSpaceId: String?
 
     public var custWabaId: String?
@@ -3982,17 +4056,25 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
 
     public var isvCode: String?
 
+    public var label: String?
+
     public var language: String?
 
     public var messageType: String?
 
     public var payloadShrink: String?
 
+    public var tag: String?
+
     public var templateCode: String?
 
     public var templateParamsShrink: String?
 
     public var to: String?
+
+    public var trackingData: String?
+
+    public var ttl: Int32?
 
     public var type: String?
 
@@ -4016,6 +4098,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.contextMessageId != nil {
+            map["ContextMessageId"] = self.contextMessageId!
+        }
         if self.custSpaceId != nil {
             map["CustSpaceId"] = self.custSpaceId!
         }
@@ -4034,6 +4119,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -4043,6 +4131,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if self.payloadShrink != nil {
             map["Payload"] = self.payloadShrink!
         }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
         }
@@ -4051,6 +4142,12 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if self.to != nil {
             map["To"] = self.to!
+        }
+        if self.trackingData != nil {
+            map["TrackingData"] = self.trackingData!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -4064,6 +4161,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("ContextMessageId") {
+            self.contextMessageId = dict["ContextMessageId"] as! String
         }
         if dict.keys.contains("CustSpaceId") {
             self.custSpaceId = dict["CustSpaceId"] as! String
@@ -4083,6 +4183,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
         }
+        if dict.keys.contains("Label") {
+            self.label = dict["Label"] as! String
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
@@ -4092,6 +4195,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Payload") {
             self.payloadShrink = dict["Payload"] as! String
         }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! String
+        }
         if dict.keys.contains("TemplateCode") {
             self.templateCode = dict["TemplateCode"] as! String
         }
@@ -4100,6 +4206,12 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("To") {
             self.to = dict["To"] as! String
+        }
+        if dict.keys.contains("TrackingData") {
+            self.trackingData = dict["TrackingData"] as! String
+        }
+        if dict.keys.contains("Ttl") {
+            self.ttl = dict["Ttl"] as! Int32
         }
         if dict.keys.contains("Type") {
             self.type = dict["Type"] as! String
