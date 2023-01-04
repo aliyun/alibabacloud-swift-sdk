@@ -2668,6 +2668,92 @@ public class DetachClusterFromHubResponse : Tea.TeaModel {
 }
 
 public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
+    public class Units : Tea.TeaModel {
+        public class VSwitches : Tea.TeaModel {
+            public var vswitchId: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vswitchId != nil {
+                    map["VswitchId"] = self.vswitchId!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("VswitchId") {
+                    self.vswitchId = dict["VswitchId"] as! String
+                }
+                if dict.keys.contains("ZoneId") {
+                    self.zoneId = dict["ZoneId"] as! String
+                }
+            }
+        }
+        public var regionId: String?
+
+        public var vSwitches: [UpdateHubClusterFeatureRequest.Units.VSwitches]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.vSwitches != nil {
+                var tmp : [Any] = []
+                for k in self.vSwitches! {
+                    tmp.append(k.toMap())
+                }
+                map["VSwitches"] = tmp
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RegionId") {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("VSwitches") {
+                self.vSwitches = dict["VSwitches"] as! [UpdateHubClusterFeatureRequest.Units.VSwitches]
+            }
+            if dict.keys.contains("VpcId") {
+                self.vpcId = dict["VpcId"] as! String
+            }
+        }
+    }
     public var apiServerEipId: String?
 
     public var auditLogEnabled: Bool?
@@ -2680,9 +2766,19 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
 
     public var enableMesh: Bool?
 
+    public var enabled: Bool?
+
     public var name: String?
 
+    public var priceLimit: String?
+
     public var publicApiServerEnabled: Bool?
+
+    public var scheduleMode: String?
+
+    public var serverEnabled: Bool?
+
+    public var units: [UpdateHubClusterFeatureRequest.Units]?
 
     public override init() {
         super.init()
@@ -2716,11 +2812,30 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if self.enableMesh != nil {
             map["EnableMesh"] = self.enableMesh!
         }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.priceLimit != nil {
+            map["PriceLimit"] = self.priceLimit!
+        }
         if self.publicApiServerEnabled != nil {
             map["PublicApiServerEnabled"] = self.publicApiServerEnabled!
+        }
+        if self.scheduleMode != nil {
+            map["ScheduleMode"] = self.scheduleMode!
+        }
+        if self.serverEnabled != nil {
+            map["ServerEnabled"] = self.serverEnabled!
+        }
+        if self.units != nil {
+            var tmp : [Any] = []
+            for k in self.units! {
+                tmp.append(k.toMap())
+            }
+            map["Units"] = tmp
         }
         return map
     }
@@ -2744,11 +2859,152 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("EnableMesh") {
             self.enableMesh = dict["EnableMesh"] as! Bool
         }
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
+        if dict.keys.contains("PriceLimit") {
+            self.priceLimit = dict["PriceLimit"] as! String
+        }
         if dict.keys.contains("PublicApiServerEnabled") {
             self.publicApiServerEnabled = dict["PublicApiServerEnabled"] as! Bool
+        }
+        if dict.keys.contains("ScheduleMode") {
+            self.scheduleMode = dict["ScheduleMode"] as! String
+        }
+        if dict.keys.contains("ServerEnabled") {
+            self.serverEnabled = dict["ServerEnabled"] as! Bool
+        }
+        if dict.keys.contains("Units") {
+            self.units = dict["Units"] as! [UpdateHubClusterFeatureRequest.Units]
+        }
+    }
+}
+
+public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
+    public var apiServerEipId: String?
+
+    public var auditLogEnabled: Bool?
+
+    public var clusterId: String?
+
+    public var deletionProtection: Bool?
+
+    public var enableArgoCD: Bool?
+
+    public var enableMesh: Bool?
+
+    public var enabled: Bool?
+
+    public var name: String?
+
+    public var priceLimit: String?
+
+    public var publicApiServerEnabled: Bool?
+
+    public var scheduleMode: String?
+
+    public var serverEnabled: Bool?
+
+    public var unitsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiServerEipId != nil {
+            map["ApiServerEipId"] = self.apiServerEipId!
+        }
+        if self.auditLogEnabled != nil {
+            map["AuditLogEnabled"] = self.auditLogEnabled!
+        }
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
+        }
+        if self.enableArgoCD != nil {
+            map["EnableArgoCD"] = self.enableArgoCD!
+        }
+        if self.enableMesh != nil {
+            map["EnableMesh"] = self.enableMesh!
+        }
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.priceLimit != nil {
+            map["PriceLimit"] = self.priceLimit!
+        }
+        if self.publicApiServerEnabled != nil {
+            map["PublicApiServerEnabled"] = self.publicApiServerEnabled!
+        }
+        if self.scheduleMode != nil {
+            map["ScheduleMode"] = self.scheduleMode!
+        }
+        if self.serverEnabled != nil {
+            map["ServerEnabled"] = self.serverEnabled!
+        }
+        if self.unitsShrink != nil {
+            map["Units"] = self.unitsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiServerEipId") {
+            self.apiServerEipId = dict["ApiServerEipId"] as! String
+        }
+        if dict.keys.contains("AuditLogEnabled") {
+            self.auditLogEnabled = dict["AuditLogEnabled"] as! Bool
+        }
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DeletionProtection") {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
+        }
+        if dict.keys.contains("EnableArgoCD") {
+            self.enableArgoCD = dict["EnableArgoCD"] as! Bool
+        }
+        if dict.keys.contains("EnableMesh") {
+            self.enableMesh = dict["EnableMesh"] as! Bool
+        }
+        if dict.keys.contains("Enabled") {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("Name") {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("PriceLimit") {
+            self.priceLimit = dict["PriceLimit"] as! String
+        }
+        if dict.keys.contains("PublicApiServerEnabled") {
+            self.publicApiServerEnabled = dict["PublicApiServerEnabled"] as! Bool
+        }
+        if dict.keys.contains("ScheduleMode") {
+            self.scheduleMode = dict["ScheduleMode"] as! String
+        }
+        if dict.keys.contains("ServerEnabled") {
+            self.serverEnabled = dict["ServerEnabled"] as! Bool
+        }
+        if dict.keys.contains("Units") {
+            self.unitsShrink = dict["Units"] as! String
         }
     }
 }

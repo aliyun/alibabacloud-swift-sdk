@@ -400,8 +400,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateHubClusterFeatureWithOptions(_ request: UpdateHubClusterFeatureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateHubClusterFeatureResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateHubClusterFeatureWithOptions(_ tmpReq: UpdateHubClusterFeatureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateHubClusterFeatureResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateHubClusterFeatureShrinkRequest = UpdateHubClusterFeatureShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.units)) {
+            request.unitsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.units, "Units", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.apiServerEipId)) {
             query["ApiServerEipId"] = request.apiServerEipId ?? "";
@@ -421,11 +426,26 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableMesh)) {
             query["EnableMesh"] = request.enableMesh!;
         }
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            query["Enabled"] = request.enabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.priceLimit)) {
+            query["PriceLimit"] = request.priceLimit ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.publicApiServerEnabled)) {
             query["PublicApiServerEnabled"] = request.publicApiServerEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleMode)) {
+            query["ScheduleMode"] = request.scheduleMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverEnabled)) {
+            query["ServerEnabled"] = request.serverEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.unitsShrink)) {
+            query["Units"] = request.unitsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
