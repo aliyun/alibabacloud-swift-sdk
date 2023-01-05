@@ -141,14 +141,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteHubClusterWithOptions(_ request: DeleteHubClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteHubClusterResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func deleteHubClusterWithOptions(_ tmpReq: DeleteHubClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteHubClusterResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteHubClusterShrinkRequest = DeleteHubClusterShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.retainResources)) {
+            request.retainResourcesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.retainResources, "RetainResources", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.force)) {
             query["Force"] = request.force!;
+        }
+        if (!TeaUtils.Client.isUnset(request.retainResourcesShrink)) {
+            query["RetainResources"] = request.retainResourcesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

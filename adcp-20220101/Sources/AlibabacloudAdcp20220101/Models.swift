@@ -346,6 +346,8 @@ public class DeleteHubClusterRequest : Tea.TeaModel {
 
     public var force: Bool?
 
+    public var retainResources: [String]?
+
     public override init() {
         super.init()
     }
@@ -366,6 +368,9 @@ public class DeleteHubClusterRequest : Tea.TeaModel {
         if self.force != nil {
             map["Force"] = self.force!
         }
+        if self.retainResources != nil {
+            map["RetainResources"] = self.retainResources!
+        }
         return map
     }
 
@@ -375,6 +380,55 @@ public class DeleteHubClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Force") {
             self.force = dict["Force"] as! Bool
+        }
+        if dict.keys.contains("RetainResources") {
+            self.retainResources = dict["RetainResources"] as! [String]
+        }
+    }
+}
+
+public class DeleteHubClusterShrinkRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var force: Bool?
+
+    public var retainResourcesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["ClusterId"] = self.clusterId!
+        }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
+        if self.retainResourcesShrink != nil {
+            map["RetainResources"] = self.retainResourcesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterId") {
+            self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("Force") {
+            self.force = dict["Force"] as! Bool
+        }
+        if dict.keys.contains("RetainResources") {
+            self.retainResourcesShrink = dict["RetainResources"] as! String
         }
     }
 }
