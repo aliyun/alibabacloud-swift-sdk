@@ -89,8 +89,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createHubClusterWithOptions(_ request: CreateHubClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHubClusterResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createHubClusterWithOptions(_ tmpReq: CreateHubClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateHubClusterResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateHubClusterShrinkRequest = CreateHubClusterShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.clusterConfiguration)) {
+            request.clusterConfigurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.clusterConfiguration, "ClusterConfiguration", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterConfigurationShrink)) {
+            query["ClusterConfiguration"] = request.clusterConfigurationShrink ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.apiServerPublicEip)) {
             body["ApiServerPublicEip"] = request.apiServerPublicEip!;
@@ -117,6 +126,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["VpcId"] = request.vpcId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
