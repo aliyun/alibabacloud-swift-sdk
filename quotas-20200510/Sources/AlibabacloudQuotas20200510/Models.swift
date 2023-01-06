@@ -266,7 +266,11 @@ public class CreateQuotaApplicationRequest : Tea.TeaModel {
 
     public var dimensions: [CreateQuotaApplicationRequest.Dimensions]?
 
+    public var effectiveTime: String?
+
     public var envLanguage: String?
+
+    public var expireTime: String?
 
     public var noticeType: Int32?
 
@@ -305,8 +309,14 @@ public class CreateQuotaApplicationRequest : Tea.TeaModel {
             }
             map["Dimensions"] = tmp
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.envLanguage != nil {
             map["EnvLanguage"] = self.envLanguage!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
         }
         if self.noticeType != nil {
             map["NoticeType"] = self.noticeType!
@@ -336,8 +346,14 @@ public class CreateQuotaApplicationRequest : Tea.TeaModel {
         if dict.keys.contains("Dimensions") {
             self.dimensions = dict["Dimensions"] as! [CreateQuotaApplicationRequest.Dimensions]
         }
+        if dict.keys.contains("EffectiveTime") {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
         if dict.keys.contains("EnvLanguage") {
             self.envLanguage = dict["EnvLanguage"] as! String
+        }
+        if dict.keys.contains("ExpireTime") {
+            self.expireTime = dict["ExpireTime"] as! String
         }
         if dict.keys.contains("NoticeType") {
             self.noticeType = dict["NoticeType"] as! Int32
@@ -617,13 +633,19 @@ public class CreateTemplateQuotaItemRequest : Tea.TeaModel {
 
     public var dimensions: [CreateTemplateQuotaItemRequest.Dimensions]?
 
+    public var effectiveTime: String?
+
     public var envLanguage: String?
+
+    public var expireTime: String?
 
     public var noticeType: Int64?
 
     public var productCode: String?
 
     public var quotaActionCode: String?
+
+    public var quotaCategory: String?
 
     public override init() {
         super.init()
@@ -649,8 +671,14 @@ public class CreateTemplateQuotaItemRequest : Tea.TeaModel {
             }
             map["Dimensions"] = tmp
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.envLanguage != nil {
             map["EnvLanguage"] = self.envLanguage!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
         }
         if self.noticeType != nil {
             map["NoticeType"] = self.noticeType!
@@ -660,6 +688,9 @@ public class CreateTemplateQuotaItemRequest : Tea.TeaModel {
         }
         if self.quotaActionCode != nil {
             map["QuotaActionCode"] = self.quotaActionCode!
+        }
+        if self.quotaCategory != nil {
+            map["QuotaCategory"] = self.quotaCategory!
         }
         return map
     }
@@ -671,8 +702,14 @@ public class CreateTemplateQuotaItemRequest : Tea.TeaModel {
         if dict.keys.contains("Dimensions") {
             self.dimensions = dict["Dimensions"] as! [CreateTemplateQuotaItemRequest.Dimensions]
         }
+        if dict.keys.contains("EffectiveTime") {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
         if dict.keys.contains("EnvLanguage") {
             self.envLanguage = dict["EnvLanguage"] as! String
+        }
+        if dict.keys.contains("ExpireTime") {
+            self.expireTime = dict["ExpireTime"] as! String
         }
         if dict.keys.contains("NoticeType") {
             self.noticeType = dict["NoticeType"] as! Int64
@@ -682,6 +719,9 @@ public class CreateTemplateQuotaItemRequest : Tea.TeaModel {
         }
         if dict.keys.contains("QuotaActionCode") {
             self.quotaActionCode = dict["QuotaActionCode"] as! String
+        }
+        if dict.keys.contains("QuotaCategory") {
+            self.quotaCategory = dict["QuotaCategory"] as! String
         }
     }
 }
@@ -1197,6 +1237,10 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
 
         public var dimensions: [String: Any]?
 
+        public var effectiveTime: String?
+
+        public var expireTime: String?
+
         public var period: GetProductQuotaResponseBody.Quota.Period?
 
         public var productCode: String?
@@ -1204,6 +1248,8 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
         public var quotaActionCode: String?
 
         public var quotaArn: String?
+
+        public var quotaCategory: String?
 
         public var quotaDescription: String?
 
@@ -1214,6 +1260,8 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
         public var quotaType: String?
 
         public var quotaUnit: String?
+
+        public var supportedRange: [Double]?
 
         public var totalQuota: Double?
 
@@ -1251,6 +1299,12 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             if self.dimensions != nil {
                 map["Dimensions"] = self.dimensions!
             }
+            if self.effectiveTime != nil {
+                map["EffectiveTime"] = self.effectiveTime!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
             if self.period != nil {
                 map["Period"] = self.period?.toMap()
             }
@@ -1262,6 +1316,9 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             }
             if self.quotaArn != nil {
                 map["QuotaArn"] = self.quotaArn!
+            }
+            if self.quotaCategory != nil {
+                map["QuotaCategory"] = self.quotaCategory!
             }
             if self.quotaDescription != nil {
                 map["QuotaDescription"] = self.quotaDescription!
@@ -1281,6 +1338,9 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             }
             if self.quotaUnit != nil {
                 map["QuotaUnit"] = self.quotaUnit!
+            }
+            if self.supportedRange != nil {
+                map["SupportedRange"] = self.supportedRange!
             }
             if self.totalQuota != nil {
                 map["TotalQuota"] = self.totalQuota!
@@ -1310,6 +1370,12 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             if dict.keys.contains("Dimensions") {
                 self.dimensions = dict["Dimensions"] as! [String: Any]
             }
+            if dict.keys.contains("EffectiveTime") {
+                self.effectiveTime = dict["EffectiveTime"] as! String
+            }
+            if dict.keys.contains("ExpireTime") {
+                self.expireTime = dict["ExpireTime"] as! String
+            }
             if dict.keys.contains("Period") {
                 var model = GetProductQuotaResponseBody.Quota.Period()
                 model.fromMap(dict["Period"] as! [String: Any])
@@ -1323,6 +1389,9 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaArn") {
                 self.quotaArn = dict["QuotaArn"] as! String
+            }
+            if dict.keys.contains("QuotaCategory") {
+                self.quotaCategory = dict["QuotaCategory"] as! String
             }
             if dict.keys.contains("QuotaDescription") {
                 self.quotaDescription = dict["QuotaDescription"] as! String
@@ -1338,6 +1407,9 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaUnit") {
                 self.quotaUnit = dict["QuotaUnit"] as! String
+            }
+            if dict.keys.contains("SupportedRange") {
+                self.supportedRange = dict["SupportedRange"] as! [Double]
             }
             if dict.keys.contains("TotalQuota") {
                 self.totalQuota = dict["TotalQuota"] as! Double
@@ -3671,6 +3743,10 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
 
         public var dimensions: [String: Any]?
 
+        public var effectiveTime: String?
+
+        public var expireTime: String?
+
         public var period: ListProductQuotasResponseBody.Quotas.Period?
 
         public var productCode: String?
@@ -3678,6 +3754,8 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
         public var quotaActionCode: String?
 
         public var quotaArn: String?
+
+        public var quotaCategory: String?
 
         public var quotaDescription: String?
 
@@ -3688,6 +3766,8 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
         public var quotaType: String?
 
         public var quotaUnit: String?
+
+        public var supportedRange: [Double]?
 
         public var totalQuota: Double?
 
@@ -3725,6 +3805,12 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             if self.dimensions != nil {
                 map["Dimensions"] = self.dimensions!
             }
+            if self.effectiveTime != nil {
+                map["EffectiveTime"] = self.effectiveTime!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
+            }
             if self.period != nil {
                 map["Period"] = self.period?.toMap()
             }
@@ -3736,6 +3822,9 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             }
             if self.quotaArn != nil {
                 map["QuotaArn"] = self.quotaArn!
+            }
+            if self.quotaCategory != nil {
+                map["QuotaCategory"] = self.quotaCategory!
             }
             if self.quotaDescription != nil {
                 map["QuotaDescription"] = self.quotaDescription!
@@ -3755,6 +3844,9 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             }
             if self.quotaUnit != nil {
                 map["QuotaUnit"] = self.quotaUnit!
+            }
+            if self.supportedRange != nil {
+                map["SupportedRange"] = self.supportedRange!
             }
             if self.totalQuota != nil {
                 map["TotalQuota"] = self.totalQuota!
@@ -3784,6 +3876,12 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             if dict.keys.contains("Dimensions") {
                 self.dimensions = dict["Dimensions"] as! [String: Any]
             }
+            if dict.keys.contains("EffectiveTime") {
+                self.effectiveTime = dict["EffectiveTime"] as! String
+            }
+            if dict.keys.contains("ExpireTime") {
+                self.expireTime = dict["ExpireTime"] as! String
+            }
             if dict.keys.contains("Period") {
                 var model = ListProductQuotasResponseBody.Quotas.Period()
                 model.fromMap(dict["Period"] as! [String: Any])
@@ -3797,6 +3895,9 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaArn") {
                 self.quotaArn = dict["QuotaArn"] as! String
+            }
+            if dict.keys.contains("QuotaCategory") {
+                self.quotaCategory = dict["QuotaCategory"] as! String
             }
             if dict.keys.contains("QuotaDescription") {
                 self.quotaDescription = dict["QuotaDescription"] as! String
@@ -3812,6 +3913,9 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaUnit") {
                 self.quotaUnit = dict["QuotaUnit"] as! String
+            }
+            if dict.keys.contains("SupportedRange") {
+                self.supportedRange = dict["SupportedRange"] as! [Double]
             }
             if dict.keys.contains("TotalQuota") {
                 self.totalQuota = dict["TotalQuota"] as! Double
@@ -3999,6 +4103,8 @@ public class ListProductsResponseBody : Tea.TeaModel {
 
         public var secondCategoryNameEn: String?
 
+        public var whiteListLabelQuotaSupport: String?
+
         public override init() {
             super.init()
         }
@@ -4040,6 +4146,9 @@ public class ListProductsResponseBody : Tea.TeaModel {
             if self.secondCategoryNameEn != nil {
                 map["SecondCategoryNameEn"] = self.secondCategoryNameEn!
             }
+            if self.whiteListLabelQuotaSupport != nil {
+                map["WhiteListLabelQuotaSupport"] = self.whiteListLabelQuotaSupport!
+            }
             return map
         }
 
@@ -4070,6 +4179,9 @@ public class ListProductsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SecondCategoryNameEn") {
                 self.secondCategoryNameEn = dict["SecondCategoryNameEn"] as! String
+            }
+            if dict.keys.contains("WhiteListLabelQuotaSupport") {
+                self.whiteListLabelQuotaSupport = dict["WhiteListLabelQuotaSupport"] as! String
             }
         }
     }
@@ -4600,6 +4712,8 @@ public class ListQuotaApplicationTemplatesRequest : Tea.TeaModel {
     }
     public var dimensions: [ListQuotaApplicationTemplatesRequest.Dimensions]?
 
+    public var id: String?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -4607,6 +4721,8 @@ public class ListQuotaApplicationTemplatesRequest : Tea.TeaModel {
     public var productCode: String?
 
     public var quotaActionCode: String?
+
+    public var quotaCategory: String?
 
     public override init() {
         super.init()
@@ -4629,6 +4745,9 @@ public class ListQuotaApplicationTemplatesRequest : Tea.TeaModel {
             }
             map["Dimensions"] = tmp
         }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
         }
@@ -4641,12 +4760,18 @@ public class ListQuotaApplicationTemplatesRequest : Tea.TeaModel {
         if self.quotaActionCode != nil {
             map["QuotaActionCode"] = self.quotaActionCode!
         }
+        if self.quotaCategory != nil {
+            map["QuotaCategory"] = self.quotaCategory!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Dimensions") {
             self.dimensions = dict["Dimensions"] as! [ListQuotaApplicationTemplatesRequest.Dimensions]
+        }
+        if dict.keys.contains("Id") {
+            self.id = dict["Id"] as! String
         }
         if dict.keys.contains("MaxResults") {
             self.maxResults = dict["MaxResults"] as! Int32
@@ -4659,6 +4784,9 @@ public class ListQuotaApplicationTemplatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("QuotaActionCode") {
             self.quotaActionCode = dict["QuotaActionCode"] as! String
+        }
+        if dict.keys.contains("QuotaCategory") {
+            self.quotaCategory = dict["QuotaCategory"] as! String
         }
     }
 }
@@ -4673,7 +4801,11 @@ public class ListQuotaApplicationTemplatesResponseBody : Tea.TeaModel {
 
         public var dimensions: [String: Any]?
 
+        public var effectiveTime: String?
+
         public var envLanguage: String?
+
+        public var expireTime: String?
 
         public var id: String?
 
@@ -4682,6 +4814,8 @@ public class ListQuotaApplicationTemplatesResponseBody : Tea.TeaModel {
         public var productCode: String?
 
         public var quotaActionCode: String?
+
+        public var quotaCategory: String?
 
         public var quotaDescription: String?
 
@@ -4713,8 +4847,14 @@ public class ListQuotaApplicationTemplatesResponseBody : Tea.TeaModel {
             if self.dimensions != nil {
                 map["Dimensions"] = self.dimensions!
             }
+            if self.effectiveTime != nil {
+                map["EffectiveTime"] = self.effectiveTime!
+            }
             if self.envLanguage != nil {
                 map["EnvLanguage"] = self.envLanguage!
+            }
+            if self.expireTime != nil {
+                map["ExpireTime"] = self.expireTime!
             }
             if self.id != nil {
                 map["Id"] = self.id!
@@ -4727,6 +4867,9 @@ public class ListQuotaApplicationTemplatesResponseBody : Tea.TeaModel {
             }
             if self.quotaActionCode != nil {
                 map["QuotaActionCode"] = self.quotaActionCode!
+            }
+            if self.quotaCategory != nil {
+                map["QuotaCategory"] = self.quotaCategory!
             }
             if self.quotaDescription != nil {
                 map["QuotaDescription"] = self.quotaDescription!
@@ -4750,8 +4893,14 @@ public class ListQuotaApplicationTemplatesResponseBody : Tea.TeaModel {
             if dict.keys.contains("Dimensions") {
                 self.dimensions = dict["Dimensions"] as! [String: Any]
             }
+            if dict.keys.contains("EffectiveTime") {
+                self.effectiveTime = dict["EffectiveTime"] as! String
+            }
             if dict.keys.contains("EnvLanguage") {
                 self.envLanguage = dict["EnvLanguage"] as! String
+            }
+            if dict.keys.contains("ExpireTime") {
+                self.expireTime = dict["ExpireTime"] as! String
             }
             if dict.keys.contains("Id") {
                 self.id = dict["Id"] as! String
@@ -4764,6 +4913,9 @@ public class ListQuotaApplicationTemplatesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaActionCode") {
                 self.quotaActionCode = dict["QuotaActionCode"] as! String
+            }
+            if dict.keys.contains("QuotaCategory") {
+                self.quotaCategory = dict["QuotaCategory"] as! String
             }
             if dict.keys.contains("QuotaDescription") {
                 self.quotaDescription = dict["QuotaDescription"] as! String
@@ -5550,7 +5702,11 @@ public class ModifyTemplateQuotaItemRequest : Tea.TeaModel {
 
     public var dimensions: [ModifyTemplateQuotaItemRequest.Dimensions]?
 
+    public var effectiveTime: String?
+
     public var envLanguage: String?
+
+    public var expireTime: String?
 
     public var id: String?
 
@@ -5559,6 +5715,8 @@ public class ModifyTemplateQuotaItemRequest : Tea.TeaModel {
     public var productCode: String?
 
     public var quotaActionCode: String?
+
+    public var quotaCategory: String?
 
     public override init() {
         super.init()
@@ -5584,8 +5742,14 @@ public class ModifyTemplateQuotaItemRequest : Tea.TeaModel {
             }
             map["Dimensions"] = tmp
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.envLanguage != nil {
             map["EnvLanguage"] = self.envLanguage!
+        }
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
         }
         if self.id != nil {
             map["Id"] = self.id!
@@ -5599,6 +5763,9 @@ public class ModifyTemplateQuotaItemRequest : Tea.TeaModel {
         if self.quotaActionCode != nil {
             map["QuotaActionCode"] = self.quotaActionCode!
         }
+        if self.quotaCategory != nil {
+            map["QuotaCategory"] = self.quotaCategory!
+        }
         return map
     }
 
@@ -5609,8 +5776,14 @@ public class ModifyTemplateQuotaItemRequest : Tea.TeaModel {
         if dict.keys.contains("Dimensions") {
             self.dimensions = dict["Dimensions"] as! [ModifyTemplateQuotaItemRequest.Dimensions]
         }
+        if dict.keys.contains("EffectiveTime") {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
         if dict.keys.contains("EnvLanguage") {
             self.envLanguage = dict["EnvLanguage"] as! String
+        }
+        if dict.keys.contains("ExpireTime") {
+            self.expireTime = dict["ExpireTime"] as! String
         }
         if dict.keys.contains("Id") {
             self.id = dict["Id"] as! String
@@ -5623,6 +5796,9 @@ public class ModifyTemplateQuotaItemRequest : Tea.TeaModel {
         }
         if dict.keys.contains("QuotaActionCode") {
             self.quotaActionCode = dict["QuotaActionCode"] as! String
+        }
+        if dict.keys.contains("QuotaCategory") {
+            self.quotaCategory = dict["QuotaCategory"] as! String
         }
     }
 }

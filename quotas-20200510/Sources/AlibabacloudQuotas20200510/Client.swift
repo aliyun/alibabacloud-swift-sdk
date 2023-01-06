@@ -88,8 +88,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dimensions)) {
             body["Dimensions"] = request.dimensions ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            body["EffectiveTime"] = request.effectiveTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.envLanguage)) {
             body["EnvLanguage"] = request.envLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            body["ExpireTime"] = request.expireTime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.noticeType)) {
             body["NoticeType"] = request.noticeType!;
@@ -140,8 +146,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dimensions)) {
             body["Dimensions"] = request.dimensions ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            body["EffectiveTime"] = request.effectiveTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.envLanguage)) {
             body["EnvLanguage"] = request.envLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            body["ExpireTime"] = request.expireTime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.noticeType)) {
             body["NoticeType"] = request.noticeType!;
@@ -151,6 +163,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.quotaActionCode)) {
             body["QuotaActionCode"] = request.quotaActionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -711,6 +726,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dimensions)) {
             body["Dimensions"] = request.dimensions ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxResults)) {
             body["MaxResults"] = request.maxResults!;
         }
@@ -719,6 +737,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.quotaActionCode)) {
             body["QuotaActionCode"] = request.quotaActionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query),
@@ -831,6 +852,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyTemplateQuotaItemWithOptions(_ request: ModifyTemplateQuotaItemRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyTemplateQuotaItemResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            query["QuotaCategory"] = request.quotaCategory ?? "";
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.desireValue)) {
             body["DesireValue"] = request.desireValue!;
@@ -838,8 +863,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dimensions)) {
             body["Dimensions"] = request.dimensions ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            body["EffectiveTime"] = request.effectiveTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.envLanguage)) {
             body["EnvLanguage"] = request.envLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            body["ExpireTime"] = request.expireTime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.id)) {
             body["Id"] = request.id ?? "";
@@ -854,6 +885,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["QuotaActionCode"] = request.quotaActionCode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
