@@ -24509,8 +24509,6 @@ public class UpdateFigureClusterShrinkRequest : Tea.TeaModel {
 }
 
 public class UpdateFigureClusterResponseBody : Tea.TeaModel {
-    public var figureCluster: FigureCluster?
-
     public var requestId: String?
 
     public override init() {
@@ -24523,14 +24521,10 @@ public class UpdateFigureClusterResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.figureCluster?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.figureCluster != nil {
-            map["FigureCluster"] = self.figureCluster?.toMap()
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -24538,11 +24532,6 @@ public class UpdateFigureClusterResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("FigureCluster") {
-            var model = FigureCluster()
-            model.fromMap(dict["FigureCluster"] as! [String: Any])
-            self.figureCluster = model
-        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
