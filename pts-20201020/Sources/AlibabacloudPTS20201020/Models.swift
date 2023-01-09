@@ -6152,6 +6152,8 @@ public class GetPtsSceneRunningDataResponseBody : Tea.TeaModel {
 
     public var totalAgents: Int32?
 
+    public var totalRealQps: Int32?
+
     public var totalRequestCount: Int64?
 
     public var tpsLimit: Int32?
@@ -6240,6 +6242,9 @@ public class GetPtsSceneRunningDataResponseBody : Tea.TeaModel {
         if self.totalAgents != nil {
             map["TotalAgents"] = self.totalAgents!
         }
+        if self.totalRealQps != nil {
+            map["TotalRealQps"] = self.totalRealQps!
+        }
         if self.totalRequestCount != nil {
             map["TotalRequestCount"] = self.totalRequestCount!
         }
@@ -6312,6 +6317,9 @@ public class GetPtsSceneRunningDataResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalAgents") {
             self.totalAgents = dict["TotalAgents"] as! Int32
+        }
+        if dict.keys.contains("TotalRealQps") {
+            self.totalRealQps = dict["TotalRealQps"] as! Int32
         }
         if dict.keys.contains("TotalRequestCount") {
             self.totalRequestCount = dict["TotalRequestCount"] as! Int64
