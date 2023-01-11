@@ -5,6 +5,142 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class CancelStackOperationRequest : Tea.TeaModel {
+    public var allowedStackOperations: [String]?
+
+    public var cancelType: String?
+
+    public var regionId: String?
+
+    public var stackId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowedStackOperations != nil {
+            map["AllowedStackOperations"] = self.allowedStackOperations!
+        }
+        if self.cancelType != nil {
+            map["CancelType"] = self.cancelType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowedStackOperations") {
+            self.allowedStackOperations = dict["AllowedStackOperations"] as! [String]
+        }
+        if dict.keys.contains("CancelType") {
+            self.cancelType = dict["CancelType"] as! String
+        }
+        if dict.keys.contains("RegionId") {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StackId") {
+            self.stackId = dict["StackId"] as! String
+        }
+    }
+}
+
+public class CancelStackOperationResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CancelStackOperationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelStackOperationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = CancelStackOperationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CancelUpdateStackRequest : Tea.TeaModel {
     public var cancelType: String?
 
@@ -4999,6 +5135,8 @@ public class GenerateTemplateByScratchResponse : Tea.TeaModel {
 }
 
 public class GenerateTemplatePolicyRequest : Tea.TeaModel {
+    public var operationTypes: [String]?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -5021,6 +5159,9 @@ public class GenerateTemplatePolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.operationTypes != nil {
+            map["OperationTypes"] = self.operationTypes!
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -5037,6 +5178,9 @@ public class GenerateTemplatePolicyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OperationTypes") {
+            self.operationTypes = dict["OperationTypes"] as! [String]
+        }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
         }
@@ -10492,6 +10636,43 @@ public class GetTemplateParameterConstraintsShrinkRequest : Tea.TeaModel {
 
 public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
     public class ParameterConstraints : Tea.TeaModel {
+        public class NotSupportResources : Tea.TeaModel {
+            public var propertyName: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.propertyName != nil {
+                    map["PropertyName"] = self.propertyName!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PropertyName") {
+                    self.propertyName = dict["PropertyName"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
         public var allowedValues: [String]?
 
         public var associationParameterNames: [String]?
@@ -10503,6 +10684,8 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
         public var illegalValueByParameterConstraints: [Any]?
 
         public var illegalValueByRules: [Any]?
+
+        public var notSupportResources: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.NotSupportResources]?
 
         public var parameterKey: String?
 
@@ -10540,6 +10723,13 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             if self.illegalValueByRules != nil {
                 map["IllegalValueByRules"] = self.illegalValueByRules!
             }
+            if self.notSupportResources != nil {
+                var tmp : [Any] = []
+                for k in self.notSupportResources! {
+                    tmp.append(k.toMap())
+                }
+                map["NotSupportResources"] = tmp
+            }
             if self.parameterKey != nil {
                 map["ParameterKey"] = self.parameterKey!
             }
@@ -10567,6 +10757,9 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IllegalValueByRules") {
                 self.illegalValueByRules = dict["IllegalValueByRules"] as! [Any]
+            }
+            if dict.keys.contains("NotSupportResources") {
+                self.notSupportResources = dict["NotSupportResources"] as! [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.NotSupportResources]
             }
             if dict.keys.contains("ParameterKey") {
                 self.parameterKey = dict["ParameterKey"] as! String

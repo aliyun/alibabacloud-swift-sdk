@@ -24,6 +24,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelStackOperationWithOptions(_ request: CancelStackOperationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelStackOperationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowedStackOperations)) {
+            query["AllowedStackOperations"] = request.allowedStackOperations ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.cancelType)) {
+            query["CancelType"] = request.cancelType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.stackId)) {
+            query["StackId"] = request.stackId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelStackOperation",
+            "version": "2019-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelStackOperationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelStackOperation(_ request: CancelStackOperationRequest) async throws -> CancelStackOperationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cancelStackOperationWithOptions(request as! CancelStackOperationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelUpdateStackWithOptions(_ request: CancelUpdateStackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelUpdateStackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1074,6 +1114,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func generateTemplatePolicyWithOptions(_ request: GenerateTemplatePolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GenerateTemplatePolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.operationTypes)) {
+            query["OperationTypes"] = request.operationTypes ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             query["TemplateBody"] = request.templateBody ?? "";
         }
