@@ -2321,7 +2321,7 @@ public class ListSourceFileResponse : Tea.TeaModel {
 }
 
 public class QueryBuildBreakpointRequest : Tea.TeaModel {
-    public var projectId: Int64?
+    public var projectId: String?
 
     public override init() {
         super.init()
@@ -2345,16 +2345,53 @@ public class QueryBuildBreakpointRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ProjectId") {
-            self.projectId = dict["ProjectId"] as! Int64
+            self.projectId = dict["ProjectId"] as! String
         }
     }
 }
 
 public class QueryBuildBreakpointResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var algorithm: String?
+        public class Breakpoints : Tea.TeaModel {
+            public var algorithm: String?
 
-        public var jobId: String?
+            public var jobId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.algorithm != nil {
+                    map["Algorithm"] = self.algorithm!
+                }
+                if self.jobId != nil {
+                    map["JobId"] = self.jobId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Algorithm") {
+                    self.algorithm = dict["Algorithm"] as! String
+                }
+                if dict.keys.contains("JobId") {
+                    self.jobId = dict["JobId"] as! String
+                }
+            }
+        }
+        public var breakpoints: [QueryBuildBreakpointResponseBody.Data.Breakpoints]?
+
+        public var projectId: String?
 
         public override init() {
             super.init()
@@ -2370,27 +2407,31 @@ public class QueryBuildBreakpointResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.algorithm != nil {
-                map["Algorithm"] = self.algorithm!
+            if self.breakpoints != nil {
+                var tmp : [Any] = []
+                for k in self.breakpoints! {
+                    tmp.append(k.toMap())
+                }
+                map["Breakpoints"] = tmp
             }
-            if self.jobId != nil {
-                map["JobId"] = self.jobId!
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("Algorithm") {
-                self.algorithm = dict["Algorithm"] as! String
+            if dict.keys.contains("Breakpoints") {
+                self.breakpoints = dict["Breakpoints"] as! [QueryBuildBreakpointResponseBody.Data.Breakpoints]
             }
-            if dict.keys.contains("JobId") {
-                self.jobId = dict["JobId"] as! String
+            if dict.keys.contains("ProjectId") {
+                self.projectId = dict["ProjectId"] as! String
             }
         }
     }
     public var code: String?
 
-    public var data: [QueryBuildBreakpointResponseBody.Data]?
+    public var data: QueryBuildBreakpointResponseBody.Data?
 
     public var errorName: String?
 
@@ -2412,6 +2453,7 @@ public class QueryBuildBreakpointResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.data?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2420,11 +2462,7 @@ public class QueryBuildBreakpointResponseBody : Tea.TeaModel {
             map["Code"] = self.code!
         }
         if self.data != nil {
-            var tmp : [Any] = []
-            for k in self.data! {
-                tmp.append(k.toMap())
-            }
-            map["Data"] = tmp
+            map["Data"] = self.data?.toMap()
         }
         if self.errorName != nil {
             map["ErrorName"] = self.errorName!
@@ -2449,7 +2487,9 @@ public class QueryBuildBreakpointResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            self.data = dict["Data"] as! [QueryBuildBreakpointResponseBody.Data]
+            var model = QueryBuildBreakpointResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
         }
         if dict.keys.contains("ErrorName") {
             self.errorName = dict["ErrorName"] as! String
