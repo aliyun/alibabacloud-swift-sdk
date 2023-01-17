@@ -3698,17 +3698,11 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.engineConcurrency)) {
-            query["EngineConcurrency"] = request.engineConcurrency!;
-        }
         if (!TeaUtils.Client.isUnset(request.projectMaxDatasetCount)) {
             query["ProjectMaxDatasetCount"] = request.projectMaxDatasetCount!;
         }
         if (!TeaUtils.Client.isUnset(request.projectName)) {
             query["ProjectName"] = request.projectName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.projectQueriesPerSecond)) {
-            query["ProjectQueriesPerSecond"] = request.projectQueriesPerSecond!;
         }
         if (!TeaUtils.Client.isUnset(request.serviceRole)) {
             query["ServiceRole"] = request.serviceRole ?? "";

@@ -22146,13 +22146,9 @@ public class UpdateProjectRequest : Tea.TeaModel {
 
     public var description_: String?
 
-    public var engineConcurrency: Int64?
-
     public var projectMaxDatasetCount: Int64?
 
     public var projectName: String?
-
-    public var projectQueriesPerSecond: Int64?
 
     public var serviceRole: String?
 
@@ -22190,17 +22186,11 @@ public class UpdateProjectRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
-        if self.engineConcurrency != nil {
-            map["EngineConcurrency"] = self.engineConcurrency!
-        }
         if self.projectMaxDatasetCount != nil {
             map["ProjectMaxDatasetCount"] = self.projectMaxDatasetCount!
         }
         if self.projectName != nil {
             map["ProjectName"] = self.projectName!
-        }
-        if self.projectQueriesPerSecond != nil {
-            map["ProjectQueriesPerSecond"] = self.projectQueriesPerSecond!
         }
         if self.serviceRole != nil {
             map["ServiceRole"] = self.serviceRole!
@@ -22230,17 +22220,11 @@ public class UpdateProjectRequest : Tea.TeaModel {
         if dict.keys.contains("Description") {
             self.description_ = dict["Description"] as! String
         }
-        if dict.keys.contains("EngineConcurrency") {
-            self.engineConcurrency = dict["EngineConcurrency"] as! Int64
-        }
         if dict.keys.contains("ProjectMaxDatasetCount") {
             self.projectMaxDatasetCount = dict["ProjectMaxDatasetCount"] as! Int64
         }
         if dict.keys.contains("ProjectName") {
             self.projectName = dict["ProjectName"] as! String
-        }
-        if dict.keys.contains("ProjectQueriesPerSecond") {
-            self.projectQueriesPerSecond = dict["ProjectQueriesPerSecond"] as! Int64
         }
         if dict.keys.contains("ServiceRole") {
             self.serviceRole = dict["ServiceRole"] as! String
