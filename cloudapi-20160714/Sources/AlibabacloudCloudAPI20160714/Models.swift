@@ -2778,6 +2778,43 @@ public class CreateDatasetItemResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var autoPay: Bool?
 
     public var chargeType: String?
@@ -2791,6 +2828,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var instanceSpec: String?
 
     public var pricingCycle: String?
+
+    public var tag: [CreateInstanceRequest.Tag]?
 
     public var token: String?
 
@@ -2831,6 +2870,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.pricingCycle != nil {
             map["PricingCycle"] = self.pricingCycle!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.token != nil {
             map["Token"] = self.token!
         }
@@ -2862,6 +2908,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("PricingCycle") {
             self.pricingCycle = dict["PricingCycle"] as! String
         }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! [CreateInstanceRequest.Tag]
+        }
         if dict.keys.contains("Token") {
             self.token = dict["Token"] as! String
         }
@@ -2875,6 +2924,8 @@ public class CreateInstanceResponseBody : Tea.TeaModel {
     public var instanceId: String?
 
     public var requestId: String?
+
+    public var tagStatus: Bool?
 
     public override init() {
         super.init()
@@ -2896,6 +2947,9 @@ public class CreateInstanceResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.tagStatus != nil {
+            map["TagStatus"] = self.tagStatus!
+        }
         return map
     }
 
@@ -2905,6 +2959,9 @@ public class CreateInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TagStatus") {
+            self.tagStatus = dict["TagStatus"] as! Bool
         }
     }
 }
@@ -16273,6 +16330,8 @@ public class DescribeApisRequest : Tea.TeaModel {
 
     public var securityToken: String?
 
+    public var stageName: String?
+
     public var tag: [DescribeApisRequest.Tag]?
 
     public var unDeployed: Bool?
@@ -16323,6 +16382,9 @@ public class DescribeApisRequest : Tea.TeaModel {
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
+        if self.stageName != nil {
+            map["StageName"] = self.stageName!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -16370,6 +16432,9 @@ public class DescribeApisRequest : Tea.TeaModel {
         if dict.keys.contains("SecurityToken") {
             self.securityToken = dict["SecurityToken"] as! String
         }
+        if dict.keys.contains("StageName") {
+            self.stageName = dict["StageName"] as! String
+        }
         if dict.keys.contains("Tag") {
             self.tag = dict["Tag"] as! [DescribeApisRequest.Tag]
         }
@@ -16385,6 +16450,84 @@ public class DescribeApisRequest : Tea.TeaModel {
 public class DescribeApisResponseBody : Tea.TeaModel {
     public class ApiSummarys : Tea.TeaModel {
         public class ApiSummary : Tea.TeaModel {
+            public class DeployedInfos : Tea.TeaModel {
+                public class DeployedInfo : Tea.TeaModel {
+                    public var deployedStatus: String?
+
+                    public var effectiveVersion: String?
+
+                    public var stageName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.deployedStatus != nil {
+                            map["DeployedStatus"] = self.deployedStatus!
+                        }
+                        if self.effectiveVersion != nil {
+                            map["EffectiveVersion"] = self.effectiveVersion!
+                        }
+                        if self.stageName != nil {
+                            map["StageName"] = self.stageName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("DeployedStatus") {
+                            self.deployedStatus = dict["DeployedStatus"] as! String
+                        }
+                        if dict.keys.contains("EffectiveVersion") {
+                            self.effectiveVersion = dict["EffectiveVersion"] as! String
+                        }
+                        if dict.keys.contains("StageName") {
+                            self.stageName = dict["StageName"] as! String
+                        }
+                    }
+                }
+                public var deployedInfo: [DescribeApisResponseBody.ApiSummarys.ApiSummary.DeployedInfos.DeployedInfo]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.deployedInfo != nil {
+                        var tmp : [Any] = []
+                        for k in self.deployedInfo! {
+                            tmp.append(k.toMap())
+                        }
+                        map["DeployedInfo"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DeployedInfo") {
+                        self.deployedInfo = dict["DeployedInfo"] as! [DescribeApisResponseBody.ApiSummarys.ApiSummary.DeployedInfos.DeployedInfo]
+                    }
+                }
+            }
             public var apiId: String?
 
             public var apiMethod: String?
@@ -16394,6 +16537,8 @@ public class DescribeApisResponseBody : Tea.TeaModel {
             public var apiPath: String?
 
             public var createdTime: String?
+
+            public var deployedInfos: DescribeApisResponseBody.ApiSummarys.ApiSummary.DeployedInfos?
 
             public var description_: String?
 
@@ -16417,6 +16562,7 @@ public class DescribeApisResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.deployedInfos?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -16435,6 +16581,9 @@ public class DescribeApisResponseBody : Tea.TeaModel {
                 }
                 if self.createdTime != nil {
                     map["CreatedTime"] = self.createdTime!
+                }
+                if self.deployedInfos != nil {
+                    map["DeployedInfos"] = self.deployedInfos?.toMap()
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
@@ -16472,6 +16621,11 @@ public class DescribeApisResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreatedTime") {
                     self.createdTime = dict["CreatedTime"] as! String
+                }
+                if dict.keys.contains("DeployedInfos") {
+                    var model = DescribeApisResponseBody.ApiSummarys.ApiSummary.DeployedInfos()
+                    model.fromMap(dict["DeployedInfos"] as! [String: Any])
+                    self.deployedInfos = model
                 }
                 if dict.keys.contains("Description") {
                     self.description_ = dict["Description"] as! String
@@ -24657,6 +24811,368 @@ public class DescribeHistoryApisResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribeHistoryApisResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeImportOASTaskRequest : Tea.TeaModel {
+    public var operationId: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.operationId != nil {
+            map["OperationId"] = self.operationId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OperationId") {
+            self.operationId = dict["OperationId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class DescribeImportOASTaskResponseBody : Tea.TeaModel {
+    public class ApiResults : Tea.TeaModel {
+        public class ApiResult : Tea.TeaModel {
+            public var apiId: String?
+
+            public var apiName: String?
+
+            public var description_: String?
+
+            public var errorMessage: String?
+
+            public var groupId: String?
+
+            public var method: String?
+
+            public var path: String?
+
+            public var updateStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.apiId != nil {
+                    map["ApiId"] = self.apiId!
+                }
+                if self.apiName != nil {
+                    map["ApiName"] = self.apiName!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.method != nil {
+                    map["Method"] = self.method!
+                }
+                if self.path != nil {
+                    map["Path"] = self.path!
+                }
+                if self.updateStatus != nil {
+                    map["UpdateStatus"] = self.updateStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ApiId") {
+                    self.apiId = dict["ApiId"] as! String
+                }
+                if dict.keys.contains("ApiName") {
+                    self.apiName = dict["ApiName"] as! String
+                }
+                if dict.keys.contains("Description") {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("GroupId") {
+                    self.groupId = dict["GroupId"] as! String
+                }
+                if dict.keys.contains("Method") {
+                    self.method = dict["Method"] as! String
+                }
+                if dict.keys.contains("Path") {
+                    self.path = dict["Path"] as! String
+                }
+                if dict.keys.contains("UpdateStatus") {
+                    self.updateStatus = dict["UpdateStatus"] as! String
+                }
+            }
+        }
+        public var apiResult: [DescribeImportOASTaskResponseBody.ApiResults.ApiResult]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.apiResult != nil {
+                var tmp : [Any] = []
+                for k in self.apiResult! {
+                    tmp.append(k.toMap())
+                }
+                map["ApiResult"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApiResult") {
+                self.apiResult = dict["ApiResult"] as! [DescribeImportOASTaskResponseBody.ApiResults.ApiResult]
+            }
+        }
+    }
+    public class ModelResults : Tea.TeaModel {
+        public class ModelResult : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var groupId: String?
+
+            public var modelId: String?
+
+            public var modelName: String?
+
+            public var updateStatus: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.modelId != nil {
+                    map["ModelId"] = self.modelId!
+                }
+                if self.modelName != nil {
+                    map["ModelName"] = self.modelName!
+                }
+                if self.updateStatus != nil {
+                    map["UpdateStatus"] = self.updateStatus!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("GroupId") {
+                    self.groupId = dict["GroupId"] as! String
+                }
+                if dict.keys.contains("ModelId") {
+                    self.modelId = dict["ModelId"] as! String
+                }
+                if dict.keys.contains("ModelName") {
+                    self.modelName = dict["ModelName"] as! String
+                }
+                if dict.keys.contains("UpdateStatus") {
+                    self.updateStatus = dict["UpdateStatus"] as! String
+                }
+            }
+        }
+        public var modelResult: [DescribeImportOASTaskResponseBody.ModelResults.ModelResult]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.modelResult != nil {
+                var tmp : [Any] = []
+                for k in self.modelResult! {
+                    tmp.append(k.toMap())
+                }
+                map["ModelResult"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ModelResult") {
+                self.modelResult = dict["ModelResult"] as! [DescribeImportOASTaskResponseBody.ModelResults.ModelResult]
+            }
+        }
+    }
+    public var apiResults: DescribeImportOASTaskResponseBody.ApiResults?
+
+    public var modelResults: DescribeImportOASTaskResponseBody.ModelResults?
+
+    public var requestId: String?
+
+    public var taskStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.apiResults?.validate()
+        try self.modelResults?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.apiResults != nil {
+            map["ApiResults"] = self.apiResults?.toMap()
+        }
+        if self.modelResults != nil {
+            map["ModelResults"] = self.modelResults?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskStatus != nil {
+            map["TaskStatus"] = self.taskStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApiResults") {
+            var model = DescribeImportOASTaskResponseBody.ApiResults()
+            model.fromMap(dict["ApiResults"] as! [String: Any])
+            self.apiResults = model
+        }
+        if dict.keys.contains("ModelResults") {
+            var model = DescribeImportOASTaskResponseBody.ModelResults()
+            model.fromMap(dict["ModelResults"] as! [String: Any])
+            self.modelResults = model
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskStatus") {
+            self.taskStatus = dict["TaskStatus"] as! String
+        }
+    }
+}
+
+public class DescribeImportOASTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeImportOASTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeImportOASTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
