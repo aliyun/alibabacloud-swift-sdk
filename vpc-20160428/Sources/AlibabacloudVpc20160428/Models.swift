@@ -69341,6 +69341,8 @@ public class ModifyBgpGroupAttributeRequest : Tea.TeaModel {
 
     public var isFakeAsn: Bool?
 
+    public var localAsn: Int64?
+
     public var name: String?
 
     public var ownerAccount: String?
@@ -69354,6 +69356,8 @@ public class ModifyBgpGroupAttributeRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var routeQuota: Int32?
 
     public override init() {
         super.init()
@@ -69387,6 +69391,9 @@ public class ModifyBgpGroupAttributeRequest : Tea.TeaModel {
         if self.isFakeAsn != nil {
             map["IsFakeAsn"] = self.isFakeAsn!
         }
+        if self.localAsn != nil {
+            map["LocalAsn"] = self.localAsn!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -69407,6 +69414,9 @@ public class ModifyBgpGroupAttributeRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.routeQuota != nil {
+            map["RouteQuota"] = self.routeQuota!
         }
         return map
     }
@@ -69430,6 +69440,9 @@ public class ModifyBgpGroupAttributeRequest : Tea.TeaModel {
         if dict.keys.contains("IsFakeAsn") {
             self.isFakeAsn = dict["IsFakeAsn"] as! Bool
         }
+        if dict.keys.contains("LocalAsn") {
+            self.localAsn = dict["LocalAsn"] as! Int64
+        }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
         }
@@ -69450,6 +69463,9 @@ public class ModifyBgpGroupAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RouteQuota") {
+            self.routeQuota = dict["RouteQuota"] as! Int32
         }
     }
 }
