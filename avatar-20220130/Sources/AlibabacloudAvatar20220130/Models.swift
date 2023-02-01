@@ -3674,6 +3674,8 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
     public class AvatarInfo : Tea.TeaModel {
         public var angle: Int32?
 
+        public var code: String?
+
         public var locate: Int32?
 
         public override init() {
@@ -3693,6 +3695,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.angle != nil {
                 map["Angle"] = self.angle!
             }
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
             if self.locate != nil {
                 map["Locate"] = self.locate!
             }
@@ -3702,6 +3707,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Angle") {
                 self.angle = dict["Angle"] as! Int32
+            }
+            if dict.keys.contains("Code") {
+                self.code = dict["Code"] as! String
             }
             if dict.keys.contains("Locate") {
                 self.locate = dict["Locate"] as! Int32
