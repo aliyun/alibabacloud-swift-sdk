@@ -624,6 +624,10 @@ public class AddNodesRequest : Tea.TeaModel {
 
     public var computeEnableHt: Bool?
 
+    public var computeSpotDuration: Int32?
+
+    public var computeSpotInterruptionBehavior: String?
+
     public var computeSpotPriceLimit: String?
 
     public var computeSpotStrategy: String?
@@ -703,6 +707,12 @@ public class AddNodesRequest : Tea.TeaModel {
         }
         if self.computeEnableHt != nil {
             map["ComputeEnableHt"] = self.computeEnableHt!
+        }
+        if self.computeSpotDuration != nil {
+            map["ComputeSpotDuration"] = self.computeSpotDuration!
+        }
+        if self.computeSpotInterruptionBehavior != nil {
+            map["ComputeSpotInterruptionBehavior"] = self.computeSpotInterruptionBehavior!
         }
         if self.computeSpotPriceLimit != nil {
             map["ComputeSpotPriceLimit"] = self.computeSpotPriceLimit!
@@ -801,6 +811,12 @@ public class AddNodesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ComputeEnableHt") {
             self.computeEnableHt = dict["ComputeEnableHt"] as! Bool
+        }
+        if dict.keys.contains("ComputeSpotDuration") {
+            self.computeSpotDuration = dict["ComputeSpotDuration"] as! Int32
+        }
+        if dict.keys.contains("ComputeSpotInterruptionBehavior") {
+            self.computeSpotInterruptionBehavior = dict["ComputeSpotInterruptionBehavior"] as! String
         }
         if dict.keys.contains("ComputeSpotPriceLimit") {
             self.computeSpotPriceLimit = dict["ComputeSpotPriceLimit"] as! String
@@ -1301,6 +1317,8 @@ public class AddUsersRequest : Tea.TeaModel {
             }
         }
     }
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var user: [AddUsersRequest.User]?
@@ -1319,6 +1337,9 @@ public class AddUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -1333,6 +1354,9 @@ public class AddUsersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -4217,6 +4241,8 @@ public class CreateHybridClusterResponse : Tea.TeaModel {
 }
 
 public class CreateJobFileRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var content: String?
@@ -4241,6 +4267,9 @@ public class CreateJobFileRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -4260,6 +4289,9 @@ public class CreateJobFileRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -5378,6 +5410,8 @@ public class DeleteJobTemplatesResponse : Tea.TeaModel {
 }
 
 public class DeleteJobsRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var jobs: String?
@@ -5396,6 +5430,9 @@ public class DeleteJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -5406,6 +5443,9 @@ public class DeleteJobsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -6072,6 +6112,8 @@ public class DeleteUsersRequest : Tea.TeaModel {
             }
         }
     }
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var user: [DeleteUsersRequest.User]?
@@ -6090,6 +6132,9 @@ public class DeleteUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -6104,6 +6149,9 @@ public class DeleteUsersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -6938,6 +6986,10 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
         public var postInstallScripts: DescribeClusterResponseBody.ClusterInfo.PostInstallScripts?
 
+        public var ramNodeTypes: String?
+
+        public var ramRoleName: String?
+
         public var regionId: String?
 
         public var remoteDirectory: String?
@@ -7039,6 +7091,12 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
             }
             if self.postInstallScripts != nil {
                 map["PostInstallScripts"] = self.postInstallScripts?.toMap()
+            }
+            if self.ramNodeTypes != nil {
+                map["RamNodeTypes"] = self.ramNodeTypes!
+            }
+            if self.ramRoleName != nil {
+                map["RamRoleName"] = self.ramRoleName!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -7147,6 +7205,12 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
                 var model = DescribeClusterResponseBody.ClusterInfo.PostInstallScripts()
                 model.fromMap(dict["PostInstallScripts"] as! [String: Any])
                 self.postInstallScripts = model
+            }
+            if dict.keys.contains("RamNodeTypes") {
+                self.ramNodeTypes = dict["RamNodeTypes"] as! String
+            }
+            if dict.keys.contains("RamRoleName") {
+                self.ramRoleName = dict["RamRoleName"] as! String
             }
             if dict.keys.contains("RegionId") {
                 self.regionId = dict["RegionId"] as! String
@@ -9517,6 +9581,8 @@ public class DescribeImagePriceResponse : Tea.TeaModel {
 }
 
 public class DescribeJobRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var jobId: String?
@@ -9535,6 +9601,9 @@ public class DescribeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -9545,6 +9614,9 @@ public class DescribeJobRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -10948,6 +11020,10 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
 
                     public var instanceType: String?
 
+                    public var spotDuration: Int32?
+
+                    public var spotInterruptionBehavior: String?
+
                     public var spotPriceLimit: Double?
 
                     public var spotStrategy: String?
@@ -10976,6 +11052,12 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
                         if self.instanceType != nil {
                             map["InstanceType"] = self.instanceType!
                         }
+                        if self.spotDuration != nil {
+                            map["SpotDuration"] = self.spotDuration!
+                        }
+                        if self.spotInterruptionBehavior != nil {
+                            map["SpotInterruptionBehavior"] = self.spotInterruptionBehavior!
+                        }
                         if self.spotPriceLimit != nil {
                             map["SpotPriceLimit"] = self.spotPriceLimit!
                         }
@@ -10997,6 +11079,12 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("InstanceType") {
                             self.instanceType = dict["InstanceType"] as! String
+                        }
+                        if dict.keys.contains("SpotDuration") {
+                            self.spotDuration = dict["SpotDuration"] as! Int32
+                        }
+                        if dict.keys.contains("SpotInterruptionBehavior") {
+                            self.spotInterruptionBehavior = dict["SpotInterruptionBehavior"] as! String
                         }
                         if dict.keys.contains("SpotPriceLimit") {
                             self.spotPriceLimit = dict["SpotPriceLimit"] as! Double
@@ -25674,6 +25762,10 @@ public class ModifyClusterAttributesRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var ramNodeTypes: [String]?
+
+    public var ramRoleName: String?
+
     public override init() {
         super.init()
     }
@@ -25703,6 +25795,12 @@ public class ModifyClusterAttributesRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.ramNodeTypes != nil {
+            map["RamNodeTypes"] = self.ramNodeTypes!
+        }
+        if self.ramRoleName != nil {
+            map["RamRoleName"] = self.ramRoleName!
+        }
         return map
     }
 
@@ -25721,6 +25819,12 @@ public class ModifyClusterAttributesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("RamNodeTypes") {
+            self.ramNodeTypes = dict["RamNodeTypes"] as! [String]
+        }
+        if dict.keys.contains("RamRoleName") {
+            self.ramRoleName = dict["RamRoleName"] as! String
         }
     }
 }
@@ -26190,6 +26294,8 @@ public class ModifyUserGroupsRequest : Tea.TeaModel {
             }
         }
     }
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var user: [ModifyUserGroupsRequest.User]?
@@ -26208,6 +26314,9 @@ public class ModifyUserGroupsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -26222,6 +26331,9 @@ public class ModifyUserGroupsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -26351,6 +26463,8 @@ public class ModifyUserPasswordsRequest : Tea.TeaModel {
             }
         }
     }
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var user: [ModifyUserPasswordsRequest.User]?
@@ -26369,6 +26483,9 @@ public class ModifyUserPasswordsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -26383,6 +26500,9 @@ public class ModifyUserPasswordsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -27310,6 +27430,8 @@ public class RecoverClusterResponse : Tea.TeaModel {
 }
 
 public class RerunJobsRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var jobs: String?
@@ -27328,6 +27450,9 @@ public class RerunJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -27338,6 +27463,9 @@ public class RerunJobsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -27816,6 +27944,10 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
         public class InstanceTypes : Tea.TeaModel {
             public var instanceType: String?
 
+            public var spotDuration: Int32?
+
+            public var spotInterruptionBehavior: String?
+
             public var spotPriceLimit: Double?
 
             public var spotStrategy: String?
@@ -27841,6 +27973,12 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
                 if self.instanceType != nil {
                     map["InstanceType"] = self.instanceType!
                 }
+                if self.spotDuration != nil {
+                    map["SpotDuration"] = self.spotDuration!
+                }
+                if self.spotInterruptionBehavior != nil {
+                    map["SpotInterruptionBehavior"] = self.spotInterruptionBehavior!
+                }
                 if self.spotPriceLimit != nil {
                     map["SpotPriceLimit"] = self.spotPriceLimit!
                 }
@@ -27859,6 +27997,12 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("InstanceType") {
                     self.instanceType = dict["InstanceType"] as! String
+                }
+                if dict.keys.contains("SpotDuration") {
+                    self.spotDuration = dict["SpotDuration"] as! Int32
+                }
+                if dict.keys.contains("SpotInterruptionBehavior") {
+                    self.spotInterruptionBehavior = dict["SpotInterruptionBehavior"] as! String
                 }
                 if dict.keys.contains("SpotPriceLimit") {
                     self.spotPriceLimit = dict["SpotPriceLimit"] as! Double
@@ -30194,6 +30338,8 @@ public class StopGWSInstanceResponse : Tea.TeaModel {
 }
 
 public class StopJobsRequest : Tea.TeaModel {
+    public var async: Bool?
+
     public var clusterId: String?
 
     public var jobs: String?
@@ -30212,6 +30358,9 @@ public class StopJobsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -30222,6 +30371,9 @@ public class StopJobsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClusterId") {
             self.clusterId = dict["ClusterId"] as! String
         }
@@ -30621,6 +30773,8 @@ public class StopVisualServiceResponse : Tea.TeaModel {
 public class SubmitJobRequest : Tea.TeaModel {
     public var arrayRequest: String?
 
+    public var async: Bool?
+
     public var clockTime: String?
 
     public var clusterId: String?
@@ -30628,6 +30782,8 @@ public class SubmitJobRequest : Tea.TeaModel {
     public var commandLine: String?
 
     public var containerId: String?
+
+    public var cpu: Int32?
 
     public var gpu: Int32?
 
@@ -30682,6 +30838,9 @@ public class SubmitJobRequest : Tea.TeaModel {
         if self.arrayRequest != nil {
             map["ArrayRequest"] = self.arrayRequest!
         }
+        if self.async != nil {
+            map["Async"] = self.async!
+        }
         if self.clockTime != nil {
             map["ClockTime"] = self.clockTime!
         }
@@ -30693,6 +30852,9 @@ public class SubmitJobRequest : Tea.TeaModel {
         }
         if self.containerId != nil {
             map["ContainerId"] = self.containerId!
+        }
+        if self.cpu != nil {
+            map["Cpu"] = self.cpu!
         }
         if self.gpu != nil {
             map["Gpu"] = self.gpu!
@@ -30755,6 +30917,9 @@ public class SubmitJobRequest : Tea.TeaModel {
         if dict.keys.contains("ArrayRequest") {
             self.arrayRequest = dict["ArrayRequest"] as! String
         }
+        if dict.keys.contains("Async") {
+            self.async = dict["Async"] as! Bool
+        }
         if dict.keys.contains("ClockTime") {
             self.clockTime = dict["ClockTime"] as! String
         }
@@ -30766,6 +30931,9 @@ public class SubmitJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ContainerId") {
             self.containerId = dict["ContainerId"] as! String
+        }
+        if dict.keys.contains("Cpu") {
+            self.cpu = dict["Cpu"] as! Int32
         }
         if dict.keys.contains("Gpu") {
             self.gpu = dict["Gpu"] as! Int32
