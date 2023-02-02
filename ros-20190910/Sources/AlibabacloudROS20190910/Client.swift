@@ -3044,6 +3044,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.disableRollback)) {
             query["DisableRollback"] = request.disableRollback!;
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.parallelism)) {
             query["Parallelism"] = request.parallelism!;
         }

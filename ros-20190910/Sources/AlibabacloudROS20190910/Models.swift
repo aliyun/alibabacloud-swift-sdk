@@ -5878,6 +5878,76 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class TemplateParameterConstraints : Tea.TeaModel {
+        public class SupportedResourceTypes : Tea.TeaModel {
+            public var properties: [String]?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.properties != nil {
+                    map["Properties"] = self.properties!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Properties") {
+                    self.properties = dict["Properties"] as! [String]
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
+        public var supportedResourceTypes: [GetFeatureDetailsResponseBody.TemplateParameterConstraints.SupportedResourceTypes]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.supportedResourceTypes != nil {
+                var tmp : [Any] = []
+                for k in self.supportedResourceTypes! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportedResourceTypes"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SupportedResourceTypes") {
+                self.supportedResourceTypes = dict["SupportedResourceTypes"] as! [GetFeatureDetailsResponseBody.TemplateParameterConstraints.SupportedResourceTypes]
+            }
+        }
+    }
     public class TemplateScratch : Tea.TeaModel {
         public class SupportedResourceTypes : Tea.TeaModel {
             public var resourceType: String?
@@ -6207,6 +6277,8 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
 
     public var resourceCleaner: GetFeatureDetailsResponseBody.ResourceCleaner?
 
+    public var templateParameterConstraints: GetFeatureDetailsResponseBody.TemplateParameterConstraints?
+
     public var templateScratch: GetFeatureDetailsResponseBody.TemplateScratch?
 
     public var terraform: GetFeatureDetailsResponseBody.Terraform?
@@ -6222,6 +6294,7 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.resourceCleaner?.validate()
+        try self.templateParameterConstraints?.validate()
         try self.templateScratch?.validate()
         try self.terraform?.validate()
     }
@@ -6233,6 +6306,9 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
         }
         if self.resourceCleaner != nil {
             map["ResourceCleaner"] = self.resourceCleaner?.toMap()
+        }
+        if self.templateParameterConstraints != nil {
+            map["TemplateParameterConstraints"] = self.templateParameterConstraints?.toMap()
         }
         if self.templateScratch != nil {
             map["TemplateScratch"] = self.templateScratch?.toMap()
@@ -6251,6 +6327,11 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
             var model = GetFeatureDetailsResponseBody.ResourceCleaner()
             model.fromMap(dict["ResourceCleaner"] as! [String: Any])
             self.resourceCleaner = model
+        }
+        if dict.keys.contains("TemplateParameterConstraints") {
+            var model = GetFeatureDetailsResponseBody.TemplateParameterConstraints()
+            model.fromMap(dict["TemplateParameterConstraints"] as! [String: Any])
+            self.templateParameterConstraints = model
         }
         if dict.keys.contains("TemplateScratch") {
             var model = GetFeatureDetailsResponseBody.TemplateScratch()
@@ -10673,6 +10754,51 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class QueryErrors : Tea.TeaModel {
+            public var errorMessage: String?
+
+            public var resourceName: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
+                if self.resourceName != nil {
+                    map["ResourceName"] = self.resourceName!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorMessage") {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
+                if dict.keys.contains("ResourceName") {
+                    self.resourceName = dict["ResourceName"] as! String
+                }
+                if dict.keys.contains("ResourceType") {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
         public var allowedValues: [String]?
 
         public var associationParameterNames: [String]?
@@ -10688,6 +10814,8 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
         public var notSupportResources: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.NotSupportResources]?
 
         public var parameterKey: String?
+
+        public var queryErrors: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryErrors]?
 
         public var type: String?
 
@@ -10733,6 +10861,13 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             if self.parameterKey != nil {
                 map["ParameterKey"] = self.parameterKey!
             }
+            if self.queryErrors != nil {
+                var tmp : [Any] = []
+                for k in self.queryErrors! {
+                    tmp.append(k.toMap())
+                }
+                map["QueryErrors"] = tmp
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -10763,6 +10898,9 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ParameterKey") {
                 self.parameterKey = dict["ParameterKey"] as! String
+            }
+            if dict.keys.contains("QueryErrors") {
+                self.queryErrors = dict["QueryErrors"] as! [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryErrors]
             }
             if dict.keys.contains("Type") {
                 self.type = dict["Type"] as! String
@@ -18593,6 +18731,8 @@ public class UpdateStackRequest : Tea.TeaModel {
 
     public var disableRollback: Bool?
 
+    public var dryRun: Bool?
+
     public var parallelism: Int64?
 
     public var parameters: [UpdateStackRequest.Parameters]?
@@ -18648,6 +18788,9 @@ public class UpdateStackRequest : Tea.TeaModel {
         }
         if self.disableRollback != nil {
             map["DisableRollback"] = self.disableRollback!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
         }
         if self.parallelism != nil {
             map["Parallelism"] = self.parallelism!
@@ -18721,6 +18864,9 @@ public class UpdateStackRequest : Tea.TeaModel {
         if dict.keys.contains("DisableRollback") {
             self.disableRollback = dict["DisableRollback"] as! Bool
         }
+        if dict.keys.contains("DryRun") {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("Parallelism") {
             self.parallelism = dict["Parallelism"] as! Int64
         }
@@ -18779,6 +18925,85 @@ public class UpdateStackRequest : Tea.TeaModel {
 }
 
 public class UpdateStackResponseBody : Tea.TeaModel {
+    public class DryRunResult : Tea.TeaModel {
+        public var parametersAllowedToBeModified: [String]?
+
+        public var parametersCauseInterruptionIfModified: [String]?
+
+        public var parametersConditionallyAllowedToBeModified: [String]?
+
+        public var parametersConditionallyCauseInterruptionIfModified: [String]?
+
+        public var parametersNotAllowedToBeModified: [String]?
+
+        public var parametersUncertainlyAllowedToBeModified: [String]?
+
+        public var parametersUncertainlyCauseInterruptionIfModified: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parametersAllowedToBeModified != nil {
+                map["ParametersAllowedToBeModified"] = self.parametersAllowedToBeModified!
+            }
+            if self.parametersCauseInterruptionIfModified != nil {
+                map["ParametersCauseInterruptionIfModified"] = self.parametersCauseInterruptionIfModified!
+            }
+            if self.parametersConditionallyAllowedToBeModified != nil {
+                map["ParametersConditionallyAllowedToBeModified"] = self.parametersConditionallyAllowedToBeModified!
+            }
+            if self.parametersConditionallyCauseInterruptionIfModified != nil {
+                map["ParametersConditionallyCauseInterruptionIfModified"] = self.parametersConditionallyCauseInterruptionIfModified!
+            }
+            if self.parametersNotAllowedToBeModified != nil {
+                map["ParametersNotAllowedToBeModified"] = self.parametersNotAllowedToBeModified!
+            }
+            if self.parametersUncertainlyAllowedToBeModified != nil {
+                map["ParametersUncertainlyAllowedToBeModified"] = self.parametersUncertainlyAllowedToBeModified!
+            }
+            if self.parametersUncertainlyCauseInterruptionIfModified != nil {
+                map["ParametersUncertainlyCauseInterruptionIfModified"] = self.parametersUncertainlyCauseInterruptionIfModified!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ParametersAllowedToBeModified") {
+                self.parametersAllowedToBeModified = dict["ParametersAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersCauseInterruptionIfModified") {
+                self.parametersCauseInterruptionIfModified = dict["ParametersCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyAllowedToBeModified") {
+                self.parametersConditionallyAllowedToBeModified = dict["ParametersConditionallyAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyCauseInterruptionIfModified") {
+                self.parametersConditionallyCauseInterruptionIfModified = dict["ParametersConditionallyCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersNotAllowedToBeModified") {
+                self.parametersNotAllowedToBeModified = dict["ParametersNotAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersUncertainlyAllowedToBeModified") {
+                self.parametersUncertainlyAllowedToBeModified = dict["ParametersUncertainlyAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersUncertainlyCauseInterruptionIfModified") {
+                self.parametersUncertainlyCauseInterruptionIfModified = dict["ParametersUncertainlyCauseInterruptionIfModified"] as! [String]
+            }
+        }
+    }
+    public var dryRunResult: UpdateStackResponseBody.DryRunResult?
+
     public var requestId: String?
 
     public var stackId: String?
@@ -18793,10 +19018,14 @@ public class UpdateStackResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.dryRunResult?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRunResult != nil {
+            map["DryRunResult"] = self.dryRunResult?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -18807,6 +19036,11 @@ public class UpdateStackResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRunResult") {
+            var model = UpdateStackResponseBody.DryRunResult()
+            model.fromMap(dict["DryRunResult"] as! [String: Any])
+            self.dryRunResult = model
+        }
         if dict.keys.contains("RequestId") {
             self.requestId = dict["RequestId"] as! String
         }
@@ -20834,6 +21068,83 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class UpdateInfo : Tea.TeaModel {
+        public var parametersAllowedToBeModified: [String]?
+
+        public var parametersCauseInterruptionIfModified: [String]?
+
+        public var parametersConditionallyAllowedToBeModified: [String]?
+
+        public var parametersConditionallyCauseInterruptionIfModified: [String]?
+
+        public var parametersNotAllowedToBeModified: [String]?
+
+        public var parametersUncertainlyAllowedToBeModified: [String]?
+
+        public var parametersUncertainlyCauseInterruptionIfModified: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.parametersAllowedToBeModified != nil {
+                map["ParametersAllowedToBeModified"] = self.parametersAllowedToBeModified!
+            }
+            if self.parametersCauseInterruptionIfModified != nil {
+                map["ParametersCauseInterruptionIfModified"] = self.parametersCauseInterruptionIfModified!
+            }
+            if self.parametersConditionallyAllowedToBeModified != nil {
+                map["ParametersConditionallyAllowedToBeModified"] = self.parametersConditionallyAllowedToBeModified!
+            }
+            if self.parametersConditionallyCauseInterruptionIfModified != nil {
+                map["ParametersConditionallyCauseInterruptionIfModified"] = self.parametersConditionallyCauseInterruptionIfModified!
+            }
+            if self.parametersNotAllowedToBeModified != nil {
+                map["ParametersNotAllowedToBeModified"] = self.parametersNotAllowedToBeModified!
+            }
+            if self.parametersUncertainlyAllowedToBeModified != nil {
+                map["ParametersUncertainlyAllowedToBeModified"] = self.parametersUncertainlyAllowedToBeModified!
+            }
+            if self.parametersUncertainlyCauseInterruptionIfModified != nil {
+                map["ParametersUncertainlyCauseInterruptionIfModified"] = self.parametersUncertainlyCauseInterruptionIfModified!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ParametersAllowedToBeModified") {
+                self.parametersAllowedToBeModified = dict["ParametersAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersCauseInterruptionIfModified") {
+                self.parametersCauseInterruptionIfModified = dict["ParametersCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyAllowedToBeModified") {
+                self.parametersConditionallyAllowedToBeModified = dict["ParametersConditionallyAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyCauseInterruptionIfModified") {
+                self.parametersConditionallyCauseInterruptionIfModified = dict["ParametersConditionallyCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersNotAllowedToBeModified") {
+                self.parametersNotAllowedToBeModified = dict["ParametersNotAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersUncertainlyAllowedToBeModified") {
+                self.parametersUncertainlyAllowedToBeModified = dict["ParametersUncertainlyAllowedToBeModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersUncertainlyCauseInterruptionIfModified") {
+                self.parametersUncertainlyCauseInterruptionIfModified = dict["ParametersUncertainlyCauseInterruptionIfModified"] as! [String]
+            }
+        }
+    }
     public var description_: String?
 
     public var outputs: [ValidateTemplateResponseBody.Outputs]?
@@ -20846,6 +21157,8 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
 
     public var resources: [ValidateTemplateResponseBody.Resources]?
 
+    public var updateInfo: ValidateTemplateResponseBody.UpdateInfo?
+
     public override init() {
         super.init()
     }
@@ -20857,6 +21170,7 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.resourceTypes?.validate()
+        try self.updateInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -20887,6 +21201,9 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             }
             map["Resources"] = tmp
         }
+        if self.updateInfo != nil {
+            map["UpdateInfo"] = self.updateInfo?.toMap()
+        }
         return map
     }
 
@@ -20910,6 +21227,11 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Resources") {
             self.resources = dict["Resources"] as! [ValidateTemplateResponseBody.Resources]
+        }
+        if dict.keys.contains("UpdateInfo") {
+            var model = ValidateTemplateResponseBody.UpdateInfo()
+            model.fromMap(dict["UpdateInfo"] as! [String: Any])
+            self.updateInfo = model
         }
     }
 }
