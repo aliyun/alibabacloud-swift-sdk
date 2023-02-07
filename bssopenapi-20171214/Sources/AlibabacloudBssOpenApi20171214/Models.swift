@@ -3289,6 +3289,1889 @@ public class DeleteCostUnitResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeCostBudgetsSummaryRequest : Tea.TeaModel {
+    public var budgetName: String?
+
+    public var budgetStatus: String?
+
+    public var budgetType: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.budgetName != nil {
+            map["BudgetName"] = self.budgetName!
+        }
+        if self.budgetStatus != nil {
+            map["BudgetStatus"] = self.budgetStatus!
+        }
+        if self.budgetType != nil {
+            map["BudgetType"] = self.budgetType!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BudgetName") {
+            self.budgetName = dict["BudgetName"] as! String
+        }
+        if dict.keys.contains("BudgetStatus") {
+            self.budgetStatus = dict["BudgetStatus"] as! String
+        }
+        if dict.keys.contains("BudgetType") {
+            self.budgetType = dict["BudgetType"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+    }
+}
+
+public class DescribeCostBudgetsSummaryResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var budget: [String: Any]?
+
+            public var budgetName: String?
+
+            public var budgetStatus: String?
+
+            public var budgetType: String?
+
+            public var calculatedValues: [String: Any]?
+
+            public var consumePeriod: [String: Any]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.budget != nil {
+                    map["Budget"] = self.budget!
+                }
+                if self.budgetName != nil {
+                    map["BudgetName"] = self.budgetName!
+                }
+                if self.budgetStatus != nil {
+                    map["BudgetStatus"] = self.budgetStatus!
+                }
+                if self.budgetType != nil {
+                    map["BudgetType"] = self.budgetType!
+                }
+                if self.calculatedValues != nil {
+                    map["CalculatedValues"] = self.calculatedValues!
+                }
+                if self.consumePeriod != nil {
+                    map["ConsumePeriod"] = self.consumePeriod!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Budget") {
+                    self.budget = dict["Budget"] as! [String: Any]
+                }
+                if dict.keys.contains("BudgetName") {
+                    self.budgetName = dict["BudgetName"] as! String
+                }
+                if dict.keys.contains("BudgetStatus") {
+                    self.budgetStatus = dict["BudgetStatus"] as! String
+                }
+                if dict.keys.contains("BudgetType") {
+                    self.budgetType = dict["BudgetType"] as! String
+                }
+                if dict.keys.contains("CalculatedValues") {
+                    self.calculatedValues = dict["CalculatedValues"] as! [String: Any]
+                }
+                if dict.keys.contains("ConsumePeriod") {
+                    self.consumePeriod = dict["ConsumePeriod"] as! [String: Any]
+                }
+            }
+        }
+        public var hostId: String?
+
+        public var items: [DescribeCostBudgetsSummaryResponseBody.Data.Items]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hostId != nil {
+                map["HostId"] = self.hostId!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("HostId") {
+                self.hostId = dict["HostId"] as! String
+            }
+            if dict.keys.contains("Items") {
+                self.items = dict["Items"] as! [DescribeCostBudgetsSummaryResponseBody.Data.Items]
+            }
+            if dict.keys.contains("MaxResults") {
+                self.maxResults = dict["MaxResults"] as! Int32
+            }
+            if dict.keys.contains("NextToken") {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeCostBudgetsSummaryResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeCostBudgetsSummaryResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeCostBudgetsSummaryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeCostBudgetsSummaryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeCostBudgetsSummaryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeInstanceAmortizedCostByAmortizationPeriodRequest : Tea.TeaModel {
+    public var billOwnerIdList: [String]?
+
+    public var billUserIdList: [String]?
+
+    public var billingCycle: String?
+
+    public var consumePeriodFilter: [String]?
+
+    public var costUnitCode: String?
+
+    public var instanceIdList: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var productCode: String?
+
+    public var productDetail: String?
+
+    public var subscriptionType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerIdList != nil {
+            map["BillOwnerIdList"] = self.billOwnerIdList!
+        }
+        if self.billUserIdList != nil {
+            map["BillUserIdList"] = self.billUserIdList!
+        }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.consumePeriodFilter != nil {
+            map["ConsumePeriodFilter"] = self.consumePeriodFilter!
+        }
+        if self.costUnitCode != nil {
+            map["CostUnitCode"] = self.costUnitCode!
+        }
+        if self.instanceIdList != nil {
+            map["InstanceIdList"] = self.instanceIdList!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productDetail != nil {
+            map["ProductDetail"] = self.productDetail!
+        }
+        if self.subscriptionType != nil {
+            map["SubscriptionType"] = self.subscriptionType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BillOwnerIdList") {
+            self.billOwnerIdList = dict["BillOwnerIdList"] as! [String]
+        }
+        if dict.keys.contains("BillUserIdList") {
+            self.billUserIdList = dict["BillUserIdList"] as! [String]
+        }
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("ConsumePeriodFilter") {
+            self.consumePeriodFilter = dict["ConsumePeriodFilter"] as! [String]
+        }
+        if dict.keys.contains("CostUnitCode") {
+            self.costUnitCode = dict["CostUnitCode"] as! String
+        }
+        if dict.keys.contains("InstanceIdList") {
+            self.instanceIdList = dict["InstanceIdList"] as! [String]
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductDetail") {
+            self.productDetail = dict["ProductDetail"] as! String
+        }
+        if dict.keys.contains("SubscriptionType") {
+            self.subscriptionType = dict["SubscriptionType"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var amortizationPeriod: String?
+
+            public var amortizationStatus: String?
+
+            public var billAccountID: Int64?
+
+            public var billAccountName: String?
+
+            public var billOwnerID: Int64?
+
+            public var billOwnerName: String?
+
+            public var bizType: String?
+
+            public var consumePeriod: String?
+
+            public var costUnit: String?
+
+            public var costUnitCode: String?
+
+            public var currentAmortizationDeductedByCashCoupons: Double?
+
+            public var currentAmortizationDeductedByCoupons: Double?
+
+            public var currentAmortizationDeductedByPrepaidCard: Double?
+
+            public var currentAmortizationExpenditureAmount: Double?
+
+            public var currentAmortizationInvoiceDiscount: Double?
+
+            public var currentAmortizationPretaxAmount: Double?
+
+            public var currentAmortizationPretaxGrossAmount: Double?
+
+            public var currentAmortizationRoundDownDiscount: Double?
+
+            public var deductedByCashCoupons: Double?
+
+            public var deductedByCoupons: Double?
+
+            public var deductedByPrepaidCard: Double?
+
+            public var expenditureAmount: Double?
+
+            public var instanceID: String?
+
+            public var internetIP: String?
+
+            public var intranetIP: String?
+
+            public var invoiceDiscount: Double?
+
+            public var pretaxAmount: Double?
+
+            public var pretaxGrossAmount: Double?
+
+            public var previouslyAmortizedDeductedByCashCoupons: Double?
+
+            public var previouslyAmortizedDeductedByCoupons: Double?
+
+            public var previouslyAmortizedDeductedByPrepaidCard: Double?
+
+            public var previouslyAmortizedExpenditureAmount: Double?
+
+            public var previouslyAmortizedInvoiceDiscount: Double?
+
+            public var previouslyAmortizedPretaxAmount: Double?
+
+            public var previouslyAmortizedPretaxGrossAmount: Double?
+
+            public var previouslyAmortizedRoundDownDiscount: Double?
+
+            public var productCode: String?
+
+            public var productDetail: String?
+
+            public var productDetailCode: String?
+
+            public var productName: String?
+
+            public var region: String?
+
+            public var remainingAmortizationDeductedByCashCoupons: Double?
+
+            public var remainingAmortizationDeductedByCoupons: Double?
+
+            public var remainingAmortizationDeductedByPrepaidCard: Double?
+
+            public var remainingAmortizationExpenditureAmount: Double?
+
+            public var remainingAmortizationInvoiceDiscount: Double?
+
+            public var remainingAmortizationPretaxAmount: Double?
+
+            public var remainingAmortizationPretaxGrossAmount: Double?
+
+            public var remainingAmortizationRoundDownDiscount: Double?
+
+            public var resourceGroup: String?
+
+            public var roundDownDiscount: Double?
+
+            public var splitAccountName: String?
+
+            public var splitItemID: String?
+
+            public var splitItemName: String?
+
+            public var splitProductDetail: String?
+
+            public var subscriptionType: String?
+
+            public var tag: String?
+
+            public var zone: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amortizationPeriod != nil {
+                    map["AmortizationPeriod"] = self.amortizationPeriod!
+                }
+                if self.amortizationStatus != nil {
+                    map["AmortizationStatus"] = self.amortizationStatus!
+                }
+                if self.billAccountID != nil {
+                    map["BillAccountID"] = self.billAccountID!
+                }
+                if self.billAccountName != nil {
+                    map["BillAccountName"] = self.billAccountName!
+                }
+                if self.billOwnerID != nil {
+                    map["BillOwnerID"] = self.billOwnerID!
+                }
+                if self.billOwnerName != nil {
+                    map["BillOwnerName"] = self.billOwnerName!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
+                }
+                if self.consumePeriod != nil {
+                    map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.costUnit != nil {
+                    map["CostUnit"] = self.costUnit!
+                }
+                if self.costUnitCode != nil {
+                    map["CostUnitCode"] = self.costUnitCode!
+                }
+                if self.currentAmortizationDeductedByCashCoupons != nil {
+                    map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
+                }
+                if self.currentAmortizationDeductedByCoupons != nil {
+                    map["CurrentAmortizationDeductedByCoupons"] = self.currentAmortizationDeductedByCoupons!
+                }
+                if self.currentAmortizationDeductedByPrepaidCard != nil {
+                    map["CurrentAmortizationDeductedByPrepaidCard"] = self.currentAmortizationDeductedByPrepaidCard!
+                }
+                if self.currentAmortizationExpenditureAmount != nil {
+                    map["CurrentAmortizationExpenditureAmount"] = self.currentAmortizationExpenditureAmount!
+                }
+                if self.currentAmortizationInvoiceDiscount != nil {
+                    map["CurrentAmortizationInvoiceDiscount"] = self.currentAmortizationInvoiceDiscount!
+                }
+                if self.currentAmortizationPretaxAmount != nil {
+                    map["CurrentAmortizationPretaxAmount"] = self.currentAmortizationPretaxAmount!
+                }
+                if self.currentAmortizationPretaxGrossAmount != nil {
+                    map["CurrentAmortizationPretaxGrossAmount"] = self.currentAmortizationPretaxGrossAmount!
+                }
+                if self.currentAmortizationRoundDownDiscount != nil {
+                    map["CurrentAmortizationRoundDownDiscount"] = self.currentAmortizationRoundDownDiscount!
+                }
+                if self.deductedByCashCoupons != nil {
+                    map["DeductedByCashCoupons"] = self.deductedByCashCoupons!
+                }
+                if self.deductedByCoupons != nil {
+                    map["DeductedByCoupons"] = self.deductedByCoupons!
+                }
+                if self.deductedByPrepaidCard != nil {
+                    map["DeductedByPrepaidCard"] = self.deductedByPrepaidCard!
+                }
+                if self.expenditureAmount != nil {
+                    map["ExpenditureAmount"] = self.expenditureAmount!
+                }
+                if self.instanceID != nil {
+                    map["InstanceID"] = self.instanceID!
+                }
+                if self.internetIP != nil {
+                    map["InternetIP"] = self.internetIP!
+                }
+                if self.intranetIP != nil {
+                    map["IntranetIP"] = self.intranetIP!
+                }
+                if self.invoiceDiscount != nil {
+                    map["InvoiceDiscount"] = self.invoiceDiscount!
+                }
+                if self.pretaxAmount != nil {
+                    map["PretaxAmount"] = self.pretaxAmount!
+                }
+                if self.pretaxGrossAmount != nil {
+                    map["PretaxGrossAmount"] = self.pretaxGrossAmount!
+                }
+                if self.previouslyAmortizedDeductedByCashCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
+                }
+                if self.previouslyAmortizedDeductedByCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCoupons"] = self.previouslyAmortizedDeductedByCoupons!
+                }
+                if self.previouslyAmortizedDeductedByPrepaidCard != nil {
+                    map["PreviouslyAmortizedDeductedByPrepaidCard"] = self.previouslyAmortizedDeductedByPrepaidCard!
+                }
+                if self.previouslyAmortizedExpenditureAmount != nil {
+                    map["PreviouslyAmortizedExpenditureAmount"] = self.previouslyAmortizedExpenditureAmount!
+                }
+                if self.previouslyAmortizedInvoiceDiscount != nil {
+                    map["PreviouslyAmortizedInvoiceDiscount"] = self.previouslyAmortizedInvoiceDiscount!
+                }
+                if self.previouslyAmortizedPretaxAmount != nil {
+                    map["PreviouslyAmortizedPretaxAmount"] = self.previouslyAmortizedPretaxAmount!
+                }
+                if self.previouslyAmortizedPretaxGrossAmount != nil {
+                    map["PreviouslyAmortizedPretaxGrossAmount"] = self.previouslyAmortizedPretaxGrossAmount!
+                }
+                if self.previouslyAmortizedRoundDownDiscount != nil {
+                    map["PreviouslyAmortizedRoundDownDiscount"] = self.previouslyAmortizedRoundDownDiscount!
+                }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.productDetail != nil {
+                    map["ProductDetail"] = self.productDetail!
+                }
+                if self.productDetailCode != nil {
+                    map["ProductDetailCode"] = self.productDetailCode!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.remainingAmortizationDeductedByCashCoupons != nil {
+                    map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
+                }
+                if self.remainingAmortizationDeductedByCoupons != nil {
+                    map["RemainingAmortizationDeductedByCoupons"] = self.remainingAmortizationDeductedByCoupons!
+                }
+                if self.remainingAmortizationDeductedByPrepaidCard != nil {
+                    map["RemainingAmortizationDeductedByPrepaidCard"] = self.remainingAmortizationDeductedByPrepaidCard!
+                }
+                if self.remainingAmortizationExpenditureAmount != nil {
+                    map["RemainingAmortizationExpenditureAmount"] = self.remainingAmortizationExpenditureAmount!
+                }
+                if self.remainingAmortizationInvoiceDiscount != nil {
+                    map["RemainingAmortizationInvoiceDiscount"] = self.remainingAmortizationInvoiceDiscount!
+                }
+                if self.remainingAmortizationPretaxAmount != nil {
+                    map["RemainingAmortizationPretaxAmount"] = self.remainingAmortizationPretaxAmount!
+                }
+                if self.remainingAmortizationPretaxGrossAmount != nil {
+                    map["RemainingAmortizationPretaxGrossAmount"] = self.remainingAmortizationPretaxGrossAmount!
+                }
+                if self.remainingAmortizationRoundDownDiscount != nil {
+                    map["RemainingAmortizationRoundDownDiscount"] = self.remainingAmortizationRoundDownDiscount!
+                }
+                if self.resourceGroup != nil {
+                    map["ResourceGroup"] = self.resourceGroup!
+                }
+                if self.roundDownDiscount != nil {
+                    map["RoundDownDiscount"] = self.roundDownDiscount!
+                }
+                if self.splitAccountName != nil {
+                    map["SplitAccountName"] = self.splitAccountName!
+                }
+                if self.splitItemID != nil {
+                    map["SplitItemID"] = self.splitItemID!
+                }
+                if self.splitItemName != nil {
+                    map["SplitItemName"] = self.splitItemName!
+                }
+                if self.splitProductDetail != nil {
+                    map["SplitProductDetail"] = self.splitProductDetail!
+                }
+                if self.subscriptionType != nil {
+                    map["SubscriptionType"] = self.subscriptionType!
+                }
+                if self.tag != nil {
+                    map["Tag"] = self.tag!
+                }
+                if self.zone != nil {
+                    map["Zone"] = self.zone!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AmortizationPeriod") {
+                    self.amortizationPeriod = dict["AmortizationPeriod"] as! String
+                }
+                if dict.keys.contains("AmortizationStatus") {
+                    self.amortizationStatus = dict["AmortizationStatus"] as! String
+                }
+                if dict.keys.contains("BillAccountID") {
+                    self.billAccountID = dict["BillAccountID"] as! Int64
+                }
+                if dict.keys.contains("BillAccountName") {
+                    self.billAccountName = dict["BillAccountName"] as! String
+                }
+                if dict.keys.contains("BillOwnerID") {
+                    self.billOwnerID = dict["BillOwnerID"] as! Int64
+                }
+                if dict.keys.contains("BillOwnerName") {
+                    self.billOwnerName = dict["BillOwnerName"] as! String
+                }
+                if dict.keys.contains("BizType") {
+                    self.bizType = dict["BizType"] as! String
+                }
+                if dict.keys.contains("ConsumePeriod") {
+                    self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CostUnit") {
+                    self.costUnit = dict["CostUnit"] as! String
+                }
+                if dict.keys.contains("CostUnitCode") {
+                    self.costUnitCode = dict["CostUnitCode"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
+                    self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCoupons") {
+                    self.currentAmortizationDeductedByCoupons = dict["CurrentAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByPrepaidCard") {
+                    self.currentAmortizationDeductedByPrepaidCard = dict["CurrentAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationExpenditureAmount") {
+                    self.currentAmortizationExpenditureAmount = dict["CurrentAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationInvoiceDiscount") {
+                    self.currentAmortizationInvoiceDiscount = dict["CurrentAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxAmount") {
+                    self.currentAmortizationPretaxAmount = dict["CurrentAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxGrossAmount") {
+                    self.currentAmortizationPretaxGrossAmount = dict["CurrentAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationRoundDownDiscount") {
+                    self.currentAmortizationRoundDownDiscount = dict["CurrentAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("DeductedByCashCoupons") {
+                    self.deductedByCashCoupons = dict["DeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByCoupons") {
+                    self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByPrepaidCard") {
+                    self.deductedByPrepaidCard = dict["DeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("ExpenditureAmount") {
+                    self.expenditureAmount = dict["ExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("InstanceID") {
+                    self.instanceID = dict["InstanceID"] as! String
+                }
+                if dict.keys.contains("InternetIP") {
+                    self.internetIP = dict["InternetIP"] as! String
+                }
+                if dict.keys.contains("IntranetIP") {
+                    self.intranetIP = dict["IntranetIP"] as! String
+                }
+                if dict.keys.contains("InvoiceDiscount") {
+                    self.invoiceDiscount = dict["InvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PretaxAmount") {
+                    self.pretaxAmount = dict["PretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PretaxGrossAmount") {
+                    self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
+                    self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCoupons") {
+                    self.previouslyAmortizedDeductedByCoupons = dict["PreviouslyAmortizedDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByPrepaidCard") {
+                    self.previouslyAmortizedDeductedByPrepaidCard = dict["PreviouslyAmortizedDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedExpenditureAmount") {
+                    self.previouslyAmortizedExpenditureAmount = dict["PreviouslyAmortizedExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedInvoiceDiscount") {
+                    self.previouslyAmortizedInvoiceDiscount = dict["PreviouslyAmortizedInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxAmount") {
+                    self.previouslyAmortizedPretaxAmount = dict["PreviouslyAmortizedPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxGrossAmount") {
+                    self.previouslyAmortizedPretaxGrossAmount = dict["PreviouslyAmortizedPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedRoundDownDiscount") {
+                    self.previouslyAmortizedRoundDownDiscount = dict["PreviouslyAmortizedRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("ProductCode") {
+                    self.productCode = dict["ProductCode"] as! String
+                }
+                if dict.keys.contains("ProductDetail") {
+                    self.productDetail = dict["ProductDetail"] as! String
+                }
+                if dict.keys.contains("ProductDetailCode") {
+                    self.productDetailCode = dict["ProductDetailCode"] as! String
+                }
+                if dict.keys.contains("ProductName") {
+                    self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
+                    self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCoupons") {
+                    self.remainingAmortizationDeductedByCoupons = dict["RemainingAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByPrepaidCard") {
+                    self.remainingAmortizationDeductedByPrepaidCard = dict["RemainingAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationExpenditureAmount") {
+                    self.remainingAmortizationExpenditureAmount = dict["RemainingAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationInvoiceDiscount") {
+                    self.remainingAmortizationInvoiceDiscount = dict["RemainingAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxAmount") {
+                    self.remainingAmortizationPretaxAmount = dict["RemainingAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxGrossAmount") {
+                    self.remainingAmortizationPretaxGrossAmount = dict["RemainingAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationRoundDownDiscount") {
+                    self.remainingAmortizationRoundDownDiscount = dict["RemainingAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("ResourceGroup") {
+                    self.resourceGroup = dict["ResourceGroup"] as! String
+                }
+                if dict.keys.contains("RoundDownDiscount") {
+                    self.roundDownDiscount = dict["RoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("SplitAccountName") {
+                    self.splitAccountName = dict["SplitAccountName"] as! String
+                }
+                if dict.keys.contains("SplitItemID") {
+                    self.splitItemID = dict["SplitItemID"] as! String
+                }
+                if dict.keys.contains("SplitItemName") {
+                    self.splitItemName = dict["SplitItemName"] as! String
+                }
+                if dict.keys.contains("SplitProductDetail") {
+                    self.splitProductDetail = dict["SplitProductDetail"] as! String
+                }
+                if dict.keys.contains("SubscriptionType") {
+                    self.subscriptionType = dict["SubscriptionType"] as! String
+                }
+                if dict.keys.contains("Tag") {
+                    self.tag = dict["Tag"] as! String
+                }
+                if dict.keys.contains("Zone") {
+                    self.zone = dict["Zone"] as! String
+                }
+            }
+        }
+        public var accountID: String?
+
+        public var accountName: String?
+
+        public var items: [DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody.Data.Items]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountID != nil {
+                map["AccountID"] = self.accountID!
+            }
+            if self.accountName != nil {
+                map["AccountName"] = self.accountName!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountID") {
+                self.accountID = dict["AccountID"] as! String
+            }
+            if dict.keys.contains("AccountName") {
+                self.accountName = dict["AccountName"] as! String
+            }
+            if dict.keys.contains("Items") {
+                self.items = dict["Items"] as! [DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody.Data.Items]
+            }
+            if dict.keys.contains("MaxResults") {
+                self.maxResults = dict["MaxResults"] as! Int32
+            }
+            if dict.keys.contains("NextToken") {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeInstanceAmortizedCostByAmortizationPeriodResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeInstanceAmortizedCostByConsumePeriodRequest : Tea.TeaModel {
+    public var amortizationPeriodFilter: [String]?
+
+    public var billOwnerIdList: [String]?
+
+    public var billUserIdList: [String]?
+
+    public var billingCycle: String?
+
+    public var costUnitCode: String?
+
+    public var instanceIdList: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var productCode: String?
+
+    public var productDetail: String?
+
+    public var subscriptionType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.amortizationPeriodFilter != nil {
+            map["AmortizationPeriodFilter"] = self.amortizationPeriodFilter!
+        }
+        if self.billOwnerIdList != nil {
+            map["BillOwnerIdList"] = self.billOwnerIdList!
+        }
+        if self.billUserIdList != nil {
+            map["BillUserIdList"] = self.billUserIdList!
+        }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.costUnitCode != nil {
+            map["CostUnitCode"] = self.costUnitCode!
+        }
+        if self.instanceIdList != nil {
+            map["InstanceIdList"] = self.instanceIdList!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productDetail != nil {
+            map["ProductDetail"] = self.productDetail!
+        }
+        if self.subscriptionType != nil {
+            map["SubscriptionType"] = self.subscriptionType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AmortizationPeriodFilter") {
+            self.amortizationPeriodFilter = dict["AmortizationPeriodFilter"] as! [String]
+        }
+        if dict.keys.contains("BillOwnerIdList") {
+            self.billOwnerIdList = dict["BillOwnerIdList"] as! [String]
+        }
+        if dict.keys.contains("BillUserIdList") {
+            self.billUserIdList = dict["BillUserIdList"] as! [String]
+        }
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("CostUnitCode") {
+            self.costUnitCode = dict["CostUnitCode"] as! String
+        }
+        if dict.keys.contains("InstanceIdList") {
+            self.instanceIdList = dict["InstanceIdList"] as! [String]
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductDetail") {
+            self.productDetail = dict["ProductDetail"] as! String
+        }
+        if dict.keys.contains("SubscriptionType") {
+            self.subscriptionType = dict["SubscriptionType"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceAmortizedCostByConsumePeriodResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var amortizationPeriod: String?
+
+            public var amortizationStatus: String?
+
+            public var billAccountID: Int64?
+
+            public var billAccountName: String?
+
+            public var billOwnerID: Int64?
+
+            public var billOwnerName: String?
+
+            public var bizType: String?
+
+            public var consumePeriod: String?
+
+            public var costUnit: String?
+
+            public var costUnitCode: String?
+
+            public var currentAmortizationDeductedByCashCoupons: Double?
+
+            public var currentAmortizationDeductedByCoupons: Double?
+
+            public var currentAmortizationDeductedByPrepaidCard: Double?
+
+            public var currentAmortizationExpenditureAmount: Double?
+
+            public var currentAmortizationInvoiceDiscount: Double?
+
+            public var currentAmortizationPretaxAmount: Double?
+
+            public var currentAmortizationPretaxGrossAmount: Double?
+
+            public var currentAmortizationRoundDownDiscount: Double?
+
+            public var deductedByCashCoupons: Double?
+
+            public var deductedByCoupons: Double?
+
+            public var deductedByPrepaidCard: Double?
+
+            public var expenditureAmount: Double?
+
+            public var instanceID: String?
+
+            public var internetIP: String?
+
+            public var intranetIP: String?
+
+            public var invoiceDiscount: Double?
+
+            public var pretaxAmount: Double?
+
+            public var pretaxGrossAmount: Double?
+
+            public var previouslyAmortizedDeductedByCashCoupons: Double?
+
+            public var previouslyAmortizedDeductedByCoupons: Double?
+
+            public var previouslyAmortizedDeductedByPrepaidCard: Double?
+
+            public var previouslyAmortizedExpenditureAmount: Double?
+
+            public var previouslyAmortizedInvoiceDiscount: Double?
+
+            public var previouslyAmortizedPretaxAmount: Double?
+
+            public var previouslyAmortizedPretaxGrossAmount: Double?
+
+            public var previouslyAmortizedRoundDownDiscount: Double?
+
+            public var productCode: String?
+
+            public var productDetail: String?
+
+            public var productDetailCode: String?
+
+            public var productName: String?
+
+            public var region: String?
+
+            public var remainingAmortizationDeductedByCashCoupons: Double?
+
+            public var remainingAmortizationDeductedByCoupons: Double?
+
+            public var remainingAmortizationDeductedByPrepaidCard: Double?
+
+            public var remainingAmortizationExpenditureAmount: Double?
+
+            public var remainingAmortizationInvoiceDiscount: Double?
+
+            public var remainingAmortizationPretaxAmount: Double?
+
+            public var remainingAmortizationPretaxGrossAmount: Double?
+
+            public var remainingAmortizationRoundDownDiscount: Double?
+
+            public var resourceGroup: String?
+
+            public var roundDownDiscount: Double?
+
+            public var splitAccountName: String?
+
+            public var splitItemID: String?
+
+            public var splitItemName: String?
+
+            public var splitProductDetail: String?
+
+            public var subscriptionType: String?
+
+            public var tag: String?
+
+            public var zone: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amortizationPeriod != nil {
+                    map["AmortizationPeriod"] = self.amortizationPeriod!
+                }
+                if self.amortizationStatus != nil {
+                    map["AmortizationStatus"] = self.amortizationStatus!
+                }
+                if self.billAccountID != nil {
+                    map["BillAccountID"] = self.billAccountID!
+                }
+                if self.billAccountName != nil {
+                    map["BillAccountName"] = self.billAccountName!
+                }
+                if self.billOwnerID != nil {
+                    map["BillOwnerID"] = self.billOwnerID!
+                }
+                if self.billOwnerName != nil {
+                    map["BillOwnerName"] = self.billOwnerName!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
+                }
+                if self.consumePeriod != nil {
+                    map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.costUnit != nil {
+                    map["CostUnit"] = self.costUnit!
+                }
+                if self.costUnitCode != nil {
+                    map["CostUnitCode"] = self.costUnitCode!
+                }
+                if self.currentAmortizationDeductedByCashCoupons != nil {
+                    map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
+                }
+                if self.currentAmortizationDeductedByCoupons != nil {
+                    map["CurrentAmortizationDeductedByCoupons"] = self.currentAmortizationDeductedByCoupons!
+                }
+                if self.currentAmortizationDeductedByPrepaidCard != nil {
+                    map["CurrentAmortizationDeductedByPrepaidCard"] = self.currentAmortizationDeductedByPrepaidCard!
+                }
+                if self.currentAmortizationExpenditureAmount != nil {
+                    map["CurrentAmortizationExpenditureAmount"] = self.currentAmortizationExpenditureAmount!
+                }
+                if self.currentAmortizationInvoiceDiscount != nil {
+                    map["CurrentAmortizationInvoiceDiscount"] = self.currentAmortizationInvoiceDiscount!
+                }
+                if self.currentAmortizationPretaxAmount != nil {
+                    map["CurrentAmortizationPretaxAmount"] = self.currentAmortizationPretaxAmount!
+                }
+                if self.currentAmortizationPretaxGrossAmount != nil {
+                    map["CurrentAmortizationPretaxGrossAmount"] = self.currentAmortizationPretaxGrossAmount!
+                }
+                if self.currentAmortizationRoundDownDiscount != nil {
+                    map["CurrentAmortizationRoundDownDiscount"] = self.currentAmortizationRoundDownDiscount!
+                }
+                if self.deductedByCashCoupons != nil {
+                    map["DeductedByCashCoupons"] = self.deductedByCashCoupons!
+                }
+                if self.deductedByCoupons != nil {
+                    map["DeductedByCoupons"] = self.deductedByCoupons!
+                }
+                if self.deductedByPrepaidCard != nil {
+                    map["DeductedByPrepaidCard"] = self.deductedByPrepaidCard!
+                }
+                if self.expenditureAmount != nil {
+                    map["ExpenditureAmount"] = self.expenditureAmount!
+                }
+                if self.instanceID != nil {
+                    map["InstanceID"] = self.instanceID!
+                }
+                if self.internetIP != nil {
+                    map["InternetIP"] = self.internetIP!
+                }
+                if self.intranetIP != nil {
+                    map["IntranetIP"] = self.intranetIP!
+                }
+                if self.invoiceDiscount != nil {
+                    map["InvoiceDiscount"] = self.invoiceDiscount!
+                }
+                if self.pretaxAmount != nil {
+                    map["PretaxAmount"] = self.pretaxAmount!
+                }
+                if self.pretaxGrossAmount != nil {
+                    map["PretaxGrossAmount"] = self.pretaxGrossAmount!
+                }
+                if self.previouslyAmortizedDeductedByCashCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
+                }
+                if self.previouslyAmortizedDeductedByCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCoupons"] = self.previouslyAmortizedDeductedByCoupons!
+                }
+                if self.previouslyAmortizedDeductedByPrepaidCard != nil {
+                    map["PreviouslyAmortizedDeductedByPrepaidCard"] = self.previouslyAmortizedDeductedByPrepaidCard!
+                }
+                if self.previouslyAmortizedExpenditureAmount != nil {
+                    map["PreviouslyAmortizedExpenditureAmount"] = self.previouslyAmortizedExpenditureAmount!
+                }
+                if self.previouslyAmortizedInvoiceDiscount != nil {
+                    map["PreviouslyAmortizedInvoiceDiscount"] = self.previouslyAmortizedInvoiceDiscount!
+                }
+                if self.previouslyAmortizedPretaxAmount != nil {
+                    map["PreviouslyAmortizedPretaxAmount"] = self.previouslyAmortizedPretaxAmount!
+                }
+                if self.previouslyAmortizedPretaxGrossAmount != nil {
+                    map["PreviouslyAmortizedPretaxGrossAmount"] = self.previouslyAmortizedPretaxGrossAmount!
+                }
+                if self.previouslyAmortizedRoundDownDiscount != nil {
+                    map["PreviouslyAmortizedRoundDownDiscount"] = self.previouslyAmortizedRoundDownDiscount!
+                }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.productDetail != nil {
+                    map["ProductDetail"] = self.productDetail!
+                }
+                if self.productDetailCode != nil {
+                    map["ProductDetailCode"] = self.productDetailCode!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.remainingAmortizationDeductedByCashCoupons != nil {
+                    map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
+                }
+                if self.remainingAmortizationDeductedByCoupons != nil {
+                    map["RemainingAmortizationDeductedByCoupons"] = self.remainingAmortizationDeductedByCoupons!
+                }
+                if self.remainingAmortizationDeductedByPrepaidCard != nil {
+                    map["RemainingAmortizationDeductedByPrepaidCard"] = self.remainingAmortizationDeductedByPrepaidCard!
+                }
+                if self.remainingAmortizationExpenditureAmount != nil {
+                    map["RemainingAmortizationExpenditureAmount"] = self.remainingAmortizationExpenditureAmount!
+                }
+                if self.remainingAmortizationInvoiceDiscount != nil {
+                    map["RemainingAmortizationInvoiceDiscount"] = self.remainingAmortizationInvoiceDiscount!
+                }
+                if self.remainingAmortizationPretaxAmount != nil {
+                    map["RemainingAmortizationPretaxAmount"] = self.remainingAmortizationPretaxAmount!
+                }
+                if self.remainingAmortizationPretaxGrossAmount != nil {
+                    map["RemainingAmortizationPretaxGrossAmount"] = self.remainingAmortizationPretaxGrossAmount!
+                }
+                if self.remainingAmortizationRoundDownDiscount != nil {
+                    map["RemainingAmortizationRoundDownDiscount"] = self.remainingAmortizationRoundDownDiscount!
+                }
+                if self.resourceGroup != nil {
+                    map["ResourceGroup"] = self.resourceGroup!
+                }
+                if self.roundDownDiscount != nil {
+                    map["RoundDownDiscount"] = self.roundDownDiscount!
+                }
+                if self.splitAccountName != nil {
+                    map["SplitAccountName"] = self.splitAccountName!
+                }
+                if self.splitItemID != nil {
+                    map["SplitItemID"] = self.splitItemID!
+                }
+                if self.splitItemName != nil {
+                    map["SplitItemName"] = self.splitItemName!
+                }
+                if self.splitProductDetail != nil {
+                    map["SplitProductDetail"] = self.splitProductDetail!
+                }
+                if self.subscriptionType != nil {
+                    map["SubscriptionType"] = self.subscriptionType!
+                }
+                if self.tag != nil {
+                    map["Tag"] = self.tag!
+                }
+                if self.zone != nil {
+                    map["Zone"] = self.zone!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AmortizationPeriod") {
+                    self.amortizationPeriod = dict["AmortizationPeriod"] as! String
+                }
+                if dict.keys.contains("AmortizationStatus") {
+                    self.amortizationStatus = dict["AmortizationStatus"] as! String
+                }
+                if dict.keys.contains("BillAccountID") {
+                    self.billAccountID = dict["BillAccountID"] as! Int64
+                }
+                if dict.keys.contains("BillAccountName") {
+                    self.billAccountName = dict["BillAccountName"] as! String
+                }
+                if dict.keys.contains("BillOwnerID") {
+                    self.billOwnerID = dict["BillOwnerID"] as! Int64
+                }
+                if dict.keys.contains("BillOwnerName") {
+                    self.billOwnerName = dict["BillOwnerName"] as! String
+                }
+                if dict.keys.contains("BizType") {
+                    self.bizType = dict["BizType"] as! String
+                }
+                if dict.keys.contains("ConsumePeriod") {
+                    self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CostUnit") {
+                    self.costUnit = dict["CostUnit"] as! String
+                }
+                if dict.keys.contains("CostUnitCode") {
+                    self.costUnitCode = dict["CostUnitCode"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
+                    self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCoupons") {
+                    self.currentAmortizationDeductedByCoupons = dict["CurrentAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByPrepaidCard") {
+                    self.currentAmortizationDeductedByPrepaidCard = dict["CurrentAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationExpenditureAmount") {
+                    self.currentAmortizationExpenditureAmount = dict["CurrentAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationInvoiceDiscount") {
+                    self.currentAmortizationInvoiceDiscount = dict["CurrentAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxAmount") {
+                    self.currentAmortizationPretaxAmount = dict["CurrentAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxGrossAmount") {
+                    self.currentAmortizationPretaxGrossAmount = dict["CurrentAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationRoundDownDiscount") {
+                    self.currentAmortizationRoundDownDiscount = dict["CurrentAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("DeductedByCashCoupons") {
+                    self.deductedByCashCoupons = dict["DeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByCoupons") {
+                    self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByPrepaidCard") {
+                    self.deductedByPrepaidCard = dict["DeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("ExpenditureAmount") {
+                    self.expenditureAmount = dict["ExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("InstanceID") {
+                    self.instanceID = dict["InstanceID"] as! String
+                }
+                if dict.keys.contains("InternetIP") {
+                    self.internetIP = dict["InternetIP"] as! String
+                }
+                if dict.keys.contains("IntranetIP") {
+                    self.intranetIP = dict["IntranetIP"] as! String
+                }
+                if dict.keys.contains("InvoiceDiscount") {
+                    self.invoiceDiscount = dict["InvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PretaxAmount") {
+                    self.pretaxAmount = dict["PretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PretaxGrossAmount") {
+                    self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
+                    self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCoupons") {
+                    self.previouslyAmortizedDeductedByCoupons = dict["PreviouslyAmortizedDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByPrepaidCard") {
+                    self.previouslyAmortizedDeductedByPrepaidCard = dict["PreviouslyAmortizedDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedExpenditureAmount") {
+                    self.previouslyAmortizedExpenditureAmount = dict["PreviouslyAmortizedExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedInvoiceDiscount") {
+                    self.previouslyAmortizedInvoiceDiscount = dict["PreviouslyAmortizedInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxAmount") {
+                    self.previouslyAmortizedPretaxAmount = dict["PreviouslyAmortizedPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxGrossAmount") {
+                    self.previouslyAmortizedPretaxGrossAmount = dict["PreviouslyAmortizedPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedRoundDownDiscount") {
+                    self.previouslyAmortizedRoundDownDiscount = dict["PreviouslyAmortizedRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("ProductCode") {
+                    self.productCode = dict["ProductCode"] as! String
+                }
+                if dict.keys.contains("ProductDetail") {
+                    self.productDetail = dict["ProductDetail"] as! String
+                }
+                if dict.keys.contains("ProductDetailCode") {
+                    self.productDetailCode = dict["ProductDetailCode"] as! String
+                }
+                if dict.keys.contains("ProductName") {
+                    self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
+                    self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCoupons") {
+                    self.remainingAmortizationDeductedByCoupons = dict["RemainingAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByPrepaidCard") {
+                    self.remainingAmortizationDeductedByPrepaidCard = dict["RemainingAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationExpenditureAmount") {
+                    self.remainingAmortizationExpenditureAmount = dict["RemainingAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationInvoiceDiscount") {
+                    self.remainingAmortizationInvoiceDiscount = dict["RemainingAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxAmount") {
+                    self.remainingAmortizationPretaxAmount = dict["RemainingAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxGrossAmount") {
+                    self.remainingAmortizationPretaxGrossAmount = dict["RemainingAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationRoundDownDiscount") {
+                    self.remainingAmortizationRoundDownDiscount = dict["RemainingAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("ResourceGroup") {
+                    self.resourceGroup = dict["ResourceGroup"] as! String
+                }
+                if dict.keys.contains("RoundDownDiscount") {
+                    self.roundDownDiscount = dict["RoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("SplitAccountName") {
+                    self.splitAccountName = dict["SplitAccountName"] as! String
+                }
+                if dict.keys.contains("SplitItemID") {
+                    self.splitItemID = dict["SplitItemID"] as! String
+                }
+                if dict.keys.contains("SplitItemName") {
+                    self.splitItemName = dict["SplitItemName"] as! String
+                }
+                if dict.keys.contains("SplitProductDetail") {
+                    self.splitProductDetail = dict["SplitProductDetail"] as! String
+                }
+                if dict.keys.contains("SubscriptionType") {
+                    self.subscriptionType = dict["SubscriptionType"] as! String
+                }
+                if dict.keys.contains("Tag") {
+                    self.tag = dict["Tag"] as! String
+                }
+                if dict.keys.contains("Zone") {
+                    self.zone = dict["Zone"] as! String
+                }
+            }
+        }
+        public var accountID: String?
+
+        public var accountName: String?
+
+        public var items: [DescribeInstanceAmortizedCostByConsumePeriodResponseBody.Data.Items]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountID != nil {
+                map["AccountID"] = self.accountID!
+            }
+            if self.accountName != nil {
+                map["AccountName"] = self.accountName!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountID") {
+                self.accountID = dict["AccountID"] as! String
+            }
+            if dict.keys.contains("AccountName") {
+                self.accountName = dict["AccountName"] as! String
+            }
+            if dict.keys.contains("Items") {
+                self.items = dict["Items"] as! [DescribeInstanceAmortizedCostByConsumePeriodResponseBody.Data.Items]
+            }
+            if dict.keys.contains("MaxResults") {
+                self.maxResults = dict["MaxResults"] as! Int32
+            }
+            if dict.keys.contains("NextToken") {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeInstanceAmortizedCostByConsumePeriodResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeInstanceAmortizedCostByConsumePeriodResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeInstanceAmortizedCostByConsumePeriodResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceAmortizedCostByConsumePeriodResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeInstanceAmortizedCostByConsumePeriodResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceBillRequest : Tea.TeaModel {
     public var billOwnerId: Int64?
 
@@ -4511,6 +6394,1352 @@ public class DescribePricingModuleResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = DescribePricingModuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeProductAmortizedCostByAmortizationPeriodRequest : Tea.TeaModel {
+    public var billOwnerIdList: [String]?
+
+    public var billUserIdList: [String]?
+
+    public var billingCycle: String?
+
+    public var consumePeriodFilter: [String]?
+
+    public var costUnitCode: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var productCode: String?
+
+    public var productDetail: String?
+
+    public var subscriptionType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerIdList != nil {
+            map["BillOwnerIdList"] = self.billOwnerIdList!
+        }
+        if self.billUserIdList != nil {
+            map["BillUserIdList"] = self.billUserIdList!
+        }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.consumePeriodFilter != nil {
+            map["ConsumePeriodFilter"] = self.consumePeriodFilter!
+        }
+        if self.costUnitCode != nil {
+            map["CostUnitCode"] = self.costUnitCode!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productDetail != nil {
+            map["ProductDetail"] = self.productDetail!
+        }
+        if self.subscriptionType != nil {
+            map["SubscriptionType"] = self.subscriptionType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BillOwnerIdList") {
+            self.billOwnerIdList = dict["BillOwnerIdList"] as! [String]
+        }
+        if dict.keys.contains("BillUserIdList") {
+            self.billUserIdList = dict["BillUserIdList"] as! [String]
+        }
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("ConsumePeriodFilter") {
+            self.consumePeriodFilter = dict["ConsumePeriodFilter"] as! [String]
+        }
+        if dict.keys.contains("CostUnitCode") {
+            self.costUnitCode = dict["CostUnitCode"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductDetail") {
+            self.productDetail = dict["ProductDetail"] as! String
+        }
+        if dict.keys.contains("SubscriptionType") {
+            self.subscriptionType = dict["SubscriptionType"] as! String
+        }
+    }
+}
+
+public class DescribeProductAmortizedCostByAmortizationPeriodResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var amortizationPeriod: String?
+
+            public var amortizationStatus: String?
+
+            public var billAccountID: Int64?
+
+            public var billAccountName: String?
+
+            public var billOwnerID: Int64?
+
+            public var billOwnerName: String?
+
+            public var bizType: String?
+
+            public var consumePeriod: String?
+
+            public var currentAmortizationDeductedByCashCoupons: Double?
+
+            public var currentAmortizationDeductedByCoupons: Double?
+
+            public var currentAmortizationDeductedByPrepaidCard: Double?
+
+            public var currentAmortizationExpenditureAmount: Double?
+
+            public var currentAmortizationInvoiceDiscount: Double?
+
+            public var currentAmortizationPretaxAmount: Double?
+
+            public var currentAmortizationPretaxGrossAmount: Double?
+
+            public var currentAmortizationRoundDownDiscount: Double?
+
+            public var deductedByCashCoupons: Double?
+
+            public var deductedByCoupons: Double?
+
+            public var deductedByPrepaidCard: Double?
+
+            public var expenditureAmount: Double?
+
+            public var invoiceDiscount: Double?
+
+            public var pretaxAmount: Double?
+
+            public var pretaxGrossAmount: Double?
+
+            public var previouslyAmortizedDeductedByCashCoupons: Double?
+
+            public var previouslyAmortizedDeductedByCoupons: Double?
+
+            public var previouslyAmortizedDeductedByPrepaidCard: Double?
+
+            public var previouslyAmortizedExpenditureAmount: Double?
+
+            public var previouslyAmortizedInvoiceDiscount: Double?
+
+            public var previouslyAmortizedPretaxAmount: Double?
+
+            public var previouslyAmortizedPretaxGrossAmount: Double?
+
+            public var previouslyAmortizedRoundDownDiscount: Double?
+
+            public var productCode: String?
+
+            public var productDetail: String?
+
+            public var productDetailCode: String?
+
+            public var productName: String?
+
+            public var remainingAmortizationDeductedByCashCoupons: Double?
+
+            public var remainingAmortizationDeductedByCoupons: Double?
+
+            public var remainingAmortizationDeductedByPrepaidCard: Double?
+
+            public var remainingAmortizationExpenditureAmount: Double?
+
+            public var remainingAmortizationInvoiceDiscount: Double?
+
+            public var remainingAmortizationPretaxAmount: Double?
+
+            public var remainingAmortizationPretaxGrossAmount: Double?
+
+            public var remainingAmortizationRoundDownDiscount: Double?
+
+            public var roundDownDiscount: Double?
+
+            public var subscriptionType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amortizationPeriod != nil {
+                    map["AmortizationPeriod"] = self.amortizationPeriod!
+                }
+                if self.amortizationStatus != nil {
+                    map["AmortizationStatus"] = self.amortizationStatus!
+                }
+                if self.billAccountID != nil {
+                    map["BillAccountID"] = self.billAccountID!
+                }
+                if self.billAccountName != nil {
+                    map["BillAccountName"] = self.billAccountName!
+                }
+                if self.billOwnerID != nil {
+                    map["BillOwnerID"] = self.billOwnerID!
+                }
+                if self.billOwnerName != nil {
+                    map["BillOwnerName"] = self.billOwnerName!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
+                }
+                if self.consumePeriod != nil {
+                    map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.currentAmortizationDeductedByCashCoupons != nil {
+                    map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
+                }
+                if self.currentAmortizationDeductedByCoupons != nil {
+                    map["CurrentAmortizationDeductedByCoupons"] = self.currentAmortizationDeductedByCoupons!
+                }
+                if self.currentAmortizationDeductedByPrepaidCard != nil {
+                    map["CurrentAmortizationDeductedByPrepaidCard"] = self.currentAmortizationDeductedByPrepaidCard!
+                }
+                if self.currentAmortizationExpenditureAmount != nil {
+                    map["CurrentAmortizationExpenditureAmount"] = self.currentAmortizationExpenditureAmount!
+                }
+                if self.currentAmortizationInvoiceDiscount != nil {
+                    map["CurrentAmortizationInvoiceDiscount"] = self.currentAmortizationInvoiceDiscount!
+                }
+                if self.currentAmortizationPretaxAmount != nil {
+                    map["CurrentAmortizationPretaxAmount"] = self.currentAmortizationPretaxAmount!
+                }
+                if self.currentAmortizationPretaxGrossAmount != nil {
+                    map["CurrentAmortizationPretaxGrossAmount"] = self.currentAmortizationPretaxGrossAmount!
+                }
+                if self.currentAmortizationRoundDownDiscount != nil {
+                    map["CurrentAmortizationRoundDownDiscount"] = self.currentAmortizationRoundDownDiscount!
+                }
+                if self.deductedByCashCoupons != nil {
+                    map["DeductedByCashCoupons"] = self.deductedByCashCoupons!
+                }
+                if self.deductedByCoupons != nil {
+                    map["DeductedByCoupons"] = self.deductedByCoupons!
+                }
+                if self.deductedByPrepaidCard != nil {
+                    map["DeductedByPrepaidCard"] = self.deductedByPrepaidCard!
+                }
+                if self.expenditureAmount != nil {
+                    map["ExpenditureAmount"] = self.expenditureAmount!
+                }
+                if self.invoiceDiscount != nil {
+                    map["InvoiceDiscount"] = self.invoiceDiscount!
+                }
+                if self.pretaxAmount != nil {
+                    map["PretaxAmount"] = self.pretaxAmount!
+                }
+                if self.pretaxGrossAmount != nil {
+                    map["PretaxGrossAmount"] = self.pretaxGrossAmount!
+                }
+                if self.previouslyAmortizedDeductedByCashCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
+                }
+                if self.previouslyAmortizedDeductedByCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCoupons"] = self.previouslyAmortizedDeductedByCoupons!
+                }
+                if self.previouslyAmortizedDeductedByPrepaidCard != nil {
+                    map["PreviouslyAmortizedDeductedByPrepaidCard"] = self.previouslyAmortizedDeductedByPrepaidCard!
+                }
+                if self.previouslyAmortizedExpenditureAmount != nil {
+                    map["PreviouslyAmortizedExpenditureAmount"] = self.previouslyAmortizedExpenditureAmount!
+                }
+                if self.previouslyAmortizedInvoiceDiscount != nil {
+                    map["PreviouslyAmortizedInvoiceDiscount"] = self.previouslyAmortizedInvoiceDiscount!
+                }
+                if self.previouslyAmortizedPretaxAmount != nil {
+                    map["PreviouslyAmortizedPretaxAmount"] = self.previouslyAmortizedPretaxAmount!
+                }
+                if self.previouslyAmortizedPretaxGrossAmount != nil {
+                    map["PreviouslyAmortizedPretaxGrossAmount"] = self.previouslyAmortizedPretaxGrossAmount!
+                }
+                if self.previouslyAmortizedRoundDownDiscount != nil {
+                    map["PreviouslyAmortizedRoundDownDiscount"] = self.previouslyAmortizedRoundDownDiscount!
+                }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.productDetail != nil {
+                    map["ProductDetail"] = self.productDetail!
+                }
+                if self.productDetailCode != nil {
+                    map["ProductDetailCode"] = self.productDetailCode!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.remainingAmortizationDeductedByCashCoupons != nil {
+                    map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
+                }
+                if self.remainingAmortizationDeductedByCoupons != nil {
+                    map["RemainingAmortizationDeductedByCoupons"] = self.remainingAmortizationDeductedByCoupons!
+                }
+                if self.remainingAmortizationDeductedByPrepaidCard != nil {
+                    map["RemainingAmortizationDeductedByPrepaidCard"] = self.remainingAmortizationDeductedByPrepaidCard!
+                }
+                if self.remainingAmortizationExpenditureAmount != nil {
+                    map["RemainingAmortizationExpenditureAmount"] = self.remainingAmortizationExpenditureAmount!
+                }
+                if self.remainingAmortizationInvoiceDiscount != nil {
+                    map["RemainingAmortizationInvoiceDiscount"] = self.remainingAmortizationInvoiceDiscount!
+                }
+                if self.remainingAmortizationPretaxAmount != nil {
+                    map["RemainingAmortizationPretaxAmount"] = self.remainingAmortizationPretaxAmount!
+                }
+                if self.remainingAmortizationPretaxGrossAmount != nil {
+                    map["RemainingAmortizationPretaxGrossAmount"] = self.remainingAmortizationPretaxGrossAmount!
+                }
+                if self.remainingAmortizationRoundDownDiscount != nil {
+                    map["RemainingAmortizationRoundDownDiscount"] = self.remainingAmortizationRoundDownDiscount!
+                }
+                if self.roundDownDiscount != nil {
+                    map["RoundDownDiscount"] = self.roundDownDiscount!
+                }
+                if self.subscriptionType != nil {
+                    map["SubscriptionType"] = self.subscriptionType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AmortizationPeriod") {
+                    self.amortizationPeriod = dict["AmortizationPeriod"] as! String
+                }
+                if dict.keys.contains("AmortizationStatus") {
+                    self.amortizationStatus = dict["AmortizationStatus"] as! String
+                }
+                if dict.keys.contains("BillAccountID") {
+                    self.billAccountID = dict["BillAccountID"] as! Int64
+                }
+                if dict.keys.contains("BillAccountName") {
+                    self.billAccountName = dict["BillAccountName"] as! String
+                }
+                if dict.keys.contains("BillOwnerID") {
+                    self.billOwnerID = dict["BillOwnerID"] as! Int64
+                }
+                if dict.keys.contains("BillOwnerName") {
+                    self.billOwnerName = dict["BillOwnerName"] as! String
+                }
+                if dict.keys.contains("BizType") {
+                    self.bizType = dict["BizType"] as! String
+                }
+                if dict.keys.contains("ConsumePeriod") {
+                    self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
+                    self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCoupons") {
+                    self.currentAmortizationDeductedByCoupons = dict["CurrentAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByPrepaidCard") {
+                    self.currentAmortizationDeductedByPrepaidCard = dict["CurrentAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationExpenditureAmount") {
+                    self.currentAmortizationExpenditureAmount = dict["CurrentAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationInvoiceDiscount") {
+                    self.currentAmortizationInvoiceDiscount = dict["CurrentAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxAmount") {
+                    self.currentAmortizationPretaxAmount = dict["CurrentAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxGrossAmount") {
+                    self.currentAmortizationPretaxGrossAmount = dict["CurrentAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationRoundDownDiscount") {
+                    self.currentAmortizationRoundDownDiscount = dict["CurrentAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("DeductedByCashCoupons") {
+                    self.deductedByCashCoupons = dict["DeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByCoupons") {
+                    self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByPrepaidCard") {
+                    self.deductedByPrepaidCard = dict["DeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("ExpenditureAmount") {
+                    self.expenditureAmount = dict["ExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("InvoiceDiscount") {
+                    self.invoiceDiscount = dict["InvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PretaxAmount") {
+                    self.pretaxAmount = dict["PretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PretaxGrossAmount") {
+                    self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
+                    self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCoupons") {
+                    self.previouslyAmortizedDeductedByCoupons = dict["PreviouslyAmortizedDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByPrepaidCard") {
+                    self.previouslyAmortizedDeductedByPrepaidCard = dict["PreviouslyAmortizedDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedExpenditureAmount") {
+                    self.previouslyAmortizedExpenditureAmount = dict["PreviouslyAmortizedExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedInvoiceDiscount") {
+                    self.previouslyAmortizedInvoiceDiscount = dict["PreviouslyAmortizedInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxAmount") {
+                    self.previouslyAmortizedPretaxAmount = dict["PreviouslyAmortizedPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxGrossAmount") {
+                    self.previouslyAmortizedPretaxGrossAmount = dict["PreviouslyAmortizedPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedRoundDownDiscount") {
+                    self.previouslyAmortizedRoundDownDiscount = dict["PreviouslyAmortizedRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("ProductCode") {
+                    self.productCode = dict["ProductCode"] as! String
+                }
+                if dict.keys.contains("ProductDetail") {
+                    self.productDetail = dict["ProductDetail"] as! String
+                }
+                if dict.keys.contains("ProductDetailCode") {
+                    self.productDetailCode = dict["ProductDetailCode"] as! String
+                }
+                if dict.keys.contains("ProductName") {
+                    self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
+                    self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCoupons") {
+                    self.remainingAmortizationDeductedByCoupons = dict["RemainingAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByPrepaidCard") {
+                    self.remainingAmortizationDeductedByPrepaidCard = dict["RemainingAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationExpenditureAmount") {
+                    self.remainingAmortizationExpenditureAmount = dict["RemainingAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationInvoiceDiscount") {
+                    self.remainingAmortizationInvoiceDiscount = dict["RemainingAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxAmount") {
+                    self.remainingAmortizationPretaxAmount = dict["RemainingAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxGrossAmount") {
+                    self.remainingAmortizationPretaxGrossAmount = dict["RemainingAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationRoundDownDiscount") {
+                    self.remainingAmortizationRoundDownDiscount = dict["RemainingAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("RoundDownDiscount") {
+                    self.roundDownDiscount = dict["RoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("SubscriptionType") {
+                    self.subscriptionType = dict["SubscriptionType"] as! String
+                }
+            }
+        }
+        public var accountID: String?
+
+        public var accountName: String?
+
+        public var items: [DescribeProductAmortizedCostByAmortizationPeriodResponseBody.Data.Items]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountID != nil {
+                map["AccountID"] = self.accountID!
+            }
+            if self.accountName != nil {
+                map["AccountName"] = self.accountName!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountID") {
+                self.accountID = dict["AccountID"] as! String
+            }
+            if dict.keys.contains("AccountName") {
+                self.accountName = dict["AccountName"] as! String
+            }
+            if dict.keys.contains("Items") {
+                self.items = dict["Items"] as! [DescribeProductAmortizedCostByAmortizationPeriodResponseBody.Data.Items]
+            }
+            if dict.keys.contains("MaxResults") {
+                self.maxResults = dict["MaxResults"] as! Int32
+            }
+            if dict.keys.contains("NextToken") {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeProductAmortizedCostByAmortizationPeriodResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeProductAmortizedCostByAmortizationPeriodResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeProductAmortizedCostByAmortizationPeriodResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeProductAmortizedCostByAmortizationPeriodResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeProductAmortizedCostByAmortizationPeriodResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeProductAmortizedCostByConsumePeriodRequest : Tea.TeaModel {
+    public var amortizationPeriodFilter: [String]?
+
+    public var billOwnerIdList: [String]?
+
+    public var billUserIdList: [String]?
+
+    public var billingCycle: String?
+
+    public var costUnitCode: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var productCode: String?
+
+    public var productDetail: String?
+
+    public var subscriptionType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.amortizationPeriodFilter != nil {
+            map["AmortizationPeriodFilter"] = self.amortizationPeriodFilter!
+        }
+        if self.billOwnerIdList != nil {
+            map["BillOwnerIdList"] = self.billOwnerIdList!
+        }
+        if self.billUserIdList != nil {
+            map["BillUserIdList"] = self.billUserIdList!
+        }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.costUnitCode != nil {
+            map["CostUnitCode"] = self.costUnitCode!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productDetail != nil {
+            map["ProductDetail"] = self.productDetail!
+        }
+        if self.subscriptionType != nil {
+            map["SubscriptionType"] = self.subscriptionType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AmortizationPeriodFilter") {
+            self.amortizationPeriodFilter = dict["AmortizationPeriodFilter"] as! [String]
+        }
+        if dict.keys.contains("BillOwnerIdList") {
+            self.billOwnerIdList = dict["BillOwnerIdList"] as! [String]
+        }
+        if dict.keys.contains("BillUserIdList") {
+            self.billUserIdList = dict["BillUserIdList"] as! [String]
+        }
+        if dict.keys.contains("BillingCycle") {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("CostUnitCode") {
+            self.costUnitCode = dict["CostUnitCode"] as! String
+        }
+        if dict.keys.contains("MaxResults") {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductDetail") {
+            self.productDetail = dict["ProductDetail"] as! String
+        }
+        if dict.keys.contains("SubscriptionType") {
+            self.subscriptionType = dict["SubscriptionType"] as! String
+        }
+    }
+}
+
+public class DescribeProductAmortizedCostByConsumePeriodResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var amortizationPeriod: String?
+
+            public var amortizationStatus: String?
+
+            public var billAccountID: Int64?
+
+            public var billAccountName: String?
+
+            public var billOwnerID: Int64?
+
+            public var billOwnerName: String?
+
+            public var bizType: String?
+
+            public var consumePeriod: String?
+
+            public var currentAmortizationDeductedByCashCoupons: Double?
+
+            public var currentAmortizationDeductedByCoupons: Double?
+
+            public var currentAmortizationDeductedByPrepaidCard: Double?
+
+            public var currentAmortizationExpenditureAmount: Double?
+
+            public var currentAmortizationInvoiceDiscount: Double?
+
+            public var currentAmortizationPretaxAmount: Double?
+
+            public var currentAmortizationPretaxGrossAmount: Double?
+
+            public var currentAmortizationRoundDownDiscount: Double?
+
+            public var deductedByCashCoupons: Double?
+
+            public var deductedByCoupons: Double?
+
+            public var deductedByPrepaidCard: Double?
+
+            public var expenditureAmount: Double?
+
+            public var invoiceDiscount: Double?
+
+            public var pretaxAmount: Double?
+
+            public var pretaxGrossAmount: Double?
+
+            public var previouslyAmortizedDeductedByCashCoupons: Double?
+
+            public var previouslyAmortizedDeductedByCoupons: Double?
+
+            public var previouslyAmortizedDeductedByPrepaidCard: Double?
+
+            public var previouslyAmortizedExpenditureAmount: Double?
+
+            public var previouslyAmortizedInvoiceDiscount: Double?
+
+            public var previouslyAmortizedPretaxAmount: Double?
+
+            public var previouslyAmortizedPretaxGrossAmount: Double?
+
+            public var previouslyAmortizedRoundDownDiscount: Double?
+
+            public var productCode: String?
+
+            public var productDetail: String?
+
+            public var productDetailCode: String?
+
+            public var productName: String?
+
+            public var remainingAmortizationDeductedByCashCoupons: Double?
+
+            public var remainingAmortizationDeductedByCoupons: Double?
+
+            public var remainingAmortizationDeductedByPrepaidCard: Double?
+
+            public var remainingAmortizationExpenditureAmount: Double?
+
+            public var remainingAmortizationInvoiceDiscount: Double?
+
+            public var remainingAmortizationPretaxAmount: Double?
+
+            public var remainingAmortizationPretaxGrossAmount: Double?
+
+            public var remainingAmortizationRoundDownDiscount: Double?
+
+            public var roundDownDiscount: Double?
+
+            public var subscriptionType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amortizationPeriod != nil {
+                    map["AmortizationPeriod"] = self.amortizationPeriod!
+                }
+                if self.amortizationStatus != nil {
+                    map["AmortizationStatus"] = self.amortizationStatus!
+                }
+                if self.billAccountID != nil {
+                    map["BillAccountID"] = self.billAccountID!
+                }
+                if self.billAccountName != nil {
+                    map["BillAccountName"] = self.billAccountName!
+                }
+                if self.billOwnerID != nil {
+                    map["BillOwnerID"] = self.billOwnerID!
+                }
+                if self.billOwnerName != nil {
+                    map["BillOwnerName"] = self.billOwnerName!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
+                }
+                if self.consumePeriod != nil {
+                    map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.currentAmortizationDeductedByCashCoupons != nil {
+                    map["CurrentAmortizationDeductedByCashCoupons"] = self.currentAmortizationDeductedByCashCoupons!
+                }
+                if self.currentAmortizationDeductedByCoupons != nil {
+                    map["CurrentAmortizationDeductedByCoupons"] = self.currentAmortizationDeductedByCoupons!
+                }
+                if self.currentAmortizationDeductedByPrepaidCard != nil {
+                    map["CurrentAmortizationDeductedByPrepaidCard"] = self.currentAmortizationDeductedByPrepaidCard!
+                }
+                if self.currentAmortizationExpenditureAmount != nil {
+                    map["CurrentAmortizationExpenditureAmount"] = self.currentAmortizationExpenditureAmount!
+                }
+                if self.currentAmortizationInvoiceDiscount != nil {
+                    map["CurrentAmortizationInvoiceDiscount"] = self.currentAmortizationInvoiceDiscount!
+                }
+                if self.currentAmortizationPretaxAmount != nil {
+                    map["CurrentAmortizationPretaxAmount"] = self.currentAmortizationPretaxAmount!
+                }
+                if self.currentAmortizationPretaxGrossAmount != nil {
+                    map["CurrentAmortizationPretaxGrossAmount"] = self.currentAmortizationPretaxGrossAmount!
+                }
+                if self.currentAmortizationRoundDownDiscount != nil {
+                    map["CurrentAmortizationRoundDownDiscount"] = self.currentAmortizationRoundDownDiscount!
+                }
+                if self.deductedByCashCoupons != nil {
+                    map["DeductedByCashCoupons"] = self.deductedByCashCoupons!
+                }
+                if self.deductedByCoupons != nil {
+                    map["DeductedByCoupons"] = self.deductedByCoupons!
+                }
+                if self.deductedByPrepaidCard != nil {
+                    map["DeductedByPrepaidCard"] = self.deductedByPrepaidCard!
+                }
+                if self.expenditureAmount != nil {
+                    map["ExpenditureAmount"] = self.expenditureAmount!
+                }
+                if self.invoiceDiscount != nil {
+                    map["InvoiceDiscount"] = self.invoiceDiscount!
+                }
+                if self.pretaxAmount != nil {
+                    map["PretaxAmount"] = self.pretaxAmount!
+                }
+                if self.pretaxGrossAmount != nil {
+                    map["PretaxGrossAmount"] = self.pretaxGrossAmount!
+                }
+                if self.previouslyAmortizedDeductedByCashCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCashCoupons"] = self.previouslyAmortizedDeductedByCashCoupons!
+                }
+                if self.previouslyAmortizedDeductedByCoupons != nil {
+                    map["PreviouslyAmortizedDeductedByCoupons"] = self.previouslyAmortizedDeductedByCoupons!
+                }
+                if self.previouslyAmortizedDeductedByPrepaidCard != nil {
+                    map["PreviouslyAmortizedDeductedByPrepaidCard"] = self.previouslyAmortizedDeductedByPrepaidCard!
+                }
+                if self.previouslyAmortizedExpenditureAmount != nil {
+                    map["PreviouslyAmortizedExpenditureAmount"] = self.previouslyAmortizedExpenditureAmount!
+                }
+                if self.previouslyAmortizedInvoiceDiscount != nil {
+                    map["PreviouslyAmortizedInvoiceDiscount"] = self.previouslyAmortizedInvoiceDiscount!
+                }
+                if self.previouslyAmortizedPretaxAmount != nil {
+                    map["PreviouslyAmortizedPretaxAmount"] = self.previouslyAmortizedPretaxAmount!
+                }
+                if self.previouslyAmortizedPretaxGrossAmount != nil {
+                    map["PreviouslyAmortizedPretaxGrossAmount"] = self.previouslyAmortizedPretaxGrossAmount!
+                }
+                if self.previouslyAmortizedRoundDownDiscount != nil {
+                    map["PreviouslyAmortizedRoundDownDiscount"] = self.previouslyAmortizedRoundDownDiscount!
+                }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.productDetail != nil {
+                    map["ProductDetail"] = self.productDetail!
+                }
+                if self.productDetailCode != nil {
+                    map["ProductDetailCode"] = self.productDetailCode!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.remainingAmortizationDeductedByCashCoupons != nil {
+                    map["RemainingAmortizationDeductedByCashCoupons"] = self.remainingAmortizationDeductedByCashCoupons!
+                }
+                if self.remainingAmortizationDeductedByCoupons != nil {
+                    map["RemainingAmortizationDeductedByCoupons"] = self.remainingAmortizationDeductedByCoupons!
+                }
+                if self.remainingAmortizationDeductedByPrepaidCard != nil {
+                    map["RemainingAmortizationDeductedByPrepaidCard"] = self.remainingAmortizationDeductedByPrepaidCard!
+                }
+                if self.remainingAmortizationExpenditureAmount != nil {
+                    map["RemainingAmortizationExpenditureAmount"] = self.remainingAmortizationExpenditureAmount!
+                }
+                if self.remainingAmortizationInvoiceDiscount != nil {
+                    map["RemainingAmortizationInvoiceDiscount"] = self.remainingAmortizationInvoiceDiscount!
+                }
+                if self.remainingAmortizationPretaxAmount != nil {
+                    map["RemainingAmortizationPretaxAmount"] = self.remainingAmortizationPretaxAmount!
+                }
+                if self.remainingAmortizationPretaxGrossAmount != nil {
+                    map["RemainingAmortizationPretaxGrossAmount"] = self.remainingAmortizationPretaxGrossAmount!
+                }
+                if self.remainingAmortizationRoundDownDiscount != nil {
+                    map["RemainingAmortizationRoundDownDiscount"] = self.remainingAmortizationRoundDownDiscount!
+                }
+                if self.roundDownDiscount != nil {
+                    map["RoundDownDiscount"] = self.roundDownDiscount!
+                }
+                if self.subscriptionType != nil {
+                    map["SubscriptionType"] = self.subscriptionType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AmortizationPeriod") {
+                    self.amortizationPeriod = dict["AmortizationPeriod"] as! String
+                }
+                if dict.keys.contains("AmortizationStatus") {
+                    self.amortizationStatus = dict["AmortizationStatus"] as! String
+                }
+                if dict.keys.contains("BillAccountID") {
+                    self.billAccountID = dict["BillAccountID"] as! Int64
+                }
+                if dict.keys.contains("BillAccountName") {
+                    self.billAccountName = dict["BillAccountName"] as! String
+                }
+                if dict.keys.contains("BillOwnerID") {
+                    self.billOwnerID = dict["BillOwnerID"] as! Int64
+                }
+                if dict.keys.contains("BillOwnerName") {
+                    self.billOwnerName = dict["BillOwnerName"] as! String
+                }
+                if dict.keys.contains("BizType") {
+                    self.bizType = dict["BizType"] as! String
+                }
+                if dict.keys.contains("ConsumePeriod") {
+                    self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCashCoupons") {
+                    self.currentAmortizationDeductedByCashCoupons = dict["CurrentAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCoupons") {
+                    self.currentAmortizationDeductedByCoupons = dict["CurrentAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByPrepaidCard") {
+                    self.currentAmortizationDeductedByPrepaidCard = dict["CurrentAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationExpenditureAmount") {
+                    self.currentAmortizationExpenditureAmount = dict["CurrentAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationInvoiceDiscount") {
+                    self.currentAmortizationInvoiceDiscount = dict["CurrentAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxAmount") {
+                    self.currentAmortizationPretaxAmount = dict["CurrentAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxGrossAmount") {
+                    self.currentAmortizationPretaxGrossAmount = dict["CurrentAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationRoundDownDiscount") {
+                    self.currentAmortizationRoundDownDiscount = dict["CurrentAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("DeductedByCashCoupons") {
+                    self.deductedByCashCoupons = dict["DeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByCoupons") {
+                    self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("DeductedByPrepaidCard") {
+                    self.deductedByPrepaidCard = dict["DeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("ExpenditureAmount") {
+                    self.expenditureAmount = dict["ExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("InvoiceDiscount") {
+                    self.invoiceDiscount = dict["InvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PretaxAmount") {
+                    self.pretaxAmount = dict["PretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PretaxGrossAmount") {
+                    self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCashCoupons") {
+                    self.previouslyAmortizedDeductedByCashCoupons = dict["PreviouslyAmortizedDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByCoupons") {
+                    self.previouslyAmortizedDeductedByCoupons = dict["PreviouslyAmortizedDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedDeductedByPrepaidCard") {
+                    self.previouslyAmortizedDeductedByPrepaidCard = dict["PreviouslyAmortizedDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedExpenditureAmount") {
+                    self.previouslyAmortizedExpenditureAmount = dict["PreviouslyAmortizedExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedInvoiceDiscount") {
+                    self.previouslyAmortizedInvoiceDiscount = dict["PreviouslyAmortizedInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxAmount") {
+                    self.previouslyAmortizedPretaxAmount = dict["PreviouslyAmortizedPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedPretaxGrossAmount") {
+                    self.previouslyAmortizedPretaxGrossAmount = dict["PreviouslyAmortizedPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("PreviouslyAmortizedRoundDownDiscount") {
+                    self.previouslyAmortizedRoundDownDiscount = dict["PreviouslyAmortizedRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("ProductCode") {
+                    self.productCode = dict["ProductCode"] as! String
+                }
+                if dict.keys.contains("ProductDetail") {
+                    self.productDetail = dict["ProductDetail"] as! String
+                }
+                if dict.keys.contains("ProductDetailCode") {
+                    self.productDetailCode = dict["ProductDetailCode"] as! String
+                }
+                if dict.keys.contains("ProductName") {
+                    self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCashCoupons") {
+                    self.remainingAmortizationDeductedByCashCoupons = dict["RemainingAmortizationDeductedByCashCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByCoupons") {
+                    self.remainingAmortizationDeductedByCoupons = dict["RemainingAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationDeductedByPrepaidCard") {
+                    self.remainingAmortizationDeductedByPrepaidCard = dict["RemainingAmortizationDeductedByPrepaidCard"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationExpenditureAmount") {
+                    self.remainingAmortizationExpenditureAmount = dict["RemainingAmortizationExpenditureAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationInvoiceDiscount") {
+                    self.remainingAmortizationInvoiceDiscount = dict["RemainingAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxAmount") {
+                    self.remainingAmortizationPretaxAmount = dict["RemainingAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationPretaxGrossAmount") {
+                    self.remainingAmortizationPretaxGrossAmount = dict["RemainingAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("RemainingAmortizationRoundDownDiscount") {
+                    self.remainingAmortizationRoundDownDiscount = dict["RemainingAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("RoundDownDiscount") {
+                    self.roundDownDiscount = dict["RoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("SubscriptionType") {
+                    self.subscriptionType = dict["SubscriptionType"] as! String
+                }
+            }
+        }
+        public var accountID: String?
+
+        public var accountName: String?
+
+        public var items: [DescribeProductAmortizedCostByConsumePeriodResponseBody.Data.Items]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountID != nil {
+                map["AccountID"] = self.accountID!
+            }
+            if self.accountName != nil {
+                map["AccountName"] = self.accountName!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountID") {
+                self.accountID = dict["AccountID"] as! String
+            }
+            if dict.keys.contains("AccountName") {
+                self.accountName = dict["AccountName"] as! String
+            }
+            if dict.keys.contains("Items") {
+                self.items = dict["Items"] as! [DescribeProductAmortizedCostByConsumePeriodResponseBody.Data.Items]
+            }
+            if dict.keys.contains("MaxResults") {
+                self.maxResults = dict["MaxResults"] as! Int32
+            }
+            if dict.keys.contains("NextToken") {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("TotalCount") {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeProductAmortizedCostByConsumePeriodResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = DescribeProductAmortizedCostByConsumePeriodResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeProductAmortizedCostByConsumePeriodResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeProductAmortizedCostByConsumePeriodResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = DescribeProductAmortizedCostByConsumePeriodResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -16101,6 +19330,231 @@ public class QueryCashCouponsResponse : Tea.TeaModel {
     }
 }
 
+public class QueryCommodityListRequest : Tea.TeaModel {
+    public var productCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ProductCode") {
+            self.productCode = dict["ProductCode"] as! String
+        }
+    }
+}
+
+public class QueryCommodityListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class CommodityList : Tea.TeaModel {
+            public var chargeType: String?
+
+            public var commodityCode: String?
+
+            public var commodityName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.chargeType != nil {
+                    map["ChargeType"] = self.chargeType!
+                }
+                if self.commodityCode != nil {
+                    map["CommodityCode"] = self.commodityCode!
+                }
+                if self.commodityName != nil {
+                    map["CommodityName"] = self.commodityName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ChargeType") {
+                    self.chargeType = dict["ChargeType"] as! String
+                }
+                if dict.keys.contains("CommodityCode") {
+                    self.commodityCode = dict["CommodityCode"] as! String
+                }
+                if dict.keys.contains("CommodityName") {
+                    self.commodityName = dict["CommodityName"] as! String
+                }
+            }
+        }
+        public var commodityList: [QueryCommodityListResponseBody.Data.CommodityList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.commodityList != nil {
+                var tmp : [Any] = []
+                for k in self.commodityList! {
+                    tmp.append(k.toMap())
+                }
+                map["CommodityList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CommodityList") {
+                self.commodityList = dict["CommodityList"] as! [QueryCommodityListResponseBody.Data.CommodityList]
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QueryCommodityListResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = QueryCommodityListResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryCommodityListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCommodityListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryCommodityListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryCostUnitRequest : Tea.TeaModel {
     public var ownerUid: Int64?
 
@@ -20528,872 +23982,6 @@ public class QueryInvoicingCustomerListResponse : Tea.TeaModel {
     }
 }
 
-public class QueryMonthlyBillRequest : Tea.TeaModel {
-    public var billingCycle: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.billingCycle != nil {
-            map["BillingCycle"] = self.billingCycle!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("BillingCycle") {
-            self.billingCycle = dict["BillingCycle"] as! String
-        }
-    }
-}
-
-public class QueryMonthlyBillResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public class Items : Tea.TeaModel {
-            public class Item : Tea.TeaModel {
-                public var afterTaxAmount: Double?
-
-                public var currency: String?
-
-                public var deductedByCashCoupons: Double?
-
-                public var deductedByCoupons: Double?
-
-                public var deductedByPrepaidCard: Double?
-
-                public var invoiceDiscount: Double?
-
-                public var item: String?
-
-                public var outstandingAmount: Double?
-
-                public var paymentAmount: Double?
-
-                public var paymentCurrency: String?
-
-                public var pretaxAmount: Double?
-
-                public var pretaxAmountLocal: Double?
-
-                public var pretaxGrossAmount: Double?
-
-                public var productCode: String?
-
-                public var productType: String?
-
-                public var solutionCode: String?
-
-                public var solutionName: String?
-
-                public var subscriptionType: String?
-
-                public var tax: Double?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.afterTaxAmount != nil {
-                        map["AfterTaxAmount"] = self.afterTaxAmount!
-                    }
-                    if self.currency != nil {
-                        map["Currency"] = self.currency!
-                    }
-                    if self.deductedByCashCoupons != nil {
-                        map["DeductedByCashCoupons"] = self.deductedByCashCoupons!
-                    }
-                    if self.deductedByCoupons != nil {
-                        map["DeductedByCoupons"] = self.deductedByCoupons!
-                    }
-                    if self.deductedByPrepaidCard != nil {
-                        map["DeductedByPrepaidCard"] = self.deductedByPrepaidCard!
-                    }
-                    if self.invoiceDiscount != nil {
-                        map["InvoiceDiscount"] = self.invoiceDiscount!
-                    }
-                    if self.item != nil {
-                        map["Item"] = self.item!
-                    }
-                    if self.outstandingAmount != nil {
-                        map["OutstandingAmount"] = self.outstandingAmount!
-                    }
-                    if self.paymentAmount != nil {
-                        map["PaymentAmount"] = self.paymentAmount!
-                    }
-                    if self.paymentCurrency != nil {
-                        map["PaymentCurrency"] = self.paymentCurrency!
-                    }
-                    if self.pretaxAmount != nil {
-                        map["PretaxAmount"] = self.pretaxAmount!
-                    }
-                    if self.pretaxAmountLocal != nil {
-                        map["PretaxAmountLocal"] = self.pretaxAmountLocal!
-                    }
-                    if self.pretaxGrossAmount != nil {
-                        map["PretaxGrossAmount"] = self.pretaxGrossAmount!
-                    }
-                    if self.productCode != nil {
-                        map["ProductCode"] = self.productCode!
-                    }
-                    if self.productType != nil {
-                        map["ProductType"] = self.productType!
-                    }
-                    if self.solutionCode != nil {
-                        map["SolutionCode"] = self.solutionCode!
-                    }
-                    if self.solutionName != nil {
-                        map["SolutionName"] = self.solutionName!
-                    }
-                    if self.subscriptionType != nil {
-                        map["SubscriptionType"] = self.subscriptionType!
-                    }
-                    if self.tax != nil {
-                        map["Tax"] = self.tax!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("AfterTaxAmount") {
-                        self.afterTaxAmount = dict["AfterTaxAmount"] as! Double
-                    }
-                    if dict.keys.contains("Currency") {
-                        self.currency = dict["Currency"] as! String
-                    }
-                    if dict.keys.contains("DeductedByCashCoupons") {
-                        self.deductedByCashCoupons = dict["DeductedByCashCoupons"] as! Double
-                    }
-                    if dict.keys.contains("DeductedByCoupons") {
-                        self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
-                    }
-                    if dict.keys.contains("DeductedByPrepaidCard") {
-                        self.deductedByPrepaidCard = dict["DeductedByPrepaidCard"] as! Double
-                    }
-                    if dict.keys.contains("InvoiceDiscount") {
-                        self.invoiceDiscount = dict["InvoiceDiscount"] as! Double
-                    }
-                    if dict.keys.contains("Item") {
-                        self.item = dict["Item"] as! String
-                    }
-                    if dict.keys.contains("OutstandingAmount") {
-                        self.outstandingAmount = dict["OutstandingAmount"] as! Double
-                    }
-                    if dict.keys.contains("PaymentAmount") {
-                        self.paymentAmount = dict["PaymentAmount"] as! Double
-                    }
-                    if dict.keys.contains("PaymentCurrency") {
-                        self.paymentCurrency = dict["PaymentCurrency"] as! String
-                    }
-                    if dict.keys.contains("PretaxAmount") {
-                        self.pretaxAmount = dict["PretaxAmount"] as! Double
-                    }
-                    if dict.keys.contains("PretaxAmountLocal") {
-                        self.pretaxAmountLocal = dict["PretaxAmountLocal"] as! Double
-                    }
-                    if dict.keys.contains("PretaxGrossAmount") {
-                        self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
-                    }
-                    if dict.keys.contains("ProductCode") {
-                        self.productCode = dict["ProductCode"] as! String
-                    }
-                    if dict.keys.contains("ProductType") {
-                        self.productType = dict["ProductType"] as! String
-                    }
-                    if dict.keys.contains("SolutionCode") {
-                        self.solutionCode = dict["SolutionCode"] as! String
-                    }
-                    if dict.keys.contains("SolutionName") {
-                        self.solutionName = dict["SolutionName"] as! String
-                    }
-                    if dict.keys.contains("SubscriptionType") {
-                        self.subscriptionType = dict["SubscriptionType"] as! String
-                    }
-                    if dict.keys.contains("Tax") {
-                        self.tax = dict["Tax"] as! Double
-                    }
-                }
-            }
-            public var item: [QueryMonthlyBillResponseBody.Data.Items.Item]?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.item != nil {
-                    var tmp : [Any] = []
-                    for k in self.item! {
-                        tmp.append(k.toMap())
-                    }
-                    map["Item"] = tmp
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Item") {
-                    self.item = dict["Item"] as! [QueryMonthlyBillResponseBody.Data.Items.Item]
-                }
-            }
-        }
-        public var billingCycle: String?
-
-        public var items: QueryMonthlyBillResponseBody.Data.Items?
-
-        public var newInvoiceAmount: Double?
-
-        public var outstandingAmount: Double?
-
-        public var totalOutstandingAmount: Double?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-            try self.items?.validate()
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.billingCycle != nil {
-                map["BillingCycle"] = self.billingCycle!
-            }
-            if self.items != nil {
-                map["Items"] = self.items?.toMap()
-            }
-            if self.newInvoiceAmount != nil {
-                map["NewInvoiceAmount"] = self.newInvoiceAmount!
-            }
-            if self.outstandingAmount != nil {
-                map["OutstandingAmount"] = self.outstandingAmount!
-            }
-            if self.totalOutstandingAmount != nil {
-                map["TotalOutstandingAmount"] = self.totalOutstandingAmount!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("BillingCycle") {
-                self.billingCycle = dict["BillingCycle"] as! String
-            }
-            if dict.keys.contains("Items") {
-                var model = QueryMonthlyBillResponseBody.Data.Items()
-                model.fromMap(dict["Items"] as! [String: Any])
-                self.items = model
-            }
-            if dict.keys.contains("NewInvoiceAmount") {
-                self.newInvoiceAmount = dict["NewInvoiceAmount"] as! Double
-            }
-            if dict.keys.contains("OutstandingAmount") {
-                self.outstandingAmount = dict["OutstandingAmount"] as! Double
-            }
-            if dict.keys.contains("TotalOutstandingAmount") {
-                self.totalOutstandingAmount = dict["TotalOutstandingAmount"] as! Double
-            }
-        }
-    }
-    public var code: String?
-
-    public var data: QueryMonthlyBillResponseBody.Data?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Data") {
-            var model = QueryMonthlyBillResponseBody.Data()
-            model.fromMap(dict["Data"] as! [String: Any])
-            self.data = model
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class QueryMonthlyBillResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: QueryMonthlyBillResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = QueryMonthlyBillResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class QueryMonthlyInstanceConsumptionRequest : Tea.TeaModel {
-    public var billingCycle: String?
-
-    public var ownerId: Int64?
-
-    public var pageNum: Int32?
-
-    public var pageSize: Int32?
-
-    public var productCode: String?
-
-    public var productType: String?
-
-    public var subscriptionType: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.billingCycle != nil {
-            map["BillingCycle"] = self.billingCycle!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.pageNum != nil {
-            map["PageNum"] = self.pageNum!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.productCode != nil {
-            map["ProductCode"] = self.productCode!
-        }
-        if self.productType != nil {
-            map["ProductType"] = self.productType!
-        }
-        if self.subscriptionType != nil {
-            map["SubscriptionType"] = self.subscriptionType!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("BillingCycle") {
-            self.billingCycle = dict["BillingCycle"] as! String
-        }
-        if dict.keys.contains("OwnerId") {
-            self.ownerId = dict["OwnerId"] as! Int64
-        }
-        if dict.keys.contains("PageNum") {
-            self.pageNum = dict["PageNum"] as! Int32
-        }
-        if dict.keys.contains("PageSize") {
-            self.pageSize = dict["PageSize"] as! Int32
-        }
-        if dict.keys.contains("ProductCode") {
-            self.productCode = dict["ProductCode"] as! String
-        }
-        if dict.keys.contains("ProductType") {
-            self.productType = dict["ProductType"] as! String
-        }
-        if dict.keys.contains("SubscriptionType") {
-            self.subscriptionType = dict["SubscriptionType"] as! String
-        }
-    }
-}
-
-public class QueryMonthlyInstanceConsumptionResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public class Items : Tea.TeaModel {
-            public class Item : Tea.TeaModel {
-                public var afterTaxAmount: Double?
-
-                public var currency: String?
-
-                public var discountAmount: Double?
-
-                public var instanceID: String?
-
-                public var ownerID: String?
-
-                public var payerAccount: String?
-
-                public var paymentCurrency: String?
-
-                public var pretaxAmount: Double?
-
-                public var pretaxAmountLocal: Double?
-
-                public var pretaxGrossAmount: Double?
-
-                public var productCode: String?
-
-                public var productType: String?
-
-                public var region: String?
-
-                public var resourceGroup: String?
-
-                public var subscriptionType: String?
-
-                public var tag: String?
-
-                public var tax: Double?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.afterTaxAmount != nil {
-                        map["AfterTaxAmount"] = self.afterTaxAmount!
-                    }
-                    if self.currency != nil {
-                        map["Currency"] = self.currency!
-                    }
-                    if self.discountAmount != nil {
-                        map["DiscountAmount"] = self.discountAmount!
-                    }
-                    if self.instanceID != nil {
-                        map["InstanceID"] = self.instanceID!
-                    }
-                    if self.ownerID != nil {
-                        map["OwnerID"] = self.ownerID!
-                    }
-                    if self.payerAccount != nil {
-                        map["PayerAccount"] = self.payerAccount!
-                    }
-                    if self.paymentCurrency != nil {
-                        map["PaymentCurrency"] = self.paymentCurrency!
-                    }
-                    if self.pretaxAmount != nil {
-                        map["PretaxAmount"] = self.pretaxAmount!
-                    }
-                    if self.pretaxAmountLocal != nil {
-                        map["PretaxAmountLocal"] = self.pretaxAmountLocal!
-                    }
-                    if self.pretaxGrossAmount != nil {
-                        map["PretaxGrossAmount"] = self.pretaxGrossAmount!
-                    }
-                    if self.productCode != nil {
-                        map["ProductCode"] = self.productCode!
-                    }
-                    if self.productType != nil {
-                        map["ProductType"] = self.productType!
-                    }
-                    if self.region != nil {
-                        map["Region"] = self.region!
-                    }
-                    if self.resourceGroup != nil {
-                        map["ResourceGroup"] = self.resourceGroup!
-                    }
-                    if self.subscriptionType != nil {
-                        map["SubscriptionType"] = self.subscriptionType!
-                    }
-                    if self.tag != nil {
-                        map["Tag"] = self.tag!
-                    }
-                    if self.tax != nil {
-                        map["Tax"] = self.tax!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("AfterTaxAmount") {
-                        self.afterTaxAmount = dict["AfterTaxAmount"] as! Double
-                    }
-                    if dict.keys.contains("Currency") {
-                        self.currency = dict["Currency"] as! String
-                    }
-                    if dict.keys.contains("DiscountAmount") {
-                        self.discountAmount = dict["DiscountAmount"] as! Double
-                    }
-                    if dict.keys.contains("InstanceID") {
-                        self.instanceID = dict["InstanceID"] as! String
-                    }
-                    if dict.keys.contains("OwnerID") {
-                        self.ownerID = dict["OwnerID"] as! String
-                    }
-                    if dict.keys.contains("PayerAccount") {
-                        self.payerAccount = dict["PayerAccount"] as! String
-                    }
-                    if dict.keys.contains("PaymentCurrency") {
-                        self.paymentCurrency = dict["PaymentCurrency"] as! String
-                    }
-                    if dict.keys.contains("PretaxAmount") {
-                        self.pretaxAmount = dict["PretaxAmount"] as! Double
-                    }
-                    if dict.keys.contains("PretaxAmountLocal") {
-                        self.pretaxAmountLocal = dict["PretaxAmountLocal"] as! Double
-                    }
-                    if dict.keys.contains("PretaxGrossAmount") {
-                        self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
-                    }
-                    if dict.keys.contains("ProductCode") {
-                        self.productCode = dict["ProductCode"] as! String
-                    }
-                    if dict.keys.contains("ProductType") {
-                        self.productType = dict["ProductType"] as! String
-                    }
-                    if dict.keys.contains("Region") {
-                        self.region = dict["Region"] as! String
-                    }
-                    if dict.keys.contains("ResourceGroup") {
-                        self.resourceGroup = dict["ResourceGroup"] as! String
-                    }
-                    if dict.keys.contains("SubscriptionType") {
-                        self.subscriptionType = dict["SubscriptionType"] as! String
-                    }
-                    if dict.keys.contains("Tag") {
-                        self.tag = dict["Tag"] as! String
-                    }
-                    if dict.keys.contains("Tax") {
-                        self.tax = dict["Tax"] as! Double
-                    }
-                }
-            }
-            public var item: [QueryMonthlyInstanceConsumptionResponseBody.Data.Items.Item]?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.item != nil {
-                    var tmp : [Any] = []
-                    for k in self.item! {
-                        tmp.append(k.toMap())
-                    }
-                    map["Item"] = tmp
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Item") {
-                    self.item = dict["Item"] as! [QueryMonthlyInstanceConsumptionResponseBody.Data.Items.Item]
-                }
-            }
-        }
-        public var billingCycle: String?
-
-        public var items: QueryMonthlyInstanceConsumptionResponseBody.Data.Items?
-
-        public var pageNum: Int32?
-
-        public var pageSize: Int32?
-
-        public var totalCount: Int32?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-            try self.items?.validate()
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.billingCycle != nil {
-                map["BillingCycle"] = self.billingCycle!
-            }
-            if self.items != nil {
-                map["Items"] = self.items?.toMap()
-            }
-            if self.pageNum != nil {
-                map["PageNum"] = self.pageNum!
-            }
-            if self.pageSize != nil {
-                map["PageSize"] = self.pageSize!
-            }
-            if self.totalCount != nil {
-                map["TotalCount"] = self.totalCount!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("BillingCycle") {
-                self.billingCycle = dict["BillingCycle"] as! String
-            }
-            if dict.keys.contains("Items") {
-                var model = QueryMonthlyInstanceConsumptionResponseBody.Data.Items()
-                model.fromMap(dict["Items"] as! [String: Any])
-                self.items = model
-            }
-            if dict.keys.contains("PageNum") {
-                self.pageNum = dict["PageNum"] as! Int32
-            }
-            if dict.keys.contains("PageSize") {
-                self.pageSize = dict["PageSize"] as! Int32
-            }
-            if dict.keys.contains("TotalCount") {
-                self.totalCount = dict["TotalCount"] as! Int32
-            }
-        }
-    }
-    public var code: String?
-
-    public var data: QueryMonthlyInstanceConsumptionResponseBody.Data?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: Bool?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Data") {
-            var model = QueryMonthlyInstanceConsumptionResponseBody.Data()
-            model.fromMap(dict["Data"] as! [String: Any])
-            self.data = model
-        }
-        if dict.keys.contains("Message") {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") {
-            self.success = dict["Success"] as! Bool
-        }
-    }
-}
-
-public class QueryMonthlyInstanceConsumptionResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: QueryMonthlyInstanceConsumptionResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") {
-            var model = QueryMonthlyInstanceConsumptionResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class QueryOrdersRequest : Tea.TeaModel {
     public var createTimeEnd: String?
 
@@ -22447,6 +25035,280 @@ public class QueryPrepaidCardsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") {
             var model = QueryPrepaidCardsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryPriceEntityListRequest : Tea.TeaModel {
+    public var commodityCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommodityCode") {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
+    }
+}
+
+public class QueryPriceEntityListResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class PriceEntityInfoList : Tea.TeaModel {
+            public class PriceFactorList : Tea.TeaModel {
+                public var priceFactorCode: String?
+
+                public var priceFactorName: String?
+
+                public var priceFactorValueList: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.priceFactorCode != nil {
+                        map["PriceFactorCode"] = self.priceFactorCode!
+                    }
+                    if self.priceFactorName != nil {
+                        map["PriceFactorName"] = self.priceFactorName!
+                    }
+                    if self.priceFactorValueList != nil {
+                        map["PriceFactorValueList"] = self.priceFactorValueList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("PriceFactorCode") {
+                        self.priceFactorCode = dict["PriceFactorCode"] as! String
+                    }
+                    if dict.keys.contains("PriceFactorName") {
+                        self.priceFactorName = dict["PriceFactorName"] as! String
+                    }
+                    if dict.keys.contains("PriceFactorValueList") {
+                        self.priceFactorValueList = dict["PriceFactorValueList"] as! [String]
+                    }
+                }
+            }
+            public var priceEntityCode: String?
+
+            public var priceEntityName: String?
+
+            public var priceFactorList: [QueryPriceEntityListResponseBody.Data.PriceEntityInfoList.PriceFactorList]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.priceEntityCode != nil {
+                    map["PriceEntityCode"] = self.priceEntityCode!
+                }
+                if self.priceEntityName != nil {
+                    map["PriceEntityName"] = self.priceEntityName!
+                }
+                if self.priceFactorList != nil {
+                    var tmp : [Any] = []
+                    for k in self.priceFactorList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PriceFactorList"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("PriceEntityCode") {
+                    self.priceEntityCode = dict["PriceEntityCode"] as! String
+                }
+                if dict.keys.contains("PriceEntityName") {
+                    self.priceEntityName = dict["PriceEntityName"] as! String
+                }
+                if dict.keys.contains("PriceFactorList") {
+                    self.priceFactorList = dict["PriceFactorList"] as! [QueryPriceEntityListResponseBody.Data.PriceEntityInfoList.PriceFactorList]
+                }
+            }
+        }
+        public var priceEntityInfoList: [QueryPriceEntityListResponseBody.Data.PriceEntityInfoList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.priceEntityInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.priceEntityInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["PriceEntityInfoList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PriceEntityInfoList") {
+                self.priceEntityInfoList = dict["PriceEntityInfoList"] as! [QueryPriceEntityListResponseBody.Data.PriceEntityInfoList]
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QueryPriceEntityListResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = QueryPriceEntityListResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryPriceEntityListResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryPriceEntityListResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QueryPriceEntityListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -24843,6 +27705,359 @@ public class QuerySavingsPlansDeductLogResponse : Tea.TeaModel {
     }
 }
 
+public class QuerySavingsPlansDiscountRequest : Tea.TeaModel {
+    public var commodityCode: String?
+
+    public var cycle: String?
+
+    public var locale: String?
+
+    public var moduleCode: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var payMode: String?
+
+    public var region: String?
+
+    public var spec: String?
+
+    public var spnType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        if self.cycle != nil {
+            map["Cycle"] = self.cycle!
+        }
+        if self.locale != nil {
+            map["Locale"] = self.locale!
+        }
+        if self.moduleCode != nil {
+            map["ModuleCode"] = self.moduleCode!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.payMode != nil {
+            map["PayMode"] = self.payMode!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.spec != nil {
+            map["Spec"] = self.spec!
+        }
+        if self.spnType != nil {
+            map["SpnType"] = self.spnType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommodityCode") {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
+        if dict.keys.contains("Cycle") {
+            self.cycle = dict["Cycle"] as! String
+        }
+        if dict.keys.contains("Locale") {
+            self.locale = dict["Locale"] as! String
+        }
+        if dict.keys.contains("ModuleCode") {
+            self.moduleCode = dict["ModuleCode"] as! String
+        }
+        if dict.keys.contains("PageNum") {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PayMode") {
+            self.payMode = dict["PayMode"] as! String
+        }
+        if dict.keys.contains("Region") {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("Spec") {
+            self.spec = dict["Spec"] as! String
+        }
+        if dict.keys.contains("SpnType") {
+            self.spnType = dict["SpnType"] as! String
+        }
+    }
+}
+
+public class QuerySavingsPlansDiscountResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var commodityName: String?
+
+            public var contractDiscountRate: String?
+
+            public var cycle: String?
+
+            public var discountRate: String?
+
+            public var moduleName: String?
+
+            public var payMode: String?
+
+            public var region: String?
+
+            public var spec: String?
+
+            public var spnType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.commodityName != nil {
+                    map["CommodityName"] = self.commodityName!
+                }
+                if self.contractDiscountRate != nil {
+                    map["ContractDiscountRate"] = self.contractDiscountRate!
+                }
+                if self.cycle != nil {
+                    map["Cycle"] = self.cycle!
+                }
+                if self.discountRate != nil {
+                    map["DiscountRate"] = self.discountRate!
+                }
+                if self.moduleName != nil {
+                    map["ModuleName"] = self.moduleName!
+                }
+                if self.payMode != nil {
+                    map["PayMode"] = self.payMode!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.spec != nil {
+                    map["Spec"] = self.spec!
+                }
+                if self.spnType != nil {
+                    map["SpnType"] = self.spnType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CommodityName") {
+                    self.commodityName = dict["CommodityName"] as! String
+                }
+                if dict.keys.contains("ContractDiscountRate") {
+                    self.contractDiscountRate = dict["ContractDiscountRate"] as! String
+                }
+                if dict.keys.contains("Cycle") {
+                    self.cycle = dict["Cycle"] as! String
+                }
+                if dict.keys.contains("DiscountRate") {
+                    self.discountRate = dict["DiscountRate"] as! String
+                }
+                if dict.keys.contains("ModuleName") {
+                    self.moduleName = dict["ModuleName"] as! String
+                }
+                if dict.keys.contains("PayMode") {
+                    self.payMode = dict["PayMode"] as! String
+                }
+                if dict.keys.contains("Region") {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("Spec") {
+                    self.spec = dict["Spec"] as! String
+                }
+                if dict.keys.contains("SpnType") {
+                    self.spnType = dict["SpnType"] as! String
+                }
+            }
+        }
+        public var hostId: String?
+
+        public var items: [QuerySavingsPlansDiscountResponseBody.Data.Items]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.hostId != nil {
+                map["HostId"] = self.hostId!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("HostId") {
+                self.hostId = dict["HostId"] as! String
+            }
+            if dict.keys.contains("Items") {
+                self.items = dict["Items"] as! [QuerySavingsPlansDiscountResponseBody.Data.Items]
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: QuerySavingsPlansDiscountResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") {
+            var model = QuerySavingsPlansDiscountResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QuerySavingsPlansDiscountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QuerySavingsPlansDiscountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") {
+            var model = QuerySavingsPlansDiscountResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QuerySavingsPlansInstanceRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -25008,6 +28223,8 @@ public class QuerySavingsPlansInstanceResponseBody : Tea.TeaModel {
 
             public var cycle: String?
 
+            public var deductCycleType: String?
+
             public var endTime: String?
 
             public var endTimestamp: Int64?
@@ -25064,6 +28281,9 @@ public class QuerySavingsPlansInstanceResponseBody : Tea.TeaModel {
                 }
                 if self.cycle != nil {
                     map["Cycle"] = self.cycle!
+                }
+                if self.deductCycleType != nil {
+                    map["DeductCycleType"] = self.deductCycleType!
                 }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
@@ -25132,6 +28352,9 @@ public class QuerySavingsPlansInstanceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Cycle") {
                     self.cycle = dict["Cycle"] as! String
+                }
+                if dict.keys.contains("DeductCycleType") {
+                    self.deductCycleType = dict["DeductCycleType"] as! String
                 }
                 if dict.keys.contains("EndTime") {
                     self.endTime = dict["EndTime"] as! String
@@ -26007,28 +29230,16 @@ public class QuerySettleBillResponse : Tea.TeaModel {
     }
 }
 
-public class QuerySettlementBillRequest : Tea.TeaModel {
-    public var billingCycle: String?
+public class QuerySkuPriceListRequest : Tea.TeaModel {
+    public var commodityCode: String?
 
-    public var endTime: String?
-
-    public var isHideZeroCharge: Bool?
-
-    public var ownerId: Int64?
-
-    public var pageNum: Int32?
+    public var nextPageToken: String?
 
     public var pageSize: Int32?
 
-    public var productCode: String?
+    public var priceEntityCode: String?
 
-    public var productType: String?
-
-    public var startTime: String?
-
-    public var subscriptionType: String?
-
-    public var type: String?
+    public var priceFactorConditionMap: [String: [String]]?
 
     public override init() {
         super.init()
@@ -26044,168 +29255,256 @@ public class QuerySettlementBillRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.billingCycle != nil {
-            map["BillingCycle"] = self.billingCycle!
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
         }
-        if self.endTime != nil {
-            map["EndTime"] = self.endTime!
-        }
-        if self.isHideZeroCharge != nil {
-            map["IsHideZeroCharge"] = self.isHideZeroCharge!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.pageNum != nil {
-            map["PageNum"] = self.pageNum!
+        if self.nextPageToken != nil {
+            map["NextPageToken"] = self.nextPageToken!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
-        if self.productCode != nil {
-            map["ProductCode"] = self.productCode!
+        if self.priceEntityCode != nil {
+            map["PriceEntityCode"] = self.priceEntityCode!
         }
-        if self.productType != nil {
-            map["ProductType"] = self.productType!
-        }
-        if self.startTime != nil {
-            map["StartTime"] = self.startTime!
-        }
-        if self.subscriptionType != nil {
-            map["SubscriptionType"] = self.subscriptionType!
-        }
-        if self.type != nil {
-            map["Type"] = self.type!
+        if self.priceFactorConditionMap != nil {
+            map["PriceFactorConditionMap"] = self.priceFactorConditionMap!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("BillingCycle") {
-            self.billingCycle = dict["BillingCycle"] as! String
+        if dict.keys.contains("CommodityCode") {
+            self.commodityCode = dict["CommodityCode"] as! String
         }
-        if dict.keys.contains("EndTime") {
-            self.endTime = dict["EndTime"] as! String
-        }
-        if dict.keys.contains("IsHideZeroCharge") {
-            self.isHideZeroCharge = dict["IsHideZeroCharge"] as! Bool
-        }
-        if dict.keys.contains("OwnerId") {
-            self.ownerId = dict["OwnerId"] as! Int64
-        }
-        if dict.keys.contains("PageNum") {
-            self.pageNum = dict["PageNum"] as! Int32
+        if dict.keys.contains("NextPageToken") {
+            self.nextPageToken = dict["NextPageToken"] as! String
         }
         if dict.keys.contains("PageSize") {
             self.pageSize = dict["PageSize"] as! Int32
         }
-        if dict.keys.contains("ProductCode") {
-            self.productCode = dict["ProductCode"] as! String
+        if dict.keys.contains("PriceEntityCode") {
+            self.priceEntityCode = dict["PriceEntityCode"] as! String
         }
-        if dict.keys.contains("ProductType") {
-            self.productType = dict["ProductType"] as! String
-        }
-        if dict.keys.contains("StartTime") {
-            self.startTime = dict["StartTime"] as! String
-        }
-        if dict.keys.contains("SubscriptionType") {
-            self.subscriptionType = dict["SubscriptionType"] as! String
-        }
-        if dict.keys.contains("Type") {
-            self.type = dict["Type"] as! String
+        if dict.keys.contains("PriceFactorConditionMap") {
+            self.priceFactorConditionMap = dict["PriceFactorConditionMap"] as! [String: [String]]
         }
     }
 }
 
-public class QuerySettlementBillResponseBody : Tea.TeaModel {
+public class QuerySkuPriceListShrinkRequest : Tea.TeaModel {
+    public var commodityCode: String?
+
+    public var nextPageToken: String?
+
+    public var pageSize: Int32?
+
+    public var priceEntityCode: String?
+
+    public var priceFactorConditionMapShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        if self.nextPageToken != nil {
+            map["NextPageToken"] = self.nextPageToken!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.priceEntityCode != nil {
+            map["PriceEntityCode"] = self.priceEntityCode!
+        }
+        if self.priceFactorConditionMapShrink != nil {
+            map["PriceFactorConditionMap"] = self.priceFactorConditionMapShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommodityCode") {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
+        if dict.keys.contains("NextPageToken") {
+            self.nextPageToken = dict["NextPageToken"] as! String
+        }
+        if dict.keys.contains("PageSize") {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PriceEntityCode") {
+            self.priceEntityCode = dict["PriceEntityCode"] as! String
+        }
+        if dict.keys.contains("PriceFactorConditionMap") {
+            self.priceFactorConditionMapShrink = dict["PriceFactorConditionMap"] as! String
+        }
+    }
+}
+
+public class QuerySkuPriceListResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public class Items : Tea.TeaModel {
-            public class Item : Tea.TeaModel {
-                public var accountDiscount: Double?
+        public class SkuPricePage : Tea.TeaModel {
+            public class SkuPriceList : Tea.TeaModel {
+                public class CskuPriceList : Tea.TeaModel {
+                    public class RangeList : Tea.TeaModel {
+                        public var factorCode: String?
 
-                public var afterTaxAmount: Double?
+                        public var max: String?
 
-                public var billID: String?
+                        public var min: String?
 
-                public var chargeDiscount: Double?
+                        public var type: String?
 
-                public var clearedTime: String?
+                        public override init() {
+                            super.init()
+                        }
 
-                public var config: String?
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
 
-                public var createTime: String?
+                        public override func validate() throws -> Void {
+                        }
 
-                public var currency: String?
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.factorCode != nil {
+                                map["FactorCode"] = self.factorCode!
+                            }
+                            if self.max != nil {
+                                map["Max"] = self.max!
+                            }
+                            if self.min != nil {
+                                map["Min"] = self.min!
+                            }
+                            if self.type != nil {
+                                map["Type"] = self.type!
+                            }
+                            return map
+                        }
 
-                public var deductedByCashCoupons: Double?
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("FactorCode") {
+                                self.factorCode = dict["FactorCode"] as! String
+                            }
+                            if dict.keys.contains("Max") {
+                                self.max = dict["Max"] as! String
+                            }
+                            if dict.keys.contains("Min") {
+                                self.min = dict["Min"] as! String
+                            }
+                            if dict.keys.contains("Type") {
+                                self.type = dict["Type"] as! String
+                            }
+                        }
+                    }
+                    public var cskuCode: String?
 
-                public var deductedByCoupons: Double?
+                    public var currency: String?
 
-                public var deductedByPrepaidCard: Double?
+                    public var price: String?
 
-                public var invoiceNo: String?
+                    public var priceMode: String?
 
-                public var item: String?
+                    public var priceType: String?
 
-                public var linkedCustomerOrderID: String?
+                    public var priceUnit: String?
 
-                public var mybankPaymentAmount: Double?
+                    public var rangeList: [QuerySkuPriceListResponseBody.Data.SkuPricePage.SkuPriceList.CskuPriceList.RangeList]?
 
-                public var orderID: String?
+                    public var usageUnit: String?
 
-                public var orderType: String?
+                    public override init() {
+                        super.init()
+                    }
 
-                public var originalOrderID: String?
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
 
-                public var outstandingAmount: Double?
+                    public override func validate() throws -> Void {
+                    }
 
-                public var ownerID: String?
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cskuCode != nil {
+                            map["CskuCode"] = self.cskuCode!
+                        }
+                        if self.currency != nil {
+                            map["Currency"] = self.currency!
+                        }
+                        if self.price != nil {
+                            map["Price"] = self.price!
+                        }
+                        if self.priceMode != nil {
+                            map["PriceMode"] = self.priceMode!
+                        }
+                        if self.priceType != nil {
+                            map["PriceType"] = self.priceType!
+                        }
+                        if self.priceUnit != nil {
+                            map["PriceUnit"] = self.priceUnit!
+                        }
+                        if self.rangeList != nil {
+                            var tmp : [Any] = []
+                            for k in self.rangeList! {
+                                tmp.append(k.toMap())
+                            }
+                            map["RangeList"] = tmp
+                        }
+                        if self.usageUnit != nil {
+                            map["UsageUnit"] = self.usageUnit!
+                        }
+                        return map
+                    }
 
-                public var payerAccount: String?
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("CskuCode") {
+                            self.cskuCode = dict["CskuCode"] as! String
+                        }
+                        if dict.keys.contains("Currency") {
+                            self.currency = dict["Currency"] as! String
+                        }
+                        if dict.keys.contains("Price") {
+                            self.price = dict["Price"] as! String
+                        }
+                        if dict.keys.contains("PriceMode") {
+                            self.priceMode = dict["PriceMode"] as! String
+                        }
+                        if dict.keys.contains("PriceType") {
+                            self.priceType = dict["PriceType"] as! String
+                        }
+                        if dict.keys.contains("PriceUnit") {
+                            self.priceUnit = dict["PriceUnit"] as! String
+                        }
+                        if dict.keys.contains("RangeList") {
+                            self.rangeList = dict["RangeList"] as! [QuerySkuPriceListResponseBody.Data.SkuPricePage.SkuPriceList.CskuPriceList.RangeList]
+                        }
+                        if dict.keys.contains("UsageUnit") {
+                            self.usageUnit = dict["UsageUnit"] as! String
+                        }
+                    }
+                }
+                public var cskuPriceList: [QuerySkuPriceListResponseBody.Data.SkuPricePage.SkuPriceList.CskuPriceList]?
 
-                public var paymentAmount: Double?
+                public var skuCode: String?
 
-                public var paymentCurrency: String?
-
-                public var paymentTime: String?
-
-                public var pretaxAmount: Double?
-
-                public var pretaxAmountLocal: Double?
-
-                public var pretaxGrossAmount: Double?
-
-                public var previousBillingCycleBalance: Double?
-
-                public var productCode: String?
-
-                public var productType: String?
-
-                public var promotion: String?
-
-                public var quantity: String?
-
-                public var recordID: String?
-
-                public var region: String?
-
-                public var seller: String?
-
-                public var solutionID: String?
-
-                public var solutionName: String?
-
-                public var status: String?
-
-                public var suborderID: String?
-
-                public var subscriptionType: String?
-
-                public var tax: Double?
-
-                public var usageEndTime: String?
-
-                public var usageStartTime: String?
+                public var skuFactorMap: [String: String]?
 
                 public override init() {
                     super.init()
@@ -26221,271 +29520,39 @@ public class QuerySettlementBillResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
-                    if self.accountDiscount != nil {
-                        map["AccountDiscount"] = self.accountDiscount!
+                    if self.cskuPriceList != nil {
+                        var tmp : [Any] = []
+                        for k in self.cskuPriceList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["CskuPriceList"] = tmp
                     }
-                    if self.afterTaxAmount != nil {
-                        map["AfterTaxAmount"] = self.afterTaxAmount!
+                    if self.skuCode != nil {
+                        map["SkuCode"] = self.skuCode!
                     }
-                    if self.billID != nil {
-                        map["BillID"] = self.billID!
-                    }
-                    if self.chargeDiscount != nil {
-                        map["ChargeDiscount"] = self.chargeDiscount!
-                    }
-                    if self.clearedTime != nil {
-                        map["ClearedTime"] = self.clearedTime!
-                    }
-                    if self.config != nil {
-                        map["Config"] = self.config!
-                    }
-                    if self.createTime != nil {
-                        map["CreateTime"] = self.createTime!
-                    }
-                    if self.currency != nil {
-                        map["Currency"] = self.currency!
-                    }
-                    if self.deductedByCashCoupons != nil {
-                        map["DeductedByCashCoupons"] = self.deductedByCashCoupons!
-                    }
-                    if self.deductedByCoupons != nil {
-                        map["DeductedByCoupons"] = self.deductedByCoupons!
-                    }
-                    if self.deductedByPrepaidCard != nil {
-                        map["DeductedByPrepaidCard"] = self.deductedByPrepaidCard!
-                    }
-                    if self.invoiceNo != nil {
-                        map["InvoiceNo"] = self.invoiceNo!
-                    }
-                    if self.item != nil {
-                        map["Item"] = self.item!
-                    }
-                    if self.linkedCustomerOrderID != nil {
-                        map["LinkedCustomerOrderID"] = self.linkedCustomerOrderID!
-                    }
-                    if self.mybankPaymentAmount != nil {
-                        map["MybankPaymentAmount"] = self.mybankPaymentAmount!
-                    }
-                    if self.orderID != nil {
-                        map["OrderID"] = self.orderID!
-                    }
-                    if self.orderType != nil {
-                        map["OrderType"] = self.orderType!
-                    }
-                    if self.originalOrderID != nil {
-                        map["OriginalOrderID"] = self.originalOrderID!
-                    }
-                    if self.outstandingAmount != nil {
-                        map["OutstandingAmount"] = self.outstandingAmount!
-                    }
-                    if self.ownerID != nil {
-                        map["OwnerID"] = self.ownerID!
-                    }
-                    if self.payerAccount != nil {
-                        map["PayerAccount"] = self.payerAccount!
-                    }
-                    if self.paymentAmount != nil {
-                        map["PaymentAmount"] = self.paymentAmount!
-                    }
-                    if self.paymentCurrency != nil {
-                        map["PaymentCurrency"] = self.paymentCurrency!
-                    }
-                    if self.paymentTime != nil {
-                        map["PaymentTime"] = self.paymentTime!
-                    }
-                    if self.pretaxAmount != nil {
-                        map["PretaxAmount"] = self.pretaxAmount!
-                    }
-                    if self.pretaxAmountLocal != nil {
-                        map["PretaxAmountLocal"] = self.pretaxAmountLocal!
-                    }
-                    if self.pretaxGrossAmount != nil {
-                        map["PretaxGrossAmount"] = self.pretaxGrossAmount!
-                    }
-                    if self.previousBillingCycleBalance != nil {
-                        map["PreviousBillingCycleBalance"] = self.previousBillingCycleBalance!
-                    }
-                    if self.productCode != nil {
-                        map["ProductCode"] = self.productCode!
-                    }
-                    if self.productType != nil {
-                        map["ProductType"] = self.productType!
-                    }
-                    if self.promotion != nil {
-                        map["Promotion"] = self.promotion!
-                    }
-                    if self.quantity != nil {
-                        map["Quantity"] = self.quantity!
-                    }
-                    if self.recordID != nil {
-                        map["RecordID"] = self.recordID!
-                    }
-                    if self.region != nil {
-                        map["Region"] = self.region!
-                    }
-                    if self.seller != nil {
-                        map["Seller"] = self.seller!
-                    }
-                    if self.solutionID != nil {
-                        map["SolutionID"] = self.solutionID!
-                    }
-                    if self.solutionName != nil {
-                        map["SolutionName"] = self.solutionName!
-                    }
-                    if self.status != nil {
-                        map["Status"] = self.status!
-                    }
-                    if self.suborderID != nil {
-                        map["SuborderID"] = self.suborderID!
-                    }
-                    if self.subscriptionType != nil {
-                        map["SubscriptionType"] = self.subscriptionType!
-                    }
-                    if self.tax != nil {
-                        map["Tax"] = self.tax!
-                    }
-                    if self.usageEndTime != nil {
-                        map["UsageEndTime"] = self.usageEndTime!
-                    }
-                    if self.usageStartTime != nil {
-                        map["UsageStartTime"] = self.usageStartTime!
+                    if self.skuFactorMap != nil {
+                        map["SkuFactorMap"] = self.skuFactorMap!
                     }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("AccountDiscount") {
-                        self.accountDiscount = dict["AccountDiscount"] as! Double
+                    if dict.keys.contains("CskuPriceList") {
+                        self.cskuPriceList = dict["CskuPriceList"] as! [QuerySkuPriceListResponseBody.Data.SkuPricePage.SkuPriceList.CskuPriceList]
                     }
-                    if dict.keys.contains("AfterTaxAmount") {
-                        self.afterTaxAmount = dict["AfterTaxAmount"] as! Double
+                    if dict.keys.contains("SkuCode") {
+                        self.skuCode = dict["SkuCode"] as! String
                     }
-                    if dict.keys.contains("BillID") {
-                        self.billID = dict["BillID"] as! String
-                    }
-                    if dict.keys.contains("ChargeDiscount") {
-                        self.chargeDiscount = dict["ChargeDiscount"] as! Double
-                    }
-                    if dict.keys.contains("ClearedTime") {
-                        self.clearedTime = dict["ClearedTime"] as! String
-                    }
-                    if dict.keys.contains("Config") {
-                        self.config = dict["Config"] as! String
-                    }
-                    if dict.keys.contains("CreateTime") {
-                        self.createTime = dict["CreateTime"] as! String
-                    }
-                    if dict.keys.contains("Currency") {
-                        self.currency = dict["Currency"] as! String
-                    }
-                    if dict.keys.contains("DeductedByCashCoupons") {
-                        self.deductedByCashCoupons = dict["DeductedByCashCoupons"] as! Double
-                    }
-                    if dict.keys.contains("DeductedByCoupons") {
-                        self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
-                    }
-                    if dict.keys.contains("DeductedByPrepaidCard") {
-                        self.deductedByPrepaidCard = dict["DeductedByPrepaidCard"] as! Double
-                    }
-                    if dict.keys.contains("InvoiceNo") {
-                        self.invoiceNo = dict["InvoiceNo"] as! String
-                    }
-                    if dict.keys.contains("Item") {
-                        self.item = dict["Item"] as! String
-                    }
-                    if dict.keys.contains("LinkedCustomerOrderID") {
-                        self.linkedCustomerOrderID = dict["LinkedCustomerOrderID"] as! String
-                    }
-                    if dict.keys.contains("MybankPaymentAmount") {
-                        self.mybankPaymentAmount = dict["MybankPaymentAmount"] as! Double
-                    }
-                    if dict.keys.contains("OrderID") {
-                        self.orderID = dict["OrderID"] as! String
-                    }
-                    if dict.keys.contains("OrderType") {
-                        self.orderType = dict["OrderType"] as! String
-                    }
-                    if dict.keys.contains("OriginalOrderID") {
-                        self.originalOrderID = dict["OriginalOrderID"] as! String
-                    }
-                    if dict.keys.contains("OutstandingAmount") {
-                        self.outstandingAmount = dict["OutstandingAmount"] as! Double
-                    }
-                    if dict.keys.contains("OwnerID") {
-                        self.ownerID = dict["OwnerID"] as! String
-                    }
-                    if dict.keys.contains("PayerAccount") {
-                        self.payerAccount = dict["PayerAccount"] as! String
-                    }
-                    if dict.keys.contains("PaymentAmount") {
-                        self.paymentAmount = dict["PaymentAmount"] as! Double
-                    }
-                    if dict.keys.contains("PaymentCurrency") {
-                        self.paymentCurrency = dict["PaymentCurrency"] as! String
-                    }
-                    if dict.keys.contains("PaymentTime") {
-                        self.paymentTime = dict["PaymentTime"] as! String
-                    }
-                    if dict.keys.contains("PretaxAmount") {
-                        self.pretaxAmount = dict["PretaxAmount"] as! Double
-                    }
-                    if dict.keys.contains("PretaxAmountLocal") {
-                        self.pretaxAmountLocal = dict["PretaxAmountLocal"] as! Double
-                    }
-                    if dict.keys.contains("PretaxGrossAmount") {
-                        self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
-                    }
-                    if dict.keys.contains("PreviousBillingCycleBalance") {
-                        self.previousBillingCycleBalance = dict["PreviousBillingCycleBalance"] as! Double
-                    }
-                    if dict.keys.contains("ProductCode") {
-                        self.productCode = dict["ProductCode"] as! String
-                    }
-                    if dict.keys.contains("ProductType") {
-                        self.productType = dict["ProductType"] as! String
-                    }
-                    if dict.keys.contains("Promotion") {
-                        self.promotion = dict["Promotion"] as! String
-                    }
-                    if dict.keys.contains("Quantity") {
-                        self.quantity = dict["Quantity"] as! String
-                    }
-                    if dict.keys.contains("RecordID") {
-                        self.recordID = dict["RecordID"] as! String
-                    }
-                    if dict.keys.contains("Region") {
-                        self.region = dict["Region"] as! String
-                    }
-                    if dict.keys.contains("Seller") {
-                        self.seller = dict["Seller"] as! String
-                    }
-                    if dict.keys.contains("SolutionID") {
-                        self.solutionID = dict["SolutionID"] as! String
-                    }
-                    if dict.keys.contains("SolutionName") {
-                        self.solutionName = dict["SolutionName"] as! String
-                    }
-                    if dict.keys.contains("Status") {
-                        self.status = dict["Status"] as! String
-                    }
-                    if dict.keys.contains("SuborderID") {
-                        self.suborderID = dict["SuborderID"] as! String
-                    }
-                    if dict.keys.contains("SubscriptionType") {
-                        self.subscriptionType = dict["SubscriptionType"] as! String
-                    }
-                    if dict.keys.contains("Tax") {
-                        self.tax = dict["Tax"] as! Double
-                    }
-                    if dict.keys.contains("UsageEndTime") {
-                        self.usageEndTime = dict["UsageEndTime"] as! String
-                    }
-                    if dict.keys.contains("UsageStartTime") {
-                        self.usageStartTime = dict["UsageStartTime"] as! String
+                    if dict.keys.contains("SkuFactorMap") {
+                        self.skuFactorMap = dict["SkuFactorMap"] as! [String: String]
                     }
                 }
             }
-            public var item: [QuerySettlementBillResponseBody.Data.Items.Item]?
+            public var nextPageToken: String?
+
+            public var skuPriceList: [QuerySkuPriceListResponseBody.Data.SkuPricePage.SkuPriceList]?
+
+            public var totalCount: Int32?
 
             public override init() {
                 super.init()
@@ -26501,31 +29568,35 @@ public class QuerySettlementBillResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
-                if self.item != nil {
+                if self.nextPageToken != nil {
+                    map["NextPageToken"] = self.nextPageToken!
+                }
+                if self.skuPriceList != nil {
                     var tmp : [Any] = []
-                    for k in self.item! {
+                    for k in self.skuPriceList! {
                         tmp.append(k.toMap())
                     }
-                    map["Item"] = tmp
+                    map["SkuPriceList"] = tmp
+                }
+                if self.totalCount != nil {
+                    map["TotalCount"] = self.totalCount!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Item") {
-                    self.item = dict["Item"] as! [QuerySettlementBillResponseBody.Data.Items.Item]
+                if dict.keys.contains("NextPageToken") {
+                    self.nextPageToken = dict["NextPageToken"] as! String
+                }
+                if dict.keys.contains("SkuPriceList") {
+                    self.skuPriceList = dict["SkuPriceList"] as! [QuerySkuPriceListResponseBody.Data.SkuPricePage.SkuPriceList]
+                }
+                if dict.keys.contains("TotalCount") {
+                    self.totalCount = dict["TotalCount"] as! Int32
                 }
             }
         }
-        public var billingCycle: String?
-
-        public var items: QuerySettlementBillResponseBody.Data.Items?
-
-        public var pageNum: Int32?
-
-        public var pageSize: Int32?
-
-        public var totalCount: Int32?
+        public var skuPricePage: QuerySkuPriceListResponseBody.Data.SkuPricePage?
 
         public override init() {
             super.init()
@@ -26537,52 +29608,28 @@ public class QuerySettlementBillResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.items?.validate()
+            try self.skuPricePage?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.billingCycle != nil {
-                map["BillingCycle"] = self.billingCycle!
-            }
-            if self.items != nil {
-                map["Items"] = self.items?.toMap()
-            }
-            if self.pageNum != nil {
-                map["PageNum"] = self.pageNum!
-            }
-            if self.pageSize != nil {
-                map["PageSize"] = self.pageSize!
-            }
-            if self.totalCount != nil {
-                map["TotalCount"] = self.totalCount!
+            if self.skuPricePage != nil {
+                map["SkuPricePage"] = self.skuPricePage?.toMap()
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("BillingCycle") {
-                self.billingCycle = dict["BillingCycle"] as! String
-            }
-            if dict.keys.contains("Items") {
-                var model = QuerySettlementBillResponseBody.Data.Items()
-                model.fromMap(dict["Items"] as! [String: Any])
-                self.items = model
-            }
-            if dict.keys.contains("PageNum") {
-                self.pageNum = dict["PageNum"] as! Int32
-            }
-            if dict.keys.contains("PageSize") {
-                self.pageSize = dict["PageSize"] as! Int32
-            }
-            if dict.keys.contains("TotalCount") {
-                self.totalCount = dict["TotalCount"] as! Int32
+            if dict.keys.contains("SkuPricePage") {
+                var model = QuerySkuPriceListResponseBody.Data.SkuPricePage()
+                model.fromMap(dict["SkuPricePage"] as! [String: Any])
+                self.skuPricePage = model
             }
         }
     }
     public var code: String?
 
-    public var data: QuerySettlementBillResponseBody.Data?
+    public var data: QuerySkuPriceListResponseBody.Data?
 
     public var message: String?
 
@@ -26628,7 +29675,7 @@ public class QuerySettlementBillResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Data") {
-            var model = QuerySettlementBillResponseBody.Data()
+            var model = QuerySkuPriceListResponseBody.Data()
             model.fromMap(dict["Data"] as! [String: Any])
             self.data = model
         }
@@ -26644,12 +29691,12 @@ public class QuerySettlementBillResponseBody : Tea.TeaModel {
     }
 }
 
-public class QuerySettlementBillResponse : Tea.TeaModel {
+public class QuerySkuPriceListResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
     public var statusCode: Int32?
 
-    public var body: QuerySettlementBillResponseBody?
+    public var body: QuerySkuPriceListResponseBody?
 
     public override init() {
         super.init()
@@ -26689,7 +29736,7 @@ public class QuerySettlementBillResponse : Tea.TeaModel {
             self.statusCode = dict["statusCode"] as! Int32
         }
         if dict.keys.contains("body") {
-            var model = QuerySettlementBillResponseBody()
+            var model = QuerySkuPriceListResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -29888,6 +32935,8 @@ public class SetResellerUserStatusRequest : Tea.TeaModel {
 
     public var status: String?
 
+    public var stopMode: String?
+
     public override init() {
         super.init()
     }
@@ -29911,6 +32960,9 @@ public class SetResellerUserStatusRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.stopMode != nil {
+            map["StopMode"] = self.stopMode!
+        }
         return map
     }
 
@@ -29923,6 +32975,9 @@ public class SetResellerUserStatusRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("StopMode") {
+            self.stopMode = dict["StopMode"] as! String
         }
     }
 }
