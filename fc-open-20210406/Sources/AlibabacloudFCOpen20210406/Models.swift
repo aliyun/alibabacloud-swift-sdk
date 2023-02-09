@@ -1619,6 +1619,8 @@ public class OSSMountConfig : Tea.TeaModel {
     public class MountPoints : Tea.TeaModel {
         public var bucketName: String?
 
+        public var bucketPath: String?
+
         public var endpoint: String?
 
         public var mountDir: String?
@@ -1642,6 +1644,9 @@ public class OSSMountConfig : Tea.TeaModel {
             if self.bucketName != nil {
                 map["bucketName"] = self.bucketName!
             }
+            if self.bucketPath != nil {
+                map["bucketPath"] = self.bucketPath!
+            }
             if self.endpoint != nil {
                 map["endpoint"] = self.endpoint!
             }
@@ -1657,6 +1662,9 @@ public class OSSMountConfig : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("bucketName") {
                 self.bucketName = dict["bucketName"] as! String
+            }
+            if dict.keys.contains("bucketPath") {
+                self.bucketPath = dict["bucketPath"] as! String
             }
             if dict.keys.contains("endpoint") {
                 self.endpoint = dict["endpoint"] as! String
@@ -1969,6 +1977,8 @@ public class PathConfig : Tea.TeaModel {
 
     public var qualifier: String?
 
+    public var rewriteConfig: RewriteConfig?
+
     public var serviceName: String?
 
     public override init() {
@@ -1981,6 +1991,7 @@ public class PathConfig : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.rewriteConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1996,6 +2007,9 @@ public class PathConfig : Tea.TeaModel {
         }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
+        }
+        if self.rewriteConfig != nil {
+            map["rewriteConfig"] = self.rewriteConfig?.toMap()
         }
         if self.serviceName != nil {
             map["serviceName"] = self.serviceName!
@@ -2015,6 +2029,11 @@ public class PathConfig : Tea.TeaModel {
         }
         if dict.keys.contains("qualifier") {
             self.qualifier = dict["qualifier"] as! String
+        }
+        if dict.keys.contains("rewriteConfig") {
+            var model = RewriteConfig()
+            model.fromMap(dict["rewriteConfig"] as! [String: Any])
+            self.rewriteConfig = model
         }
         if dict.keys.contains("serviceName") {
             self.serviceName = dict["serviceName"] as! String
@@ -2240,6 +2259,175 @@ public class Resource : Tea.TeaModel {
         }
         if dict.keys.contains("tags") {
             self.tags = dict["tags"] as! [String: String]
+        }
+    }
+}
+
+public class RewriteConfig : Tea.TeaModel {
+    public class EqualRules : Tea.TeaModel {
+        public var match: String?
+
+        public var replacement: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.match != nil {
+                map["match"] = self.match!
+            }
+            if self.replacement != nil {
+                map["replacement"] = self.replacement!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("match") {
+                self.match = dict["match"] as! String
+            }
+            if dict.keys.contains("replacement") {
+                self.replacement = dict["replacement"] as! String
+            }
+        }
+    }
+    public class RegexRules : Tea.TeaModel {
+        public var match: String?
+
+        public var replacement: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.match != nil {
+                map["match"] = self.match!
+            }
+            if self.replacement != nil {
+                map["replacement"] = self.replacement!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("match") {
+                self.match = dict["match"] as! String
+            }
+            if dict.keys.contains("replacement") {
+                self.replacement = dict["replacement"] as! String
+            }
+        }
+    }
+    public class WildcardRules : Tea.TeaModel {
+        public var match: String?
+
+        public var replacement: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.match != nil {
+                map["match"] = self.match!
+            }
+            if self.replacement != nil {
+                map["replacement"] = self.replacement!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("match") {
+                self.match = dict["match"] as! String
+            }
+            if dict.keys.contains("replacement") {
+                self.replacement = dict["replacement"] as! String
+            }
+        }
+    }
+    public var equalRules: [RewriteConfig.EqualRules]?
+
+    public var regexRules: [RewriteConfig.RegexRules]?
+
+    public var wildcardRules: [RewriteConfig.WildcardRules]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.equalRules != nil {
+            var tmp : [Any] = []
+            for k in self.equalRules! {
+                tmp.append(k.toMap())
+            }
+            map["equalRules"] = tmp
+        }
+        if self.regexRules != nil {
+            var tmp : [Any] = []
+            for k in self.regexRules! {
+                tmp.append(k.toMap())
+            }
+            map["regexRules"] = tmp
+        }
+        if self.wildcardRules != nil {
+            var tmp : [Any] = []
+            for k in self.wildcardRules! {
+                tmp.append(k.toMap())
+            }
+            map["wildcardRules"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("equalRules") {
+            self.equalRules = dict["equalRules"] as! [RewriteConfig.EqualRules]
+        }
+        if dict.keys.contains("regexRules") {
+            self.regexRules = dict["regexRules"] as! [RewriteConfig.RegexRules]
+        }
+        if dict.keys.contains("wildcardRules") {
+            self.wildcardRules = dict["wildcardRules"] as! [RewriteConfig.WildcardRules]
         }
     }
 }
@@ -3210,6 +3398,36 @@ public class VendorConfig : Tea.TeaModel {
     }
 }
 
+public class WAFConfig : Tea.TeaModel {
+    public var enableWAF: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableWAF != nil {
+            map["enableWAF"] = self.enableWAF!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("enableWAF") {
+            self.enableWAF = dict["enableWAF"] as! Bool
+        }
+    }
+}
+
 public class ClaimGPUInstanceHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
@@ -3277,11 +3495,19 @@ public class ClaimGPUInstanceRequest : Tea.TeaModel {
 
     public var password: String?
 
+    public var role: String?
+
+    public var sgId: String?
+
     public var sourceCidrIp: String?
 
     public var tcpPortRange: [String]?
 
     public var udpPortRange: [String]?
+
+    public var vpcId: String?
+
+    public var vswId: String?
 
     public override init() {
         super.init()
@@ -3315,6 +3541,12 @@ public class ClaimGPUInstanceRequest : Tea.TeaModel {
         if self.password != nil {
             map["password"] = self.password!
         }
+        if self.role != nil {
+            map["role"] = self.role!
+        }
+        if self.sgId != nil {
+            map["sgId"] = self.sgId!
+        }
         if self.sourceCidrIp != nil {
             map["sourceCidrIp"] = self.sourceCidrIp!
         }
@@ -3323,6 +3555,12 @@ public class ClaimGPUInstanceRequest : Tea.TeaModel {
         }
         if self.udpPortRange != nil {
             map["udpPortRange"] = self.udpPortRange!
+        }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
+        }
+        if self.vswId != nil {
+            map["vswId"] = self.vswId!
         }
         return map
     }
@@ -3346,6 +3584,12 @@ public class ClaimGPUInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("password") {
             self.password = dict["password"] as! String
         }
+        if dict.keys.contains("role") {
+            self.role = dict["role"] as! String
+        }
+        if dict.keys.contains("sgId") {
+            self.sgId = dict["sgId"] as! String
+        }
         if dict.keys.contains("sourceCidrIp") {
             self.sourceCidrIp = dict["sourceCidrIp"] as! String
         }
@@ -3354,6 +3598,12 @@ public class ClaimGPUInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("udpPortRange") {
             self.udpPortRange = dict["udpPortRange"] as! [String]
+        }
+        if dict.keys.contains("vpcId") {
+            self.vpcId = dict["vpcId"] as! String
+        }
+        if dict.keys.contains("vswId") {
+            self.vswId = dict["vswId"] as! String
         }
     }
 }
@@ -3770,6 +4020,8 @@ public class CreateCustomDomainRequest : Tea.TeaModel {
 
     public var tlsConfig: TLSConfig?
 
+    public var wafConfig: WAFConfig?
+
     public override init() {
         super.init()
     }
@@ -3783,6 +4035,7 @@ public class CreateCustomDomainRequest : Tea.TeaModel {
         try self.certConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
+        try self.wafConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3801,6 +4054,9 @@ public class CreateCustomDomainRequest : Tea.TeaModel {
         }
         if self.tlsConfig != nil {
             map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        if self.wafConfig != nil {
+            map["wafConfig"] = self.wafConfig?.toMap()
         }
         return map
     }
@@ -3827,6 +4083,11 @@ public class CreateCustomDomainRequest : Tea.TeaModel {
             model.fromMap(dict["tlsConfig"] as! [String: Any])
             self.tlsConfig = model
         }
+        if dict.keys.contains("wafConfig") {
+            var model = WAFConfig()
+            model.fromMap(dict["wafConfig"] as! [String: Any])
+            self.wafConfig = model
+        }
     }
 }
 
@@ -3849,6 +4110,8 @@ public class CreateCustomDomainResponseBody : Tea.TeaModel {
 
     public var tlsConfig: TLSConfig?
 
+    public var wafConfig: WAFConfig?
+
     public override init() {
         super.init()
     }
@@ -3862,6 +4125,7 @@ public class CreateCustomDomainResponseBody : Tea.TeaModel {
         try self.certConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
+        try self.wafConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3892,6 +4156,9 @@ public class CreateCustomDomainResponseBody : Tea.TeaModel {
         }
         if self.tlsConfig != nil {
             map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        if self.wafConfig != nil {
+            map["wafConfig"] = self.wafConfig?.toMap()
         }
         return map
     }
@@ -3929,6 +4196,11 @@ public class CreateCustomDomainResponseBody : Tea.TeaModel {
             var model = TLSConfig()
             model.fromMap(dict["tlsConfig"] as! [String: Any])
             self.tlsConfig = model
+        }
+        if dict.keys.contains("wafConfig") {
+            var model = WAFConfig()
+            model.fromMap(dict["wafConfig"] as! [String: Any])
+            self.wafConfig = model
         }
     }
 }
@@ -4070,6 +4342,8 @@ public class CreateFunctionRequest : Tea.TeaModel {
 
     public var functionName: String?
 
+    public var gpuMemorySize: Int32?
+
     public var handler: String?
 
     public var initializationTimeout: Int32?
@@ -4144,6 +4418,9 @@ public class CreateFunctionRequest : Tea.TeaModel {
         }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
+        }
+        if self.gpuMemorySize != nil {
+            map["gpuMemorySize"] = self.gpuMemorySize!
         }
         if self.handler != nil {
             map["handler"] = self.handler!
@@ -4225,6 +4502,9 @@ public class CreateFunctionRequest : Tea.TeaModel {
         if dict.keys.contains("functionName") {
             self.functionName = dict["functionName"] as! String
         }
+        if dict.keys.contains("gpuMemorySize") {
+            self.gpuMemorySize = dict["gpuMemorySize"] as! Int32
+        }
         if dict.keys.contains("handler") {
             self.handler = dict["handler"] as! String
         }
@@ -4291,6 +4571,8 @@ public class CreateFunctionResponseBody : Tea.TeaModel {
     public var functionId: String?
 
     public var functionName: String?
+
+    public var gpuMemorySize: Int32?
 
     public var handler: String?
 
@@ -4376,6 +4658,9 @@ public class CreateFunctionResponseBody : Tea.TeaModel {
         }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
+        }
+        if self.gpuMemorySize != nil {
+            map["gpuMemorySize"] = self.gpuMemorySize!
         }
         if self.handler != nil {
             map["handler"] = self.handler!
@@ -4466,6 +4751,9 @@ public class CreateFunctionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("functionName") {
             self.functionName = dict["functionName"] as! String
+        }
+        if dict.keys.contains("gpuMemorySize") {
+            self.gpuMemorySize = dict["gpuMemorySize"] as! Int32
         }
         if dict.keys.contains("handler") {
             self.handler = dict["handler"] as! String
@@ -7178,6 +7466,8 @@ public class GetCustomDomainResponseBody : Tea.TeaModel {
 
     public var tlsConfig: TLSConfig?
 
+    public var wafConfig: WAFConfig?
+
     public override init() {
         super.init()
     }
@@ -7191,6 +7481,7 @@ public class GetCustomDomainResponseBody : Tea.TeaModel {
         try self.certConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
+        try self.wafConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7221,6 +7512,9 @@ public class GetCustomDomainResponseBody : Tea.TeaModel {
         }
         if self.tlsConfig != nil {
             map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        if self.wafConfig != nil {
+            map["wafConfig"] = self.wafConfig?.toMap()
         }
         return map
     }
@@ -7258,6 +7552,11 @@ public class GetCustomDomainResponseBody : Tea.TeaModel {
             var model = TLSConfig()
             model.fromMap(dict["tlsConfig"] as! [String: Any])
             self.tlsConfig = model
+        }
+        if dict.keys.contains("wafConfig") {
+            var model = WAFConfig()
+            model.fromMap(dict["wafConfig"] as! [String: Any])
+            self.wafConfig = model
         }
     }
 }
@@ -7427,6 +7726,8 @@ public class GetFunctionResponseBody : Tea.TeaModel {
 
     public var functionName: String?
 
+    public var gpuMemorySize: Int32?
+
     public var handler: String?
 
     public var initializationTimeout: Int32?
@@ -7513,6 +7814,9 @@ public class GetFunctionResponseBody : Tea.TeaModel {
         }
         if self.functionName != nil {
             map["functionName"] = self.functionName!
+        }
+        if self.gpuMemorySize != nil {
+            map["gpuMemorySize"] = self.gpuMemorySize!
         }
         if self.handler != nil {
             map["handler"] = self.handler!
@@ -7606,6 +7910,9 @@ public class GetFunctionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("functionName") {
             self.functionName = dict["functionName"] as! String
+        }
+        if dict.keys.contains("gpuMemorySize") {
+            self.gpuMemorySize = dict["gpuMemorySize"] as! Int32
         }
         if dict.keys.contains("handler") {
             self.handler = dict["handler"] as! String
@@ -10030,6 +10337,8 @@ public class ListCustomDomainsResponseBody : Tea.TeaModel {
 
         public var tlsConfig: TLSConfig?
 
+        public var wafConfig: WAFConfig?
+
         public override init() {
             super.init()
         }
@@ -10043,6 +10352,7 @@ public class ListCustomDomainsResponseBody : Tea.TeaModel {
             try self.certConfig?.validate()
             try self.routeConfig?.validate()
             try self.tlsConfig?.validate()
+            try self.wafConfig?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10073,6 +10383,9 @@ public class ListCustomDomainsResponseBody : Tea.TeaModel {
             }
             if self.tlsConfig != nil {
                 map["tlsConfig"] = self.tlsConfig?.toMap()
+            }
+            if self.wafConfig != nil {
+                map["wafConfig"] = self.wafConfig?.toMap()
             }
             return map
         }
@@ -10110,6 +10423,11 @@ public class ListCustomDomainsResponseBody : Tea.TeaModel {
                 var model = TLSConfig()
                 model.fromMap(dict["tlsConfig"] as! [String: Any])
                 self.tlsConfig = model
+            }
+            if dict.keys.contains("wafConfig") {
+                var model = WAFConfig()
+                model.fromMap(dict["wafConfig"] as! [String: Any])
+                self.wafConfig = model
             }
         }
     }
@@ -10861,6 +11179,8 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
 
         public var functionName: String?
 
+        public var gpuMemorySize: Int32?
+
         public var handler: String?
 
         public var initializationTimeout: Int32?
@@ -10937,6 +11257,9 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
             }
             if self.functionName != nil {
                 map["functionName"] = self.functionName!
+            }
+            if self.gpuMemorySize != nil {
+                map["gpuMemorySize"] = self.gpuMemorySize!
             }
             if self.handler != nil {
                 map["handler"] = self.handler!
@@ -11017,6 +11340,9 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("functionName") {
                 self.functionName = dict["functionName"] as! String
+            }
+            if dict.keys.contains("gpuMemorySize") {
+                self.gpuMemorySize = dict["gpuMemorySize"] as! Int32
             }
             if dict.keys.contains("handler") {
                 self.handler = dict["handler"] as! String
@@ -16153,6 +16479,8 @@ public class UpdateCustomDomainRequest : Tea.TeaModel {
 
     public var tlsConfig: TLSConfig?
 
+    public var wafConfig: WAFConfig?
+
     public override init() {
         super.init()
     }
@@ -16166,6 +16494,7 @@ public class UpdateCustomDomainRequest : Tea.TeaModel {
         try self.certConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
+        try self.wafConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -16181,6 +16510,9 @@ public class UpdateCustomDomainRequest : Tea.TeaModel {
         }
         if self.tlsConfig != nil {
             map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        if self.wafConfig != nil {
+            map["wafConfig"] = self.wafConfig?.toMap()
         }
         return map
     }
@@ -16204,6 +16536,11 @@ public class UpdateCustomDomainRequest : Tea.TeaModel {
             model.fromMap(dict["tlsConfig"] as! [String: Any])
             self.tlsConfig = model
         }
+        if dict.keys.contains("wafConfig") {
+            var model = WAFConfig()
+            model.fromMap(dict["wafConfig"] as! [String: Any])
+            self.wafConfig = model
+        }
     }
 }
 
@@ -16226,6 +16563,8 @@ public class UpdateCustomDomainResponseBody : Tea.TeaModel {
 
     public var tlsConfig: TLSConfig?
 
+    public var wafConfig: WAFConfig?
+
     public override init() {
         super.init()
     }
@@ -16239,6 +16578,7 @@ public class UpdateCustomDomainResponseBody : Tea.TeaModel {
         try self.certConfig?.validate()
         try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
+        try self.wafConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -16269,6 +16609,9 @@ public class UpdateCustomDomainResponseBody : Tea.TeaModel {
         }
         if self.tlsConfig != nil {
             map["tlsConfig"] = self.tlsConfig?.toMap()
+        }
+        if self.wafConfig != nil {
+            map["wafConfig"] = self.wafConfig?.toMap()
         }
         return map
     }
@@ -16306,6 +16649,11 @@ public class UpdateCustomDomainResponseBody : Tea.TeaModel {
             var model = TLSConfig()
             model.fromMap(dict["tlsConfig"] as! [String: Any])
             self.tlsConfig = model
+        }
+        if dict.keys.contains("wafConfig") {
+            var model = WAFConfig()
+            model.fromMap(dict["wafConfig"] as! [String: Any])
+            self.wafConfig = model
         }
     }
 }
@@ -16455,6 +16803,8 @@ public class UpdateFunctionRequest : Tea.TeaModel {
 
     public var environmentVariables: [String: String]?
 
+    public var gpuMemorySize: Int32?
+
     public var handler: String?
 
     public var initializationTimeout: Int32?
@@ -16527,6 +16877,9 @@ public class UpdateFunctionRequest : Tea.TeaModel {
         }
         if self.environmentVariables != nil {
             map["environmentVariables"] = self.environmentVariables!
+        }
+        if self.gpuMemorySize != nil {
+            map["gpuMemorySize"] = self.gpuMemorySize!
         }
         if self.handler != nil {
             map["handler"] = self.handler!
@@ -16605,6 +16958,9 @@ public class UpdateFunctionRequest : Tea.TeaModel {
         if dict.keys.contains("environmentVariables") {
             self.environmentVariables = dict["environmentVariables"] as! [String: String]
         }
+        if dict.keys.contains("gpuMemorySize") {
+            self.gpuMemorySize = dict["gpuMemorySize"] as! Int32
+        }
         if dict.keys.contains("handler") {
             self.handler = dict["handler"] as! String
         }
@@ -16669,11 +17025,15 @@ public class UpdateFunctionResponseBody : Tea.TeaModel {
 
     public var functionName: String?
 
+    public var gpuMemorySize: Int32?
+
     public var handler: String?
 
     public var initializationTimeout: Int32?
 
     public var initializer: String?
+
+    public var instanceConcurrency: Int32?
 
     public var instanceLifecycleConfig: InstanceLifecycleConfig?
 
@@ -16752,6 +17112,9 @@ public class UpdateFunctionResponseBody : Tea.TeaModel {
         if self.functionName != nil {
             map["functionName"] = self.functionName!
         }
+        if self.gpuMemorySize != nil {
+            map["gpuMemorySize"] = self.gpuMemorySize!
+        }
         if self.handler != nil {
             map["handler"] = self.handler!
         }
@@ -16760,6 +17123,9 @@ public class UpdateFunctionResponseBody : Tea.TeaModel {
         }
         if self.initializer != nil {
             map["initializer"] = self.initializer!
+        }
+        if self.instanceConcurrency != nil {
+            map["instanceConcurrency"] = self.instanceConcurrency!
         }
         if self.instanceLifecycleConfig != nil {
             map["instanceLifecycleConfig"] = self.instanceLifecycleConfig?.toMap()
@@ -16839,6 +17205,9 @@ public class UpdateFunctionResponseBody : Tea.TeaModel {
         if dict.keys.contains("functionName") {
             self.functionName = dict["functionName"] as! String
         }
+        if dict.keys.contains("gpuMemorySize") {
+            self.gpuMemorySize = dict["gpuMemorySize"] as! Int32
+        }
         if dict.keys.contains("handler") {
             self.handler = dict["handler"] as! String
         }
@@ -16847,6 +17216,9 @@ public class UpdateFunctionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("initializer") {
             self.initializer = dict["initializer"] as! String
+        }
+        if dict.keys.contains("instanceConcurrency") {
+            self.instanceConcurrency = dict["instanceConcurrency"] as! Int32
         }
         if dict.keys.contains("instanceLifecycleConfig") {
             var model = InstanceLifecycleConfig()
