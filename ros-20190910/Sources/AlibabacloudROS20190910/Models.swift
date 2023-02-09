@@ -10493,6 +10493,8 @@ public class GetTemplateParameterConstraintsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var stackId: String?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -10534,6 +10536,9 @@ public class GetTemplateParameterConstraintsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -10564,6 +10569,9 @@ public class GetTemplateParameterConstraintsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StackId") {
+            self.stackId = dict["StackId"] as! String
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -10628,6 +10636,8 @@ public class GetTemplateParameterConstraintsShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var stackId: String?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -10669,6 +10679,9 @@ public class GetTemplateParameterConstraintsShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -10699,6 +10712,9 @@ public class GetTemplateParameterConstraintsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StackId") {
+            self.stackId = dict["StackId"] as! String
         }
         if dict.keys.contains("TemplateBody") {
             self.templateBody = dict["TemplateBody"] as! String
@@ -17364,6 +17380,8 @@ public class PreviewStackResponseBody : Tea.TeaModel {
 
             public var logicalResourceId: String?
 
+            public var physicalResourceId: String?
+
             public var properties: [String: Any]?
 
             public var replacement: String?
@@ -17400,6 +17418,9 @@ public class PreviewStackResponseBody : Tea.TeaModel {
                 if self.logicalResourceId != nil {
                     map["LogicalResourceId"] = self.logicalResourceId!
                 }
+                if self.physicalResourceId != nil {
+                    map["PhysicalResourceId"] = self.physicalResourceId!
+                }
                 if self.properties != nil {
                     map["Properties"] = self.properties!
                 }
@@ -17430,6 +17451,9 @@ public class PreviewStackResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("LogicalResourceId") {
                     self.logicalResourceId = dict["LogicalResourceId"] as! String
+                }
+                if dict.keys.contains("PhysicalResourceId") {
+                    self.physicalResourceId = dict["PhysicalResourceId"] as! String
                 }
                 if dict.keys.contains("Properties") {
                     self.properties = dict["Properties"] as! [String: Any]
