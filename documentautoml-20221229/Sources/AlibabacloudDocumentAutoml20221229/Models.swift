@@ -8,7 +8,7 @@ import AlibabacloudEndpointUtil
 public class PredictClassifierModelRequest : Tea.TeaModel {
     public var autoPrediction: Bool?
 
-    public var classifierId: String?
+    public var classifierId: Int64?
 
     public var content: String?
 
@@ -43,7 +43,7 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
             self.autoPrediction = dict["AutoPrediction"] as! Bool
         }
         if dict.keys.contains("ClassifierId") {
-            self.classifierId = dict["ClassifierId"] as! String
+            self.classifierId = dict["ClassifierId"] as! Int64
         }
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
@@ -320,7 +320,7 @@ public class PredictModelResponse : Tea.TeaModel {
 public class PredictTemplateModelRequest : Tea.TeaModel {
     public var content: String?
 
-    public var projectId: Int64?
+    public var taskId: Int64?
 
     public override init() {
         super.init()
@@ -339,8 +339,8 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
-        if self.projectId != nil {
-            map["ProjectId"] = self.projectId!
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
         }
         return map
     }
@@ -349,8 +349,8 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
         if dict.keys.contains("Content") {
             self.content = dict["Content"] as! String
         }
-        if dict.keys.contains("ProjectId") {
-            self.projectId = dict["ProjectId"] as! Int64
+        if dict.keys.contains("TaskId") {
+            self.taskId = dict["TaskId"] as! Int64
         }
     }
 }
