@@ -41,10 +41,30 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createBenchmarkTask(_ request: CreateBenchmarkTaskRequest) async throws -> CreateBenchmarkTaskResponse {
+    public func commitServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CommitServiceResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CommitService",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId) + "/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName) + "/commit",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CommitServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func commitService(_ ClusterId: String, _ ServiceName: String) async throws -> CommitServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createBenchmarkTaskWithOptions(request as! CreateBenchmarkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await commitServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -70,10 +90,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createResource(_ request: CreateResourceRequest) async throws -> CreateResourceResponse {
+    public func createBenchmarkTask(_ request: CreateBenchmarkTaskRequest) async throws -> CreateBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createResourceWithOptions(request as! CreateResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createBenchmarkTaskWithOptions(request as! CreateBenchmarkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -112,10 +132,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createResourceInstances(_ ClusterId: String, _ ResourceId: String, _ request: CreateResourceInstancesRequest) async throws -> CreateResourceInstancesResponse {
+    public func createResource(_ request: CreateResourceRequest) async throws -> CreateResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createResourceInstancesWithOptions(ClusterId as! String, ResourceId as! String, request as! CreateResourceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createResourceWithOptions(request as! CreateResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -157,10 +177,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createResourceLog(_ ClusterId: String, _ ResourceId: String, _ request: CreateResourceLogRequest) async throws -> CreateResourceLogResponse {
+    public func createResourceInstances(_ ClusterId: String, _ ResourceId: String, _ request: CreateResourceInstancesRequest) async throws -> CreateResourceInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createResourceLogWithOptions(ClusterId as! String, ResourceId as! String, request as! CreateResourceLogRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createResourceInstancesWithOptions(ClusterId as! String, ResourceId as! String, request as! CreateResourceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -193,17 +213,30 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createService(_ request: CreateServiceRequest) async throws -> CreateServiceResponse {
+    public func createResourceLog(_ ClusterId: String, _ ResourceId: String, _ request: CreateResourceLogRequest) async throws -> CreateResourceLogResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createServiceWithOptions(request as! CreateServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createResourceLogWithOptions(ClusterId as! String, ResourceId as! String, request as! CreateResourceLogRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createServiceWithOptions(_ request: CreateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createServiceWithOptions(_ tmpReq: CreateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateServiceShrinkRequest = CreateServiceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.labels)) {
+            request.labelsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labels, "Labels", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.develop)) {
+            query["Develop"] = request.develop ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelsShrink)) {
+            query["Labels"] = request.labelsShrink ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -222,10 +255,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createServiceAutoScaler(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceAutoScalerRequest) async throws -> CreateServiceAutoScalerResponse {
+    public func createService(_ request: CreateServiceRequest) async throws -> CreateServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceAutoScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createServiceWithOptions(request as! CreateServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -261,10 +294,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createServiceCronScaler(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceCronScalerRequest) async throws -> CreateServiceCronScalerResponse {
+    public func createServiceAutoScaler(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceAutoScalerRequest) async throws -> CreateServiceAutoScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceCronScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceAutoScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -297,10 +330,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createServiceMirror(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceMirrorRequest) async throws -> CreateServiceMirrorResponse {
+    public func createServiceCronScaler(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceCronScalerRequest) async throws -> CreateServiceCronScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await createServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceMirrorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceCronScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -333,10 +366,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> DeleteBenchmarkTaskResponse {
+    public func createServiceMirror(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceMirrorRequest) async throws -> CreateServiceMirrorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await createServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, request as! CreateServiceMirrorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -360,10 +393,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteResource(_ ClusterId: String, _ ResourceId: String) async throws -> DeleteResourceResponse {
+    public func deleteBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> DeleteBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteResourceWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -387,10 +420,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteResourceDLink(_ ClusterId: String, _ ResourceId: String) async throws -> DeleteResourceDLinkResponse {
+    public func deleteResource(_ ClusterId: String, _ ResourceId: String) async throws -> DeleteResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteResourceWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -414,10 +447,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteResourceInstances(_ ClusterId: String, _ ResourceId: String, _ request: DeleteResourceInstancesRequest) async throws -> DeleteResourceInstancesResponse {
+    public func deleteResourceDLink(_ ClusterId: String, _ ResourceId: String) async throws -> DeleteResourceDLinkResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteResourceInstancesWithOptions(ClusterId as! String, ResourceId as! String, request as! DeleteResourceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -450,10 +483,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteResourceLog(_ ClusterId: String, _ ResourceId: String) async throws -> DeleteResourceLogResponse {
+    public func deleteResourceInstances(_ ClusterId: String, _ ResourceId: String, _ request: DeleteResourceInstancesRequest) async throws -> DeleteResourceInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteResourceLogWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteResourceInstancesWithOptions(ClusterId as! String, ResourceId as! String, request as! DeleteResourceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -477,10 +510,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteService(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceResponse {
+    public func deleteResourceLog(_ ClusterId: String, _ ResourceId: String) async throws -> DeleteResourceLogResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteResourceLogWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -504,10 +537,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteServiceAutoScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceAutoScalerResponse {
+    public func deleteService(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -531,10 +564,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteServiceCronScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceCronScalerResponse {
+    public func deleteServiceAutoScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceAutoScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -558,10 +591,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteServiceInstances(_ ClusterId: String, _ ServiceName: String, _ request: DeleteServiceInstancesRequest) async throws -> DeleteServiceInstancesResponse {
+    public func deleteServiceCronScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceCronScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteServiceInstancesWithOptions(ClusterId as! String, ServiceName as! String, request as! DeleteServiceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -591,10 +624,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteServiceMirror(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceMirrorResponse {
+    public func deleteServiceInstances(_ ClusterId: String, _ ServiceName: String, _ request: DeleteServiceInstancesRequest) async throws -> DeleteServiceInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteServiceInstancesWithOptions(ClusterId as! String, ServiceName as! String, request as! DeleteServiceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteServiceLabelWithOptions(_ ClusterId: String, _ ServiceName: String, _ tmpReq: DeleteServiceLabelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteServiceLabelResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteServiceLabelShrinkRequest = DeleteServiceLabelShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.keys)) {
+            request.keysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.keys, "Keys", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keysShrink)) {
+            query["Keys"] = request.keysShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteServiceLabel",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId) + "/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName) + "/label",
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteServiceLabelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteServiceLabel(_ ClusterId: String, _ ServiceName: String, _ request: DeleteServiceLabelRequest) async throws -> DeleteServiceLabelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteServiceLabelWithOptions(ClusterId as! String, ServiceName as! String, request as! DeleteServiceLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -618,10 +689,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> DescribeBenchmarkTaskResponse {
+    public func deleteServiceMirror(_ ClusterId: String, _ ServiceName: String) async throws -> DeleteServiceMirrorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -645,10 +716,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeBenchmarkTaskReport(_ ClusterId: String, _ TaskName: String, _ request: DescribeBenchmarkTaskReportRequest) async throws -> DescribeBenchmarkTaskReportResponse {
+    public func describeBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> DescribeBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeBenchmarkTaskReportWithOptions(ClusterId as! String, TaskName as! String, request as! DescribeBenchmarkTaskReportRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -678,10 +749,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeGroup(_ ClusterId: String, _ GroupName: String) async throws -> DescribeGroupResponse {
+    public func describeBenchmarkTaskReport(_ ClusterId: String, _ TaskName: String, _ request: DescribeBenchmarkTaskReportRequest) async throws -> DescribeBenchmarkTaskReportResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeGroupWithOptions(ClusterId as! String, GroupName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeBenchmarkTaskReportWithOptions(ClusterId as! String, TaskName as! String, request as! DescribeBenchmarkTaskReportRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -705,10 +776,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeResource(_ ClusterId: String, _ ResourceId: String) async throws -> DescribeResourceResponse {
+    public func describeGroup(_ ClusterId: String, _ GroupName: String) async throws -> DescribeGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeResourceWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeGroupWithOptions(ClusterId as! String, GroupName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -732,10 +803,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeResourceDLink(_ ClusterId: String, _ ResourceId: String) async throws -> DescribeResourceDLinkResponse {
+    public func describeResource(_ ClusterId: String, _ ResourceId: String) async throws -> DescribeResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeResourceWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -759,10 +830,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeResourceLog(_ ClusterId: String, _ ResourceId: String) async throws -> DescribeResourceLogResponse {
+    public func describeResourceDLink(_ ClusterId: String, _ ResourceId: String) async throws -> DescribeResourceDLinkResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeResourceLogWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -786,10 +857,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeService(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceResponse {
+    public func describeResourceLog(_ ClusterId: String, _ ResourceId: String) async throws -> DescribeResourceLogResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeResourceLogWithOptions(ClusterId as! String, ResourceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -813,10 +884,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeServiceAutoScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceAutoScalerResponse {
+    public func describeService(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -840,10 +911,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeServiceCronScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceCronScalerResponse {
+    public func describeServiceAutoScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceAutoScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -867,10 +938,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeServiceEvent(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceEventRequest) async throws -> DescribeServiceEventResponse {
+    public func describeServiceCronScaler(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceCronScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeServiceEventWithOptions(ClusterId as! String, ServiceName as! String, request as! DescribeServiceEventRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -909,10 +980,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeServiceLog(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceLogRequest) async throws -> DescribeServiceLogResponse {
+    public func describeServiceEvent(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceEventRequest) async throws -> DescribeServiceEventResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeServiceLogWithOptions(ClusterId as! String, ServiceName as! String, request as! DescribeServiceLogRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeServiceEventWithOptions(ClusterId as! String, ServiceName as! String, request as! DescribeServiceEventRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -957,10 +1028,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeServiceMirror(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceMirrorResponse {
+    public func describeServiceLog(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceLogRequest) async throws -> DescribeServiceLogResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeServiceLogWithOptions(ClusterId as! String, ServiceName as! String, request as! DescribeServiceLogRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -984,10 +1055,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listBenchmarkTask(_ request: ListBenchmarkTaskRequest) async throws -> ListBenchmarkTaskResponse {
+    public func describeServiceMirror(_ ClusterId: String, _ ServiceName: String) async throws -> DescribeServiceMirrorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listBenchmarkTaskWithOptions(request as! ListBenchmarkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func developServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: DevelopServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DevelopServiceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exit)) {
+            query["Exit"] = request.exit ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DevelopService",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId) + "/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName) + "/develop",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DevelopServiceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func developService(_ ClusterId: String, _ ServiceName: String, _ request: DevelopServiceRequest) async throws -> DevelopServiceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await developServiceWithOptions(ClusterId as! String, ServiceName as! String, request as! DevelopServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1026,10 +1130,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listGroups(_ request: ListGroupsRequest) async throws -> ListGroupsResponse {
+    public func listBenchmarkTask(_ request: ListBenchmarkTaskRequest) async throws -> ListBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listGroupsWithOptions(request as! ListGroupsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listBenchmarkTaskWithOptions(request as! ListBenchmarkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1065,10 +1169,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listResourceInstanceWorker(_ ClusterId: String, _ ResourceId: String, _ InstanceName: String, _ request: ListResourceInstanceWorkerRequest) async throws -> ListResourceInstanceWorkerResponse {
+    public func listGroups(_ request: ListGroupsRequest) async throws -> ListGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listResourceInstanceWorkerWithOptions(ClusterId as! String, ResourceId as! String, InstanceName as! String, request as! ListResourceInstanceWorkerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listGroupsWithOptions(request as! ListGroupsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1101,10 +1205,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listResourceInstances(_ ClusterId: String, _ ResourceId: String, _ request: ListResourceInstancesRequest) async throws -> ListResourceInstancesResponse {
+    public func listResourceInstanceWorker(_ ClusterId: String, _ ResourceId: String, _ InstanceName: String, _ request: ListResourceInstanceWorkerRequest) async throws -> ListResourceInstanceWorkerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listResourceInstancesWithOptions(ClusterId as! String, ResourceId as! String, request as! ListResourceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listResourceInstanceWorkerWithOptions(ClusterId as! String, ResourceId as! String, InstanceName as! String, request as! ListResourceInstanceWorkerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1146,10 +1250,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listResourceServices(_ ClusterId: String, _ ResourceId: String, _ request: ListResourceServicesRequest) async throws -> ListResourceServicesResponse {
+    public func listResourceInstances(_ ClusterId: String, _ ResourceId: String, _ request: ListResourceInstancesRequest) async throws -> ListResourceInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listResourceServicesWithOptions(ClusterId as! String, ResourceId as! String, request as! ListResourceServicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listResourceInstancesWithOptions(ClusterId as! String, ResourceId as! String, request as! ListResourceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1182,10 +1286,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listResources(_ request: ListResourcesRequest) async throws -> ListResourcesResponse {
+    public func listResourceServices(_ ClusterId: String, _ ResourceId: String, _ request: ListResourceServicesRequest) async throws -> ListResourceServicesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listResourcesWithOptions(request as! ListResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listResourceServicesWithOptions(ClusterId as! String, ResourceId as! String, request as! ListResourceServicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1224,10 +1328,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listServiceInstances(_ ClusterId: String, _ ServiceName: String, _ request: ListServiceInstancesRequest) async throws -> ListServiceInstancesResponse {
+    public func listResources(_ request: ListResourcesRequest) async throws -> ListResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listServiceInstancesWithOptions(ClusterId as! String, ServiceName as! String, request as! ListServiceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listResourcesWithOptions(request as! ListResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1260,10 +1364,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listServiceVersions(_ ClusterId: String, _ ServiceName: String, _ request: ListServiceVersionsRequest) async throws -> ListServiceVersionsResponse {
+    public func listServiceInstances(_ ClusterId: String, _ ServiceName: String, _ request: ListServiceInstancesRequest) async throws -> ListServiceInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listServiceVersionsWithOptions(ClusterId as! String, ServiceName as! String, request as! ListServiceVersionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listServiceInstancesWithOptions(ClusterId as! String, ServiceName as! String, request as! ListServiceInstancesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1296,21 +1400,29 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listServices(_ request: ListServicesRequest) async throws -> ListServicesResponse {
+    public func listServiceVersions(_ ClusterId: String, _ ServiceName: String, _ request: ListServiceVersionsRequest) async throws -> ListServiceVersionsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listServicesWithOptions(request as! ListServicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listServiceVersionsWithOptions(ClusterId as! String, ServiceName as! String, request as! ListServiceVersionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listServicesWithOptions(_ request: ListServicesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServicesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listServicesWithOptions(_ tmpReq: ListServicesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServicesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListServicesShrinkRequest = ListServicesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.label)) {
+            request.labelShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.label, "Label", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.labelShrink)) {
+            query["Label"] = request.labelShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.order)) {
             query["Order"] = request.order ?? "";
@@ -1320,6 +1432,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.parentServiceUid)) {
+            query["ParentServiceUid"] = request.parentServiceUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceType)) {
+            query["ServiceType"] = request.serviceType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sort)) {
             query["Sort"] = request.sort ?? "";
@@ -1344,10 +1462,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func releaseService(_ ClusterId: String, _ ServiceName: String, _ request: ReleaseServiceRequest) async throws -> ReleaseServiceResponse {
+    public func listServices(_ request: ListServicesRequest) async throws -> ListServicesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await releaseServiceWithOptions(ClusterId as! String, ServiceName as! String, request as! ReleaseServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listServicesWithOptions(request as! ListServicesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1380,10 +1498,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> StartBenchmarkTaskResponse {
+    public func releaseService(_ ClusterId: String, _ ServiceName: String, _ request: ReleaseServiceRequest) async throws -> ReleaseServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await startBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await releaseServiceWithOptions(ClusterId as! String, ServiceName as! String, request as! ReleaseServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1407,10 +1525,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startService(_ ClusterId: String, _ ServiceName: String) async throws -> StartServiceResponse {
+    public func startBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> StartBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await startServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await startBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1434,10 +1552,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> StopBenchmarkTaskResponse {
+    public func startService(_ ClusterId: String, _ ServiceName: String) async throws -> StartServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await stopBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await startServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1461,10 +1579,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopService(_ ClusterId: String, _ ServiceName: String) async throws -> StopServiceResponse {
+    public func stopBenchmarkTask(_ ClusterId: String, _ TaskName: String) async throws -> StopBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await stopServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await stopBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1488,10 +1606,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateBenchmarkTask(_ ClusterId: String, _ TaskName: String, _ request: UpdateBenchmarkTaskRequest) async throws -> UpdateBenchmarkTaskResponse {
+    public func stopService(_ ClusterId: String, _ ServiceName: String) async throws -> StopServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, request as! UpdateBenchmarkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await stopServiceWithOptions(ClusterId as! String, ServiceName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1517,10 +1635,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateResource(_ ClusterId: String, _ ResourceId: String, _ request: UpdateResourceRequest) async throws -> UpdateResourceResponse {
+    public func updateBenchmarkTask(_ ClusterId: String, _ TaskName: String, _ request: UpdateBenchmarkTaskRequest) async throws -> UpdateBenchmarkTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateResourceWithOptions(ClusterId as! String, ResourceId as! String, request as! UpdateResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateBenchmarkTaskWithOptions(ClusterId as! String, TaskName as! String, request as! UpdateBenchmarkTaskRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1550,10 +1668,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateResourceDLink(_ ClusterId: String, _ ResourceId: String, _ request: UpdateResourceDLinkRequest) async throws -> UpdateResourceDLinkResponse {
+    public func updateResource(_ ClusterId: String, _ ResourceId: String, _ request: UpdateResourceRequest) async throws -> UpdateResourceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, request as! UpdateResourceDLinkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateResourceWithOptions(ClusterId as! String, ResourceId as! String, request as! UpdateResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1592,10 +1710,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateResourceInstance(_ ClusterId: String, _ ResourceId: String, _ InstanceId: String, _ request: UpdateResourceInstanceRequest) async throws -> UpdateResourceInstanceResponse {
+    public func updateResourceDLink(_ ClusterId: String, _ ResourceId: String, _ request: UpdateResourceDLinkRequest) async throws -> UpdateResourceDLinkResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateResourceInstanceWithOptions(ClusterId as! String, ResourceId as! String, InstanceId as! String, request as! UpdateResourceInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateResourceDLinkWithOptions(ClusterId as! String, ResourceId as! String, request as! UpdateResourceDLinkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1625,10 +1743,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateService(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRequest) async throws -> UpdateServiceResponse {
+    public func updateResourceInstance(_ ClusterId: String, _ ResourceId: String, _ InstanceId: String, _ request: UpdateResourceInstanceRequest) async throws -> UpdateResourceInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateServiceWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateResourceInstanceWithOptions(ClusterId as! String, ResourceId as! String, InstanceId as! String, request as! UpdateResourceInstanceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1654,10 +1772,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceAutoScaler(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceAutoScalerRequest) async throws -> UpdateServiceAutoScalerResponse {
+    public func updateService(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRequest) async throws -> UpdateServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceAutoScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateServiceWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1693,10 +1811,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceCronScaler(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceCronScalerRequest) async throws -> UpdateServiceCronScalerResponse {
+    public func updateServiceAutoScaler(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceAutoScalerRequest) async throws -> UpdateServiceAutoScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceCronScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateServiceAutoScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceAutoScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1729,10 +1847,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceMirror(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceMirrorRequest) async throws -> UpdateServiceMirrorResponse {
+    public func updateServiceCronScaler(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceCronScalerRequest) async throws -> UpdateServiceCronScalerResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceMirrorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateServiceCronScalerWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceCronScalerRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceLabelWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceLabelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceLabelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.labels)) {
+            body["Labels"] = request.labels ?? [:];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateServiceLabel",
+            "version": "2021-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/api/v2/services/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ClusterId) + "/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ServiceName) + "/label",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateServiceLabelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceLabel(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceLabelRequest) async throws -> UpdateServiceLabelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateServiceLabelWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceLabelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1765,10 +1916,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceSafetyLock(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceSafetyLockRequest) async throws -> UpdateServiceSafetyLockResponse {
+    public func updateServiceMirror(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceMirrorRequest) async throws -> UpdateServiceMirrorResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateServiceSafetyLockWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceSafetyLockRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateServiceMirrorWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceMirrorRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1798,10 +1949,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateServiceVersion(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceVersionRequest) async throws -> UpdateServiceVersionResponse {
+    public func updateServiceSafetyLock(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceSafetyLockRequest) async throws -> UpdateServiceSafetyLockResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await updateServiceVersionWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await updateServiceSafetyLockWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceSafetyLockRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1828,5 +1979,12 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(UpdateServiceVersionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceVersion(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceVersionRequest) async throws -> UpdateServiceVersionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateServiceVersionWithOptions(ClusterId as! String, ServiceName as! String, request as! UpdateServiceVersionRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
