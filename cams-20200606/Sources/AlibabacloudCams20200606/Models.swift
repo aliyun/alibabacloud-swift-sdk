@@ -6348,13 +6348,19 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
 
     public var isvCode: String?
 
+    public var label: String?
+
     public var language: String?
 
     public var senderList: [SendChatappMassMessageRequest.SenderList]?
 
+    public var tag: String?
+
     public var taskId: String?
 
     public var templateCode: String?
+
+    public var ttl: Int64?
 
     public override init() {
         super.init()
@@ -6391,6 +6397,9 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
@@ -6401,11 +6410,17 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
             }
             map["SenderList"] = tmp
         }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
         }
         return map
     }
@@ -6432,17 +6447,26 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
         }
+        if dict.keys.contains("Label") {
+            self.label = dict["Label"] as! String
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
         if dict.keys.contains("SenderList") {
             self.senderList = dict["SenderList"] as! [SendChatappMassMessageRequest.SenderList]
         }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! String
+        }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
         }
         if dict.keys.contains("TemplateCode") {
             self.templateCode = dict["TemplateCode"] as! String
+        }
+        if dict.keys.contains("Ttl") {
+            self.ttl = dict["Ttl"] as! Int64
         }
     }
 }
@@ -6462,13 +6486,19 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
 
     public var isvCode: String?
 
+    public var label: String?
+
     public var language: String?
 
     public var senderListShrink: String?
 
+    public var tag: String?
+
     public var taskId: String?
 
     public var templateCode: String?
+
+    public var ttl: Int64?
 
     public override init() {
         super.init()
@@ -6505,17 +6535,26 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         if self.isvCode != nil {
             map["IsvCode"] = self.isvCode!
         }
+        if self.label != nil {
+            map["Label"] = self.label!
+        }
         if self.language != nil {
             map["Language"] = self.language!
         }
         if self.senderListShrink != nil {
             map["SenderList"] = self.senderListShrink!
         }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
         if self.templateCode != nil {
             map["TemplateCode"] = self.templateCode!
+        }
+        if self.ttl != nil {
+            map["Ttl"] = self.ttl!
         }
         return map
     }
@@ -6542,17 +6581,26 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("IsvCode") {
             self.isvCode = dict["IsvCode"] as! String
         }
+        if dict.keys.contains("Label") {
+            self.label = dict["Label"] as! String
+        }
         if dict.keys.contains("Language") {
             self.language = dict["Language"] as! String
         }
         if dict.keys.contains("SenderList") {
             self.senderListShrink = dict["SenderList"] as! String
         }
+        if dict.keys.contains("Tag") {
+            self.tag = dict["Tag"] as! String
+        }
         if dict.keys.contains("TaskId") {
             self.taskId = dict["TaskId"] as! String
         }
         if dict.keys.contains("TemplateCode") {
             self.templateCode = dict["TemplateCode"] as! String
+        }
+        if dict.keys.contains("Ttl") {
+            self.ttl = dict["Ttl"] as! Int64
         }
     }
 }
