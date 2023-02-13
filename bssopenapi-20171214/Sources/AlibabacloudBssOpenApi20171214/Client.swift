@@ -4264,6 +4264,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.multAccountRelSubscribe)) {
             query["MultAccountRelSubscribe"] = request.multAccountRelSubscribe ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.rowLimitPerFile)) {
+            query["RowLimitPerFile"] = request.rowLimitPerFile!;
+        }
         if (!TeaUtils.Client.isUnset(request.subscribeBucket)) {
             query["SubscribeBucket"] = request.subscribeBucket ?? "";
         }

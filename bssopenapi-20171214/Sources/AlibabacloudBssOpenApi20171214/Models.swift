@@ -18774,6 +18774,8 @@ public class QueryBillToOSSSubscriptionResponseBody : Tea.TeaModel {
 
                 public var bucketPath: String?
 
+                public var rowLimitPerFile: Int32?
+
                 public var subscribeBucket: String?
 
                 public var subscribeLanguage: String?
@@ -18802,6 +18804,9 @@ public class QueryBillToOSSSubscriptionResponseBody : Tea.TeaModel {
                     if self.bucketPath != nil {
                         map["BucketPath"] = self.bucketPath!
                     }
+                    if self.rowLimitPerFile != nil {
+                        map["RowLimitPerFile"] = self.rowLimitPerFile!
+                    }
                     if self.subscribeBucket != nil {
                         map["SubscribeBucket"] = self.subscribeBucket!
                     }
@@ -18823,6 +18828,9 @@ public class QueryBillToOSSSubscriptionResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("BucketPath") {
                         self.bucketPath = dict["BucketPath"] as! String
+                    }
+                    if dict.keys.contains("RowLimitPerFile") {
+                        self.rowLimitPerFile = dict["RowLimitPerFile"] as! Int32
                     }
                     if dict.keys.contains("SubscribeBucket") {
                         self.subscribeBucket = dict["SubscribeBucket"] as! String
@@ -33105,6 +33113,8 @@ public class SubscribeBillToOSSRequest : Tea.TeaModel {
 
     public var multAccountRelSubscribe: String?
 
+    public var rowLimitPerFile: Int32?
+
     public var subscribeBucket: String?
 
     public var subscribeType: String?
@@ -33135,6 +33145,9 @@ public class SubscribeBillToOSSRequest : Tea.TeaModel {
         if self.multAccountRelSubscribe != nil {
             map["MultAccountRelSubscribe"] = self.multAccountRelSubscribe!
         }
+        if self.rowLimitPerFile != nil {
+            map["RowLimitPerFile"] = self.rowLimitPerFile!
+        }
         if self.subscribeBucket != nil {
             map["SubscribeBucket"] = self.subscribeBucket!
         }
@@ -33156,6 +33169,9 @@ public class SubscribeBillToOSSRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MultAccountRelSubscribe") {
             self.multAccountRelSubscribe = dict["MultAccountRelSubscribe"] as! String
+        }
+        if dict.keys.contains("RowLimitPerFile") {
+            self.rowLimitPerFile = dict["RowLimitPerFile"] as! Int32
         }
         if dict.keys.contains("SubscribeBucket") {
             self.subscribeBucket = dict["SubscribeBucket"] as! String
