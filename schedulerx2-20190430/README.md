@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudSchedulerx220190430` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudSchedulerx220190430', '~> 1.0.0'
+pod 'AlibabacloudSchedulerx220190430', '~> 1.0.1'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudSchedulerx220190430', '~> 1.0.0'
 To integrate `AlibabacloudSchedulerx220190430` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/schedulerx2-20190430" "1.0.0"
+github "alibabacloud-sdk-swift/schedulerx2-20190430" "1.0.1"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudSchedulerx220190430` into your Xcode project using [Sw
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/schedulerx2-20190430.git", from: "1.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/schedulerx2-20190430.git", from: "1.0.1")
 ]
 ```
 
