@@ -4356,6 +4356,8 @@ public class GetAccessKeyLastUsedResponseBody : Tea.TeaModel {
     public class AccessKeyLastUsed : Tea.TeaModel {
         public var lastUsedDate: String?
 
+        public var serviceName: String?
+
         public override init() {
             super.init()
         }
@@ -4373,12 +4375,18 @@ public class GetAccessKeyLastUsedResponseBody : Tea.TeaModel {
             if self.lastUsedDate != nil {
                 map["LastUsedDate"] = self.lastUsedDate!
             }
+            if self.serviceName != nil {
+                map["ServiceName"] = self.serviceName!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("LastUsedDate") {
                 self.lastUsedDate = dict["LastUsedDate"] as! String
+            }
+            if dict.keys.contains("ServiceName") {
+                self.serviceName = dict["ServiceName"] as! String
             }
         }
     }
