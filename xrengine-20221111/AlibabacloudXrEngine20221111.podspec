@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudXrEngine20221111"
-  spec.version      = "1.0.6"
+  spec.version      = "1.0.7"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud xrEngine (20221111) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/xrengine-20221111" 
