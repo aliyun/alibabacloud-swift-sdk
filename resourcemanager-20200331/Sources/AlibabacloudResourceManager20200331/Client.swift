@@ -194,6 +194,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelChangeAccountEmailWithOptions(_ request: CancelChangeAccountEmailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelChangeAccountEmailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CancelChangeAccountEmail",
+            "version": "2020-03-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CancelChangeAccountEmailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cancelChangeAccountEmail(_ request: CancelChangeAccountEmailRequest) async throws -> CancelChangeAccountEmailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cancelChangeAccountEmailWithOptions(request as! CancelChangeAccountEmailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelCreateCloudAccountWithOptions(_ request: CancelCreateCloudAccountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelCreateCloudAccountResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -284,6 +315,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func cancelPromoteResourceAccount(_ request: CancelPromoteResourceAccountRequest) async throws -> CancelPromoteResourceAccountResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await cancelPromoteResourceAccountWithOptions(request as! CancelPromoteResourceAccountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func changeAccountEmailWithOptions(_ request: ChangeAccountEmailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeAccountEmailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            query["Email"] = request.email ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ChangeAccountEmail",
+            "version": "2020-03-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ChangeAccountEmailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func changeAccountEmail(_ request: ChangeAccountEmailRequest) async throws -> ChangeAccountEmailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await changeAccountEmailWithOptions(request as! ChangeAccountEmailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -520,6 +585,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.payerAccountId)) {
             query["PayerAccountId"] = request.payerAccountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resellAccountType)) {
+            query["ResellAccountType"] = request.resellAccountType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
@@ -2765,6 +2833,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func resendPromoteResourceAccountEmail(_ request: ResendPromoteResourceAccountEmailRequest) async throws -> ResendPromoteResourceAccountEmailResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await resendPromoteResourceAccountEmailWithOptions(request as! ResendPromoteResourceAccountEmailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryChangeAccountEmailWithOptions(_ request: RetryChangeAccountEmailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RetryChangeAccountEmailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountId)) {
+            query["AccountId"] = request.accountId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RetryChangeAccountEmail",
+            "version": "2020-03-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RetryChangeAccountEmailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func retryChangeAccountEmail(_ request: RetryChangeAccountEmailRequest) async throws -> RetryChangeAccountEmailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await retryChangeAccountEmailWithOptions(request as! RetryChangeAccountEmailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
