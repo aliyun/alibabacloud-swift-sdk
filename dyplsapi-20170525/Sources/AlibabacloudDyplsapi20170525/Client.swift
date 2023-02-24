@@ -135,6 +135,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callTimeout)) {
             query["CallTimeout"] = request.callTimeout!;
         }
+        if (!TeaUtils.Client.isUnset(request.dtmfConfig)) {
+            query["DtmfConfig"] = request.dtmfConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.expectCity)) {
             query["ExpectCity"] = request.expectCity ?? "";
         }
@@ -540,52 +543,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func cancelPickUpWaybill(_ request: CancelPickUpWaybillRequest) async throws -> CancelPickUpWaybillResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await cancelPickUpWaybillWithOptions(request as! CancelPickUpWaybillRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func confirmSendSmsWithOptions(_ request: ConfirmSendSmsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ConfirmSendSmsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.callId)) {
-            query["CallId"] = request.callId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.poolKey)) {
-            query["PoolKey"] = request.poolKey ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.secretNo)) {
-            query["SecretNo"] = request.secretNo ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ConfirmSendSms",
-            "version": "2017-05-25",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ConfirmSendSmsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func confirmSendSms(_ request: ConfirmSendSmsRequest) async throws -> ConfirmSendSmsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await confirmSendSmsWithOptions(request as! ConfirmSendSmsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
