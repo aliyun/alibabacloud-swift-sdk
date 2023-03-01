@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudICE20201109` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudICE20201109', '~> 1.3.6'
+pod 'AlibabacloudICE20201109', '~> 1.3.7'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudICE20201109', '~> 1.3.6'
 To integrate `AlibabacloudICE20201109` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ice-20201109" "1.3.6"
+github "alibabacloud-sdk-swift/ice-20201109" "1.3.7"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudICE20201109` into your Xcode project using [Swift Pack
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ice-20201109.git", from: "1.3.6")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ice-20201109.git", from: "1.3.7")
 ]
 ```
 
