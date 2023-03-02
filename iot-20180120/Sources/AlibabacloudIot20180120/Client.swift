@@ -2699,9 +2699,6 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateDownloadDataJobShrinkRequest = CreateDownloadDataJobShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.context)) {
-            request.contextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.context, "Context", "json")
-        }
         if (!TeaUtils.Client.isUnset(tmpReq.fileConfig)) {
             request.fileConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.fileConfig, "FileConfig", "json")
         }
@@ -2722,9 +2719,6 @@ open class Client : AlibabacloudOpenApi.Client {
             query["TableName"] = request.tableName ?? "";
         }
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.contextShrink)) {
-            body["Context"] = request.contextShrink ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
             body["IotInstanceId"] = request.iotInstanceId ?? "";
         }
@@ -10661,6 +10655,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryDevicePropertyStatus(_ request: QueryDevicePropertyStatusRequest) async throws -> QueryDevicePropertyStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryDevicePropertyStatusWithOptions(request as! QueryDevicePropertyStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDeviceProvisioningWithOptions(_ request: QueryDeviceProvisioningRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDeviceProvisioningResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            body["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryDeviceProvisioning",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryDeviceProvisioningResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDeviceProvisioning(_ request: QueryDeviceProvisioningRequest) async throws -> QueryDeviceProvisioningResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryDeviceProvisioningWithOptions(request as! QueryDeviceProvisioningRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
