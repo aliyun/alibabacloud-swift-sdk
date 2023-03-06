@@ -524,6 +524,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatappTemplateDetailWithOptions(_ request: GetChatappTemplateDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChatappTemplateDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custWabaId)) {
+            query["CustWabaId"] = request.custWabaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvCode)) {
+            query["IsvCode"] = request.isvCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateCode)) {
+            query["TemplateCode"] = request.templateCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            query["TemplateType"] = request.templateType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetChatappTemplateDetail",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetChatappTemplateDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getChatappTemplateDetail(_ request: GetChatappTemplateDetailRequest) async throws -> GetChatappTemplateDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getChatappTemplateDetailWithOptions(request as! GetChatappTemplateDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getChatappUploadAuthorizationWithOptions(_ request: GetChatappUploadAuthorizationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChatappUploadAuthorizationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -697,6 +743,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func isvGetAppId(_ request: IsvGetAppIdRequest) async throws -> IsvGetAppIdResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await isvGetAppIdWithOptions(request as! IsvGetAppIdRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listChatappTemplateWithOptions(_ tmpReq: ListChatappTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListChatappTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListChatappTemplateShrinkRequest = ListChatappTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.page)) {
+            request.pageShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.page, "Page", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auditStatus)) {
+            query["AuditStatus"] = request.auditStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            query["CustSpaceId"] = request.custSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custWabaId)) {
+            query["CustWabaId"] = request.custWabaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvCode)) {
+            query["IsvCode"] = request.isvCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageShrink)) {
+            query["Page"] = request.pageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            query["TemplateType"] = request.templateType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListChatappTemplate",
+            "version": "2020-06-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListChatappTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listChatappTemplate(_ request: ListChatappTemplateRequest) async throws -> ListChatappTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listChatappTemplateWithOptions(request as! ListChatappTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
