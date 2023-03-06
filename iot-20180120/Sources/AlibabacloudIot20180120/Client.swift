@@ -6908,6 +6908,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getShareSpeechModelAudioWithOptions(_ request: GetShareSpeechModelAudioRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetShareSpeechModelAudioResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            body["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.shareTaskId)) {
+            body["ShareTaskId"] = request.shareTaskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.speechModelCodeList)) {
+            body["SpeechModelCodeList"] = request.speechModelCodeList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetShareSpeechModelAudio",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetShareSpeechModelAudioResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getShareSpeechModelAudio(_ request: GetShareSpeechModelAudioRequest) async throws -> GetShareSpeechModelAudioResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getShareSpeechModelAudioWithOptions(request as! GetShareSpeechModelAudioRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getShareTaskByDeviceOpenWithOptions(_ request: GetShareTaskByDeviceOpenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetShareTaskByDeviceOpenResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -12475,6 +12512,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func querySpeechDevice(_ request: QuerySpeechDeviceRequest) async throws -> QuerySpeechDeviceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await querySpeechDeviceWithOptions(request as! QuerySpeechDeviceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func querySpeechLicenseAvailableQuotaWithOptions(_ request: QuerySpeechLicenseAvailableQuotaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuerySpeechLicenseAvailableQuotaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            body["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QuerySpeechLicenseAvailableQuota",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QuerySpeechLicenseAvailableQuotaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func querySpeechLicenseAvailableQuota(_ request: QuerySpeechLicenseAvailableQuotaRequest) async throws -> QuerySpeechLicenseAvailableQuotaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await querySpeechLicenseAvailableQuotaWithOptions(request as! QuerySpeechLicenseAvailableQuotaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
