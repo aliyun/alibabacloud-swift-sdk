@@ -1692,45 +1692,6 @@ public class ListResourceTypesRequest : Tea.TeaModel {
 
 public class ListResourceTypesResponseBody : Tea.TeaModel {
     public class ResourceTypes : Tea.TeaModel {
-        public class CodeMapping : Tea.TeaModel {
-            public var resourceGroup: String?
-
-            public var tag: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.resourceGroup != nil {
-                    map["ResourceGroup"] = self.resourceGroup!
-                }
-                if self.tag != nil {
-                    map["Tag"] = self.tag!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("ResourceGroup") && dict["ResourceGroup"] != nil {
-                    self.resourceGroup = dict["ResourceGroup"] as! String
-                }
-                if dict.keys.contains("Tag") && dict["Tag"] != nil {
-                    self.tag = dict["Tag"] as! String
-                }
-            }
-        }
-        public var codeMapping: ListResourceTypesResponseBody.ResourceTypes.CodeMapping?
-
         public var filterKeys: [String]?
 
         public var productName: String?
@@ -1749,14 +1710,10 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.codeMapping?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.codeMapping != nil {
-                map["CodeMapping"] = self.codeMapping?.toMap()
-            }
             if self.filterKeys != nil {
                 map["FilterKeys"] = self.filterKeys!
             }
@@ -1773,11 +1730,6 @@ public class ListResourceTypesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("CodeMapping") && dict["CodeMapping"] != nil {
-                var model = ListResourceTypesResponseBody.ResourceTypes.CodeMapping()
-                model.fromMap(dict["CodeMapping"] as! [String: Any])
-                self.codeMapping = model
-            }
             if dict.keys.contains("FilterKeys") && dict["FilterKeys"] != nil {
                 self.filterKeys = dict["FilterKeys"] as! [String]
             }
