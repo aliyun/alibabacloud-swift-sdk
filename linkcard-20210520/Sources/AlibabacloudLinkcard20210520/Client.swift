@@ -212,6 +212,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addTagsToCardWithOptions(_ tmpReq: AddTagsToCardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddTagsToCardResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddTagsToCardShrinkRequest = AddTagsToCardShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.tagNameList)) {
+            request.tagNameListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagNameList, "TagNameList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.iccid)) {
+            query["Iccid"] = request.iccid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagNameListShrink)) {
+            query["TagNameList"] = request.tagNameListShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddTagsToCard",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddTagsToCardResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addTagsToCard(_ request: AddTagsToCardRequest) async throws -> AddTagsToCardResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addTagsToCardWithOptions(request as! AddTagsToCardRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchAddDirectionalAddressWithOptions(_ request: BatchAddDirectionalAddressRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchAddDirectionalAddressResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -459,6 +498,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCardLatestFlow(_ request: GetCardLatestFlowRequest) async throws -> GetCardLatestFlowResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getCardLatestFlowWithOptions(request as! GetCardLatestFlowRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCardRealStatusWithOptions(_ tmpReq: GetCardRealStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCardRealStatusResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetCardRealStatusShrinkRequest = GetCardRealStatusShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serialNo)) {
+            request.serialNoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serialNo, "SerialNo", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.iccid)) {
+            query["Iccid"] = request.iccid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.msisdn)) {
+            query["Msisdn"] = request.msisdn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serialNoShrink)) {
+            query["SerialNo"] = request.serialNoShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCardRealStatus",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCardRealStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCardRealStatus(_ request: GetCardRealStatusRequest) async throws -> GetCardRealStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCardRealStatusWithOptions(request as! GetCardRealStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
