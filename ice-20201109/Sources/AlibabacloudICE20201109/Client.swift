@@ -526,6 +526,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            query["TemplateType"] = request.templateType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.timeline)) {
             query["Timeline"] = request.timeline ?? "";
         }

@@ -2721,6 +2721,8 @@ public class CreateEditingProjectRequest : Tea.TeaModel {
 
     public var templateId: String?
 
+    public var templateType: String?
+
     public var timeline: String?
 
     public var title: String?
@@ -2760,6 +2762,9 @@ public class CreateEditingProjectRequest : Tea.TeaModel {
         if self.templateId != nil {
             map["TemplateId"] = self.templateId!
         }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
         if self.timeline != nil {
             map["Timeline"] = self.timeline!
         }
@@ -2790,6 +2795,9 @@ public class CreateEditingProjectRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
             self.templateId = dict["TemplateId"] as! String
+        }
+        if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+            self.templateType = dict["TemplateType"] as! String
         }
         if dict.keys.contains("Timeline") && dict["Timeline"] != nil {
             self.timeline = dict["Timeline"] as! String
