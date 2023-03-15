@@ -1783,6 +1783,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTemplateRecommendParametersWithOptions(_ request: GetTemplateRecommendParametersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTemplateRecommendParametersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            query["Parameters"] = request.parameters ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateBody)) {
+            query["TemplateBody"] = request.templateBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateId)) {
+            query["TemplateId"] = request.templateId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateURL)) {
+            query["TemplateURL"] = request.templateURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateVersion)) {
+            query["TemplateVersion"] = request.templateVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetTemplateRecommendParameters",
+            "version": "2019-09-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTemplateRecommendParametersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTemplateRecommendParameters(_ request: GetTemplateRecommendParametersRequest) async throws -> GetTemplateRecommendParametersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getTemplateRecommendParametersWithOptions(request as! GetTemplateRecommendParametersRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTemplateScratchWithOptions(_ request: GetTemplateScratchRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTemplateScratchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
