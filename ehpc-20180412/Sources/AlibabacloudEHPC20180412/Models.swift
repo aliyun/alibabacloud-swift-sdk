@@ -2148,11 +2148,8 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.validateRequired(self.compute, "compute")
             try self.compute?.validate()
-            try self.validateRequired(self.login, "login")
             try self.login?.validate()
-            try self.validateRequired(self.manager, "manager")
             try self.manager?.validate()
         }
 
@@ -3637,9 +3634,7 @@ public class CreateHybridClusterRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.validateRequired(self.compute, "compute")
             try self.compute?.validate()
-            try self.validateRequired(self.manager, "manager")
             try self.manager?.validate()
         }
 
@@ -11618,6 +11613,8 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
 
     public var clusterType: String?
 
+    public var computeEnableHt: Bool?
+
     public var enableAutoGrow: Bool?
 
     public var enableAutoShrink: Bool?
@@ -11670,6 +11667,9 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
         }
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
+        }
+        if self.computeEnableHt != nil {
+            map["ComputeEnableHt"] = self.computeEnableHt!
         }
         if self.enableAutoGrow != nil {
             map["EnableAutoGrow"] = self.enableAutoGrow!
@@ -11728,6 +11728,9 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ClusterType") && dict["ClusterType"] != nil {
             self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("ComputeEnableHt") && dict["ComputeEnableHt"] != nil {
+            self.computeEnableHt = dict["ComputeEnableHt"] as! Bool
         }
         if dict.keys.contains("EnableAutoGrow") && dict["EnableAutoGrow"] != nil {
             self.enableAutoGrow = dict["EnableAutoGrow"] as! Bool
@@ -28928,6 +28931,8 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
     }
     public var clusterId: String?
 
+    public var computeEnableHt: Bool?
+
     public var enableAutoGrow: Bool?
 
     public var enableAutoShrink: Bool?
@@ -28972,6 +28977,9 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
+        }
+        if self.computeEnableHt != nil {
+            map["ComputeEnableHt"] = self.computeEnableHt!
         }
         if self.enableAutoGrow != nil {
             map["EnableAutoGrow"] = self.enableAutoGrow!
@@ -29025,6 +29033,9 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
             self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("ComputeEnableHt") && dict["ComputeEnableHt"] != nil {
+            self.computeEnableHt = dict["ComputeEnableHt"] as! Bool
         }
         if dict.keys.contains("EnableAutoGrow") && dict["EnableAutoGrow"] != nil {
             self.enableAutoGrow = dict["EnableAutoGrow"] as! Bool
@@ -32830,6 +32841,8 @@ public class UpdateClusterVolumesRequest : Tea.TeaModel {
 
         public var volumeId: String?
 
+        public var volumeMountOption: String?
+
         public var volumeMountpoint: String?
 
         public var volumeProtocol: String?
@@ -32872,6 +32885,9 @@ public class UpdateClusterVolumesRequest : Tea.TeaModel {
             if self.volumeId != nil {
                 map["VolumeId"] = self.volumeId!
             }
+            if self.volumeMountOption != nil {
+                map["VolumeMountOption"] = self.volumeMountOption!
+            }
             if self.volumeMountpoint != nil {
                 map["VolumeMountpoint"] = self.volumeMountpoint!
             }
@@ -32910,6 +32926,9 @@ public class UpdateClusterVolumesRequest : Tea.TeaModel {
             }
             if dict.keys.contains("VolumeId") && dict["VolumeId"] != nil {
                 self.volumeId = dict["VolumeId"] as! String
+            }
+            if dict.keys.contains("VolumeMountOption") && dict["VolumeMountOption"] != nil {
+                self.volumeMountOption = dict["VolumeMountOption"] as! String
             }
             if dict.keys.contains("VolumeMountpoint") && dict["VolumeMountpoint"] != nil {
                 self.volumeMountpoint = dict["VolumeMountpoint"] as! String
