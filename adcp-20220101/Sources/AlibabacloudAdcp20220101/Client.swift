@@ -448,11 +448,16 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func grantUserPermissionsWithOptions(_ request: GrantUserPermissionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantUserPermissionsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func grantUserPermissionsWithOptions(_ tmpReq: GrantUserPermissionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantUserPermissionsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GrantUserPermissionsShrinkRequest = GrantUserPermissionsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.permissions)) {
+            request.permissionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.permissions, "Permissions", "json")
+        }
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.permissions)) {
-            query["Permissions"] = request.permissions ?? [];
+        if (!TeaUtils.Client.isUnset(request.permissionsShrink)) {
+            query["Permissions"] = request.permissionsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             query["UserId"] = request.userId ?? "";

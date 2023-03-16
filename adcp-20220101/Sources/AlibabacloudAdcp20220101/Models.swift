@@ -2843,10 +2843,6 @@ public class DescribeUserPermissionsRequest : Tea.TeaModel {
 
 public class DescribeUserPermissionsResponseBody : Tea.TeaModel {
     public class Permissions : Tea.TeaModel {
-        public var ownerId: String?
-
-        public var parentId: String?
-
         public var resourceId: String?
 
         public var resourceType: String?
@@ -2869,12 +2865,6 @@ public class DescribeUserPermissionsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.ownerId != nil {
-                map["OwnerId"] = self.ownerId!
-            }
-            if self.parentId != nil {
-                map["ParentId"] = self.parentId!
-            }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
             }
@@ -2891,12 +2881,6 @@ public class DescribeUserPermissionsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
-                self.ownerId = dict["OwnerId"] as! String
-            }
-            if dict.keys.contains("ParentId") && dict["ParentId"] != nil {
-                self.parentId = dict["ParentId"] as! String
-            }
             if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
                 self.resourceId = dict["ResourceId"] as! String
             }
@@ -3260,6 +3244,44 @@ public class GrantUserPermissionsRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.permissions = tmp
+        }
+        if dict.keys.contains("UserId") && dict["UserId"] != nil {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class GrantUserPermissionsShrinkRequest : Tea.TeaModel {
+    public var permissionsShrink: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.permissionsShrink != nil {
+            map["Permissions"] = self.permissionsShrink!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Permissions") && dict["Permissions"] != nil {
+            self.permissionsShrink = dict["Permissions"] as! String
         }
         if dict.keys.contains("UserId") && dict["UserId"] != nil {
             self.userId = dict["UserId"] as! String
