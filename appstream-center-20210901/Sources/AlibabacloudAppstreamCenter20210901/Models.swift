@@ -755,6 +755,35 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class RuntimePolicy : Tea.TeaModel {
+        public var sessionType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sessionType != nil {
+                map["SessionType"] = self.sessionType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SessionType") && dict["SessionType"] != nil {
+                self.sessionType = dict["SessionType"] as! String
+            }
+        }
+    }
     public class UserInfo : Tea.TeaModel {
         public var type: String?
 
@@ -812,6 +841,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
     public var promotionId: String?
 
+    public var runtimePolicy: CreateAppInstanceGroupRequest.RuntimePolicy?
+
     public var sessionTimeout: Int32?
 
     public var userInfo: CreateAppInstanceGroupRequest.UserInfo?
@@ -830,6 +861,7 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.network?.validate()
         try self.nodePool?.validate()
+        try self.runtimePolicy?.validate()
         try self.userInfo?.validate()
     }
 
@@ -876,6 +908,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
+        }
+        if self.runtimePolicy != nil {
+            map["RuntimePolicy"] = self.runtimePolicy?.toMap()
         }
         if self.sessionTimeout != nil {
             map["SessionTimeout"] = self.sessionTimeout!
@@ -936,6 +971,11 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         if dict.keys.contains("PromotionId") && dict["PromotionId"] != nil {
             self.promotionId = dict["PromotionId"] as! String
         }
+        if dict.keys.contains("RuntimePolicy") && dict["RuntimePolicy"] != nil {
+            var model = CreateAppInstanceGroupRequest.RuntimePolicy()
+            model.fromMap(dict["RuntimePolicy"] as! [String: Any])
+            self.runtimePolicy = model
+        }
         if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
             self.sessionTimeout = dict["SessionTimeout"] as! Int32
         }
@@ -978,6 +1018,8 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
     public var productType: String?
 
     public var promotionId: String?
+
+    public var runtimePolicyShrink: String?
 
     public var sessionTimeout: Int32?
 
@@ -1041,6 +1083,9 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.promotionId != nil {
             map["PromotionId"] = self.promotionId!
         }
+        if self.runtimePolicyShrink != nil {
+            map["RuntimePolicy"] = self.runtimePolicyShrink!
+        }
         if self.sessionTimeout != nil {
             map["SessionTimeout"] = self.sessionTimeout!
         }
@@ -1095,6 +1140,9 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PromotionId") && dict["PromotionId"] != nil {
             self.promotionId = dict["PromotionId"] as! String
+        }
+        if dict.keys.contains("RuntimePolicy") && dict["RuntimePolicy"] != nil {
+            self.runtimePolicyShrink = dict["RuntimePolicy"] as! String
         }
         if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
             self.sessionTimeout = dict["SessionTimeout"] as! Int32

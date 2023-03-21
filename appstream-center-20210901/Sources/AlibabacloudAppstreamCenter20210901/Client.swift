@@ -151,6 +151,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.nodePool)) {
             request.nodePoolShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodePool, "NodePool", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.runtimePolicy)) {
+            request.runtimePolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.runtimePolicy, "RuntimePolicy", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.userInfo)) {
             request.userInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userInfo, "UserInfo", "json")
         }
@@ -196,6 +199,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.promotionId)) {
             body["PromotionId"] = request.promotionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.runtimePolicyShrink)) {
+            body["RuntimePolicy"] = request.runtimePolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sessionTimeout)) {
             body["SessionTimeout"] = request.sessionTimeout!;
