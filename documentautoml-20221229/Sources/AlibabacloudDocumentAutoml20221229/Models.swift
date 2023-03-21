@@ -214,7 +214,7 @@ public class PredictModelRequest : Tea.TeaModel {
 public class PredictModelResponseBody : Tea.TeaModel {
     public var code: Int32?
 
-    public var data: String?
+    public var data: [String: Any]?
 
     public var message: String?
 
@@ -254,7 +254,7 @@ public class PredictModelResponseBody : Tea.TeaModel {
             self.code = dict["Code"] as! Int32
         }
         if dict.keys.contains("Data") && dict["Data"] != nil {
-            self.data = dict["Data"] as! String
+            self.data = dict["Data"] as! [String: Any]
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
