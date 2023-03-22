@@ -2120,6 +2120,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeTableOcrWithOptions(_ request: RecognizeTableOcrRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeTableOcrResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isHandWriting)) {
+            query["IsHandWriting"] = request.isHandWriting ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lineLess)) {
             query["LineLess"] = request.lineLess!;
         }
@@ -2363,39 +2366,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeTrainInvoice(_ request: RecognizeTrainInvoiceRequest) async throws -> RecognizeTrainInvoiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await recognizeTrainInvoiceWithOptions(request as! RecognizeTrainInvoiceRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func recognizeTravelCardWithOptions(_ request: RecognizeTravelCardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeTravelCardResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.url)) {
-            query["Url"] = request.url ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": request.body!,
-            "stream": request.body!
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "RecognizeTravelCard",
-            "version": "2021-07-07",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(RecognizeTravelCardResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func recognizeTravelCard(_ request: RecognizeTravelCardRequest) async throws -> RecognizeTravelCardResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await recognizeTravelCardWithOptions(request as! RecognizeTravelCardRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
