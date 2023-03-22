@@ -318,6 +318,8 @@ public class PredictModelResponse : Tea.TeaModel {
 }
 
 public class PredictTemplateModelRequest : Tea.TeaModel {
+    public var binaryToText: Bool?
+
     public var content: String?
 
     public var taskId: Int64?
@@ -336,6 +338,9 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.binaryToText != nil {
+            map["BinaryToText"] = self.binaryToText!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -346,6 +351,9 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BinaryToText") && dict["BinaryToText"] != nil {
+            self.binaryToText = dict["BinaryToText"] as! Bool
+        }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
         }

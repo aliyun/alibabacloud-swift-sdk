@@ -104,6 +104,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func predictTemplateModelWithOptions(_ request: PredictTemplateModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PredictTemplateModelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.binaryToText)) {
+            query["BinaryToText"] = request.binaryToText!;
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
         }
