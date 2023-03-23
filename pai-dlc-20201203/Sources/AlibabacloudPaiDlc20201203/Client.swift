@@ -166,6 +166,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTensorboardWithOptions(_ request: CreateTensorboardRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTensorboardResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cpu)) {
+            body["Cpu"] = request.cpu!;
+        }
         if (!TeaUtils.Client.isUnset(request.dataSourceId)) {
             body["DataSourceId"] = request.dataSourceId ?? "";
         }
@@ -183,6 +186,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.maxRunningTimeMinutes)) {
             body["MaxRunningTimeMinutes"] = request.maxRunningTimeMinutes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.memory)) {
+            body["Memory"] = request.memory!;
         }
         if (!TeaUtils.Client.isUnset(request.options)) {
             body["Options"] = request.options ?? "";
