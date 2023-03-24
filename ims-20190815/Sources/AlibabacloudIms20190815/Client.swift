@@ -2015,8 +2015,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func setSecurityPreferenceWithOptions(_ request: SetSecurityPreferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetSecurityPreferenceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func setSecurityPreferenceWithOptions(_ tmpReq: SetSecurityPreferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetSecurityPreferenceResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SetSecurityPreferenceShrinkRequest = SetSecurityPreferenceShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.verificationTypes)) {
+            request.verificationTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.verificationTypes, "VerificationTypes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.allowUserToChangePassword)) {
             query["AllowUserToChangePassword"] = request.allowUserToChangePassword!;
@@ -2044,6 +2049,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.operationForRiskLogin)) {
             query["OperationForRiskLogin"] = request.operationForRiskLogin ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.verificationTypesShrink)) {
+            query["VerificationTypes"] = request.verificationTypesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
