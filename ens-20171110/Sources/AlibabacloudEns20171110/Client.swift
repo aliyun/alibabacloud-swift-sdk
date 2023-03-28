@@ -472,6 +472,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.keyPairName)) {
             query["KeyPairName"] = request.keyPairName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nameSpace)) {
+            query["NameSpace"] = request.nameSpace ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.payType)) {
             query["PayType"] = request.payType ?? "";
         }

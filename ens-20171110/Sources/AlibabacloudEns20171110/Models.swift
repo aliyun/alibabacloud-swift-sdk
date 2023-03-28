@@ -2551,6 +2551,8 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
 
     public var keyPairName: String?
 
+    public var nameSpace: String?
+
     public var payType: String?
 
     public var period: Int32?
@@ -2596,6 +2598,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
         }
+        if self.nameSpace != nil {
+            map["NameSpace"] = self.nameSpace!
+        }
         if self.payType != nil {
             map["PayType"] = self.payType!
         }
@@ -2635,6 +2640,9 @@ public class CreateARMServerInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("KeyPairName") && dict["KeyPairName"] != nil {
             self.keyPairName = dict["KeyPairName"] as! String
+        }
+        if dict.keys.contains("NameSpace") && dict["NameSpace"] != nil {
+            self.nameSpace = dict["NameSpace"] as! String
         }
         if dict.keys.contains("PayType") && dict["PayType"] != nil {
             self.payType = dict["PayType"] as! String
@@ -10061,6 +10069,8 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
 
         public var expiredTime: String?
 
+        public var namespace: String?
+
         public var serverId: String?
 
         public var specName: String?
@@ -10099,6 +10109,9 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
             if self.serverId != nil {
                 map["ServerId"] = self.serverId!
             }
@@ -10134,6 +10147,9 @@ public class DescribeARMServerInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExpiredTime") && dict["ExpiredTime"] != nil {
                 self.expiredTime = dict["ExpiredTime"] as! String
+            }
+            if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                self.namespace = dict["Namespace"] as! String
             }
             if dict.keys.contains("ServerId") && dict["ServerId"] != nil {
                 self.serverId = dict["ServerId"] as! String
