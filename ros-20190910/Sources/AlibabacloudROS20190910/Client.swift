@@ -3519,17 +3519,19 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.templateBody)) {
-            query["TemplateBody"] = request.templateBody ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.templateURL)) {
             query["TemplateURL"] = request.templateURL ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.validationOption)) {
             query["ValidationOption"] = request.validationOption ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.templateBody)) {
+            body["TemplateBody"] = request.templateBody ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "ValidateTemplate",

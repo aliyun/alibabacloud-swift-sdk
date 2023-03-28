@@ -17,7 +17,7 @@
 [CocoaPods](https://cocoapods.org) 是 Cocoa 项目管理工具。请访问其官方网站获取关于 CocoaPods 的使用和安装说明。要使用 CocoaPods 将 `AlibabacloudROS20190910` 集成到你的 Xcode 项目中，需要在 `Podfile` 中定义以下内容:
 
 ```ruby
-pod 'AlibabacloudROS20190910', '~> 1.0.8'
+pod 'AlibabacloudROS20190910', '~> 1.0.9'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudROS20190910', '~> 1.0.8'
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudROS20190910` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ros-20190910" "1.0.8"
+github "alibabacloud-sdk-swift/ros-20190910" "1.0.9"
 ```
 
 ### Swift 包管理工具
@@ -34,7 +34,7 @@ github "alibabacloud-sdk-swift/ros-20190910" "1.0.8"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ros-20190910.git", from: "1.0.8")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ros-20190910.git", from: "1.0.9")
 ]
 ```
 
