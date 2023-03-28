@@ -319,6 +319,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ExtendClusterShrinkRequest = ExtendClusterShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.ipAllocationPolicy)) {
+            request.ipAllocationPolicyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.ipAllocationPolicy, "IpAllocationPolicy", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.nodeGroups)) {
             request.nodeGroupsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeGroups, "NodeGroups", "json")
         }
@@ -331,6 +334,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ignoreFailedNodeTasks)) {
             body["IgnoreFailedNodeTasks"] = request.ignoreFailedNodeTasks!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipAllocationPolicyShrink)) {
+            body["IpAllocationPolicy"] = request.ipAllocationPolicyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nodeGroupsShrink)) {
             body["NodeGroups"] = request.nodeGroupsShrink ?? "";

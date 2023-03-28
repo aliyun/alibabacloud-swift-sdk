@@ -212,6 +212,336 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
     }
     public class Networks : Tea.TeaModel {
+        public class IpAllocationPolicy : Tea.TeaModel {
+            public class BondPolicy : Tea.TeaModel {
+                public class Bonds : Tea.TeaModel {
+                    public var name: String?
+
+                    public var subnet: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.subnet != nil {
+                            map["Subnet"] = self.subnet!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Name") && dict["Name"] != nil {
+                            self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Subnet") && dict["Subnet"] != nil {
+                            self.subnet = dict["Subnet"] as! String
+                        }
+                    }
+                }
+                public var bondDefaultSubnet: String?
+
+                public var bonds: [CreateClusterRequest.Networks.IpAllocationPolicy.BondPolicy.Bonds]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bondDefaultSubnet != nil {
+                        map["BondDefaultSubnet"] = self.bondDefaultSubnet!
+                    }
+                    if self.bonds != nil {
+                        var tmp : [Any] = []
+                        for k in self.bonds! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Bonds"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BondDefaultSubnet") && dict["BondDefaultSubnet"] != nil {
+                        self.bondDefaultSubnet = dict["BondDefaultSubnet"] as! String
+                    }
+                    if dict.keys.contains("Bonds") && dict["Bonds"] != nil {
+                        var tmp : [CreateClusterRequest.Networks.IpAllocationPolicy.BondPolicy.Bonds] = []
+                        for v in dict["Bonds"] as! [Any] {
+                            var model = CreateClusterRequest.Networks.IpAllocationPolicy.BondPolicy.Bonds()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.bonds = tmp
+                    }
+                }
+            }
+            public class MachineTypePolicy : Tea.TeaModel {
+                public class Bonds : Tea.TeaModel {
+                    public var name: String?
+
+                    public var subnet: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.subnet != nil {
+                            map["Subnet"] = self.subnet!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Name") && dict["Name"] != nil {
+                            self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Subnet") && dict["Subnet"] != nil {
+                            self.subnet = dict["Subnet"] as! String
+                        }
+                    }
+                }
+                public var bonds: [CreateClusterRequest.Networks.IpAllocationPolicy.MachineTypePolicy.Bonds]?
+
+                public var machineType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bonds != nil {
+                        var tmp : [Any] = []
+                        for k in self.bonds! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Bonds"] = tmp
+                    }
+                    if self.machineType != nil {
+                        map["MachineType"] = self.machineType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Bonds") && dict["Bonds"] != nil {
+                        var tmp : [CreateClusterRequest.Networks.IpAllocationPolicy.MachineTypePolicy.Bonds] = []
+                        for v in dict["Bonds"] as! [Any] {
+                            var model = CreateClusterRequest.Networks.IpAllocationPolicy.MachineTypePolicy.Bonds()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.bonds = tmp
+                    }
+                    if dict.keys.contains("MachineType") && dict["MachineType"] != nil {
+                        self.machineType = dict["MachineType"] as! String
+                    }
+                }
+            }
+            public class NodePolicy : Tea.TeaModel {
+                public class Bonds : Tea.TeaModel {
+                    public var name: String?
+
+                    public var subnet: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.name != nil {
+                            map["Name"] = self.name!
+                        }
+                        if self.subnet != nil {
+                            map["Subnet"] = self.subnet!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Name") && dict["Name"] != nil {
+                            self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Subnet") && dict["Subnet"] != nil {
+                            self.subnet = dict["Subnet"] as! String
+                        }
+                    }
+                }
+                public var bonds: [CreateClusterRequest.Networks.IpAllocationPolicy.NodePolicy.Bonds]?
+
+                public var nodeId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.bonds != nil {
+                        var tmp : [Any] = []
+                        for k in self.bonds! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Bonds"] = tmp
+                    }
+                    if self.nodeId != nil {
+                        map["NodeId"] = self.nodeId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Bonds") && dict["Bonds"] != nil {
+                        var tmp : [CreateClusterRequest.Networks.IpAllocationPolicy.NodePolicy.Bonds] = []
+                        for v in dict["Bonds"] as! [Any] {
+                            var model = CreateClusterRequest.Networks.IpAllocationPolicy.NodePolicy.Bonds()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.bonds = tmp
+                    }
+                    if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
+                        self.nodeId = dict["NodeId"] as! String
+                    }
+                }
+            }
+            public var bondPolicy: CreateClusterRequest.Networks.IpAllocationPolicy.BondPolicy?
+
+            public var machineTypePolicy: [CreateClusterRequest.Networks.IpAllocationPolicy.MachineTypePolicy]?
+
+            public var nodePolicy: [CreateClusterRequest.Networks.IpAllocationPolicy.NodePolicy]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.bondPolicy?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bondPolicy != nil {
+                    map["BondPolicy"] = self.bondPolicy?.toMap()
+                }
+                if self.machineTypePolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.machineTypePolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MachineTypePolicy"] = tmp
+                }
+                if self.nodePolicy != nil {
+                    var tmp : [Any] = []
+                    for k in self.nodePolicy! {
+                        tmp.append(k.toMap())
+                    }
+                    map["NodePolicy"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BondPolicy") && dict["BondPolicy"] != nil {
+                    var model = CreateClusterRequest.Networks.IpAllocationPolicy.BondPolicy()
+                    model.fromMap(dict["BondPolicy"] as! [String: Any])
+                    self.bondPolicy = model
+                }
+                if dict.keys.contains("MachineTypePolicy") && dict["MachineTypePolicy"] != nil {
+                    var tmp : [CreateClusterRequest.Networks.IpAllocationPolicy.MachineTypePolicy] = []
+                    for v in dict["MachineTypePolicy"] as! [Any] {
+                        var model = CreateClusterRequest.Networks.IpAllocationPolicy.MachineTypePolicy()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.machineTypePolicy = tmp
+                }
+                if dict.keys.contains("NodePolicy") && dict["NodePolicy"] != nil {
+                    var tmp : [CreateClusterRequest.Networks.IpAllocationPolicy.NodePolicy] = []
+                    for v in dict["NodePolicy"] as! [Any] {
+                        var model = CreateClusterRequest.Networks.IpAllocationPolicy.NodePolicy()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.nodePolicy = tmp
+                }
+            }
+        }
         public class NewVpdInfo : Tea.TeaModel {
             public class VpdSubnets : Tea.TeaModel {
                 public var subnetCidr: String?
@@ -383,6 +713,8 @@ public class CreateClusterRequest : Tea.TeaModel {
                 }
             }
         }
+        public var ipAllocationPolicy: [CreateClusterRequest.Networks.IpAllocationPolicy]?
+
         public var newVpdInfo: CreateClusterRequest.Networks.NewVpdInfo?
 
         public var vpdInfo: CreateClusterRequest.Networks.VpdInfo?
@@ -403,6 +735,13 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ipAllocationPolicy != nil {
+                var tmp : [Any] = []
+                for k in self.ipAllocationPolicy! {
+                    tmp.append(k.toMap())
+                }
+                map["IpAllocationPolicy"] = tmp
+            }
             if self.newVpdInfo != nil {
                 map["NewVpdInfo"] = self.newVpdInfo?.toMap()
             }
@@ -413,6 +752,17 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IpAllocationPolicy") && dict["IpAllocationPolicy"] != nil {
+                var tmp : [CreateClusterRequest.Networks.IpAllocationPolicy] = []
+                for v in dict["IpAllocationPolicy"] as! [Any] {
+                    var model = CreateClusterRequest.Networks.IpAllocationPolicy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.ipAllocationPolicy = tmp
+            }
             if dict.keys.contains("NewVpdInfo") && dict["NewVpdInfo"] != nil {
                 var model = CreateClusterRequest.Networks.NewVpdInfo()
                 model.fromMap(dict["NewVpdInfo"] as! [String: Any])
@@ -2361,6 +2711,336 @@ public class DescribeZonesResponse : Tea.TeaModel {
 }
 
 public class ExtendClusterRequest : Tea.TeaModel {
+    public class IpAllocationPolicy : Tea.TeaModel {
+        public class BondPolicy : Tea.TeaModel {
+            public class Bonds : Tea.TeaModel {
+                public var name: String?
+
+                public var subnet: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.subnet != nil {
+                        map["Subnet"] = self.subnet!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Subnet") && dict["Subnet"] != nil {
+                        self.subnet = dict["Subnet"] as! String
+                    }
+                }
+            }
+            public var bondDefaultSubnet: String?
+
+            public var bonds: [ExtendClusterRequest.IpAllocationPolicy.BondPolicy.Bonds]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bondDefaultSubnet != nil {
+                    map["BondDefaultSubnet"] = self.bondDefaultSubnet!
+                }
+                if self.bonds != nil {
+                    var tmp : [Any] = []
+                    for k in self.bonds! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Bonds"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BondDefaultSubnet") && dict["BondDefaultSubnet"] != nil {
+                    self.bondDefaultSubnet = dict["BondDefaultSubnet"] as! String
+                }
+                if dict.keys.contains("Bonds") && dict["Bonds"] != nil {
+                    var tmp : [ExtendClusterRequest.IpAllocationPolicy.BondPolicy.Bonds] = []
+                    for v in dict["Bonds"] as! [Any] {
+                        var model = ExtendClusterRequest.IpAllocationPolicy.BondPolicy.Bonds()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.bonds = tmp
+                }
+            }
+        }
+        public class MachineTypePolicy : Tea.TeaModel {
+            public class Bonds : Tea.TeaModel {
+                public var name: String?
+
+                public var subnet: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.subnet != nil {
+                        map["Subnet"] = self.subnet!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Subnet") && dict["Subnet"] != nil {
+                        self.subnet = dict["Subnet"] as! String
+                    }
+                }
+            }
+            public var bonds: [ExtendClusterRequest.IpAllocationPolicy.MachineTypePolicy.Bonds]?
+
+            public var machineType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bonds != nil {
+                    var tmp : [Any] = []
+                    for k in self.bonds! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Bonds"] = tmp
+                }
+                if self.machineType != nil {
+                    map["MachineType"] = self.machineType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bonds") && dict["Bonds"] != nil {
+                    var tmp : [ExtendClusterRequest.IpAllocationPolicy.MachineTypePolicy.Bonds] = []
+                    for v in dict["Bonds"] as! [Any] {
+                        var model = ExtendClusterRequest.IpAllocationPolicy.MachineTypePolicy.Bonds()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.bonds = tmp
+                }
+                if dict.keys.contains("MachineType") && dict["MachineType"] != nil {
+                    self.machineType = dict["MachineType"] as! String
+                }
+            }
+        }
+        public class NodePolicy : Tea.TeaModel {
+            public class Bonds : Tea.TeaModel {
+                public var name: String?
+
+                public var subnet: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.subnet != nil {
+                        map["Subnet"] = self.subnet!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Subnet") && dict["Subnet"] != nil {
+                        self.subnet = dict["Subnet"] as! String
+                    }
+                }
+            }
+            public var bonds: [ExtendClusterRequest.IpAllocationPolicy.NodePolicy.Bonds]?
+
+            public var nodeId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bonds != nil {
+                    var tmp : [Any] = []
+                    for k in self.bonds! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Bonds"] = tmp
+                }
+                if self.nodeId != nil {
+                    map["NodeId"] = self.nodeId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Bonds") && dict["Bonds"] != nil {
+                    var tmp : [ExtendClusterRequest.IpAllocationPolicy.NodePolicy.Bonds] = []
+                    for v in dict["Bonds"] as! [Any] {
+                        var model = ExtendClusterRequest.IpAllocationPolicy.NodePolicy.Bonds()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.bonds = tmp
+                }
+                if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
+                    self.nodeId = dict["NodeId"] as! String
+                }
+            }
+        }
+        public var bondPolicy: ExtendClusterRequest.IpAllocationPolicy.BondPolicy?
+
+        public var machineTypePolicy: [ExtendClusterRequest.IpAllocationPolicy.MachineTypePolicy]?
+
+        public var nodePolicy: [ExtendClusterRequest.IpAllocationPolicy.NodePolicy]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.bondPolicy?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bondPolicy != nil {
+                map["BondPolicy"] = self.bondPolicy?.toMap()
+            }
+            if self.machineTypePolicy != nil {
+                var tmp : [Any] = []
+                for k in self.machineTypePolicy! {
+                    tmp.append(k.toMap())
+                }
+                map["MachineTypePolicy"] = tmp
+            }
+            if self.nodePolicy != nil {
+                var tmp : [Any] = []
+                for k in self.nodePolicy! {
+                    tmp.append(k.toMap())
+                }
+                map["NodePolicy"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BondPolicy") && dict["BondPolicy"] != nil {
+                var model = ExtendClusterRequest.IpAllocationPolicy.BondPolicy()
+                model.fromMap(dict["BondPolicy"] as! [String: Any])
+                self.bondPolicy = model
+            }
+            if dict.keys.contains("MachineTypePolicy") && dict["MachineTypePolicy"] != nil {
+                var tmp : [ExtendClusterRequest.IpAllocationPolicy.MachineTypePolicy] = []
+                for v in dict["MachineTypePolicy"] as! [Any] {
+                    var model = ExtendClusterRequest.IpAllocationPolicy.MachineTypePolicy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.machineTypePolicy = tmp
+            }
+            if dict.keys.contains("NodePolicy") && dict["NodePolicy"] != nil {
+                var tmp : [ExtendClusterRequest.IpAllocationPolicy.NodePolicy] = []
+                for v in dict["NodePolicy"] as! [Any] {
+                    var model = ExtendClusterRequest.IpAllocationPolicy.NodePolicy()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.nodePolicy = tmp
+            }
+        }
+    }
     public class NodeGroups : Tea.TeaModel {
         public class Nodes : Tea.TeaModel {
             public var hostname: String?
@@ -2459,6 +3139,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
     public var ignoreFailedNodeTasks: Bool?
 
+    public var ipAllocationPolicy: [ExtendClusterRequest.IpAllocationPolicy]?
+
     public var nodeGroups: [ExtendClusterRequest.NodeGroups]?
 
     public var vpdSubnets: [String]?
@@ -2483,6 +3165,13 @@ public class ExtendClusterRequest : Tea.TeaModel {
         if self.ignoreFailedNodeTasks != nil {
             map["IgnoreFailedNodeTasks"] = self.ignoreFailedNodeTasks!
         }
+        if self.ipAllocationPolicy != nil {
+            var tmp : [Any] = []
+            for k in self.ipAllocationPolicy! {
+                tmp.append(k.toMap())
+            }
+            map["IpAllocationPolicy"] = tmp
+        }
         if self.nodeGroups != nil {
             var tmp : [Any] = []
             for k in self.nodeGroups! {
@@ -2502,6 +3191,17 @@ public class ExtendClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IgnoreFailedNodeTasks") && dict["IgnoreFailedNodeTasks"] != nil {
             self.ignoreFailedNodeTasks = dict["IgnoreFailedNodeTasks"] as! Bool
+        }
+        if dict.keys.contains("IpAllocationPolicy") && dict["IpAllocationPolicy"] != nil {
+            var tmp : [ExtendClusterRequest.IpAllocationPolicy] = []
+            for v in dict["IpAllocationPolicy"] as! [Any] {
+                var model = ExtendClusterRequest.IpAllocationPolicy()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.ipAllocationPolicy = tmp
         }
         if dict.keys.contains("NodeGroups") && dict["NodeGroups"] != nil {
             var tmp : [ExtendClusterRequest.NodeGroups] = []
@@ -2524,6 +3224,8 @@ public class ExtendClusterShrinkRequest : Tea.TeaModel {
     public var clusterId: String?
 
     public var ignoreFailedNodeTasks: Bool?
+
+    public var ipAllocationPolicyShrink: String?
 
     public var nodeGroupsShrink: String?
 
@@ -2549,6 +3251,9 @@ public class ExtendClusterShrinkRequest : Tea.TeaModel {
         if self.ignoreFailedNodeTasks != nil {
             map["IgnoreFailedNodeTasks"] = self.ignoreFailedNodeTasks!
         }
+        if self.ipAllocationPolicyShrink != nil {
+            map["IpAllocationPolicy"] = self.ipAllocationPolicyShrink!
+        }
         if self.nodeGroupsShrink != nil {
             map["NodeGroups"] = self.nodeGroupsShrink!
         }
@@ -2564,6 +3269,9 @@ public class ExtendClusterShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IgnoreFailedNodeTasks") && dict["IgnoreFailedNodeTasks"] != nil {
             self.ignoreFailedNodeTasks = dict["IgnoreFailedNodeTasks"] as! Bool
+        }
+        if dict.keys.contains("IpAllocationPolicy") && dict["IpAllocationPolicy"] != nil {
+            self.ipAllocationPolicyShrink = dict["IpAllocationPolicy"] as! String
         }
         if dict.keys.contains("NodeGroups") && dict["NodeGroups"] != nil {
             self.nodeGroupsShrink = dict["NodeGroups"] as! String
