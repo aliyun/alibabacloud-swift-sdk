@@ -916,6 +916,8 @@ public class EventSourceParameters : Tea.TeaModel {
 }
 
 public class HTTPTriggerConfig : Tea.TeaModel {
+    public var authConfig: String?
+
     public var authType: String?
 
     public var disableURLInternet: Bool?
@@ -936,6 +938,9 @@ public class HTTPTriggerConfig : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.authConfig != nil {
+            map["authConfig"] = self.authConfig!
+        }
         if self.authType != nil {
             map["authType"] = self.authType!
         }
@@ -949,6 +954,9 @@ public class HTTPTriggerConfig : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("authConfig") && dict["authConfig"] != nil {
+            self.authConfig = dict["authConfig"] as! String
+        }
         if dict.keys.contains("authType") && dict["authType"] != nil {
             self.authType = dict["authType"] as! String
         }
@@ -1001,6 +1009,68 @@ public class InstanceLifecycleConfig : Tea.TeaModel {
             var model = LifecycleHook()
             model.fromMap(dict["preStop"] as! [String: Any])
             self.preStop = model
+        }
+    }
+}
+
+public class JWTAuthConfig : Tea.TeaModel {
+    public var blackList: String?
+
+    public var claimPassBy: [String]?
+
+    public var jwks: String?
+
+    public var tokenLookup: [String]?
+
+    public var whiteList: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.blackList != nil {
+            map["blackList"] = self.blackList!
+        }
+        if self.claimPassBy != nil {
+            map["claimPassBy"] = self.claimPassBy!
+        }
+        if self.jwks != nil {
+            map["jwks"] = self.jwks!
+        }
+        if self.tokenLookup != nil {
+            map["tokenLookup"] = self.tokenLookup!
+        }
+        if self.whiteList != nil {
+            map["whiteList"] = self.whiteList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("blackList") && dict["blackList"] != nil {
+            self.blackList = dict["blackList"] as! String
+        }
+        if dict.keys.contains("claimPassBy") && dict["claimPassBy"] != nil {
+            self.claimPassBy = dict["claimPassBy"] as! [String]
+        }
+        if dict.keys.contains("jwks") && dict["jwks"] != nil {
+            self.jwks = dict["jwks"] as! String
+        }
+        if dict.keys.contains("tokenLookup") && dict["tokenLookup"] != nil {
+            self.tokenLookup = dict["tokenLookup"] as! [String]
+        }
+        if dict.keys.contains("whiteList") && dict["whiteList"] != nil {
+            self.whiteList = dict["whiteList"] as! [String]
         }
     }
 }
@@ -2533,7 +2603,7 @@ public class RouteConfig : Tea.TeaModel {
 public class RoutePolicy : Tea.TeaModel {
     public var condition: [UInt8]?
 
-    public var policyItems: PolicyItem?
+    public var policyItems: [PolicyItem]?
 
     public override init() {
         super.init()
@@ -2545,7 +2615,6 @@ public class RoutePolicy : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.policyItems?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2554,7 +2623,11 @@ public class RoutePolicy : Tea.TeaModel {
             map["condition"] = self.condition!
         }
         if self.policyItems != nil {
-            map["policyItems"] = self.policyItems?.toMap()
+            var tmp : [Any] = []
+            for k in self.policyItems! {
+                tmp.append(k.toMap())
+            }
+            map["policyItems"] = tmp
         }
         return map
     }
@@ -2564,9 +2637,15 @@ public class RoutePolicy : Tea.TeaModel {
             self.condition = dict["condition"] as! [UInt8]
         }
         if dict.keys.contains("policyItems") && dict["policyItems"] != nil {
-            var model = PolicyItem()
-            model.fromMap(dict["policyItems"] as! [String: Any])
-            self.policyItems = model
+            var tmp : [PolicyItem] = []
+            for v in dict["policyItems"] as! [Any] {
+                var model = PolicyItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.policyItems = tmp
         }
     }
 }
