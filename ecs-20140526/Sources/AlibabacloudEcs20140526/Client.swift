@@ -9112,6 +9112,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeImageSupportInstanceTypesWithOptions(_ request: DescribeImageSupportInstanceTypesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeImageSupportInstanceTypesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actionType)) {
+            query["ActionType"] = request.actionType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["Filter"] = request.filter ?? [];
         }
@@ -20213,6 +20216,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageOptions)) {
+            query["ImageOptions"] = request.imageOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceChargeType)) {
             query["InstanceChargeType"] = request.instanceChargeType ?? "";

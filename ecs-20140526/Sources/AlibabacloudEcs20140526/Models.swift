@@ -46818,6 +46818,8 @@ public class DescribeImageSupportInstanceTypesRequest : Tea.TeaModel {
             }
         }
     }
+    public var actionType: String?
+
     public var filter: [DescribeImageSupportInstanceTypesRequest.Filter]?
 
     public var imageId: String?
@@ -46844,6 +46846,9 @@ public class DescribeImageSupportInstanceTypesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.actionType != nil {
+            map["ActionType"] = self.actionType!
+        }
         if self.filter != nil {
             var tmp : [Any] = []
             for k in self.filter! {
@@ -46870,6 +46875,9 @@ public class DescribeImageSupportInstanceTypesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActionType") && dict["ActionType"] != nil {
+            self.actionType = dict["ActionType"] as! String
+        }
         if dict.keys.contains("Filter") && dict["Filter"] != nil {
             var tmp : [DescribeImageSupportInstanceTypesRequest.Filter] = []
             for v in dict["Filter"] as! [Any] {
@@ -107678,6 +107686,35 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public class ImageOptions : Tea.TeaModel {
+        public var loginAsNonRoot: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.loginAsNonRoot != nil {
+                map["LoginAsNonRoot"] = self.loginAsNonRoot!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LoginAsNonRoot") && dict["LoginAsNonRoot"] != nil {
+                self.loginAsNonRoot = dict["LoginAsNonRoot"] as! Bool
+            }
+        }
+    }
     public class NetworkInterface : Tea.TeaModel {
         public var description_: String?
 
@@ -107927,6 +107964,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var imageOptions: RunInstancesRequest.ImageOptions?
+
     public var instanceChargeType: String?
 
     public var instanceName: String?
@@ -108033,6 +108072,7 @@ public class RunInstancesRequest : Tea.TeaModel {
         try self.schedulerOptions?.validate()
         try self.securityOptions?.validate()
         try self.systemDisk?.validate()
+        try self.imageOptions?.validate()
         try self.networkOptions?.validate()
     }
 
@@ -108132,6 +108172,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.imageOptions != nil {
+            map["ImageOptions"] = self.imageOptions?.toMap()
         }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
@@ -108394,6 +108437,11 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("ImageOptions") && dict["ImageOptions"] != nil {
+            var model = RunInstancesRequest.ImageOptions()
+            model.fromMap(dict["ImageOptions"] as! [String: Any])
+            self.imageOptions = model
         }
         if dict.keys.contains("InstanceChargeType") && dict["InstanceChargeType"] != nil {
             self.instanceChargeType = dict["InstanceChargeType"] as! String
