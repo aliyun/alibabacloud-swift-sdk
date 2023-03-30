@@ -673,6 +673,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteStackWithOptions(_ request: DeleteStackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteStackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteOptions)) {
+            query["DeleteOptions"] = request.deleteOptions ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.ramRoleName)) {
             query["RamRoleName"] = request.ramRoleName ?? "";
         }

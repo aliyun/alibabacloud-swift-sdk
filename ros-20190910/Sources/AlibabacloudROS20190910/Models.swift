@@ -3360,6 +3360,8 @@ public class DeleteChangeSetResponse : Tea.TeaModel {
 }
 
 public class DeleteStackRequest : Tea.TeaModel {
+    public var deleteOptions: [String]?
+
     public var ramRoleName: String?
 
     public var regionId: String?
@@ -3384,6 +3386,9 @@ public class DeleteStackRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteOptions != nil {
+            map["DeleteOptions"] = self.deleteOptions!
+        }
         if self.ramRoleName != nil {
             map["RamRoleName"] = self.ramRoleName!
         }
@@ -3403,6 +3408,9 @@ public class DeleteStackRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeleteOptions") && dict["DeleteOptions"] != nil {
+            self.deleteOptions = dict["DeleteOptions"] as! [String]
+        }
         if dict.keys.contains("RamRoleName") && dict["RamRoleName"] != nil {
             self.ramRoleName = dict["RamRoleName"] as! String
         }
@@ -5976,6 +5984,35 @@ public class GetFeatureDetailsRequest : Tea.TeaModel {
 }
 
 public class GetFeatureDetailsResponseBody : Tea.TeaModel {
+    public class DriftDetection : Tea.TeaModel {
+        public var supportedResourceTypes: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.supportedResourceTypes != nil {
+                map["SupportedResourceTypes"] = self.supportedResourceTypes!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SupportedResourceTypes") && dict["SupportedResourceTypes"] != nil {
+                self.supportedResourceTypes = dict["SupportedResourceTypes"] as! [String]
+            }
+        }
+    }
     public class ResourceCleaner : Tea.TeaModel {
         public class SupportedResourceTypes : Tea.TeaModel {
             public var resourceType: String?
@@ -6053,6 +6090,84 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
                 var tmp : [GetFeatureDetailsResponseBody.ResourceCleaner.SupportedResourceTypes] = []
                 for v in dict["SupportedResourceTypes"] as! [Any] {
                     var model = GetFeatureDetailsResponseBody.ResourceCleaner.SupportedResourceTypes()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.supportedResourceTypes = tmp
+            }
+        }
+    }
+    public class ResourceImport : Tea.TeaModel {
+        public class SupportedResourceTypes : Tea.TeaModel {
+            public var resourceIdentifiers: [String]?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.resourceIdentifiers != nil {
+                    map["ResourceIdentifiers"] = self.resourceIdentifiers!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ResourceIdentifiers") && dict["ResourceIdentifiers"] != nil {
+                    self.resourceIdentifiers = dict["ResourceIdentifiers"] as! [String]
+                }
+                if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
+        public var supportedResourceTypes: [GetFeatureDetailsResponseBody.ResourceImport.SupportedResourceTypes]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.supportedResourceTypes != nil {
+                var tmp : [Any] = []
+                for k in self.supportedResourceTypes! {
+                    tmp.append(k.toMap())
+                }
+                map["SupportedResourceTypes"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SupportedResourceTypes") && dict["SupportedResourceTypes"] != nil {
+                var tmp : [GetFeatureDetailsResponseBody.ResourceImport.SupportedResourceTypes] = []
+                for v in dict["SupportedResourceTypes"] as! [Any] {
+                    var model = GetFeatureDetailsResponseBody.ResourceImport.SupportedResourceTypes()
                     if v != nil {
                         model.fromMap(v as! [String: Any])
                     }
@@ -6489,9 +6604,13 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var driftDetection: GetFeatureDetailsResponseBody.DriftDetection?
+
     public var requestId: String?
 
     public var resourceCleaner: GetFeatureDetailsResponseBody.ResourceCleaner?
+
+    public var resourceImport: GetFeatureDetailsResponseBody.ResourceImport?
 
     public var templateParameterConstraints: GetFeatureDetailsResponseBody.TemplateParameterConstraints?
 
@@ -6509,7 +6628,9 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.driftDetection?.validate()
         try self.resourceCleaner?.validate()
+        try self.resourceImport?.validate()
         try self.templateParameterConstraints?.validate()
         try self.templateScratch?.validate()
         try self.terraform?.validate()
@@ -6517,11 +6638,17 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.driftDetection != nil {
+            map["DriftDetection"] = self.driftDetection?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
         if self.resourceCleaner != nil {
             map["ResourceCleaner"] = self.resourceCleaner?.toMap()
+        }
+        if self.resourceImport != nil {
+            map["ResourceImport"] = self.resourceImport?.toMap()
         }
         if self.templateParameterConstraints != nil {
             map["TemplateParameterConstraints"] = self.templateParameterConstraints?.toMap()
@@ -6536,6 +6663,11 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DriftDetection") && dict["DriftDetection"] != nil {
+            var model = GetFeatureDetailsResponseBody.DriftDetection()
+            model.fromMap(dict["DriftDetection"] as! [String: Any])
+            self.driftDetection = model
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -6543,6 +6675,11 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
             var model = GetFeatureDetailsResponseBody.ResourceCleaner()
             model.fromMap(dict["ResourceCleaner"] as! [String: Any])
             self.resourceCleaner = model
+        }
+        if dict.keys.contains("ResourceImport") && dict["ResourceImport"] != nil {
+            var model = GetFeatureDetailsResponseBody.ResourceImport()
+            model.fromMap(dict["ResourceImport"] as! [String: Any])
+            self.resourceImport = model
         }
         if dict.keys.contains("TemplateParameterConstraints") && dict["TemplateParameterConstraints"] != nil {
             var model = GetFeatureDetailsResponseBody.TemplateParameterConstraints()
