@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudDocumentAutoml20221229"
-  spec.version      = "1.0.4"
+  spec.version      = "1.0.5"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud documentAutoml (20221229) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/documentautoml-20221229" 
