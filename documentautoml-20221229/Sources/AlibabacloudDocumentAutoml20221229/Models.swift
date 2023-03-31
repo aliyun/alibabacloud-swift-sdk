@@ -18,6 +18,8 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
 
     public var serviceVersion: String?
 
+    public var body: String?
+
     public override init() {
         super.init()
     }
@@ -50,6 +52,9 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
         if self.serviceVersion != nil {
             map["ServiceVersion"] = self.serviceVersion!
         }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
         return map
     }
 
@@ -71,6 +76,9 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceVersion") && dict["ServiceVersion"] != nil {
             self.serviceVersion = dict["ServiceVersion"] as! String
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            self.body = dict["body"] as! String
         }
     }
 }
@@ -324,6 +332,8 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
 
     public var content: String?
 
+    public var body: String?
+
     public override init() {
         super.init()
     }
@@ -347,6 +357,9 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
         if self.content != nil {
             map["Content"] = self.content!
         }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
         return map
     }
 
@@ -359,6 +372,9 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            self.body = dict["body"] as! String
         }
     }
 }
@@ -478,6 +494,8 @@ public class PredictModelRequest : Tea.TeaModel {
 
     public var modelVersion: String?
 
+    public var body: String?
+
     public override init() {
         super.init()
     }
@@ -504,6 +522,9 @@ public class PredictModelRequest : Tea.TeaModel {
         if self.modelVersion != nil {
             map["ModelVersion"] = self.modelVersion!
         }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
         return map
     }
 
@@ -519,6 +540,9 @@ public class PredictModelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ModelVersion") && dict["ModelVersion"] != nil {
             self.modelVersion = dict["ModelVersion"] as! String
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            self.body = dict["body"] as! String
         }
     }
 }
@@ -636,6 +660,8 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
 
     public var taskId: Int64?
 
+    public var body: String?
+
     public override init() {
         super.init()
     }
@@ -659,6 +685,9 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
         return map
     }
 
@@ -671,6 +700,9 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! Int64
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            self.body = dict["body"] as! String
         }
     }
 }

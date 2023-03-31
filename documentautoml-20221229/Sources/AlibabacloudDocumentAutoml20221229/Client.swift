@@ -46,7 +46,8 @@ open class Client : AlibabacloudOpenApi.Client {
             query["ServiceVersion"] = request.serviceVersion ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateModelAsyncPredict",
@@ -114,7 +115,8 @@ open class Client : AlibabacloudOpenApi.Client {
             query["Content"] = request.content ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "PredictClassifierModel",
@@ -154,7 +156,8 @@ open class Client : AlibabacloudOpenApi.Client {
             query["ModelVersion"] = request.modelVersion ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "PredictModel",
@@ -191,7 +194,8 @@ open class Client : AlibabacloudOpenApi.Client {
             query["TaskId"] = request.taskId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "PredictTemplateModel",
