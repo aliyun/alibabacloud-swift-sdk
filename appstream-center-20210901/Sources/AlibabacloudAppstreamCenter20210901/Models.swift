@@ -2028,6 +2028,8 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var appInstanceType: String?
 
+        public var appPolicyId: String?
+
         public var apps: [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Apps]?
 
         public var chargeType: String?
@@ -2086,6 +2088,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if self.appInstanceType != nil {
                 map["AppInstanceType"] = self.appInstanceType!
+            }
+            if self.appPolicyId != nil {
+                map["AppPolicyId"] = self.appPolicyId!
             }
             if self.apps != nil {
                 var tmp : [Any] = []
@@ -2155,6 +2160,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppInstanceType") && dict["AppInstanceType"] != nil {
                 self.appInstanceType = dict["AppInstanceType"] as! String
+            }
+            if dict.keys.contains("AppPolicyId") && dict["AppPolicyId"] != nil {
+                self.appPolicyId = dict["AppPolicyId"] as! String
             }
             if dict.keys.contains("Apps") && dict["Apps"] != nil {
                 var tmp : [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Apps] = []
@@ -4554,6 +4562,8 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
 
     public var language: String?
 
+    public var nodeInstanceType: String?
+
     public var osType: String?
 
     public var pageNumber: Int32?
@@ -4582,6 +4592,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         if self.language != nil {
             map["Language"] = self.language!
         }
+        if self.nodeInstanceType != nil {
+            map["NodeInstanceType"] = self.nodeInstanceType!
+        }
         if self.osType != nil {
             map["OsType"] = self.osType!
         }
@@ -4603,6 +4616,9 @@ public class ListNodeInstanceTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Language") && dict["Language"] != nil {
             self.language = dict["Language"] as! String
+        }
+        if dict.keys.contains("NodeInstanceType") && dict["NodeInstanceType"] != nil {
+            self.nodeInstanceType = dict["NodeInstanceType"] as! String
         }
         if dict.keys.contains("OsType") && dict["OsType"] != nil {
             self.osType = dict["OsType"] as! String
@@ -5716,7 +5732,113 @@ public class ModifyAppInstanceGroupAttributeResponse : Tea.TeaModel {
 
 public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
     public class NodePoolStrategy : Tea.TeaModel {
+        public class RecurrenceSchedules : Tea.TeaModel {
+            public class TimerPeriods : Tea.TeaModel {
+                public var amount: Int32?
+
+                public var endTime: String?
+
+                public var startTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.amount != nil {
+                        map["Amount"] = self.amount!
+                    }
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                        self.amount = dict["Amount"] as! Int32
+                    }
+                    if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                        self.endTime = dict["EndTime"] as! String
+                    }
+                    if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                        self.startTime = dict["StartTime"] as! String
+                    }
+                }
+            }
+            public var recurrenceType: String?
+
+            public var recurrenceValues: [Int32]?
+
+            public var timerPeriods: [ModifyNodePoolAttributeRequest.NodePoolStrategy.RecurrenceSchedules.TimerPeriods]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.recurrenceType != nil {
+                    map["RecurrenceType"] = self.recurrenceType!
+                }
+                if self.recurrenceValues != nil {
+                    map["RecurrenceValues"] = self.recurrenceValues!
+                }
+                if self.timerPeriods != nil {
+                    var tmp : [Any] = []
+                    for k in self.timerPeriods! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TimerPeriods"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("RecurrenceType") && dict["RecurrenceType"] != nil {
+                    self.recurrenceType = dict["RecurrenceType"] as! String
+                }
+                if dict.keys.contains("RecurrenceValues") && dict["RecurrenceValues"] != nil {
+                    self.recurrenceValues = dict["RecurrenceValues"] as! [Int32]
+                }
+                if dict.keys.contains("TimerPeriods") && dict["TimerPeriods"] != nil {
+                    var tmp : [ModifyNodePoolAttributeRequest.NodePoolStrategy.RecurrenceSchedules.TimerPeriods] = []
+                    for v in dict["TimerPeriods"] as! [Any] {
+                        var model = ModifyNodePoolAttributeRequest.NodePoolStrategy.RecurrenceSchedules.TimerPeriods()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.timerPeriods = tmp
+                }
+            }
+        }
         public var maxScalingAmount: Int32?
+
+        public var nodeAmount: Int32?
+
+        public var recurrenceSchedules: [ModifyNodePoolAttributeRequest.NodePoolStrategy.RecurrenceSchedules]?
 
         public var scalingDownAfterIdleMinutes: Int32?
 
@@ -5724,7 +5846,13 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
 
         public var scalingUsageThreshold: String?
 
+        public var strategyDisableDate: String?
+
+        public var strategyEnableDate: String?
+
         public var strategyType: String?
+
+        public var warmUp: Bool?
 
         public override init() {
             super.init()
@@ -5743,6 +5871,16 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
             if self.maxScalingAmount != nil {
                 map["MaxScalingAmount"] = self.maxScalingAmount!
             }
+            if self.nodeAmount != nil {
+                map["NodeAmount"] = self.nodeAmount!
+            }
+            if self.recurrenceSchedules != nil {
+                var tmp : [Any] = []
+                for k in self.recurrenceSchedules! {
+                    tmp.append(k.toMap())
+                }
+                map["RecurrenceSchedules"] = tmp
+            }
             if self.scalingDownAfterIdleMinutes != nil {
                 map["ScalingDownAfterIdleMinutes"] = self.scalingDownAfterIdleMinutes!
             }
@@ -5752,8 +5890,17 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
             if self.scalingUsageThreshold != nil {
                 map["ScalingUsageThreshold"] = self.scalingUsageThreshold!
             }
+            if self.strategyDisableDate != nil {
+                map["StrategyDisableDate"] = self.strategyDisableDate!
+            }
+            if self.strategyEnableDate != nil {
+                map["StrategyEnableDate"] = self.strategyEnableDate!
+            }
             if self.strategyType != nil {
                 map["StrategyType"] = self.strategyType!
+            }
+            if self.warmUp != nil {
+                map["WarmUp"] = self.warmUp!
             }
             return map
         }
@@ -5761,6 +5908,20 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("MaxScalingAmount") && dict["MaxScalingAmount"] != nil {
                 self.maxScalingAmount = dict["MaxScalingAmount"] as! Int32
+            }
+            if dict.keys.contains("NodeAmount") && dict["NodeAmount"] != nil {
+                self.nodeAmount = dict["NodeAmount"] as! Int32
+            }
+            if dict.keys.contains("RecurrenceSchedules") && dict["RecurrenceSchedules"] != nil {
+                var tmp : [ModifyNodePoolAttributeRequest.NodePoolStrategy.RecurrenceSchedules] = []
+                for v in dict["RecurrenceSchedules"] as! [Any] {
+                    var model = ModifyNodePoolAttributeRequest.NodePoolStrategy.RecurrenceSchedules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.recurrenceSchedules = tmp
             }
             if dict.keys.contains("ScalingDownAfterIdleMinutes") && dict["ScalingDownAfterIdleMinutes"] != nil {
                 self.scalingDownAfterIdleMinutes = dict["ScalingDownAfterIdleMinutes"] as! Int32
@@ -5771,8 +5932,17 @@ public class ModifyNodePoolAttributeRequest : Tea.TeaModel {
             if dict.keys.contains("ScalingUsageThreshold") && dict["ScalingUsageThreshold"] != nil {
                 self.scalingUsageThreshold = dict["ScalingUsageThreshold"] as! String
             }
+            if dict.keys.contains("StrategyDisableDate") && dict["StrategyDisableDate"] != nil {
+                self.strategyDisableDate = dict["StrategyDisableDate"] as! String
+            }
+            if dict.keys.contains("StrategyEnableDate") && dict["StrategyEnableDate"] != nil {
+                self.strategyEnableDate = dict["StrategyEnableDate"] as! String
+            }
             if dict.keys.contains("StrategyType") && dict["StrategyType"] != nil {
                 self.strategyType = dict["StrategyType"] as! String
+            }
+            if dict.keys.contains("WarmUp") && dict["WarmUp"] != nil {
+                self.warmUp = dict["WarmUp"] as! Bool
             }
         }
     }
