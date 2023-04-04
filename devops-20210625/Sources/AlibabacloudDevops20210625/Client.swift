@@ -5498,6 +5498,62 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGroupWithOptions(_ request: UpdateGroupRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.avatarUrl)) {
+            body["avatarUrl"] = request.avatarUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.path)) {
+            body["path"] = request.path ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pathWithNamespace)) {
+            body["pathWithNamespace"] = request.pathWithNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.visibilityLevel)) {
+            body["visibilityLevel"] = request.visibilityLevel!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGroup",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/groups/modify",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGroup(_ request: UpdateGroupRequest) async throws -> UpdateGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateGroupWithOptions(request as! UpdateGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateGroupMemberWithOptions(_ groupId: String, _ request: UpdateGroupMemberRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGroupMemberResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

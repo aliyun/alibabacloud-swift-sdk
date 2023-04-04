@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudDevops20210625` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudDevops20210625', '~> 2.1.8'
+pod 'AlibabacloudDevops20210625', '~> 2.1.9'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudDevops20210625', '~> 2.1.8'
 To integrate `AlibabacloudDevops20210625` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/devops-20210625" "2.1.8"
+github "alibabacloud-sdk-swift/devops-20210625" "2.1.9"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudDevops20210625` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/devops-20210625.git", from: "2.1.8")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/devops-20210625.git", from: "2.1.9")
 ]
 ```
 
