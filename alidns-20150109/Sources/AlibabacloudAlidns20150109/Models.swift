@@ -28026,6 +28026,8 @@ public class DescribeRecordResolveStatisticsSummaryResponseBody : Tea.TeaModel {
 
         public var domainType: String?
 
+        public var subDomain: String?
+
         public override init() {
             super.init()
         }
@@ -28049,6 +28051,9 @@ public class DescribeRecordResolveStatisticsSummaryResponseBody : Tea.TeaModel {
             if self.domainType != nil {
                 map["DomainType"] = self.domainType!
             }
+            if self.subDomain != nil {
+                map["SubDomain"] = self.subDomain!
+            }
             return map
         }
 
@@ -28061,6 +28066,9 @@ public class DescribeRecordResolveStatisticsSummaryResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DomainType") && dict["DomainType"] != nil {
                 self.domainType = dict["DomainType"] as! String
+            }
+            if dict.keys.contains("SubDomain") && dict["SubDomain"] != nil {
+                self.subDomain = dict["SubDomain"] as! String
             }
         }
     }

@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudAlidns20150109` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudAlidns20150109', '~> 3.0.2'
+pod 'AlibabacloudAlidns20150109', '~> 3.0.3'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudAlidns20150109', '~> 3.0.2'
 To integrate `AlibabacloudAlidns20150109` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/alidns-20150109" "3.0.2"
+github "alibabacloud-sdk-swift/alidns-20150109" "3.0.3"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudAlidns20150109` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/alidns-20150109.git", from: "3.0.2")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/alidns-20150109.git", from: "3.0.3")
 ]
 ```
 
