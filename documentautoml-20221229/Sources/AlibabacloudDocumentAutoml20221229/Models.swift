@@ -8,6 +8,8 @@ import AlibabacloudEndpointUtil
 public class CreateModelAsyncPredictRequest : Tea.TeaModel {
     public var binaryToText: Bool?
 
+    public var body: String?
+
     public var content: String?
 
     public var modelId: Int64?
@@ -17,8 +19,6 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
     public var serviceName: String?
 
     public var serviceVersion: String?
-
-    public var body: String?
 
     public override init() {
         super.init()
@@ -37,6 +37,9 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
         if self.binaryToText != nil {
             map["BinaryToText"] = self.binaryToText!
         }
+        if self.body != nil {
+            map["Body"] = self.body!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -52,15 +55,15 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
         if self.serviceVersion != nil {
             map["ServiceVersion"] = self.serviceVersion!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BinaryToText") && dict["BinaryToText"] != nil {
             self.binaryToText = dict["BinaryToText"] as! Bool
+        }
+        if dict.keys.contains("Body") && dict["Body"] != nil {
+            self.body = dict["Body"] as! String
         }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
@@ -76,9 +79,6 @@ public class CreateModelAsyncPredictRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceVersion") && dict["ServiceVersion"] != nil {
             self.serviceVersion = dict["ServiceVersion"] as! String
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -328,11 +328,11 @@ public class GetModelAsyncPredictResponse : Tea.TeaModel {
 public class PredictClassifierModelRequest : Tea.TeaModel {
     public var autoPrediction: Bool?
 
+    public var body: String?
+
     public var classifierId: Int64?
 
     public var content: String?
-
-    public var body: String?
 
     public override init() {
         super.init()
@@ -351,14 +351,14 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
         if self.autoPrediction != nil {
             map["AutoPrediction"] = self.autoPrediction!
         }
+        if self.body != nil {
+            map["Body"] = self.body!
+        }
         if self.classifierId != nil {
             map["ClassifierId"] = self.classifierId!
         }
         if self.content != nil {
             map["Content"] = self.content!
-        }
-        if self.body != nil {
-            map["body"] = self.body!
         }
         return map
     }
@@ -367,14 +367,14 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
         if dict.keys.contains("AutoPrediction") && dict["AutoPrediction"] != nil {
             self.autoPrediction = dict["AutoPrediction"] as! Bool
         }
+        if dict.keys.contains("Body") && dict["Body"] != nil {
+            self.body = dict["Body"] as! String
+        }
         if dict.keys.contains("ClassifierId") && dict["ClassifierId"] != nil {
             self.classifierId = dict["ClassifierId"] as! Int64
         }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -488,13 +488,13 @@ public class PredictClassifierModelResponse : Tea.TeaModel {
 public class PredictModelRequest : Tea.TeaModel {
     public var binaryToText: Bool?
 
+    public var body: String?
+
     public var content: String?
 
     public var modelId: Int64?
 
     public var modelVersion: String?
-
-    public var body: String?
 
     public override init() {
         super.init()
@@ -513,6 +513,9 @@ public class PredictModelRequest : Tea.TeaModel {
         if self.binaryToText != nil {
             map["BinaryToText"] = self.binaryToText!
         }
+        if self.body != nil {
+            map["Body"] = self.body!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -522,15 +525,15 @@ public class PredictModelRequest : Tea.TeaModel {
         if self.modelVersion != nil {
             map["ModelVersion"] = self.modelVersion!
         }
-        if self.body != nil {
-            map["body"] = self.body!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BinaryToText") && dict["BinaryToText"] != nil {
             self.binaryToText = dict["BinaryToText"] as! Bool
+        }
+        if dict.keys.contains("Body") && dict["Body"] != nil {
+            self.body = dict["Body"] as! String
         }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
@@ -540,9 +543,6 @@ public class PredictModelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ModelVersion") && dict["ModelVersion"] != nil {
             self.modelVersion = dict["ModelVersion"] as! String
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            self.body = dict["body"] as! String
         }
     }
 }
@@ -656,11 +656,11 @@ public class PredictModelResponse : Tea.TeaModel {
 public class PredictTemplateModelRequest : Tea.TeaModel {
     public var binaryToText: Bool?
 
+    public var body: String?
+
     public var content: String?
 
     public var taskId: Int64?
-
-    public var body: String?
 
     public override init() {
         super.init()
@@ -679,14 +679,14 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
         if self.binaryToText != nil {
             map["BinaryToText"] = self.binaryToText!
         }
+        if self.body != nil {
+            map["Body"] = self.body!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
-        }
-        if self.body != nil {
-            map["body"] = self.body!
         }
         return map
     }
@@ -695,14 +695,14 @@ public class PredictTemplateModelRequest : Tea.TeaModel {
         if dict.keys.contains("BinaryToText") && dict["BinaryToText"] != nil {
             self.binaryToText = dict["BinaryToText"] as! Bool
         }
+        if dict.keys.contains("Body") && dict["Body"] != nil {
+            self.body = dict["Body"] as! String
+        }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! Int64
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            self.body = dict["body"] as! String
         }
     }
 }
