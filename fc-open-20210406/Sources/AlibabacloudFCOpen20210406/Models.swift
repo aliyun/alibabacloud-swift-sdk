@@ -2144,13 +2144,13 @@ public class PathConfig : Tea.TeaModel {
 }
 
 public class PolicyItem : Tea.TeaModel {
-    public var key: [UInt8]?
+    public var key: String?
 
-    public var operator_: [UInt8]?
+    public var operator_: String?
 
-    public var type: [UInt8]?
+    public var type: String?
 
-    public var value: [UInt8]?
+    public var value: String?
 
     public override init() {
         super.init()
@@ -2183,16 +2183,16 @@ public class PolicyItem : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("key") && dict["key"] != nil {
-            self.key = dict["key"] as! [UInt8]
+            self.key = dict["key"] as! String
         }
         if dict.keys.contains("operator") && dict["operator"] != nil {
-            self.operator_ = dict["operator"] as! [UInt8]
+            self.operator_ = dict["operator"] as! String
         }
         if dict.keys.contains("type") && dict["type"] != nil {
-            self.type = dict["type"] as! [UInt8]
+            self.type = dict["type"] as! String
         }
         if dict.keys.contains("value") && dict["value"] != nil {
-            self.value = dict["value"] as! [UInt8]
+            self.value = dict["value"] as! String
         }
     }
 }
@@ -2601,7 +2601,7 @@ public class RouteConfig : Tea.TeaModel {
 }
 
 public class RoutePolicy : Tea.TeaModel {
-    public var condition: [UInt8]?
+    public var condition: String?
 
     public var policyItems: [PolicyItem]?
 
@@ -2634,7 +2634,7 @@ public class RoutePolicy : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("condition") && dict["condition"] != nil {
-            self.condition = dict["condition"] as! [UInt8]
+            self.condition = dict["condition"] as! String
         }
         if dict.keys.contains("policyItems") && dict["policyItems"] != nil {
             var tmp : [PolicyItem] = []
