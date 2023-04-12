@@ -4599,6 +4599,8 @@ public class GetOperateResultRequest : Tea.TeaModel {
 
 public class GetOperateResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var executeResult: String?
+
         public var operateType: String?
 
         public var result: Bool?
@@ -4619,6 +4621,9 @@ public class GetOperateResultResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.executeResult != nil {
+                map["ExecuteResult"] = self.executeResult!
+            }
             if self.operateType != nil {
                 map["OperateType"] = self.operateType!
             }
@@ -4632,6 +4637,9 @@ public class GetOperateResultResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ExecuteResult") && dict["ExecuteResult"] != nil {
+                self.executeResult = dict["ExecuteResult"] as! String
+            }
             if dict.keys.contains("OperateType") && dict["OperateType"] != nil {
                 self.operateType = dict["OperateType"] as! String
             }
@@ -6674,6 +6682,8 @@ public class ListDirectionalDetailResponse : Tea.TeaModel {
 }
 
 public class ListOrderRequest : Tea.TeaModel {
+    public var credentialNo: String?
+
     public var endDate: String?
 
     public var orderId: String?
@@ -6702,6 +6712,9 @@ public class ListOrderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.credentialNo != nil {
+            map["CredentialNo"] = self.credentialNo!
+        }
         if self.endDate != nil {
             map["EndDate"] = self.endDate!
         }
@@ -6727,6 +6740,9 @@ public class ListOrderRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CredentialNo") && dict["CredentialNo"] != nil {
+            self.credentialNo = dict["CredentialNo"] as! String
+        }
         if dict.keys.contains("EndDate") && dict["EndDate"] != nil {
             self.endDate = dict["EndDate"] as! String
         }

@@ -903,6 +903,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listOrderWithOptions(_ request: ListOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListOrderResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.credentialNo)) {
+            query["CredentialNo"] = request.credentialNo ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endDate)) {
             query["EndDate"] = request.endDate ?? "";
         }
