@@ -280,6 +280,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.createOption)) {
             query["CreateOption"] = request.createOption ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.createOptions)) {
+            query["CreateOptions"] = request.createOptions ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
             query["DeletionProtection"] = request.deletionProtection ?? "";
         }
@@ -2375,6 +2378,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listStacksWithOptions(_ request: ListStacksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListStacksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
@@ -2401,6 +2407,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.stackName)) {
             query["StackName"] = request.stackName ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? [];

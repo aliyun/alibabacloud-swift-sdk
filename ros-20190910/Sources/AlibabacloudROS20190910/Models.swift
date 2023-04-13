@@ -1095,6 +1095,8 @@ public class CreateStackRequest : Tea.TeaModel {
 
     public var createOption: String?
 
+    public var createOptions: [String]?
+
     public var deletionProtection: String?
 
     public var disableRollback: Bool?
@@ -1152,6 +1154,9 @@ public class CreateStackRequest : Tea.TeaModel {
         }
         if self.createOption != nil {
             map["CreateOption"] = self.createOption!
+        }
+        if self.createOptions != nil {
+            map["CreateOptions"] = self.createOptions!
         }
         if self.deletionProtection != nil {
             map["DeletionProtection"] = self.deletionProtection!
@@ -1227,6 +1232,9 @@ public class CreateStackRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CreateOption") && dict["CreateOption"] != nil {
             self.createOption = dict["CreateOption"] as! String
+        }
+        if dict.keys.contains("CreateOptions") && dict["CreateOptions"] != nil {
+            self.createOptions = dict["CreateOptions"] as! [String]
         }
         if dict.keys.contains("DeletionProtection") && dict["DeletionProtection"] != nil {
             self.deletionProtection = dict["DeletionProtection"] as! String
@@ -15602,6 +15610,8 @@ public class ListStacksRequest : Tea.TeaModel {
             }
         }
     }
+    public var endTime: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -15619,6 +15629,8 @@ public class ListStacksRequest : Tea.TeaModel {
     public var stackIds: [String]?
 
     public var stackName: [String]?
+
+    public var startTime: String?
 
     public var status: [String]?
 
@@ -15638,6 +15650,9 @@ public class ListStacksRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -15665,6 +15680,9 @@ public class ListStacksRequest : Tea.TeaModel {
         if self.stackName != nil {
             map["StackName"] = self.stackName!
         }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -15679,6 +15697,9 @@ public class ListStacksRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int64
         }
@@ -15705,6 +15726,9 @@ public class ListStacksRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StackName") && dict["StackName"] != nil {
             self.stackName = dict["StackName"] as! [String]
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! [String]
