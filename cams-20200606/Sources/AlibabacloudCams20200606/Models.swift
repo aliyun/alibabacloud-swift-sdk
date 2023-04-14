@@ -2839,6 +2839,8 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
             }
         }
     }
+    public var allowCategoryChange: Bool?
+
     public var category: String?
 
     public var components: [CreateChatappTemplateRequest.Components]?
@@ -2871,6 +2873,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowCategoryChange != nil {
+            map["AllowCategoryChange"] = self.allowCategoryChange!
+        }
         if self.category != nil {
             map["Category"] = self.category!
         }
@@ -2906,6 +2911,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowCategoryChange") && dict["AllowCategoryChange"] != nil {
+            self.allowCategoryChange = dict["AllowCategoryChange"] as! Bool
+        }
         if dict.keys.contains("Category") && dict["Category"] != nil {
             self.category = dict["Category"] as! String
         }
@@ -2945,6 +2953,8 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
 }
 
 public class CreateChatappTemplateShrinkRequest : Tea.TeaModel {
+    public var allowCategoryChange: Bool?
+
     public var category: String?
 
     public var componentsShrink: String?
@@ -2977,6 +2987,9 @@ public class CreateChatappTemplateShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowCategoryChange != nil {
+            map["AllowCategoryChange"] = self.allowCategoryChange!
+        }
         if self.category != nil {
             map["Category"] = self.category!
         }
@@ -3008,6 +3021,9 @@ public class CreateChatappTemplateShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowCategoryChange") && dict["AllowCategoryChange"] != nil {
+            self.allowCategoryChange = dict["AllowCategoryChange"] as! Bool
+        }
         if dict.keys.contains("Category") && dict["Category"] != nil {
             self.category = dict["Category"] as! String
         }
@@ -3482,6 +3498,14 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
 
             public var format: String?
 
+            public var latitude: String?
+
+            public var locationAddress: String?
+
+            public var locationName: String?
+
+            public var longitude: String?
+
             public var text: String?
 
             public var thumbUrl: String?
@@ -3526,6 +3550,18 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 if self.format != nil {
                     map["Format"] = self.format!
                 }
+                if self.latitude != nil {
+                    map["Latitude"] = self.latitude!
+                }
+                if self.locationAddress != nil {
+                    map["LocationAddress"] = self.locationAddress!
+                }
+                if self.locationName != nil {
+                    map["LocationName"] = self.locationName!
+                }
+                if self.longitude != nil {
+                    map["Longitude"] = self.longitude!
+                }
                 if self.text != nil {
                     map["Text"] = self.text!
                 }
@@ -3567,6 +3603,18 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Format") && dict["Format"] != nil {
                     self.format = dict["Format"] as! String
+                }
+                if dict.keys.contains("Latitude") && dict["Latitude"] != nil {
+                    self.latitude = dict["Latitude"] as! String
+                }
+                if dict.keys.contains("LocationAddress") && dict["LocationAddress"] != nil {
+                    self.locationAddress = dict["LocationAddress"] as! String
+                }
+                if dict.keys.contains("LocationName") && dict["LocationName"] != nil {
+                    self.locationName = dict["LocationName"] as! String
+                }
+                if dict.keys.contains("Longitude") && dict["Longitude"] != nil {
+                    self.longitude = dict["Longitude"] as! String
                 }
                 if dict.keys.contains("Text") && dict["Text"] != nil {
                     self.text = dict["Text"] as! String
@@ -4972,6 +5020,8 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var total: Int32?
+
     public override init() {
         super.init()
     }
@@ -5002,6 +5052,9 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.total != nil {
+            map["Total"] = self.total!
+        }
         return map
     }
 
@@ -5025,6 +5078,9 @@ public class ListChatappTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Total") && dict["Total"] != nil {
+            self.total = dict["Total"] as! Int32
         }
     }
 }
@@ -6822,6 +6878,8 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
 
     public var fallBackContent: String?
 
+    public var fallBackDuration: Int32?
+
     public var fallBackId: String?
 
     public var from: String?
@@ -6867,6 +6925,9 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         }
         if self.fallBackContent != nil {
             map["FallBackContent"] = self.fallBackContent!
+        }
+        if self.fallBackDuration != nil {
+            map["FallBackDuration"] = self.fallBackDuration!
         }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
@@ -6918,6 +6979,9 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         if dict.keys.contains("FallBackContent") && dict["FallBackContent"] != nil {
             self.fallBackContent = dict["FallBackContent"] as! String
         }
+        if dict.keys.contains("FallBackDuration") && dict["FallBackDuration"] != nil {
+            self.fallBackDuration = dict["FallBackDuration"] as! Int32
+        }
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
         }
@@ -6968,6 +7032,8 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
 
     public var fallBackContent: String?
 
+    public var fallBackDuration: Int32?
+
     public var fallBackId: String?
 
     public var from: String?
@@ -7014,6 +7080,9 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         if self.fallBackContent != nil {
             map["FallBackContent"] = self.fallBackContent!
         }
+        if self.fallBackDuration != nil {
+            map["FallBackDuration"] = self.fallBackDuration!
+        }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
         }
@@ -7059,6 +7128,9 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FallBackContent") && dict["FallBackContent"] != nil {
             self.fallBackContent = dict["FallBackContent"] as! String
+        }
+        if dict.keys.contains("FallBackDuration") && dict["FallBackDuration"] != nil {
+            self.fallBackDuration = dict["FallBackDuration"] as! Int32
         }
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
@@ -7212,6 +7284,8 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 
     public var fallBackContent: String?
 
+    public var fallBackDuration: Int32?
+
     public var fallBackId: String?
 
     public var from: String?
@@ -7273,6 +7347,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if self.fallBackContent != nil {
             map["FallBackContent"] = self.fallBackContent!
+        }
+        if self.fallBackDuration != nil {
+            map["FallBackDuration"] = self.fallBackDuration!
         }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
@@ -7341,6 +7418,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if dict.keys.contains("FallBackContent") && dict["FallBackContent"] != nil {
             self.fallBackContent = dict["FallBackContent"] as! String
         }
+        if dict.keys.contains("FallBackDuration") && dict["FallBackDuration"] != nil {
+            self.fallBackDuration = dict["FallBackDuration"] as! Int32
+        }
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
         }
@@ -7401,6 +7481,8 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
     public var custWabaId: String?
 
     public var fallBackContent: String?
+
+    public var fallBackDuration: Int32?
 
     public var fallBackId: String?
 
@@ -7463,6 +7545,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if self.fallBackContent != nil {
             map["FallBackContent"] = self.fallBackContent!
+        }
+        if self.fallBackDuration != nil {
+            map["FallBackDuration"] = self.fallBackDuration!
         }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
@@ -7530,6 +7615,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FallBackContent") && dict["FallBackContent"] != nil {
             self.fallBackContent = dict["FallBackContent"] as! String
+        }
+        if dict.keys.contains("FallBackDuration") && dict["FallBackDuration"] != nil {
+            self.fallBackDuration = dict["FallBackDuration"] as! Int32
         }
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String

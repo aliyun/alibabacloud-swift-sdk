@@ -429,16 +429,18 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.example)) {
             request.exampleShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.example, "Example", "json")
         }
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
-            query["CustSpaceId"] = request.custSpaceId ?? "";
-        }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowCategoryChange)) {
+            body["AllowCategoryChange"] = request.allowCategoryChange!;
+        }
         if (!TeaUtils.Client.isUnset(request.category)) {
             body["Category"] = request.category ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
             body["Components"] = request.componentsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.custSpaceId)) {
+            body["CustSpaceId"] = request.custSpaceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.custWabaId)) {
             body["CustWabaId"] = request.custWabaId ?? "";
@@ -459,7 +461,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["TemplateType"] = request.templateType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1079,6 +1080,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fallBackContent)) {
             body["FallBackContent"] = request.fallBackContent ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fallBackDuration)) {
+            body["FallBackDuration"] = request.fallBackDuration!;
+        }
         if (!TeaUtils.Client.isUnset(request.fallBackId)) {
             body["FallBackId"] = request.fallBackId ?? "";
         }
@@ -1166,6 +1170,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.fallBackContent)) {
             body["FallBackContent"] = request.fallBackContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallBackDuration)) {
+            body["FallBackDuration"] = request.fallBackDuration!;
         }
         if (!TeaUtils.Client.isUnset(request.fallBackId)) {
             body["FallBackId"] = request.fallBackId ?? "";
