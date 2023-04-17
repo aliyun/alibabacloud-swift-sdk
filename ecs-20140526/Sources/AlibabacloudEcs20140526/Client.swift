@@ -11856,6 +11856,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeResourcesModificationWithOptions(_ request: DescribeResourcesModificationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeResourcesModificationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.conditions)) {
+            query["Conditions"] = request.conditions ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.cores)) {
             query["Cores"] = request.cores!;
         }
@@ -15851,6 +15854,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDiskDeploymentWithOptions(_ request: ModifyDiskDeploymentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskDeploymentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.diskCategory)) {
+            query["DiskCategory"] = request.diskCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.diskId)) {
+            query["DiskId"] = request.diskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.performanceLevel)) {
+            query["PerformanceLevel"] = request.performanceLevel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.storageClusterId)) {
+            query["StorageClusterId"] = request.storageClusterId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyDiskDeployment",
+            "version": "2014-05-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyDiskDeploymentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyDiskDeployment(_ request: ModifyDiskDeploymentRequest) async throws -> ModifyDiskDeploymentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyDiskDeploymentWithOptions(request as! ModifyDiskDeploymentRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyDiskSpecWithOptions(_ request: ModifyDiskSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDiskSpecResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -15868,6 +15926,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.performanceControlOptions)) {
+            query["PerformanceControlOptions"] = request.performanceControlOptions!;
         }
         if (!TeaUtils.Client.isUnset(request.performanceLevel)) {
             query["PerformanceLevel"] = request.performanceLevel ?? "";
@@ -16928,6 +16989,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.disk)) {
+            query["Disk"] = request.disk ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
@@ -16939,6 +17003,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.internetMaxBandwidthOut)) {
             query["InternetMaxBandwidthOut"] = request.internetMaxBandwidthOut!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyMode)) {
+            query["ModifyMode"] = request.modifyMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
@@ -17401,6 +17468,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.disk)) {
+            query["Disk"] = request.disk ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
@@ -17412,6 +17482,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.migrateAcrossZone)) {
             query["MigrateAcrossZone"] = request.migrateAcrossZone!;
+        }
+        if (!TeaUtils.Client.isUnset(request.modifyMode)) {
+            query["ModifyMode"] = request.modifyMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.operatorType)) {
             query["OperatorType"] = request.operatorType ?? "";
