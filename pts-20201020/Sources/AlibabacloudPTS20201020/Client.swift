@@ -58,6 +58,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func adjustPtsSceneSpeedWithOptions(_ tmpReq: AdjustPtsSceneSpeedRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AdjustPtsSceneSpeedResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AdjustPtsSceneSpeedShrinkRequest = AdjustPtsSceneSpeedShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.apiSpeedList)) {
+            request.apiSpeedListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.apiSpeedList, "ApiSpeedList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiSpeedListShrink)) {
+            query["ApiSpeedList"] = request.apiSpeedListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            query["SceneId"] = request.sceneId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AdjustPtsSceneSpeed",
+            "version": "2020-10-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AdjustPtsSceneSpeedResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func adjustPtsSceneSpeed(_ request: AdjustPtsSceneSpeedRequest) async throws -> AdjustPtsSceneSpeedResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await adjustPtsSceneSpeedWithOptions(request as! AdjustPtsSceneSpeedRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createPtsSceneWithOptions(_ request: CreatePtsSceneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePtsSceneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -466,6 +505,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getOpenJMeterScene(_ request: GetOpenJMeterSceneRequest) async throws -> GetOpenJMeterSceneResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getOpenJMeterSceneWithOptions(request as! GetOpenJMeterSceneRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPtsDebugSampleLogsWithOptions(_ request: GetPtsDebugSampleLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPtsDebugSampleLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.planId)) {
+            query["PlanId"] = request.planId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPtsDebugSampleLogs",
+            "version": "2020-10-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPtsDebugSampleLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPtsDebugSampleLogs(_ request: GetPtsDebugSampleLogsRequest) async throws -> GetPtsDebugSampleLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getPtsDebugSampleLogsWithOptions(request as! GetPtsDebugSampleLogsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
