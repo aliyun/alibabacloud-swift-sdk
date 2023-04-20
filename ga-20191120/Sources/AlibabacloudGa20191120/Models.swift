@@ -3157,6 +3157,43 @@ public class CreateBasicAccelerateIpEndpointRelationsResponse : Tea.TeaModel {
 }
 
 public class CreateBasicAcceleratorRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var autoPay: Bool?
 
     public var autoRenew: Bool?
@@ -3182,6 +3219,8 @@ public class CreateBasicAcceleratorRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var tag: [CreateBasicAcceleratorRequest.Tag]?
 
     public override init() {
         super.init()
@@ -3236,6 +3275,13 @@ public class CreateBasicAcceleratorRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -3278,6 +3324,17 @@ public class CreateBasicAcceleratorRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [CreateBasicAcceleratorRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateBasicAcceleratorRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
