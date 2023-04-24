@@ -193,6 +193,51 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func predictPreTrainModelWithOptions(_ request: PredictPreTrainModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PredictPreTrainModelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.binaryToText)) {
+            query["BinaryToText"] = request.binaryToText!;
+        }
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceVersion)) {
+            query["ServiceVersion"] = request.serviceVersion ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.body)) {
+            body["Body"] = request.body ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PredictPreTrainModel",
+            "version": "2022-12-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PredictPreTrainModelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func predictPreTrainModel(_ request: PredictPreTrainModelRequest) async throws -> PredictPreTrainModelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await predictPreTrainModelWithOptions(request as! PredictPreTrainModelRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func predictTemplateModelWithOptions(_ request: PredictTemplateModelRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PredictTemplateModelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

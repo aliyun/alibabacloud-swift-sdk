@@ -653,6 +653,174 @@ public class PredictModelResponse : Tea.TeaModel {
     }
 }
 
+public class PredictPreTrainModelRequest : Tea.TeaModel {
+    public var binaryToText: Bool?
+
+    public var body: String?
+
+    public var content: String?
+
+    public var serviceName: String?
+
+    public var serviceVersion: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.binaryToText != nil {
+            map["BinaryToText"] = self.binaryToText!
+        }
+        if self.body != nil {
+            map["Body"] = self.body!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.serviceName != nil {
+            map["ServiceName"] = self.serviceName!
+        }
+        if self.serviceVersion != nil {
+            map["ServiceVersion"] = self.serviceVersion!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BinaryToText") && dict["BinaryToText"] != nil {
+            self.binaryToText = dict["BinaryToText"] as! Bool
+        }
+        if dict.keys.contains("Body") && dict["Body"] != nil {
+            self.body = dict["Body"] as! String
+        }
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("ServiceName") && dict["ServiceName"] != nil {
+            self.serviceName = dict["ServiceName"] as! String
+        }
+        if dict.keys.contains("ServiceVersion") && dict["ServiceVersion"] != nil {
+            self.serviceVersion = dict["ServiceVersion"] as! String
+        }
+    }
+}
+
+public class PredictPreTrainModelResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! [String: Any]
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class PredictPreTrainModelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PredictPreTrainModelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = PredictPreTrainModelResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PredictTemplateModelRequest : Tea.TeaModel {
     public var binaryToText: Bool?
 
