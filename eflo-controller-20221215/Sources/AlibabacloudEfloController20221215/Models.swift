@@ -1825,6 +1825,8 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var imageName: String?
+
     public var machineType: String?
 
     public var networks: [DescribeNodeResponseBody.Networks]?
@@ -1874,6 +1876,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.imageName != nil {
+            map["ImageName"] = self.imageName!
         }
         if self.machineType != nil {
             map["MachineType"] = self.machineType!
@@ -1927,6 +1932,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("ImageName") && dict["ImageName"] != nil {
+            self.imageName = dict["ImageName"] as! String
         }
         if dict.keys.contains("MachineType") && dict["MachineType"] != nil {
             self.machineType = dict["MachineType"] as! String
