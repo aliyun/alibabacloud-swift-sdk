@@ -21005,9 +21005,15 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
 
         public var outputType: String?
 
+        public var restoreExpiration: String?
+
+        public var restoreStatus: String?
+
         public var size: Int64?
 
         public var status: String?
+
+        public var storageClass: String?
 
         public var videoId: String?
 
@@ -21060,11 +21066,20 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
             if self.outputType != nil {
                 map["OutputType"] = self.outputType!
             }
+            if self.restoreExpiration != nil {
+                map["RestoreExpiration"] = self.restoreExpiration!
+            }
+            if self.restoreStatus != nil {
+                map["RestoreStatus"] = self.restoreStatus!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.storageClass != nil {
+                map["StorageClass"] = self.storageClass!
             }
             if self.videoId != nil {
                 map["VideoId"] = self.videoId!
@@ -21118,11 +21133,20 @@ public class GetMezzanineInfoResponseBody : Tea.TeaModel {
             if dict.keys.contains("OutputType") && dict["OutputType"] != nil {
                 self.outputType = dict["OutputType"] as! String
             }
+            if dict.keys.contains("RestoreExpiration") && dict["RestoreExpiration"] != nil {
+                self.restoreExpiration = dict["RestoreExpiration"] as! String
+            }
+            if dict.keys.contains("RestoreStatus") && dict["RestoreStatus"] != nil {
+                self.restoreStatus = dict["RestoreStatus"] as! String
+            }
             if dict.keys.contains("Size") && dict["Size"] != nil {
                 self.size = dict["Size"] as! Int64
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                self.storageClass = dict["StorageClass"] as! String
             }
             if dict.keys.contains("VideoId") && dict["VideoId"] != nil {
                 self.videoId = dict["VideoId"] as! String
@@ -23565,11 +23589,17 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var restoreExpiration: String?
+
+        public var restoreStatus: String?
+
         public var size: Int64?
 
         public var snapshots: GetVideoInfoResponseBody.Video.Snapshots?
 
         public var status: String?
+
+        public var storageClass: String?
 
         public var storageLocation: String?
 
@@ -23629,6 +23659,12 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.restoreExpiration != nil {
+                map["RestoreExpiration"] = self.restoreExpiration!
+            }
+            if self.restoreStatus != nil {
+                map["RestoreStatus"] = self.restoreStatus!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
@@ -23637,6 +23673,9 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.storageClass != nil {
+                map["StorageClass"] = self.storageClass!
             }
             if self.storageLocation != nil {
                 map["StorageLocation"] = self.storageLocation!
@@ -23690,6 +23729,12 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
             }
+            if dict.keys.contains("RestoreExpiration") && dict["RestoreExpiration"] != nil {
+                self.restoreExpiration = dict["RestoreExpiration"] as! String
+            }
+            if dict.keys.contains("RestoreStatus") && dict["RestoreStatus"] != nil {
+                self.restoreStatus = dict["RestoreStatus"] as! String
+            }
             if dict.keys.contains("Size") && dict["Size"] != nil {
                 self.size = dict["Size"] as! Int64
             }
@@ -23700,6 +23745,9 @@ public class GetVideoInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                self.storageClass = dict["StorageClass"] as! String
             }
             if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
                 self.storageLocation = dict["StorageLocation"] as! String
@@ -23858,11 +23906,17 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
 
         public var modificationTime: String?
 
+        public var restoreExpiration: String?
+
+        public var restoreStatus: String?
+
         public var size: Int64?
 
         public var snapshots: [String]?
 
         public var status: String?
+
+        public var storageClass: String?
 
         public var storageLocation: String?
 
@@ -23912,6 +23966,12 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             if self.modificationTime != nil {
                 map["ModificationTime"] = self.modificationTime!
             }
+            if self.restoreExpiration != nil {
+                map["RestoreExpiration"] = self.restoreExpiration!
+            }
+            if self.restoreStatus != nil {
+                map["RestoreStatus"] = self.restoreStatus!
+            }
             if self.size != nil {
                 map["Size"] = self.size!
             }
@@ -23920,6 +23980,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.storageClass != nil {
+                map["StorageClass"] = self.storageClass!
             }
             if self.storageLocation != nil {
                 map["StorageLocation"] = self.storageLocation!
@@ -23964,6 +24027,12 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             if dict.keys.contains("ModificationTime") && dict["ModificationTime"] != nil {
                 self.modificationTime = dict["ModificationTime"] as! String
             }
+            if dict.keys.contains("RestoreExpiration") && dict["RestoreExpiration"] != nil {
+                self.restoreExpiration = dict["RestoreExpiration"] as! String
+            }
+            if dict.keys.contains("RestoreStatus") && dict["RestoreStatus"] != nil {
+                self.restoreStatus = dict["RestoreStatus"] as! String
+            }
             if dict.keys.contains("Size") && dict["Size"] != nil {
                 self.size = dict["Size"] as! Int64
             }
@@ -23972,6 +24041,9 @@ public class GetVideoInfosResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                self.storageClass = dict["StorageClass"] as! String
             }
             if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
                 self.storageLocation = dict["StorageLocation"] as! String
@@ -24233,11 +24305,17 @@ public class GetVideoListResponseBody : Tea.TeaModel {
 
             public var modificationTime: String?
 
+            public var restoreExpiration: String?
+
+            public var restoreStatus: String?
+
             public var size: Int64?
 
             public var snapshots: GetVideoListResponseBody.VideoList.Video.Snapshots?
 
             public var status: String?
+
+            public var storageClass: String?
 
             public var storageLocation: String?
 
@@ -24286,6 +24364,12 @@ public class GetVideoListResponseBody : Tea.TeaModel {
                 if self.modificationTime != nil {
                     map["ModificationTime"] = self.modificationTime!
                 }
+                if self.restoreExpiration != nil {
+                    map["RestoreExpiration"] = self.restoreExpiration!
+                }
+                if self.restoreStatus != nil {
+                    map["RestoreStatus"] = self.restoreStatus!
+                }
                 if self.size != nil {
                     map["Size"] = self.size!
                 }
@@ -24294,6 +24378,9 @@ public class GetVideoListResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.storageClass != nil {
+                    map["StorageClass"] = self.storageClass!
                 }
                 if self.storageLocation != nil {
                     map["StorageLocation"] = self.storageLocation!
@@ -24335,6 +24422,12 @@ public class GetVideoListResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ModificationTime") && dict["ModificationTime"] != nil {
                     self.modificationTime = dict["ModificationTime"] as! String
                 }
+                if dict.keys.contains("RestoreExpiration") && dict["RestoreExpiration"] != nil {
+                    self.restoreExpiration = dict["RestoreExpiration"] as! String
+                }
+                if dict.keys.contains("RestoreStatus") && dict["RestoreStatus"] != nil {
+                    self.restoreStatus = dict["RestoreStatus"] as! String
+                }
                 if dict.keys.contains("Size") && dict["Size"] != nil {
                     self.size = dict["Size"] as! Int64
                 }
@@ -24345,6 +24438,9 @@ public class GetVideoListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                    self.storageClass = dict["StorageClass"] as! String
                 }
                 if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
                     self.storageLocation = dict["StorageLocation"] as! String
@@ -30059,6 +30155,275 @@ public class SearchMediaRequest : Tea.TeaModel {
 
 public class SearchMediaResponseBody : Tea.TeaModel {
     public class MediaList : Tea.TeaModel {
+        public class AiData : Tea.TeaModel {
+            public class AiLabelInfo : Tea.TeaModel {
+                public class Occurrences : Tea.TeaModel {
+                    public var from: Double?
+
+                    public var score: Double?
+
+                    public var to: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.from != nil {
+                            map["From"] = self.from!
+                        }
+                        if self.score != nil {
+                            map["Score"] = self.score!
+                        }
+                        if self.to != nil {
+                            map["To"] = self.to!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("From") && dict["From"] != nil {
+                            self.from = dict["From"] as! Double
+                        }
+                        if dict.keys.contains("Score") && dict["Score"] != nil {
+                            self.score = dict["Score"] as! Double
+                        }
+                        if dict.keys.contains("To") && dict["To"] != nil {
+                            self.to = dict["To"] as! Double
+                        }
+                    }
+                }
+                public var category: String?
+
+                public var labelId: String?
+
+                public var labelName: String?
+
+                public var occurrences: [SearchMediaResponseBody.MediaList.AiData.AiLabelInfo.Occurrences]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.category != nil {
+                        map["Category"] = self.category!
+                    }
+                    if self.labelId != nil {
+                        map["LabelId"] = self.labelId!
+                    }
+                    if self.labelName != nil {
+                        map["LabelName"] = self.labelName!
+                    }
+                    if self.occurrences != nil {
+                        var tmp : [Any] = []
+                        for k in self.occurrences! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Occurrences"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Category") && dict["Category"] != nil {
+                        self.category = dict["Category"] as! String
+                    }
+                    if dict.keys.contains("LabelId") && dict["LabelId"] != nil {
+                        self.labelId = dict["LabelId"] as! String
+                    }
+                    if dict.keys.contains("LabelName") && dict["LabelName"] != nil {
+                        self.labelName = dict["LabelName"] as! String
+                    }
+                    if dict.keys.contains("Occurrences") && dict["Occurrences"] != nil {
+                        var tmp : [SearchMediaResponseBody.MediaList.AiData.AiLabelInfo.Occurrences] = []
+                        for v in dict["Occurrences"] as! [Any] {
+                            var model = SearchMediaResponseBody.MediaList.AiData.AiLabelInfo.Occurrences()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.occurrences = tmp
+                    }
+                }
+            }
+            public class OcrInfo : Tea.TeaModel {
+                public var content: String?
+
+                public var from: Double?
+
+                public var to: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.content != nil {
+                        map["Content"] = self.content!
+                    }
+                    if self.from != nil {
+                        map["From"] = self.from!
+                    }
+                    if self.to != nil {
+                        map["To"] = self.to!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Content") && dict["Content"] != nil {
+                        self.content = dict["Content"] as! String
+                    }
+                    if dict.keys.contains("From") && dict["From"] != nil {
+                        self.from = dict["From"] as! Double
+                    }
+                    if dict.keys.contains("To") && dict["To"] != nil {
+                        self.to = dict["To"] as! Double
+                    }
+                }
+            }
+            public var aiLabelInfo: [SearchMediaResponseBody.MediaList.AiData.AiLabelInfo]?
+
+            public var ocrInfo: [SearchMediaResponseBody.MediaList.AiData.OcrInfo]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aiLabelInfo != nil {
+                    var tmp : [Any] = []
+                    for k in self.aiLabelInfo! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AiLabelInfo"] = tmp
+                }
+                if self.ocrInfo != nil {
+                    var tmp : [Any] = []
+                    for k in self.ocrInfo! {
+                        tmp.append(k.toMap())
+                    }
+                    map["OcrInfo"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AiLabelInfo") && dict["AiLabelInfo"] != nil {
+                    var tmp : [SearchMediaResponseBody.MediaList.AiData.AiLabelInfo] = []
+                    for v in dict["AiLabelInfo"] as! [Any] {
+                        var model = SearchMediaResponseBody.MediaList.AiData.AiLabelInfo()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.aiLabelInfo = tmp
+                }
+                if dict.keys.contains("OcrInfo") && dict["OcrInfo"] != nil {
+                    var tmp : [SearchMediaResponseBody.MediaList.AiData.OcrInfo] = []
+                    for v in dict["OcrInfo"] as! [Any] {
+                        var model = SearchMediaResponseBody.MediaList.AiData.OcrInfo()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.ocrInfo = tmp
+                }
+            }
+        }
+        public class AiRoughData : Tea.TeaModel {
+            public var aiCategory: String?
+
+            public var aiJobId: String?
+
+            public var saveType: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aiCategory != nil {
+                    map["AiCategory"] = self.aiCategory!
+                }
+                if self.aiJobId != nil {
+                    map["AiJobId"] = self.aiJobId!
+                }
+                if self.saveType != nil {
+                    map["SaveType"] = self.saveType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AiCategory") && dict["AiCategory"] != nil {
+                    self.aiCategory = dict["AiCategory"] as! String
+                }
+                if dict.keys.contains("AiJobId") && dict["AiJobId"] != nil {
+                    self.aiJobId = dict["AiJobId"] as! String
+                }
+                if dict.keys.contains("SaveType") && dict["SaveType"] != nil {
+                    self.saveType = dict["SaveType"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
         public class AttachedMedia : Tea.TeaModel {
             public class Categories : Tea.TeaModel {
                 public var cateId: Int64?
@@ -30266,6 +30631,10 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
             public var preprocessStatus: String?
 
+            public var restoreExpiration: String?
+
+            public var restoreStatus: String?
+
             public var size: Int64?
 
             public var snapshots: [String]?
@@ -30273,6 +30642,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
             public var spriteSnapshots: [String]?
 
             public var status: String?
+
+            public var storageClass: String?
 
             public var storageLocation: String?
 
@@ -30332,6 +30703,12 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 if self.preprocessStatus != nil {
                     map["PreprocessStatus"] = self.preprocessStatus!
                 }
+                if self.restoreExpiration != nil {
+                    map["RestoreExpiration"] = self.restoreExpiration!
+                }
+                if self.restoreStatus != nil {
+                    map["RestoreStatus"] = self.restoreStatus!
+                }
                 if self.size != nil {
                     map["Size"] = self.size!
                 }
@@ -30343,6 +30720,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.storageClass != nil {
+                    map["StorageClass"] = self.storageClass!
                 }
                 if self.storageLocation != nil {
                     map["StorageLocation"] = self.storageLocation!
@@ -30396,6 +30776,12 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 if dict.keys.contains("PreprocessStatus") && dict["PreprocessStatus"] != nil {
                     self.preprocessStatus = dict["PreprocessStatus"] as! String
                 }
+                if dict.keys.contains("RestoreExpiration") && dict["RestoreExpiration"] != nil {
+                    self.restoreExpiration = dict["RestoreExpiration"] as! String
+                }
+                if dict.keys.contains("RestoreStatus") && dict["RestoreStatus"] != nil {
+                    self.restoreStatus = dict["RestoreStatus"] as! String
+                }
                 if dict.keys.contains("Size") && dict["Size"] != nil {
                     self.size = dict["Size"] as! Int64
                 }
@@ -30407,6 +30793,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                    self.storageClass = dict["StorageClass"] as! String
                 }
                 if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
                     self.storageLocation = dict["StorageLocation"] as! String
@@ -30562,6 +30951,10 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
             public var preprocessStatus: String?
 
+            public var restoreExpiration: String?
+
+            public var restoreStatus: String?
+
             public var size: Int64?
 
             public var snapshots: [String]?
@@ -30569,6 +30962,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
             public var spriteSnapshots: [String]?
 
             public var status: String?
+
+            public var storageClass: String?
 
             public var storageLocation: String?
 
@@ -30627,6 +31022,12 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 if self.preprocessStatus != nil {
                     map["PreprocessStatus"] = self.preprocessStatus!
                 }
+                if self.restoreExpiration != nil {
+                    map["RestoreExpiration"] = self.restoreExpiration!
+                }
+                if self.restoreStatus != nil {
+                    map["RestoreStatus"] = self.restoreStatus!
+                }
                 if self.size != nil {
                     map["Size"] = self.size!
                 }
@@ -30638,6 +31039,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.storageClass != nil {
+                    map["StorageClass"] = self.storageClass!
                 }
                 if self.storageLocation != nil {
                     map["StorageLocation"] = self.storageLocation!
@@ -30691,6 +31095,12 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 if dict.keys.contains("PreprocessStatus") && dict["PreprocessStatus"] != nil {
                     self.preprocessStatus = dict["PreprocessStatus"] as! String
                 }
+                if dict.keys.contains("RestoreExpiration") && dict["RestoreExpiration"] != nil {
+                    self.restoreExpiration = dict["RestoreExpiration"] as! String
+                }
+                if dict.keys.contains("RestoreStatus") && dict["RestoreStatus"] != nil {
+                    self.restoreStatus = dict["RestoreStatus"] as! String
+                }
                 if dict.keys.contains("Size") && dict["Size"] != nil {
                     self.size = dict["Size"] as! Int64
                 }
@@ -30702,6 +31112,9 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                    self.storageClass = dict["StorageClass"] as! String
                 }
                 if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
                     self.storageLocation = dict["StorageLocation"] as! String
@@ -30720,6 +31133,10 @@ public class SearchMediaResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aiData: SearchMediaResponseBody.MediaList.AiData?
+
+        public var aiRoughData: SearchMediaResponseBody.MediaList.AiRoughData?
+
         public var attachedMedia: SearchMediaResponseBody.MediaList.AttachedMedia?
 
         public var audio: SearchMediaResponseBody.MediaList.Audio?
@@ -30744,6 +31161,8 @@ public class SearchMediaResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.aiData?.validate()
+            try self.aiRoughData?.validate()
             try self.attachedMedia?.validate()
             try self.audio?.validate()
             try self.image?.validate()
@@ -30752,6 +31171,12 @@ public class SearchMediaResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aiData != nil {
+                map["AiData"] = self.aiData?.toMap()
+            }
+            if self.aiRoughData != nil {
+                map["AiRoughData"] = self.aiRoughData?.toMap()
+            }
             if self.attachedMedia != nil {
                 map["AttachedMedia"] = self.attachedMedia?.toMap()
             }
@@ -30777,6 +31202,16 @@ public class SearchMediaResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AiData") && dict["AiData"] != nil {
+                var model = SearchMediaResponseBody.MediaList.AiData()
+                model.fromMap(dict["AiData"] as! [String: Any])
+                self.aiData = model
+            }
+            if dict.keys.contains("AiRoughData") && dict["AiRoughData"] != nil {
+                var model = SearchMediaResponseBody.MediaList.AiRoughData()
+                model.fromMap(dict["AiRoughData"] as! [String: Any])
+                self.aiRoughData = model
+            }
             if dict.keys.contains("AttachedMedia") && dict["AttachedMedia"] != nil {
                 var model = SearchMediaResponseBody.MediaList.AttachedMedia()
                 model.fromMap(dict["AttachedMedia"] as! [String: Any])
