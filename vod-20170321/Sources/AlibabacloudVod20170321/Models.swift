@@ -29722,6 +29722,279 @@ public class RegisterMediaResponse : Tea.TeaModel {
     }
 }
 
+public class RestoreMediaRequest : Tea.TeaModel {
+    public var mediaIds: String?
+
+    public var restoreDays: String?
+
+    public var restoreTier: String?
+
+    public var scope: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mediaIds != nil {
+            map["MediaIds"] = self.mediaIds!
+        }
+        if self.restoreDays != nil {
+            map["RestoreDays"] = self.restoreDays!
+        }
+        if self.restoreTier != nil {
+            map["RestoreTier"] = self.restoreTier!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MediaIds") && dict["MediaIds"] != nil {
+            self.mediaIds = dict["MediaIds"] as! String
+        }
+        if dict.keys.contains("RestoreDays") && dict["RestoreDays"] != nil {
+            self.restoreDays = dict["RestoreDays"] as! String
+        }
+        if dict.keys.contains("RestoreTier") && dict["RestoreTier"] != nil {
+            self.restoreTier = dict["RestoreTier"] as! String
+        }
+        if dict.keys.contains("Scope") && dict["Scope"] != nil {
+            self.scope = dict["Scope"] as! String
+        }
+    }
+}
+
+public class RestoreMediaResponseBody : Tea.TeaModel {
+    public class ForbiddenList : Tea.TeaModel {
+        public class MediaForbiddenReasonDTO : Tea.TeaModel {
+            public var mediaId: String?
+
+            public var reason: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mediaId != nil {
+                    map["MediaId"] = self.mediaId!
+                }
+                if self.reason != nil {
+                    map["Reason"] = self.reason!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
+                    self.mediaId = dict["MediaId"] as! String
+                }
+                if dict.keys.contains("Reason") && dict["Reason"] != nil {
+                    self.reason = dict["Reason"] as! String
+                }
+            }
+        }
+        public var mediaForbiddenReasonDTO: [RestoreMediaResponseBody.ForbiddenList.MediaForbiddenReasonDTO]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mediaForbiddenReasonDTO != nil {
+                var tmp : [Any] = []
+                for k in self.mediaForbiddenReasonDTO! {
+                    tmp.append(k.toMap())
+                }
+                map["MediaForbiddenReasonDTO"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MediaForbiddenReasonDTO") && dict["MediaForbiddenReasonDTO"] != nil {
+                var tmp : [RestoreMediaResponseBody.ForbiddenList.MediaForbiddenReasonDTO] = []
+                for v in dict["MediaForbiddenReasonDTO"] as! [Any] {
+                    var model = RestoreMediaResponseBody.ForbiddenList.MediaForbiddenReasonDTO()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.mediaForbiddenReasonDTO = tmp
+            }
+        }
+    }
+    public class IgnoredList : Tea.TeaModel {
+        public var mediaId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mediaId != nil {
+                map["MediaId"] = self.mediaId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
+                self.mediaId = dict["MediaId"] as! [String]
+            }
+        }
+    }
+    public var forbiddenList: RestoreMediaResponseBody.ForbiddenList?
+
+    public var ignoredList: RestoreMediaResponseBody.IgnoredList?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.forbiddenList?.validate()
+        try self.ignoredList?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.forbiddenList != nil {
+            map["ForbiddenList"] = self.forbiddenList?.toMap()
+        }
+        if self.ignoredList != nil {
+            map["IgnoredList"] = self.ignoredList?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ForbiddenList") && dict["ForbiddenList"] != nil {
+            var model = RestoreMediaResponseBody.ForbiddenList()
+            model.fromMap(dict["ForbiddenList"] as! [String: Any])
+            self.forbiddenList = model
+        }
+        if dict.keys.contains("IgnoredList") && dict["IgnoredList"] != nil {
+            var model = RestoreMediaResponseBody.IgnoredList()
+            model.fromMap(dict["IgnoredList"] as! [String: Any])
+            self.ignoredList = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class RestoreMediaResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RestoreMediaResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = RestoreMediaResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SearchEditingProjectRequest : Tea.TeaModel {
     public var endTime: String?
 
@@ -35189,6 +35462,279 @@ public class UpdateImageInfosResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateImageInfosResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateMediaStorageClassRequest : Tea.TeaModel {
+    public var mediaIds: String?
+
+    public var restoreTier: String?
+
+    public var scope: String?
+
+    public var storageClass: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.mediaIds != nil {
+            map["MediaIds"] = self.mediaIds!
+        }
+        if self.restoreTier != nil {
+            map["RestoreTier"] = self.restoreTier!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.storageClass != nil {
+            map["StorageClass"] = self.storageClass!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MediaIds") && dict["MediaIds"] != nil {
+            self.mediaIds = dict["MediaIds"] as! String
+        }
+        if dict.keys.contains("RestoreTier") && dict["RestoreTier"] != nil {
+            self.restoreTier = dict["RestoreTier"] as! String
+        }
+        if dict.keys.contains("Scope") && dict["Scope"] != nil {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+            self.storageClass = dict["StorageClass"] as! String
+        }
+    }
+}
+
+public class UpdateMediaStorageClassResponseBody : Tea.TeaModel {
+    public class ForbiddenList : Tea.TeaModel {
+        public class MediaForbiddenReasonDTO : Tea.TeaModel {
+            public var mediaId: String?
+
+            public var reason: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.mediaId != nil {
+                    map["MediaId"] = self.mediaId!
+                }
+                if self.reason != nil {
+                    map["Reason"] = self.reason!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
+                    self.mediaId = dict["MediaId"] as! String
+                }
+                if dict.keys.contains("Reason") && dict["Reason"] != nil {
+                    self.reason = dict["Reason"] as! String
+                }
+            }
+        }
+        public var mediaForbiddenReasonDTO: [UpdateMediaStorageClassResponseBody.ForbiddenList.MediaForbiddenReasonDTO]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mediaForbiddenReasonDTO != nil {
+                var tmp : [Any] = []
+                for k in self.mediaForbiddenReasonDTO! {
+                    tmp.append(k.toMap())
+                }
+                map["MediaForbiddenReasonDTO"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MediaForbiddenReasonDTO") && dict["MediaForbiddenReasonDTO"] != nil {
+                var tmp : [UpdateMediaStorageClassResponseBody.ForbiddenList.MediaForbiddenReasonDTO] = []
+                for v in dict["MediaForbiddenReasonDTO"] as! [Any] {
+                    var model = UpdateMediaStorageClassResponseBody.ForbiddenList.MediaForbiddenReasonDTO()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.mediaForbiddenReasonDTO = tmp
+            }
+        }
+    }
+    public class IgnoredList : Tea.TeaModel {
+        public var mediaId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.mediaId != nil {
+                map["MediaId"] = self.mediaId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
+                self.mediaId = dict["MediaId"] as! [String]
+            }
+        }
+    }
+    public var forbiddenList: UpdateMediaStorageClassResponseBody.ForbiddenList?
+
+    public var ignoredList: UpdateMediaStorageClassResponseBody.IgnoredList?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.forbiddenList?.validate()
+        try self.ignoredList?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.forbiddenList != nil {
+            map["ForbiddenList"] = self.forbiddenList?.toMap()
+        }
+        if self.ignoredList != nil {
+            map["IgnoredList"] = self.ignoredList?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ForbiddenList") && dict["ForbiddenList"] != nil {
+            var model = UpdateMediaStorageClassResponseBody.ForbiddenList()
+            model.fromMap(dict["ForbiddenList"] as! [String: Any])
+            self.forbiddenList = model
+        }
+        if dict.keys.contains("IgnoredList") && dict["IgnoredList"] != nil {
+            var model = UpdateMediaStorageClassResponseBody.IgnoredList()
+            model.fromMap(dict["IgnoredList"] as! [String: Any])
+            self.ignoredList = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class UpdateMediaStorageClassResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateMediaStorageClassResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateMediaStorageClassResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
