@@ -6317,6 +6317,8 @@ public class InviteAccountToResourceDirectoryRequest : Tea.TeaModel {
     }
     public var note: String?
 
+    public var parentFolderId: String?
+
     public var tag: [InviteAccountToResourceDirectoryRequest.Tag]?
 
     public var targetEntity: String?
@@ -6340,6 +6342,9 @@ public class InviteAccountToResourceDirectoryRequest : Tea.TeaModel {
         if self.note != nil {
             map["Note"] = self.note!
         }
+        if self.parentFolderId != nil {
+            map["ParentFolderId"] = self.parentFolderId!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -6359,6 +6364,9 @@ public class InviteAccountToResourceDirectoryRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Note") && dict["Note"] != nil {
             self.note = dict["Note"] as! String
+        }
+        if dict.keys.contains("ParentFolderId") && dict["ParentFolderId"] != nil {
+            self.parentFolderId = dict["ParentFolderId"] as! String
         }
         if dict.keys.contains("Tag") && dict["Tag"] != nil {
             var tmp : [InviteAccountToResourceDirectoryRequest.Tag] = []

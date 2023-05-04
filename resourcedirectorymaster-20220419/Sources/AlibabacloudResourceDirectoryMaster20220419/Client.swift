@@ -1206,6 +1206,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.note)) {
             query["Note"] = request.note ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parentFolderId)) {
+            query["ParentFolderId"] = request.parentFolderId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
