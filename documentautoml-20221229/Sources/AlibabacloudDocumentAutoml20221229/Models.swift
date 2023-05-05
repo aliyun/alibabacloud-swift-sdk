@@ -328,6 +328,8 @@ public class GetModelAsyncPredictResponse : Tea.TeaModel {
 public class PredictClassifierModelRequest : Tea.TeaModel {
     public var autoPrediction: Bool?
 
+    public var binaryToText: Bool?
+
     public var body: String?
 
     public var classifierId: Int64?
@@ -351,6 +353,9 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
         if self.autoPrediction != nil {
             map["AutoPrediction"] = self.autoPrediction!
         }
+        if self.binaryToText != nil {
+            map["BinaryToText"] = self.binaryToText!
+        }
         if self.body != nil {
             map["Body"] = self.body!
         }
@@ -366,6 +371,9 @@ public class PredictClassifierModelRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AutoPrediction") && dict["AutoPrediction"] != nil {
             self.autoPrediction = dict["AutoPrediction"] as! Bool
+        }
+        if dict.keys.contains("BinaryToText") && dict["BinaryToText"] != nil {
+            self.binaryToText = dict["BinaryToText"] as! Bool
         }
         if dict.keys.contains("Body") && dict["Body"] != nil {
             self.body = dict["Body"] as! String

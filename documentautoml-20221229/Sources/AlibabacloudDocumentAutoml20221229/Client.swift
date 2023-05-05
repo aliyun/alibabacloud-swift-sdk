@@ -112,6 +112,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoPrediction)) {
             query["AutoPrediction"] = request.autoPrediction!;
         }
+        if (!TeaUtils.Client.isUnset(request.binaryToText)) {
+            query["BinaryToText"] = request.binaryToText!;
+        }
         if (!TeaUtils.Client.isUnset(request.classifierId)) {
             query["ClassifierId"] = request.classifierId!;
         }
