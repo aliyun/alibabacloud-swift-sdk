@@ -35763,6 +35763,43 @@ public class ListMultiChannelRecordingsRequest : Tea.TeaModel {
 
 public class ListMultiChannelRecordingsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class HoldTimeSegments : Tea.TeaModel {
+            public var endTime: Int64?
+
+            public var startTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                    self.endTime = dict["EndTime"] as! Int64
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! Int64
+                }
+            }
+        }
         public var agentChannelId: String?
 
         public var agentId: String?
@@ -35776,6 +35813,8 @@ public class ListMultiChannelRecordingsResponseBody : Tea.TeaModel {
         public var fileName: String?
 
         public var fileUrl: String?
+
+        public var holdTimeSegments: [ListMultiChannelRecordingsResponseBody.Data.HoldTimeSegments]?
 
         public var ramId: String?
 
@@ -35818,6 +35857,13 @@ public class ListMultiChannelRecordingsResponseBody : Tea.TeaModel {
             if self.fileUrl != nil {
                 map["FileUrl"] = self.fileUrl!
             }
+            if self.holdTimeSegments != nil {
+                var tmp : [Any] = []
+                for k in self.holdTimeSegments! {
+                    tmp.append(k.toMap())
+                }
+                map["HoldTimeSegments"] = tmp
+            }
             if self.ramId != nil {
                 map["RamId"] = self.ramId!
             }
@@ -35851,6 +35897,17 @@ public class ListMultiChannelRecordingsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("FileUrl") && dict["FileUrl"] != nil {
                 self.fileUrl = dict["FileUrl"] as! String
+            }
+            if dict.keys.contains("HoldTimeSegments") && dict["HoldTimeSegments"] != nil {
+                var tmp : [ListMultiChannelRecordingsResponseBody.Data.HoldTimeSegments] = []
+                for v in dict["HoldTimeSegments"] as! [Any] {
+                    var model = ListMultiChannelRecordingsResponseBody.Data.HoldTimeSegments()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.holdTimeSegments = tmp
             }
             if dict.keys.contains("RamId") && dict["RamId"] != nil {
                 self.ramId = dict["RamId"] as! String
