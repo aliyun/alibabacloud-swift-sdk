@@ -2667,7 +2667,15 @@ public class CreateChatappMigrationInitiateResponse : Tea.TeaModel {
 public class CreateChatappTemplateRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Buttons : Tea.TeaModel {
+            public var autofillText: String?
+
+            public var isOptOut: Bool?
+
+            public var packageName: String?
+
             public var phoneNumber: String?
+
+            public var signatureHash: String?
 
             public var text: String?
 
@@ -2691,8 +2699,20 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autofillText != nil {
+                    map["AutofillText"] = self.autofillText!
+                }
+                if self.isOptOut != nil {
+                    map["IsOptOut"] = self.isOptOut!
+                }
+                if self.packageName != nil {
+                    map["PackageName"] = self.packageName!
+                }
                 if self.phoneNumber != nil {
                     map["PhoneNumber"] = self.phoneNumber!
+                }
+                if self.signatureHash != nil {
+                    map["SignatureHash"] = self.signatureHash!
                 }
                 if self.text != nil {
                     map["Text"] = self.text!
@@ -2710,8 +2730,20 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AutofillText") && dict["AutofillText"] != nil {
+                    self.autofillText = dict["AutofillText"] as! String
+                }
+                if dict.keys.contains("IsOptOut") && dict["IsOptOut"] != nil {
+                    self.isOptOut = dict["IsOptOut"] as! Bool
+                }
+                if dict.keys.contains("PackageName") && dict["PackageName"] != nil {
+                    self.packageName = dict["PackageName"] as! String
+                }
                 if dict.keys.contains("PhoneNumber") && dict["PhoneNumber"] != nil {
                     self.phoneNumber = dict["PhoneNumber"] as! String
+                }
+                if dict.keys.contains("SignatureHash") && dict["SignatureHash"] != nil {
+                    self.signatureHash = dict["SignatureHash"] as! String
                 }
                 if dict.keys.contains("Text") && dict["Text"] != nil {
                     self.text = dict["Text"] as! String
@@ -2727,9 +2759,13 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
                 }
             }
         }
+        public var addSecretRecommendation: Bool?
+
         public var buttons: [CreateChatappTemplateRequest.Components.Buttons]?
 
         public var caption: String?
+
+        public var codeExpirationMinutes: Int32?
 
         public var duration: Int32?
 
@@ -2761,6 +2797,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addSecretRecommendation != nil {
+                map["AddSecretRecommendation"] = self.addSecretRecommendation!
+            }
             if self.buttons != nil {
                 var tmp : [Any] = []
                 for k in self.buttons! {
@@ -2770,6 +2809,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
             }
             if self.caption != nil {
                 map["Caption"] = self.caption!
+            }
+            if self.codeExpirationMinutes != nil {
+                map["CodeExpirationMinutes"] = self.codeExpirationMinutes!
             }
             if self.duration != nil {
                 map["Duration"] = self.duration!
@@ -2799,6 +2841,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddSecretRecommendation") && dict["AddSecretRecommendation"] != nil {
+                self.addSecretRecommendation = dict["AddSecretRecommendation"] as! Bool
+            }
             if dict.keys.contains("Buttons") && dict["Buttons"] != nil {
                 var tmp : [CreateChatappTemplateRequest.Components.Buttons] = []
                 for v in dict["Buttons"] as! [Any] {
@@ -2812,6 +2857,9 @@ public class CreateChatappTemplateRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Caption") && dict["Caption"] != nil {
                 self.caption = dict["Caption"] as! String
+            }
+            if dict.keys.contains("CodeExpirationMinutes") && dict["CodeExpirationMinutes"] != nil {
+                self.codeExpirationMinutes = dict["CodeExpirationMinutes"] as! Int32
             }
             if dict.keys.contains("Duration") && dict["Duration"] != nil {
                 self.duration = dict["Duration"] as! Int32
@@ -3426,7 +3474,78 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Components : Tea.TeaModel {
             public class Buttons : Tea.TeaModel {
+                public class ExtendAttrs : Tea.TeaModel {
+                    public var action: String?
+
+                    public var intentCode: String?
+
+                    public var nextLanguageCode: String?
+
+                    public var nextTemplateCode: String?
+
+                    public var nextTemplateName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.action != nil {
+                            map["Action"] = self.action!
+                        }
+                        if self.intentCode != nil {
+                            map["IntentCode"] = self.intentCode!
+                        }
+                        if self.nextLanguageCode != nil {
+                            map["NextLanguageCode"] = self.nextLanguageCode!
+                        }
+                        if self.nextTemplateCode != nil {
+                            map["NextTemplateCode"] = self.nextTemplateCode!
+                        }
+                        if self.nextTemplateName != nil {
+                            map["NextTemplateName"] = self.nextTemplateName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Action") && dict["Action"] != nil {
+                            self.action = dict["Action"] as! String
+                        }
+                        if dict.keys.contains("IntentCode") && dict["IntentCode"] != nil {
+                            self.intentCode = dict["IntentCode"] as! String
+                        }
+                        if dict.keys.contains("NextLanguageCode") && dict["NextLanguageCode"] != nil {
+                            self.nextLanguageCode = dict["NextLanguageCode"] as! String
+                        }
+                        if dict.keys.contains("NextTemplateCode") && dict["NextTemplateCode"] != nil {
+                            self.nextTemplateCode = dict["NextTemplateCode"] as! String
+                        }
+                        if dict.keys.contains("NextTemplateName") && dict["NextTemplateName"] != nil {
+                            self.nextTemplateName = dict["NextTemplateName"] as! String
+                        }
+                    }
+                }
+                public var autofillText: String?
+
+                public var extendAttrs: GetChatappTemplateDetailResponseBody.Data.Components.Buttons.ExtendAttrs?
+
+                public var isOptOut: Bool?
+
+                public var packageName: String?
+
                 public var phoneNumber: String?
+
+                public var signatureHash: String?
 
                 public var text: String?
 
@@ -3446,12 +3565,28 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.extendAttrs?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.autofillText != nil {
+                        map["AutofillText"] = self.autofillText!
+                    }
+                    if self.extendAttrs != nil {
+                        map["ExtendAttrs"] = self.extendAttrs?.toMap()
+                    }
+                    if self.isOptOut != nil {
+                        map["IsOptOut"] = self.isOptOut!
+                    }
+                    if self.packageName != nil {
+                        map["PackageName"] = self.packageName!
+                    }
                     if self.phoneNumber != nil {
                         map["PhoneNumber"] = self.phoneNumber!
+                    }
+                    if self.signatureHash != nil {
+                        map["SignatureHash"] = self.signatureHash!
                     }
                     if self.text != nil {
                         map["Text"] = self.text!
@@ -3469,8 +3604,25 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AutofillText") && dict["AutofillText"] != nil {
+                        self.autofillText = dict["AutofillText"] as! String
+                    }
+                    if dict.keys.contains("ExtendAttrs") && dict["ExtendAttrs"] != nil {
+                        var model = GetChatappTemplateDetailResponseBody.Data.Components.Buttons.ExtendAttrs()
+                        model.fromMap(dict["ExtendAttrs"] as! [String: Any])
+                        self.extendAttrs = model
+                    }
+                    if dict.keys.contains("IsOptOut") && dict["IsOptOut"] != nil {
+                        self.isOptOut = dict["IsOptOut"] as! Bool
+                    }
+                    if dict.keys.contains("PackageName") && dict["PackageName"] != nil {
+                        self.packageName = dict["PackageName"] as! String
+                    }
                     if dict.keys.contains("PhoneNumber") && dict["PhoneNumber"] != nil {
                         self.phoneNumber = dict["PhoneNumber"] as! String
+                    }
+                    if dict.keys.contains("SignatureHash") && dict["SignatureHash"] != nil {
+                        self.signatureHash = dict["SignatureHash"] as! String
                     }
                     if dict.keys.contains("Text") && dict["Text"] != nil {
                         self.text = dict["Text"] as! String
@@ -3486,9 +3638,13 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var addSecretRecommendation: Bool?
+
             public var buttons: [GetChatappTemplateDetailResponseBody.Data.Components.Buttons]?
 
             public var caption: String?
+
+            public var codeExpirationMinutes: Int32?
 
             public var duration: Int32?
 
@@ -3528,6 +3684,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.addSecretRecommendation != nil {
+                    map["AddSecretRecommendation"] = self.addSecretRecommendation!
+                }
                 if self.buttons != nil {
                     var tmp : [Any] = []
                     for k in self.buttons! {
@@ -3537,6 +3696,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 }
                 if self.caption != nil {
                     map["Caption"] = self.caption!
+                }
+                if self.codeExpirationMinutes != nil {
+                    map["CodeExpirationMinutes"] = self.codeExpirationMinutes!
                 }
                 if self.duration != nil {
                     map["Duration"] = self.duration!
@@ -3578,6 +3740,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AddSecretRecommendation") && dict["AddSecretRecommendation"] != nil {
+                    self.addSecretRecommendation = dict["AddSecretRecommendation"] as! Bool
+                }
                 if dict.keys.contains("Buttons") && dict["Buttons"] != nil {
                     var tmp : [GetChatappTemplateDetailResponseBody.Data.Components.Buttons] = []
                     for v in dict["Buttons"] as! [Any] {
@@ -3591,6 +3756,9 @@ public class GetChatappTemplateDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Caption") && dict["Caption"] != nil {
                     self.caption = dict["Caption"] as! String
+                }
+                if dict.keys.contains("CodeExpirationMinutes") && dict["CodeExpirationMinutes"] != nil {
+                    self.codeExpirationMinutes = dict["CodeExpirationMinutes"] as! Int32
                 }
                 if dict.keys.contains("Duration") && dict["Duration"] != nil {
                     self.duration = dict["Duration"] as! Int32
@@ -5140,7 +5308,15 @@ public class ListChatappTemplateResponse : Tea.TeaModel {
 public class ModifyChatappTemplateRequest : Tea.TeaModel {
     public class Components : Tea.TeaModel {
         public class Buttons : Tea.TeaModel {
+            public var autofillText: String?
+
+            public var isOptOut: Bool?
+
+            public var packageName: String?
+
             public var phoneNumber: String?
+
+            public var signatureHash: String?
 
             public var text: String?
 
@@ -5164,8 +5340,20 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autofillText != nil {
+                    map["AutofillText"] = self.autofillText!
+                }
+                if self.isOptOut != nil {
+                    map["IsOptOut"] = self.isOptOut!
+                }
+                if self.packageName != nil {
+                    map["PackageName"] = self.packageName!
+                }
                 if self.phoneNumber != nil {
                     map["PhoneNumber"] = self.phoneNumber!
+                }
+                if self.signatureHash != nil {
+                    map["SignatureHash"] = self.signatureHash!
                 }
                 if self.text != nil {
                     map["Text"] = self.text!
@@ -5183,8 +5371,20 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AutofillText") && dict["AutofillText"] != nil {
+                    self.autofillText = dict["AutofillText"] as! String
+                }
+                if dict.keys.contains("IsOptOut") && dict["IsOptOut"] != nil {
+                    self.isOptOut = dict["IsOptOut"] as! Bool
+                }
+                if dict.keys.contains("PackageName") && dict["PackageName"] != nil {
+                    self.packageName = dict["PackageName"] as! String
+                }
                 if dict.keys.contains("PhoneNumber") && dict["PhoneNumber"] != nil {
                     self.phoneNumber = dict["PhoneNumber"] as! String
+                }
+                if dict.keys.contains("SignatureHash") && dict["SignatureHash"] != nil {
+                    self.signatureHash = dict["SignatureHash"] as! String
                 }
                 if dict.keys.contains("Text") && dict["Text"] != nil {
                     self.text = dict["Text"] as! String
@@ -5200,9 +5400,13 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
                 }
             }
         }
+        public var addSecretRecommendation: Bool?
+
         public var buttons: [ModifyChatappTemplateRequest.Components.Buttons]?
 
         public var caption: String?
+
+        public var codeExpirationMinutes: Int32?
 
         public var duration: Int32?
 
@@ -5234,6 +5438,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.addSecretRecommendation != nil {
+                map["AddSecretRecommendation"] = self.addSecretRecommendation!
+            }
             if self.buttons != nil {
                 var tmp : [Any] = []
                 for k in self.buttons! {
@@ -5243,6 +5450,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
             }
             if self.caption != nil {
                 map["Caption"] = self.caption!
+            }
+            if self.codeExpirationMinutes != nil {
+                map["CodeExpirationMinutes"] = self.codeExpirationMinutes!
             }
             if self.duration != nil {
                 map["Duration"] = self.duration!
@@ -5272,6 +5482,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AddSecretRecommendation") && dict["AddSecretRecommendation"] != nil {
+                self.addSecretRecommendation = dict["AddSecretRecommendation"] as! Bool
+            }
             if dict.keys.contains("Buttons") && dict["Buttons"] != nil {
                 var tmp : [ModifyChatappTemplateRequest.Components.Buttons] = []
                 for v in dict["Buttons"] as! [Any] {
@@ -5285,6 +5498,9 @@ public class ModifyChatappTemplateRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Caption") && dict["Caption"] != nil {
                 self.caption = dict["Caption"] as! String
+            }
+            if dict.keys.contains("CodeExpirationMinutes") && dict["CodeExpirationMinutes"] != nil {
+                self.codeExpirationMinutes = dict["CodeExpirationMinutes"] as! Int32
             }
             if dict.keys.contains("Duration") && dict["Duration"] != nil {
                 self.duration = dict["Duration"] as! Int32
