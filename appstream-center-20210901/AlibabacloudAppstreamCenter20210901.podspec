@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudAppstreamCenter20210901"
-  spec.version      = "1.0.6"
+  spec.version      = "1.0.7"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud appstream-center (20210901) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/appstream-center-20210901" 

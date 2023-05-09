@@ -476,6 +476,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public var ipExpireMinutes: Int32?
+
         public var routes: [CreateAppInstanceGroupRequest.Network.Routes]?
 
         public var strategyType: String?
@@ -494,6 +496,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.ipExpireMinutes != nil {
+                map["IpExpireMinutes"] = self.ipExpireMinutes!
+            }
             if self.routes != nil {
                 var tmp : [Any] = []
                 for k in self.routes! {
@@ -508,6 +513,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IpExpireMinutes") && dict["IpExpireMinutes"] != nil {
+                self.ipExpireMinutes = dict["IpExpireMinutes"] as! Int32
+            }
             if dict.keys.contains("Routes") && dict["Routes"] != nil {
                 var tmp : [CreateAppInstanceGroupRequest.Network.Routes] = []
                 for v in dict["Routes"] as! [Any] {
@@ -756,6 +764,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
     }
     public class RuntimePolicy : Tea.TeaModel {
+        public var debugMode: String?
+
         public var sessionType: String?
 
         public override init() {
@@ -772,6 +782,9 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.debugMode != nil {
+                map["DebugMode"] = self.debugMode!
+            }
             if self.sessionType != nil {
                 map["SessionType"] = self.sessionType!
             }
@@ -779,8 +792,77 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DebugMode") && dict["DebugMode"] != nil {
+                self.debugMode = dict["DebugMode"] as! String
+            }
             if dict.keys.contains("SessionType") && dict["SessionType"] != nil {
                 self.sessionType = dict["SessionType"] as! String
+            }
+        }
+    }
+    public class SecurityPolicy : Tea.TeaModel {
+        public var resetAfterUnbind: Bool?
+
+        public var skipUserAuthCheck: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resetAfterUnbind != nil {
+                map["ResetAfterUnbind"] = self.resetAfterUnbind!
+            }
+            if self.skipUserAuthCheck != nil {
+                map["SkipUserAuthCheck"] = self.skipUserAuthCheck!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ResetAfterUnbind") && dict["ResetAfterUnbind"] != nil {
+                self.resetAfterUnbind = dict["ResetAfterUnbind"] as! Bool
+            }
+            if dict.keys.contains("SkipUserAuthCheck") && dict["SkipUserAuthCheck"] != nil {
+                self.skipUserAuthCheck = dict["SkipUserAuthCheck"] as! Bool
+            }
+        }
+    }
+    public class StoragePolicy : Tea.TeaModel {
+        public var storageTypeList: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.storageTypeList != nil {
+                map["StorageTypeList"] = self.storageTypeList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("StorageTypeList") && dict["StorageTypeList"] != nil {
+                self.storageTypeList = dict["StorageTypeList"] as! [String]
             }
         }
     }
@@ -843,7 +925,11 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
     public var runtimePolicy: CreateAppInstanceGroupRequest.RuntimePolicy?
 
+    public var securityPolicy: CreateAppInstanceGroupRequest.SecurityPolicy?
+
     public var sessionTimeout: Int32?
+
+    public var storagePolicy: CreateAppInstanceGroupRequest.StoragePolicy?
 
     public var userInfo: CreateAppInstanceGroupRequest.UserInfo?
 
@@ -862,6 +948,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         try self.network?.validate()
         try self.nodePool?.validate()
         try self.runtimePolicy?.validate()
+        try self.securityPolicy?.validate()
+        try self.storagePolicy?.validate()
         try self.userInfo?.validate()
     }
 
@@ -912,8 +1000,14 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         if self.runtimePolicy != nil {
             map["RuntimePolicy"] = self.runtimePolicy?.toMap()
         }
+        if self.securityPolicy != nil {
+            map["SecurityPolicy"] = self.securityPolicy?.toMap()
+        }
         if self.sessionTimeout != nil {
             map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.storagePolicy != nil {
+            map["StoragePolicy"] = self.storagePolicy?.toMap()
         }
         if self.userInfo != nil {
             map["UserInfo"] = self.userInfo?.toMap()
@@ -976,8 +1070,18 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
             model.fromMap(dict["RuntimePolicy"] as! [String: Any])
             self.runtimePolicy = model
         }
+        if dict.keys.contains("SecurityPolicy") && dict["SecurityPolicy"] != nil {
+            var model = CreateAppInstanceGroupRequest.SecurityPolicy()
+            model.fromMap(dict["SecurityPolicy"] as! [String: Any])
+            self.securityPolicy = model
+        }
         if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
             self.sessionTimeout = dict["SessionTimeout"] as! Int32
+        }
+        if dict.keys.contains("StoragePolicy") && dict["StoragePolicy"] != nil {
+            var model = CreateAppInstanceGroupRequest.StoragePolicy()
+            model.fromMap(dict["StoragePolicy"] as! [String: Any])
+            self.storagePolicy = model
         }
         if dict.keys.contains("UserInfo") && dict["UserInfo"] != nil {
             var model = CreateAppInstanceGroupRequest.UserInfo()
@@ -1021,7 +1125,11 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
 
     public var runtimePolicyShrink: String?
 
+    public var securityPolicyShrink: String?
+
     public var sessionTimeout: Int32?
+
+    public var storagePolicyShrink: String?
 
     public var userInfoShrink: String?
 
@@ -1086,8 +1194,14 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         if self.runtimePolicyShrink != nil {
             map["RuntimePolicy"] = self.runtimePolicyShrink!
         }
+        if self.securityPolicyShrink != nil {
+            map["SecurityPolicy"] = self.securityPolicyShrink!
+        }
         if self.sessionTimeout != nil {
             map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.storagePolicyShrink != nil {
+            map["StoragePolicy"] = self.storagePolicyShrink!
         }
         if self.userInfoShrink != nil {
             map["UserInfo"] = self.userInfoShrink!
@@ -1144,8 +1258,14 @@ public class CreateAppInstanceGroupShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("RuntimePolicy") && dict["RuntimePolicy"] != nil {
             self.runtimePolicyShrink = dict["RuntimePolicy"] as! String
         }
+        if dict.keys.contains("SecurityPolicy") && dict["SecurityPolicy"] != nil {
+            self.securityPolicyShrink = dict["SecurityPolicy"] as! String
+        }
         if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
             self.sessionTimeout = dict["SessionTimeout"] as! Int32
+        }
+        if dict.keys.contains("StoragePolicy") && dict["StoragePolicy"] != nil {
+            self.storagePolicyShrink = dict["StoragePolicy"] as! String
         }
         if dict.keys.contains("UserInfo") && dict["UserInfo"] != nil {
             self.userInfoShrink = dict["UserInfo"] as! String
@@ -1288,6 +1408,142 @@ public class CreateAppInstanceGroupResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateAppInstanceGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateImageFromAppInstanceGroupRequest : Tea.TeaModel {
+    public var appCenterImageName: String?
+
+    public var appInstanceGroupId: String?
+
+    public var productType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appCenterImageName != nil {
+            map["AppCenterImageName"] = self.appCenterImageName!
+        }
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppCenterImageName") && dict["AppCenterImageName"] != nil {
+            self.appCenterImageName = dict["AppCenterImageName"] as! String
+        }
+        if dict.keys.contains("AppInstanceGroupId") && dict["AppInstanceGroupId"] != nil {
+            self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+        }
+        if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
+            self.productType = dict["ProductType"] as! String
+        }
+    }
+}
+
+public class CreateImageFromAppInstanceGroupResponseBody : Tea.TeaModel {
+    public var imageId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.imageId != nil {
+            map["ImageId"] = self.imageId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
+            self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateImageFromAppInstanceGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateImageFromAppInstanceGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateImageFromAppInstanceGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -2052,6 +2308,8 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var sessionTimeout: String?
 
+        public var skipUserAuthCheck: Bool?
+
         public var specId: String?
 
         public var status: String?
@@ -2132,6 +2390,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if self.sessionTimeout != nil {
                 map["SessionTimeout"] = self.sessionTimeout!
+            }
+            if self.skipUserAuthCheck != nil {
+                map["SkipUserAuthCheck"] = self.skipUserAuthCheck!
             }
             if self.specId != nil {
                 map["SpecId"] = self.specId!
@@ -2214,6 +2475,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
                 self.sessionTimeout = dict["SessionTimeout"] as! String
+            }
+            if dict.keys.contains("SkipUserAuthCheck") && dict["SkipUserAuthCheck"] != nil {
+                self.skipUserAuthCheck = dict["SkipUserAuthCheck"] as! Bool
             }
             if dict.keys.contains("SpecId") && dict["SpecId"] != nil {
                 self.specId = dict["SpecId"] as! String
@@ -2541,6 +2805,174 @@ public class GetConnectionTicketResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetConnectionTicketResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetDebugAppInstanceRequest : Tea.TeaModel {
+    public var appInstanceGroupId: String?
+
+    public var productType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppInstanceGroupId") && dict["AppInstanceGroupId"] != nil {
+            self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+        }
+        if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
+            self.productType = dict["ProductType"] as! String
+        }
+    }
+}
+
+public class GetDebugAppInstanceResponseBody : Tea.TeaModel {
+    public var appId: String?
+
+    public var appInstanceGroupId: String?
+
+    public var appInstanceId: String?
+
+    public var appVersion: String?
+
+    public var authCode: String?
+
+    public var requestId: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appInstanceGroupId != nil {
+            map["AppInstanceGroupId"] = self.appInstanceGroupId!
+        }
+        if self.appInstanceId != nil {
+            map["AppInstanceId"] = self.appInstanceId!
+        }
+        if self.appVersion != nil {
+            map["AppVersion"] = self.appVersion!
+        }
+        if self.authCode != nil {
+            map["AuthCode"] = self.authCode!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppInstanceGroupId") && dict["AppInstanceGroupId"] != nil {
+            self.appInstanceGroupId = dict["AppInstanceGroupId"] as! String
+        }
+        if dict.keys.contains("AppInstanceId") && dict["AppInstanceId"] != nil {
+            self.appInstanceId = dict["AppInstanceId"] as! String
+        }
+        if dict.keys.contains("AppVersion") && dict["AppVersion"] != nil {
+            self.appVersion = dict["AppVersion"] as! String
+        }
+        if dict.keys.contains("AuthCode") && dict["AuthCode"] != nil {
+            self.authCode = dict["AuthCode"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("UserId") && dict["UserId"] != nil {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class GetDebugAppInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDebugAppInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetDebugAppInstanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3996,6 +4428,8 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var sessionTimeout: String?
 
+        public var skipUserAuthCheck: Bool?
+
         public var specId: String?
 
         public var status: String?
@@ -4076,6 +4510,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if self.sessionTimeout != nil {
                 map["SessionTimeout"] = self.sessionTimeout!
+            }
+            if self.skipUserAuthCheck != nil {
+                map["SkipUserAuthCheck"] = self.skipUserAuthCheck!
             }
             if self.specId != nil {
                 map["SpecId"] = self.specId!
@@ -4158,6 +4595,9 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
                 self.sessionTimeout = dict["SessionTimeout"] as! String
+            }
+            if dict.keys.contains("SkipUserAuthCheck") && dict["SkipUserAuthCheck"] != nil {
+                self.skipUserAuthCheck = dict["SkipUserAuthCheck"] as! Bool
             }
             if dict.keys.contains("SpecId") && dict["SpecId"] != nil {
                 self.specId = dict["SpecId"] as! String
@@ -4297,6 +4737,10 @@ public class ListAppInstancesRequest : Tea.TeaModel {
 
     public var appInstanceId: String?
 
+    public var appInstanceIdList: [String]?
+
+    public var includeDeleted: Bool?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -4323,6 +4767,12 @@ public class ListAppInstancesRequest : Tea.TeaModel {
         if self.appInstanceId != nil {
             map["AppInstanceId"] = self.appInstanceId!
         }
+        if self.appInstanceIdList != nil {
+            map["AppInstanceIdList"] = self.appInstanceIdList!
+        }
+        if self.includeDeleted != nil {
+            map["IncludeDeleted"] = self.includeDeleted!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -4342,6 +4792,12 @@ public class ListAppInstancesRequest : Tea.TeaModel {
         if dict.keys.contains("AppInstanceId") && dict["AppInstanceId"] != nil {
             self.appInstanceId = dict["AppInstanceId"] as! String
         }
+        if dict.keys.contains("AppInstanceIdList") && dict["AppInstanceIdList"] != nil {
+            self.appInstanceIdList = dict["AppInstanceIdList"] as! [String]
+        }
+        if dict.keys.contains("IncludeDeleted") && dict["IncludeDeleted"] != nil {
+            self.includeDeleted = dict["IncludeDeleted"] as! Bool
+        }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
@@ -4356,9 +4812,48 @@ public class ListAppInstancesRequest : Tea.TeaModel {
 
 public class ListAppInstancesResponseBody : Tea.TeaModel {
     public class AppInstanceModels : Tea.TeaModel {
+        public class BindInfo : Tea.TeaModel {
+            public var endUserId: String?
+
+            public var usageDuration: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endUserId != nil {
+                    map["EndUserId"] = self.endUserId!
+                }
+                if self.usageDuration != nil {
+                    map["UsageDuration"] = self.usageDuration!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
+                    self.endUserId = dict["EndUserId"] as! String
+                }
+                if dict.keys.contains("UsageDuration") && dict["UsageDuration"] != nil {
+                    self.usageDuration = dict["UsageDuration"] as! Int64
+                }
+            }
+        }
         public var appInstanceGroupId: String?
 
         public var appInstanceId: String?
+
+        public var bindInfo: ListAppInstancesResponseBody.AppInstanceModels.BindInfo?
 
         public var gmtCreate: String?
 
@@ -4380,6 +4875,7 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.bindInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -4389,6 +4885,9 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
             }
             if self.appInstanceId != nil {
                 map["AppInstanceId"] = self.appInstanceId!
+            }
+            if self.bindInfo != nil {
+                map["BindInfo"] = self.bindInfo?.toMap()
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
@@ -4414,6 +4913,11 @@ public class ListAppInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppInstanceId") && dict["AppInstanceId"] != nil {
                 self.appInstanceId = dict["AppInstanceId"] as! String
+            }
+            if dict.keys.contains("BindInfo") && dict["BindInfo"] != nil {
+                var model = ListAppInstancesResponseBody.AppInstanceModels.BindInfo()
+                model.fromMap(dict["BindInfo"] as! [String: Any])
+                self.bindInfo = model
             }
             if dict.keys.contains("GmtCreate") && dict["GmtCreate"] != nil {
                 self.gmtCreate = dict["GmtCreate"] as! String
@@ -5506,6 +6010,72 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
             }
         }
     }
+    public class SecurityPolicy : Tea.TeaModel {
+        public var resetAfterUnbind: Bool?
+
+        public var skipUserAuthCheck: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resetAfterUnbind != nil {
+                map["ResetAfterUnbind"] = self.resetAfterUnbind!
+            }
+            if self.skipUserAuthCheck != nil {
+                map["SkipUserAuthCheck"] = self.skipUserAuthCheck!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ResetAfterUnbind") && dict["ResetAfterUnbind"] != nil {
+                self.resetAfterUnbind = dict["ResetAfterUnbind"] as! Bool
+            }
+            if dict.keys.contains("SkipUserAuthCheck") && dict["SkipUserAuthCheck"] != nil {
+                self.skipUserAuthCheck = dict["SkipUserAuthCheck"] as! Bool
+            }
+        }
+    }
+    public class StoragePolicy : Tea.TeaModel {
+        public var storageTypeList: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.storageTypeList != nil {
+                map["StorageTypeList"] = self.storageTypeList!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("StorageTypeList") && dict["StorageTypeList"] != nil {
+                self.storageTypeList = dict["StorageTypeList"] as! [String]
+            }
+        }
+    }
     public var appInstanceGroupId: String?
 
     public var appInstanceGroupName: String?
@@ -5514,7 +6084,11 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
 
     public var productType: String?
 
+    public var securityPolicy: ModifyAppInstanceGroupAttributeRequest.SecurityPolicy?
+
     public var sessionTimeout: Int32?
+
+    public var storagePolicy: ModifyAppInstanceGroupAttributeRequest.StoragePolicy?
 
     public override init() {
         super.init()
@@ -5527,6 +6101,8 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.nodePool?.validate()
+        try self.securityPolicy?.validate()
+        try self.storagePolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5543,8 +6119,14 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
+        if self.securityPolicy != nil {
+            map["SecurityPolicy"] = self.securityPolicy?.toMap()
+        }
         if self.sessionTimeout != nil {
             map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.storagePolicy != nil {
+            map["StoragePolicy"] = self.storagePolicy?.toMap()
         }
         return map
     }
@@ -5564,8 +6146,18 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
         }
+        if dict.keys.contains("SecurityPolicy") && dict["SecurityPolicy"] != nil {
+            var model = ModifyAppInstanceGroupAttributeRequest.SecurityPolicy()
+            model.fromMap(dict["SecurityPolicy"] as! [String: Any])
+            self.securityPolicy = model
+        }
         if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
             self.sessionTimeout = dict["SessionTimeout"] as! Int32
+        }
+        if dict.keys.contains("StoragePolicy") && dict["StoragePolicy"] != nil {
+            var model = ModifyAppInstanceGroupAttributeRequest.StoragePolicy()
+            model.fromMap(dict["StoragePolicy"] as! [String: Any])
+            self.storagePolicy = model
         }
     }
 }
@@ -5579,7 +6171,11 @@ public class ModifyAppInstanceGroupAttributeShrinkRequest : Tea.TeaModel {
 
     public var productType: String?
 
+    public var securityPolicyShrink: String?
+
     public var sessionTimeout: Int32?
+
+    public var storagePolicyShrink: String?
 
     public override init() {
         super.init()
@@ -5607,8 +6203,14 @@ public class ModifyAppInstanceGroupAttributeShrinkRequest : Tea.TeaModel {
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
+        if self.securityPolicyShrink != nil {
+            map["SecurityPolicy"] = self.securityPolicyShrink!
+        }
         if self.sessionTimeout != nil {
             map["SessionTimeout"] = self.sessionTimeout!
+        }
+        if self.storagePolicyShrink != nil {
+            map["StoragePolicy"] = self.storagePolicyShrink!
         }
         return map
     }
@@ -5626,8 +6228,14 @@ public class ModifyAppInstanceGroupAttributeShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
         }
+        if dict.keys.contains("SecurityPolicy") && dict["SecurityPolicy"] != nil {
+            self.securityPolicyShrink = dict["SecurityPolicy"] as! String
+        }
         if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
             self.sessionTimeout = dict["SessionTimeout"] as! Int32
+        }
+        if dict.keys.contains("StoragePolicy") && dict["StoragePolicy"] != nil {
+            self.storagePolicyShrink = dict["StoragePolicy"] as! String
         }
     }
 }
