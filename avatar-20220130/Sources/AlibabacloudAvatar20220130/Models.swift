@@ -2226,6 +2226,8 @@ public class SendMessageRequest : Tea.TeaModel {
             }
         }
     }
+    public var feedback: Bool?
+
     public var sessionId: String?
 
     public var tenantId: Int64?
@@ -2250,6 +2252,9 @@ public class SendMessageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.feedback != nil {
+            map["Feedback"] = self.feedback!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -2266,6 +2271,9 @@ public class SendMessageRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Feedback") && dict["Feedback"] != nil {
+            self.feedback = dict["Feedback"] as! Bool
+        }
         if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
             self.sessionId = dict["SessionId"] as! String
         }
@@ -2286,6 +2294,8 @@ public class SendMessageRequest : Tea.TeaModel {
 }
 
 public class SendMessageShrinkRequest : Tea.TeaModel {
+    public var feedback: Bool?
+
     public var sessionId: String?
 
     public var tenantId: Int64?
@@ -2308,6 +2318,9 @@ public class SendMessageShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.feedback != nil {
+            map["Feedback"] = self.feedback!
+        }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
@@ -2324,6 +2337,9 @@ public class SendMessageShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Feedback") && dict["Feedback"] != nil {
+            self.feedback = dict["Feedback"] as! Bool
+        }
         if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
             self.sessionId = dict["SessionId"] as! String
         }

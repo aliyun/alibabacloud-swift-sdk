@@ -323,6 +323,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.VAMLRequestShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.VAMLRequest, "VAMLRequest", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.feedback)) {
+            query["Feedback"] = request.feedback!;
+        }
         if (!TeaUtils.Client.isUnset(request.sessionId)) {
             query["SessionId"] = request.sessionId ?? "";
         }
