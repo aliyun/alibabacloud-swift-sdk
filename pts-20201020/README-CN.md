@@ -17,7 +17,7 @@
 [CocoaPods](https://cocoapods.org) 是 Cocoa 项目管理工具。请访问其官方网站获取关于 CocoaPods 的使用和安装说明。要使用 CocoaPods 将 `AlibabacloudPTS20201020` 集成到你的 Xcode 项目中，需要在 `Podfile` 中定义以下内容:
 
 ```ruby
-pod 'AlibabacloudPTS20201020', '~> 1.8.21'
+pod 'AlibabacloudPTS20201020', '~> 1.8.22'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudPTS20201020', '~> 1.8.21'
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudPTS20201020` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/pts-20201020" "1.8.21"
+github "alibabacloud-sdk-swift/pts-20201020" "1.8.22"
 ```
 
 ### Swift 包管理工具
@@ -34,7 +34,7 @@ github "alibabacloud-sdk-swift/pts-20201020" "1.8.21"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/pts-20201020.git", from: "1.8.21")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/pts-20201020.git", from: "1.8.22")
 ]
 ```
 
