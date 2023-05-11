@@ -2131,11 +2131,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDnsProductInstancesWithOptions(_ request: DescribeDnsProductInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDnsProductInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.direction)) {
+            query["Direction"] = request.direction ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.domainType)) {
             query["DomainType"] = request.domainType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["OrderBy"] = request.orderBy ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;

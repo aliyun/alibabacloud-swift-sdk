@@ -13134,9 +13134,13 @@ public class DescribeDnsProductInstanceResponse : Tea.TeaModel {
 }
 
 public class DescribeDnsProductInstancesRequest : Tea.TeaModel {
+    public var direction: String?
+
     public var domainType: String?
 
     public var lang: String?
+
+    public var orderBy: String?
 
     public var pageNumber: Int64?
 
@@ -13160,11 +13164,17 @@ public class DescribeDnsProductInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
         if self.domainType != nil {
             map["DomainType"] = self.domainType!
         }
         if self.lang != nil {
             map["Lang"] = self.lang!
+        }
+        if self.orderBy != nil {
+            map["OrderBy"] = self.orderBy!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -13182,11 +13192,17 @@ public class DescribeDnsProductInstancesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Direction") && dict["Direction"] != nil {
+            self.direction = dict["Direction"] as! String
+        }
         if dict.keys.contains("DomainType") && dict["DomainType"] != nil {
             self.domainType = dict["DomainType"] as! String
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("OrderBy") && dict["OrderBy"] != nil {
+            self.orderBy = dict["OrderBy"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int64
