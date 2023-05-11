@@ -14,37 +14,37 @@
 
 ### CocoaPods
 
-[CocoaPods](https://cocoapods.org) 是 Cocoa 项目管理工具。请访问其官方网站获取关于 CocoaPods 的使用和安装说明。要使用 CocoaPods 将 `AlibabacloudQuickbi_public20220101` 集成到你的 Xcode 项目中，需要在 `Podfile` 中定义以下内容:
+[CocoaPods](https://cocoapods.org) 是 Cocoa 项目管理工具。请访问其官方网站获取关于 CocoaPods 的使用和安装说明。要使用 CocoaPods 将 `AlibabacloudQuickbiPublic20220101` 集成到你的 Xcode 项目中，需要在 `Podfile` 中定义以下内容:
 
 ```ruby
-pod 'AlibabacloudQuickbi_public20220101', '~> 1.0.1'
+pod 'AlibabacloudQuickbiPublic20220101', '~> 1.0.2'
 ```
 
 ### Carthage
 
-要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudQuickbi_public20220101` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
+要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudQuickbiPublic20220101` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/quickbi-public-20220101" "1.0.1"
+github "alibabacloud-sdk-swift/quickbi-public-20220101" "1.0.2"
 ```
 
 ### Swift 包管理工具
 
-要使用 [Swift Package Manager](https://swift.org/package-manager/) 将 `AlibabacloudQuickbi_public20220101` 集成到你的 Xcode 项目中，请将 `AlibabacloudQuickbi_public20220101` 添加至你的 `Package.swift` 文件的 dependencies 数组内容中:
+要使用 [Swift Package Manager](https://swift.org/package-manager/) 将 `AlibabacloudQuickbiPublic20220101` 集成到你的 Xcode 项目中，请将 `AlibabacloudQuickbiPublic20220101` 添加至你的 `Package.swift` 文件的 dependencies 数组内容中:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/quickbi-public-20220101.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/quickbi-public-20220101.git", from: "1.0.2")
 ]
 ```
 
-另外，还需要在 `target` 的 `dependencies` 中添加 `"AlibabacloudQuickbi_public20220101"`，如下：
+另外，还需要在 `target` 的 `dependencies` 中添加 `"AlibabacloudQuickbiPublic20220101"`，如下：
 
 ```swift
 .target(
     name: "<your-project-name>",
     dependencies: [
-        "AlibabacloudQuickbi_public20220101",
+        "AlibabacloudQuickbiPublic20220101",
     ]),
 ```
 
@@ -58,6 +58,7 @@ dependencies: [
 
 ## 相关
 
+* [开发者门户](https://next.api.aliyun.com/home)
 * [最新源码](https://github.com/alibabacloud-sdk-swift/quickbi-public-20220101)
 
 ## 许可证

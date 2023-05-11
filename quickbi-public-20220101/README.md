@@ -14,37 +14,37 @@ English | [简体中文](README-CN.md)
 
 ### CocoaPods
 
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudQuickbi_public20220101` into your Xcode project using CocoaPods, specify it in your `Podfile`:
+[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudQuickbiPublic20220101` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudQuickbi_public20220101', '~> 1.0.1'
+pod 'AlibabacloudQuickbiPublic20220101', '~> 1.0.2'
 ```
 
 ### Carthage
 
-To integrate `AlibabacloudQuickbi_public20220101` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
+To integrate `AlibabacloudQuickbiPublic20220101` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/quickbi-public-20220101" "1.0.1"
+github "alibabacloud-sdk-swift/quickbi-public-20220101" "1.0.2"
 ```
 
 ### Swift Package Manager
 
-To integrate `AlibabacloudQuickbi_public20220101` into your Xcode project using [Swift Package Manager](https://swift.org/package-manager/) , adding `AlibabacloudQuickbi_public20220101` to the `dependencies` value of your `Package.swift`.
+To integrate `AlibabacloudQuickbiPublic20220101` into your Xcode project using [Swift Package Manager](https://swift.org/package-manager/) , adding `AlibabacloudQuickbiPublic20220101` to the `dependencies` value of your `Package.swift`.
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/quickbi-public-20220101.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/quickbi-public-20220101.git", from: "1.0.2")
 ]
 ```
 
-In addition, you also need to add `"AlibabacloudQuickbi_public20220101"` to the `dependencies` of the `target`, as follows:
+In addition, you also need to add `"AlibabacloudQuickbiPublic20220101"` to the `dependencies` of the `target`, as follows:
 
 ```swift
 .target(
     name: "<your-project-name>",
     dependencies: [
-        "AlibabacloudQuickbi_public20220101",
+        "AlibabacloudQuickbiPublic20220101",
     ])
 ```
 
@@ -58,6 +58,7 @@ Detailed changes for each release are documented in the [release notes](./Change
 
 ## References
 
+* [OpenAPI Developer Portal](https://next.api.alibabacloud.com/home)
 - [Latest Release](https://github.com/alibabacloud-sdk-swift/quickbi-public-20220101)
 
 ## License
