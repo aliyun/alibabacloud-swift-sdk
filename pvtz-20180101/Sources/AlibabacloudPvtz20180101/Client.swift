@@ -617,6 +617,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.userClientIp)) {
             query["UserClientIp"] = request.userClientIp ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vpcType)) {
+            query["VpcType"] = request.vpcType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
