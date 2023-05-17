@@ -112,6 +112,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ecsInstanceType)) {
             body["EcsInstanceType"] = request.ecsInstanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.systemDiskSize)) {
+            body["SystemDiskSize"] = request.systemDiskSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.zone)) {
+            body["Zone"] = request.zone ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -154,8 +160,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ecsInstanceType)) {
             body["EcsInstanceType"] = request.ecsInstanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.systemDiskSize)) {
+            body["SystemDiskSize"] = request.systemDiskSize!;
+        }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             body["UserData"] = request.userData ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.zone)) {
+            body["Zone"] = request.zone ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -265,6 +277,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createServiceAutoScalerWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: CreateServiceAutoScalerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateServiceAutoScalerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.behavior)) {
+            body["behavior"] = request.behavior!;
+        }
         if (!TeaUtils.Client.isUnset(request.max)) {
             body["max"] = request.max!;
         }
@@ -951,6 +966,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.eventType)) {
+            query["EventType"] = request.eventType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNum)) {
             query["PageNum"] = request.pageNum ?? "";
         }
@@ -990,8 +1011,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeServiceLogWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: DescribeServiceLogRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeServiceLogResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.containerName)) {
+            query["ContainerName"] = request.containerName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ip)) {
             query["Ip"] = request.ip ?? "";
@@ -1004,6 +1031,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.previous)) {
+            query["Previous"] = request.previous!;
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
@@ -1218,17 +1248,32 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIP)) {
+            query["InstanceIP"] = request.instanceIP ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             query["InstanceName"] = request.instanceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceStatus)) {
+            query["InstanceStatus"] = request.instanceStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1338,11 +1383,44 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listServiceInstancesWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: ListServiceInstancesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["Filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hostIP)) {
+            query["HostIP"] = request.hostIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIP)) {
+            query["InstanceIP"] = request.instanceIP ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceName)) {
+            query["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceStatus)) {
+            query["InstanceStatus"] = request.instanceStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceType)) {
+            query["InstanceType"] = request.instanceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isSpot)) {
+            query["IsSpot"] = request.isSpot!;
+        }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.role)) {
+            query["Role"] = request.role ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["Sort"] = request.sort ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1436,8 +1514,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.parentServiceUid)) {
             query["ParentServiceUid"] = request.parentServiceUid ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceName)) {
+            query["ResourceName"] = request.resourceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceStatus)) {
+            query["ServiceStatus"] = request.serviceStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceType)) {
             query["ServiceType"] = request.serviceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceUid)) {
+            query["ServiceUid"] = request.serviceUid ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sort)) {
             query["Sort"] = request.sort ?? "";
@@ -1782,6 +1872,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateServiceAutoScalerWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceAutoScalerRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceAutoScalerResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.behavior)) {
+            body["behavior"] = request.behavior!;
+        }
         if (!TeaUtils.Client.isUnset(request.max)) {
             body["max"] = request.max!;
         }
