@@ -6086,6 +6086,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.editingProduceConfig)) {
             query["EditingProduceConfig"] = request.editingProduceConfig ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mediaMetadata)) {
+            query["MediaMetadata"] = request.mediaMetadata ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.outputMediaConfig)) {
             query["OutputMediaConfig"] = request.outputMediaConfig ?? "";
         }

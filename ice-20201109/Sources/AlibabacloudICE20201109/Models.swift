@@ -24201,6 +24201,91 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public class TransConfig : Tea.TeaModel {
+                            public var adjDarMethod: String?
+
+                            public var isCheckAudioBitrate: String?
+
+                            public var isCheckAudioBitrateFail: String?
+
+                            public var isCheckReso: String?
+
+                            public var isCheckResoFail: String?
+
+                            public var isCheckVideoBitrate: String?
+
+                            public var isCheckVideoBitrateFail: String?
+
+                            public var transMode: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.adjDarMethod != nil {
+                                    map["AdjDarMethod"] = self.adjDarMethod!
+                                }
+                                if self.isCheckAudioBitrate != nil {
+                                    map["IsCheckAudioBitrate"] = self.isCheckAudioBitrate!
+                                }
+                                if self.isCheckAudioBitrateFail != nil {
+                                    map["IsCheckAudioBitrateFail"] = self.isCheckAudioBitrateFail!
+                                }
+                                if self.isCheckReso != nil {
+                                    map["IsCheckReso"] = self.isCheckReso!
+                                }
+                                if self.isCheckResoFail != nil {
+                                    map["IsCheckResoFail"] = self.isCheckResoFail!
+                                }
+                                if self.isCheckVideoBitrate != nil {
+                                    map["IsCheckVideoBitrate"] = self.isCheckVideoBitrate!
+                                }
+                                if self.isCheckVideoBitrateFail != nil {
+                                    map["IsCheckVideoBitrateFail"] = self.isCheckVideoBitrateFail!
+                                }
+                                if self.transMode != nil {
+                                    map["TransMode"] = self.transMode!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("AdjDarMethod") && dict["AdjDarMethod"] != nil {
+                                    self.adjDarMethod = dict["AdjDarMethod"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrate") && dict["IsCheckAudioBitrate"] != nil {
+                                    self.isCheckAudioBitrate = dict["IsCheckAudioBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrateFail") && dict["IsCheckAudioBitrateFail"] != nil {
+                                    self.isCheckAudioBitrateFail = dict["IsCheckAudioBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckReso") && dict["IsCheckReso"] != nil {
+                                    self.isCheckReso = dict["IsCheckReso"] as! String
+                                }
+                                if dict.keys.contains("IsCheckResoFail") && dict["IsCheckResoFail"] != nil {
+                                    self.isCheckResoFail = dict["IsCheckResoFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrate") && dict["IsCheckVideoBitrate"] != nil {
+                                    self.isCheckVideoBitrate = dict["IsCheckVideoBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrateFail") && dict["IsCheckVideoBitrateFail"] != nil {
+                                    self.isCheckVideoBitrateFail = dict["IsCheckVideoBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("TransMode") && dict["TransMode"] != nil {
+                                    self.transMode = dict["TransMode"] as! String
+                                }
+                            }
+                        }
                         public class Video : Tea.TeaModel {
                             public var abrMax: String?
 
@@ -24372,6 +24457,8 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
 
                         public var muxConfig: GetTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.MuxConfig?
 
+                        public var transConfig: GetTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.TransConfig?
+
                         public var video: GetTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.Video?
 
                         public override init() {
@@ -24387,6 +24474,7 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                             try self.audio?.validate()
                             try self.container?.validate()
                             try self.muxConfig?.validate()
+                            try self.transConfig?.validate()
                             try self.video?.validate()
                         }
 
@@ -24400,6 +24488,9 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                             }
                             if self.muxConfig != nil {
                                 map["MuxConfig"] = self.muxConfig?.toMap()
+                            }
+                            if self.transConfig != nil {
+                                map["TransConfig"] = self.transConfig?.toMap()
                             }
                             if self.video != nil {
                                 map["Video"] = self.video?.toMap()
@@ -24422,6 +24513,11 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                                 var model = GetTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.MuxConfig()
                                 model.fromMap(dict["MuxConfig"] as! [String: Any])
                                 self.muxConfig = model
+                            }
+                            if dict.keys.contains("TransConfig") && dict["TransConfig"] != nil {
+                                var model = GetTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.TransConfig()
+                                model.fromMap(dict["TransConfig"] as! [String: Any])
+                                self.transConfig = model
                             }
                             if dict.keys.contains("Video") && dict["Video"] != nil {
                                 var model = GetTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.Video()
@@ -26091,6 +26187,91 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public class TransConfig : Tea.TeaModel {
+                            public var adjDarMethod: String?
+
+                            public var isCheckAudioBitrate: String?
+
+                            public var isCheckAudioBitrateFail: String?
+
+                            public var isCheckReso: String?
+
+                            public var isCheckResoFail: String?
+
+                            public var isCheckVideoBitrate: String?
+
+                            public var isCheckVideoBitrateFail: String?
+
+                            public var transMode: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.adjDarMethod != nil {
+                                    map["AdjDarMethod"] = self.adjDarMethod!
+                                }
+                                if self.isCheckAudioBitrate != nil {
+                                    map["IsCheckAudioBitrate"] = self.isCheckAudioBitrate!
+                                }
+                                if self.isCheckAudioBitrateFail != nil {
+                                    map["IsCheckAudioBitrateFail"] = self.isCheckAudioBitrateFail!
+                                }
+                                if self.isCheckReso != nil {
+                                    map["IsCheckReso"] = self.isCheckReso!
+                                }
+                                if self.isCheckResoFail != nil {
+                                    map["IsCheckResoFail"] = self.isCheckResoFail!
+                                }
+                                if self.isCheckVideoBitrate != nil {
+                                    map["IsCheckVideoBitrate"] = self.isCheckVideoBitrate!
+                                }
+                                if self.isCheckVideoBitrateFail != nil {
+                                    map["IsCheckVideoBitrateFail"] = self.isCheckVideoBitrateFail!
+                                }
+                                if self.transMode != nil {
+                                    map["TransMode"] = self.transMode!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("AdjDarMethod") && dict["AdjDarMethod"] != nil {
+                                    self.adjDarMethod = dict["AdjDarMethod"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrate") && dict["IsCheckAudioBitrate"] != nil {
+                                    self.isCheckAudioBitrate = dict["IsCheckAudioBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrateFail") && dict["IsCheckAudioBitrateFail"] != nil {
+                                    self.isCheckAudioBitrateFail = dict["IsCheckAudioBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckReso") && dict["IsCheckReso"] != nil {
+                                    self.isCheckReso = dict["IsCheckReso"] as! String
+                                }
+                                if dict.keys.contains("IsCheckResoFail") && dict["IsCheckResoFail"] != nil {
+                                    self.isCheckResoFail = dict["IsCheckResoFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrate") && dict["IsCheckVideoBitrate"] != nil {
+                                    self.isCheckVideoBitrate = dict["IsCheckVideoBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrateFail") && dict["IsCheckVideoBitrateFail"] != nil {
+                                    self.isCheckVideoBitrateFail = dict["IsCheckVideoBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("TransMode") && dict["TransMode"] != nil {
+                                    self.transMode = dict["TransMode"] as! String
+                                }
+                            }
+                        }
                         public class Video : Tea.TeaModel {
                             public var abrMax: String?
 
@@ -26264,6 +26445,8 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
 
                         public var tags: [String: String]?
 
+                        public var transConfig: GetTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.TransConfig?
+
                         public var video: GetTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.Video?
 
                         public override init() {
@@ -26279,6 +26462,7 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                             try self.audio?.validate()
                             try self.container?.validate()
                             try self.muxConfig?.validate()
+                            try self.transConfig?.validate()
                             try self.video?.validate()
                         }
 
@@ -26295,6 +26479,9 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                             }
                             if self.tags != nil {
                                 map["Tags"] = self.tags!
+                            }
+                            if self.transConfig != nil {
+                                map["TransConfig"] = self.transConfig?.toMap()
                             }
                             if self.video != nil {
                                 map["Video"] = self.video?.toMap()
@@ -26320,6 +26507,11 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                             }
                             if dict.keys.contains("Tags") && dict["Tags"] != nil {
                                 self.tags = dict["Tags"] as! [String: String]
+                            }
+                            if dict.keys.contains("TransConfig") && dict["TransConfig"] != nil {
+                                var model = GetTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.TransConfig()
+                                model.fromMap(dict["TransConfig"] as! [String: Any])
+                                self.transConfig = model
                             }
                             if dict.keys.contains("Video") && dict["Video"] != nil {
                                 var model = GetTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.Video()
@@ -49923,6 +50115,8 @@ public class SubmitMediaProducingJobRequest : Tea.TeaModel {
 
     public var editingProduceConfig: String?
 
+    public var mediaMetadata: String?
+
     public var outputMediaConfig: String?
 
     public var outputMediaTarget: String?
@@ -49962,6 +50156,9 @@ public class SubmitMediaProducingJobRequest : Tea.TeaModel {
         if self.editingProduceConfig != nil {
             map["EditingProduceConfig"] = self.editingProduceConfig!
         }
+        if self.mediaMetadata != nil {
+            map["MediaMetadata"] = self.mediaMetadata!
+        }
         if self.outputMediaConfig != nil {
             map["OutputMediaConfig"] = self.outputMediaConfig!
         }
@@ -49998,6 +50195,9 @@ public class SubmitMediaProducingJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EditingProduceConfig") && dict["EditingProduceConfig"] != nil {
             self.editingProduceConfig = dict["EditingProduceConfig"] as! String
+        }
+        if dict.keys.contains("MediaMetadata") && dict["MediaMetadata"] != nil {
+            self.mediaMetadata = dict["MediaMetadata"] as! String
         }
         if dict.keys.contains("OutputMediaConfig") && dict["OutputMediaConfig"] != nil {
             self.outputMediaConfig = dict["OutputMediaConfig"] as! String
@@ -53550,6 +53750,91 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
                             }
                         }
                     }
+                    public class TransConfig : Tea.TeaModel {
+                        public var adjDarMethod: String?
+
+                        public var isCheckAudioBitrate: String?
+
+                        public var isCheckAudioBitrateFail: String?
+
+                        public var isCheckReso: String?
+
+                        public var isCheckResoFail: String?
+
+                        public var isCheckVideoBitrate: String?
+
+                        public var isCheckVideoBitrateFail: String?
+
+                        public var transMode: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.adjDarMethod != nil {
+                                map["AdjDarMethod"] = self.adjDarMethod!
+                            }
+                            if self.isCheckAudioBitrate != nil {
+                                map["IsCheckAudioBitrate"] = self.isCheckAudioBitrate!
+                            }
+                            if self.isCheckAudioBitrateFail != nil {
+                                map["IsCheckAudioBitrateFail"] = self.isCheckAudioBitrateFail!
+                            }
+                            if self.isCheckReso != nil {
+                                map["IsCheckReso"] = self.isCheckReso!
+                            }
+                            if self.isCheckResoFail != nil {
+                                map["IsCheckResoFail"] = self.isCheckResoFail!
+                            }
+                            if self.isCheckVideoBitrate != nil {
+                                map["IsCheckVideoBitrate"] = self.isCheckVideoBitrate!
+                            }
+                            if self.isCheckVideoBitrateFail != nil {
+                                map["IsCheckVideoBitrateFail"] = self.isCheckVideoBitrateFail!
+                            }
+                            if self.transMode != nil {
+                                map["TransMode"] = self.transMode!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("AdjDarMethod") && dict["AdjDarMethod"] != nil {
+                                self.adjDarMethod = dict["AdjDarMethod"] as! String
+                            }
+                            if dict.keys.contains("IsCheckAudioBitrate") && dict["IsCheckAudioBitrate"] != nil {
+                                self.isCheckAudioBitrate = dict["IsCheckAudioBitrate"] as! String
+                            }
+                            if dict.keys.contains("IsCheckAudioBitrateFail") && dict["IsCheckAudioBitrateFail"] != nil {
+                                self.isCheckAudioBitrateFail = dict["IsCheckAudioBitrateFail"] as! String
+                            }
+                            if dict.keys.contains("IsCheckReso") && dict["IsCheckReso"] != nil {
+                                self.isCheckReso = dict["IsCheckReso"] as! String
+                            }
+                            if dict.keys.contains("IsCheckResoFail") && dict["IsCheckResoFail"] != nil {
+                                self.isCheckResoFail = dict["IsCheckResoFail"] as! String
+                            }
+                            if dict.keys.contains("IsCheckVideoBitrate") && dict["IsCheckVideoBitrate"] != nil {
+                                self.isCheckVideoBitrate = dict["IsCheckVideoBitrate"] as! String
+                            }
+                            if dict.keys.contains("IsCheckVideoBitrateFail") && dict["IsCheckVideoBitrateFail"] != nil {
+                                self.isCheckVideoBitrateFail = dict["IsCheckVideoBitrateFail"] as! String
+                            }
+                            if dict.keys.contains("TransMode") && dict["TransMode"] != nil {
+                                self.transMode = dict["TransMode"] as! String
+                            }
+                        }
+                    }
                     public class Video : Tea.TeaModel {
                         public var abrMax: String?
 
@@ -53723,6 +54008,8 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
 
                     public var tags: [String: String]?
 
+                    public var transConfig: SubmitTranscodeJobRequest.OutputGroup.ProcessConfig.Transcode.OverwriteParams.TransConfig?
+
                     public var video: SubmitTranscodeJobRequest.OutputGroup.ProcessConfig.Transcode.OverwriteParams.Video?
 
                     public override init() {
@@ -53738,6 +54025,7 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
                         try self.audio?.validate()
                         try self.container?.validate()
                         try self.muxConfig?.validate()
+                        try self.transConfig?.validate()
                         try self.video?.validate()
                     }
 
@@ -53754,6 +54042,9 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
                         }
                         if self.tags != nil {
                             map["Tags"] = self.tags!
+                        }
+                        if self.transConfig != nil {
+                            map["TransConfig"] = self.transConfig?.toMap()
                         }
                         if self.video != nil {
                             map["Video"] = self.video?.toMap()
@@ -53779,6 +54070,11 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
                         }
                         if dict.keys.contains("Tags") && dict["Tags"] != nil {
                             self.tags = dict["Tags"] as! [String: String]
+                        }
+                        if dict.keys.contains("TransConfig") && dict["TransConfig"] != nil {
+                            var model = SubmitTranscodeJobRequest.OutputGroup.ProcessConfig.Transcode.OverwriteParams.TransConfig()
+                            model.fromMap(dict["TransConfig"] as! [String: Any])
+                            self.transConfig = model
                         }
                         if dict.keys.contains("Video") && dict["Video"] != nil {
                             var model = SubmitTranscodeJobRequest.OutputGroup.ProcessConfig.Transcode.OverwriteParams.Video()
@@ -55057,6 +55353,91 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public class TransConfig : Tea.TeaModel {
+                            public var adjDarMethod: String?
+
+                            public var isCheckAudioBitrate: String?
+
+                            public var isCheckAudioBitrateFail: String?
+
+                            public var isCheckReso: String?
+
+                            public var isCheckResoFail: String?
+
+                            public var isCheckVideoBitrate: String?
+
+                            public var isCheckVideoBitrateFail: String?
+
+                            public var transMode: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.adjDarMethod != nil {
+                                    map["AdjDarMethod"] = self.adjDarMethod!
+                                }
+                                if self.isCheckAudioBitrate != nil {
+                                    map["IsCheckAudioBitrate"] = self.isCheckAudioBitrate!
+                                }
+                                if self.isCheckAudioBitrateFail != nil {
+                                    map["IsCheckAudioBitrateFail"] = self.isCheckAudioBitrateFail!
+                                }
+                                if self.isCheckReso != nil {
+                                    map["IsCheckReso"] = self.isCheckReso!
+                                }
+                                if self.isCheckResoFail != nil {
+                                    map["IsCheckResoFail"] = self.isCheckResoFail!
+                                }
+                                if self.isCheckVideoBitrate != nil {
+                                    map["IsCheckVideoBitrate"] = self.isCheckVideoBitrate!
+                                }
+                                if self.isCheckVideoBitrateFail != nil {
+                                    map["IsCheckVideoBitrateFail"] = self.isCheckVideoBitrateFail!
+                                }
+                                if self.transMode != nil {
+                                    map["TransMode"] = self.transMode!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("AdjDarMethod") && dict["AdjDarMethod"] != nil {
+                                    self.adjDarMethod = dict["AdjDarMethod"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrate") && dict["IsCheckAudioBitrate"] != nil {
+                                    self.isCheckAudioBitrate = dict["IsCheckAudioBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrateFail") && dict["IsCheckAudioBitrateFail"] != nil {
+                                    self.isCheckAudioBitrateFail = dict["IsCheckAudioBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckReso") && dict["IsCheckReso"] != nil {
+                                    self.isCheckReso = dict["IsCheckReso"] as! String
+                                }
+                                if dict.keys.contains("IsCheckResoFail") && dict["IsCheckResoFail"] != nil {
+                                    self.isCheckResoFail = dict["IsCheckResoFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrate") && dict["IsCheckVideoBitrate"] != nil {
+                                    self.isCheckVideoBitrate = dict["IsCheckVideoBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrateFail") && dict["IsCheckVideoBitrateFail"] != nil {
+                                    self.isCheckVideoBitrateFail = dict["IsCheckVideoBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("TransMode") && dict["TransMode"] != nil {
+                                    self.transMode = dict["TransMode"] as! String
+                                }
+                            }
+                        }
                         public class Video : Tea.TeaModel {
                             public var abrMax: String?
 
@@ -55228,6 +55609,8 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
 
                         public var muxConfig: SubmitTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.MuxConfig?
 
+                        public var transConfig: SubmitTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.TransConfig?
+
                         public var video: SubmitTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.Video?
 
                         public override init() {
@@ -55243,6 +55626,7 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                             try self.audio?.validate()
                             try self.container?.validate()
                             try self.muxConfig?.validate()
+                            try self.transConfig?.validate()
                             try self.video?.validate()
                         }
 
@@ -55256,6 +55640,9 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                             }
                             if self.muxConfig != nil {
                                 map["MuxConfig"] = self.muxConfig?.toMap()
+                            }
+                            if self.transConfig != nil {
+                                map["TransConfig"] = self.transConfig?.toMap()
                             }
                             if self.video != nil {
                                 map["Video"] = self.video?.toMap()
@@ -55278,6 +55665,11 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                                 var model = SubmitTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.MuxConfig()
                                 model.fromMap(dict["MuxConfig"] as! [String: Any])
                                 self.muxConfig = model
+                            }
+                            if dict.keys.contains("TransConfig") && dict["TransConfig"] != nil {
+                                var model = SubmitTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.TransConfig()
+                                model.fromMap(dict["TransConfig"] as! [String: Any])
+                                self.transConfig = model
                             }
                             if dict.keys.contains("Video") && dict["Video"] != nil {
                                 var model = SubmitTranscodeJobResponseBody.TranscodeParentJob.OutputGroup.ProcessConfig.Transcode.OverwriteParams.Video()
@@ -56947,6 +57339,91 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                                 }
                             }
                         }
+                        public class TransConfig : Tea.TeaModel {
+                            public var adjDarMethod: String?
+
+                            public var isCheckAudioBitrate: String?
+
+                            public var isCheckAudioBitrateFail: String?
+
+                            public var isCheckReso: String?
+
+                            public var isCheckResoFail: String?
+
+                            public var isCheckVideoBitrate: String?
+
+                            public var isCheckVideoBitrateFail: String?
+
+                            public var transMode: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.adjDarMethod != nil {
+                                    map["AdjDarMethod"] = self.adjDarMethod!
+                                }
+                                if self.isCheckAudioBitrate != nil {
+                                    map["IsCheckAudioBitrate"] = self.isCheckAudioBitrate!
+                                }
+                                if self.isCheckAudioBitrateFail != nil {
+                                    map["IsCheckAudioBitrateFail"] = self.isCheckAudioBitrateFail!
+                                }
+                                if self.isCheckReso != nil {
+                                    map["IsCheckReso"] = self.isCheckReso!
+                                }
+                                if self.isCheckResoFail != nil {
+                                    map["IsCheckResoFail"] = self.isCheckResoFail!
+                                }
+                                if self.isCheckVideoBitrate != nil {
+                                    map["IsCheckVideoBitrate"] = self.isCheckVideoBitrate!
+                                }
+                                if self.isCheckVideoBitrateFail != nil {
+                                    map["IsCheckVideoBitrateFail"] = self.isCheckVideoBitrateFail!
+                                }
+                                if self.transMode != nil {
+                                    map["TransMode"] = self.transMode!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("AdjDarMethod") && dict["AdjDarMethod"] != nil {
+                                    self.adjDarMethod = dict["AdjDarMethod"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrate") && dict["IsCheckAudioBitrate"] != nil {
+                                    self.isCheckAudioBitrate = dict["IsCheckAudioBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckAudioBitrateFail") && dict["IsCheckAudioBitrateFail"] != nil {
+                                    self.isCheckAudioBitrateFail = dict["IsCheckAudioBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckReso") && dict["IsCheckReso"] != nil {
+                                    self.isCheckReso = dict["IsCheckReso"] as! String
+                                }
+                                if dict.keys.contains("IsCheckResoFail") && dict["IsCheckResoFail"] != nil {
+                                    self.isCheckResoFail = dict["IsCheckResoFail"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrate") && dict["IsCheckVideoBitrate"] != nil {
+                                    self.isCheckVideoBitrate = dict["IsCheckVideoBitrate"] as! String
+                                }
+                                if dict.keys.contains("IsCheckVideoBitrateFail") && dict["IsCheckVideoBitrateFail"] != nil {
+                                    self.isCheckVideoBitrateFail = dict["IsCheckVideoBitrateFail"] as! String
+                                }
+                                if dict.keys.contains("TransMode") && dict["TransMode"] != nil {
+                                    self.transMode = dict["TransMode"] as! String
+                                }
+                            }
+                        }
                         public class Video : Tea.TeaModel {
                             public var abrMax: String?
 
@@ -57120,6 +57597,8 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
 
                         public var tags: [String: Any]?
 
+                        public var transConfig: SubmitTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.TransConfig?
+
                         public var video: SubmitTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.Video?
 
                         public override init() {
@@ -57135,6 +57614,7 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                             try self.audio?.validate()
                             try self.container?.validate()
                             try self.muxConfig?.validate()
+                            try self.transConfig?.validate()
                             try self.video?.validate()
                         }
 
@@ -57151,6 +57631,9 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                             }
                             if self.tags != nil {
                                 map["Tags"] = self.tags!
+                            }
+                            if self.transConfig != nil {
+                                map["TransConfig"] = self.transConfig?.toMap()
                             }
                             if self.video != nil {
                                 map["Video"] = self.video?.toMap()
@@ -57176,6 +57659,11 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                             }
                             if dict.keys.contains("Tags") && dict["Tags"] != nil {
                                 self.tags = dict["Tags"] as! [String: Any]
+                            }
+                            if dict.keys.contains("TransConfig") && dict["TransConfig"] != nil {
+                                var model = SubmitTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.TransConfig()
+                                model.fromMap(dict["TransConfig"] as! [String: Any])
+                                self.transConfig = model
                             }
                             if dict.keys.contains("Video") && dict["Video"] != nil {
                                 var model = SubmitTranscodeJobResponseBody.TranscodeParentJob.TranscodeJobList.ProcessConfig.Transcode.OverwriteParams.Video()
