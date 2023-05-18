@@ -7724,6 +7724,8 @@ public class RecognizePaymentRecordResponse : Tea.TeaModel {
 }
 
 public class RecognizePurchaseRecordRequest : Tea.TeaModel {
+    public var outputMultiOrders: Bool?
+
     public var url: String?
 
     public var body: InputStream?
@@ -7742,6 +7744,9 @@ public class RecognizePurchaseRecordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.outputMultiOrders != nil {
+            map["OutputMultiOrders"] = self.outputMultiOrders!
+        }
         if self.url != nil {
             map["Url"] = self.url!
         }
@@ -7752,6 +7757,9 @@ public class RecognizePurchaseRecordRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OutputMultiOrders") && dict["OutputMultiOrders"] != nil {
+            self.outputMultiOrders = dict["OutputMultiOrders"] as! Bool
+        }
         if dict.keys.contains("Url") && dict["Url"] != nil {
             self.url = dict["Url"] as! String
         }

@@ -1847,6 +1847,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizePurchaseRecordWithOptions(_ request: RecognizePurchaseRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizePurchaseRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.outputMultiOrders)) {
+            query["OutputMultiOrders"] = request.outputMultiOrders!;
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
         }
