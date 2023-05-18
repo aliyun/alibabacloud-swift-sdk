@@ -8337,6 +8337,8 @@ public class GetStackResponseBody : Tea.TeaModel {
 
     public var operationInfo: GetStackResponseBody.OperationInfo?
 
+    public var orderIds: [String]?
+
     public var outputs: [[String: Any]]?
 
     public var parameters: [GetStackResponseBody.Parameters]?
@@ -8430,6 +8432,9 @@ public class GetStackResponseBody : Tea.TeaModel {
         }
         if self.operationInfo != nil {
             map["OperationInfo"] = self.operationInfo?.toMap()
+        }
+        if self.orderIds != nil {
+            map["OrderIds"] = self.orderIds!
         }
         if self.outputs != nil {
             map["Outputs"] = self.outputs!
@@ -8548,6 +8553,9 @@ public class GetStackResponseBody : Tea.TeaModel {
             var model = GetStackResponseBody.OperationInfo()
             model.fromMap(dict["OperationInfo"] as! [String: Any])
             self.operationInfo = model
+        }
+        if dict.keys.contains("OrderIds") && dict["OrderIds"] != nil {
+            self.orderIds = dict["OrderIds"] as! [String]
         }
         if dict.keys.contains("Outputs") && dict["Outputs"] != nil {
             self.outputs = dict["Outputs"] as! [[String: Any]]
@@ -11025,6 +11033,8 @@ public class GetTemplateEstimateCostRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var stackId: String?
+
     public var templateBody: String?
 
     public var templateId: String?
@@ -11064,6 +11074,9 @@ public class GetTemplateEstimateCostRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
         if self.templateBody != nil {
             map["TemplateBody"] = self.templateBody!
         }
@@ -11102,6 +11115,9 @@ public class GetTemplateEstimateCostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StackId") && dict["StackId"] != nil {
+            self.stackId = dict["StackId"] as! String
         }
         if dict.keys.contains("TemplateBody") && dict["TemplateBody"] != nil {
             self.templateBody = dict["TemplateBody"] as! String

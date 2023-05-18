@@ -1723,6 +1723,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.stackId)) {
+            query["StackId"] = request.stackId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.templateBody)) {
             query["TemplateBody"] = request.templateBody ?? "";
         }
