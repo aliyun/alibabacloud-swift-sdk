@@ -5352,6 +5352,8 @@ public class DetachClusterFromHubResponse : Tea.TeaModel {
 public class GrantUserPermissionRequest : Tea.TeaModel {
     public var clusterId: String?
 
+    public var isRamRole: Bool?
+
     public var namespace: String?
 
     public var roleName: String?
@@ -5377,6 +5379,9 @@ public class GrantUserPermissionRequest : Tea.TeaModel {
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
+        if self.isRamRole != nil {
+            map["IsRamRole"] = self.isRamRole!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -5395,6 +5400,9 @@ public class GrantUserPermissionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
             self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("IsRamRole") && dict["IsRamRole"] != nil {
+            self.isRamRole = dict["IsRamRole"] as! Bool
         }
         if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
             self.namespace = dict["Namespace"] as! String
@@ -5497,6 +5505,8 @@ public class GrantUserPermissionsRequest : Tea.TeaModel {
     public class Permissions : Tea.TeaModel {
         public var clusterId: String?
 
+        public var isRamRole: Bool?
+
         public var namespace: String?
 
         public var roleName: String?
@@ -5520,6 +5530,9 @@ public class GrantUserPermissionsRequest : Tea.TeaModel {
             if self.clusterId != nil {
                 map["ClusterId"] = self.clusterId!
             }
+            if self.isRamRole != nil {
+                map["IsRamRole"] = self.isRamRole!
+            }
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
@@ -5535,6 +5548,9 @@ public class GrantUserPermissionsRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
                 self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("IsRamRole") && dict["IsRamRole"] != nil {
+                self.isRamRole = dict["IsRamRole"] as! Bool
             }
             if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
                 self.namespace = dict["Namespace"] as! String
