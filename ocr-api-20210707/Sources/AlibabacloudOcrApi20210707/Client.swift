@@ -1176,6 +1176,39 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeHKIdcardWithOptions(_ request: RecognizeHKIdcardRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeHKIdcardResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body!,
+            "stream": request.body!
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecognizeHKIdcard",
+            "version": "2021-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecognizeHKIdcardResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeHKIdcard(_ request: RecognizeHKIdcardRequest) async throws -> RecognizeHKIdcardResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recognizeHKIdcardWithOptions(request as! RecognizeHKIdcardRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func recognizeHandwritingWithOptions(_ request: RecognizeHandwritingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeHandwritingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudOcrApi20210707` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'AlibabacloudOcrApi20210707', '~> 1.1.14'
+pod 'AlibabacloudOcrApi20210707', '~> 1.1.15'
 ```
 
 ### Carthage
@@ -25,7 +25,7 @@ pod 'AlibabacloudOcrApi20210707', '~> 1.1.14'
 To integrate `AlibabacloudOcrApi20210707` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ocr-api-20210707" "1.1.14"
+github "alibabacloud-sdk-swift/ocr-api-20210707" "1.1.15"
 ```
 
 ### Swift Package Manager
@@ -34,7 +34,7 @@ To integrate `AlibabacloudOcrApi20210707` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ocr-api-20210707.git", from: "1.1.14")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ocr-api-20210707.git", from: "1.1.15")
 ]
 ```
 
