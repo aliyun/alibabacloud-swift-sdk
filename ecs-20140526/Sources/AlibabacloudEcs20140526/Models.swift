@@ -36185,6 +36185,8 @@ public class DescribeDemandsResponseBody : Tea.TeaModel {
                 public class SupplyInfo : Tea.TeaModel {
                     public var amount: Int32?
 
+                    public var privatePoolId: String?
+
                     public var supplyEndTime: String?
 
                     public var supplyStartTime: String?
@@ -36208,6 +36210,9 @@ public class DescribeDemandsResponseBody : Tea.TeaModel {
                         if self.amount != nil {
                             map["Amount"] = self.amount!
                         }
+                        if self.privatePoolId != nil {
+                            map["PrivatePoolId"] = self.privatePoolId!
+                        }
                         if self.supplyEndTime != nil {
                             map["SupplyEndTime"] = self.supplyEndTime!
                         }
@@ -36223,6 +36228,9 @@ public class DescribeDemandsResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("Amount") && dict["Amount"] != nil {
                             self.amount = dict["Amount"] as! Int32
+                        }
+                        if dict.keys.contains("PrivatePoolId") && dict["PrivatePoolId"] != nil {
+                            self.privatePoolId = dict["PrivatePoolId"] as! String
                         }
                         if dict.keys.contains("SupplyEndTime") && dict["SupplyEndTime"] != nil {
                             self.supplyEndTime = dict["SupplyEndTime"] as! String
@@ -36625,6 +36633,8 @@ public class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest : Tea.TeaMo
 
     public var resourceOwnerId: Int64?
 
+    public var strategy: String?
+
     public override init() {
         super.init()
     }
@@ -36654,6 +36664,9 @@ public class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest : Tea.TeaMo
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.strategy != nil {
+            map["Strategy"] = self.strategy!
+        }
         return map
     }
 
@@ -36672,6 +36685,9 @@ public class DescribeDeploymentSetSupportedInstanceTypeFamilyRequest : Tea.TeaMo
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Strategy") && dict["Strategy"] != nil {
+            self.strategy = dict["Strategy"] as! String
         }
     }
 }
@@ -46501,6 +46517,8 @@ public class DescribeImageSharePermissionResponseBody : Tea.TeaModel {
         public class Account : Tea.TeaModel {
             public var aliyunId: String?
 
+            public var sharedTime: String?
+
             public override init() {
                 super.init()
             }
@@ -46518,12 +46536,18 @@ public class DescribeImageSharePermissionResponseBody : Tea.TeaModel {
                 if self.aliyunId != nil {
                     map["AliyunId"] = self.aliyunId!
                 }
+                if self.sharedTime != nil {
+                    map["SharedTime"] = self.sharedTime!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AliyunId") && dict["AliyunId"] != nil {
                     self.aliyunId = dict["AliyunId"] as! String
+                }
+                if dict.keys.contains("SharedTime") && dict["SharedTime"] != nil {
+                    self.sharedTime = dict["SharedTime"] as! String
                 }
             }
         }
@@ -86743,6 +86767,8 @@ public class InvokeCommandRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var commandId: String?
 
     public var containerId: String?
@@ -86793,6 +86819,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandId != nil {
             map["CommandId"] = self.commandId!
         }
@@ -86855,6 +86884,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("CommandId") && dict["CommandId"] != nil {
             self.commandId = dict["CommandId"] as! String
         }
@@ -86958,6 +86990,8 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var commandId: String?
 
     public var containerId: String?
@@ -87008,6 +87042,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandId != nil {
             map["CommandId"] = self.commandId!
         }
@@ -87070,6 +87107,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("CommandId") && dict["CommandId"] != nil {
             self.commandId = dict["CommandId"] as! String
         }
@@ -107199,6 +107239,8 @@ public class RunCommandRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var commandContent: String?
 
     public var containerId: String?
@@ -107263,6 +107305,9 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
@@ -107346,6 +107391,9 @@ public class RunCommandRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("CommandContent") && dict["CommandContent"] != nil {
             self.commandContent = dict["CommandContent"] as! String
         }
@@ -107470,6 +107518,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var commandContent: String?
 
     public var containerId: String?
@@ -107534,6 +107584,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.commandContent != nil {
             map["CommandContent"] = self.commandContent!
         }
@@ -107617,6 +107670,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("CommandContent") && dict["CommandContent"] != nil {
             self.commandContent = dict["CommandContent"] as! String
         }
