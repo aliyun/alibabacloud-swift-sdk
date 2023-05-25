@@ -6953,6 +6953,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appKey)) {
             query["AppKey"] = request.appKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.newAppKey)) {
+            query["NewAppKey"] = request.newAppKey ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.newAppSecret)) {
             query["NewAppSecret"] = request.newAppSecret ?? "";
         }
@@ -7752,5 +7755,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func untagResources(_ request: UntagResourcesRequest) async throws -> UntagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await untagResourcesWithOptions(request as! UntagResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateVpcConnectivityWithOptions(_ request: ValidateVpcConnectivityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ValidateVpcConnectivityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcAccessId)) {
+            query["VpcAccessId"] = request.vpcAccessId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ValidateVpcConnectivity",
+            "version": "2016-07-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ValidateVpcConnectivityResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func validateVpcConnectivity(_ request: ValidateVpcConnectivityRequest) async throws -> ValidateVpcConnectivityResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await validateVpcConnectivityWithOptions(request as! ValidateVpcConnectivityRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
