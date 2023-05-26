@@ -1389,15 +1389,31 @@ public class JobElasticSpec : Tea.TeaModel {
 
     public var AIMasterType: String?
 
+    public var EDPMaxParallelism: Int32?
+
+    public var EDPMinParallelism: Int32?
+
+    public var elasticStrategy: String?
+
     public var enableAIMaster: Bool?
+
+    public var enableEDP: Bool?
 
     public var enableElasticTraining: Bool?
 
+    public var enablePsJobElasticPS: Bool?
+
     public var enablePsJobElasticWorker: Bool?
+
+    public var enablePsResourceEstimate: Bool?
 
     public var maxParallelism: Int32?
 
     public var minParallelism: Int32?
+
+    public var PSMaxParallelism: Int32?
+
+    public var PSMinParallelism: Int32?
 
     public override init() {
         super.init()
@@ -1419,20 +1435,44 @@ public class JobElasticSpec : Tea.TeaModel {
         if self.AIMasterType != nil {
             map["AIMasterType"] = self.AIMasterType!
         }
+        if self.EDPMaxParallelism != nil {
+            map["EDPMaxParallelism"] = self.EDPMaxParallelism!
+        }
+        if self.EDPMinParallelism != nil {
+            map["EDPMinParallelism"] = self.EDPMinParallelism!
+        }
+        if self.elasticStrategy != nil {
+            map["ElasticStrategy"] = self.elasticStrategy!
+        }
         if self.enableAIMaster != nil {
             map["EnableAIMaster"] = self.enableAIMaster!
+        }
+        if self.enableEDP != nil {
+            map["EnableEDP"] = self.enableEDP!
         }
         if self.enableElasticTraining != nil {
             map["EnableElasticTraining"] = self.enableElasticTraining!
         }
+        if self.enablePsJobElasticPS != nil {
+            map["EnablePsJobElasticPS"] = self.enablePsJobElasticPS!
+        }
         if self.enablePsJobElasticWorker != nil {
             map["EnablePsJobElasticWorker"] = self.enablePsJobElasticWorker!
+        }
+        if self.enablePsResourceEstimate != nil {
+            map["EnablePsResourceEstimate"] = self.enablePsResourceEstimate!
         }
         if self.maxParallelism != nil {
             map["MaxParallelism"] = self.maxParallelism!
         }
         if self.minParallelism != nil {
             map["MinParallelism"] = self.minParallelism!
+        }
+        if self.PSMaxParallelism != nil {
+            map["PSMaxParallelism"] = self.PSMaxParallelism!
+        }
+        if self.PSMinParallelism != nil {
+            map["PSMinParallelism"] = self.PSMinParallelism!
         }
         return map
     }
@@ -1444,20 +1484,44 @@ public class JobElasticSpec : Tea.TeaModel {
         if dict.keys.contains("AIMasterType") && dict["AIMasterType"] != nil {
             self.AIMasterType = dict["AIMasterType"] as! String
         }
+        if dict.keys.contains("EDPMaxParallelism") && dict["EDPMaxParallelism"] != nil {
+            self.EDPMaxParallelism = dict["EDPMaxParallelism"] as! Int32
+        }
+        if dict.keys.contains("EDPMinParallelism") && dict["EDPMinParallelism"] != nil {
+            self.EDPMinParallelism = dict["EDPMinParallelism"] as! Int32
+        }
+        if dict.keys.contains("ElasticStrategy") && dict["ElasticStrategy"] != nil {
+            self.elasticStrategy = dict["ElasticStrategy"] as! String
+        }
         if dict.keys.contains("EnableAIMaster") && dict["EnableAIMaster"] != nil {
             self.enableAIMaster = dict["EnableAIMaster"] as! Bool
+        }
+        if dict.keys.contains("EnableEDP") && dict["EnableEDP"] != nil {
+            self.enableEDP = dict["EnableEDP"] as! Bool
         }
         if dict.keys.contains("EnableElasticTraining") && dict["EnableElasticTraining"] != nil {
             self.enableElasticTraining = dict["EnableElasticTraining"] as! Bool
         }
+        if dict.keys.contains("EnablePsJobElasticPS") && dict["EnablePsJobElasticPS"] != nil {
+            self.enablePsJobElasticPS = dict["EnablePsJobElasticPS"] as! Bool
+        }
         if dict.keys.contains("EnablePsJobElasticWorker") && dict["EnablePsJobElasticWorker"] != nil {
             self.enablePsJobElasticWorker = dict["EnablePsJobElasticWorker"] as! Bool
+        }
+        if dict.keys.contains("EnablePsResourceEstimate") && dict["EnablePsResourceEstimate"] != nil {
+            self.enablePsResourceEstimate = dict["EnablePsResourceEstimate"] as! Bool
         }
         if dict.keys.contains("MaxParallelism") && dict["MaxParallelism"] != nil {
             self.maxParallelism = dict["MaxParallelism"] as! Int32
         }
         if dict.keys.contains("MinParallelism") && dict["MinParallelism"] != nil {
             self.minParallelism = dict["MinParallelism"] as! Int32
+        }
+        if dict.keys.contains("PSMaxParallelism") && dict["PSMaxParallelism"] != nil {
+            self.PSMaxParallelism = dict["PSMaxParallelism"] as! Int32
+        }
+        if dict.keys.contains("PSMinParallelism") && dict["PSMinParallelism"] != nil {
+            self.PSMinParallelism = dict["PSMinParallelism"] as! Int32
         }
     }
 }
@@ -2179,6 +2243,112 @@ public class NodeMetric : Tea.TeaModel {
         }
         if dict.keys.contains("NodeName") && dict["NodeName"] != nil {
             self.nodeName = dict["NodeName"] as! String
+        }
+    }
+}
+
+public class PodItem : Tea.TeaModel {
+    public var gmtCreateTime: String?
+
+    public var gmtFinishTime: String?
+
+    public var gmtStartTime: String?
+
+    public var historyPods: [PodItem]?
+
+    public var ip: String?
+
+    public var podId: String?
+
+    public var podUid: String?
+
+    public var status: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtFinishTime != nil {
+            map["GmtFinishTime"] = self.gmtFinishTime!
+        }
+        if self.gmtStartTime != nil {
+            map["GmtStartTime"] = self.gmtStartTime!
+        }
+        if self.historyPods != nil {
+            var tmp : [Any] = []
+            for k in self.historyPods! {
+                tmp.append(k.toMap())
+            }
+            map["HistoryPods"] = tmp
+        }
+        if self.ip != nil {
+            map["Ip"] = self.ip!
+        }
+        if self.podId != nil {
+            map["PodId"] = self.podId!
+        }
+        if self.podUid != nil {
+            map["PodUid"] = self.podUid!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
+            self.gmtCreateTime = dict["GmtCreateTime"] as! String
+        }
+        if dict.keys.contains("GmtFinishTime") && dict["GmtFinishTime"] != nil {
+            self.gmtFinishTime = dict["GmtFinishTime"] as! String
+        }
+        if dict.keys.contains("GmtStartTime") && dict["GmtStartTime"] != nil {
+            self.gmtStartTime = dict["GmtStartTime"] as! String
+        }
+        if dict.keys.contains("HistoryPods") && dict["HistoryPods"] != nil {
+            var tmp : [PodItem] = []
+            for v in dict["HistoryPods"] as! [Any] {
+                var model = PodItem()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.historyPods = tmp
+        }
+        if dict.keys.contains("Ip") && dict["Ip"] != nil {
+            self.ip = dict["Ip"] as! String
+        }
+        if dict.keys.contains("PodId") && dict["PodId"] != nil {
+            self.podId = dict["PodId"] as! String
+        }
+        if dict.keys.contains("PodUid") && dict["PodUid"] != nil {
+            self.podUid = dict["PodUid"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -3966,6 +4136,36 @@ public class DeleteTensorboardResponse : Tea.TeaModel {
             var model = DeleteTensorboardResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
+        }
+    }
+}
+
+public class GetJobRequest : Tea.TeaModel {
+    public var needDetail: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.needDetail != nil {
+            map["NeedDetail"] = self.needDetail!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NeedDetail") && dict["NeedDetail"] != nil {
+            self.needDetail = dict["NeedDetail"] as! Bool
         }
     }
 }
