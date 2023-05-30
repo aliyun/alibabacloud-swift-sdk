@@ -9932,6 +9932,8 @@ public class InvokeFunctionHeaders : Tea.TeaModel {
 
     public var xFcLogType: String?
 
+    public var xFcStatefulAsyncInvocationEnable: String?
+
     public var xFcStatefulAsyncInvocationId: String?
 
     public var xFcTraceId: String?
@@ -9965,6 +9967,9 @@ public class InvokeFunctionHeaders : Tea.TeaModel {
         if self.xFcLogType != nil {
             map["X-Fc-Log-Type"] = self.xFcLogType!
         }
+        if self.xFcStatefulAsyncInvocationEnable != nil {
+            map["X-Fc-Stateful-Async-Invocation-Enable"] = self.xFcStatefulAsyncInvocationEnable!
+        }
         if self.xFcStatefulAsyncInvocationId != nil {
             map["X-Fc-Stateful-Async-Invocation-Id"] = self.xFcStatefulAsyncInvocationId!
         }
@@ -9989,6 +9994,9 @@ public class InvokeFunctionHeaders : Tea.TeaModel {
         }
         if dict.keys.contains("X-Fc-Log-Type") && dict["X-Fc-Log-Type"] != nil {
             self.xFcLogType = dict["X-Fc-Log-Type"] as! String
+        }
+        if dict.keys.contains("X-Fc-Stateful-Async-Invocation-Enable") && dict["X-Fc-Stateful-Async-Invocation-Enable"] != nil {
+            self.xFcStatefulAsyncInvocationEnable = dict["X-Fc-Stateful-Async-Invocation-Enable"] as! String
         }
         if dict.keys.contains("X-Fc-Stateful-Async-Invocation-Id") && dict["X-Fc-Stateful-Async-Invocation-Id"] != nil {
             self.xFcStatefulAsyncInvocationId = dict["X-Fc-Stateful-Async-Invocation-Id"] as! String

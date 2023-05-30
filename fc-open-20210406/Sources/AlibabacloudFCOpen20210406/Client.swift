@@ -1674,6 +1674,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(headers.xFcLogType)) {
             realHeaders["X-Fc-Log-Type"] = TeaUtils.Client.toJSONString(headers.xFcLogType);
         }
+        if (!TeaUtils.Client.isUnset(headers.xFcStatefulAsyncInvocationEnable)) {
+            realHeaders["X-Fc-Stateful-Async-Invocation-Enable"] = TeaUtils.Client.toJSONString(headers.xFcStatefulAsyncInvocationEnable);
+        }
         if (!TeaUtils.Client.isUnset(headers.xFcStatefulAsyncInvocationId)) {
             realHeaders["X-Fc-Stateful-Async-Invocation-Id"] = TeaUtils.Client.toJSONString(headers.xFcStatefulAsyncInvocationId);
         }

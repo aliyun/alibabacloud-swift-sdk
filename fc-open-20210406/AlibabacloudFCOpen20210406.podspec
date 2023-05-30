@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudFCOpen20210406"
-  spec.version      = "2.0.8"
+  spec.version      = "2.0.9"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud FC-Open (20210406) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/fc-open-20210406" 
