@@ -24,9 +24,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func expireLoginTokenWithOptions(_ request: ExpireLoginTokenRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExpireLoginTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endUserId)) {
+            body["EndUserId"] = request.endUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loginToken)) {
+            body["LoginToken"] = request.loginToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.officeSiteId)) {
+            body["OfficeSiteId"] = request.officeSiteId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sessionId)) {
+            body["SessionId"] = request.sessionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ExpireLoginToken",
+            "version": "2021-02-18",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ExpireLoginTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func expireLoginToken(_ request: ExpireLoginTokenRequest) async throws -> ExpireLoginTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await expireLoginTokenWithOptions(request as! ExpireLoginTokenRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAuthCodeWithOptions(_ request: GetAuthCodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAuthCodeResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoCreateUser)) {
+            body["AutoCreateUser"] = request.autoCreateUser!;
+        }
         if (!TeaUtils.Client.isUnset(request.endUserId)) {
             body["EndUserId"] = request.endUserId ?? "";
         }
