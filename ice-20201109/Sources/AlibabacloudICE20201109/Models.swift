@@ -4407,6 +4407,166 @@ public class CreateUploadStreamResponse : Tea.TeaModel {
     }
 }
 
+public class DecryptKMSDataKeyRequest : Tea.TeaModel {
+    public var ciphertextBlob: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ciphertextBlob != nil {
+            map["CiphertextBlob"] = self.ciphertextBlob!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CiphertextBlob") && dict["CiphertextBlob"] != nil {
+            self.ciphertextBlob = dict["CiphertextBlob"] as! String
+        }
+    }
+}
+
+public class DecryptKMSDataKeyResponseBody : Tea.TeaModel {
+    public class DataKey : Tea.TeaModel {
+        public var keyId: String?
+
+        public var plaintext: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.keyId != nil {
+                map["KeyId"] = self.keyId!
+            }
+            if self.plaintext != nil {
+                map["Plaintext"] = self.plaintext!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("KeyId") && dict["KeyId"] != nil {
+                self.keyId = dict["KeyId"] as! String
+            }
+            if dict.keys.contains("Plaintext") && dict["Plaintext"] != nil {
+                self.plaintext = dict["Plaintext"] as! String
+            }
+        }
+    }
+    public var dataKey: DecryptKMSDataKeyResponseBody.DataKey?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dataKey?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataKey != nil {
+            map["DataKey"] = self.dataKey?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataKey") && dict["DataKey"] != nil {
+            var model = DecryptKMSDataKeyResponseBody.DataKey()
+            model.fromMap(dict["DataKey"] as! [String: Any])
+            self.dataKey = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DecryptKMSDataKeyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DecryptKMSDataKeyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DecryptKMSDataKeyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteCategoryRequest : Tea.TeaModel {
     public var cateId: Int64?
 
@@ -12292,6 +12452,144 @@ public class DescribeQueryConfigsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeQueryConfigsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GenerateKMSDataKeyResponseBody : Tea.TeaModel {
+    public class DataKey : Tea.TeaModel {
+        public var ciphertextBlob: String?
+
+        public var keyId: String?
+
+        public var plaintext: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ciphertextBlob != nil {
+                map["CiphertextBlob"] = self.ciphertextBlob!
+            }
+            if self.keyId != nil {
+                map["KeyId"] = self.keyId!
+            }
+            if self.plaintext != nil {
+                map["Plaintext"] = self.plaintext!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CiphertextBlob") && dict["CiphertextBlob"] != nil {
+                self.ciphertextBlob = dict["CiphertextBlob"] as! String
+            }
+            if dict.keys.contains("KeyId") && dict["KeyId"] != nil {
+                self.keyId = dict["KeyId"] as! String
+            }
+            if dict.keys.contains("Plaintext") && dict["Plaintext"] != nil {
+                self.plaintext = dict["Plaintext"] as! String
+            }
+        }
+    }
+    public var dataKey: GenerateKMSDataKeyResponseBody.DataKey?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dataKey?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataKey != nil {
+            map["DataKey"] = self.dataKey?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataKey") && dict["DataKey"] != nil {
+            var model = GenerateKMSDataKeyResponseBody.DataKey()
+            model.fromMap(dict["DataKey"] as! [String: Any])
+            self.dataKey = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GenerateKMSDataKeyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GenerateKMSDataKeyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GenerateKMSDataKeyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -23467,6 +23765,8 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
 
                     public var encryptType: String?
 
+                    public var keyServiceType: String?
+
                     public override init() {
                         super.init()
                     }
@@ -23490,6 +23790,9 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                         if self.encryptType != nil {
                             map["EncryptType"] = self.encryptType!
                         }
+                        if self.keyServiceType != nil {
+                            map["KeyServiceType"] = self.keyServiceType!
+                        }
                         return map
                     }
 
@@ -23502,6 +23805,9 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("EncryptType") && dict["EncryptType"] != nil {
                             self.encryptType = dict["EncryptType"] as! String
+                        }
+                        if dict.keys.contains("KeyServiceType") && dict["KeyServiceType"] != nil {
+                            self.keyServiceType = dict["KeyServiceType"] as! String
                         }
                     }
                 }
@@ -25453,6 +25759,8 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
 
                     public var encryptType: String?
 
+                    public var keyServiceType: String?
+
                     public override init() {
                         super.init()
                     }
@@ -25476,6 +25784,9 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                         if self.encryptType != nil {
                             map["EncryptType"] = self.encryptType!
                         }
+                        if self.keyServiceType != nil {
+                            map["KeyServiceType"] = self.keyServiceType!
+                        }
                         return map
                     }
 
@@ -25488,6 +25799,9 @@ public class GetTranscodeJobResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("EncryptType") && dict["EncryptType"] != nil {
                             self.encryptType = dict["EncryptType"] as! String
+                        }
+                        if dict.keys.contains("KeyServiceType") && dict["KeyServiceType"] != nil {
+                            self.keyServiceType = dict["KeyServiceType"] as! String
                         }
                     }
                 }
@@ -53016,6 +53330,8 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
 
                 public var encryptType: String?
 
+                public var keyServiceType: String?
+
                 public override init() {
                     super.init()
                 }
@@ -53039,6 +53355,9 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
                     if self.encryptType != nil {
                         map["EncryptType"] = self.encryptType!
                     }
+                    if self.keyServiceType != nil {
+                        map["KeyServiceType"] = self.keyServiceType!
+                    }
                     return map
                 }
 
@@ -53051,6 +53370,9 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
                     }
                     if dict.keys.contains("EncryptType") && dict["EncryptType"] != nil {
                         self.encryptType = dict["EncryptType"] as! String
+                    }
+                    if dict.keys.contains("KeyServiceType") && dict["KeyServiceType"] != nil {
+                        self.keyServiceType = dict["KeyServiceType"] as! String
                     }
                 }
             }
@@ -54619,6 +54941,8 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
 
                     public var encryptType: String?
 
+                    public var keyServiceType: String?
+
                     public override init() {
                         super.init()
                     }
@@ -54642,6 +54966,9 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                         if self.encryptType != nil {
                             map["EncryptType"] = self.encryptType!
                         }
+                        if self.keyServiceType != nil {
+                            map["KeyServiceType"] = self.keyServiceType!
+                        }
                         return map
                     }
 
@@ -54654,6 +54981,9 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("EncryptType") && dict["EncryptType"] != nil {
                             self.encryptType = dict["EncryptType"] as! String
+                        }
+                        if dict.keys.contains("KeyServiceType") && dict["KeyServiceType"] != nil {
+                            self.keyServiceType = dict["KeyServiceType"] as! String
                         }
                     }
                 }
@@ -56605,6 +56935,8 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
 
                     public var encryptType: String?
 
+                    public var keyServiceType: String?
+
                     public override init() {
                         super.init()
                     }
@@ -56628,6 +56960,9 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                         if self.encryptType != nil {
                             map["EncryptType"] = self.encryptType!
                         }
+                        if self.keyServiceType != nil {
+                            map["KeyServiceType"] = self.keyServiceType!
+                        }
                         return map
                     }
 
@@ -56640,6 +56975,9 @@ public class SubmitTranscodeJobResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("EncryptType") && dict["EncryptType"] != nil {
                             self.encryptType = dict["EncryptType"] as! String
+                        }
+                        if dict.keys.contains("KeyServiceType") && dict["KeyServiceType"] != nil {
+                            self.keyServiceType = dict["KeyServiceType"] as! String
                         }
                     }
                 }
