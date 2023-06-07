@@ -1071,6 +1071,8 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
 
             public var subtitlesUrl: String?
 
+            public var videoDuration: Int32?
+
             public var videoUrl: String?
 
             public var wordSubtitlesUrl: String?
@@ -1098,6 +1100,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
                 if self.subtitlesUrl != nil {
                     map["SubtitlesUrl"] = self.subtitlesUrl!
                 }
+                if self.videoDuration != nil {
+                    map["VideoDuration"] = self.videoDuration!
+                }
                 if self.videoUrl != nil {
                     map["VideoUrl"] = self.videoUrl!
                 }
@@ -1116,6 +1121,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SubtitlesUrl") && dict["SubtitlesUrl"] != nil {
                     self.subtitlesUrl = dict["SubtitlesUrl"] as! String
+                }
+                if dict.keys.contains("VideoDuration") && dict["VideoDuration"] != nil {
+                    self.videoDuration = dict["VideoDuration"] as! Int32
                 }
                 if dict.keys.contains("VideoUrl") && dict["VideoUrl"] != nil {
                     self.videoUrl = dict["VideoUrl"] as! String
@@ -3516,11 +3524,15 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         }
     }
     public class VideoInfo : Tea.TeaModel {
+        public var alphaFormat: Int32?
+
         public var backgroundImageUrl: String?
 
         public var isAlpha: Bool?
 
         public var isSubtitles: Bool?
+
+        public var resolution: Int32?
 
         public override init() {
             super.init()
@@ -3536,6 +3548,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.alphaFormat != nil {
+                map["AlphaFormat"] = self.alphaFormat!
+            }
             if self.backgroundImageUrl != nil {
                 map["BackgroundImageUrl"] = self.backgroundImageUrl!
             }
@@ -3545,10 +3560,16 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.isSubtitles != nil {
                 map["IsSubtitles"] = self.isSubtitles!
             }
+            if self.resolution != nil {
+                map["Resolution"] = self.resolution!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AlphaFormat") && dict["AlphaFormat"] != nil {
+                self.alphaFormat = dict["AlphaFormat"] as! Int32
+            }
             if dict.keys.contains("BackgroundImageUrl") && dict["BackgroundImageUrl"] != nil {
                 self.backgroundImageUrl = dict["BackgroundImageUrl"] as! String
             }
@@ -3557,6 +3578,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("IsSubtitles") && dict["IsSubtitles"] != nil {
                 self.isSubtitles = dict["IsSubtitles"] as! Bool
+            }
+            if dict.keys.contains("Resolution") && dict["Resolution"] != nil {
+                self.resolution = dict["Resolution"] as! Int32
             }
         }
     }
@@ -4297,356 +4321,6 @@ public class SubmitTextTo3DAvatarVideoTaskResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = SubmitTextTo3DAvatarVideoTaskResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class SubmitTextToSignVideoTaskRequest : Tea.TeaModel {
-    public class App : Tea.TeaModel {
-        public var appId: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.appId != nil {
-                map["AppId"] = self.appId!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AppId") && dict["AppId"] != nil {
-                self.appId = dict["AppId"] as! String
-            }
-        }
-    }
-    public class VideoInfo : Tea.TeaModel {
-        public var isAlpha: Bool?
-
-        public var isSubtitles: Bool?
-
-        public var resolution: Int32?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.isAlpha != nil {
-                map["IsAlpha"] = self.isAlpha!
-            }
-            if self.isSubtitles != nil {
-                map["IsSubtitles"] = self.isSubtitles!
-            }
-            if self.resolution != nil {
-                map["Resolution"] = self.resolution!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("IsAlpha") && dict["IsAlpha"] != nil {
-                self.isAlpha = dict["IsAlpha"] as! Bool
-            }
-            if dict.keys.contains("IsSubtitles") && dict["IsSubtitles"] != nil {
-                self.isSubtitles = dict["IsSubtitles"] as! Bool
-            }
-            if dict.keys.contains("Resolution") && dict["Resolution"] != nil {
-                self.resolution = dict["Resolution"] as! Int32
-            }
-        }
-    }
-    public var app: SubmitTextToSignVideoTaskRequest.App?
-
-    public var tenantId: Int64?
-
-    public var text: String?
-
-    public var title: String?
-
-    public var videoInfo: SubmitTextToSignVideoTaskRequest.VideoInfo?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.app?.validate()
-        try self.videoInfo?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.app != nil {
-            map["App"] = self.app?.toMap()
-        }
-        if self.tenantId != nil {
-            map["TenantId"] = self.tenantId!
-        }
-        if self.text != nil {
-            map["Text"] = self.text!
-        }
-        if self.title != nil {
-            map["Title"] = self.title!
-        }
-        if self.videoInfo != nil {
-            map["VideoInfo"] = self.videoInfo?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("App") && dict["App"] != nil {
-            var model = SubmitTextToSignVideoTaskRequest.App()
-            model.fromMap(dict["App"] as! [String: Any])
-            self.app = model
-        }
-        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
-            self.tenantId = dict["TenantId"] as! Int64
-        }
-        if dict.keys.contains("Text") && dict["Text"] != nil {
-            self.text = dict["Text"] as! String
-        }
-        if dict.keys.contains("Title") && dict["Title"] != nil {
-            self.title = dict["Title"] as! String
-        }
-        if dict.keys.contains("VideoInfo") && dict["VideoInfo"] != nil {
-            var model = SubmitTextToSignVideoTaskRequest.VideoInfo()
-            model.fromMap(dict["VideoInfo"] as! [String: Any])
-            self.videoInfo = model
-        }
-    }
-}
-
-public class SubmitTextToSignVideoTaskShrinkRequest : Tea.TeaModel {
-    public var appShrink: String?
-
-    public var tenantId: Int64?
-
-    public var text: String?
-
-    public var title: String?
-
-    public var videoInfoShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.appShrink != nil {
-            map["App"] = self.appShrink!
-        }
-        if self.tenantId != nil {
-            map["TenantId"] = self.tenantId!
-        }
-        if self.text != nil {
-            map["Text"] = self.text!
-        }
-        if self.title != nil {
-            map["Title"] = self.title!
-        }
-        if self.videoInfoShrink != nil {
-            map["VideoInfo"] = self.videoInfoShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("App") && dict["App"] != nil {
-            self.appShrink = dict["App"] as! String
-        }
-        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
-            self.tenantId = dict["TenantId"] as! Int64
-        }
-        if dict.keys.contains("Text") && dict["Text"] != nil {
-            self.text = dict["Text"] as! String
-        }
-        if dict.keys.contains("Title") && dict["Title"] != nil {
-            self.title = dict["Title"] as! String
-        }
-        if dict.keys.contains("VideoInfo") && dict["VideoInfo"] != nil {
-            self.videoInfoShrink = dict["VideoInfo"] as! String
-        }
-    }
-}
-
-public class SubmitTextToSignVideoTaskResponseBody : Tea.TeaModel {
-    public class Data : Tea.TeaModel {
-        public var taskUuid: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.taskUuid != nil {
-                map["TaskUuid"] = self.taskUuid!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("TaskUuid") && dict["TaskUuid"] != nil {
-                self.taskUuid = dict["TaskUuid"] as! String
-            }
-        }
-    }
-    public var code: String?
-
-    public var data: SubmitTextToSignVideoTaskResponseBody.Data?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var success: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.data?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.data != nil {
-            map["Data"] = self.data?.toMap()
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Data") && dict["Data"] != nil {
-            var model = SubmitTextToSignVideoTaskResponseBody.Data()
-            model.fromMap(dict["Data"] as! [String: Any])
-            self.data = model
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! String
-        }
-    }
-}
-
-public class SubmitTextToSignVideoTaskResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: SubmitTextToSignVideoTaskResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = SubmitTextToSignVideoTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
