@@ -236,6 +236,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAvatarWithOptions(_ request: QueryAvatarRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAvatarResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryAvatar",
+            "version": "2022-01-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryAvatarResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAvatar(_ request: QueryAvatarRequest) async throws -> QueryAvatarResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryAvatarWithOptions(request as! QueryAvatarRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAvatarListWithOptions(_ request: QueryAvatarListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAvatarListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            query["ModelType"] = request.modelType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["TenantId"] = request.tenantId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryAvatarList",
+            "version": "2022-01-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryAvatarListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAvatarList(_ request: QueryAvatarListRequest) async throws -> QueryAvatarListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryAvatarListWithOptions(request as! QueryAvatarListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryRunningInstanceWithOptions(_ tmpReq: QueryRunningInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryRunningInstanceResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: QueryRunningInstanceShrinkRequest = QueryRunningInstanceShrinkRequest([:])
@@ -485,6 +553,63 @@ open class Client : AlibabacloudOpenApi.Client {
     public func stopInstance(_ request: StopInstanceRequest) async throws -> StopInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await stopInstanceWithOptions(request as! StopInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAudioTo2DAvatarVideoTaskWithOptions(_ tmpReq: SubmitAudioTo2DAvatarVideoTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAudioTo2DAvatarVideoTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitAudioTo2DAvatarVideoTaskShrinkRequest = SubmitAudioTo2DAvatarVideoTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.app)) {
+            request.appShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.app, "App", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.avatarInfo)) {
+            request.avatarInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.avatarInfo, "AvatarInfo", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.videoInfo)) {
+            request.videoInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.videoInfo, "VideoInfo", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appShrink)) {
+            query["App"] = request.appShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.avatarInfoShrink)) {
+            query["AvatarInfo"] = request.avatarInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["TenantId"] = request.tenantId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoInfoShrink)) {
+            query["VideoInfo"] = request.videoInfoShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitAudioTo2DAvatarVideoTask",
+            "version": "2022-01-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitAudioTo2DAvatarVideoTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAudioTo2DAvatarVideoTask(_ request: SubmitAudioTo2DAvatarVideoTaskRequest) async throws -> SubmitAudioTo2DAvatarVideoTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitAudioTo2DAvatarVideoTaskWithOptions(request as! SubmitAudioTo2DAvatarVideoTaskRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
