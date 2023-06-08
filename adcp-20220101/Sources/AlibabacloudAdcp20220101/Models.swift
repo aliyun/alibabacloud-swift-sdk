@@ -5739,6 +5739,8 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
 
     public var argoServerEnabled: Bool?
 
+    public var armsEnabled: Bool?
+
     public var auditLogEnabled: Bool?
 
     public var clusterId: String?
@@ -5780,6 +5782,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
         }
+        if self.armsEnabled != nil {
+            map["ArmsEnabled"] = self.armsEnabled!
+        }
         if self.auditLogEnabled != nil {
             map["AuditLogEnabled"] = self.auditLogEnabled!
         }
@@ -5820,6 +5825,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
         }
+        if dict.keys.contains("ArmsEnabled") && dict["ArmsEnabled"] != nil {
+            self.armsEnabled = dict["ArmsEnabled"] as! Bool
+        }
         if dict.keys.contains("AuditLogEnabled") && dict["AuditLogEnabled"] != nil {
             self.auditLogEnabled = dict["AuditLogEnabled"] as! Bool
         }
@@ -5856,6 +5864,8 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
     public var argoCDEnabled: Bool?
 
     public var argoServerEnabled: Bool?
+
+    public var armsEnabled: Bool?
 
     public var auditLogEnabled: Bool?
 
@@ -5898,6 +5908,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
         }
+        if self.armsEnabled != nil {
+            map["ArmsEnabled"] = self.armsEnabled!
+        }
         if self.auditLogEnabled != nil {
             map["AuditLogEnabled"] = self.auditLogEnabled!
         }
@@ -5937,6 +5950,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
+        }
+        if dict.keys.contains("ArmsEnabled") && dict["ArmsEnabled"] != nil {
+            self.armsEnabled = dict["ArmsEnabled"] as! Bool
         }
         if dict.keys.contains("AuditLogEnabled") && dict["AuditLogEnabled"] != nil {
             self.auditLogEnabled = dict["AuditLogEnabled"] as! Bool

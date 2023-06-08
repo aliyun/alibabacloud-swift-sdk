@@ -828,6 +828,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.argoServerEnabled)) {
             query["ArgoServerEnabled"] = request.argoServerEnabled!;
         }
+        if (!TeaUtils.Client.isUnset(request.armsEnabled)) {
+            query["ArmsEnabled"] = request.armsEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.auditLogEnabled)) {
             query["AuditLogEnabled"] = request.auditLogEnabled!;
         }
