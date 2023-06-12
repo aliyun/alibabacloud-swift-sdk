@@ -1072,52 +1072,6 @@ public class CreateUserGroupRequest : Tea.TeaModel {
     }
 }
 
-public class CreateUserGroupShrinkRequest : Tea.TeaModel {
-    public var attributesShrink: String?
-
-    public var description_: String?
-
-    public var name: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.attributesShrink != nil {
-            map["Attributes"] = self.attributesShrink!
-        }
-        if self.description_ != nil {
-            map["Description"] = self.description_!
-        }
-        if self.name != nil {
-            map["Name"] = self.name!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
-            self.attributesShrink = dict["Attributes"] as! String
-        }
-        if dict.keys.contains("Description") && dict["Description"] != nil {
-            self.description_ = dict["Description"] as! String
-        }
-        if dict.keys.contains("Name") && dict["Name"] != nil {
-            self.name = dict["Name"] as! String
-        }
-    }
-}
-
 public class CreateUserGroupResponseBody : Tea.TeaModel {
     public var requestId: String?
 
@@ -2679,36 +2633,6 @@ public class ListApplicationsForPrivateAccessPolicyRequest : Tea.TeaModel {
     }
 }
 
-public class ListApplicationsForPrivateAccessPolicyShrinkRequest : Tea.TeaModel {
-    public var policyIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.policyIdsShrink != nil {
-            map["PolicyIds"] = self.policyIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
-            self.policyIdsShrink = dict["PolicyIds"] as! String
-        }
-    }
-}
-
 public class ListApplicationsForPrivateAccessPolicyResponseBody : Tea.TeaModel {
     public class Polices : Tea.TeaModel {
         public class Applications : Tea.TeaModel {
@@ -3024,36 +2948,6 @@ public class ListApplicationsForPrivateAccessTagRequest : Tea.TeaModel {
     }
 }
 
-public class ListApplicationsForPrivateAccessTagShrinkRequest : Tea.TeaModel {
-    public var tagIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.tagIdsShrink != nil {
-            map["TagIds"] = self.tagIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
-            self.tagIdsShrink = dict["TagIds"] as! String
-        }
-    }
-}
-
 public class ListApplicationsForPrivateAccessTagResponseBody : Tea.TeaModel {
     public class Tags : Tea.TeaModel {
         public class Applications : Tea.TeaModel {
@@ -3348,6 +3242,10 @@ public class ListConnectorsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var status: String?
+
+    public var switchStatus: String?
+
     public override init() {
         super.init()
     }
@@ -3374,6 +3272,12 @@ public class ListConnectorsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.switchStatus != nil {
+            map["SwitchStatus"] = self.switchStatus!
+        }
         return map
     }
 
@@ -3390,59 +3294,11 @@ public class ListConnectorsRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
         }
-    }
-}
-
-public class ListConnectorsShrinkRequest : Tea.TeaModel {
-    public var connectorIdsShrink: String?
-
-    public var currentPage: Int32?
-
-    public var name: String?
-
-    public var pageSize: Int32?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.connectorIdsShrink != nil {
-            map["ConnectorIds"] = self.connectorIdsShrink!
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
         }
-        if self.currentPage != nil {
-            map["CurrentPage"] = self.currentPage!
-        }
-        if self.name != nil {
-            map["Name"] = self.name!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ConnectorIds") && dict["ConnectorIds"] != nil {
-            self.connectorIdsShrink = dict["ConnectorIds"] as! String
-        }
-        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
-            self.currentPage = dict["CurrentPage"] as! Int32
-        }
-        if dict.keys.contains("Name") && dict["Name"] != nil {
-            self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! Int32
+        if dict.keys.contains("SwitchStatus") && dict["SwitchStatus"] != nil {
+            self.switchStatus = dict["SwitchStatus"] as! String
         }
     }
 }
@@ -3757,36 +3613,6 @@ public class ListPolicesForPrivateAccessApplicationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
             self.applicationIds = dict["ApplicationIds"] as! [String]
-        }
-    }
-}
-
-public class ListPolicesForPrivateAccessApplicationShrinkRequest : Tea.TeaModel {
-    public var applicationIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.applicationIdsShrink != nil {
-            map["ApplicationIds"] = self.applicationIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
-            self.applicationIdsShrink = dict["ApplicationIds"] as! String
         }
     }
 }
@@ -4138,36 +3964,6 @@ public class ListPolicesForPrivateAccessTagRequest : Tea.TeaModel {
     }
 }
 
-public class ListPolicesForPrivateAccessTagShrinkRequest : Tea.TeaModel {
-    public var tagIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.tagIdsShrink != nil {
-            map["TagIds"] = self.tagIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
-            self.tagIdsShrink = dict["TagIds"] as! String
-        }
-    }
-}
-
 public class ListPolicesForPrivateAccessTagResponseBody : Tea.TeaModel {
     public class Tags : Tea.TeaModel {
         public class Polices : Tea.TeaModel {
@@ -4515,36 +4311,6 @@ public class ListPolicesForUserGroupRequest : Tea.TeaModel {
     }
 }
 
-public class ListPolicesForUserGroupShrinkRequest : Tea.TeaModel {
-    public var userGroupIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.userGroupIdsShrink != nil {
-            map["UserGroupIds"] = self.userGroupIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("UserGroupIds") && dict["UserGroupIds"] != nil {
-            self.userGroupIdsShrink = dict["UserGroupIds"] as! String
-        }
-    }
-}
-
 public class ListPolicesForUserGroupResponseBody : Tea.TeaModel {
     public class UserGroups : Tea.TeaModel {
         public class Polices : Tea.TeaModel {
@@ -4805,92 +4571,6 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
             self.applicationIds = dict["ApplicationIds"] as! [String]
-        }
-        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
-            self.currentPage = dict["CurrentPage"] as! Int32
-        }
-        if dict.keys.contains("Name") && dict["Name"] != nil {
-            self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! Int32
-        }
-        if dict.keys.contains("PolicyId") && dict["PolicyId"] != nil {
-            self.policyId = dict["PolicyId"] as! String
-        }
-        if dict.keys.contains("Status") && dict["Status"] != nil {
-            self.status = dict["Status"] as! String
-        }
-        if dict.keys.contains("TagId") && dict["TagId"] != nil {
-            self.tagId = dict["TagId"] as! String
-        }
-    }
-}
-
-public class ListPrivateAccessApplicationsShrinkRequest : Tea.TeaModel {
-    public var address: String?
-
-    public var applicationIdsShrink: String?
-
-    public var currentPage: Int32?
-
-    public var name: String?
-
-    public var pageSize: Int32?
-
-    public var policyId: String?
-
-    public var status: String?
-
-    public var tagId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.address != nil {
-            map["Address"] = self.address!
-        }
-        if self.applicationIdsShrink != nil {
-            map["ApplicationIds"] = self.applicationIdsShrink!
-        }
-        if self.currentPage != nil {
-            map["CurrentPage"] = self.currentPage!
-        }
-        if self.name != nil {
-            map["Name"] = self.name!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.policyId != nil {
-            map["PolicyId"] = self.policyId!
-        }
-        if self.status != nil {
-            map["Status"] = self.status!
-        }
-        if self.tagId != nil {
-            map["TagId"] = self.tagId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Address") && dict["Address"] != nil {
-            self.address = dict["Address"] as! String
-        }
-        if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
-            self.applicationIdsShrink = dict["ApplicationIds"] as! String
         }
         if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
             self.currentPage = dict["CurrentPage"] as! Int32
@@ -5254,100 +4934,6 @@ public class ListPrivateAccessPolicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
             self.policyIds = dict["PolicyIds"] as! [String]
-        }
-        if dict.keys.contains("Status") && dict["Status"] != nil {
-            self.status = dict["Status"] as! String
-        }
-        if dict.keys.contains("TagId") && dict["TagId"] != nil {
-            self.tagId = dict["TagId"] as! String
-        }
-        if dict.keys.contains("UserGroupId") && dict["UserGroupId"] != nil {
-            self.userGroupId = dict["UserGroupId"] as! String
-        }
-    }
-}
-
-public class ListPrivateAccessPolicesShrinkRequest : Tea.TeaModel {
-    public var applicationId: String?
-
-    public var currentPage: Int32?
-
-    public var name: String?
-
-    public var pageSize: Int32?
-
-    public var policyAction: String?
-
-    public var policyIdsShrink: String?
-
-    public var status: String?
-
-    public var tagId: String?
-
-    public var userGroupId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.applicationId != nil {
-            map["ApplicationId"] = self.applicationId!
-        }
-        if self.currentPage != nil {
-            map["CurrentPage"] = self.currentPage!
-        }
-        if self.name != nil {
-            map["Name"] = self.name!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.policyAction != nil {
-            map["PolicyAction"] = self.policyAction!
-        }
-        if self.policyIdsShrink != nil {
-            map["PolicyIds"] = self.policyIdsShrink!
-        }
-        if self.status != nil {
-            map["Status"] = self.status!
-        }
-        if self.tagId != nil {
-            map["TagId"] = self.tagId!
-        }
-        if self.userGroupId != nil {
-            map["UserGroupId"] = self.userGroupId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
-            self.applicationId = dict["ApplicationId"] as! String
-        }
-        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
-            self.currentPage = dict["CurrentPage"] as! Int32
-        }
-        if dict.keys.contains("Name") && dict["Name"] != nil {
-            self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! Int32
-        }
-        if dict.keys.contains("PolicyAction") && dict["PolicyAction"] != nil {
-            self.policyAction = dict["PolicyAction"] as! String
-        }
-        if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
-            self.policyIdsShrink = dict["PolicyIds"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
@@ -5731,76 +5317,6 @@ public class ListPrivateAccessTagsRequest : Tea.TeaModel {
     }
 }
 
-public class ListPrivateAccessTagsShrinkRequest : Tea.TeaModel {
-    public var applicationId: String?
-
-    public var currentPage: Int32?
-
-    public var name: String?
-
-    public var pageSize: Int32?
-
-    public var policyId: String?
-
-    public var tagIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.applicationId != nil {
-            map["ApplicationId"] = self.applicationId!
-        }
-        if self.currentPage != nil {
-            map["CurrentPage"] = self.currentPage!
-        }
-        if self.name != nil {
-            map["Name"] = self.name!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.policyId != nil {
-            map["PolicyId"] = self.policyId!
-        }
-        if self.tagIdsShrink != nil {
-            map["TagIds"] = self.tagIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
-            self.applicationId = dict["ApplicationId"] as! String
-        }
-        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
-            self.currentPage = dict["CurrentPage"] as! Int32
-        }
-        if dict.keys.contains("Name") && dict["Name"] != nil {
-            self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! Int32
-        }
-        if dict.keys.contains("PolicyId") && dict["PolicyId"] != nil {
-            self.policyId = dict["PolicyId"] as! String
-        }
-        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
-            self.tagIdsShrink = dict["TagIds"] as! String
-        }
-    }
-}
-
 public class ListPrivateAccessTagsResponseBody : Tea.TeaModel {
     public class Tags : Tea.TeaModel {
         public var applicationIds: [String]?
@@ -6014,36 +5530,6 @@ public class ListTagsForPrivateAccessApplicationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
             self.applicationIds = dict["ApplicationIds"] as! [String]
-        }
-    }
-}
-
-public class ListTagsForPrivateAccessApplicationShrinkRequest : Tea.TeaModel {
-    public var applicationIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.applicationIdsShrink != nil {
-            map["ApplicationIds"] = self.applicationIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
-            self.applicationIdsShrink = dict["ApplicationIds"] as! String
         }
     }
 }
@@ -6286,36 +5772,6 @@ public class ListTagsForPrivateAccessPolicyRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
             self.policyIds = dict["PolicyIds"] as! [String]
-        }
-    }
-}
-
-public class ListTagsForPrivateAccessPolicyShrinkRequest : Tea.TeaModel {
-    public var policyIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.policyIdsShrink != nil {
-            map["PolicyIds"] = self.policyIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
-            self.policyIdsShrink = dict["PolicyIds"] as! String
         }
     }
 }
@@ -6602,76 +6058,6 @@ public class ListUserGroupsRequest : Tea.TeaModel {
     }
 }
 
-public class ListUserGroupsShrinkRequest : Tea.TeaModel {
-    public var attributeValue: String?
-
-    public var currentPage: Int32?
-
-    public var name: String?
-
-    public var PAPolicyId: String?
-
-    public var pageSize: Int32?
-
-    public var userGroupIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.attributeValue != nil {
-            map["AttributeValue"] = self.attributeValue!
-        }
-        if self.currentPage != nil {
-            map["CurrentPage"] = self.currentPage!
-        }
-        if self.name != nil {
-            map["Name"] = self.name!
-        }
-        if self.PAPolicyId != nil {
-            map["PAPolicyId"] = self.PAPolicyId!
-        }
-        if self.pageSize != nil {
-            map["PageSize"] = self.pageSize!
-        }
-        if self.userGroupIdsShrink != nil {
-            map["UserGroupIds"] = self.userGroupIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AttributeValue") && dict["AttributeValue"] != nil {
-            self.attributeValue = dict["AttributeValue"] as! String
-        }
-        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
-            self.currentPage = dict["CurrentPage"] as! Int32
-        }
-        if dict.keys.contains("Name") && dict["Name"] != nil {
-            self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("PAPolicyId") && dict["PAPolicyId"] != nil {
-            self.PAPolicyId = dict["PAPolicyId"] as! String
-        }
-        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! Int32
-        }
-        if dict.keys.contains("UserGroupIds") && dict["UserGroupIds"] != nil {
-            self.userGroupIdsShrink = dict["UserGroupIds"] as! String
-        }
-    }
-}
-
 public class ListUserGroupsResponseBody : Tea.TeaModel {
     public class UserGroups : Tea.TeaModel {
         public class Attributes : Tea.TeaModel {
@@ -6934,36 +6320,6 @@ public class ListUserGroupsForPrivateAccessPolicyRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
             self.policyIds = dict["PolicyIds"] as! [String]
-        }
-    }
-}
-
-public class ListUserGroupsForPrivateAccessPolicyShrinkRequest : Tea.TeaModel {
-    public var policyIdsShrink: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.policyIdsShrink != nil {
-            map["PolicyIds"] = self.policyIdsShrink!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PolicyIds") && dict["PolicyIds"] != nil {
-            self.policyIdsShrink = dict["PolicyIds"] as! String
         }
     }
 }
@@ -8037,60 +7393,6 @@ public class UpdateUserGroupRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.attributes = tmp
-        }
-        if dict.keys.contains("Description") && dict["Description"] != nil {
-            self.description_ = dict["Description"] as! String
-        }
-        if dict.keys.contains("ModifyType") && dict["ModifyType"] != nil {
-            self.modifyType = dict["ModifyType"] as! String
-        }
-        if dict.keys.contains("UserGroupId") && dict["UserGroupId"] != nil {
-            self.userGroupId = dict["UserGroupId"] as! String
-        }
-    }
-}
-
-public class UpdateUserGroupShrinkRequest : Tea.TeaModel {
-    public var attributesShrink: String?
-
-    public var description_: String?
-
-    public var modifyType: String?
-
-    public var userGroupId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.attributesShrink != nil {
-            map["Attributes"] = self.attributesShrink!
-        }
-        if self.description_ != nil {
-            map["Description"] = self.description_!
-        }
-        if self.modifyType != nil {
-            map["ModifyType"] = self.modifyType!
-        }
-        if self.userGroupId != nil {
-            map["UserGroupId"] = self.userGroupId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
-            self.attributesShrink = dict["Attributes"] as! String
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String

@@ -232,16 +232,12 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createUserGroupWithOptions(_ tmpReq: CreateUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUserGroupResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: CreateUserGroupShrinkRequest = CreateUserGroupShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.attributes)) {
-            request.attributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.attributes, "Attributes", "json")
-        }
+    public func createUserGroupWithOptions(_ request: CreateUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUserGroupResponse {
+        try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.attributesShrink)) {
-            body["Attributes"] = request.attributesShrink ?? "";
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attributes)) {
+            bodyFlat["Attributes"] = request.attributes ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -249,6 +245,7 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             body["Name"] = request.name ?? "";
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -521,13 +518,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listApplicationsForPrivateAccessPolicyWithOptions(_ tmpReq: ListApplicationsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationsForPrivateAccessPolicyResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListApplicationsForPrivateAccessPolicyShrinkRequest = ListApplicationsForPrivateAccessPolicyShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.policyIds)) {
-            request.policyIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.policyIds, "PolicyIds", "json")
-        }
+    public func listApplicationsForPrivateAccessPolicyWithOptions(_ request: ListApplicationsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationsForPrivateAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -554,13 +546,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listApplicationsForPrivateAccessTagWithOptions(_ tmpReq: ListApplicationsForPrivateAccessTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationsForPrivateAccessTagResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListApplicationsForPrivateAccessTagShrinkRequest = ListApplicationsForPrivateAccessTagShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.tagIds)) {
-            request.tagIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagIds, "TagIds", "json")
-        }
+    public func listApplicationsForPrivateAccessTagWithOptions(_ request: ListApplicationsForPrivateAccessTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListApplicationsForPrivateAccessTagResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -587,13 +574,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listConnectorsWithOptions(_ tmpReq: ListConnectorsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConnectorsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListConnectorsShrinkRequest = ListConnectorsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.connectorIds)) {
-            request.connectorIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.connectorIds, "ConnectorIds", "json")
-        }
+    public func listConnectorsWithOptions(_ request: ListConnectorsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConnectorsResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -620,13 +602,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPolicesForPrivateAccessApplicationWithOptions(_ tmpReq: ListPolicesForPrivateAccessApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicesForPrivateAccessApplicationResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListPolicesForPrivateAccessApplicationShrinkRequest = ListPolicesForPrivateAccessApplicationShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.applicationIds)) {
-            request.applicationIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationIds, "ApplicationIds", "json")
-        }
+    public func listPolicesForPrivateAccessApplicationWithOptions(_ request: ListPolicesForPrivateAccessApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicesForPrivateAccessApplicationResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -653,13 +630,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPolicesForPrivateAccessTagWithOptions(_ tmpReq: ListPolicesForPrivateAccessTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicesForPrivateAccessTagResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListPolicesForPrivateAccessTagShrinkRequest = ListPolicesForPrivateAccessTagShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.tagIds)) {
-            request.tagIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagIds, "TagIds", "json")
-        }
+    public func listPolicesForPrivateAccessTagWithOptions(_ request: ListPolicesForPrivateAccessTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicesForPrivateAccessTagResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -686,13 +658,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPolicesForUserGroupWithOptions(_ tmpReq: ListPolicesForUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicesForUserGroupResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListPolicesForUserGroupShrinkRequest = ListPolicesForUserGroupShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.userGroupIds)) {
-            request.userGroupIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userGroupIds, "UserGroupIds", "json")
-        }
+    public func listPolicesForUserGroupWithOptions(_ request: ListPolicesForUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPolicesForUserGroupResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -719,13 +686,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPrivateAccessApplicationsWithOptions(_ tmpReq: ListPrivateAccessApplicationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrivateAccessApplicationsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListPrivateAccessApplicationsShrinkRequest = ListPrivateAccessApplicationsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.applicationIds)) {
-            request.applicationIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationIds, "ApplicationIds", "json")
-        }
+    public func listPrivateAccessApplicationsWithOptions(_ request: ListPrivateAccessApplicationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrivateAccessApplicationsResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -752,13 +714,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPrivateAccessPolicesWithOptions(_ tmpReq: ListPrivateAccessPolicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrivateAccessPolicesResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListPrivateAccessPolicesShrinkRequest = ListPrivateAccessPolicesShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.policyIds)) {
-            request.policyIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.policyIds, "PolicyIds", "json")
-        }
+    public func listPrivateAccessPolicesWithOptions(_ request: ListPrivateAccessPolicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrivateAccessPolicesResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -785,13 +742,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listPrivateAccessTagsWithOptions(_ tmpReq: ListPrivateAccessTagsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrivateAccessTagsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListPrivateAccessTagsShrinkRequest = ListPrivateAccessTagsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.tagIds)) {
-            request.tagIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagIds, "TagIds", "json")
-        }
+    public func listPrivateAccessTagsWithOptions(_ request: ListPrivateAccessTagsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrivateAccessTagsResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -818,13 +770,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTagsForPrivateAccessApplicationWithOptions(_ tmpReq: ListTagsForPrivateAccessApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagsForPrivateAccessApplicationResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListTagsForPrivateAccessApplicationShrinkRequest = ListTagsForPrivateAccessApplicationShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.applicationIds)) {
-            request.applicationIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.applicationIds, "ApplicationIds", "json")
-        }
+    public func listTagsForPrivateAccessApplicationWithOptions(_ request: ListTagsForPrivateAccessApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagsForPrivateAccessApplicationResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -851,13 +798,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTagsForPrivateAccessPolicyWithOptions(_ tmpReq: ListTagsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagsForPrivateAccessPolicyResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListTagsForPrivateAccessPolicyShrinkRequest = ListTagsForPrivateAccessPolicyShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.policyIds)) {
-            request.policyIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.policyIds, "PolicyIds", "json")
-        }
+    public func listTagsForPrivateAccessPolicyWithOptions(_ request: ListTagsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagsForPrivateAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -884,13 +826,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listUserGroupsWithOptions(_ tmpReq: ListUserGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUserGroupsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListUserGroupsShrinkRequest = ListUserGroupsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.userGroupIds)) {
-            request.userGroupIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.userGroupIds, "UserGroupIds", "json")
-        }
+    public func listUserGroupsWithOptions(_ request: ListUserGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUserGroupsResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -917,13 +854,8 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listUserGroupsForPrivateAccessPolicyWithOptions(_ tmpReq: ListUserGroupsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUserGroupsForPrivateAccessPolicyResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: ListUserGroupsForPrivateAccessPolicyShrinkRequest = ListUserGroupsForPrivateAccessPolicyShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.policyIds)) {
-            request.policyIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.policyIds, "PolicyIds", "json")
-        }
+    public func listUserGroupsForPrivateAccessPolicyWithOptions(_ request: ListUserGroupsForPrivateAccessPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUserGroupsForPrivateAccessPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1091,16 +1023,12 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateUserGroupWithOptions(_ tmpReq: UpdateUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateUserGroupResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: UpdateUserGroupShrinkRequest = UpdateUserGroupShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.attributes)) {
-            request.attributesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.attributes, "Attributes", "json")
-        }
+    public func updateUserGroupWithOptions(_ request: UpdateUserGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateUserGroupResponse {
+        try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.attributesShrink)) {
-            body["Attributes"] = request.attributesShrink ?? "";
+        var bodyFlat: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.attributes)) {
+            bodyFlat["Attributes"] = request.attributes ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
@@ -1111,6 +1039,7 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.userGroupId)) {
             body["UserGroupId"] = request.userGroupId ?? "";
         }
+        body = Tea.TeaConverter.merge([:], body, AlibabaCloudOpenApiUtil.Client.query(bodyFlat))
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
