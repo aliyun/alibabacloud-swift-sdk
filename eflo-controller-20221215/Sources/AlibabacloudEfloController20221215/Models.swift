@@ -2400,6 +2400,8 @@ public class DescribeTaskResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var nodeIds: [String]?
+
     public var requestId: String?
 
     public var steps: [DescribeTaskResponseBody.Steps]?
@@ -2436,6 +2438,9 @@ public class DescribeTaskResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["Message"] = self.message!
         }
+        if self.nodeIds != nil {
+            map["NodeIds"] = self.nodeIds!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -2470,6 +2475,9 @@ public class DescribeTaskResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("NodeIds") && dict["NodeIds"] != nil {
+            self.nodeIds = dict["NodeIds"] as! [String]
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
