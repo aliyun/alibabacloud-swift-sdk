@@ -3013,6 +3013,51 @@ public class QueryTimedResetOperateStatusResponse : Tea.TeaModel {
 }
 
 public class SendMessageRequest : Tea.TeaModel {
+    public class StreamExtension : Tea.TeaModel {
+        public var index: Int32?
+
+        public var isStream: Bool?
+
+        public var position: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.index != nil {
+                map["Index"] = self.index!
+            }
+            if self.isStream != nil {
+                map["IsStream"] = self.isStream!
+            }
+            if self.position != nil {
+                map["Position"] = self.position!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Index") && dict["Index"] != nil {
+                self.index = dict["Index"] as! Int32
+            }
+            if dict.keys.contains("IsStream") && dict["IsStream"] != nil {
+                self.isStream = dict["IsStream"] as! Bool
+            }
+            if dict.keys.contains("Position") && dict["Position"] != nil {
+                self.position = dict["Position"] as! String
+            }
+        }
+    }
     public class TextRequest : Tea.TeaModel {
         public var commandType: String?
 
@@ -3107,6 +3152,8 @@ public class SendMessageRequest : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var streamExtension: SendMessageRequest.StreamExtension?
+
     public var tenantId: Int64?
 
     public var textRequest: SendMessageRequest.TextRequest?
@@ -3123,6 +3170,7 @@ public class SendMessageRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.streamExtension?.validate()
         try self.textRequest?.validate()
         try self.VAMLRequest?.validate()
     }
@@ -3134,6 +3182,9 @@ public class SendMessageRequest : Tea.TeaModel {
         }
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
+        }
+        if self.streamExtension != nil {
+            map["StreamExtension"] = self.streamExtension?.toMap()
         }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
@@ -3153,6 +3204,11 @@ public class SendMessageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("StreamExtension") && dict["StreamExtension"] != nil {
+            var model = SendMessageRequest.StreamExtension()
+            model.fromMap(dict["StreamExtension"] as! [String: Any])
+            self.streamExtension = model
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
@@ -3174,6 +3230,8 @@ public class SendMessageShrinkRequest : Tea.TeaModel {
     public var feedback: Bool?
 
     public var sessionId: String?
+
+    public var streamExtensionShrink: String?
 
     public var tenantId: Int64?
 
@@ -3201,6 +3259,9 @@ public class SendMessageShrinkRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.streamExtensionShrink != nil {
+            map["StreamExtension"] = self.streamExtensionShrink!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -3219,6 +3280,9 @@ public class SendMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("StreamExtension") && dict["StreamExtension"] != nil {
+            self.streamExtensionShrink = dict["StreamExtension"] as! String
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
