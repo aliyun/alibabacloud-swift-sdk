@@ -5739,8 +5739,6 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
 
     public var argoServerEnabled: Bool?
 
-    public var armsEnabled: Bool?
-
     public var auditLogEnabled: Bool?
 
     public var clusterId: String?
@@ -5748,6 +5746,8 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
     public var deletionProtection: Bool?
 
     public var enableMesh: Bool?
+
+    public var monitorEnabled: Bool?
 
     public var name: String?
 
@@ -5782,9 +5782,6 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
         }
-        if self.armsEnabled != nil {
-            map["ArmsEnabled"] = self.armsEnabled!
-        }
         if self.auditLogEnabled != nil {
             map["AuditLogEnabled"] = self.auditLogEnabled!
         }
@@ -5796,6 +5793,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         }
         if self.enableMesh != nil {
             map["EnableMesh"] = self.enableMesh!
+        }
+        if self.monitorEnabled != nil {
+            map["MonitorEnabled"] = self.monitorEnabled!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -5825,9 +5825,6 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
         }
-        if dict.keys.contains("ArmsEnabled") && dict["ArmsEnabled"] != nil {
-            self.armsEnabled = dict["ArmsEnabled"] as! Bool
-        }
         if dict.keys.contains("AuditLogEnabled") && dict["AuditLogEnabled"] != nil {
             self.auditLogEnabled = dict["AuditLogEnabled"] as! Bool
         }
@@ -5839,6 +5836,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableMesh") && dict["EnableMesh"] != nil {
             self.enableMesh = dict["EnableMesh"] as! Bool
+        }
+        if dict.keys.contains("MonitorEnabled") && dict["MonitorEnabled"] != nil {
+            self.monitorEnabled = dict["MonitorEnabled"] as! Bool
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
@@ -5865,8 +5865,6 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
 
     public var argoServerEnabled: Bool?
 
-    public var armsEnabled: Bool?
-
     public var auditLogEnabled: Bool?
 
     public var clusterId: String?
@@ -5874,6 +5872,8 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
     public var deletionProtection: Bool?
 
     public var enableMesh: Bool?
+
+    public var monitorEnabled: Bool?
 
     public var name: String?
 
@@ -5908,9 +5908,6 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
         }
-        if self.armsEnabled != nil {
-            map["ArmsEnabled"] = self.armsEnabled!
-        }
         if self.auditLogEnabled != nil {
             map["AuditLogEnabled"] = self.auditLogEnabled!
         }
@@ -5922,6 +5919,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if self.enableMesh != nil {
             map["EnableMesh"] = self.enableMesh!
+        }
+        if self.monitorEnabled != nil {
+            map["MonitorEnabled"] = self.monitorEnabled!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -5951,9 +5951,6 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
         }
-        if dict.keys.contains("ArmsEnabled") && dict["ArmsEnabled"] != nil {
-            self.armsEnabled = dict["ArmsEnabled"] as! Bool
-        }
         if dict.keys.contains("AuditLogEnabled") && dict["AuditLogEnabled"] != nil {
             self.auditLogEnabled = dict["AuditLogEnabled"] as! Bool
         }
@@ -5965,6 +5962,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableMesh") && dict["EnableMesh"] != nil {
             self.enableMesh = dict["EnableMesh"] as! Bool
+        }
+        if dict.keys.contains("MonitorEnabled") && dict["MonitorEnabled"] != nil {
+            self.monitorEnabled = dict["MonitorEnabled"] as! Bool
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
