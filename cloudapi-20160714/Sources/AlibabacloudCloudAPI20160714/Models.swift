@@ -11551,6 +11551,10 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
     public var ipv6Status: String?
 
+    public var migrationError: String?
+
+    public var migrationStatus: String?
+
     public var modifiedTime: String?
 
     public var passthroughHeaders: String?
@@ -11653,6 +11657,12 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if self.ipv6Status != nil {
             map["Ipv6Status"] = self.ipv6Status!
+        }
+        if self.migrationError != nil {
+            map["MigrationError"] = self.migrationError!
+        }
+        if self.migrationStatus != nil {
+            map["MigrationStatus"] = self.migrationStatus!
         }
         if self.modifiedTime != nil {
             map["ModifiedTime"] = self.modifiedTime!
@@ -11758,6 +11768,12 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Ipv6Status") && dict["Ipv6Status"] != nil {
             self.ipv6Status = dict["Ipv6Status"] as! String
+        }
+        if dict.keys.contains("MigrationError") && dict["MigrationError"] != nil {
+            self.migrationError = dict["MigrationError"] as! String
+        }
+        if dict.keys.contains("MigrationStatus") && dict["MigrationStatus"] != nil {
+            self.migrationStatus = dict["MigrationStatus"] as! String
         }
         if dict.keys.contains("ModifiedTime") && dict["ModifiedTime"] != nil {
             self.modifiedTime = dict["ModifiedTime"] as! String
@@ -20819,6 +20835,147 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
     public class BackendInfo : Tea.TeaModel {
         public class BackendModels : Tea.TeaModel {
             public class BackendConfig : Tea.TeaModel {
+                public class DiscoveryConfig : Tea.TeaModel {
+                    public class NacosConfig : Tea.TeaModel {
+                        public var accessKey: String?
+
+                        public var authType: String?
+
+                        public var clusters: String?
+
+                        public var groupName: String?
+
+                        public var namespace: String?
+
+                        public var password: String?
+
+                        public var secretKey: String?
+
+                        public var serverAddress: String?
+
+                        public var serviceName: String?
+
+                        public var userName: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.accessKey != nil {
+                                map["AccessKey"] = self.accessKey!
+                            }
+                            if self.authType != nil {
+                                map["AuthType"] = self.authType!
+                            }
+                            if self.clusters != nil {
+                                map["Clusters"] = self.clusters!
+                            }
+                            if self.groupName != nil {
+                                map["GroupName"] = self.groupName!
+                            }
+                            if self.namespace != nil {
+                                map["Namespace"] = self.namespace!
+                            }
+                            if self.password != nil {
+                                map["Password"] = self.password!
+                            }
+                            if self.secretKey != nil {
+                                map["SecretKey"] = self.secretKey!
+                            }
+                            if self.serverAddress != nil {
+                                map["ServerAddress"] = self.serverAddress!
+                            }
+                            if self.serviceName != nil {
+                                map["ServiceName"] = self.serviceName!
+                            }
+                            if self.userName != nil {
+                                map["UserName"] = self.userName!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("AccessKey") && dict["AccessKey"] != nil {
+                                self.accessKey = dict["AccessKey"] as! String
+                            }
+                            if dict.keys.contains("AuthType") && dict["AuthType"] != nil {
+                                self.authType = dict["AuthType"] as! String
+                            }
+                            if dict.keys.contains("Clusters") && dict["Clusters"] != nil {
+                                self.clusters = dict["Clusters"] as! String
+                            }
+                            if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                                self.groupName = dict["GroupName"] as! String
+                            }
+                            if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                                self.namespace = dict["Namespace"] as! String
+                            }
+                            if dict.keys.contains("Password") && dict["Password"] != nil {
+                                self.password = dict["Password"] as! String
+                            }
+                            if dict.keys.contains("SecretKey") && dict["SecretKey"] != nil {
+                                self.secretKey = dict["SecretKey"] as! String
+                            }
+                            if dict.keys.contains("ServerAddress") && dict["ServerAddress"] != nil {
+                                self.serverAddress = dict["ServerAddress"] as! String
+                            }
+                            if dict.keys.contains("ServiceName") && dict["ServiceName"] != nil {
+                                self.serviceName = dict["ServiceName"] as! String
+                            }
+                            if dict.keys.contains("UserName") && dict["UserName"] != nil {
+                                self.userName = dict["UserName"] as! String
+                            }
+                        }
+                    }
+                    public var nacosConfig: DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.DiscoveryConfig.NacosConfig?
+
+                    public var rcType: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.nacosConfig?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.nacosConfig != nil {
+                            map["NacosConfig"] = self.nacosConfig?.toMap()
+                        }
+                        if self.rcType != nil {
+                            map["RcType"] = self.rcType!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("NacosConfig") && dict["NacosConfig"] != nil {
+                            var model = DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.DiscoveryConfig.NacosConfig()
+                            model.fromMap(dict["NacosConfig"] as! [String: Any])
+                            self.nacosConfig = model
+                        }
+                        if dict.keys.contains("RcType") && dict["RcType"] != nil {
+                            self.rcType = dict["RcType"] as! String
+                        }
+                    }
+                }
                 public class EventBridgeConfig : Tea.TeaModel {
                     public var eventBridgeRegionId: String?
 
@@ -21165,6 +21322,8 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var discoveryConfig: DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.DiscoveryConfig?
+
                 public var eventBridgeConfig: DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.EventBridgeConfig?
 
                 public var functionComputeConfig: DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.FunctionComputeConfig?
@@ -21191,6 +21350,7 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.discoveryConfig?.validate()
                     try self.eventBridgeConfig?.validate()
                     try self.functionComputeConfig?.validate()
                     try self.mockConfig?.validate()
@@ -21200,6 +21360,9 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.discoveryConfig != nil {
+                        map["DiscoveryConfig"] = self.discoveryConfig?.toMap()
+                    }
                     if self.eventBridgeConfig != nil {
                         map["EventBridgeConfig"] = self.eventBridgeConfig?.toMap()
                     }
@@ -21228,6 +21391,11 @@ public class DescribeBackendInfoResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DiscoveryConfig") && dict["DiscoveryConfig"] != nil {
+                        var model = DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.DiscoveryConfig()
+                        model.fromMap(dict["DiscoveryConfig"] as! [String: Any])
+                        self.discoveryConfig = model
+                    }
                     if dict.keys.contains("EventBridgeConfig") && dict["EventBridgeConfig"] != nil {
                         var model = DescribeBackendInfoResponseBody.BackendInfo.BackendModels.BackendConfig.EventBridgeConfig()
                         model.fromMap(dict["EventBridgeConfig"] as! [String: Any])
@@ -28534,6 +28702,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var classicEgressAddress: String?
 
+            public var connectCidrBlocks: String?
+
             public var connectVpcId: String?
 
             public var createdTime: String?
@@ -28575,6 +28745,10 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public var internetEgressAddress: String?
 
             public var intranetSegments: String?
+
+            public var maintainEndTime: String?
+
+            public var maintainStartTime: String?
 
             public var networkInterfaceAttributes: DescribeInstancesResponseBody.Instances.InstanceAttribute.NetworkInterfaceAttributes?
 
@@ -28632,6 +28806,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.classicEgressAddress != nil {
                     map["ClassicEgressAddress"] = self.classicEgressAddress!
+                }
+                if self.connectCidrBlocks != nil {
+                    map["ConnectCidrBlocks"] = self.connectCidrBlocks!
                 }
                 if self.connectVpcId != nil {
                     map["ConnectVpcId"] = self.connectVpcId!
@@ -28696,6 +28873,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 if self.intranetSegments != nil {
                     map["IntranetSegments"] = self.intranetSegments!
                 }
+                if self.maintainEndTime != nil {
+                    map["MaintainEndTime"] = self.maintainEndTime!
+                }
+                if self.maintainStartTime != nil {
+                    map["MaintainStartTime"] = self.maintainStartTime!
+                }
                 if self.networkInterfaceAttributes != nil {
                     map["NetworkInterfaceAttributes"] = self.networkInterfaceAttributes?.toMap()
                 }
@@ -28753,6 +28936,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ClassicEgressAddress") && dict["ClassicEgressAddress"] != nil {
                     self.classicEgressAddress = dict["ClassicEgressAddress"] as! String
+                }
+                if dict.keys.contains("ConnectCidrBlocks") && dict["ConnectCidrBlocks"] != nil {
+                    self.connectCidrBlocks = dict["ConnectCidrBlocks"] as! String
                 }
                 if dict.keys.contains("ConnectVpcId") && dict["ConnectVpcId"] != nil {
                     self.connectVpcId = dict["ConnectVpcId"] as! String
@@ -28818,6 +29004,12 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("IntranetSegments") && dict["IntranetSegments"] != nil {
                     self.intranetSegments = dict["IntranetSegments"] as! String
+                }
+                if dict.keys.contains("MaintainEndTime") && dict["MaintainEndTime"] != nil {
+                    self.maintainEndTime = dict["MaintainEndTime"] as! String
+                }
+                if dict.keys.contains("MaintainStartTime") && dict["MaintainStartTime"] != nil {
+                    self.maintainStartTime = dict["MaintainStartTime"] as! String
                 }
                 if dict.keys.contains("NetworkInterfaceAttributes") && dict["NetworkInterfaceAttributes"] != nil {
                     var model = DescribeInstancesResponseBody.Instances.InstanceAttribute.NetworkInterfaceAttributes()
@@ -39002,6 +39194,8 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
 
     public var securityToken: String?
 
+    public var supportSSE: String?
+
     public var tag: [ModifyApiGroupRequest.Tag]?
 
     public var userLogConfig: String?
@@ -39053,6 +39247,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
+        if self.supportSSE != nil {
+            map["SupportSSE"] = self.supportSSE!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -39099,6 +39296,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
             self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("SupportSSE") && dict["SupportSSE"] != nil {
+            self.supportSSE = dict["SupportSSE"] as! String
         }
         if dict.keys.contains("Tag") && dict["Tag"] != nil {
             var tmp : [ModifyApiGroupRequest.Tag] = []
