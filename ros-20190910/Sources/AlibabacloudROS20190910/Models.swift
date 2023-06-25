@@ -5244,6 +5244,8 @@ public class GenerateTemplateByScratchRequest : Tea.TeaModel {
 
     public var templateScratchId: String?
 
+    public var templateType: String?
+
     public override init() {
         super.init()
     }
@@ -5267,6 +5269,9 @@ public class GenerateTemplateByScratchRequest : Tea.TeaModel {
         if self.templateScratchId != nil {
             map["TemplateScratchId"] = self.templateScratchId!
         }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
         return map
     }
 
@@ -5279,6 +5284,9 @@ public class GenerateTemplateByScratchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateScratchId") && dict["TemplateScratchId"] != nil {
             self.templateScratchId = dict["TemplateScratchId"] as! String
+        }
+        if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+            self.templateType = dict["TemplateType"] as! String
         }
     }
 }
@@ -5505,6 +5513,8 @@ public class GenerateTemplatePolicyResponseBody : Tea.TeaModel {
         public class Statement : Tea.TeaModel {
             public var action: [String]?
 
+            public var condition: [String: Any]?
+
             public var effect: String?
 
             public var resource: String?
@@ -5526,6 +5536,9 @@ public class GenerateTemplatePolicyResponseBody : Tea.TeaModel {
                 if self.action != nil {
                     map["Action"] = self.action!
                 }
+                if self.condition != nil {
+                    map["Condition"] = self.condition!
+                }
                 if self.effect != nil {
                     map["Effect"] = self.effect!
                 }
@@ -5538,6 +5551,9 @@ public class GenerateTemplatePolicyResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Action") && dict["Action"] != nil {
                     self.action = dict["Action"] as! [String]
+                }
+                if dict.keys.contains("Condition") && dict["Condition"] != nil {
+                    self.condition = dict["Condition"] as! [String: Any]
                 }
                 if dict.keys.contains("Effect") && dict["Effect"] != nil {
                     self.effect = dict["Effect"] as! String
@@ -11571,6 +11587,59 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class OriginalConstraints : Tea.TeaModel {
+            public var allowedValues: [Any]?
+
+            public var propertyName: String?
+
+            public var resourceName: String?
+
+            public var resourceType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowedValues != nil {
+                    map["AllowedValues"] = self.allowedValues!
+                }
+                if self.propertyName != nil {
+                    map["PropertyName"] = self.propertyName!
+                }
+                if self.resourceName != nil {
+                    map["ResourceName"] = self.resourceName!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AllowedValues") && dict["AllowedValues"] != nil {
+                    self.allowedValues = dict["AllowedValues"] as! [Any]
+                }
+                if dict.keys.contains("PropertyName") && dict["PropertyName"] != nil {
+                    self.propertyName = dict["PropertyName"] as! String
+                }
+                if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
+                    self.resourceName = dict["ResourceName"] as! String
+                }
+                if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+            }
+        }
         public class QueryErrors : Tea.TeaModel {
             public var errorMessage: String?
 
@@ -11630,6 +11699,8 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
 
         public var notSupportResources: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.NotSupportResources]?
 
+        public var originalConstraints: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.OriginalConstraints]?
+
         public var parameterKey: String?
 
         public var queryErrors: [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.QueryErrors]?
@@ -11674,6 +11745,13 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["NotSupportResources"] = tmp
+            }
+            if self.originalConstraints != nil {
+                var tmp : [Any] = []
+                for k in self.originalConstraints! {
+                    tmp.append(k.toMap())
+                }
+                map["OriginalConstraints"] = tmp
             }
             if self.parameterKey != nil {
                 map["ParameterKey"] = self.parameterKey!
@@ -11720,6 +11798,17 @@ public class GetTemplateParameterConstraintsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.notSupportResources = tmp
+            }
+            if dict.keys.contains("OriginalConstraints") && dict["OriginalConstraints"] != nil {
+                var tmp : [GetTemplateParameterConstraintsResponseBody.ParameterConstraints.OriginalConstraints] = []
+                for v in dict["OriginalConstraints"] as! [Any] {
+                    var model = GetTemplateParameterConstraintsResponseBody.ParameterConstraints.OriginalConstraints()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.originalConstraints = tmp
             }
             if dict.keys.contains("ParameterKey") && dict["ParameterKey"] != nil {
                 self.parameterKey = dict["ParameterKey"] as! String
