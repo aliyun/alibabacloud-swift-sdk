@@ -582,6 +582,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.avatarInfoShrink)) {
             query["AvatarInfo"] = request.avatarInfoShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callback)) {
+            query["Callback"] = request.callback!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            query["CallbackParams"] = request.callbackParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extParams)) {
+            query["ExtParams"] = request.extParams ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["TenantId"] = request.tenantId!;
         }
@@ -638,6 +647,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.avatarInfoShrink)) {
             query["AvatarInfo"] = request.avatarInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callback)) {
+            query["Callback"] = request.callback!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            query["CallbackParams"] = request.callbackParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extParams)) {
+            query["ExtParams"] = request.extParams ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["TenantId"] = request.tenantId!;
@@ -701,6 +719,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.avatarInfoShrink)) {
             query["AvatarInfo"] = request.avatarInfoShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callback)) {
+            query["Callback"] = request.callback!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            query["CallbackParams"] = request.callbackParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extParams)) {
+            query["ExtParams"] = request.extParams ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["TenantId"] = request.tenantId!;

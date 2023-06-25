@@ -4460,6 +4460,12 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 
     public var avatarInfo: SubmitAudioTo2DAvatarVideoTaskRequest.AvatarInfo?
 
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
+
     public var tenantId: Int64?
 
     public var title: String?
@@ -4491,6 +4497,15 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         if self.avatarInfo != nil {
             map["AvatarInfo"] = self.avatarInfo?.toMap()
         }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -4517,6 +4532,15 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             model.fromMap(dict["AvatarInfo"] as! [String: Any])
             self.avatarInfo = model
         }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
+        }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
         }
@@ -4538,6 +4562,12 @@ public class SubmitAudioTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public var appShrink: String?
 
     public var avatarInfoShrink: String?
+
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
 
     public var tenantId: Int64?
 
@@ -4567,6 +4597,15 @@ public class SubmitAudioTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         if self.avatarInfoShrink != nil {
             map["AvatarInfo"] = self.avatarInfoShrink!
         }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -4588,6 +4627,15 @@ public class SubmitAudioTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             self.avatarInfoShrink = dict["AvatarInfo"] as! String
+        }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
@@ -4882,6 +4930,12 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
     public var avatarInfo: SubmitAudioTo3DAvatarVideoTaskRequest.AvatarInfo?
 
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
+
     public var tenantId: Int64?
 
     public var title: String?
@@ -4913,6 +4967,15 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         if self.avatarInfo != nil {
             map["AvatarInfo"] = self.avatarInfo?.toMap()
         }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -4939,6 +5002,15 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             model.fromMap(dict["AvatarInfo"] as! [String: Any])
             self.avatarInfo = model
         }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
+        }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
         }
@@ -4960,6 +5032,12 @@ public class SubmitAudioTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public var appShrink: String?
 
     public var avatarInfoShrink: String?
+
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
 
     public var tenantId: Int64?
 
@@ -4989,6 +5067,15 @@ public class SubmitAudioTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         if self.avatarInfoShrink != nil {
             map["AvatarInfo"] = self.avatarInfoShrink!
         }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -5010,6 +5097,15 @@ public class SubmitAudioTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             self.avatarInfoShrink = dict["AvatarInfo"] as! String
+        }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
@@ -5351,6 +5447,12 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 
     public var avatarInfo: SubmitTextTo2DAvatarVideoTaskRequest.AvatarInfo?
 
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
+
     public var tenantId: Int64?
 
     public var text: String?
@@ -5386,6 +5488,15 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         if self.avatarInfo != nil {
             map["AvatarInfo"] = self.avatarInfo?.toMap()
         }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -5417,6 +5528,15 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             model.fromMap(dict["AvatarInfo"] as! [String: Any])
             self.avatarInfo = model
         }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
+        }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
         }
@@ -5440,6 +5560,12 @@ public class SubmitTextTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public var audioInfoShrink: String?
 
     public var avatarInfoShrink: String?
+
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
 
     public var tenantId: Int64?
 
@@ -5472,6 +5598,15 @@ public class SubmitTextTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         if self.avatarInfoShrink != nil {
             map["AvatarInfo"] = self.avatarInfoShrink!
         }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
@@ -5496,6 +5631,15 @@ public class SubmitTextTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             self.avatarInfoShrink = dict["AvatarInfo"] as! String
+        }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
