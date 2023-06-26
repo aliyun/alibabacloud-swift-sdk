@@ -27065,7 +27065,11 @@ public class DescribeDBInstancesResponse : Tea.TeaModel {
 }
 
 public class DescribeDBInstancesAsCsvRequest : Tea.TeaModel {
+    public var cachedAsync: Bool?
+
     public var DBInstanceId: String?
+
+    public var exportKey: String?
 
     public var ownerId: Int64?
 
@@ -27091,8 +27095,14 @@ public class DescribeDBInstancesAsCsvRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cachedAsync != nil {
+            map["CachedAsync"] = self.cachedAsync!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.exportKey != nil {
+            map["ExportKey"] = self.exportKey!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
@@ -27113,8 +27123,14 @@ public class DescribeDBInstancesAsCsvRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CachedAsync") && dict["CachedAsync"] != nil {
+            self.cachedAsync = dict["CachedAsync"] as! Bool
+        }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("ExportKey") && dict["ExportKey"] != nil {
+            self.exportKey = dict["ExportKey"] as! String
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
@@ -27137,6 +27153,35 @@ public class DescribeDBInstancesAsCsvRequest : Tea.TeaModel {
 public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
         public class DBInstanceAttribute : Tea.TeaModel {
+            public class SlaveZones : Tea.TeaModel {
+                public var slaveRegion: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.slaveRegion != nil {
+                        map["slaveRegion"] = self.slaveRegion!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("slaveRegion") && dict["slaveRegion"] != nil {
+                        self.slaveRegion = dict["slaveRegion"] as! [String]
+                    }
+                }
+            }
             public var accountMaxQuantity: Int32?
 
             public var accountType: String?
@@ -27179,6 +27224,8 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
 
             public var expireTime: String?
 
+            public var exportKey: String?
+
             public var guardDBInstanceId: String?
 
             public var incrementSourceDBInstanceId: String?
@@ -27207,6 +27254,8 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
 
             public var securityIPList: String?
 
+            public var slaveZones: DescribeDBInstancesAsCsvResponseBody.Items.DBInstanceAttribute.SlaveZones?
+
             public var supportUpgradeAccountType: String?
 
             public var tags: String?
@@ -27229,6 +27278,7 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.slaveZones?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -27296,6 +27346,9 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
                 if self.expireTime != nil {
                     map["ExpireTime"] = self.expireTime!
                 }
+                if self.exportKey != nil {
+                    map["ExportKey"] = self.exportKey!
+                }
                 if self.guardDBInstanceId != nil {
                     map["GuardDBInstanceId"] = self.guardDBInstanceId!
                 }
@@ -27337,6 +27390,9 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
                 }
                 if self.securityIPList != nil {
                     map["SecurityIPList"] = self.securityIPList!
+                }
+                if self.slaveZones != nil {
+                    map["SlaveZones"] = self.slaveZones?.toMap()
                 }
                 if self.supportUpgradeAccountType != nil {
                     map["SupportUpgradeAccountType"] = self.supportUpgradeAccountType!
@@ -27423,6 +27479,9 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
                     self.expireTime = dict["ExpireTime"] as! String
                 }
+                if dict.keys.contains("ExportKey") && dict["ExportKey"] != nil {
+                    self.exportKey = dict["ExportKey"] as! String
+                }
                 if dict.keys.contains("GuardDBInstanceId") && dict["GuardDBInstanceId"] != nil {
                     self.guardDBInstanceId = dict["GuardDBInstanceId"] as! String
                 }
@@ -27464,6 +27523,11 @@ public class DescribeDBInstancesAsCsvResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SecurityIPList") && dict["SecurityIPList"] != nil {
                     self.securityIPList = dict["SecurityIPList"] as! String
+                }
+                if dict.keys.contains("SlaveZones") && dict["SlaveZones"] != nil {
+                    var model = DescribeDBInstancesAsCsvResponseBody.Items.DBInstanceAttribute.SlaveZones()
+                    model.fromMap(dict["SlaveZones"] as! [String: Any])
+                    self.slaveZones = model
                 }
                 if dict.keys.contains("SupportUpgradeAccountType") && dict["SupportUpgradeAccountType"] != nil {
                     self.supportUpgradeAccountType = dict["SupportUpgradeAccountType"] as! String
@@ -31172,7 +31236,98 @@ public class DescribeDatabasesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class AdvancedInfo : Tea.TeaModel {
+                public var advancedDbProperty: [[String: Any]]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.advancedDbProperty != nil {
+                        map["AdvancedDbProperty"] = self.advancedDbProperty!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AdvancedDbProperty") && dict["AdvancedDbProperty"] != nil {
+                        self.advancedDbProperty = dict["AdvancedDbProperty"] as! [[String: Any]]
+                    }
+                }
+            }
+            public class BasicInfo : Tea.TeaModel {
+                public var basicDbProperty: [[String: Any]]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.basicDbProperty != nil {
+                        map["BasicDbProperty"] = self.basicDbProperty!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BasicDbProperty") && dict["BasicDbProperty"] != nil {
+                        self.basicDbProperty = dict["BasicDbProperty"] as! [[String: Any]]
+                    }
+                }
+            }
+            public class RuntimeInfo : Tea.TeaModel {
+                public var runtimeDbProperty: [[String: Any]]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.runtimeDbProperty != nil {
+                        map["RuntimeDbProperty"] = self.runtimeDbProperty!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RuntimeDbProperty") && dict["RuntimeDbProperty"] != nil {
+                        self.runtimeDbProperty = dict["RuntimeDbProperty"] as! [[String: Any]]
+                    }
+                }
+            }
             public var accounts: DescribeDatabasesResponseBody.Databases.Database.Accounts?
+
+            public var advancedInfo: DescribeDatabasesResponseBody.Databases.Database.AdvancedInfo?
+
+            public var basicInfo: DescribeDatabasesResponseBody.Databases.Database.BasicInfo?
 
             public var characterSetName: String?
 
@@ -31198,6 +31353,8 @@ public class DescribeDatabasesResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var runtimeInfo: DescribeDatabasesResponseBody.Databases.Database.RuntimeInfo?
+
             public var tablespace: String?
 
             public var totalCount: Int32?
@@ -31213,12 +31370,21 @@ public class DescribeDatabasesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.accounts?.validate()
+                try self.advancedInfo?.validate()
+                try self.basicInfo?.validate()
+                try self.runtimeInfo?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
                 if self.accounts != nil {
                     map["Accounts"] = self.accounts?.toMap()
+                }
+                if self.advancedInfo != nil {
+                    map["AdvancedInfo"] = self.advancedInfo?.toMap()
+                }
+                if self.basicInfo != nil {
+                    map["BasicInfo"] = self.basicInfo?.toMap()
                 }
                 if self.characterSetName != nil {
                     map["CharacterSetName"] = self.characterSetName!
@@ -31256,6 +31422,9 @@ public class DescribeDatabasesResponseBody : Tea.TeaModel {
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
+                if self.runtimeInfo != nil {
+                    map["RuntimeInfo"] = self.runtimeInfo?.toMap()
+                }
                 if self.tablespace != nil {
                     map["Tablespace"] = self.tablespace!
                 }
@@ -31270,6 +31439,16 @@ public class DescribeDatabasesResponseBody : Tea.TeaModel {
                     var model = DescribeDatabasesResponseBody.Databases.Database.Accounts()
                     model.fromMap(dict["Accounts"] as! [String: Any])
                     self.accounts = model
+                }
+                if dict.keys.contains("AdvancedInfo") && dict["AdvancedInfo"] != nil {
+                    var model = DescribeDatabasesResponseBody.Databases.Database.AdvancedInfo()
+                    model.fromMap(dict["AdvancedInfo"] as! [String: Any])
+                    self.advancedInfo = model
+                }
+                if dict.keys.contains("BasicInfo") && dict["BasicInfo"] != nil {
+                    var model = DescribeDatabasesResponseBody.Databases.Database.BasicInfo()
+                    model.fromMap(dict["BasicInfo"] as! [String: Any])
+                    self.basicInfo = model
                 }
                 if dict.keys.contains("CharacterSetName") && dict["CharacterSetName"] != nil {
                     self.characterSetName = dict["CharacterSetName"] as! String
@@ -31306,6 +31485,11 @@ public class DescribeDatabasesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
+                }
+                if dict.keys.contains("RuntimeInfo") && dict["RuntimeInfo"] != nil {
+                    var model = DescribeDatabasesResponseBody.Databases.Database.RuntimeInfo()
+                    model.fromMap(dict["RuntimeInfo"] as! [String: Any])
+                    self.runtimeInfo = model
                 }
                 if dict.keys.contains("Tablespace") && dict["Tablespace"] != nil {
                     self.tablespace = dict["Tablespace"] as! String

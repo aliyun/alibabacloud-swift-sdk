@@ -5305,8 +5305,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDBInstancesAsCsvWithOptions(_ request: DescribeDBInstancesAsCsvRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBInstancesAsCsvResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cachedAsync)) {
+            query["CachedAsync"] = request.cachedAsync!;
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.exportKey)) {
+            query["ExportKey"] = request.exportKey ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
