@@ -6377,6 +6377,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDcdnFullDomainsBlockIPWithOptions(_ request: SetDcdnFullDomainsBlockIPRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDcdnFullDomainsBlockIPResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.blockInterval)) {
+            body["BlockInterval"] = request.blockInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.IPList)) {
+            body["IPList"] = request.IPList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationType)) {
+            body["OperationType"] = request.operationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateType)) {
+            body["UpdateType"] = request.updateType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetDcdnFullDomainsBlockIP",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetDcdnFullDomainsBlockIPResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDcdnFullDomainsBlockIP(_ request: SetDcdnFullDomainsBlockIPRequest) async throws -> SetDcdnFullDomainsBlockIPResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setDcdnFullDomainsBlockIPWithOptions(request as! SetDcdnFullDomainsBlockIPRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setDcdnUserConfigWithOptions(_ request: SetDcdnUserConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDcdnUserConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
