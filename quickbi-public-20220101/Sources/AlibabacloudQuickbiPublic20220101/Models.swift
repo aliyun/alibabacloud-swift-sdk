@@ -7665,6 +7665,1145 @@ public class ModifyApiDatasourceParametersResponse : Tea.TeaModel {
     }
 }
 
+public class QueryComponentPerformanceRequest : Tea.TeaModel {
+    public var costTimeAvgMin: Int32?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryType: String?
+
+    public var reportId: String?
+
+    public var resourceType: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.costTimeAvgMin != nil {
+            map["CostTimeAvgMin"] = self.costTimeAvgMin!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
+        if self.reportId != nil {
+            map["ReportId"] = self.reportId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CostTimeAvgMin") && dict["CostTimeAvgMin"] != nil {
+            self.costTimeAvgMin = dict["CostTimeAvgMin"] as! Int32
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryType") && dict["QueryType"] != nil {
+            self.queryType = dict["QueryType"] as! String
+        }
+        if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+            self.reportId = dict["ReportId"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class QueryComponentPerformanceResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var cacheCostTimeAvg: Double?
+
+        public var cacheQueryCount: Int32?
+
+        public var componentId: String?
+
+        public var componentName: String?
+
+        public var costTimeAvg: Double?
+
+        public var queryCount: Int32?
+
+        public var queryCountAvg: Double?
+
+        public var queryOverFivePercentNum: Double?
+
+        public var queryOverFiveSecPercent: String?
+
+        public var queryOverTenSecPercent: String?
+
+        public var queryOverTenSecPercentNum: Double?
+
+        public var queryTimeoutCount: Int32?
+
+        public var queryTimeoutCountPercent: Double?
+
+        public var quickIndexCostTimeAvg: Double?
+
+        public var quickIndexQueryCount: Int32?
+
+        public var repeatQueryPercent: String?
+
+        public var repeatQueryPercentNum: Double?
+
+        public var repeatSqlQueryCount: Int32?
+
+        public var repeatSqlQueryPercent: String?
+
+        public var reportId: String?
+
+        public var reportName: String?
+
+        public var reportType: String?
+
+        public var workspaceId: String?
+
+        public var workspaceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cacheCostTimeAvg != nil {
+                map["CacheCostTimeAvg"] = self.cacheCostTimeAvg!
+            }
+            if self.cacheQueryCount != nil {
+                map["CacheQueryCount"] = self.cacheQueryCount!
+            }
+            if self.componentId != nil {
+                map["ComponentId"] = self.componentId!
+            }
+            if self.componentName != nil {
+                map["ComponentName"] = self.componentName!
+            }
+            if self.costTimeAvg != nil {
+                map["CostTimeAvg"] = self.costTimeAvg!
+            }
+            if self.queryCount != nil {
+                map["QueryCount"] = self.queryCount!
+            }
+            if self.queryCountAvg != nil {
+                map["QueryCountAvg"] = self.queryCountAvg!
+            }
+            if self.queryOverFivePercentNum != nil {
+                map["QueryOverFivePercentNum"] = self.queryOverFivePercentNum!
+            }
+            if self.queryOverFiveSecPercent != nil {
+                map["QueryOverFiveSecPercent"] = self.queryOverFiveSecPercent!
+            }
+            if self.queryOverTenSecPercent != nil {
+                map["QueryOverTenSecPercent"] = self.queryOverTenSecPercent!
+            }
+            if self.queryOverTenSecPercentNum != nil {
+                map["QueryOverTenSecPercentNum"] = self.queryOverTenSecPercentNum!
+            }
+            if self.queryTimeoutCount != nil {
+                map["QueryTimeoutCount"] = self.queryTimeoutCount!
+            }
+            if self.queryTimeoutCountPercent != nil {
+                map["QueryTimeoutCountPercent"] = self.queryTimeoutCountPercent!
+            }
+            if self.quickIndexCostTimeAvg != nil {
+                map["QuickIndexCostTimeAvg"] = self.quickIndexCostTimeAvg!
+            }
+            if self.quickIndexQueryCount != nil {
+                map["QuickIndexQueryCount"] = self.quickIndexQueryCount!
+            }
+            if self.repeatQueryPercent != nil {
+                map["RepeatQueryPercent"] = self.repeatQueryPercent!
+            }
+            if self.repeatQueryPercentNum != nil {
+                map["RepeatQueryPercentNum"] = self.repeatQueryPercentNum!
+            }
+            if self.repeatSqlQueryCount != nil {
+                map["RepeatSqlQueryCount"] = self.repeatSqlQueryCount!
+            }
+            if self.repeatSqlQueryPercent != nil {
+                map["RepeatSqlQueryPercent"] = self.repeatSqlQueryPercent!
+            }
+            if self.reportId != nil {
+                map["ReportId"] = self.reportId!
+            }
+            if self.reportName != nil {
+                map["ReportName"] = self.reportName!
+            }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
+            }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
+            if self.workspaceName != nil {
+                map["WorkspaceName"] = self.workspaceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CacheCostTimeAvg") && dict["CacheCostTimeAvg"] != nil {
+                self.cacheCostTimeAvg = dict["CacheCostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("CacheQueryCount") && dict["CacheQueryCount"] != nil {
+                self.cacheQueryCount = dict["CacheQueryCount"] as! Int32
+            }
+            if dict.keys.contains("ComponentId") && dict["ComponentId"] != nil {
+                self.componentId = dict["ComponentId"] as! String
+            }
+            if dict.keys.contains("ComponentName") && dict["ComponentName"] != nil {
+                self.componentName = dict["ComponentName"] as! String
+            }
+            if dict.keys.contains("CostTimeAvg") && dict["CostTimeAvg"] != nil {
+                self.costTimeAvg = dict["CostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("QueryCount") && dict["QueryCount"] != nil {
+                self.queryCount = dict["QueryCount"] as! Int32
+            }
+            if dict.keys.contains("QueryCountAvg") && dict["QueryCountAvg"] != nil {
+                self.queryCountAvg = dict["QueryCountAvg"] as! Double
+            }
+            if dict.keys.contains("QueryOverFivePercentNum") && dict["QueryOverFivePercentNum"] != nil {
+                self.queryOverFivePercentNum = dict["QueryOverFivePercentNum"] as! Double
+            }
+            if dict.keys.contains("QueryOverFiveSecPercent") && dict["QueryOverFiveSecPercent"] != nil {
+                self.queryOverFiveSecPercent = dict["QueryOverFiveSecPercent"] as! String
+            }
+            if dict.keys.contains("QueryOverTenSecPercent") && dict["QueryOverTenSecPercent"] != nil {
+                self.queryOverTenSecPercent = dict["QueryOverTenSecPercent"] as! String
+            }
+            if dict.keys.contains("QueryOverTenSecPercentNum") && dict["QueryOverTenSecPercentNum"] != nil {
+                self.queryOverTenSecPercentNum = dict["QueryOverTenSecPercentNum"] as! Double
+            }
+            if dict.keys.contains("QueryTimeoutCount") && dict["QueryTimeoutCount"] != nil {
+                self.queryTimeoutCount = dict["QueryTimeoutCount"] as! Int32
+            }
+            if dict.keys.contains("QueryTimeoutCountPercent") && dict["QueryTimeoutCountPercent"] != nil {
+                self.queryTimeoutCountPercent = dict["QueryTimeoutCountPercent"] as! Double
+            }
+            if dict.keys.contains("QuickIndexCostTimeAvg") && dict["QuickIndexCostTimeAvg"] != nil {
+                self.quickIndexCostTimeAvg = dict["QuickIndexCostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("QuickIndexQueryCount") && dict["QuickIndexQueryCount"] != nil {
+                self.quickIndexQueryCount = dict["QuickIndexQueryCount"] as! Int32
+            }
+            if dict.keys.contains("RepeatQueryPercent") && dict["RepeatQueryPercent"] != nil {
+                self.repeatQueryPercent = dict["RepeatQueryPercent"] as! String
+            }
+            if dict.keys.contains("RepeatQueryPercentNum") && dict["RepeatQueryPercentNum"] != nil {
+                self.repeatQueryPercentNum = dict["RepeatQueryPercentNum"] as! Double
+            }
+            if dict.keys.contains("RepeatSqlQueryCount") && dict["RepeatSqlQueryCount"] != nil {
+                self.repeatSqlQueryCount = dict["RepeatSqlQueryCount"] as! Int32
+            }
+            if dict.keys.contains("RepeatSqlQueryPercent") && dict["RepeatSqlQueryPercent"] != nil {
+                self.repeatSqlQueryPercent = dict["RepeatSqlQueryPercent"] as! String
+            }
+            if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+                self.reportId = dict["ReportId"] as! String
+            }
+            if dict.keys.contains("ReportName") && dict["ReportName"] != nil {
+                self.reportName = dict["ReportName"] as! String
+            }
+            if dict.keys.contains("ReportType") && dict["ReportType"] != nil {
+                self.reportType = dict["ReportType"] as! String
+            }
+            if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+                self.workspaceId = dict["WorkspaceId"] as! String
+            }
+            if dict.keys.contains("WorkspaceName") && dict["WorkspaceName"] != nil {
+                self.workspaceName = dict["WorkspaceName"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [QueryComponentPerformanceResponseBody.Result]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            var tmp : [QueryComponentPerformanceResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = QueryComponentPerformanceResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryComponentPerformanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryComponentPerformanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryComponentPerformanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryCubeOptimizationRequest : Tea.TeaModel {
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class QueryCubeOptimizationResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class CubePerformanceDiagnoseModel : Tea.TeaModel {
+            public var cacheCostTimeAvg: Double?
+
+            public var cacheQueryCount: Int32?
+
+            public var costTimeAvg: Double?
+
+            public var cubeId: String?
+
+            public var cubeName: String?
+
+            public var queryCount: Int32?
+
+            public var queryCountAvg: Double?
+
+            public var queryOverFivePercentNum: Double?
+
+            public var queryOverFiveSecPercent: String?
+
+            public var queryOverTenSecPercent: String?
+
+            public var queryOverTenSecPercentNum: Double?
+
+            public var queryTimeoutCount: Int32?
+
+            public var queryTimeoutCountPercent: Double?
+
+            public var quickIndexCostTimeAvg: Double?
+
+            public var quickIndexQueryCount: Int32?
+
+            public var repeatQueryPercent: String?
+
+            public var repeatQueryPercentNum: Double?
+
+            public var repeatSqlQueryCount: Int32?
+
+            public var repeatSqlQueryPercent: String?
+
+            public var workspaceId: String?
+
+            public var workspaceName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cacheCostTimeAvg != nil {
+                    map["CacheCostTimeAvg"] = self.cacheCostTimeAvg!
+                }
+                if self.cacheQueryCount != nil {
+                    map["CacheQueryCount"] = self.cacheQueryCount!
+                }
+                if self.costTimeAvg != nil {
+                    map["CostTimeAvg"] = self.costTimeAvg!
+                }
+                if self.cubeId != nil {
+                    map["CubeId"] = self.cubeId!
+                }
+                if self.cubeName != nil {
+                    map["CubeName"] = self.cubeName!
+                }
+                if self.queryCount != nil {
+                    map["QueryCount"] = self.queryCount!
+                }
+                if self.queryCountAvg != nil {
+                    map["QueryCountAvg"] = self.queryCountAvg!
+                }
+                if self.queryOverFivePercentNum != nil {
+                    map["QueryOverFivePercentNum"] = self.queryOverFivePercentNum!
+                }
+                if self.queryOverFiveSecPercent != nil {
+                    map["QueryOverFiveSecPercent"] = self.queryOverFiveSecPercent!
+                }
+                if self.queryOverTenSecPercent != nil {
+                    map["QueryOverTenSecPercent"] = self.queryOverTenSecPercent!
+                }
+                if self.queryOverTenSecPercentNum != nil {
+                    map["QueryOverTenSecPercentNum"] = self.queryOverTenSecPercentNum!
+                }
+                if self.queryTimeoutCount != nil {
+                    map["QueryTimeoutCount"] = self.queryTimeoutCount!
+                }
+                if self.queryTimeoutCountPercent != nil {
+                    map["QueryTimeoutCountPercent"] = self.queryTimeoutCountPercent!
+                }
+                if self.quickIndexCostTimeAvg != nil {
+                    map["QuickIndexCostTimeAvg"] = self.quickIndexCostTimeAvg!
+                }
+                if self.quickIndexQueryCount != nil {
+                    map["QuickIndexQueryCount"] = self.quickIndexQueryCount!
+                }
+                if self.repeatQueryPercent != nil {
+                    map["RepeatQueryPercent"] = self.repeatQueryPercent!
+                }
+                if self.repeatQueryPercentNum != nil {
+                    map["RepeatQueryPercentNum"] = self.repeatQueryPercentNum!
+                }
+                if self.repeatSqlQueryCount != nil {
+                    map["RepeatSqlQueryCount"] = self.repeatSqlQueryCount!
+                }
+                if self.repeatSqlQueryPercent != nil {
+                    map["RepeatSqlQueryPercent"] = self.repeatSqlQueryPercent!
+                }
+                if self.workspaceId != nil {
+                    map["WorkspaceId"] = self.workspaceId!
+                }
+                if self.workspaceName != nil {
+                    map["WorkspaceName"] = self.workspaceName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CacheCostTimeAvg") && dict["CacheCostTimeAvg"] != nil {
+                    self.cacheCostTimeAvg = dict["CacheCostTimeAvg"] as! Double
+                }
+                if dict.keys.contains("CacheQueryCount") && dict["CacheQueryCount"] != nil {
+                    self.cacheQueryCount = dict["CacheQueryCount"] as! Int32
+                }
+                if dict.keys.contains("CostTimeAvg") && dict["CostTimeAvg"] != nil {
+                    self.costTimeAvg = dict["CostTimeAvg"] as! Double
+                }
+                if dict.keys.contains("CubeId") && dict["CubeId"] != nil {
+                    self.cubeId = dict["CubeId"] as! String
+                }
+                if dict.keys.contains("CubeName") && dict["CubeName"] != nil {
+                    self.cubeName = dict["CubeName"] as! String
+                }
+                if dict.keys.contains("QueryCount") && dict["QueryCount"] != nil {
+                    self.queryCount = dict["QueryCount"] as! Int32
+                }
+                if dict.keys.contains("QueryCountAvg") && dict["QueryCountAvg"] != nil {
+                    self.queryCountAvg = dict["QueryCountAvg"] as! Double
+                }
+                if dict.keys.contains("QueryOverFivePercentNum") && dict["QueryOverFivePercentNum"] != nil {
+                    self.queryOverFivePercentNum = dict["QueryOverFivePercentNum"] as! Double
+                }
+                if dict.keys.contains("QueryOverFiveSecPercent") && dict["QueryOverFiveSecPercent"] != nil {
+                    self.queryOverFiveSecPercent = dict["QueryOverFiveSecPercent"] as! String
+                }
+                if dict.keys.contains("QueryOverTenSecPercent") && dict["QueryOverTenSecPercent"] != nil {
+                    self.queryOverTenSecPercent = dict["QueryOverTenSecPercent"] as! String
+                }
+                if dict.keys.contains("QueryOverTenSecPercentNum") && dict["QueryOverTenSecPercentNum"] != nil {
+                    self.queryOverTenSecPercentNum = dict["QueryOverTenSecPercentNum"] as! Double
+                }
+                if dict.keys.contains("QueryTimeoutCount") && dict["QueryTimeoutCount"] != nil {
+                    self.queryTimeoutCount = dict["QueryTimeoutCount"] as! Int32
+                }
+                if dict.keys.contains("QueryTimeoutCountPercent") && dict["QueryTimeoutCountPercent"] != nil {
+                    self.queryTimeoutCountPercent = dict["QueryTimeoutCountPercent"] as! Double
+                }
+                if dict.keys.contains("QuickIndexCostTimeAvg") && dict["QuickIndexCostTimeAvg"] != nil {
+                    self.quickIndexCostTimeAvg = dict["QuickIndexCostTimeAvg"] as! Double
+                }
+                if dict.keys.contains("QuickIndexQueryCount") && dict["QuickIndexQueryCount"] != nil {
+                    self.quickIndexQueryCount = dict["QuickIndexQueryCount"] as! Int32
+                }
+                if dict.keys.contains("RepeatQueryPercent") && dict["RepeatQueryPercent"] != nil {
+                    self.repeatQueryPercent = dict["RepeatQueryPercent"] as! String
+                }
+                if dict.keys.contains("RepeatQueryPercentNum") && dict["RepeatQueryPercentNum"] != nil {
+                    self.repeatQueryPercentNum = dict["RepeatQueryPercentNum"] as! Double
+                }
+                if dict.keys.contains("RepeatSqlQueryCount") && dict["RepeatSqlQueryCount"] != nil {
+                    self.repeatSqlQueryCount = dict["RepeatSqlQueryCount"] as! Int32
+                }
+                if dict.keys.contains("RepeatSqlQueryPercent") && dict["RepeatSqlQueryPercent"] != nil {
+                    self.repeatSqlQueryPercent = dict["RepeatSqlQueryPercent"] as! String
+                }
+                if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+                    self.workspaceId = dict["WorkspaceId"] as! String
+                }
+                if dict.keys.contains("WorkspaceName") && dict["WorkspaceName"] != nil {
+                    self.workspaceName = dict["WorkspaceName"] as! String
+                }
+            }
+        }
+        public var adviceType: String?
+
+        public var cubePerformanceDiagnoseModel: QueryCubeOptimizationResponseBody.Result.CubePerformanceDiagnoseModel?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.cubePerformanceDiagnoseModel?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.adviceType != nil {
+                map["AdviceType"] = self.adviceType!
+            }
+            if self.cubePerformanceDiagnoseModel != nil {
+                map["CubePerformanceDiagnoseModel"] = self.cubePerformanceDiagnoseModel?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdviceType") && dict["AdviceType"] != nil {
+                self.adviceType = dict["AdviceType"] as! String
+            }
+            if dict.keys.contains("CubePerformanceDiagnoseModel") && dict["CubePerformanceDiagnoseModel"] != nil {
+                var model = QueryCubeOptimizationResponseBody.Result.CubePerformanceDiagnoseModel()
+                model.fromMap(dict["CubePerformanceDiagnoseModel"] as! [String: Any])
+                self.cubePerformanceDiagnoseModel = model
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [QueryCubeOptimizationResponseBody.Result]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            var tmp : [QueryCubeOptimizationResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = QueryCubeOptimizationResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryCubeOptimizationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCubeOptimizationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryCubeOptimizationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryCubePerformanceRequest : Tea.TeaModel {
+    public var costTimeAvgMin: Int32?
+
+    public var cubeId: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryType: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.costTimeAvgMin != nil {
+            map["CostTimeAvgMin"] = self.costTimeAvgMin!
+        }
+        if self.cubeId != nil {
+            map["CubeId"] = self.cubeId!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CostTimeAvgMin") && dict["CostTimeAvgMin"] != nil {
+            self.costTimeAvgMin = dict["CostTimeAvgMin"] as! Int32
+        }
+        if dict.keys.contains("CubeId") && dict["CubeId"] != nil {
+            self.cubeId = dict["CubeId"] as! String
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryType") && dict["QueryType"] != nil {
+            self.queryType = dict["QueryType"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class QueryCubePerformanceResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var cacheCostTimeAvg: Double?
+
+        public var cacheQueryCount: Int32?
+
+        public var costTimeAvg: Double?
+
+        public var cubeId: String?
+
+        public var cubeName: String?
+
+        public var queryCount: Int32?
+
+        public var queryCountAvg: Double?
+
+        public var queryOverFivePercentNum: Double?
+
+        public var queryOverFiveSecPercent: String?
+
+        public var queryOverTenSecPercent: String?
+
+        public var queryOverTenSecPercentNum: Double?
+
+        public var queryTimeoutCount: Int32?
+
+        public var queryTimeoutCountPercent: Double?
+
+        public var quickIndexCostTimeAvg: Double?
+
+        public var quickIndexQueryCount: Int32?
+
+        public var repeatQueryPercent: String?
+
+        public var repeatQueryPercentNum: Double?
+
+        public var repeatSqlQueryCount: Int32?
+
+        public var repeatSqlQueryPercent: String?
+
+        public var workspaceId: String?
+
+        public var workspaceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cacheCostTimeAvg != nil {
+                map["CacheCostTimeAvg"] = self.cacheCostTimeAvg!
+            }
+            if self.cacheQueryCount != nil {
+                map["CacheQueryCount"] = self.cacheQueryCount!
+            }
+            if self.costTimeAvg != nil {
+                map["CostTimeAvg"] = self.costTimeAvg!
+            }
+            if self.cubeId != nil {
+                map["CubeId"] = self.cubeId!
+            }
+            if self.cubeName != nil {
+                map["CubeName"] = self.cubeName!
+            }
+            if self.queryCount != nil {
+                map["QueryCount"] = self.queryCount!
+            }
+            if self.queryCountAvg != nil {
+                map["QueryCountAvg"] = self.queryCountAvg!
+            }
+            if self.queryOverFivePercentNum != nil {
+                map["QueryOverFivePercentNum"] = self.queryOverFivePercentNum!
+            }
+            if self.queryOverFiveSecPercent != nil {
+                map["QueryOverFiveSecPercent"] = self.queryOverFiveSecPercent!
+            }
+            if self.queryOverTenSecPercent != nil {
+                map["QueryOverTenSecPercent"] = self.queryOverTenSecPercent!
+            }
+            if self.queryOverTenSecPercentNum != nil {
+                map["QueryOverTenSecPercentNum"] = self.queryOverTenSecPercentNum!
+            }
+            if self.queryTimeoutCount != nil {
+                map["QueryTimeoutCount"] = self.queryTimeoutCount!
+            }
+            if self.queryTimeoutCountPercent != nil {
+                map["QueryTimeoutCountPercent"] = self.queryTimeoutCountPercent!
+            }
+            if self.quickIndexCostTimeAvg != nil {
+                map["QuickIndexCostTimeAvg"] = self.quickIndexCostTimeAvg!
+            }
+            if self.quickIndexQueryCount != nil {
+                map["QuickIndexQueryCount"] = self.quickIndexQueryCount!
+            }
+            if self.repeatQueryPercent != nil {
+                map["RepeatQueryPercent"] = self.repeatQueryPercent!
+            }
+            if self.repeatQueryPercentNum != nil {
+                map["RepeatQueryPercentNum"] = self.repeatQueryPercentNum!
+            }
+            if self.repeatSqlQueryCount != nil {
+                map["RepeatSqlQueryCount"] = self.repeatSqlQueryCount!
+            }
+            if self.repeatSqlQueryPercent != nil {
+                map["RepeatSqlQueryPercent"] = self.repeatSqlQueryPercent!
+            }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
+            if self.workspaceName != nil {
+                map["WorkspaceName"] = self.workspaceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CacheCostTimeAvg") && dict["CacheCostTimeAvg"] != nil {
+                self.cacheCostTimeAvg = dict["CacheCostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("CacheQueryCount") && dict["CacheQueryCount"] != nil {
+                self.cacheQueryCount = dict["CacheQueryCount"] as! Int32
+            }
+            if dict.keys.contains("CostTimeAvg") && dict["CostTimeAvg"] != nil {
+                self.costTimeAvg = dict["CostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("CubeId") && dict["CubeId"] != nil {
+                self.cubeId = dict["CubeId"] as! String
+            }
+            if dict.keys.contains("CubeName") && dict["CubeName"] != nil {
+                self.cubeName = dict["CubeName"] as! String
+            }
+            if dict.keys.contains("QueryCount") && dict["QueryCount"] != nil {
+                self.queryCount = dict["QueryCount"] as! Int32
+            }
+            if dict.keys.contains("QueryCountAvg") && dict["QueryCountAvg"] != nil {
+                self.queryCountAvg = dict["QueryCountAvg"] as! Double
+            }
+            if dict.keys.contains("QueryOverFivePercentNum") && dict["QueryOverFivePercentNum"] != nil {
+                self.queryOverFivePercentNum = dict["QueryOverFivePercentNum"] as! Double
+            }
+            if dict.keys.contains("QueryOverFiveSecPercent") && dict["QueryOverFiveSecPercent"] != nil {
+                self.queryOverFiveSecPercent = dict["QueryOverFiveSecPercent"] as! String
+            }
+            if dict.keys.contains("QueryOverTenSecPercent") && dict["QueryOverTenSecPercent"] != nil {
+                self.queryOverTenSecPercent = dict["QueryOverTenSecPercent"] as! String
+            }
+            if dict.keys.contains("QueryOverTenSecPercentNum") && dict["QueryOverTenSecPercentNum"] != nil {
+                self.queryOverTenSecPercentNum = dict["QueryOverTenSecPercentNum"] as! Double
+            }
+            if dict.keys.contains("QueryTimeoutCount") && dict["QueryTimeoutCount"] != nil {
+                self.queryTimeoutCount = dict["QueryTimeoutCount"] as! Int32
+            }
+            if dict.keys.contains("QueryTimeoutCountPercent") && dict["QueryTimeoutCountPercent"] != nil {
+                self.queryTimeoutCountPercent = dict["QueryTimeoutCountPercent"] as! Double
+            }
+            if dict.keys.contains("QuickIndexCostTimeAvg") && dict["QuickIndexCostTimeAvg"] != nil {
+                self.quickIndexCostTimeAvg = dict["QuickIndexCostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("QuickIndexQueryCount") && dict["QuickIndexQueryCount"] != nil {
+                self.quickIndexQueryCount = dict["QuickIndexQueryCount"] as! Int32
+            }
+            if dict.keys.contains("RepeatQueryPercent") && dict["RepeatQueryPercent"] != nil {
+                self.repeatQueryPercent = dict["RepeatQueryPercent"] as! String
+            }
+            if dict.keys.contains("RepeatQueryPercentNum") && dict["RepeatQueryPercentNum"] != nil {
+                self.repeatQueryPercentNum = dict["RepeatQueryPercentNum"] as! Double
+            }
+            if dict.keys.contains("RepeatSqlQueryCount") && dict["RepeatSqlQueryCount"] != nil {
+                self.repeatSqlQueryCount = dict["RepeatSqlQueryCount"] as! Int32
+            }
+            if dict.keys.contains("RepeatSqlQueryPercent") && dict["RepeatSqlQueryPercent"] != nil {
+                self.repeatSqlQueryPercent = dict["RepeatSqlQueryPercent"] as! String
+            }
+            if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+                self.workspaceId = dict["WorkspaceId"] as! String
+            }
+            if dict.keys.contains("WorkspaceName") && dict["WorkspaceName"] != nil {
+                self.workspaceName = dict["WorkspaceName"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [QueryCubePerformanceResponseBody.Result]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            var tmp : [QueryCubePerformanceResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = QueryCubePerformanceResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryCubePerformanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryCubePerformanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryCubePerformanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryDataServiceRequest : Tea.TeaModel {
     public var apiId: String?
 
@@ -10356,6 +11495,407 @@ public class QueryReadableResourcesListByUserIdResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = QueryReadableResourcesListByUserIdResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryReportPerformanceRequest : Tea.TeaModel {
+    public var costTimeAvgMin: Int32?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryType: String?
+
+    public var reportId: String?
+
+    public var resourceType: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.costTimeAvgMin != nil {
+            map["CostTimeAvgMin"] = self.costTimeAvgMin!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryType != nil {
+            map["QueryType"] = self.queryType!
+        }
+        if self.reportId != nil {
+            map["ReportId"] = self.reportId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CostTimeAvgMin") && dict["CostTimeAvgMin"] != nil {
+            self.costTimeAvgMin = dict["CostTimeAvgMin"] as! Int32
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryType") && dict["QueryType"] != nil {
+            self.queryType = dict["QueryType"] as! String
+        }
+        if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+            self.reportId = dict["ReportId"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class QueryReportPerformanceResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var cacheCostTimeAvg: Double?
+
+        public var cacheQueryCount: Int32?
+
+        public var componentQueryCount: Int32?
+
+        public var componentQueryCountAvg: Double?
+
+        public var costTimeAvg: Double?
+
+        public var queryCount: Int32?
+
+        public var queryCountAvg: Double?
+
+        public var queryOverFivePercentNum: Double?
+
+        public var queryOverFiveSecPercent: String?
+
+        public var queryOverTenSecPercent: String?
+
+        public var queryOverTenSecPercentNum: Double?
+
+        public var queryTimeoutCount: Int32?
+
+        public var queryTimeoutCountPercent: Double?
+
+        public var quickIndexCostTimeAvg: Double?
+
+        public var quickIndexQueryCount: Int32?
+
+        public var repeatQueryPercent: String?
+
+        public var repeatQueryPercentNum: Double?
+
+        public var repeatSqlQueryCount: Int32?
+
+        public var repeatSqlQueryPercent: String?
+
+        public var reportId: String?
+
+        public var reportName: String?
+
+        public var reportType: String?
+
+        public var workspaceId: String?
+
+        public var workspaceName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cacheCostTimeAvg != nil {
+                map["CacheCostTimeAvg"] = self.cacheCostTimeAvg!
+            }
+            if self.cacheQueryCount != nil {
+                map["CacheQueryCount"] = self.cacheQueryCount!
+            }
+            if self.componentQueryCount != nil {
+                map["ComponentQueryCount"] = self.componentQueryCount!
+            }
+            if self.componentQueryCountAvg != nil {
+                map["ComponentQueryCountAvg"] = self.componentQueryCountAvg!
+            }
+            if self.costTimeAvg != nil {
+                map["CostTimeAvg"] = self.costTimeAvg!
+            }
+            if self.queryCount != nil {
+                map["QueryCount"] = self.queryCount!
+            }
+            if self.queryCountAvg != nil {
+                map["QueryCountAvg"] = self.queryCountAvg!
+            }
+            if self.queryOverFivePercentNum != nil {
+                map["QueryOverFivePercentNum"] = self.queryOverFivePercentNum!
+            }
+            if self.queryOverFiveSecPercent != nil {
+                map["QueryOverFiveSecPercent"] = self.queryOverFiveSecPercent!
+            }
+            if self.queryOverTenSecPercent != nil {
+                map["QueryOverTenSecPercent"] = self.queryOverTenSecPercent!
+            }
+            if self.queryOverTenSecPercentNum != nil {
+                map["QueryOverTenSecPercentNum"] = self.queryOverTenSecPercentNum!
+            }
+            if self.queryTimeoutCount != nil {
+                map["QueryTimeoutCount"] = self.queryTimeoutCount!
+            }
+            if self.queryTimeoutCountPercent != nil {
+                map["QueryTimeoutCountPercent"] = self.queryTimeoutCountPercent!
+            }
+            if self.quickIndexCostTimeAvg != nil {
+                map["QuickIndexCostTimeAvg"] = self.quickIndexCostTimeAvg!
+            }
+            if self.quickIndexQueryCount != nil {
+                map["QuickIndexQueryCount"] = self.quickIndexQueryCount!
+            }
+            if self.repeatQueryPercent != nil {
+                map["RepeatQueryPercent"] = self.repeatQueryPercent!
+            }
+            if self.repeatQueryPercentNum != nil {
+                map["RepeatQueryPercentNum"] = self.repeatQueryPercentNum!
+            }
+            if self.repeatSqlQueryCount != nil {
+                map["RepeatSqlQueryCount"] = self.repeatSqlQueryCount!
+            }
+            if self.repeatSqlQueryPercent != nil {
+                map["RepeatSqlQueryPercent"] = self.repeatSqlQueryPercent!
+            }
+            if self.reportId != nil {
+                map["ReportId"] = self.reportId!
+            }
+            if self.reportName != nil {
+                map["ReportName"] = self.reportName!
+            }
+            if self.reportType != nil {
+                map["ReportType"] = self.reportType!
+            }
+            if self.workspaceId != nil {
+                map["WorkspaceId"] = self.workspaceId!
+            }
+            if self.workspaceName != nil {
+                map["WorkspaceName"] = self.workspaceName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CacheCostTimeAvg") && dict["CacheCostTimeAvg"] != nil {
+                self.cacheCostTimeAvg = dict["CacheCostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("CacheQueryCount") && dict["CacheQueryCount"] != nil {
+                self.cacheQueryCount = dict["CacheQueryCount"] as! Int32
+            }
+            if dict.keys.contains("ComponentQueryCount") && dict["ComponentQueryCount"] != nil {
+                self.componentQueryCount = dict["ComponentQueryCount"] as! Int32
+            }
+            if dict.keys.contains("ComponentQueryCountAvg") && dict["ComponentQueryCountAvg"] != nil {
+                self.componentQueryCountAvg = dict["ComponentQueryCountAvg"] as! Double
+            }
+            if dict.keys.contains("CostTimeAvg") && dict["CostTimeAvg"] != nil {
+                self.costTimeAvg = dict["CostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("QueryCount") && dict["QueryCount"] != nil {
+                self.queryCount = dict["QueryCount"] as! Int32
+            }
+            if dict.keys.contains("QueryCountAvg") && dict["QueryCountAvg"] != nil {
+                self.queryCountAvg = dict["QueryCountAvg"] as! Double
+            }
+            if dict.keys.contains("QueryOverFivePercentNum") && dict["QueryOverFivePercentNum"] != nil {
+                self.queryOverFivePercentNum = dict["QueryOverFivePercentNum"] as! Double
+            }
+            if dict.keys.contains("QueryOverFiveSecPercent") && dict["QueryOverFiveSecPercent"] != nil {
+                self.queryOverFiveSecPercent = dict["QueryOverFiveSecPercent"] as! String
+            }
+            if dict.keys.contains("QueryOverTenSecPercent") && dict["QueryOverTenSecPercent"] != nil {
+                self.queryOverTenSecPercent = dict["QueryOverTenSecPercent"] as! String
+            }
+            if dict.keys.contains("QueryOverTenSecPercentNum") && dict["QueryOverTenSecPercentNum"] != nil {
+                self.queryOverTenSecPercentNum = dict["QueryOverTenSecPercentNum"] as! Double
+            }
+            if dict.keys.contains("QueryTimeoutCount") && dict["QueryTimeoutCount"] != nil {
+                self.queryTimeoutCount = dict["QueryTimeoutCount"] as! Int32
+            }
+            if dict.keys.contains("QueryTimeoutCountPercent") && dict["QueryTimeoutCountPercent"] != nil {
+                self.queryTimeoutCountPercent = dict["QueryTimeoutCountPercent"] as! Double
+            }
+            if dict.keys.contains("QuickIndexCostTimeAvg") && dict["QuickIndexCostTimeAvg"] != nil {
+                self.quickIndexCostTimeAvg = dict["QuickIndexCostTimeAvg"] as! Double
+            }
+            if dict.keys.contains("QuickIndexQueryCount") && dict["QuickIndexQueryCount"] != nil {
+                self.quickIndexQueryCount = dict["QuickIndexQueryCount"] as! Int32
+            }
+            if dict.keys.contains("RepeatQueryPercent") && dict["RepeatQueryPercent"] != nil {
+                self.repeatQueryPercent = dict["RepeatQueryPercent"] as! String
+            }
+            if dict.keys.contains("RepeatQueryPercentNum") && dict["RepeatQueryPercentNum"] != nil {
+                self.repeatQueryPercentNum = dict["RepeatQueryPercentNum"] as! Double
+            }
+            if dict.keys.contains("RepeatSqlQueryCount") && dict["RepeatSqlQueryCount"] != nil {
+                self.repeatSqlQueryCount = dict["RepeatSqlQueryCount"] as! Int32
+            }
+            if dict.keys.contains("RepeatSqlQueryPercent") && dict["RepeatSqlQueryPercent"] != nil {
+                self.repeatSqlQueryPercent = dict["RepeatSqlQueryPercent"] as! String
+            }
+            if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+                self.reportId = dict["ReportId"] as! String
+            }
+            if dict.keys.contains("ReportName") && dict["ReportName"] != nil {
+                self.reportName = dict["ReportName"] as! String
+            }
+            if dict.keys.contains("ReportType") && dict["ReportType"] != nil {
+                self.reportType = dict["ReportType"] as! String
+            }
+            if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+                self.workspaceId = dict["WorkspaceId"] as! String
+            }
+            if dict.keys.contains("WorkspaceName") && dict["WorkspaceName"] != nil {
+                self.workspaceName = dict["WorkspaceName"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [QueryReportPerformanceResponseBody.Result]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            var tmp : [QueryReportPerformanceResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = QueryReportPerformanceResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryReportPerformanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryReportPerformanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryReportPerformanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
