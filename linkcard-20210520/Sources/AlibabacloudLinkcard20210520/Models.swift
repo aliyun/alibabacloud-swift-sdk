@@ -320,6 +320,8 @@ public class AddDirectionalAddressRequest : Tea.TeaModel {
 
     public var source: String?
 
+    public var urlInsecurityForce: Bool?
+
     public override init() {
         super.init()
     }
@@ -352,6 +354,9 @@ public class AddDirectionalAddressRequest : Tea.TeaModel {
         if self.source != nil {
             map["Source"] = self.source!
         }
+        if self.urlInsecurityForce != nil {
+            map["UrlInsecurityForce"] = self.urlInsecurityForce!
+        }
         return map
     }
 
@@ -373,6 +378,9 @@ public class AddDirectionalAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
+        }
+        if dict.keys.contains("UrlInsecurityForce") && dict["UrlInsecurityForce"] != nil {
+            self.urlInsecurityForce = dict["UrlInsecurityForce"] as! Bool
         }
     }
 }
@@ -4309,6 +4317,8 @@ public class GetCredentialPoolStatisticsResponseBody : Tea.TeaModel {
 
         public var effectiveTotalFlow: String?
 
+        public var monthExceedFee: Int64?
+
         public var monthFeatureFee: Int64?
 
         public var monthUsedAmount: Int64?
@@ -4360,6 +4370,9 @@ public class GetCredentialPoolStatisticsResponseBody : Tea.TeaModel {
             if self.effectiveTotalFlow != nil {
                 map["EffectiveTotalFlow"] = self.effectiveTotalFlow!
             }
+            if self.monthExceedFee != nil {
+                map["MonthExceedFee"] = self.monthExceedFee!
+            }
             if self.monthFeatureFee != nil {
                 map["MonthFeatureFee"] = self.monthFeatureFee!
             }
@@ -4408,6 +4421,9 @@ public class GetCredentialPoolStatisticsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EffectiveTotalFlow") && dict["EffectiveTotalFlow"] != nil {
                 self.effectiveTotalFlow = dict["EffectiveTotalFlow"] as! String
+            }
+            if dict.keys.contains("MonthExceedFee") && dict["MonthExceedFee"] != nil {
+                self.monthExceedFee = dict["MonthExceedFee"] as! Int64
             }
             if dict.keys.contains("MonthFeatureFee") && dict["MonthFeatureFee"] != nil {
                 self.monthFeatureFee = dict["MonthFeatureFee"] as! Int64
