@@ -427,6 +427,8 @@ public class AllocateInstancePublicConnectionRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var PGBouncerPort: String?
+
     public var port: String?
 
     public var resourceOwnerAccount: String?
@@ -465,6 +467,9 @@ public class AllocateInstancePublicConnectionRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.PGBouncerPort != nil {
+            map["PGBouncerPort"] = self.PGBouncerPort!
+        }
         if self.port != nil {
             map["Port"] = self.port!
         }
@@ -495,6 +500,9 @@ public class AllocateInstancePublicConnectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PGBouncerPort") && dict["PGBouncerPort"] != nil {
+            self.PGBouncerPort = dict["PGBouncerPort"] as! String
         }
         if dict.keys.contains("Port") && dict["Port"] != nil {
             self.port = dict["Port"] as! String
@@ -5489,6 +5497,8 @@ public class CreateDBInstanceEndpointRequest : Tea.TeaModel {
 
     public var privateIpAddress: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerId: Int64?
 
     public var vSwitchId: String?
@@ -5537,6 +5547,9 @@ public class CreateDBInstanceEndpointRequest : Tea.TeaModel {
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
@@ -5582,6 +5595,9 @@ public class CreateDBInstanceEndpointRequest : Tea.TeaModel {
         if dict.keys.contains("PrivateIpAddress") && dict["PrivateIpAddress"] != nil {
             self.privateIpAddress = dict["PrivateIpAddress"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
@@ -5610,6 +5626,8 @@ public class CreateDBInstanceEndpointShrinkRequest : Tea.TeaModel {
     public var port: String?
 
     public var privateIpAddress: String?
+
+    public var resourceGroupId: String?
 
     public var resourceOwnerId: Int64?
 
@@ -5655,6 +5673,9 @@ public class CreateDBInstanceEndpointShrinkRequest : Tea.TeaModel {
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
@@ -5691,6 +5712,9 @@ public class CreateDBInstanceEndpointShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PrivateIpAddress") && dict["PrivateIpAddress"] != nil {
             self.privateIpAddress = dict["PrivateIpAddress"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
@@ -5855,6 +5879,8 @@ public class CreateDBInstanceEndpointAddressRequest : Tea.TeaModel {
 
     public var port: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerId: Int64?
 
     public override init() {
@@ -5889,6 +5915,9 @@ public class CreateDBInstanceEndpointAddressRequest : Tea.TeaModel {
         if self.port != nil {
             map["Port"] = self.port!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
@@ -5913,6 +5942,9 @@ public class CreateDBInstanceEndpointAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Port") && dict["Port"] != nil {
             self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
@@ -6410,6 +6442,8 @@ public class CreateDBNodesRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -6447,6 +6481,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -6480,6 +6517,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -6499,6 +6539,8 @@ public class CreateDBNodesShrinkRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
 
@@ -6533,6 +6575,9 @@ public class CreateDBNodesShrinkRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -6557,6 +6602,9 @@ public class CreateDBNodesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -20578,6 +20626,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var maxIOPS: Int32?
 
+            public var PGBouncerEnabled: String?
+
             public var payType: String?
 
             public var port: String?
@@ -20783,6 +20833,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.maxIOPS != nil {
                     map["MaxIOPS"] = self.maxIOPS!
+                }
+                if self.PGBouncerEnabled != nil {
+                    map["PGBouncerEnabled"] = self.PGBouncerEnabled!
                 }
                 if self.payType != nil {
                     map["PayType"] = self.payType!
@@ -21000,6 +21053,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MaxIOPS") && dict["MaxIOPS"] != nil {
                     self.maxIOPS = dict["MaxIOPS"] as! Int32
+                }
+                if dict.keys.contains("PGBouncerEnabled") && dict["PGBouncerEnabled"] != nil {
+                    self.PGBouncerEnabled = dict["PGBouncerEnabled"] as! String
                 }
                 if dict.keys.contains("PayType") && dict["PayType"] != nil {
                     self.payType = dict["PayType"] as! String
@@ -24060,6 +24116,8 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
 
             public var maxDelayTime: String?
 
+            public var PGBouncerPort: String?
+
             public var port: String?
 
             public var securityIPGroups: DescribeDBInstanceNetInfoResponseBody.DBInstanceNetInfos.DBInstanceNetInfo.SecurityIPGroups?
@@ -24113,6 +24171,9 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
                 if self.maxDelayTime != nil {
                     map["MaxDelayTime"] = self.maxDelayTime!
                 }
+                if self.PGBouncerPort != nil {
+                    map["PGBouncerPort"] = self.PGBouncerPort!
+                }
                 if self.port != nil {
                     map["Port"] = self.port!
                 }
@@ -24160,6 +24221,9 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MaxDelayTime") && dict["MaxDelayTime"] != nil {
                     self.maxDelayTime = dict["MaxDelayTime"] as! String
+                }
+                if dict.keys.contains("PGBouncerPort") && dict["PGBouncerPort"] != nil {
+                    self.PGBouncerPort = dict["PGBouncerPort"] as! String
                 }
                 if dict.keys.contains("Port") && dict["Port"] != nil {
                     self.port = dict["Port"] as! String
@@ -53967,6 +54031,8 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var PGBouncerPort: String?
+
     public var port: String?
 
     public var resourceOwnerAccount: String?
@@ -54008,6 +54074,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.PGBouncerPort != nil {
+            map["PGBouncerPort"] = self.PGBouncerPort!
+        }
         if self.port != nil {
             map["Port"] = self.port!
         }
@@ -54041,6 +54110,9 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PGBouncerPort") && dict["PGBouncerPort"] != nil {
+            self.PGBouncerPort = dict["PGBouncerPort"] as! String
         }
         if dict.keys.contains("Port") && dict["Port"] != nil {
             self.port = dict["Port"] as! String
