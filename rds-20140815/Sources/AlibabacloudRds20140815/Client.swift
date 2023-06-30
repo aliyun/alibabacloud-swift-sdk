@@ -9572,6 +9572,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backupPolicyMode)) {
             query["BackupPolicyMode"] = request.backupPolicyMode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.backupPriority)) {
+            query["BackupPriority"] = request.backupPriority!;
+        }
         if (!TeaUtils.Client.isUnset(request.backupRetentionPeriod)) {
             query["BackupRetentionPeriod"] = request.backupRetentionPeriod ?? "";
         }

@@ -15864,6 +15864,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
     public var backupMethod: String?
 
+    public var backupPriority: Int32?
+
     public var backupRetentionPeriod: Int32?
 
     public var category: String?
@@ -15895,6 +15897,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
     public var releasedKeepPolicy: String?
 
     public var requestId: String?
+
+    public var supportModifyBackupPriority: Bool?
 
     public var supportReleasedKeep: Int32?
 
@@ -15931,6 +15935,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if self.backupMethod != nil {
             map["BackupMethod"] = self.backupMethod!
+        }
+        if self.backupPriority != nil {
+            map["BackupPriority"] = self.backupPriority!
         }
         if self.backupRetentionPeriod != nil {
             map["BackupRetentionPeriod"] = self.backupRetentionPeriod!
@@ -15980,6 +15987,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.supportModifyBackupPriority != nil {
+            map["SupportModifyBackupPriority"] = self.supportModifyBackupPriority!
+        }
         if self.supportReleasedKeep != nil {
             map["SupportReleasedKeep"] = self.supportReleasedKeep!
         }
@@ -16007,6 +16017,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BackupMethod") && dict["BackupMethod"] != nil {
             self.backupMethod = dict["BackupMethod"] as! String
+        }
+        if dict.keys.contains("BackupPriority") && dict["BackupPriority"] != nil {
+            self.backupPriority = dict["BackupPriority"] as! Int32
         }
         if dict.keys.contains("BackupRetentionPeriod") && dict["BackupRetentionPeriod"] != nil {
             self.backupRetentionPeriod = dict["BackupRetentionPeriod"] as! Int32
@@ -16055,6 +16068,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SupportModifyBackupPriority") && dict["SupportModifyBackupPriority"] != nil {
+            self.supportModifyBackupPriority = dict["SupportModifyBackupPriority"] as! Bool
         }
         if dict.keys.contains("SupportReleasedKeep") && dict["SupportReleasedKeep"] != nil {
             self.supportReleasedKeep = dict["SupportReleasedKeep"] as! Int32
@@ -53015,6 +53031,8 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
 
     public var backupPolicyMode: String?
 
+    public var backupPriority: Int32?
+
     public var backupRetentionPeriod: String?
 
     public var category: String?
@@ -53087,6 +53105,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         }
         if self.backupPolicyMode != nil {
             map["BackupPolicyMode"] = self.backupPolicyMode!
+        }
+        if self.backupPriority != nil {
+            map["BackupPriority"] = self.backupPriority!
         }
         if self.backupRetentionPeriod != nil {
             map["BackupRetentionPeriod"] = self.backupRetentionPeriod!
@@ -53169,6 +53190,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("BackupPolicyMode") && dict["BackupPolicyMode"] != nil {
             self.backupPolicyMode = dict["BackupPolicyMode"] as! String
+        }
+        if dict.keys.contains("BackupPriority") && dict["BackupPriority"] != nil {
+            self.backupPriority = dict["BackupPriority"] as! Int32
         }
         if dict.keys.contains("BackupRetentionPeriod") && dict["BackupRetentionPeriod"] != nil {
             self.backupRetentionPeriod = dict["BackupRetentionPeriod"] as! String
