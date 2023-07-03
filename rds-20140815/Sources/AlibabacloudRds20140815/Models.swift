@@ -40680,6 +40680,43 @@ public class DescribePriceRequest : Tea.TeaModel {
             }
         }
     }
+    public class ServerlessConfig : Tea.TeaModel {
+        public var maxCapacity: Double?
+
+        public var minCapacity: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxCapacity != nil {
+                map["MaxCapacity"] = self.maxCapacity!
+            }
+            if self.minCapacity != nil {
+                map["MinCapacity"] = self.minCapacity!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MaxCapacity") && dict["MaxCapacity"] != nil {
+                self.maxCapacity = dict["MaxCapacity"] as! Double
+            }
+            if dict.keys.contains("MinCapacity") && dict["MinCapacity"] != nil {
+                self.minCapacity = dict["MinCapacity"] as! Double
+            }
+        }
+    }
     public var clientToken: String?
 
     public var commodityCode: String?
@@ -40716,6 +40753,8 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var serverlessConfig: DescribePriceRequest.ServerlessConfig?
+
     public var timeType: String?
 
     public var usedTime: Int32?
@@ -40732,6 +40771,7 @@ public class DescribePriceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.serverlessConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -40793,6 +40833,9 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.serverlessConfig != nil {
+            map["ServerlessConfig"] = self.serverlessConfig?.toMap()
         }
         if self.timeType != nil {
             map["TimeType"] = self.timeType!
@@ -40869,6 +40912,11 @@ public class DescribePriceRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
+        if dict.keys.contains("ServerlessConfig") && dict["ServerlessConfig"] != nil {
+            var model = DescribePriceRequest.ServerlessConfig()
+            model.fromMap(dict["ServerlessConfig"] as! [String: Any])
+            self.serverlessConfig = model
+        }
         if dict.keys.contains("TimeType") && dict["TimeType"] != nil {
             self.timeType = dict["TimeType"] as! String
         }
@@ -40917,6 +40965,8 @@ public class DescribePriceShrinkRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var serverlessConfigShrink: String?
 
     public var timeType: String?
 
@@ -40992,6 +41042,9 @@ public class DescribePriceShrinkRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.serverlessConfigShrink != nil {
+            map["ServerlessConfig"] = self.serverlessConfigShrink!
+        }
         if self.timeType != nil {
             map["TimeType"] = self.timeType!
         }
@@ -41058,6 +41111,9 @@ public class DescribePriceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ServerlessConfig") && dict["ServerlessConfig"] != nil {
+            self.serverlessConfigShrink = dict["ServerlessConfig"] as! String
         }
         if dict.keys.contains("TimeType") && dict["TimeType"] != nil {
             self.timeType = dict["TimeType"] as! String
@@ -41420,6 +41476,10 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
     public var showDiscount: Bool?
 
+    public var tradeMaxRCUAmount: Double?
+
+    public var tradeMinRCUAmount: Double?
+
     public override init() {
         super.init()
     }
@@ -41448,6 +41508,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
         if self.showDiscount != nil {
             map["ShowDiscount"] = self.showDiscount!
         }
+        if self.tradeMaxRCUAmount != nil {
+            map["TradeMaxRCUAmount"] = self.tradeMaxRCUAmount!
+        }
+        if self.tradeMinRCUAmount != nil {
+            map["TradeMinRCUAmount"] = self.tradeMinRCUAmount!
+        }
         return map
     }
 
@@ -41467,6 +41533,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ShowDiscount") && dict["ShowDiscount"] != nil {
             self.showDiscount = dict["ShowDiscount"] as! Bool
+        }
+        if dict.keys.contains("TradeMaxRCUAmount") && dict["TradeMaxRCUAmount"] != nil {
+            self.tradeMaxRCUAmount = dict["TradeMaxRCUAmount"] as! Double
+        }
+        if dict.keys.contains("TradeMinRCUAmount") && dict["TradeMinRCUAmount"] != nil {
+            self.tradeMinRCUAmount = dict["TradeMinRCUAmount"] as! Double
         }
     }
 }

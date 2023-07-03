@@ -7317,6 +7317,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.DBNode)) {
             request.DBNodeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.DBNode, "DBNode", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.serverlessConfig)) {
+            request.serverlessConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfig, "ServerlessConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
@@ -7371,6 +7374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessConfigShrink)) {
+            query["ServerlessConfig"] = request.serverlessConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.timeType)) {
             query["TimeType"] = request.timeType ?? "";
