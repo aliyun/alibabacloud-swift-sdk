@@ -12,20 +12,12 @@ English | [简体中文](README-CN.md)
 
 ## Installation
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudNlpAutoml20191111` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'AlibabacloudNlpAutoml20191111', '~> 1.0.1'
-```
-
 ### Carthage
 
 To integrate `AlibabacloudNlpAutoml20191111` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/nlp-automl-20191111" "1.0.1"
+github "alibabacloud-sdk-swift/nlp-automl-20191111" "1.0.2"
 ```
 
 ### Swift Package Manager
@@ -34,7 +26,7 @@ To integrate `AlibabacloudNlpAutoml20191111` into your Xcode project using [Swif
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/nlp-automl-20191111.git", from: "1.0.1")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/nlp-automl-20191111.git", from: "1.0.2")
 ]
 ```
 

@@ -85,6 +85,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func findUserReport4AlinlpWithOptions(_ request: FindUserReport4AlinlpRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FindUserReport4AlinlpResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.beginTime)) {
+            body["BeginTime"] = request.beginTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.customerUserParentId)) {
+            body["CustomerUserParentId"] = request.customerUserParentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            body["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modelType)) {
+            body["ModelType"] = request.modelType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "FindUserReport4Alinlp",
+            "version": "2019-11-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(FindUserReport4AlinlpResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func findUserReport4Alinlp(_ request: FindUserReport4AlinlpRequest) async throws -> FindUserReport4AlinlpResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await findUserReport4AlinlpWithOptions(request as! FindUserReport4AlinlpRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getAsyncPredictWithOptions(_ request: GetAsyncPredictRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAsyncPredictResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -190,5 +233,42 @@ open class Client : AlibabacloudOpenApi.Client {
     public func runPreTrainService(_ request: RunPreTrainServiceRequest) async throws -> RunPreTrainServiceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await runPreTrainServiceWithOptions(request as! RunPreTrainServiceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runPreTrainServiceNewWithOptions(_ request: RunPreTrainServiceNewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RunPreTrainServiceNewResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.predictContent)) {
+            body["PredictContent"] = request.predictContent ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceName)) {
+            body["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceVersion)) {
+            body["ServiceVersion"] = request.serviceVersion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunPreTrainServiceNew",
+            "version": "2019-11-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunPreTrainServiceNewResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runPreTrainServiceNew(_ request: RunPreTrainServiceNewRequest) async throws -> RunPreTrainServiceNewResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await runPreTrainServiceNewWithOptions(request as! RunPreTrainServiceNewRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 }
