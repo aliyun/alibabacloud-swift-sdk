@@ -473,6 +473,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.failReturn)) {
             query["FailReturn"] = request.failReturn!;
         }
+        if (!TeaUtils.Client.isUnset(request.outId)) {
+            query["OutId"] = request.outId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }

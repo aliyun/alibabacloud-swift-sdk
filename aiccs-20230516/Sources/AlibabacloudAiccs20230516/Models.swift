@@ -2744,6 +2744,8 @@ public class ImportNumberRequest : Tea.TeaModel {
 
     public var failReturn: Int64?
 
+    public var outId: String?
+
     public var ownerId: Int64?
 
     public var resourceOwnerAccount: String?
@@ -2776,6 +2778,9 @@ public class ImportNumberRequest : Tea.TeaModel {
         if self.failReturn != nil {
             map["FailReturn"] = self.failReturn!
         }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -2806,6 +2811,9 @@ public class ImportNumberRequest : Tea.TeaModel {
         if dict.keys.contains("FailReturn") && dict["FailReturn"] != nil {
             self.failReturn = dict["FailReturn"] as! Int64
         }
+        if dict.keys.contains("OutId") && dict["OutId"] != nil {
+            self.outId = dict["OutId"] as! String
+        }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
         }
@@ -2825,6 +2833,8 @@ public class ImportNumberShrinkRequest : Tea.TeaModel {
     public var customersShrink: String?
 
     public var failReturn: Int64?
+
+    public var outId: String?
 
     public var ownerId: Int64?
 
@@ -2854,6 +2864,9 @@ public class ImportNumberShrinkRequest : Tea.TeaModel {
         if self.failReturn != nil {
             map["FailReturn"] = self.failReturn!
         }
+        if self.outId != nil {
+            map["OutId"] = self.outId!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -2875,6 +2888,9 @@ public class ImportNumberShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FailReturn") && dict["FailReturn"] != nil {
             self.failReturn = dict["FailReturn"] as! Int64
+        }
+        if dict.keys.contains("OutId") && dict["OutId"] != nil {
+            self.outId = dict["OutId"] as! String
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
