@@ -57117,6 +57117,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoUseCoupon: Bool?
+
     public var burstingEnabled: Bool?
 
     public var category: String?
@@ -57174,6 +57176,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.burstingEnabled != nil {
             map["BurstingEnabled"] = self.burstingEnabled!
         }
@@ -57241,6 +57246,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoUseCoupon") && dict["AutoUseCoupon"] != nil {
+            self.autoUseCoupon = dict["AutoUseCoupon"] as! Bool
+        }
         if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
             self.burstingEnabled = dict["BurstingEnabled"] as! Bool
         }
@@ -57310,6 +57318,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
+    public var autoUseCoupon: Bool?
+
     public var burstingEnabled: Bool?
 
     public var category: String?
@@ -57366,6 +57376,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoUseCoupon != nil {
+            map["AutoUseCoupon"] = self.autoUseCoupon!
+        }
         if self.burstingEnabled != nil {
             map["BurstingEnabled"] = self.burstingEnabled!
         }
@@ -57433,6 +57446,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoUseCoupon") && dict["AutoUseCoupon"] != nil {
+            self.autoUseCoupon = dict["AutoUseCoupon"] as! Bool
+        }
         if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
             self.burstingEnabled = dict["BurstingEnabled"] as! Bool
         }

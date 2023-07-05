@@ -10689,6 +10689,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.serverlessConfigurationShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfiguration, "ServerlessConfiguration", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoUseCoupon)) {
+            query["AutoUseCoupon"] = request.autoUseCoupon!;
+        }
         if (!TeaUtils.Client.isUnset(request.burstingEnabled)) {
             query["BurstingEnabled"] = request.burstingEnabled!;
         }
