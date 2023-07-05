@@ -4989,7 +4989,7 @@ public class WildcardRule : Tea.TeaModel {
 }
 
 public class CreateAliasRequest : Tea.TeaModel {
-    public var request: CreateAliasInput?
+    public var body: CreateAliasInput?
 
     public override init() {
         super.init()
@@ -5001,22 +5001,22 @@ public class CreateAliasRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateAliasInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -5074,7 +5074,7 @@ public class CreateAliasResponse : Tea.TeaModel {
 }
 
 public class CreateCustomDomainRequest : Tea.TeaModel {
-    public var request: CreateCustomDomainInput?
+    public var body: CreateCustomDomainInput?
 
     public override init() {
         super.init()
@@ -5086,22 +5086,22 @@ public class CreateCustomDomainRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateCustomDomainInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -5159,7 +5159,7 @@ public class CreateCustomDomainResponse : Tea.TeaModel {
 }
 
 public class CreateFunctionRequest : Tea.TeaModel {
-    public var request: CreateFunctionInput?
+    public var body: CreateFunctionInput?
 
     public override init() {
         super.init()
@@ -5171,22 +5171,22 @@ public class CreateFunctionRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateFunctionInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -5244,7 +5244,7 @@ public class CreateFunctionResponse : Tea.TeaModel {
 }
 
 public class CreateLayerVersionRequest : Tea.TeaModel {
-    public var request: CreateLayerVersionInput?
+    public var body: CreateLayerVersionInput?
 
     public override init() {
         super.init()
@@ -5256,22 +5256,22 @@ public class CreateLayerVersionRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateLayerVersionInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -5329,7 +5329,7 @@ public class CreateLayerVersionResponse : Tea.TeaModel {
 }
 
 public class CreateTriggerRequest : Tea.TeaModel {
-    public var request: CreateTriggerInput?
+    public var body: CreateTriggerInput?
 
     public override init() {
         super.init()
@@ -5341,22 +5341,22 @@ public class CreateTriggerRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateTriggerInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -6602,9 +6602,9 @@ public class InvokeFunctionHeaders : Tea.TeaModel {
 }
 
 public class InvokeFunctionRequest : Tea.TeaModel {
-    public var qualifier: String?
+    public var body: InputStream?
 
-    public var request: InputStream?
+    public var qualifier: String?
 
     public override init() {
         super.init()
@@ -6620,21 +6620,21 @@ public class InvokeFunctionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body!
+        }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
-        }
-        if self.request != nil {
-            map["request"] = self.request!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") && dict["body"] != nil {
+            self.body = dict["body"] as! InputStream
+        }
         if dict.keys.contains("qualifier") && dict["qualifier"] != nil {
             self.qualifier = dict["qualifier"] as! String
-        }
-        if dict.keys.contains("request") && dict["request"] != nil {
-            self.request = dict["request"] as! InputStream
         }
     }
 }
@@ -7857,7 +7857,7 @@ public class ListTriggersResponse : Tea.TeaModel {
 }
 
 public class PublishFunctionVersionRequest : Tea.TeaModel {
-    public var request: PublishVersionInput?
+    public var body: PublishVersionInput?
 
     public override init() {
         super.init()
@@ -7869,22 +7869,22 @@ public class PublishFunctionVersionRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = PublishVersionInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -7942,9 +7942,9 @@ public class PublishFunctionVersionResponse : Tea.TeaModel {
 }
 
 public class PutAsyncInvokeConfigRequest : Tea.TeaModel {
-    public var qualifier: String?
+    public var body: PutAsyncInvokeConfigInput?
 
-    public var request: PutAsyncInvokeConfigInput?
+    public var qualifier: String?
 
     public override init() {
         super.init()
@@ -7956,28 +7956,28 @@ public class PutAsyncInvokeConfigRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
-        }
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = PutAsyncInvokeConfigInput()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
         if dict.keys.contains("qualifier") && dict["qualifier"] != nil {
             self.qualifier = dict["qualifier"] as! String
-        }
-        if dict.keys.contains("request") && dict["request"] != nil {
-            var model = PutAsyncInvokeConfigInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
         }
     }
 }
@@ -8035,7 +8035,7 @@ public class PutAsyncInvokeConfigResponse : Tea.TeaModel {
 }
 
 public class PutConcurrencyConfigRequest : Tea.TeaModel {
-    public var request: PutConcurrencyInput?
+    public var body: PutConcurrencyInput?
 
     public override init() {
         super.init()
@@ -8047,22 +8047,22 @@ public class PutConcurrencyConfigRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = PutConcurrencyInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -8190,9 +8190,9 @@ public class PutLayerACLResponse : Tea.TeaModel {
 }
 
 public class PutProvisionConfigRequest : Tea.TeaModel {
-    public var qualifier: String?
+    public var body: PutProvisionConfigInput?
 
-    public var request: PutProvisionConfigInput?
+    public var qualifier: String?
 
     public override init() {
         super.init()
@@ -8204,28 +8204,28 @@ public class PutProvisionConfigRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
         if self.qualifier != nil {
             map["qualifier"] = self.qualifier!
-        }
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = PutProvisionConfigInput()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
         if dict.keys.contains("qualifier") && dict["qualifier"] != nil {
             self.qualifier = dict["qualifier"] as! String
-        }
-        if dict.keys.contains("request") && dict["request"] != nil {
-            var model = PutProvisionConfigInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
         }
     }
 }
@@ -8283,7 +8283,7 @@ public class PutProvisionConfigResponse : Tea.TeaModel {
 }
 
 public class TagResourceRequest : Tea.TeaModel {
-    public var request: TagResourceInput?
+    public var body: TagResourceInput?
 
     public override init() {
         super.init()
@@ -8295,22 +8295,22 @@ public class TagResourceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = TagResourceInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -8454,7 +8454,7 @@ public class UntagResourceResponse : Tea.TeaModel {
 }
 
 public class UpdateAliasRequest : Tea.TeaModel {
-    public var request: UpdateAliasInput?
+    public var body: UpdateAliasInput?
 
     public override init() {
         super.init()
@@ -8466,22 +8466,22 @@ public class UpdateAliasRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateAliasInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -8539,7 +8539,7 @@ public class UpdateAliasResponse : Tea.TeaModel {
 }
 
 public class UpdateCustomDomainRequest : Tea.TeaModel {
-    public var request: UpdateCustomDomainInput?
+    public var body: UpdateCustomDomainInput?
 
     public override init() {
         super.init()
@@ -8551,22 +8551,22 @@ public class UpdateCustomDomainRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateCustomDomainInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -8624,7 +8624,7 @@ public class UpdateCustomDomainResponse : Tea.TeaModel {
 }
 
 public class UpdateFunctionRequest : Tea.TeaModel {
-    public var request: UpdateFunctionInput?
+    public var body: UpdateFunctionInput?
 
     public override init() {
         super.init()
@@ -8636,22 +8636,22 @@ public class UpdateFunctionRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateFunctionInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
@@ -8709,7 +8709,7 @@ public class UpdateFunctionResponse : Tea.TeaModel {
 }
 
 public class UpdateTriggerRequest : Tea.TeaModel {
-    public var request: UpdateTriggerInput?
+    public var body: UpdateTriggerInput?
 
     public override init() {
         super.init()
@@ -8721,22 +8721,22 @@ public class UpdateTriggerRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.request?.validate()
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.request != nil {
-            map["request"] = self.request?.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("request") && dict["request"] != nil {
+        if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateTriggerInput()
-            model.fromMap(dict["request"] as! [String: Any])
-            self.request = model
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
