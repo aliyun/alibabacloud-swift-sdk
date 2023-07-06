@@ -6094,6 +6094,8 @@ public class RecognizeInternationalIdcardResponse : Tea.TeaModel {
 }
 
 public class RecognizeInvoiceRequest : Tea.TeaModel {
+    public var pageNo: Int32?
+
     public var url: String?
 
     public var body: InputStream?
@@ -6112,6 +6114,9 @@ public class RecognizeInvoiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
         if self.url != nil {
             map["Url"] = self.url!
         }
@@ -6122,6 +6127,9 @@ public class RecognizeInvoiceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
         if dict.keys.contains("Url") && dict["Url"] != nil {
             self.url = dict["Url"] as! String
         }
@@ -7030,6 +7038,8 @@ public class RecognizeMedicalDeviceProduceLicenseResponse : Tea.TeaModel {
 }
 
 public class RecognizeMixedInvoicesRequest : Tea.TeaModel {
+    public var pageNo: Int32?
+
     public var url: String?
 
     public var body: InputStream?
@@ -7048,6 +7058,9 @@ public class RecognizeMixedInvoicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
         if self.url != nil {
             map["Url"] = self.url!
         }
@@ -7058,6 +7071,9 @@ public class RecognizeMixedInvoicesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
         if dict.keys.contains("Url") && dict["Url"] != nil {
             self.url = dict["Url"] as! String
         }

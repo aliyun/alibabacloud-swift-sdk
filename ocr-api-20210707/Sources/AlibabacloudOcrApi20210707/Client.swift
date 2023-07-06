@@ -1470,6 +1470,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeInvoiceWithOptions(_ request: RecognizeInvoiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeInvoiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
         }
@@ -1695,6 +1698,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeMixedInvoicesWithOptions(_ request: RecognizeMixedInvoicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeMixedInvoicesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
         }
