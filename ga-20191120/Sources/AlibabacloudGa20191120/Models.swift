@@ -21738,9 +21738,15 @@ public class ListAvailableAccelerateAreasRequest : Tea.TeaModel {
 public class ListAvailableAccelerateAreasResponseBody : Tea.TeaModel {
     public class Areas : Tea.TeaModel {
         public class RegionList : Tea.TeaModel {
+            public var chinaMainland: Bool?
+
+            public var ispTypeList: [String]?
+
             public var localName: String?
 
             public var regionId: String?
+
+            public var supportIpv6: Bool?
 
             public override init() {
                 super.init()
@@ -21756,21 +21762,39 @@ public class ListAvailableAccelerateAreasResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.chinaMainland != nil {
+                    map["ChinaMainland"] = self.chinaMainland!
+                }
+                if self.ispTypeList != nil {
+                    map["IspTypeList"] = self.ispTypeList!
+                }
                 if self.localName != nil {
                     map["LocalName"] = self.localName!
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.supportIpv6 != nil {
+                    map["SupportIpv6"] = self.supportIpv6!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ChinaMainland") && dict["ChinaMainland"] != nil {
+                    self.chinaMainland = dict["ChinaMainland"] as! Bool
+                }
+                if dict.keys.contains("IspTypeList") && dict["IspTypeList"] != nil {
+                    self.ispTypeList = dict["IspTypeList"] as! [String]
+                }
                 if dict.keys.contains("LocalName") && dict["LocalName"] != nil {
                     self.localName = dict["LocalName"] as! String
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("SupportIpv6") && dict["SupportIpv6"] != nil {
+                    self.supportIpv6 = dict["SupportIpv6"] as! Bool
                 }
             }
         }
@@ -21971,6 +21995,8 @@ public class ListAvailableBusiRegionsRequest : Tea.TeaModel {
 
 public class ListAvailableBusiRegionsResponseBody : Tea.TeaModel {
     public class Regions : Tea.TeaModel {
+        public var chinaMainland: Bool?
+
         public var localName: String?
 
         public var pop: Bool?
@@ -21991,6 +22017,9 @@ public class ListAvailableBusiRegionsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.chinaMainland != nil {
+                map["ChinaMainland"] = self.chinaMainland!
+            }
             if self.localName != nil {
                 map["LocalName"] = self.localName!
             }
@@ -22004,6 +22033,9 @@ public class ListAvailableBusiRegionsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ChinaMainland") && dict["ChinaMainland"] != nil {
+                self.chinaMainland = dict["ChinaMainland"] as! Bool
+            }
             if dict.keys.contains("LocalName") && dict["LocalName"] != nil {
                 self.localName = dict["LocalName"] as! String
             }
