@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudAvatar20220130` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/avatar-20220130" "1.0.26"
+github "alibabacloud-sdk-swift/avatar-20220130" "1.0.27"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/avatar-20220130" "1.0.26"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/avatar-20220130.git", from: "1.0.26")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/avatar-20220130.git", from: "1.0.27")
 ]
 ```
 
