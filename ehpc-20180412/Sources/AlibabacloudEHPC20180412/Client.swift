@@ -1181,6 +1181,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeServerlessJobsWithOptions(_ request: DescribeServerlessJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeServerlessJobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobIds)) {
+            query["JobIds"] = request.jobIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeServerlessJobs",
+            "version": "2018-04-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeServerlessJobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeServerlessJobs(_ request: DescribeServerlessJobsRequest) async throws -> DescribeServerlessJobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeServerlessJobsWithOptions(request as! DescribeServerlessJobsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func editJobTemplateWithOptions(_ request: EditJobTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EditJobTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -2461,6 +2495,73 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServerlessJobsWithOptions(_ request: ListServerlessJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServerlessJobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobIds)) {
+            query["JobIds"] = request.jobIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.jobNames)) {
+            query["JobNames"] = request.jobNames ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queues)) {
+            query["Queues"] = request.queues ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startOrder)) {
+            query["StartOrder"] = request.startOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["State"] = request.state ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.submitOrder)) {
+            query["SubmitOrder"] = request.submitOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.submitTimeEnd)) {
+            query["SubmitTimeEnd"] = request.submitTimeEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.submitTimeStart)) {
+            query["SubmitTimeStart"] = request.submitTimeStart ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.users)) {
+            query["Users"] = request.users ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListServerlessJobs",
+            "version": "2018-04-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListServerlessJobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServerlessJobs(_ request: ListServerlessJobsRequest) async throws -> ListServerlessJobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listServerlessJobsWithOptions(request as! ListServerlessJobsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listSoftwaresWithOptions(_ request: ListSoftwaresRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSoftwaresResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -3473,6 +3574,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopServerlessJobsWithOptions(_ request: StopServerlessJobsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopServerlessJobsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobIds)) {
+            query["JobIds"] = request.jobIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StopServerlessJobs",
+            "version": "2018-04-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StopServerlessJobsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func stopServerlessJobs(_ request: StopServerlessJobsRequest) async throws -> StopServerlessJobsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await stopServerlessJobsWithOptions(request as! StopServerlessJobsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopVisualServiceWithOptions(_ request: StopVisualServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopVisualServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
@@ -3526,6 +3661,96 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitJob(_ request: SubmitJobRequest) async throws -> SubmitJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitJobWithOptions(request as! SubmitJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitServerlessJobWithOptions(_ tmpReq: SubmitServerlessJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitServerlessJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitServerlessJobShrinkRequest = SubmitServerlessJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.arrayProperties)) {
+            request.arrayPropertiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.arrayProperties, "ArrayProperties", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.container)) {
+            request.containerShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.container, "Container", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.dependsOn)) {
+            request.dependsOnShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dependsOn, "DependsOn", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.instanceType)) {
+            request.instanceTypeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceType, "InstanceType", "simple")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.vSwitchId)) {
+            request.vSwitchIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitchId, "VSwitchId", "simple")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.arrayPropertiesShrink)) {
+            query["ArrayProperties"] = request.arrayPropertiesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.containerShrink)) {
+            query["Container"] = request.containerShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cpu)) {
+            query["Cpu"] = request.cpu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dependsOnShrink)) {
+            query["DependsOn"] = request.dependsOnShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ephemeralStorage)) {
+            query["EphemeralStorage"] = request.ephemeralStorage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeShrink)) {
+            query["InstanceType"] = request.instanceTypeShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobName)) {
+            query["JobName"] = request.jobName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobPriority)) {
+            query["JobPriority"] = request.jobPriority!;
+        }
+        if (!TeaUtils.Client.isUnset(request.memory)) {
+            query["Memory"] = request.memory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ramRoleName)) {
+            query["RamRoleName"] = request.ramRoleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.spotPriceLimit)) {
+            query["SpotPriceLimit"] = request.spotPriceLimit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.spotStrategy)) {
+            query["SpotStrategy"] = request.spotStrategy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["Timeout"] = request.timeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchIdShrink)) {
+            query["VSwitchId"] = request.vSwitchIdShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitServerlessJob",
+            "version": "2018-04-12",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitServerlessJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitServerlessJob(_ request: SubmitServerlessJobRequest) async throws -> SubmitServerlessJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitServerlessJobWithOptions(request as! SubmitServerlessJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -12,20 +12,12 @@ English | [简体中文](README-CN.md)
 
 ## Installation
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudEHPC20180412` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'AlibabacloudEHPC20180412', '~> 1.0.6'
-```
-
 ### Carthage
 
 To integrate `AlibabacloudEHPC20180412` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/ehpc-20180412" "1.0.6"
+github "alibabacloud-sdk-swift/ehpc-20180412" "1.0.7"
 ```
 
 ### Swift Package Manager
@@ -34,7 +26,7 @@ To integrate `AlibabacloudEHPC20180412` into your Xcode project using [Swift Pac
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/ehpc-20180412.git", from: "1.0.6")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/ehpc-20180412.git", from: "1.0.7")
 ]
 ```
 
