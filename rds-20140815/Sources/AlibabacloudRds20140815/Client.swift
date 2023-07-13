@@ -12666,6 +12666,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            query["NodeId"] = request.nodeId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }

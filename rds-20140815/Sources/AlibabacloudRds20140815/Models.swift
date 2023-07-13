@@ -13797,6 +13797,8 @@ public class DescribeActiveOperationTasksResponseBody : Tea.TeaModel {
 
         public var switchTime: String?
 
+        public var taskParams: String?
+
         public var taskType: String?
 
         public var taskTypeEn: String?
@@ -13889,6 +13891,9 @@ public class DescribeActiveOperationTasksResponseBody : Tea.TeaModel {
             if self.switchTime != nil {
                 map["SwitchTime"] = self.switchTime!
             }
+            if self.taskParams != nil {
+                map["TaskParams"] = self.taskParams!
+            }
             if self.taskType != nil {
                 map["TaskType"] = self.taskType!
             }
@@ -13973,6 +13978,9 @@ public class DescribeActiveOperationTasksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SwitchTime") && dict["SwitchTime"] != nil {
                 self.switchTime = dict["SwitchTime"] as! String
+            }
+            if dict.keys.contains("TaskParams") && dict["TaskParams"] != nil {
+                self.taskParams = dict["TaskParams"] as! String
             }
             if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
                 self.taskType = dict["TaskType"] as! String
@@ -64318,6 +64326,8 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var nodeId: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -64346,6 +64356,9 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.nodeId != nil {
+            map["NodeId"] = self.nodeId!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -64367,6 +64380,9 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
+            self.nodeId = dict["NodeId"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
