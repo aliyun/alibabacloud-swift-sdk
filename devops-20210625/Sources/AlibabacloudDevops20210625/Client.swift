@@ -1366,6 +1366,78 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWorkitemV2WithOptions(_ organizationId: String, _ request: CreateWorkitemV2Request, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWorkitemV2Response {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.assignedTo)) {
+            body["assignedTo"] = request.assignedTo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            body["category"] = request.category ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldValueList)) {
+            body["fieldValueList"] = request.fieldValueList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.parentIdentifier)) {
+            body["parentIdentifier"] = request.parentIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.participants)) {
+            body["participants"] = request.participants ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.spaceIdentifier)) {
+            body["spaceIdentifier"] = request.spaceIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sprintIdentifier)) {
+            body["sprintIdentifier"] = request.sprintIdentifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subject)) {
+            body["subject"] = request.subject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            body["tags"] = request.tags ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.trackers)) {
+            body["trackers"] = request.trackers ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.verifier)) {
+            body["verifier"] = request.verifier ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.versions)) {
+            body["versions"] = request.versions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.workitemTypeIdentifier)) {
+            body["workitemTypeIdentifier"] = request.workitemTypeIdentifier ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWorkitemV2",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/organization/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(organizationId) + "/workitem",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWorkitemV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWorkitemV2(_ organizationId: String, _ request: CreateWorkitemV2Request) async throws -> CreateWorkitemV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createWorkitemV2WithOptions(organizationId as! String, request as! CreateWorkitemV2Request, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createWorkspaceWithOptions(_ request: CreateWorkspaceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWorkspaceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -3297,6 +3369,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await getWorkItemWorkFlowInfoWithOptions(organizationId as! String, workitemId as! String, request as! GetWorkItemWorkFlowInfoRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkitemAttachmentCreatemetaWithOptions(_ organizationId: String, _ workitemIdentifier: String, _ request: GetWorkitemAttachmentCreatemetaRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkitemAttachmentCreatemetaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileName)) {
+            query["fileName"] = request.fileName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWorkitemAttachmentCreatemeta",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/organization/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(organizationId) + "/workitem/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workitemIdentifier) + "/attachment/createmeta",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWorkitemAttachmentCreatemetaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkitemAttachmentCreatemeta(_ organizationId: String, _ workitemIdentifier: String, _ request: GetWorkitemAttachmentCreatemetaRequest) async throws -> GetWorkitemAttachmentCreatemetaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getWorkitemAttachmentCreatemetaWithOptions(organizationId as! String, workitemIdentifier as! String, request as! GetWorkitemAttachmentCreatemetaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6656,5 +6761,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateWorkitemFieldWithOptions(organizationId as! String, request as! UpdateWorkitemFieldRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func workitemAttachmentCreateWithOptions(_ organizationId: String, _ workitemIdentifier: String, _ request: WorkitemAttachmentCreateRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> WorkitemAttachmentCreateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileKey)) {
+            body["fileKey"] = request.fileKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originalFilename)) {
+            body["originalFilename"] = request.originalFilename ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "WorkitemAttachmentCreate",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/organization/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(organizationId) + "/workitem/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workitemIdentifier) + "/attachment",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(WorkitemAttachmentCreateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func workitemAttachmentCreate(_ organizationId: String, _ workitemIdentifier: String, _ request: WorkitemAttachmentCreateRequest) async throws -> WorkitemAttachmentCreateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await workitemAttachmentCreateWithOptions(organizationId as! String, workitemIdentifier as! String, request as! WorkitemAttachmentCreateRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
