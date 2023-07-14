@@ -8226,6 +8226,10 @@ public class GetStackResponseBody : Tea.TeaModel {
 
         public var pendingResourceCount: Int32?
 
+        public var stackActionProgress: Double?
+
+        public var stackOperationProgress: Double?
+
         public var successResourceCount: Int32?
 
         public var totalResourceCount: Int32?
@@ -8260,6 +8264,12 @@ public class GetStackResponseBody : Tea.TeaModel {
             if self.pendingResourceCount != nil {
                 map["PendingResourceCount"] = self.pendingResourceCount!
             }
+            if self.stackActionProgress != nil {
+                map["StackActionProgress"] = self.stackActionProgress!
+            }
+            if self.stackOperationProgress != nil {
+                map["StackOperationProgress"] = self.stackOperationProgress!
+            }
             if self.successResourceCount != nil {
                 map["SuccessResourceCount"] = self.successResourceCount!
             }
@@ -8289,6 +8299,12 @@ public class GetStackResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PendingResourceCount") && dict["PendingResourceCount"] != nil {
                 self.pendingResourceCount = dict["PendingResourceCount"] as! Int32
+            }
+            if dict.keys.contains("StackActionProgress") && dict["StackActionProgress"] != nil {
+                self.stackActionProgress = dict["StackActionProgress"] as! Double
+            }
+            if dict.keys.contains("StackOperationProgress") && dict["StackOperationProgress"] != nil {
+                self.stackOperationProgress = dict["StackOperationProgress"] as! Double
             }
             if dict.keys.contains("SuccessResourceCount") && dict["SuccessResourceCount"] != nil {
                 self.successResourceCount = dict["SuccessResourceCount"] as! Int32
