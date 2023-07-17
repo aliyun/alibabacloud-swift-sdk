@@ -6343,6 +6343,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDcdnDomainSSLCertificateWithOptions(_ request: SetDcdnDomainSSLCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDcdnDomainSSLCertificateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.certId)) {
+            query["CertId"] = request.certId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.certName)) {
+            query["CertName"] = request.certName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certRegion)) {
+            query["CertRegion"] = request.certRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certType)) {
+            query["CertType"] = request.certType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLPri)) {
+            query["SSLPri"] = request.SSLPri ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLProtocol)) {
+            query["SSLProtocol"] = request.SSLProtocol ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SSLPub)) {
+            query["SSLPub"] = request.SSLPub ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetDcdnDomainSSLCertificate",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetDcdnDomainSSLCertificateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDcdnDomainSSLCertificate(_ request: SetDcdnDomainSSLCertificateRequest) async throws -> SetDcdnDomainSSLCertificateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setDcdnDomainSSLCertificateWithOptions(request as! SetDcdnDomainSSLCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setDcdnDomainStagingConfigWithOptions(_ request: SetDcdnDomainStagingConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDcdnDomainStagingConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

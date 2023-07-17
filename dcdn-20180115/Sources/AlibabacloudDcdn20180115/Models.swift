@@ -36837,6 +36837,190 @@ public class SetDcdnDomainSMCertificateResponse : Tea.TeaModel {
     }
 }
 
+public class SetDcdnDomainSSLCertificateRequest : Tea.TeaModel {
+    public var certId: Int64?
+
+    public var certName: String?
+
+    public var certRegion: String?
+
+    public var certType: String?
+
+    public var domainName: String?
+
+    public var ownerId: Int64?
+
+    public var SSLPri: String?
+
+    public var SSLProtocol: String?
+
+    public var SSLPub: String?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.certId != nil {
+            map["CertId"] = self.certId!
+        }
+        if self.certName != nil {
+            map["CertName"] = self.certName!
+        }
+        if self.certRegion != nil {
+            map["CertRegion"] = self.certRegion!
+        }
+        if self.certType != nil {
+            map["CertType"] = self.certType!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.SSLPri != nil {
+            map["SSLPri"] = self.SSLPri!
+        }
+        if self.SSLProtocol != nil {
+            map["SSLProtocol"] = self.SSLProtocol!
+        }
+        if self.SSLPub != nil {
+            map["SSLPub"] = self.SSLPub!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CertId") && dict["CertId"] != nil {
+            self.certId = dict["CertId"] as! Int64
+        }
+        if dict.keys.contains("CertName") && dict["CertName"] != nil {
+            self.certName = dict["CertName"] as! String
+        }
+        if dict.keys.contains("CertRegion") && dict["CertRegion"] != nil {
+            self.certRegion = dict["CertRegion"] as! String
+        }
+        if dict.keys.contains("CertType") && dict["CertType"] != nil {
+            self.certType = dict["CertType"] as! String
+        }
+        if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("SSLPri") && dict["SSLPri"] != nil {
+            self.SSLPri = dict["SSLPri"] as! String
+        }
+        if dict.keys.contains("SSLProtocol") && dict["SSLProtocol"] != nil {
+            self.SSLProtocol = dict["SSLProtocol"] as! String
+        }
+        if dict.keys.contains("SSLPub") && dict["SSLPub"] != nil {
+            self.SSLPub = dict["SSLPub"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class SetDcdnDomainSSLCertificateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SetDcdnDomainSSLCertificateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetDcdnDomainSSLCertificateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SetDcdnDomainSSLCertificateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SetDcdnDomainStagingConfigRequest : Tea.TeaModel {
     public var domainName: String?
 
