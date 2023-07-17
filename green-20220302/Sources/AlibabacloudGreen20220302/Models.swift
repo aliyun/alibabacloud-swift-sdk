@@ -122,6 +122,8 @@ public class DescribeImageResultExtResponseBody : Tea.TeaModel {
         public class TextInImage : Tea.TeaModel {
             public var ocrDatas: [String]?
 
+            public var riskWords: [String]?
+
             public override init() {
                 super.init()
             }
@@ -139,12 +141,18 @@ public class DescribeImageResultExtResponseBody : Tea.TeaModel {
                 if self.ocrDatas != nil {
                     map["OcrDatas"] = self.ocrDatas!
                 }
+                if self.riskWords != nil {
+                    map["RiskWords"] = self.riskWords!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("OcrDatas") && dict["OcrDatas"] != nil {
                     self.ocrDatas = dict["OcrDatas"] as! [String]
+                }
+                if dict.keys.contains("RiskWords") && dict["RiskWords"] != nil {
+                    self.riskWords = dict["RiskWords"] as! [String]
                 }
             }
         }
@@ -321,6 +329,200 @@ public class DescribeImageResultExtResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeImageResultExtResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeUploadTokenResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var accessKeyId: String?
+
+        public var accessKeySecret: String?
+
+        public var bucketName: String?
+
+        public var expiration: Int32?
+
+        public var fileNamePrefix: String?
+
+        public var ossInternalEndPoint: String?
+
+        public var ossInternetEndPoint: String?
+
+        public var securityToken: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessKeyId != nil {
+                map["AccessKeyId"] = self.accessKeyId!
+            }
+            if self.accessKeySecret != nil {
+                map["AccessKeySecret"] = self.accessKeySecret!
+            }
+            if self.bucketName != nil {
+                map["BucketName"] = self.bucketName!
+            }
+            if self.expiration != nil {
+                map["Expiration"] = self.expiration!
+            }
+            if self.fileNamePrefix != nil {
+                map["FileNamePrefix"] = self.fileNamePrefix!
+            }
+            if self.ossInternalEndPoint != nil {
+                map["OssInternalEndPoint"] = self.ossInternalEndPoint!
+            }
+            if self.ossInternetEndPoint != nil {
+                map["OssInternetEndPoint"] = self.ossInternetEndPoint!
+            }
+            if self.securityToken != nil {
+                map["SecurityToken"] = self.securityToken!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessKeyId") && dict["AccessKeyId"] != nil {
+                self.accessKeyId = dict["AccessKeyId"] as! String
+            }
+            if dict.keys.contains("AccessKeySecret") && dict["AccessKeySecret"] != nil {
+                self.accessKeySecret = dict["AccessKeySecret"] as! String
+            }
+            if dict.keys.contains("BucketName") && dict["BucketName"] != nil {
+                self.bucketName = dict["BucketName"] as! String
+            }
+            if dict.keys.contains("Expiration") && dict["Expiration"] != nil {
+                self.expiration = dict["Expiration"] as! Int32
+            }
+            if dict.keys.contains("FileNamePrefix") && dict["FileNamePrefix"] != nil {
+                self.fileNamePrefix = dict["FileNamePrefix"] as! String
+            }
+            if dict.keys.contains("OssInternalEndPoint") && dict["OssInternalEndPoint"] != nil {
+                self.ossInternalEndPoint = dict["OssInternalEndPoint"] as! String
+            }
+            if dict.keys.contains("OssInternetEndPoint") && dict["OssInternetEndPoint"] != nil {
+                self.ossInternetEndPoint = dict["OssInternetEndPoint"] as! String
+            }
+            if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+                self.securityToken = dict["SecurityToken"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: DescribeUploadTokenResponseBody.Data?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = DescribeUploadTokenResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Msg") && dict["Msg"] != nil {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeUploadTokenResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeUploadTokenResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeUploadTokenResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
