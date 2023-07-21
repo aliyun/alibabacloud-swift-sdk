@@ -5662,9 +5662,9 @@ public class GetWebTerminalRequest : Tea.TeaModel {
 }
 
 public class GetWebTerminalResponseBody : Tea.TeaModel {
-    public var URL: String?
-
     public var requestId: String?
+
+    public var webTerminalUrl: String?
 
     public override init() {
         super.init()
@@ -5680,21 +5680,21 @@ public class GetWebTerminalResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.URL != nil {
-            map["URL"] = self.URL!
-        }
         if self.requestId != nil {
-            map["requestId"] = self.requestId!
+            map["RequestId"] = self.requestId!
+        }
+        if self.webTerminalUrl != nil {
+            map["WebTerminalUrl"] = self.webTerminalUrl!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("URL") && dict["URL"] != nil {
-            self.URL = dict["URL"] as! String
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
         }
-        if dict.keys.contains("requestId") && dict["requestId"] != nil {
-            self.requestId = dict["requestId"] as! String
+        if dict.keys.contains("WebTerminalUrl") && dict["WebTerminalUrl"] != nil {
+            self.webTerminalUrl = dict["WebTerminalUrl"] as! String
         }
     }
 }
