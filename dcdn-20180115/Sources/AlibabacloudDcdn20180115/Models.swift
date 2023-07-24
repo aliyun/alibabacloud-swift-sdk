@@ -36110,6 +36110,10 @@ public class PublishRoutineCodeRevisionResponse : Tea.TeaModel {
 }
 
 public class PutDcdnKvRequest : Tea.TeaModel {
+    public var expiration: Int64?
+
+    public var expirationTtl: Int64?
+
     public var key: String?
 
     public var namespace: String?
@@ -36130,6 +36134,12 @@ public class PutDcdnKvRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.expiration != nil {
+            map["Expiration"] = self.expiration!
+        }
+        if self.expirationTtl != nil {
+            map["ExpirationTtl"] = self.expirationTtl!
+        }
         if self.key != nil {
             map["Key"] = self.key!
         }
@@ -36143,6 +36153,12 @@ public class PutDcdnKvRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Expiration") && dict["Expiration"] != nil {
+            self.expiration = dict["Expiration"] as! Int64
+        }
+        if dict.keys.contains("ExpirationTtl") && dict["ExpirationTtl"] != nil {
+            self.expirationTtl = dict["ExpirationTtl"] as! Int64
+        }
         if dict.keys.contains("Key") && dict["Key"] != nil {
             self.key = dict["Key"] as! String
         }

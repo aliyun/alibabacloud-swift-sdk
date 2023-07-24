@@ -6135,6 +6135,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func putDcdnKvWithOptions(_ request: PutDcdnKvRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PutDcdnKvResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expiration)) {
+            query["Expiration"] = request.expiration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.expirationTtl)) {
+            query["ExpirationTtl"] = request.expirationTtl!;
+        }
         if (!TeaUtils.Client.isUnset(request.key)) {
             query["Key"] = request.key ?? "";
         }
