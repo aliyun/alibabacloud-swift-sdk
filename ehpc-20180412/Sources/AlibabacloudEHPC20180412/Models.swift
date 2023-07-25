@@ -13836,15 +13836,13 @@ public class DescribeServerlessJobsResponseBody : Tea.TeaModel {
 
         public var endTime: Int64?
 
-        public var id: String?
-
         public var isArrayJob: Bool?
 
+        public var jobId: String?
+
+        public var jobName: String?
+
         public var lastModifyTime: Int64?
-
-        public var name: String?
-
-        public var owner: String?
 
         public var priority: Int64?
 
@@ -13855,6 +13853,8 @@ public class DescribeServerlessJobsResponseBody : Tea.TeaModel {
         public var state: String?
 
         public var submitTime: Int64?
+
+        public var user: String?
 
         public override init() {
             super.init()
@@ -13884,20 +13884,17 @@ public class DescribeServerlessJobsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
-            if self.id != nil {
-                map["Id"] = self.id!
-            }
             if self.isArrayJob != nil {
                 map["IsArrayJob"] = self.isArrayJob!
             }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
+            }
             if self.lastModifyTime != nil {
                 map["LastModifyTime"] = self.lastModifyTime!
-            }
-            if self.name != nil {
-                map["Name"] = self.name!
-            }
-            if self.owner != nil {
-                map["Owner"] = self.owner!
             }
             if self.priority != nil {
                 map["Priority"] = self.priority!
@@ -13913,6 +13910,9 @@ public class DescribeServerlessJobsResponseBody : Tea.TeaModel {
             }
             if self.submitTime != nil {
                 map["SubmitTime"] = self.submitTime!
+            }
+            if self.user != nil {
+                map["User"] = self.user!
             }
             return map
         }
@@ -13937,20 +13937,17 @@ public class DescribeServerlessJobsResponseBody : Tea.TeaModel {
             if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
                 self.endTime = dict["EndTime"] as! Int64
             }
-            if dict.keys.contains("Id") && dict["Id"] != nil {
-                self.id = dict["Id"] as! String
-            }
             if dict.keys.contains("IsArrayJob") && dict["IsArrayJob"] != nil {
                 self.isArrayJob = dict["IsArrayJob"] as! Bool
             }
+            if dict.keys.contains("JobId") && dict["JobId"] != nil {
+                self.jobId = dict["JobId"] as! String
+            }
+            if dict.keys.contains("JobName") && dict["JobName"] != nil {
+                self.jobName = dict["JobName"] as! String
+            }
             if dict.keys.contains("LastModifyTime") && dict["LastModifyTime"] != nil {
                 self.lastModifyTime = dict["LastModifyTime"] as! Int64
-            }
-            if dict.keys.contains("Name") && dict["Name"] != nil {
-                self.name = dict["Name"] as! String
-            }
-            if dict.keys.contains("Owner") && dict["Owner"] != nil {
-                self.owner = dict["Owner"] as! String
             }
             if dict.keys.contains("Priority") && dict["Priority"] != nil {
                 self.priority = dict["Priority"] as! Int64
@@ -13966,6 +13963,9 @@ public class DescribeServerlessJobsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SubmitTime") && dict["SubmitTime"] != nil {
                 self.submitTime = dict["SubmitTime"] as! Int64
+            }
+            if dict.keys.contains("User") && dict["User"] != nil {
+                self.user = dict["User"] as! String
             }
         }
     }
@@ -27863,8 +27863,6 @@ public class ListServerlessJobsRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
-    public var queues: [String]?
-
     public var regionId: String?
 
     public var startOrder: String?
@@ -27876,8 +27874,6 @@ public class ListServerlessJobsRequest : Tea.TeaModel {
     public var submitTimeEnd: String?
 
     public var submitTimeStart: String?
-
-    public var users: [String]?
 
     public override init() {
         super.init()
@@ -27908,9 +27904,6 @@ public class ListServerlessJobsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
-        if self.queues != nil {
-            map["Queues"] = self.queues!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -27928,9 +27921,6 @@ public class ListServerlessJobsRequest : Tea.TeaModel {
         }
         if self.submitTimeStart != nil {
             map["SubmitTimeStart"] = self.submitTimeStart!
-        }
-        if self.users != nil {
-            map["Users"] = self.users!
         }
         return map
     }
@@ -27951,9 +27941,6 @@ public class ListServerlessJobsRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int64
         }
-        if dict.keys.contains("Queues") && dict["Queues"] != nil {
-            self.queues = dict["Queues"] as! [String]
-        }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
@@ -27972,9 +27959,6 @@ public class ListServerlessJobsRequest : Tea.TeaModel {
         if dict.keys.contains("SubmitTimeStart") && dict["SubmitTimeStart"] != nil {
             self.submitTimeStart = dict["SubmitTimeStart"] as! String
         }
-        if dict.keys.contains("Users") && dict["Users"] != nil {
-            self.users = dict["Users"] as! [String]
-        }
     }
 }
 
@@ -27982,13 +27966,11 @@ public class ListServerlessJobsResponseBody : Tea.TeaModel {
     public class Jobs : Tea.TeaModel {
         public var endTime: String?
 
-        public var id: String?
-
         public var isArrayJob: Bool?
 
-        public var name: String?
+        public var jobId: String?
 
-        public var owner: String?
+        public var jobName: String?
 
         public var priority: String?
 
@@ -27999,6 +27981,8 @@ public class ListServerlessJobsResponseBody : Tea.TeaModel {
         public var state: String?
 
         public var submitTime: String?
+
+        public var user: String?
 
         public override init() {
             super.init()
@@ -28017,17 +28001,14 @@ public class ListServerlessJobsResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
-            if self.id != nil {
-                map["Id"] = self.id!
-            }
             if self.isArrayJob != nil {
                 map["IsArrayJob"] = self.isArrayJob!
             }
-            if self.name != nil {
-                map["Name"] = self.name!
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
             }
-            if self.owner != nil {
-                map["Owner"] = self.owner!
+            if self.jobName != nil {
+                map["JobName"] = self.jobName!
             }
             if self.priority != nil {
                 map["Priority"] = self.priority!
@@ -28044,6 +28025,9 @@ public class ListServerlessJobsResponseBody : Tea.TeaModel {
             if self.submitTime != nil {
                 map["SubmitTime"] = self.submitTime!
             }
+            if self.user != nil {
+                map["User"] = self.user!
+            }
             return map
         }
 
@@ -28051,17 +28035,14 @@ public class ListServerlessJobsResponseBody : Tea.TeaModel {
             if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
                 self.endTime = dict["EndTime"] as! String
             }
-            if dict.keys.contains("Id") && dict["Id"] != nil {
-                self.id = dict["Id"] as! String
-            }
             if dict.keys.contains("IsArrayJob") && dict["IsArrayJob"] != nil {
                 self.isArrayJob = dict["IsArrayJob"] as! Bool
             }
-            if dict.keys.contains("Name") && dict["Name"] != nil {
-                self.name = dict["Name"] as! String
+            if dict.keys.contains("JobId") && dict["JobId"] != nil {
+                self.jobId = dict["JobId"] as! String
             }
-            if dict.keys.contains("Owner") && dict["Owner"] != nil {
-                self.owner = dict["Owner"] as! String
+            if dict.keys.contains("JobName") && dict["JobName"] != nil {
+                self.jobName = dict["JobName"] as! String
             }
             if dict.keys.contains("Priority") && dict["Priority"] != nil {
                 self.priority = dict["Priority"] as! String
@@ -28077,6 +28058,9 @@ public class ListServerlessJobsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SubmitTime") && dict["SubmitTime"] != nil {
                 self.submitTime = dict["SubmitTime"] as! String
+            }
+            if dict.keys.contains("User") && dict["User"] != nil {
+                self.user = dict["User"] as! String
             }
         }
     }
@@ -36098,7 +36082,7 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
     }
     public class Container : Tea.TeaModel {
         public class EnvironmentVar : Tea.TeaModel {
-            public var name: String?
+            public var key: String?
 
             public var value: String?
 
@@ -36116,8 +36100,8 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
-                if self.name != nil {
-                    map["Name"] = self.name!
+                if self.key != nil {
+                    map["Key"] = self.key!
                 }
                 if self.value != nil {
                     map["Value"] = self.value!
@@ -36126,8 +36110,8 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Name") && dict["Name"] != nil {
-                    self.name = dict["Name"] as! String
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
                 }
                 if dict.keys.contains("Value") && dict["Value"] != nil {
                     self.value = dict["Value"] as! String
@@ -36135,91 +36119,9 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
             }
         }
         public class VolumeMount : Tea.TeaModel {
-            public class FlexVolume : Tea.TeaModel {
-                public var driver: String?
+            public var flexVolumeDriver: String?
 
-                public var options: String?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.driver != nil {
-                        map["Driver"] = self.driver!
-                    }
-                    if self.options != nil {
-                        map["Options"] = self.options!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("Driver") && dict["Driver"] != nil {
-                        self.driver = dict["Driver"] as! String
-                    }
-                    if dict.keys.contains("Options") && dict["Options"] != nil {
-                        self.options = dict["Options"] as! String
-                    }
-                }
-            }
-            public class NFSVolume : Tea.TeaModel {
-                public var path: String?
-
-                public var readOnly: Bool?
-
-                public var server: String?
-
-                public override init() {
-                    super.init()
-                }
-
-                public init(_ dict: [String: Any]) {
-                    super.init()
-                    self.fromMap(dict)
-                }
-
-                public override func validate() throws -> Void {
-                }
-
-                public override func toMap() -> [String : Any] {
-                    var map = super.toMap()
-                    if self.path != nil {
-                        map["Path"] = self.path!
-                    }
-                    if self.readOnly != nil {
-                        map["ReadOnly"] = self.readOnly!
-                    }
-                    if self.server != nil {
-                        map["Server"] = self.server!
-                    }
-                    return map
-                }
-
-                public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("Path") && dict["Path"] != nil {
-                        self.path = dict["Path"] as! String
-                    }
-                    if dict.keys.contains("ReadOnly") && dict["ReadOnly"] != nil {
-                        self.readOnly = dict["ReadOnly"] as! Bool
-                    }
-                    if dict.keys.contains("Server") && dict["Server"] != nil {
-                        self.server = dict["Server"] as! String
-                    }
-                }
-            }
-            public var flexVolume: SubmitServerlessJobRequest.Container.VolumeMount.FlexVolume?
-
-            public var NFSVolume: SubmitServerlessJobRequest.Container.VolumeMount.NFSVolume?
+            public var flexVolumeOptions: String?
 
             public var mountPath: String?
 
@@ -36233,17 +36135,15 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
-                try self.flexVolume?.validate()
-                try self.NFSVolume?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
-                if self.flexVolume != nil {
-                    map["FlexVolume"] = self.flexVolume?.toMap()
+                if self.flexVolumeDriver != nil {
+                    map["FlexVolumeDriver"] = self.flexVolumeDriver!
                 }
-                if self.NFSVolume != nil {
-                    map["NFSVolume"] = self.NFSVolume?.toMap()
+                if self.flexVolumeOptions != nil {
+                    map["FlexVolumeOptions"] = self.flexVolumeOptions!
                 }
                 if self.mountPath != nil {
                     map["MountPath"] = self.mountPath!
@@ -36252,15 +36152,11 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("FlexVolume") && dict["FlexVolume"] != nil {
-                    var model = SubmitServerlessJobRequest.Container.VolumeMount.FlexVolume()
-                    model.fromMap(dict["FlexVolume"] as! [String: Any])
-                    self.flexVolume = model
+                if dict.keys.contains("FlexVolumeDriver") && dict["FlexVolumeDriver"] != nil {
+                    self.flexVolumeDriver = dict["FlexVolumeDriver"] as! String
                 }
-                if dict.keys.contains("NFSVolume") && dict["NFSVolume"] != nil {
-                    var model = SubmitServerlessJobRequest.Container.VolumeMount.NFSVolume()
-                    model.fromMap(dict["NFSVolume"] as! [String: Any])
-                    self.NFSVolume = model
+                if dict.keys.contains("FlexVolumeOptions") && dict["FlexVolumeOptions"] != nil {
+                    self.flexVolumeOptions = dict["FlexVolumeOptions"] as! String
                 }
                 if dict.keys.contains("MountPath") && dict["MountPath"] != nil {
                     self.mountPath = dict["MountPath"] as! String
