@@ -538,6 +538,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getTokenWithOptions(_ request: GetTokenRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTokenResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            query["ExpireTime"] = request.expireTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.targetId)) {
+            query["TargetId"] = request.targetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetToken",
+            "version": "2020-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/tokens",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetTokenResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getToken(_ request: GetTokenRequest) async throws -> GetTokenResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getTokenWithOptions(request as! GetTokenRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getWebTerminalWithOptions(_ JobId: String, _ PodId: String, _ request: GetWebTerminalRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWebTerminalResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
