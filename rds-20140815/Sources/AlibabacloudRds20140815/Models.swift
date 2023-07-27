@@ -59849,6 +59849,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var switchTime: String?
 
+    public var targetMinorVersion: String?
+
     public var usedTime: Int64?
 
     public var zoneId: String?
@@ -59928,6 +59930,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if self.switchTime != nil {
             map["SwitchTime"] = self.switchTime!
         }
+        if self.targetMinorVersion != nil {
+            map["TargetMinorVersion"] = self.targetMinorVersion!
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -60000,6 +60005,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if dict.keys.contains("SwitchTime") && dict["SwitchTime"] != nil {
             self.switchTime = dict["SwitchTime"] as! String
         }
+        if dict.keys.contains("TargetMinorVersion") && dict["TargetMinorVersion"] != nil {
+            self.targetMinorVersion = dict["TargetMinorVersion"] as! String
+        }
         if dict.keys.contains("UsedTime") && dict["UsedTime"] != nil {
             self.usedTime = dict["UsedTime"] as! Int64
         }
@@ -60049,6 +60057,8 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
     public var sourceBiz: String?
 
     public var switchTime: String?
+
+    public var targetMinorVersion: String?
 
     public var usedTime: Int64?
 
@@ -60128,6 +60138,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         if self.switchTime != nil {
             map["SwitchTime"] = self.switchTime!
         }
+        if self.targetMinorVersion != nil {
+            map["TargetMinorVersion"] = self.targetMinorVersion!
+        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -60197,6 +60210,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SwitchTime") && dict["SwitchTime"] != nil {
             self.switchTime = dict["SwitchTime"] as! String
+        }
+        if dict.keys.contains("TargetMinorVersion") && dict["TargetMinorVersion"] != nil {
+            self.targetMinorVersion = dict["TargetMinorVersion"] as! String
         }
         if dict.keys.contains("UsedTime") && dict["UsedTime"] != nil {
             self.usedTime = dict["UsedTime"] as! Int64
