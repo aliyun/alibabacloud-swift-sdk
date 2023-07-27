@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudResourceManager20200331"
-  spec.version      = "1.0.3"
+  spec.version      = "1.0.4"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud ResourceManager (20200331) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/resourcemanager-20200331" 
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.tvos.deployment_target    = '13.0'
 
   spec.dependency 'Tea',  '~> 1.0.0'
-  spec.dependency 'TeaUtils',  '~> 1.0.2'
+  spec.dependency 'TeaUtils',  '~> 1.0.3'
   spec.dependency 'AlibabacloudOpenApi',  '~> 1.0.1'
   spec.dependency 'AlibabaCloudOpenApiUtil',  '~> 1.0.1'
   spec.dependency 'AlibabacloudEndpointUtil',  '~> 1.0.0'

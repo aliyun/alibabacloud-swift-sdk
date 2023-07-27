@@ -13759,6 +13759,43 @@ public class ListResourceGroupsResponse : Tea.TeaModel {
 }
 
 public class ListResourcesRequest : Tea.TeaModel {
+    public class ResourceTypes : Tea.TeaModel {
+        public var resourceType: String?
+
+        public var service: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.service != nil {
+                map["Service"] = self.service!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+            if dict.keys.contains("Service") && dict["Service"] != nil {
+                self.service = dict["Service"] as! String
+            }
+        }
+    }
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -13770,6 +13807,8 @@ public class ListResourcesRequest : Tea.TeaModel {
     public var resourceId: String?
 
     public var resourceType: String?
+
+    public var resourceTypes: [ListResourcesRequest.ResourceTypes]?
 
     public var service: String?
 
@@ -13805,6 +13844,13 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
         }
+        if self.resourceTypes != nil {
+            var tmp : [Any] = []
+            for k in self.resourceTypes! {
+                tmp.append(k.toMap())
+            }
+            map["ResourceTypes"] = tmp
+        }
         if self.service != nil {
             map["Service"] = self.service!
         }
@@ -13829,6 +13875,17 @@ public class ListResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("ResourceTypes") && dict["ResourceTypes"] != nil {
+            var tmp : [ListResourcesRequest.ResourceTypes] = []
+            for v in dict["ResourceTypes"] as! [Any] {
+                var model = ListResourcesRequest.ResourceTypes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.resourceTypes = tmp
         }
         if dict.keys.contains("Service") && dict["Service"] != nil {
             self.service = dict["Service"] as! String
