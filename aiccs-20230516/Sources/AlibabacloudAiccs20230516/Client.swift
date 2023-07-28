@@ -95,6 +95,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
+            query["CallbackUrl"] = request.callbackUrl ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.maxConcurrency)) {
             query["MaxConcurrency"] = request.maxConcurrency!;
         }
@@ -379,6 +382,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callTimeListShrink)) {
             query["CallTimeList"] = request.callTimeListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackUrl)) {
+            query["CallbackUrl"] = request.callbackUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.maxConcurrency)) {
             query["MaxConcurrency"] = request.maxConcurrency!;

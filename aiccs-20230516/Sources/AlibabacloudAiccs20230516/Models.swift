@@ -368,6 +368,8 @@ public class AddTaskRequest : Tea.TeaModel {
     }
     public var callTimeList: [AddTaskRequest.CallTimeList]?
 
+    public var callbackUrl: String?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -424,6 +426,9 @@ public class AddTaskRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CallTimeList"] = tmp
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -498,6 +503,9 @@ public class AddTaskRequest : Tea.TeaModel {
             }
             self.callTimeList = tmp
         }
+        if dict.keys.contains("CallbackUrl") && dict["CallbackUrl"] != nil {
+            self.callbackUrl = dict["CallbackUrl"] as! String
+        }
         if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
         }
@@ -566,6 +574,8 @@ public class AddTaskRequest : Tea.TeaModel {
 public class AddTaskShrinkRequest : Tea.TeaModel {
     public var callTimeListShrink: String?
 
+    public var callbackUrl: String?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -618,6 +628,9 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.callTimeListShrink != nil {
             map["CallTimeList"] = self.callTimeListShrink!
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -679,6 +692,9 @@ public class AddTaskShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CallTimeList") && dict["CallTimeList"] != nil {
             self.callTimeListShrink = dict["CallTimeList"] as! String
+        }
+        if dict.keys.contains("CallbackUrl") && dict["CallbackUrl"] != nil {
+            self.callbackUrl = dict["CallbackUrl"] as! String
         }
         if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
@@ -2155,6 +2171,8 @@ public class EditTaskRequest : Tea.TeaModel {
     }
     public var callTimeList: [EditTaskRequest.CallTimeList]?
 
+    public var callbackUrl: String?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -2211,6 +2229,9 @@ public class EditTaskRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CallTimeList"] = tmp
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -2285,6 +2306,9 @@ public class EditTaskRequest : Tea.TeaModel {
             }
             self.callTimeList = tmp
         }
+        if dict.keys.contains("CallbackUrl") && dict["CallbackUrl"] != nil {
+            self.callbackUrl = dict["CallbackUrl"] as! String
+        }
         if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
         }
@@ -2353,6 +2377,8 @@ public class EditTaskRequest : Tea.TeaModel {
 public class EditTaskShrinkRequest : Tea.TeaModel {
     public var callTimeListShrink: String?
 
+    public var callbackUrl: String?
+
     public var maxConcurrency: Int64?
 
     public var name: String?
@@ -2405,6 +2431,9 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.callTimeListShrink != nil {
             map["CallTimeList"] = self.callTimeListShrink!
+        }
+        if self.callbackUrl != nil {
+            map["CallbackUrl"] = self.callbackUrl!
         }
         if self.maxConcurrency != nil {
             map["MaxConcurrency"] = self.maxConcurrency!
@@ -2466,6 +2495,9 @@ public class EditTaskShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CallTimeList") && dict["CallTimeList"] != nil {
             self.callTimeListShrink = dict["CallTimeList"] as! String
+        }
+        if dict.keys.contains("CallbackUrl") && dict["CallbackUrl"] != nil {
+            self.callbackUrl = dict["CallbackUrl"] as! String
         }
         if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
             self.maxConcurrency = dict["MaxConcurrency"] as! Int64
