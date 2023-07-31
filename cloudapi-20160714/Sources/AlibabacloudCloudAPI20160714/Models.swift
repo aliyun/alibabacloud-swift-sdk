@@ -2024,6 +2024,8 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var extend: String?
+
     public var securityToken: String?
 
     public var tag: [CreateAppRequest.Tag]?
@@ -2057,6 +2059,9 @@ public class CreateAppRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -2085,6 +2090,9 @@ public class CreateAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Extend") && dict["Extend"] != nil {
+            self.extend = dict["Extend"] as! String
         }
         if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
             self.securityToken = dict["SecurityToken"] as! String
@@ -9040,132 +9048,6 @@ public class DescribeApiResponseBody : Tea.TeaModel {
             }
         }
     }
-    public class ResultDescriptions : Tea.TeaModel {
-        public class ResultDescription : Tea.TeaModel {
-            public var description_: String?
-
-            public var hasChild: Bool?
-
-            public var id: String?
-
-            public var key: String?
-
-            public var mandatory: Bool?
-
-            public var name: String?
-
-            public var pid: String?
-
-            public var type: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.description_ != nil {
-                    map["Description"] = self.description_!
-                }
-                if self.hasChild != nil {
-                    map["HasChild"] = self.hasChild!
-                }
-                if self.id != nil {
-                    map["Id"] = self.id!
-                }
-                if self.key != nil {
-                    map["Key"] = self.key!
-                }
-                if self.mandatory != nil {
-                    map["Mandatory"] = self.mandatory!
-                }
-                if self.name != nil {
-                    map["Name"] = self.name!
-                }
-                if self.pid != nil {
-                    map["Pid"] = self.pid!
-                }
-                if self.type != nil {
-                    map["Type"] = self.type!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Description") && dict["Description"] != nil {
-                    self.description_ = dict["Description"] as! String
-                }
-                if dict.keys.contains("HasChild") && dict["HasChild"] != nil {
-                    self.hasChild = dict["HasChild"] as! Bool
-                }
-                if dict.keys.contains("Id") && dict["Id"] != nil {
-                    self.id = dict["Id"] as! String
-                }
-                if dict.keys.contains("Key") && dict["Key"] != nil {
-                    self.key = dict["Key"] as! String
-                }
-                if dict.keys.contains("Mandatory") && dict["Mandatory"] != nil {
-                    self.mandatory = dict["Mandatory"] as! Bool
-                }
-                if dict.keys.contains("Name") && dict["Name"] != nil {
-                    self.name = dict["Name"] as! String
-                }
-                if dict.keys.contains("Pid") && dict["Pid"] != nil {
-                    self.pid = dict["Pid"] as! String
-                }
-                if dict.keys.contains("Type") && dict["Type"] != nil {
-                    self.type = dict["Type"] as! String
-                }
-            }
-        }
-        public var resultDescription: [DescribeApiResponseBody.ResultDescriptions.ResultDescription]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.resultDescription != nil {
-                var tmp : [Any] = []
-                for k in self.resultDescription! {
-                    tmp.append(k.toMap())
-                }
-                map["ResultDescription"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ResultDescription") && dict["ResultDescription"] != nil {
-                var tmp : [DescribeApiResponseBody.ResultDescriptions.ResultDescription] = []
-                for v in dict["ResultDescription"] as! [Any] {
-                    var model = DescribeApiResponseBody.ResultDescriptions.ResultDescription()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.resultDescription = tmp
-            }
-        }
-    }
     public class ServiceConfig : Tea.TeaModel {
         public class EventBridgeConfig : Tea.TeaModel {
             public var eventBridgeRegionId: String?
@@ -10020,8 +9902,6 @@ public class DescribeApiResponseBody : Tea.TeaModel {
 
     public var resultBodyModel: String?
 
-    public var resultDescriptions: DescribeApiResponseBody.ResultDescriptions?
-
     public var resultSample: String?
 
     public var resultType: String?
@@ -10056,7 +9936,6 @@ public class DescribeApiResponseBody : Tea.TeaModel {
         try self.openIdConnectConfig?.validate()
         try self.requestConfig?.validate()
         try self.requestParameters?.validate()
-        try self.resultDescriptions?.validate()
         try self.serviceConfig?.validate()
         try self.serviceParameters?.validate()
         try self.serviceParametersMap?.validate()
@@ -10145,9 +10024,6 @@ public class DescribeApiResponseBody : Tea.TeaModel {
         }
         if self.resultBodyModel != nil {
             map["ResultBodyModel"] = self.resultBodyModel!
-        }
-        if self.resultDescriptions != nil {
-            map["ResultDescriptions"] = self.resultDescriptions?.toMap()
         }
         if self.resultSample != nil {
             map["ResultSample"] = self.resultSample!
@@ -10273,11 +10149,6 @@ public class DescribeApiResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ResultBodyModel") && dict["ResultBodyModel"] != nil {
             self.resultBodyModel = dict["ResultBodyModel"] as! String
-        }
-        if dict.keys.contains("ResultDescriptions") && dict["ResultDescriptions"] != nil {
-            var model = DescribeApiResponseBody.ResultDescriptions()
-            model.fromMap(dict["ResultDescriptions"] as! [String: Any])
-            self.resultDescriptions = model
         }
         if dict.keys.contains("ResultSample") && dict["ResultSample"] != nil {
             self.resultSample = dict["ResultSample"] as! String
@@ -10774,132 +10645,6 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
             }
         }
     }
-    public class ResultDescriptions : Tea.TeaModel {
-        public class ResultDescription : Tea.TeaModel {
-            public var description_: String?
-
-            public var hasChild: Bool?
-
-            public var id: String?
-
-            public var key: String?
-
-            public var mandatory: Bool?
-
-            public var name: String?
-
-            public var pid: String?
-
-            public var type: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.description_ != nil {
-                    map["Description"] = self.description_!
-                }
-                if self.hasChild != nil {
-                    map["HasChild"] = self.hasChild!
-                }
-                if self.id != nil {
-                    map["Id"] = self.id!
-                }
-                if self.key != nil {
-                    map["Key"] = self.key!
-                }
-                if self.mandatory != nil {
-                    map["Mandatory"] = self.mandatory!
-                }
-                if self.name != nil {
-                    map["Name"] = self.name!
-                }
-                if self.pid != nil {
-                    map["Pid"] = self.pid!
-                }
-                if self.type != nil {
-                    map["Type"] = self.type!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Description") && dict["Description"] != nil {
-                    self.description_ = dict["Description"] as! String
-                }
-                if dict.keys.contains("HasChild") && dict["HasChild"] != nil {
-                    self.hasChild = dict["HasChild"] as! Bool
-                }
-                if dict.keys.contains("Id") && dict["Id"] != nil {
-                    self.id = dict["Id"] as! String
-                }
-                if dict.keys.contains("Key") && dict["Key"] != nil {
-                    self.key = dict["Key"] as! String
-                }
-                if dict.keys.contains("Mandatory") && dict["Mandatory"] != nil {
-                    self.mandatory = dict["Mandatory"] as! Bool
-                }
-                if dict.keys.contains("Name") && dict["Name"] != nil {
-                    self.name = dict["Name"] as! String
-                }
-                if dict.keys.contains("Pid") && dict["Pid"] != nil {
-                    self.pid = dict["Pid"] as! String
-                }
-                if dict.keys.contains("Type") && dict["Type"] != nil {
-                    self.type = dict["Type"] as! String
-                }
-            }
-        }
-        public var resultDescription: [DescribeApiDocResponseBody.ResultDescriptions.ResultDescription]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.resultDescription != nil {
-                var tmp : [Any] = []
-                for k in self.resultDescription! {
-                    tmp.append(k.toMap())
-                }
-                map["ResultDescription"] = tmp
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("ResultDescription") && dict["ResultDescription"] != nil {
-                var tmp : [DescribeApiDocResponseBody.ResultDescriptions.ResultDescription] = []
-                for v in dict["ResultDescription"] as! [Any] {
-                    var model = DescribeApiDocResponseBody.ResultDescriptions.ResultDescription()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.resultDescription = tmp
-            }
-        }
-    }
     public var apiId: String?
 
     public var apiName: String?
@@ -10930,8 +10675,6 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
 
     public var requestParameters: DescribeApiDocResponseBody.RequestParameters?
 
-    public var resultDescriptions: DescribeApiDocResponseBody.ResultDescriptions?
-
     public var resultSample: String?
 
     public var resultType: String?
@@ -10953,7 +10696,6 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
         try self.errorCodeSamples?.validate()
         try self.requestConfig?.validate()
         try self.requestParameters?.validate()
-        try self.resultDescriptions?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -11002,9 +10744,6 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
         }
         if self.requestParameters != nil {
             map["RequestParameters"] = self.requestParameters?.toMap()
-        }
-        if self.resultDescriptions != nil {
-            map["ResultDescriptions"] = self.resultDescriptions?.toMap()
         }
         if self.resultSample != nil {
             map["ResultSample"] = self.resultSample!
@@ -11072,11 +10811,6 @@ public class DescribeApiDocResponseBody : Tea.TeaModel {
             var model = DescribeApiDocResponseBody.RequestParameters()
             model.fromMap(dict["RequestParameters"] as! [String: Any])
             self.requestParameters = model
-        }
-        if dict.keys.contains("ResultDescriptions") && dict["ResultDescriptions"] != nil {
-            var model = DescribeApiDocResponseBody.ResultDescriptions()
-            model.fromMap(dict["ResultDescriptions"] as! [String: Any])
-            self.resultDescriptions = model
         }
         if dict.keys.contains("ResultSample") && dict["ResultSample"] != nil {
             self.resultSample = dict["ResultSample"] as! String
@@ -11271,8 +11005,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
             public var wildcardDomainPatterns: String?
 
-            public var wssEnable: String?
-
             public override init() {
                 super.init()
             }
@@ -11329,9 +11061,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
                 if self.wildcardDomainPatterns != nil {
                     map["WildcardDomainPatterns"] = self.wildcardDomainPatterns!
                 }
-                if self.wssEnable != nil {
-                    map["WssEnable"] = self.wssEnable!
-                }
                 return map
             }
 
@@ -11377,9 +11106,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("WildcardDomainPatterns") && dict["WildcardDomainPatterns"] != nil {
                     self.wildcardDomainPatterns = dict["WildcardDomainPatterns"] as! String
-                }
-                if dict.keys.contains("WssEnable") && dict["WssEnable"] != nil {
-                    self.wssEnable = dict["WssEnable"] as! String
                 }
             }
         }
@@ -11513,8 +11239,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
     public var billingStatus: String?
 
-    public var classicVpcSubDomain: String?
-
     public var cloudMarketCommodity: Bool?
 
     public var cmsMonitorGroup: String?
@@ -11547,8 +11271,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
     public var instanceType: String?
 
-    public var instanceVipList: String?
-
     public var ipv6Status: String?
 
     public var migrationError: String?
@@ -11562,8 +11284,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
     public var regionId: String?
 
     public var requestId: String?
-
-    public var rpcPattern: String?
 
     public var stageItems: DescribeApiGroupResponseBody.StageItems?
 
@@ -11600,9 +11320,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if self.billingStatus != nil {
             map["BillingStatus"] = self.billingStatus!
-        }
-        if self.classicVpcSubDomain != nil {
-            map["ClassicVpcSubDomain"] = self.classicVpcSubDomain!
         }
         if self.cloudMarketCommodity != nil {
             map["CloudMarketCommodity"] = self.cloudMarketCommodity!
@@ -11652,9 +11369,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         if self.instanceType != nil {
             map["InstanceType"] = self.instanceType!
         }
-        if self.instanceVipList != nil {
-            map["InstanceVipList"] = self.instanceVipList!
-        }
         if self.ipv6Status != nil {
             map["Ipv6Status"] = self.ipv6Status!
         }
@@ -11675,9 +11389,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.rpcPattern != nil {
-            map["RpcPattern"] = self.rpcPattern!
         }
         if self.stageItems != nil {
             map["StageItems"] = self.stageItems?.toMap()
@@ -11709,9 +11420,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BillingStatus") && dict["BillingStatus"] != nil {
             self.billingStatus = dict["BillingStatus"] as! String
-        }
-        if dict.keys.contains("ClassicVpcSubDomain") && dict["ClassicVpcSubDomain"] != nil {
-            self.classicVpcSubDomain = dict["ClassicVpcSubDomain"] as! String
         }
         if dict.keys.contains("CloudMarketCommodity") && dict["CloudMarketCommodity"] != nil {
             self.cloudMarketCommodity = dict["CloudMarketCommodity"] as! Bool
@@ -11763,9 +11471,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
             self.instanceType = dict["InstanceType"] as! String
         }
-        if dict.keys.contains("InstanceVipList") && dict["InstanceVipList"] != nil {
-            self.instanceVipList = dict["InstanceVipList"] as! String
-        }
         if dict.keys.contains("Ipv6Status") && dict["Ipv6Status"] != nil {
             self.ipv6Status = dict["Ipv6Status"] as! String
         }
@@ -11786,9 +11491,6 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("RpcPattern") && dict["RpcPattern"] != nil {
-            self.rpcPattern = dict["RpcPattern"] as! String
         }
         if dict.keys.contains("StageItems") && dict["StageItems"] != nil {
             var model = DescribeApiGroupResponseBody.StageItems()
@@ -19081,6 +18783,8 @@ public class DescribeAppResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var extend: String?
+
     public var modifiedTime: String?
 
     public var requestId: String?
@@ -19111,6 +18815,9 @@ public class DescribeAppResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
+        }
         if self.modifiedTime != nil {
             map["ModifiedTime"] = self.modifiedTime!
         }
@@ -19132,6 +18839,9 @@ public class DescribeAppResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Extend") && dict["Extend"] != nil {
+            self.extend = dict["Extend"] as! String
         }
         if dict.keys.contains("ModifiedTime") && dict["ModifiedTime"] != nil {
             self.modifiedTime = dict["ModifiedTime"] as! String
@@ -19242,6 +18952,8 @@ public class DescribeAppAttributesRequest : Tea.TeaModel {
 
     public var enableTagAuth: Bool?
 
+    public var extend: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -19281,6 +18993,9 @@ public class DescribeAppAttributesRequest : Tea.TeaModel {
         if self.enableTagAuth != nil {
             map["EnableTagAuth"] = self.enableTagAuth!
         }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -19318,6 +19033,9 @@ public class DescribeAppAttributesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableTagAuth") && dict["EnableTagAuth"] != nil {
             self.enableTagAuth = dict["EnableTagAuth"] as! Bool
+        }
+        if dict.keys.contains("Extend") && dict["Extend"] != nil {
+            self.extend = dict["Extend"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -19434,6 +19152,8 @@ public class DescribeAppAttributesResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var extend: String?
+
             public var modifiedTime: String?
 
             public var tags: DescribeAppAttributesResponseBody.Apps.AppAttribute.Tags?
@@ -19465,6 +19185,9 @@ public class DescribeAppAttributesResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.extend != nil {
+                    map["Extend"] = self.extend!
+                }
                 if self.modifiedTime != nil {
                     map["ModifiedTime"] = self.modifiedTime!
                 }
@@ -19486,6 +19209,9 @@ public class DescribeAppAttributesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Description") && dict["Description"] != nil {
                     self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Extend") && dict["Extend"] != nil {
+                    self.extend = dict["Extend"] as! String
                 }
                 if dict.keys.contains("ModifiedTime") && dict["ModifiedTime"] != nil {
                     self.modifiedTime = dict["ModifiedTime"] as! String
@@ -28594,8 +28320,6 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 public class NetworkInterfaceAttribute : Tea.TeaModel {
                     public var cidrBlock: String?
 
-                    public var networkInterfaceId: String?
-
                     public var securityGroupId: String?
 
                     public var vswitchId: String?
@@ -28619,9 +28343,6 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                         if self.cidrBlock != nil {
                             map["CidrBlock"] = self.cidrBlock!
                         }
-                        if self.networkInterfaceId != nil {
-                            map["NetworkInterfaceId"] = self.networkInterfaceId!
-                        }
                         if self.securityGroupId != nil {
                             map["SecurityGroupId"] = self.securityGroupId!
                         }
@@ -28637,9 +28358,6 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("CidrBlock") && dict["CidrBlock"] != nil {
                             self.cidrBlock = dict["CidrBlock"] as! String
-                        }
-                        if dict.keys.contains("NetworkInterfaceId") && dict["NetworkInterfaceId"] != nil {
-                            self.networkInterfaceId = dict["NetworkInterfaceId"] as! String
                         }
                         if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                             self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -28761,8 +28479,6 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public var userVpcId: String?
 
             public var userVswitchId: String?
-
-            public var vipTypeList: String?
 
             public var vpcEgressAddress: String?
 
@@ -28897,9 +28613,6 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 if self.userVswitchId != nil {
                     map["UserVswitchId"] = self.userVswitchId!
                 }
-                if self.vipTypeList != nil {
-                    map["VipTypeList"] = self.vipTypeList!
-                }
                 if self.vpcEgressAddress != nil {
                     map["VpcEgressAddress"] = self.vpcEgressAddress!
                 }
@@ -29030,9 +28743,6 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("UserVswitchId") && dict["UserVswitchId"] != nil {
                     self.userVswitchId = dict["UserVswitchId"] as! String
-                }
-                if dict.keys.contains("VipTypeList") && dict["VipTypeList"] != nil {
-                    self.vipTypeList = dict["VipTypeList"] as! String
                 }
                 if dict.keys.contains("VpcEgressAddress") && dict["VpcEgressAddress"] != nil {
                     self.vpcEgressAddress = dict["VpcEgressAddress"] as! String
@@ -39763,6 +39473,8 @@ public class ModifyAppRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var extend: String?
+
     public var securityToken: String?
 
     public var tag: [ModifyAppRequest.Tag]?
@@ -39790,6 +39502,9 @@ public class ModifyAppRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.extend != nil {
+            map["Extend"] = self.extend!
+        }
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
@@ -39812,6 +39527,9 @@ public class ModifyAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("Extend") && dict["Extend"] != nil {
+            self.extend = dict["Extend"] as! String
         }
         if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
             self.securityToken = dict["SecurityToken"] as! String
