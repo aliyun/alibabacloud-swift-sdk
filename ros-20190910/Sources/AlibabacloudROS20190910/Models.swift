@@ -21268,6 +21268,8 @@ public class UpdateStackRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var dryRunOptions: [String]?
+
     public var parallelism: Int64?
 
     public var parameters: [UpdateStackRequest.Parameters]?
@@ -21326,6 +21328,9 @@ public class UpdateStackRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.dryRunOptions != nil {
+            map["DryRunOptions"] = self.dryRunOptions!
         }
         if self.parallelism != nil {
             map["Parallelism"] = self.parallelism!
@@ -21401,6 +21406,9 @@ public class UpdateStackRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("DryRunOptions") && dict["DryRunOptions"] != nil {
+            self.dryRunOptions = dict["DryRunOptions"] as! [String]
         }
         if dict.keys.contains("Parallelism") && dict["Parallelism"] != nil {
             self.parallelism = dict["Parallelism"] as! Int64
@@ -21481,15 +21489,21 @@ public class UpdateStackResponseBody : Tea.TeaModel {
 
         public var parametersCauseInterruptionIfModified: [String]?
 
+        public var parametersCauseReplacementIfModified: [String]?
+
         public var parametersConditionallyAllowedToBeModified: [String]?
 
         public var parametersConditionallyCauseInterruptionIfModified: [String]?
+
+        public var parametersConditionallyCauseReplacementIfModified: [String]?
 
         public var parametersNotAllowedToBeModified: [String]?
 
         public var parametersUncertainlyAllowedToBeModified: [String]?
 
         public var parametersUncertainlyCauseInterruptionIfModified: [String]?
+
+        public var parametersUncertainlyCauseReplacementIfModified: [String]?
 
         public override init() {
             super.init()
@@ -21511,11 +21525,17 @@ public class UpdateStackResponseBody : Tea.TeaModel {
             if self.parametersCauseInterruptionIfModified != nil {
                 map["ParametersCauseInterruptionIfModified"] = self.parametersCauseInterruptionIfModified!
             }
+            if self.parametersCauseReplacementIfModified != nil {
+                map["ParametersCauseReplacementIfModified"] = self.parametersCauseReplacementIfModified!
+            }
             if self.parametersConditionallyAllowedToBeModified != nil {
                 map["ParametersConditionallyAllowedToBeModified"] = self.parametersConditionallyAllowedToBeModified!
             }
             if self.parametersConditionallyCauseInterruptionIfModified != nil {
                 map["ParametersConditionallyCauseInterruptionIfModified"] = self.parametersConditionallyCauseInterruptionIfModified!
+            }
+            if self.parametersConditionallyCauseReplacementIfModified != nil {
+                map["ParametersConditionallyCauseReplacementIfModified"] = self.parametersConditionallyCauseReplacementIfModified!
             }
             if self.parametersNotAllowedToBeModified != nil {
                 map["ParametersNotAllowedToBeModified"] = self.parametersNotAllowedToBeModified!
@@ -21525,6 +21545,9 @@ public class UpdateStackResponseBody : Tea.TeaModel {
             }
             if self.parametersUncertainlyCauseInterruptionIfModified != nil {
                 map["ParametersUncertainlyCauseInterruptionIfModified"] = self.parametersUncertainlyCauseInterruptionIfModified!
+            }
+            if self.parametersUncertainlyCauseReplacementIfModified != nil {
+                map["ParametersUncertainlyCauseReplacementIfModified"] = self.parametersUncertainlyCauseReplacementIfModified!
             }
             return map
         }
@@ -21536,11 +21559,17 @@ public class UpdateStackResponseBody : Tea.TeaModel {
             if dict.keys.contains("ParametersCauseInterruptionIfModified") && dict["ParametersCauseInterruptionIfModified"] != nil {
                 self.parametersCauseInterruptionIfModified = dict["ParametersCauseInterruptionIfModified"] as! [String]
             }
+            if dict.keys.contains("ParametersCauseReplacementIfModified") && dict["ParametersCauseReplacementIfModified"] != nil {
+                self.parametersCauseReplacementIfModified = dict["ParametersCauseReplacementIfModified"] as! [String]
+            }
             if dict.keys.contains("ParametersConditionallyAllowedToBeModified") && dict["ParametersConditionallyAllowedToBeModified"] != nil {
                 self.parametersConditionallyAllowedToBeModified = dict["ParametersConditionallyAllowedToBeModified"] as! [String]
             }
             if dict.keys.contains("ParametersConditionallyCauseInterruptionIfModified") && dict["ParametersConditionallyCauseInterruptionIfModified"] != nil {
                 self.parametersConditionallyCauseInterruptionIfModified = dict["ParametersConditionallyCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyCauseReplacementIfModified") && dict["ParametersConditionallyCauseReplacementIfModified"] != nil {
+                self.parametersConditionallyCauseReplacementIfModified = dict["ParametersConditionallyCauseReplacementIfModified"] as! [String]
             }
             if dict.keys.contains("ParametersNotAllowedToBeModified") && dict["ParametersNotAllowedToBeModified"] != nil {
                 self.parametersNotAllowedToBeModified = dict["ParametersNotAllowedToBeModified"] as! [String]
@@ -21550,6 +21579,9 @@ public class UpdateStackResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ParametersUncertainlyCauseInterruptionIfModified") && dict["ParametersUncertainlyCauseInterruptionIfModified"] != nil {
                 self.parametersUncertainlyCauseInterruptionIfModified = dict["ParametersUncertainlyCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersUncertainlyCauseReplacementIfModified") && dict["ParametersUncertainlyCauseReplacementIfModified"] != nil {
+                self.parametersUncertainlyCauseReplacementIfModified = dict["ParametersUncertainlyCauseReplacementIfModified"] as! [String]
             }
         }
     }
@@ -23502,6 +23534,8 @@ public class ValidateTemplateRequest : Tea.TeaModel {
 
     public var templateURL: String?
 
+    public var updateInfoOptions: [String]?
+
     public var validationOption: String?
 
     public override init() {
@@ -23530,6 +23564,9 @@ public class ValidateTemplateRequest : Tea.TeaModel {
         if self.templateURL != nil {
             map["TemplateURL"] = self.templateURL!
         }
+        if self.updateInfoOptions != nil {
+            map["UpdateInfoOptions"] = self.updateInfoOptions!
+        }
         if self.validationOption != nil {
             map["ValidationOption"] = self.validationOption!
         }
@@ -23548,6 +23585,9 @@ public class ValidateTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TemplateURL") && dict["TemplateURL"] != nil {
             self.templateURL = dict["TemplateURL"] as! String
+        }
+        if dict.keys.contains("UpdateInfoOptions") && dict["UpdateInfoOptions"] != nil {
+            self.updateInfoOptions = dict["UpdateInfoOptions"] as! [String]
         }
         if dict.keys.contains("ValidationOption") && dict["ValidationOption"] != nil {
             self.validationOption = dict["ValidationOption"] as! String
@@ -23688,15 +23728,21 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
 
         public var parametersCauseInterruptionIfModified: [String]?
 
+        public var parametersCauseReplacementIfModified: [String]?
+
         public var parametersConditionallyAllowedToBeModified: [String]?
 
         public var parametersConditionallyCauseInterruptionIfModified: [String]?
+
+        public var parametersConditionallyCauseReplacementIfModified: [String]?
 
         public var parametersNotAllowedToBeModified: [String]?
 
         public var parametersUncertainlyAllowedToBeModified: [String]?
 
         public var parametersUncertainlyCauseInterruptionIfModified: [String]?
+
+        public var parametersUncertainlyCauseReplacementIfModified: [String]?
 
         public override init() {
             super.init()
@@ -23718,11 +23764,17 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             if self.parametersCauseInterruptionIfModified != nil {
                 map["ParametersCauseInterruptionIfModified"] = self.parametersCauseInterruptionIfModified!
             }
+            if self.parametersCauseReplacementIfModified != nil {
+                map["ParametersCauseReplacementIfModified"] = self.parametersCauseReplacementIfModified!
+            }
             if self.parametersConditionallyAllowedToBeModified != nil {
                 map["ParametersConditionallyAllowedToBeModified"] = self.parametersConditionallyAllowedToBeModified!
             }
             if self.parametersConditionallyCauseInterruptionIfModified != nil {
                 map["ParametersConditionallyCauseInterruptionIfModified"] = self.parametersConditionallyCauseInterruptionIfModified!
+            }
+            if self.parametersConditionallyCauseReplacementIfModified != nil {
+                map["ParametersConditionallyCauseReplacementIfModified"] = self.parametersConditionallyCauseReplacementIfModified!
             }
             if self.parametersNotAllowedToBeModified != nil {
                 map["ParametersNotAllowedToBeModified"] = self.parametersNotAllowedToBeModified!
@@ -23732,6 +23784,9 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             }
             if self.parametersUncertainlyCauseInterruptionIfModified != nil {
                 map["ParametersUncertainlyCauseInterruptionIfModified"] = self.parametersUncertainlyCauseInterruptionIfModified!
+            }
+            if self.parametersUncertainlyCauseReplacementIfModified != nil {
+                map["ParametersUncertainlyCauseReplacementIfModified"] = self.parametersUncertainlyCauseReplacementIfModified!
             }
             return map
         }
@@ -23743,11 +23798,17 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             if dict.keys.contains("ParametersCauseInterruptionIfModified") && dict["ParametersCauseInterruptionIfModified"] != nil {
                 self.parametersCauseInterruptionIfModified = dict["ParametersCauseInterruptionIfModified"] as! [String]
             }
+            if dict.keys.contains("ParametersCauseReplacementIfModified") && dict["ParametersCauseReplacementIfModified"] != nil {
+                self.parametersCauseReplacementIfModified = dict["ParametersCauseReplacementIfModified"] as! [String]
+            }
             if dict.keys.contains("ParametersConditionallyAllowedToBeModified") && dict["ParametersConditionallyAllowedToBeModified"] != nil {
                 self.parametersConditionallyAllowedToBeModified = dict["ParametersConditionallyAllowedToBeModified"] as! [String]
             }
             if dict.keys.contains("ParametersConditionallyCauseInterruptionIfModified") && dict["ParametersConditionallyCauseInterruptionIfModified"] != nil {
                 self.parametersConditionallyCauseInterruptionIfModified = dict["ParametersConditionallyCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersConditionallyCauseReplacementIfModified") && dict["ParametersConditionallyCauseReplacementIfModified"] != nil {
+                self.parametersConditionallyCauseReplacementIfModified = dict["ParametersConditionallyCauseReplacementIfModified"] as! [String]
             }
             if dict.keys.contains("ParametersNotAllowedToBeModified") && dict["ParametersNotAllowedToBeModified"] != nil {
                 self.parametersNotAllowedToBeModified = dict["ParametersNotAllowedToBeModified"] as! [String]
@@ -23757,6 +23818,9 @@ public class ValidateTemplateResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ParametersUncertainlyCauseInterruptionIfModified") && dict["ParametersUncertainlyCauseInterruptionIfModified"] != nil {
                 self.parametersUncertainlyCauseInterruptionIfModified = dict["ParametersUncertainlyCauseInterruptionIfModified"] as! [String]
+            }
+            if dict.keys.contains("ParametersUncertainlyCauseReplacementIfModified") && dict["ParametersUncertainlyCauseReplacementIfModified"] != nil {
+                self.parametersUncertainlyCauseReplacementIfModified = dict["ParametersUncertainlyCauseReplacementIfModified"] as! [String]
             }
         }
     }
