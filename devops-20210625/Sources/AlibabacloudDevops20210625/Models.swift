@@ -67,8 +67,6 @@ public class AddGroupMemberResponseBody : Tea.TeaModel {
 
         public var email: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var name: String?
@@ -102,9 +100,6 @@ public class AddGroupMemberResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["email"] = self.email!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -132,9 +127,6 @@ public class AddGroupMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("email") && dict["email"] != nil {
                 self.email = dict["email"] as! String
-            }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -484,8 +476,6 @@ public class AddRepositoryMemberResponseBody : Tea.TeaModel {
 
         public var email: String?
 
-        public var externUserId: String?
-
         public var id: Int64?
 
         public var state: String?
@@ -513,9 +503,6 @@ public class AddRepositoryMemberResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["email"] = self.email!
             }
-            if self.externUserId != nil {
-                map["externUserId"] = self.externUserId!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -534,9 +521,6 @@ public class AddRepositoryMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("email") && dict["email"] != nil {
                 self.email = dict["email"] as! String
-            }
-            if dict.keys.contains("externUserId") && dict["externUserId"] != nil {
-                self.externUserId = dict["externUserId"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -10375,8 +10359,6 @@ public class DeleteGroupMemberResponseBody : Tea.TeaModel {
 
         public var avatarUrl: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var memberType: String?
@@ -10409,9 +10391,6 @@ public class DeleteGroupMemberResponseBody : Tea.TeaModel {
             if self.avatarUrl != nil {
                 map["avatarUrl"] = self.avatarUrl!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -10439,9 +10418,6 @@ public class DeleteGroupMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
                 self.avatarUrl = dict["avatarUrl"] as! String
-            }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -11805,8 +11781,6 @@ public class DeleteRepositoryMemberResponseBody : Tea.TeaModel {
 
         public var createAt: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var sourceId: Int64?
@@ -11837,9 +11811,6 @@ public class DeleteRepositoryMemberResponseBody : Tea.TeaModel {
             if self.createAt != nil {
                 map["createAt"] = self.createAt!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -11864,9 +11835,6 @@ public class DeleteRepositoryMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("createAt") && dict["createAt"] != nil {
                 self.createAt = dict["createAt"] as! String
-            }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -13749,15 +13717,11 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
 
                 public var email: String?
 
-                public var externUid: String?
-
                 public var id: Int64?
 
                 public var name: String?
 
                 public var state: String?
-
-                public var tbUserId: String?
 
                 public var username: String?
 
@@ -13781,9 +13745,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     if self.email != nil {
                         map["email"] = self.email!
                     }
-                    if self.externUid != nil {
-                        map["externUid"] = self.externUid!
-                    }
                     if self.id != nil {
                         map["id"] = self.id!
                     }
@@ -13792,9 +13753,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     }
                     if self.state != nil {
                         map["state"] = self.state!
-                    }
-                    if self.tbUserId != nil {
-                        map["tbUserId"] = self.tbUserId!
                     }
                     if self.username != nil {
                         map["username"] = self.username!
@@ -13809,9 +13767,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     if dict.keys.contains("email") && dict["email"] != nil {
                         self.email = dict["email"] as! String
                     }
-                    if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                        self.externUid = dict["externUid"] as! String
-                    }
                     if dict.keys.contains("id") && dict["id"] != nil {
                         self.id = dict["id"] as! Int64
                     }
@@ -13820,9 +13775,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("state") && dict["state"] != nil {
                         self.state = dict["state"] as! String
-                    }
-                    if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                        self.tbUserId = dict["tbUserId"] as! String
                     }
                     if dict.keys.contains("username") && dict["username"] != nil {
                         self.username = dict["username"] as! String
@@ -13834,15 +13786,11 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
 
                 public var email: String?
 
-                public var externUid: String?
-
                 public var id: Int64?
 
                 public var name: String?
 
                 public var state: String?
-
-                public var tbUserId: String?
 
                 public var username: String?
 
@@ -13866,9 +13814,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     if self.email != nil {
                         map["email"] = self.email!
                     }
-                    if self.externUid != nil {
-                        map["externUid"] = self.externUid!
-                    }
                     if self.id != nil {
                         map["id"] = self.id!
                     }
@@ -13877,9 +13822,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     }
                     if self.state != nil {
                         map["state"] = self.state!
-                    }
-                    if self.tbUserId != nil {
-                        map["tbUserId"] = self.tbUserId!
                     }
                     if self.username != nil {
                         map["username"] = self.username!
@@ -13894,9 +13836,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     if dict.keys.contains("email") && dict["email"] != nil {
                         self.email = dict["email"] as! String
                     }
-                    if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                        self.externUid = dict["externUid"] as! String
-                    }
                     if dict.keys.contains("id") && dict["id"] != nil {
                         self.id = dict["id"] as! Int64
                     }
@@ -13905,9 +13844,6 @@ public class GetBranchInfoResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("state") && dict["state"] != nil {
                         self.state = dict["state"] as! String
-                    }
-                    if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                        self.tbUserId = dict["tbUserId"] as! String
                     }
                     if dict.keys.contains("username") && dict["username"] != nil {
                         self.username = dict["username"] as! String
@@ -14573,8 +14509,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
 
                 public var email: String?
 
-                public var externUid: String?
-
                 public var id: Int64?
 
                 public var name: String?
@@ -14582,8 +14516,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                 public var state: String?
 
                 public var username: String?
-
-                public var websiteUrl: String?
 
                 public override init() {
                     super.init()
@@ -14605,9 +14537,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     if self.email != nil {
                         map["email"] = self.email!
                     }
-                    if self.externUid != nil {
-                        map["externUid"] = self.externUid!
-                    }
                     if self.id != nil {
                         map["id"] = self.id!
                     }
@@ -14620,9 +14549,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     if self.username != nil {
                         map["username"] = self.username!
                     }
-                    if self.websiteUrl != nil {
-                        map["websiteUrl"] = self.websiteUrl!
-                    }
                     return map
                 }
 
@@ -14632,9 +14558,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("email") && dict["email"] != nil {
                         self.email = dict["email"] as! String
-                    }
-                    if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                        self.externUid = dict["externUid"] as! String
                     }
                     if dict.keys.contains("id") && dict["id"] != nil {
                         self.id = dict["id"] as! Int64
@@ -14647,9 +14570,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("username") && dict["username"] != nil {
                         self.username = dict["username"] as! String
-                    }
-                    if dict.keys.contains("websiteUrl") && dict["websiteUrl"] != nil {
-                        self.websiteUrl = dict["websiteUrl"] as! String
                     }
                 }
             }
@@ -14658,8 +14578,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
 
                 public var email: String?
 
-                public var externUid: String?
-
                 public var id: Int64?
 
                 public var name: String?
@@ -14667,8 +14585,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                 public var state: String?
 
                 public var username: String?
-
-                public var websiteUrl: String?
 
                 public override init() {
                     super.init()
@@ -14690,9 +14606,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     if self.email != nil {
                         map["email"] = self.email!
                     }
-                    if self.externUid != nil {
-                        map["externUid"] = self.externUid!
-                    }
                     if self.id != nil {
                         map["id"] = self.id!
                     }
@@ -14705,9 +14618,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     if self.username != nil {
                         map["username"] = self.username!
                     }
-                    if self.websiteUrl != nil {
-                        map["websiteUrl"] = self.websiteUrl!
-                    }
                     return map
                 }
 
@@ -14717,9 +14627,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("email") && dict["email"] != nil {
                         self.email = dict["email"] as! String
-                    }
-                    if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                        self.externUid = dict["externUid"] as! String
                     }
                     if dict.keys.contains("id") && dict["id"] != nil {
                         self.id = dict["id"] as! Int64
@@ -14732,9 +14639,6 @@ public class GetCompareDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("username") && dict["username"] != nil {
                         self.username = dict["username"] as! String
-                    }
-                    if dict.keys.contains("websiteUrl") && dict["websiteUrl"] != nil {
-                        self.websiteUrl = dict["websiteUrl"] as! String
                     }
                 }
             }
@@ -19276,8 +19180,6 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
 
         public var avatarUrl: String?
 
-        public var externUserId: String?
-
         public var id: Int64?
 
         public var name: String?
@@ -19302,9 +19204,6 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
             if self.avatarUrl != nil {
                 map["avatarUrl"] = self.avatarUrl!
             }
-            if self.externUserId != nil {
-                map["externUserId"] = self.externUserId!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -19320,9 +19219,6 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
                 self.avatarUrl = dict["avatarUrl"] as! String
-            }
-            if dict.keys.contains("externUserId") && dict["externUserId"] != nil {
-                self.externUserId = dict["externUserId"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -19925,15 +19821,11 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
 
             public var email: String?
 
-            public var externUid: String?
-
             public var id: Int64?
 
             public var name: String?
 
             public var state: String?
-
-            public var tbUserId: String?
 
             public var username: String?
 
@@ -19959,9 +19851,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 if self.email != nil {
                     map["email"] = self.email!
                 }
-                if self.externUid != nil {
-                    map["externUid"] = self.externUid!
-                }
                 if self.id != nil {
                     map["id"] = self.id!
                 }
@@ -19970,9 +19859,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 }
                 if self.state != nil {
                     map["state"] = self.state!
-                }
-                if self.tbUserId != nil {
-                    map["tbUserId"] = self.tbUserId!
                 }
                 if self.username != nil {
                     map["username"] = self.username!
@@ -19990,9 +19876,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 if dict.keys.contains("email") && dict["email"] != nil {
                     self.email = dict["email"] as! String
                 }
-                if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                    self.externUid = dict["externUid"] as! String
-                }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! Int64
                 }
@@ -20001,9 +19884,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("state") && dict["state"] != nil {
                     self.state = dict["state"] as! String
-                }
-                if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                    self.tbUserId = dict["tbUserId"] as! String
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
@@ -20018,15 +19898,11 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
 
             public var email: String?
 
-            public var externUid: String?
-
             public var id: Int64?
 
             public var name: String?
 
             public var state: String?
-
-            public var tbUserId: String?
 
             public var username: String?
 
@@ -20052,9 +19928,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 if self.email != nil {
                     map["email"] = self.email!
                 }
-                if self.externUid != nil {
-                    map["externUid"] = self.externUid!
-                }
                 if self.id != nil {
                     map["id"] = self.id!
                 }
@@ -20063,9 +19936,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 }
                 if self.state != nil {
                     map["state"] = self.state!
-                }
-                if self.tbUserId != nil {
-                    map["tbUserId"] = self.tbUserId!
                 }
                 if self.username != nil {
                     map["username"] = self.username!
@@ -20083,9 +19953,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 if dict.keys.contains("email") && dict["email"] != nil {
                     self.email = dict["email"] as! String
                 }
-                if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                    self.externUid = dict["externUid"] as! String
-                }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! Int64
                 }
@@ -20094,9 +19961,6 @@ public class GetRepositoryCommitResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("state") && dict["state"] != nil {
                     self.state = dict["state"] as! String
-                }
-                if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                    self.tbUserId = dict["tbUserId"] as! String
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
@@ -22339,8 +22203,6 @@ public class GetUserInfoResponseBody : Tea.TeaModel {
 
         public var email: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var name: String?
@@ -22367,9 +22229,6 @@ public class GetUserInfoResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["email"] = self.email!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -22388,9 +22247,6 @@ public class GetUserInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("email") && dict["email"] != nil {
                 self.email = dict["email"] as! String
-            }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -26229,8 +26085,6 @@ public class ListGroupMemberResponseBody : Tea.TeaModel {
 
         public var email: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var memberType: String?
@@ -26266,9 +26120,6 @@ public class ListGroupMemberResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["email"] = self.email!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -26299,9 +26150,6 @@ public class ListGroupMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("email") && dict["email"] != nil {
                 self.email = dict["email"] as! String
-            }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -31016,8 +30864,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
 
             public var name: String?
 
-            public var tbUserId: String?
-
             public var username: String?
 
             public override init() {
@@ -31046,9 +30892,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
-                if self.tbUserId != nil {
-                    map["tbUserId"] = self.tbUserId!
-                }
                 if self.username != nil {
                     map["username"] = self.username!
                 }
@@ -31067,9 +30910,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
-                }
-                if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                    self.tbUserId = dict["tbUserId"] as! String
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
@@ -31085,8 +30925,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
 
             public var name: String?
 
-            public var tbUserId: String?
-
             public var username: String?
 
             public override init() {
@@ -31115,9 +30953,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
-                if self.tbUserId != nil {
-                    map["tbUserId"] = self.tbUserId!
-                }
                 if self.username != nil {
                     map["username"] = self.username!
                 }
@@ -31137,9 +30972,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
                 }
-                if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                    self.tbUserId = dict["tbUserId"] as! String
-                }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
                 }
@@ -31154,8 +30986,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                 public var id: Int64?
 
                 public var name: String?
-
-                public var tbUserId: String?
 
                 public var username: String?
 
@@ -31185,9 +31015,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["name"] = self.name!
                     }
-                    if self.tbUserId != nil {
-                        map["tbUserId"] = self.tbUserId!
-                    }
                     if self.username != nil {
                         map["username"] = self.username!
                     }
@@ -31206,9 +31033,6 @@ public class ListProtectedBranchesResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("name") && dict["name"] != nil {
                         self.name = dict["name"] as! String
-                    }
-                    if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                        self.tbUserId = dict["tbUserId"] as! String
                     }
                     if dict.keys.contains("username") && dict["username"] != nil {
                         self.username = dict["username"] as! String
@@ -33044,15 +32868,11 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
 
             public var email: String?
 
-            public var externUid: String?
-
             public var id: Int64?
 
             public var name: String?
 
             public var state: String?
-
-            public var tbUserId: String?
 
             public var username: String?
 
@@ -33078,9 +32898,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 if self.email != nil {
                     map["email"] = self.email!
                 }
-                if self.externUid != nil {
-                    map["externUid"] = self.externUid!
-                }
                 if self.id != nil {
                     map["id"] = self.id!
                 }
@@ -33089,9 +32906,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 }
                 if self.state != nil {
                     map["state"] = self.state!
-                }
-                if self.tbUserId != nil {
-                    map["tbUserId"] = self.tbUserId!
                 }
                 if self.username != nil {
                     map["username"] = self.username!
@@ -33109,9 +32923,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("email") && dict["email"] != nil {
                     self.email = dict["email"] as! String
                 }
-                if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                    self.externUid = dict["externUid"] as! String
-                }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! Int64
                 }
@@ -33120,9 +32931,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("state") && dict["state"] != nil {
                     self.state = dict["state"] as! String
-                }
-                if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                    self.tbUserId = dict["tbUserId"] as! String
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
@@ -33137,15 +32945,11 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
 
             public var email: String?
 
-            public var externUid: String?
-
             public var id: Int64?
 
             public var name: String?
 
             public var state: String?
-
-            public var tbUserId: String?
 
             public var username: String?
 
@@ -33171,9 +32975,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 if self.email != nil {
                     map["email"] = self.email!
                 }
-                if self.externUid != nil {
-                    map["externUid"] = self.externUid!
-                }
                 if self.id != nil {
                     map["id"] = self.id!
                 }
@@ -33182,9 +32983,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 }
                 if self.state != nil {
                     map["state"] = self.state!
-                }
-                if self.tbUserId != nil {
-                    map["tbUserId"] = self.tbUserId!
                 }
                 if self.username != nil {
                     map["username"] = self.username!
@@ -33202,9 +33000,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("email") && dict["email"] != nil {
                     self.email = dict["email"] as! String
                 }
-                if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                    self.externUid = dict["externUid"] as! String
-                }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! Int64
                 }
@@ -33213,9 +33008,6 @@ public class ListRepositoryCommitsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("state") && dict["state"] != nil {
                     self.state = dict["state"] as! String
-                }
-                if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                    self.tbUserId = dict["tbUserId"] as! String
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
@@ -34060,8 +33852,6 @@ public class ListRepositoryMemberWithInheritedResponseBody : Tea.TeaModel {
 
         public var email: String?
 
-        public var externUserId: String?
-
         public var id: Int64?
 
         public var inherited: ListRepositoryMemberWithInheritedResponseBody.Result.Inherited?
@@ -34096,9 +33886,6 @@ public class ListRepositoryMemberWithInheritedResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["email"] = self.email!
             }
-            if self.externUserId != nil {
-                map["externUserId"] = self.externUserId!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -34126,9 +33913,6 @@ public class ListRepositoryMemberWithInheritedResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("email") && dict["email"] != nil {
                 self.email = dict["email"] as! String
-            }
-            if dict.keys.contains("externUserId") && dict["externUserId"] != nil {
-                self.externUserId = dict["externUserId"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -38152,6 +37936,801 @@ public class ListUserKeysResponse : Tea.TeaModel {
     }
 }
 
+public class ListUserResourcesRequest : Tea.TeaModel {
+    public var accessToken: String?
+
+    public var organizationId: String?
+
+    public var page: Int64?
+
+    public var pageSize: Int64?
+
+    public var userIds: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["accessToken"] = self.accessToken!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.page != nil {
+            map["page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.userIds != nil {
+            map["userIds"] = self.userIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("accessToken") && dict["accessToken"] != nil {
+            self.accessToken = dict["accessToken"] as! String
+        }
+        if dict.keys.contains("organizationId") && dict["organizationId"] != nil {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("page") && dict["page"] != nil {
+            self.page = dict["page"] as! Int64
+        }
+        if dict.keys.contains("pageSize") && dict["pageSize"] != nil {
+            self.pageSize = dict["pageSize"] as! Int64
+        }
+        if dict.keys.contains("userIds") && dict["userIds"] != nil {
+            self.userIds = dict["userIds"] as! String
+        }
+    }
+}
+
+public class ListUserResourcesResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class GroupInfos : Tea.TeaModel {
+            public class GroupInfo : Tea.TeaModel {
+                public var createdAt: String?
+
+                public var description_: String?
+
+                public var id: Int64?
+
+                public var name: String?
+
+                public var nameWithNamespace: String?
+
+                public var ownerId: Int64?
+
+                public var parentId: Int64?
+
+                public var path: String?
+
+                public var pathWithNamespace: String?
+
+                public var updatedAt: String?
+
+                public var visibilityLevel: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.createdAt != nil {
+                        map["createdAt"] = self.createdAt!
+                    }
+                    if self.description_ != nil {
+                        map["description"] = self.description_!
+                    }
+                    if self.id != nil {
+                        map["id"] = self.id!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.nameWithNamespace != nil {
+                        map["nameWithNamespace"] = self.nameWithNamespace!
+                    }
+                    if self.ownerId != nil {
+                        map["ownerId"] = self.ownerId!
+                    }
+                    if self.parentId != nil {
+                        map["parentId"] = self.parentId!
+                    }
+                    if self.path != nil {
+                        map["path"] = self.path!
+                    }
+                    if self.pathWithNamespace != nil {
+                        map["pathWithNamespace"] = self.pathWithNamespace!
+                    }
+                    if self.updatedAt != nil {
+                        map["updatedAt"] = self.updatedAt!
+                    }
+                    if self.visibilityLevel != nil {
+                        map["visibilityLevel"] = self.visibilityLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("createdAt") && dict["createdAt"] != nil {
+                        self.createdAt = dict["createdAt"] as! String
+                    }
+                    if dict.keys.contains("description") && dict["description"] != nil {
+                        self.description_ = dict["description"] as! String
+                    }
+                    if dict.keys.contains("id") && dict["id"] != nil {
+                        self.id = dict["id"] as! Int64
+                    }
+                    if dict.keys.contains("name") && dict["name"] != nil {
+                        self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("nameWithNamespace") && dict["nameWithNamespace"] != nil {
+                        self.nameWithNamespace = dict["nameWithNamespace"] as! String
+                    }
+                    if dict.keys.contains("ownerId") && dict["ownerId"] != nil {
+                        self.ownerId = dict["ownerId"] as! Int64
+                    }
+                    if dict.keys.contains("parentId") && dict["parentId"] != nil {
+                        self.parentId = dict["parentId"] as! Int64
+                    }
+                    if dict.keys.contains("path") && dict["path"] != nil {
+                        self.path = dict["path"] as! String
+                    }
+                    if dict.keys.contains("pathWithNamespace") && dict["pathWithNamespace"] != nil {
+                        self.pathWithNamespace = dict["pathWithNamespace"] as! String
+                    }
+                    if dict.keys.contains("updatedAt") && dict["updatedAt"] != nil {
+                        self.updatedAt = dict["updatedAt"] as! String
+                    }
+                    if dict.keys.contains("visibilityLevel") && dict["visibilityLevel"] != nil {
+                        self.visibilityLevel = dict["visibilityLevel"] as! Int32
+                    }
+                }
+            }
+            public class GroupRole : Tea.TeaModel {
+                public var accessLevel: Int32?
+
+                public var cnRoleName: String?
+
+                public var enRoleName: String?
+
+                public var sourceId: Int64?
+
+                public var sourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessLevel != nil {
+                        map["accessLevel"] = self.accessLevel!
+                    }
+                    if self.cnRoleName != nil {
+                        map["cnRoleName"] = self.cnRoleName!
+                    }
+                    if self.enRoleName != nil {
+                        map["enRoleName"] = self.enRoleName!
+                    }
+                    if self.sourceId != nil {
+                        map["sourceId"] = self.sourceId!
+                    }
+                    if self.sourceType != nil {
+                        map["sourceType"] = self.sourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("accessLevel") && dict["accessLevel"] != nil {
+                        self.accessLevel = dict["accessLevel"] as! Int32
+                    }
+                    if dict.keys.contains("cnRoleName") && dict["cnRoleName"] != nil {
+                        self.cnRoleName = dict["cnRoleName"] as! String
+                    }
+                    if dict.keys.contains("enRoleName") && dict["enRoleName"] != nil {
+                        self.enRoleName = dict["enRoleName"] as! String
+                    }
+                    if dict.keys.contains("sourceId") && dict["sourceId"] != nil {
+                        self.sourceId = dict["sourceId"] as! Int64
+                    }
+                    if dict.keys.contains("sourceType") && dict["sourceType"] != nil {
+                        self.sourceType = dict["sourceType"] as! String
+                    }
+                }
+            }
+            public var groupInfo: ListUserResourcesResponseBody.Result.GroupInfos.GroupInfo?
+
+            public var groupRole: ListUserResourcesResponseBody.Result.GroupInfos.GroupRole?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.groupInfo?.validate()
+                try self.groupRole?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupInfo != nil {
+                    map["groupInfo"] = self.groupInfo?.toMap()
+                }
+                if self.groupRole != nil {
+                    map["groupRole"] = self.groupRole?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("groupInfo") && dict["groupInfo"] != nil {
+                    var model = ListUserResourcesResponseBody.Result.GroupInfos.GroupInfo()
+                    model.fromMap(dict["groupInfo"] as! [String: Any])
+                    self.groupInfo = model
+                }
+                if dict.keys.contains("groupRole") && dict["groupRole"] != nil {
+                    var model = ListUserResourcesResponseBody.Result.GroupInfos.GroupRole()
+                    model.fromMap(dict["groupRole"] as! [String: Any])
+                    self.groupRole = model
+                }
+            }
+        }
+        public class RepositoryInfos : Tea.TeaModel {
+            public class RepositoryInfo : Tea.TeaModel {
+                public var accessLevel: Int32?
+
+                public var archived: Bool?
+
+                public var createdAt: String?
+
+                public var creatorId: Int64?
+
+                public var description_: String?
+
+                public var encrypted: Bool?
+
+                public var id: Int64?
+
+                public var lastActivityAt: String?
+
+                public var name: String?
+
+                public var nameWithNamespace: String?
+
+                public var namespaceId: Int64?
+
+                public var path: String?
+
+                public var pathWithNamespace: String?
+
+                public var updatedAt: String?
+
+                public var visibilityLevel: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessLevel != nil {
+                        map["accessLevel"] = self.accessLevel!
+                    }
+                    if self.archived != nil {
+                        map["archived"] = self.archived!
+                    }
+                    if self.createdAt != nil {
+                        map["createdAt"] = self.createdAt!
+                    }
+                    if self.creatorId != nil {
+                        map["creatorId"] = self.creatorId!
+                    }
+                    if self.description_ != nil {
+                        map["description"] = self.description_!
+                    }
+                    if self.encrypted != nil {
+                        map["encrypted"] = self.encrypted!
+                    }
+                    if self.id != nil {
+                        map["id"] = self.id!
+                    }
+                    if self.lastActivityAt != nil {
+                        map["lastActivityAt"] = self.lastActivityAt!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.nameWithNamespace != nil {
+                        map["nameWithNamespace"] = self.nameWithNamespace!
+                    }
+                    if self.namespaceId != nil {
+                        map["namespaceId"] = self.namespaceId!
+                    }
+                    if self.path != nil {
+                        map["path"] = self.path!
+                    }
+                    if self.pathWithNamespace != nil {
+                        map["pathWithNamespace"] = self.pathWithNamespace!
+                    }
+                    if self.updatedAt != nil {
+                        map["updatedAt"] = self.updatedAt!
+                    }
+                    if self.visibilityLevel != nil {
+                        map["visibilityLevel"] = self.visibilityLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("accessLevel") && dict["accessLevel"] != nil {
+                        self.accessLevel = dict["accessLevel"] as! Int32
+                    }
+                    if dict.keys.contains("archived") && dict["archived"] != nil {
+                        self.archived = dict["archived"] as! Bool
+                    }
+                    if dict.keys.contains("createdAt") && dict["createdAt"] != nil {
+                        self.createdAt = dict["createdAt"] as! String
+                    }
+                    if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
+                        self.creatorId = dict["creatorId"] as! Int64
+                    }
+                    if dict.keys.contains("description") && dict["description"] != nil {
+                        self.description_ = dict["description"] as! String
+                    }
+                    if dict.keys.contains("encrypted") && dict["encrypted"] != nil {
+                        self.encrypted = dict["encrypted"] as! Bool
+                    }
+                    if dict.keys.contains("id") && dict["id"] != nil {
+                        self.id = dict["id"] as! Int64
+                    }
+                    if dict.keys.contains("lastActivityAt") && dict["lastActivityAt"] != nil {
+                        self.lastActivityAt = dict["lastActivityAt"] as! String
+                    }
+                    if dict.keys.contains("name") && dict["name"] != nil {
+                        self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("nameWithNamespace") && dict["nameWithNamespace"] != nil {
+                        self.nameWithNamespace = dict["nameWithNamespace"] as! String
+                    }
+                    if dict.keys.contains("namespaceId") && dict["namespaceId"] != nil {
+                        self.namespaceId = dict["namespaceId"] as! Int64
+                    }
+                    if dict.keys.contains("path") && dict["path"] != nil {
+                        self.path = dict["path"] as! String
+                    }
+                    if dict.keys.contains("pathWithNamespace") && dict["pathWithNamespace"] != nil {
+                        self.pathWithNamespace = dict["pathWithNamespace"] as! String
+                    }
+                    if dict.keys.contains("updatedAt") && dict["updatedAt"] != nil {
+                        self.updatedAt = dict["updatedAt"] as! String
+                    }
+                    if dict.keys.contains("visibilityLevel") && dict["visibilityLevel"] != nil {
+                        self.visibilityLevel = dict["visibilityLevel"] as! Int32
+                    }
+                }
+            }
+            public class RepositoryRole : Tea.TeaModel {
+                public var accessLevel: Int32?
+
+                public var cnRoleName: String?
+
+                public var enRoleName: String?
+
+                public var sourceId: Int64?
+
+                public var sourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessLevel != nil {
+                        map["accessLevel"] = self.accessLevel!
+                    }
+                    if self.cnRoleName != nil {
+                        map["cnRoleName"] = self.cnRoleName!
+                    }
+                    if self.enRoleName != nil {
+                        map["enRoleName"] = self.enRoleName!
+                    }
+                    if self.sourceId != nil {
+                        map["sourceId"] = self.sourceId!
+                    }
+                    if self.sourceType != nil {
+                        map["sourceType"] = self.sourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("accessLevel") && dict["accessLevel"] != nil {
+                        self.accessLevel = dict["accessLevel"] as! Int32
+                    }
+                    if dict.keys.contains("cnRoleName") && dict["cnRoleName"] != nil {
+                        self.cnRoleName = dict["cnRoleName"] as! String
+                    }
+                    if dict.keys.contains("enRoleName") && dict["enRoleName"] != nil {
+                        self.enRoleName = dict["enRoleName"] as! String
+                    }
+                    if dict.keys.contains("sourceId") && dict["sourceId"] != nil {
+                        self.sourceId = dict["sourceId"] as! Int64
+                    }
+                    if dict.keys.contains("sourceType") && dict["sourceType"] != nil {
+                        self.sourceType = dict["sourceType"] as! String
+                    }
+                }
+            }
+            public var repositoryInfo: ListUserResourcesResponseBody.Result.RepositoryInfos.RepositoryInfo?
+
+            public var repositoryRole: ListUserResourcesResponseBody.Result.RepositoryInfos.RepositoryRole?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.repositoryInfo?.validate()
+                try self.repositoryRole?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.repositoryInfo != nil {
+                    map["repositoryInfo"] = self.repositoryInfo?.toMap()
+                }
+                if self.repositoryRole != nil {
+                    map["repositoryRole"] = self.repositoryRole?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("repositoryInfo") && dict["repositoryInfo"] != nil {
+                    var model = ListUserResourcesResponseBody.Result.RepositoryInfos.RepositoryInfo()
+                    model.fromMap(dict["repositoryInfo"] as! [String: Any])
+                    self.repositoryInfo = model
+                }
+                if dict.keys.contains("repositoryRole") && dict["repositoryRole"] != nil {
+                    var model = ListUserResourcesResponseBody.Result.RepositoryInfos.RepositoryRole()
+                    model.fromMap(dict["repositoryRole"] as! [String: Any])
+                    self.repositoryRole = model
+                }
+            }
+        }
+        public class UserInfo : Tea.TeaModel {
+            public var avatarUrl: String?
+
+            public var email: String?
+
+            public var id: Int64?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var username: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.avatarUrl != nil {
+                    map["avatarUrl"] = self.avatarUrl!
+                }
+                if self.email != nil {
+                    map["email"] = self.email!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.username != nil {
+                    map["username"] = self.username!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
+                    self.avatarUrl = dict["avatarUrl"] as! String
+                }
+                if dict.keys.contains("email") && dict["email"] != nil {
+                    self.email = dict["email"] as! String
+                }
+                if dict.keys.contains("id") && dict["id"] != nil {
+                    self.id = dict["id"] as! Int64
+                }
+                if dict.keys.contains("name") && dict["name"] != nil {
+                    self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("state") && dict["state"] != nil {
+                    self.state = dict["state"] as! String
+                }
+                if dict.keys.contains("username") && dict["username"] != nil {
+                    self.username = dict["username"] as! String
+                }
+            }
+        }
+        public var groupInfos: [ListUserResourcesResponseBody.Result.GroupInfos]?
+
+        public var repositoryInfos: [ListUserResourcesResponseBody.Result.RepositoryInfos]?
+
+        public var userInfo: ListUserResourcesResponseBody.Result.UserInfo?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.userInfo?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupInfos != nil {
+                var tmp : [Any] = []
+                for k in self.groupInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["groupInfos"] = tmp
+            }
+            if self.repositoryInfos != nil {
+                var tmp : [Any] = []
+                for k in self.repositoryInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["repositoryInfos"] = tmp
+            }
+            if self.userInfo != nil {
+                map["userInfo"] = self.userInfo?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("groupInfos") && dict["groupInfos"] != nil {
+                var tmp : [ListUserResourcesResponseBody.Result.GroupInfos] = []
+                for v in dict["groupInfos"] as! [Any] {
+                    var model = ListUserResourcesResponseBody.Result.GroupInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.groupInfos = tmp
+            }
+            if dict.keys.contains("repositoryInfos") && dict["repositoryInfos"] != nil {
+                var tmp : [ListUserResourcesResponseBody.Result.RepositoryInfos] = []
+                for v in dict["repositoryInfos"] as! [Any] {
+                    var model = ListUserResourcesResponseBody.Result.RepositoryInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.repositoryInfos = tmp
+            }
+            if dict.keys.contains("userInfo") && dict["userInfo"] != nil {
+                var model = ListUserResourcesResponseBody.Result.UserInfo()
+                model.fromMap(dict["userInfo"] as! [String: Any])
+                self.userInfo = model
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var result: [ListUserResourcesResponseBody.Result]?
+
+    public var success: Bool?
+
+    public var total: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["result"] = tmp
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.total != nil {
+            map["total"] = self.total!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
+            self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("result") && dict["result"] != nil {
+            var tmp : [ListUserResourcesResponseBody.Result] = []
+            for v in dict["result"] as! [Any] {
+                var model = ListUserResourcesResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("total") && dict["total"] != nil {
+            self.total = dict["total"] as! Int64
+        }
+    }
+}
+
+public class ListUserResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListUserResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListUserResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListVariableGroupsRequest : Tea.TeaModel {
     public var maxResults: Int32?
 
@@ -42077,6 +42656,350 @@ public class StopVMDeployOrderResponse : Tea.TeaModel {
     }
 }
 
+public class TransferRepositoryRequest : Tea.TeaModel {
+    public var accessToken: String?
+
+    public var groupId: String?
+
+    public var organizationId: String?
+
+    public var repositoryId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["accessToken"] = self.accessToken!
+        }
+        if self.groupId != nil {
+            map["groupId"] = self.groupId!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.repositoryId != nil {
+            map["repositoryId"] = self.repositoryId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("accessToken") && dict["accessToken"] != nil {
+            self.accessToken = dict["accessToken"] as! String
+        }
+        if dict.keys.contains("groupId") && dict["groupId"] != nil {
+            self.groupId = dict["groupId"] as! String
+        }
+        if dict.keys.contains("organizationId") && dict["organizationId"] != nil {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("repositoryId") && dict["repositoryId"] != nil {
+            self.repositoryId = dict["repositoryId"] as! String
+        }
+    }
+}
+
+public class TransferRepositoryResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public var accessLevel: Int32?
+
+        public var archived: Bool?
+
+        public var createdAt: String?
+
+        public var creatorId: Int64?
+
+        public var demoProject: Bool?
+
+        public var description_: String?
+
+        public var encrypted: Bool?
+
+        public var id: Int64?
+
+        public var lastActivityAt: String?
+
+        public var name: String?
+
+        public var nameWithNamespace: String?
+
+        public var namespaceId: Int64?
+
+        public var path: String?
+
+        public var pathWithNamespace: String?
+
+        public var starCount: Int64?
+
+        public var starred: Bool?
+
+        public var updatedAt: String?
+
+        public var visibilityLevel: Int32?
+
+        public var webUrl: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessLevel != nil {
+                map["accessLevel"] = self.accessLevel!
+            }
+            if self.archived != nil {
+                map["archived"] = self.archived!
+            }
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.creatorId != nil {
+                map["creatorId"] = self.creatorId!
+            }
+            if self.demoProject != nil {
+                map["demoProject"] = self.demoProject!
+            }
+            if self.description_ != nil {
+                map["description"] = self.description_!
+            }
+            if self.encrypted != nil {
+                map["encrypted"] = self.encrypted!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.lastActivityAt != nil {
+                map["lastActivityAt"] = self.lastActivityAt!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.nameWithNamespace != nil {
+                map["nameWithNamespace"] = self.nameWithNamespace!
+            }
+            if self.namespaceId != nil {
+                map["namespaceId"] = self.namespaceId!
+            }
+            if self.path != nil {
+                map["path"] = self.path!
+            }
+            if self.pathWithNamespace != nil {
+                map["pathWithNamespace"] = self.pathWithNamespace!
+            }
+            if self.starCount != nil {
+                map["starCount"] = self.starCount!
+            }
+            if self.starred != nil {
+                map["starred"] = self.starred!
+            }
+            if self.updatedAt != nil {
+                map["updatedAt"] = self.updatedAt!
+            }
+            if self.visibilityLevel != nil {
+                map["visibilityLevel"] = self.visibilityLevel!
+            }
+            if self.webUrl != nil {
+                map["webUrl"] = self.webUrl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accessLevel") && dict["accessLevel"] != nil {
+                self.accessLevel = dict["accessLevel"] as! Int32
+            }
+            if dict.keys.contains("archived") && dict["archived"] != nil {
+                self.archived = dict["archived"] as! Bool
+            }
+            if dict.keys.contains("createdAt") && dict["createdAt"] != nil {
+                self.createdAt = dict["createdAt"] as! String
+            }
+            if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
+                self.creatorId = dict["creatorId"] as! Int64
+            }
+            if dict.keys.contains("demoProject") && dict["demoProject"] != nil {
+                self.demoProject = dict["demoProject"] as! Bool
+            }
+            if dict.keys.contains("description") && dict["description"] != nil {
+                self.description_ = dict["description"] as! String
+            }
+            if dict.keys.contains("encrypted") && dict["encrypted"] != nil {
+                self.encrypted = dict["encrypted"] as! Bool
+            }
+            if dict.keys.contains("id") && dict["id"] != nil {
+                self.id = dict["id"] as! Int64
+            }
+            if dict.keys.contains("lastActivityAt") && dict["lastActivityAt"] != nil {
+                self.lastActivityAt = dict["lastActivityAt"] as! String
+            }
+            if dict.keys.contains("name") && dict["name"] != nil {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("nameWithNamespace") && dict["nameWithNamespace"] != nil {
+                self.nameWithNamespace = dict["nameWithNamespace"] as! String
+            }
+            if dict.keys.contains("namespaceId") && dict["namespaceId"] != nil {
+                self.namespaceId = dict["namespaceId"] as! Int64
+            }
+            if dict.keys.contains("path") && dict["path"] != nil {
+                self.path = dict["path"] as! String
+            }
+            if dict.keys.contains("pathWithNamespace") && dict["pathWithNamespace"] != nil {
+                self.pathWithNamespace = dict["pathWithNamespace"] as! String
+            }
+            if dict.keys.contains("starCount") && dict["starCount"] != nil {
+                self.starCount = dict["starCount"] as! Int64
+            }
+            if dict.keys.contains("starred") && dict["starred"] != nil {
+                self.starred = dict["starred"] as! Bool
+            }
+            if dict.keys.contains("updatedAt") && dict["updatedAt"] != nil {
+                self.updatedAt = dict["updatedAt"] as! String
+            }
+            if dict.keys.contains("visibilityLevel") && dict["visibilityLevel"] != nil {
+                self.visibilityLevel = dict["visibilityLevel"] as! Int32
+            }
+            if dict.keys.contains("webUrl") && dict["webUrl"] != nil {
+                self.webUrl = dict["webUrl"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var result: TransferRepositoryResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
+            self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("result") && dict["result"] != nil {
+            var model = TransferRepositoryResponseBody.Result()
+            model.fromMap(dict["result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class TransferRepositoryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: TransferRepositoryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = TransferRepositoryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class TriggerRepositoryMirrorSyncRequest : Tea.TeaModel {
     public var accessToken: String?
 
@@ -43195,8 +44118,6 @@ public class UpdateGroupMemberResponseBody : Tea.TeaModel {
 
         public var email: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var memberType: String?
@@ -43232,9 +44153,6 @@ public class UpdateGroupMemberResponseBody : Tea.TeaModel {
             if self.email != nil {
                 map["email"] = self.email!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -43265,9 +44183,6 @@ public class UpdateGroupMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("email") && dict["email"] != nil {
                 self.email = dict["email"] as! String
-            }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -46386,8 +47301,6 @@ public class UpdateRepositoryMemberResponseBody : Tea.TeaModel {
 
         public var expireAt: String?
 
-        public var externUid: String?
-
         public var id: Int64?
 
         public var memberName: String?
@@ -46401,8 +47314,6 @@ public class UpdateRepositoryMemberResponseBody : Tea.TeaModel {
         public var sourceType: String?
 
         public var state: String?
-
-        public var tbUserId: String?
 
         public var username: String?
 
@@ -46434,9 +47345,6 @@ public class UpdateRepositoryMemberResponseBody : Tea.TeaModel {
             if self.expireAt != nil {
                 map["expireAt"] = self.expireAt!
             }
-            if self.externUid != nil {
-                map["externUid"] = self.externUid!
-            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -46457,9 +47365,6 @@ public class UpdateRepositoryMemberResponseBody : Tea.TeaModel {
             }
             if self.state != nil {
                 map["state"] = self.state!
-            }
-            if self.tbUserId != nil {
-                map["tbUserId"] = self.tbUserId!
             }
             if self.username != nil {
                 map["username"] = self.username!
@@ -46483,9 +47388,6 @@ public class UpdateRepositoryMemberResponseBody : Tea.TeaModel {
             if dict.keys.contains("expireAt") && dict["expireAt"] != nil {
                 self.expireAt = dict["expireAt"] as! String
             }
-            if dict.keys.contains("externUid") && dict["externUid"] != nil {
-                self.externUid = dict["externUid"] as! String
-            }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
             }
@@ -46506,9 +47408,6 @@ public class UpdateRepositoryMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("state") && dict["state"] != nil {
                 self.state = dict["state"] as! String
-            }
-            if dict.keys.contains("tbUserId") && dict["tbUserId"] != nil {
-                self.tbUserId = dict["tbUserId"] as! String
             }
             if dict.keys.contains("username") && dict["username"] != nil {
                 self.username = dict["username"] as! String
