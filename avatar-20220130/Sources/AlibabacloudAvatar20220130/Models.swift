@@ -1449,6 +1449,8 @@ public class GetVideoTaskInfoShrinkRequest : Tea.TeaModel {
 public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class TaskResult : Tea.TeaModel {
+            public var alphaUrl: String?
+
             public var failCode: String?
 
             public var failReason: String?
@@ -1475,6 +1477,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.alphaUrl != nil {
+                    map["AlphaUrl"] = self.alphaUrl!
+                }
                 if self.failCode != nil {
                     map["FailCode"] = self.failCode!
                 }
@@ -1497,6 +1502,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AlphaUrl") && dict["AlphaUrl"] != nil {
+                    self.alphaUrl = dict["AlphaUrl"] as! String
+                }
                 if dict.keys.contains("FailCode") && dict["FailCode"] != nil {
                     self.failCode = dict["FailCode"] as! String
                 }
@@ -5958,7 +5966,7 @@ public class SubmitAudioTo2DAvatarVideoTaskResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: String?
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -6009,7 +6017,7 @@ public class SubmitAudioTo2DAvatarVideoTaskResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! String
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -6436,7 +6444,7 @@ public class SubmitAudioTo3DAvatarVideoTaskResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
-    public var success: String?
+    public var success: Bool?
 
     public override init() {
         super.init()
@@ -6487,7 +6495,7 @@ public class SubmitAudioTo3DAvatarVideoTaskResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! String
+            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -6667,6 +6675,8 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 
         public var resolution: Int32?
 
+        public var subtitleEmbedded: Bool?
+
         public override init() {
             super.init()
         }
@@ -6696,6 +6706,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.resolution != nil {
                 map["Resolution"] = self.resolution!
             }
+            if self.subtitleEmbedded != nil {
+                map["SubtitleEmbedded"] = self.subtitleEmbedded!
+            }
             return map
         }
 
@@ -6714,6 +6727,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Resolution") && dict["Resolution"] != nil {
                 self.resolution = dict["Resolution"] as! Int32
+            }
+            if dict.keys.contains("SubtitleEmbedded") && dict["SubtitleEmbedded"] != nil {
+                self.subtitleEmbedded = dict["SubtitleEmbedded"] as! Bool
             }
         }
     }
@@ -7225,6 +7241,8 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
         public var resolution: Int32?
 
+        public var subtitleEmbedded: Bool?
+
         public override init() {
             super.init()
         }
@@ -7254,6 +7272,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.resolution != nil {
                 map["Resolution"] = self.resolution!
             }
+            if self.subtitleEmbedded != nil {
+                map["SubtitleEmbedded"] = self.subtitleEmbedded!
+            }
             return map
         }
 
@@ -7272,6 +7293,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Resolution") && dict["Resolution"] != nil {
                 self.resolution = dict["Resolution"] as! Int32
+            }
+            if dict.keys.contains("SubtitleEmbedded") && dict["SubtitleEmbedded"] != nil {
+                self.subtitleEmbedded = dict["SubtitleEmbedded"] as! Bool
             }
         }
     }
