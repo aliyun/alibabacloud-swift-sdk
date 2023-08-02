@@ -1376,6 +1376,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDBInstanceNetInfoWithOptions(_ request: DescribeDBInstanceNetInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBInstanceNetInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectionString)) {
+            query["ConnectionString"] = request.connectionString ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }
@@ -2924,6 +2927,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func grantCollection(_ request: GrantCollectionRequest) async throws -> GrantCollectionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await grantCollectionWithOptions(request as! GrantCollectionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initVectorDatabaseWithOptions(_ request: InitVectorDatabaseRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InitVectorDatabaseResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managerAccount)) {
+            query["ManagerAccount"] = request.managerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.managerAccountPassword)) {
+            query["ManagerAccountPassword"] = request.managerAccountPassword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "InitVectorDatabase",
+            "version": "2016-05-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(InitVectorDatabaseResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func initVectorDatabase(_ request: InitVectorDatabaseRequest) async throws -> InitVectorDatabaseResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await initVectorDatabaseWithOptions(request as! InitVectorDatabaseRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

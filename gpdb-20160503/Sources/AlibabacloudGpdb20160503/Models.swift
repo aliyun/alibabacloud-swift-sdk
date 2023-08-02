@@ -7063,6 +7063,8 @@ public class DescribeDBInstanceIndexUsageResponse : Tea.TeaModel {
 }
 
 public class DescribeDBInstanceNetInfoRequest : Tea.TeaModel {
+    public var connectionString: String?
+
     public var DBInstanceId: String?
 
     public override init() {
@@ -7079,6 +7081,9 @@ public class DescribeDBInstanceNetInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.connectionString != nil {
+            map["ConnectionString"] = self.connectionString!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -7086,6 +7091,9 @@ public class DescribeDBInstanceNetInfoRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConnectionString") && dict["ConnectionString"] != nil {
+            self.connectionString = dict["ConnectionString"] as! String
+        }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
@@ -16715,6 +16723,166 @@ public class GrantCollectionResponse : Tea.TeaModel {
     }
 }
 
+public class InitVectorDatabaseRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var managerAccount: String?
+
+    public var managerAccountPassword: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.managerAccount != nil {
+            map["ManagerAccount"] = self.managerAccount!
+        }
+        if self.managerAccountPassword != nil {
+            map["ManagerAccountPassword"] = self.managerAccountPassword!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("ManagerAccount") && dict["ManagerAccount"] != nil {
+            self.managerAccount = dict["ManagerAccount"] as! String
+        }
+        if dict.keys.contains("ManagerAccountPassword") && dict["ManagerAccountPassword"] != nil {
+            self.managerAccountPassword = dict["ManagerAccountPassword"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class InitVectorDatabaseResponseBody : Tea.TeaModel {
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class InitVectorDatabaseResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: InitVectorDatabaseResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = InitVectorDatabaseResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListCollectionsRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -19581,6 +19749,8 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
 
             public var metadata: [String: String]?
 
+            public var similarity: Double?
+
             public var values: QueryCollectionDataResponseBody.Matches.Match.Values?
 
             public override init() {
@@ -19604,6 +19774,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 if self.metadata != nil {
                     map["Metadata"] = self.metadata!
                 }
+                if self.similarity != nil {
+                    map["Similarity"] = self.similarity!
+                }
                 if self.values != nil {
                     map["Values"] = self.values?.toMap()
                 }
@@ -19616,6 +19789,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Metadata") && dict["Metadata"] != nil {
                     self.metadata = dict["Metadata"] as! [String: String]
+                }
+                if dict.keys.contains("Similarity") && dict["Similarity"] != nil {
+                    self.similarity = dict["Similarity"] as! Double
                 }
                 if dict.keys.contains("Values") && dict["Values"] != nil {
                     var model = QueryCollectionDataResponseBody.Matches.Match.Values()
@@ -19666,6 +19842,8 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
     }
     public var matches: QueryCollectionDataResponseBody.Matches?
 
+    public var message: String?
+
     public var requestId: String?
 
     public var status: String?
@@ -19688,6 +19866,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
         if self.matches != nil {
             map["Matches"] = self.matches?.toMap()
         }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -19702,6 +19883,9 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
             var model = QueryCollectionDataResponseBody.Matches()
             model.fromMap(dict["Matches"] as! [String: Any])
             self.matches = model
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
