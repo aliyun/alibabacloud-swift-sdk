@@ -5733,9 +5733,13 @@ public class GrantUserPermissionsResponse : Tea.TeaModel {
 }
 
 public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
+    public var accessControlList: [String]?
+
     public var apiServerEipId: String?
 
     public var argoCDEnabled: Bool?
+
+    public var argoCDHAEnabled: Bool?
 
     public var argoServerEnabled: Bool?
 
@@ -5752,6 +5756,8 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
     public var name: String?
 
     public var priceLimit: String?
+
+    public var publicAccessEnabled: Bool?
 
     public var publicApiServerEnabled: Bool?
 
@@ -5773,11 +5779,17 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessControlList != nil {
+            map["AccessControlList"] = self.accessControlList!
+        }
         if self.apiServerEipId != nil {
             map["ApiServerEipId"] = self.apiServerEipId!
         }
         if self.argoCDEnabled != nil {
             map["ArgoCDEnabled"] = self.argoCDEnabled!
+        }
+        if self.argoCDHAEnabled != nil {
+            map["ArgoCDHAEnabled"] = self.argoCDHAEnabled!
         }
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
@@ -5803,6 +5815,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if self.priceLimit != nil {
             map["PriceLimit"] = self.priceLimit!
         }
+        if self.publicAccessEnabled != nil {
+            map["PublicAccessEnabled"] = self.publicAccessEnabled!
+        }
         if self.publicApiServerEnabled != nil {
             map["PublicApiServerEnabled"] = self.publicApiServerEnabled!
         }
@@ -5816,11 +5831,17 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessControlList") && dict["AccessControlList"] != nil {
+            self.accessControlList = dict["AccessControlList"] as! [String]
+        }
         if dict.keys.contains("ApiServerEipId") && dict["ApiServerEipId"] != nil {
             self.apiServerEipId = dict["ApiServerEipId"] as! String
         }
         if dict.keys.contains("ArgoCDEnabled") && dict["ArgoCDEnabled"] != nil {
             self.argoCDEnabled = dict["ArgoCDEnabled"] as! Bool
+        }
+        if dict.keys.contains("ArgoCDHAEnabled") && dict["ArgoCDHAEnabled"] != nil {
+            self.argoCDHAEnabled = dict["ArgoCDHAEnabled"] as! Bool
         }
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
@@ -5846,6 +5867,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("PriceLimit") && dict["PriceLimit"] != nil {
             self.priceLimit = dict["PriceLimit"] as! String
         }
+        if dict.keys.contains("PublicAccessEnabled") && dict["PublicAccessEnabled"] != nil {
+            self.publicAccessEnabled = dict["PublicAccessEnabled"] as! Bool
+        }
         if dict.keys.contains("PublicApiServerEnabled") && dict["PublicApiServerEnabled"] != nil {
             self.publicApiServerEnabled = dict["PublicApiServerEnabled"] as! Bool
         }
@@ -5859,9 +5883,13 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
 }
 
 public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
+    public var accessControlListShrink: String?
+
     public var apiServerEipId: String?
 
     public var argoCDEnabled: Bool?
+
+    public var argoCDHAEnabled: Bool?
 
     public var argoServerEnabled: Bool?
 
@@ -5878,6 +5906,8 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
     public var name: String?
 
     public var priceLimit: String?
+
+    public var publicAccessEnabled: Bool?
 
     public var publicApiServerEnabled: Bool?
 
@@ -5899,11 +5929,17 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessControlListShrink != nil {
+            map["AccessControlList"] = self.accessControlListShrink!
+        }
         if self.apiServerEipId != nil {
             map["ApiServerEipId"] = self.apiServerEipId!
         }
         if self.argoCDEnabled != nil {
             map["ArgoCDEnabled"] = self.argoCDEnabled!
+        }
+        if self.argoCDHAEnabled != nil {
+            map["ArgoCDHAEnabled"] = self.argoCDHAEnabled!
         }
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
@@ -5929,6 +5965,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         if self.priceLimit != nil {
             map["PriceLimit"] = self.priceLimit!
         }
+        if self.publicAccessEnabled != nil {
+            map["PublicAccessEnabled"] = self.publicAccessEnabled!
+        }
         if self.publicApiServerEnabled != nil {
             map["PublicApiServerEnabled"] = self.publicApiServerEnabled!
         }
@@ -5942,11 +5981,17 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessControlList") && dict["AccessControlList"] != nil {
+            self.accessControlListShrink = dict["AccessControlList"] as! String
+        }
         if dict.keys.contains("ApiServerEipId") && dict["ApiServerEipId"] != nil {
             self.apiServerEipId = dict["ApiServerEipId"] as! String
         }
         if dict.keys.contains("ArgoCDEnabled") && dict["ArgoCDEnabled"] != nil {
             self.argoCDEnabled = dict["ArgoCDEnabled"] as! Bool
+        }
+        if dict.keys.contains("ArgoCDHAEnabled") && dict["ArgoCDHAEnabled"] != nil {
+            self.argoCDHAEnabled = dict["ArgoCDHAEnabled"] as! Bool
         }
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
@@ -5971,6 +6016,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PriceLimit") && dict["PriceLimit"] != nil {
             self.priceLimit = dict["PriceLimit"] as! String
+        }
+        if dict.keys.contains("PublicAccessEnabled") && dict["PublicAccessEnabled"] != nil {
+            self.publicAccessEnabled = dict["PublicAccessEnabled"] as! Bool
         }
         if dict.keys.contains("PublicApiServerEnabled") && dict["PublicApiServerEnabled"] != nil {
             self.publicApiServerEnabled = dict["PublicApiServerEnabled"] as! Bool

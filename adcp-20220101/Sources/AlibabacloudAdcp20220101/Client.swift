@@ -815,15 +815,24 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateHubClusterFeatureShrinkRequest = UpdateHubClusterFeatureShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.accessControlList)) {
+            request.accessControlListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.accessControlList, "AccessControlList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.vSwitches)) {
             request.vSwitchesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitches, "VSwitches", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessControlListShrink)) {
+            query["AccessControlList"] = request.accessControlListShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.apiServerEipId)) {
             query["ApiServerEipId"] = request.apiServerEipId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.argoCDEnabled)) {
             query["ArgoCDEnabled"] = request.argoCDEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.argoCDHAEnabled)) {
+            query["ArgoCDHAEnabled"] = request.argoCDHAEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.argoServerEnabled)) {
             query["ArgoServerEnabled"] = request.argoServerEnabled!;
@@ -848,6 +857,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.priceLimit)) {
             query["PriceLimit"] = request.priceLimit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.publicAccessEnabled)) {
+            query["PublicAccessEnabled"] = request.publicAccessEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.publicApiServerEnabled)) {
             query["PublicApiServerEnabled"] = request.publicApiServerEnabled!;
