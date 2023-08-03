@@ -25272,6 +25272,239 @@ public class DescribeDomainResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeGroupQpsRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var groupId: String?
+
+    public var securityToken: String?
+
+    public var stageName: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.stageName != nil {
+            map["StageName"] = self.stageName!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("StageName") && dict["StageName"] != nil {
+            self.stageName = dict["StageName"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeGroupQpsResponseBody : Tea.TeaModel {
+    public class GroupQps : Tea.TeaModel {
+        public class MonitorItem : Tea.TeaModel {
+            public var itemTime: String?
+
+            public var itemValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.itemTime != nil {
+                    map["ItemTime"] = self.itemTime!
+                }
+                if self.itemValue != nil {
+                    map["ItemValue"] = self.itemValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ItemTime") && dict["ItemTime"] != nil {
+                    self.itemTime = dict["ItemTime"] as! String
+                }
+                if dict.keys.contains("ItemValue") && dict["ItemValue"] != nil {
+                    self.itemValue = dict["ItemValue"] as! String
+                }
+            }
+        }
+        public var monitorItem: [DescribeGroupQpsResponseBody.GroupQps.MonitorItem]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.monitorItem != nil {
+                var tmp : [Any] = []
+                for k in self.monitorItem! {
+                    tmp.append(k.toMap())
+                }
+                map["MonitorItem"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MonitorItem") && dict["MonitorItem"] != nil {
+                var tmp : [DescribeGroupQpsResponseBody.GroupQps.MonitorItem] = []
+                for v in dict["MonitorItem"] as! [Any] {
+                    var model = DescribeGroupQpsResponseBody.GroupQps.MonitorItem()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.monitorItem = tmp
+            }
+        }
+    }
+    public var groupQps: DescribeGroupQpsResponseBody.GroupQps?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.groupQps?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupQps != nil {
+            map["GroupQps"] = self.groupQps?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GroupQps") && dict["GroupQps"] != nil {
+            var model = DescribeGroupQpsResponseBody.GroupQps()
+            model.fromMap(dict["GroupQps"] as! [String: Any])
+            self.groupQps = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeGroupQpsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeGroupQpsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeGroupQpsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeHistoryApisRequest : Tea.TeaModel {
     public var apiId: String?
 
