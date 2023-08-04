@@ -5300,6 +5300,8 @@ public class ListCardInfoRequest : Tea.TeaModel {
 
     public var msisdn: String?
 
+    public var networkType: String?
+
     public var notifyId: String?
 
     public var osStatus: String?
@@ -5391,6 +5393,9 @@ public class ListCardInfoRequest : Tea.TeaModel {
         if self.msisdn != nil {
             map["Msisdn"] = self.msisdn!
         }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
         if self.notifyId != nil {
             map["NotifyId"] = self.notifyId!
         }
@@ -5481,6 +5486,9 @@ public class ListCardInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Msisdn") && dict["Msisdn"] != nil {
             self.msisdn = dict["Msisdn"] as! String
+        }
+        if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+            self.networkType = dict["NetworkType"] as! String
         }
         if dict.keys.contains("NotifyId") && dict["NotifyId"] != nil {
             self.notifyId = dict["NotifyId"] as! String
@@ -5583,6 +5591,8 @@ public class ListCardInfoResponseBody : Tea.TeaModel {
 
             public var expireTime: String?
 
+            public var flowLatestModifiedTime: String?
+
             public var iccid: String?
 
             public var imsi: [String]?
@@ -5590,6 +5600,8 @@ public class ListCardInfoResponseBody : Tea.TeaModel {
             public var isAutoRecharge: Bool?
 
             public var msisdn: [String]?
+
+            public var networkType: String?
 
             public var notifyId: String?
 
@@ -5675,6 +5687,9 @@ public class ListCardInfoResponseBody : Tea.TeaModel {
                 if self.expireTime != nil {
                     map["ExpireTime"] = self.expireTime!
                 }
+                if self.flowLatestModifiedTime != nil {
+                    map["FlowLatestModifiedTime"] = self.flowLatestModifiedTime!
+                }
                 if self.iccid != nil {
                     map["Iccid"] = self.iccid!
                 }
@@ -5686,6 +5701,9 @@ public class ListCardInfoResponseBody : Tea.TeaModel {
                 }
                 if self.msisdn != nil {
                     map["Msisdn"] = self.msisdn!
+                }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType!
                 }
                 if self.notifyId != nil {
                     map["NotifyId"] = self.notifyId!
@@ -5779,6 +5797,9 @@ public class ListCardInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
                     self.expireTime = dict["ExpireTime"] as! String
                 }
+                if dict.keys.contains("FlowLatestModifiedTime") && dict["FlowLatestModifiedTime"] != nil {
+                    self.flowLatestModifiedTime = dict["FlowLatestModifiedTime"] as! String
+                }
                 if dict.keys.contains("Iccid") && dict["Iccid"] != nil {
                     self.iccid = dict["Iccid"] as! String
                 }
@@ -5790,6 +5811,9 @@ public class ListCardInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Msisdn") && dict["Msisdn"] != nil {
                     self.msisdn = dict["Msisdn"] as! [String]
+                }
+                if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+                    self.networkType = dict["NetworkType"] as! String
                 }
                 if dict.keys.contains("NotifyId") && dict["NotifyId"] != nil {
                     self.notifyId = dict["NotifyId"] as! String
@@ -6873,6 +6897,8 @@ public class ListOrderResponseBody : Tea.TeaModel {
 
             public var functionFee: Int32?
 
+            public var networkType: String?
+
             public var orderDetailUrl: String?
 
             public var orderId: String?
@@ -6950,6 +6976,9 @@ public class ListOrderResponseBody : Tea.TeaModel {
                 }
                 if self.functionFee != nil {
                     map["FunctionFee"] = self.functionFee!
+                }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType!
                 }
                 if self.orderDetailUrl != nil {
                     map["OrderDetailUrl"] = self.orderDetailUrl!
@@ -7031,6 +7060,9 @@ public class ListOrderResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FunctionFee") && dict["FunctionFee"] != nil {
                     self.functionFee = dict["FunctionFee"] as! Int32
+                }
+                if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+                    self.networkType = dict["NetworkType"] as! String
                 }
                 if dict.keys.contains("OrderDetailUrl") && dict["OrderDetailUrl"] != nil {
                     self.orderDetailUrl = dict["OrderDetailUrl"] as! String

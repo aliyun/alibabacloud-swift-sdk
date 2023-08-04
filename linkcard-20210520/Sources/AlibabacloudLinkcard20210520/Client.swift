@@ -774,6 +774,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.msisdn)) {
             query["Msisdn"] = request.msisdn ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.networkType)) {
+            query["NetworkType"] = request.networkType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.notifyId)) {
             query["NotifyId"] = request.notifyId ?? "";
         }
