@@ -183,6 +183,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.fullTextRetrievalFields)) {
             query["FullTextRetrievalFields"] = request.fullTextRetrievalFields ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hnswM)) {
+            query["HnswM"] = request.hnswM!;
+        }
         if (!TeaUtils.Client.isUnset(request.managerAccount)) {
             query["ManagerAccount"] = request.managerAccount ?? "";
         }
@@ -192,6 +195,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.metadata)) {
             query["Metadata"] = request.metadata ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.metrics)) {
+            query["Metrics"] = request.metrics ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.namespace)) {
             query["Namespace"] = request.namespace ?? "";
         }
@@ -200,6 +206,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.parser)) {
             query["Parser"] = request.parser ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pqEnable)) {
+            query["PqEnable"] = request.pqEnable!;
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -546,6 +555,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dimension)) {
             query["Dimension"] = request.dimension!;
         }
+        if (!TeaUtils.Client.isUnset(request.hnswM)) {
+            query["HnswM"] = request.hnswM!;
+        }
         if (!TeaUtils.Client.isUnset(request.managerAccount)) {
             query["ManagerAccount"] = request.managerAccount ?? "";
         }
@@ -560,6 +572,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pqEnable)) {
+            query["PqEnable"] = request.pqEnable!;
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";

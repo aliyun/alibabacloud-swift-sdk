@@ -462,17 +462,23 @@ public class CreateCollectionRequest : Tea.TeaModel {
 
     public var fullTextRetrievalFields: String?
 
+    public var hnswM: Int32?
+
     public var managerAccount: String?
 
     public var managerAccountPassword: String?
 
     public var metadata: String?
 
+    public var metrics: String?
+
     public var namespace: String?
 
     public var ownerId: Int64?
 
     public var parser: String?
+
+    public var pqEnable: Int32?
 
     public var regionId: String?
 
@@ -502,6 +508,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if self.fullTextRetrievalFields != nil {
             map["FullTextRetrievalFields"] = self.fullTextRetrievalFields!
         }
+        if self.hnswM != nil {
+            map["HnswM"] = self.hnswM!
+        }
         if self.managerAccount != nil {
             map["ManagerAccount"] = self.managerAccount!
         }
@@ -511,6 +520,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if self.metadata != nil {
             map["Metadata"] = self.metadata!
         }
+        if self.metrics != nil {
+            map["Metrics"] = self.metrics!
+        }
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
@@ -519,6 +531,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if self.parser != nil {
             map["Parser"] = self.parser!
+        }
+        if self.pqEnable != nil {
+            map["PqEnable"] = self.pqEnable!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -539,6 +554,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if dict.keys.contains("FullTextRetrievalFields") && dict["FullTextRetrievalFields"] != nil {
             self.fullTextRetrievalFields = dict["FullTextRetrievalFields"] as! String
         }
+        if dict.keys.contains("HnswM") && dict["HnswM"] != nil {
+            self.hnswM = dict["HnswM"] as! Int32
+        }
         if dict.keys.contains("ManagerAccount") && dict["ManagerAccount"] != nil {
             self.managerAccount = dict["ManagerAccount"] as! String
         }
@@ -548,6 +566,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         if dict.keys.contains("Metadata") && dict["Metadata"] != nil {
             self.metadata = dict["Metadata"] as! String
         }
+        if dict.keys.contains("Metrics") && dict["Metrics"] != nil {
+            self.metrics = dict["Metrics"] as! String
+        }
         if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
             self.namespace = dict["Namespace"] as! String
         }
@@ -556,6 +577,9 @@ public class CreateCollectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Parser") && dict["Parser"] != nil {
             self.parser = dict["Parser"] as! String
+        }
+        if dict.keys.contains("PqEnable") && dict["PqEnable"] != nil {
+            self.pqEnable = dict["PqEnable"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -1781,6 +1805,8 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
 
     public var dimension: Int32?
 
+    public var hnswM: Int32?
+
     public var managerAccount: String?
 
     public var managerAccountPassword: String?
@@ -1790,6 +1816,8 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
     public var namespace: String?
 
     public var ownerId: Int64?
+
+    public var pqEnable: Int32?
 
     public var regionId: String?
 
@@ -1816,6 +1844,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         if self.dimension != nil {
             map["Dimension"] = self.dimension!
         }
+        if self.hnswM != nil {
+            map["HnswM"] = self.hnswM!
+        }
         if self.managerAccount != nil {
             map["ManagerAccount"] = self.managerAccount!
         }
@@ -1830,6 +1861,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.pqEnable != nil {
+            map["PqEnable"] = self.pqEnable!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -1847,6 +1881,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         if dict.keys.contains("Dimension") && dict["Dimension"] != nil {
             self.dimension = dict["Dimension"] as! Int32
         }
+        if dict.keys.contains("HnswM") && dict["HnswM"] != nil {
+            self.hnswM = dict["HnswM"] as! Int32
+        }
         if dict.keys.contains("ManagerAccount") && dict["ManagerAccount"] != nil {
             self.managerAccount = dict["ManagerAccount"] as! String
         }
@@ -1861,6 +1898,9 @@ public class CreateVectorIndexRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PqEnable") && dict["PqEnable"] != nil {
+            self.pqEnable = dict["PqEnable"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -19749,7 +19789,7 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
 
             public var metadata: [String: String]?
 
-            public var similarity: Double?
+            public var score: Double?
 
             public var values: QueryCollectionDataResponseBody.Matches.Match.Values?
 
@@ -19774,8 +19814,8 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 if self.metadata != nil {
                     map["Metadata"] = self.metadata!
                 }
-                if self.similarity != nil {
-                    map["Similarity"] = self.similarity!
+                if self.score != nil {
+                    map["Score"] = self.score!
                 }
                 if self.values != nil {
                     map["Values"] = self.values?.toMap()
@@ -19790,8 +19830,8 @@ public class QueryCollectionDataResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Metadata") && dict["Metadata"] != nil {
                     self.metadata = dict["Metadata"] as! [String: String]
                 }
-                if dict.keys.contains("Similarity") && dict["Similarity"] != nil {
-                    self.similarity = dict["Similarity"] as! Double
+                if dict.keys.contains("Score") && dict["Score"] != nil {
+                    self.score = dict["Score"] as! Double
                 }
                 if dict.keys.contains("Values") && dict["Values"] != nil {
                     var model = QueryCollectionDataResponseBody.Matches.Match.Values()
