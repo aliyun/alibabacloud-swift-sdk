@@ -14041,6 +14041,8 @@ public class CreatePublicIpAddressPoolRequest : Tea.TeaModel {
             }
         }
     }
+    public var bizType: String?
+
     public var clientToken: String?
 
     public var description_: String?
@@ -14065,6 +14067,8 @@ public class CreatePublicIpAddressPoolRequest : Tea.TeaModel {
 
     public var tag: [CreatePublicIpAddressPoolRequest.Tag]?
 
+    public var zones: [String]?
+
     public override init() {
         super.init()
     }
@@ -14079,6 +14083,9 @@ public class CreatePublicIpAddressPoolRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -14119,10 +14126,16 @@ public class CreatePublicIpAddressPoolRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.zones != nil {
+            map["Zones"] = self.zones!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizType") && dict["BizType"] != nil {
+            self.bizType = dict["BizType"] as! String
+        }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -14166,6 +14179,9 @@ public class CreatePublicIpAddressPoolRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("Zones") && dict["Zones"] != nil {
+            self.zones = dict["Zones"] as! [String]
         }
     }
 }
@@ -32266,6 +32282,8 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
 
             public var bandwidthPackageId: String?
 
+            public var bizType: String?
+
             public var businessStatus: String?
 
             public var creationTime: String?
@@ -32310,6 +32328,8 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
 
             public var tags: DescribeCommonBandwidthPackagesResponseBody.CommonBandwidthPackages.CommonBandwidthPackage.Tags?
 
+            public var zone: String?
+
             public override init() {
                 super.init()
             }
@@ -32332,6 +32352,9 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
                 }
                 if self.bandwidthPackageId != nil {
                     map["BandwidthPackageId"] = self.bandwidthPackageId!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
                 }
                 if self.businessStatus != nil {
                     map["BusinessStatus"] = self.businessStatus!
@@ -32399,6 +32422,9 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
+                if self.zone != nil {
+                    map["Zone"] = self.zone!
+                }
                 return map
             }
 
@@ -32408,6 +32434,9 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("BandwidthPackageId") && dict["BandwidthPackageId"] != nil {
                     self.bandwidthPackageId = dict["BandwidthPackageId"] as! String
+                }
+                if dict.keys.contains("BizType") && dict["BizType"] != nil {
+                    self.bizType = dict["BizType"] as! String
                 }
                 if dict.keys.contains("BusinessStatus") && dict["BusinessStatus"] != nil {
                     self.businessStatus = dict["BusinessStatus"] as! String
@@ -32480,6 +32509,9 @@ public class DescribeCommonBandwidthPackagesResponseBody : Tea.TeaModel {
                     var model = DescribeCommonBandwidthPackagesResponseBody.CommonBandwidthPackages.CommonBandwidthPackage.Tags()
                     model.fromMap(dict["Tags"] as! [String: Any])
                     self.tags = model
+                }
+                if dict.keys.contains("Zone") && dict["Zone"] != nil {
+                    self.zone = dict["Zone"] as! String
                 }
             }
         }
@@ -34155,6 +34187,8 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
 
             public var bandwidthPackageType: String?
 
+            public var bizType: String?
+
             public var businessStatus: String?
 
             public var chargeType: String?
@@ -34253,6 +34287,9 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if self.bandwidthPackageType != nil {
                     map["BandwidthPackageType"] = self.bandwidthPackageType!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
                 }
                 if self.businessStatus != nil {
                     map["BusinessStatus"] = self.businessStatus!
@@ -34371,6 +34408,9 @@ public class DescribeEipAddressesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("BandwidthPackageType") && dict["BandwidthPackageType"] != nil {
                     self.bandwidthPackageType = dict["BandwidthPackageType"] as! String
+                }
+                if dict.keys.contains("BizType") && dict["BizType"] != nil {
+                    self.bizType = dict["BizType"] as! String
                 }
                 if dict.keys.contains("BusinessStatus") && dict["BusinessStatus"] != nil {
                     self.businessStatus = dict["BusinessStatus"] as! String
@@ -44859,6 +44899,84 @@ public class DescribePhysicalConnectionsRequest : Tea.TeaModel {
 public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
     public class PhysicalConnectionSet : Tea.TeaModel {
         public class PhysicalConnectionType : Tea.TeaModel {
+            public class Tags : Tea.TeaModel {
+                public class Tags : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") && dict["Key"] != nil {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Value") && dict["Value"] != nil {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var tags: [DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.Tags.Tags]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tags != nil {
+                        var tmp : [Any] = []
+                        for k in self.tags! {
+                            tmp.append(k.toMap())
+                        }
+                        map["tags"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("tags") && dict["tags"] != nil {
+                        var tmp : [DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.Tags.Tags] = []
+                        for v in dict["tags"] as! [Any] {
+                            var model = DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.Tags.Tags()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tags = tmp
+                    }
+                }
+            }
             public var accessPointId: String?
 
             public var accessPointType: String?
@@ -44923,6 +45041,8 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var tags: DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.Tags?
+
             public var type: String?
 
             public var virtualPhysicalConnectionCount: Int32?
@@ -44941,6 +45061,7 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -45040,6 +45161,9 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 if self.type != nil {
                     map["Type"] = self.type!
@@ -45152,6 +45276,11 @@ public class DescribePhysicalConnectionsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                    var model = DescribePhysicalConnectionsResponseBody.PhysicalConnectionSet.PhysicalConnectionType.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
@@ -64754,6 +64883,8 @@ public class EnableNatGatewayEcsMetricResponse : Tea.TeaModel {
 }
 
 public class EnablePhysicalConnectionRequest : Tea.TeaModel {
+    public var byPassSp: Bool?
+
     public var clientToken: String?
 
     public var ownerAccount: String?
@@ -64782,6 +64913,9 @@ public class EnablePhysicalConnectionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.byPassSp != nil {
+            map["ByPassSp"] = self.byPassSp!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -64807,6 +64941,9 @@ public class EnablePhysicalConnectionRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ByPassSp") && dict["ByPassSp"] != nil {
+            self.byPassSp = dict["ByPassSp"] as! Bool
+        }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -73604,6 +73741,8 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var bizType: String?
+
         public var creationTime: String?
 
         public var description_: String?
@@ -73634,6 +73773,8 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
 
         public var userType: Bool?
 
+        public var zones: [String]?
+
         public override init() {
             super.init()
         }
@@ -73648,6 +73789,9 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bizType != nil {
+                map["BizType"] = self.bizType!
+            }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
             }
@@ -73697,10 +73841,16 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
             if self.userType != nil {
                 map["UserType"] = self.userType!
             }
+            if self.zones != nil {
+                map["Zones"] = self.zones!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizType") && dict["BizType"] != nil {
+                self.bizType = dict["BizType"] as! String
+            }
             if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
                 self.creationTime = dict["CreationTime"] as! String
             }
@@ -73753,6 +73903,9 @@ public class ListPublicIpAddressPoolsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("UserType") && dict["UserType"] != nil {
                 self.userType = dict["UserType"] as! Bool
+            }
+            if dict.keys.contains("Zones") && dict["Zones"] != nil {
+                self.zones = dict["Zones"] as! [String]
             }
         }
     }
@@ -75918,6 +76071,43 @@ public class ListVirtualPhysicalConnectionsRequest : Tea.TeaModel {
 
 public class ListVirtualPhysicalConnectionsResponseBody : Tea.TeaModel {
     public class VirtualPhysicalConnections : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var accessPointId: String?
 
         public var adLocation: String?
@@ -75971,6 +76161,8 @@ public class ListVirtualPhysicalConnectionsResponseBody : Tea.TeaModel {
         public var spec: String?
 
         public var status: String?
+
+        public var tags: [ListVirtualPhysicalConnectionsResponseBody.VirtualPhysicalConnections.Tags]?
 
         public var type: String?
 
@@ -76073,6 +76265,13 @@ public class ListVirtualPhysicalConnectionsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -76166,6 +76365,17 @@ public class ListVirtualPhysicalConnectionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [ListVirtualPhysicalConnectionsResponseBody.VirtualPhysicalConnections.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListVirtualPhysicalConnectionsResponseBody.VirtualPhysicalConnections.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String

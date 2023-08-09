@@ -4026,6 +4026,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createPublicIpAddressPoolWithOptions(_ request: CreatePublicIpAddressPoolRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePublicIpAddressPoolResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizType)) {
+            query["BizType"] = request.bizType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
@@ -4061,6 +4064,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.zones)) {
+            query["Zones"] = request.zones ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -12861,6 +12867,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enablePhysicalConnectionWithOptions(_ request: EnablePhysicalConnectionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnablePhysicalConnectionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.byPassSp)) {
+            query["ByPassSp"] = request.byPassSp!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
