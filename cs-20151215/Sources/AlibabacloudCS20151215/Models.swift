@@ -2477,6 +2477,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var nodePortRange: String?
 
+    public var nodepools: [Nodepool]?
+
     public var numOfNodes: Int64?
 
     public var osType: String?
@@ -2719,6 +2721,13 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.nodePortRange != nil {
             map["node_port_range"] = self.nodePortRange!
+        }
+        if self.nodepools != nil {
+            var tmp : [Any] = []
+            for k in self.nodepools! {
+                tmp.append(k.toMap())
+            }
+            map["nodepools"] = tmp
         }
         if self.numOfNodes != nil {
             map["num_of_nodes"] = self.numOfNodes!
@@ -3007,6 +3016,17 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("node_port_range") && dict["node_port_range"] != nil {
             self.nodePortRange = dict["node_port_range"] as! String
+        }
+        if dict.keys.contains("nodepools") && dict["nodepools"] != nil {
+            var tmp : [Nodepool] = []
+            for v in dict["nodepools"] as! [Any] {
+                var model = Nodepool()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.nodepools = tmp
         }
         if dict.keys.contains("num_of_nodes") && dict["num_of_nodes"] != nil {
             self.numOfNodes = dict["num_of_nodes"] as! Int64
@@ -3819,9 +3839,13 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var spotStrategy: String?
 
+        public var systemDiskBurstingEnabled: Bool?
+
         public var systemDiskCategory: String?
 
         public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskProvisionedIops: Int64?
 
         public var systemDiskSize: Int64?
 
@@ -3939,11 +3963,17 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if self.spotStrategy != nil {
                 map["spot_strategy"] = self.spotStrategy!
             }
+            if self.systemDiskBurstingEnabled != nil {
+                map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+            }
             if self.systemDiskCategory != nil {
                 map["system_disk_category"] = self.systemDiskCategory!
             }
             if self.systemDiskPerformanceLevel != nil {
                 map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskProvisionedIops != nil {
+                map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
             }
             if self.systemDiskSize != nil {
                 map["system_disk_size"] = self.systemDiskSize!
@@ -4067,11 +4097,17 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if dict.keys.contains("spot_strategy") && dict["spot_strategy"] != nil {
                 self.spotStrategy = dict["spot_strategy"] as! String
             }
+            if dict.keys.contains("system_disk_bursting_enabled") && dict["system_disk_bursting_enabled"] != nil {
+                self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+            }
             if dict.keys.contains("system_disk_category") && dict["system_disk_category"] != nil {
                 self.systemDiskCategory = dict["system_disk_category"] as! String
             }
             if dict.keys.contains("system_disk_performance_level") && dict["system_disk_performance_level"] != nil {
                 self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+            }
+            if dict.keys.contains("system_disk_provisioned_iops") && dict["system_disk_provisioned_iops"] != nil {
+                self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
             }
             if dict.keys.contains("system_disk_size") && dict["system_disk_size"] != nil {
                 self.systemDiskSize = dict["system_disk_size"] as! Int64

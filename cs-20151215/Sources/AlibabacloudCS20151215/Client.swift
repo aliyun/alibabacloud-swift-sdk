@@ -528,6 +528,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodePortRange)) {
             body["node_port_range"] = request.nodePortRange ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodepools)) {
+            body["nodepools"] = request.nodepools ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.numOfNodes)) {
             body["num_of_nodes"] = request.numOfNodes!;
         }
