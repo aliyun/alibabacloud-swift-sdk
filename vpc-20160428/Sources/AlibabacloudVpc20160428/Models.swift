@@ -33778,6 +33778,43 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var filter: [DescribeEipAddressesRequest.Filter]?
 
     public var allocationId: String?
@@ -33823,6 +33860,8 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
     public var segmentInstanceId: String?
 
     public var status: String?
+
+    public var tag: [DescribeEipAddressesRequest.Tag]?
 
     public override init() {
         super.init()
@@ -33911,6 +33950,13 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -33991,6 +34037,17 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [DescribeEipAddressesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeEipAddressesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -36423,6 +36480,8 @@ public class DescribeForwardTableEntriesResponseBody : Tea.TeaModel {
 
             public var ipProtocol: String?
 
+            public var natGatewayId: String?
+
             public var status: String?
 
             public override init() {
@@ -36463,6 +36522,9 @@ public class DescribeForwardTableEntriesResponseBody : Tea.TeaModel {
                 if self.ipProtocol != nil {
                     map["IpProtocol"] = self.ipProtocol!
                 }
+                if self.natGatewayId != nil {
+                    map["NatGatewayId"] = self.natGatewayId!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -36493,6 +36555,9 @@ public class DescribeForwardTableEntriesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("IpProtocol") && dict["IpProtocol"] != nil {
                     self.ipProtocol = dict["IpProtocol"] as! String
+                }
+                if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
+                    self.natGatewayId = dict["NatGatewayId"] as! String
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
@@ -49533,6 +49598,8 @@ public class DescribeSnatTableEntriesRequest : Tea.TeaModel {
 public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
     public class SnatTableEntries : Tea.TeaModel {
         public class SnatTableEntry : Tea.TeaModel {
+            public var natGatewayId: String?
+
             public var snatEntryId: String?
 
             public var snatEntryName: String?
@@ -49561,6 +49628,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.natGatewayId != nil {
+                    map["NatGatewayId"] = self.natGatewayId!
+                }
                 if self.snatEntryId != nil {
                     map["SnatEntryId"] = self.snatEntryId!
                 }
@@ -49586,6 +49656,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
+                    self.natGatewayId = dict["NatGatewayId"] as! String
+                }
                 if dict.keys.contains("SnatEntryId") && dict["SnatEntryId"] != nil {
                     self.snatEntryId = dict["SnatEntryId"] as! String
                 }
@@ -84512,6 +84585,774 @@ public class ModifySslVpnServerResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifySslVpnServerResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyTunnelAttributeRequest : Tea.TeaModel {
+    public class TunnelOptionsSpecification : Tea.TeaModel {
+        public class TunnelBgpConfig : Tea.TeaModel {
+            public var localAsn: Int64?
+
+            public var localBgpIp: String?
+
+            public var tunnelCidr: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.localAsn != nil {
+                    map["LocalAsn"] = self.localAsn!
+                }
+                if self.localBgpIp != nil {
+                    map["LocalBgpIp"] = self.localBgpIp!
+                }
+                if self.tunnelCidr != nil {
+                    map["TunnelCidr"] = self.tunnelCidr!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("LocalAsn") && dict["LocalAsn"] != nil {
+                    self.localAsn = dict["LocalAsn"] as! Int64
+                }
+                if dict.keys.contains("LocalBgpIp") && dict["LocalBgpIp"] != nil {
+                    self.localBgpIp = dict["LocalBgpIp"] as! String
+                }
+                if dict.keys.contains("TunnelCidr") && dict["TunnelCidr"] != nil {
+                    self.tunnelCidr = dict["TunnelCidr"] as! String
+                }
+            }
+        }
+        public class TunnelIkeConfig : Tea.TeaModel {
+            public var ikeAuthAlg: String?
+
+            public var ikeEncAlg: String?
+
+            public var ikeLifetime: Int64?
+
+            public var ikeMode: String?
+
+            public var ikePfs: String?
+
+            public var ikeVersion: String?
+
+            public var localId: String?
+
+            public var psk: String?
+
+            public var remoteId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ikeAuthAlg != nil {
+                    map["IkeAuthAlg"] = self.ikeAuthAlg!
+                }
+                if self.ikeEncAlg != nil {
+                    map["IkeEncAlg"] = self.ikeEncAlg!
+                }
+                if self.ikeLifetime != nil {
+                    map["IkeLifetime"] = self.ikeLifetime!
+                }
+                if self.ikeMode != nil {
+                    map["IkeMode"] = self.ikeMode!
+                }
+                if self.ikePfs != nil {
+                    map["IkePfs"] = self.ikePfs!
+                }
+                if self.ikeVersion != nil {
+                    map["IkeVersion"] = self.ikeVersion!
+                }
+                if self.localId != nil {
+                    map["LocalId"] = self.localId!
+                }
+                if self.psk != nil {
+                    map["Psk"] = self.psk!
+                }
+                if self.remoteId != nil {
+                    map["RemoteId"] = self.remoteId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IkeAuthAlg") && dict["IkeAuthAlg"] != nil {
+                    self.ikeAuthAlg = dict["IkeAuthAlg"] as! String
+                }
+                if dict.keys.contains("IkeEncAlg") && dict["IkeEncAlg"] != nil {
+                    self.ikeEncAlg = dict["IkeEncAlg"] as! String
+                }
+                if dict.keys.contains("IkeLifetime") && dict["IkeLifetime"] != nil {
+                    self.ikeLifetime = dict["IkeLifetime"] as! Int64
+                }
+                if dict.keys.contains("IkeMode") && dict["IkeMode"] != nil {
+                    self.ikeMode = dict["IkeMode"] as! String
+                }
+                if dict.keys.contains("IkePfs") && dict["IkePfs"] != nil {
+                    self.ikePfs = dict["IkePfs"] as! String
+                }
+                if dict.keys.contains("IkeVersion") && dict["IkeVersion"] != nil {
+                    self.ikeVersion = dict["IkeVersion"] as! String
+                }
+                if dict.keys.contains("LocalId") && dict["LocalId"] != nil {
+                    self.localId = dict["LocalId"] as! String
+                }
+                if dict.keys.contains("Psk") && dict["Psk"] != nil {
+                    self.psk = dict["Psk"] as! String
+                }
+                if dict.keys.contains("RemoteId") && dict["RemoteId"] != nil {
+                    self.remoteId = dict["RemoteId"] as! String
+                }
+            }
+        }
+        public class TunnelIpsecConfig : Tea.TeaModel {
+            public var ipsecAuthAlg: String?
+
+            public var ipsecEncAlg: String?
+
+            public var ipsecLifetime: Int64?
+
+            public var ipsecPfs: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ipsecAuthAlg != nil {
+                    map["IpsecAuthAlg"] = self.ipsecAuthAlg!
+                }
+                if self.ipsecEncAlg != nil {
+                    map["IpsecEncAlg"] = self.ipsecEncAlg!
+                }
+                if self.ipsecLifetime != nil {
+                    map["IpsecLifetime"] = self.ipsecLifetime!
+                }
+                if self.ipsecPfs != nil {
+                    map["IpsecPfs"] = self.ipsecPfs!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("IpsecAuthAlg") && dict["IpsecAuthAlg"] != nil {
+                    self.ipsecAuthAlg = dict["IpsecAuthAlg"] as! String
+                }
+                if dict.keys.contains("IpsecEncAlg") && dict["IpsecEncAlg"] != nil {
+                    self.ipsecEncAlg = dict["IpsecEncAlg"] as! String
+                }
+                if dict.keys.contains("IpsecLifetime") && dict["IpsecLifetime"] != nil {
+                    self.ipsecLifetime = dict["IpsecLifetime"] as! Int64
+                }
+                if dict.keys.contains("IpsecPfs") && dict["IpsecPfs"] != nil {
+                    self.ipsecPfs = dict["IpsecPfs"] as! String
+                }
+            }
+        }
+        public var enableDpd: Bool?
+
+        public var enableNatTraversal: Bool?
+
+        public var remoteCaCertificate: String?
+
+        public var tunnelBgpConfig: ModifyTunnelAttributeRequest.TunnelOptionsSpecification.TunnelBgpConfig?
+
+        public var tunnelIkeConfig: ModifyTunnelAttributeRequest.TunnelOptionsSpecification.TunnelIkeConfig?
+
+        public var tunnelIpsecConfig: ModifyTunnelAttributeRequest.TunnelOptionsSpecification.TunnelIpsecConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.tunnelBgpConfig?.validate()
+            try self.tunnelIkeConfig?.validate()
+            try self.tunnelIpsecConfig?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableDpd != nil {
+                map["EnableDpd"] = self.enableDpd!
+            }
+            if self.enableNatTraversal != nil {
+                map["EnableNatTraversal"] = self.enableNatTraversal!
+            }
+            if self.remoteCaCertificate != nil {
+                map["RemoteCaCertificate"] = self.remoteCaCertificate!
+            }
+            if self.tunnelBgpConfig != nil {
+                map["TunnelBgpConfig"] = self.tunnelBgpConfig?.toMap()
+            }
+            if self.tunnelIkeConfig != nil {
+                map["TunnelIkeConfig"] = self.tunnelIkeConfig?.toMap()
+            }
+            if self.tunnelIpsecConfig != nil {
+                map["TunnelIpsecConfig"] = self.tunnelIpsecConfig?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableDpd") && dict["EnableDpd"] != nil {
+                self.enableDpd = dict["EnableDpd"] as! Bool
+            }
+            if dict.keys.contains("EnableNatTraversal") && dict["EnableNatTraversal"] != nil {
+                self.enableNatTraversal = dict["EnableNatTraversal"] as! Bool
+            }
+            if dict.keys.contains("RemoteCaCertificate") && dict["RemoteCaCertificate"] != nil {
+                self.remoteCaCertificate = dict["RemoteCaCertificate"] as! String
+            }
+            if dict.keys.contains("TunnelBgpConfig") && dict["TunnelBgpConfig"] != nil {
+                var model = ModifyTunnelAttributeRequest.TunnelOptionsSpecification.TunnelBgpConfig()
+                model.fromMap(dict["TunnelBgpConfig"] as! [String: Any])
+                self.tunnelBgpConfig = model
+            }
+            if dict.keys.contains("TunnelIkeConfig") && dict["TunnelIkeConfig"] != nil {
+                var model = ModifyTunnelAttributeRequest.TunnelOptionsSpecification.TunnelIkeConfig()
+                model.fromMap(dict["TunnelIkeConfig"] as! [String: Any])
+                self.tunnelIkeConfig = model
+            }
+            if dict.keys.contains("TunnelIpsecConfig") && dict["TunnelIpsecConfig"] != nil {
+                var model = ModifyTunnelAttributeRequest.TunnelOptionsSpecification.TunnelIpsecConfig()
+                model.fromMap(dict["TunnelIpsecConfig"] as! [String: Any])
+                self.tunnelIpsecConfig = model
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tunnelId: String?
+
+    public var tunnelOptionsSpecification: ModifyTunnelAttributeRequest.TunnelOptionsSpecification?
+
+    public var vpnConnectionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tunnelOptionsSpecification?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tunnelId != nil {
+            map["TunnelId"] = self.tunnelId!
+        }
+        if self.tunnelOptionsSpecification != nil {
+            map["TunnelOptionsSpecification"] = self.tunnelOptionsSpecification?.toMap()
+        }
+        if self.vpnConnectionId != nil {
+            map["VpnConnectionId"] = self.vpnConnectionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TunnelId") && dict["TunnelId"] != nil {
+            self.tunnelId = dict["TunnelId"] as! String
+        }
+        if dict.keys.contains("TunnelOptionsSpecification") && dict["TunnelOptionsSpecification"] != nil {
+            var model = ModifyTunnelAttributeRequest.TunnelOptionsSpecification()
+            model.fromMap(dict["TunnelOptionsSpecification"] as! [String: Any])
+            self.tunnelOptionsSpecification = model
+        }
+        if dict.keys.contains("VpnConnectionId") && dict["VpnConnectionId"] != nil {
+            self.vpnConnectionId = dict["VpnConnectionId"] as! String
+        }
+    }
+}
+
+public class ModifyTunnelAttributeResponseBody : Tea.TeaModel {
+    public class TunnelBgpConfig : Tea.TeaModel {
+        public var enableBgp: Bool?
+
+        public var localAsn: Int64?
+
+        public var localBgpIp: String?
+
+        public var peerAsn: Int64?
+
+        public var peerBgpIp: String?
+
+        public var tunnelCidr: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableBgp != nil {
+                map["EnableBgp"] = self.enableBgp!
+            }
+            if self.localAsn != nil {
+                map["LocalAsn"] = self.localAsn!
+            }
+            if self.localBgpIp != nil {
+                map["LocalBgpIp"] = self.localBgpIp!
+            }
+            if self.peerAsn != nil {
+                map["PeerAsn"] = self.peerAsn!
+            }
+            if self.peerBgpIp != nil {
+                map["PeerBgpIp"] = self.peerBgpIp!
+            }
+            if self.tunnelCidr != nil {
+                map["TunnelCidr"] = self.tunnelCidr!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableBgp") && dict["EnableBgp"] != nil {
+                self.enableBgp = dict["EnableBgp"] as! Bool
+            }
+            if dict.keys.contains("LocalAsn") && dict["LocalAsn"] != nil {
+                self.localAsn = dict["LocalAsn"] as! Int64
+            }
+            if dict.keys.contains("LocalBgpIp") && dict["LocalBgpIp"] != nil {
+                self.localBgpIp = dict["LocalBgpIp"] as! String
+            }
+            if dict.keys.contains("PeerAsn") && dict["PeerAsn"] != nil {
+                self.peerAsn = dict["PeerAsn"] as! Int64
+            }
+            if dict.keys.contains("PeerBgpIp") && dict["PeerBgpIp"] != nil {
+                self.peerBgpIp = dict["PeerBgpIp"] as! String
+            }
+            if dict.keys.contains("TunnelCidr") && dict["TunnelCidr"] != nil {
+                self.tunnelCidr = dict["TunnelCidr"] as! String
+            }
+        }
+    }
+    public class TunnelIkeConfig : Tea.TeaModel {
+        public var ikeAuthAlg: String?
+
+        public var ikeEncAlg: String?
+
+        public var ikeLifetime: Int64?
+
+        public var ikeMode: String?
+
+        public var ikePfs: String?
+
+        public var ikeVersion: String?
+
+        public var localId: String?
+
+        public var psk: String?
+
+        public var remoteId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ikeAuthAlg != nil {
+                map["IkeAuthAlg"] = self.ikeAuthAlg!
+            }
+            if self.ikeEncAlg != nil {
+                map["IkeEncAlg"] = self.ikeEncAlg!
+            }
+            if self.ikeLifetime != nil {
+                map["IkeLifetime"] = self.ikeLifetime!
+            }
+            if self.ikeMode != nil {
+                map["IkeMode"] = self.ikeMode!
+            }
+            if self.ikePfs != nil {
+                map["IkePfs"] = self.ikePfs!
+            }
+            if self.ikeVersion != nil {
+                map["IkeVersion"] = self.ikeVersion!
+            }
+            if self.localId != nil {
+                map["LocalId"] = self.localId!
+            }
+            if self.psk != nil {
+                map["Psk"] = self.psk!
+            }
+            if self.remoteId != nil {
+                map["RemoteId"] = self.remoteId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IkeAuthAlg") && dict["IkeAuthAlg"] != nil {
+                self.ikeAuthAlg = dict["IkeAuthAlg"] as! String
+            }
+            if dict.keys.contains("IkeEncAlg") && dict["IkeEncAlg"] != nil {
+                self.ikeEncAlg = dict["IkeEncAlg"] as! String
+            }
+            if dict.keys.contains("IkeLifetime") && dict["IkeLifetime"] != nil {
+                self.ikeLifetime = dict["IkeLifetime"] as! Int64
+            }
+            if dict.keys.contains("IkeMode") && dict["IkeMode"] != nil {
+                self.ikeMode = dict["IkeMode"] as! String
+            }
+            if dict.keys.contains("IkePfs") && dict["IkePfs"] != nil {
+                self.ikePfs = dict["IkePfs"] as! String
+            }
+            if dict.keys.contains("IkeVersion") && dict["IkeVersion"] != nil {
+                self.ikeVersion = dict["IkeVersion"] as! String
+            }
+            if dict.keys.contains("LocalId") && dict["LocalId"] != nil {
+                self.localId = dict["LocalId"] as! String
+            }
+            if dict.keys.contains("Psk") && dict["Psk"] != nil {
+                self.psk = dict["Psk"] as! String
+            }
+            if dict.keys.contains("RemoteId") && dict["RemoteId"] != nil {
+                self.remoteId = dict["RemoteId"] as! String
+            }
+        }
+    }
+    public class TunnelIpsecConfig : Tea.TeaModel {
+        public var ipsecAuthAlg: String?
+
+        public var ipsecEncAlg: String?
+
+        public var ipsecLifetime: Int64?
+
+        public var ipsecPfs: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ipsecAuthAlg != nil {
+                map["IpsecAuthAlg"] = self.ipsecAuthAlg!
+            }
+            if self.ipsecEncAlg != nil {
+                map["IpsecEncAlg"] = self.ipsecEncAlg!
+            }
+            if self.ipsecLifetime != nil {
+                map["IpsecLifetime"] = self.ipsecLifetime!
+            }
+            if self.ipsecPfs != nil {
+                map["IpsecPfs"] = self.ipsecPfs!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IpsecAuthAlg") && dict["IpsecAuthAlg"] != nil {
+                self.ipsecAuthAlg = dict["IpsecAuthAlg"] as! String
+            }
+            if dict.keys.contains("IpsecEncAlg") && dict["IpsecEncAlg"] != nil {
+                self.ipsecEncAlg = dict["IpsecEncAlg"] as! String
+            }
+            if dict.keys.contains("IpsecLifetime") && dict["IpsecLifetime"] != nil {
+                self.ipsecLifetime = dict["IpsecLifetime"] as! Int64
+            }
+            if dict.keys.contains("IpsecPfs") && dict["IpsecPfs"] != nil {
+                self.ipsecPfs = dict["IpsecPfs"] as! String
+            }
+        }
+    }
+    public var customerGatewayId: String?
+
+    public var enableDpd: Bool?
+
+    public var enableNatTraversal: Bool?
+
+    public var internetIp: String?
+
+    public var remoteCaCertificate: String?
+
+    public var requestId: String?
+
+    public var role: String?
+
+    public var state: String?
+
+    public var tunnelBgpConfig: ModifyTunnelAttributeResponseBody.TunnelBgpConfig?
+
+    public var tunnelId: String?
+
+    public var tunnelIkeConfig: ModifyTunnelAttributeResponseBody.TunnelIkeConfig?
+
+    public var tunnelIpsecConfig: ModifyTunnelAttributeResponseBody.TunnelIpsecConfig?
+
+    public var zoneNo: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tunnelBgpConfig?.validate()
+        try self.tunnelIkeConfig?.validate()
+        try self.tunnelIpsecConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.customerGatewayId != nil {
+            map["CustomerGatewayId"] = self.customerGatewayId!
+        }
+        if self.enableDpd != nil {
+            map["EnableDpd"] = self.enableDpd!
+        }
+        if self.enableNatTraversal != nil {
+            map["EnableNatTraversal"] = self.enableNatTraversal!
+        }
+        if self.internetIp != nil {
+            map["InternetIp"] = self.internetIp!
+        }
+        if self.remoteCaCertificate != nil {
+            map["RemoteCaCertificate"] = self.remoteCaCertificate!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.role != nil {
+            map["Role"] = self.role!
+        }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
+        if self.tunnelBgpConfig != nil {
+            map["TunnelBgpConfig"] = self.tunnelBgpConfig?.toMap()
+        }
+        if self.tunnelId != nil {
+            map["TunnelId"] = self.tunnelId!
+        }
+        if self.tunnelIkeConfig != nil {
+            map["TunnelIkeConfig"] = self.tunnelIkeConfig?.toMap()
+        }
+        if self.tunnelIpsecConfig != nil {
+            map["TunnelIpsecConfig"] = self.tunnelIpsecConfig?.toMap()
+        }
+        if self.zoneNo != nil {
+            map["ZoneNo"] = self.zoneNo!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CustomerGatewayId") && dict["CustomerGatewayId"] != nil {
+            self.customerGatewayId = dict["CustomerGatewayId"] as! String
+        }
+        if dict.keys.contains("EnableDpd") && dict["EnableDpd"] != nil {
+            self.enableDpd = dict["EnableDpd"] as! Bool
+        }
+        if dict.keys.contains("EnableNatTraversal") && dict["EnableNatTraversal"] != nil {
+            self.enableNatTraversal = dict["EnableNatTraversal"] as! Bool
+        }
+        if dict.keys.contains("InternetIp") && dict["InternetIp"] != nil {
+            self.internetIp = dict["InternetIp"] as! String
+        }
+        if dict.keys.contains("RemoteCaCertificate") && dict["RemoteCaCertificate"] != nil {
+            self.remoteCaCertificate = dict["RemoteCaCertificate"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Role") && dict["Role"] != nil {
+            self.role = dict["Role"] as! String
+        }
+        if dict.keys.contains("State") && dict["State"] != nil {
+            self.state = dict["State"] as! String
+        }
+        if dict.keys.contains("TunnelBgpConfig") && dict["TunnelBgpConfig"] != nil {
+            var model = ModifyTunnelAttributeResponseBody.TunnelBgpConfig()
+            model.fromMap(dict["TunnelBgpConfig"] as! [String: Any])
+            self.tunnelBgpConfig = model
+        }
+        if dict.keys.contains("TunnelId") && dict["TunnelId"] != nil {
+            self.tunnelId = dict["TunnelId"] as! String
+        }
+        if dict.keys.contains("TunnelIkeConfig") && dict["TunnelIkeConfig"] != nil {
+            var model = ModifyTunnelAttributeResponseBody.TunnelIkeConfig()
+            model.fromMap(dict["TunnelIkeConfig"] as! [String: Any])
+            self.tunnelIkeConfig = model
+        }
+        if dict.keys.contains("TunnelIpsecConfig") && dict["TunnelIpsecConfig"] != nil {
+            var model = ModifyTunnelAttributeResponseBody.TunnelIpsecConfig()
+            model.fromMap(dict["TunnelIpsecConfig"] as! [String: Any])
+            self.tunnelIpsecConfig = model
+        }
+        if dict.keys.contains("ZoneNo") && dict["ZoneNo"] != nil {
+            self.zoneNo = dict["ZoneNo"] as! String
+        }
+    }
+}
+
+public class ModifyTunnelAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyTunnelAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyTunnelAttributeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
