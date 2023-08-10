@@ -6168,6 +6168,8 @@ public class CopySnapshotRequest : Tea.TeaModel {
 
     public var destinationSnapshotName: String?
 
+    public var destinationStorageLocationArn: String?
+
     public var encrypted: Bool?
 
     public var KMSKeyId: String?
@@ -6217,6 +6219,9 @@ public class CopySnapshotRequest : Tea.TeaModel {
         }
         if self.destinationSnapshotName != nil {
             map["DestinationSnapshotName"] = self.destinationSnapshotName!
+        }
+        if self.destinationStorageLocationArn != nil {
+            map["DestinationStorageLocationArn"] = self.destinationStorageLocationArn!
         }
         if self.encrypted != nil {
             map["Encrypted"] = self.encrypted!
@@ -6275,6 +6280,9 @@ public class CopySnapshotRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestinationSnapshotName") && dict["DestinationSnapshotName"] != nil {
             self.destinationSnapshotName = dict["DestinationSnapshotName"] as! String
+        }
+        if dict.keys.contains("DestinationStorageLocationArn") && dict["DestinationStorageLocationArn"] != nil {
+            self.destinationStorageLocationArn = dict["DestinationStorageLocationArn"] as! String
         }
         if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
             self.encrypted = dict["Encrypted"] as! Bool
@@ -7716,6 +7724,8 @@ public class CreateAutoProvisioningGroupResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var amount: Int32?
+
             public var errorCode: String?
 
             public var errorMsg: String?
@@ -7743,6 +7753,9 @@ public class CreateAutoProvisioningGroupResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.amount != nil {
+                    map["Amount"] = self.amount!
+                }
                 if self.errorCode != nil {
                     map["ErrorCode"] = self.errorCode!
                 }
@@ -7765,6 +7778,9 @@ public class CreateAutoProvisioningGroupResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                    self.amount = dict["Amount"] as! Int32
+                }
                 if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
                     self.errorCode = dict["ErrorCode"] as! String
                 }
@@ -13774,6 +13790,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
     public var dataDisk: [CreateLaunchTemplateRequest.DataDisk]?
 
+    public var deletionProtection: Bool?
+
     public var deploymentSetId: String?
 
     public var description_: String?
@@ -13885,6 +13903,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisk"] = tmp
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.deploymentSetId != nil {
             map["DeploymentSetId"] = self.deploymentSetId!
@@ -14046,6 +14067,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.dataDisk = tmp
+        }
+        if dict.keys.contains("DeletionProtection") && dict["DeletionProtection"] != nil {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
         }
         if dict.keys.contains("DeploymentSetId") && dict["DeploymentSetId"] != nil {
             self.deploymentSetId = dict["DeploymentSetId"] as! String
@@ -14645,6 +14669,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
     public var dataDisk: [CreateLaunchTemplateVersionRequest.DataDisk]?
 
+    public var deletionProtection: Bool?
+
     public var deploymentSetId: String?
 
     public var description_: String?
@@ -14754,6 +14780,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisk"] = tmp
+        }
+        if self.deletionProtection != nil {
+            map["DeletionProtection"] = self.deletionProtection!
         }
         if self.deploymentSetId != nil {
             map["DeploymentSetId"] = self.deploymentSetId!
@@ -14908,6 +14937,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.dataDisk = tmp
+        }
+        if dict.keys.contains("DeletionProtection") && dict["DeletionProtection"] != nil {
+            self.deletionProtection = dict["DeletionProtection"] as! Bool
         }
         if dict.keys.contains("DeploymentSetId") && dict["DeploymentSetId"] != nil {
             self.deploymentSetId = dict["DeploymentSetId"] as! String
@@ -50201,6 +50233,8 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
 
                 public var rack: String?
 
+                public var responseResult: String?
+
                 public override init() {
                     super.init()
                 }
@@ -50256,6 +50290,9 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
                     if self.rack != nil {
                         map["Rack"] = self.rack!
                     }
+                    if self.responseResult != nil {
+                        map["ResponseResult"] = self.responseResult!
+                    }
                     return map
                 }
 
@@ -50302,6 +50339,9 @@ public class DescribeInstanceHistoryEventsResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Rack") && dict["Rack"] != nil {
                         self.rack = dict["Rack"] as! String
+                    }
+                    if dict.keys.contains("ResponseResult") && dict["ResponseResult"] != nil {
+                        self.responseResult = dict["ResponseResult"] as! String
                     }
                 }
             }
@@ -59880,6 +59920,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                 public var dataDisks: DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.DataDisks?
 
+                public var deletionProtection: Bool?
+
                 public var deploymentSetId: String?
 
                 public var description_: String?
@@ -59973,6 +60015,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if self.dataDisks != nil {
                         map["DataDisks"] = self.dataDisks?.toMap()
+                    }
+                    if self.deletionProtection != nil {
+                        map["DeletionProtection"] = self.deletionProtection!
                     }
                     if self.deploymentSetId != nil {
                         map["DeploymentSetId"] = self.deploymentSetId!
@@ -60089,6 +60134,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                         var model = DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.DataDisks()
                         model.fromMap(dict["DataDisks"] as! [String: Any])
                         self.dataDisks = model
+                    }
+                    if dict.keys.contains("DeletionProtection") && dict["DeletionProtection"] != nil {
+                        self.deletionProtection = dict["DeletionProtection"] as! Bool
                     }
                     if dict.keys.contains("DeploymentSetId") && dict["DeploymentSetId"] != nil {
                         self.deploymentSetId = dict["DeploymentSetId"] as! String
@@ -108576,6 +108624,8 @@ public class RunInstancesRequest : Tea.TeaModel {
 
     public var arn: [RunInstancesRequest.Arn]?
 
+    public var autoPay: Bool?
+
     public var autoReleaseTime: String?
 
     public var autoRenew: Bool?
@@ -108760,6 +108810,9 @@ public class RunInstancesRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Arn"] = tmp
+        }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
         }
         if self.autoReleaseTime != nil {
             map["AutoReleaseTime"] = self.autoReleaseTime!
@@ -109021,6 +109074,9 @@ public class RunInstancesRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.arn = tmp
+        }
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
         }
         if dict.keys.contains("AutoReleaseTime") && dict["AutoReleaseTime"] != nil {
             self.autoReleaseTime = dict["AutoReleaseTime"] as! String
