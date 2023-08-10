@@ -1923,6 +1923,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var caller: String?
 
+    public var driver: String?
+
     public var enableErrorMonitoringInAIMaster: Bool?
 
     public var enableOssAppend: Bool?
@@ -1962,6 +1964,9 @@ public class JobSettings : Tea.TeaModel {
         if self.caller != nil {
             map["Caller"] = self.caller!
         }
+        if self.driver != nil {
+            map["Driver"] = self.driver!
+        }
         if self.enableErrorMonitoringInAIMaster != nil {
             map["EnableErrorMonitoringInAIMaster"] = self.enableErrorMonitoringInAIMaster!
         }
@@ -1998,6 +2003,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if dict.keys.contains("Caller") && dict["Caller"] != nil {
             self.caller = dict["Caller"] as! String
+        }
+        if dict.keys.contains("Driver") && dict["Driver"] != nil {
+            self.driver = dict["Driver"] as! String
         }
         if dict.keys.contains("EnableErrorMonitoringInAIMaster") && dict["EnableErrorMonitoringInAIMaster"] != nil {
             self.enableErrorMonitoringInAIMaster = dict["EnableErrorMonitoringInAIMaster"] as! Bool
@@ -6514,6 +6522,8 @@ public class ListTensorboardsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var showOwn: Bool?
+
     public var sortBy: String?
 
     public var sourceId: String?
@@ -6562,6 +6572,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.showOwn != nil {
+            map["ShowOwn"] = self.showOwn!
+        }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
@@ -6607,6 +6620,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ShowOwn") && dict["ShowOwn"] != nil {
+            self.showOwn = dict["ShowOwn"] as! Bool
         }
         if dict.keys.contains("SortBy") && dict["SortBy"] != nil {
             self.sortBy = dict["SortBy"] as! String
