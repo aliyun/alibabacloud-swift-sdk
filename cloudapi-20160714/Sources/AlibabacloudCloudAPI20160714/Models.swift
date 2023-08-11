@@ -11259,6 +11259,8 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var disableInnerDomain: Bool?
+
     public var groupId: String?
 
     public var groupName: String?
@@ -11350,6 +11352,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
+        }
+        if self.disableInnerDomain != nil {
+            map["DisableInnerDomain"] = self.disableInnerDomain!
         }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
@@ -11452,6 +11457,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DisableInnerDomain") && dict["DisableInnerDomain"] != nil {
+            self.disableInnerDomain = dict["DisableInnerDomain"] as! Bool
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
