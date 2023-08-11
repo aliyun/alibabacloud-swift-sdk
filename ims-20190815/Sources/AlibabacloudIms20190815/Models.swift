@@ -59,6 +59,8 @@ public class AddClientIdToOIDCProviderResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var issuanceLimitTime: Int64?
+
         public var issuerUrl: String?
 
         public var OIDCProviderName: String?
@@ -100,6 +102,9 @@ public class AddClientIdToOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -133,6 +138,9 @@ public class AddClientIdToOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
@@ -291,6 +299,8 @@ public class AddFingerprintToOIDCProviderResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var issuanceLimitTime: Int64?
+
         public var issuerUrl: String?
 
         public var OIDCProviderName: String?
@@ -332,6 +342,9 @@ public class AddFingerprintToOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -365,6 +378,9 @@ public class AddFingerprintToOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
@@ -2085,6 +2101,8 @@ public class CreateOIDCProviderRequest : Tea.TeaModel {
 
     public var fingerprints: String?
 
+    public var issuanceLimitTime: Int64?
+
     public var issuerUrl: String?
 
     public var OIDCProviderName: String?
@@ -2112,6 +2130,9 @@ public class CreateOIDCProviderRequest : Tea.TeaModel {
         if self.fingerprints != nil {
             map["Fingerprints"] = self.fingerprints!
         }
+        if self.issuanceLimitTime != nil {
+            map["IssuanceLimitTime"] = self.issuanceLimitTime!
+        }
         if self.issuerUrl != nil {
             map["IssuerUrl"] = self.issuerUrl!
         }
@@ -2130,6 +2151,9 @@ public class CreateOIDCProviderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Fingerprints") && dict["Fingerprints"] != nil {
             self.fingerprints = dict["Fingerprints"] as! String
+        }
+        if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+            self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
         }
         if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
             self.issuerUrl = dict["IssuerUrl"] as! String
@@ -2155,6 +2179,8 @@ public class CreateOIDCProviderResponseBody : Tea.TeaModel {
         public var gmtCreate: String?
 
         public var gmtModified: String?
+
+        public var issuanceLimitTime: Int64?
 
         public var issuerUrl: String?
 
@@ -2197,6 +2223,9 @@ public class CreateOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -2230,6 +2259,9 @@ public class CreateOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
@@ -6299,6 +6331,8 @@ public class GetOIDCProviderResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var issuanceLimitTime: Int64?
+
         public var issuerUrl: String?
 
         public var OIDCProviderName: String?
@@ -6340,6 +6374,9 @@ public class GetOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -6373,6 +6410,9 @@ public class GetOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
@@ -9227,6 +9267,8 @@ public class ListOIDCProvidersResponseBody : Tea.TeaModel {
 
             public var gmtModified: String?
 
+            public var issuanceLimitTime: Int64?
+
             public var issuerUrl: String?
 
             public var OIDCProviderName: String?
@@ -9268,6 +9310,9 @@ public class ListOIDCProvidersResponseBody : Tea.TeaModel {
                 if self.gmtModified != nil {
                     map["GmtModified"] = self.gmtModified!
                 }
+                if self.issuanceLimitTime != nil {
+                    map["IssuanceLimitTime"] = self.issuanceLimitTime!
+                }
                 if self.issuerUrl != nil {
                     map["IssuerUrl"] = self.issuerUrl!
                 }
@@ -9301,6 +9346,9 @@ public class ListOIDCProvidersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                     self.gmtModified = dict["GmtModified"] as! String
+                }
+                if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                    self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
                 }
                 if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                     self.issuerUrl = dict["IssuerUrl"] as! String
@@ -11542,6 +11590,8 @@ public class RemoveClientIdFromOIDCProviderResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var issuanceLimitTime: Int64?
+
         public var issuerUrl: String?
 
         public var OIDCProviderName: String?
@@ -11583,6 +11633,9 @@ public class RemoveClientIdFromOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -11616,6 +11669,9 @@ public class RemoveClientIdFromOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
@@ -11774,6 +11830,8 @@ public class RemoveFingerprintFromOIDCProviderResponseBody : Tea.TeaModel {
 
         public var gmtModified: String?
 
+        public var issuanceLimitTime: Int64?
+
         public var issuerUrl: String?
 
         public var OIDCProviderName: String?
@@ -11815,6 +11873,9 @@ public class RemoveFingerprintFromOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -11848,6 +11909,9 @@ public class RemoveFingerprintFromOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
@@ -14739,6 +14803,8 @@ public class UpdateLoginProfileResponse : Tea.TeaModel {
 public class UpdateOIDCProviderRequest : Tea.TeaModel {
     public var clientIds: String?
 
+    public var issuanceLimitTime: Int64?
+
     public var newDescription: String?
 
     public var OIDCProviderName: String?
@@ -14760,6 +14826,9 @@ public class UpdateOIDCProviderRequest : Tea.TeaModel {
         if self.clientIds != nil {
             map["ClientIds"] = self.clientIds!
         }
+        if self.issuanceLimitTime != nil {
+            map["IssuanceLimitTime"] = self.issuanceLimitTime!
+        }
         if self.newDescription != nil {
             map["NewDescription"] = self.newDescription!
         }
@@ -14772,6 +14841,9 @@ public class UpdateOIDCProviderRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientIds") && dict["ClientIds"] != nil {
             self.clientIds = dict["ClientIds"] as! String
+        }
+        if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+            self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
         }
         if dict.keys.contains("NewDescription") && dict["NewDescription"] != nil {
             self.newDescription = dict["NewDescription"] as! String
@@ -14797,6 +14869,8 @@ public class UpdateOIDCProviderResponseBody : Tea.TeaModel {
         public var gmtCreate: String?
 
         public var gmtModified: String?
+
+        public var issuanceLimitTime: Int64?
 
         public var issuerUrl: String?
 
@@ -14839,6 +14913,9 @@ public class UpdateOIDCProviderResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.issuanceLimitTime != nil {
+                map["IssuanceLimitTime"] = self.issuanceLimitTime!
+            }
             if self.issuerUrl != nil {
                 map["IssuerUrl"] = self.issuerUrl!
             }
@@ -14872,6 +14949,9 @@ public class UpdateOIDCProviderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("IssuanceLimitTime") && dict["IssuanceLimitTime"] != nil {
+                self.issuanceLimitTime = dict["IssuanceLimitTime"] as! Int64
             }
             if dict.keys.contains("IssuerUrl") && dict["IssuerUrl"] != nil {
                 self.issuerUrl = dict["IssuerUrl"] as! String
