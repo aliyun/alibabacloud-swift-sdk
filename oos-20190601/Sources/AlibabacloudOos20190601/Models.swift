@@ -2001,6 +2001,8 @@ public class CreatePatchBaselineRequest : Tea.TeaModel {
 
     public var rejectedPatchesAction: String?
 
+    public var resourceGroupId: String?
+
     public var sources: [String]?
 
     public var tags: [CreatePatchBaselineRequest.Tags]?
@@ -2049,6 +2051,9 @@ public class CreatePatchBaselineRequest : Tea.TeaModel {
         if self.rejectedPatchesAction != nil {
             map["RejectedPatchesAction"] = self.rejectedPatchesAction!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sources != nil {
             map["Sources"] = self.sources!
         }
@@ -2093,6 +2098,9 @@ public class CreatePatchBaselineRequest : Tea.TeaModel {
         if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
             self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("Sources") && dict["Sources"] != nil {
             self.sources = dict["Sources"] as! [String]
         }
@@ -2130,6 +2138,8 @@ public class CreatePatchBaselineShrinkRequest : Tea.TeaModel {
     public var rejectedPatchesShrink: String?
 
     public var rejectedPatchesAction: String?
+
+    public var resourceGroupId: String?
 
     public var sourcesShrink: String?
 
@@ -2179,6 +2189,9 @@ public class CreatePatchBaselineShrinkRequest : Tea.TeaModel {
         if self.rejectedPatchesAction != nil {
             map["RejectedPatchesAction"] = self.rejectedPatchesAction!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sourcesShrink != nil {
             map["Sources"] = self.sourcesShrink!
         }
@@ -2218,6 +2231,9 @@ public class CreatePatchBaselineShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
             self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Sources") && dict["Sources"] != nil {
             self.sourcesShrink = dict["Sources"] as! String
@@ -2289,6 +2305,8 @@ public class CreatePatchBaselineResponseBody : Tea.TeaModel {
 
         public var rejectedPatchesAction: String?
 
+        public var resourceGroupId: String?
+
         public var shareType: String?
 
         public var sources: [String]?
@@ -2346,6 +2364,9 @@ public class CreatePatchBaselineResponseBody : Tea.TeaModel {
             if self.rejectedPatchesAction != nil {
                 map["RejectedPatchesAction"] = self.rejectedPatchesAction!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.shareType != nil {
                 map["ShareType"] = self.shareType!
             }
@@ -2401,6 +2422,9 @@ public class CreatePatchBaselineResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
                 self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
                 self.shareType = dict["ShareType"] as! String
@@ -7707,6 +7731,8 @@ public class GetPatchBaselineResponseBody : Tea.TeaModel {
 
         public var rejectedPatchesAction: String?
 
+        public var resourceGroupId: String?
+
         public var shareType: String?
 
         public var sources: [String]?
@@ -7767,6 +7793,9 @@ public class GetPatchBaselineResponseBody : Tea.TeaModel {
             if self.rejectedPatchesAction != nil {
                 map["RejectedPatchesAction"] = self.rejectedPatchesAction!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.shareType != nil {
                 map["ShareType"] = self.shareType!
             }
@@ -7825,6 +7854,9 @@ public class GetPatchBaselineResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
                 self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
                 self.shareType = dict["ShareType"] as! String
@@ -17784,6 +17816,8 @@ public class RegisterDefaultPatchBaselineResponseBody : Tea.TeaModel {
 
         public var operationSystem: String?
 
+        public var resourceGroupId: String?
+
         public var shareType: String?
 
         public var updatedBy: String?
@@ -17825,6 +17859,9 @@ public class RegisterDefaultPatchBaselineResponseBody : Tea.TeaModel {
             if self.operationSystem != nil {
                 map["OperationSystem"] = self.operationSystem!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.shareType != nil {
                 map["ShareType"] = self.shareType!
             }
@@ -17858,6 +17895,9 @@ public class RegisterDefaultPatchBaselineResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OperationSystem") && dict["OperationSystem"] != nil {
                 self.operationSystem = dict["OperationSystem"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
                 self.shareType = dict["ShareType"] as! String
@@ -21211,6 +21251,8 @@ public class UpdatePatchBaselineRequest : Tea.TeaModel {
 
     public var rejectedPatchesAction: String?
 
+    public var resourceGroupId: String?
+
     public var sources: [String]?
 
     public var tags: [UpdatePatchBaselineRequest.Tags]?
@@ -21256,6 +21298,9 @@ public class UpdatePatchBaselineRequest : Tea.TeaModel {
         if self.rejectedPatchesAction != nil {
             map["RejectedPatchesAction"] = self.rejectedPatchesAction!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sources != nil {
             map["Sources"] = self.sources!
         }
@@ -21297,6 +21342,9 @@ public class UpdatePatchBaselineRequest : Tea.TeaModel {
         if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
             self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("Sources") && dict["Sources"] != nil {
             self.sources = dict["Sources"] as! [String]
         }
@@ -21332,6 +21380,8 @@ public class UpdatePatchBaselineShrinkRequest : Tea.TeaModel {
     public var rejectedPatchesShrink: String?
 
     public var rejectedPatchesAction: String?
+
+    public var resourceGroupId: String?
 
     public var sourcesShrink: String?
 
@@ -21378,6 +21428,9 @@ public class UpdatePatchBaselineShrinkRequest : Tea.TeaModel {
         if self.rejectedPatchesAction != nil {
             map["RejectedPatchesAction"] = self.rejectedPatchesAction!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sourcesShrink != nil {
             map["Sources"] = self.sourcesShrink!
         }
@@ -21414,6 +21467,9 @@ public class UpdatePatchBaselineShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
             self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Sources") && dict["Sources"] != nil {
             self.sourcesShrink = dict["Sources"] as! String
@@ -21485,6 +21541,8 @@ public class UpdatePatchBaselineResponseBody : Tea.TeaModel {
 
         public var rejectedPatchesAction: String?
 
+        public var resourceGroupId: String?
+
         public var shareType: String?
 
         public var sources: [String]?
@@ -21542,6 +21600,9 @@ public class UpdatePatchBaselineResponseBody : Tea.TeaModel {
             if self.rejectedPatchesAction != nil {
                 map["RejectedPatchesAction"] = self.rejectedPatchesAction!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.shareType != nil {
                 map["ShareType"] = self.shareType!
             }
@@ -21597,6 +21658,9 @@ public class UpdatePatchBaselineResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RejectedPatchesAction") && dict["RejectedPatchesAction"] != nil {
                 self.rejectedPatchesAction = dict["RejectedPatchesAction"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
                 self.shareType = dict["ShareType"] as! String
