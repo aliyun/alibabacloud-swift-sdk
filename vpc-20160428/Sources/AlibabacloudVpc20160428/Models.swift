@@ -46562,6 +46562,9 @@ public class DescribeRouteEntryListResponse : Tea.TeaModel {
 
 public class DescribeRouteTableListRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
 
         public override init() {
             super.init()
@@ -46577,10 +46580,22 @@ public class DescribeRouteTableListRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
         }
     }
     public var ownerAccount: String?
