@@ -2131,6 +2131,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeExternalAgentWithOptions(_ ClusterId: String, _ request: DescribeExternalAgentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExternalAgentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentMode)) {
+            query["AgentMode"] = request.agentMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.privateIpAddress)) {
             query["PrivateIpAddress"] = request.privateIpAddress ?? "";
         }

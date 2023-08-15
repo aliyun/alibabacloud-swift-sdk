@@ -13142,6 +13142,8 @@ public class DescribeEventsResponse : Tea.TeaModel {
 }
 
 public class DescribeExternalAgentRequest : Tea.TeaModel {
+    public var agentMode: String?
+
     public var privateIpAddress: String?
 
     public override init() {
@@ -13158,6 +13160,9 @@ public class DescribeExternalAgentRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.agentMode != nil {
+            map["AgentMode"] = self.agentMode!
+        }
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
         }
@@ -13165,6 +13170,9 @@ public class DescribeExternalAgentRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentMode") && dict["AgentMode"] != nil {
+            self.agentMode = dict["AgentMode"] as! String
+        }
         if dict.keys.contains("PrivateIpAddress") && dict["PrivateIpAddress"] != nil {
             self.privateIpAddress = dict["PrivateIpAddress"] as! String
         }
