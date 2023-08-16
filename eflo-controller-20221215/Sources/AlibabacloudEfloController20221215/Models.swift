@@ -831,6 +831,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var nodes: [CreateClusterRequest.NodeGroups.Nodes]?
 
+        public var userData: String?
+
         public var zoneId: String?
 
         public override init() {
@@ -866,6 +868,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                 }
                 map["Nodes"] = tmp
             }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -895,6 +900,9 @@ public class CreateClusterRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.nodes = tmp
+            }
+            if dict.keys.contains("UserData") && dict["UserData"] != nil {
+                self.userData = dict["UserData"] as! String
             }
             if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
                 self.zoneId = dict["ZoneId"] as! String
@@ -3107,6 +3115,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
         public var nodes: [ExtendClusterRequest.NodeGroups.Nodes]?
 
+        public var userData: String?
+
         public override init() {
             super.init()
         }
@@ -3131,6 +3141,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
                 map["Nodes"] = tmp
             }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
             return map
         }
 
@@ -3148,6 +3161,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.nodes = tmp
+            }
+            if dict.keys.contains("UserData") && dict["UserData"] != nil {
+                self.userData = dict["UserData"] as! String
             }
         }
     }
@@ -4780,6 +4796,8 @@ public class ReimageNodesRequest : Tea.TeaModel {
 
     public var nodes: [ReimageNodesRequest.Nodes]?
 
+    public var userData: String?
+
     public override init() {
         super.init()
     }
@@ -4807,6 +4825,9 @@ public class ReimageNodesRequest : Tea.TeaModel {
             }
             map["Nodes"] = tmp
         }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
         return map
     }
 
@@ -4828,6 +4849,9 @@ public class ReimageNodesRequest : Tea.TeaModel {
             }
             self.nodes = tmp
         }
+        if dict.keys.contains("UserData") && dict["UserData"] != nil {
+            self.userData = dict["UserData"] as! String
+        }
     }
 }
 
@@ -4837,6 +4861,8 @@ public class ReimageNodesShrinkRequest : Tea.TeaModel {
     public var ignoreFailedNodeTasks: Bool?
 
     public var nodesShrink: String?
+
+    public var userData: String?
 
     public override init() {
         super.init()
@@ -4861,6 +4887,9 @@ public class ReimageNodesShrinkRequest : Tea.TeaModel {
         if self.nodesShrink != nil {
             map["Nodes"] = self.nodesShrink!
         }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
         return map
     }
 
@@ -4873,6 +4902,9 @@ public class ReimageNodesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Nodes") && dict["Nodes"] != nil {
             self.nodesShrink = dict["Nodes"] as! String
+        }
+        if dict.keys.contains("UserData") && dict["UserData"] != nil {
+            self.userData = dict["UserData"] as! String
         }
     }
 }
