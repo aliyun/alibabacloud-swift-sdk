@@ -163,6 +163,198 @@ public class AttachApplication2ConnectorResponse : Tea.TeaModel {
     }
 }
 
+public class CreateDynamicRouteRequest : Tea.TeaModel {
+    public var applicationIds: [String]?
+
+    public var applicationType: String?
+
+    public var description_: String?
+
+    public var dynamicRouteType: String?
+
+    public var name: String?
+
+    public var nextHop: String?
+
+    public var priority: Int32?
+
+    public var regionIds: [String]?
+
+    public var status: String?
+
+    public var tagIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationIds != nil {
+            map["ApplicationIds"] = self.applicationIds!
+        }
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.dynamicRouteType != nil {
+            map["DynamicRouteType"] = self.dynamicRouteType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.nextHop != nil {
+            map["NextHop"] = self.nextHop!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.regionIds != nil {
+            map["RegionIds"] = self.regionIds!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tagIds != nil {
+            map["TagIds"] = self.tagIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
+            self.applicationIds = dict["ApplicationIds"] as! [String]
+        }
+        if dict.keys.contains("ApplicationType") && dict["ApplicationType"] != nil {
+            self.applicationType = dict["ApplicationType"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DynamicRouteType") && dict["DynamicRouteType"] != nil {
+            self.dynamicRouteType = dict["DynamicRouteType"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NextHop") && dict["NextHop"] != nil {
+            self.nextHop = dict["NextHop"] as! String
+        }
+        if dict.keys.contains("Priority") && dict["Priority"] != nil {
+            self.priority = dict["Priority"] as! Int32
+        }
+        if dict.keys.contains("RegionIds") && dict["RegionIds"] != nil {
+            self.regionIds = dict["RegionIds"] as! [String]
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIds = dict["TagIds"] as! [String]
+        }
+    }
+}
+
+public class CreateDynamicRouteResponseBody : Tea.TeaModel {
+    public var dynamicRouteId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRouteId != nil {
+            map["DynamicRouteId"] = self.dynamicRouteId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+            self.dynamicRouteId = dict["DynamicRouteId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateDynamicRouteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateDynamicRouteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateDynamicRouteResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreatePrivateAccessApplicationRequest : Tea.TeaModel {
     public class PortRanges : Tea.TeaModel {
         public var begin: Int32?
@@ -1162,6 +1354,118 @@ public class CreateUserGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDynamicRouteRequest : Tea.TeaModel {
+    public var dynamicRouteId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRouteId != nil {
+            map["DynamicRouteId"] = self.dynamicRouteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+            self.dynamicRouteId = dict["DynamicRouteId"] as! String
+        }
+    }
+}
+
+public class DeleteDynamicRouteResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteDynamicRouteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDynamicRouteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteDynamicRouteResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeletePrivateAccessApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
@@ -1762,6 +2066,246 @@ public class DetachApplication2ConnectorResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DetachApplication2ConnectorResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetDynamicRouteRequest : Tea.TeaModel {
+    public var dynamicRouteId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRouteId != nil {
+            map["DynamicRouteId"] = self.dynamicRouteId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+            self.dynamicRouteId = dict["DynamicRouteId"] as! String
+        }
+    }
+}
+
+public class GetDynamicRouteResponseBody : Tea.TeaModel {
+    public class DynamicRoute : Tea.TeaModel {
+        public var applicationIds: [String]?
+
+        public var applicationType: String?
+
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var dynamicRouteId: String?
+
+        public var dynamicRouteType: String?
+
+        public var name: String?
+
+        public var nextHop: String?
+
+        public var priority: Int32?
+
+        public var regionIds: [String]?
+
+        public var status: String?
+
+        public var tagIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationIds != nil {
+                map["ApplicationIds"] = self.applicationIds!
+            }
+            if self.applicationType != nil {
+                map["ApplicationType"] = self.applicationType!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.dynamicRouteId != nil {
+                map["DynamicRouteId"] = self.dynamicRouteId!
+            }
+            if self.dynamicRouteType != nil {
+                map["DynamicRouteType"] = self.dynamicRouteType!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.nextHop != nil {
+                map["NextHop"] = self.nextHop!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.regionIds != nil {
+                map["RegionIds"] = self.regionIds!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tagIds != nil {
+                map["TagIds"] = self.tagIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
+                self.applicationIds = dict["ApplicationIds"] as! [String]
+            }
+            if dict.keys.contains("ApplicationType") && dict["ApplicationType"] != nil {
+                self.applicationType = dict["ApplicationType"] as! String
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+                self.dynamicRouteId = dict["DynamicRouteId"] as! String
+            }
+            if dict.keys.contains("DynamicRouteType") && dict["DynamicRouteType"] != nil {
+                self.dynamicRouteType = dict["DynamicRouteType"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("NextHop") && dict["NextHop"] != nil {
+                self.nextHop = dict["NextHop"] as! String
+            }
+            if dict.keys.contains("Priority") && dict["Priority"] != nil {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("RegionIds") && dict["RegionIds"] != nil {
+                self.regionIds = dict["RegionIds"] as! [String]
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+                self.tagIds = dict["TagIds"] as! [String]
+            }
+        }
+    }
+    public var dynamicRoute: GetDynamicRouteResponseBody.DynamicRoute?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.dynamicRoute?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRoute != nil {
+            map["DynamicRoute"] = self.dynamicRoute?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRoute") && dict["DynamicRoute"] != nil {
+            var model = GetDynamicRouteResponseBody.DynamicRoute()
+            model.fromMap(dict["DynamicRoute"] as! [String: Any])
+            self.dynamicRoute = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetDynamicRouteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDynamicRouteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetDynamicRouteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3587,6 +4131,425 @@ public class ListConnectorsResponse : Tea.TeaModel {
     }
 }
 
+public class ListDynamicRouteRegionsResponseBody : Tea.TeaModel {
+    public var regions: [String]?
+
+    public var requestId: String?
+
+    public var totalNum: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regions != nil {
+            map["Regions"] = self.regions!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalNum != nil {
+            map["TotalNum"] = self.totalNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Regions") && dict["Regions"] != nil {
+            self.regions = dict["Regions"] as! [String]
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalNum") && dict["TotalNum"] != nil {
+            self.totalNum = dict["TotalNum"] as! Int32
+        }
+    }
+}
+
+public class ListDynamicRouteRegionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDynamicRouteRegionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListDynamicRouteRegionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListDynamicRoutesRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var currentPage: Int32?
+
+    public var dynamicRouteIds: [String]?
+
+    public var name: String?
+
+    public var nextHop: String?
+
+    public var pageSize: Int32?
+
+    public var regionIds: [String]?
+
+    public var status: String?
+
+    public var tagId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.dynamicRouteIds != nil {
+            map["DynamicRouteIds"] = self.dynamicRouteIds!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.nextHop != nil {
+            map["NextHop"] = self.nextHop!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionIds != nil {
+            map["RegionIds"] = self.regionIds!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tagId != nil {
+            map["TagId"] = self.tagId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
+            self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
+            self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("DynamicRouteIds") && dict["DynamicRouteIds"] != nil {
+            self.dynamicRouteIds = dict["DynamicRouteIds"] as! [String]
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NextHop") && dict["NextHop"] != nil {
+            self.nextHop = dict["NextHop"] as! String
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RegionIds") && dict["RegionIds"] != nil {
+            self.regionIds = dict["RegionIds"] as! [String]
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TagId") && dict["TagId"] != nil {
+            self.tagId = dict["TagId"] as! String
+        }
+    }
+}
+
+public class ListDynamicRoutesResponseBody : Tea.TeaModel {
+    public class DynamicRoutes : Tea.TeaModel {
+        public var applicationIds: [String]?
+
+        public var applicationType: String?
+
+        public var createTime: String?
+
+        public var description_: String?
+
+        public var dynamicRouteId: String?
+
+        public var dynamicRouteType: String?
+
+        public var name: String?
+
+        public var nextHop: String?
+
+        public var priority: Int32?
+
+        public var regionIds: [String]?
+
+        public var status: String?
+
+        public var tagIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applicationIds != nil {
+                map["ApplicationIds"] = self.applicationIds!
+            }
+            if self.applicationType != nil {
+                map["ApplicationType"] = self.applicationType!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.dynamicRouteId != nil {
+                map["DynamicRouteId"] = self.dynamicRouteId!
+            }
+            if self.dynamicRouteType != nil {
+                map["DynamicRouteType"] = self.dynamicRouteType!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.nextHop != nil {
+                map["NextHop"] = self.nextHop!
+            }
+            if self.priority != nil {
+                map["Priority"] = self.priority!
+            }
+            if self.regionIds != nil {
+                map["RegionIds"] = self.regionIds!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tagIds != nil {
+                map["TagIds"] = self.tagIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
+                self.applicationIds = dict["ApplicationIds"] as! [String]
+            }
+            if dict.keys.contains("ApplicationType") && dict["ApplicationType"] != nil {
+                self.applicationType = dict["ApplicationType"] as! String
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+                self.dynamicRouteId = dict["DynamicRouteId"] as! String
+            }
+            if dict.keys.contains("DynamicRouteType") && dict["DynamicRouteType"] != nil {
+                self.dynamicRouteType = dict["DynamicRouteType"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("NextHop") && dict["NextHop"] != nil {
+                self.nextHop = dict["NextHop"] as! String
+            }
+            if dict.keys.contains("Priority") && dict["Priority"] != nil {
+                self.priority = dict["Priority"] as! Int32
+            }
+            if dict.keys.contains("RegionIds") && dict["RegionIds"] != nil {
+                self.regionIds = dict["RegionIds"] as! [String]
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+                self.tagIds = dict["TagIds"] as! [String]
+            }
+        }
+    }
+    public var dynamicRoutes: [ListDynamicRoutesResponseBody.DynamicRoutes]?
+
+    public var requestId: String?
+
+    public var totalNum: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRoutes != nil {
+            var tmp : [Any] = []
+            for k in self.dynamicRoutes! {
+                tmp.append(k.toMap())
+            }
+            map["DynamicRoutes"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalNum != nil {
+            map["TotalNum"] = self.totalNum!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRoutes") && dict["DynamicRoutes"] != nil {
+            var tmp : [ListDynamicRoutesResponseBody.DynamicRoutes] = []
+            for v in dict["DynamicRoutes"] as! [Any] {
+                var model = ListDynamicRoutesResponseBody.DynamicRoutes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dynamicRoutes = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalNum") && dict["TotalNum"] != nil {
+            self.totalNum = dict["TotalNum"] as! Int32
+        }
+    }
+}
+
+public class ListDynamicRoutesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListDynamicRoutesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListDynamicRoutesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListPolicesForPrivateAccessApplicationRequest : Tea.TeaModel {
     public var applicationIds: [String]?
 
@@ -4853,6 +5816,321 @@ public class ListPrivateAccessApplicationsResponse : Tea.TeaModel {
     }
 }
 
+public class ListPrivateAccessApplicationsForDynamicRouteRequest : Tea.TeaModel {
+    public var dynamicRouteIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRouteIds != nil {
+            map["DynamicRouteIds"] = self.dynamicRouteIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRouteIds") && dict["DynamicRouteIds"] != nil {
+            self.dynamicRouteIds = dict["DynamicRouteIds"] as! [String]
+        }
+    }
+}
+
+public class ListPrivateAccessApplicationsForDynamicRouteResponseBody : Tea.TeaModel {
+    public class DynamicRoutes : Tea.TeaModel {
+        public class Applications : Tea.TeaModel {
+            public class PortRanges : Tea.TeaModel {
+                public var begin: Int32?
+
+                public var end: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.begin != nil {
+                        map["Begin"] = self.begin!
+                    }
+                    if self.end != nil {
+                        map["End"] = self.end!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Begin") && dict["Begin"] != nil {
+                        self.begin = dict["Begin"] as! Int32
+                    }
+                    if dict.keys.contains("End") && dict["End"] != nil {
+                        self.end = dict["End"] as! Int32
+                    }
+                }
+            }
+            public var addresses: [String]?
+
+            public var applicationId: String?
+
+            public var createTime: String?
+
+            public var description_: String?
+
+            public var name: String?
+
+            public var portRanges: [ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes.Applications.PortRanges]?
+
+            public var protocol_: String?
+
+            public var status: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.addresses != nil {
+                    map["Addresses"] = self.addresses!
+                }
+                if self.applicationId != nil {
+                    map["ApplicationId"] = self.applicationId!
+                }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.portRanges != nil {
+                    var tmp : [Any] = []
+                    for k in self.portRanges! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PortRanges"] = tmp
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Addresses") && dict["Addresses"] != nil {
+                    self.addresses = dict["Addresses"] as! [String]
+                }
+                if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
+                    self.applicationId = dict["ApplicationId"] as! String
+                }
+                if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("Description") && dict["Description"] != nil {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("PortRanges") && dict["PortRanges"] != nil {
+                    var tmp : [ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes.Applications.PortRanges] = []
+                    for v in dict["PortRanges"] as! [Any] {
+                        var model = ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes.Applications.PortRanges()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.portRanges = tmp
+                }
+                if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
+                    self.protocol_ = dict["Protocol"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+            }
+        }
+        public var applications: [ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes.Applications]?
+
+        public var dynamicRouteId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.applications != nil {
+                var tmp : [Any] = []
+                for k in self.applications! {
+                    tmp.append(k.toMap())
+                }
+                map["Applications"] = tmp
+            }
+            if self.dynamicRouteId != nil {
+                map["DynamicRouteId"] = self.dynamicRouteId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Applications") && dict["Applications"] != nil {
+                var tmp : [ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes.Applications] = []
+                for v in dict["Applications"] as! [Any] {
+                    var model = ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes.Applications()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.applications = tmp
+            }
+            if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+                self.dynamicRouteId = dict["DynamicRouteId"] as! String
+            }
+        }
+    }
+    public var dynamicRoutes: [ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRoutes != nil {
+            var tmp : [Any] = []
+            for k in self.dynamicRoutes! {
+                tmp.append(k.toMap())
+            }
+            map["DynamicRoutes"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRoutes") && dict["DynamicRoutes"] != nil {
+            var tmp : [ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes] = []
+            for v in dict["DynamicRoutes"] as! [Any] {
+                var model = ListPrivateAccessApplicationsForDynamicRouteResponseBody.DynamicRoutes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dynamicRoutes = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListPrivateAccessApplicationsForDynamicRouteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListPrivateAccessApplicationsForDynamicRouteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListPrivateAccessApplicationsForDynamicRouteResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListPrivateAccessPolicesRequest : Tea.TeaModel {
     public var applicationId: String?
 
@@ -5498,6 +6776,248 @@ public class ListPrivateAccessTagsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListPrivateAccessTagsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListPrivateAccessTagsForDynamicRouteRequest : Tea.TeaModel {
+    public var dynamicRouteIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRouteIds != nil {
+            map["DynamicRouteIds"] = self.dynamicRouteIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRouteIds") && dict["DynamicRouteIds"] != nil {
+            self.dynamicRouteIds = dict["DynamicRouteIds"] as! [String]
+        }
+    }
+}
+
+public class ListPrivateAccessTagsForDynamicRouteResponseBody : Tea.TeaModel {
+    public class DynamicRoutes : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var createTime: String?
+
+            public var description_: String?
+
+            public var name: String?
+
+            public var tagId: String?
+
+            public var tagType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.tagId != nil {
+                    map["TagId"] = self.tagId!
+                }
+                if self.tagType != nil {
+                    map["TagType"] = self.tagType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("Description") && dict["Description"] != nil {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("TagId") && dict["TagId"] != nil {
+                    self.tagId = dict["TagId"] as! String
+                }
+                if dict.keys.contains("TagType") && dict["TagType"] != nil {
+                    self.tagType = dict["TagType"] as! String
+                }
+            }
+        }
+        public var dynamicRouteId: String?
+
+        public var tags: [ListPrivateAccessTagsForDynamicRouteResponseBody.DynamicRoutes.Tags]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dynamicRouteId != nil {
+                map["DynamicRouteId"] = self.dynamicRouteId!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+                self.dynamicRouteId = dict["DynamicRouteId"] as! String
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [ListPrivateAccessTagsForDynamicRouteResponseBody.DynamicRoutes.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListPrivateAccessTagsForDynamicRouteResponseBody.DynamicRoutes.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+        }
+    }
+    public var dynamicRoutes: [ListPrivateAccessTagsForDynamicRouteResponseBody.DynamicRoutes]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dynamicRoutes != nil {
+            var tmp : [Any] = []
+            for k in self.dynamicRoutes! {
+                tmp.append(k.toMap())
+            }
+            map["DynamicRoutes"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DynamicRoutes") && dict["DynamicRoutes"] != nil {
+            var tmp : [ListPrivateAccessTagsForDynamicRouteResponseBody.DynamicRoutes] = []
+            for v in dict["DynamicRoutes"] as! [Any] {
+                var model = ListPrivateAccessTagsForDynamicRouteResponseBody.DynamicRoutes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dynamicRoutes = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListPrivateAccessTagsForDynamicRouteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListPrivateAccessTagsForDynamicRouteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListPrivateAccessTagsForDynamicRouteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6595,6 +8115,206 @@ public class ListUserGroupsForPrivateAccessPolicyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListUserGroupsForPrivateAccessPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateDynamicRouteRequest : Tea.TeaModel {
+    public var applicationIds: [String]?
+
+    public var applicationType: String?
+
+    public var description_: String?
+
+    public var dynamicRouteId: String?
+
+    public var dynamicRouteType: String?
+
+    public var modifyType: String?
+
+    public var name: String?
+
+    public var nextHop: String?
+
+    public var priority: Int32?
+
+    public var regionIds: [String]?
+
+    public var status: String?
+
+    public var tagIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationIds != nil {
+            map["ApplicationIds"] = self.applicationIds!
+        }
+        if self.applicationType != nil {
+            map["ApplicationType"] = self.applicationType!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.dynamicRouteId != nil {
+            map["DynamicRouteId"] = self.dynamicRouteId!
+        }
+        if self.dynamicRouteType != nil {
+            map["DynamicRouteType"] = self.dynamicRouteType!
+        }
+        if self.modifyType != nil {
+            map["ModifyType"] = self.modifyType!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.nextHop != nil {
+            map["NextHop"] = self.nextHop!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
+        }
+        if self.regionIds != nil {
+            map["RegionIds"] = self.regionIds!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tagIds != nil {
+            map["TagIds"] = self.tagIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
+            self.applicationIds = dict["ApplicationIds"] as! [String]
+        }
+        if dict.keys.contains("ApplicationType") && dict["ApplicationType"] != nil {
+            self.applicationType = dict["ApplicationType"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("DynamicRouteId") && dict["DynamicRouteId"] != nil {
+            self.dynamicRouteId = dict["DynamicRouteId"] as! String
+        }
+        if dict.keys.contains("DynamicRouteType") && dict["DynamicRouteType"] != nil {
+            self.dynamicRouteType = dict["DynamicRouteType"] as! String
+        }
+        if dict.keys.contains("ModifyType") && dict["ModifyType"] != nil {
+            self.modifyType = dict["ModifyType"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NextHop") && dict["NextHop"] != nil {
+            self.nextHop = dict["NextHop"] as! String
+        }
+        if dict.keys.contains("Priority") && dict["Priority"] != nil {
+            self.priority = dict["Priority"] as! Int32
+        }
+        if dict.keys.contains("RegionIds") && dict["RegionIds"] != nil {
+            self.regionIds = dict["RegionIds"] as! [String]
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIds = dict["TagIds"] as! [String]
+        }
+    }
+}
+
+public class UpdateDynamicRouteResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateDynamicRouteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateDynamicRouteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateDynamicRouteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
