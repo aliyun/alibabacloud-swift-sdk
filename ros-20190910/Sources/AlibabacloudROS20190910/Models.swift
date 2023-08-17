@@ -8351,6 +8351,8 @@ public class GetStackResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var checkedStackResourceCount: Int32?
+
     public var createTime: String?
 
     public var deletionProtection: String?
@@ -8364,6 +8366,8 @@ public class GetStackResponseBody : Tea.TeaModel {
     public var interface: String?
 
     public var log: GetStackResponseBody.Log?
+
+    public var notCheckedStackResourceCount: Int32?
 
     public var notificationURLs: [String]?
 
@@ -8438,6 +8442,9 @@ public class GetStackResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.checkedStackResourceCount != nil {
+            map["CheckedStackResourceCount"] = self.checkedStackResourceCount!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -8458,6 +8465,9 @@ public class GetStackResponseBody : Tea.TeaModel {
         }
         if self.log != nil {
             map["Log"] = self.log?.toMap()
+        }
+        if self.notCheckedStackResourceCount != nil {
+            map["NotCheckedStackResourceCount"] = self.notCheckedStackResourceCount!
         }
         if self.notificationURLs != nil {
             map["NotificationURLs"] = self.notificationURLs!
@@ -8555,6 +8565,9 @@ public class GetStackResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CheckedStackResourceCount") && dict["CheckedStackResourceCount"] != nil {
+            self.checkedStackResourceCount = dict["CheckedStackResourceCount"] as! Int32
+        }
         if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
             self.createTime = dict["CreateTime"] as! String
         }
@@ -8577,6 +8590,9 @@ public class GetStackResponseBody : Tea.TeaModel {
             var model = GetStackResponseBody.Log()
             model.fromMap(dict["Log"] as! [String: Any])
             self.log = model
+        }
+        if dict.keys.contains("NotCheckedStackResourceCount") && dict["NotCheckedStackResourceCount"] != nil {
+            self.notCheckedStackResourceCount = dict["NotCheckedStackResourceCount"] as! Int32
         }
         if dict.keys.contains("NotificationURLs") && dict["NotificationURLs"] != nil {
             self.notificationURLs = dict["NotificationURLs"] as! [String]
@@ -16973,6 +16989,8 @@ public class ListStacksResponseBody : Tea.TeaModel {
         }
         public var createTime: String?
 
+        public var deletionProtection: String?
+
         public var disableRollback: Bool?
 
         public var driftDetectionTime: String?
@@ -17024,6 +17042,9 @@ public class ListStacksResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.deletionProtection != nil {
+                map["DeletionProtection"] = self.deletionProtection!
             }
             if self.disableRollback != nil {
                 map["DisableRollback"] = self.disableRollback!
@@ -17086,6 +17107,9 @@ public class ListStacksResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("DeletionProtection") && dict["DeletionProtection"] != nil {
+                self.deletionProtection = dict["DeletionProtection"] as! String
             }
             if dict.keys.contains("DisableRollback") && dict["DisableRollback"] != nil {
                 self.disableRollback = dict["DisableRollback"] as! Bool
