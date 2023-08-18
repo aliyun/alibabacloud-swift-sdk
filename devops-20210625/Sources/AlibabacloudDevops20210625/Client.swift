@@ -210,6 +210,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func closeMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: CloseMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CloseMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CloseMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId) + "/close",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CloseMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func closeMergeRequest(_ repositoryId: String, _ localId: String, _ request: CloseMergeRequestRequest) async throws -> CloseMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await closeMergeRequestWithOptions(repositoryId as! String, localId as! String, request as! CloseMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createBranchWithOptions(_ repositoryId: String, _ request: CreateBranchRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBranchResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -480,6 +516,71 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createHostGroupWithOptions(organizationId as! String, request as! CreateHostGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMergeRequestWithOptions(_ repositoryId: String, _ request: CreateMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.createFrom)) {
+            body["createFrom"] = request.createFrom ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reviewerIds)) {
+            body["reviewerIds"] = request.reviewerIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceBranch)) {
+            body["sourceBranch"] = request.sourceBranch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceProjectId)) {
+            body["sourceProjectId"] = request.sourceProjectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.targetBranch)) {
+            body["targetBranch"] = request.targetBranch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetProjectId)) {
+            body["targetProjectId"] = request.targetProjectId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            body["title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workItemIds)) {
+            body["workItemIds"] = request.workItemIds ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMergeRequest(_ repositoryId: String, _ request: CreateMergeRequestRequest) async throws -> CreateMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createMergeRequestWithOptions(repositoryId as! String, request as! CreateMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2781,6 +2882,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: GetMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId) + "/detail",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMergeRequest(_ repositoryId: String, _ localId: String, _ request: GetMergeRequestRequest) async throws -> GetMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getMergeRequestWithOptions(repositoryId as! String, localId as! String, request as! GetMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getOrganizationMemberWithOptions(_ organizationId: String, _ accountId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOrganizationMemberResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -3840,6 +3977,75 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listHostGroupsWithOptions(organizationId as! String, request as! ListHostGroupsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMergeRequestsWithOptions(_ request: ListMergeRequestsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMergeRequestsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authorIds)) {
+            query["authorIds"] = request.authorIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filter)) {
+            query["filter"] = request.filter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.groupIds)) {
+            query["groupIds"] = request.groupIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderBy)) {
+            query["orderBy"] = request.orderBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.projectIds)) {
+            query["projectIds"] = request.projectIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reviewerIds)) {
+            query["reviewerIds"] = request.reviewerIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.search)) {
+            query["search"] = request.search ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sort)) {
+            query["sort"] = request.sort ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["state"] = request.state ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMergeRequests",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/merge_requests/advanced_search",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMergeRequestsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMergeRequests(_ request: ListMergeRequestsRequest) async throws -> ListMergeRequestsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listMergeRequestsWithOptions(request as! ListMergeRequestsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5678,6 +5884,53 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mergeMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: MergeMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> MergeMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mergeMessage)) {
+            body["mergeMessage"] = request.mergeMessage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mergeType)) {
+            body["mergeType"] = request.mergeType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.removeSourceBranch)) {
+            body["removeSourceBranch"] = request.removeSourceBranch!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MergeMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId) + "/merge",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MergeMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mergeMergeRequest(_ repositoryId: String, _ localId: String, _ request: MergeMergeRequestRequest) async throws -> MergeMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await mergeMergeRequestWithOptions(repositoryId as! String, localId as! String, request as! MergeMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func passPipelineValidateWithOptions(_ organizationId: String, _ pipelineId: String, _ pipelineRunId: String, _ jobId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PassPipelineValidateResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -5756,6 +6009,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await releaseWorkspaceWithOptions(workspaceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reopenMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: ReopenMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ReopenMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReopenMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId) + "/reopen",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReopenMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reopenMergeRequest(_ repositoryId: String, _ localId: String, _ request: ReopenMergeRequestRequest) async throws -> ReopenMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await reopenMergeRequestWithOptions(repositoryId as! String, localId as! String, request as! ReopenMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5864,6 +6153,53 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await retryVMDeployMachineWithOptions(organizationId as! String, pipelineId as! String, deployOrderId as! String, machineSn as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reviewMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: ReviewMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ReviewMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.draftCommentIds)) {
+            body["draftCommentIds"] = request.draftCommentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.reviewComment)) {
+            body["reviewComment"] = request.reviewComment ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reviewOpinion)) {
+            body["reviewOpinion"] = request.reviewOpinion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ReviewMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId) + "/submit_review_opinion",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ReviewMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func reviewMergeRequest(_ repositoryId: String, _ localId: String, _ request: ReviewMergeRequestRequest) async throws -> ReviewMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await reviewMergeRequestWithOptions(repositoryId as! String, localId as! String, request as! ReviewMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6407,6 +6743,91 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateHostGroupWithOptions(organizationId as! String, id as! String, request as! UpdateHostGroupRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMergeRequestWithOptions(_ repositoryId: String, _ localId: String, _ request: UpdateMergeRequestRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMergeRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            body["title"] = request.title ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMergeRequest",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId),
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMergeRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMergeRequest(_ repositoryId: String, _ localId: String, _ request: UpdateMergeRequestRequest) async throws -> UpdateMergeRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMergeRequestWithOptions(repositoryId as! String, localId as! String, request as! UpdateMergeRequestRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMergeRequestPersonnelWithOptions(_ repositoryId: String, _ localId: String, _ personType: String, _ request: UpdateMergeRequestPersonnelRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMergeRequestPersonnelResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.newUserIdList)) {
+            body["newUserIdList"] = request.newUserIdList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMergeRequestPersonnel",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(repositoryId) + "/merge_requests/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(localId) + "/person/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(personType),
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMergeRequestPersonnelResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMergeRequestPersonnel(_ repositoryId: String, _ localId: String, _ personType: String, _ request: UpdateMergeRequestPersonnelRequest) async throws -> UpdateMergeRequestPersonnelResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateMergeRequestPersonnelWithOptions(repositoryId as! String, localId as! String, personType as! String, request as! UpdateMergeRequestPersonnelRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
