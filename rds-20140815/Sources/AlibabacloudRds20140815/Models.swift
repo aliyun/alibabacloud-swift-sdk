@@ -809,6 +809,8 @@ public class AllocateReadWriteSplittingConnectionResponse : Tea.TeaModel {
 public class AttachWhitelistTemplateToInstanceRequest : Tea.TeaModel {
     public var insName: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -832,6 +834,9 @@ public class AttachWhitelistTemplateToInstanceRequest : Tea.TeaModel {
         if self.insName != nil {
             map["InsName"] = self.insName!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -847,6 +852,9 @@ public class AttachWhitelistTemplateToInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InsName") && dict["InsName"] != nil {
             self.insName = dict["InsName"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -14797,6 +14805,8 @@ public class DescribeAllWhitelistTemplateRequest : Tea.TeaModel {
 
     public var pageNumbers: Int32?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -14826,6 +14836,9 @@ public class DescribeAllWhitelistTemplateRequest : Tea.TeaModel {
         if self.pageNumbers != nil {
             map["PageNumbers"] = self.pageNumbers!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -14847,6 +14860,9 @@ public class DescribeAllWhitelistTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageNumbers") && dict["PageNumbers"] != nil {
             self.pageNumbers = dict["PageNumbers"] as! Int32
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -37333,6 +37349,8 @@ public class DescribeInstanceKeywordsResponse : Tea.TeaModel {
 public class DescribeInstanceLinkedWhitelistTemplateRequest : Tea.TeaModel {
     public var insName: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -37354,6 +37372,9 @@ public class DescribeInstanceLinkedWhitelistTemplateRequest : Tea.TeaModel {
         if self.insName != nil {
             map["InsName"] = self.insName!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -37366,6 +37387,9 @@ public class DescribeInstanceLinkedWhitelistTemplateRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InsName") && dict["InsName"] != nil {
             self.insName = dict["InsName"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -47799,6 +47823,8 @@ public class DescribeSlotsResponseBody : Tea.TeaModel {
 
         public var slotType: String?
 
+        public var subReplayLag: String?
+
         public var temporary: String?
 
         public var walDelay: String?
@@ -47832,6 +47858,9 @@ public class DescribeSlotsResponseBody : Tea.TeaModel {
             if self.slotType != nil {
                 map["SlotType"] = self.slotType!
             }
+            if self.subReplayLag != nil {
+                map["SubReplayLag"] = self.subReplayLag!
+            }
             if self.temporary != nil {
                 map["Temporary"] = self.temporary!
             }
@@ -47856,6 +47885,9 @@ public class DescribeSlotsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SlotType") && dict["SlotType"] != nil {
                 self.slotType = dict["SlotType"] as! String
+            }
+            if dict.keys.contains("SubReplayLag") && dict["SubReplayLag"] != nil {
+                self.subReplayLag = dict["SubReplayLag"] as! String
             }
             if dict.keys.contains("Temporary") && dict["Temporary"] != nil {
                 self.temporary = dict["Temporary"] as! String
@@ -50966,6 +50998,8 @@ public class DescribeVSwitchesResponse : Tea.TeaModel {
 }
 
 public class DescribeWhitelistTemplateRequest : Tea.TeaModel {
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -50986,6 +51020,9 @@ public class DescribeWhitelistTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -50999,6 +51036,9 @@ public class DescribeWhitelistTemplateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -51230,6 +51270,8 @@ public class DescribeWhitelistTemplateResponse : Tea.TeaModel {
 }
 
 public class DescribeWhitelistTemplateLinkedInstanceRequest : Tea.TeaModel {
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -51250,6 +51292,9 @@ public class DescribeWhitelistTemplateLinkedInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -51263,6 +51308,9 @@ public class DescribeWhitelistTemplateLinkedInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -51728,6 +51776,8 @@ public class DetachGadInstanceMemberResponse : Tea.TeaModel {
 public class DetachWhitelistTemplateToInstanceRequest : Tea.TeaModel {
     public var insName: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -51751,6 +51801,9 @@ public class DetachWhitelistTemplateToInstanceRequest : Tea.TeaModel {
         if self.insName != nil {
             map["InsName"] = self.insName!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -51766,6 +51819,9 @@ public class DetachWhitelistTemplateToInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InsName") && dict["InsName"] != nil {
             self.insName = dict["InsName"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -51936,6 +51992,10 @@ public class DetachWhitelistTemplateToInstanceResponse : Tea.TeaModel {
 public class GetDBInstanceTopologyRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerId: Int64?
+
     public override init() {
         super.init()
     }
@@ -51953,12 +52013,24 @@ public class GetDBInstanceTopologyRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
@@ -54345,6 +54417,10 @@ public class MigrateConnectionToOtherZoneRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var ownerId: Int64?
+
+    public var resourceOwnerId: Int64?
+
     public var zoneId: String?
 
     public override init() {
@@ -54367,6 +54443,12 @@ public class MigrateConnectionToOtherZoneRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -54379,6 +54461,12 @@ public class MigrateConnectionToOtherZoneRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
@@ -64510,6 +64598,8 @@ public class ModifySecurityIpsResponse : Tea.TeaModel {
 public class ModifyWhitelistTemplateRequest : Tea.TeaModel {
     public var ipWhitelist: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -64535,6 +64625,9 @@ public class ModifyWhitelistTemplateRequest : Tea.TeaModel {
         if self.ipWhitelist != nil {
             map["IpWhitelist"] = self.ipWhitelist!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -64553,6 +64646,9 @@ public class ModifyWhitelistTemplateRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("IpWhitelist") && dict["IpWhitelist"] != nil {
             self.ipWhitelist = dict["IpWhitelist"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
