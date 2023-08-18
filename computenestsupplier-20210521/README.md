@@ -12,20 +12,12 @@ English | [简体中文](README-CN.md)
 
 ## Installation
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudComputeNestSupplier20210521` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'AlibabacloudComputeNestSupplier20210521', '~> 1.0.3'
-```
-
 ### Carthage
 
 To integrate `AlibabacloudComputeNestSupplier20210521` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/computenestsupplier-20210521" "1.0.3"
+github "alibabacloud-sdk-swift/computenestsupplier-20210521" "1.1.0"
 ```
 
 ### Swift Package Manager
@@ -34,7 +26,7 @@ To integrate `AlibabacloudComputeNestSupplier20210521` into your Xcode project u
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/computenestsupplier-20210521.git", from: "1.0.3")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/computenestsupplier-20210521.git", from: "1.1.0")
 ]
 ```
 
