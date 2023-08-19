@@ -769,6 +769,8 @@ public class AddImageVulWhiteListRequest : Tea.TeaModel {
 
     public var reason: String?
 
+    public var source: String?
+
     public var target: String?
 
     public var type: String?
@@ -795,6 +797,9 @@ public class AddImageVulWhiteListRequest : Tea.TeaModel {
         if self.reason != nil {
             map["Reason"] = self.reason!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.target != nil {
             map["Target"] = self.target!
         }
@@ -813,6 +818,9 @@ public class AddImageVulWhiteListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Reason") && dict["Reason"] != nil {
             self.reason = dict["Reason"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("Target") && dict["Target"] != nil {
             self.target = dict["Target"] as! String
@@ -21722,6 +21730,8 @@ public class DescribeCheckWarningsRequest : Tea.TeaModel {
 
     public var riskStatus: Int32?
 
+    public var source: String?
+
     public var sourceIp: String?
 
     public var uuid: String?
@@ -21764,6 +21774,9 @@ public class DescribeCheckWarningsRequest : Tea.TeaModel {
         if self.riskStatus != nil {
             map["RiskStatus"] = self.riskStatus!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.sourceIp != nil {
             map["SourceIp"] = self.sourceIp!
         }
@@ -21797,6 +21810,9 @@ public class DescribeCheckWarningsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskStatus") && dict["RiskStatus"] != nil {
             self.riskStatus = dict["RiskStatus"] as! Int32
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceIp") && dict["SourceIp"] != nil {
             self.sourceIp = dict["SourceIp"] as! String
@@ -35595,6 +35611,8 @@ public class DescribeImageBaselineItemListResponse : Tea.TeaModel {
 public class DescribeImageBaselineStrategyRequest : Tea.TeaModel {
     public var lang: String?
 
+    public var source: String?
+
     public var strategyId: Int64?
 
     public override init() {
@@ -35614,6 +35632,9 @@ public class DescribeImageBaselineStrategyRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.strategyId != nil {
             map["StrategyId"] = self.strategyId!
         }
@@ -35623,6 +35644,9 @@ public class DescribeImageBaselineStrategyRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("StrategyId") && dict["StrategyId"] != nil {
             self.strategyId = dict["StrategyId"] as! Int64
@@ -35677,6 +35701,8 @@ public class DescribeImageBaselineStrategyResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var baselineItem: String?
+
         public var baselineItemList: [DescribeImageBaselineStrategyResponseBody.Strategy.BaselineItemList]?
 
         public var selectedItemCount: Int32?
@@ -35703,6 +35729,9 @@ public class DescribeImageBaselineStrategyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.baselineItem != nil {
+                map["BaselineItem"] = self.baselineItem!
+            }
             if self.baselineItemList != nil {
                 var tmp : [Any] = []
                 for k in self.baselineItemList! {
@@ -35729,6 +35758,9 @@ public class DescribeImageBaselineStrategyResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BaselineItem") && dict["BaselineItem"] != nil {
+                self.baselineItem = dict["BaselineItem"] as! String
+            }
             if dict.keys.contains("BaselineItemList") && dict["BaselineItemList"] != nil {
                 var tmp : [DescribeImageBaselineStrategyResponseBody.Strategy.BaselineItemList] = []
                 for v in dict["BaselineItemList"] as! [Any] {
@@ -41881,6 +41913,8 @@ public class DescribeImageVulWhiteListRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var source: String?
+
     public override init() {
         super.init()
     }
@@ -41907,6 +41941,9 @@ public class DescribeImageVulWhiteListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         return map
     }
 
@@ -41922,6 +41959,9 @@ public class DescribeImageVulWhiteListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
     }
 }
@@ -54382,6 +54422,8 @@ public class DescribeRiskListCheckResultResponse : Tea.TeaModel {
 public class DescribeRiskTypeRequest : Tea.TeaModel {
     public var lang: String?
 
+    public var source: String?
+
     public var sourceIp: String?
 
     public override init() {
@@ -54401,6 +54443,9 @@ public class DescribeRiskTypeRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.sourceIp != nil {
             map["SourceIp"] = self.sourceIp!
         }
@@ -54410,6 +54455,9 @@ public class DescribeRiskTypeRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceIp") && dict["SourceIp"] != nil {
             self.sourceIp = dict["SourceIp"] as! String
@@ -76736,6 +76784,8 @@ public class GetAgentlessTaskCountResponseBody : Tea.TeaModel {
 
     public var scanMachine: Int32?
 
+    public var sysVulCount: String?
+
     public var vulnerability: Int32?
 
     public override init() {
@@ -76776,6 +76826,9 @@ public class GetAgentlessTaskCountResponseBody : Tea.TeaModel {
         if self.scanMachine != nil {
             map["ScanMachine"] = self.scanMachine!
         }
+        if self.sysVulCount != nil {
+            map["SysVulCount"] = self.sysVulCount!
+        }
         if self.vulnerability != nil {
             map["Vulnerability"] = self.vulnerability!
         }
@@ -76806,6 +76859,9 @@ public class GetAgentlessTaskCountResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ScanMachine") && dict["ScanMachine"] != nil {
             self.scanMachine = dict["ScanMachine"] as! Int32
+        }
+        if dict.keys.contains("SysVulCount") && dict["SysVulCount"] != nil {
+            self.sysVulCount = dict["SysVulCount"] as! String
         }
         if dict.keys.contains("Vulnerability") && dict["Vulnerability"] != nil {
             self.vulnerability = dict["Vulnerability"] as! Int32
@@ -87868,6 +87924,8 @@ public class IgnoreCheckItemsRequest : Tea.TeaModel {
 
     public var reason: String?
 
+    public var source: String?
+
     public var type: Int32?
 
     public var uuidList: [String]?
@@ -87899,6 +87957,9 @@ public class IgnoreCheckItemsRequest : Tea.TeaModel {
         if self.reason != nil {
             map["Reason"] = self.reason!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -87925,6 +87986,9 @@ public class IgnoreCheckItemsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Reason") && dict["Reason"] != nil {
             self.reason = dict["Reason"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! Int32
@@ -88026,6 +88090,8 @@ public class IgnoreHcCheckWarningsRequest : Tea.TeaModel {
 
     public var riskId: String?
 
+    public var source: String?
+
     public var sourceIp: String?
 
     public var type: Int64?
@@ -88056,6 +88122,9 @@ public class IgnoreHcCheckWarningsRequest : Tea.TeaModel {
         if self.riskId != nil {
             map["RiskId"] = self.riskId!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.sourceIp != nil {
             map["SourceIp"] = self.sourceIp!
         }
@@ -88077,6 +88146,9 @@ public class IgnoreHcCheckWarningsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskId") && dict["RiskId"] != nil {
             self.riskId = dict["RiskId"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceIp") && dict["SourceIp"] != nil {
             self.sourceIp = dict["SourceIp"] as! String
@@ -92045,6 +92117,8 @@ public class ListCheckItemWarningMachineRequest : Tea.TeaModel {
 
     public var riskType: String?
 
+    public var source: String?
+
     public var status: Int32?
 
     public override init() {
@@ -92088,6 +92162,9 @@ public class ListCheckItemWarningMachineRequest : Tea.TeaModel {
         if self.riskType != nil {
             map["RiskType"] = self.riskType!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -92121,6 +92198,9 @@ public class ListCheckItemWarningMachineRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskType") && dict["RiskType"] != nil {
             self.riskType = dict["RiskType"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! Int32
@@ -92222,6 +92302,8 @@ public class ListCheckItemWarningMachineResponseBody : Tea.TeaModel {
 
         public var intranetIp: String?
 
+        public var lastScanTime: Int64?
+
         public var portOpen: Bool?
 
         public var prompt: String?
@@ -92229,6 +92311,12 @@ public class ListCheckItemWarningMachineResponseBody : Tea.TeaModel {
         public var regionId: String?
 
         public var status: Int32?
+
+        public var targetId: String?
+
+        public var targetName: String?
+
+        public var targetType: String?
 
         public var uuid: String?
 
@@ -92279,6 +92367,9 @@ public class ListCheckItemWarningMachineResponseBody : Tea.TeaModel {
             if self.intranetIp != nil {
                 map["IntranetIp"] = self.intranetIp!
             }
+            if self.lastScanTime != nil {
+                map["LastScanTime"] = self.lastScanTime!
+            }
             if self.portOpen != nil {
                 map["PortOpen"] = self.portOpen!
             }
@@ -92290,6 +92381,15 @@ public class ListCheckItemWarningMachineResponseBody : Tea.TeaModel {
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            if self.targetName != nil {
+                map["TargetName"] = self.targetName!
+            }
+            if self.targetType != nil {
+                map["TargetType"] = self.targetType!
             }
             if self.uuid != nil {
                 map["Uuid"] = self.uuid!
@@ -92340,6 +92440,9 @@ public class ListCheckItemWarningMachineResponseBody : Tea.TeaModel {
             if dict.keys.contains("IntranetIp") && dict["IntranetIp"] != nil {
                 self.intranetIp = dict["IntranetIp"] as! String
             }
+            if dict.keys.contains("LastScanTime") && dict["LastScanTime"] != nil {
+                self.lastScanTime = dict["LastScanTime"] as! Int64
+            }
             if dict.keys.contains("PortOpen") && dict["PortOpen"] != nil {
                 self.portOpen = dict["PortOpen"] as! Bool
             }
@@ -92351,6 +92454,15 @@ public class ListCheckItemWarningMachineResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! Int32
+            }
+            if dict.keys.contains("TargetId") && dict["TargetId"] != nil {
+                self.targetId = dict["TargetId"] as! String
+            }
+            if dict.keys.contains("TargetName") && dict["TargetName"] != nil {
+                self.targetName = dict["TargetName"] as! String
+            }
+            if dict.keys.contains("TargetType") && dict["TargetType"] != nil {
+                self.targetType = dict["TargetType"] as! String
             }
             if dict.keys.contains("Uuid") && dict["Uuid"] != nil {
                 self.uuid = dict["Uuid"] as! String
@@ -92556,6 +92668,8 @@ public class ListCheckItemWarningSummaryRequest : Tea.TeaModel {
 
     public var riskType: String?
 
+    public var source: String?
+
     public override init() {
         super.init()
     }
@@ -92603,6 +92717,9 @@ public class ListCheckItemWarningSummaryRequest : Tea.TeaModel {
         if self.riskType != nil {
             map["RiskType"] = self.riskType!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         return map
     }
 
@@ -92639,6 +92756,9 @@ public class ListCheckItemWarningSummaryRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RiskType") && dict["RiskType"] != nil {
             self.riskType = dict["RiskType"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
     }
 }
@@ -114432,6 +114552,231 @@ public class PublicSyncAndCreateImageScanTaskResponse : Tea.TeaModel {
     }
 }
 
+public class QueryAttackCountRequest : Tea.TeaModel {
+    public var from: String?
+
+    public var lang: String?
+
+    public var sourceIp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.from != nil {
+            map["From"] = self.from!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("From") && dict["From"] != nil {
+            self.from = dict["From"] as! String
+        }
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("SourceIp") && dict["SourceIp"] != nil {
+            self.sourceIp = dict["SourceIp"] as! String
+        }
+    }
+}
+
+public class QueryAttackCountResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var eventCount: Int32?
+
+        public var tacticId: String?
+
+        public var tacticType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eventCount != nil {
+                map["EventCount"] = self.eventCount!
+            }
+            if self.tacticId != nil {
+                map["TacticId"] = self.tacticId!
+            }
+            if self.tacticType != nil {
+                map["TacticType"] = self.tacticType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EventCount") && dict["EventCount"] != nil {
+                self.eventCount = dict["EventCount"] as! Int32
+            }
+            if dict.keys.contains("TacticId") && dict["TacticId"] != nil {
+                self.tacticId = dict["TacticId"] as! String
+            }
+            if dict.keys.contains("TacticType") && dict["TacticType"] != nil {
+                self.tacticType = dict["TacticType"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var count: Int32?
+
+    public var data: [QueryAttackCountResponseBody.Data]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Count") && dict["Count"] != nil {
+            self.count = dict["Count"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [QueryAttackCountResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = QueryAttackCountResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class QueryAttackCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryAttackCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryAttackCountResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryDiscoverDatabaseRequest : Tea.TeaModel {
     public var createMark: String?
 
@@ -116254,6 +116599,8 @@ public class SaveImageBaselineStrategyRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var source: String?
+
     public var strategyId: Int64?
 
     public var strategyName: String?
@@ -116278,6 +116625,9 @@ public class SaveImageBaselineStrategyRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         if self.strategyId != nil {
             map["StrategyId"] = self.strategyId!
         }
@@ -116293,6 +116643,9 @@ public class SaveImageBaselineStrategyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
         if dict.keys.contains("StrategyId") && dict["StrategyId"] != nil {
             self.strategyId = dict["StrategyId"] as! Int64
