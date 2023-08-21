@@ -783,6 +783,10 @@ public class CreateClusterRequest : Tea.TeaModel {
 
             public var nodeId: String?
 
+            public var vSwitchId: String?
+
+            public var vpcId: String?
+
             public override init() {
                 super.init()
             }
@@ -806,6 +810,12 @@ public class CreateClusterRequest : Tea.TeaModel {
                 if self.nodeId != nil {
                     map["NodeId"] = self.nodeId!
                 }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
+                }
                 return map
             }
 
@@ -818,6 +828,12 @@ public class CreateClusterRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
                     self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                    self.vSwitchId = dict["VSwitchId"] as! String
+                }
+                if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                    self.vpcId = dict["VpcId"] as! String
                 }
             }
         }
@@ -1556,6 +1572,8 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
     public var updateTime: String?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -1620,6 +1638,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
         if self.updateTime != nil {
             map["UpdateTime"] = self.updateTime!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -1681,6 +1702,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
             self.updateTime = dict["UpdateTime"] as! String
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
         }
     }
 }
@@ -3822,6 +3846,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
         public var updateTime: String?
 
+        public var vpcId: String?
+
         public override init() {
             super.init()
         }
@@ -3872,6 +3898,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
             return map
         }
 
@@ -3911,6 +3940,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
                 self.updateTime = dict["UpdateTime"] as! String
+            }
+            if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                self.vpcId = dict["VpcId"] as! String
             }
         }
     }
