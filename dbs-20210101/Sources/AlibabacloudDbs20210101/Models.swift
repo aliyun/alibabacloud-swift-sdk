@@ -578,6 +578,8 @@ public class CreateSandboxInstanceRequest : Tea.TeaModel {
 
     public var vpcSwitchId: String?
 
+    public var zoneId: String?
+
     public override init() {
         super.init()
     }
@@ -622,6 +624,9 @@ public class CreateSandboxInstanceRequest : Tea.TeaModel {
         if self.vpcSwitchId != nil {
             map["VpcSwitchId"] = self.vpcSwitchId!
         }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
@@ -655,6 +660,9 @@ public class CreateSandboxInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VpcSwitchId") && dict["VpcSwitchId"] != nil {
             self.vpcSwitchId = dict["VpcSwitchId"] as! String
+        }
+        if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+            self.zoneId = dict["ZoneId"] as! String
         }
     }
 }
@@ -834,6 +842,8 @@ public class DeleteSandboxInstanceRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var zoneId: String?
+
     public override init() {
         super.init()
     }
@@ -854,6 +864,9 @@ public class DeleteSandboxInstanceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
         return map
     }
 
@@ -863,6 +876,9 @@ public class DeleteSandboxInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+            self.zoneId = dict["ZoneId"] as! String
         }
     }
 }
