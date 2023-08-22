@@ -197,6 +197,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeMfaDevicesWithOptions(_ request: DescribeMfaDevicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeMfaDevicesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adDomain)) {
+            query["AdDomain"] = request.adDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endUserIds)) {
             query["EndUserIds"] = request.endUserIds ?? [];
         }
@@ -406,6 +409,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func lockMfaDeviceWithOptions(_ request: LockMfaDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LockMfaDeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adDomain)) {
+            query["AdDomain"] = request.adDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serialNumber)) {
             query["SerialNumber"] = request.serialNumber ?? "";
         }
@@ -529,6 +535,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func removeMfaDeviceWithOptions(_ request: RemoveMfaDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveMfaDeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adDomain)) {
+            query["AdDomain"] = request.adDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serialNumber)) {
             query["SerialNumber"] = request.serialNumber ?? "";
         }
@@ -720,6 +729,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func unlockMfaDeviceWithOptions(_ request: UnlockMfaDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnlockMfaDeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.adDomain)) {
+            query["AdDomain"] = request.adDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serialNumber)) {
             query["SerialNumber"] = request.serialNumber ?? "";
         }

@@ -5,6 +5,80 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class WaIdPermissions : Tea.TeaModel {
+    public var code: String?
+
+    public var isBasicChild: Bool?
+
+    public var name: String?
+
+    public var subPermissions: [WaIdPermissions]?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isBasicChild != nil {
+            map["IsBasicChild"] = self.isBasicChild!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.subPermissions != nil {
+            var tmp : [Any] = []
+            for k in self.subPermissions! {
+                tmp.append(k.toMap())
+            }
+            map["SubPermissions"] = tmp
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsBasicChild") && dict["IsBasicChild"] != nil {
+            self.isBasicChild = dict["IsBasicChild"] as! Bool
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SubPermissions") && dict["SubPermissions"] != nil {
+            var tmp : [WaIdPermissions] = []
+            for v in dict["SubPermissions"] as! [Any] {
+                var model = WaIdPermissions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.subPermissions = tmp
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
 public class CheckUsedPropertyRequest : Tea.TeaModel {
     public var propertyId: Int64?
 
@@ -1107,6 +1181,8 @@ public class DeleteUserPropertyValueResponse : Tea.TeaModel {
 }
 
 public class DescribeMfaDevicesRequest : Tea.TeaModel {
+    public var adDomain: String?
+
     public var endUserIds: [String]?
 
     public var maxResults: Int64?
@@ -1129,6 +1205,9 @@ public class DescribeMfaDevicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adDomain != nil {
+            map["AdDomain"] = self.adDomain!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -1145,6 +1224,9 @@ public class DescribeMfaDevicesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdDomain") && dict["AdDomain"] != nil {
+            self.adDomain = dict["AdDomain"] as! String
+        }
         if dict.keys.contains("EndUserIds") && dict["EndUserIds"] != nil {
             self.endUserIds = dict["EndUserIds"] as! [String]
         }
@@ -1443,6 +1525,8 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
 
         public var isTenantManager: Bool?
 
+        public var nickName: String?
+
         public var orgId: String?
 
         public var ownerType: String?
@@ -1481,6 +1565,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             if self.isTenantManager != nil {
                 map["IsTenantManager"] = self.isTenantManager!
             }
+            if self.nickName != nil {
+                map["NickName"] = self.nickName!
+            }
             if self.orgId != nil {
                 map["OrgId"] = self.orgId!
             }
@@ -1514,6 +1601,9 @@ public class DescribeUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IsTenantManager") && dict["IsTenantManager"] != nil {
                 self.isTenantManager = dict["IsTenantManager"] as! Bool
+            }
+            if dict.keys.contains("NickName") && dict["NickName"] != nil {
+                self.nickName = dict["NickName"] as! String
             }
             if dict.keys.contains("OrgId") && dict["OrgId"] != nil {
                 self.orgId = dict["OrgId"] as! String
@@ -2879,6 +2969,8 @@ public class ListPropertyValueResponse : Tea.TeaModel {
 }
 
 public class LockMfaDeviceRequest : Tea.TeaModel {
+    public var adDomain: String?
+
     public var serialNumber: String?
 
     public override init() {
@@ -2895,6 +2987,9 @@ public class LockMfaDeviceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adDomain != nil {
+            map["AdDomain"] = self.adDomain!
+        }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
         }
@@ -2902,6 +2997,9 @@ public class LockMfaDeviceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdDomain") && dict["AdDomain"] != nil {
+            self.adDomain = dict["AdDomain"] as! String
+        }
         if dict.keys.contains("SerialNumber") && dict["SerialNumber"] != nil {
             self.serialNumber = dict["SerialNumber"] as! String
         }
@@ -3554,6 +3652,8 @@ public class QuerySyncStatusByAliUidResponse : Tea.TeaModel {
 }
 
 public class RemoveMfaDeviceRequest : Tea.TeaModel {
+    public var adDomain: String?
+
     public var serialNumber: String?
 
     public override init() {
@@ -3570,6 +3670,9 @@ public class RemoveMfaDeviceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adDomain != nil {
+            map["AdDomain"] = self.adDomain!
+        }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
         }
@@ -3577,6 +3680,9 @@ public class RemoveMfaDeviceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdDomain") && dict["AdDomain"] != nil {
+            self.adDomain = dict["AdDomain"] as! String
+        }
         if dict.keys.contains("SerialNumber") && dict["SerialNumber"] != nil {
             self.serialNumber = dict["SerialNumber"] as! String
         }
@@ -4470,6 +4576,8 @@ public class SyncAllEduInfoResponse : Tea.TeaModel {
 }
 
 public class UnlockMfaDeviceRequest : Tea.TeaModel {
+    public var adDomain: String?
+
     public var serialNumber: String?
 
     public override init() {
@@ -4486,6 +4594,9 @@ public class UnlockMfaDeviceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.adDomain != nil {
+            map["AdDomain"] = self.adDomain!
+        }
         if self.serialNumber != nil {
             map["SerialNumber"] = self.serialNumber!
         }
@@ -4493,6 +4604,9 @@ public class UnlockMfaDeviceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdDomain") && dict["AdDomain"] != nil {
+            self.adDomain = dict["AdDomain"] as! String
+        }
         if dict.keys.contains("SerialNumber") && dict["SerialNumber"] != nil {
             self.serialNumber = dict["SerialNumber"] as! String
         }
