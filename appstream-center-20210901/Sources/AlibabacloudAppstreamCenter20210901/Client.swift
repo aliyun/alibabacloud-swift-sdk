@@ -517,6 +517,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.amount)) {
             query["Amount"] = request.amount!;
         }
+        if (!TeaUtils.Client.isUnset(request.appInstanceType)) {
+            query["AppInstanceType"] = request.appInstanceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
             query["BizRegionId"] = request.bizRegionId ?? "";
         }
@@ -883,6 +886,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyAppInstanceGroupAttributeShrinkRequest = ModifyAppInstanceGroupAttributeShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.network)) {
+            request.networkShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.network, "Network", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.nodePool)) {
             request.nodePoolShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodePool, "NodePool", "json")
         }
@@ -909,6 +915,15 @@ open class Client : AlibabacloudOpenApi.Client {
             query["SessionTimeout"] = request.sessionTimeout!;
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.networkShrink)) {
+            body["Network"] = request.networkShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preOpenAppId)) {
+            body["PreOpenAppId"] = request.preOpenAppId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preOpenMode)) {
+            body["PreOpenMode"] = request.preOpenMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.securityPolicyShrink)) {
             body["SecurityPolicy"] = request.securityPolicyShrink ?? "";
         }

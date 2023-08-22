@@ -439,6 +439,43 @@ public class CancelOtaTaskResponse : Tea.TeaModel {
 
 public class CreateAppInstanceGroupRequest : Tea.TeaModel {
     public class Network : Tea.TeaModel {
+        public class DomainRules : Tea.TeaModel {
+            public var domain: String?
+
+            public var policy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.domain != nil {
+                    map["Domain"] = self.domain!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Domain") && dict["Domain"] != nil {
+                    self.domain = dict["Domain"] as! String
+                }
+                if dict.keys.contains("Policy") && dict["Policy"] != nil {
+                    self.policy = dict["Policy"] as! String
+                }
+            }
+        }
         public class Routes : Tea.TeaModel {
             public var destination: String?
 
@@ -476,6 +513,8 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
                 }
             }
         }
+        public var domainRules: [CreateAppInstanceGroupRequest.Network.DomainRules]?
+
         public var ipExpireMinutes: Int32?
 
         public var routes: [CreateAppInstanceGroupRequest.Network.Routes]?
@@ -496,6 +535,13 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.domainRules != nil {
+                var tmp : [Any] = []
+                for k in self.domainRules! {
+                    tmp.append(k.toMap())
+                }
+                map["DomainRules"] = tmp
+            }
             if self.ipExpireMinutes != nil {
                 map["IpExpireMinutes"] = self.ipExpireMinutes!
             }
@@ -513,6 +559,17 @@ public class CreateAppInstanceGroupRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DomainRules") && dict["DomainRules"] != nil {
+                var tmp : [CreateAppInstanceGroupRequest.Network.DomainRules] = []
+                for v in dict["DomainRules"] as! [Any] {
+                    var model = CreateAppInstanceGroupRequest.Network.DomainRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainRules = tmp
+            }
             if dict.keys.contains("IpExpireMinutes") && dict["IpExpireMinutes"] != nil {
                 self.ipExpireMinutes = dict["IpExpireMinutes"] as! Int32
             }
@@ -2284,15 +2341,23 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var appInstanceType: String?
 
+        public var appInstanceTypeName: String?
+
         public var appPolicyId: String?
 
         public var apps: [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.Apps]?
+
+        public var chargeResourceMode: String?
 
         public var chargeType: String?
 
         public var expiredTime: String?
 
         public var gmtCreate: String?
+
+        public var maxAmount: Int32?
+
+        public var minAmount: Int32?
 
         public var nodePool: [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.NodePool]?
 
@@ -2304,7 +2369,19 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var reserveAmountRatio: String?
+
+        public var reserveMaxAmount: Int32?
+
+        public var reserveMinAmount: Int32?
+
         public var resourceStatus: String?
+
+        public var scalingDownAfterIdleMinutes: Int32?
+
+        public var scalingStep: Int32?
+
+        public var scalingUsageThreshold: String?
 
         public var sessionTimeout: String?
 
@@ -2347,6 +2424,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.appInstanceType != nil {
                 map["AppInstanceType"] = self.appInstanceType!
             }
+            if self.appInstanceTypeName != nil {
+                map["AppInstanceTypeName"] = self.appInstanceTypeName!
+            }
             if self.appPolicyId != nil {
                 map["AppPolicyId"] = self.appPolicyId!
             }
@@ -2357,6 +2437,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                 }
                 map["Apps"] = tmp
             }
+            if self.chargeResourceMode != nil {
+                map["ChargeResourceMode"] = self.chargeResourceMode!
+            }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
@@ -2365,6 +2448,12 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.maxAmount != nil {
+                map["MaxAmount"] = self.maxAmount!
+            }
+            if self.minAmount != nil {
+                map["MinAmount"] = self.minAmount!
             }
             if self.nodePool != nil {
                 var tmp : [Any] = []
@@ -2385,8 +2474,26 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.reserveAmountRatio != nil {
+                map["ReserveAmountRatio"] = self.reserveAmountRatio!
+            }
+            if self.reserveMaxAmount != nil {
+                map["ReserveMaxAmount"] = self.reserveMaxAmount!
+            }
+            if self.reserveMinAmount != nil {
+                map["ReserveMinAmount"] = self.reserveMinAmount!
+            }
             if self.resourceStatus != nil {
                 map["ResourceStatus"] = self.resourceStatus!
+            }
+            if self.scalingDownAfterIdleMinutes != nil {
+                map["ScalingDownAfterIdleMinutes"] = self.scalingDownAfterIdleMinutes!
+            }
+            if self.scalingStep != nil {
+                map["ScalingStep"] = self.scalingStep!
+            }
+            if self.scalingUsageThreshold != nil {
+                map["ScalingUsageThreshold"] = self.scalingUsageThreshold!
             }
             if self.sessionTimeout != nil {
                 map["SessionTimeout"] = self.sessionTimeout!
@@ -2422,6 +2529,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("AppInstanceType") && dict["AppInstanceType"] != nil {
                 self.appInstanceType = dict["AppInstanceType"] as! String
             }
+            if dict.keys.contains("AppInstanceTypeName") && dict["AppInstanceTypeName"] != nil {
+                self.appInstanceTypeName = dict["AppInstanceTypeName"] as! String
+            }
             if dict.keys.contains("AppPolicyId") && dict["AppPolicyId"] != nil {
                 self.appPolicyId = dict["AppPolicyId"] as! String
             }
@@ -2436,6 +2546,9 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
                 }
                 self.apps = tmp
             }
+            if dict.keys.contains("ChargeResourceMode") && dict["ChargeResourceMode"] != nil {
+                self.chargeResourceMode = dict["ChargeResourceMode"] as! String
+            }
             if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
                 self.chargeType = dict["ChargeType"] as! String
             }
@@ -2444,6 +2557,12 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtCreate") && dict["GmtCreate"] != nil {
                 self.gmtCreate = dict["GmtCreate"] as! String
+            }
+            if dict.keys.contains("MaxAmount") && dict["MaxAmount"] != nil {
+                self.maxAmount = dict["MaxAmount"] as! Int32
+            }
+            if dict.keys.contains("MinAmount") && dict["MinAmount"] != nil {
+                self.minAmount = dict["MinAmount"] as! Int32
             }
             if dict.keys.contains("NodePool") && dict["NodePool"] != nil {
                 var tmp : [GetAppInstanceGroupResponseBody.AppInstanceGroupModels.NodePool] = []
@@ -2470,8 +2589,26 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
             }
+            if dict.keys.contains("ReserveAmountRatio") && dict["ReserveAmountRatio"] != nil {
+                self.reserveAmountRatio = dict["ReserveAmountRatio"] as! String
+            }
+            if dict.keys.contains("ReserveMaxAmount") && dict["ReserveMaxAmount"] != nil {
+                self.reserveMaxAmount = dict["ReserveMaxAmount"] as! Int32
+            }
+            if dict.keys.contains("ReserveMinAmount") && dict["ReserveMinAmount"] != nil {
+                self.reserveMinAmount = dict["ReserveMinAmount"] as! Int32
+            }
             if dict.keys.contains("ResourceStatus") && dict["ResourceStatus"] != nil {
                 self.resourceStatus = dict["ResourceStatus"] as! String
+            }
+            if dict.keys.contains("ScalingDownAfterIdleMinutes") && dict["ScalingDownAfterIdleMinutes"] != nil {
+                self.scalingDownAfterIdleMinutes = dict["ScalingDownAfterIdleMinutes"] as! Int32
+            }
+            if dict.keys.contains("ScalingStep") && dict["ScalingStep"] != nil {
+                self.scalingStep = dict["ScalingStep"] as! Int32
+            }
+            if dict.keys.contains("ScalingUsageThreshold") && dict["ScalingUsageThreshold"] != nil {
+                self.scalingUsageThreshold = dict["ScalingUsageThreshold"] as! String
             }
             if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
                 self.sessionTimeout = dict["SessionTimeout"] as! String
@@ -2688,6 +2825,8 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
 
     public var taskStatus: String?
 
+    public var tenantId: Int64?
+
     public var ticket: String?
 
     public override init() {
@@ -2725,6 +2864,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         if self.taskStatus != nil {
             map["TaskStatus"] = self.taskStatus!
         }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
         if self.ticket != nil {
             map["Ticket"] = self.ticket!
         }
@@ -2752,6 +2894,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TaskStatus") && dict["TaskStatus"] != nil {
             self.taskStatus = dict["TaskStatus"] as! String
+        }
+        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
+            self.tenantId = dict["TenantId"] as! Int64
         }
         if dict.keys.contains("Ticket") && dict["Ticket"] != nil {
             self.ticket = dict["Ticket"] as! String
@@ -3134,6 +3279,8 @@ public class GetOtaTaskByTaskIdResponse : Tea.TeaModel {
 public class GetResourcePriceRequest : Tea.TeaModel {
     public var amount: Int64?
 
+    public var appInstanceType: String?
+
     public var bizRegionId: String?
 
     public var chargeType: String?
@@ -3163,6 +3310,9 @@ public class GetResourcePriceRequest : Tea.TeaModel {
         if self.amount != nil {
             map["Amount"] = self.amount!
         }
+        if self.appInstanceType != nil {
+            map["AppInstanceType"] = self.appInstanceType!
+        }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
@@ -3188,6 +3338,9 @@ public class GetResourcePriceRequest : Tea.TeaModel {
         if dict.keys.contains("Amount") && dict["Amount"] != nil {
             self.amount = dict["Amount"] as! Int64
         }
+        if dict.keys.contains("AppInstanceType") && dict["AppInstanceType"] != nil {
+            self.appInstanceType = dict["AppInstanceType"] as! String
+        }
         if dict.keys.contains("BizRegionId") && dict["BizRegionId"] != nil {
             self.bizRegionId = dict["BizRegionId"] as! String
         }
@@ -3210,6 +3363,237 @@ public class GetResourcePriceRequest : Tea.TeaModel {
 }
 
 public class GetResourcePriceResponseBody : Tea.TeaModel {
+    public class PriceList : Tea.TeaModel {
+        public class Price : Tea.TeaModel {
+            public class Promotions : Tea.TeaModel {
+                public var optionCode: String?
+
+                public var promotionDesc: String?
+
+                public var promotionId: String?
+
+                public var promotionName: String?
+
+                public var selected: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.optionCode != nil {
+                        map["OptionCode"] = self.optionCode!
+                    }
+                    if self.promotionDesc != nil {
+                        map["PromotionDesc"] = self.promotionDesc!
+                    }
+                    if self.promotionId != nil {
+                        map["PromotionId"] = self.promotionId!
+                    }
+                    if self.promotionName != nil {
+                        map["PromotionName"] = self.promotionName!
+                    }
+                    if self.selected != nil {
+                        map["Selected"] = self.selected!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("OptionCode") && dict["OptionCode"] != nil {
+                        self.optionCode = dict["OptionCode"] as! String
+                    }
+                    if dict.keys.contains("PromotionDesc") && dict["PromotionDesc"] != nil {
+                        self.promotionDesc = dict["PromotionDesc"] as! String
+                    }
+                    if dict.keys.contains("PromotionId") && dict["PromotionId"] != nil {
+                        self.promotionId = dict["PromotionId"] as! String
+                    }
+                    if dict.keys.contains("PromotionName") && dict["PromotionName"] != nil {
+                        self.promotionName = dict["PromotionName"] as! String
+                    }
+                    if dict.keys.contains("Selected") && dict["Selected"] != nil {
+                        self.selected = dict["Selected"] as! Bool
+                    }
+                }
+            }
+            public var currency: String?
+
+            public var discountPrice: String?
+
+            public var originalPrice: String?
+
+            public var promotions: [GetResourcePriceResponseBody.PriceList.Price.Promotions]?
+
+            public var tradePrice: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.currency != nil {
+                    map["Currency"] = self.currency!
+                }
+                if self.discountPrice != nil {
+                    map["DiscountPrice"] = self.discountPrice!
+                }
+                if self.originalPrice != nil {
+                    map["OriginalPrice"] = self.originalPrice!
+                }
+                if self.promotions != nil {
+                    var tmp : [Any] = []
+                    for k in self.promotions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Promotions"] = tmp
+                }
+                if self.tradePrice != nil {
+                    map["TradePrice"] = self.tradePrice!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Currency") && dict["Currency"] != nil {
+                    self.currency = dict["Currency"] as! String
+                }
+                if dict.keys.contains("DiscountPrice") && dict["DiscountPrice"] != nil {
+                    self.discountPrice = dict["DiscountPrice"] as! String
+                }
+                if dict.keys.contains("OriginalPrice") && dict["OriginalPrice"] != nil {
+                    self.originalPrice = dict["OriginalPrice"] as! String
+                }
+                if dict.keys.contains("Promotions") && dict["Promotions"] != nil {
+                    var tmp : [GetResourcePriceResponseBody.PriceList.Price.Promotions] = []
+                    for v in dict["Promotions"] as! [Any] {
+                        var model = GetResourcePriceResponseBody.PriceList.Price.Promotions()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.promotions = tmp
+                }
+                if dict.keys.contains("TradePrice") && dict["TradePrice"] != nil {
+                    self.tradePrice = dict["TradePrice"] as! String
+                }
+            }
+        }
+        public class Rules : Tea.TeaModel {
+            public var description_: String?
+
+            public var ruleId: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
+                if self.ruleId != nil {
+                    map["RuleId"] = self.ruleId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Description") && dict["Description"] != nil {
+                    self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+                    self.ruleId = dict["RuleId"] as! Int64
+                }
+            }
+        }
+        public var price: GetResourcePriceResponseBody.PriceList.Price?
+
+        public var priceType: String?
+
+        public var rules: [GetResourcePriceResponseBody.PriceList.Rules]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.price?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.price != nil {
+                map["Price"] = self.price?.toMap()
+            }
+            if self.priceType != nil {
+                map["PriceType"] = self.priceType!
+            }
+            if self.rules != nil {
+                var tmp : [Any] = []
+                for k in self.rules! {
+                    tmp.append(k.toMap())
+                }
+                map["Rules"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Price") && dict["Price"] != nil {
+                var model = GetResourcePriceResponseBody.PriceList.Price()
+                model.fromMap(dict["Price"] as! [String: Any])
+                self.price = model
+            }
+            if dict.keys.contains("PriceType") && dict["PriceType"] != nil {
+                self.priceType = dict["PriceType"] as! String
+            }
+            if dict.keys.contains("Rules") && dict["Rules"] != nil {
+                var tmp : [GetResourcePriceResponseBody.PriceList.Rules] = []
+                for v in dict["Rules"] as! [Any] {
+                    var model = GetResourcePriceResponseBody.PriceList.Rules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.rules = tmp
+            }
+        }
+    }
     public class PriceModel : Tea.TeaModel {
         public class Price : Tea.TeaModel {
             public class Promotions : Tea.TeaModel {
@@ -3437,6 +3821,8 @@ public class GetResourcePriceResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var priceList: [GetResourcePriceResponseBody.PriceList]?
+
     public var priceModel: GetResourcePriceResponseBody.PriceModel?
 
     public var requestId: String?
@@ -3462,6 +3848,13 @@ public class GetResourcePriceResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["Message"] = self.message!
         }
+        if self.priceList != nil {
+            var tmp : [Any] = []
+            for k in self.priceList! {
+                tmp.append(k.toMap())
+            }
+            map["PriceList"] = tmp
+        }
         if self.priceModel != nil {
             map["PriceModel"] = self.priceModel?.toMap()
         }
@@ -3477,6 +3870,17 @@ public class GetResourcePriceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PriceList") && dict["PriceList"] != nil {
+            var tmp : [GetResourcePriceResponseBody.PriceList] = []
+            for v in dict["PriceList"] as! [Any] {
+                var model = GetResourcePriceResponseBody.PriceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.priceList = tmp
         }
         if dict.keys.contains("PriceModel") && dict["PriceModel"] != nil {
             var model = GetResourcePriceResponseBody.PriceModel()
@@ -4414,6 +4818,10 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var gmtCreate: String?
 
+        public var maxAmount: Int32?
+
+        public var minAmount: Int32?
+
         public var nodePool: [ListAppInstanceGroupResponseBody.AppInstanceGroupModels.NodePool]?
 
         public var osType: String?
@@ -4424,7 +4832,19 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var reserveAmountRatio: String?
+
+        public var reserveMaxAmount: Int32?
+
+        public var reserveMinAmount: Int32?
+
         public var resourceStatus: String?
+
+        public var scalingDownAfterIdleMinutes: Int32?
+
+        public var scalingStep: Int32?
+
+        public var scalingUsageThreshold: String?
 
         public var sessionTimeout: String?
 
@@ -4486,6 +4906,12 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.gmtCreate != nil {
                 map["GmtCreate"] = self.gmtCreate!
             }
+            if self.maxAmount != nil {
+                map["MaxAmount"] = self.maxAmount!
+            }
+            if self.minAmount != nil {
+                map["MinAmount"] = self.minAmount!
+            }
             if self.nodePool != nil {
                 var tmp : [Any] = []
                 for k in self.nodePool! {
@@ -4505,8 +4931,26 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.reserveAmountRatio != nil {
+                map["ReserveAmountRatio"] = self.reserveAmountRatio!
+            }
+            if self.reserveMaxAmount != nil {
+                map["ReserveMaxAmount"] = self.reserveMaxAmount!
+            }
+            if self.reserveMinAmount != nil {
+                map["ReserveMinAmount"] = self.reserveMinAmount!
+            }
             if self.resourceStatus != nil {
                 map["ResourceStatus"] = self.resourceStatus!
+            }
+            if self.scalingDownAfterIdleMinutes != nil {
+                map["ScalingDownAfterIdleMinutes"] = self.scalingDownAfterIdleMinutes!
+            }
+            if self.scalingStep != nil {
+                map["ScalingStep"] = self.scalingStep!
+            }
+            if self.scalingUsageThreshold != nil {
+                map["ScalingUsageThreshold"] = self.scalingUsageThreshold!
             }
             if self.sessionTimeout != nil {
                 map["SessionTimeout"] = self.sessionTimeout!
@@ -4565,6 +5009,12 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("GmtCreate") && dict["GmtCreate"] != nil {
                 self.gmtCreate = dict["GmtCreate"] as! String
             }
+            if dict.keys.contains("MaxAmount") && dict["MaxAmount"] != nil {
+                self.maxAmount = dict["MaxAmount"] as! Int32
+            }
+            if dict.keys.contains("MinAmount") && dict["MinAmount"] != nil {
+                self.minAmount = dict["MinAmount"] as! Int32
+            }
             if dict.keys.contains("NodePool") && dict["NodePool"] != nil {
                 var tmp : [ListAppInstanceGroupResponseBody.AppInstanceGroupModels.NodePool] = []
                 for v in dict["NodePool"] as! [Any] {
@@ -4590,8 +5040,26 @@ public class ListAppInstanceGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
             }
+            if dict.keys.contains("ReserveAmountRatio") && dict["ReserveAmountRatio"] != nil {
+                self.reserveAmountRatio = dict["ReserveAmountRatio"] as! String
+            }
+            if dict.keys.contains("ReserveMaxAmount") && dict["ReserveMaxAmount"] != nil {
+                self.reserveMaxAmount = dict["ReserveMaxAmount"] as! Int32
+            }
+            if dict.keys.contains("ReserveMinAmount") && dict["ReserveMinAmount"] != nil {
+                self.reserveMinAmount = dict["ReserveMinAmount"] as! Int32
+            }
             if dict.keys.contains("ResourceStatus") && dict["ResourceStatus"] != nil {
                 self.resourceStatus = dict["ResourceStatus"] as! String
+            }
+            if dict.keys.contains("ScalingDownAfterIdleMinutes") && dict["ScalingDownAfterIdleMinutes"] != nil {
+                self.scalingDownAfterIdleMinutes = dict["ScalingDownAfterIdleMinutes"] as! Int32
+            }
+            if dict.keys.contains("ScalingStep") && dict["ScalingStep"] != nil {
+                self.scalingStep = dict["ScalingStep"] as! Int32
+            }
+            if dict.keys.contains("ScalingUsageThreshold") && dict["ScalingUsageThreshold"] != nil {
+                self.scalingUsageThreshold = dict["ScalingUsageThreshold"] as! String
             }
             if dict.keys.contains("SessionTimeout") && dict["SessionTimeout"] != nil {
                 self.sessionTimeout = dict["SessionTimeout"] as! String
@@ -5973,6 +6441,84 @@ public class LogOffAllSessionsInAppInstanceGroupResponse : Tea.TeaModel {
 }
 
 public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
+    public class Network : Tea.TeaModel {
+        public class DomainRules : Tea.TeaModel {
+            public var domain: String?
+
+            public var policy: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.domain != nil {
+                    map["Domain"] = self.domain!
+                }
+                if self.policy != nil {
+                    map["Policy"] = self.policy!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Domain") && dict["Domain"] != nil {
+                    self.domain = dict["Domain"] as! String
+                }
+                if dict.keys.contains("Policy") && dict["Policy"] != nil {
+                    self.policy = dict["Policy"] as! String
+                }
+            }
+        }
+        public var domainRules: [ModifyAppInstanceGroupAttributeRequest.Network.DomainRules]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainRules != nil {
+                var tmp : [Any] = []
+                for k in self.domainRules! {
+                    tmp.append(k.toMap())
+                }
+                map["DomainRules"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DomainRules") && dict["DomainRules"] != nil {
+                var tmp : [ModifyAppInstanceGroupAttributeRequest.Network.DomainRules] = []
+                for v in dict["DomainRules"] as! [Any] {
+                    var model = ModifyAppInstanceGroupAttributeRequest.Network.DomainRules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainRules = tmp
+            }
+        }
+    }
     public class NodePool : Tea.TeaModel {
         public var nodeCapacity: Int32?
 
@@ -6080,7 +6626,13 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
 
     public var appInstanceGroupName: String?
 
+    public var network: ModifyAppInstanceGroupAttributeRequest.Network?
+
     public var nodePool: ModifyAppInstanceGroupAttributeRequest.NodePool?
+
+    public var preOpenAppId: String?
+
+    public var preOpenMode: String?
 
     public var productType: String?
 
@@ -6100,6 +6652,7 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.network?.validate()
         try self.nodePool?.validate()
         try self.securityPolicy?.validate()
         try self.storagePolicy?.validate()
@@ -6113,8 +6666,17 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         if self.appInstanceGroupName != nil {
             map["AppInstanceGroupName"] = self.appInstanceGroupName!
         }
+        if self.network != nil {
+            map["Network"] = self.network?.toMap()
+        }
         if self.nodePool != nil {
             map["NodePool"] = self.nodePool?.toMap()
+        }
+        if self.preOpenAppId != nil {
+            map["PreOpenAppId"] = self.preOpenAppId!
+        }
+        if self.preOpenMode != nil {
+            map["PreOpenMode"] = self.preOpenMode!
         }
         if self.productType != nil {
             map["ProductType"] = self.productType!
@@ -6138,10 +6700,21 @@ public class ModifyAppInstanceGroupAttributeRequest : Tea.TeaModel {
         if dict.keys.contains("AppInstanceGroupName") && dict["AppInstanceGroupName"] != nil {
             self.appInstanceGroupName = dict["AppInstanceGroupName"] as! String
         }
+        if dict.keys.contains("Network") && dict["Network"] != nil {
+            var model = ModifyAppInstanceGroupAttributeRequest.Network()
+            model.fromMap(dict["Network"] as! [String: Any])
+            self.network = model
+        }
         if dict.keys.contains("NodePool") && dict["NodePool"] != nil {
             var model = ModifyAppInstanceGroupAttributeRequest.NodePool()
             model.fromMap(dict["NodePool"] as! [String: Any])
             self.nodePool = model
+        }
+        if dict.keys.contains("PreOpenAppId") && dict["PreOpenAppId"] != nil {
+            self.preOpenAppId = dict["PreOpenAppId"] as! String
+        }
+        if dict.keys.contains("PreOpenMode") && dict["PreOpenMode"] != nil {
+            self.preOpenMode = dict["PreOpenMode"] as! String
         }
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
@@ -6167,7 +6740,13 @@ public class ModifyAppInstanceGroupAttributeShrinkRequest : Tea.TeaModel {
 
     public var appInstanceGroupName: String?
 
+    public var networkShrink: String?
+
     public var nodePoolShrink: String?
+
+    public var preOpenAppId: String?
+
+    public var preOpenMode: String?
 
     public var productType: String?
 
@@ -6197,8 +6776,17 @@ public class ModifyAppInstanceGroupAttributeShrinkRequest : Tea.TeaModel {
         if self.appInstanceGroupName != nil {
             map["AppInstanceGroupName"] = self.appInstanceGroupName!
         }
+        if self.networkShrink != nil {
+            map["Network"] = self.networkShrink!
+        }
         if self.nodePoolShrink != nil {
             map["NodePool"] = self.nodePoolShrink!
+        }
+        if self.preOpenAppId != nil {
+            map["PreOpenAppId"] = self.preOpenAppId!
+        }
+        if self.preOpenMode != nil {
+            map["PreOpenMode"] = self.preOpenMode!
         }
         if self.productType != nil {
             map["ProductType"] = self.productType!
@@ -6222,8 +6810,17 @@ public class ModifyAppInstanceGroupAttributeShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("AppInstanceGroupName") && dict["AppInstanceGroupName"] != nil {
             self.appInstanceGroupName = dict["AppInstanceGroupName"] as! String
         }
+        if dict.keys.contains("Network") && dict["Network"] != nil {
+            self.networkShrink = dict["Network"] as! String
+        }
         if dict.keys.contains("NodePool") && dict["NodePool"] != nil {
             self.nodePoolShrink = dict["NodePool"] as! String
+        }
+        if dict.keys.contains("PreOpenAppId") && dict["PreOpenAppId"] != nil {
+            self.preOpenAppId = dict["PreOpenAppId"] as! String
+        }
+        if dict.keys.contains("PreOpenMode") && dict["PreOpenMode"] != nil {
+            self.preOpenMode = dict["PreOpenMode"] as! String
         }
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
