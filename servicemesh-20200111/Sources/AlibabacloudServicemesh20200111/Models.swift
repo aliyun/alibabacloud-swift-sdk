@@ -13024,6 +13024,8 @@ public class DescribeServiceMeshKubeconfigRequest : Tea.TeaModel {
 }
 
 public class DescribeServiceMeshKubeconfigResponseBody : Tea.TeaModel {
+    public var expireTime: String?
+
     public var kubeconfig: String?
 
     public var requestId: String?
@@ -13042,6 +13044,9 @@ public class DescribeServiceMeshKubeconfigResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.expireTime != nil {
+            map["ExpireTime"] = self.expireTime!
+        }
         if self.kubeconfig != nil {
             map["Kubeconfig"] = self.kubeconfig!
         }
@@ -13052,6 +13057,9 @@ public class DescribeServiceMeshKubeconfigResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
+            self.expireTime = dict["ExpireTime"] as! String
+        }
         if dict.keys.contains("Kubeconfig") && dict["Kubeconfig"] != nil {
             self.kubeconfig = dict["Kubeconfig"] as! String
         }
