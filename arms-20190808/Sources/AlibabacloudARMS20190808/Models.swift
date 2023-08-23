@@ -7871,6 +7871,8 @@ public class CreateOrUpdateIMRobotResponse : Tea.TeaModel {
 }
 
 public class CreateOrUpdateNotificationPolicyRequest : Tea.TeaModel {
+    public var directedMode: Bool?
+
     public var escalationPolicyId: Int64?
 
     public var groupRule: String?
@@ -7909,6 +7911,9 @@ public class CreateOrUpdateNotificationPolicyRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.directedMode != nil {
+            map["DirectedMode"] = self.directedMode!
+        }
         if self.escalationPolicyId != nil {
             map["EscalationPolicyId"] = self.escalationPolicyId!
         }
@@ -7949,6 +7954,9 @@ public class CreateOrUpdateNotificationPolicyRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DirectedMode") && dict["DirectedMode"] != nil {
+            self.directedMode = dict["DirectedMode"] as! Bool
+        }
         if dict.keys.contains("EscalationPolicyId") && dict["EscalationPolicyId"] != nil {
             self.escalationPolicyId = dict["EscalationPolicyId"] as! Int64
         }
@@ -8332,6 +8340,8 @@ public class CreateOrUpdateNotificationPolicyResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var directedMode: Bool?
+
         public var escalationPolicyId: Int64?
 
         public var groupRule: CreateOrUpdateNotificationPolicyResponseBody.NotificationPolicy.GroupRule?
@@ -8371,6 +8381,9 @@ public class CreateOrUpdateNotificationPolicyResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.directedMode != nil {
+                map["DirectedMode"] = self.directedMode!
+            }
             if self.escalationPolicyId != nil {
                 map["EscalationPolicyId"] = self.escalationPolicyId!
             }
@@ -8412,6 +8425,9 @@ public class CreateOrUpdateNotificationPolicyResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DirectedMode") && dict["DirectedMode"] != nil {
+                self.directedMode = dict["DirectedMode"] as! Bool
+            }
             if dict.keys.contains("EscalationPolicyId") && dict["EscalationPolicyId"] != nil {
                 self.escalationPolicyId = dict["EscalationPolicyId"] as! Int64
             }
@@ -32614,6 +32630,8 @@ public class ListAlertsRequest : Tea.TeaModel {
 
     public var page: Int64?
 
+    public var regionId: String?
+
     public var severity: String?
 
     public var showActivities: Bool?
@@ -32655,6 +32673,9 @@ public class ListAlertsRequest : Tea.TeaModel {
         if self.page != nil {
             map["Page"] = self.page!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.severity != nil {
             map["Severity"] = self.severity!
         }
@@ -32691,6 +32712,9 @@ public class ListAlertsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Page") && dict["Page"] != nil {
             self.page = dict["Page"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("Severity") && dict["Severity"] != nil {
             self.severity = dict["Severity"] as! String
@@ -35799,6 +35823,8 @@ public class ListIntegrationResponse : Tea.TeaModel {
 }
 
 public class ListNotificationPoliciesRequest : Tea.TeaModel {
+    public var directedMode: Bool?
+
     public var ids: String?
 
     public var isDetail: Bool?
@@ -35825,6 +35851,9 @@ public class ListNotificationPoliciesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.directedMode != nil {
+            map["DirectedMode"] = self.directedMode!
+        }
         if self.ids != nil {
             map["Ids"] = self.ids!
         }
@@ -35847,6 +35876,9 @@ public class ListNotificationPoliciesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DirectedMode") && dict["DirectedMode"] != nil {
+            self.directedMode = dict["DirectedMode"] as! Bool
+        }
         if dict.keys.contains("Ids") && dict["Ids"] != nil {
             self.ids = dict["Ids"] as! String
         }
@@ -36213,6 +36245,8 @@ public class ListNotificationPoliciesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var directedMode: Bool?
+
             public var escalationPolicyId: Int64?
 
             public var groupRule: ListNotificationPoliciesResponseBody.PageBean.NotificationPolicies.GroupRule?
@@ -36252,6 +36286,9 @@ public class ListNotificationPoliciesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.directedMode != nil {
+                    map["DirectedMode"] = self.directedMode!
+                }
                 if self.escalationPolicyId != nil {
                     map["EscalationPolicyId"] = self.escalationPolicyId!
                 }
@@ -36293,6 +36330,9 @@ public class ListNotificationPoliciesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DirectedMode") && dict["DirectedMode"] != nil {
+                    self.directedMode = dict["DirectedMode"] as! Bool
+                }
                 if dict.keys.contains("EscalationPolicyId") && dict["EscalationPolicyId"] != nil {
                     self.escalationPolicyId = dict["EscalationPolicyId"] as! Int64
                 }

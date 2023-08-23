@@ -1134,6 +1134,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createOrUpdateNotificationPolicyWithOptions(_ request: CreateOrUpdateNotificationPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrUpdateNotificationPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directedMode)) {
+            body["DirectedMode"] = request.directedMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.escalationPolicyId)) {
             body["EscalationPolicyId"] = request.escalationPolicyId!;
         }
@@ -4428,6 +4431,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.page)) {
             query["Page"] = request.page!;
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.severity)) {
             query["Severity"] = request.severity ?? "";
         }
@@ -4813,6 +4819,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listNotificationPoliciesWithOptions(_ request: ListNotificationPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNotificationPoliciesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directedMode)) {
+            query["DirectedMode"] = request.directedMode!;
+        }
         if (!TeaUtils.Client.isUnset(request.ids)) {
             query["Ids"] = request.ids ?? "";
         }
