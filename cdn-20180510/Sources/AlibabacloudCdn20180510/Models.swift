@@ -5198,6 +5198,8 @@ public class DescribeCdnDeliverListResponse : Tea.TeaModel {
 }
 
 public class DescribeCdnDomainByCertificateRequest : Tea.TeaModel {
+    public var exact: Bool?
+
     public var SSLPub: String?
 
     public var SSLStatus: Bool?
@@ -5216,6 +5218,9 @@ public class DescribeCdnDomainByCertificateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.exact != nil {
+            map["Exact"] = self.exact!
+        }
         if self.SSLPub != nil {
             map["SSLPub"] = self.SSLPub!
         }
@@ -5226,6 +5231,9 @@ public class DescribeCdnDomainByCertificateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Exact") && dict["Exact"] != nil {
+            self.exact = dict["Exact"] as! Bool
+        }
         if dict.keys.contains("SSLPub") && dict["SSLPub"] != nil {
             self.SSLPub = dict["SSLPub"] as! String
         }
@@ -5968,8 +5976,6 @@ public class DescribeCdnDomainDetailResponseBody : Tea.TeaModel {
 
         public var domainStatus: String?
 
-        public var globalResourcePlan: String?
-
         public var gmtCreated: String?
 
         public var gmtModified: String?
@@ -6014,9 +6020,6 @@ public class DescribeCdnDomainDetailResponseBody : Tea.TeaModel {
             if self.domainStatus != nil {
                 map["DomainStatus"] = self.domainStatus!
             }
-            if self.globalResourcePlan != nil {
-                map["GlobalResourcePlan"] = self.globalResourcePlan!
-            }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
             }
@@ -6056,9 +6059,6 @@ public class DescribeCdnDomainDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DomainStatus") && dict["DomainStatus"] != nil {
                 self.domainStatus = dict["DomainStatus"] as! String
-            }
-            if dict.keys.contains("GlobalResourcePlan") && dict["GlobalResourcePlan"] != nil {
-                self.globalResourcePlan = dict["GlobalResourcePlan"] as! String
             }
             if dict.keys.contains("GmtCreated") && dict["GmtCreated"] != nil {
                 self.gmtCreated = dict["GmtCreated"] as! String
@@ -28958,8 +28958,6 @@ public class DescribeUserDomainsResponseBody : Tea.TeaModel {
 
             public var domainStatus: String?
 
-            public var globalResourcePlan: String?
-
             public var gmtCreated: String?
 
             public var gmtModified: String?
@@ -29008,9 +29006,6 @@ public class DescribeUserDomainsResponseBody : Tea.TeaModel {
                 if self.domainStatus != nil {
                     map["DomainStatus"] = self.domainStatus!
                 }
-                if self.globalResourcePlan != nil {
-                    map["GlobalResourcePlan"] = self.globalResourcePlan!
-                }
                 if self.gmtCreated != nil {
                     map["GmtCreated"] = self.gmtCreated!
                 }
@@ -29053,9 +29048,6 @@ public class DescribeUserDomainsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DomainStatus") && dict["DomainStatus"] != nil {
                     self.domainStatus = dict["DomainStatus"] as! String
-                }
-                if dict.keys.contains("GlobalResourcePlan") && dict["GlobalResourcePlan"] != nil {
-                    self.globalResourcePlan = dict["GlobalResourcePlan"] as! String
                 }
                 if dict.keys.contains("GmtCreated") && dict["GmtCreated"] != nil {
                     self.gmtCreated = dict["GmtCreated"] as! String
