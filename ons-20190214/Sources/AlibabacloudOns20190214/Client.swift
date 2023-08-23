@@ -697,6 +697,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func onsInstanceInServiceListWithOptions(_ request: OnsInstanceInServiceListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> OnsInstanceInServiceListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.needResourceInfo)) {
+            query["NeedResourceInfo"] = request.needResourceInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
