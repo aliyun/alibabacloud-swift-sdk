@@ -1949,6 +1949,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDcdnDomainByCertificateWithOptions(_ request: DescribeDcdnDomainByCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDcdnDomainByCertificateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exact)) {
+            query["Exact"] = request.exact!;
+        }
         if (!TeaUtils.Client.isUnset(request.SSLPub)) {
             query["SSLPub"] = request.SSLPub ?? "";
         }

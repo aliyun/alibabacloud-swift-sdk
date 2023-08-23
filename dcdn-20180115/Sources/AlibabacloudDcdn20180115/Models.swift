@@ -8010,6 +8010,8 @@ public class DescribeDcdnDomainBpsDataByLayerResponse : Tea.TeaModel {
 }
 
 public class DescribeDcdnDomainByCertificateRequest : Tea.TeaModel {
+    public var exact: Bool?
+
     public var SSLPub: String?
 
     public var SSLStatus: Bool?
@@ -8028,6 +8030,9 @@ public class DescribeDcdnDomainByCertificateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.exact != nil {
+            map["Exact"] = self.exact!
+        }
         if self.SSLPub != nil {
             map["SSLPub"] = self.SSLPub!
         }
@@ -8038,6 +8043,9 @@ public class DescribeDcdnDomainByCertificateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Exact") && dict["Exact"] != nil {
+            self.exact = dict["Exact"] as! Bool
+        }
         if dict.keys.contains("SSLPub") && dict["SSLPub"] != nil {
             self.SSLPub = dict["SSLPub"] as! String
         }
