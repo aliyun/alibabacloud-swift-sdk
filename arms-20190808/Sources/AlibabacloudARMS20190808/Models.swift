@@ -5848,6 +5848,43 @@ public class CreateIntegrationResponse : Tea.TeaModel {
 }
 
 public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
+    public class MarkTags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public var key: String?
 
@@ -5912,6 +5949,8 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
     public var labels: String?
 
     public var level: String?
+
+    public var markTags: [CreateOrUpdateAlertRuleRequest.MarkTags]?
 
     public var message: String?
 
@@ -5984,6 +6023,13 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         }
         if self.level != nil {
             map["Level"] = self.level!
+        }
+        if self.markTags != nil {
+            var tmp : [Any] = []
+            for k in self.markTags! {
+                tmp.append(k.toMap())
+            }
+            map["MarkTags"] = tmp
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -6058,6 +6104,17 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Level") && dict["Level"] != nil {
             self.level = dict["Level"] as! String
+        }
+        if dict.keys.contains("MarkTags") && dict["MarkTags"] != nil {
+            var tmp : [CreateOrUpdateAlertRuleRequest.MarkTags] = []
+            for v in dict["MarkTags"] as! [Any] {
+                var model = CreateOrUpdateAlertRuleRequest.MarkTags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.markTags = tmp
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
@@ -17071,6 +17128,8 @@ public class DeleteSyntheticTaskResponse : Tea.TeaModel {
 public class DeleteTimingSyntheticTaskRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var taskId: String?
 
     public override init() {
@@ -17090,6 +17149,9 @@ public class DeleteTimingSyntheticTaskRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -17099,6 +17161,9 @@ public class DeleteTimingSyntheticTaskRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! String
