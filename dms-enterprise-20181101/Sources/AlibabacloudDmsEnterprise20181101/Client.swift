@@ -6532,6 +6532,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dbId)) {
             query["DbId"] = request.dbId!;
         }
+        if (!TeaUtils.Client.isUnset(request.isDefault)) {
+            query["IsDefault"] = request.isDefault!;
+        }
         if (!TeaUtils.Client.isUnset(request.isLogic)) {
             query["IsLogic"] = request.isLogic!;
         }

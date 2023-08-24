@@ -47887,6 +47887,8 @@ public class ModifyDesensitizationStrategyRequest : Tea.TeaModel {
 
     public var dbId: Int32?
 
+    public var isDefault: Bool?
+
     public var isLogic: Bool?
 
     public var isReset: Bool?
@@ -47919,6 +47921,9 @@ public class ModifyDesensitizationStrategyRequest : Tea.TeaModel {
         if self.dbId != nil {
             map["DbId"] = self.dbId!
         }
+        if self.isDefault != nil {
+            map["IsDefault"] = self.isDefault!
+        }
         if self.isLogic != nil {
             map["IsLogic"] = self.isLogic!
         }
@@ -47946,6 +47951,9 @@ public class ModifyDesensitizationStrategyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DbId") && dict["DbId"] != nil {
             self.dbId = dict["DbId"] as! Int32
+        }
+        if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
+            self.isDefault = dict["IsDefault"] as! Bool
         }
         if dict.keys.contains("IsLogic") && dict["IsLogic"] != nil {
             self.isLogic = dict["IsLogic"] as! Bool
