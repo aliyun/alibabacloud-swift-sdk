@@ -406,6 +406,8 @@ public class Resource : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var resourceType: String?
+
     public var status: String?
 
     public var updateTime: String?
@@ -457,6 +459,9 @@ public class Resource : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -499,6 +504,9 @@ public class Resource : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
             self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
@@ -1435,6 +1443,59 @@ public class CreateBenchmarkTaskResponse : Tea.TeaModel {
 }
 
 public class CreateResourceRequest : Tea.TeaModel {
+    public class NodeTolerations : Tea.TeaModel {
+        public var effect: String?
+
+        public var key: String?
+
+        public var operator_: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.effect != nil {
+                map["effect"] = self.effect!
+            }
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.operator_ != nil {
+                map["operator"] = self.operator_!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("effect") && dict["effect"] != nil {
+                self.effect = dict["effect"] as! String
+            }
+            if dict.keys.contains("key") && dict["key"] != nil {
+                self.key = dict["key"] as! String
+            }
+            if dict.keys.contains("operator") && dict["operator"] != nil {
+                self.operator_ = dict["operator"] as! String
+            }
+            if dict.keys.contains("value") && dict["value"] != nil {
+                self.value = dict["value"] as! String
+            }
+        }
+    }
     public var autoRenewal: Bool?
 
     public var chargeType: String?
@@ -1442,6 +1503,16 @@ public class CreateResourceRequest : Tea.TeaModel {
     public var ecsInstanceCount: Int32?
 
     public var ecsInstanceType: String?
+
+    public var externalClusterId: String?
+
+    public var nodeMatchLabels: [String: String]?
+
+    public var nodeTolerations: [CreateResourceRequest.NodeTolerations]?
+
+    public var resourceType: String?
+
+    public var roleName: String?
 
     public var systemDiskSize: Int32?
 
@@ -1473,6 +1544,25 @@ public class CreateResourceRequest : Tea.TeaModel {
         if self.ecsInstanceType != nil {
             map["EcsInstanceType"] = self.ecsInstanceType!
         }
+        if self.externalClusterId != nil {
+            map["ExternalClusterId"] = self.externalClusterId!
+        }
+        if self.nodeMatchLabels != nil {
+            map["NodeMatchLabels"] = self.nodeMatchLabels!
+        }
+        if self.nodeTolerations != nil {
+            var tmp : [Any] = []
+            for k in self.nodeTolerations! {
+                tmp.append(k.toMap())
+            }
+            map["NodeTolerations"] = tmp
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.roleName != nil {
+            map["RoleName"] = self.roleName!
+        }
         if self.systemDiskSize != nil {
             map["SystemDiskSize"] = self.systemDiskSize!
         }
@@ -1494,6 +1584,29 @@ public class CreateResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EcsInstanceType") && dict["EcsInstanceType"] != nil {
             self.ecsInstanceType = dict["EcsInstanceType"] as! String
+        }
+        if dict.keys.contains("ExternalClusterId") && dict["ExternalClusterId"] != nil {
+            self.externalClusterId = dict["ExternalClusterId"] as! String
+        }
+        if dict.keys.contains("NodeMatchLabels") && dict["NodeMatchLabels"] != nil {
+            self.nodeMatchLabels = dict["NodeMatchLabels"] as! [String: String]
+        }
+        if dict.keys.contains("NodeTolerations") && dict["NodeTolerations"] != nil {
+            var tmp : [CreateResourceRequest.NodeTolerations] = []
+            for v in dict["NodeTolerations"] as! [Any] {
+                var model = CreateResourceRequest.NodeTolerations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.nodeTolerations = tmp
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("RoleName") && dict["RoleName"] != nil {
+            self.roleName = dict["RoleName"] as! String
         }
         if dict.keys.contains("SystemDiskSize") && dict["SystemDiskSize"] != nil {
             self.systemDiskSize = dict["SystemDiskSize"] as! Int32
@@ -4337,6 +4450,8 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var resourceType: String?
+
     public var status: String?
 
     public var updateTime: String?
@@ -4394,6 +4509,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -4442,6 +4560,9 @@ public class DescribeResourceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
             self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
@@ -7209,6 +7330,8 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -7235,6 +7358,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -7250,6 +7376,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
             self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
     }
 }
@@ -9044,6 +9173,63 @@ public class UpdateBenchmarkTaskResponse : Tea.TeaModel {
 }
 
 public class UpdateResourceRequest : Tea.TeaModel {
+    public class NodeTolerations : Tea.TeaModel {
+        public var effect: String?
+
+        public var key: String?
+
+        public var operator_: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.effect != nil {
+                map["effect"] = self.effect!
+            }
+            if self.key != nil {
+                map["key"] = self.key!
+            }
+            if self.operator_ != nil {
+                map["operator"] = self.operator_!
+            }
+            if self.value != nil {
+                map["value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("effect") && dict["effect"] != nil {
+                self.effect = dict["effect"] as! String
+            }
+            if dict.keys.contains("key") && dict["key"] != nil {
+                self.key = dict["key"] as! String
+            }
+            if dict.keys.contains("operator") && dict["operator"] != nil {
+                self.operator_ = dict["operator"] as! String
+            }
+            if dict.keys.contains("value") && dict["value"] != nil {
+                self.value = dict["value"] as! String
+            }
+        }
+    }
+    public var nodeMatchLabels: [String: String]?
+
+    public var nodeTolerations: [UpdateResourceRequest.NodeTolerations]?
+
     public var resourceName: String?
 
     public override init() {
@@ -9060,6 +9246,16 @@ public class UpdateResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.nodeMatchLabels != nil {
+            map["NodeMatchLabels"] = self.nodeMatchLabels!
+        }
+        if self.nodeTolerations != nil {
+            var tmp : [Any] = []
+            for k in self.nodeTolerations! {
+                tmp.append(k.toMap())
+            }
+            map["NodeTolerations"] = tmp
+        }
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
@@ -9067,6 +9263,20 @@ public class UpdateResourceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NodeMatchLabels") && dict["NodeMatchLabels"] != nil {
+            self.nodeMatchLabels = dict["NodeMatchLabels"] as! [String: String]
+        }
+        if dict.keys.contains("NodeTolerations") && dict["NodeTolerations"] != nil {
+            var tmp : [UpdateResourceRequest.NodeTolerations] = []
+            for v in dict["NodeTolerations"] as! [Any] {
+                var model = UpdateResourceRequest.NodeTolerations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.nodeTolerations = tmp
+        }
         if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
             self.resourceName = dict["ResourceName"] as! String
         }

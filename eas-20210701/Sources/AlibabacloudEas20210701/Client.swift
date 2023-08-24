@@ -112,6 +112,21 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ecsInstanceType)) {
             body["EcsInstanceType"] = request.ecsInstanceType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.externalClusterId)) {
+            body["ExternalClusterId"] = request.externalClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeMatchLabels)) {
+            body["NodeMatchLabels"] = request.nodeMatchLabels ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeTolerations)) {
+            body["NodeTolerations"] = request.nodeTolerations ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            body["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleName)) {
+            body["RoleName"] = request.roleName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.systemDiskSize)) {
             body["SystemDiskSize"] = request.systemDiskSize!;
         }
@@ -1413,6 +1428,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceName)) {
             query["ResourceName"] = request.resourceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1849,6 +1867,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateResourceWithOptions(_ ClusterId: String, _ ResourceId: String, _ request: UpdateResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.nodeMatchLabels)) {
+            body["NodeMatchLabels"] = request.nodeMatchLabels ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.nodeTolerations)) {
+            body["NodeTolerations"] = request.nodeTolerations ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.resourceName)) {
             body["ResourceName"] = request.resourceName ?? "";
         }
