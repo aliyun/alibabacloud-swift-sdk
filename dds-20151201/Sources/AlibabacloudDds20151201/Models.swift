@@ -975,6 +975,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var period: Int32?
 
+    public var provisionedIops: Int64?
+
     public var readonlyReplicas: String?
 
     public var regionId: String?
@@ -1088,6 +1090,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.period != nil {
             map["Period"] = self.period!
+        }
+        if self.provisionedIops != nil {
+            map["ProvisionedIops"] = self.provisionedIops!
         }
         if self.readonlyReplicas != nil {
             map["ReadonlyReplicas"] = self.readonlyReplicas!
@@ -1213,6 +1218,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Period") && dict["Period"] != nil {
             self.period = dict["Period"] as! Int32
+        }
+        if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+            self.provisionedIops = dict["ProvisionedIops"] as! Int64
         }
         if dict.keys.contains("ReadonlyReplicas") && dict["ReadonlyReplicas"] != nil {
             self.readonlyReplicas = dict["ReadonlyReplicas"] as! String
@@ -2296,6 +2304,8 @@ public class CreateShardingDBInstanceRequest : Tea.TeaModel {
 
     public var protocolType: String?
 
+    public var provisionedIops: Int64?
+
     public var regionId: String?
 
     public var replicaSet: [CreateShardingDBInstanceRequest.ReplicaSet]?
@@ -2403,6 +2413,9 @@ public class CreateShardingDBInstanceRequest : Tea.TeaModel {
         }
         if self.protocolType != nil {
             map["ProtocolType"] = self.protocolType!
+        }
+        if self.provisionedIops != nil {
+            map["ProvisionedIops"] = self.provisionedIops!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -2533,6 +2546,9 @@ public class CreateShardingDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProtocolType") && dict["ProtocolType"] != nil {
             self.protocolType = dict["ProtocolType"] as! String
+        }
+        if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+            self.provisionedIops = dict["ProvisionedIops"] as! Int64
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -7470,6 +7486,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var burstingEnabled: Bool?
+
             public var capacityUnit: String?
 
             public var chargeType: String?
@@ -7530,6 +7548,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var protocolType: String?
 
+            public var provisionedIops: Int64?
+
             public var readonlyReplicas: String?
 
             public var regionId: String?
@@ -7585,6 +7605,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.burstingEnabled != nil {
+                    map["BurstingEnabled"] = self.burstingEnabled!
+                }
                 if self.capacityUnit != nil {
                     map["CapacityUnit"] = self.capacityUnit!
                 }
@@ -7675,6 +7698,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.protocolType != nil {
                     map["ProtocolType"] = self.protocolType!
                 }
+                if self.provisionedIops != nil {
+                    map["ProvisionedIops"] = self.provisionedIops!
+                }
                 if self.readonlyReplicas != nil {
                     map["ReadonlyReplicas"] = self.readonlyReplicas!
                 }
@@ -7733,6 +7759,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
+                    self.burstingEnabled = dict["BurstingEnabled"] as! Bool
+                }
                 if dict.keys.contains("CapacityUnit") && dict["CapacityUnit"] != nil {
                     self.capacityUnit = dict["CapacityUnit"] as! String
                 }
@@ -7826,6 +7855,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ProtocolType") && dict["ProtocolType"] != nil {
                     self.protocolType = dict["ProtocolType"] as! String
+                }
+                if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+                    self.provisionedIops = dict["ProvisionedIops"] as! Int64
                 }
                 if dict.keys.contains("ReadonlyReplicas") && dict["ReadonlyReplicas"] != nil {
                     self.readonlyReplicas = dict["ReadonlyReplicas"] as! String
@@ -24881,6 +24913,8 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
 
     public var period: Int64?
 
+    public var pricingCycle: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -24928,6 +24962,9 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
         if self.period != nil {
             map["Period"] = self.period!
         }
+        if self.pricingCycle != nil {
+            map["PricingCycle"] = self.pricingCycle!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -24967,6 +25004,9 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Period") && dict["Period"] != nil {
             self.period = dict["Period"] as! Int64
+        }
+        if dict.keys.contains("PricingCycle") && dict["PricingCycle"] != nil {
+            self.pricingCycle = dict["PricingCycle"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
