@@ -76524,6 +76524,8 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
 
     public var services: [ListVpcEndpointServicesByEndUserResponseBody.Services]?
 
+    public var totalCount: String?
+
     public override init() {
         super.init()
     }
@@ -76554,6 +76556,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
             }
             map["Services"] = tmp
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -76577,6 +76582,9 @@ public class ListVpcEndpointServicesByEndUserResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.services = tmp
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! String
         }
     }
 }
