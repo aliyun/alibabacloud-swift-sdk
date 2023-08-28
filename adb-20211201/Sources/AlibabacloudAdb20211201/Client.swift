@@ -221,6 +221,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDBClusterWithOptions(_ request: CreateDBClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDBClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backupSetId)) {
+            query["BackupSetId"] = request.backupSetId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.computeResource)) {
             query["ComputeResource"] = request.computeResource ?? "";
         }
@@ -247,6 +250,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.restoreToTime)) {
+            query["RestoreToTime"] = request.restoreToTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.restoreType)) {
+            query["RestoreType"] = request.restoreType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDbClusterId)) {
+            query["SourceDbClusterId"] = request.sourceDbClusterId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.storageResource)) {
             query["StorageResource"] = request.storageResource ?? "";

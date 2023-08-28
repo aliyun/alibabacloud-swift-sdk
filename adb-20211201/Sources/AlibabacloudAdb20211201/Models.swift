@@ -2781,6 +2781,8 @@ public class CreateDBClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public var backupSetId: String?
+
     public var computeResource: String?
 
     public var DBClusterDescription: String?
@@ -2798,6 +2800,12 @@ public class CreateDBClusterRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var restoreToTime: String?
+
+    public var restoreType: String?
+
+    public var sourceDbClusterId: String?
 
     public var storageResource: String?
 
@@ -2825,6 +2833,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.backupSetId != nil {
+            map["BackupSetId"] = self.backupSetId!
+        }
         if self.computeResource != nil {
             map["ComputeResource"] = self.computeResource!
         }
@@ -2852,6 +2863,15 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.restoreToTime != nil {
+            map["RestoreToTime"] = self.restoreToTime!
+        }
+        if self.restoreType != nil {
+            map["RestoreType"] = self.restoreType!
+        }
+        if self.sourceDbClusterId != nil {
+            map["SourceDbClusterId"] = self.sourceDbClusterId!
+        }
         if self.storageResource != nil {
             map["StorageResource"] = self.storageResource!
         }
@@ -2878,6 +2898,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackupSetId") && dict["BackupSetId"] != nil {
+            self.backupSetId = dict["BackupSetId"] as! String
+        }
         if dict.keys.contains("ComputeResource") && dict["ComputeResource"] != nil {
             self.computeResource = dict["ComputeResource"] as! String
         }
@@ -2904,6 +2927,15 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("RestoreToTime") && dict["RestoreToTime"] != nil {
+            self.restoreToTime = dict["RestoreToTime"] as! String
+        }
+        if dict.keys.contains("RestoreType") && dict["RestoreType"] != nil {
+            self.restoreType = dict["RestoreType"] as! String
+        }
+        if dict.keys.contains("SourceDbClusterId") && dict["SourceDbClusterId"] != nil {
+            self.sourceDbClusterId = dict["SourceDbClusterId"] as! String
         }
         if dict.keys.contains("StorageResource") && dict["StorageResource"] != nil {
             self.storageResource = dict["StorageResource"] as! String
