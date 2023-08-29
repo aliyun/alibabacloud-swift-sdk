@@ -47,6 +47,8 @@ public class AddDcdnDomainRequest : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var functionType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -84,6 +86,9 @@ public class AddDcdnDomainRequest : Tea.TeaModel {
         }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
+        }
+        if self.functionType != nil {
+            map["FunctionType"] = self.functionType!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -125,6 +130,9 @@ public class AddDcdnDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
             self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("FunctionType") && dict["FunctionType"] != nil {
+            self.functionType = dict["FunctionType"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -1136,6 +1144,245 @@ public class BatchModifyDcdnWafRulesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = BatchModifyDcdnWafRulesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class BatchPutDcdnKvRequest : Tea.TeaModel {
+    public class KvList : Tea.TeaModel {
+        public var expiration: Int64?
+
+        public var expirationTtl: Int64?
+
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.expiration != nil {
+                map["Expiration"] = self.expiration!
+            }
+            if self.expirationTtl != nil {
+                map["ExpirationTtl"] = self.expirationTtl!
+            }
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Expiration") && dict["Expiration"] != nil {
+                self.expiration = dict["Expiration"] as! Int64
+            }
+            if dict.keys.contains("ExpirationTtl") && dict["ExpirationTtl"] != nil {
+                self.expirationTtl = dict["ExpirationTtl"] as! Int64
+            }
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var kvList: [BatchPutDcdnKvRequest.KvList]?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.kvList != nil {
+            var tmp : [Any] = []
+            for k in self.kvList! {
+                tmp.append(k.toMap())
+            }
+            map["KvList"] = tmp
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("KvList") && dict["KvList"] != nil {
+            var tmp : [BatchPutDcdnKvRequest.KvList] = []
+            for v in dict["KvList"] as! [Any] {
+                var model = BatchPutDcdnKvRequest.KvList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.kvList = tmp
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class BatchPutDcdnKvShrinkRequest : Tea.TeaModel {
+    public var kvListShrink: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.kvListShrink != nil {
+            map["KvList"] = self.kvListShrink!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("KvList") && dict["KvList"] != nil {
+            self.kvListShrink = dict["KvList"] as! String
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class BatchPutDcdnKvResponseBody : Tea.TeaModel {
+    public var failKeys: [String]?
+
+    public var requestId: String?
+
+    public var successKeys: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.failKeys != nil {
+            map["FailKeys"] = self.failKeys!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.successKeys != nil {
+            map["SuccessKeys"] = self.successKeys!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FailKeys") && dict["FailKeys"] != nil {
+            self.failKeys = dict["FailKeys"] as! [String]
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SuccessKeys") && dict["SuccessKeys"] != nil {
+            self.successKeys = dict["SuccessKeys"] as! [String]
+        }
+    }
+}
+
+public class BatchPutDcdnKvResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchPutDcdnKvResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = BatchPutDcdnKvResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -9565,6 +9812,8 @@ public class DescribeDcdnDomainDetailResponseBody : Tea.TeaModel {
 
         public var domainStatus: String?
 
+        public var functionType: String?
+
         public var gmtCreated: String?
 
         public var gmtModified: String?
@@ -9608,6 +9857,9 @@ public class DescribeDcdnDomainDetailResponseBody : Tea.TeaModel {
             if self.domainStatus != nil {
                 map["DomainStatus"] = self.domainStatus!
             }
+            if self.functionType != nil {
+                map["FunctionType"] = self.functionType!
+            }
             if self.gmtCreated != nil {
                 map["GmtCreated"] = self.gmtCreated!
             }
@@ -9647,6 +9899,9 @@ public class DescribeDcdnDomainDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DomainStatus") && dict["DomainStatus"] != nil {
                 self.domainStatus = dict["DomainStatus"] as! String
+            }
+            if dict.keys.contains("FunctionType") && dict["FunctionType"] != nil {
+                self.functionType = dict["FunctionType"] as! String
             }
             if dict.keys.contains("GmtCreated") && dict["GmtCreated"] != nil {
                 self.gmtCreated = dict["GmtCreated"] as! String
@@ -27970,6 +28225,8 @@ public class DescribeDcdnUserDomainsRequest : Tea.TeaModel {
 
     public var tag: [DescribeDcdnUserDomainsRequest.Tag]?
 
+    public var webSiteType: String?
+
     public override init() {
         super.init()
     }
@@ -28027,6 +28284,9 @@ public class DescribeDcdnUserDomainsRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.webSiteType != nil {
+            map["WebSiteType"] = self.webSiteType!
+        }
         return map
     }
 
@@ -28077,6 +28337,9 @@ public class DescribeDcdnUserDomainsRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("WebSiteType") && dict["WebSiteType"] != nil {
+            self.webSiteType = dict["WebSiteType"] as! String
         }
     }
 }
@@ -28196,6 +28459,8 @@ public class DescribeDcdnUserDomainsResponseBody : Tea.TeaModel {
 
             public var domainStatus: String?
 
+            public var functionType: String?
+
             public var gmtCreated: String?
 
             public var gmtModified: String?
@@ -28240,6 +28505,9 @@ public class DescribeDcdnUserDomainsResponseBody : Tea.TeaModel {
                 if self.domainStatus != nil {
                     map["DomainStatus"] = self.domainStatus!
                 }
+                if self.functionType != nil {
+                    map["FunctionType"] = self.functionType!
+                }
                 if self.gmtCreated != nil {
                     map["GmtCreated"] = self.gmtCreated!
                 }
@@ -28279,6 +28547,9 @@ public class DescribeDcdnUserDomainsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DomainStatus") && dict["DomainStatus"] != nil {
                     self.domainStatus = dict["DomainStatus"] as! String
+                }
+                if dict.keys.contains("FunctionType") && dict["FunctionType"] != nil {
+                    self.functionType = dict["FunctionType"] as! String
                 }
                 if dict.keys.contains("GmtCreated") && dict["GmtCreated"] != nil {
                     self.gmtCreated = dict["GmtCreated"] as! String
@@ -36983,6 +37254,126 @@ public class DescribeRoutineCodeRevisionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeRoutineCodeRevisionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRoutineRelatedDomainsRequest : Tea.TeaModel {
+    public var name: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+    }
+}
+
+public class DescribeRoutineRelatedDomainsResponseBody : Tea.TeaModel {
+    public var content: [String: Any]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! [String: Any]
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeRoutineRelatedDomainsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRoutineRelatedDomainsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeRoutineRelatedDomainsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
