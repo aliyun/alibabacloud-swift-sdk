@@ -18971,6 +18971,53 @@ public class PutEnableFwSwitchRequest : Tea.TeaModel {
 }
 
 public class PutEnableFwSwitchResponseBody : Tea.TeaModel {
+    public class AbnormalResourceStatusList : Tea.TeaModel {
+        public var msg: String?
+
+        public var resource: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.msg != nil {
+                map["Msg"] = self.msg!
+            }
+            if self.resource != nil {
+                map["Resource"] = self.resource!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Msg") && dict["Msg"] != nil {
+                self.msg = dict["Msg"] as! String
+            }
+            if dict.keys.contains("Resource") && dict["Resource"] != nil {
+                self.resource = dict["Resource"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var abnormalResourceStatusList: [PutEnableFwSwitchResponseBody.AbnormalResourceStatusList]?
+
     public var requestId: String?
 
     public override init() {
@@ -18987,6 +19034,13 @@ public class PutEnableFwSwitchResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.abnormalResourceStatusList != nil {
+            var tmp : [Any] = []
+            for k in self.abnormalResourceStatusList! {
+                tmp.append(k.toMap())
+            }
+            map["AbnormalResourceStatusList"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -18994,6 +19048,17 @@ public class PutEnableFwSwitchResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AbnormalResourceStatusList") && dict["AbnormalResourceStatusList"] != nil {
+            var tmp : [PutEnableFwSwitchResponseBody.AbnormalResourceStatusList] = []
+            for v in dict["AbnormalResourceStatusList"] as! [Any] {
+                var model = PutEnableFwSwitchResponseBody.AbnormalResourceStatusList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.abnormalResourceStatusList = tmp
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
