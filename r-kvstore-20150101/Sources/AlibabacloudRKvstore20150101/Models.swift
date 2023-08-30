@@ -30,6 +30,8 @@ public class AddShardingNodeRequest : Tea.TeaModel {
 
     public var sourceBiz: String?
 
+    public var vSwitchId: String?
+
     public override init() {
         super.init()
     }
@@ -80,6 +82,9 @@ public class AddShardingNodeRequest : Tea.TeaModel {
         if self.sourceBiz != nil {
             map["SourceBiz"] = self.sourceBiz!
         }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
         return map
     }
 
@@ -119,6 +124,9 @@ public class AddShardingNodeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceBiz") && dict["SourceBiz"] != nil {
             self.sourceBiz = dict["SourceBiz"] as! String
+        }
+        if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+            self.vSwitchId = dict["VSwitchId"] as! String
         }
     }
 }
@@ -1738,6 +1746,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var paramGroupId: String?
+
     public var password: String?
 
     public var period: String?
@@ -1858,6 +1868,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.paramGroupId != nil {
+            map["ParamGroupId"] = self.paramGroupId!
         }
         if self.password != nil {
             map["Password"] = self.password!
@@ -1992,6 +2005,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ParamGroupId") && dict["ParamGroupId"] != nil {
+            self.paramGroupId = dict["ParamGroupId"] as! String
         }
         if dict.keys.contains("Password") && dict["Password"] != nil {
             self.password = dict["Password"] as! String
