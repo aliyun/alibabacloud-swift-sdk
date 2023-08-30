@@ -660,6 +660,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.currentPage)) {
             query["CurrentPage"] = request.currentPage!;
         }
+        if (!TeaUtils.Client.isUnset(request.identifier)) {
+            query["Identifier"] = request.identifier ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.showSize)) {
             query["ShowSize"] = request.showSize!;
         }

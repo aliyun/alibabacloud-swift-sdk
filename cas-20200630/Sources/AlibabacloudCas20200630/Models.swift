@@ -2595,6 +2595,8 @@ public class DescribeCACertificateCountResponse : Tea.TeaModel {
 public class DescribeCACertificateListRequest : Tea.TeaModel {
     public var currentPage: Int32?
 
+    public var identifier: String?
+
     public var showSize: Int32?
 
     public override init() {
@@ -2614,6 +2616,9 @@ public class DescribeCACertificateListRequest : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.identifier != nil {
+            map["Identifier"] = self.identifier!
+        }
         if self.showSize != nil {
             map["ShowSize"] = self.showSize!
         }
@@ -2623,6 +2628,9 @@ public class DescribeCACertificateListRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
             self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("Identifier") && dict["Identifier"] != nil {
+            self.identifier = dict["Identifier"] as! String
         }
         if dict.keys.contains("ShowSize") && dict["ShowSize"] != nil {
             self.showSize = dict["ShowSize"] as! Int32
