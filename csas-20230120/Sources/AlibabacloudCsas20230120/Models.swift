@@ -2197,6 +2197,8 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
 
         public var applicationId: String?
 
+        public var connectorIds: [String]?
+
         public var createTime: String?
 
         public var description_: String?
@@ -2232,6 +2234,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
+            }
+            if self.connectorIds != nil {
+                map["ConnectorIds"] = self.connectorIds!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -2270,6 +2275,9 @@ public class GetPrivateAccessApplicationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
                 self.applicationId = dict["ApplicationId"] as! String
+            }
+            if dict.keys.contains("ConnectorIds") && dict["ConnectorIds"] != nil {
+                self.connectorIds = dict["ConnectorIds"] as! [String]
             }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
@@ -3698,6 +3706,59 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ConnectorClients : Tea.TeaModel {
+            public var connectionStatus: String?
+
+            public var devTag: String?
+
+            public var hostname: String?
+
+            public var publicIp: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.connectionStatus != nil {
+                    map["ConnectionStatus"] = self.connectionStatus!
+                }
+                if self.devTag != nil {
+                    map["DevTag"] = self.devTag!
+                }
+                if self.hostname != nil {
+                    map["Hostname"] = self.hostname!
+                }
+                if self.publicIp != nil {
+                    map["PublicIp"] = self.publicIp!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConnectionStatus") && dict["ConnectionStatus"] != nil {
+                    self.connectionStatus = dict["ConnectionStatus"] as! String
+                }
+                if dict.keys.contains("DevTag") && dict["DevTag"] != nil {
+                    self.devTag = dict["DevTag"] as! String
+                }
+                if dict.keys.contains("Hostname") && dict["Hostname"] != nil {
+                    self.hostname = dict["Hostname"] as! String
+                }
+                if dict.keys.contains("PublicIp") && dict["PublicIp"] != nil {
+                    self.publicIp = dict["PublicIp"] as! String
+                }
+            }
+        }
         public class UpgradeTime : Tea.TeaModel {
             public var end: String?
 
@@ -3737,6 +3798,8 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
         }
         public var applications: [ListConnectorsResponseBody.Connectors.Applications]?
 
+        public var connectorClients: [ListConnectorsResponseBody.Connectors.ConnectorClients]?
+
         public var connectorId: String?
 
         public var createTime: String?
@@ -3773,6 +3836,13 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                 }
                 map["Applications"] = tmp
             }
+            if self.connectorClients != nil {
+                var tmp : [Any] = []
+                for k in self.connectorClients! {
+                    tmp.append(k.toMap())
+                }
+                map["ConnectorClients"] = tmp
+            }
             if self.connectorId != nil {
                 map["ConnectorId"] = self.connectorId!
             }
@@ -3808,6 +3878,17 @@ public class ListConnectorsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.applications = tmp
+            }
+            if dict.keys.contains("ConnectorClients") && dict["ConnectorClients"] != nil {
+                var tmp : [ListConnectorsResponseBody.Connectors.ConnectorClients] = []
+                for v in dict["ConnectorClients"] as! [Any] {
+                    var model = ListConnectorsResponseBody.Connectors.ConnectorClients()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.connectorClients = tmp
             }
             if dict.keys.contains("ConnectorId") && dict["ConnectorId"] != nil {
                 self.connectorId = dict["ConnectorId"] as! String
@@ -5287,6 +5368,8 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
 
     public var applicationIds: [String]?
 
+    public var connectorId: String?
+
     public var currentPage: Int32?
 
     public var name: String?
@@ -5319,6 +5402,9 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
         if self.applicationIds != nil {
             map["ApplicationIds"] = self.applicationIds!
         }
+        if self.connectorId != nil {
+            map["ConnectorId"] = self.connectorId!
+        }
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
@@ -5346,6 +5432,9 @@ public class ListPrivateAccessApplicationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ApplicationIds") && dict["ApplicationIds"] != nil {
             self.applicationIds = dict["ApplicationIds"] as! [String]
+        }
+        if dict.keys.contains("ConnectorId") && dict["ConnectorId"] != nil {
+            self.connectorId = dict["ConnectorId"] as! String
         }
         if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
             self.currentPage = dict["CurrentPage"] as! Int32
@@ -5411,6 +5500,8 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
 
         public var applicationId: String?
 
+        public var connectorIds: [String]?
+
         public var createTime: String?
 
         public var description_: String?
@@ -5446,6 +5537,9 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if self.applicationId != nil {
                 map["ApplicationId"] = self.applicationId!
+            }
+            if self.connectorIds != nil {
+                map["ConnectorIds"] = self.connectorIds!
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
@@ -5484,6 +5578,9 @@ public class ListPrivateAccessApplicationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
                 self.applicationId = dict["ApplicationId"] as! String
+            }
+            if dict.keys.contains("ConnectorIds") && dict["ConnectorIds"] != nil {
+                self.connectorIds = dict["ConnectorIds"] as! [String]
             }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
