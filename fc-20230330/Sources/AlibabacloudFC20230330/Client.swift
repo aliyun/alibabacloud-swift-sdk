@@ -169,6 +169,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVpcBindingWithOptions(_ functionName: String, _ request: CreateVpcBindingRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateVpcBindingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateVpcBinding",
+            "version": "2023-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/2023-03-30/functions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName) + "/vpc-bindings",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateVpcBindingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createVpcBinding(_ functionName: String, _ request: CreateVpcBindingRequest) async throws -> CreateVpcBindingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createVpcBindingWithOptions(functionName as! String, request as! CreateVpcBindingRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteAliasWithOptions(_ functionName: String, _ aliasName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAliasResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -310,7 +339,7 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteFunctionVersionWithOptions(_ functionName: String, _ versionID: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFunctionVersionResponse {
+    public func deleteFunctionVersionWithOptions(_ functionName: String, _ versionId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFunctionVersionResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -318,7 +347,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteFunctionVersion",
             "version": "2023-03-30",
             "protocol": "HTTPS",
-            "pathname": "/2023-03-30/functions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName) + "/versions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(versionID),
+            "pathname": "/2023-03-30/functions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName) + "/versions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(versionId),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -330,10 +359,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteFunctionVersion(_ functionName: String, _ versionID: String) async throws -> DeleteFunctionVersionResponse {
+    public func deleteFunctionVersion(_ functionName: String, _ versionId: String) async throws -> DeleteFunctionVersionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteFunctionVersionWithOptions(functionName as! String, versionID as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteFunctionVersionWithOptions(functionName as! String, versionId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -421,6 +450,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await deleteTriggerWithOptions(functionName as! String, triggerName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVpcBindingWithOptions(_ functionName: String, _ vpcId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVpcBindingResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVpcBinding",
+            "version": "2023-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/2023-03-30/functions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName) + "/vpc-bindings/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(vpcId),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "none"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVpcBindingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVpcBinding(_ functionName: String, _ vpcId: String) async throws -> DeleteVpcBindingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await deleteVpcBindingWithOptions(functionName as! String, vpcId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1274,6 +1330,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVpcBindingsWithOptions(_ functionName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListVpcBindingsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListVpcBindings",
+            "version": "2023-03-30",
+            "protocol": "HTTPS",
+            "pathname": "/2023-03-30/functions/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(functionName) + "/vpc-bindings",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListVpcBindingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listVpcBindings(_ functionName: String) async throws -> ListVpcBindingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listVpcBindingsWithOptions(functionName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func publishFunctionVersionWithOptions(_ functionName: String, _ request: PublishFunctionVersionRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PublishFunctionVersionResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -1448,7 +1531,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "authType": "AK",
             "style": "ROA",
             "reqBodyType": "json",
-            "bodyType": "json"
+            "bodyType": "none"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(TagResourceResponse(), tmp)
