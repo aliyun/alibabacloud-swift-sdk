@@ -2887,6 +2887,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateControlPlaneLogConfigWithOptions(_ request: UpdateControlPlaneLogConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateControlPlaneLogConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enabled)) {
+            body["Enabled"] = request.enabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logTTLInDay)) {
+            body["LogTTLInDay"] = request.logTTLInDay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.project)) {
+            body["Project"] = request.project ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateControlPlaneLogConfig",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateControlPlaneLogConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateControlPlaneLogConfig(_ request: UpdateControlPlaneLogConfigRequest) async throws -> UpdateControlPlaneLogConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateControlPlaneLogConfigWithOptions(request as! UpdateControlPlaneLogConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateIstioGatewayRoutesWithOptions(_ tmpReq: UpdateIstioGatewayRoutesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateIstioGatewayRoutesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateIstioGatewayRoutesShrinkRequest = UpdateIstioGatewayRoutesShrinkRequest([:])
@@ -3083,6 +3123,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateMeshFeatureWithOptions(_ request: UpdateMeshFeatureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMeshFeatureResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessLogGatewayEnabled)) {
+            query["AccessLogGatewayEnabled"] = request.accessLogGatewayEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.accessLogSidecarEnabled)) {
+            query["AccessLogSidecarEnabled"] = request.accessLogSidecarEnabled!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accessLogEnabled)) {
             body["AccessLogEnabled"] = request.accessLogEnabled!;
@@ -3376,6 +3423,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["WebAssemblyFilterEnabled"] = request.webAssemblyFilterEnabled!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -3405,6 +3453,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.concurrency)) {
             body["Concurrency"] = request.concurrency!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableCoreDump)) {
+            body["EnableCoreDump"] = request.enableCoreDump!;
         }
         if (!TeaUtils.Client.isUnset(request.excludeIPRanges)) {
             body["ExcludeIPRanges"] = request.excludeIPRanges ?? "";
@@ -3448,6 +3499,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.preStop)) {
             body["PreStop"] = request.preStop ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.privileged)) {
+            body["Privileged"] = request.privileged!;
+        }
         if (!TeaUtils.Client.isUnset(request.proxyInitAckSloCPUResourceLimit)) {
             body["ProxyInitAckSloCPUResourceLimit"] = request.proxyInitAckSloCPUResourceLimit ?? "";
         }
@@ -3477,6 +3531,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.proxyStatsMatcher)) {
             body["ProxyStatsMatcher"] = request.proxyStatsMatcher ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.readinessFailureThreshold)) {
+            body["ReadinessFailureThreshold"] = request.readinessFailureThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.readinessInitialDelaySeconds)) {
+            body["ReadinessInitialDelaySeconds"] = request.readinessInitialDelaySeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.readinessPeriodSeconds)) {
+            body["ReadinessPeriodSeconds"] = request.readinessPeriodSeconds!;
         }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             body["ServiceMeshId"] = request.serviceMeshId ?? "";

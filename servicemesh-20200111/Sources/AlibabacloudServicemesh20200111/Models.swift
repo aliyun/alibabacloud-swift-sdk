@@ -8806,6 +8806,8 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
         }
         public var concurrency: Int32?
 
+        public var enableCoreDump: Bool?
+
         public var excludeInboundPorts: String?
 
         public var excludeOutboundIPRanges: String?
@@ -8828,9 +8830,17 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
 
         public var logLevel: String?
 
+        public var privileged: Bool?
+
         public var proxyMetadata: [String: String]?
 
         public var proxyStatsMatcher: DescribeNamespaceScopeSidecarConfigResponseBody.ConfigPatches.ProxyStatsMatcher?
+
+        public var readinessFailureThreshold: Int32?
+
+        public var readinessInitialDelaySeconds: Int32?
+
+        public var readinessPeriodSeconds: Int32?
 
         public var sidecarProxyAckSloResource: DescribeNamespaceScopeSidecarConfigResponseBody.ConfigPatches.SidecarProxyAckSloResource?
 
@@ -8873,6 +8883,9 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
             if self.concurrency != nil {
                 map["Concurrency"] = self.concurrency!
             }
+            if self.enableCoreDump != nil {
+                map["EnableCoreDump"] = self.enableCoreDump!
+            }
             if self.excludeInboundPorts != nil {
                 map["ExcludeInboundPorts"] = self.excludeInboundPorts!
             }
@@ -8906,11 +8919,23 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
             if self.logLevel != nil {
                 map["LogLevel"] = self.logLevel!
             }
+            if self.privileged != nil {
+                map["Privileged"] = self.privileged!
+            }
             if self.proxyMetadata != nil {
                 map["ProxyMetadata"] = self.proxyMetadata!
             }
             if self.proxyStatsMatcher != nil {
                 map["ProxyStatsMatcher"] = self.proxyStatsMatcher?.toMap()
+            }
+            if self.readinessFailureThreshold != nil {
+                map["ReadinessFailureThreshold"] = self.readinessFailureThreshold!
+            }
+            if self.readinessInitialDelaySeconds != nil {
+                map["ReadinessInitialDelaySeconds"] = self.readinessInitialDelaySeconds!
+            }
+            if self.readinessPeriodSeconds != nil {
+                map["ReadinessPeriodSeconds"] = self.readinessPeriodSeconds!
             }
             if self.sidecarProxyAckSloResource != nil {
                 map["SidecarProxyAckSloResource"] = self.sidecarProxyAckSloResource?.toMap()
@@ -8942,6 +8967,9 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Concurrency") && dict["Concurrency"] != nil {
                 self.concurrency = dict["Concurrency"] as! Int32
+            }
+            if dict.keys.contains("EnableCoreDump") && dict["EnableCoreDump"] != nil {
+                self.enableCoreDump = dict["EnableCoreDump"] as! Bool
             }
             if dict.keys.contains("ExcludeInboundPorts") && dict["ExcludeInboundPorts"] != nil {
                 self.excludeInboundPorts = dict["ExcludeInboundPorts"] as! String
@@ -8976,6 +9004,9 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
             if dict.keys.contains("LogLevel") && dict["LogLevel"] != nil {
                 self.logLevel = dict["LogLevel"] as! String
             }
+            if dict.keys.contains("Privileged") && dict["Privileged"] != nil {
+                self.privileged = dict["Privileged"] as! Bool
+            }
             if dict.keys.contains("ProxyMetadata") && dict["ProxyMetadata"] != nil {
                 self.proxyMetadata = dict["ProxyMetadata"] as! [String: String]
             }
@@ -8983,6 +9014,15 @@ public class DescribeNamespaceScopeSidecarConfigResponseBody : Tea.TeaModel {
                 var model = DescribeNamespaceScopeSidecarConfigResponseBody.ConfigPatches.ProxyStatsMatcher()
                 model.fromMap(dict["ProxyStatsMatcher"] as! [String: Any])
                 self.proxyStatsMatcher = model
+            }
+            if dict.keys.contains("ReadinessFailureThreshold") && dict["ReadinessFailureThreshold"] != nil {
+                self.readinessFailureThreshold = dict["ReadinessFailureThreshold"] as! Int32
+            }
+            if dict.keys.contains("ReadinessInitialDelaySeconds") && dict["ReadinessInitialDelaySeconds"] != nil {
+                self.readinessInitialDelaySeconds = dict["ReadinessInitialDelaySeconds"] as! Int32
+            }
+            if dict.keys.contains("ReadinessPeriodSeconds") && dict["ReadinessPeriodSeconds"] != nil {
+                self.readinessPeriodSeconds = dict["ReadinessPeriodSeconds"] as! Int32
             }
             if dict.keys.contains("SidecarProxyAckSloResource") && dict["SidecarProxyAckSloResource"] != nil {
                 var model = DescribeNamespaceScopeSidecarConfigResponseBody.ConfigPatches.SidecarProxyAckSloResource()
@@ -10517,6 +10557,8 @@ public class DescribeServiceMeshDetailResponseBody : Tea.TeaModel {
                 public class ControlPlaneLogInfo : Tea.TeaModel {
                     public var enabled: Bool?
 
+                    public var logTTL: Int32?
+
                     public var project: String?
 
                     public override init() {
@@ -10536,6 +10578,9 @@ public class DescribeServiceMeshDetailResponseBody : Tea.TeaModel {
                         if self.enabled != nil {
                             map["Enabled"] = self.enabled!
                         }
+                        if self.logTTL != nil {
+                            map["LogTTL"] = self.logTTL!
+                        }
                         if self.project != nil {
                             map["Project"] = self.project!
                         }
@@ -10545,6 +10590,9 @@ public class DescribeServiceMeshDetailResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("Enabled") && dict["Enabled"] != nil {
                             self.enabled = dict["Enabled"] as! Bool
+                        }
+                        if dict.keys.contains("LogTTL") && dict["LogTTL"] != nil {
+                            self.logTTL = dict["LogTTL"] as! Int32
                         }
                         if dict.keys.contains("Project") && dict["Project"] != nil {
                             self.project = dict["Project"] as! String
@@ -10598,7 +10646,11 @@ public class DescribeServiceMeshDetailResponseBody : Tea.TeaModel {
                 }
                 public class ExtraConfiguration : Tea.TeaModel {
                     public class AccessLogExtraConf : Tea.TeaModel {
+                        public var gatewayEnabled: Bool?
+
                         public var gatewayLifecycle: Int32?
+
+                        public var sidecarEnabled: Bool?
 
                         public var sidecarLifecycle: Int32?
 
@@ -10616,8 +10668,14 @@ public class DescribeServiceMeshDetailResponseBody : Tea.TeaModel {
 
                         public override func toMap() -> [String : Any] {
                             var map = super.toMap()
+                            if self.gatewayEnabled != nil {
+                                map["GatewayEnabled"] = self.gatewayEnabled!
+                            }
                             if self.gatewayLifecycle != nil {
                                 map["GatewayLifecycle"] = self.gatewayLifecycle!
+                            }
+                            if self.sidecarEnabled != nil {
+                                map["SidecarEnabled"] = self.sidecarEnabled!
                             }
                             if self.sidecarLifecycle != nil {
                                 map["SidecarLifecycle"] = self.sidecarLifecycle!
@@ -10626,8 +10684,14 @@ public class DescribeServiceMeshDetailResponseBody : Tea.TeaModel {
                         }
 
                         public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("GatewayEnabled") && dict["GatewayEnabled"] != nil {
+                                self.gatewayEnabled = dict["GatewayEnabled"] as! Bool
+                            }
                             if dict.keys.contains("GatewayLifecycle") && dict["GatewayLifecycle"] != nil {
                                 self.gatewayLifecycle = dict["GatewayLifecycle"] as! Int32
+                            }
+                            if dict.keys.contains("SidecarEnabled") && dict["SidecarEnabled"] != nil {
+                                self.sidecarEnabled = dict["SidecarEnabled"] as! Bool
                             }
                             if dict.keys.contains("SidecarLifecycle") && dict["SidecarLifecycle"] != nil {
                                 self.sidecarLifecycle = dict["SidecarLifecycle"] as! Int32
@@ -19894,6 +19958,142 @@ public class UpdateASMNamespaceFromGuestClusterResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateControlPlaneLogConfigRequest : Tea.TeaModel {
+    public var enabled: Bool?
+
+    public var logTTLInDay: Int32?
+
+    public var project: String?
+
+    public var serviceMeshId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enabled != nil {
+            map["Enabled"] = self.enabled!
+        }
+        if self.logTTLInDay != nil {
+            map["LogTTLInDay"] = self.logTTLInDay!
+        }
+        if self.project != nil {
+            map["Project"] = self.project!
+        }
+        if self.serviceMeshId != nil {
+            map["ServiceMeshId"] = self.serviceMeshId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enabled") && dict["Enabled"] != nil {
+            self.enabled = dict["Enabled"] as! Bool
+        }
+        if dict.keys.contains("LogTTLInDay") && dict["LogTTLInDay"] != nil {
+            self.logTTLInDay = dict["LogTTLInDay"] as! Int32
+        }
+        if dict.keys.contains("Project") && dict["Project"] != nil {
+            self.project = dict["Project"] as! String
+        }
+        if dict.keys.contains("ServiceMeshId") && dict["ServiceMeshId"] != nil {
+            self.serviceMeshId = dict["ServiceMeshId"] as! String
+        }
+    }
+}
+
+public class UpdateControlPlaneLogConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateControlPlaneLogConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateControlPlaneLogConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateControlPlaneLogConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateIstioGatewayRoutesRequest : Tea.TeaModel {
     public class GatewayRoute : Tea.TeaModel {
         public class HTTPAdvancedOptions : Tea.TeaModel {
@@ -21566,6 +21766,8 @@ public class UpdateMeshFeatureRequest : Tea.TeaModel {
 
     public var accessLogFormat: String?
 
+    public var accessLogGatewayEnabled: Bool?
+
     public var accessLogGatewayLifecycle: Int32?
 
     public var accessLogProject: String?
@@ -21575,6 +21777,8 @@ public class UpdateMeshFeatureRequest : Tea.TeaModel {
     public var accessLogServiceHost: String?
 
     public var accessLogServicePort: Int32?
+
+    public var accessLogSidecarEnabled: Bool?
 
     public var accessLogSidecarLifecycle: Int32?
 
@@ -21777,6 +21981,9 @@ public class UpdateMeshFeatureRequest : Tea.TeaModel {
         if self.accessLogFormat != nil {
             map["AccessLogFormat"] = self.accessLogFormat!
         }
+        if self.accessLogGatewayEnabled != nil {
+            map["AccessLogGatewayEnabled"] = self.accessLogGatewayEnabled!
+        }
         if self.accessLogGatewayLifecycle != nil {
             map["AccessLogGatewayLifecycle"] = self.accessLogGatewayLifecycle!
         }
@@ -21791,6 +21998,9 @@ public class UpdateMeshFeatureRequest : Tea.TeaModel {
         }
         if self.accessLogServicePort != nil {
             map["AccessLogServicePort"] = self.accessLogServicePort!
+        }
+        if self.accessLogSidecarEnabled != nil {
+            map["AccessLogSidecarEnabled"] = self.accessLogSidecarEnabled!
         }
         if self.accessLogSidecarLifecycle != nil {
             map["AccessLogSidecarLifecycle"] = self.accessLogSidecarLifecycle!
@@ -22072,6 +22282,9 @@ public class UpdateMeshFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("AccessLogFormat") && dict["AccessLogFormat"] != nil {
             self.accessLogFormat = dict["AccessLogFormat"] as! String
         }
+        if dict.keys.contains("AccessLogGatewayEnabled") && dict["AccessLogGatewayEnabled"] != nil {
+            self.accessLogGatewayEnabled = dict["AccessLogGatewayEnabled"] as! Bool
+        }
         if dict.keys.contains("AccessLogGatewayLifecycle") && dict["AccessLogGatewayLifecycle"] != nil {
             self.accessLogGatewayLifecycle = dict["AccessLogGatewayLifecycle"] as! Int32
         }
@@ -22086,6 +22299,9 @@ public class UpdateMeshFeatureRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AccessLogServicePort") && dict["AccessLogServicePort"] != nil {
             self.accessLogServicePort = dict["AccessLogServicePort"] as! Int32
+        }
+        if dict.keys.contains("AccessLogSidecarEnabled") && dict["AccessLogSidecarEnabled"] != nil {
+            self.accessLogSidecarEnabled = dict["AccessLogSidecarEnabled"] as! Bool
         }
         if dict.keys.contains("AccessLogSidecarLifecycle") && dict["AccessLogSidecarLifecycle"] != nil {
             self.accessLogSidecarLifecycle = dict["AccessLogSidecarLifecycle"] as! Int32
@@ -22442,6 +22658,8 @@ public class UpdateMeshFeatureResponse : Tea.TeaModel {
 public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
     public var concurrency: Int32?
 
+    public var enableCoreDump: Bool?
+
     public var excludeIPRanges: String?
 
     public var excludeInboundPorts: String?
@@ -22470,6 +22688,8 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
 
     public var preStop: String?
 
+    public var privileged: Bool?
+
     public var proxyInitAckSloCPUResourceLimit: String?
 
     public var proxyInitAckSloCPUResourceRequest: String?
@@ -22489,6 +22709,12 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
     public var proxyMetadata: String?
 
     public var proxyStatsMatcher: String?
+
+    public var readinessFailureThreshold: Int32?
+
+    public var readinessInitialDelaySeconds: Int32?
+
+    public var readinessPeriodSeconds: Int32?
 
     public var serviceMeshId: String?
 
@@ -22528,6 +22754,9 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.concurrency != nil {
             map["Concurrency"] = self.concurrency!
+        }
+        if self.enableCoreDump != nil {
+            map["EnableCoreDump"] = self.enableCoreDump!
         }
         if self.excludeIPRanges != nil {
             map["ExcludeIPRanges"] = self.excludeIPRanges!
@@ -22571,6 +22800,9 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
         if self.preStop != nil {
             map["PreStop"] = self.preStop!
         }
+        if self.privileged != nil {
+            map["Privileged"] = self.privileged!
+        }
         if self.proxyInitAckSloCPUResourceLimit != nil {
             map["ProxyInitAckSloCPUResourceLimit"] = self.proxyInitAckSloCPUResourceLimit!
         }
@@ -22600,6 +22832,15 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
         }
         if self.proxyStatsMatcher != nil {
             map["ProxyStatsMatcher"] = self.proxyStatsMatcher!
+        }
+        if self.readinessFailureThreshold != nil {
+            map["ReadinessFailureThreshold"] = self.readinessFailureThreshold!
+        }
+        if self.readinessInitialDelaySeconds != nil {
+            map["ReadinessInitialDelaySeconds"] = self.readinessInitialDelaySeconds!
+        }
+        if self.readinessPeriodSeconds != nil {
+            map["ReadinessPeriodSeconds"] = self.readinessPeriodSeconds!
         }
         if self.serviceMeshId != nil {
             map["ServiceMeshId"] = self.serviceMeshId!
@@ -22640,6 +22881,9 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Concurrency") && dict["Concurrency"] != nil {
             self.concurrency = dict["Concurrency"] as! Int32
+        }
+        if dict.keys.contains("EnableCoreDump") && dict["EnableCoreDump"] != nil {
+            self.enableCoreDump = dict["EnableCoreDump"] as! Bool
         }
         if dict.keys.contains("ExcludeIPRanges") && dict["ExcludeIPRanges"] != nil {
             self.excludeIPRanges = dict["ExcludeIPRanges"] as! String
@@ -22683,6 +22927,9 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
         if dict.keys.contains("PreStop") && dict["PreStop"] != nil {
             self.preStop = dict["PreStop"] as! String
         }
+        if dict.keys.contains("Privileged") && dict["Privileged"] != nil {
+            self.privileged = dict["Privileged"] as! Bool
+        }
         if dict.keys.contains("ProxyInitAckSloCPUResourceLimit") && dict["ProxyInitAckSloCPUResourceLimit"] != nil {
             self.proxyInitAckSloCPUResourceLimit = dict["ProxyInitAckSloCPUResourceLimit"] as! String
         }
@@ -22712,6 +22959,15 @@ public class UpdateNamespaceScopeSidecarConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProxyStatsMatcher") && dict["ProxyStatsMatcher"] != nil {
             self.proxyStatsMatcher = dict["ProxyStatsMatcher"] as! String
+        }
+        if dict.keys.contains("ReadinessFailureThreshold") && dict["ReadinessFailureThreshold"] != nil {
+            self.readinessFailureThreshold = dict["ReadinessFailureThreshold"] as! Int32
+        }
+        if dict.keys.contains("ReadinessInitialDelaySeconds") && dict["ReadinessInitialDelaySeconds"] != nil {
+            self.readinessInitialDelaySeconds = dict["ReadinessInitialDelaySeconds"] as! Int32
+        }
+        if dict.keys.contains("ReadinessPeriodSeconds") && dict["ReadinessPeriodSeconds"] != nil {
+            self.readinessPeriodSeconds = dict["ReadinessPeriodSeconds"] as! Int32
         }
         if dict.keys.contains("ServiceMeshId") && dict["ServiceMeshId"] != nil {
             self.serviceMeshId = dict["ServiceMeshId"] as! String
