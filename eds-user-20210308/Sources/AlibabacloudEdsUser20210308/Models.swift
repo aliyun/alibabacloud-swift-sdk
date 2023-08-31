@@ -735,6 +735,8 @@ public class CreateUsersRequest : Tea.TeaModel {
             }
         }
     }
+    public var autoLockTime: String?
+
     public var password: String?
 
     public var users: [CreateUsersRequest.Users]?
@@ -753,6 +755,9 @@ public class CreateUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoLockTime != nil {
+            map["AutoLockTime"] = self.autoLockTime!
+        }
         if self.password != nil {
             map["Password"] = self.password!
         }
@@ -767,6 +772,9 @@ public class CreateUsersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoLockTime") && dict["AutoLockTime"] != nil {
+            self.autoLockTime = dict["AutoLockTime"] as! String
+        }
         if dict.keys.contains("Password") && dict["Password"] != nil {
             self.password = dict["Password"] as! String
         }
@@ -4696,6 +4704,8 @@ public class UnlockMfaDeviceResponse : Tea.TeaModel {
 }
 
 public class UnlockUsersRequest : Tea.TeaModel {
+    public var autoLockTime: String?
+
     public var users: [String]?
 
     public override init() {
@@ -4712,6 +4722,9 @@ public class UnlockUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoLockTime != nil {
+            map["AutoLockTime"] = self.autoLockTime!
+        }
         if self.users != nil {
             map["Users"] = self.users!
         }
@@ -4719,6 +4732,9 @@ public class UnlockUsersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoLockTime") && dict["AutoLockTime"] != nil {
+            self.autoLockTime = dict["AutoLockTime"] as! String
+        }
         if dict.keys.contains("Users") && dict["Users"] != nil {
             self.users = dict["Users"] as! [String]
         }
