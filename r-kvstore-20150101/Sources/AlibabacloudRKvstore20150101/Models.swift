@@ -6109,6 +6109,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
     public var backupRetentionPeriod: String?
 
+    public var dbsInstance: String?
+
     public var enableBackupLog: Int32?
 
     public var preferredBackupPeriod: String?
@@ -6140,6 +6142,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         if self.backupRetentionPeriod != nil {
             map["BackupRetentionPeriod"] = self.backupRetentionPeriod!
         }
+        if self.dbsInstance != nil {
+            map["DbsInstance"] = self.dbsInstance!
+        }
         if self.enableBackupLog != nil {
             map["EnableBackupLog"] = self.enableBackupLog!
         }
@@ -6166,6 +6171,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BackupRetentionPeriod") && dict["BackupRetentionPeriod"] != nil {
             self.backupRetentionPeriod = dict["BackupRetentionPeriod"] as! String
+        }
+        if dict.keys.contains("DbsInstance") && dict["DbsInstance"] != nil {
+            self.dbsInstance = dict["DbsInstance"] as! String
         }
         if dict.keys.contains("EnableBackupLog") && dict["EnableBackupLog"] != nil {
             self.enableBackupLog = dict["EnableBackupLog"] as! Int32
