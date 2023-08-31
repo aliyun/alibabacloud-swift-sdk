@@ -27431,6 +27431,8 @@ public class DescribeDBInstanceTDEResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var TDEMode: String?
+
     public var TDEStatus: String?
 
     public override init() {
@@ -27454,6 +27456,9 @@ public class DescribeDBInstanceTDEResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.TDEMode != nil {
+            map["TDEMode"] = self.TDEMode!
+        }
         if self.TDEStatus != nil {
             map["TDEStatus"] = self.TDEStatus!
         }
@@ -27468,6 +27473,9 @@ public class DescribeDBInstanceTDEResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TDEMode") && dict["TDEMode"] != nil {
+            self.TDEMode = dict["TDEMode"] as! String
         }
         if dict.keys.contains("TDEStatus") && dict["TDEStatus"] != nil {
             self.TDEStatus = dict["TDEStatus"] as! String
