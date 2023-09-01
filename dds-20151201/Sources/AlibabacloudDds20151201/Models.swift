@@ -5146,6 +5146,8 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
 
     public var securityToken: String?
 
+    public var storageType: String?
+
     public var zoneId: String?
 
     public override init() {
@@ -5189,6 +5191,9 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
         if self.securityToken != nil {
             map["SecurityToken"] = self.securityToken!
         }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -5222,6 +5227,9 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
             self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("StorageType") && dict["StorageType"] != nil {
+            self.storageType = dict["StorageType"] as! String
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
@@ -14411,6 +14419,8 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var endPoint: String?
+
             public var regionId: String?
 
             public var regionName: String?
@@ -14432,6 +14442,9 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.endPoint != nil {
+                    map["EndPoint"] = self.endPoint!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
@@ -14445,6 +14458,9 @@ public class DescribeRegionsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndPoint") && dict["EndPoint"] != nil {
+                    self.endPoint = dict["EndPoint"] as! String
+                }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
                 }

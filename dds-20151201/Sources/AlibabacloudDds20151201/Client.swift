@@ -1392,6 +1392,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.zoneId)) {
             query["ZoneId"] = request.zoneId ?? "";
         }
