@@ -3620,6 +3620,352 @@ public class ChangeCheckCustomConfigResponse : Tea.TeaModel {
     }
 }
 
+public class ChangeSecurityScoreRuleRequest : Tea.TeaModel {
+    public class SecurityScoreRuleList : Tea.TeaModel {
+        public class SecurityScoreItemList : Tea.TeaModel {
+            public var score: Int32?
+
+            public var scoreThreshold: Int32?
+
+            public var subRuleType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.score != nil {
+                    map["Score"] = self.score!
+                }
+                if self.scoreThreshold != nil {
+                    map["ScoreThreshold"] = self.scoreThreshold!
+                }
+                if self.subRuleType != nil {
+                    map["SubRuleType"] = self.subRuleType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Score") && dict["Score"] != nil {
+                    self.score = dict["Score"] as! Int32
+                }
+                if dict.keys.contains("ScoreThreshold") && dict["ScoreThreshold"] != nil {
+                    self.scoreThreshold = dict["ScoreThreshold"] as! Int32
+                }
+                if dict.keys.contains("SubRuleType") && dict["SubRuleType"] != nil {
+                    self.subRuleType = dict["SubRuleType"] as! String
+                }
+            }
+        }
+        public var ruleType: String?
+
+        public var score: Int32?
+
+        public var securityScoreItemList: [ChangeSecurityScoreRuleRequest.SecurityScoreRuleList.SecurityScoreItemList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
+            }
+            if self.score != nil {
+                map["Score"] = self.score!
+            }
+            if self.securityScoreItemList != nil {
+                var tmp : [Any] = []
+                for k in self.securityScoreItemList! {
+                    tmp.append(k.toMap())
+                }
+                map["SecurityScoreItemList"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RuleType") && dict["RuleType"] != nil {
+                self.ruleType = dict["RuleType"] as! String
+            }
+            if dict.keys.contains("Score") && dict["Score"] != nil {
+                self.score = dict["Score"] as! Int32
+            }
+            if dict.keys.contains("SecurityScoreItemList") && dict["SecurityScoreItemList"] != nil {
+                var tmp : [ChangeSecurityScoreRuleRequest.SecurityScoreRuleList.SecurityScoreItemList] = []
+                for v in dict["SecurityScoreItemList"] as! [Any] {
+                    var model = ChangeSecurityScoreRuleRequest.SecurityScoreRuleList.SecurityScoreItemList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.securityScoreItemList = tmp
+            }
+        }
+    }
+    public var resetSecurityScoreRule: Bool?
+
+    public var securityScoreRuleList: [ChangeSecurityScoreRuleRequest.SecurityScoreRuleList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.resetSecurityScoreRule != nil {
+            map["ResetSecurityScoreRule"] = self.resetSecurityScoreRule!
+        }
+        if self.securityScoreRuleList != nil {
+            var tmp : [Any] = []
+            for k in self.securityScoreRuleList! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityScoreRuleList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ResetSecurityScoreRule") && dict["ResetSecurityScoreRule"] != nil {
+            self.resetSecurityScoreRule = dict["ResetSecurityScoreRule"] as! Bool
+        }
+        if dict.keys.contains("SecurityScoreRuleList") && dict["SecurityScoreRuleList"] != nil {
+            var tmp : [ChangeSecurityScoreRuleRequest.SecurityScoreRuleList] = []
+            for v in dict["SecurityScoreRuleList"] as! [Any] {
+                var model = ChangeSecurityScoreRuleRequest.SecurityScoreRuleList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.securityScoreRuleList = tmp
+        }
+    }
+}
+
+public class ChangeSecurityScoreRuleResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ChangeSecurityScoreRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeSecurityScoreRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ChangeSecurityScoreRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ChangeUserLangRequest : Tea.TeaModel {
+    public var userLang: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.userLang != nil {
+            map["UserLang"] = self.userLang!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("UserLang") && dict["UserLang"] != nil {
+            self.userLang = dict["UserLang"] as! String
+        }
+    }
+}
+
+public class ChangeUserLangResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ChangeUserLangResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeUserLangResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ChangeUserLangResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CheckQuaraFileIdRequest : Tea.TeaModel {
     public var quaraFileIds: [String]?
 
@@ -86968,6 +87314,264 @@ public class GetRulesCountResponse : Tea.TeaModel {
     }
 }
 
+public class GetSecurityScoreRuleRequest : Tea.TeaModel {
+    public var lang: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
+        }
+    }
+}
+
+public class GetSecurityScoreRuleResponseBody : Tea.TeaModel {
+    public class SecurityScoreRuleList : Tea.TeaModel {
+        public class SecurityScoreItemList : Tea.TeaModel {
+            public var score: Int32?
+
+            public var scoreThreshold: Int32?
+
+            public var subRuleType: String?
+
+            public var title: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.score != nil {
+                    map["Score"] = self.score!
+                }
+                if self.scoreThreshold != nil {
+                    map["ScoreThreshold"] = self.scoreThreshold!
+                }
+                if self.subRuleType != nil {
+                    map["SubRuleType"] = self.subRuleType!
+                }
+                if self.title != nil {
+                    map["Title"] = self.title!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Score") && dict["Score"] != nil {
+                    self.score = dict["Score"] as! Int32
+                }
+                if dict.keys.contains("ScoreThreshold") && dict["ScoreThreshold"] != nil {
+                    self.scoreThreshold = dict["ScoreThreshold"] as! Int32
+                }
+                if dict.keys.contains("SubRuleType") && dict["SubRuleType"] != nil {
+                    self.subRuleType = dict["SubRuleType"] as! String
+                }
+                if dict.keys.contains("Title") && dict["Title"] != nil {
+                    self.title = dict["Title"] as! String
+                }
+            }
+        }
+        public var ruleType: String?
+
+        public var score: Int32?
+
+        public var securityScoreItemList: [GetSecurityScoreRuleResponseBody.SecurityScoreRuleList.SecurityScoreItemList]?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ruleType != nil {
+                map["RuleType"] = self.ruleType!
+            }
+            if self.score != nil {
+                map["Score"] = self.score!
+            }
+            if self.securityScoreItemList != nil {
+                var tmp : [Any] = []
+                for k in self.securityScoreItemList! {
+                    tmp.append(k.toMap())
+                }
+                map["SecurityScoreItemList"] = tmp
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RuleType") && dict["RuleType"] != nil {
+                self.ruleType = dict["RuleType"] as! String
+            }
+            if dict.keys.contains("Score") && dict["Score"] != nil {
+                self.score = dict["Score"] as! Int32
+            }
+            if dict.keys.contains("SecurityScoreItemList") && dict["SecurityScoreItemList"] != nil {
+                var tmp : [GetSecurityScoreRuleResponseBody.SecurityScoreRuleList.SecurityScoreItemList] = []
+                for v in dict["SecurityScoreItemList"] as! [Any] {
+                    var model = GetSecurityScoreRuleResponseBody.SecurityScoreRuleList.SecurityScoreItemList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.securityScoreItemList = tmp
+            }
+            if dict.keys.contains("Title") && dict["Title"] != nil {
+                self.title = dict["Title"] as! String
+            }
+        }
+    }
+    public var enableStatus: Bool?
+
+    public var requestId: String?
+
+    public var securityScoreRuleList: [GetSecurityScoreRuleResponseBody.SecurityScoreRuleList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableStatus != nil {
+            map["EnableStatus"] = self.enableStatus!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.securityScoreRuleList != nil {
+            var tmp : [Any] = []
+            for k in self.securityScoreRuleList! {
+                tmp.append(k.toMap())
+            }
+            map["SecurityScoreRuleList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableStatus") && dict["EnableStatus"] != nil {
+            self.enableStatus = dict["EnableStatus"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SecurityScoreRuleList") && dict["SecurityScoreRuleList"] != nil {
+            var tmp : [GetSecurityScoreRuleResponseBody.SecurityScoreRuleList] = []
+            for v in dict["SecurityScoreRuleList"] as! [Any] {
+                var model = GetSecurityScoreRuleResponseBody.SecurityScoreRuleList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.securityScoreRuleList = tmp
+        }
+    }
+}
+
+public class GetSecurityScoreRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetSecurityScoreRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetSecurityScoreRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetServiceTrailRequest : Tea.TeaModel {
     public var regionId: String?
 
@@ -87531,6 +88135,128 @@ public class GetSwitchRegionDetailResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetSwitchRegionDetailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetUserLangResponseBody : Tea.TeaModel {
+    public class SasUserLang : Tea.TeaModel {
+        public var lang: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.lang != nil {
+                map["Lang"] = self.lang!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Lang") && dict["Lang"] != nil {
+                self.lang = dict["Lang"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var sasUserLang: GetUserLangResponseBody.SasUserLang?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sasUserLang?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sasUserLang != nil {
+            map["SasUserLang"] = self.sasUserLang?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SasUserLang") && dict["SasUserLang"] != nil {
+            var model = GetUserLangResponseBody.SasUserLang()
+            model.fromMap(dict["SasUserLang"] as! [String: Any])
+            self.sasUserLang = model
+        }
+    }
+}
+
+public class GetUserLangResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetUserLangResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetUserLangResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
