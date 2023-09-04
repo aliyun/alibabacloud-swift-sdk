@@ -33244,6 +33244,8 @@ public class SetCdnDomainSSLCertificateRequest : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var env: String?
+
     public var ownerId: Int64?
 
     public var SSLPri: String?
@@ -33283,6 +33285,9 @@ public class SetCdnDomainSSLCertificateRequest : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -33316,6 +33321,9 @@ public class SetCdnDomainSSLCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
             self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("Env") && dict["Env"] != nil {
+            self.env = dict["Env"] as! String
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
