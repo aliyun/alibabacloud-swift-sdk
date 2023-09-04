@@ -42,8 +42,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDBInstanceForDmsWithOptions(_ request: DescribeDBInstanceForDmsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBInstanceForDmsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.host)) {
             query["Host"] = request.host ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
         }
         if (!TeaUtils.Client.isUnset(request.port)) {
             query["Port"] = request.port!;
@@ -79,6 +85,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -109,6 +118,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.aliUid)) {
             query["AliUid"] = request.aliUid!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -146,6 +158,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
         }
         if (!TeaUtils.Client.isUnset(request.whileList)) {
             query["WhileList"] = request.whileList ?? "";
