@@ -11600,6 +11600,51 @@ public class DescribeAcceleratorResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public var key: String?
 
@@ -11676,6 +11721,12 @@ public class DescribeAcceleratorResponseBody : Tea.TeaModel {
     public var resourceGroupId: String?
 
     public var secondDnsName: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeAcceleratorResponseBody.ServiceManagedInfos]?
 
     public var spec: String?
 
@@ -11762,6 +11813,19 @@ public class DescribeAcceleratorResponseBody : Tea.TeaModel {
         if self.secondDnsName != nil {
             map["SecondDnsName"] = self.secondDnsName!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
+        }
         if self.spec != nil {
             map["Spec"] = self.spec!
         }
@@ -11847,6 +11911,23 @@ public class DescribeAcceleratorResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SecondDnsName") && dict["SecondDnsName"] != nil {
             self.secondDnsName = dict["SecondDnsName"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeAcceleratorResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeAcceleratorResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("Spec") && dict["Spec"] != nil {
             self.spec = dict["Spec"] as! String
@@ -14132,6 +14213,51 @@ public class DescribeCustomRoutingEndPointTrafficPolicyResponseBody : Tea.TeaMod
             }
         }
     }
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public var acceleratorId: String?
 
     public var address: String?
@@ -14149,6 +14275,12 @@ public class DescribeCustomRoutingEndPointTrafficPolicyResponseBody : Tea.TeaMod
     public var portRanges: [DescribeCustomRoutingEndPointTrafficPolicyResponseBody.PortRanges]?
 
     public var requestId: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeCustomRoutingEndPointTrafficPolicyResponseBody.ServiceManagedInfos]?
 
     public var state: String?
 
@@ -14197,6 +14329,19 @@ public class DescribeCustomRoutingEndPointTrafficPolicyResponseBody : Tea.TeaMod
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
+        }
         if self.state != nil {
             map["State"] = self.state!
         }
@@ -14238,6 +14383,23 @@ public class DescribeCustomRoutingEndPointTrafficPolicyResponseBody : Tea.TeaMod
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeCustomRoutingEndPointTrafficPolicyResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeCustomRoutingEndPointTrafficPolicyResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("State") && dict["State"] != nil {
             self.state = dict["State"] as! String
@@ -14344,6 +14506,51 @@ public class DescribeCustomRoutingEndpointRequest : Tea.TeaModel {
 }
 
 public class DescribeCustomRoutingEndpointResponseBody : Tea.TeaModel {
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public var acceleratorId: String?
 
     public var endpoint: String?
@@ -14355,6 +14562,12 @@ public class DescribeCustomRoutingEndpointResponseBody : Tea.TeaModel {
     public var listenerId: String?
 
     public var requestId: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeCustomRoutingEndpointResponseBody.ServiceManagedInfos]?
 
     public var state: String?
 
@@ -14394,6 +14607,19 @@ public class DescribeCustomRoutingEndpointResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
+        }
         if self.state != nil {
             map["State"] = self.state!
         }
@@ -14424,6 +14650,23 @@ public class DescribeCustomRoutingEndpointResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeCustomRoutingEndpointResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeCustomRoutingEndpointResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("State") && dict["State"] != nil {
             self.state = dict["State"] as! String
@@ -14528,6 +14771,51 @@ public class DescribeCustomRoutingEndpointGroupRequest : Tea.TeaModel {
 }
 
 public class DescribeCustomRoutingEndpointGroupResponseBody : Tea.TeaModel {
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public var acceleratorId: String?
 
     public var accessLogSwitch: String?
@@ -14549,6 +14837,12 @@ public class DescribeCustomRoutingEndpointGroupResponseBody : Tea.TeaModel {
     public var name: String?
 
     public var requestId: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeCustomRoutingEndpointGroupResponseBody.ServiceManagedInfos]?
 
     public var slsLogStoreName: String?
 
@@ -14605,6 +14899,19 @@ public class DescribeCustomRoutingEndpointGroupResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
+        }
         if self.slsLogStoreName != nil {
             map["SlsLogStoreName"] = self.slsLogStoreName!
         }
@@ -14653,6 +14960,23 @@ public class DescribeCustomRoutingEndpointGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeCustomRoutingEndpointGroupResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeCustomRoutingEndpointGroupResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("SlsLogStoreName") && dict["SlsLogStoreName"] != nil {
             self.slsLogStoreName = dict["SlsLogStoreName"] as! String
@@ -14768,6 +15092,51 @@ public class DescribeCustomRoutingEndpointGroupDestinationsRequest : Tea.TeaMode
 }
 
 public class DescribeCustomRoutingEndpointGroupDestinationsResponseBody : Tea.TeaModel {
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public var acceleratorId: String?
 
     public var destinationId: String?
@@ -14781,6 +15150,12 @@ public class DescribeCustomRoutingEndpointGroupDestinationsResponseBody : Tea.Te
     public var protocols: [String]?
 
     public var requestId: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeCustomRoutingEndpointGroupDestinationsResponseBody.ServiceManagedInfos]?
 
     public var state: String?
 
@@ -14821,6 +15196,19 @@ public class DescribeCustomRoutingEndpointGroupDestinationsResponseBody : Tea.Te
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
+        }
         if self.state != nil {
             map["State"] = self.state!
         }
@@ -14851,6 +15239,23 @@ public class DescribeCustomRoutingEndpointGroupDestinationsResponseBody : Tea.Te
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeCustomRoutingEndpointGroupDestinationsResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeCustomRoutingEndpointGroupDestinationsResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("State") && dict["State"] != nil {
             self.state = dict["State"] as! String
@@ -15066,6 +15471,51 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public var key: String?
 
@@ -15144,6 +15594,12 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
     public var portOverrides: [DescribeEndpointGroupResponseBody.PortOverrides]?
 
     public var requestId: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeEndpointGroupResponseBody.ServiceManagedInfos]?
 
     public var slsLogStoreName: String?
 
@@ -15243,6 +15699,19 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
         }
         if self.slsLogStoreName != nil {
             map["SlsLogStoreName"] = self.slsLogStoreName!
@@ -15351,6 +15820,23 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeEndpointGroupResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeEndpointGroupResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("SlsLogStoreName") && dict["SlsLogStoreName"] != nil {
             self.slsLogStoreName = dict["SlsLogStoreName"] as! String
@@ -15475,6 +15961,51 @@ public class DescribeIpSetRequest : Tea.TeaModel {
 }
 
 public class DescribeIpSetResponseBody : Tea.TeaModel {
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public var accelerateRegionId: String?
 
     public var acceleratorId: String?
@@ -15490,6 +16021,12 @@ public class DescribeIpSetResponseBody : Tea.TeaModel {
     public var ispType: String?
 
     public var requestId: String?
+
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeIpSetResponseBody.ServiceManagedInfos]?
 
     public var state: String?
 
@@ -15531,6 +16068,19 @@ public class DescribeIpSetResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
+        }
         if self.state != nil {
             map["State"] = self.state!
         }
@@ -15561,6 +16111,23 @@ public class DescribeIpSetResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeIpSetResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeIpSetResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("State") && dict["State"] != nil {
             self.state = dict["State"] as! String
@@ -15807,6 +16374,51 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ServiceManagedInfos : Tea.TeaModel {
+        public var action: String?
+
+        public var childType: String?
+
+        public var isManaged: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["Action"] = self.action!
+            }
+            if self.childType != nil {
+                map["ChildType"] = self.childType!
+            }
+            if self.isManaged != nil {
+                map["IsManaged"] = self.isManaged!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Action") && dict["Action"] != nil {
+                self.action = dict["Action"] as! String
+            }
+            if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                self.childType = dict["ChildType"] as! String
+            }
+            if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                self.isManaged = dict["IsManaged"] as! Bool
+            }
+        }
+    }
     public class XForwardedForConfig : Tea.TeaModel {
         public var XForwardedForGaApEnabled: Bool?
 
@@ -15898,6 +16510,12 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
 
     public var securityPolicyId: String?
 
+    public var serviceId: String?
+
+    public var serviceManaged: Bool?
+
+    public var serviceManagedInfos: [DescribeListenerResponseBody.ServiceManagedInfos]?
+
     public var state: String?
 
     public var type: String?
@@ -15979,6 +16597,19 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
         }
         if self.securityPolicyId != nil {
             map["SecurityPolicyId"] = self.securityPolicyId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        if self.serviceManagedInfos != nil {
+            var tmp : [Any] = []
+            for k in self.serviceManagedInfos! {
+                tmp.append(k.toMap())
+            }
+            map["ServiceManagedInfos"] = tmp
         }
         if self.state != nil {
             map["State"] = self.state!
@@ -16069,6 +16700,23 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
             self.securityPolicyId = dict["SecurityPolicyId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+        if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+            var tmp : [DescribeListenerResponseBody.ServiceManagedInfos] = []
+            for v in dict["ServiceManagedInfos"] as! [Any] {
+                var model = DescribeListenerResponseBody.ServiceManagedInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.serviceManagedInfos = tmp
         }
         if dict.keys.contains("State") && dict["State"] != nil {
             self.state = dict["State"] as! String
@@ -20337,6 +20985,51 @@ public class ListAcceleratorsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -20411,6 +21104,12 @@ public class ListAcceleratorsResponseBody : Tea.TeaModel {
         public var resourceGroupId: String?
 
         public var secondDnsName: String?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListAcceleratorsResponseBody.Accelerators.ServiceManagedInfos]?
 
         public var spec: String?
 
@@ -20495,6 +21194,19 @@ public class ListAcceleratorsResponseBody : Tea.TeaModel {
             }
             if self.secondDnsName != nil {
                 map["SecondDnsName"] = self.secondDnsName!
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
             }
             if self.spec != nil {
                 map["Spec"] = self.spec!
@@ -20581,6 +21293,23 @@ public class ListAcceleratorsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SecondDnsName") && dict["SecondDnsName"] != nil {
                 self.secondDnsName = dict["SecondDnsName"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListAcceleratorsResponseBody.Accelerators.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListAcceleratorsResponseBody.Accelerators.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("Spec") && dict["Spec"] != nil {
                 self.spec = dict["Spec"] as! String
@@ -24819,9 +25548,9 @@ public class ListCustomRoutingEndpointGroupDestinationsRequest : Tea.TeaModel {
 
     public var listenerId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var protocols: [String]?
 
@@ -24887,10 +25616,10 @@ public class ListCustomRoutingEndpointGroupDestinationsRequest : Tea.TeaModel {
             self.listenerId = dict["ListenerId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("Protocols") && dict["Protocols"] != nil {
             self.protocols = dict["Protocols"] as! [String]
@@ -24906,6 +25635,51 @@ public class ListCustomRoutingEndpointGroupDestinationsRequest : Tea.TeaModel {
 
 public class ListCustomRoutingEndpointGroupDestinationsResponseBody : Tea.TeaModel {
     public class Destinations : Tea.TeaModel {
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public var acceleratorId: String?
 
         public var destinationId: String?
@@ -24917,6 +25691,12 @@ public class ListCustomRoutingEndpointGroupDestinationsResponseBody : Tea.TeaMod
         public var listenerId: String?
 
         public var protocols: [String]?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListCustomRoutingEndpointGroupDestinationsResponseBody.Destinations.ServiceManagedInfos]?
 
         public var toPort: Int32?
 
@@ -24952,6 +25732,19 @@ public class ListCustomRoutingEndpointGroupDestinationsResponseBody : Tea.TeaMod
             if self.protocols != nil {
                 map["Protocols"] = self.protocols!
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
+            }
             if self.toPort != nil {
                 map["ToPort"] = self.toPort!
             }
@@ -24976,6 +25769,23 @@ public class ListCustomRoutingEndpointGroupDestinationsResponseBody : Tea.TeaMod
             }
             if dict.keys.contains("Protocols") && dict["Protocols"] != nil {
                 self.protocols = dict["Protocols"] as! [String]
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListCustomRoutingEndpointGroupDestinationsResponseBody.Destinations.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListCustomRoutingEndpointGroupDestinationsResponseBody.Destinations.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("ToPort") && dict["ToPort"] != nil {
                 self.toPort = dict["ToPort"] as! Int32
@@ -25114,9 +25924,9 @@ public class ListCustomRoutingEndpointGroupsRequest : Tea.TeaModel {
 
     public var listenerId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var regionId: String?
 
@@ -25166,10 +25976,10 @@ public class ListCustomRoutingEndpointGroupsRequest : Tea.TeaModel {
             self.listenerId = dict["ListenerId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -25179,6 +25989,51 @@ public class ListCustomRoutingEndpointGroupsRequest : Tea.TeaModel {
 
 public class ListCustomRoutingEndpointGroupsResponseBody : Tea.TeaModel {
     public class EndpointGroups : Tea.TeaModel {
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public var acceleratorId: String?
 
         public var description_: String?
@@ -25194,6 +26049,12 @@ public class ListCustomRoutingEndpointGroupsResponseBody : Tea.TeaModel {
         public var listenerId: String?
 
         public var name: String?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListCustomRoutingEndpointGroupsResponseBody.EndpointGroups.ServiceManagedInfos]?
 
         public var state: String?
 
@@ -25235,6 +26096,19 @@ public class ListCustomRoutingEndpointGroupsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -25265,6 +26139,23 @@ public class ListCustomRoutingEndpointGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListCustomRoutingEndpointGroupsResponseBody.EndpointGroups.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListCustomRoutingEndpointGroupsResponseBody.EndpointGroups.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("State") && dict["State"] != nil {
                 self.state = dict["State"] as! String
@@ -25407,9 +26298,9 @@ public class ListCustomRoutingEndpointTrafficPoliciesRequest : Tea.TeaModel {
 
     public var listenerId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var regionId: String?
 
@@ -25471,10 +26362,10 @@ public class ListCustomRoutingEndpointTrafficPoliciesRequest : Tea.TeaModel {
             self.listenerId = dict["ListenerId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -25521,6 +26412,51 @@ public class ListCustomRoutingEndpointTrafficPoliciesResponseBody : Tea.TeaModel
                 }
             }
         }
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public var acceleratorId: String?
 
         public var address: String?
@@ -25534,6 +26470,12 @@ public class ListCustomRoutingEndpointTrafficPoliciesResponseBody : Tea.TeaModel
         public var policyId: String?
 
         public var portRanges: [ListCustomRoutingEndpointTrafficPoliciesResponseBody.Policies.PortRanges]?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListCustomRoutingEndpointTrafficPoliciesResponseBody.Policies.ServiceManagedInfos]?
 
         public override init() {
             super.init()
@@ -25574,6 +26516,19 @@ public class ListCustomRoutingEndpointTrafficPoliciesResponseBody : Tea.TeaModel
                 }
                 map["PortRanges"] = tmp
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
+            }
             return map
         }
 
@@ -25606,6 +26561,23 @@ public class ListCustomRoutingEndpointTrafficPoliciesResponseBody : Tea.TeaModel
                     tmp.append(model)
                 }
                 self.portRanges = tmp
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListCustomRoutingEndpointTrafficPoliciesResponseBody.Policies.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListCustomRoutingEndpointTrafficPoliciesResponseBody.Policies.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
         }
     }
@@ -25741,9 +26713,9 @@ public class ListCustomRoutingEndpointsRequest : Tea.TeaModel {
 
     public var listenerId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var regionId: String?
 
@@ -25793,10 +26765,10 @@ public class ListCustomRoutingEndpointsRequest : Tea.TeaModel {
             self.listenerId = dict["ListenerId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -25806,6 +26778,51 @@ public class ListCustomRoutingEndpointsRequest : Tea.TeaModel {
 
 public class ListCustomRoutingEndpointsResponseBody : Tea.TeaModel {
     public class Endpoints : Tea.TeaModel {
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public var acceleratorId: String?
 
         public var endpoint: String?
@@ -25815,6 +26832,12 @@ public class ListCustomRoutingEndpointsResponseBody : Tea.TeaModel {
         public var endpointId: String?
 
         public var listenerId: String?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListCustomRoutingEndpointsResponseBody.Endpoints.ServiceManagedInfos]?
 
         public var trafficToEndpointPolicy: String?
 
@@ -25849,6 +26872,19 @@ public class ListCustomRoutingEndpointsResponseBody : Tea.TeaModel {
             if self.listenerId != nil {
                 map["ListenerId"] = self.listenerId!
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
+            }
             if self.trafficToEndpointPolicy != nil {
                 map["TrafficToEndpointPolicy"] = self.trafficToEndpointPolicy!
             }
@@ -25873,6 +26909,23 @@ public class ListCustomRoutingEndpointsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
                 self.listenerId = dict["ListenerId"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListCustomRoutingEndpointsResponseBody.Endpoints.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListCustomRoutingEndpointsResponseBody.Endpoints.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("TrafficToEndpointPolicy") && dict["TrafficToEndpointPolicy"] != nil {
                 self.trafficToEndpointPolicy = dict["TrafficToEndpointPolicy"] as! String
@@ -26014,9 +27067,9 @@ public class ListCustomRoutingPortMappingsRequest : Tea.TeaModel {
 
     public var listenerId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var regionId: String?
 
@@ -26066,10 +27119,10 @@ public class ListCustomRoutingPortMappingsRequest : Tea.TeaModel {
             self.listenerId = dict["ListenerId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -26349,9 +27402,9 @@ public class ListCustomRoutingPortMappingsByDestinationRequest : Tea.TeaModel {
 
     public var endpointId: String?
 
-    public var pageNumber: String?
+    public var pageNumber: Int32?
 
-    public var pageSize: String?
+    public var pageSize: Int32?
 
     public var regionId: String?
 
@@ -26395,10 +27448,10 @@ public class ListCustomRoutingPortMappingsByDestinationRequest : Tea.TeaModel {
             self.endpointId = dict["EndpointId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
-            self.pageNumber = dict["PageNumber"] as! String
+            self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
-            self.pageSize = dict["PageSize"] as! String
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -26746,9 +27799,60 @@ public class ListDomainsRequest : Tea.TeaModel {
 public class ListDomainsResponseBody : Tea.TeaModel {
     public class Domains : Tea.TeaModel {
         public class Accelerators : Tea.TeaModel {
+            public class ServiceManagedInfos : Tea.TeaModel {
+                public var action: String?
+
+                public var childType: String?
+
+                public var isManaged: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.action != nil {
+                        map["Action"] = self.action!
+                    }
+                    if self.childType != nil {
+                        map["ChildType"] = self.childType!
+                    }
+                    if self.isManaged != nil {
+                        map["IsManaged"] = self.isManaged!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Action") && dict["Action"] != nil {
+                        self.action = dict["Action"] as! String
+                    }
+                    if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                        self.childType = dict["ChildType"] as! String
+                    }
+                    if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                        self.isManaged = dict["IsManaged"] as! Bool
+                    }
+                }
+            }
             public var acceleratorId: String?
 
             public var name: String?
+
+            public var serviceId: String?
+
+            public var serviceManaged: Bool?
+
+            public var serviceManagedInfos: [ListDomainsResponseBody.Domains.Accelerators.ServiceManagedInfos]?
 
             public override init() {
                 super.init()
@@ -26770,6 +27874,19 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.serviceId != nil {
+                    map["ServiceId"] = self.serviceId!
+                }
+                if self.serviceManaged != nil {
+                    map["ServiceManaged"] = self.serviceManaged!
+                }
+                if self.serviceManagedInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.serviceManagedInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ServiceManagedInfos"] = tmp
+                }
                 return map
             }
 
@@ -26779,6 +27896,23 @@ public class ListDomainsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                    self.serviceId = dict["ServiceId"] as! String
+                }
+                if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                    self.serviceManaged = dict["ServiceManaged"] as! Bool
+                }
+                if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                    var tmp : [ListDomainsResponseBody.Domains.Accelerators.ServiceManagedInfos] = []
+                    for v in dict["ServiceManagedInfos"] as! [Any] {
+                        var model = ListDomainsResponseBody.Domains.Accelerators.ServiceManagedInfos()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.serviceManagedInfos = tmp
                 }
             }
         }
@@ -27374,6 +28508,51 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -27446,6 +28625,12 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var portOverrides: [ListEndpointGroupsResponseBody.EndpointGroups.PortOverrides]?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListEndpointGroupsResponseBody.EndpointGroups.ServiceManagedInfos]?
 
         public var state: String?
 
@@ -27530,6 +28715,19 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["PortOverrides"] = tmp
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
             }
             if self.state != nil {
                 map["State"] = self.state!
@@ -27620,6 +28818,23 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.portOverrides = tmp
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListEndpointGroupsResponseBody.EndpointGroups.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListEndpointGroupsResponseBody.EndpointGroups.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("State") && dict["State"] != nil {
                 self.state = dict["State"] as! String
@@ -28091,6 +29306,51 @@ public class ListForwardingRulesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public var forwardingRuleDirection: String?
 
         public var forwardingRuleId: String?
@@ -28106,6 +29366,12 @@ public class ListForwardingRulesResponseBody : Tea.TeaModel {
         public var ruleActions: [ListForwardingRulesResponseBody.ForwardingRules.RuleActions]?
 
         public var ruleConditions: [ListForwardingRulesResponseBody.ForwardingRules.RuleConditions]?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListForwardingRulesResponseBody.ForwardingRules.ServiceManagedInfos]?
 
         public override init() {
             super.init()
@@ -28153,6 +29419,19 @@ public class ListForwardingRulesResponseBody : Tea.TeaModel {
                 }
                 map["RuleConditions"] = tmp
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
+            }
             return map
         }
 
@@ -28196,6 +29475,23 @@ public class ListForwardingRulesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.ruleConditions = tmp
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListForwardingRulesResponseBody.ForwardingRules.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListForwardingRulesResponseBody.ForwardingRules.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
         }
     }
@@ -28380,6 +29676,51 @@ public class ListIpSetsRequest : Tea.TeaModel {
 
 public class ListIpSetsResponseBody : Tea.TeaModel {
     public class IpSets : Tea.TeaModel {
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public var accelerateRegionId: String?
 
         public var bandwidth: Int32?
@@ -28391,6 +29732,12 @@ public class ListIpSetsResponseBody : Tea.TeaModel {
         public var ipVersion: String?
 
         public var ispType: String?
+
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListIpSetsResponseBody.IpSets.ServiceManagedInfos]?
 
         public var state: String?
 
@@ -28426,6 +29773,19 @@ public class ListIpSetsResponseBody : Tea.TeaModel {
             if self.ispType != nil {
                 map["IspType"] = self.ispType!
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -28450,6 +29810,23 @@ public class ListIpSetsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IspType") && dict["IspType"] != nil {
                 self.ispType = dict["IspType"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListIpSetsResponseBody.IpSets.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListIpSetsResponseBody.IpSets.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("State") && dict["State"] != nil {
                 self.state = dict["State"] as! String
@@ -29133,6 +30510,51 @@ public class ListListenersResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class ServiceManagedInfos : Tea.TeaModel {
+            public var action: String?
+
+            public var childType: String?
+
+            public var isManaged: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.childType != nil {
+                    map["ChildType"] = self.childType!
+                }
+                if self.isManaged != nil {
+                    map["IsManaged"] = self.isManaged!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("ChildType") && dict["ChildType"] != nil {
+                    self.childType = dict["ChildType"] as! String
+                }
+                if dict.keys.contains("IsManaged") && dict["IsManaged"] != nil {
+                    self.isManaged = dict["IsManaged"] as! Bool
+                }
+            }
+        }
         public class XForwardedForConfig : Tea.TeaModel {
             public var XForwardedForGaApEnabled: Bool?
 
@@ -29218,6 +30640,12 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
         public var securityPolicyId: String?
 
+        public var serviceId: String?
+
+        public var serviceManaged: Bool?
+
+        public var serviceManagedInfos: [ListListenersResponseBody.Listeners.ServiceManagedInfos]?
+
         public var state: String?
 
         public var type: String?
@@ -29286,6 +30714,19 @@ public class ListListenersResponseBody : Tea.TeaModel {
             }
             if self.securityPolicyId != nil {
                 map["SecurityPolicyId"] = self.securityPolicyId!
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.serviceManaged != nil {
+                map["ServiceManaged"] = self.serviceManaged!
+            }
+            if self.serviceManagedInfos != nil {
+                var tmp : [Any] = []
+                for k in self.serviceManagedInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ServiceManagedInfos"] = tmp
             }
             if self.state != nil {
                 map["State"] = self.state!
@@ -29359,6 +30800,23 @@ public class ListListenersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
                 self.securityPolicyId = dict["SecurityPolicyId"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
+            }
+            if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                self.serviceManaged = dict["ServiceManaged"] as! Bool
+            }
+            if dict.keys.contains("ServiceManagedInfos") && dict["ServiceManagedInfos"] != nil {
+                var tmp : [ListListenersResponseBody.Listeners.ServiceManagedInfos] = []
+                for v in dict["ServiceManagedInfos"] as! [Any] {
+                    var model = ListListenersResponseBody.Listeners.ServiceManagedInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.serviceManagedInfos = tmp
             }
             if dict.keys.contains("State") && dict["State"] != nil {
                 self.state = dict["State"] as! String
@@ -31762,6 +33220,142 @@ public class UpdateAcceleratorCrossBorderModeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateAcceleratorCrossBorderModeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateAcceleratorCrossBorderStatusRequest : Tea.TeaModel {
+    public var acceleratorId: String?
+
+    public var clientToken: String?
+
+    public var crossBorderStatus: Bool?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceleratorId != nil {
+            map["AcceleratorId"] = self.acceleratorId!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.crossBorderStatus != nil {
+            map["CrossBorderStatus"] = self.crossBorderStatus!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceleratorId") && dict["AcceleratorId"] != nil {
+            self.acceleratorId = dict["AcceleratorId"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CrossBorderStatus") && dict["CrossBorderStatus"] != nil {
+            self.crossBorderStatus = dict["CrossBorderStatus"] as! Bool
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class UpdateAcceleratorCrossBorderStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateAcceleratorCrossBorderStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateAcceleratorCrossBorderStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateAcceleratorCrossBorderStatusResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -36582,6 +38176,150 @@ public class UpdateListenerResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateListenerResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateServiceManagedControlRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var regionId: String?
+
+    public var resourceId: String?
+
+    public var resourceType: String?
+
+    public var serviceManaged: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
+        }
+    }
+}
+
+public class UpdateServiceManagedControlResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateServiceManagedControlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateServiceManagedControlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateServiceManagedControlResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
