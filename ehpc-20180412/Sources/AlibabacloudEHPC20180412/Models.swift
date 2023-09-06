@@ -1064,6 +1064,8 @@ public class AddQueueRequest : Tea.TeaModel {
 
     public var queueName: String?
 
+    public var useESS: Bool?
+
     public override init() {
         super.init()
     }
@@ -1090,6 +1092,9 @@ public class AddQueueRequest : Tea.TeaModel {
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
+        if self.useESS != nil {
+            map["UseESS"] = self.useESS!
+        }
         return map
     }
 
@@ -1105,6 +1110,9 @@ public class AddQueueRequest : Tea.TeaModel {
         }
         if dict.keys.contains("QueueName") && dict["QueueName"] != nil {
             self.queueName = dict["QueueName"] as! String
+        }
+        if dict.keys.contains("UseESS") && dict["UseESS"] != nil {
+            self.useESS = dict["UseESS"] as! Bool
         }
     }
 }
@@ -14883,6 +14891,8 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var autoMinNodesPerCycle: Bool?
+
             public var dataDisks: GetAutoScaleConfigResponseBody.Queues.QueueInfo.DataDisks?
 
             public var enableAutoGrow: Bool?
@@ -14939,6 +14949,9 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoMinNodesPerCycle != nil {
+                    map["AutoMinNodesPerCycle"] = self.autoMinNodesPerCycle!
+                }
                 if self.dataDisks != nil {
                     map["DataDisks"] = self.dataDisks?.toMap()
                 }
@@ -15003,6 +15016,9 @@ public class GetAutoScaleConfigResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AutoMinNodesPerCycle") && dict["AutoMinNodesPerCycle"] != nil {
+                    self.autoMinNodesPerCycle = dict["AutoMinNodesPerCycle"] as! Bool
+                }
                 if dict.keys.contains("DataDisks") && dict["DataDisks"] != nil {
                     var model = GetAutoScaleConfigResponseBody.Queues.QueueInfo.DataDisks()
                     model.fromMap(dict["DataDisks"] as! [String: Any])
@@ -27287,6 +27303,8 @@ public class ListQueuesResponseBody : Tea.TeaModel {
 
             public var imageId: String?
 
+            public var networkInterfaceTrafficMode: String?
+
             public var queueName: String?
 
             public var resourceGroupId: String?
@@ -27296,6 +27314,8 @@ public class ListQueuesResponseBody : Tea.TeaModel {
             public var spotStrategy: String?
 
             public var type: String?
+
+            public var useESS: Bool?
 
             public override init() {
                 super.init()
@@ -27331,6 +27351,9 @@ public class ListQueuesResponseBody : Tea.TeaModel {
                 if self.imageId != nil {
                     map["ImageId"] = self.imageId!
                 }
+                if self.networkInterfaceTrafficMode != nil {
+                    map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+                }
                 if self.queueName != nil {
                     map["QueueName"] = self.queueName!
                 }
@@ -27345,6 +27368,9 @@ public class ListQueuesResponseBody : Tea.TeaModel {
                 }
                 if self.type != nil {
                     map["Type"] = self.type!
+                }
+                if self.useESS != nil {
+                    map["UseESS"] = self.useESS!
                 }
                 return map
             }
@@ -27370,6 +27396,9 @@ public class ListQueuesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
                     self.imageId = dict["ImageId"] as! String
                 }
+                if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                    self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+                }
                 if dict.keys.contains("QueueName") && dict["QueueName"] != nil {
                     self.queueName = dict["QueueName"] as! String
                 }
@@ -27386,6 +27415,9 @@ public class ListQueuesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("UseESS") && dict["UseESS"] != nil {
+                    self.useESS = dict["UseESS"] as! Bool
                 }
             }
         }
@@ -32674,6 +32706,8 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
                 }
             }
         }
+        public var autoMinNodesPerCycle: Bool?
+
         public var dataDisks: [SetAutoScaleConfigRequest.Queues.DataDisks]?
 
         public var enableAutoGrow: Bool?
@@ -32726,6 +32760,9 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoMinNodesPerCycle != nil {
+                map["AutoMinNodesPerCycle"] = self.autoMinNodesPerCycle!
+            }
             if self.dataDisks != nil {
                 var tmp : [Any] = []
                 for k in self.dataDisks! {
@@ -32795,6 +32832,9 @@ public class SetAutoScaleConfigRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoMinNodesPerCycle") && dict["AutoMinNodesPerCycle"] != nil {
+                self.autoMinNodesPerCycle = dict["AutoMinNodesPerCycle"] as! Bool
+            }
             if dict.keys.contains("DataDisks") && dict["DataDisks"] != nil {
                 var tmp : [SetAutoScaleConfigRequest.Queues.DataDisks] = []
                 for v in dict["DataDisks"] as! [Any] {
@@ -36300,6 +36340,92 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
             }
         }
     }
+    public class RetryStrategy : Tea.TeaModel {
+        public class EvaluateOnExit : Tea.TeaModel {
+            public var action: String?
+
+            public var onExitCode: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.action != nil {
+                    map["Action"] = self.action!
+                }
+                if self.onExitCode != nil {
+                    map["OnExitCode"] = self.onExitCode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Action") && dict["Action"] != nil {
+                    self.action = dict["Action"] as! String
+                }
+                if dict.keys.contains("OnExitCode") && dict["OnExitCode"] != nil {
+                    self.onExitCode = dict["OnExitCode"] as! String
+                }
+            }
+        }
+        public var attempts: Int32?
+
+        public var evaluateOnExit: [SubmitServerlessJobRequest.RetryStrategy.EvaluateOnExit]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attempts != nil {
+                map["Attempts"] = self.attempts!
+            }
+            if self.evaluateOnExit != nil {
+                var tmp : [Any] = []
+                for k in self.evaluateOnExit! {
+                    tmp.append(k.toMap())
+                }
+                map["EvaluateOnExit"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Attempts") && dict["Attempts"] != nil {
+                self.attempts = dict["Attempts"] as! Int32
+            }
+            if dict.keys.contains("EvaluateOnExit") && dict["EvaluateOnExit"] != nil {
+                var tmp : [SubmitServerlessJobRequest.RetryStrategy.EvaluateOnExit] = []
+                for v in dict["EvaluateOnExit"] as! [Any] {
+                    var model = SubmitServerlessJobRequest.RetryStrategy.EvaluateOnExit()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.evaluateOnExit = tmp
+            }
+        }
+    }
     public var arrayProperties: SubmitServerlessJobRequest.ArrayProperties?
 
     public var clusterId: String?
@@ -36322,6 +36448,8 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
 
     public var ramRoleName: String?
 
+    public var retryStrategy: SubmitServerlessJobRequest.RetryStrategy?
+
     public var spotPriceLimit: Double?
 
     public var spotStrategy: String?
@@ -36342,6 +36470,7 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.arrayProperties?.validate()
         try self.container?.validate()
+        try self.retryStrategy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -36382,6 +36511,9 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
         }
         if self.ramRoleName != nil {
             map["RamRoleName"] = self.ramRoleName!
+        }
+        if self.retryStrategy != nil {
+            map["RetryStrategy"] = self.retryStrategy?.toMap()
         }
         if self.spotPriceLimit != nil {
             map["SpotPriceLimit"] = self.spotPriceLimit!
@@ -36444,6 +36576,11 @@ public class SubmitServerlessJobRequest : Tea.TeaModel {
         if dict.keys.contains("RamRoleName") && dict["RamRoleName"] != nil {
             self.ramRoleName = dict["RamRoleName"] as! String
         }
+        if dict.keys.contains("RetryStrategy") && dict["RetryStrategy"] != nil {
+            var model = SubmitServerlessJobRequest.RetryStrategy()
+            model.fromMap(dict["RetryStrategy"] as! [String: Any])
+            self.retryStrategy = model
+        }
         if dict.keys.contains("SpotPriceLimit") && dict["SpotPriceLimit"] != nil {
             self.spotPriceLimit = dict["SpotPriceLimit"] as! Double
         }
@@ -36481,6 +36618,8 @@ public class SubmitServerlessJobShrinkRequest : Tea.TeaModel {
     public var memory: Double?
 
     public var ramRoleName: String?
+
+    public var retryStrategyShrink: String?
 
     public var spotPriceLimit: Double?
 
@@ -36537,6 +36676,9 @@ public class SubmitServerlessJobShrinkRequest : Tea.TeaModel {
         if self.ramRoleName != nil {
             map["RamRoleName"] = self.ramRoleName!
         }
+        if self.retryStrategyShrink != nil {
+            map["RetryStrategy"] = self.retryStrategyShrink!
+        }
         if self.spotPriceLimit != nil {
             map["SpotPriceLimit"] = self.spotPriceLimit!
         }
@@ -36585,6 +36727,9 @@ public class SubmitServerlessJobShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RamRoleName") && dict["RamRoleName"] != nil {
             self.ramRoleName = dict["RamRoleName"] as! String
+        }
+        if dict.keys.contains("RetryStrategy") && dict["RetryStrategy"] != nil {
+            self.retryStrategyShrink = dict["RetryStrategy"] as! String
         }
         if dict.keys.contains("SpotPriceLimit") && dict["SpotPriceLimit"] != nil {
             self.spotPriceLimit = dict["SpotPriceLimit"] as! Double
@@ -37805,6 +37950,8 @@ public class UpdateQueueConfigRequest : Tea.TeaModel {
 
     public var deploymentSetId: String?
 
+    public var networkInterfaceTrafficMode: String?
+
     public var queueName: String?
 
     public var resourceGroupId: String?
@@ -37832,6 +37979,9 @@ public class UpdateQueueConfigRequest : Tea.TeaModel {
         if self.deploymentSetId != nil {
             map["DeploymentSetId"] = self.deploymentSetId!
         }
+        if self.networkInterfaceTrafficMode != nil {
+            map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+        }
         if self.queueName != nil {
             map["QueueName"] = self.queueName!
         }
@@ -37850,6 +38000,9 @@ public class UpdateQueueConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeploymentSetId") && dict["DeploymentSetId"] != nil {
             self.deploymentSetId = dict["DeploymentSetId"] as! String
+        }
+        if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+            self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
         }
         if dict.keys.contains("QueueName") && dict["QueueName"] != nil {
             self.queueName = dict["QueueName"] as! String

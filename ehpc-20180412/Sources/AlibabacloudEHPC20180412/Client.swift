@@ -3672,10 +3672,13 @@ open class Client : AlibabacloudOpenApi.Client {
             request.dependsOnShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dependsOn, "DependsOn", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.instanceType)) {
-            request.instanceTypeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceType, "InstanceType", "simple")
+            request.instanceTypeShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceType, "InstanceType", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.retryStrategy)) {
+            request.retryStrategyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.retryStrategy, "RetryStrategy", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.vSwitchId)) {
-            request.vSwitchIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitchId, "VSwitchId", "simple")
+            request.vSwitchIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitchId, "VSwitchId", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.arrayPropertiesShrink)) {
@@ -3710,6 +3713,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ramRoleName)) {
             query["RamRoleName"] = request.ramRoleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retryStrategyShrink)) {
+            query["RetryStrategy"] = request.retryStrategyShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.spotPriceLimit)) {
             query["SpotPriceLimit"] = request.spotPriceLimit!;
