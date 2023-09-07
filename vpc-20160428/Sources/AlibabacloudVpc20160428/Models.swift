@@ -6194,11 +6194,17 @@ public class CheckVpnBgpEnabledResponse : Tea.TeaModel {
 public class CompletePhysicalConnectionLOARequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var finishWork: Bool?
+
     public var instanceId: String?
 
     public var lineCode: String?
 
     public var lineLabel: String?
+
+    public var lineSPContactInfo: String?
+
+    public var lineServiceProvider: String?
 
     public var ownerAccount: String?
 
@@ -6227,6 +6233,9 @@ public class CompletePhysicalConnectionLOARequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.finishWork != nil {
+            map["FinishWork"] = self.finishWork!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -6235,6 +6244,12 @@ public class CompletePhysicalConnectionLOARequest : Tea.TeaModel {
         }
         if self.lineLabel != nil {
             map["LineLabel"] = self.lineLabel!
+        }
+        if self.lineSPContactInfo != nil {
+            map["LineSPContactInfo"] = self.lineSPContactInfo!
+        }
+        if self.lineServiceProvider != nil {
+            map["LineServiceProvider"] = self.lineServiceProvider!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -6258,6 +6273,9 @@ public class CompletePhysicalConnectionLOARequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("FinishWork") && dict["FinishWork"] != nil {
+            self.finishWork = dict["FinishWork"] as! Bool
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -6266,6 +6284,12 @@ public class CompletePhysicalConnectionLOARequest : Tea.TeaModel {
         }
         if dict.keys.contains("LineLabel") && dict["LineLabel"] != nil {
             self.lineLabel = dict["LineLabel"] as! String
+        }
+        if dict.keys.contains("LineSPContactInfo") && dict["LineSPContactInfo"] != nil {
+            self.lineSPContactInfo = dict["LineSPContactInfo"] as! String
+        }
+        if dict.keys.contains("LineServiceProvider") && dict["LineServiceProvider"] != nil {
+            self.lineServiceProvider = dict["LineServiceProvider"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -44554,6 +44578,10 @@ public class DescribePhysicalConnectionLOAResponseBody : Tea.TeaModel {
 
         public var lineLabel: String?
 
+        public var lineSPContactInfo: String?
+
+        public var lineServiceProvider: String?
+
         public var lineType: String?
 
         public var loaUrl: String?
@@ -44597,6 +44625,12 @@ public class DescribePhysicalConnectionLOAResponseBody : Tea.TeaModel {
             if self.lineLabel != nil {
                 map["LineLabel"] = self.lineLabel!
             }
+            if self.lineSPContactInfo != nil {
+                map["LineSPContactInfo"] = self.lineSPContactInfo!
+            }
+            if self.lineServiceProvider != nil {
+                map["LineServiceProvider"] = self.lineServiceProvider!
+            }
             if self.lineType != nil {
                 map["LineType"] = self.lineType!
             }
@@ -44633,6 +44667,12 @@ public class DescribePhysicalConnectionLOAResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LineLabel") && dict["LineLabel"] != nil {
                 self.lineLabel = dict["LineLabel"] as! String
+            }
+            if dict.keys.contains("LineSPContactInfo") && dict["LineSPContactInfo"] != nil {
+                self.lineSPContactInfo = dict["LineSPContactInfo"] as! String
+            }
+            if dict.keys.contains("LineServiceProvider") && dict["LineServiceProvider"] != nil {
+                self.lineServiceProvider = dict["LineServiceProvider"] as! String
             }
             if dict.keys.contains("LineType") && dict["LineType"] != nil {
                 self.lineType = dict["LineType"] as! String
