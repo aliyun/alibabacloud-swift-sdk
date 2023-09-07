@@ -114,6 +114,92 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeAllTextWithOptions(_ tmpReq: RecognizeAllTextRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeAllTextResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: RecognizeAllTextShrinkRequest = RecognizeAllTextShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.advancedConfig)) {
+            request.advancedConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.advancedConfig, "AdvancedConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.idCardConfig)) {
+            request.idCardConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.idCardConfig, "IdCardConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.internationalIdCardConfig)) {
+            request.internationalIdCardConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.internationalIdCardConfig, "InternationalIdCardConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.multiLanConfig)) {
+            request.multiLanConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multiLanConfig, "MultiLanConfig", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.advancedConfigShrink)) {
+            query["AdvancedConfig"] = request.advancedConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idCardConfigShrink)) {
+            query["IdCardConfig"] = request.idCardConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.internationalIdCardConfigShrink)) {
+            query["InternationalIdCardConfig"] = request.internationalIdCardConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.multiLanConfigShrink)) {
+            query["MultiLanConfig"] = request.multiLanConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.outputBarCode)) {
+            query["OutputBarCode"] = request.outputBarCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputCoordinate)) {
+            query["OutputCoordinate"] = request.outputCoordinate!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputFigure)) {
+            query["OutputFigure"] = request.outputFigure!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputKVExcel)) {
+            query["OutputKVExcel"] = request.outputKVExcel!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputOricoord)) {
+            query["OutputOricoord"] = request.outputOricoord!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputQrcode)) {
+            query["OutputQrcode"] = request.outputQrcode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outputStamp)) {
+            query["OutputStamp"] = request.outputStamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.url)) {
+            query["Url"] = request.url ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body!,
+            "stream": tmpReq.body!
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RecognizeAllText",
+            "version": "2021-07-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RecognizeAllTextResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func recognizeAllText(_ request: RecognizeAllTextRequest) async throws -> RecognizeAllTextResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await recognizeAllTextWithOptions(request as! RecognizeAllTextRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func recognizeBankAcceptanceWithOptions(_ request: RecognizeBankAcceptanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeBankAcceptanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
