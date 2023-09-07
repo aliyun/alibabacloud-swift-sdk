@@ -254,14 +254,35 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ECSClassListShrink)) {
             query["ECSClassList"] = request.ECSClassListShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ecsDeploymentSetId)) {
+            query["EcsDeploymentSetId"] = request.ecsDeploymentSetId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ecsHostName)) {
+            query["EcsHostName"] = request.ecsHostName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ecsInstanceName)) {
+            query["EcsInstanceName"] = request.ecsInstanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ecsUniqueSuffix)) {
+            query["EcsUniqueSuffix"] = request.ecsUniqueSuffix ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.engine)) {
             query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageId)) {
+            query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyPairName)) {
+            query["KeyPairName"] = request.keyPairName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.osPassword)) {
             query["OsPassword"] = request.osPassword ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.passwordInherit)) {
+            query["PasswordInherit"] = request.passwordInherit ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.payType)) {
             query["PayType"] = request.payType ?? "";
