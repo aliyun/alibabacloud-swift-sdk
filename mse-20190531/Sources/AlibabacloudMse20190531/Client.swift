@@ -923,8 +923,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func applyTagPoliciesWithOptions(_ request: ApplyTagPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyTagPoliciesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func applyTagPoliciesWithOptions(_ tmpReq: ApplyTagPoliciesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyTagPoliciesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ApplyTagPoliciesShrinkRequest = ApplyTagPoliciesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.rules)) {
+            request.rulesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.rules, "Rules", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
@@ -947,8 +952,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.rules)) {
-            query["Rules"] = request.rules ?? "";
+        if (!TeaUtils.Client.isUnset(request.rulesShrink)) {
+            query["Rules"] = request.rulesShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

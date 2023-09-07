@@ -584,6 +584,576 @@ public class TrafficPolicy : Tea.TeaModel {
     }
 }
 
+public class RulesValue : Tea.TeaModel {
+    public class Rules : Tea.TeaModel {
+        public class Springcloud : Tea.TeaModel {
+            public class RestItems : Tea.TeaModel {
+                public var datum: String?
+
+                public var operator_: String?
+
+                public var nameList: [String]?
+
+                public var cond: String?
+
+                public var divisor: Int32?
+
+                public var remainder: Int32?
+
+                public var rate: Int32?
+
+                public var type: String?
+
+                public var name: String?
+
+                public var value: Any?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.datum != nil {
+                        map["datum"] = self.datum!
+                    }
+                    if self.operator_ != nil {
+                        map["operator"] = self.operator_!
+                    }
+                    if self.nameList != nil {
+                        map["nameList"] = self.nameList!
+                    }
+                    if self.cond != nil {
+                        map["cond"] = self.cond!
+                    }
+                    if self.divisor != nil {
+                        map["divisor"] = self.divisor!
+                    }
+                    if self.remainder != nil {
+                        map["remainder"] = self.remainder!
+                    }
+                    if self.rate != nil {
+                        map["rate"] = self.rate!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("datum") && dict["datum"] != nil {
+                        self.datum = dict["datum"] as! String
+                    }
+                    if dict.keys.contains("operator") && dict["operator"] != nil {
+                        self.operator_ = dict["operator"] as! String
+                    }
+                    if dict.keys.contains("nameList") && dict["nameList"] != nil {
+                        self.nameList = dict["nameList"] as! [String]
+                    }
+                    if dict.keys.contains("cond") && dict["cond"] != nil {
+                        self.cond = dict["cond"] as! String
+                    }
+                    if dict.keys.contains("divisor") && dict["divisor"] != nil {
+                        self.divisor = dict["divisor"] as! Int32
+                    }
+                    if dict.keys.contains("remainder") && dict["remainder"] != nil {
+                        self.remainder = dict["remainder"] as! Int32
+                    }
+                    if dict.keys.contains("rate") && dict["rate"] != nil {
+                        self.rate = dict["rate"] as! Int32
+                    }
+                    if dict.keys.contains("type") && dict["type"] != nil {
+                        self.type = dict["type"] as! String
+                    }
+                    if dict.keys.contains("name") && dict["name"] != nil {
+                        self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("value") && dict["value"] != nil {
+                        self.value = dict["value"] as! Any
+                    }
+                }
+            }
+            public var condition: String?
+
+            public var restItems: [RulesValue.Rules.Springcloud.RestItems]?
+
+            public var triggerPolicy: String?
+
+            public var enable: Bool?
+
+            public var appId: String?
+
+            public var priority: Int32?
+
+            public var tags: [String]?
+
+            public var paths: [String]?
+
+            public var path: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.condition != nil {
+                    map["condition"] = self.condition!
+                }
+                if self.restItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.restItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["restItems"] = tmp
+                }
+                if self.triggerPolicy != nil {
+                    map["triggerPolicy"] = self.triggerPolicy!
+                }
+                if self.enable != nil {
+                    map["enable"] = self.enable!
+                }
+                if self.appId != nil {
+                    map["appId"] = self.appId!
+                }
+                if self.priority != nil {
+                    map["priority"] = self.priority!
+                }
+                if self.tags != nil {
+                    map["tags"] = self.tags!
+                }
+                if self.paths != nil {
+                    map["paths"] = self.paths!
+                }
+                if self.path != nil {
+                    map["path"] = self.path!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("condition") && dict["condition"] != nil {
+                    self.condition = dict["condition"] as! String
+                }
+                if dict.keys.contains("restItems") && dict["restItems"] != nil {
+                    var tmp : [RulesValue.Rules.Springcloud.RestItems] = []
+                    for v in dict["restItems"] as! [Any] {
+                        var model = RulesValue.Rules.Springcloud.RestItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.restItems = tmp
+                }
+                if dict.keys.contains("triggerPolicy") && dict["triggerPolicy"] != nil {
+                    self.triggerPolicy = dict["triggerPolicy"] as! String
+                }
+                if dict.keys.contains("enable") && dict["enable"] != nil {
+                    self.enable = dict["enable"] as! Bool
+                }
+                if dict.keys.contains("appId") && dict["appId"] != nil {
+                    self.appId = dict["appId"] as! String
+                }
+                if dict.keys.contains("priority") && dict["priority"] != nil {
+                    self.priority = dict["priority"] as! Int32
+                }
+                if dict.keys.contains("tags") && dict["tags"] != nil {
+                    self.tags = dict["tags"] as! [String]
+                }
+                if dict.keys.contains("paths") && dict["paths"] != nil {
+                    self.paths = dict["paths"] as! [String]
+                }
+                if dict.keys.contains("path") && dict["path"] != nil {
+                    self.path = dict["path"] as! String
+                }
+            }
+        }
+        public class Dubbo : Tea.TeaModel {
+            public class ArgumentItems : Tea.TeaModel {
+                public var operator_: String?
+
+                public var nameList: [String]?
+
+                public var datum: String?
+
+                public var cond: String?
+
+                public var divisor: Int32?
+
+                public var remainder: Int32?
+
+                public var rate: Int32?
+
+                public var index: Int32?
+
+                public var expr: String?
+
+                public var value: Any?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.operator_ != nil {
+                        map["operator"] = self.operator_!
+                    }
+                    if self.nameList != nil {
+                        map["nameList"] = self.nameList!
+                    }
+                    if self.datum != nil {
+                        map["datum"] = self.datum!
+                    }
+                    if self.cond != nil {
+                        map["cond"] = self.cond!
+                    }
+                    if self.divisor != nil {
+                        map["divisor"] = self.divisor!
+                    }
+                    if self.remainder != nil {
+                        map["remainder"] = self.remainder!
+                    }
+                    if self.rate != nil {
+                        map["rate"] = self.rate!
+                    }
+                    if self.index != nil {
+                        map["index"] = self.index!
+                    }
+                    if self.expr != nil {
+                        map["expr"] = self.expr!
+                    }
+                    if self.value != nil {
+                        map["value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("operator") && dict["operator"] != nil {
+                        self.operator_ = dict["operator"] as! String
+                    }
+                    if dict.keys.contains("nameList") && dict["nameList"] != nil {
+                        self.nameList = dict["nameList"] as! [String]
+                    }
+                    if dict.keys.contains("datum") && dict["datum"] != nil {
+                        self.datum = dict["datum"] as! String
+                    }
+                    if dict.keys.contains("cond") && dict["cond"] != nil {
+                        self.cond = dict["cond"] as! String
+                    }
+                    if dict.keys.contains("divisor") && dict["divisor"] != nil {
+                        self.divisor = dict["divisor"] as! Int32
+                    }
+                    if dict.keys.contains("remainder") && dict["remainder"] != nil {
+                        self.remainder = dict["remainder"] as! Int32
+                    }
+                    if dict.keys.contains("rate") && dict["rate"] != nil {
+                        self.rate = dict["rate"] as! Int32
+                    }
+                    if dict.keys.contains("index") && dict["index"] != nil {
+                        self.index = dict["index"] as! Int32
+                    }
+                    if dict.keys.contains("expr") && dict["expr"] != nil {
+                        self.expr = dict["expr"] as! String
+                    }
+                    if dict.keys.contains("value") && dict["value"] != nil {
+                        self.value = dict["value"] as! Any
+                    }
+                }
+            }
+            public var appId: String?
+
+            public var tags: [String]?
+
+            public var triggerPolicy: String?
+
+            public var serviceName: String?
+
+            public var group: String?
+
+            public var version: String?
+
+            public var methodName: String?
+
+            public var paramTypes: [String]?
+
+            public var condition: String?
+
+            public var argumentItems: [RulesValue.Rules.Dubbo.ArgumentItems]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["appId"] = self.appId!
+                }
+                if self.tags != nil {
+                    map["tags"] = self.tags!
+                }
+                if self.triggerPolicy != nil {
+                    map["triggerPolicy"] = self.triggerPolicy!
+                }
+                if self.serviceName != nil {
+                    map["serviceName"] = self.serviceName!
+                }
+                if self.group != nil {
+                    map["group"] = self.group!
+                }
+                if self.version != nil {
+                    map["version"] = self.version!
+                }
+                if self.methodName != nil {
+                    map["methodName"] = self.methodName!
+                }
+                if self.paramTypes != nil {
+                    map["paramTypes"] = self.paramTypes!
+                }
+                if self.condition != nil {
+                    map["condition"] = self.condition!
+                }
+                if self.argumentItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.argumentItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["argumentItems"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("appId") && dict["appId"] != nil {
+                    self.appId = dict["appId"] as! String
+                }
+                if dict.keys.contains("tags") && dict["tags"] != nil {
+                    self.tags = dict["tags"] as! [String]
+                }
+                if dict.keys.contains("triggerPolicy") && dict["triggerPolicy"] != nil {
+                    self.triggerPolicy = dict["triggerPolicy"] as! String
+                }
+                if dict.keys.contains("serviceName") && dict["serviceName"] != nil {
+                    self.serviceName = dict["serviceName"] as! String
+                }
+                if dict.keys.contains("group") && dict["group"] != nil {
+                    self.group = dict["group"] as! String
+                }
+                if dict.keys.contains("version") && dict["version"] != nil {
+                    self.version = dict["version"] as! String
+                }
+                if dict.keys.contains("methodName") && dict["methodName"] != nil {
+                    self.methodName = dict["methodName"] as! String
+                }
+                if dict.keys.contains("paramTypes") && dict["paramTypes"] != nil {
+                    self.paramTypes = dict["paramTypes"] as! [String]
+                }
+                if dict.keys.contains("condition") && dict["condition"] != nil {
+                    self.condition = dict["condition"] as! String
+                }
+                if dict.keys.contains("argumentItems") && dict["argumentItems"] != nil {
+                    var tmp : [RulesValue.Rules.Dubbo.ArgumentItems] = []
+                    for v in dict["argumentItems"] as! [Any] {
+                        var model = RulesValue.Rules.Dubbo.ArgumentItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.argumentItems = tmp
+                }
+            }
+        }
+        public var springcloud: [RulesValue.Rules.Springcloud]?
+
+        public var dubbo: [RulesValue.Rules.Dubbo]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.springcloud != nil {
+                var tmp : [Any] = []
+                for k in self.springcloud! {
+                    tmp.append(k.toMap())
+                }
+                map["springcloud"] = tmp
+            }
+            if self.dubbo != nil {
+                var tmp : [Any] = []
+                for k in self.dubbo! {
+                    tmp.append(k.toMap())
+                }
+                map["dubbo"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("springcloud") && dict["springcloud"] != nil {
+                var tmp : [RulesValue.Rules.Springcloud] = []
+                for v in dict["springcloud"] as! [Any] {
+                    var model = RulesValue.Rules.Springcloud()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.springcloud = tmp
+            }
+            if dict.keys.contains("dubbo") && dict["dubbo"] != nil {
+                var tmp : [RulesValue.Rules.Dubbo] = []
+                for v in dict["dubbo"] as! [Any] {
+                    var model = RulesValue.Rules.Dubbo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dubbo = tmp
+            }
+        }
+    }
+    public var status: Int32?
+
+    public var rate: Int32?
+
+    public var enable: Bool?
+
+    public var tag: String?
+
+    public var name: String?
+
+    public var id: Int64?
+
+    public var instanceNum: Int32?
+
+    public var rules: RulesValue.Rules?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.rules?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.rate != nil {
+            map["Rate"] = self.rate!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.tag != nil {
+            map["Tag"] = self.tag!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.instanceNum != nil {
+            map["InstanceNum"] = self.instanceNum!
+        }
+        if self.rules != nil {
+            map["Rules"] = self.rules?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+        if dict.keys.contains("Rate") && dict["Rate"] != nil {
+            self.rate = dict["Rate"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            self.tag = dict["Tag"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("InstanceNum") && dict["InstanceNum"] != nil {
+            self.instanceNum = dict["InstanceNum"] as! Int32
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            var model = RulesValue.Rules()
+            model.fromMap(dict["Rules"] as! [String: Any])
+            self.rules = model
+        }
+    }
+}
+
 public class DataValue : Tea.TeaModel {
     public var userId: String?
 
@@ -5942,7 +6512,7 @@ public class ApplyTagPoliciesRequest : Tea.TeaModel {
 
     public var region: String?
 
-    public var rules: String?
+    public var rules: [String: RulesValue]?
 
     public override init() {
         super.init()
@@ -5980,7 +6550,11 @@ public class ApplyTagPoliciesRequest : Tea.TeaModel {
             map["Region"] = self.region!
         }
         if self.rules != nil {
-            map["Rules"] = self.rules!
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.rules! {
+                tmp[k] = v.toMap()
+            }
+            map["Rules"] = tmp
         }
         return map
     }
@@ -6008,7 +6582,101 @@ public class ApplyTagPoliciesRequest : Tea.TeaModel {
             self.region = dict["Region"] as! String
         }
         if dict.keys.contains("Rules") && dict["Rules"] != nil {
-            self.rules = dict["Rules"] as! String
+            var tmp : [String: RulesValue] = [:]
+            for (k, v) in dict["Rules"] as! [String: Any] {
+                if v != nil {
+                    var model = RulesValue()
+                    model.fromMap(v as! [String: Any])
+                    tmp[k] = model
+                }
+            }
+            self.rules = tmp
+        }
+    }
+}
+
+public class ApplyTagPoliciesShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var enable: Bool?
+
+    public var namespace: String?
+
+    public var namespaceId: String?
+
+    public var region: String?
+
+    public var rulesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.rulesShrink != nil {
+            map["Rules"] = self.rulesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
+            self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("Region") && dict["Region"] != nil {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            self.rulesShrink = dict["Rules"] as! String
         }
     }
 }
@@ -17360,8 +18028,6 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
 
             public var status: Int64?
 
-            public var tagCount: Int64?
-
             public var userId: String?
 
             public override init() {
@@ -17405,9 +18071,6 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
-                if self.tagCount != nil {
-                    map["TagCount"] = self.tagCount!
-                }
                 if self.userId != nil {
                     map["UserId"] = self.userId!
                 }
@@ -17441,9 +18104,6 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! Int64
-                }
-                if dict.keys.contains("TagCount") && dict["TagCount"] != nil {
-                    self.tagCount = dict["TagCount"] as! Int64
                 }
                 if dict.keys.contains("UserId") && dict["UserId"] != nil {
                     self.userId = dict["UserId"] as! String
@@ -17516,8 +18176,6 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
     }
     public var data: GetApplicationListResponseBody.Data?
 
-    public var errorCode: String?
-
     public var message: String?
 
     public var requestId: String?
@@ -17542,9 +18200,6 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
         if self.data != nil {
             map["Data"] = self.data?.toMap()
         }
-        if self.errorCode != nil {
-            map["ErrorCode"] = self.errorCode!
-        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -17562,9 +18217,6 @@ public class GetApplicationListResponseBody : Tea.TeaModel {
             var model = GetApplicationListResponseBody.Data()
             model.fromMap(dict["Data"] as! [String: Any])
             self.data = model
-        }
-        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
-            self.errorCode = dict["ErrorCode"] as! String
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
@@ -22462,8 +23114,6 @@ public class GetGovernanceKubernetesClusterRequest : Tea.TeaModel {
 public class GetGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Namespaces : Tea.TeaModel {
-            public var labels: [String: String]?
-
             public var mseNamespace: String?
 
             public var name: String?
@@ -22482,9 +23132,6 @@ public class GetGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
-                if self.labels != nil {
-                    map["Labels"] = self.labels!
-                }
                 if self.mseNamespace != nil {
                     map["MseNamespace"] = self.mseNamespace!
                 }
@@ -22495,9 +23142,6 @@ public class GetGovernanceKubernetesClusterResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Labels") && dict["Labels"] != nil {
-                    self.labels = dict["Labels"] as! [String: String]
-                }
                 if dict.keys.contains("MseNamespace") && dict["MseNamespace"] != nil {
                     self.mseNamespace = dict["MseNamespace"] as! String
                 }
@@ -30264,11 +30908,488 @@ public class ListApplicationsWithTagRulesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Result : Tea.TeaModel {
             public class RouteRules : Tea.TeaModel {
-                public var carryData: Bool?
+                public class Rules : Tea.TeaModel {
+                    public class Dubbo : Tea.TeaModel {
+                        public class ArgumentItems : Tea.TeaModel {
+                            public var cond: String?
 
+                            public var datum: String?
+
+                            public var divisor: Int32?
+
+                            public var expr: String?
+
+                            public var index: Int32?
+
+                            public var nameList: [String]?
+
+                            public var operator_: String?
+
+                            public var rate: Int32?
+
+                            public var remainder: Int32?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.cond != nil {
+                                    map["cond"] = self.cond!
+                                }
+                                if self.datum != nil {
+                                    map["datum"] = self.datum!
+                                }
+                                if self.divisor != nil {
+                                    map["divisor"] = self.divisor!
+                                }
+                                if self.expr != nil {
+                                    map["expr"] = self.expr!
+                                }
+                                if self.index != nil {
+                                    map["index"] = self.index!
+                                }
+                                if self.nameList != nil {
+                                    map["nameList"] = self.nameList!
+                                }
+                                if self.operator_ != nil {
+                                    map["operator"] = self.operator_!
+                                }
+                                if self.rate != nil {
+                                    map["rate"] = self.rate!
+                                }
+                                if self.remainder != nil {
+                                    map["remainder"] = self.remainder!
+                                }
+                                if self.value != nil {
+                                    map["value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("cond") && dict["cond"] != nil {
+                                    self.cond = dict["cond"] as! String
+                                }
+                                if dict.keys.contains("datum") && dict["datum"] != nil {
+                                    self.datum = dict["datum"] as! String
+                                }
+                                if dict.keys.contains("divisor") && dict["divisor"] != nil {
+                                    self.divisor = dict["divisor"] as! Int32
+                                }
+                                if dict.keys.contains("expr") && dict["expr"] != nil {
+                                    self.expr = dict["expr"] as! String
+                                }
+                                if dict.keys.contains("index") && dict["index"] != nil {
+                                    self.index = dict["index"] as! Int32
+                                }
+                                if dict.keys.contains("nameList") && dict["nameList"] != nil {
+                                    self.nameList = dict["nameList"] as! [String]
+                                }
+                                if dict.keys.contains("operator") && dict["operator"] != nil {
+                                    self.operator_ = dict["operator"] as! String
+                                }
+                                if dict.keys.contains("rate") && dict["rate"] != nil {
+                                    self.rate = dict["rate"] as! Int32
+                                }
+                                if dict.keys.contains("remainder") && dict["remainder"] != nil {
+                                    self.remainder = dict["remainder"] as! Int32
+                                }
+                                if dict.keys.contains("value") && dict["value"] != nil {
+                                    self.value = dict["value"] as! String
+                                }
+                            }
+                        }
+                        public var appId: String?
+
+                        public var argumentItems: [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Dubbo.ArgumentItems]?
+
+                        public var condition: String?
+
+                        public var group: String?
+
+                        public var methodName: String?
+
+                        public var paramTypes: [String]?
+
+                        public var serviceName: String?
+
+                        public var tags: [String]?
+
+                        public var triggerPolicy: String?
+
+                        public var version: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["appId"] = self.appId!
+                            }
+                            if self.argumentItems != nil {
+                                var tmp : [Any] = []
+                                for k in self.argumentItems! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["argumentItems"] = tmp
+                            }
+                            if self.condition != nil {
+                                map["condition"] = self.condition!
+                            }
+                            if self.group != nil {
+                                map["group"] = self.group!
+                            }
+                            if self.methodName != nil {
+                                map["methodName"] = self.methodName!
+                            }
+                            if self.paramTypes != nil {
+                                map["paramTypes"] = self.paramTypes!
+                            }
+                            if self.serviceName != nil {
+                                map["serviceName"] = self.serviceName!
+                            }
+                            if self.tags != nil {
+                                map["tags"] = self.tags!
+                            }
+                            if self.triggerPolicy != nil {
+                                map["triggerPolicy"] = self.triggerPolicy!
+                            }
+                            if self.version != nil {
+                                map["version"] = self.version!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("appId") && dict["appId"] != nil {
+                                self.appId = dict["appId"] as! String
+                            }
+                            if dict.keys.contains("argumentItems") && dict["argumentItems"] != nil {
+                                var tmp : [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Dubbo.ArgumentItems] = []
+                                for v in dict["argumentItems"] as! [Any] {
+                                    var model = ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Dubbo.ArgumentItems()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.argumentItems = tmp
+                            }
+                            if dict.keys.contains("condition") && dict["condition"] != nil {
+                                self.condition = dict["condition"] as! String
+                            }
+                            if dict.keys.contains("group") && dict["group"] != nil {
+                                self.group = dict["group"] as! String
+                            }
+                            if dict.keys.contains("methodName") && dict["methodName"] != nil {
+                                self.methodName = dict["methodName"] as! String
+                            }
+                            if dict.keys.contains("paramTypes") && dict["paramTypes"] != nil {
+                                self.paramTypes = dict["paramTypes"] as! [String]
+                            }
+                            if dict.keys.contains("serviceName") && dict["serviceName"] != nil {
+                                self.serviceName = dict["serviceName"] as! String
+                            }
+                            if dict.keys.contains("tags") && dict["tags"] != nil {
+                                self.tags = dict["tags"] as! [String]
+                            }
+                            if dict.keys.contains("triggerPolicy") && dict["triggerPolicy"] != nil {
+                                self.triggerPolicy = dict["triggerPolicy"] as! String
+                            }
+                            if dict.keys.contains("version") && dict["version"] != nil {
+                                self.version = dict["version"] as! String
+                            }
+                        }
+                    }
+                    public class Springcloud : Tea.TeaModel {
+                        public class RestItems : Tea.TeaModel {
+                            public var cond: String?
+
+                            public var datum: String?
+
+                            public var divisor: Int32?
+
+                            public var name: String?
+
+                            public var nameList: [String]?
+
+                            public var operator_: String?
+
+                            public var rate: Int32?
+
+                            public var remainder: Int32?
+
+                            public var type: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.cond != nil {
+                                    map["cond"] = self.cond!
+                                }
+                                if self.datum != nil {
+                                    map["datum"] = self.datum!
+                                }
+                                if self.divisor != nil {
+                                    map["divisor"] = self.divisor!
+                                }
+                                if self.name != nil {
+                                    map["name"] = self.name!
+                                }
+                                if self.nameList != nil {
+                                    map["nameList"] = self.nameList!
+                                }
+                                if self.operator_ != nil {
+                                    map["operator"] = self.operator_!
+                                }
+                                if self.rate != nil {
+                                    map["rate"] = self.rate!
+                                }
+                                if self.remainder != nil {
+                                    map["remainder"] = self.remainder!
+                                }
+                                if self.type != nil {
+                                    map["type"] = self.type!
+                                }
+                                if self.value != nil {
+                                    map["value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("cond") && dict["cond"] != nil {
+                                    self.cond = dict["cond"] as! String
+                                }
+                                if dict.keys.contains("datum") && dict["datum"] != nil {
+                                    self.datum = dict["datum"] as! String
+                                }
+                                if dict.keys.contains("divisor") && dict["divisor"] != nil {
+                                    self.divisor = dict["divisor"] as! Int32
+                                }
+                                if dict.keys.contains("name") && dict["name"] != nil {
+                                    self.name = dict["name"] as! String
+                                }
+                                if dict.keys.contains("nameList") && dict["nameList"] != nil {
+                                    self.nameList = dict["nameList"] as! [String]
+                                }
+                                if dict.keys.contains("operator") && dict["operator"] != nil {
+                                    self.operator_ = dict["operator"] as! String
+                                }
+                                if dict.keys.contains("rate") && dict["rate"] != nil {
+                                    self.rate = dict["rate"] as! Int32
+                                }
+                                if dict.keys.contains("remainder") && dict["remainder"] != nil {
+                                    self.remainder = dict["remainder"] as! Int32
+                                }
+                                if dict.keys.contains("type") && dict["type"] != nil {
+                                    self.type = dict["type"] as! String
+                                }
+                                if dict.keys.contains("value") && dict["value"] != nil {
+                                    self.value = dict["value"] as! String
+                                }
+                            }
+                        }
+                        public var appId: String?
+
+                        public var condition: String?
+
+                        public var enable: Bool?
+
+                        public var path: String?
+
+                        public var paths: [String]?
+
+                        public var priority: Int32?
+
+                        public var restItems: [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Springcloud.RestItems]?
+
+                        public var tags: [String]?
+
+                        public var triggerPolicy: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.appId != nil {
+                                map["appId"] = self.appId!
+                            }
+                            if self.condition != nil {
+                                map["condition"] = self.condition!
+                            }
+                            if self.enable != nil {
+                                map["enable"] = self.enable!
+                            }
+                            if self.path != nil {
+                                map["path"] = self.path!
+                            }
+                            if self.paths != nil {
+                                map["paths"] = self.paths!
+                            }
+                            if self.priority != nil {
+                                map["priority"] = self.priority!
+                            }
+                            if self.restItems != nil {
+                                var tmp : [Any] = []
+                                for k in self.restItems! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["restItems"] = tmp
+                            }
+                            if self.tags != nil {
+                                map["tags"] = self.tags!
+                            }
+                            if self.triggerPolicy != nil {
+                                map["triggerPolicy"] = self.triggerPolicy!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("appId") && dict["appId"] != nil {
+                                self.appId = dict["appId"] as! String
+                            }
+                            if dict.keys.contains("condition") && dict["condition"] != nil {
+                                self.condition = dict["condition"] as! String
+                            }
+                            if dict.keys.contains("enable") && dict["enable"] != nil {
+                                self.enable = dict["enable"] as! Bool
+                            }
+                            if dict.keys.contains("path") && dict["path"] != nil {
+                                self.path = dict["path"] as! String
+                            }
+                            if dict.keys.contains("paths") && dict["paths"] != nil {
+                                self.paths = dict["paths"] as! [String]
+                            }
+                            if dict.keys.contains("priority") && dict["priority"] != nil {
+                                self.priority = dict["priority"] as! Int32
+                            }
+                            if dict.keys.contains("restItems") && dict["restItems"] != nil {
+                                var tmp : [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Springcloud.RestItems] = []
+                                for v in dict["restItems"] as! [Any] {
+                                    var model = ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Springcloud.RestItems()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.restItems = tmp
+                            }
+                            if dict.keys.contains("tags") && dict["tags"] != nil {
+                                self.tags = dict["tags"] as! [String]
+                            }
+                            if dict.keys.contains("triggerPolicy") && dict["triggerPolicy"] != nil {
+                                self.triggerPolicy = dict["triggerPolicy"] as! String
+                            }
+                        }
+                    }
+                    public var dubbo: [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Dubbo]?
+
+                    public var springcloud: [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Springcloud]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.dubbo != nil {
+                            var tmp : [Any] = []
+                            for k in self.dubbo! {
+                                tmp.append(k.toMap())
+                            }
+                            map["dubbo"] = tmp
+                        }
+                        if self.springcloud != nil {
+                            var tmp : [Any] = []
+                            for k in self.springcloud! {
+                                tmp.append(k.toMap())
+                            }
+                            map["springcloud"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("dubbo") && dict["dubbo"] != nil {
+                            var tmp : [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Dubbo] = []
+                            for v in dict["dubbo"] as! [Any] {
+                                var model = ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Dubbo()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.dubbo = tmp
+                        }
+                        if dict.keys.contains("springcloud") && dict["springcloud"] != nil {
+                            var tmp : [ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Springcloud] = []
+                            for v in dict["springcloud"] as! [Any] {
+                                var model = ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules.Springcloud()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.springcloud = tmp
+                        }
+                    }
+                }
                 public var enable: Bool?
-
-                public var gmtModified: String?
 
                 public var id: Int64?
 
@@ -30278,9 +31399,7 @@ public class ListApplicationsWithTagRulesResponseBody : Tea.TeaModel {
 
                 public var rate: Int32?
 
-                public var remove: Bool?
-
-                public var rules: String?
+                public var rules: ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules?
 
                 public var status: Int32?
 
@@ -30296,18 +31415,13 @@ public class ListApplicationsWithTagRulesResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.rules?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
-                    if self.carryData != nil {
-                        map["CarryData"] = self.carryData!
-                    }
                     if self.enable != nil {
                         map["Enable"] = self.enable!
-                    }
-                    if self.gmtModified != nil {
-                        map["GmtModified"] = self.gmtModified!
                     }
                     if self.id != nil {
                         map["Id"] = self.id!
@@ -30321,11 +31435,8 @@ public class ListApplicationsWithTagRulesResponseBody : Tea.TeaModel {
                     if self.rate != nil {
                         map["Rate"] = self.rate!
                     }
-                    if self.remove != nil {
-                        map["Remove"] = self.remove!
-                    }
                     if self.rules != nil {
-                        map["Rules"] = self.rules!
+                        map["Rules"] = self.rules?.toMap()
                     }
                     if self.status != nil {
                         map["Status"] = self.status!
@@ -30337,14 +31448,8 @@ public class ListApplicationsWithTagRulesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
-                    if dict.keys.contains("CarryData") && dict["CarryData"] != nil {
-                        self.carryData = dict["CarryData"] as! Bool
-                    }
                     if dict.keys.contains("Enable") && dict["Enable"] != nil {
                         self.enable = dict["Enable"] as! Bool
-                    }
-                    if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
-                        self.gmtModified = dict["GmtModified"] as! String
                     }
                     if dict.keys.contains("Id") && dict["Id"] != nil {
                         self.id = dict["Id"] as! Int64
@@ -30358,11 +31463,10 @@ public class ListApplicationsWithTagRulesResponseBody : Tea.TeaModel {
                     if dict.keys.contains("Rate") && dict["Rate"] != nil {
                         self.rate = dict["Rate"] as! Int32
                     }
-                    if dict.keys.contains("Remove") && dict["Remove"] != nil {
-                        self.remove = dict["Remove"] as! Bool
-                    }
                     if dict.keys.contains("Rules") && dict["Rules"] != nil {
-                        self.rules = dict["Rules"] as! String
+                        var model = ListApplicationsWithTagRulesResponseBody.Data.Result.RouteRules.Rules()
+                        model.fromMap(dict["Rules"] as! [String: Any])
+                        self.rules = model
                     }
                     if dict.keys.contains("Status") && dict["Status"] != nil {
                         self.status = dict["Status"] as! Int32
