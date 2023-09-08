@@ -30685,6 +30685,8 @@ public class DescribeDBMiniEngineVersionsResponseBody : Tea.TeaModel {
 
         public var engineVersion: String?
 
+        public var expireStatus: String?
+
         public var isHotfixVersion: Bool?
 
         public var minorVersion: String?
@@ -30722,6 +30724,9 @@ public class DescribeDBMiniEngineVersionsResponseBody : Tea.TeaModel {
             if self.engineVersion != nil {
                 map["EngineVersion"] = self.engineVersion!
             }
+            if self.expireStatus != nil {
+                map["ExpireStatus"] = self.expireStatus!
+            }
             if self.isHotfixVersion != nil {
                 map["IsHotfixVersion"] = self.isHotfixVersion!
             }
@@ -30755,6 +30760,9 @@ public class DescribeDBMiniEngineVersionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
                 self.engineVersion = dict["EngineVersion"] as! String
+            }
+            if dict.keys.contains("ExpireStatus") && dict["ExpireStatus"] != nil {
+                self.expireStatus = dict["ExpireStatus"] as! String
             }
             if dict.keys.contains("IsHotfixVersion") && dict["IsHotfixVersion"] != nil {
                 self.isHotfixVersion = dict["IsHotfixVersion"] as! Bool
