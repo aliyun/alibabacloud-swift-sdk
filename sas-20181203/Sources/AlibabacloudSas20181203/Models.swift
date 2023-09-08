@@ -70841,6 +70841,8 @@ public class DescribeVulListResponseBody : Tea.TeaModel {
     }
     public var currentPage: Int32?
 
+    public var nextToken: String?
+
     public var pageSize: Int32?
 
     public var requestId: String?
@@ -70866,6 +70868,9 @@ public class DescribeVulListResponseBody : Tea.TeaModel {
         if self.currentPage != nil {
             map["CurrentPage"] = self.currentPage!
         }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -70888,6 +70893,9 @@ public class DescribeVulListResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
             self.currentPage = dict["CurrentPage"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
