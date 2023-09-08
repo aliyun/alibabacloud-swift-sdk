@@ -16796,6 +16796,8 @@ public class DescribeCensResponse : Tea.TeaModel {
 }
 
 public class DescribeChildInstanceRegionsRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -16820,6 +16822,9 @@ public class DescribeChildInstanceRegionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -16839,6 +16844,9 @@ public class DescribeChildInstanceRegionsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }

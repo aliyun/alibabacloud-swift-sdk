@@ -3762,6 +3762,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeChildInstanceRegionsWithOptions(_ request: DescribeChildInstanceRegionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeChildInstanceRegionsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
