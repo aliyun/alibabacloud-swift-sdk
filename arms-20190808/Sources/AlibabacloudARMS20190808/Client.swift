@@ -1908,6 +1908,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAppListWithOptions(_ request: DeleteAppListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAppListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pids)) {
+            query["Pids"] = request.pids ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAppList",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAppListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAppList(_ request: DeleteAppListRequest) async throws -> DeleteAppListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteAppListWithOptions(request as! DeleteAppListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteCmsExporterWithOptions(_ request: DeleteCmsExporterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCmsExporterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5357,6 +5391,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTraceAppsWithOptions(_ request: ListTraceAppsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTraceAppsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            query["AppType"] = request.appType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
         }
