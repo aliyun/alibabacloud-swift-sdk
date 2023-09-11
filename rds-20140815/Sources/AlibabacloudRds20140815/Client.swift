@@ -2368,6 +2368,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.port)) {
+            query["Port"] = request.port ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.privateIpAddress)) {
             query["PrivateIpAddress"] = request.privateIpAddress ?? "";
         }

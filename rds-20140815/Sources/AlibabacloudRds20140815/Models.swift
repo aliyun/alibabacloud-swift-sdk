@@ -9471,6 +9471,8 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
 
     public var period: String?
 
+    public var port: String?
+
     public var privateIpAddress: String?
 
     public var regionId: String?
@@ -9571,6 +9573,9 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
         }
         if self.period != nil {
             map["Period"] = self.period!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
         }
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
@@ -9674,6 +9679,9 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Period") && dict["Period"] != nil {
             self.period = dict["Period"] as! String
+        }
+        if dict.keys.contains("Port") && dict["Port"] != nil {
+            self.port = dict["Port"] as! String
         }
         if dict.keys.contains("PrivateIpAddress") && dict["PrivateIpAddress"] != nil {
             self.privateIpAddress = dict["PrivateIpAddress"] as! String
