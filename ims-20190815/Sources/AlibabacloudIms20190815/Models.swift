@@ -5713,10 +5713,52 @@ public class GetApplicationResponse : Tea.TeaModel {
     }
 }
 
+public class GetCredentialReportRequest : Tea.TeaModel {
+    public var maxItems: String?
+
+    public var nextToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxItems != nil {
+            map["MaxItems"] = self.maxItems!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxItems") && dict["MaxItems"] != nil {
+            self.maxItems = dict["MaxItems"] as! String
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+    }
+}
+
 public class GetCredentialReportResponseBody : Tea.TeaModel {
     public var content: String?
 
     public var generatedTime: String?
+
+    public var isTruncated: String?
+
+    public var nextToken: String?
 
     public var requestId: String?
 
@@ -5740,6 +5782,12 @@ public class GetCredentialReportResponseBody : Tea.TeaModel {
         if self.generatedTime != nil {
             map["GeneratedTime"] = self.generatedTime!
         }
+        if self.isTruncated != nil {
+            map["IsTruncated"] = self.isTruncated!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -5752,6 +5800,12 @@ public class GetCredentialReportResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("GeneratedTime") && dict["GeneratedTime"] != nil {
             self.generatedTime = dict["GeneratedTime"] as! String
+        }
+        if dict.keys.contains("IsTruncated") && dict["IsTruncated"] != nil {
+            self.isTruncated = dict["IsTruncated"] as! String
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String

@@ -1071,8 +1071,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getCredentialReportWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> GetCredentialReportResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+    public func getCredentialReportWithOptions(_ request: GetCredentialReportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCredentialReportResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxItems)) {
+            query["MaxItems"] = request.maxItems ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetCredentialReport",
             "version": "2019-08-15",
@@ -1089,9 +1099,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getCredentialReport() async throws -> GetCredentialReportResponse {
+    public func getCredentialReport(_ request: GetCredentialReportRequest) async throws -> GetCredentialReportResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getCredentialReportWithOptions(runtime as! TeaUtils.RuntimeOptions)
+        return try await getCredentialReportWithOptions(request as! GetCredentialReportRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
