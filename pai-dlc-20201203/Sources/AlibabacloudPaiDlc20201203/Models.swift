@@ -3327,6 +3327,8 @@ public class CreateJobRequest : Tea.TeaModel {
         }
     }
     public class UserVpc : Tea.TeaModel {
+        public var defaultRoute: String?
+
         public var extendedCIDRs: [String]?
 
         public var securityGroupId: String?
@@ -3349,6 +3351,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.defaultRoute != nil {
+                map["DefaultRoute"] = self.defaultRoute!
+            }
             if self.extendedCIDRs != nil {
                 map["ExtendedCIDRs"] = self.extendedCIDRs!
             }
@@ -3365,6 +3370,9 @@ public class CreateJobRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultRoute") && dict["DefaultRoute"] != nil {
+                self.defaultRoute = dict["DefaultRoute"] as! String
+            }
             if dict.keys.contains("ExtendedCIDRs") && dict["ExtendedCIDRs"] != nil {
                 self.extendedCIDRs = dict["ExtendedCIDRs"] as! [String]
             }
@@ -5552,6 +5560,8 @@ public class GetPodLogsResponse : Tea.TeaModel {
 public class GetTensorboardRequest : Tea.TeaModel {
     public var jodId: String?
 
+    public var token: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -5571,6 +5581,9 @@ public class GetTensorboardRequest : Tea.TeaModel {
         if self.jodId != nil {
             map["JodId"] = self.jodId!
         }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -5580,6 +5593,9 @@ public class GetTensorboardRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("JodId") && dict["JodId"] != nil {
             self.jodId = dict["JodId"] as! String
+        }
+        if dict.keys.contains("Token") && dict["Token"] != nil {
+            self.token = dict["Token"] as! String
         }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -5633,6 +5649,126 @@ public class GetTensorboardResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = Tensorboard()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetTensorboardSharedUrlRequest : Tea.TeaModel {
+    public var expireTimeSeconds: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.expireTimeSeconds != nil {
+            map["ExpireTimeSeconds"] = self.expireTimeSeconds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExpireTimeSeconds") && dict["ExpireTimeSeconds"] != nil {
+            self.expireTimeSeconds = dict["ExpireTimeSeconds"] as! String
+        }
+    }
+}
+
+public class GetTensorboardSharedUrlResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var tensorboardSharedUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.tensorboardSharedUrl != nil {
+            map["TensorboardSharedUrl"] = self.tensorboardSharedUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TensorboardSharedUrl") && dict["TensorboardSharedUrl"] != nil {
+            self.tensorboardSharedUrl = dict["TensorboardSharedUrl"] as! String
+        }
+    }
+}
+
+public class GetTensorboardSharedUrlResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetTensorboardSharedUrlResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetTensorboardSharedUrlResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
