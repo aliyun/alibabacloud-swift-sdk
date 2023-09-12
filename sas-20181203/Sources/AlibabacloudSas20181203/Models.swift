@@ -44103,6 +44103,8 @@ public class DescribeInstanceStatisticsResponseBody : Tea.TeaModel {
 
         public var agentlessVulSca: Int32?
 
+        public var agentlessVulSys: Int32?
+
         public var appNum: Int32?
 
         public var cmsNum: Int32?
@@ -44160,6 +44162,9 @@ public class DescribeInstanceStatisticsResponseBody : Tea.TeaModel {
             }
             if self.agentlessVulSca != nil {
                 map["AgentlessVulSca"] = self.agentlessVulSca!
+            }
+            if self.agentlessVulSys != nil {
+                map["AgentlessVulSys"] = self.agentlessVulSys!
             }
             if self.appNum != nil {
                 map["AppNum"] = self.appNum!
@@ -44221,6 +44226,9 @@ public class DescribeInstanceStatisticsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AgentlessVulSca") && dict["AgentlessVulSca"] != nil {
                 self.agentlessVulSca = dict["AgentlessVulSca"] as! Int32
+            }
+            if dict.keys.contains("AgentlessVulSys") && dict["AgentlessVulSys"] != nil {
+                self.agentlessVulSys = dict["AgentlessVulSys"] as! Int32
             }
             if dict.keys.contains("AppNum") && dict["AppNum"] != nil {
                 self.appNum = dict["AppNum"] as! Int32
@@ -93233,6 +93241,8 @@ public class ListAgentlessMaliciousFilesRequest : Tea.TeaModel {
 
     public var maliciousMd5: String?
 
+    public var maliciousType: String?
+
     public var pageSize: String?
 
     public var remark: String?
@@ -93274,6 +93284,9 @@ public class ListAgentlessMaliciousFilesRequest : Tea.TeaModel {
         if self.maliciousMd5 != nil {
             map["MaliciousMd5"] = self.maliciousMd5!
         }
+        if self.maliciousType != nil {
+            map["MaliciousType"] = self.maliciousType!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -93307,6 +93320,9 @@ public class ListAgentlessMaliciousFilesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MaliciousMd5") && dict["MaliciousMd5"] != nil {
             self.maliciousMd5 = dict["MaliciousMd5"] as! String
+        }
+        if dict.keys.contains("MaliciousType") && dict["MaliciousType"] != nil {
+            self.maliciousType = dict["MaliciousType"] as! String
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! String
@@ -93446,6 +93462,8 @@ public class ListAgentlessMaliciousFilesResponseBody : Tea.TeaModel {
 
         public var maliciousName: String?
 
+        public var maliciousType: String?
+
         public var notes: [ListAgentlessMaliciousFilesResponseBody.List.Notes]?
 
         public var operateResult: String?
@@ -93518,6 +93536,9 @@ public class ListAgentlessMaliciousFilesResponseBody : Tea.TeaModel {
             }
             if self.maliciousName != nil {
                 map["MaliciousName"] = self.maliciousName!
+            }
+            if self.maliciousType != nil {
+                map["MaliciousType"] = self.maliciousType!
             }
             if self.notes != nil {
                 var tmp : [Any] = []
@@ -93597,6 +93618,9 @@ public class ListAgentlessMaliciousFilesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MaliciousName") && dict["MaliciousName"] != nil {
                 self.maliciousName = dict["MaliciousName"] as! String
+            }
+            if dict.keys.contains("MaliciousType") && dict["MaliciousType"] != nil {
+                self.maliciousType = dict["MaliciousType"] as! String
             }
             if dict.keys.contains("Notes") && dict["Notes"] != nil {
                 var tmp : [ListAgentlessMaliciousFilesResponseBody.List.Notes] = []

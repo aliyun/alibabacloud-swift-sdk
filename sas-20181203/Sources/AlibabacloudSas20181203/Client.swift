@@ -15008,6 +15008,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maliciousMd5)) {
             query["MaliciousMd5"] = request.maliciousMd5 ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maliciousType)) {
+            query["MaliciousType"] = request.maliciousType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize ?? "";
         }
