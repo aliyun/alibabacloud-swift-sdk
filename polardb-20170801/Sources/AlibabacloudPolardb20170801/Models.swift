@@ -9470,6 +9470,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     }
     public var aiType: String?
 
+    public var architecture: String?
+
     public var blktagTotal: Int64?
 
     public var blktagUsed: Int64?
@@ -9511,6 +9513,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     public var expired: String?
 
     public var hasCompleteStandbyRes: Bool?
+
+    public var hotStandbyCluster: String?
 
     public var inodeTotal: Int64?
 
@@ -9587,6 +9591,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if self.aiType != nil {
             map["AiType"] = self.aiType!
         }
+        if self.architecture != nil {
+            map["Architecture"] = self.architecture!
+        }
         if self.blktagTotal != nil {
             map["BlktagTotal"] = self.blktagTotal!
         }
@@ -9653,6 +9660,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.hasCompleteStandbyRes != nil {
             map["HasCompleteStandbyRes"] = self.hasCompleteStandbyRes!
+        }
+        if self.hotStandbyCluster != nil {
+            map["HotStandbyCluster"] = self.hotStandbyCluster!
         }
         if self.inodeTotal != nil {
             map["InodeTotal"] = self.inodeTotal!
@@ -9752,6 +9762,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         if dict.keys.contains("AiType") && dict["AiType"] != nil {
             self.aiType = dict["AiType"] as! String
         }
+        if dict.keys.contains("Architecture") && dict["Architecture"] != nil {
+            self.architecture = dict["Architecture"] as! String
+        }
         if dict.keys.contains("BlktagTotal") && dict["BlktagTotal"] != nil {
             self.blktagTotal = dict["BlktagTotal"] as! Int64
         }
@@ -9822,6 +9835,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("HasCompleteStandbyRes") && dict["HasCompleteStandbyRes"] != nil {
             self.hasCompleteStandbyRes = dict["HasCompleteStandbyRes"] as! Bool
+        }
+        if dict.keys.contains("HotStandbyCluster") && dict["HotStandbyCluster"] != nil {
+            self.hotStandbyCluster = dict["HotStandbyCluster"] as! String
         }
         if dict.keys.contains("InodeTotal") && dict["InodeTotal"] != nil {
             self.inodeTotal = dict["InodeTotal"] as! Int64
@@ -28866,6 +28882,8 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
 
     public var DBNodeTargetClass: String?
 
+    public var DBNodeType: String?
+
     public var modifyType: String?
 
     public var ownerAccount: String?
@@ -28905,6 +28923,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
         if self.DBNodeTargetClass != nil {
             map["DBNodeTargetClass"] = self.DBNodeTargetClass!
         }
+        if self.DBNodeType != nil {
+            map["DBNodeType"] = self.DBNodeType!
+        }
         if self.modifyType != nil {
             map["ModifyType"] = self.modifyType!
         }
@@ -28941,6 +28962,9 @@ public class ModifyDBNodeClassRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBNodeTargetClass") && dict["DBNodeTargetClass"] != nil {
             self.DBNodeTargetClass = dict["DBNodeTargetClass"] as! String
+        }
+        if dict.keys.contains("DBNodeType") && dict["DBNodeType"] != nil {
+            self.DBNodeType = dict["DBNodeType"] as! String
         }
         if dict.keys.contains("ModifyType") && dict["ModifyType"] != nil {
             self.modifyType = dict["ModifyType"] as! String

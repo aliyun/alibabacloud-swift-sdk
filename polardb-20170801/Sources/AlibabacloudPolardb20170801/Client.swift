@@ -6104,6 +6104,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBNodeTargetClass)) {
             query["DBNodeTargetClass"] = request.DBNodeTargetClass ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBNodeType)) {
+            query["DBNodeType"] = request.DBNodeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.modifyType)) {
             query["ModifyType"] = request.modifyType ?? "";
         }
