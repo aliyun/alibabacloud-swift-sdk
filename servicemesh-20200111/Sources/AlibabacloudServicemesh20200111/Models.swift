@@ -3058,9 +3058,15 @@ public class CreateSwimLaneGroupRequest : Tea.TeaModel {
 
     public var ingressType: String?
 
+    public var isPermissive: Bool?
+
+    public var routeHeader: String?
+
     public var serviceMeshId: String?
 
     public var servicesList: String?
+
+    public var traceHeader: String?
 
     public override init() {
         super.init()
@@ -3085,11 +3091,20 @@ public class CreateSwimLaneGroupRequest : Tea.TeaModel {
         if self.ingressType != nil {
             map["IngressType"] = self.ingressType!
         }
+        if self.isPermissive != nil {
+            map["IsPermissive"] = self.isPermissive!
+        }
+        if self.routeHeader != nil {
+            map["RouteHeader"] = self.routeHeader!
+        }
         if self.serviceMeshId != nil {
             map["ServiceMeshId"] = self.serviceMeshId!
         }
         if self.servicesList != nil {
             map["ServicesList"] = self.servicesList!
+        }
+        if self.traceHeader != nil {
+            map["TraceHeader"] = self.traceHeader!
         }
         return map
     }
@@ -3104,11 +3119,20 @@ public class CreateSwimLaneGroupRequest : Tea.TeaModel {
         if dict.keys.contains("IngressType") && dict["IngressType"] != nil {
             self.ingressType = dict["IngressType"] as! String
         }
+        if dict.keys.contains("IsPermissive") && dict["IsPermissive"] != nil {
+            self.isPermissive = dict["IsPermissive"] as! Bool
+        }
+        if dict.keys.contains("RouteHeader") && dict["RouteHeader"] != nil {
+            self.routeHeader = dict["RouteHeader"] as! String
+        }
         if dict.keys.contains("ServiceMeshId") && dict["ServiceMeshId"] != nil {
             self.serviceMeshId = dict["ServiceMeshId"] as! String
         }
         if dict.keys.contains("ServicesList") && dict["ServicesList"] != nil {
             self.servicesList = dict["ServicesList"] as! String
+        }
+        if dict.keys.contains("TraceHeader") && dict["TraceHeader"] != nil {
+            self.traceHeader = dict["TraceHeader"] as! String
         }
     }
 }
@@ -17347,13 +17371,23 @@ public class GetSwimLaneGroupListRequest : Tea.TeaModel {
 
 public class GetSwimLaneGroupListResponseBody : Tea.TeaModel {
     public class SwimLaneGroupList : Tea.TeaModel {
+        public var fallbackTarget: String?
+
         public var groupName: String?
 
         public var ingressGatewayName: String?
 
         public var ingressType: String?
 
+        public var isPermissive: Bool?
+
+        public var routeHeader: String?
+
         public var serviceList: String?
+
+        public var swimLaneLabels: String?
+
+        public var traceHeader: String?
 
         public override init() {
             super.init()
@@ -17369,6 +17403,9 @@ public class GetSwimLaneGroupListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.fallbackTarget != nil {
+                map["FallbackTarget"] = self.fallbackTarget!
+            }
             if self.groupName != nil {
                 map["GroupName"] = self.groupName!
             }
@@ -17378,13 +17415,28 @@ public class GetSwimLaneGroupListResponseBody : Tea.TeaModel {
             if self.ingressType != nil {
                 map["IngressType"] = self.ingressType!
             }
+            if self.isPermissive != nil {
+                map["IsPermissive"] = self.isPermissive!
+            }
+            if self.routeHeader != nil {
+                map["RouteHeader"] = self.routeHeader!
+            }
             if self.serviceList != nil {
                 map["ServiceList"] = self.serviceList!
+            }
+            if self.swimLaneLabels != nil {
+                map["SwimLaneLabels"] = self.swimLaneLabels!
+            }
+            if self.traceHeader != nil {
+                map["TraceHeader"] = self.traceHeader!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("FallbackTarget") && dict["FallbackTarget"] != nil {
+                self.fallbackTarget = dict["FallbackTarget"] as! String
+            }
             if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
                 self.groupName = dict["GroupName"] as! String
             }
@@ -17394,8 +17446,20 @@ public class GetSwimLaneGroupListResponseBody : Tea.TeaModel {
             if dict.keys.contains("IngressType") && dict["IngressType"] != nil {
                 self.ingressType = dict["IngressType"] as! String
             }
+            if dict.keys.contains("IsPermissive") && dict["IsPermissive"] != nil {
+                self.isPermissive = dict["IsPermissive"] as! Bool
+            }
+            if dict.keys.contains("RouteHeader") && dict["RouteHeader"] != nil {
+                self.routeHeader = dict["RouteHeader"] as! String
+            }
             if dict.keys.contains("ServiceList") && dict["ServiceList"] != nil {
                 self.serviceList = dict["ServiceList"] as! String
+            }
+            if dict.keys.contains("SwimLaneLabels") && dict["SwimLaneLabels"] != nil {
+                self.swimLaneLabels = dict["SwimLaneLabels"] as! String
+            }
+            if dict.keys.contains("TraceHeader") && dict["TraceHeader"] != nil {
+                self.traceHeader = dict["TraceHeader"] as! String
             }
         }
     }
@@ -23240,6 +23304,8 @@ public class UpdateSwimLaneResponse : Tea.TeaModel {
 }
 
 public class UpdateSwimLaneGroupRequest : Tea.TeaModel {
+    public var fallbackTarget: String?
+
     public var groupName: String?
 
     public var serviceMeshId: String?
@@ -23260,6 +23326,9 @@ public class UpdateSwimLaneGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.fallbackTarget != nil {
+            map["FallbackTarget"] = self.fallbackTarget!
+        }
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
@@ -23273,6 +23342,9 @@ public class UpdateSwimLaneGroupRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FallbackTarget") && dict["FallbackTarget"] != nil {
+            self.fallbackTarget = dict["FallbackTarget"] as! String
+        }
         if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
             self.groupName = dict["GroupName"] as! String
         }

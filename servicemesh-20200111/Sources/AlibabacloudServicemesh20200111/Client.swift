@@ -595,11 +595,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ingressType)) {
             body["IngressType"] = request.ingressType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isPermissive)) {
+            body["IsPermissive"] = request.isPermissive!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeHeader)) {
+            body["RouteHeader"] = request.routeHeader ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
             body["ServiceMeshId"] = request.serviceMeshId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.servicesList)) {
             body["ServicesList"] = request.servicesList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.traceHeader)) {
+            body["TraceHeader"] = request.traceHeader ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
@@ -3648,6 +3657,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSwimLaneGroupWithOptions(_ request: UpdateSwimLaneGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSwimLaneGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fallbackTarget)) {
+            body["FallbackTarget"] = request.fallbackTarget ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             body["GroupName"] = request.groupName ?? "";
         }
