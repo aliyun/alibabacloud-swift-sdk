@@ -1087,6 +1087,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendMessageWithOptions(_ tmpReq: SendMessageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendMessageResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SendMessageShrinkRequest = SendMessageShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.msisdns)) {
+            request.msisdnsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.msisdns, "Msisdns", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiProduct)) {
+            body["ApiProduct"] = request.apiProduct ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.messageSendTime)) {
+            body["MessageSendTime"] = request.messageSendTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.messageTemplateId)) {
+            body["MessageTemplateId"] = request.messageTemplateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.messageVariableParam)) {
+            body["MessageVariableParam"] = request.messageVariableParam ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.msisdnsShrink)) {
+            body["Msisdns"] = request.msisdnsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskName)) {
+            body["TaskName"] = request.taskName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SendMessage",
+            "version": "2021-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SendMessageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func sendMessage(_ request: SendMessageRequest) async throws -> SendMessageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await sendMessageWithOptions(request as! SendMessageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setCardStopRuleWithOptions(_ request: SetCardStopRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetCardStopRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
