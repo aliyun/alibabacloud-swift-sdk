@@ -2422,6 +2422,8 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
 
     public var receivers: Int32?
 
+    public var remainFreeQuota: Int32?
+
     public var requestId: String?
 
     public var smsRecord: Int32?
@@ -2477,6 +2479,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         if self.receivers != nil {
             map["Receivers"] = self.receivers!
         }
+        if self.remainFreeQuota != nil {
+            map["RemainFreeQuota"] = self.remainFreeQuota!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -2528,6 +2533,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Receivers") && dict["Receivers"] != nil {
             self.receivers = dict["Receivers"] as! Int32
+        }
+        if dict.keys.contains("RemainFreeQuota") && dict["RemainFreeQuota"] != nil {
+            self.remainFreeQuota = dict["RemainFreeQuota"] as! Int32
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
