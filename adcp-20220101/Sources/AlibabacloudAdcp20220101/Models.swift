@@ -5741,6 +5741,8 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
 
     public var argoCDHAEnabled: Bool?
 
+    public var argoEventsEnabled: Bool?
+
     public var argoServerEnabled: Bool?
 
     public var auditLogEnabled: Bool?
@@ -5790,6 +5792,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         }
         if self.argoCDHAEnabled != nil {
             map["ArgoCDHAEnabled"] = self.argoCDHAEnabled!
+        }
+        if self.argoEventsEnabled != nil {
+            map["ArgoEventsEnabled"] = self.argoEventsEnabled!
         }
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
@@ -5843,6 +5848,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("ArgoCDHAEnabled") && dict["ArgoCDHAEnabled"] != nil {
             self.argoCDHAEnabled = dict["ArgoCDHAEnabled"] as! Bool
         }
+        if dict.keys.contains("ArgoEventsEnabled") && dict["ArgoEventsEnabled"] != nil {
+            self.argoEventsEnabled = dict["ArgoEventsEnabled"] as! Bool
+        }
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
         }
@@ -5890,6 +5898,8 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
     public var argoCDEnabled: Bool?
 
     public var argoCDHAEnabled: Bool?
+
+    public var argoEventsEnabled: Bool?
 
     public var argoServerEnabled: Bool?
 
@@ -5940,6 +5950,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if self.argoCDHAEnabled != nil {
             map["ArgoCDHAEnabled"] = self.argoCDHAEnabled!
+        }
+        if self.argoEventsEnabled != nil {
+            map["ArgoEventsEnabled"] = self.argoEventsEnabled!
         }
         if self.argoServerEnabled != nil {
             map["ArgoServerEnabled"] = self.argoServerEnabled!
@@ -5992,6 +6005,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ArgoCDHAEnabled") && dict["ArgoCDHAEnabled"] != nil {
             self.argoCDHAEnabled = dict["ArgoCDHAEnabled"] as! Bool
+        }
+        if dict.keys.contains("ArgoEventsEnabled") && dict["ArgoEventsEnabled"] != nil {
+            self.argoEventsEnabled = dict["ArgoEventsEnabled"] as! Bool
         }
         if dict.keys.contains("ArgoServerEnabled") && dict["ArgoServerEnabled"] != nil {
             self.argoServerEnabled = dict["ArgoServerEnabled"] as! Bool
