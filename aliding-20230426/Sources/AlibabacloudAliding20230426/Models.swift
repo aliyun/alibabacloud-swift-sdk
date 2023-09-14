@@ -13445,6 +13445,35 @@ public class GetEventResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RichTextDescription : Tea.TeaModel {
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.text != nil {
+                map["Text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Text") && dict["Text"] != nil {
+                self.text = dict["Text"] as! String
+            }
+        }
+    }
     public class Start : Tea.TeaModel {
         public var date: String?
 
@@ -13522,6 +13551,8 @@ public class GetEventResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var richTextDescription: GetEventResponseBody.RichTextDescription?
+
     public var seriesMasterId: String?
 
     public var start: GetEventResponseBody.Start?
@@ -13549,6 +13580,7 @@ public class GetEventResponseBody : Tea.TeaModel {
         try self.organizer?.validate()
         try self.originStart?.validate()
         try self.recurrence?.validate()
+        try self.richTextDescription?.validate()
         try self.start?.validate()
     }
 
@@ -13617,6 +13649,9 @@ public class GetEventResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.richTextDescription != nil {
+            map["richTextDescription"] = self.richTextDescription?.toMap()
         }
         if self.seriesMasterId != nil {
             map["seriesMasterId"] = self.seriesMasterId!
@@ -13730,6 +13765,11 @@ public class GetEventResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("richTextDescription") && dict["richTextDescription"] != nil {
+            var model = GetEventResponseBody.RichTextDescription()
+            model.fromMap(dict["richTextDescription"] as! [String: Any])
+            self.richTextDescription = model
         }
         if dict.keys.contains("seriesMasterId") && dict["seriesMasterId"] != nil {
             self.seriesMasterId = dict["seriesMasterId"] as! String
@@ -23134,6 +23174,35 @@ public class ListEventsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RichTextDescription : Tea.TeaModel {
+            public var text: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.text != nil {
+                    map["Text"] = self.text!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Text") && dict["Text"] != nil {
+                    self.text = dict["Text"] as! String
+                }
+            }
+        }
         public class Start : Tea.TeaModel {
             public var date: String?
 
@@ -23209,6 +23278,8 @@ public class ListEventsResponseBody : Tea.TeaModel {
 
         public var reminders: [ListEventsResponseBody.Events.Reminders]?
 
+        public var richTextDescription: ListEventsResponseBody.Events.RichTextDescription?
+
         public var seriesMasterId: String?
 
         public var start: ListEventsResponseBody.Events.Start?
@@ -23236,6 +23307,7 @@ public class ListEventsResponseBody : Tea.TeaModel {
             try self.organizer?.validate()
             try self.originStart?.validate()
             try self.recurrence?.validate()
+            try self.richTextDescription?.validate()
             try self.start?.validate()
         }
 
@@ -23301,6 +23373,9 @@ public class ListEventsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Reminders"] = tmp
+            }
+            if self.richTextDescription != nil {
+                map["RichTextDescription"] = self.richTextDescription?.toMap()
             }
             if self.seriesMasterId != nil {
                 map["SeriesMasterId"] = self.seriesMasterId!
@@ -23411,6 +23486,11 @@ public class ListEventsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.reminders = tmp
+            }
+            if dict.keys.contains("RichTextDescription") && dict["RichTextDescription"] != nil {
+                var model = ListEventsResponseBody.Events.RichTextDescription()
+                model.fromMap(dict["RichTextDescription"] as! [String: Any])
+                self.richTextDescription = model
             }
             if dict.keys.contains("SeriesMasterId") && dict["SeriesMasterId"] != nil {
                 self.seriesMasterId = dict["SeriesMasterId"] as! String
