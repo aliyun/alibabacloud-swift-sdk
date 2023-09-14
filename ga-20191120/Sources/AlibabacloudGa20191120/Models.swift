@@ -5650,6 +5650,8 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
 
         public var endpoint: String?
 
+        public var subAddress: String?
+
         public var type: String?
 
         public var weight: Int32?
@@ -5677,6 +5679,9 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
             if self.endpoint != nil {
                 map["Endpoint"] = self.endpoint!
             }
+            if self.subAddress != nil {
+                map["SubAddress"] = self.subAddress!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -5695,6 +5700,9 @@ public class CreateEndpointGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
                 self.endpoint = dict["Endpoint"] as! String
+            }
+            if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                self.subAddress = dict["SubAddress"] as! String
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
@@ -6082,6 +6090,8 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
             public var endpoint: String?
 
+            public var subAddress: String?
+
             public var type: String?
 
             public var weight: Int64?
@@ -6103,6 +6113,9 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
                 }
+                if self.subAddress != nil {
+                    map["SubAddress"] = self.subAddress!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -6115,6 +6128,9 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
                     self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                    self.subAddress = dict["SubAddress"] as! String
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
@@ -15368,6 +15384,8 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
 
         public var probeProtocol: String?
 
+        public var subAddress: String?
+
         public var type: String?
 
         public var weight: Int32?
@@ -15401,6 +15419,9 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
             if self.probeProtocol != nil {
                 map["ProbeProtocol"] = self.probeProtocol!
             }
+            if self.subAddress != nil {
+                map["SubAddress"] = self.subAddress!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -15425,6 +15446,9 @@ public class DescribeEndpointGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProbeProtocol") && dict["ProbeProtocol"] != nil {
                 self.probeProtocol = dict["ProbeProtocol"] as! String
+            }
+            if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                self.subAddress = dict["SubAddress"] as! String
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
@@ -16778,6 +16802,198 @@ public class DescribeListenerResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeListenerResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeLogStoreOfEndpointGroupRequest : Tea.TeaModel {
+    public var acceleratorId: String?
+
+    public var endpointGroupId: String?
+
+    public var listenerId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceleratorId != nil {
+            map["AcceleratorId"] = self.acceleratorId!
+        }
+        if self.endpointGroupId != nil {
+            map["EndpointGroupId"] = self.endpointGroupId!
+        }
+        if self.listenerId != nil {
+            map["ListenerId"] = self.listenerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceleratorId") && dict["AcceleratorId"] != nil {
+            self.acceleratorId = dict["AcceleratorId"] as! String
+        }
+        if dict.keys.contains("EndpointGroupId") && dict["EndpointGroupId"] != nil {
+            self.endpointGroupId = dict["EndpointGroupId"] as! String
+        }
+        if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
+            self.listenerId = dict["ListenerId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DescribeLogStoreOfEndpointGroupResponseBody : Tea.TeaModel {
+    public var acceleratorId: String?
+
+    public var endpointGroupId: String?
+
+    public var listenerId: String?
+
+    public var requestId: String?
+
+    public var slsLogStoreName: String?
+
+    public var slsProjectName: String?
+
+    public var slsRegionId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceleratorId != nil {
+            map["AcceleratorId"] = self.acceleratorId!
+        }
+        if self.endpointGroupId != nil {
+            map["EndpointGroupId"] = self.endpointGroupId!
+        }
+        if self.listenerId != nil {
+            map["ListenerId"] = self.listenerId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.slsLogStoreName != nil {
+            map["SlsLogStoreName"] = self.slsLogStoreName!
+        }
+        if self.slsProjectName != nil {
+            map["SlsProjectName"] = self.slsProjectName!
+        }
+        if self.slsRegionId != nil {
+            map["SlsRegionId"] = self.slsRegionId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceleratorId") && dict["AcceleratorId"] != nil {
+            self.acceleratorId = dict["AcceleratorId"] as! String
+        }
+        if dict.keys.contains("EndpointGroupId") && dict["EndpointGroupId"] != nil {
+            self.endpointGroupId = dict["EndpointGroupId"] as! String
+        }
+        if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
+            self.listenerId = dict["ListenerId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SlsLogStoreName") && dict["SlsLogStoreName"] != nil {
+            self.slsLogStoreName = dict["SlsLogStoreName"] as! String
+        }
+        if dict.keys.contains("SlsProjectName") && dict["SlsProjectName"] != nil {
+            self.slsProjectName = dict["SlsProjectName"] as! String
+        }
+        if dict.keys.contains("SlsRegionId") && dict["SlsRegionId"] != nil {
+            self.slsRegionId = dict["SlsRegionId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class DescribeLogStoreOfEndpointGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLogStoreOfEndpointGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeLogStoreOfEndpointGroupResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -28405,6 +28621,8 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
 
             public var probeProtocol: String?
 
+            public var subAddress: String?
+
             public var type: String?
 
             public var weight: Int32?
@@ -28438,6 +28656,9 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                 if self.probeProtocol != nil {
                     map["ProbeProtocol"] = self.probeProtocol!
                 }
+                if self.subAddress != nil {
+                    map["SubAddress"] = self.subAddress!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -28462,6 +28683,9 @@ public class ListEndpointGroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ProbeProtocol") && dict["ProbeProtocol"] != nil {
                     self.probeProtocol = dict["ProbeProtocol"] as! String
+                }
+                if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                    self.subAddress = dict["SubAddress"] as! String
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
@@ -36024,6 +36248,8 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
 
         public var endpoint: String?
 
+        public var subAddress: String?
+
         public var type: String?
 
         public var weight: Int32?
@@ -36051,6 +36277,9 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
             if self.endpoint != nil {
                 map["Endpoint"] = self.endpoint!
             }
+            if self.subAddress != nil {
+                map["SubAddress"] = self.subAddress!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -36069,6 +36298,9 @@ public class UpdateEndpointGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
                 self.endpoint = dict["Endpoint"] as! String
+            }
+            if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                self.subAddress = dict["SubAddress"] as! String
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
@@ -36519,6 +36751,8 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
             public var endpoint: String?
 
+            public var subAddress: String?
+
             public var type: String?
 
             public var weight: Int64?
@@ -36540,6 +36774,9 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
                 }
+                if self.subAddress != nil {
+                    map["SubAddress"] = self.subAddress!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -36552,6 +36789,9 @@ public class UpdateEndpointGroupsRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
                     self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                    self.subAddress = dict["SubAddress"] as! String
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
