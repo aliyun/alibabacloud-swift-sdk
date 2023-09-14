@@ -1385,6 +1385,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDcdnUserConfigWithOptions(_ request: DeleteDcdnUserConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDcdnUserConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.functionName)) {
+            query["FunctionName"] = request.functionName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteDcdnUserConfig",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteDcdnUserConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteDcdnUserConfig(_ request: DeleteDcdnUserConfigRequest) async throws -> DeleteDcdnUserConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteDcdnUserConfigWithOptions(request as! DeleteDcdnUserConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteDcdnWafGroupWithOptions(_ request: DeleteDcdnWafGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDcdnWafGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

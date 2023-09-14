@@ -4926,6 +4926,118 @@ public class DeleteDcdnSubTaskResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteDcdnUserConfigRequest : Tea.TeaModel {
+    public var functionName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.functionName != nil {
+            map["FunctionName"] = self.functionName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FunctionName") && dict["FunctionName"] != nil {
+            self.functionName = dict["FunctionName"] as! String
+        }
+    }
+}
+
+public class DeleteDcdnUserConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteDcdnUserConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteDcdnUserConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteDcdnUserConfigResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteDcdnWafGroupRequest : Tea.TeaModel {
     public var id: Int64?
 
@@ -7166,6 +7278,8 @@ public class DescribeDcdnDdosSpecInfoResponseBody : Tea.TeaModel {
 
     public var enable: String?
 
+    public var isSpecialPort: String?
+
     public var protectedArea: String?
 
     public var qpsLimit: String?
@@ -7197,6 +7311,9 @@ public class DescribeDcdnDdosSpecInfoResponseBody : Tea.TeaModel {
         if self.enable != nil {
             map["Enable"] = self.enable!
         }
+        if self.isSpecialPort != nil {
+            map["IsSpecialPort"] = self.isSpecialPort!
+        }
         if self.protectedArea != nil {
             map["ProtectedArea"] = self.protectedArea!
         }
@@ -7225,6 +7342,9 @@ public class DescribeDcdnDdosSpecInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Enable") && dict["Enable"] != nil {
             self.enable = dict["Enable"] as! String
+        }
+        if dict.keys.contains("IsSpecialPort") && dict["IsSpecialPort"] != nil {
+            self.isSpecialPort = dict["IsSpecialPort"] as! String
         }
         if dict.keys.contains("ProtectedArea") && dict["ProtectedArea"] != nil {
             self.protectedArea = dict["ProtectedArea"] as! String
