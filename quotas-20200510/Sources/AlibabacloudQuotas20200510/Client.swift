@@ -137,6 +137,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createQuotaApplicationsForTemplateWithOptions(_ request: CreateQuotaApplicationsForTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQuotaApplicationsForTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunUids)) {
+            body["AliyunUids"] = request.aliyunUids ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.desireValue)) {
+            body["DesireValue"] = request.desireValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dimensions)) {
+            body["Dimensions"] = request.dimensions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            body["EffectiveTime"] = request.effectiveTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.envLanguage)) {
+            body["EnvLanguage"] = request.envLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.expireTime)) {
+            body["ExpireTime"] = request.expireTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noticeType)) {
+            body["NoticeType"] = request.noticeType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaActionCode)) {
+            body["QuotaActionCode"] = request.quotaActionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            body["Reason"] = request.reason ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateQuotaApplicationsForTemplate",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateQuotaApplicationsForTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createQuotaApplicationsForTemplate(_ request: CreateQuotaApplicationsForTemplateRequest) async throws -> CreateQuotaApplicationsForTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createQuotaApplicationsForTemplateWithOptions(request as! CreateQuotaApplicationsForTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createTemplateQuotaItemWithOptions(_ request: CreateTemplateQuotaItemRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTemplateQuotaItemResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -816,6 +877,110 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listQuotaApplications(_ request: ListQuotaApplicationsRequest) async throws -> ListQuotaApplicationsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listQuotaApplicationsWithOptions(request as! ListQuotaApplicationsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaApplicationsDetailForTemplateWithOptions(_ request: ListQuotaApplicationsDetailForTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotaApplicationsDetailForTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunUid)) {
+            body["AliyunUid"] = request.aliyunUid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.batchQuotaApplicationId)) {
+            body["BatchQuotaApplicationId"] = request.batchQuotaApplicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaActionCode)) {
+            body["QuotaActionCode"] = request.quotaActionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListQuotaApplicationsDetailForTemplate",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListQuotaApplicationsDetailForTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaApplicationsDetailForTemplate(_ request: ListQuotaApplicationsDetailForTemplateRequest) async throws -> ListQuotaApplicationsDetailForTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listQuotaApplicationsDetailForTemplateWithOptions(request as! ListQuotaApplicationsDetailForTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaApplicationsForTemplateWithOptions(_ request: ListQuotaApplicationsForTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotaApplicationsForTemplateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applyEndTime)) {
+            body["ApplyEndTime"] = request.applyEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.applyStartTime)) {
+            body["ApplyStartTime"] = request.applyStartTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.batchQuotaApplicationId)) {
+            body["BatchQuotaApplicationId"] = request.batchQuotaApplicationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaActionCode)) {
+            body["QuotaActionCode"] = request.quotaActionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.quotaCategory)) {
+            body["QuotaCategory"] = request.quotaCategory ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListQuotaApplicationsForTemplate",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListQuotaApplicationsForTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listQuotaApplicationsForTemplate(_ request: ListQuotaApplicationsForTemplateRequest) async throws -> ListQuotaApplicationsForTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listQuotaApplicationsForTemplateWithOptions(request as! ListQuotaApplicationsForTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
