@@ -8,6 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         self._endpointMap = [
             "cn-beijing": "cn-beijing.fnf.aliyuncs.com",
@@ -42,6 +43,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.executionMode)) {
+            body["ExecutionMode"] = request.executionMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.externalStorageLocation)) {
             body["ExternalStorageLocation"] = request.externalStorageLocation ?? "";
