@@ -4517,6 +4517,8 @@ public class DescribeDatabaseInstancesResponse : Tea.TeaModel {
 }
 
 public class DescribeDatabaseSlowLogRecordsRequest : Tea.TeaModel {
+    public var acsProduct: String?
+
     public var databaseInstanceId: String?
 
     public var endTime: String?
@@ -4543,6 +4545,9 @@ public class DescribeDatabaseSlowLogRecordsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acsProduct != nil {
+            map["AcsProduct"] = self.acsProduct!
+        }
         if self.databaseInstanceId != nil {
             map["DatabaseInstanceId"] = self.databaseInstanceId!
         }
@@ -4565,6 +4570,9 @@ public class DescribeDatabaseSlowLogRecordsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsProduct") && dict["AcsProduct"] != nil {
+            self.acsProduct = dict["AcsProduct"] as! String
+        }
         if dict.keys.contains("DatabaseInstanceId") && dict["DatabaseInstanceId"] != nil {
             self.databaseInstanceId = dict["DatabaseInstanceId"] as! String
         }
@@ -9002,6 +9010,8 @@ public class ListInstancesResponse : Tea.TeaModel {
 }
 
 public class ListInstancesTrafficPackagesRequest : Tea.TeaModel {
+    public var acsProduct: String?
+
     public var instanceIds: String?
 
     public var regionId: String?
@@ -9020,6 +9030,9 @@ public class ListInstancesTrafficPackagesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acsProduct != nil {
+            map["AcsProduct"] = self.acsProduct!
+        }
         if self.instanceIds != nil {
             map["InstanceIds"] = self.instanceIds!
         }
@@ -9030,6 +9043,9 @@ public class ListInstancesTrafficPackagesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsProduct") && dict["AcsProduct"] != nil {
+            self.acsProduct = dict["AcsProduct"] as! String
+        }
         if dict.keys.contains("InstanceIds") && dict["InstanceIds"] != nil {
             self.instanceIds = dict["InstanceIds"] as! String
         }
@@ -9583,6 +9599,8 @@ public class ListRegionsResponse : Tea.TeaModel {
 }
 
 public class ListSnapshotsRequest : Tea.TeaModel {
+    public var acsProduct: String?
+
     public var diskId: String?
 
     public var instanceId: String?
@@ -9611,6 +9629,9 @@ public class ListSnapshotsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acsProduct != nil {
+            map["AcsProduct"] = self.acsProduct!
+        }
         if self.diskId != nil {
             map["DiskId"] = self.diskId!
         }
@@ -9636,6 +9657,9 @@ public class ListSnapshotsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsProduct") && dict["AcsProduct"] != nil {
+            self.acsProduct = dict["AcsProduct"] as! String
+        }
         if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
             self.diskId = dict["DiskId"] as! String
         }

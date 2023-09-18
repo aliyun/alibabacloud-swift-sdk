@@ -965,6 +965,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDatabaseSlowLogRecordsWithOptions(_ request: DescribeDatabaseSlowLogRecordsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDatabaseSlowLogRecordsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsProduct)) {
+            query["AcsProduct"] = request.acsProduct ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.databaseInstanceId)) {
             query["DatabaseInstanceId"] = request.databaseInstanceId ?? "";
         }
@@ -1808,6 +1811,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listInstancesTrafficPackagesWithOptions(_ request: ListInstancesTrafficPackagesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListInstancesTrafficPackagesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsProduct)) {
+            query["AcsProduct"] = request.acsProduct ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             query["InstanceIds"] = request.instanceIds ?? "";
         }
@@ -1897,6 +1903,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSnapshotsWithOptions(_ request: ListSnapshotsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSnapshotsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsProduct)) {
+            query["AcsProduct"] = request.acsProduct ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.diskId)) {
             query["DiskId"] = request.diskId ?? "";
         }
