@@ -19058,6 +19058,8 @@ public class DescribeMetaListRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var regionCode: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -19101,6 +19103,9 @@ public class DescribeMetaListRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.regionCode != nil {
+            map["RegionCode"] = self.regionCode!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -19137,6 +19142,9 @@ public class DescribeMetaListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RegionCode") && dict["RegionCode"] != nil {
+            self.regionCode = dict["RegionCode"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
