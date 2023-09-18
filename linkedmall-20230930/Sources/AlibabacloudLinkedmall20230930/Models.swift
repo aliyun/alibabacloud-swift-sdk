@@ -273,10 +273,10 @@ public class CooperationShop : Tea.TeaModel {
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.cooperationCompanyId != nil {
-            map["CooperationCompanyId"] = self.cooperationCompanyId!
+            map["cooperationCompanyId"] = self.cooperationCompanyId!
         }
         if self.cooperationShopId != nil {
-            map["CooperationShopId"] = self.cooperationShopId!
+            map["cooperationShopId"] = self.cooperationShopId!
         }
         if self.shopId != nil {
             map["shopId"] = self.shopId!
@@ -285,11 +285,11 @@ public class CooperationShop : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("CooperationCompanyId") && dict["CooperationCompanyId"] != nil {
-            self.cooperationCompanyId = dict["CooperationCompanyId"] as! String
+        if dict.keys.contains("cooperationCompanyId") && dict["cooperationCompanyId"] != nil {
+            self.cooperationCompanyId = dict["cooperationCompanyId"] as! String
         }
-        if dict.keys.contains("CooperationShopId") && dict["CooperationShopId"] != nil {
-            self.cooperationShopId = dict["CooperationShopId"] as! String
+        if dict.keys.contains("cooperationShopId") && dict["cooperationShopId"] != nil {
+            self.cooperationShopId = dict["cooperationShopId"] as! String
         }
         if dict.keys.contains("shopId") && dict["shopId"] != nil {
             self.shopId = dict["shopId"] as! String
