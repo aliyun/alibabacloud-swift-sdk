@@ -13838,6 +13838,8 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
         public var ruleIds: DescribePriceResponseBody.Order.RuleIds?
 
+        public var showDiscountInfo: Bool?
+
         public var tradeAmount: String?
 
         public override init() {
@@ -13871,6 +13873,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if self.ruleIds != nil {
                 map["RuleIds"] = self.ruleIds?.toMap()
             }
+            if self.showDiscountInfo != nil {
+                map["ShowDiscountInfo"] = self.showDiscountInfo!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -13896,6 +13901,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                 var model = DescribePriceResponseBody.Order.RuleIds()
                 model.fromMap(dict["RuleIds"] as! [String: Any])
                 self.ruleIds = model
+            }
+            if dict.keys.contains("ShowDiscountInfo") && dict["ShowDiscountInfo"] != nil {
+                self.showDiscountInfo = dict["ShowDiscountInfo"] as! Bool
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! String
