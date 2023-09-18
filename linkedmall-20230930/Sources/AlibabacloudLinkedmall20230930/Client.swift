@@ -88,7 +88,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CancelRefundOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(disputeId) + "/commands/cancel",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(disputeId) + "/commands/cancel",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -117,7 +117,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ConfirmDisburse",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/confirmDisburse",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/commands/confirmDisburse",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -146,7 +146,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateGoodsShippingNotice",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/command/createGoodsShippingNotice",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/command/createGoodsShippingNotice",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -175,7 +175,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreatePurchaseOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -204,7 +204,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "CreateRefundOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -231,7 +231,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId),
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -250,78 +250,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProductWithOptions(_ productId: String, _ request: GetProductRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProductResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.distributorShopId)) {
-            query["distributorShopId"] = request.distributorShopId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.divisionCode)) {
-            query["divisionCode"] = request.divisionCode ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetProduct",
-            "version": "2023-09-30",
-            "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(productId),
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetProductResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProduct(_ productId: String, _ request: GetProductRequest) async throws -> GetProductResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getProductWithOptions(productId as! String, request as! GetProductRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProductSaleInfoWithOptions(_ productId: String, _ request: GetProductSaleInfoRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProductSaleInfoResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.distributorShopId)) {
-            query["distributorShopId"] = request.distributorShopId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.divisionCode)) {
-            query["divisionCode"] = request.divisionCode ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetProductSaleInfo",
-            "version": "2023-09-30",
-            "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(productId) + "/saleInfo",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetProductSaleInfoResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProductSaleInfo(_ productId: String, _ request: GetProductSaleInfoRequest) async throws -> GetProductSaleInfoResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getProductSaleInfoWithOptions(productId as! String, request as! GetProductSaleInfoRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getPurchaseOrderStatusWithOptions(_ purchaseOrderId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPurchaseOrderStatusResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -330,7 +258,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetPurchaseOrderStatus",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(purchaseOrderId) + "/status",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(purchaseOrderId) + "/status",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -349,6 +277,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPurchaserShopWithOptions(_ purchaserId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPurchaserShopResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPurchaserShop",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaserShops/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(purchaserId),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPurchaserShopResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPurchaserShop(_ purchaserId: String) async throws -> GetPurchaserShopResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getPurchaserShopWithOptions(purchaserId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRefundOrderWithOptions(_ disputeId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRefundOrderResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -357,7 +312,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetRefundOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(disputeId),
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(disputeId),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -376,15 +331,24 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getShopWithOptions(_ shopId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetShopResponse {
+    public func getSelectionProductWithOptions(_ productId: String, _ request: GetSelectionProductRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSelectionProductResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.divisionCode)) {
+            query["divisionCode"] = request.divisionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.purchaserId)) {
+            query["purchaserId"] = request.purchaserId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetShop",
+            "action": "GetSelectionProduct",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(shopId),
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(productId),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -392,14 +356,50 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetShopResponse(), tmp)
+        return Tea.TeaConverter.fromMap(GetSelectionProductResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getShop(_ shopId: String) async throws -> GetShopResponse {
+    public func getSelectionProduct(_ productId: String, _ request: GetSelectionProductRequest) async throws -> GetSelectionProductResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getShopWithOptions(shopId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getSelectionProductWithOptions(productId as! String, request as! GetSelectionProductRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSelectionProductSaleInfoWithOptions(_ productId: String, _ request: GetSelectionProductSaleInfoRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSelectionProductSaleInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.divisionCode)) {
+            query["divisionCode"] = request.divisionCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.purchaserId)) {
+            query["purchaserId"] = request.purchaserId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSelectionProductSaleInfo",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(productId) + "/saleInfo",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSelectionProductSaleInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSelectionProductSaleInfo(_ productId: String, _ request: GetSelectionProductSaleInfoRequest) async throws -> GetSelectionProductSaleInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getSelectionProductSaleInfoWithOptions(productId as! String, request as! GetSelectionProductSaleInfoRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -411,7 +411,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListLogisticsOrders",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId) + "/logisticsOrders",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId) + "/logisticsOrders",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -430,70 +430,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProductGeneralBillsWithOptions(_ request: ListProductGeneralBillsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProductGeneralBillsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListProductGeneralBills",
-            "version": "2023-09-30",
-            "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/productGeneralBills",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListProductGeneralBillsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProductGeneralBills(_ request: ListProductGeneralBillsRequest) async throws -> ListProductGeneralBillsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listProductGeneralBillsWithOptions(request as! ListProductGeneralBillsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProductSaleInfosWithOptions(_ request: ListProductSaleInfosRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProductSaleInfosResponse {
-        try TeaUtils.Client.validateModel(request)
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListProductSaleInfos",
-            "version": "2023-09-30",
-            "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/products/saleInfo/commands/list",
-            "method": "POST",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListProductSaleInfosResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProductSaleInfos(_ request: ListProductSaleInfosRequest) async throws -> ListProductSaleInfosResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listProductSaleInfosWithOptions(request as! ListProductSaleInfosRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProductsWithOptions(_ request: ListProductsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProductsResponse {
+    public func listPurchaserShopsWithOptions(_ request: ListPurchaserShopsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPurchaserShopsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.distributorShopId)) {
-            query["distributorShopId"] = request.distributorShopId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["pageNumber"] = request.pageNumber!;
         }
@@ -505,10 +444,10 @@ open class Client : AlibabacloudOpenApi.Client {
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListProducts",
+            "action": "ListPurchaserShops",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/products",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaserShops",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -516,79 +455,28 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListProductsResponse(), tmp)
+        return Tea.TeaConverter.fromMap(ListPurchaserShopsResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listProducts(_ request: ListProductsRequest) async throws -> ListProductsResponse {
+    public func listPurchaserShops(_ request: ListPurchaserShopsRequest) async throws -> ListPurchaserShopsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listProductsWithOptions(request as! ListProductsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listPurchaserShopsWithOptions(request as! ListPurchaserShopsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listShopsWithOptions(_ request: ListShopsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListShopsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.channelSupplierId)) {
-            query["channelSupplierId"] = request.channelSupplierId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.endDate)) {
-            query["endDate"] = request.endDate ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            query["pageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            query["pageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.shopId)) {
-            query["shopId"] = request.shopId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.shopName)) {
-            query["shopName"] = request.shopName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.startDate)) {
-            query["startDate"] = request.startDate ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListShops",
-            "version": "2023-09-30",
-            "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/shops",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListShopsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listShops(_ request: ListShopsRequest) async throws -> ListShopsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await listShopsWithOptions(request as! ListShopsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listSkuSaleInfosWithOptions(_ request: ListSkuSaleInfosRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSkuSaleInfosResponse {
+    public func listSelectionProductSaleInfosWithOptions(_ request: ListSelectionProductSaleInfosRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSelectionProductSaleInfosResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListSkuSaleInfos",
+            "action": "ListSelectionProductSaleInfos",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/skus/saleInfo/commands/list",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products/saleInfo/commands/list",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -596,14 +484,82 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListSkuSaleInfosResponse(), tmp)
+        return Tea.TeaConverter.fromMap(ListSelectionProductSaleInfosResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listSkuSaleInfos(_ request: ListSkuSaleInfosRequest) async throws -> ListSkuSaleInfosResponse {
+    public func listSelectionProductSaleInfos(_ request: ListSelectionProductSaleInfosRequest) async throws -> ListSelectionProductSaleInfosResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listSkuSaleInfosWithOptions(request as! ListSkuSaleInfosRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listSelectionProductSaleInfosWithOptions(request as! ListSelectionProductSaleInfosRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSelectionProductsWithOptions(_ request: ListSelectionProductsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSelectionProductsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.purchaserId)) {
+            query["purchaserId"] = request.purchaserId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSelectionProducts",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/products",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSelectionProductsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSelectionProducts(_ request: ListSelectionProductsRequest) async throws -> ListSelectionProductsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listSelectionProductsWithOptions(request as! ListSelectionProductsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSelectionSkuSaleInfosWithOptions(_ request: ListSelectionSkuSaleInfosRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSelectionSkuSaleInfosResponse {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSelectionSkuSaleInfos",
+            "version": "2023-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/selectionPool/skus/saleInfo/commands/list",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSelectionSkuSaleInfosResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSelectionSkuSaleInfos(_ request: ListSelectionSkuSaleInfosRequest) async throws -> ListSelectionSkuSaleInfosResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listSelectionSkuSaleInfosWithOptions(request as! ListSelectionSkuSaleInfosRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -617,7 +573,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "QueryChildDivisionCode",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/division/commands/queryChildDivisionCode",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/division/commands/queryChildDivisionCode",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -646,7 +602,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "QueryOrders",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/orders/commands/query",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/orders/commands/query",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -675,7 +631,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "RenderPurchaseOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/purchaseOrders/commands/render",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/purchaseOrders/commands/render",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -704,7 +660,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "RenderRefundOrder",
             "version": "2023-09-30",
             "protocol": "HTTPS",
-            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v1/refunds/commands/render",
+            "pathname": "/opensaas-s2b/opensaas-s2b-biz-trade/v2/refunds/commands/render",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
