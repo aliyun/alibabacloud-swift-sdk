@@ -74211,6 +74211,8 @@ public class DescribeSnapshotGroupsResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public var available: Bool?
+
                     public var instantAccess: Bool?
 
                     public var instantAccessRetentionDays: Int32?
@@ -74240,6 +74242,9 @@ public class DescribeSnapshotGroupsResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.available != nil {
+                            map["Available"] = self.available!
+                        }
                         if self.instantAccess != nil {
                             map["InstantAccess"] = self.instantAccess!
                         }
@@ -74265,6 +74270,9 @@ public class DescribeSnapshotGroupsResponseBody : Tea.TeaModel {
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Available") && dict["Available"] != nil {
+                            self.available = dict["Available"] as! Bool
+                        }
                         if dict.keys.contains("InstantAccess") && dict["InstantAccess"] != nil {
                             self.instantAccess = dict["InstantAccess"] as! Bool
                         }
@@ -75986,6 +75994,8 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var available: Bool?
+
             public var category: String?
 
             public var creationTime: String?
@@ -76053,6 +76063,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.available != nil {
+                    map["Available"] = self.available!
+                }
                 if self.category != nil {
                     map["Category"] = self.category!
                 }
@@ -76135,6 +76148,9 @@ public class DescribeSnapshotsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Available") && dict["Available"] != nil {
+                    self.available = dict["Available"] as! Bool
+                }
                 if dict.keys.contains("Category") && dict["Category"] != nil {
                     self.category = dict["Category"] as! String
                 }
@@ -99932,6 +99948,8 @@ public class ModifySnapshotAttributeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var retentionDays: Int32?
+
     public var snapshotId: String?
 
     public var snapshotName: String?
@@ -99968,6 +99986,9 @@ public class ModifySnapshotAttributeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.retentionDays != nil {
+            map["RetentionDays"] = self.retentionDays!
+        }
         if self.snapshotId != nil {
             map["SnapshotId"] = self.snapshotId!
         }
@@ -99995,6 +100016,9 @@ public class ModifySnapshotAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RetentionDays") && dict["RetentionDays"] != nil {
+            self.retentionDays = dict["RetentionDays"] as! Int32
         }
         if dict.keys.contains("SnapshotId") && dict["SnapshotId"] != nil {
             self.snapshotId = dict["SnapshotId"] as! String
@@ -110601,6 +110625,8 @@ public class StartInstancesResponse : Tea.TeaModel {
 }
 
 public class StartTerminalSessionRequest : Tea.TeaModel {
+    public var commandLine: String?
+
     public var instanceId: [String]?
 
     public var ownerAccount: String?
@@ -110614,6 +110640,8 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var targetServer: String?
 
     public override init() {
         super.init()
@@ -110629,6 +110657,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.commandLine != nil {
+            map["CommandLine"] = self.commandLine!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -110650,10 +110681,16 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.targetServer != nil {
+            map["TargetServer"] = self.targetServer!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CommandLine") && dict["CommandLine"] != nil {
+            self.commandLine = dict["CommandLine"] as! String
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! [String]
         }
@@ -110674,6 +110711,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TargetServer") && dict["TargetServer"] != nil {
+            self.targetServer = dict["TargetServer"] as! String
         }
     }
 }
