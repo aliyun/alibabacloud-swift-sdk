@@ -73309,6 +73309,8 @@ public class DescribeSendFileResultsRequest : Tea.TeaModel {
     }
     public var instanceId: String?
 
+    public var invocationStatus: String?
+
     public var invokeId: String?
 
     public var name: String?
@@ -73347,6 +73349,9 @@ public class DescribeSendFileResultsRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.invocationStatus != nil {
+            map["InvocationStatus"] = self.invocationStatus!
         }
         if self.invokeId != nil {
             map["InvokeId"] = self.invokeId!
@@ -73391,6 +73396,9 @@ public class DescribeSendFileResultsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InvocationStatus") && dict["InvocationStatus"] != nil {
+            self.invocationStatus = dict["InvocationStatus"] as! String
         }
         if dict.keys.contains("InvokeId") && dict["InvokeId"] != nil {
             self.invokeId = dict["InvokeId"] as! String

@@ -12240,6 +12240,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.invocationStatus)) {
+            query["InvocationStatus"] = request.invocationStatus ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.invokeId)) {
             query["InvokeId"] = request.invokeId ?? "";
         }
