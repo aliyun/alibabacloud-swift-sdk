@@ -14213,43 +14213,6 @@ public class DescribeScalingConfigurationsRequest : Tea.TeaModel {
 
 public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
     public class ScalingConfigurations : Tea.TeaModel {
-        public class PrivatePoolOptions : Tea.TeaModel {
-            public var id: String?
-
-            public var matchCriteria: String?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.id != nil {
-                    map["Id"] = self.id!
-                }
-                if self.matchCriteria != nil {
-                    map["MatchCriteria"] = self.matchCriteria!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("Id") && dict["Id"] != nil {
-                    self.id = dict["Id"] as! String
-                }
-                if dict.keys.contains("MatchCriteria") && dict["MatchCriteria"] != nil {
-                    self.matchCriteria = dict["MatchCriteria"] as! String
-                }
-            }
-        }
         public class DataDisks : Tea.TeaModel {
             public var autoSnapshotPolicyId: String?
 
@@ -14563,8 +14526,6 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var privatePoolOptions: DescribeScalingConfigurationsResponseBody.ScalingConfigurations.PrivatePoolOptions?
-
         public var affinity: String?
 
         public var cpu: Int32?
@@ -14626,6 +14587,10 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         public var memory: Int32?
 
         public var passwordInherit: Bool?
+
+        public var privatePoolOptions_id: String?
+
+        public var privatePoolOptions_matchCriteria: String?
 
         public var ramRoleName: String?
 
@@ -14697,15 +14662,11 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
-            try self.privatePoolOptions?.validate()
             try self.schedulerOptions?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.privatePoolOptions != nil {
-                map["PrivatePoolOptions"] = self.privatePoolOptions?.toMap()
-            }
             if self.affinity != nil {
                 map["Affinity"] = self.affinity!
             }
@@ -14806,6 +14767,12 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.passwordInherit != nil {
                 map["PasswordInherit"] = self.passwordInherit!
+            }
+            if self.privatePoolOptions_id != nil {
+                map["PrivatePoolOptions.Id"] = self.privatePoolOptions_id!
+            }
+            if self.privatePoolOptions_matchCriteria != nil {
+                map["PrivatePoolOptions.MatchCriteria"] = self.privatePoolOptions_matchCriteria!
             }
             if self.ramRoleName != nil {
                 map["RamRoleName"] = self.ramRoleName!
@@ -14909,11 +14876,6 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("PrivatePoolOptions") && dict["PrivatePoolOptions"] != nil {
-                var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.PrivatePoolOptions()
-                model.fromMap(dict["PrivatePoolOptions"] as! [String: Any])
-                self.privatePoolOptions = model
-            }
             if dict.keys.contains("Affinity") && dict["Affinity"] != nil {
                 self.affinity = dict["Affinity"] as! String
             }
@@ -15022,6 +14984,12 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PasswordInherit") && dict["PasswordInherit"] != nil {
                 self.passwordInherit = dict["PasswordInherit"] as! Bool
+            }
+            if dict.keys.contains("PrivatePoolOptions.Id") && dict["PrivatePoolOptions.Id"] != nil {
+                self.privatePoolOptions_id = dict["PrivatePoolOptions.Id"] as! String
+            }
+            if dict.keys.contains("PrivatePoolOptions.MatchCriteria") && dict["PrivatePoolOptions.MatchCriteria"] != nil {
+                self.privatePoolOptions_matchCriteria = dict["PrivatePoolOptions.MatchCriteria"] as! String
             }
             if dict.keys.contains("RamRoleName") && dict["RamRoleName"] != nil {
                 self.ramRoleName = dict["RamRoleName"] as! String
@@ -15259,6 +15227,43 @@ public class DescribeScalingConfigurationsResponse : Tea.TeaModel {
 }
 
 public class DescribeScalingGroupsRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var groupType: String?
 
     public var ownerAccount: String?
@@ -15282,6 +15287,8 @@ public class DescribeScalingGroupsRequest : Tea.TeaModel {
     public var scalingGroupName: String?
 
     public var scalingGroupNames: [String]?
+
+    public var tags: [DescribeScalingGroupsRequest.Tags]?
 
     public override init() {
         super.init()
@@ -15333,6 +15340,13 @@ public class DescribeScalingGroupsRequest : Tea.TeaModel {
         if self.scalingGroupNames != nil {
             map["ScalingGroupNames"] = self.scalingGroupNames!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -15372,6 +15386,17 @@ public class DescribeScalingGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupNames") && dict["ScalingGroupNames"] != nil {
             self.scalingGroupNames = dict["ScalingGroupNames"] as! [String]
+        }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            var tmp : [DescribeScalingGroupsRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = DescribeScalingGroupsRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
     }
 }
