@@ -797,6 +797,1160 @@ public class MetricStat : Tea.TeaModel {
     }
 }
 
+public class MigrationJob : Tea.TeaModel {
+    public class Plan : Tea.TeaModel {
+        public class Contacts : Tea.TeaModel {
+            public class Channels : Tea.TeaModel {
+                public var level: Int64?
+
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Level") && dict["Level"] != nil {
+                        self.level = dict["Level"] as! Int64
+                    }
+                    if dict.keys.contains("Type") && dict["Type"] != nil {
+                        self.type = dict["Type"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var channels: [MigrationJob.Plan.Contacts.Channels]?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.channels != nil {
+                    var tmp : [Any] = []
+                    for k in self.channels! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Channels"] = tmp
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Channels") && dict["Channels"] != nil {
+                    var tmp : [MigrationJob.Plan.Contacts.Channels] = []
+                    for v in dict["Channels"] as! [Any] {
+                        var model = MigrationJob.Plan.Contacts.Channels()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.channels = tmp
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class Escalations : Tea.TeaModel {
+            public class Escalations : Tea.TeaModel {
+                public class LevelGroups : Tea.TeaModel {
+                    public var critical: [String]?
+
+                    public var info: [String]?
+
+                    public var resolved: [String]?
+
+                    public var warning: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.critical != nil {
+                            map["Critical"] = self.critical!
+                        }
+                        if self.info != nil {
+                            map["Info"] = self.info!
+                        }
+                        if self.resolved != nil {
+                            map["Resolved"] = self.resolved!
+                        }
+                        if self.warning != nil {
+                            map["Warning"] = self.warning!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Critical") && dict["Critical"] != nil {
+                            self.critical = dict["Critical"] as! [String]
+                        }
+                        if dict.keys.contains("Info") && dict["Info"] != nil {
+                            self.info = dict["Info"] as! [String]
+                        }
+                        if dict.keys.contains("Resolved") && dict["Resolved"] != nil {
+                            self.resolved = dict["Resolved"] as! [String]
+                        }
+                        if dict.keys.contains("Warning") && dict["Warning"] != nil {
+                            self.warning = dict["Warning"] as! [String]
+                        }
+                    }
+                }
+                public var groups: [String]?
+
+                public var levelGroups: MigrationJob.Plan.Escalations.Escalations.LevelGroups?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.levelGroups?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.groups != nil {
+                        map["Groups"] = self.groups!
+                    }
+                    if self.levelGroups != nil {
+                        map["LevelGroups"] = self.levelGroups?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Groups") && dict["Groups"] != nil {
+                        self.groups = dict["Groups"] as! [String]
+                    }
+                    if dict.keys.contains("LevelGroups") && dict["LevelGroups"] != nil {
+                        var model = MigrationJob.Plan.Escalations.Escalations.LevelGroups()
+                        model.fromMap(dict["LevelGroups"] as! [String: Any])
+                        self.levelGroups = model
+                    }
+                }
+            }
+            public var escalations: [MigrationJob.Plan.Escalations.Escalations]?
+
+            public var name: String?
+
+            public var uuid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.escalations != nil {
+                    var tmp : [Any] = []
+                    for k in self.escalations! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Escalations"] = tmp
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.uuid != nil {
+                    map["Uuid"] = self.uuid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Escalations") && dict["Escalations"] != nil {
+                    var tmp : [MigrationJob.Plan.Escalations.Escalations] = []
+                    for v in dict["Escalations"] as! [Any] {
+                        var model = MigrationJob.Plan.Escalations.Escalations()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.escalations = tmp
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Uuid") && dict["Uuid"] != nil {
+                    self.uuid = dict["Uuid"] as! String
+                }
+            }
+        }
+        public class Groups : Tea.TeaModel {
+            public var contacts: [String]?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.contacts != nil {
+                    map["Contacts"] = self.contacts!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Contacts") && dict["Contacts"] != nil {
+                    self.contacts = dict["Contacts"] as! [String]
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class Strategies : Tea.TeaModel {
+            public class EscalationSetting : Tea.TeaModel {
+                public var escalationUuid: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.escalationUuid != nil {
+                        map["escalationUuid"] = self.escalationUuid!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("escalationUuid") && dict["escalationUuid"] != nil {
+                        self.escalationUuid = dict["escalationUuid"] as! String
+                    }
+                }
+            }
+            public class PushingSetting : Tea.TeaModel {
+                public var targetUuids: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.targetUuids != nil {
+                        map["TargetUuids"] = self.targetUuids!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TargetUuids") && dict["TargetUuids"] != nil {
+                        self.targetUuids = dict["TargetUuids"] as! [String]
+                    }
+                }
+            }
+            public var escalationSetting: MigrationJob.Plan.Strategies.EscalationSetting?
+
+            public var name: String?
+
+            public var pushingSetting: MigrationJob.Plan.Strategies.PushingSetting?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.escalationSetting?.validate()
+                try self.pushingSetting?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.escalationSetting != nil {
+                    map["EscalationSetting"] = self.escalationSetting?.toMap()
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.pushingSetting != nil {
+                    map["PushingSetting"] = self.pushingSetting?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EscalationSetting") && dict["EscalationSetting"] != nil {
+                    var model = MigrationJob.Plan.Strategies.EscalationSetting()
+                    model.fromMap(dict["EscalationSetting"] as! [String: Any])
+                    self.escalationSetting = model
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("PushingSetting") && dict["PushingSetting"] != nil {
+                    var model = MigrationJob.Plan.Strategies.PushingSetting()
+                    model.fromMap(dict["PushingSetting"] as! [String: Any])
+                    self.pushingSetting = model
+                }
+            }
+        }
+        public class Subscriptions : Tea.TeaModel {
+            public class Conditions : Tea.TeaModel {
+                public var field: String?
+
+                public var op: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.op != nil {
+                        map["Op"] = self.op!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Field") && dict["Field"] != nil {
+                        self.field = dict["Field"] as! String
+                    }
+                    if dict.keys.contains("Op") && dict["Op"] != nil {
+                        self.op = dict["Op"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var conditions: [MigrationJob.Plan.Subscriptions.Conditions]?
+
+            public var name: String?
+
+            public var strategyUuid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.conditions != nil {
+                    var tmp : [Any] = []
+                    for k in self.conditions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Conditions"] = tmp
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.strategyUuid != nil {
+                    map["StrategyUuid"] = self.strategyUuid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Conditions") && dict["Conditions"] != nil {
+                    var tmp : [MigrationJob.Plan.Subscriptions.Conditions] = []
+                    for v in dict["Conditions"] as! [Any] {
+                        var model = MigrationJob.Plan.Subscriptions.Conditions()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.conditions = tmp
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("StrategyUuid") && dict["StrategyUuid"] != nil {
+                    self.strategyUuid = dict["StrategyUuid"] as! String
+                }
+            }
+        }
+        public class Targets : Tea.TeaModel {
+            public class HttpRequestTarget : Tea.TeaModel {
+                public var contentType: String?
+
+                public var method: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.contentType != nil {
+                        map["ContentType"] = self.contentType!
+                    }
+                    if self.method != nil {
+                        map["Method"] = self.method!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ContentType") && dict["ContentType"] != nil {
+                        self.contentType = dict["ContentType"] as! String
+                    }
+                    if dict.keys.contains("Method") && dict["Method"] != nil {
+                        self.method = dict["Method"] as! String
+                    }
+                    if dict.keys.contains("Url") && dict["Url"] != nil {
+                        self.url = dict["Url"] as! String
+                    }
+                }
+            }
+            public var arn: String?
+
+            public var httpRequestTarget: MigrationJob.Plan.Targets.HttpRequestTarget?
+
+            public var name: String?
+
+            public var type: String?
+
+            public var uuid: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.httpRequestTarget?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.arn != nil {
+                    map["Arn"] = self.arn!
+                }
+                if self.httpRequestTarget != nil {
+                    map["HttpRequestTarget"] = self.httpRequestTarget?.toMap()
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                if self.uuid != nil {
+                    map["Uuid"] = self.uuid!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Arn") && dict["Arn"] != nil {
+                    self.arn = dict["Arn"] as! String
+                }
+                if dict.keys.contains("HttpRequestTarget") && dict["HttpRequestTarget"] != nil {
+                    var model = MigrationJob.Plan.Targets.HttpRequestTarget()
+                    model.fromMap(dict["HttpRequestTarget"] as! [String: Any])
+                    self.httpRequestTarget = model
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Type") && dict["Type"] != nil {
+                    self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("Uuid") && dict["Uuid"] != nil {
+                    self.uuid = dict["Uuid"] as! String
+                }
+            }
+        }
+        public var contacts: [MigrationJob.Plan.Contacts]?
+
+        public var escalations: [MigrationJob.Plan.Escalations]?
+
+        public var groups: [MigrationJob.Plan.Groups]?
+
+        public var ruleNames: [String]?
+
+        public var strategies: [MigrationJob.Plan.Strategies]?
+
+        public var subscriptions: [MigrationJob.Plan.Subscriptions]?
+
+        public var targets: [MigrationJob.Plan.Targets]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.contacts != nil {
+                var tmp : [Any] = []
+                for k in self.contacts! {
+                    tmp.append(k.toMap())
+                }
+                map["Contacts"] = tmp
+            }
+            if self.escalations != nil {
+                var tmp : [Any] = []
+                for k in self.escalations! {
+                    tmp.append(k.toMap())
+                }
+                map["Escalations"] = tmp
+            }
+            if self.groups != nil {
+                var tmp : [Any] = []
+                for k in self.groups! {
+                    tmp.append(k.toMap())
+                }
+                map["Groups"] = tmp
+            }
+            if self.ruleNames != nil {
+                map["RuleNames"] = self.ruleNames!
+            }
+            if self.strategies != nil {
+                var tmp : [Any] = []
+                for k in self.strategies! {
+                    tmp.append(k.toMap())
+                }
+                map["Strategies"] = tmp
+            }
+            if self.subscriptions != nil {
+                var tmp : [Any] = []
+                for k in self.subscriptions! {
+                    tmp.append(k.toMap())
+                }
+                map["Subscriptions"] = tmp
+            }
+            if self.targets != nil {
+                var tmp : [Any] = []
+                for k in self.targets! {
+                    tmp.append(k.toMap())
+                }
+                map["Targets"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Contacts") && dict["Contacts"] != nil {
+                var tmp : [MigrationJob.Plan.Contacts] = []
+                for v in dict["Contacts"] as! [Any] {
+                    var model = MigrationJob.Plan.Contacts()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.contacts = tmp
+            }
+            if dict.keys.contains("Escalations") && dict["Escalations"] != nil {
+                var tmp : [MigrationJob.Plan.Escalations] = []
+                for v in dict["Escalations"] as! [Any] {
+                    var model = MigrationJob.Plan.Escalations()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.escalations = tmp
+            }
+            if dict.keys.contains("Groups") && dict["Groups"] != nil {
+                var tmp : [MigrationJob.Plan.Groups] = []
+                for v in dict["Groups"] as! [Any] {
+                    var model = MigrationJob.Plan.Groups()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.groups = tmp
+            }
+            if dict.keys.contains("RuleNames") && dict["RuleNames"] != nil {
+                self.ruleNames = dict["RuleNames"] as! [String]
+            }
+            if dict.keys.contains("Strategies") && dict["Strategies"] != nil {
+                var tmp : [MigrationJob.Plan.Strategies] = []
+                for v in dict["Strategies"] as! [Any] {
+                    var model = MigrationJob.Plan.Strategies()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.strategies = tmp
+            }
+            if dict.keys.contains("Subscriptions") && dict["Subscriptions"] != nil {
+                var tmp : [MigrationJob.Plan.Subscriptions] = []
+                for v in dict["Subscriptions"] as! [Any] {
+                    var model = MigrationJob.Plan.Subscriptions()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.subscriptions = tmp
+            }
+            if dict.keys.contains("Targets") && dict["Targets"] != nil {
+                var tmp : [MigrationJob.Plan.Targets] = []
+                for v in dict["Targets"] as! [Any] {
+                    var model = MigrationJob.Plan.Targets()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.targets = tmp
+            }
+        }
+    }
+    public class Source : Tea.TeaModel {
+        public class Rule : Tea.TeaModel {
+            public class KeywordFilter : Tea.TeaModel {
+                public var keywords: [String]?
+
+                public var relation: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.keywords != nil {
+                        map["Keywords"] = self.keywords!
+                    }
+                    if self.relation != nil {
+                        map["Relation"] = self.relation!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Keywords") && dict["Keywords"] != nil {
+                        self.keywords = dict["Keywords"] as! [String]
+                    }
+                    if dict.keys.contains("Relation") && dict["Relation"] != nil {
+                        self.relation = dict["Relation"] as! String
+                    }
+                }
+            }
+            public class PrimaryFilters : Tea.TeaModel {
+                public var field: String?
+
+                public var opType: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.field != nil {
+                        map["Field"] = self.field!
+                    }
+                    if self.opType != nil {
+                        map["OpType"] = self.opType!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Field") && dict["Field"] != nil {
+                        self.field = dict["Field"] as! String
+                    }
+                    if dict.keys.contains("OpType") && dict["OpType"] != nil {
+                        self.opType = dict["OpType"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var keywordFilter: MigrationJob.Source.Rule.KeywordFilter?
+
+            public var name: String?
+
+            public var primaryFilters: [MigrationJob.Source.Rule.PrimaryFilters]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.keywordFilter?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.keywordFilter != nil {
+                    map["KeywordFilter"] = self.keywordFilter?.toMap()
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.primaryFilters != nil {
+                    var tmp : [Any] = []
+                    for k in self.primaryFilters! {
+                        tmp.append(k.toMap())
+                    }
+                    map["PrimaryFilters"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("KeywordFilter") && dict["KeywordFilter"] != nil {
+                    var model = MigrationJob.Source.Rule.KeywordFilter()
+                    model.fromMap(dict["KeywordFilter"] as! [String: Any])
+                    self.keywordFilter = model
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("PrimaryFilters") && dict["PrimaryFilters"] != nil {
+                    var tmp : [MigrationJob.Source.Rule.PrimaryFilters] = []
+                    for v in dict["PrimaryFilters"] as! [Any] {
+                        var model = MigrationJob.Source.Rule.PrimaryFilters()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.primaryFilters = tmp
+                }
+            }
+        }
+        public class Targets : Tea.TeaModel {
+            public class Content : Tea.TeaModel {
+                public var group: String?
+
+                public var level: String?
+
+                public var method: String?
+
+                public var region: String?
+
+                public var resourcePath: String?
+
+                public var url: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.group != nil {
+                        map["Group"] = self.group!
+                    }
+                    if self.level != nil {
+                        map["Level"] = self.level!
+                    }
+                    if self.method != nil {
+                        map["Method"] = self.method!
+                    }
+                    if self.region != nil {
+                        map["Region"] = self.region!
+                    }
+                    if self.resourcePath != nil {
+                        map["ResourcePath"] = self.resourcePath!
+                    }
+                    if self.url != nil {
+                        map["Url"] = self.url!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Group") && dict["Group"] != nil {
+                        self.group = dict["Group"] as! String
+                    }
+                    if dict.keys.contains("Level") && dict["Level"] != nil {
+                        self.level = dict["Level"] as! String
+                    }
+                    if dict.keys.contains("Method") && dict["Method"] != nil {
+                        self.method = dict["Method"] as! String
+                    }
+                    if dict.keys.contains("Region") && dict["Region"] != nil {
+                        self.region = dict["Region"] as! String
+                    }
+                    if dict.keys.contains("ResourcePath") && dict["ResourcePath"] != nil {
+                        self.resourcePath = dict["ResourcePath"] as! String
+                    }
+                    if dict.keys.contains("Url") && dict["Url"] != nil {
+                        self.url = dict["Url"] as! String
+                    }
+                }
+            }
+            public var content: MigrationJob.Source.Targets.Content?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.content?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.content != nil {
+                    map["Content"] = self.content?.toMap()
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Content") && dict["Content"] != nil {
+                    var model = MigrationJob.Source.Targets.Content()
+                    model.fromMap(dict["Content"] as! [String: Any])
+                    self.content = model
+                }
+                if dict.keys.contains("Type") && dict["Type"] != nil {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
+        public var rule: MigrationJob.Source.Rule?
+
+        public var targets: [MigrationJob.Source.Targets]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.rule?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.rule != nil {
+                map["Rule"] = self.rule?.toMap()
+            }
+            if self.targets != nil {
+                var tmp : [Any] = []
+                for k in self.targets! {
+                    tmp.append(k.toMap())
+                }
+                map["Targets"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Rule") && dict["Rule"] != nil {
+                var model = MigrationJob.Source.Rule()
+                model.fromMap(dict["Rule"] as! [String: Any])
+                self.rule = model
+            }
+            if dict.keys.contains("Targets") && dict["Targets"] != nil {
+                var tmp : [MigrationJob.Source.Targets] = []
+                for v in dict["Targets"] as! [Any] {
+                    var model = MigrationJob.Source.Targets()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.targets = tmp
+            }
+        }
+    }
+    public var createTime: String?
+
+    public var detail: String?
+
+    public var jobStatus: String?
+
+    public var plan: MigrationJob.Plan?
+
+    public var ruleNames: [String]?
+
+    public var source: [MigrationJob.Source]?
+
+    public var updateTime: String?
+
+    public var uuid: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.plan?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.detail != nil {
+            map["Detail"] = self.detail!
+        }
+        if self.jobStatus != nil {
+            map["JobStatus"] = self.jobStatus!
+        }
+        if self.plan != nil {
+            map["Plan"] = self.plan?.toMap()
+        }
+        if self.ruleNames != nil {
+            map["RuleNames"] = self.ruleNames!
+        }
+        if self.source != nil {
+            var tmp : [Any] = []
+            for k in self.source! {
+                tmp.append(k.toMap())
+            }
+            map["Source"] = tmp
+        }
+        if self.updateTime != nil {
+            map["UpdateTime"] = self.updateTime!
+        }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+            self.createTime = dict["CreateTime"] as! String
+        }
+        if dict.keys.contains("Detail") && dict["Detail"] != nil {
+            self.detail = dict["Detail"] as! String
+        }
+        if dict.keys.contains("JobStatus") && dict["JobStatus"] != nil {
+            self.jobStatus = dict["JobStatus"] as! String
+        }
+        if dict.keys.contains("Plan") && dict["Plan"] != nil {
+            var model = MigrationJob.Plan()
+            model.fromMap(dict["Plan"] as! [String: Any])
+            self.plan = model
+        }
+        if dict.keys.contains("RuleNames") && dict["RuleNames"] != nil {
+            self.ruleNames = dict["RuleNames"] as! [String]
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            var tmp : [MigrationJob.Source] = []
+            for v in dict["Source"] as! [Any] {
+                var model = MigrationJob.Source()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.source = tmp
+        }
+        if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
+            self.updateTime = dict["UpdateTime"] as! String
+        }
+        if dict.keys.contains("Uuid") && dict["Uuid"] != nil {
+            self.uuid = dict["Uuid"] as! String
+        }
+    }
+}
+
 public class NotificationStrategy : Tea.TeaModel {
     public class EscalationSetting : Tea.TeaModel {
         public class CustomChannels : Tea.TeaModel {
@@ -20152,6 +21306,75 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class KeywordFilterObj : Tea.TeaModel {
+                public class Keywords : Tea.TeaModel {
+                    public var keyword: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.keyword != nil {
+                            map["keyword"] = self.keyword!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("keyword") && dict["keyword"] != nil {
+                            self.keyword = dict["keyword"] as! [String]
+                        }
+                    }
+                }
+                public var keywords: DescribeEventRuleAttributeResponseBody.Result.EventPattern.KeywordFilterObj.Keywords?
+
+                public var relation: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.keywords?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.keywords != nil {
+                        map["Keywords"] = self.keywords?.toMap()
+                    }
+                    if self.relation != nil {
+                        map["Relation"] = self.relation!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Keywords") && dict["Keywords"] != nil {
+                        var model = DescribeEventRuleAttributeResponseBody.Result.EventPattern.KeywordFilterObj.Keywords()
+                        model.fromMap(dict["Keywords"] as! [String: Any])
+                        self.keywords = model
+                    }
+                    if dict.keys.contains("Relation") && dict["Relation"] != nil {
+                        self.relation = dict["Relation"] as! String
+                    }
+                }
+            }
             public class LevelList : Tea.TeaModel {
                 public var levelList: [String]?
 
@@ -20241,11 +21464,15 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
             }
             public var eventTypeList: DescribeEventRuleAttributeResponseBody.Result.EventPattern.EventTypeList?
 
+            public var keywordFilterObj: DescribeEventRuleAttributeResponseBody.Result.EventPattern.KeywordFilterObj?
+
             public var levelList: DescribeEventRuleAttributeResponseBody.Result.EventPattern.LevelList?
 
             public var nameList: DescribeEventRuleAttributeResponseBody.Result.EventPattern.NameList?
 
             public var product: String?
+
+            public var SQLFilter: String?
 
             public var statusList: DescribeEventRuleAttributeResponseBody.Result.EventPattern.StatusList?
 
@@ -20260,6 +21487,7 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.eventTypeList?.validate()
+                try self.keywordFilterObj?.validate()
                 try self.levelList?.validate()
                 try self.nameList?.validate()
                 try self.statusList?.validate()
@@ -20270,6 +21498,9 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
                 if self.eventTypeList != nil {
                     map["EventTypeList"] = self.eventTypeList?.toMap()
                 }
+                if self.keywordFilterObj != nil {
+                    map["KeywordFilterObj"] = self.keywordFilterObj?.toMap()
+                }
                 if self.levelList != nil {
                     map["LevelList"] = self.levelList?.toMap()
                 }
@@ -20278,6 +21509,9 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.product != nil {
                     map["Product"] = self.product!
+                }
+                if self.SQLFilter != nil {
+                    map["SQLFilter"] = self.SQLFilter!
                 }
                 if self.statusList != nil {
                     map["StatusList"] = self.statusList?.toMap()
@@ -20291,6 +21525,11 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
                     model.fromMap(dict["EventTypeList"] as! [String: Any])
                     self.eventTypeList = model
                 }
+                if dict.keys.contains("KeywordFilterObj") && dict["KeywordFilterObj"] != nil {
+                    var model = DescribeEventRuleAttributeResponseBody.Result.EventPattern.KeywordFilterObj()
+                    model.fromMap(dict["KeywordFilterObj"] as! [String: Any])
+                    self.keywordFilterObj = model
+                }
                 if dict.keys.contains("LevelList") && dict["LevelList"] != nil {
                     var model = DescribeEventRuleAttributeResponseBody.Result.EventPattern.LevelList()
                     model.fromMap(dict["LevelList"] as! [String: Any])
@@ -20303,6 +21542,9 @@ public class DescribeEventRuleAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Product") && dict["Product"] != nil {
                     self.product = dict["Product"] as! String
+                }
+                if dict.keys.contains("SQLFilter") && dict["SQLFilter"] != nil {
+                    self.SQLFilter = dict["SQLFilter"] as! String
                 }
                 if dict.keys.contains("StatusList") && dict["StatusList"] != nil {
                     var model = DescribeEventRuleAttributeResponseBody.Result.EventPattern.StatusList()
@@ -20501,6 +21743,8 @@ public class DescribeEventRuleAttributeResponse : Tea.TeaModel {
 public class DescribeEventRuleListRequest : Tea.TeaModel {
     public var groupId: String?
 
+    public var isEnable: Bool?
+
     public var namePrefix: String?
 
     public var pageNumber: String?
@@ -20526,6 +21770,9 @@ public class DescribeEventRuleListRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.isEnable != nil {
+            map["IsEnable"] = self.isEnable!
+        }
         if self.namePrefix != nil {
             map["NamePrefix"] = self.namePrefix!
         }
@@ -20544,6 +21791,9 @@ public class DescribeEventRuleListRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("IsEnable") && dict["IsEnable"] != nil {
+            self.isEnable = dict["IsEnable"] as! Bool
         }
         if dict.keys.contains("NamePrefix") && dict["NamePrefix"] != nil {
             self.namePrefix = dict["NamePrefix"] as! String
@@ -37449,6 +38699,8 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
 
             public var username: String?
 
+            public var waitTimeAfterCompletion: Int32?
+
             public override init() {
                 super.init()
             }
@@ -37598,6 +38850,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 if self.username != nil {
                     map["username"] = self.username!
                 }
+                if self.waitTimeAfterCompletion != nil {
+                    map["waitTime_after_completion"] = self.waitTimeAfterCompletion!
+                }
                 return map
             }
 
@@ -37745,6 +39000,9 @@ public class DescribeSiteMonitorAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
+                }
+                if dict.keys.contains("waitTime_after_completion") && dict["waitTime_after_completion"] != nil {
+                    self.waitTimeAfterCompletion = dict["waitTime_after_completion"] as! Int32
                 }
             }
         }
