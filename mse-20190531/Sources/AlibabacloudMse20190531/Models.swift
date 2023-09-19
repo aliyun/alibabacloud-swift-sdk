@@ -156,7 +156,13 @@ public class GatewayOption : Tea.TeaModel {
     public class TraceDetails : Tea.TeaModel {
         public var sample: Int64?
 
+        public var serviceId: Int64?
+
+        public var servicePort: String?
+
         public var traceEnabled: Bool?
+
+        public var traceType: String?
 
         public override init() {
             super.init()
@@ -175,8 +181,17 @@ public class GatewayOption : Tea.TeaModel {
             if self.sample != nil {
                 map["Sample"] = self.sample!
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.servicePort != nil {
+                map["ServicePort"] = self.servicePort!
+            }
             if self.traceEnabled != nil {
                 map["TraceEnabled"] = self.traceEnabled!
+            }
+            if self.traceType != nil {
+                map["TraceType"] = self.traceType!
             }
             return map
         }
@@ -185,8 +200,17 @@ public class GatewayOption : Tea.TeaModel {
             if dict.keys.contains("Sample") && dict["Sample"] != nil {
                 self.sample = dict["Sample"] as! Int64
             }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! Int64
+            }
+            if dict.keys.contains("ServicePort") && dict["ServicePort"] != nil {
+                self.servicePort = dict["ServicePort"] as! String
+            }
             if dict.keys.contains("TraceEnabled") && dict["TraceEnabled"] != nil {
                 self.traceEnabled = dict["TraceEnabled"] as! Bool
+            }
+            if dict.keys.contains("TraceType") && dict["TraceType"] != nil {
+                self.traceType = dict["TraceType"] as! String
             }
         }
     }
@@ -61826,6 +61850,364 @@ public class UpdateGatewayRouteWafStatusResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateGatewayRouteWafStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateGatewayServiceCheckRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var check: Bool?
+
+    public var expectedStatuses: [Int32]?
+
+    public var gatewayUniqueId: String?
+
+    public var healthyThreshold: Int32?
+
+    public var httpHost: String?
+
+    public var httpPath: String?
+
+    public var interval: Int32?
+
+    public var protocol_: String?
+
+    public var serviceId: String?
+
+    public var timeout: Int32?
+
+    public var unhealthyThreshold: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.check != nil {
+            map["Check"] = self.check!
+        }
+        if self.expectedStatuses != nil {
+            map["ExpectedStatuses"] = self.expectedStatuses!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.healthyThreshold != nil {
+            map["HealthyThreshold"] = self.healthyThreshold!
+        }
+        if self.httpHost != nil {
+            map["HttpHost"] = self.httpHost!
+        }
+        if self.httpPath != nil {
+            map["HttpPath"] = self.httpPath!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.timeout != nil {
+            map["Timeout"] = self.timeout!
+        }
+        if self.unhealthyThreshold != nil {
+            map["UnhealthyThreshold"] = self.unhealthyThreshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Check") && dict["Check"] != nil {
+            self.check = dict["Check"] as! Bool
+        }
+        if dict.keys.contains("ExpectedStatuses") && dict["ExpectedStatuses"] != nil {
+            self.expectedStatuses = dict["ExpectedStatuses"] as! [Int32]
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("HealthyThreshold") && dict["HealthyThreshold"] != nil {
+            self.healthyThreshold = dict["HealthyThreshold"] as! Int32
+        }
+        if dict.keys.contains("HttpHost") && dict["HttpHost"] != nil {
+            self.httpHost = dict["HttpHost"] as! String
+        }
+        if dict.keys.contains("HttpPath") && dict["HttpPath"] != nil {
+            self.httpPath = dict["HttpPath"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! Int32
+        }
+        if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
+            self.protocol_ = dict["Protocol"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("Timeout") && dict["Timeout"] != nil {
+            self.timeout = dict["Timeout"] as! Int32
+        }
+        if dict.keys.contains("UnhealthyThreshold") && dict["UnhealthyThreshold"] != nil {
+            self.unhealthyThreshold = dict["UnhealthyThreshold"] as! Int32
+        }
+    }
+}
+
+public class UpdateGatewayServiceCheckShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var check: Bool?
+
+    public var expectedStatusesShrink: String?
+
+    public var gatewayUniqueId: String?
+
+    public var healthyThreshold: Int32?
+
+    public var httpHost: String?
+
+    public var httpPath: String?
+
+    public var interval: Int32?
+
+    public var protocol_: String?
+
+    public var serviceId: String?
+
+    public var timeout: Int32?
+
+    public var unhealthyThreshold: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.check != nil {
+            map["Check"] = self.check!
+        }
+        if self.expectedStatusesShrink != nil {
+            map["ExpectedStatuses"] = self.expectedStatusesShrink!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.healthyThreshold != nil {
+            map["HealthyThreshold"] = self.healthyThreshold!
+        }
+        if self.httpHost != nil {
+            map["HttpHost"] = self.httpHost!
+        }
+        if self.httpPath != nil {
+            map["HttpPath"] = self.httpPath!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.protocol_ != nil {
+            map["Protocol"] = self.protocol_!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        if self.timeout != nil {
+            map["Timeout"] = self.timeout!
+        }
+        if self.unhealthyThreshold != nil {
+            map["UnhealthyThreshold"] = self.unhealthyThreshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Check") && dict["Check"] != nil {
+            self.check = dict["Check"] as! Bool
+        }
+        if dict.keys.contains("ExpectedStatuses") && dict["ExpectedStatuses"] != nil {
+            self.expectedStatusesShrink = dict["ExpectedStatuses"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("HealthyThreshold") && dict["HealthyThreshold"] != nil {
+            self.healthyThreshold = dict["HealthyThreshold"] as! Int32
+        }
+        if dict.keys.contains("HttpHost") && dict["HttpHost"] != nil {
+            self.httpHost = dict["HttpHost"] as! String
+        }
+        if dict.keys.contains("HttpPath") && dict["HttpPath"] != nil {
+            self.httpPath = dict["HttpPath"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! Int32
+        }
+        if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
+            self.protocol_ = dict["Protocol"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("Timeout") && dict["Timeout"] != nil {
+            self.timeout = dict["Timeout"] as! Int32
+        }
+        if dict.keys.contains("UnhealthyThreshold") && dict["UnhealthyThreshold"] != nil {
+            self.unhealthyThreshold = dict["UnhealthyThreshold"] as! Int32
+        }
+    }
+}
+
+public class UpdateGatewayServiceCheckResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Int64?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateGatewayServiceCheckResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayServiceCheckResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateGatewayServiceCheckResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

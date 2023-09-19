@@ -8450,6 +8450,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayServiceCheckWithOptions(_ tmpReq: UpdateGatewayServiceCheckRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayServiceCheckResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateGatewayServiceCheckShrinkRequest = UpdateGatewayServiceCheckShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.expectedStatuses)) {
+            request.expectedStatusesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.expectedStatuses, "ExpectedStatuses", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.check)) {
+            query["Check"] = request.check!;
+        }
+        if (!TeaUtils.Client.isUnset(request.expectedStatusesShrink)) {
+            query["ExpectedStatuses"] = request.expectedStatusesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.healthyThreshold)) {
+            query["HealthyThreshold"] = request.healthyThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.httpHost)) {
+            query["HttpHost"] = request.httpHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpPath)) {
+            query["HttpPath"] = request.httpPath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            query["Interval"] = request.interval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.protocol_)) {
+            query["Protocol"] = request.protocol_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            query["ServiceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeout)) {
+            query["Timeout"] = request.timeout!;
+        }
+        if (!TeaUtils.Client.isUnset(request.unhealthyThreshold)) {
+            query["UnhealthyThreshold"] = request.unhealthyThreshold!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayServiceCheck",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayServiceCheckResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayServiceCheck(_ request: UpdateGatewayServiceCheckRequest) async throws -> UpdateGatewayServiceCheckResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGatewayServiceCheckWithOptions(request as! UpdateGatewayServiceCheckRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateGatewayServiceTrafficPolicyWithOptions(_ tmpReq: UpdateGatewayServiceTrafficPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayServiceTrafficPolicyResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateGatewayServiceTrafficPolicyShrinkRequest = UpdateGatewayServiceTrafficPolicyShrinkRequest([:])
