@@ -13765,7 +13765,7 @@ public class ListPatchBaselinesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
-    public var resourceGroupld: String?
+    public var resourceGroupId: String?
 
     public var shareType: String?
 
@@ -13808,8 +13808,8 @@ public class ListPatchBaselinesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
-        if self.resourceGroupld != nil {
-            map["ResourceGroupld"] = self.resourceGroupld!
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.shareType != nil {
             map["ShareType"] = self.shareType!
@@ -13849,8 +13849,8 @@ public class ListPatchBaselinesRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
-        if dict.keys.contains("ResourceGroupld") && dict["ResourceGroupld"] != nil {
-            self.resourceGroupld = dict["ResourceGroupld"] as! String
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
             self.shareType = dict["ShareType"] as! String
@@ -13887,7 +13887,7 @@ public class ListPatchBaselinesShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
-    public var resourceGroupld: String?
+    public var resourceGroupId: String?
 
     public var shareType: String?
 
@@ -13930,8 +13930,8 @@ public class ListPatchBaselinesShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
-        if self.resourceGroupld != nil {
-            map["ResourceGroupld"] = self.resourceGroupld!
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.shareType != nil {
             map["ShareType"] = self.shareType!
@@ -13967,8 +13967,8 @@ public class ListPatchBaselinesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
-        if dict.keys.contains("ResourceGroupld") && dict["ResourceGroupld"] != nil {
-            self.resourceGroupld = dict["ResourceGroupld"] as! String
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
             self.shareType = dict["ShareType"] as! String
@@ -14039,7 +14039,7 @@ public class ListPatchBaselinesResponseBody : Tea.TeaModel {
 
         public var operationSystem: String?
 
-        public var resourceGroupld: String?
+        public var resourceGroupId: String?
 
         public var shareType: String?
 
@@ -14092,8 +14092,8 @@ public class ListPatchBaselinesResponseBody : Tea.TeaModel {
             if self.operationSystem != nil {
                 map["OperationSystem"] = self.operationSystem!
             }
-            if self.resourceGroupld != nil {
-                map["ResourceGroupld"] = self.resourceGroupld!
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
             }
             if self.shareType != nil {
                 map["ShareType"] = self.shareType!
@@ -14145,8 +14145,8 @@ public class ListPatchBaselinesResponseBody : Tea.TeaModel {
             if dict.keys.contains("OperationSystem") && dict["OperationSystem"] != nil {
                 self.operationSystem = dict["OperationSystem"] as! String
             }
-            if dict.keys.contains("ResourceGroupld") && dict["ResourceGroupld"] != nil {
-                self.resourceGroupld = dict["ResourceGroupld"] as! String
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ShareType") && dict["ShareType"] != nil {
                 self.shareType = dict["ShareType"] as! String
@@ -20264,6 +20264,10 @@ public class UpdateExecutionRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
+    public var tags: String?
+
     public override init() {
         super.init()
     }
@@ -20293,6 +20297,12 @@ public class UpdateExecutionRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         return map
     }
 
@@ -20311,6 +20321,12 @@ public class UpdateExecutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            self.tags = dict["Tags"] as! String
         }
     }
 }
