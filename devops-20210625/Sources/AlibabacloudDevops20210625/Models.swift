@@ -39790,6 +39790,8 @@ public class ListServiceConnectionsResponseBody : Tea.TeaModel {
 
         public var type: String?
 
+        public var uuid: String?
+
         public override init() {
             super.init()
         }
@@ -39819,6 +39821,9 @@ public class ListServiceConnectionsResponseBody : Tea.TeaModel {
             if self.type != nil {
                 map["type"] = self.type!
             }
+            if self.uuid != nil {
+                map["uuid"] = self.uuid!
+            }
             return map
         }
 
@@ -39837,6 +39842,9 @@ public class ListServiceConnectionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("type") && dict["type"] != nil {
                 self.type = dict["type"] as! String
+            }
+            if dict.keys.contains("uuid") && dict["uuid"] != nil {
+                self.uuid = dict["uuid"] as! String
             }
         }
     }
