@@ -1329,6 +1329,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDBInstanceIPArrayListWithOptions(_ request: DescribeDBInstanceIPArrayListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBInstanceIPArrayListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceIPArrayName)) {
+            query["DBInstanceIPArrayName"] = request.DBInstanceIPArrayName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }

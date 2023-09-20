@@ -6653,6 +6653,8 @@ public class DescribeDBInstanceErrorLogResponse : Tea.TeaModel {
 }
 
 public class DescribeDBInstanceIPArrayListRequest : Tea.TeaModel {
+    public var DBInstanceIPArrayName: String?
+
     public var DBInstanceId: String?
 
     public var resourceGroupId: String?
@@ -6671,6 +6673,9 @@ public class DescribeDBInstanceIPArrayListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.DBInstanceIPArrayName != nil {
+            map["DBInstanceIPArrayName"] = self.DBInstanceIPArrayName!
+        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -6681,6 +6686,9 @@ public class DescribeDBInstanceIPArrayListRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceIPArrayName") && dict["DBInstanceIPArrayName"] != nil {
+            self.DBInstanceIPArrayName = dict["DBInstanceIPArrayName"] as! String
+        }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
