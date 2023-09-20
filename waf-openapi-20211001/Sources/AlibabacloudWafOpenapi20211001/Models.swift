@@ -2525,6 +2525,12 @@ public class DescribeDefenseResourcesRequest : Tea.TeaModel {
 
 public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
     public class Resources : Tea.TeaModel {
+        public var acwCookieStatus: Int32?
+
+        public var acwSecureStatus: Int32?
+
+        public var acwV3SecureStatus: Int32?
+
         public var customHeaders: [String]?
 
         public var description_: String?
@@ -2563,6 +2569,15 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.acwCookieStatus != nil {
+                map["AcwCookieStatus"] = self.acwCookieStatus!
+            }
+            if self.acwSecureStatus != nil {
+                map["AcwSecureStatus"] = self.acwSecureStatus!
+            }
+            if self.acwV3SecureStatus != nil {
+                map["AcwV3SecureStatus"] = self.acwV3SecureStatus!
+            }
             if self.customHeaders != nil {
                 map["CustomHeaders"] = self.customHeaders!
             }
@@ -2603,6 +2618,15 @@ public class DescribeDefenseResourcesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AcwCookieStatus") && dict["AcwCookieStatus"] != nil {
+                self.acwCookieStatus = dict["AcwCookieStatus"] as! Int32
+            }
+            if dict.keys.contains("AcwSecureStatus") && dict["AcwSecureStatus"] != nil {
+                self.acwSecureStatus = dict["AcwSecureStatus"] as! Int32
+            }
+            if dict.keys.contains("AcwV3SecureStatus") && dict["AcwV3SecureStatus"] != nil {
+                self.acwV3SecureStatus = dict["AcwV3SecureStatus"] as! Int32
+            }
             if dict.keys.contains("CustomHeaders") && dict["CustomHeaders"] != nil {
                 self.customHeaders = dict["CustomHeaders"] as! [String]
             }
@@ -3321,6 +3345,8 @@ public class DescribeDefenseTemplateResponseBody : Tea.TeaModel {
     public class Template : Tea.TeaModel {
         public var defenseScene: String?
 
+        public var defenseSubScene: String?
+
         public var description_: String?
 
         public var gmtModified: Int64?
@@ -3352,6 +3378,9 @@ public class DescribeDefenseTemplateResponseBody : Tea.TeaModel {
             if self.defenseScene != nil {
                 map["DefenseScene"] = self.defenseScene!
             }
+            if self.defenseSubScene != nil {
+                map["DefenseSubScene"] = self.defenseSubScene!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -3379,6 +3408,9 @@ public class DescribeDefenseTemplateResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DefenseScene") && dict["DefenseScene"] != nil {
                 self.defenseScene = dict["DefenseScene"] as! String
+            }
+            if dict.keys.contains("DefenseSubScene") && dict["DefenseSubScene"] != nil {
+                self.defenseSubScene = dict["DefenseSubScene"] as! String
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
@@ -4815,9 +4847,15 @@ public class DescribeFlowChartResponseBody : Tea.TeaModel {
 
         public var outBytes: Int64?
 
+        public var ratelimitBlockSum: Int64?
+
+        public var ratelimitReportSum: Int64?
+
         public var regionBlockBlocksSum: Int64?
 
         public var regionBlockReportsSum: Int64?
+
+        public var robotCount: Int64?
 
         public var wafBlockSum: Int64?
 
@@ -4888,11 +4926,20 @@ public class DescribeFlowChartResponseBody : Tea.TeaModel {
             if self.outBytes != nil {
                 map["OutBytes"] = self.outBytes!
             }
+            if self.ratelimitBlockSum != nil {
+                map["RatelimitBlockSum"] = self.ratelimitBlockSum!
+            }
+            if self.ratelimitReportSum != nil {
+                map["RatelimitReportSum"] = self.ratelimitReportSum!
+            }
             if self.regionBlockBlocksSum != nil {
                 map["RegionBlockBlocksSum"] = self.regionBlockBlocksSum!
             }
             if self.regionBlockReportsSum != nil {
                 map["RegionBlockReportsSum"] = self.regionBlockReportsSum!
+            }
+            if self.robotCount != nil {
+                map["RobotCount"] = self.robotCount!
             }
             if self.wafBlockSum != nil {
                 map["WafBlockSum"] = self.wafBlockSum!
@@ -4955,11 +5002,20 @@ public class DescribeFlowChartResponseBody : Tea.TeaModel {
             if dict.keys.contains("OutBytes") && dict["OutBytes"] != nil {
                 self.outBytes = dict["OutBytes"] as! Int64
             }
+            if dict.keys.contains("RatelimitBlockSum") && dict["RatelimitBlockSum"] != nil {
+                self.ratelimitBlockSum = dict["RatelimitBlockSum"] as! Int64
+            }
+            if dict.keys.contains("RatelimitReportSum") && dict["RatelimitReportSum"] != nil {
+                self.ratelimitReportSum = dict["RatelimitReportSum"] as! Int64
+            }
             if dict.keys.contains("RegionBlockBlocksSum") && dict["RegionBlockBlocksSum"] != nil {
                 self.regionBlockBlocksSum = dict["RegionBlockBlocksSum"] as! Int64
             }
             if dict.keys.contains("RegionBlockReportsSum") && dict["RegionBlockReportsSum"] != nil {
                 self.regionBlockReportsSum = dict["RegionBlockReportsSum"] as! Int64
+            }
+            if dict.keys.contains("RobotCount") && dict["RobotCount"] != nil {
+                self.robotCount = dict["RobotCount"] as! Int64
             }
             if dict.keys.contains("WafBlockSum") && dict["WafBlockSum"] != nil {
                 self.wafBlockSum = dict["WafBlockSum"] as! Int64
@@ -12009,6 +12065,134 @@ public class ModifyDomainResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyDomainResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyHybridCloudClusterBypassStatusRequest : Tea.TeaModel {
+    public var clusterResourceId: String?
+
+    public var instanceId: String?
+
+    public var ruleStatus: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterResourceId != nil {
+            map["ClusterResourceId"] = self.clusterResourceId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ruleStatus != nil {
+            map["RuleStatus"] = self.ruleStatus!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterResourceId") && dict["ClusterResourceId"] != nil {
+            self.clusterResourceId = dict["ClusterResourceId"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RuleStatus") && dict["RuleStatus"] != nil {
+            self.ruleStatus = dict["RuleStatus"] as! String
+        }
+    }
+}
+
+public class ModifyHybridCloudClusterBypassStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyHybridCloudClusterBypassStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyHybridCloudClusterBypassStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyHybridCloudClusterBypassStatusResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

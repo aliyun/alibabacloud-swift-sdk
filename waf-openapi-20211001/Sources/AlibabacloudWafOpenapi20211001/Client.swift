@@ -2228,6 +2228,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyHybridCloudClusterBypassStatusWithOptions(_ request: ModifyHybridCloudClusterBypassStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyHybridCloudClusterBypassStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterResourceId)) {
+            query["ClusterResourceId"] = request.clusterResourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleStatus)) {
+            query["RuleStatus"] = request.ruleStatus ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyHybridCloudClusterBypassStatus",
+            "version": "2021-10-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyHybridCloudClusterBypassStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyHybridCloudClusterBypassStatus(_ request: ModifyHybridCloudClusterBypassStatusRequest) async throws -> ModifyHybridCloudClusterBypassStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyHybridCloudClusterBypassStatusWithOptions(request as! ModifyHybridCloudClusterBypassStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyMajorProtectionBlackIpWithOptions(_ request: ModifyMajorProtectionBlackIpRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyMajorProtectionBlackIpResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
