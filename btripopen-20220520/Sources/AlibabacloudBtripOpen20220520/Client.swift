@@ -2425,11 +2425,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.invoiceSubTaskId)) {
             query["invoice_sub_task_id"] = request.invoiceSubTaskId!;
         }
+        if (!TeaUtils.Client.isUnset(request.itineraryNum)) {
+            query["itinerary_num"] = request.itineraryNum ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["page_no"] = request.pageNo!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["page_size"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ticketNo)) {
+            query["ticket_no"] = request.ticketNo ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -6724,6 +6730,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["page_size"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serialNumber)) {
+            query["serial_number"] = request.serialNumber ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ticketNo)) {
+            query["ticket_no"] = request.ticketNo ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
