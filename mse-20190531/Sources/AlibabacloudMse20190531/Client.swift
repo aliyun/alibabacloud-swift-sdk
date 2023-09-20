@@ -4164,6 +4164,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fcAlias)) {
+            query["FcAlias"] = request.fcAlias ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fcServiceName)) {
             query["FcServiceName"] = request.fcServiceName ?? "";
         }

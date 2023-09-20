@@ -28446,6 +28446,8 @@ public class ImportServicesRequest : Tea.TeaModel {
     }
     public var acceptLanguage: String?
 
+    public var fcAlias: String?
+
     public var fcServiceName: String?
 
     public var fcVersion: String?
@@ -28475,6 +28477,9 @@ public class ImportServicesRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.fcAlias != nil {
+            map["FcAlias"] = self.fcAlias!
+        }
         if self.fcServiceName != nil {
             map["FcServiceName"] = self.fcServiceName!
         }
@@ -28503,6 +28508,9 @@ public class ImportServicesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("FcAlias") && dict["FcAlias"] != nil {
+            self.fcAlias = dict["FcAlias"] as! String
         }
         if dict.keys.contains("FcServiceName") && dict["FcServiceName"] != nil {
             self.fcServiceName = dict["FcServiceName"] as! String
@@ -28536,6 +28544,8 @@ public class ImportServicesRequest : Tea.TeaModel {
 public class ImportServicesShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var fcAlias: String?
+
     public var fcServiceName: String?
 
     public var fcVersion: String?
@@ -28565,6 +28575,9 @@ public class ImportServicesShrinkRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.fcAlias != nil {
+            map["FcAlias"] = self.fcAlias!
+        }
         if self.fcServiceName != nil {
             map["FcServiceName"] = self.fcServiceName!
         }
@@ -28589,6 +28602,9 @@ public class ImportServicesShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("FcAlias") && dict["FcAlias"] != nil {
+            self.fcAlias = dict["FcAlias"] as! String
         }
         if dict.keys.contains("FcServiceName") && dict["FcServiceName"] != nil {
             self.fcServiceName = dict["FcServiceName"] as! String
