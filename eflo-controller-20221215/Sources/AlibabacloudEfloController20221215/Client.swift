@@ -71,6 +71,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.networks)) {
             request.networksShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.networks, "Networks", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.nimizVSwitches)) {
+            request.nimizVSwitchesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nimizVSwitches, "NimizVSwitches", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.nodeGroups)) {
             request.nodeGroupsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.nodeGroups, "NodeGroups", "json")
         }
@@ -91,11 +94,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.componentsShrink)) {
             body["Components"] = request.componentsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.hpnZone)) {
+            body["HpnZone"] = request.hpnZone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ignoreFailedNodeTasks)) {
             body["IgnoreFailedNodeTasks"] = request.ignoreFailedNodeTasks!;
         }
         if (!TeaUtils.Client.isUnset(request.networksShrink)) {
             body["Networks"] = request.networksShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nimizVSwitchesShrink)) {
+            body["NimizVSwitches"] = request.nimizVSwitchesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.nodeGroupsShrink)) {
             body["NodeGroups"] = request.nodeGroupsShrink ?? "";
@@ -449,6 +458,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listFreeNodesWithOptions(_ request: ListFreeNodesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFreeNodesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.hpnZone)) {
+            body["HpnZone"] = request.hpnZone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.machineType)) {
             body["MachineType"] = request.machineType ?? "";
         }

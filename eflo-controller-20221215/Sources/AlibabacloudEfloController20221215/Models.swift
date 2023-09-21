@@ -970,9 +970,13 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var components: [CreateClusterRequest.Components]?
 
+    public var hpnZone: String?
+
     public var ignoreFailedNodeTasks: Bool?
 
     public var networks: CreateClusterRequest.Networks?
+
+    public var nimizVSwitches: [String]?
 
     public var nodeGroups: [CreateClusterRequest.NodeGroups]?
 
@@ -1011,11 +1015,17 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             map["Components"] = tmp
         }
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
+        }
         if self.ignoreFailedNodeTasks != nil {
             map["IgnoreFailedNodeTasks"] = self.ignoreFailedNodeTasks!
         }
         if self.networks != nil {
             map["Networks"] = self.networks?.toMap()
+        }
+        if self.nimizVSwitches != nil {
+            map["NimizVSwitches"] = self.nimizVSwitches!
         }
         if self.nodeGroups != nil {
             var tmp : [Any] = []
@@ -1058,6 +1068,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             self.components = tmp
         }
+        if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+            self.hpnZone = dict["HpnZone"] as! String
+        }
         if dict.keys.contains("IgnoreFailedNodeTasks") && dict["IgnoreFailedNodeTasks"] != nil {
             self.ignoreFailedNodeTasks = dict["IgnoreFailedNodeTasks"] as! Bool
         }
@@ -1065,6 +1078,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             var model = CreateClusterRequest.Networks()
             model.fromMap(dict["Networks"] as! [String: Any])
             self.networks = model
+        }
+        if dict.keys.contains("NimizVSwitches") && dict["NimizVSwitches"] != nil {
+            self.nimizVSwitches = dict["NimizVSwitches"] as! [String]
         }
         if dict.keys.contains("NodeGroups") && dict["NodeGroups"] != nil {
             var tmp : [CreateClusterRequest.NodeGroups] = []
@@ -1140,9 +1156,13 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
 
     public var componentsShrink: String?
 
+    public var hpnZone: String?
+
     public var ignoreFailedNodeTasks: Bool?
 
     public var networksShrink: String?
+
+    public var nimizVSwitchesShrink: String?
 
     public var nodeGroupsShrink: String?
 
@@ -1176,11 +1196,17 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         if self.componentsShrink != nil {
             map["Components"] = self.componentsShrink!
         }
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
+        }
         if self.ignoreFailedNodeTasks != nil {
             map["IgnoreFailedNodeTasks"] = self.ignoreFailedNodeTasks!
         }
         if self.networksShrink != nil {
             map["Networks"] = self.networksShrink!
+        }
+        if self.nimizVSwitchesShrink != nil {
+            map["NimizVSwitches"] = self.nimizVSwitchesShrink!
         }
         if self.nodeGroupsShrink != nil {
             map["NodeGroups"] = self.nodeGroupsShrink!
@@ -1211,11 +1237,17 @@ public class CreateClusterShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Components") && dict["Components"] != nil {
             self.componentsShrink = dict["Components"] as! String
         }
+        if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+            self.hpnZone = dict["HpnZone"] as! String
+        }
         if dict.keys.contains("IgnoreFailedNodeTasks") && dict["IgnoreFailedNodeTasks"] != nil {
             self.ignoreFailedNodeTasks = dict["IgnoreFailedNodeTasks"] as! Bool
         }
         if dict.keys.contains("Networks") && dict["Networks"] != nil {
             self.networksShrink = dict["Networks"] as! String
+        }
+        if dict.keys.contains("NimizVSwitches") && dict["NimizVSwitches"] != nil {
+            self.nimizVSwitchesShrink = dict["NimizVSwitches"] as! String
         }
         if dict.keys.contains("NodeGroups") && dict["NodeGroups"] != nil {
             self.nodeGroupsShrink = dict["NodeGroups"] as! String
@@ -1556,6 +1588,8 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var hpnZone: String?
+
     public var networks: [DescribeClusterResponseBody.Networks]?
 
     public var nodeCount: Int64?
@@ -1609,6 +1643,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
+        }
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
         }
         if self.networks != nil {
             var tmp : [Any] = []
@@ -1670,6 +1707,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
             self.createTime = dict["CreateTime"] as! String
+        }
+        if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+            self.hpnZone = dict["HpnZone"] as! String
         }
         if dict.keys.contains("Networks") && dict["Networks"] != nil {
             var tmp : [DescribeClusterResponseBody.Networks] = []
@@ -1855,6 +1895,8 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
     public var hostname: String?
 
+    public var hpnZone: String?
+
     public var imageId: String?
 
     public var imageName: String?
@@ -1905,6 +1947,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
+        }
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -1961,6 +2006,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Hostname") && dict["Hostname"] != nil {
             self.hostname = dict["Hostname"] as! String
+        }
+        if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+            self.hpnZone = dict["HpnZone"] as! String
         }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
@@ -3097,6 +3145,10 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
             public var nodeId: String?
 
+            public var vSwitchId: String?
+
+            public var vpcId: String?
+
             public override init() {
                 super.init()
             }
@@ -3120,6 +3172,12 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 if self.nodeId != nil {
                     map["NodeId"] = self.nodeId!
                 }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId!
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId!
+                }
                 return map
             }
 
@@ -3132,6 +3190,12 @@ public class ExtendClusterRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
                     self.nodeId = dict["NodeId"] as! String
+                }
+                if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                    self.vSwitchId = dict["VSwitchId"] as! String
+                }
+                if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                    self.vpcId = dict["VpcId"] as! String
                 }
             }
         }
@@ -3543,6 +3607,8 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
 
         public var hostname: String?
 
+        public var hpnZone: String?
+
         public var imageId: String?
 
         public var machineType: String?
@@ -3583,6 +3649,9 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
             }
             if self.hostname != nil {
                 map["Hostname"] = self.hostname!
+            }
+            if self.hpnZone != nil {
+                map["HpnZone"] = self.hpnZone!
             }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
@@ -3627,6 +3696,9 @@ public class ListClusterNodesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Hostname") && dict["Hostname"] != nil {
                 self.hostname = dict["Hostname"] as! String
+            }
+            if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+                self.hpnZone = dict["HpnZone"] as! String
             }
             if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
                 self.imageId = dict["ImageId"] as! String
@@ -3834,6 +3906,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
         public var createTime: String?
 
+        public var hpnZone: String?
+
         public var nodeCount: Int64?
 
         public var nodeGroupCount: Int64?
@@ -3880,6 +3954,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.hpnZone != nil {
+                map["HpnZone"] = self.hpnZone!
+            }
             if self.nodeCount != nil {
                 map["NodeCount"] = self.nodeCount!
             }
@@ -3922,6 +3999,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+                self.hpnZone = dict["HpnZone"] as! String
             }
             if dict.keys.contains("NodeCount") && dict["NodeCount"] != nil {
                 self.nodeCount = dict["NodeCount"] as! Int64
@@ -4056,6 +4136,8 @@ public class ListClustersResponse : Tea.TeaModel {
 }
 
 public class ListFreeNodesRequest : Tea.TeaModel {
+    public var hpnZone: String?
+
     public var machineType: String?
 
     public var maxResults: Int64?
@@ -4076,6 +4158,9 @@ public class ListFreeNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.hpnZone != nil {
+            map["HpnZone"] = self.hpnZone!
+        }
         if self.machineType != nil {
             map["MachineType"] = self.machineType!
         }
@@ -4089,6 +4174,9 @@ public class ListFreeNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+            self.hpnZone = dict["HpnZone"] as! String
+        }
         if dict.keys.contains("MachineType") && dict["MachineType"] != nil {
             self.machineType = dict["MachineType"] as! String
         }
@@ -4106,6 +4194,8 @@ public class ListFreeNodesResponseBody : Tea.TeaModel {
         public var createTime: String?
 
         public var expiredTime: String?
+
+        public var hpnZone: String?
 
         public var machineType: String?
 
@@ -4135,6 +4225,9 @@ public class ListFreeNodesResponseBody : Tea.TeaModel {
             if self.expiredTime != nil {
                 map["ExpiredTime"] = self.expiredTime!
             }
+            if self.hpnZone != nil {
+                map["HpnZone"] = self.hpnZone!
+            }
             if self.machineType != nil {
                 map["MachineType"] = self.machineType!
             }
@@ -4156,6 +4249,9 @@ public class ListFreeNodesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExpiredTime") && dict["ExpiredTime"] != nil {
                 self.expiredTime = dict["ExpiredTime"] as! String
+            }
+            if dict.keys.contains("HpnZone") && dict["HpnZone"] != nil {
+                self.hpnZone = dict["HpnZone"] as! String
             }
             if dict.keys.contains("MachineType") && dict["MachineType"] != nil {
                 self.machineType = dict["MachineType"] as! String
