@@ -2938,6 +2938,190 @@ public class ChangeColumnSecLevelResponse : Tea.TeaModel {
     }
 }
 
+public class ChangeColumnSecurityLevelRequest : Tea.TeaModel {
+    public var columnName: String?
+
+    public var dbId: Int64?
+
+    public var isLogic: Bool?
+
+    public var newSensitivityLevel: String?
+
+    public var schemaName: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.columnName != nil {
+            map["ColumnName"] = self.columnName!
+        }
+        if self.dbId != nil {
+            map["DbId"] = self.dbId!
+        }
+        if self.isLogic != nil {
+            map["IsLogic"] = self.isLogic!
+        }
+        if self.newSensitivityLevel != nil {
+            map["NewSensitivityLevel"] = self.newSensitivityLevel!
+        }
+        if self.schemaName != nil {
+            map["SchemaName"] = self.schemaName!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ColumnName") && dict["ColumnName"] != nil {
+            self.columnName = dict["ColumnName"] as! String
+        }
+        if dict.keys.contains("DbId") && dict["DbId"] != nil {
+            self.dbId = dict["DbId"] as! Int64
+        }
+        if dict.keys.contains("IsLogic") && dict["IsLogic"] != nil {
+            self.isLogic = dict["IsLogic"] as! Bool
+        }
+        if dict.keys.contains("NewSensitivityLevel") && dict["NewSensitivityLevel"] != nil {
+            self.newSensitivityLevel = dict["NewSensitivityLevel"] as! String
+        }
+        if dict.keys.contains("SchemaName") && dict["SchemaName"] != nil {
+            self.schemaName = dict["SchemaName"] as! String
+        }
+        if dict.keys.contains("TableName") && dict["TableName"] != nil {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ChangeColumnSecurityLevelResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ChangeColumnSecurityLevelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeColumnSecurityLevelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ChangeColumnSecurityLevelResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ChangeLhDagOwnerRequest : Tea.TeaModel {
     public var dagId: Int64?
 
@@ -7350,6 +7534,365 @@ public class CreateOrderResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateOrderResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateProcCorrectOrderRequest : Tea.TeaModel {
+    public class Param : Tea.TeaModel {
+        public class DbItemList : Tea.TeaModel {
+            public var dbId: Int64?
+
+            public var logic: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dbId != nil {
+                    map["DbId"] = self.dbId!
+                }
+                if self.logic != nil {
+                    map["Logic"] = self.logic!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DbId") && dict["DbId"] != nil {
+                    self.dbId = dict["DbId"] as! Int64
+                }
+                if dict.keys.contains("Logic") && dict["Logic"] != nil {
+                    self.logic = dict["Logic"] as! Bool
+                }
+            }
+        }
+        public var classify: String?
+
+        public var dbItemList: [CreateProcCorrectOrderRequest.Param.DbItemList]?
+
+        public var execSQL: String?
+
+        public var rollbackAttachmentName: String?
+
+        public var rollbackSQL: String?
+
+        public var rollbackSqlType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.classify != nil {
+                map["Classify"] = self.classify!
+            }
+            if self.dbItemList != nil {
+                var tmp : [Any] = []
+                for k in self.dbItemList! {
+                    tmp.append(k.toMap())
+                }
+                map["DbItemList"] = tmp
+            }
+            if self.execSQL != nil {
+                map["ExecSQL"] = self.execSQL!
+            }
+            if self.rollbackAttachmentName != nil {
+                map["RollbackAttachmentName"] = self.rollbackAttachmentName!
+            }
+            if self.rollbackSQL != nil {
+                map["RollbackSQL"] = self.rollbackSQL!
+            }
+            if self.rollbackSqlType != nil {
+                map["RollbackSqlType"] = self.rollbackSqlType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Classify") && dict["Classify"] != nil {
+                self.classify = dict["Classify"] as! String
+            }
+            if dict.keys.contains("DbItemList") && dict["DbItemList"] != nil {
+                var tmp : [CreateProcCorrectOrderRequest.Param.DbItemList] = []
+                for v in dict["DbItemList"] as! [Any] {
+                    var model = CreateProcCorrectOrderRequest.Param.DbItemList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dbItemList = tmp
+            }
+            if dict.keys.contains("ExecSQL") && dict["ExecSQL"] != nil {
+                self.execSQL = dict["ExecSQL"] as! String
+            }
+            if dict.keys.contains("RollbackAttachmentName") && dict["RollbackAttachmentName"] != nil {
+                self.rollbackAttachmentName = dict["RollbackAttachmentName"] as! String
+            }
+            if dict.keys.contains("RollbackSQL") && dict["RollbackSQL"] != nil {
+                self.rollbackSQL = dict["RollbackSQL"] as! String
+            }
+            if dict.keys.contains("RollbackSqlType") && dict["RollbackSqlType"] != nil {
+                self.rollbackSqlType = dict["RollbackSqlType"] as! String
+            }
+        }
+    }
+    public var attachmentKey: String?
+
+    public var comment: String?
+
+    public var param: CreateProcCorrectOrderRequest.Param?
+
+    public var relatedUserList: [Int64]?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.param?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attachmentKey != nil {
+            map["AttachmentKey"] = self.attachmentKey!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.param != nil {
+            map["Param"] = self.param?.toMap()
+        }
+        if self.relatedUserList != nil {
+            map["RelatedUserList"] = self.relatedUserList!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AttachmentKey") && dict["AttachmentKey"] != nil {
+            self.attachmentKey = dict["AttachmentKey"] as! String
+        }
+        if dict.keys.contains("Comment") && dict["Comment"] != nil {
+            self.comment = dict["Comment"] as! String
+        }
+        if dict.keys.contains("Param") && dict["Param"] != nil {
+            var model = CreateProcCorrectOrderRequest.Param()
+            model.fromMap(dict["Param"] as! [String: Any])
+            self.param = model
+        }
+        if dict.keys.contains("RelatedUserList") && dict["RelatedUserList"] != nil {
+            self.relatedUserList = dict["RelatedUserList"] as! [Int64]
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateProcCorrectOrderShrinkRequest : Tea.TeaModel {
+    public var attachmentKey: String?
+
+    public var comment: String?
+
+    public var paramShrink: String?
+
+    public var relatedUserListShrink: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attachmentKey != nil {
+            map["AttachmentKey"] = self.attachmentKey!
+        }
+        if self.comment != nil {
+            map["Comment"] = self.comment!
+        }
+        if self.paramShrink != nil {
+            map["Param"] = self.paramShrink!
+        }
+        if self.relatedUserListShrink != nil {
+            map["RelatedUserList"] = self.relatedUserListShrink!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AttachmentKey") && dict["AttachmentKey"] != nil {
+            self.attachmentKey = dict["AttachmentKey"] as! String
+        }
+        if dict.keys.contains("Comment") && dict["Comment"] != nil {
+            self.comment = dict["Comment"] as! String
+        }
+        if dict.keys.contains("Param") && dict["Param"] != nil {
+            self.paramShrink = dict["Param"] as! String
+        }
+        if dict.keys.contains("RelatedUserList") && dict["RelatedUserList"] != nil {
+            self.relatedUserListShrink = dict["RelatedUserList"] as! String
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class CreateProcCorrectOrderResponseBody : Tea.TeaModel {
+    public var createOrderResult: [Int64]?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createOrderResult != nil {
+            map["CreateOrderResult"] = self.createOrderResult!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateOrderResult") && dict["CreateOrderResult"] != nil {
+            self.createOrderResult = dict["CreateOrderResult"] as! [Int64]
+        }
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateProcCorrectOrderResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateProcCorrectOrderResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateProcCorrectOrderResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -14460,6 +15003,214 @@ public class GetAuthorityTemplateItemResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetAuthorityTemplateItemResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetClassificationTemplateRequest : Tea.TeaModel {
+    public var instanceId: Int64?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! Int64
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class GetClassificationTemplateResponseBody : Tea.TeaModel {
+    public class ClassificationResourceTemplateMap : Tea.TeaModel {
+        public var resourceId: Int64?
+
+        public var resourceType: String?
+
+        public var templateId: Int64?
+
+        public var templateType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            if self.templateType != nil {
+                map["TemplateType"] = self.templateType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+                self.resourceId = dict["ResourceId"] as! Int64
+            }
+            if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+            if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+                self.templateId = dict["TemplateId"] as! Int64
+            }
+            if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+                self.templateType = dict["TemplateType"] as! String
+            }
+        }
+    }
+    public var classificationResourceTemplateMap: GetClassificationTemplateResponseBody.ClassificationResourceTemplateMap?
+
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.classificationResourceTemplateMap?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.classificationResourceTemplateMap != nil {
+            map["ClassificationResourceTemplateMap"] = self.classificationResourceTemplateMap?.toMap()
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClassificationResourceTemplateMap") && dict["ClassificationResourceTemplateMap"] != nil {
+            var model = GetClassificationTemplateResponseBody.ClassificationResourceTemplateMap()
+            model.fromMap(dict["ClassificationResourceTemplateMap"] as! [String: Any])
+            self.classificationResourceTemplateMap = model
+        }
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetClassificationTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetClassificationTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetClassificationTemplateResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -42564,6 +43315,231 @@ public class ListSensitiveDataAuditLogResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListSensitiveDataAuditLogResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListSensitivityLevelRequest : Tea.TeaModel {
+    public var templateId: Int64?
+
+    public var templateType: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+            self.templateId = dict["TemplateId"] as! Int64
+        }
+        if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+            self.templateType = dict["TemplateType"] as! String
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListSensitivityLevelResponseBody : Tea.TeaModel {
+    public class SensitivityLevelList : Tea.TeaModel {
+        public var isPlain: Bool?
+
+        public var name: String?
+
+        public var templateId: String?
+
+        public var templateType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isPlain != nil {
+                map["IsPlain"] = self.isPlain!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            if self.templateType != nil {
+                map["TemplateType"] = self.templateType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IsPlain") && dict["IsPlain"] != nil {
+                self.isPlain = dict["IsPlain"] as! Bool
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+                self.templateId = dict["TemplateId"] as! String
+            }
+            if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+                self.templateType = dict["TemplateType"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var sensitivityLevelList: [ListSensitivityLevelResponseBody.SensitivityLevelList]?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sensitivityLevelList != nil {
+            var tmp : [Any] = []
+            for k in self.sensitivityLevelList! {
+                tmp.append(k.toMap())
+            }
+            map["SensitivityLevelList"] = tmp
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SensitivityLevelList") && dict["SensitivityLevelList"] != nil {
+            var tmp : [ListSensitivityLevelResponseBody.SensitivityLevelList] = []
+            for v in dict["SensitivityLevelList"] as! [Any] {
+                var model = ListSensitivityLevelResponseBody.SensitivityLevelList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sensitivityLevelList = tmp
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListSensitivityLevelResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSensitivityLevelResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListSensitivityLevelResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
