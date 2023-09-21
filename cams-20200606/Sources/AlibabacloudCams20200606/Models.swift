@@ -9599,6 +9599,8 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
 
     public var fallBackId: String?
 
+    public var fallBackRule: String?
+
     public var from: String?
 
     public var isvCode: String?
@@ -9648,6 +9650,9 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
+        }
+        if self.fallBackRule != nil {
+            map["FallBackRule"] = self.fallBackRule!
         }
         if self.from != nil {
             map["From"] = self.from!
@@ -9702,6 +9707,9 @@ public class SendChatappMassMessageRequest : Tea.TeaModel {
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
         }
+        if dict.keys.contains("FallBackRule") && dict["FallBackRule"] != nil {
+            self.fallBackRule = dict["FallBackRule"] as! String
+        }
         if dict.keys.contains("From") && dict["From"] != nil {
             self.from = dict["From"] as! String
         }
@@ -9753,6 +9761,8 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
 
     public var fallBackId: String?
 
+    public var fallBackRule: String?
+
     public var from: String?
 
     public var isvCode: String?
@@ -9803,6 +9813,9 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
         }
+        if self.fallBackRule != nil {
+            map["FallBackRule"] = self.fallBackRule!
+        }
         if self.from != nil {
             map["From"] = self.from!
         }
@@ -9851,6 +9864,9 @@ public class SendChatappMassMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
+        }
+        if dict.keys.contains("FallBackRule") && dict["FallBackRule"] != nil {
+            self.fallBackRule = dict["FallBackRule"] as! String
         }
         if dict.keys.contains("From") && dict["From"] != nil {
             self.from = dict["From"] as! String
@@ -10140,6 +10156,8 @@ public class SendChatappMessageRequest : Tea.TeaModel {
 
     public var fallBackId: String?
 
+    public var fallBackRule: String?
+
     public var from: String?
 
     public var isvCode: String?
@@ -10208,6 +10226,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
+        }
+        if self.fallBackRule != nil {
+            map["FallBackRule"] = self.fallBackRule!
         }
         if self.from != nil {
             map["From"] = self.from!
@@ -10282,6 +10303,9 @@ public class SendChatappMessageRequest : Tea.TeaModel {
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
         }
+        if dict.keys.contains("FallBackRule") && dict["FallBackRule"] != nil {
+            self.fallBackRule = dict["FallBackRule"] as! String
+        }
         if dict.keys.contains("From") && dict["From"] != nil {
             self.from = dict["From"] as! String
         }
@@ -10348,6 +10372,8 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
     public var fallBackDuration: Int32?
 
     public var fallBackId: String?
+
+    public var fallBackRule: String?
 
     public var from: String?
 
@@ -10416,6 +10442,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if self.fallBackId != nil {
             map["FallBackId"] = self.fallBackId!
+        }
+        if self.fallBackRule != nil {
+            map["FallBackRule"] = self.fallBackRule!
         }
         if self.from != nil {
             map["From"] = self.from!
@@ -10489,6 +10518,9 @@ public class SendChatappMessageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FallBackId") && dict["FallBackId"] != nil {
             self.fallBackId = dict["FallBackId"] as! String
+        }
+        if dict.keys.contains("FallBackRule") && dict["FallBackRule"] != nil {
+            self.fallBackRule = dict["FallBackRule"] as! String
         }
         if dict.keys.contains("From") && dict["From"] != nil {
             self.from = dict["From"] as! String
