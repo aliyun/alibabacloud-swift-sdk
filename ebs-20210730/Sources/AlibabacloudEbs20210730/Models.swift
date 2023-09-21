@@ -6175,6 +6175,8 @@ public class ReprotectDiskReplicaGroupRequest : Tea.TeaModel {
 
     public var replicaGroupId: String?
 
+    public var reverseReplicate: Bool?
+
     public override init() {
         super.init()
     }
@@ -6198,6 +6200,9 @@ public class ReprotectDiskReplicaGroupRequest : Tea.TeaModel {
         if self.replicaGroupId != nil {
             map["ReplicaGroupId"] = self.replicaGroupId!
         }
+        if self.reverseReplicate != nil {
+            map["ReverseReplicate"] = self.reverseReplicate!
+        }
         return map
     }
 
@@ -6210,6 +6215,9 @@ public class ReprotectDiskReplicaGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ReplicaGroupId") && dict["ReplicaGroupId"] != nil {
             self.replicaGroupId = dict["ReplicaGroupId"] as! String
+        }
+        if dict.keys.contains("ReverseReplicate") && dict["ReverseReplicate"] != nil {
+            self.reverseReplicate = dict["ReverseReplicate"] as! Bool
         }
     }
 }
@@ -6303,6 +6311,8 @@ public class ReprotectDiskReplicaPairRequest : Tea.TeaModel {
 
     public var replicaPairId: String?
 
+    public var reverseReplicate: Bool?
+
     public override init() {
         super.init()
     }
@@ -6326,6 +6336,9 @@ public class ReprotectDiskReplicaPairRequest : Tea.TeaModel {
         if self.replicaPairId != nil {
             map["ReplicaPairId"] = self.replicaPairId!
         }
+        if self.reverseReplicate != nil {
+            map["ReverseReplicate"] = self.reverseReplicate!
+        }
         return map
     }
 
@@ -6338,6 +6351,9 @@ public class ReprotectDiskReplicaPairRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ReplicaPairId") && dict["ReplicaPairId"] != nil {
             self.replicaPairId = dict["ReplicaPairId"] as! String
+        }
+        if dict.keys.contains("ReverseReplicate") && dict["ReverseReplicate"] != nil {
+            self.reverseReplicate = dict["ReverseReplicate"] as! Bool
         }
     }
 }
