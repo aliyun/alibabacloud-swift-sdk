@@ -5930,6 +5930,8 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
 
     public var alertName: String?
 
+    public var alertPiplines: String?
+
     public var alertRuleContent: String?
 
     public var alertStatus: String?
@@ -5941,6 +5943,8 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
     public var autoAddNewApplication: Bool?
 
     public var clusterId: String?
+
+    public var dataConfig: String?
 
     public var duration: Int64?
 
@@ -5957,6 +5961,8 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
     public var metricsKey: String?
 
     public var metricsType: String?
+
+    public var notice: String?
 
     public var notifyStrategy: String?
 
@@ -5994,6 +6000,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         if self.alertName != nil {
             map["AlertName"] = self.alertName!
         }
+        if self.alertPiplines != nil {
+            map["AlertPiplines"] = self.alertPiplines!
+        }
         if self.alertRuleContent != nil {
             map["AlertRuleContent"] = self.alertRuleContent!
         }
@@ -6011,6 +6020,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
+        }
+        if self.dataConfig != nil {
+            map["DataConfig"] = self.dataConfig!
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
@@ -6039,6 +6051,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         }
         if self.metricsType != nil {
             map["MetricsType"] = self.metricsType!
+        }
+        if self.notice != nil {
+            map["Notice"] = self.notice!
         }
         if self.notifyStrategy != nil {
             map["NotifyStrategy"] = self.notifyStrategy!
@@ -6075,6 +6090,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         if dict.keys.contains("AlertName") && dict["AlertName"] != nil {
             self.alertName = dict["AlertName"] as! String
         }
+        if dict.keys.contains("AlertPiplines") && dict["AlertPiplines"] != nil {
+            self.alertPiplines = dict["AlertPiplines"] as! String
+        }
         if dict.keys.contains("AlertRuleContent") && dict["AlertRuleContent"] != nil {
             self.alertRuleContent = dict["AlertRuleContent"] as! String
         }
@@ -6092,6 +6110,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
             self.clusterId = dict["ClusterId"] as! String
+        }
+        if dict.keys.contains("DataConfig") && dict["DataConfig"] != nil {
+            self.dataConfig = dict["DataConfig"] as! String
         }
         if dict.keys.contains("Duration") && dict["Duration"] != nil {
             self.duration = dict["Duration"] as! Int64
@@ -6124,6 +6145,9 @@ public class CreateOrUpdateAlertRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MetricsType") && dict["MetricsType"] != nil {
             self.metricsType = dict["MetricsType"] as! String
+        }
+        if dict.keys.contains("Notice") && dict["Notice"] != nil {
+            self.notice = dict["Notice"] as! String
         }
         if dict.keys.contains("NotifyStrategy") && dict["NotifyStrategy"] != nil {
             self.notifyStrategy = dict["NotifyStrategy"] as! String
@@ -12483,6 +12507,12 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
 
             public var transmissionSize: Int64?
 
+            public var validateKeywords: String?
+
+            public var verifyWay: Int32?
+
+            public var whiteList: String?
+
             public override init() {
                 super.init()
             }
@@ -12542,6 +12572,15 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 if self.transmissionSize != nil {
                     map["TransmissionSize"] = self.transmissionSize!
                 }
+                if self.validateKeywords != nil {
+                    map["ValidateKeywords"] = self.validateKeywords!
+                }
+                if self.verifyWay != nil {
+                    map["VerifyWay"] = self.verifyWay!
+                }
+                if self.whiteList != nil {
+                    map["WhiteList"] = self.whiteList!
+                }
                 return map
             }
 
@@ -12590,6 +12629,15 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("TransmissionSize") && dict["TransmissionSize"] != nil {
                     self.transmissionSize = dict["TransmissionSize"] as! Int64
+                }
+                if dict.keys.contains("ValidateKeywords") && dict["ValidateKeywords"] != nil {
+                    self.validateKeywords = dict["ValidateKeywords"] as! String
+                }
+                if dict.keys.contains("VerifyWay") && dict["VerifyWay"] != nil {
+                    self.verifyWay = dict["VerifyWay"] as! Int32
+                }
+                if dict.keys.contains("WhiteList") && dict["WhiteList"] != nil {
+                    self.whiteList = dict["WhiteList"] as! String
                 }
             }
         }
@@ -12824,6 +12872,83 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Stream : Tea.TeaModel {
+            public var customHeaderContent: [String: String]?
+
+            public var playerType: Int32?
+
+            public var streamAddressType: Int32?
+
+            public var streamMonitorTimeout: Int32?
+
+            public var streamType: Int32?
+
+            public var targetUrl: String?
+
+            public var whiteList: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customHeaderContent != nil {
+                    map["CustomHeaderContent"] = self.customHeaderContent!
+                }
+                if self.playerType != nil {
+                    map["PlayerType"] = self.playerType!
+                }
+                if self.streamAddressType != nil {
+                    map["StreamAddressType"] = self.streamAddressType!
+                }
+                if self.streamMonitorTimeout != nil {
+                    map["StreamMonitorTimeout"] = self.streamMonitorTimeout!
+                }
+                if self.streamType != nil {
+                    map["StreamType"] = self.streamType!
+                }
+                if self.targetUrl != nil {
+                    map["TargetUrl"] = self.targetUrl!
+                }
+                if self.whiteList != nil {
+                    map["WhiteList"] = self.whiteList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CustomHeaderContent") && dict["CustomHeaderContent"] != nil {
+                    self.customHeaderContent = dict["CustomHeaderContent"] as! [String: String]
+                }
+                if dict.keys.contains("PlayerType") && dict["PlayerType"] != nil {
+                    self.playerType = dict["PlayerType"] as! Int32
+                }
+                if dict.keys.contains("StreamAddressType") && dict["StreamAddressType"] != nil {
+                    self.streamAddressType = dict["StreamAddressType"] as! Int32
+                }
+                if dict.keys.contains("StreamMonitorTimeout") && dict["StreamMonitorTimeout"] != nil {
+                    self.streamMonitorTimeout = dict["StreamMonitorTimeout"] as! Int32
+                }
+                if dict.keys.contains("StreamType") && dict["StreamType"] != nil {
+                    self.streamType = dict["StreamType"] as! Int32
+                }
+                if dict.keys.contains("TargetUrl") && dict["TargetUrl"] != nil {
+                    self.targetUrl = dict["TargetUrl"] as! String
+                }
+                if dict.keys.contains("WhiteList") && dict["WhiteList"] != nil {
+                    self.whiteList = dict["WhiteList"] as! String
+                }
+            }
+        }
         public class Website : Tea.TeaModel {
             public var automaticScrolling: Int32?
 
@@ -12831,21 +12956,35 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
 
             public var customHeaderContent: [String: String]?
 
+            public var DNSHijackWhitelist: String?
+
             public var disableCache: Int32?
 
             public var disableCompression: Int32?
 
+            public var elementBlacklist: String?
+
             public var filterInvalidIP: Int32?
+
+            public var flowHijackJumpTimes: Int32?
+
+            public var flowHijackLogo: String?
 
             public var ignoreCertificateError: Int32?
 
             public var monitorTimeout: Int64?
+
+            public var pageTamper: String?
 
             public var redirection: Int32?
 
             public var slowElementThreshold: Int64?
 
             public var targetUrl: String?
+
+            public var verifyStringBlacklist: String?
+
+            public var verifyStringWhitelist: String?
 
             public var waitCompletionTime: Int64?
 
@@ -12872,20 +13011,35 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 if self.customHeaderContent != nil {
                     map["CustomHeaderContent"] = self.customHeaderContent!
                 }
+                if self.DNSHijackWhitelist != nil {
+                    map["DNSHijackWhitelist"] = self.DNSHijackWhitelist!
+                }
                 if self.disableCache != nil {
                     map["DisableCache"] = self.disableCache!
                 }
                 if self.disableCompression != nil {
                     map["DisableCompression"] = self.disableCompression!
                 }
+                if self.elementBlacklist != nil {
+                    map["ElementBlacklist"] = self.elementBlacklist!
+                }
                 if self.filterInvalidIP != nil {
                     map["FilterInvalidIP"] = self.filterInvalidIP!
+                }
+                if self.flowHijackJumpTimes != nil {
+                    map["FlowHijackJumpTimes"] = self.flowHijackJumpTimes!
+                }
+                if self.flowHijackLogo != nil {
+                    map["FlowHijackLogo"] = self.flowHijackLogo!
                 }
                 if self.ignoreCertificateError != nil {
                     map["IgnoreCertificateError"] = self.ignoreCertificateError!
                 }
                 if self.monitorTimeout != nil {
                     map["MonitorTimeout"] = self.monitorTimeout!
+                }
+                if self.pageTamper != nil {
+                    map["PageTamper"] = self.pageTamper!
                 }
                 if self.redirection != nil {
                     map["Redirection"] = self.redirection!
@@ -12895,6 +13049,12 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
                 if self.targetUrl != nil {
                     map["TargetUrl"] = self.targetUrl!
+                }
+                if self.verifyStringBlacklist != nil {
+                    map["VerifyStringBlacklist"] = self.verifyStringBlacklist!
+                }
+                if self.verifyStringWhitelist != nil {
+                    map["VerifyStringWhitelist"] = self.verifyStringWhitelist!
                 }
                 if self.waitCompletionTime != nil {
                     map["WaitCompletionTime"] = self.waitCompletionTime!
@@ -12912,20 +13072,35 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 if dict.keys.contains("CustomHeaderContent") && dict["CustomHeaderContent"] != nil {
                     self.customHeaderContent = dict["CustomHeaderContent"] as! [String: String]
                 }
+                if dict.keys.contains("DNSHijackWhitelist") && dict["DNSHijackWhitelist"] != nil {
+                    self.DNSHijackWhitelist = dict["DNSHijackWhitelist"] as! String
+                }
                 if dict.keys.contains("DisableCache") && dict["DisableCache"] != nil {
                     self.disableCache = dict["DisableCache"] as! Int32
                 }
                 if dict.keys.contains("DisableCompression") && dict["DisableCompression"] != nil {
                     self.disableCompression = dict["DisableCompression"] as! Int32
                 }
+                if dict.keys.contains("ElementBlacklist") && dict["ElementBlacklist"] != nil {
+                    self.elementBlacklist = dict["ElementBlacklist"] as! String
+                }
                 if dict.keys.contains("FilterInvalidIP") && dict["FilterInvalidIP"] != nil {
                     self.filterInvalidIP = dict["FilterInvalidIP"] as! Int32
+                }
+                if dict.keys.contains("FlowHijackJumpTimes") && dict["FlowHijackJumpTimes"] != nil {
+                    self.flowHijackJumpTimes = dict["FlowHijackJumpTimes"] as! Int32
+                }
+                if dict.keys.contains("FlowHijackLogo") && dict["FlowHijackLogo"] != nil {
+                    self.flowHijackLogo = dict["FlowHijackLogo"] as! String
                 }
                 if dict.keys.contains("IgnoreCertificateError") && dict["IgnoreCertificateError"] != nil {
                     self.ignoreCertificateError = dict["IgnoreCertificateError"] as! Int32
                 }
                 if dict.keys.contains("MonitorTimeout") && dict["MonitorTimeout"] != nil {
                     self.monitorTimeout = dict["MonitorTimeout"] as! Int64
+                }
+                if dict.keys.contains("PageTamper") && dict["PageTamper"] != nil {
+                    self.pageTamper = dict["PageTamper"] as! String
                 }
                 if dict.keys.contains("Redirection") && dict["Redirection"] != nil {
                     self.redirection = dict["Redirection"] as! Int32
@@ -12935,6 +13110,12 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("TargetUrl") && dict["TargetUrl"] != nil {
                     self.targetUrl = dict["TargetUrl"] as! String
+                }
+                if dict.keys.contains("VerifyStringBlacklist") && dict["VerifyStringBlacklist"] != nil {
+                    self.verifyStringBlacklist = dict["VerifyStringBlacklist"] as! String
+                }
+                if dict.keys.contains("VerifyStringWhitelist") && dict["VerifyStringWhitelist"] != nil {
+                    self.verifyStringWhitelist = dict["VerifyStringWhitelist"] as! String
                 }
                 if dict.keys.contains("WaitCompletionTime") && dict["WaitCompletionTime"] != nil {
                     self.waitCompletionTime = dict["WaitCompletionTime"] as! Int64
@@ -12950,6 +13131,8 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
         public var netICMP: CreateTimingSyntheticTaskRequest.MonitorConf.NetICMP?
 
         public var netTCP: CreateTimingSyntheticTaskRequest.MonitorConf.NetTCP?
+
+        public var stream: CreateTimingSyntheticTaskRequest.MonitorConf.Stream?
 
         public var website: CreateTimingSyntheticTaskRequest.MonitorConf.Website?
 
@@ -12968,6 +13151,7 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
             try self.netDNS?.validate()
             try self.netICMP?.validate()
             try self.netTCP?.validate()
+            try self.stream?.validate()
             try self.website?.validate()
         }
 
@@ -12987,6 +13171,9 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
             }
             if self.netTCP != nil {
                 map["NetTCP"] = self.netTCP?.toMap()
+            }
+            if self.stream != nil {
+                map["Stream"] = self.stream?.toMap()
             }
             if self.website != nil {
                 map["Website"] = self.website?.toMap()
@@ -13019,6 +13206,11 @@ public class CreateTimingSyntheticTaskRequest : Tea.TeaModel {
                 var model = CreateTimingSyntheticTaskRequest.MonitorConf.NetTCP()
                 model.fromMap(dict["NetTCP"] as! [String: Any])
                 self.netTCP = model
+            }
+            if dict.keys.contains("Stream") && dict["Stream"] != nil {
+                var model = CreateTimingSyntheticTaskRequest.MonitorConf.Stream()
+                model.fromMap(dict["Stream"] as! [String: Any])
+                self.stream = model
             }
             if dict.keys.contains("Website") && dict["Website"] != nil {
                 var model = CreateTimingSyntheticTaskRequest.MonitorConf.Website()
@@ -29690,6 +29882,12 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
 
                 public var transmissionSize: Int64?
 
+                public var validateKeywords: String?
+
+                public var verifyWay: Int32?
+
+                public var whiteList: String?
+
                 public override init() {
                     super.init()
                 }
@@ -29749,6 +29947,15 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     if self.transmissionSize != nil {
                         map["TransmissionSize"] = self.transmissionSize!
                     }
+                    if self.validateKeywords != nil {
+                        map["ValidateKeywords"] = self.validateKeywords!
+                    }
+                    if self.verifyWay != nil {
+                        map["VerifyWay"] = self.verifyWay!
+                    }
+                    if self.whiteList != nil {
+                        map["WhiteList"] = self.whiteList!
+                    }
                     return map
                 }
 
@@ -29797,6 +30004,15 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("TransmissionSize") && dict["TransmissionSize"] != nil {
                         self.transmissionSize = dict["TransmissionSize"] as! Int64
+                    }
+                    if dict.keys.contains("ValidateKeywords") && dict["ValidateKeywords"] != nil {
+                        self.validateKeywords = dict["ValidateKeywords"] as! String
+                    }
+                    if dict.keys.contains("VerifyWay") && dict["VerifyWay"] != nil {
+                        self.verifyWay = dict["VerifyWay"] as! Int32
+                    }
+                    if dict.keys.contains("WhiteList") && dict["WhiteList"] != nil {
+                        self.whiteList = dict["WhiteList"] as! String
                     }
                 }
             }
@@ -30031,6 +30247,83 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Stream : Tea.TeaModel {
+                public var customHeaderContent: [String: String]?
+
+                public var playerType: Int32?
+
+                public var streamAddressType: Int32?
+
+                public var streamMonitorTimeout: Int32?
+
+                public var streamType: Int32?
+
+                public var targetUrl: String?
+
+                public var whiteList: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.customHeaderContent != nil {
+                        map["CustomHeaderContent"] = self.customHeaderContent!
+                    }
+                    if self.playerType != nil {
+                        map["PlayerType"] = self.playerType!
+                    }
+                    if self.streamAddressType != nil {
+                        map["StreamAddressType"] = self.streamAddressType!
+                    }
+                    if self.streamMonitorTimeout != nil {
+                        map["StreamMonitorTimeout"] = self.streamMonitorTimeout!
+                    }
+                    if self.streamType != nil {
+                        map["StreamType"] = self.streamType!
+                    }
+                    if self.targetUrl != nil {
+                        map["TargetUrl"] = self.targetUrl!
+                    }
+                    if self.whiteList != nil {
+                        map["WhiteList"] = self.whiteList!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CustomHeaderContent") && dict["CustomHeaderContent"] != nil {
+                        self.customHeaderContent = dict["CustomHeaderContent"] as! [String: String]
+                    }
+                    if dict.keys.contains("PlayerType") && dict["PlayerType"] != nil {
+                        self.playerType = dict["PlayerType"] as! Int32
+                    }
+                    if dict.keys.contains("StreamAddressType") && dict["StreamAddressType"] != nil {
+                        self.streamAddressType = dict["StreamAddressType"] as! Int32
+                    }
+                    if dict.keys.contains("StreamMonitorTimeout") && dict["StreamMonitorTimeout"] != nil {
+                        self.streamMonitorTimeout = dict["StreamMonitorTimeout"] as! Int32
+                    }
+                    if dict.keys.contains("StreamType") && dict["StreamType"] != nil {
+                        self.streamType = dict["StreamType"] as! Int32
+                    }
+                    if dict.keys.contains("TargetUrl") && dict["TargetUrl"] != nil {
+                        self.targetUrl = dict["TargetUrl"] as! String
+                    }
+                    if dict.keys.contains("WhiteList") && dict["WhiteList"] != nil {
+                        self.whiteList = dict["WhiteList"] as! String
+                    }
+                }
+            }
             public class Website : Tea.TeaModel {
                 public var automaticScrolling: Int32?
 
@@ -30038,21 +30331,35 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
 
                 public var customHeaderContent: [String: String]?
 
+                public var DNSHijackWhitelist: String?
+
                 public var disableCache: Int32?
 
                 public var disableCompression: Int32?
 
+                public var elementBlacklist: String?
+
                 public var filterInvalidIP: Int32?
+
+                public var flowHijackJumpTimes: Int32?
+
+                public var flowHijackLogo: String?
 
                 public var ignoreCertificateError: Int32?
 
                 public var monitorTimeout: Int32?
+
+                public var pageTamper: String?
 
                 public var redirection: Int32?
 
                 public var slowElementThreshold: Int64?
 
                 public var targetUrl: String?
+
+                public var verifyStringBlacklist: String?
+
+                public var verifyStringWhitelist: String?
 
                 public var waitCompletionTime: Int64?
 
@@ -30079,20 +30386,35 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     if self.customHeaderContent != nil {
                         map["CustomHeaderContent"] = self.customHeaderContent!
                     }
+                    if self.DNSHijackWhitelist != nil {
+                        map["DNSHijackWhitelist"] = self.DNSHijackWhitelist!
+                    }
                     if self.disableCache != nil {
                         map["DisableCache"] = self.disableCache!
                     }
                     if self.disableCompression != nil {
                         map["DisableCompression"] = self.disableCompression!
                     }
+                    if self.elementBlacklist != nil {
+                        map["ElementBlacklist"] = self.elementBlacklist!
+                    }
                     if self.filterInvalidIP != nil {
                         map["FilterInvalidIP"] = self.filterInvalidIP!
+                    }
+                    if self.flowHijackJumpTimes != nil {
+                        map["FlowHijackJumpTimes"] = self.flowHijackJumpTimes!
+                    }
+                    if self.flowHijackLogo != nil {
+                        map["FlowHijackLogo"] = self.flowHijackLogo!
                     }
                     if self.ignoreCertificateError != nil {
                         map["IgnoreCertificateError"] = self.ignoreCertificateError!
                     }
                     if self.monitorTimeout != nil {
                         map["MonitorTimeout"] = self.monitorTimeout!
+                    }
+                    if self.pageTamper != nil {
+                        map["PageTamper"] = self.pageTamper!
                     }
                     if self.redirection != nil {
                         map["Redirection"] = self.redirection!
@@ -30102,6 +30424,12 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     }
                     if self.targetUrl != nil {
                         map["TargetUrl"] = self.targetUrl!
+                    }
+                    if self.verifyStringBlacklist != nil {
+                        map["VerifyStringBlacklist"] = self.verifyStringBlacklist!
+                    }
+                    if self.verifyStringWhitelist != nil {
+                        map["VerifyStringWhitelist"] = self.verifyStringWhitelist!
                     }
                     if self.waitCompletionTime != nil {
                         map["WaitCompletionTime"] = self.waitCompletionTime!
@@ -30119,20 +30447,35 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     if dict.keys.contains("CustomHeaderContent") && dict["CustomHeaderContent"] != nil {
                         self.customHeaderContent = dict["CustomHeaderContent"] as! [String: String]
                     }
+                    if dict.keys.contains("DNSHijackWhitelist") && dict["DNSHijackWhitelist"] != nil {
+                        self.DNSHijackWhitelist = dict["DNSHijackWhitelist"] as! String
+                    }
                     if dict.keys.contains("DisableCache") && dict["DisableCache"] != nil {
                         self.disableCache = dict["DisableCache"] as! Int32
                     }
                     if dict.keys.contains("DisableCompression") && dict["DisableCompression"] != nil {
                         self.disableCompression = dict["DisableCompression"] as! Int32
                     }
+                    if dict.keys.contains("ElementBlacklist") && dict["ElementBlacklist"] != nil {
+                        self.elementBlacklist = dict["ElementBlacklist"] as! String
+                    }
                     if dict.keys.contains("FilterInvalidIP") && dict["FilterInvalidIP"] != nil {
                         self.filterInvalidIP = dict["FilterInvalidIP"] as! Int32
+                    }
+                    if dict.keys.contains("FlowHijackJumpTimes") && dict["FlowHijackJumpTimes"] != nil {
+                        self.flowHijackJumpTimes = dict["FlowHijackJumpTimes"] as! Int32
+                    }
+                    if dict.keys.contains("FlowHijackLogo") && dict["FlowHijackLogo"] != nil {
+                        self.flowHijackLogo = dict["FlowHijackLogo"] as! String
                     }
                     if dict.keys.contains("IgnoreCertificateError") && dict["IgnoreCertificateError"] != nil {
                         self.ignoreCertificateError = dict["IgnoreCertificateError"] as! Int32
                     }
                     if dict.keys.contains("MonitorTimeout") && dict["MonitorTimeout"] != nil {
                         self.monitorTimeout = dict["MonitorTimeout"] as! Int32
+                    }
+                    if dict.keys.contains("PageTamper") && dict["PageTamper"] != nil {
+                        self.pageTamper = dict["PageTamper"] as! String
                     }
                     if dict.keys.contains("Redirection") && dict["Redirection"] != nil {
                         self.redirection = dict["Redirection"] as! Int32
@@ -30142,6 +30485,12 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("TargetUrl") && dict["TargetUrl"] != nil {
                         self.targetUrl = dict["TargetUrl"] as! String
+                    }
+                    if dict.keys.contains("VerifyStringBlacklist") && dict["VerifyStringBlacklist"] != nil {
+                        self.verifyStringBlacklist = dict["VerifyStringBlacklist"] as! String
+                    }
+                    if dict.keys.contains("VerifyStringWhitelist") && dict["VerifyStringWhitelist"] != nil {
+                        self.verifyStringWhitelist = dict["VerifyStringWhitelist"] as! String
                     }
                     if dict.keys.contains("WaitCompletionTime") && dict["WaitCompletionTime"] != nil {
                         self.waitCompletionTime = dict["WaitCompletionTime"] as! Int64
@@ -30157,6 +30506,8 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
             public var netICMP: GetTimingSyntheticTaskResponseBody.Data.MonitorConf.NetICMP?
 
             public var netTCP: GetTimingSyntheticTaskResponseBody.Data.MonitorConf.NetTCP?
+
+            public var stream: GetTimingSyntheticTaskResponseBody.Data.MonitorConf.Stream?
 
             public var website: GetTimingSyntheticTaskResponseBody.Data.MonitorConf.Website?
 
@@ -30175,6 +30526,7 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                 try self.netDNS?.validate()
                 try self.netICMP?.validate()
                 try self.netTCP?.validate()
+                try self.stream?.validate()
                 try self.website?.validate()
             }
 
@@ -30194,6 +30546,9 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                 }
                 if self.netTCP != nil {
                     map["NetTCP"] = self.netTCP?.toMap()
+                }
+                if self.stream != nil {
+                    map["Stream"] = self.stream?.toMap()
                 }
                 if self.website != nil {
                     map["Website"] = self.website?.toMap()
@@ -30226,6 +30581,11 @@ public class GetTimingSyntheticTaskResponseBody : Tea.TeaModel {
                     var model = GetTimingSyntheticTaskResponseBody.Data.MonitorConf.NetTCP()
                     model.fromMap(dict["NetTCP"] as! [String: Any])
                     self.netTCP = model
+                }
+                if dict.keys.contains("Stream") && dict["Stream"] != nil {
+                    var model = GetTimingSyntheticTaskResponseBody.Data.MonitorConf.Stream()
+                    model.fromMap(dict["Stream"] as! [String: Any])
+                    self.stream = model
                 }
                 if dict.keys.contains("Website") && dict["Website"] != nil {
                     var model = GetTimingSyntheticTaskResponseBody.Data.MonitorConf.Website()
@@ -52719,6 +53079,12 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
 
             public var transmissionSize: Int64?
 
+            public var validateKeywords: String?
+
+            public var verifyWay: Int32?
+
+            public var whiteList: String?
+
             public override init() {
                 super.init()
             }
@@ -52778,6 +53144,15 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 if self.transmissionSize != nil {
                     map["TransmissionSize"] = self.transmissionSize!
                 }
+                if self.validateKeywords != nil {
+                    map["ValidateKeywords"] = self.validateKeywords!
+                }
+                if self.verifyWay != nil {
+                    map["VerifyWay"] = self.verifyWay!
+                }
+                if self.whiteList != nil {
+                    map["WhiteList"] = self.whiteList!
+                }
                 return map
             }
 
@@ -52826,6 +53201,15 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("TransmissionSize") && dict["TransmissionSize"] != nil {
                     self.transmissionSize = dict["TransmissionSize"] as! Int64
+                }
+                if dict.keys.contains("ValidateKeywords") && dict["ValidateKeywords"] != nil {
+                    self.validateKeywords = dict["ValidateKeywords"] as! String
+                }
+                if dict.keys.contains("VerifyWay") && dict["VerifyWay"] != nil {
+                    self.verifyWay = dict["VerifyWay"] as! Int32
+                }
+                if dict.keys.contains("WhiteList") && dict["WhiteList"] != nil {
+                    self.whiteList = dict["WhiteList"] as! String
                 }
             }
         }
@@ -53075,21 +53459,35 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
 
             public var customHeaderContent: [String: String]?
 
+            public var DNSHijackWhitelist: String?
+
             public var disableCache: Int32?
 
             public var disableCompression: Int32?
 
+            public var elementBlacklist: String?
+
             public var filterInvalidIP: Int32?
+
+            public var flowHijackJumpTimes: Int32?
+
+            public var flowHijackLogo: String?
 
             public var ignoreCertificateError: Int32?
 
             public var monitorTimeout: Int64?
+
+            public var pageTamper: String?
 
             public var redirection: Int32?
 
             public var slowElementThreshold: Int64?
 
             public var targetUrl: String?
+
+            public var verifyStringBlacklist: String?
+
+            public var verifyStringWhitelist: String?
 
             public var waitCompletionTime: Int64?
 
@@ -53116,20 +53514,35 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 if self.customHeaderContent != nil {
                     map["CustomHeaderContent"] = self.customHeaderContent!
                 }
+                if self.DNSHijackWhitelist != nil {
+                    map["DNSHijackWhitelist"] = self.DNSHijackWhitelist!
+                }
                 if self.disableCache != nil {
                     map["DisableCache"] = self.disableCache!
                 }
                 if self.disableCompression != nil {
                     map["DisableCompression"] = self.disableCompression!
                 }
+                if self.elementBlacklist != nil {
+                    map["ElementBlacklist"] = self.elementBlacklist!
+                }
                 if self.filterInvalidIP != nil {
                     map["FilterInvalidIP"] = self.filterInvalidIP!
+                }
+                if self.flowHijackJumpTimes != nil {
+                    map["FlowHijackJumpTimes"] = self.flowHijackJumpTimes!
+                }
+                if self.flowHijackLogo != nil {
+                    map["FlowHijackLogo"] = self.flowHijackLogo!
                 }
                 if self.ignoreCertificateError != nil {
                     map["IgnoreCertificateError"] = self.ignoreCertificateError!
                 }
                 if self.monitorTimeout != nil {
                     map["MonitorTimeout"] = self.monitorTimeout!
+                }
+                if self.pageTamper != nil {
+                    map["PageTamper"] = self.pageTamper!
                 }
                 if self.redirection != nil {
                     map["Redirection"] = self.redirection!
@@ -53139,6 +53552,12 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
                 if self.targetUrl != nil {
                     map["TargetUrl"] = self.targetUrl!
+                }
+                if self.verifyStringBlacklist != nil {
+                    map["VerifyStringBlacklist"] = self.verifyStringBlacklist!
+                }
+                if self.verifyStringWhitelist != nil {
+                    map["VerifyStringWhitelist"] = self.verifyStringWhitelist!
                 }
                 if self.waitCompletionTime != nil {
                     map["WaitCompletionTime"] = self.waitCompletionTime!
@@ -53156,20 +53575,35 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 if dict.keys.contains("CustomHeaderContent") && dict["CustomHeaderContent"] != nil {
                     self.customHeaderContent = dict["CustomHeaderContent"] as! [String: String]
                 }
+                if dict.keys.contains("DNSHijackWhitelist") && dict["DNSHijackWhitelist"] != nil {
+                    self.DNSHijackWhitelist = dict["DNSHijackWhitelist"] as! String
+                }
                 if dict.keys.contains("DisableCache") && dict["DisableCache"] != nil {
                     self.disableCache = dict["DisableCache"] as! Int32
                 }
                 if dict.keys.contains("DisableCompression") && dict["DisableCompression"] != nil {
                     self.disableCompression = dict["DisableCompression"] as! Int32
                 }
+                if dict.keys.contains("ElementBlacklist") && dict["ElementBlacklist"] != nil {
+                    self.elementBlacklist = dict["ElementBlacklist"] as! String
+                }
                 if dict.keys.contains("FilterInvalidIP") && dict["FilterInvalidIP"] != nil {
                     self.filterInvalidIP = dict["FilterInvalidIP"] as! Int32
+                }
+                if dict.keys.contains("FlowHijackJumpTimes") && dict["FlowHijackJumpTimes"] != nil {
+                    self.flowHijackJumpTimes = dict["FlowHijackJumpTimes"] as! Int32
+                }
+                if dict.keys.contains("FlowHijackLogo") && dict["FlowHijackLogo"] != nil {
+                    self.flowHijackLogo = dict["FlowHijackLogo"] as! String
                 }
                 if dict.keys.contains("IgnoreCertificateError") && dict["IgnoreCertificateError"] != nil {
                     self.ignoreCertificateError = dict["IgnoreCertificateError"] as! Int32
                 }
                 if dict.keys.contains("MonitorTimeout") && dict["MonitorTimeout"] != nil {
                     self.monitorTimeout = dict["MonitorTimeout"] as! Int64
+                }
+                if dict.keys.contains("PageTamper") && dict["PageTamper"] != nil {
+                    self.pageTamper = dict["PageTamper"] as! String
                 }
                 if dict.keys.contains("Redirection") && dict["Redirection"] != nil {
                     self.redirection = dict["Redirection"] as! Int32
@@ -53179,6 +53613,12 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("TargetUrl") && dict["TargetUrl"] != nil {
                     self.targetUrl = dict["TargetUrl"] as! String
+                }
+                if dict.keys.contains("VerifyStringBlacklist") && dict["VerifyStringBlacklist"] != nil {
+                    self.verifyStringBlacklist = dict["VerifyStringBlacklist"] as! String
+                }
+                if dict.keys.contains("VerifyStringWhitelist") && dict["VerifyStringWhitelist"] != nil {
+                    self.verifyStringWhitelist = dict["VerifyStringWhitelist"] as! String
                 }
                 if dict.keys.contains("WaitCompletionTime") && dict["WaitCompletionTime"] != nil {
                     self.waitCompletionTime = dict["WaitCompletionTime"] as! Int64
