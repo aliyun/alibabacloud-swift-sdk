@@ -12890,6 +12890,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.attachTypes)) {
             query["AttachTypes"] = request.attachTypes ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.cveId)) {
+            query["CveId"] = request.cveId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dealed)) {
             query["Dealed"] = request.dealed ?? "";
         }
@@ -15776,8 +15779,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAssetRefreshTaskConfigWithOptions(_ request: ListAssetRefreshTaskConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAssetRefreshTaskConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.refreshConfigType)) {
+            query["RefreshConfigType"] = request.refreshConfigType!;
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetId)) {
+            query["TargetId"] = request.targetId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

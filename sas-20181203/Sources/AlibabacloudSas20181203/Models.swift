@@ -2625,9 +2625,13 @@ public class CancelOnceTaskResponse : Tea.TeaModel {
 
 public class ChangeAssetRefreshTaskConfigRequest : Tea.TeaModel {
     public class AssetRefreshConfigs : Tea.TeaModel {
+        public var refreshConfigType: Int32?
+
         public var schedulePeriod: Int32?
 
         public var status: Int32?
+
+        public var targetId: Int64?
 
         public var vendor: Int32?
 
@@ -2645,11 +2649,17 @@ public class ChangeAssetRefreshTaskConfigRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.refreshConfigType != nil {
+                map["RefreshConfigType"] = self.refreshConfigType!
+            }
             if self.schedulePeriod != nil {
                 map["SchedulePeriod"] = self.schedulePeriod!
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
             }
             if self.vendor != nil {
                 map["Vendor"] = self.vendor!
@@ -2658,11 +2668,17 @@ public class ChangeAssetRefreshTaskConfigRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RefreshConfigType") && dict["RefreshConfigType"] != nil {
+                self.refreshConfigType = dict["RefreshConfigType"] as! Int32
+            }
             if dict.keys.contains("SchedulePeriod") && dict["SchedulePeriod"] != nil {
                 self.schedulePeriod = dict["SchedulePeriod"] as! Int32
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! Int32
+            }
+            if dict.keys.contains("TargetId") && dict["TargetId"] != nil {
+                self.targetId = dict["TargetId"] as! Int64
             }
             if dict.keys.contains("Vendor") && dict["Vendor"] != nil {
                 self.vendor = dict["Vendor"] as! Int32
@@ -78365,6 +78381,8 @@ public class ExportVulRequest : Tea.TeaModel {
 
     public var attachTypes: String?
 
+    public var cveId: String?
+
     public var dealed: String?
 
     public var groupId: String?
@@ -78401,6 +78419,9 @@ public class ExportVulRequest : Tea.TeaModel {
         if self.attachTypes != nil {
             map["AttachTypes"] = self.attachTypes!
         }
+        if self.cveId != nil {
+            map["CveId"] = self.cveId!
+        }
         if self.dealed != nil {
             map["Dealed"] = self.dealed!
         }
@@ -78434,6 +78455,9 @@ public class ExportVulRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AttachTypes") && dict["AttachTypes"] != nil {
             self.attachTypes = dict["AttachTypes"] as! String
+        }
+        if dict.keys.contains("CveId") && dict["CveId"] != nil {
+            self.cveId = dict["CveId"] as! String
         }
         if dict.keys.contains("Dealed") && dict["Dealed"] != nil {
             self.dealed = dict["Dealed"] as! String
@@ -98182,7 +98206,11 @@ public class ListAssetCleanConfigResponse : Tea.TeaModel {
 }
 
 public class ListAssetRefreshTaskConfigRequest : Tea.TeaModel {
+    public var refreshConfigType: Int32?
+
     public var regionId: String?
+
+    public var targetId: Int64?
 
     public override init() {
         super.init()
@@ -98198,21 +98226,35 @@ public class ListAssetRefreshTaskConfigRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.refreshConfigType != nil {
+            map["RefreshConfigType"] = self.refreshConfigType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.targetId != nil {
+            map["TargetId"] = self.targetId!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RefreshConfigType") && dict["RefreshConfigType"] != nil {
+            self.refreshConfigType = dict["RefreshConfigType"] as! Int32
+        }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("TargetId") && dict["TargetId"] != nil {
+            self.targetId = dict["TargetId"] as! Int64
         }
     }
 }
 
 public class ListAssetRefreshTaskConfigResponseBody : Tea.TeaModel {
     public class AssetRefreshConfig : Tea.TeaModel {
+        public var refreshConfigType: Int32?
+
         public var schedulePeriod: Int32?
 
         public var status: Int32?
@@ -98233,6 +98275,9 @@ public class ListAssetRefreshTaskConfigResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.refreshConfigType != nil {
+                map["RefreshConfigType"] = self.refreshConfigType!
+            }
             if self.schedulePeriod != nil {
                 map["SchedulePeriod"] = self.schedulePeriod!
             }
@@ -98246,6 +98291,9 @@ public class ListAssetRefreshTaskConfigResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RefreshConfigType") && dict["RefreshConfigType"] != nil {
+                self.refreshConfigType = dict["RefreshConfigType"] as! Int32
+            }
             if dict.keys.contains("SchedulePeriod") && dict["SchedulePeriod"] != nil {
                 self.schedulePeriod = dict["SchedulePeriod"] as! Int32
             }
