@@ -5820,11 +5820,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.fromTimeService)) {
+            query["FromTimeService"] = request.fromTimeService!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.plannedEndTime)) {
+            query["PlannedEndTime"] = request.plannedEndTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
+            query["PlannedStartTime"] = request.plannedStartTime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";

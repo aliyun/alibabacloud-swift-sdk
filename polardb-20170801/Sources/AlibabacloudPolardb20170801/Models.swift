@@ -27960,9 +27960,15 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
 
     public var DBClusterId: String?
 
+    public var fromTimeService: Bool?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var plannedEndTime: String?
+
+    public var plannedStartTime: String?
 
     public var resourceOwnerAccount: String?
 
@@ -27998,11 +28004,20 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.fromTimeService != nil {
+            map["FromTimeService"] = self.fromTimeService!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.plannedEndTime != nil {
+            map["PlannedEndTime"] = self.plannedEndTime!
+        }
+        if self.plannedStartTime != nil {
+            map["PlannedStartTime"] = self.plannedStartTime!
         }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
@@ -28035,11 +28050,20 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
+        if dict.keys.contains("FromTimeService") && dict["FromTimeService"] != nil {
+            self.fromTimeService = dict["FromTimeService"] as! Bool
+        }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PlannedEndTime") && dict["PlannedEndTime"] != nil {
+            self.plannedEndTime = dict["PlannedEndTime"] as! String
+        }
+        if dict.keys.contains("PlannedStartTime") && dict["PlannedStartTime"] != nil {
+            self.plannedStartTime = dict["PlannedStartTime"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
