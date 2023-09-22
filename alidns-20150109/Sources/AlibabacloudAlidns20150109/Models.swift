@@ -13222,6 +13222,8 @@ public class DescribeDnsProductInstancesRequest : Tea.TeaModel {
 public class DescribeDnsProductInstancesResponseBody : Tea.TeaModel {
     public class DnsProducts : Tea.TeaModel {
         public class DnsProduct : Tea.TeaModel {
+            public var autoRenewal: Bool?
+
             public var bindCount: Int64?
 
             public var bindDomainCount: Int64?
@@ -13300,6 +13302,9 @@ public class DescribeDnsProductInstancesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoRenewal != nil {
+                    map["AutoRenewal"] = self.autoRenewal!
+                }
                 if self.bindCount != nil {
                     map["BindCount"] = self.bindCount!
                 }
@@ -13400,6 +13405,9 @@ public class DescribeDnsProductInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AutoRenewal") && dict["AutoRenewal"] != nil {
+                    self.autoRenewal = dict["AutoRenewal"] as! Bool
+                }
                 if dict.keys.contains("BindCount") && dict["BindCount"] != nil {
                     self.bindCount = dict["BindCount"] as! Int64
                 }
@@ -15773,6 +15781,8 @@ public class DescribeDomainInfoResponseBody : Tea.TeaModel {
 
     public var slaveDns: Bool?
 
+    public var subDomain: Bool?
+
     public var versionCode: String?
 
     public var versionName: String?
@@ -15857,6 +15867,9 @@ public class DescribeDomainInfoResponseBody : Tea.TeaModel {
         if self.slaveDns != nil {
             map["SlaveDns"] = self.slaveDns!
         }
+        if self.subDomain != nil {
+            map["SubDomain"] = self.subDomain!
+        }
         if self.versionCode != nil {
             map["VersionCode"] = self.versionCode!
         }
@@ -15935,6 +15948,9 @@ public class DescribeDomainInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SlaveDns") && dict["SlaveDns"] != nil {
             self.slaveDns = dict["SlaveDns"] as! Bool
+        }
+        if dict.keys.contains("SubDomain") && dict["SubDomain"] != nil {
+            self.subDomain = dict["SubDomain"] as! Bool
         }
         if dict.keys.contains("VersionCode") && dict["VersionCode"] != nil {
             self.versionCode = dict["VersionCode"] as! String
@@ -16935,6 +16951,8 @@ public class DescribeDomainRecordsRequest : Tea.TeaModel {
 public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
     public class DomainRecords : Tea.TeaModel {
         public class Record : Tea.TeaModel {
+            public var createTimestamp: Int64?
+
             public var domainName: String?
 
             public var line: String?
@@ -16955,6 +16973,8 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
 
             public var type: String?
 
+            public var updateTimestamp: Int64?
+
             public var value: String?
 
             public var weight: Int32?
@@ -16973,6 +16993,9 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
                 }
@@ -17003,6 +17026,9 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
                 if self.value != nil {
                     map["Value"] = self.value!
                 }
@@ -17013,6 +17039,9 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
+                    self.createTimestamp = dict["CreateTimestamp"] as! Int64
+                }
                 if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
                     self.domainName = dict["DomainName"] as! String
                 }
@@ -17042,6 +17071,9 @@ public class DescribeDomainRecordsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
+                }
+                if dict.keys.contains("UpdateTimestamp") && dict["UpdateTimestamp"] != nil {
+                    self.updateTimestamp = dict["UpdateTimestamp"] as! Int64
                 }
                 if dict.keys.contains("Value") && dict["Value"] != nil {
                     self.value = dict["Value"] as! String
