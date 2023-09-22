@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudQuotas20200510` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/quotas-20200510" "1.1.0"
+github "alibabacloud-sdk-swift/quotas-20200510" "1.1.1"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudQuotas20200510` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/quotas-20200510.git", from: "1.1.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/quotas-20200510.git", from: "1.1.1")
 ]
 ```
 
