@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudEdsUser20210308"
-  spec.version      = "1.0.2"
+  spec.version      = "1.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud eds-user (20210308) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/eds-user-20210308" 
