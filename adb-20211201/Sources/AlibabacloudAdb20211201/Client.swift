@@ -405,6 +405,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDBResourceGroupWithOptions(_ request: CreateDBResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDBResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterMode)) {
+            query["ClusterMode"] = request.clusterMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterSizeResource)) {
+            query["ClusterSizeResource"] = request.clusterSizeResource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
@@ -414,8 +420,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupType)) {
             query["GroupType"] = request.groupType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxClusterCount)) {
+            query["MaxClusterCount"] = request.maxClusterCount!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxComputeResource)) {
             query["MaxComputeResource"] = request.maxComputeResource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minClusterCount)) {
+            query["MinClusterCount"] = request.minClusterCount!;
         }
         if (!TeaUtils.Client.isUnset(request.minComputeResource)) {
             query["MinComputeResource"] = request.minComputeResource ?? "";
@@ -4059,6 +4071,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBResourceGroupWithOptions(_ request: ModifyDBResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterMode)) {
+            query["ClusterMode"] = request.clusterMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterSizeResource)) {
+            query["ClusterSizeResource"] = request.clusterSizeResource ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
@@ -4068,8 +4086,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupType)) {
             query["GroupType"] = request.groupType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxClusterCount)) {
+            query["MaxClusterCount"] = request.maxClusterCount!;
+        }
         if (!TeaUtils.Client.isUnset(request.maxComputeResource)) {
             query["MaxComputeResource"] = request.maxComputeResource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.minClusterCount)) {
+            query["MinClusterCount"] = request.minClusterCount!;
         }
         if (!TeaUtils.Client.isUnset(request.minComputeResource)) {
             query["MinComputeResource"] = request.minComputeResource ?? "";

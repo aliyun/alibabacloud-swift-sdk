@@ -3487,13 +3487,21 @@ public class CreateDBClusterResponse : Tea.TeaModel {
 }
 
 public class CreateDBResourceGroupRequest : Tea.TeaModel {
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
     public var DBClusterId: String?
 
     public var groupName: String?
 
     public var groupType: String?
 
+    public var maxClusterCount: Int32?
+
     public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
 
     public var minComputeResource: String?
 
@@ -3511,6 +3519,12 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -3520,8 +3534,14 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
         }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
         if self.maxComputeResource != nil {
             map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
         }
         if self.minComputeResource != nil {
             map["MinComputeResource"] = self.minComputeResource!
@@ -3530,6 +3550,12 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterMode") && dict["ClusterMode"] != nil {
+            self.clusterMode = dict["ClusterMode"] as! String
+        }
+        if dict.keys.contains("ClusterSizeResource") && dict["ClusterSizeResource"] != nil {
+            self.clusterSizeResource = dict["ClusterSizeResource"] as! String
+        }
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
@@ -3539,8 +3565,14 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if dict.keys.contains("GroupType") && dict["GroupType"] != nil {
             self.groupType = dict["GroupType"] as! String
         }
+        if dict.keys.contains("MaxClusterCount") && dict["MaxClusterCount"] != nil {
+            self.maxClusterCount = dict["MaxClusterCount"] as! Int32
+        }
         if dict.keys.contains("MaxComputeResource") && dict["MaxComputeResource"] != nil {
             self.maxComputeResource = dict["MaxComputeResource"] as! String
+        }
+        if dict.keys.contains("MinClusterCount") && dict["MinClusterCount"] != nil {
+            self.minClusterCount = dict["MinClusterCount"] as! Int32
         }
         if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
             self.minComputeResource = dict["MinComputeResource"] as! String
@@ -10979,6 +11011,10 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
 
 public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
     public class GroupsInfo : Tea.TeaModel {
+        public var clusterMode: String?
+
+        public var clusterSizeResource: String?
+
         public var createTime: String?
 
         public var elasticMinComputeResource: String?
@@ -10989,9 +11025,15 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
         public var groupUsers: String?
 
+        public var maxClusterCount: Int32?
+
         public var maxComputeResource: String?
 
+        public var minClusterCount: Int32?
+
         public var minComputeResource: String?
+
+        public var runningClusterCount: Int32?
 
         public var status: String?
 
@@ -11011,6 +11053,12 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.clusterMode != nil {
+                map["ClusterMode"] = self.clusterMode!
+            }
+            if self.clusterSizeResource != nil {
+                map["ClusterSizeResource"] = self.clusterSizeResource!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -11026,11 +11074,20 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             if self.groupUsers != nil {
                 map["GroupUsers"] = self.groupUsers!
             }
+            if self.maxClusterCount != nil {
+                map["MaxClusterCount"] = self.maxClusterCount!
+            }
             if self.maxComputeResource != nil {
                 map["MaxComputeResource"] = self.maxComputeResource!
             }
+            if self.minClusterCount != nil {
+                map["MinClusterCount"] = self.minClusterCount!
+            }
             if self.minComputeResource != nil {
                 map["MinComputeResource"] = self.minComputeResource!
+            }
+            if self.runningClusterCount != nil {
+                map["RunningClusterCount"] = self.runningClusterCount!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -11042,6 +11099,12 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterMode") && dict["ClusterMode"] != nil {
+                self.clusterMode = dict["ClusterMode"] as! String
+            }
+            if dict.keys.contains("ClusterSizeResource") && dict["ClusterSizeResource"] != nil {
+                self.clusterSizeResource = dict["ClusterSizeResource"] as! String
+            }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
             }
@@ -11057,11 +11120,20 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("GroupUsers") && dict["GroupUsers"] != nil {
                 self.groupUsers = dict["GroupUsers"] as! String
             }
+            if dict.keys.contains("MaxClusterCount") && dict["MaxClusterCount"] != nil {
+                self.maxClusterCount = dict["MaxClusterCount"] as! Int32
+            }
             if dict.keys.contains("MaxComputeResource") && dict["MaxComputeResource"] != nil {
                 self.maxComputeResource = dict["MaxComputeResource"] as! String
             }
+            if dict.keys.contains("MinClusterCount") && dict["MinClusterCount"] != nil {
+                self.minClusterCount = dict["MinClusterCount"] as! Int32
+            }
             if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
                 self.minComputeResource = dict["MinComputeResource"] as! String
+            }
+            if dict.keys.contains("RunningClusterCount") && dict["RunningClusterCount"] != nil {
+                self.runningClusterCount = dict["RunningClusterCount"] as! Int32
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
@@ -23107,13 +23179,21 @@ public class ModifyDBClusterMaintainTimeResponse : Tea.TeaModel {
 }
 
 public class ModifyDBResourceGroupRequest : Tea.TeaModel {
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
     public var DBClusterId: String?
 
     public var groupName: String?
 
     public var groupType: String?
 
+    public var maxClusterCount: Int32?
+
     public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
 
     public var minComputeResource: String?
 
@@ -23131,6 +23211,12 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -23140,8 +23226,14 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
         }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
         if self.maxComputeResource != nil {
             map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
         }
         if self.minComputeResource != nil {
             map["MinComputeResource"] = self.minComputeResource!
@@ -23150,6 +23242,12 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterMode") && dict["ClusterMode"] != nil {
+            self.clusterMode = dict["ClusterMode"] as! String
+        }
+        if dict.keys.contains("ClusterSizeResource") && dict["ClusterSizeResource"] != nil {
+            self.clusterSizeResource = dict["ClusterSizeResource"] as! String
+        }
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
@@ -23159,8 +23257,14 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         if dict.keys.contains("GroupType") && dict["GroupType"] != nil {
             self.groupType = dict["GroupType"] as! String
         }
+        if dict.keys.contains("MaxClusterCount") && dict["MaxClusterCount"] != nil {
+            self.maxClusterCount = dict["MaxClusterCount"] as! Int32
+        }
         if dict.keys.contains("MaxComputeResource") && dict["MaxComputeResource"] != nil {
             self.maxComputeResource = dict["MaxComputeResource"] as! String
+        }
+        if dict.keys.contains("MinClusterCount") && dict["MinClusterCount"] != nil {
+            self.minClusterCount = dict["MinClusterCount"] as! Int32
         }
         if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
             self.minComputeResource = dict["MinComputeResource"] as! String
