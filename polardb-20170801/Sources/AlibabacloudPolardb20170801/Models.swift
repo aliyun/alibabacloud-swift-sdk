@@ -12920,6 +12920,10 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var scaleApRoNumMax: String?
+
+    public var scaleApRoNumMin: String?
+
     public var scaleMax: String?
 
     public var scaleMin: String?
@@ -12929,6 +12933,8 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
     public var scaleRoNumMin: String?
 
     public var secondsUntilAutoPause: String?
+
+    public var switchs: String?
 
     public override init() {
         super.init()
@@ -12953,6 +12959,12 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.scaleApRoNumMax != nil {
+            map["ScaleApRoNumMax"] = self.scaleApRoNumMax!
+        }
+        if self.scaleApRoNumMin != nil {
+            map["ScaleApRoNumMin"] = self.scaleApRoNumMin!
+        }
         if self.scaleMax != nil {
             map["ScaleMax"] = self.scaleMax!
         }
@@ -12968,6 +12980,9 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         if self.secondsUntilAutoPause != nil {
             map["SecondsUntilAutoPause"] = self.secondsUntilAutoPause!
         }
+        if self.switchs != nil {
+            map["Switchs"] = self.switchs!
+        }
         return map
     }
 
@@ -12980,6 +12995,12 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ScaleApRoNumMax") && dict["ScaleApRoNumMax"] != nil {
+            self.scaleApRoNumMax = dict["ScaleApRoNumMax"] as! String
+        }
+        if dict.keys.contains("ScaleApRoNumMin") && dict["ScaleApRoNumMin"] != nil {
+            self.scaleApRoNumMin = dict["ScaleApRoNumMin"] as! String
         }
         if dict.keys.contains("ScaleMax") && dict["ScaleMax"] != nil {
             self.scaleMax = dict["ScaleMax"] as! String
@@ -12995,6 +13016,9 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SecondsUntilAutoPause") && dict["SecondsUntilAutoPause"] != nil {
             self.secondsUntilAutoPause = dict["SecondsUntilAutoPause"] as! String
+        }
+        if dict.keys.contains("Switchs") && dict["Switchs"] != nil {
+            self.switchs = dict["Switchs"] as! String
         }
     }
 }
@@ -23537,6 +23561,158 @@ public class DescribeVSwitchesResponse : Tea.TeaModel {
     }
 }
 
+public class DisableDBClusterServerlessRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DisableDBClusterServerlessResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DisableDBClusterServerlessResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableDBClusterServerlessResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DisableDBClusterServerlessResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class EnableFirewallRulesRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
@@ -27974,6 +28150,10 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var scaleApRoNumMax: String?
+
+    public var scaleApRoNumMin: String?
+
     public var scaleMax: String?
 
     public var scaleMin: String?
@@ -28025,6 +28205,12 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.scaleApRoNumMax != nil {
+            map["ScaleApRoNumMax"] = self.scaleApRoNumMax!
+        }
+        if self.scaleApRoNumMin != nil {
+            map["ScaleApRoNumMin"] = self.scaleApRoNumMin!
+        }
         if self.scaleMax != nil {
             map["ScaleMax"] = self.scaleMax!
         }
@@ -28070,6 +28256,12 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ScaleApRoNumMax") && dict["ScaleApRoNumMax"] != nil {
+            self.scaleApRoNumMax = dict["ScaleApRoNumMax"] as! String
+        }
+        if dict.keys.contains("ScaleApRoNumMin") && dict["ScaleApRoNumMin"] != nil {
+            self.scaleApRoNumMin = dict["ScaleApRoNumMin"] as! String
         }
         if dict.keys.contains("ScaleMax") && dict["ScaleMax"] != nil {
             self.scaleMax = dict["ScaleMax"] as! String
