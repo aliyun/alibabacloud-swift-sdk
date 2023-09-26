@@ -5562,6 +5562,8 @@ public class GetImageResponse : Tea.TeaModel {
 }
 
 public class GetMemberRequest : Tea.TeaModel {
+    public var memberId: String?
+
     public var userId: String?
 
     public override init() {
@@ -5578,6 +5580,9 @@ public class GetMemberRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.memberId != nil {
+            map["MemberId"] = self.memberId!
+        }
         if self.userId != nil {
             map["UserId"] = self.userId!
         }
@@ -5585,6 +5590,9 @@ public class GetMemberRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MemberId") && dict["MemberId"] != nil {
+            self.memberId = dict["MemberId"] as! String
+        }
         if dict.keys.contains("UserId") && dict["UserId"] != nil {
             self.userId = dict["UserId"] as! String
         }
