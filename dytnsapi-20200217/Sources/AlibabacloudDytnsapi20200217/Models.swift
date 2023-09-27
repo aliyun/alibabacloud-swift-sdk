@@ -93,7 +93,46 @@ public class CompanyFourElementsVerificationRequest : Tea.TeaModel {
 
 public class CompanyFourElementsVerificationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var detailInfo: [String: Any]?
+        public class DetailInfo : Tea.TeaModel {
+            public var enterpriseStatus: String?
+
+            public var openTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enterpriseStatus != nil {
+                    map["EnterpriseStatus"] = self.enterpriseStatus!
+                }
+                if self.openTime != nil {
+                    map["OpenTime"] = self.openTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EnterpriseStatus") && dict["EnterpriseStatus"] != nil {
+                    self.enterpriseStatus = dict["EnterpriseStatus"] as! String
+                }
+                if dict.keys.contains("OpenTime") && dict["OpenTime"] != nil {
+                    self.openTime = dict["OpenTime"] as! String
+                }
+            }
+        }
+        public var detailInfo: CompanyFourElementsVerificationResponseBody.Data.DetailInfo?
+
+        public var inconsistentData: [String]?
 
         public var reasonCode: Int64?
 
@@ -109,12 +148,16 @@ public class CompanyFourElementsVerificationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.detailInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.detailInfo != nil {
-                map["DetailInfo"] = self.detailInfo!
+                map["DetailInfo"] = self.detailInfo?.toMap()
+            }
+            if self.inconsistentData != nil {
+                map["InconsistentData"] = self.inconsistentData!
             }
             if self.reasonCode != nil {
                 map["ReasonCode"] = self.reasonCode!
@@ -127,7 +170,12 @@ public class CompanyFourElementsVerificationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DetailInfo") && dict["DetailInfo"] != nil {
-                self.detailInfo = dict["DetailInfo"] as! [String: Any]
+                var model = CompanyFourElementsVerificationResponseBody.Data.DetailInfo()
+                model.fromMap(dict["DetailInfo"] as! [String: Any])
+                self.detailInfo = model
+            }
+            if dict.keys.contains("InconsistentData") && dict["InconsistentData"] != nil {
+                self.inconsistentData = dict["InconsistentData"] as! [String]
             }
             if dict.keys.contains("ReasonCode") && dict["ReasonCode"] != nil {
                 self.reasonCode = dict["ReasonCode"] as! Int64
@@ -333,7 +381,46 @@ public class CompanyThreeElementsVerificationRequest : Tea.TeaModel {
 
 public class CompanyThreeElementsVerificationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var detailInfo: [String: Any]?
+        public class DetailInfo : Tea.TeaModel {
+            public var enterpriseStatus: String?
+
+            public var openTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enterpriseStatus != nil {
+                    map["EnterpriseStatus"] = self.enterpriseStatus!
+                }
+                if self.openTime != nil {
+                    map["OpenTime"] = self.openTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EnterpriseStatus") && dict["EnterpriseStatus"] != nil {
+                    self.enterpriseStatus = dict["EnterpriseStatus"] as! String
+                }
+                if dict.keys.contains("OpenTime") && dict["OpenTime"] != nil {
+                    self.openTime = dict["OpenTime"] as! String
+                }
+            }
+        }
+        public var detailInfo: CompanyThreeElementsVerificationResponseBody.Data.DetailInfo?
+
+        public var inconsistentData: [String]?
 
         public var reasonCode: Int64?
 
@@ -349,12 +436,16 @@ public class CompanyThreeElementsVerificationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.detailInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.detailInfo != nil {
-                map["DetailInfo"] = self.detailInfo!
+                map["DetailInfo"] = self.detailInfo?.toMap()
+            }
+            if self.inconsistentData != nil {
+                map["InconsistentData"] = self.inconsistentData!
             }
             if self.reasonCode != nil {
                 map["ReasonCode"] = self.reasonCode!
@@ -367,7 +458,12 @@ public class CompanyThreeElementsVerificationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DetailInfo") && dict["DetailInfo"] != nil {
-                self.detailInfo = dict["DetailInfo"] as! [String: Any]
+                var model = CompanyThreeElementsVerificationResponseBody.Data.DetailInfo()
+                model.fromMap(dict["DetailInfo"] as! [String: Any])
+                self.detailInfo = model
+            }
+            if dict.keys.contains("InconsistentData") && dict["InconsistentData"] != nil {
+                self.inconsistentData = dict["InconsistentData"] as! [String]
             }
             if dict.keys.contains("ReasonCode") && dict["ReasonCode"] != nil {
                 self.reasonCode = dict["ReasonCode"] as! Int64
@@ -565,7 +661,46 @@ public class CompanyTwoElementsVerificationRequest : Tea.TeaModel {
 
 public class CompanyTwoElementsVerificationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
-        public var detailInfo: [String: Any]?
+        public class DetailInfo : Tea.TeaModel {
+            public var enterpriseStatus: String?
+
+            public var openTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enterpriseStatus != nil {
+                    map["EnterpriseStatus"] = self.enterpriseStatus!
+                }
+                if self.openTime != nil {
+                    map["OpenTime"] = self.openTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EnterpriseStatus") && dict["EnterpriseStatus"] != nil {
+                    self.enterpriseStatus = dict["EnterpriseStatus"] as! String
+                }
+                if dict.keys.contains("OpenTime") && dict["OpenTime"] != nil {
+                    self.openTime = dict["OpenTime"] as! String
+                }
+            }
+        }
+        public var detailInfo: CompanyTwoElementsVerificationResponseBody.Data.DetailInfo?
+
+        public var inconsistentData: [String]?
 
         public var reasonCode: String?
 
@@ -581,12 +716,16 @@ public class CompanyTwoElementsVerificationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.detailInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.detailInfo != nil {
-                map["DetailInfo"] = self.detailInfo!
+                map["DetailInfo"] = self.detailInfo?.toMap()
+            }
+            if self.inconsistentData != nil {
+                map["InconsistentData"] = self.inconsistentData!
             }
             if self.reasonCode != nil {
                 map["ReasonCode"] = self.reasonCode!
@@ -599,7 +738,12 @@ public class CompanyTwoElementsVerificationResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DetailInfo") && dict["DetailInfo"] != nil {
-                self.detailInfo = dict["DetailInfo"] as! [String: Any]
+                var model = CompanyTwoElementsVerificationResponseBody.Data.DetailInfo()
+                model.fromMap(dict["DetailInfo"] as! [String: Any])
+                self.detailInfo = model
+            }
+            if dict.keys.contains("InconsistentData") && dict["InconsistentData"] != nil {
+                self.inconsistentData = dict["InconsistentData"] as! [String]
             }
             if dict.keys.contains("ReasonCode") && dict["ReasonCode"] != nil {
                 self.reasonCode = dict["ReasonCode"] as! String
