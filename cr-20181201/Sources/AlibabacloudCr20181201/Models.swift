@@ -573,6 +573,158 @@ public class CreateArtifactBuildRuleResponse : Tea.TeaModel {
     }
 }
 
+public class CreateBuildRecordByRecordRequest : Tea.TeaModel {
+    public var buildRecordId: String?
+
+    public var instanceId: String?
+
+    public var repoId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.buildRecordId != nil {
+            map["BuildRecordId"] = self.buildRecordId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.repoId != nil {
+            map["RepoId"] = self.repoId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BuildRecordId") && dict["BuildRecordId"] != nil {
+            self.buildRecordId = dict["BuildRecordId"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RepoId") && dict["RepoId"] != nil {
+            self.repoId = dict["RepoId"] as! String
+        }
+    }
+}
+
+public class CreateBuildRecordByRecordResponseBody : Tea.TeaModel {
+    public var buildRecordId: String?
+
+    public var code: String?
+
+    public var isSuccess: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.buildRecordId != nil {
+            map["BuildRecordId"] = self.buildRecordId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BuildRecordId") && dict["BuildRecordId"] != nil {
+            self.buildRecordId = dict["BuildRecordId"] as! String
+        }
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateBuildRecordByRecordResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateBuildRecordByRecordResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateBuildRecordByRecordResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateBuildRecordByRuleRequest : Tea.TeaModel {
     public var buildRuleId: String?
 
@@ -5215,6 +5367,198 @@ public class DeleteRepositoryResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteRepositoryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetArtifactBuildRuleRequest : Tea.TeaModel {
+    public var artifactType: String?
+
+    public var buildRuleId: String?
+
+    public var instanceId: String?
+
+    public var scopeId: String?
+
+    public var scopeType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactType != nil {
+            map["ArtifactType"] = self.artifactType!
+        }
+        if self.buildRuleId != nil {
+            map["BuildRuleId"] = self.buildRuleId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.scopeId != nil {
+            map["ScopeId"] = self.scopeId!
+        }
+        if self.scopeType != nil {
+            map["ScopeType"] = self.scopeType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArtifactType") && dict["ArtifactType"] != nil {
+            self.artifactType = dict["ArtifactType"] as! String
+        }
+        if dict.keys.contains("BuildRuleId") && dict["BuildRuleId"] != nil {
+            self.buildRuleId = dict["BuildRuleId"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ScopeId") && dict["ScopeId"] != nil {
+            self.scopeId = dict["ScopeId"] as! String
+        }
+        if dict.keys.contains("ScopeType") && dict["ScopeType"] != nil {
+            self.scopeType = dict["ScopeType"] as! String
+        }
+    }
+}
+
+public class GetArtifactBuildRuleResponseBody : Tea.TeaModel {
+    public var artifactType: String?
+
+    public var buildRuleId: String?
+
+    public var code: String?
+
+    public var isSuccess: Bool?
+
+    public var requestId: String?
+
+    public var scopeId: String?
+
+    public var scopeType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactType != nil {
+            map["ArtifactType"] = self.artifactType!
+        }
+        if self.buildRuleId != nil {
+            map["BuildRuleId"] = self.buildRuleId!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.scopeId != nil {
+            map["ScopeId"] = self.scopeId!
+        }
+        if self.scopeType != nil {
+            map["ScopeType"] = self.scopeType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArtifactType") && dict["ArtifactType"] != nil {
+            self.artifactType = dict["ArtifactType"] as! String
+        }
+        if dict.keys.contains("BuildRuleId") && dict["BuildRuleId"] != nil {
+            self.buildRuleId = dict["BuildRuleId"] as! String
+        }
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ScopeId") && dict["ScopeId"] != nil {
+            self.scopeId = dict["ScopeId"] as! String
+        }
+        if dict.keys.contains("ScopeType") && dict["ScopeType"] != nil {
+            self.scopeType = dict["ScopeType"] as! String
+        }
+    }
+}
+
+public class GetArtifactBuildRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetArtifactBuildRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetArtifactBuildRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
