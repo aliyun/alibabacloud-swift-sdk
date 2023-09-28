@@ -12,14 +12,6 @@ English | [简体中文](README-CN.md)
 
 ## Installation
 
-### CocoaPods
-
-[CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate `AlibabacloudRocketMQ20220801` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-
-```ruby
-pod 'AlibabacloudRocketMQ20220801', '~> 1.0.3'
-```
-
 ### Carthage
 
 To integrate `AlibabacloudRocketMQ20220801` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:

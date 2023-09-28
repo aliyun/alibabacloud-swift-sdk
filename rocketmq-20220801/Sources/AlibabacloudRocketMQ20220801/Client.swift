@@ -377,6 +377,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumerGroupSubscriptionsWithOptions(_ instanceId: String, _ consumerGroupId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerGroupSubscriptionsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConsumerGroupSubscriptions",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId) + "/consumerGroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(consumerGroupId) + "/subscriptions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListConsumerGroupSubscriptionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumerGroupSubscriptions(_ instanceId: String, _ consumerGroupId: String) async throws -> ListConsumerGroupSubscriptionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listConsumerGroupSubscriptionsWithOptions(instanceId as! String, consumerGroupId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listConsumerGroupsWithOptions(_ instanceId: String, _ request: ListConsumerGroupsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -430,6 +457,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["resourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["tags"] = request.tags ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -502,6 +532,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listTopicsWithOptions(instanceId as! String, request as! ListTopicsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetConsumeOffsetWithOptions(_ instanceId: String, _ consumerGroupId: String, _ topicName: String, _ request: ResetConsumeOffsetRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetConsumeOffsetResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.resetTime)) {
+            body["resetTime"] = request.resetTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resetType)) {
+            body["resetType"] = request.resetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ResetConsumeOffset",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId) + "/consumerGroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(consumerGroupId) + "/consumeOffsets/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(topicName),
+            "method": "PATCH",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ResetConsumeOffsetResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func resetConsumeOffset(_ instanceId: String, _ consumerGroupId: String, _ topicName: String, _ request: ResetConsumeOffsetRequest) async throws -> ResetConsumeOffsetResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await resetConsumeOffsetWithOptions(instanceId as! String, consumerGroupId as! String, topicName as! String, request as! ResetConsumeOffsetRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
