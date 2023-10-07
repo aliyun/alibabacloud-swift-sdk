@@ -3888,6 +3888,10 @@ public class DeleteMembersRequest : Tea.TeaModel {
 }
 
 public class DeleteMembersResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
     public var requestId: String?
 
     public override init() {
@@ -3904,6 +3908,12 @@ public class DeleteMembersResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -3911,6 +3921,12 @@ public class DeleteMembersResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
