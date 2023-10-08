@@ -1952,8 +1952,6 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var protocol_: String?
 
-    public var quicVersion: String?
-
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -2009,9 +2007,6 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if self.protocol_ != nil {
             map["Protocol"] = self.protocol_!
-        }
-        if self.quicVersion != nil {
-            map["QuicVersion"] = self.quicVersion!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -2070,9 +2065,6 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
             self.protocol_ = dict["Protocol"] as! String
-        }
-        if dict.keys.contains("QuicVersion") && dict["QuicVersion"] != nil {
-            self.quicVersion = dict["QuicVersion"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -8024,8 +8016,6 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
 
         public var protocol_: String?
 
-        public var quicVersion: String?
-
         public var regionId: String?
 
         public var relatedLoadBalancerIds: [String]?
@@ -8086,9 +8076,6 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
-            }
-            if self.quicVersion != nil {
-                map["QuicVersion"] = self.quicVersion!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -8156,9 +8143,6 @@ public class ListServerGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
                 self.protocol_ = dict["Protocol"] as! String
-            }
-            if dict.keys.contains("QuicVersion") && dict["QuicVersion"] != nil {
-                self.quicVersion = dict["QuicVersion"] as! String
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
@@ -11754,8 +11738,6 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public var preserveClientIpEnabled: Bool?
 
-    public var quicVersion: String?
-
     public var regionId: String?
 
     public var scheduler: String?
@@ -11797,9 +11779,6 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         if self.preserveClientIpEnabled != nil {
             map["PreserveClientIpEnabled"] = self.preserveClientIpEnabled!
         }
-        if self.quicVersion != nil {
-            map["QuicVersion"] = self.quicVersion!
-        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -11835,9 +11814,6 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PreserveClientIpEnabled") && dict["PreserveClientIpEnabled"] != nil {
             self.preserveClientIpEnabled = dict["PreserveClientIpEnabled"] as! Bool
-        }
-        if dict.keys.contains("QuicVersion") && dict["QuicVersion"] != nil {
-            self.quicVersion = dict["QuicVersion"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
