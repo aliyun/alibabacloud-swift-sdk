@@ -6892,6 +6892,8 @@ public class ReleaseInstanceResponse : Tea.TeaModel {
 public class StartInstanceRequest : Tea.TeaModel {
     public var config: String?
 
+    public var crossZone: Bool?
+
     public var deployModule: String?
 
     public var instanceId: String?
@@ -6944,6 +6946,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.config != nil {
             map["Config"] = self.config!
+        }
+        if self.crossZone != nil {
+            map["CrossZone"] = self.crossZone!
         }
         if self.deployModule != nil {
             map["DeployModule"] = self.deployModule!
@@ -7005,6 +7010,9 @@ public class StartInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Config") && dict["Config"] != nil {
             self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("CrossZone") && dict["CrossZone"] != nil {
+            self.crossZone = dict["CrossZone"] as! Bool
         }
         if dict.keys.contains("DeployModule") && dict["DeployModule"] != nil {
             self.deployModule = dict["DeployModule"] as! String

@@ -1198,6 +1198,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.config)) {
             query["Config"] = request.config ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.crossZone)) {
+            query["CrossZone"] = request.crossZone!;
+        }
         if (!TeaUtils.Client.isUnset(request.deployModule)) {
             query["DeployModule"] = request.deployModule ?? "";
         }
