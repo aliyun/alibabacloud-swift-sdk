@@ -15552,6 +15552,8 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var deleteOnRelease: Bool?
+
     public var description_: String?
 
     public var instanceType: String?
@@ -15623,6 +15625,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.deleteOnRelease != nil {
+            map["DeleteOnRelease"] = self.deleteOnRelease!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -15715,6 +15720,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
+            self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
@@ -62959,6 +62967,8 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
 
     public var creationTime: String?
 
+    public var deleteOnRelease: Bool?
+
     public var description_: String?
 
     public var instanceId: String?
@@ -63046,6 +63056,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
         if self.creationTime != nil {
             map["CreationTime"] = self.creationTime!
+        }
+        if self.deleteOnRelease != nil {
+            map["DeleteOnRelease"] = self.deleteOnRelease!
         }
         if self.description_ != nil {
             map["Description"] = self.description_!
@@ -63146,6 +63159,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
             self.creationTime = dict["CreationTime"] as! String
+        }
+        if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
+            self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
@@ -64412,6 +64428,8 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
 
             public var creationTime: String?
 
+            public var deleteOnRelease: Bool?
+
             public var description_: String?
 
             public var instanceId: String?
@@ -64490,6 +64508,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
+                }
+                if self.deleteOnRelease != nil {
+                    map["DeleteOnRelease"] = self.deleteOnRelease!
                 }
                 if self.description_ != nil {
                     map["Description"] = self.description_!
@@ -64579,6 +64600,9 @@ public class DescribeNetworkInterfacesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
                     self.creationTime = dict["CreationTime"] as! String
+                }
+                if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
+                    self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
                 }
                 if dict.keys.contains("Description") && dict["Description"] != nil {
                     self.description_ = dict["Description"] as! String
@@ -96972,6 +96996,8 @@ public class ModifyManagedInstanceResponse : Tea.TeaModel {
 }
 
 public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
+    public var deleteOnRelease: Bool?
+
     public var description_: String?
 
     public var networkInterfaceId: String?
@@ -97006,6 +97032,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteOnRelease != nil {
+            map["DeleteOnRelease"] = self.deleteOnRelease!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -97040,6 +97069,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
+            self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
+        }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
@@ -108448,6 +108480,8 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
     }
     public class NetworkInterface : Tea.TeaModel {
+        public var deleteOnRelease: Bool?
+
         public var description_: String?
 
         public var instanceType: String?
@@ -108457,6 +108491,8 @@ public class RunInstancesRequest : Tea.TeaModel {
         public var ipv6AddressCount: Int64?
 
         public var networkCardIndex: Int32?
+
+        public var networkInterfaceId: String?
 
         public var networkInterfaceName: String?
 
@@ -108488,6 +108524,9 @@ public class RunInstancesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.deleteOnRelease != nil {
+                map["DeleteOnRelease"] = self.deleteOnRelease!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -108502,6 +108541,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
             if self.networkCardIndex != nil {
                 map["NetworkCardIndex"] = self.networkCardIndex!
+            }
+            if self.networkInterfaceId != nil {
+                map["NetworkInterfaceId"] = self.networkInterfaceId!
             }
             if self.networkInterfaceName != nil {
                 map["NetworkInterfaceName"] = self.networkInterfaceName!
@@ -108531,6 +108573,9 @@ public class RunInstancesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
+                self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
+            }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
             }
@@ -108545,6 +108590,9 @@ public class RunInstancesRequest : Tea.TeaModel {
             }
             if dict.keys.contains("NetworkCardIndex") && dict["NetworkCardIndex"] != nil {
                 self.networkCardIndex = dict["NetworkCardIndex"] as! Int32
+            }
+            if dict.keys.contains("NetworkInterfaceId") && dict["NetworkInterfaceId"] != nil {
+                self.networkInterfaceId = dict["NetworkInterfaceId"] as! String
             }
             if dict.keys.contains("NetworkInterfaceName") && dict["NetworkInterfaceName"] != nil {
                 self.networkInterfaceName = dict["NetworkInterfaceName"] as! String
