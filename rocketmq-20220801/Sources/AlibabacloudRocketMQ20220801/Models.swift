@@ -485,6 +485,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
         public class VpcInfo : Tea.TeaModel {
+            public var securityGroupIds: String?
+
             public var vSwitchId: String?
 
             public var vpcId: String?
@@ -503,6 +505,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.securityGroupIds != nil {
+                    map["securityGroupIds"] = self.securityGroupIds!
+                }
                 if self.vSwitchId != nil {
                     map["vSwitchId"] = self.vSwitchId!
                 }
@@ -513,6 +518,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("securityGroupIds") && dict["securityGroupIds"] != nil {
+                    self.securityGroupIds = dict["securityGroupIds"] as! String
+                }
                 if dict.keys.contains("vSwitchId") && dict["vSwitchId"] != nil {
                     self.vSwitchId = dict["vSwitchId"] as! String
                 }
@@ -566,6 +574,10 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public class ProductInfo : Tea.TeaModel {
         public var autoScaling: Bool?
 
+        public var chargeType: String?
+
+        public var intranetSpec: String?
+
         public var messageRetentionTime: Int32?
 
         public var msgProcessSpec: String?
@@ -589,6 +601,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.autoScaling != nil {
                 map["autoScaling"] = self.autoScaling!
             }
+            if self.chargeType != nil {
+                map["chargeType"] = self.chargeType!
+            }
+            if self.intranetSpec != nil {
+                map["intranetSpec"] = self.intranetSpec!
+            }
             if self.messageRetentionTime != nil {
                 map["messageRetentionTime"] = self.messageRetentionTime!
             }
@@ -605,6 +623,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if dict.keys.contains("autoScaling") && dict["autoScaling"] != nil {
                 self.autoScaling = dict["autoScaling"] as! Bool
             }
+            if dict.keys.contains("chargeType") && dict["chargeType"] != nil {
+                self.chargeType = dict["chargeType"] as! String
+            }
+            if dict.keys.contains("intranetSpec") && dict["intranetSpec"] != nil {
+                self.intranetSpec = dict["intranetSpec"] as! String
+            }
             if dict.keys.contains("messageRetentionTime") && dict["messageRetentionTime"] != nil {
                 self.messageRetentionTime = dict["messageRetentionTime"] as! Int32
             }
@@ -619,6 +643,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var autoRenew: Bool?
 
     public var autoRenewPeriod: Int32?
+
+    public var commodityCode: String?
 
     public var instanceName: String?
 
@@ -666,6 +692,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.autoRenewPeriod != nil {
             map["autoRenewPeriod"] = self.autoRenewPeriod!
         }
+        if self.commodityCode != nil {
+            map["commodityCode"] = self.commodityCode!
+        }
         if self.instanceName != nil {
             map["instanceName"] = self.instanceName!
         }
@@ -711,6 +740,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("autoRenewPeriod") && dict["autoRenewPeriod"] != nil {
             self.autoRenewPeriod = dict["autoRenewPeriod"] as! Int32
+        }
+        if dict.keys.contains("commodityCode") && dict["commodityCode"] != nil {
+            self.commodityCode = dict["commodityCode"] as! String
         }
         if dict.keys.contains("instanceName") && dict["instanceName"] != nil {
             self.instanceName = dict["instanceName"] as! String
@@ -2071,6 +2103,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
             }
             public class VpcInfo : Tea.TeaModel {
+                public var securityGroupIds: String?
+
                 public var vSwitchId: String?
 
                 public var vpcId: String?
@@ -2089,6 +2123,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.securityGroupIds != nil {
+                        map["securityGroupIds"] = self.securityGroupIds!
+                    }
                     if self.vSwitchId != nil {
                         map["vSwitchId"] = self.vSwitchId!
                     }
@@ -2099,6 +2136,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("securityGroupIds") && dict["securityGroupIds"] != nil {
+                        self.securityGroupIds = dict["securityGroupIds"] as! String
+                    }
                     if dict.keys.contains("vSwitchId") && dict["vSwitchId"] != nil {
                         self.vSwitchId = dict["vSwitchId"] as! String
                     }
@@ -2180,6 +2220,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
             public var supportAutoScaling: Bool?
 
+            public var traceOn: Bool?
+
             public override init() {
                 super.init()
             }
@@ -2209,6 +2251,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 if self.supportAutoScaling != nil {
                     map["supportAutoScaling"] = self.supportAutoScaling!
                 }
+                if self.traceOn != nil {
+                    map["traceOn"] = self.traceOn!
+                }
                 return map
             }
 
@@ -2227,6 +2272,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("supportAutoScaling") && dict["supportAutoScaling"] != nil {
                     self.supportAutoScaling = dict["supportAutoScaling"] as! Bool
+                }
+                if dict.keys.contains("traceOn") && dict["traceOn"] != nil {
+                    self.traceOn = dict["traceOn"] as! Bool
                 }
             }
         }
@@ -3585,6 +3633,35 @@ public class ListInstancesRequest : Tea.TeaModel {
 public class ListInstancesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public class ProductInfo : Tea.TeaModel {
+                public var traceOn: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.traceOn != nil {
+                        map["traceOn"] = self.traceOn!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("traceOn") && dict["traceOn"] != nil {
+                        self.traceOn = dict["traceOn"] as! Bool
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public var key: String?
 
@@ -3636,6 +3713,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var paymentType: String?
 
+            public var productInfo: ListInstancesResponseBody.Data.List.ProductInfo?
+
             public var regionId: String?
 
             public var releaseTime: String?
@@ -3672,6 +3751,7 @@ public class ListInstancesResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.productInfo?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -3696,6 +3776,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.paymentType != nil {
                     map["paymentType"] = self.paymentType!
+                }
+                if self.productInfo != nil {
+                    map["productInfo"] = self.productInfo?.toMap()
                 }
                 if self.regionId != nil {
                     map["regionId"] = self.regionId!
@@ -3764,6 +3847,11 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("paymentType") && dict["paymentType"] != nil {
                     self.paymentType = dict["paymentType"] as! String
+                }
+                if dict.keys.contains("productInfo") && dict["productInfo"] != nil {
+                    var model = ListInstancesResponseBody.Data.List.ProductInfo()
+                    model.fromMap(dict["productInfo"] as! [String: Any])
+                    self.productInfo = model
                 }
                 if dict.keys.contains("regionId") && dict["regionId"] != nil {
                     self.regionId = dict["regionId"] as! String
@@ -4886,6 +4974,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
         public var sendReceiveRatio: Double?
 
+        public var traceOn: Bool?
+
         public override init() {
             super.init()
         }
@@ -4909,6 +4999,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.sendReceiveRatio != nil {
                 map["sendReceiveRatio"] = self.sendReceiveRatio!
             }
+            if self.traceOn != nil {
+                map["traceOn"] = self.traceOn!
+            }
             return map
         }
 
@@ -4921,6 +5014,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("sendReceiveRatio") && dict["sendReceiveRatio"] != nil {
                 self.sendReceiveRatio = dict["sendReceiveRatio"] as! Double
+            }
+            if dict.keys.contains("traceOn") && dict["traceOn"] != nil {
+                self.traceOn = dict["traceOn"] as! Bool
             }
         }
     }

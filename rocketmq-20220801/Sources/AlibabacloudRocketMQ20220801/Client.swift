@@ -118,6 +118,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoRenewPeriod)) {
             body["autoRenewPeriod"] = request.autoRenewPeriod!;
         }
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            body["commodityCode"] = request.commodityCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["instanceName"] = request.instanceName ?? "";
         }
