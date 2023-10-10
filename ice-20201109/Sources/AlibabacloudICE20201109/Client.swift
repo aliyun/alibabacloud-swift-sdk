@@ -7046,6 +7046,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.scheduleConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scheduleConfig, "ScheduleConfig", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.inputGroupShrink)) {
             query["InputGroup"] = request.inputGroupShrink ?? "";
         }

@@ -58266,6 +58266,8 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var inputGroup: [SubmitTranscodeJobRequest.InputGroup]?
 
     public var name: String?
@@ -58291,6 +58293,9 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.inputGroup != nil {
             var tmp : [Any] = []
             for k in self.inputGroup! {
@@ -58318,6 +58323,9 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("InputGroup") && dict["InputGroup"] != nil {
             var tmp : [SubmitTranscodeJobRequest.InputGroup] = []
             for v in dict["InputGroup"] as! [Any] {
@@ -58355,6 +58363,8 @@ public class SubmitTranscodeJobRequest : Tea.TeaModel {
 }
 
 public class SubmitTranscodeJobShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var inputGroupShrink: String?
 
     public var name: String?
@@ -58379,6 +58389,9 @@ public class SubmitTranscodeJobShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.inputGroupShrink != nil {
             map["InputGroup"] = self.inputGroupShrink!
         }
@@ -58398,6 +58411,9 @@ public class SubmitTranscodeJobShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("InputGroup") && dict["InputGroup"] != nil {
             self.inputGroupShrink = dict["InputGroup"] as! String
         }
