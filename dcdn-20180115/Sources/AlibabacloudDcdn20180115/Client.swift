@@ -6090,6 +6090,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKvUsageDataWithOptions(_ request: DescribeKvUsageDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeKvUsageDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessType)) {
+            query["AccessType"] = request.accessType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.field)) {
+            query["Field"] = request.field ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceId)) {
+            query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseType)) {
+            query["ResponseType"] = request.responseType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.splitBy)) {
+            query["SplitBy"] = request.splitBy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeKvUsageData",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeKvUsageDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKvUsageData(_ request: DescribeKvUsageDataRequest) async throws -> DescribeKvUsageDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeKvUsageDataWithOptions(request as! DescribeKvUsageDataRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeRDDomainConfigWithOptions(_ request: DescribeRDDomainConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeRDDomainConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

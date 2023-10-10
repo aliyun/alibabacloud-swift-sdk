@@ -1628,6 +1628,94 @@ public class BatchSetDcdnDomainConfigsRequest : Tea.TeaModel {
 }
 
 public class BatchSetDcdnDomainConfigsResponseBody : Tea.TeaModel {
+    public class DomainConfigList : Tea.TeaModel {
+        public class DomainConfigModel : Tea.TeaModel {
+            public var configId: Int64?
+
+            public var domainName: String?
+
+            public var functionName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.configId != nil {
+                    map["ConfigId"] = self.configId!
+                }
+                if self.domainName != nil {
+                    map["DomainName"] = self.domainName!
+                }
+                if self.functionName != nil {
+                    map["FunctionName"] = self.functionName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConfigId") && dict["ConfigId"] != nil {
+                    self.configId = dict["ConfigId"] as! Int64
+                }
+                if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+                    self.domainName = dict["DomainName"] as! String
+                }
+                if dict.keys.contains("FunctionName") && dict["FunctionName"] != nil {
+                    self.functionName = dict["FunctionName"] as! String
+                }
+            }
+        }
+        public var domainConfigModel: [BatchSetDcdnDomainConfigsResponseBody.DomainConfigList.DomainConfigModel]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainConfigModel != nil {
+                var tmp : [Any] = []
+                for k in self.domainConfigModel! {
+                    tmp.append(k.toMap())
+                }
+                map["DomainConfigModel"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DomainConfigModel") && dict["DomainConfigModel"] != nil {
+                var tmp : [BatchSetDcdnDomainConfigsResponseBody.DomainConfigList.DomainConfigModel] = []
+                for v in dict["DomainConfigModel"] as! [Any] {
+                    var model = BatchSetDcdnDomainConfigsResponseBody.DomainConfigList.DomainConfigModel()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainConfigModel = tmp
+            }
+        }
+    }
+    public var domainConfigList: BatchSetDcdnDomainConfigsResponseBody.DomainConfigList?
+
     public var requestId: String?
 
     public override init() {
@@ -1640,10 +1728,14 @@ public class BatchSetDcdnDomainConfigsResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.domainConfigList?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.domainConfigList != nil {
+            map["DomainConfigList"] = self.domainConfigList?.toMap()
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1651,6 +1743,11 @@ public class BatchSetDcdnDomainConfigsResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainConfigList") && dict["DomainConfigList"] != nil {
+            var model = BatchSetDcdnDomainConfigsResponseBody.DomainConfigList()
+            model.fromMap(dict["DomainConfigList"] as! [String: Any])
+            self.domainConfigList = model
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -36488,6 +36585,255 @@ public class DescribeHighlightInfoResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeHighlightInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeKvUsageDataRequest : Tea.TeaModel {
+    public var accessType: String?
+
+    public var endTime: String?
+
+    public var field: String?
+
+    public var namespaceId: String?
+
+    public var responseType: String?
+
+    public var splitBy: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessType != nil {
+            map["AccessType"] = self.accessType!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.field != nil {
+            map["Field"] = self.field!
+        }
+        if self.namespaceId != nil {
+            map["NamespaceId"] = self.namespaceId!
+        }
+        if self.responseType != nil {
+            map["ResponseType"] = self.responseType!
+        }
+        if self.splitBy != nil {
+            map["SplitBy"] = self.splitBy!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccessType") && dict["AccessType"] != nil {
+            self.accessType = dict["AccessType"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Field") && dict["Field"] != nil {
+            self.field = dict["Field"] as! String
+        }
+        if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
+            self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("ResponseType") && dict["ResponseType"] != nil {
+            self.responseType = dict["ResponseType"] as! String
+        }
+        if dict.keys.contains("SplitBy") && dict["SplitBy"] != nil {
+            self.splitBy = dict["SplitBy"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeKvUsageDataResponseBody : Tea.TeaModel {
+    public class KvUsageData : Tea.TeaModel {
+        public var acc: Int64?
+
+        public var accessType: String?
+
+        public var namespaceId: String?
+
+        public var timeStamp: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.acc != nil {
+                map["Acc"] = self.acc!
+            }
+            if self.accessType != nil {
+                map["AccessType"] = self.accessType!
+            }
+            if self.namespaceId != nil {
+                map["NamespaceId"] = self.namespaceId!
+            }
+            if self.timeStamp != nil {
+                map["TimeStamp"] = self.timeStamp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Acc") && dict["Acc"] != nil {
+                self.acc = dict["Acc"] as! Int64
+            }
+            if dict.keys.contains("AccessType") && dict["AccessType"] != nil {
+                self.accessType = dict["AccessType"] as! String
+            }
+            if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
+                self.namespaceId = dict["NamespaceId"] as! String
+            }
+            if dict.keys.contains("TimeStamp") && dict["TimeStamp"] != nil {
+                self.timeStamp = dict["TimeStamp"] as! String
+            }
+        }
+    }
+    public var endTime: String?
+
+    public var kvUsageData: [DescribeKvUsageDataResponseBody.KvUsageData]?
+
+    public var requestId: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.kvUsageData != nil {
+            var tmp : [Any] = []
+            for k in self.kvUsageData! {
+                tmp.append(k.toMap())
+            }
+            map["KvUsageData"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("KvUsageData") && dict["KvUsageData"] != nil {
+            var tmp : [DescribeKvUsageDataResponseBody.KvUsageData] = []
+            for v in dict["KvUsageData"] as! [Any] {
+                var model = DescribeKvUsageDataResponseBody.KvUsageData()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.kvUsageData = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeKvUsageDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeKvUsageDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeKvUsageDataResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
