@@ -384,6 +384,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createClusterWithOptions(_ request: CreateClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessControlList)) {
+            body["access_control_list"] = request.accessControlList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.addons)) {
             body["addons"] = request.addons ?? [];
         }
@@ -2971,11 +2974,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyClusterWithOptions(_ ClusterId: String, _ request: ModifyClusterRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessControlList)) {
+            body["access_control_list"] = request.accessControlList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.apiServerEip)) {
             body["api_server_eip"] = request.apiServerEip!;
         }
         if (!TeaUtils.Client.isUnset(request.apiServerEipId)) {
             body["api_server_eip_id"] = request.apiServerEipId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clusterName)) {
+            body["cluster_name"] = request.clusterName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.deletionProtection)) {
             body["deletion_protection"] = request.deletionProtection!;
@@ -2984,7 +2993,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["enable_rrsa"] = request.enableRrsa!;
         }
         if (!TeaUtils.Client.isUnset(request.ingressDomainRebinding)) {
-            body["ingress_domain_rebinding"] = request.ingressDomainRebinding ?? "";
+            body["ingress_domain_rebinding"] = request.ingressDomainRebinding!;
         }
         if (!TeaUtils.Client.isUnset(request.ingressLoadbalancerId)) {
             body["ingress_loadbalancer_id"] = request.ingressLoadbalancerId ?? "";

@@ -129,6 +129,180 @@ public class DataDisk : Tea.TeaModel {
     }
 }
 
+public class KubeletConfig : Tea.TeaModel {
+    public var allowedUnsafeSysctls: [String]?
+
+    public var containerLogMaxFiles: Int64?
+
+    public var containerLogMaxSize: String?
+
+    public var cpuManagerPolicy: String?
+
+    public var eventBurst: Int64?
+
+    public var eventRecordQPS: Int64?
+
+    public var evictionHard: [String: Any]?
+
+    public var evictionSoft: [String: Any]?
+
+    public var evictionSoftGracePeriod: [String: Any]?
+
+    public var featureGates: [String: Any]?
+
+    public var kubeAPIBurst: Int64?
+
+    public var kubeAPIQPS: Int64?
+
+    public var kubeReserved: [String: Any]?
+
+    public var maxPods: Int64?
+
+    public var readOnlyPort: Int64?
+
+    public var registryBurst: Int64?
+
+    public var registryPullQPS: Int64?
+
+    public var serializeImagePulls: Bool?
+
+    public var systemReserved: [String: Any]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowedUnsafeSysctls != nil {
+            map["allowedUnsafeSysctls"] = self.allowedUnsafeSysctls!
+        }
+        if self.containerLogMaxFiles != nil {
+            map["containerLogMaxFiles"] = self.containerLogMaxFiles!
+        }
+        if self.containerLogMaxSize != nil {
+            map["containerLogMaxSize"] = self.containerLogMaxSize!
+        }
+        if self.cpuManagerPolicy != nil {
+            map["cpuManagerPolicy"] = self.cpuManagerPolicy!
+        }
+        if self.eventBurst != nil {
+            map["eventBurst"] = self.eventBurst!
+        }
+        if self.eventRecordQPS != nil {
+            map["eventRecordQPS"] = self.eventRecordQPS!
+        }
+        if self.evictionHard != nil {
+            map["evictionHard"] = self.evictionHard!
+        }
+        if self.evictionSoft != nil {
+            map["evictionSoft"] = self.evictionSoft!
+        }
+        if self.evictionSoftGracePeriod != nil {
+            map["evictionSoftGracePeriod"] = self.evictionSoftGracePeriod!
+        }
+        if self.featureGates != nil {
+            map["featureGates"] = self.featureGates!
+        }
+        if self.kubeAPIBurst != nil {
+            map["kubeAPIBurst"] = self.kubeAPIBurst!
+        }
+        if self.kubeAPIQPS != nil {
+            map["kubeAPIQPS"] = self.kubeAPIQPS!
+        }
+        if self.kubeReserved != nil {
+            map["kubeReserved"] = self.kubeReserved!
+        }
+        if self.maxPods != nil {
+            map["maxPods"] = self.maxPods!
+        }
+        if self.readOnlyPort != nil {
+            map["readOnlyPort"] = self.readOnlyPort!
+        }
+        if self.registryBurst != nil {
+            map["registryBurst"] = self.registryBurst!
+        }
+        if self.registryPullQPS != nil {
+            map["registryPullQPS"] = self.registryPullQPS!
+        }
+        if self.serializeImagePulls != nil {
+            map["serializeImagePulls"] = self.serializeImagePulls!
+        }
+        if self.systemReserved != nil {
+            map["systemReserved"] = self.systemReserved!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("allowedUnsafeSysctls") && dict["allowedUnsafeSysctls"] != nil {
+            self.allowedUnsafeSysctls = dict["allowedUnsafeSysctls"] as! [String]
+        }
+        if dict.keys.contains("containerLogMaxFiles") && dict["containerLogMaxFiles"] != nil {
+            self.containerLogMaxFiles = dict["containerLogMaxFiles"] as! Int64
+        }
+        if dict.keys.contains("containerLogMaxSize") && dict["containerLogMaxSize"] != nil {
+            self.containerLogMaxSize = dict["containerLogMaxSize"] as! String
+        }
+        if dict.keys.contains("cpuManagerPolicy") && dict["cpuManagerPolicy"] != nil {
+            self.cpuManagerPolicy = dict["cpuManagerPolicy"] as! String
+        }
+        if dict.keys.contains("eventBurst") && dict["eventBurst"] != nil {
+            self.eventBurst = dict["eventBurst"] as! Int64
+        }
+        if dict.keys.contains("eventRecordQPS") && dict["eventRecordQPS"] != nil {
+            self.eventRecordQPS = dict["eventRecordQPS"] as! Int64
+        }
+        if dict.keys.contains("evictionHard") && dict["evictionHard"] != nil {
+            self.evictionHard = dict["evictionHard"] as! [String: Any]
+        }
+        if dict.keys.contains("evictionSoft") && dict["evictionSoft"] != nil {
+            self.evictionSoft = dict["evictionSoft"] as! [String: Any]
+        }
+        if dict.keys.contains("evictionSoftGracePeriod") && dict["evictionSoftGracePeriod"] != nil {
+            self.evictionSoftGracePeriod = dict["evictionSoftGracePeriod"] as! [String: Any]
+        }
+        if dict.keys.contains("featureGates") && dict["featureGates"] != nil {
+            self.featureGates = dict["featureGates"] as! [String: Any]
+        }
+        if dict.keys.contains("kubeAPIBurst") && dict["kubeAPIBurst"] != nil {
+            self.kubeAPIBurst = dict["kubeAPIBurst"] as! Int64
+        }
+        if dict.keys.contains("kubeAPIQPS") && dict["kubeAPIQPS"] != nil {
+            self.kubeAPIQPS = dict["kubeAPIQPS"] as! Int64
+        }
+        if dict.keys.contains("kubeReserved") && dict["kubeReserved"] != nil {
+            self.kubeReserved = dict["kubeReserved"] as! [String: Any]
+        }
+        if dict.keys.contains("maxPods") && dict["maxPods"] != nil {
+            self.maxPods = dict["maxPods"] as! Int64
+        }
+        if dict.keys.contains("readOnlyPort") && dict["readOnlyPort"] != nil {
+            self.readOnlyPort = dict["readOnlyPort"] as! Int64
+        }
+        if dict.keys.contains("registryBurst") && dict["registryBurst"] != nil {
+            self.registryBurst = dict["registryBurst"] as! Int64
+        }
+        if dict.keys.contains("registryPullQPS") && dict["registryPullQPS"] != nil {
+            self.registryPullQPS = dict["registryPullQPS"] as! Int64
+        }
+        if dict.keys.contains("serializeImagePulls") && dict["serializeImagePulls"] != nil {
+            self.serializeImagePulls = dict["serializeImagePulls"] as! Bool
+        }
+        if dict.keys.contains("systemReserved") && dict["systemReserved"] != nil {
+            self.systemReserved = dict["systemReserved"] as! [String: Any]
+        }
+    }
+}
+
 public class MaintenanceWindow : Tea.TeaModel {
     public var duration: String?
 
@@ -2381,6 +2555,8 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
         }
     }
+    public var accessControlList: [String]?
+
     public var addons: [Addon]?
 
     public var apiAudiences: String?
@@ -2574,6 +2750,9 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessControlList != nil {
+            map["access_control_list"] = self.accessControlList!
+        }
         if self.addons != nil {
             var tmp : [Any] = []
             for k in self.addons! {
@@ -2865,6 +3044,9 @@ public class CreateClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("access_control_list") && dict["access_control_list"] != nil {
+            self.accessControlList = dict["access_control_list"] as! [String]
+        }
         if dict.keys.contains("addons") && dict["addons"] != nil {
             var tmp : [Addon] = []
             for v in dict["addons"] as! [Any] {
@@ -4282,6 +4464,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 public class CreateClusterNodePoolResponseBody : Tea.TeaModel {
     public var nodepoolId: String?
 
+    public var taskId: String?
+
     public override init() {
         super.init()
     }
@@ -4299,12 +4483,18 @@ public class CreateClusterNodePoolResponseBody : Tea.TeaModel {
         if self.nodepoolId != nil {
             map["nodepool_id"] = self.nodepoolId!
         }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("nodepool_id") && dict["nodepool_id"] != nil {
             self.nodepoolId = dict["nodepool_id"] as! String
+        }
+        if dict.keys.contains("task_id") && dict["task_id"] != nil {
+            self.taskId = dict["task_id"] as! String
         }
     }
 }
@@ -7984,6 +8174,38 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class NodeConfig : Tea.TeaModel {
+        public var kubeletConfiguration: KubeletConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.kubeletConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.kubeletConfiguration != nil {
+                map["kubelet_configuration"] = self.kubeletConfiguration?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("kubelet_configuration") && dict["kubelet_configuration"] != nil {
+                var model = KubeletConfig()
+                model.fromMap(dict["kubelet_configuration"] as! [String: Any])
+                self.kubeletConfiguration = model
+            }
+        }
+    }
     public class NodepoolInfo : Tea.TeaModel {
         public var created: String?
 
@@ -8609,6 +8831,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
     public var maxNodes: Int64?
 
+    public var nodeConfig: DescribeClusterNodePoolDetailResponseBody.NodeConfig?
+
     public var nodepoolInfo: DescribeClusterNodePoolDetailResponseBody.NodepoolInfo?
 
     public var scalingGroup: DescribeClusterNodePoolDetailResponseBody.ScalingGroup?
@@ -8631,6 +8855,7 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         try self.interconnectConfig?.validate()
         try self.kubernetesConfig?.validate()
         try self.management?.validate()
+        try self.nodeConfig?.validate()
         try self.nodepoolInfo?.validate()
         try self.scalingGroup?.validate()
         try self.status?.validate()
@@ -8656,6 +8881,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
         if self.maxNodes != nil {
             map["max_nodes"] = self.maxNodes!
+        }
+        if self.nodeConfig != nil {
+            map["node_config"] = self.nodeConfig?.toMap()
         }
         if self.nodepoolInfo != nil {
             map["nodepool_info"] = self.nodepoolInfo?.toMap()
@@ -8698,6 +8926,11 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("max_nodes") && dict["max_nodes"] != nil {
             self.maxNodes = dict["max_nodes"] as! Int64
+        }
+        if dict.keys.contains("node_config") && dict["node_config"] != nil {
+            var model = DescribeClusterNodePoolDetailResponseBody.NodeConfig()
+            model.fromMap(dict["node_config"] as! [String: Any])
+            self.nodeConfig = model
         }
         if dict.keys.contains("nodepool_info") && dict["nodepool_info"] != nil {
             var model = DescribeClusterNodePoolDetailResponseBody.NodepoolInfo()
@@ -9121,6 +9354,38 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     var model = DescribeClusterNodePoolsResponseBody.Nodepools.Management.UpgradeConfig()
                     model.fromMap(dict["upgrade_config"] as! [String: Any])
                     self.upgradeConfig = model
+                }
+            }
+        }
+        public class NodeConfig : Tea.TeaModel {
+            public var kubeletConfiguration: KubeletConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.kubeletConfiguration?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.kubeletConfiguration != nil {
+                    map["kubelet_configuration"] = self.kubeletConfiguration?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("kubelet_configuration") && dict["kubelet_configuration"] != nil {
+                    var model = KubeletConfig()
+                    model.fromMap(dict["kubelet_configuration"] as! [String: Any])
+                    self.kubeletConfiguration = model
                 }
             }
         }
@@ -9749,6 +10014,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
         public var maxNodes: Int64?
 
+        public var nodeConfig: DescribeClusterNodePoolsResponseBody.Nodepools.NodeConfig?
+
         public var nodepoolInfo: DescribeClusterNodePoolsResponseBody.Nodepools.NodepoolInfo?
 
         public var scalingGroup: DescribeClusterNodePoolsResponseBody.Nodepools.ScalingGroup?
@@ -9771,6 +10038,7 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             try self.interconnectConfig?.validate()
             try self.kubernetesConfig?.validate()
             try self.management?.validate()
+            try self.nodeConfig?.validate()
             try self.nodepoolInfo?.validate()
             try self.scalingGroup?.validate()
             try self.status?.validate()
@@ -9796,6 +10064,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
             if self.maxNodes != nil {
                 map["max_nodes"] = self.maxNodes!
+            }
+            if self.nodeConfig != nil {
+                map["node_config"] = self.nodeConfig?.toMap()
             }
             if self.nodepoolInfo != nil {
                 map["nodepool_info"] = self.nodepoolInfo?.toMap()
@@ -9838,6 +10109,11 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("max_nodes") && dict["max_nodes"] != nil {
                 self.maxNodes = dict["max_nodes"] as! Int64
+            }
+            if dict.keys.contains("node_config") && dict["node_config"] != nil {
+                var model = DescribeClusterNodePoolsResponseBody.Nodepools.NodeConfig()
+                model.fromMap(dict["node_config"] as! [String: Any])
+                self.nodeConfig = model
             }
             if dict.keys.contains("nodepool_info") && dict["nodepool_info"] != nil {
                 var model = DescribeClusterNodePoolsResponseBody.Nodepools.NodepoolInfo()
@@ -18099,15 +18375,19 @@ public class MigrateClusterResponse : Tea.TeaModel {
 }
 
 public class ModifyClusterRequest : Tea.TeaModel {
+    public var accessControlList: [String]?
+
     public var apiServerEip: Bool?
 
     public var apiServerEipId: String?
+
+    public var clusterName: String?
 
     public var deletionProtection: Bool?
 
     public var enableRrsa: Bool?
 
-    public var ingressDomainRebinding: String?
+    public var ingressDomainRebinding: Bool?
 
     public var ingressLoadbalancerId: String?
 
@@ -18132,11 +18412,17 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accessControlList != nil {
+            map["access_control_list"] = self.accessControlList!
+        }
         if self.apiServerEip != nil {
             map["api_server_eip"] = self.apiServerEip!
         }
         if self.apiServerEipId != nil {
             map["api_server_eip_id"] = self.apiServerEipId!
+        }
+        if self.clusterName != nil {
+            map["cluster_name"] = self.clusterName!
         }
         if self.deletionProtection != nil {
             map["deletion_protection"] = self.deletionProtection!
@@ -18163,11 +18449,17 @@ public class ModifyClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("access_control_list") && dict["access_control_list"] != nil {
+            self.accessControlList = dict["access_control_list"] as! [String]
+        }
         if dict.keys.contains("api_server_eip") && dict["api_server_eip"] != nil {
             self.apiServerEip = dict["api_server_eip"] as! Bool
         }
         if dict.keys.contains("api_server_eip_id") && dict["api_server_eip_id"] != nil {
             self.apiServerEipId = dict["api_server_eip_id"] as! String
+        }
+        if dict.keys.contains("cluster_name") && dict["cluster_name"] != nil {
+            self.clusterName = dict["cluster_name"] as! String
         }
         if dict.keys.contains("deletion_protection") && dict["deletion_protection"] != nil {
             self.deletionProtection = dict["deletion_protection"] as! Bool
@@ -18176,7 +18468,7 @@ public class ModifyClusterRequest : Tea.TeaModel {
             self.enableRrsa = dict["enable_rrsa"] as! Bool
         }
         if dict.keys.contains("ingress_domain_rebinding") && dict["ingress_domain_rebinding"] != nil {
-            self.ingressDomainRebinding = dict["ingress_domain_rebinding"] as! String
+            self.ingressDomainRebinding = dict["ingress_domain_rebinding"] as! Bool
         }
         if dict.keys.contains("ingress_loadbalancer_id") && dict["ingress_loadbalancer_id"] != nil {
             self.ingressLoadbalancerId = dict["ingress_loadbalancer_id"] as! String
@@ -19519,131 +19811,6 @@ public class ModifyClusterTagsResponse : Tea.TeaModel {
 }
 
 public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
-    public class KubeletConfig : Tea.TeaModel {
-        public var cpuManagerPolicy: String?
-
-        public var eventBurst: Int64?
-
-        public var eventRecordQPS: Int64?
-
-        public var evictionHard: [String: Any]?
-
-        public var evictionSoft: [String: Any]?
-
-        public var evictionSoftGracePeriod: [String: Any]?
-
-        public var kubeAPIBurst: Int64?
-
-        public var kubeAPIQPS: Int64?
-
-        public var kubeReserved: [String: Any]?
-
-        public var registryBurst: Int64?
-
-        public var registryPullQPS: Int64?
-
-        public var serializeImagePulls: Bool?
-
-        public var systemReserved: [String: Any]?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.cpuManagerPolicy != nil {
-                map["cpuManagerPolicy"] = self.cpuManagerPolicy!
-            }
-            if self.eventBurst != nil {
-                map["eventBurst"] = self.eventBurst!
-            }
-            if self.eventRecordQPS != nil {
-                map["eventRecordQPS"] = self.eventRecordQPS!
-            }
-            if self.evictionHard != nil {
-                map["evictionHard"] = self.evictionHard!
-            }
-            if self.evictionSoft != nil {
-                map["evictionSoft"] = self.evictionSoft!
-            }
-            if self.evictionSoftGracePeriod != nil {
-                map["evictionSoftGracePeriod"] = self.evictionSoftGracePeriod!
-            }
-            if self.kubeAPIBurst != nil {
-                map["kubeAPIBurst"] = self.kubeAPIBurst!
-            }
-            if self.kubeAPIQPS != nil {
-                map["kubeAPIQPS"] = self.kubeAPIQPS!
-            }
-            if self.kubeReserved != nil {
-                map["kubeReserved"] = self.kubeReserved!
-            }
-            if self.registryBurst != nil {
-                map["registryBurst"] = self.registryBurst!
-            }
-            if self.registryPullQPS != nil {
-                map["registryPullQPS"] = self.registryPullQPS!
-            }
-            if self.serializeImagePulls != nil {
-                map["serializeImagePulls"] = self.serializeImagePulls!
-            }
-            if self.systemReserved != nil {
-                map["systemReserved"] = self.systemReserved!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("cpuManagerPolicy") && dict["cpuManagerPolicy"] != nil {
-                self.cpuManagerPolicy = dict["cpuManagerPolicy"] as! String
-            }
-            if dict.keys.contains("eventBurst") && dict["eventBurst"] != nil {
-                self.eventBurst = dict["eventBurst"] as! Int64
-            }
-            if dict.keys.contains("eventRecordQPS") && dict["eventRecordQPS"] != nil {
-                self.eventRecordQPS = dict["eventRecordQPS"] as! Int64
-            }
-            if dict.keys.contains("evictionHard") && dict["evictionHard"] != nil {
-                self.evictionHard = dict["evictionHard"] as! [String: Any]
-            }
-            if dict.keys.contains("evictionSoft") && dict["evictionSoft"] != nil {
-                self.evictionSoft = dict["evictionSoft"] as! [String: Any]
-            }
-            if dict.keys.contains("evictionSoftGracePeriod") && dict["evictionSoftGracePeriod"] != nil {
-                self.evictionSoftGracePeriod = dict["evictionSoftGracePeriod"] as! [String: Any]
-            }
-            if dict.keys.contains("kubeAPIBurst") && dict["kubeAPIBurst"] != nil {
-                self.kubeAPIBurst = dict["kubeAPIBurst"] as! Int64
-            }
-            if dict.keys.contains("kubeAPIQPS") && dict["kubeAPIQPS"] != nil {
-                self.kubeAPIQPS = dict["kubeAPIQPS"] as! Int64
-            }
-            if dict.keys.contains("kubeReserved") && dict["kubeReserved"] != nil {
-                self.kubeReserved = dict["kubeReserved"] as! [String: Any]
-            }
-            if dict.keys.contains("registryBurst") && dict["registryBurst"] != nil {
-                self.registryBurst = dict["registryBurst"] as! Int64
-            }
-            if dict.keys.contains("registryPullQPS") && dict["registryPullQPS"] != nil {
-                self.registryPullQPS = dict["registryPullQPS"] as! Int64
-            }
-            if dict.keys.contains("serializeImagePulls") && dict["serializeImagePulls"] != nil {
-                self.serializeImagePulls = dict["serializeImagePulls"] as! Bool
-            }
-            if dict.keys.contains("systemReserved") && dict["systemReserved"] != nil {
-                self.systemReserved = dict["systemReserved"] as! [String: Any]
-            }
-        }
-    }
     public class RollingPolicy : Tea.TeaModel {
         public var maxParallelism: Int64?
 
@@ -19673,7 +19840,7 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
             }
         }
     }
-    public var kubeletConfig: ModifyNodePoolNodeConfigRequest.KubeletConfig?
+    public var kubeletConfig: KubeletConfig?
 
     public var rollingPolicy: ModifyNodePoolNodeConfigRequest.RollingPolicy?
 
@@ -19704,7 +19871,7 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("kubelet_config") && dict["kubelet_config"] != nil {
-            var model = ModifyNodePoolNodeConfigRequest.KubeletConfig()
+            var model = KubeletConfig()
             model.fromMap(dict["kubelet_config"] as! [String: Any])
             self.kubeletConfig = model
         }
@@ -22431,6 +22598,8 @@ public class TagResourcesResponse : Tea.TeaModel {
 
 public class UnInstallClusterAddonsRequest : Tea.TeaModel {
     public class Addons : Tea.TeaModel {
+        public var cleanupCloudResources: Bool?
+
         public var name: String?
 
         public override init() {
@@ -22447,6 +22616,9 @@ public class UnInstallClusterAddonsRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.cleanupCloudResources != nil {
+                map["cleanup_cloud_resources"] = self.cleanupCloudResources!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -22454,6 +22626,9 @@ public class UnInstallClusterAddonsRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cleanup_cloud_resources") && dict["cleanup_cloud_resources"] != nil {
+                self.cleanupCloudResources = dict["cleanup_cloud_resources"] as! Bool
+            }
             if dict.keys.contains("name") && dict["name"] != nil {
                 self.name = dict["name"] as! String
             }
