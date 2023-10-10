@@ -2875,6 +2875,8 @@ public class CreateTemplateScratchRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var sourceResourceGroup: CreateTemplateScratchRequest.SourceResourceGroup?
 
     public var sourceResources: [CreateTemplateScratchRequest.SourceResources]?
@@ -2922,6 +2924,9 @@ public class CreateTemplateScratchRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.sourceResourceGroup != nil {
             map["SourceResourceGroup"] = self.sourceResourceGroup?.toMap()
@@ -2975,6 +2980,9 @@ public class CreateTemplateScratchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SourceResourceGroup") && dict["SourceResourceGroup"] != nil {
             var model = CreateTemplateScratchRequest.SourceResourceGroup()
@@ -3064,6 +3072,8 @@ public class CreateTemplateScratchShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var sourceResourceGroupShrink: String?
 
     public var sourceResourcesShrink: String?
@@ -3106,6 +3116,9 @@ public class CreateTemplateScratchShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sourceResourceGroupShrink != nil {
             map["SourceResourceGroup"] = self.sourceResourceGroupShrink!
         }
@@ -3146,6 +3159,9 @@ public class CreateTemplateScratchShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SourceResourceGroup") && dict["SourceResourceGroup"] != nil {
             self.sourceResourceGroupShrink = dict["SourceResourceGroup"] as! String
@@ -6427,6 +6443,8 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
 
             public var sourceTagSupported: Bool?
 
+            public var supportedTemplateScratchTypes: [String]?
+
             public override init() {
                 super.init()
             }
@@ -6456,6 +6474,9 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
                 if self.sourceTagSupported != nil {
                     map["SourceTagSupported"] = self.sourceTagSupported!
                 }
+                if self.supportedTemplateScratchTypes != nil {
+                    map["SupportedTemplateScratchTypes"] = self.supportedTemplateScratchTypes!
+                }
                 return map
             }
 
@@ -6474,6 +6495,9 @@ public class GetFeatureDetailsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SourceTagSupported") && dict["SourceTagSupported"] != nil {
                     self.sourceTagSupported = dict["SourceTagSupported"] as! Bool
+                }
+                if dict.keys.contains("SupportedTemplateScratchTypes") && dict["SupportedTemplateScratchTypes"] != nil {
+                    self.supportedTemplateScratchTypes = dict["SupportedTemplateScratchTypes"] as! [String]
                 }
             }
         }
@@ -12524,6 +12548,8 @@ public class GetTemplateScratchResponseBody : Tea.TeaModel {
 
         public var preferenceParameters: [GetTemplateScratchResponseBody.TemplateScratch.PreferenceParameters]?
 
+        public var resourceGroupId: String?
+
         public var sourceResourceGroup: GetTemplateScratchResponseBody.TemplateScratch.SourceResourceGroup?
 
         public var sourceResources: [GetTemplateScratchResponseBody.TemplateScratch.SourceResources]?
@@ -12581,6 +12607,9 @@ public class GetTemplateScratchResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["PreferenceParameters"] = tmp
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
             }
             if self.sourceResourceGroup != nil {
                 map["SourceResourceGroup"] = self.sourceResourceGroup?.toMap()
@@ -12649,6 +12678,9 @@ public class GetTemplateScratchResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.preferenceParameters = tmp
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("SourceResourceGroup") && dict["SourceResourceGroup"] != nil {
                 var model = GetTemplateScratchResponseBody.TemplateScratch.SourceResourceGroup()
@@ -17913,6 +17945,8 @@ public class ListTemplateScratchesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var status: String?
 
     public var tags: [ListTemplateScratchesRequest.Tags]?
@@ -17944,6 +17978,9 @@ public class ListTemplateScratchesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -17972,6 +18009,9 @@ public class ListTemplateScratchesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
@@ -18193,6 +18233,8 @@ public class ListTemplateScratchesResponseBody : Tea.TeaModel {
 
         public var preferenceParameters: [ListTemplateScratchesResponseBody.TemplateScratches.PreferenceParameters]?
 
+        public var resourceGroupId: String?
+
         public var sourceResourceGroup: ListTemplateScratchesResponseBody.TemplateScratches.SourceResourceGroup?
 
         public var sourceResources: [ListTemplateScratchesResponseBody.TemplateScratches.SourceResources]?
@@ -18245,6 +18287,9 @@ public class ListTemplateScratchesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["PreferenceParameters"] = tmp
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
             }
             if self.sourceResourceGroup != nil {
                 map["SourceResourceGroup"] = self.sourceResourceGroup?.toMap()
@@ -18307,6 +18352,9 @@ public class ListTemplateScratchesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.preferenceParameters = tmp
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("SourceResourceGroup") && dict["SourceResourceGroup"] != nil {
                 var model = ListTemplateScratchesResponseBody.TemplateScratches.SourceResourceGroup()
@@ -23238,6 +23286,8 @@ public class UpdateTemplateScratchRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var sourceResourceGroup: UpdateTemplateScratchRequest.SourceResourceGroup?
 
     public var sourceResources: [UpdateTemplateScratchRequest.SourceResources]?
@@ -23283,6 +23333,9 @@ public class UpdateTemplateScratchRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.sourceResourceGroup != nil {
             map["SourceResourceGroup"] = self.sourceResourceGroup?.toMap()
@@ -23330,6 +23383,9 @@ public class UpdateTemplateScratchRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("SourceResourceGroup") && dict["SourceResourceGroup"] != nil {
             var model = UpdateTemplateScratchRequest.SourceResourceGroup()
             model.fromMap(dict["SourceResourceGroup"] as! [String: Any])
@@ -23369,6 +23425,8 @@ public class UpdateTemplateScratchShrinkRequest : Tea.TeaModel {
     public var preferenceParametersShrink: String?
 
     public var regionId: String?
+
+    public var resourceGroupId: String?
 
     public var sourceResourceGroupShrink: String?
 
@@ -23410,6 +23468,9 @@ public class UpdateTemplateScratchShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sourceResourceGroupShrink != nil {
             map["SourceResourceGroup"] = self.sourceResourceGroupShrink!
         }
@@ -23443,6 +23504,9 @@ public class UpdateTemplateScratchShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SourceResourceGroup") && dict["SourceResourceGroup"] != nil {
             self.sourceResourceGroupShrink = dict["SourceResourceGroup"] as! String
