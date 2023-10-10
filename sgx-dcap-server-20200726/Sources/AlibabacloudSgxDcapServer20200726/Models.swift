@@ -5,6 +5,44 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class GetQeIdentityRequest : Tea.TeaModel {
+    public var acsHost: String?
+
+    public var clientVpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acsHost != nil {
+            map["AcsHost"] = self.acsHost!
+        }
+        if self.clientVpcId != nil {
+            map["ClientVpcId"] = self.clientVpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsHost") && dict["AcsHost"] != nil {
+            self.acsHost = dict["AcsHost"] as! String
+        }
+        if dict.keys.contains("ClientVpcId") && dict["ClientVpcId"] != nil {
+            self.clientVpcId = dict["ClientVpcId"] as! String
+        }
+    }
+}
+
 public class GetQeIdentityResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
@@ -50,6 +88,44 @@ public class GetQeIdentityResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             self.body = dict["body"] as! String
+        }
+    }
+}
+
+public class GetQveIdentityRequest : Tea.TeaModel {
+    public var acsHost: String?
+
+    public var clientVpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acsHost != nil {
+            map["AcsHost"] = self.acsHost!
+        }
+        if self.clientVpcId != nil {
+            map["ClientVpcId"] = self.clientVpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsHost") && dict["AcsHost"] != nil {
+            self.acsHost = dict["AcsHost"] as! String
+        }
+        if dict.keys.contains("ClientVpcId") && dict["ClientVpcId"] != nil {
+            self.clientVpcId = dict["ClientVpcId"] as! String
         }
     }
 }
@@ -104,6 +180,10 @@ public class GetQveIdentityResponse : Tea.TeaModel {
 }
 
 public class GetTcbInfoRequest : Tea.TeaModel {
+    public var acsHost: String?
+
+    public var clientVpcId: String?
+
     public var fmspc: String?
 
     public override init() {
@@ -120,6 +200,12 @@ public class GetTcbInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acsHost != nil {
+            map["AcsHost"] = self.acsHost!
+        }
+        if self.clientVpcId != nil {
+            map["ClientVpcId"] = self.clientVpcId!
+        }
         if self.fmspc != nil {
             map["fmspc"] = self.fmspc!
         }
@@ -127,6 +213,12 @@ public class GetTcbInfoRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsHost") && dict["AcsHost"] != nil {
+            self.acsHost = dict["AcsHost"] as! String
+        }
+        if dict.keys.contains("ClientVpcId") && dict["ClientVpcId"] != nil {
+            self.clientVpcId = dict["ClientVpcId"] as! String
+        }
         if dict.keys.contains("fmspc") && dict["fmspc"] != nil {
             self.fmspc = dict["fmspc"] as! String
         }
@@ -183,6 +275,10 @@ public class GetTcbInfoResponse : Tea.TeaModel {
 }
 
 public class PckCrlRequest : Tea.TeaModel {
+    public var acsHost: String?
+
+    public var clientVpcId: String?
+
     public var ca: String?
 
     public override init() {
@@ -199,6 +295,12 @@ public class PckCrlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acsHost != nil {
+            map["AcsHost"] = self.acsHost!
+        }
+        if self.clientVpcId != nil {
+            map["ClientVpcId"] = self.clientVpcId!
+        }
         if self.ca != nil {
             map["ca"] = self.ca!
         }
@@ -206,6 +308,12 @@ public class PckCrlRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsHost") && dict["AcsHost"] != nil {
+            self.acsHost = dict["AcsHost"] as! String
+        }
+        if dict.keys.contains("ClientVpcId") && dict["ClientVpcId"] != nil {
+            self.clientVpcId = dict["ClientVpcId"] as! String
+        }
         if dict.keys.contains("ca") && dict["ca"] != nil {
             self.ca = dict["ca"] as! String
         }
@@ -261,6 +369,44 @@ public class PckCrlResponse : Tea.TeaModel {
     }
 }
 
+public class RootCaCrlRequest : Tea.TeaModel {
+    public var acsHost: String?
+
+    public var clientVpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acsHost != nil {
+            map["AcsHost"] = self.acsHost!
+        }
+        if self.clientVpcId != nil {
+            map["ClientVpcId"] = self.clientVpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsHost") && dict["AcsHost"] != nil {
+            self.acsHost = dict["AcsHost"] as! String
+        }
+        if dict.keys.contains("ClientVpcId") && dict["ClientVpcId"] != nil {
+            self.clientVpcId = dict["ClientVpcId"] as! String
+        }
+    }
+}
+
 public class RootCaCrlResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
@@ -311,6 +457,10 @@ public class RootCaCrlResponse : Tea.TeaModel {
 }
 
 public class SimplePackagePckCertRequest : Tea.TeaModel {
+    public var acsHost: String?
+
+    public var clientVpcId: String?
+
     public var cpusvn: String?
 
     public var encryptedPpid: String?
@@ -335,6 +485,12 @@ public class SimplePackagePckCertRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acsHost != nil {
+            map["AcsHost"] = self.acsHost!
+        }
+        if self.clientVpcId != nil {
+            map["ClientVpcId"] = self.clientVpcId!
+        }
         if self.cpusvn != nil {
             map["cpusvn"] = self.cpusvn!
         }
@@ -354,6 +510,12 @@ public class SimplePackagePckCertRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcsHost") && dict["AcsHost"] != nil {
+            self.acsHost = dict["AcsHost"] as! String
+        }
+        if dict.keys.contains("ClientVpcId") && dict["ClientVpcId"] != nil {
+            self.clientVpcId = dict["ClientVpcId"] as! String
+        }
         if dict.keys.contains("cpusvn") && dict["cpusvn"] != nil {
             self.cpusvn = dict["cpusvn"] as! String
         }

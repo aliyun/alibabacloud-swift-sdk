@@ -25,9 +25,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getQeIdentityWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQeIdentityResponse {
+    public func getQeIdentityWithOptions(_ request: GetQeIdentityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQeIdentityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsHost)) {
+            query["AcsHost"] = request.acsHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVpcId)) {
+            query["ClientVpcId"] = request.clientVpcId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetQeIdentity",
@@ -45,16 +54,25 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getQeIdentity() async throws -> GetQeIdentityResponse {
+    public func getQeIdentity(_ request: GetQeIdentityRequest) async throws -> GetQeIdentityResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getQeIdentityWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getQeIdentityWithOptions(request as! GetQeIdentityRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getQveIdentityWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQveIdentityResponse {
+    public func getQveIdentityWithOptions(_ request: GetQveIdentityRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQveIdentityResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsHost)) {
+            query["AcsHost"] = request.acsHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVpcId)) {
+            query["ClientVpcId"] = request.clientVpcId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetQveIdentity",
@@ -72,16 +90,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getQveIdentity() async throws -> GetQveIdentityResponse {
+    public func getQveIdentity(_ request: GetQveIdentityRequest) async throws -> GetQveIdentityResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getQveIdentityWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getQveIdentityWithOptions(request as! GetQveIdentityRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTcbInfoWithOptions(_ request: GetTcbInfoRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTcbInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsHost)) {
+            query["AcsHost"] = request.acsHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVpcId)) {
+            query["ClientVpcId"] = request.clientVpcId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fmspc)) {
             query["fmspc"] = request.fmspc ?? "";
         }
@@ -115,6 +139,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func pckCrlWithOptions(_ request: PckCrlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> PckCrlResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsHost)) {
+            query["AcsHost"] = request.acsHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVpcId)) {
+            query["ClientVpcId"] = request.clientVpcId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ca)) {
             query["ca"] = request.ca ?? "";
         }
@@ -145,9 +175,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func rootCaCrlWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RootCaCrlResponse {
+    public func rootCaCrlWithOptions(_ request: RootCaCrlRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RootCaCrlResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsHost)) {
+            query["AcsHost"] = request.acsHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVpcId)) {
+            query["ClientVpcId"] = request.clientVpcId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "RootCaCrl",
@@ -165,16 +204,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func rootCaCrl() async throws -> RootCaCrlResponse {
+    public func rootCaCrl(_ request: RootCaCrlRequest) async throws -> RootCaCrlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await rootCaCrlWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await rootCaCrlWithOptions(request as! RootCaCrlRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func simplePackagePckCertWithOptions(_ request: SimplePackagePckCertRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SimplePackagePckCertResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acsHost)) {
+            query["AcsHost"] = request.acsHost ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientVpcId)) {
+            query["ClientVpcId"] = request.clientVpcId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cpusvn)) {
             query["cpusvn"] = request.cpusvn ?? "";
         }
