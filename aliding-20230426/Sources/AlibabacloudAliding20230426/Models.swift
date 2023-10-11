@@ -30633,9 +30633,11 @@ public class QueryLiveInfoResponseBody : Tea.TeaModel {
 
     public var introduction: String?
 
-    public var liveId: Int32?
+    public var liveId: String?
 
     public var livePlayUrl: String?
+
+    public var liveStatus: Int32?
 
     public var playbackDuration: Int64?
 
@@ -30681,6 +30683,9 @@ public class QueryLiveInfoResponseBody : Tea.TeaModel {
         if self.livePlayUrl != nil {
             map["livePlayUrl"] = self.livePlayUrl!
         }
+        if self.liveStatus != nil {
+            map["liveStatus"] = self.liveStatus!
+        }
         if self.playbackDuration != nil {
             map["playbackDuration"] = self.playbackDuration!
         }
@@ -30716,10 +30721,13 @@ public class QueryLiveInfoResponseBody : Tea.TeaModel {
             self.introduction = dict["introduction"] as! String
         }
         if dict.keys.contains("liveId") && dict["liveId"] != nil {
-            self.liveId = dict["liveId"] as! Int32
+            self.liveId = dict["liveId"] as! String
         }
         if dict.keys.contains("livePlayUrl") && dict["livePlayUrl"] != nil {
             self.livePlayUrl = dict["livePlayUrl"] as! String
+        }
+        if dict.keys.contains("liveStatus") && dict["liveStatus"] != nil {
+            self.liveStatus = dict["liveStatus"] as! Int32
         }
         if dict.keys.contains("playbackDuration") && dict["playbackDuration"] != nil {
             self.playbackDuration = dict["playbackDuration"] as! Int64
