@@ -425,9 +425,15 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
     public class OIDCTokenInfo : Tea.TeaModel {
         public var clientIds: String?
 
+        public var expirationTime: String?
+
+        public var issuanceTime: String?
+
         public var issuer: String?
 
         public var subject: String?
+
+        public var verificationInfo: String?
 
         public override init() {
             super.init()
@@ -446,11 +452,20 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
             if self.clientIds != nil {
                 map["ClientIds"] = self.clientIds!
             }
+            if self.expirationTime != nil {
+                map["ExpirationTime"] = self.expirationTime!
+            }
+            if self.issuanceTime != nil {
+                map["IssuanceTime"] = self.issuanceTime!
+            }
             if self.issuer != nil {
                 map["Issuer"] = self.issuer!
             }
             if self.subject != nil {
                 map["Subject"] = self.subject!
+            }
+            if self.verificationInfo != nil {
+                map["VerificationInfo"] = self.verificationInfo!
             }
             return map
         }
@@ -459,11 +474,20 @@ public class AssumeRoleWithOIDCResponseBody : Tea.TeaModel {
             if dict.keys.contains("ClientIds") && dict["ClientIds"] != nil {
                 self.clientIds = dict["ClientIds"] as! String
             }
+            if dict.keys.contains("ExpirationTime") && dict["ExpirationTime"] != nil {
+                self.expirationTime = dict["ExpirationTime"] as! String
+            }
+            if dict.keys.contains("IssuanceTime") && dict["IssuanceTime"] != nil {
+                self.issuanceTime = dict["IssuanceTime"] as! String
+            }
             if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
                 self.issuer = dict["Issuer"] as! String
             }
             if dict.keys.contains("Subject") && dict["Subject"] != nil {
                 self.subject = dict["Subject"] as! String
+            }
+            if dict.keys.contains("VerificationInfo") && dict["VerificationInfo"] != nil {
+                self.verificationInfo = dict["VerificationInfo"] as! String
             }
         }
     }
