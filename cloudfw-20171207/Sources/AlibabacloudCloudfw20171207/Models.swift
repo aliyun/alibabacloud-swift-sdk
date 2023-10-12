@@ -259,6 +259,8 @@ public class AddControlPolicyRequest : Tea.TeaModel {
 
     public var direction: String?
 
+    public var endTime: Int64?
+
     public var ipVersion: String?
 
     public var lang: String?
@@ -269,11 +271,21 @@ public class AddControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatDays: [Int64]?
+
+    public var repeatEndTime: String?
+
+    public var repeatStartTime: String?
+
+    public var repeatType: String?
+
     public var source: String?
 
     public var sourceIp: String?
 
     public var sourceType: String?
+
+    public var startTime: Int64?
 
     public override init() {
         super.init()
@@ -319,6 +331,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         if self.direction != nil {
             map["Direction"] = self.direction!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.ipVersion != nil {
             map["IpVersion"] = self.ipVersion!
         }
@@ -334,6 +349,18 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatDays != nil {
+            map["RepeatDays"] = self.repeatDays!
+        }
+        if self.repeatEndTime != nil {
+            map["RepeatEndTime"] = self.repeatEndTime!
+        }
+        if self.repeatStartTime != nil {
+            map["RepeatStartTime"] = self.repeatStartTime!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -342,6 +369,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -377,6 +407,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Direction") && dict["Direction"] != nil {
             self.direction = dict["Direction"] as! String
         }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
         if dict.keys.contains("IpVersion") && dict["IpVersion"] != nil {
             self.ipVersion = dict["IpVersion"] as! String
         }
@@ -392,6 +425,18 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+            self.repeatDays = dict["RepeatDays"] as! [Int64]
+        }
+        if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+            self.repeatEndTime = dict["RepeatEndTime"] as! String
+        }
+        if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+            self.repeatStartTime = dict["RepeatStartTime"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
@@ -400,6 +445,9 @@ public class AddControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
         }
     }
 }
@@ -812,6 +860,8 @@ public class CreateNatFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var domainResolveType: Int32?
 
+    public var endTime: Int64?
+
     public var ipVersion: String?
 
     public var lang: String?
@@ -824,9 +874,19 @@ public class CreateNatFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatDays: [Int64]?
+
+    public var repeatEndTime: String?
+
+    public var repeatStartTime: String?
+
+    public var repeatType: String?
+
     public var source: String?
 
     public var sourceType: String?
+
+    public var startTime: Int64?
 
     public override init() {
         super.init()
@@ -872,6 +932,9 @@ public class CreateNatFirewallControlPolicyRequest : Tea.TeaModel {
         if self.domainResolveType != nil {
             map["DomainResolveType"] = self.domainResolveType!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.ipVersion != nil {
             map["IpVersion"] = self.ipVersion!
         }
@@ -890,11 +953,26 @@ public class CreateNatFirewallControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatDays != nil {
+            map["RepeatDays"] = self.repeatDays!
+        }
+        if self.repeatEndTime != nil {
+            map["RepeatEndTime"] = self.repeatEndTime!
+        }
+        if self.repeatStartTime != nil {
+            map["RepeatStartTime"] = self.repeatStartTime!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -930,6 +1008,9 @@ public class CreateNatFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("DomainResolveType") && dict["DomainResolveType"] != nil {
             self.domainResolveType = dict["DomainResolveType"] as! Int32
         }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
         if dict.keys.contains("IpVersion") && dict["IpVersion"] != nil {
             self.ipVersion = dict["IpVersion"] as! String
         }
@@ -948,11 +1029,26 @@ public class CreateNatFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+            self.repeatDays = dict["RepeatDays"] as! [Int64]
+        }
+        if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+            self.repeatEndTime = dict["RepeatEndTime"] as! String
+        }
+        if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+            self.repeatStartTime = dict["RepeatStartTime"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
         }
     }
 }
@@ -2004,6 +2100,8 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var applicationName: String?
 
+    public var applicationNameList: [String]?
+
     public var description_: String?
 
     public var destPort: String?
@@ -2016,6 +2114,8 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var destinationType: String?
 
+    public var endTime: Int64?
+
     public var lang: String?
 
     public var memberUid: String?
@@ -2026,9 +2126,19 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatDays: [Int64]?
+
+    public var repeatEndTime: String?
+
+    public var repeatStartTime: String?
+
+    public var repeatType: String?
+
     public var source: String?
 
     public var sourceType: String?
+
+    public var startTime: Int64?
 
     public var vpcFirewallId: String?
 
@@ -2052,6 +2162,9 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
+        if self.applicationNameList != nil {
+            map["ApplicationNameList"] = self.applicationNameList!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -2070,6 +2183,9 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -2085,11 +2201,26 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatDays != nil {
+            map["RepeatDays"] = self.repeatDays!
+        }
+        if self.repeatEndTime != nil {
+            map["RepeatEndTime"] = self.repeatEndTime!
+        }
+        if self.repeatStartTime != nil {
+            map["RepeatStartTime"] = self.repeatStartTime!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         if self.vpcFirewallId != nil {
             map["VpcFirewallId"] = self.vpcFirewallId!
@@ -2103,6 +2234,9 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ApplicationName") && dict["ApplicationName"] != nil {
             self.applicationName = dict["ApplicationName"] as! String
+        }
+        if dict.keys.contains("ApplicationNameList") && dict["ApplicationNameList"] != nil {
+            self.applicationNameList = dict["ApplicationNameList"] as! [String]
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
@@ -2122,6 +2256,9 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String
         }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -2137,11 +2274,26 @@ public class CreateVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+            self.repeatDays = dict["RepeatDays"] as! [Int64]
+        }
+        if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+            self.repeatEndTime = dict["RepeatEndTime"] as! String
+        }
+        if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+            self.repeatStartTime = dict["RepeatStartTime"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
         }
         if dict.keys.contains("VpcFirewallId") && dict["VpcFirewallId"] != nil {
             self.vpcFirewallId = dict["VpcFirewallId"] as! String
@@ -4177,6 +4329,8 @@ public class DescribeControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatType: String?
+
     public var source: String?
 
     public override init() {
@@ -4226,6 +4380,9 @@ public class DescribeControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -4265,6 +4422,9 @@ public class DescribeControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -4310,6 +4470,8 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
 
         public var dnsResultTime: Int64?
 
+        public var endTime: Int64?
+
         public var hitLastTime: Int64?
 
         public var hitTimes: Int64?
@@ -4324,6 +4486,14 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
 
         public var release: String?
 
+        public var repeatDays: [Int64]?
+
+        public var repeatEndTime: String?
+
+        public var repeatStartTime: String?
+
+        public var repeatType: String?
+
         public var source: String?
 
         public var sourceGroupCidrs: [String]?
@@ -4333,6 +4503,8 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
         public var sourceType: String?
 
         public var spreadCnt: Int32?
+
+        public var startTime: Int64?
 
         public override init() {
             super.init()
@@ -4402,6 +4574,9 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             if self.dnsResultTime != nil {
                 map["DnsResultTime"] = self.dnsResultTime!
             }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
             if self.hitLastTime != nil {
                 map["HitLastTime"] = self.hitLastTime!
             }
@@ -4423,6 +4598,18 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             if self.release != nil {
                 map["Release"] = self.release!
             }
+            if self.repeatDays != nil {
+                map["RepeatDays"] = self.repeatDays!
+            }
+            if self.repeatEndTime != nil {
+                map["RepeatEndTime"] = self.repeatEndTime!
+            }
+            if self.repeatStartTime != nil {
+                map["RepeatStartTime"] = self.repeatStartTime!
+            }
+            if self.repeatType != nil {
+                map["RepeatType"] = self.repeatType!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -4437,6 +4624,9 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.spreadCnt != nil {
                 map["SpreadCnt"] = self.spreadCnt!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
             }
             return map
         }
@@ -4496,6 +4686,9 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             if dict.keys.contains("DnsResultTime") && dict["DnsResultTime"] != nil {
                 self.dnsResultTime = dict["DnsResultTime"] as! Int64
             }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! Int64
+            }
             if dict.keys.contains("HitLastTime") && dict["HitLastTime"] != nil {
                 self.hitLastTime = dict["HitLastTime"] as! Int64
             }
@@ -4517,6 +4710,18 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             if dict.keys.contains("Release") && dict["Release"] != nil {
                 self.release = dict["Release"] as! String
             }
+            if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+                self.repeatDays = dict["RepeatDays"] as! [Int64]
+            }
+            if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+                self.repeatEndTime = dict["RepeatEndTime"] as! String
+            }
+            if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+                self.repeatStartTime = dict["RepeatStartTime"] as! String
+            }
+            if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+                self.repeatType = dict["RepeatType"] as! String
+            }
             if dict.keys.contains("Source") && dict["Source"] != nil {
                 self.source = dict["Source"] as! String
             }
@@ -4531,6 +4736,9 @@ public class DescribeControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SpreadCnt") && dict["SpreadCnt"] != nil {
                 self.spreadCnt = dict["SpreadCnt"] as! Int32
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! Int64
             }
         }
     }
@@ -5316,6 +5524,431 @@ public class DescribeInstanceMembersResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInternetOpenIpRequest : Tea.TeaModel {
+    public var assetsInstanceId: String?
+
+    public var assetsInstanceName: String?
+
+    public var assetsType: String?
+
+    public var currentPage: String?
+
+    public var endTime: String?
+
+    public var lang: String?
+
+    public var pageSize: String?
+
+    public var port: String?
+
+    public var publicIp: String?
+
+    public var regionNo: String?
+
+    public var riskLevel: String?
+
+    public var serviceName: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.assetsInstanceId != nil {
+            map["AssetsInstanceId"] = self.assetsInstanceId!
+        }
+        if self.assetsInstanceName != nil {
+            map["AssetsInstanceName"] = self.assetsInstanceName!
+        }
+        if self.assetsType != nil {
+            map["AssetsType"] = self.assetsType!
+        }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.publicIp != nil {
+            map["PublicIp"] = self.publicIp!
+        }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
+        if self.riskLevel != nil {
+            map["RiskLevel"] = self.riskLevel!
+        }
+        if self.serviceName != nil {
+            map["ServiceName"] = self.serviceName!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssetsInstanceId") && dict["AssetsInstanceId"] != nil {
+            self.assetsInstanceId = dict["AssetsInstanceId"] as! String
+        }
+        if dict.keys.contains("AssetsInstanceName") && dict["AssetsInstanceName"] != nil {
+            self.assetsInstanceName = dict["AssetsInstanceName"] as! String
+        }
+        if dict.keys.contains("AssetsType") && dict["AssetsType"] != nil {
+            self.assetsType = dict["AssetsType"] as! String
+        }
+        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
+            self.currentPage = dict["CurrentPage"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! String
+        }
+        if dict.keys.contains("Port") && dict["Port"] != nil {
+            self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("PublicIp") && dict["PublicIp"] != nil {
+            self.publicIp = dict["PublicIp"] as! String
+        }
+        if dict.keys.contains("RegionNo") && dict["RegionNo"] != nil {
+            self.regionNo = dict["RegionNo"] as! String
+        }
+        if dict.keys.contains("RiskLevel") && dict["RiskLevel"] != nil {
+            self.riskLevel = dict["RiskLevel"] as! String
+        }
+        if dict.keys.contains("ServiceName") && dict["ServiceName"] != nil {
+            self.serviceName = dict["ServiceName"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeInternetOpenIpResponseBody : Tea.TeaModel {
+    public class DataList : Tea.TeaModel {
+        public var aclRecommendDetail: String?
+
+        public var assetsInstanceId: String?
+
+        public var assetsName: String?
+
+        public var assetsType: String?
+
+        public var detailNum: Int32?
+
+        public var hasAclRecommend: Bool?
+
+        public var portList: [String]?
+
+        public var publicIp: String?
+
+        public var regionNo: String?
+
+        public var riskLevel: Int32?
+
+        public var riskReason: String?
+
+        public var serviceNameList: [String]?
+
+        public var trafficPercent1Day: String?
+
+        public var trafficPercent30Day: String?
+
+        public var trafficPercent7Day: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclRecommendDetail != nil {
+                map["AclRecommendDetail"] = self.aclRecommendDetail!
+            }
+            if self.assetsInstanceId != nil {
+                map["AssetsInstanceId"] = self.assetsInstanceId!
+            }
+            if self.assetsName != nil {
+                map["AssetsName"] = self.assetsName!
+            }
+            if self.assetsType != nil {
+                map["AssetsType"] = self.assetsType!
+            }
+            if self.detailNum != nil {
+                map["DetailNum"] = self.detailNum!
+            }
+            if self.hasAclRecommend != nil {
+                map["HasAclRecommend"] = self.hasAclRecommend!
+            }
+            if self.portList != nil {
+                map["PortList"] = self.portList!
+            }
+            if self.publicIp != nil {
+                map["PublicIp"] = self.publicIp!
+            }
+            if self.regionNo != nil {
+                map["RegionNo"] = self.regionNo!
+            }
+            if self.riskLevel != nil {
+                map["RiskLevel"] = self.riskLevel!
+            }
+            if self.riskReason != nil {
+                map["RiskReason"] = self.riskReason!
+            }
+            if self.serviceNameList != nil {
+                map["ServiceNameList"] = self.serviceNameList!
+            }
+            if self.trafficPercent1Day != nil {
+                map["TrafficPercent1Day"] = self.trafficPercent1Day!
+            }
+            if self.trafficPercent30Day != nil {
+                map["TrafficPercent30Day"] = self.trafficPercent30Day!
+            }
+            if self.trafficPercent7Day != nil {
+                map["TrafficPercent7Day"] = self.trafficPercent7Day!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AclRecommendDetail") && dict["AclRecommendDetail"] != nil {
+                self.aclRecommendDetail = dict["AclRecommendDetail"] as! String
+            }
+            if dict.keys.contains("AssetsInstanceId") && dict["AssetsInstanceId"] != nil {
+                self.assetsInstanceId = dict["AssetsInstanceId"] as! String
+            }
+            if dict.keys.contains("AssetsName") && dict["AssetsName"] != nil {
+                self.assetsName = dict["AssetsName"] as! String
+            }
+            if dict.keys.contains("AssetsType") && dict["AssetsType"] != nil {
+                self.assetsType = dict["AssetsType"] as! String
+            }
+            if dict.keys.contains("DetailNum") && dict["DetailNum"] != nil {
+                self.detailNum = dict["DetailNum"] as! Int32
+            }
+            if dict.keys.contains("HasAclRecommend") && dict["HasAclRecommend"] != nil {
+                self.hasAclRecommend = dict["HasAclRecommend"] as! Bool
+            }
+            if dict.keys.contains("PortList") && dict["PortList"] != nil {
+                self.portList = dict["PortList"] as! [String]
+            }
+            if dict.keys.contains("PublicIp") && dict["PublicIp"] != nil {
+                self.publicIp = dict["PublicIp"] as! String
+            }
+            if dict.keys.contains("RegionNo") && dict["RegionNo"] != nil {
+                self.regionNo = dict["RegionNo"] as! String
+            }
+            if dict.keys.contains("RiskLevel") && dict["RiskLevel"] != nil {
+                self.riskLevel = dict["RiskLevel"] as! Int32
+            }
+            if dict.keys.contains("RiskReason") && dict["RiskReason"] != nil {
+                self.riskReason = dict["RiskReason"] as! String
+            }
+            if dict.keys.contains("ServiceNameList") && dict["ServiceNameList"] != nil {
+                self.serviceNameList = dict["ServiceNameList"] as! [String]
+            }
+            if dict.keys.contains("TrafficPercent1Day") && dict["TrafficPercent1Day"] != nil {
+                self.trafficPercent1Day = dict["TrafficPercent1Day"] as! String
+            }
+            if dict.keys.contains("TrafficPercent30Day") && dict["TrafficPercent30Day"] != nil {
+                self.trafficPercent30Day = dict["TrafficPercent30Day"] as! String
+            }
+            if dict.keys.contains("TrafficPercent7Day") && dict["TrafficPercent7Day"] != nil {
+                self.trafficPercent7Day = dict["TrafficPercent7Day"] as! String
+            }
+        }
+    }
+    public class PageInfo : Tea.TeaModel {
+        public var currentPage: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.currentPage != nil {
+                map["CurrentPage"] = self.currentPage!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
+                self.currentPage = dict["CurrentPage"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var dataList: [DescribeInternetOpenIpResponseBody.DataList]?
+
+    public var pageInfo: DescribeInternetOpenIpResponseBody.PageInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pageInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataList != nil {
+            var tmp : [Any] = []
+            for k in self.dataList! {
+                tmp.append(k.toMap())
+            }
+            map["DataList"] = tmp
+        }
+        if self.pageInfo != nil {
+            map["PageInfo"] = self.pageInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataList") && dict["DataList"] != nil {
+            var tmp : [DescribeInternetOpenIpResponseBody.DataList] = []
+            for v in dict["DataList"] as! [Any] {
+                var model = DescribeInternetOpenIpResponseBody.DataList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.dataList = tmp
+        }
+        if dict.keys.contains("PageInfo") && dict["PageInfo"] != nil {
+            var model = DescribeInternetOpenIpResponseBody.PageInfo()
+            model.fromMap(dict["PageInfo"] as! [String: Any])
+            self.pageInfo = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeInternetOpenIpResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInternetOpenIpResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeInternetOpenIpResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInternetTrafficTrendRequest : Tea.TeaModel {
     public var direction: String?
 
@@ -5430,6 +6063,8 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
 
         public var time: Int32?
 
+        public var totalBps: Int64?
+
         public override init() {
             super.init()
         }
@@ -5471,6 +6106,9 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
             if self.time != nil {
                 map["Time"] = self.time!
             }
+            if self.totalBps != nil {
+                map["TotalBps"] = self.totalBps!
+            }
             return map
         }
 
@@ -5501,6 +6139,9 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Time") && dict["Time"] != nil {
                 self.time = dict["Time"] as! Int32
+            }
+            if dict.keys.contains("TotalBps") && dict["TotalBps"] != nil {
+                self.totalBps = dict["TotalBps"] as! Int64
             }
         }
     }
@@ -6213,6 +6854,8 @@ public class DescribeNatFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatType: String?
+
     public var source: String?
 
     public override init() {
@@ -6262,6 +6905,9 @@ public class DescribeNatFirewallControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -6301,6 +6947,9 @@ public class DescribeNatFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -6342,6 +6991,8 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
 
         public var domainResolveType: Int32?
 
+        public var endTime: Int64?
+
         public var hitLastTime: Int64?
 
         public var hitTimes: Int32?
@@ -6356,6 +7007,14 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
 
         public var release: String?
 
+        public var repeatDays: [Int64]?
+
+        public var repeatEndTime: String?
+
+        public var repeatStartTime: String?
+
+        public var repeatType: String?
+
         public var source: String?
 
         public var sourceGroupCidrs: [String]?
@@ -6365,6 +7024,8 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
         public var sourceType: String?
 
         public var spreadCnt: String?
+
+        public var startTime: Int64?
 
         public override init() {
             super.init()
@@ -6428,6 +7089,9 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             if self.domainResolveType != nil {
                 map["DomainResolveType"] = self.domainResolveType!
             }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
             if self.hitLastTime != nil {
                 map["HitLastTime"] = self.hitLastTime!
             }
@@ -6449,6 +7113,18 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             if self.release != nil {
                 map["Release"] = self.release!
             }
+            if self.repeatDays != nil {
+                map["RepeatDays"] = self.repeatDays!
+            }
+            if self.repeatEndTime != nil {
+                map["RepeatEndTime"] = self.repeatEndTime!
+            }
+            if self.repeatStartTime != nil {
+                map["RepeatStartTime"] = self.repeatStartTime!
+            }
+            if self.repeatType != nil {
+                map["RepeatType"] = self.repeatType!
+            }
             if self.source != nil {
                 map["Source"] = self.source!
             }
@@ -6463,6 +7139,9 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.spreadCnt != nil {
                 map["SpreadCnt"] = self.spreadCnt!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
             }
             return map
         }
@@ -6516,6 +7195,9 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             if dict.keys.contains("DomainResolveType") && dict["DomainResolveType"] != nil {
                 self.domainResolveType = dict["DomainResolveType"] as! Int32
             }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! Int64
+            }
             if dict.keys.contains("HitLastTime") && dict["HitLastTime"] != nil {
                 self.hitLastTime = dict["HitLastTime"] as! Int64
             }
@@ -6537,6 +7219,18 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             if dict.keys.contains("Release") && dict["Release"] != nil {
                 self.release = dict["Release"] as! String
             }
+            if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+                self.repeatDays = dict["RepeatDays"] as! [Int64]
+            }
+            if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+                self.repeatEndTime = dict["RepeatEndTime"] as! String
+            }
+            if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+                self.repeatStartTime = dict["RepeatStartTime"] as! String
+            }
+            if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+                self.repeatType = dict["RepeatType"] as! String
+            }
             if dict.keys.contains("Source") && dict["Source"] != nil {
                 self.source = dict["Source"] as! String
             }
@@ -6551,6 +7245,9 @@ public class DescribeNatFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SpreadCnt") && dict["SpreadCnt"] != nil {
                 self.spreadCnt = dict["SpreadCnt"] as! String
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! Int64
             }
         }
     }
@@ -11331,6 +12028,8 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
 
         public var aclGroupName: String?
 
+        public var aclRuleCount: Int32?
+
         public var memberUid: String?
 
         public override init() {
@@ -11353,6 +12052,9 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
             if self.aclGroupName != nil {
                 map["AclGroupName"] = self.aclGroupName!
             }
+            if self.aclRuleCount != nil {
+                map["AclRuleCount"] = self.aclRuleCount!
+            }
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
             }
@@ -11365,6 +12067,9 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AclGroupName") && dict["AclGroupName"] != nil {
                 self.aclGroupName = dict["AclGroupName"] as! String
+            }
+            if dict.keys.contains("AclRuleCount") && dict["AclRuleCount"] != nil {
+                self.aclRuleCount = dict["AclRuleCount"] as! Int32
             }
             if dict.keys.contains("MemberUid") && dict["MemberUid"] != nil {
                 self.memberUid = dict["MemberUid"] as! String
@@ -12699,6 +13404,8 @@ public class DescribeVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatType: String?
+
     public var source: String?
 
     public var vpcFirewallId: String?
@@ -12747,6 +13454,9 @@ public class DescribeVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -12787,6 +13497,9 @@ public class DescribeVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
@@ -12806,6 +13519,10 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
 
         public var applicationName: String?
 
+        public var applicationNameList: [String]?
+
+        public var createTime: Int64?
+
         public var description_: String?
 
         public var destPort: String?
@@ -12824,15 +13541,29 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
 
         public var destinationType: String?
 
-        public var hitTimes: Int32?
+        public var endTime: Int64?
+
+        public var hitLastTime: Int64?
+
+        public var hitTimes: Int64?
 
         public var memberUid: String?
+
+        public var modifyTime: Int64?
 
         public var order: Int32?
 
         public var proto: String?
 
         public var release: String?
+
+        public var repeatDays: [Int64]?
+
+        public var repeatEndTime: String?
+
+        public var repeatStartTime: String?
+
+        public var repeatType: String?
 
         public var source: String?
 
@@ -12841,6 +13572,10 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
         public var sourceGroupType: String?
 
         public var sourceType: String?
+
+        public var spreadCnt: Int64?
+
+        public var startTime: Int64?
 
         public override init() {
             super.init()
@@ -12867,6 +13602,12 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.applicationName != nil {
                 map["ApplicationName"] = self.applicationName!
+            }
+            if self.applicationNameList != nil {
+                map["ApplicationNameList"] = self.applicationNameList!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -12895,11 +13636,20 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             if self.destinationType != nil {
                 map["DestinationType"] = self.destinationType!
             }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.hitLastTime != nil {
+                map["HitLastTime"] = self.hitLastTime!
+            }
             if self.hitTimes != nil {
                 map["HitTimes"] = self.hitTimes!
             }
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
             }
             if self.order != nil {
                 map["Order"] = self.order!
@@ -12909,6 +13659,18 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.release != nil {
                 map["Release"] = self.release!
+            }
+            if self.repeatDays != nil {
+                map["RepeatDays"] = self.repeatDays!
+            }
+            if self.repeatEndTime != nil {
+                map["RepeatEndTime"] = self.repeatEndTime!
+            }
+            if self.repeatStartTime != nil {
+                map["RepeatStartTime"] = self.repeatStartTime!
+            }
+            if self.repeatType != nil {
+                map["RepeatType"] = self.repeatType!
             }
             if self.source != nil {
                 map["Source"] = self.source!
@@ -12921,6 +13683,12 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if self.sourceType != nil {
                 map["SourceType"] = self.sourceType!
+            }
+            if self.spreadCnt != nil {
+                map["SpreadCnt"] = self.spreadCnt!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
             }
             return map
         }
@@ -12937,6 +13705,12 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ApplicationName") && dict["ApplicationName"] != nil {
                 self.applicationName = dict["ApplicationName"] as! String
+            }
+            if dict.keys.contains("ApplicationNameList") && dict["ApplicationNameList"] != nil {
+                self.applicationNameList = dict["ApplicationNameList"] as! [String]
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! Int64
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
@@ -12965,11 +13739,20 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
                 self.destinationType = dict["DestinationType"] as! String
             }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! Int64
+            }
+            if dict.keys.contains("HitLastTime") && dict["HitLastTime"] != nil {
+                self.hitLastTime = dict["HitLastTime"] as! Int64
+            }
             if dict.keys.contains("HitTimes") && dict["HitTimes"] != nil {
-                self.hitTimes = dict["HitTimes"] as! Int32
+                self.hitTimes = dict["HitTimes"] as! Int64
             }
             if dict.keys.contains("MemberUid") && dict["MemberUid"] != nil {
                 self.memberUid = dict["MemberUid"] as! String
+            }
+            if dict.keys.contains("ModifyTime") && dict["ModifyTime"] != nil {
+                self.modifyTime = dict["ModifyTime"] as! Int64
             }
             if dict.keys.contains("Order") && dict["Order"] != nil {
                 self.order = dict["Order"] as! Int32
@@ -12979,6 +13762,18 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Release") && dict["Release"] != nil {
                 self.release = dict["Release"] as! String
+            }
+            if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+                self.repeatDays = dict["RepeatDays"] as! [Int64]
+            }
+            if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+                self.repeatEndTime = dict["RepeatEndTime"] as! String
+            }
+            if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+                self.repeatStartTime = dict["RepeatStartTime"] as! String
+            }
+            if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+                self.repeatType = dict["RepeatType"] as! String
             }
             if dict.keys.contains("Source") && dict["Source"] != nil {
                 self.source = dict["Source"] as! String
@@ -12991,6 +13786,12 @@ public class DescribeVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
                 self.sourceType = dict["SourceType"] as! String
+            }
+            if dict.keys.contains("SpreadCnt") && dict["SpreadCnt"] != nil {
+                self.spreadCnt = dict["SpreadCnt"] as! Int64
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! Int64
             }
         }
     }
@@ -15482,15 +16283,27 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
 
     public var direction: String?
 
+    public var endTime: Int64?
+
     public var lang: String?
 
     public var proto: String?
 
     public var release: String?
 
+    public var repeatDays: [Int64]?
+
+    public var repeatEndTime: String?
+
+    public var repeatStartTime: String?
+
+    public var repeatType: String?
+
     public var source: String?
 
     public var sourceType: String?
+
+    public var startTime: Int64?
 
     public override init() {
         super.init()
@@ -15539,6 +16352,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         if self.direction != nil {
             map["Direction"] = self.direction!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -15548,11 +16364,26 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatDays != nil {
+            map["RepeatDays"] = self.repeatDays!
+        }
+        if self.repeatEndTime != nil {
+            map["RepeatEndTime"] = self.repeatEndTime!
+        }
+        if self.repeatStartTime != nil {
+            map["RepeatStartTime"] = self.repeatStartTime!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -15591,6 +16422,9 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Direction") && dict["Direction"] != nil {
             self.direction = dict["Direction"] as! String
         }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -15600,11 +16434,26 @@ public class ModifyControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+            self.repeatDays = dict["RepeatDays"] as! [Int64]
+        }
+        if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+            self.repeatEndTime = dict["RepeatEndTime"] as! String
+        }
+        if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+            self.repeatStartTime = dict["RepeatStartTime"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
         }
     }
 }
@@ -16345,6 +17194,8 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var domainResolveType: String?
 
+    public var endTime: Int64?
+
     public var lang: String?
 
     public var natGatewayId: String?
@@ -16353,9 +17204,19 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var release: String?
 
+    public var repeatDays: [Int64]?
+
+    public var repeatEndTime: String?
+
+    public var repeatStartTime: String?
+
+    public var repeatType: String?
+
     public var source: String?
 
     public var sourceType: String?
+
+    public var startTime: Int64?
 
     public override init() {
         super.init()
@@ -16401,6 +17262,9 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
         if self.domainResolveType != nil {
             map["DomainResolveType"] = self.domainResolveType!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -16413,11 +17277,26 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatDays != nil {
+            map["RepeatDays"] = self.repeatDays!
+        }
+        if self.repeatEndTime != nil {
+            map["RepeatEndTime"] = self.repeatEndTime!
+        }
+        if self.repeatStartTime != nil {
+            map["RepeatStartTime"] = self.repeatStartTime!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         return map
     }
@@ -16453,6 +17332,9 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("DomainResolveType") && dict["DomainResolveType"] != nil {
             self.domainResolveType = dict["DomainResolveType"] as! String
         }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -16465,11 +17347,26 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+            self.repeatDays = dict["RepeatDays"] as! [Int64]
+        }
+        if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+            self.repeatEndTime = dict["RepeatEndTime"] as! String
+        }
+        if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+            self.repeatStartTime = dict["RepeatStartTime"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
         }
     }
 }
@@ -17851,6 +18748,8 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var applicationName: String?
 
+    public var applicationNameList: [String]?
+
     public var description_: String?
 
     public var destPort: String?
@@ -17863,15 +18762,27 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var destinationType: String?
 
+    public var endTime: Int64?
+
     public var lang: String?
 
     public var proto: String?
 
     public var release: String?
 
+    public var repeatDays: [Int64]?
+
+    public var repeatEndTime: String?
+
+    public var repeatStartTime: String?
+
+    public var repeatType: String?
+
     public var source: String?
 
     public var sourceType: String?
+
+    public var startTime: Int64?
 
     public var vpcFirewallId: String?
 
@@ -17898,6 +18809,9 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.applicationName != nil {
             map["ApplicationName"] = self.applicationName!
         }
+        if self.applicationNameList != nil {
+            map["ApplicationNameList"] = self.applicationNameList!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -17916,6 +18830,9 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
         }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -17925,11 +18842,26 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if self.release != nil {
             map["Release"] = self.release!
         }
+        if self.repeatDays != nil {
+            map["RepeatDays"] = self.repeatDays!
+        }
+        if self.repeatEndTime != nil {
+            map["RepeatEndTime"] = self.repeatEndTime!
+        }
+        if self.repeatStartTime != nil {
+            map["RepeatStartTime"] = self.repeatStartTime!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
         }
         if self.vpcFirewallId != nil {
             map["VpcFirewallId"] = self.vpcFirewallId!
@@ -17946,6 +18878,9 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ApplicationName") && dict["ApplicationName"] != nil {
             self.applicationName = dict["ApplicationName"] as! String
+        }
+        if dict.keys.contains("ApplicationNameList") && dict["ApplicationNameList"] != nil {
+            self.applicationNameList = dict["ApplicationNameList"] as! [String]
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
@@ -17965,6 +18900,9 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String
         }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -17974,11 +18912,26 @@ public class ModifyVpcFirewallControlPolicyRequest : Tea.TeaModel {
         if dict.keys.contains("Release") && dict["Release"] != nil {
             self.release = dict["Release"] as! String
         }
+        if dict.keys.contains("RepeatDays") && dict["RepeatDays"] != nil {
+            self.repeatDays = dict["RepeatDays"] as! [Int64]
+        }
+        if dict.keys.contains("RepeatEndTime") && dict["RepeatEndTime"] != nil {
+            self.repeatEndTime = dict["RepeatEndTime"] as! String
+        }
+        if dict.keys.contains("RepeatStartTime") && dict["RepeatStartTime"] != nil {
+            self.repeatStartTime = dict["RepeatStartTime"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
         }
         if dict.keys.contains("VpcFirewallId") && dict["VpcFirewallId"] != nil {
             self.vpcFirewallId = dict["VpcFirewallId"] as! String
