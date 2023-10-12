@@ -10625,6 +10625,51 @@ public class DescribeClusterNodesResponse : Tea.TeaModel {
 
 public class DescribeClusterResourcesResponse : Tea.TeaModel {
     public class Body : Tea.TeaModel {
+        public class Dependencies : Tea.TeaModel {
+            public var clusterId: String?
+
+            public var resourceType: String?
+
+            public var instanceId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.clusterId != nil {
+                    map["cluster_id"] = self.clusterId!
+                }
+                if self.resourceType != nil {
+                    map["resource_type"] = self.resourceType!
+                }
+                if self.instanceId != nil {
+                    map["instance_id"] = self.instanceId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+                    self.clusterId = dict["cluster_id"] as! String
+                }
+                if dict.keys.contains("resource_type") && dict["resource_type"] != nil {
+                    self.resourceType = dict["resource_type"] as! String
+                }
+                if dict.keys.contains("instance_id") && dict["instance_id"] != nil {
+                    self.instanceId = dict["instance_id"] as! String
+                }
+            }
+        }
         public var clusterId: String?
 
         public var created: String?
@@ -10639,6 +10684,8 @@ public class DescribeClusterResourcesResponse : Tea.TeaModel {
 
         public var autoCreate: Int64?
 
+        public var dependencies: DescribeClusterResourcesResponse.Body.Dependencies?
+
         public override init() {
             super.init()
         }
@@ -10649,6 +10696,7 @@ public class DescribeClusterResourcesResponse : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.dependencies?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -10674,6 +10722,9 @@ public class DescribeClusterResourcesResponse : Tea.TeaModel {
             if self.autoCreate != nil {
                 map["auto_create"] = self.autoCreate!
             }
+            if self.dependencies != nil {
+                map["dependencies"] = self.dependencies?.toMap()
+            }
             return map
         }
 
@@ -10698,6 +10749,11 @@ public class DescribeClusterResourcesResponse : Tea.TeaModel {
             }
             if dict.keys.contains("auto_create") && dict["auto_create"] != nil {
                 self.autoCreate = dict["auto_create"] as! Int64
+            }
+            if dict.keys.contains("dependencies") && dict["dependencies"] != nil {
+                var model = DescribeClusterResourcesResponse.Body.Dependencies()
+                model.fromMap(dict["dependencies"] as! [String: Any])
+                self.dependencies = model
             }
         }
     }
