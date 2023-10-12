@@ -2136,7 +2136,11 @@ public class AddGatewayRequest : Tea.TeaModel {
 
     public var internetSlbSpec: String?
 
+    public var mserVersion: String?
+
     public var name: String?
+
+    public var nlbNetworkType: String?
 
     public var region: String?
 
@@ -2197,8 +2201,14 @@ public class AddGatewayRequest : Tea.TeaModel {
         if self.internetSlbSpec != nil {
             map["InternetSlbSpec"] = self.internetSlbSpec!
         }
+        if self.mserVersion != nil {
+            map["MserVersion"] = self.mserVersion!
+        }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.nlbNetworkType != nil {
+            map["NlbNetworkType"] = self.nlbNetworkType!
         }
         if self.region != nil {
             map["Region"] = self.region!
@@ -2269,8 +2279,14 @@ public class AddGatewayRequest : Tea.TeaModel {
         if dict.keys.contains("InternetSlbSpec") && dict["InternetSlbSpec"] != nil {
             self.internetSlbSpec = dict["InternetSlbSpec"] as! String
         }
+        if dict.keys.contains("MserVersion") && dict["MserVersion"] != nil {
+            self.mserVersion = dict["MserVersion"] as! String
+        }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NlbNetworkType") && dict["NlbNetworkType"] != nil {
+            self.nlbNetworkType = dict["NlbNetworkType"] as! String
         }
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
@@ -2379,7 +2395,11 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
 
     public var internetSlbSpec: String?
 
+    public var mserVersion: String?
+
     public var name: String?
+
+    public var nlbNetworkType: String?
 
     public var region: String?
 
@@ -2440,8 +2460,14 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
         if self.internetSlbSpec != nil {
             map["InternetSlbSpec"] = self.internetSlbSpec!
         }
+        if self.mserVersion != nil {
+            map["MserVersion"] = self.mserVersion!
+        }
         if self.name != nil {
             map["Name"] = self.name!
+        }
+        if self.nlbNetworkType != nil {
+            map["NlbNetworkType"] = self.nlbNetworkType!
         }
         if self.region != nil {
             map["Region"] = self.region!
@@ -2508,8 +2534,14 @@ public class AddGatewayShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("InternetSlbSpec") && dict["InternetSlbSpec"] != nil {
             self.internetSlbSpec = dict["InternetSlbSpec"] as! String
         }
+        if dict.keys.contains("MserVersion") && dict["MserVersion"] != nil {
+            self.mserVersion = dict["MserVersion"] as! String
+        }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NlbNetworkType") && dict["NlbNetworkType"] != nil {
+            self.nlbNetworkType = dict["NlbNetworkType"] as! String
         }
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
@@ -36767,6 +36799,51 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class MaintenancePeriod : Tea.TeaModel {
+                public var endTime: String?
+
+                public var startTime: String?
+
+                public var timeZone: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.endTime != nil {
+                        map["EndTime"] = self.endTime!
+                    }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
+                    if self.timeZone != nil {
+                        map["TimeZone"] = self.timeZone!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                        self.endTime = dict["EndTime"] as! String
+                    }
+                    if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                        self.startTime = dict["StartTime"] as! String
+                    }
+                    if dict.keys.contains("TimeZone") && dict["TimeZone"] != nil {
+                        self.timeZone = dict["TimeZone"] as! String
+                    }
+                }
+            }
             public class Slb : Tea.TeaModel {
                 public var gatewaySlbMode: String?
 
@@ -36894,7 +36971,11 @@ public class ListGatewayResponseBody : Tea.TeaModel {
 
             public var latestVersion: String?
 
+            public var maintenancePeriod: ListGatewayResponseBody.Data.Result.MaintenancePeriod?
+
             public var mseTag: String?
+
+            public var mseVersion: String?
 
             public var mustUpgrade: Bool?
 
@@ -36942,6 +37023,7 @@ public class ListGatewayResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.elasticPolicy?.validate()
                 try self.initConfig?.validate()
+                try self.maintenancePeriod?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -37013,8 +37095,14 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 if self.latestVersion != nil {
                     map["LatestVersion"] = self.latestVersion!
                 }
+                if self.maintenancePeriod != nil {
+                    map["MaintenancePeriod"] = self.maintenancePeriod?.toMap()
+                }
                 if self.mseTag != nil {
                     map["MseTag"] = self.mseTag!
+                }
+                if self.mseVersion != nil {
+                    map["MseVersion"] = self.mseVersion!
                 }
                 if self.mustUpgrade != nil {
                     map["MustUpgrade"] = self.mustUpgrade!
@@ -37150,8 +37238,16 @@ public class ListGatewayResponseBody : Tea.TeaModel {
                 if dict.keys.contains("LatestVersion") && dict["LatestVersion"] != nil {
                     self.latestVersion = dict["LatestVersion"] as! String
                 }
+                if dict.keys.contains("MaintenancePeriod") && dict["MaintenancePeriod"] != nil {
+                    var model = ListGatewayResponseBody.Data.Result.MaintenancePeriod()
+                    model.fromMap(dict["MaintenancePeriod"] as! [String: Any])
+                    self.maintenancePeriod = model
+                }
                 if dict.keys.contains("MseTag") && dict["MseTag"] != nil {
                     self.mseTag = dict["MseTag"] as! String
+                }
+                if dict.keys.contains("MseVersion") && dict["MseVersion"] != nil {
+                    self.mseVersion = dict["MseVersion"] as! String
                 }
                 if dict.keys.contains("MustUpgrade") && dict["MustUpgrade"] != nil {
                     self.mustUpgrade = dict["MustUpgrade"] as! Bool
@@ -41402,6 +41498,8 @@ public class ListGatewaySlbResponseBody : Tea.TeaModel {
 
         public var slbPort: String?
 
+        public var slbType: String?
+
         public var statusDesc: String?
 
         public var type: String?
@@ -41465,6 +41563,9 @@ public class ListGatewaySlbResponseBody : Tea.TeaModel {
             if self.slbPort != nil {
                 map["SlbPort"] = self.slbPort!
             }
+            if self.slbType != nil {
+                map["SlbType"] = self.slbType!
+            }
             if self.statusDesc != nil {
                 map["StatusDesc"] = self.statusDesc!
             }
@@ -41526,6 +41627,9 @@ public class ListGatewaySlbResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SlbPort") && dict["SlbPort"] != nil {
                 self.slbPort = dict["SlbPort"] as! String
+            }
+            if dict.keys.contains("SlbType") && dict["SlbType"] != nil {
+                self.slbType = dict["SlbType"] as! String
             }
             if dict.keys.contains("StatusDesc") && dict["StatusDesc"] != nil {
                 self.statusDesc = dict["StatusDesc"] as! String
@@ -44555,6 +44659,8 @@ public class ListServiceSourceRequest : Tea.TeaModel {
 
     public var gatewayUniqueId: String?
 
+    public var source: String?
+
     public override init() {
         super.init()
     }
@@ -44575,6 +44681,9 @@ public class ListServiceSourceRequest : Tea.TeaModel {
         if self.gatewayUniqueId != nil {
             map["GatewayUniqueId"] = self.gatewayUniqueId!
         }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
         return map
     }
 
@@ -44584,6 +44693,9 @@ public class ListServiceSourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
             self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
         }
     }
 }
@@ -49327,6 +49439,43 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class MaintenancePeriod : Tea.TeaModel {
+            public var endTime: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                    self.endTime = dict["EndTime"] as! String
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
         public var aclEntryList: String?
 
         public var aclId: String?
@@ -49385,6 +49534,8 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
 
         public var intranetPort: String?
 
+        public var maintenancePeriod: QueryClusterInfoResponseBody.Data.MaintenancePeriod?
+
         public var memoryCapacity: Int64?
 
         public var mseVersion: String?
@@ -49417,6 +49568,7 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.maintenancePeriod?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -49511,6 +49663,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             }
             if self.intranetPort != nil {
                 map["IntranetPort"] = self.intranetPort!
+            }
+            if self.maintenancePeriod != nil {
+                map["MaintenancePeriod"] = self.maintenancePeriod?.toMap()
             }
             if self.memoryCapacity != nil {
                 map["MemoryCapacity"] = self.memoryCapacity!
@@ -49643,6 +49798,11 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IntranetPort") && dict["IntranetPort"] != nil {
                 self.intranetPort = dict["IntranetPort"] as! String
+            }
+            if dict.keys.contains("MaintenancePeriod") && dict["MaintenancePeriod"] != nil {
+                var model = QueryClusterInfoResponseBody.Data.MaintenancePeriod()
+                model.fromMap(dict["MaintenancePeriod"] as! [String: Any])
+                self.maintenancePeriod = model
             }
             if dict.keys.contains("MemoryCapacity") && dict["MemoryCapacity"] != nil {
                 self.memoryCapacity = dict["MemoryCapacity"] as! Int64
@@ -55092,6 +55252,10 @@ public class UpdateClusterRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var maintenanceEndTime: String?
+
+    public var maintenanceStartTime: String?
+
     public var requestPars: String?
 
     public override init() {
@@ -55117,6 +55281,12 @@ public class UpdateClusterRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.maintenanceEndTime != nil {
+            map["MaintenanceEndTime"] = self.maintenanceEndTime!
+        }
+        if self.maintenanceStartTime != nil {
+            map["MaintenanceStartTime"] = self.maintenanceStartTime!
+        }
         if self.requestPars != nil {
             map["RequestPars"] = self.requestPars!
         }
@@ -55132,6 +55302,12 @@ public class UpdateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("MaintenanceEndTime") && dict["MaintenanceEndTime"] != nil {
+            self.maintenanceEndTime = dict["MaintenanceEndTime"] as! String
+        }
+        if dict.keys.contains("MaintenanceStartTime") && dict["MaintenanceStartTime"] != nil {
+            self.maintenanceStartTime = dict["MaintenanceStartTime"] as! String
         }
         if dict.keys.contains("RequestPars") && dict["RequestPars"] != nil {
             self.requestPars = dict["RequestPars"] as! String
