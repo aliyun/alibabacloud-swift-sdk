@@ -12438,6 +12438,8 @@ public class DescribeApplicationMonitorResponseBody : Tea.TeaModel {
 
     public var silenceTime: Int32?
 
+    public var state: String?
+
     public var taskId: String?
 
     public var taskName: String?
@@ -12493,6 +12495,9 @@ public class DescribeApplicationMonitorResponseBody : Tea.TeaModel {
         if self.silenceTime != nil {
             map["SilenceTime"] = self.silenceTime!
         }
+        if self.state != nil {
+            map["State"] = self.state!
+        }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
@@ -12543,6 +12548,9 @@ public class DescribeApplicationMonitorResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SilenceTime") && dict["SilenceTime"] != nil {
             self.silenceTime = dict["SilenceTime"] as! Int32
+        }
+        if dict.keys.contains("State") && dict["State"] != nil {
+            self.state = dict["State"] as! String
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! String
