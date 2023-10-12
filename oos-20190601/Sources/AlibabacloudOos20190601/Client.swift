@@ -167,6 +167,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            query["ServiceId"] = request.serviceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tagsShrink)) {
             query["Tags"] = request.tagsShrink ?? "";
         }

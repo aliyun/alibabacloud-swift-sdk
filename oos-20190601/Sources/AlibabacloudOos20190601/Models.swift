@@ -455,6 +455,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var serviceId: String?
+
     public var tags: [String: Any]?
 
     public override init() {
@@ -490,6 +492,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
@@ -517,6 +522,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
+        }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             self.tags = dict["Tags"] as! [String: Any]
         }
@@ -535,6 +543,8 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
     public var regionId: String?
 
     public var resourceGroupId: String?
+
+    public var serviceId: String?
 
     public var tagsShrink: String?
 
@@ -570,6 +580,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
@@ -594,6 +607,9 @@ public class CreateApplicationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! String
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             self.tagsShrink = dict["Tags"] as! String
@@ -5491,6 +5507,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
         public var resourceGroupId: String?
 
+        public var serviceId: String?
+
         public var tags: [String: Any]?
 
         public var updateDate: String?
@@ -5528,6 +5546,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
             if self.tags != nil {
                 map["Tags"] = self.tags!
             }
@@ -5557,6 +5578,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! String
             }
             if dict.keys.contains("Tags") && dict["Tags"] != nil {
                 self.tags = dict["Tags"] as! [String: Any]
