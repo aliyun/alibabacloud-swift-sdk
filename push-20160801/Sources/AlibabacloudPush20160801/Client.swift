@@ -510,6 +510,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidExtParameters)) {
             query["AndroidExtParameters"] = request.androidExtParameters ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.androidHonorTargetUserType)) {
+            query["AndroidHonorTargetUserType"] = request.androidHonorTargetUserType!;
+        }
         if (!TeaUtils.Client.isUnset(request.androidHuaweiReceiptId)) {
             query["AndroidHuaweiReceiptId"] = request.androidHuaweiReceiptId ?? "";
         }
@@ -584,6 +587,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.androidRenderStyle)) {
             query["AndroidRenderStyle"] = request.androidRenderStyle!;
+        }
+        if (!TeaUtils.Client.isUnset(request.androidTargetUserType)) {
+            query["AndroidTargetUserType"] = request.androidTargetUserType!;
         }
         if (!TeaUtils.Client.isUnset(request.androidVivoPushMode)) {
             query["AndroidVivoPushMode"] = request.androidVivoPushMode!;
@@ -742,6 +748,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobKey)) {
             query["JobKey"] = request.jobKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.storeOffline)) {
+            query["StoreOffline"] = request.storeOffline!;
+        }
         if (!TeaUtils.Client.isUnset(request.target)) {
             query["Target"] = request.target ?? "";
         }
@@ -787,6 +796,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.jobKey)) {
             query["JobKey"] = request.jobKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storeOffline)) {
+            query["StoreOffline"] = request.storeOffline!;
         }
         if (!TeaUtils.Client.isUnset(request.target)) {
             query["Target"] = request.target ?? "";
@@ -836,6 +848,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.jobKey)) {
             query["JobKey"] = request.jobKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storeOffline)) {
+            query["StoreOffline"] = request.storeOffline!;
         }
         if (!TeaUtils.Client.isUnset(request.target)) {
             query["Target"] = request.target ?? "";

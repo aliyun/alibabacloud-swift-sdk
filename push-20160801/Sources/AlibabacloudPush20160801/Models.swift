@@ -1726,6 +1726,8 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidExtParameters: String?
 
+        public var androidHonorTargetUserType: Int32?
+
         public var androidHuaweiReceiptId: String?
 
         public var androidHuaweiTargetUserType: Int32?
@@ -1775,6 +1777,8 @@ public class MassPushRequest : Tea.TeaModel {
         public var androidRemind: Bool?
 
         public var androidRenderStyle: String?
+
+        public var androidTargetUserType: Int32?
 
         public var androidVivoPushMode: Int32?
 
@@ -1873,6 +1877,9 @@ public class MassPushRequest : Tea.TeaModel {
             if self.androidExtParameters != nil {
                 map["AndroidExtParameters"] = self.androidExtParameters!
             }
+            if self.androidHonorTargetUserType != nil {
+                map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+            }
             if self.androidHuaweiReceiptId != nil {
                 map["AndroidHuaweiReceiptId"] = self.androidHuaweiReceiptId!
             }
@@ -1947,6 +1954,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidRenderStyle != nil {
                 map["AndroidRenderStyle"] = self.androidRenderStyle!
+            }
+            if self.androidTargetUserType != nil {
+                map["AndroidTargetUserType"] = self.androidTargetUserType!
             }
             if self.androidVivoPushMode != nil {
                 map["AndroidVivoPushMode"] = self.androidVivoPushMode!
@@ -2069,6 +2079,9 @@ public class MassPushRequest : Tea.TeaModel {
             if dict.keys.contains("AndroidExtParameters") && dict["AndroidExtParameters"] != nil {
                 self.androidExtParameters = dict["AndroidExtParameters"] as! String
             }
+            if dict.keys.contains("AndroidHonorTargetUserType") && dict["AndroidHonorTargetUserType"] != nil {
+                self.androidHonorTargetUserType = dict["AndroidHonorTargetUserType"] as! Int32
+            }
             if dict.keys.contains("AndroidHuaweiReceiptId") && dict["AndroidHuaweiReceiptId"] != nil {
                 self.androidHuaweiReceiptId = dict["AndroidHuaweiReceiptId"] as! String
             }
@@ -2143,6 +2156,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if dict.keys.contains("AndroidRenderStyle") && dict["AndroidRenderStyle"] != nil {
                 self.androidRenderStyle = dict["AndroidRenderStyle"] as! String
+            }
+            if dict.keys.contains("AndroidTargetUserType") && dict["AndroidTargetUserType"] != nil {
+                self.androidTargetUserType = dict["AndroidTargetUserType"] as! Int32
             }
             if dict.keys.contains("AndroidVivoPushMode") && dict["AndroidVivoPushMode"] != nil {
                 self.androidVivoPushMode = dict["AndroidVivoPushMode"] as! Int32
@@ -2430,6 +2446,8 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidExtParameters: String?
 
+    public var androidHonorTargetUserType: Int32?
+
     public var androidHuaweiReceiptId: String?
 
     public var androidHuaweiTargetUserType: Int32?
@@ -2479,6 +2497,8 @@ public class PushRequest : Tea.TeaModel {
     public var androidRemind: Bool?
 
     public var androidRenderStyle: Int32?
+
+    public var androidTargetUserType: Int32?
 
     public var androidVivoPushMode: Int32?
 
@@ -2589,6 +2609,9 @@ public class PushRequest : Tea.TeaModel {
         if self.androidExtParameters != nil {
             map["AndroidExtParameters"] = self.androidExtParameters!
         }
+        if self.androidHonorTargetUserType != nil {
+            map["AndroidHonorTargetUserType"] = self.androidHonorTargetUserType!
+        }
         if self.androidHuaweiReceiptId != nil {
             map["AndroidHuaweiReceiptId"] = self.androidHuaweiReceiptId!
         }
@@ -2663,6 +2686,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidRenderStyle != nil {
             map["AndroidRenderStyle"] = self.androidRenderStyle!
+        }
+        if self.androidTargetUserType != nil {
+            map["AndroidTargetUserType"] = self.androidTargetUserType!
         }
         if self.androidVivoPushMode != nil {
             map["AndroidVivoPushMode"] = self.androidVivoPushMode!
@@ -2803,6 +2829,9 @@ public class PushRequest : Tea.TeaModel {
         if dict.keys.contains("AndroidExtParameters") && dict["AndroidExtParameters"] != nil {
             self.androidExtParameters = dict["AndroidExtParameters"] as! String
         }
+        if dict.keys.contains("AndroidHonorTargetUserType") && dict["AndroidHonorTargetUserType"] != nil {
+            self.androidHonorTargetUserType = dict["AndroidHonorTargetUserType"] as! Int32
+        }
         if dict.keys.contains("AndroidHuaweiReceiptId") && dict["AndroidHuaweiReceiptId"] != nil {
             self.androidHuaweiReceiptId = dict["AndroidHuaweiReceiptId"] as! String
         }
@@ -2877,6 +2906,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidRenderStyle") && dict["AndroidRenderStyle"] != nil {
             self.androidRenderStyle = dict["AndroidRenderStyle"] as! Int32
+        }
+        if dict.keys.contains("AndroidTargetUserType") && dict["AndroidTargetUserType"] != nil {
+            self.androidTargetUserType = dict["AndroidTargetUserType"] as! Int32
         }
         if dict.keys.contains("AndroidVivoPushMode") && dict["AndroidVivoPushMode"] != nil {
             self.androidVivoPushMode = dict["AndroidVivoPushMode"] as! Int32
@@ -3098,6 +3130,8 @@ public class PushMessageToAndroidRequest : Tea.TeaModel {
 
     public var jobKey: String?
 
+    public var storeOffline: Bool?
+
     public var target: String?
 
     public var targetValue: String?
@@ -3127,6 +3161,9 @@ public class PushMessageToAndroidRequest : Tea.TeaModel {
         if self.jobKey != nil {
             map["JobKey"] = self.jobKey!
         }
+        if self.storeOffline != nil {
+            map["StoreOffline"] = self.storeOffline!
+        }
         if self.target != nil {
             map["Target"] = self.target!
         }
@@ -3148,6 +3185,9 @@ public class PushMessageToAndroidRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobKey") && dict["JobKey"] != nil {
             self.jobKey = dict["JobKey"] as! String
+        }
+        if dict.keys.contains("StoreOffline") && dict["StoreOffline"] != nil {
+            self.storeOffline = dict["StoreOffline"] as! Bool
         }
         if dict.keys.contains("Target") && dict["Target"] != nil {
             self.target = dict["Target"] as! String
@@ -3258,6 +3298,8 @@ public class PushMessageToiOSRequest : Tea.TeaModel {
 
     public var jobKey: String?
 
+    public var storeOffline: Bool?
+
     public var target: String?
 
     public var targetValue: String?
@@ -3287,6 +3329,9 @@ public class PushMessageToiOSRequest : Tea.TeaModel {
         if self.jobKey != nil {
             map["JobKey"] = self.jobKey!
         }
+        if self.storeOffline != nil {
+            map["StoreOffline"] = self.storeOffline!
+        }
         if self.target != nil {
             map["Target"] = self.target!
         }
@@ -3308,6 +3353,9 @@ public class PushMessageToiOSRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobKey") && dict["JobKey"] != nil {
             self.jobKey = dict["JobKey"] as! String
+        }
+        if dict.keys.contains("StoreOffline") && dict["StoreOffline"] != nil {
+            self.storeOffline = dict["StoreOffline"] as! Bool
         }
         if dict.keys.contains("Target") && dict["Target"] != nil {
             self.target = dict["Target"] as! String
@@ -3420,6 +3468,8 @@ public class PushNoticeToAndroidRequest : Tea.TeaModel {
 
     public var jobKey: String?
 
+    public var storeOffline: Bool?
+
     public var target: String?
 
     public var targetValue: String?
@@ -3452,6 +3502,9 @@ public class PushNoticeToAndroidRequest : Tea.TeaModel {
         if self.jobKey != nil {
             map["JobKey"] = self.jobKey!
         }
+        if self.storeOffline != nil {
+            map["StoreOffline"] = self.storeOffline!
+        }
         if self.target != nil {
             map["Target"] = self.target!
         }
@@ -3476,6 +3529,9 @@ public class PushNoticeToAndroidRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JobKey") && dict["JobKey"] != nil {
             self.jobKey = dict["JobKey"] as! String
+        }
+        if dict.keys.contains("StoreOffline") && dict["StoreOffline"] != nil {
+            self.storeOffline = dict["StoreOffline"] as! Bool
         }
         if dict.keys.contains("Target") && dict["Target"] != nil {
             self.target = dict["Target"] as! String
@@ -4000,6 +4056,8 @@ public class QueryDeviceInfoResponseBody : Tea.TeaModel {
 
         public var alias: String?
 
+        public var brand: String?
+
         public var deviceId: String?
 
         public var deviceToken: String?
@@ -4007,6 +4065,8 @@ public class QueryDeviceInfoResponseBody : Tea.TeaModel {
         public var deviceType: String?
 
         public var lastOnlineTime: String?
+
+        public var model: String?
 
         public var online: Bool?
 
@@ -4036,6 +4096,9 @@ public class QueryDeviceInfoResponseBody : Tea.TeaModel {
             if self.alias != nil {
                 map["Alias"] = self.alias!
             }
+            if self.brand != nil {
+                map["Brand"] = self.brand!
+            }
             if self.deviceId != nil {
                 map["DeviceId"] = self.deviceId!
             }
@@ -4047,6 +4110,9 @@ public class QueryDeviceInfoResponseBody : Tea.TeaModel {
             }
             if self.lastOnlineTime != nil {
                 map["LastOnlineTime"] = self.lastOnlineTime!
+            }
+            if self.model != nil {
+                map["Model"] = self.model!
             }
             if self.online != nil {
                 map["Online"] = self.online!
@@ -4070,6 +4136,9 @@ public class QueryDeviceInfoResponseBody : Tea.TeaModel {
             if dict.keys.contains("Alias") && dict["Alias"] != nil {
                 self.alias = dict["Alias"] as! String
             }
+            if dict.keys.contains("Brand") && dict["Brand"] != nil {
+                self.brand = dict["Brand"] as! String
+            }
             if dict.keys.contains("DeviceId") && dict["DeviceId"] != nil {
                 self.deviceId = dict["DeviceId"] as! String
             }
@@ -4081,6 +4150,9 @@ public class QueryDeviceInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LastOnlineTime") && dict["LastOnlineTime"] != nil {
                 self.lastOnlineTime = dict["LastOnlineTime"] as! String
+            }
+            if dict.keys.contains("Model") && dict["Model"] != nil {
+                self.model = dict["Model"] as! String
             }
             if dict.keys.contains("Online") && dict["Online"] != nil {
                 self.online = dict["Online"] as! Bool
