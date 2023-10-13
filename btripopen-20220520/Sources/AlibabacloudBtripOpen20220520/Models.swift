@@ -6310,6 +6310,35 @@ public class ApplyAddRequest : Tea.TeaModel {
         }
     }
     public class ItineraryList : Tea.TeaModel {
+        public class ItineraryTravelStandard : Tea.TeaModel {
+            public var hotelAvailableNightsPerDay: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hotelAvailableNightsPerDay != nil {
+                    map["hotel_available_nights_per_day"] = self.hotelAvailableNightsPerDay!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("hotel_available_nights_per_day") && dict["hotel_available_nights_per_day"] != nil {
+                    self.hotelAvailableNightsPerDay = dict["hotel_available_nights_per_day"] as! Int32
+                }
+            }
+        }
         public var arrCity: String?
 
         public var arrCityCode: String?
@@ -6327,6 +6356,8 @@ public class ApplyAddRequest : Tea.TeaModel {
         public var invoiceId: Int64?
 
         public var itineraryId: String?
+
+        public var itineraryTravelStandard: ApplyAddRequest.ItineraryList.ItineraryTravelStandard?
 
         public var needHotel: Bool?
 
@@ -6354,6 +6385,7 @@ public class ApplyAddRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.itineraryTravelStandard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6384,6 +6416,9 @@ public class ApplyAddRequest : Tea.TeaModel {
             }
             if self.itineraryId != nil {
                 map["itinerary_id"] = self.itineraryId!
+            }
+            if self.itineraryTravelStandard != nil {
+                map["itinerary_travel_standard"] = self.itineraryTravelStandard?.toMap()
             }
             if self.needHotel != nil {
                 map["need_hotel"] = self.needHotel!
@@ -6440,6 +6475,11 @@ public class ApplyAddRequest : Tea.TeaModel {
             if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                 self.itineraryId = dict["itinerary_id"] as! String
             }
+            if dict.keys.contains("itinerary_travel_standard") && dict["itinerary_travel_standard"] != nil {
+                var model = ApplyAddRequest.ItineraryList.ItineraryTravelStandard()
+                model.fromMap(dict["itinerary_travel_standard"] as! [String: Any])
+                self.itineraryTravelStandard = model
+            }
             if dict.keys.contains("need_hotel") && dict["need_hotel"] != nil {
                 self.needHotel = dict["need_hotel"] as! Bool
             }
@@ -6467,6 +6507,35 @@ public class ApplyAddRequest : Tea.TeaModel {
         }
     }
     public class ItinerarySetList : Tea.TeaModel {
+        public class ItineraryTravelStandard : Tea.TeaModel {
+            public var hotelAvailableNightsPerDay: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hotelAvailableNightsPerDay != nil {
+                    map["hotel_available_nights_per_day"] = self.hotelAvailableNightsPerDay!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("hotel_available_nights_per_day") && dict["hotel_available_nights_per_day"] != nil {
+                    self.hotelAvailableNightsPerDay = dict["hotel_available_nights_per_day"] as! Int32
+                }
+            }
+        }
         public var arrDate: String?
 
         public var cityCodeSet: String?
@@ -6480,6 +6549,8 @@ public class ApplyAddRequest : Tea.TeaModel {
         public var invoiceId: Int64?
 
         public var itineraryId: String?
+
+        public var itineraryTravelStandard: ApplyAddRequest.ItinerarySetList.ItineraryTravelStandard?
 
         public var projectCode: String?
 
@@ -6501,6 +6572,7 @@ public class ApplyAddRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.itineraryTravelStandard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6525,6 +6597,9 @@ public class ApplyAddRequest : Tea.TeaModel {
             }
             if self.itineraryId != nil {
                 map["itinerary_id"] = self.itineraryId!
+            }
+            if self.itineraryTravelStandard != nil {
+                map["itinerary_travel_standard"] = self.itineraryTravelStandard?.toMap()
             }
             if self.projectCode != nil {
                 map["project_code"] = self.projectCode!
@@ -6565,6 +6640,11 @@ public class ApplyAddRequest : Tea.TeaModel {
             }
             if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                 self.itineraryId = dict["itinerary_id"] as! String
+            }
+            if dict.keys.contains("itinerary_travel_standard") && dict["itinerary_travel_standard"] != nil {
+                var model = ApplyAddRequest.ItinerarySetList.ItineraryTravelStandard()
+                model.fromMap(dict["itinerary_travel_standard"] as! [String: Any])
+                self.itineraryTravelStandard = model
             }
             if dict.keys.contains("project_code") && dict["project_code"] != nil {
                 self.projectCode = dict["project_code"] as! String
@@ -8511,6 +8591,8 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
 
             public var projectTitle: String?
 
+            public var thirdpartItineraryId: String?
+
             public var trafficType: Int32?
 
             public var tripWay: Int32?
@@ -8556,6 +8638,9 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
                 if self.projectTitle != nil {
                     map["project_title"] = self.projectTitle!
                 }
+                if self.thirdpartItineraryId != nil {
+                    map["thirdpart_itinerary_id"] = self.thirdpartItineraryId!
+                }
                 if self.trafficType != nil {
                     map["traffic_type"] = self.trafficType!
                 }
@@ -8593,6 +8678,9 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("project_title") && dict["project_title"] != nil {
                     self.projectTitle = dict["project_title"] as! String
                 }
+                if dict.keys.contains("thirdpart_itinerary_id") && dict["thirdpart_itinerary_id"] != nil {
+                    self.thirdpartItineraryId = dict["thirdpart_itinerary_id"] as! String
+                }
                 if dict.keys.contains("traffic_type") && dict["traffic_type"] != nil {
                     self.trafficType = dict["traffic_type"] as! Int32
                 }
@@ -8619,6 +8707,8 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
             public var projectCode: String?
 
             public var projectTitle: String?
+
+            public var thirdpartItineraryId: String?
 
             public var trafficType: Int32?
 
@@ -8663,6 +8753,9 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
                 if self.projectTitle != nil {
                     map["project_title"] = self.projectTitle!
                 }
+                if self.thirdpartItineraryId != nil {
+                    map["thirdpart_itinerary_id"] = self.thirdpartItineraryId!
+                }
                 if self.trafficType != nil {
                     map["traffic_type"] = self.trafficType!
                 }
@@ -8696,6 +8789,9 @@ public class ApplyListQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("project_title") && dict["project_title"] != nil {
                     self.projectTitle = dict["project_title"] as! String
+                }
+                if dict.keys.contains("thirdpart_itinerary_id") && dict["thirdpart_itinerary_id"] != nil {
+                    self.thirdpartItineraryId = dict["thirdpart_itinerary_id"] as! String
                 }
                 if dict.keys.contains("traffic_type") && dict["traffic_type"] != nil {
                     self.trafficType = dict["traffic_type"] as! Int32
@@ -9424,6 +9520,35 @@ public class ApplyModifyRequest : Tea.TeaModel {
         }
     }
     public class ItineraryList : Tea.TeaModel {
+        public class ItineraryTravelStandard : Tea.TeaModel {
+            public var hotelAvailableNightsPerDay: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hotelAvailableNightsPerDay != nil {
+                    map["hotel_available_nights_per_day"] = self.hotelAvailableNightsPerDay!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("hotel_available_nights_per_day") && dict["hotel_available_nights_per_day"] != nil {
+                    self.hotelAvailableNightsPerDay = dict["hotel_available_nights_per_day"] as! Int32
+                }
+            }
+        }
         public var arrCity: String?
 
         public var arrCityCode: String?
@@ -9441,6 +9566,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
         public var invoiceId: Int64?
 
         public var itineraryId: String?
+
+        public var itineraryTravelStandard: ApplyModifyRequest.ItineraryList.ItineraryTravelStandard?
 
         public var needHotel: Bool?
 
@@ -9468,6 +9595,7 @@ public class ApplyModifyRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.itineraryTravelStandard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -9498,6 +9626,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
             }
             if self.itineraryId != nil {
                 map["itinerary_id"] = self.itineraryId!
+            }
+            if self.itineraryTravelStandard != nil {
+                map["itinerary_travel_standard"] = self.itineraryTravelStandard?.toMap()
             }
             if self.needHotel != nil {
                 map["need_hotel"] = self.needHotel!
@@ -9554,6 +9685,11 @@ public class ApplyModifyRequest : Tea.TeaModel {
             if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                 self.itineraryId = dict["itinerary_id"] as! String
             }
+            if dict.keys.contains("itinerary_travel_standard") && dict["itinerary_travel_standard"] != nil {
+                var model = ApplyModifyRequest.ItineraryList.ItineraryTravelStandard()
+                model.fromMap(dict["itinerary_travel_standard"] as! [String: Any])
+                self.itineraryTravelStandard = model
+            }
             if dict.keys.contains("need_hotel") && dict["need_hotel"] != nil {
                 self.needHotel = dict["need_hotel"] as! Bool
             }
@@ -9581,6 +9717,35 @@ public class ApplyModifyRequest : Tea.TeaModel {
         }
     }
     public class ItinerarySetList : Tea.TeaModel {
+        public class ItineraryTravelStandard : Tea.TeaModel {
+            public var hotelAvailableNightsPerDay: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hotelAvailableNightsPerDay != nil {
+                    map["hotel_available_nights_per_day"] = self.hotelAvailableNightsPerDay!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("hotel_available_nights_per_day") && dict["hotel_available_nights_per_day"] != nil {
+                    self.hotelAvailableNightsPerDay = dict["hotel_available_nights_per_day"] as! Int32
+                }
+            }
+        }
         public var arrDate: String?
 
         public var cityCodeSet: String?
@@ -9594,6 +9759,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
         public var invoiceId: Int64?
 
         public var itineraryId: String?
+
+        public var itineraryTravelStandard: ApplyModifyRequest.ItinerarySetList.ItineraryTravelStandard?
 
         public var projectCode: String?
 
@@ -9615,6 +9782,7 @@ public class ApplyModifyRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.itineraryTravelStandard?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -9639,6 +9807,9 @@ public class ApplyModifyRequest : Tea.TeaModel {
             }
             if self.itineraryId != nil {
                 map["itinerary_id"] = self.itineraryId!
+            }
+            if self.itineraryTravelStandard != nil {
+                map["itinerary_travel_standard"] = self.itineraryTravelStandard?.toMap()
             }
             if self.projectCode != nil {
                 map["project_code"] = self.projectCode!
@@ -9679,6 +9850,11 @@ public class ApplyModifyRequest : Tea.TeaModel {
             }
             if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                 self.itineraryId = dict["itinerary_id"] as! String
+            }
+            if dict.keys.contains("itinerary_travel_standard") && dict["itinerary_travel_standard"] != nil {
+                var model = ApplyModifyRequest.ItinerarySetList.ItineraryTravelStandard()
+                model.fromMap(dict["itinerary_travel_standard"] as! [String: Any])
+                self.itineraryTravelStandard = model
             }
             if dict.keys.contains("project_code") && dict["project_code"] != nil {
                 self.projectCode = dict["project_code"] as! String
@@ -11026,6 +11202,35 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             }
         }
         public class ItineraryList : Tea.TeaModel {
+            public class ItineraryTravelStandard : Tea.TeaModel {
+                public var hotelAvailableNightsPerDay: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.hotelAvailableNightsPerDay != nil {
+                        map["hotel_available_nights_per_day"] = self.hotelAvailableNightsPerDay!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("hotel_available_nights_per_day") && dict["hotel_available_nights_per_day"] != nil {
+                        self.hotelAvailableNightsPerDay = dict["hotel_available_nights_per_day"] as! Int32
+                    }
+                }
+            }
             public var arrCity: String?
 
             public var arrCityCode: String?
@@ -11044,9 +11249,13 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
 
             public var itineraryId: String?
 
+            public var itineraryTravelStandard: ApplyQueryResponseBody.Module.ItineraryList.ItineraryTravelStandard?
+
             public var projectCode: String?
 
             public var projectTitle: String?
+
+            public var thirdpartItineraryId: String?
 
             public var trafficType: Int32?
 
@@ -11062,6 +11271,7 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.itineraryTravelStandard?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -11093,11 +11303,17 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                 if self.itineraryId != nil {
                     map["itinerary_id"] = self.itineraryId!
                 }
+                if self.itineraryTravelStandard != nil {
+                    map["itinerary_travel_standard"] = self.itineraryTravelStandard?.toMap()
+                }
                 if self.projectCode != nil {
                     map["project_code"] = self.projectCode!
                 }
                 if self.projectTitle != nil {
                     map["project_title"] = self.projectTitle!
+                }
+                if self.thirdpartItineraryId != nil {
+                    map["thirdpart_itinerary_id"] = self.thirdpartItineraryId!
                 }
                 if self.trafficType != nil {
                     map["traffic_type"] = self.trafficType!
@@ -11136,11 +11352,19 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                     self.itineraryId = dict["itinerary_id"] as! String
                 }
+                if dict.keys.contains("itinerary_travel_standard") && dict["itinerary_travel_standard"] != nil {
+                    var model = ApplyQueryResponseBody.Module.ItineraryList.ItineraryTravelStandard()
+                    model.fromMap(dict["itinerary_travel_standard"] as! [String: Any])
+                    self.itineraryTravelStandard = model
+                }
                 if dict.keys.contains("project_code") && dict["project_code"] != nil {
                     self.projectCode = dict["project_code"] as! String
                 }
                 if dict.keys.contains("project_title") && dict["project_title"] != nil {
                     self.projectTitle = dict["project_title"] as! String
+                }
+                if dict.keys.contains("thirdpart_itinerary_id") && dict["thirdpart_itinerary_id"] != nil {
+                    self.thirdpartItineraryId = dict["thirdpart_itinerary_id"] as! String
                 }
                 if dict.keys.contains("traffic_type") && dict["traffic_type"] != nil {
                     self.trafficType = dict["traffic_type"] as! Int32
@@ -11151,6 +11375,35 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             }
         }
         public class ItinerarySetList : Tea.TeaModel {
+            public class ItineraryTravelStandard : Tea.TeaModel {
+                public var hotelAvailableNightsPerDay: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.hotelAvailableNightsPerDay != nil {
+                        map["hotel_available_nights_per_day"] = self.hotelAvailableNightsPerDay!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("hotel_available_nights_per_day") && dict["hotel_available_nights_per_day"] != nil {
+                        self.hotelAvailableNightsPerDay = dict["hotel_available_nights_per_day"] as! Int32
+                    }
+                }
+            }
             public var arrDate: String?
 
             public var cityCodeSet: String?
@@ -11165,9 +11418,13 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
 
             public var itineraryId: String?
 
+            public var itineraryTravelStandard: ApplyQueryResponseBody.Module.ItinerarySetList.ItineraryTravelStandard?
+
             public var projectCode: String?
 
             public var projectTitle: String?
+
+            public var thirdpartItineraryId: String?
 
             public var trafficType: Int32?
 
@@ -11181,6 +11438,7 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.itineraryTravelStandard?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -11206,11 +11464,17 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                 if self.itineraryId != nil {
                     map["itinerary_id"] = self.itineraryId!
                 }
+                if self.itineraryTravelStandard != nil {
+                    map["itinerary_travel_standard"] = self.itineraryTravelStandard?.toMap()
+                }
                 if self.projectCode != nil {
                     map["project_code"] = self.projectCode!
                 }
                 if self.projectTitle != nil {
                     map["project_title"] = self.projectTitle!
+                }
+                if self.thirdpartItineraryId != nil {
+                    map["thirdpart_itinerary_id"] = self.thirdpartItineraryId!
                 }
                 if self.trafficType != nil {
                     map["traffic_type"] = self.trafficType!
@@ -11240,11 +11504,19 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                     self.itineraryId = dict["itinerary_id"] as! String
                 }
+                if dict.keys.contains("itinerary_travel_standard") && dict["itinerary_travel_standard"] != nil {
+                    var model = ApplyQueryResponseBody.Module.ItinerarySetList.ItineraryTravelStandard()
+                    model.fromMap(dict["itinerary_travel_standard"] as! [String: Any])
+                    self.itineraryTravelStandard = model
+                }
                 if dict.keys.contains("project_code") && dict["project_code"] != nil {
                     self.projectCode = dict["project_code"] as! String
                 }
                 if dict.keys.contains("project_title") && dict["project_title"] != nil {
                     self.projectTitle = dict["project_title"] as! String
+                }
+                if dict.keys.contains("thirdpart_itinerary_id") && dict["thirdpart_itinerary_id"] != nil {
+                    self.thirdpartItineraryId = dict["thirdpart_itinerary_id"] as! String
                 }
                 if dict.keys.contains("traffic_type") && dict["traffic_type"] != nil {
                     self.trafficType = dict["traffic_type"] as! Int32
@@ -13412,6 +13684,10 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var deptTime: String?
 
+            public var driverAddDetail: String?
+
+            public var driverAddFee: Double?
+
             public var estimateDriveDistance: String?
 
             public var estimatePrice: Double?
@@ -13421,6 +13697,8 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
             public var index: String?
 
             public var invoiceTitle: String?
+
+            public var levelName: String?
 
             public var memo: String?
 
@@ -13465,6 +13743,8 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
             public var status: Int32?
 
             public var subOrderId: String?
+
+            public var supplementApplyId: String?
 
             public var taxRate: String?
 
@@ -13595,6 +13875,12 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.deptTime != nil {
                     map["dept_time"] = self.deptTime!
                 }
+                if self.driverAddDetail != nil {
+                    map["driver_add_detail"] = self.driverAddDetail!
+                }
+                if self.driverAddFee != nil {
+                    map["driver_add_fee"] = self.driverAddFee!
+                }
                 if self.estimateDriveDistance != nil {
                     map["estimate_drive_distance"] = self.estimateDriveDistance!
                 }
@@ -13609,6 +13895,9 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.invoiceTitle != nil {
                     map["invoice_title"] = self.invoiceTitle!
+                }
+                if self.levelName != nil {
+                    map["level_name"] = self.levelName!
                 }
                 if self.memo != nil {
                     map["memo"] = self.memo!
@@ -13675,6 +13964,9 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.subOrderId != nil {
                     map["sub_order_id"] = self.subOrderId!
+                }
+                if self.supplementApplyId != nil {
+                    map["supplement_apply_id"] = self.supplementApplyId!
                 }
                 if self.taxRate != nil {
                     map["tax_rate"] = self.taxRate!
@@ -13803,6 +14095,12 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("dept_time") && dict["dept_time"] != nil {
                     self.deptTime = dict["dept_time"] as! String
                 }
+                if dict.keys.contains("driver_add_detail") && dict["driver_add_detail"] != nil {
+                    self.driverAddDetail = dict["driver_add_detail"] as! String
+                }
+                if dict.keys.contains("driver_add_fee") && dict["driver_add_fee"] != nil {
+                    self.driverAddFee = dict["driver_add_fee"] as! Double
+                }
                 if dict.keys.contains("estimate_drive_distance") && dict["estimate_drive_distance"] != nil {
                     self.estimateDriveDistance = dict["estimate_drive_distance"] as! String
                 }
@@ -13817,6 +14115,9 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("invoice_title") && dict["invoice_title"] != nil {
                     self.invoiceTitle = dict["invoice_title"] as! String
+                }
+                if dict.keys.contains("level_name") && dict["level_name"] != nil {
+                    self.levelName = dict["level_name"] as! String
                 }
                 if dict.keys.contains("memo") && dict["memo"] != nil {
                     self.memo = dict["memo"] as! String
@@ -13883,6 +14184,9 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("sub_order_id") && dict["sub_order_id"] != nil {
                     self.subOrderId = dict["sub_order_id"] as! String
+                }
+                if dict.keys.contains("supplement_apply_id") && dict["supplement_apply_id"] != nil {
+                    self.supplementApplyId = dict["supplement_apply_id"] as! String
                 }
                 if dict.keys.contains("tax_rate") && dict["tax_rate"] != nil {
                     self.taxRate = dict["tax_rate"] as! String
@@ -21580,6 +21884,8 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var buildFee: Double?
 
+            public var businessTripResult: String?
+
             public var cabin: String?
 
             public var cabinClass: String?
@@ -21590,7 +21896,11 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var changeFee: Double?
 
+            public var changeResult: String?
+
             public var corpPayOrderFee: Double?
+
+            public var corpSettlePrice: Double?
 
             public var costCenter: String?
 
@@ -21616,19 +21926,27 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var discount: String?
 
+            public var exceedReason: String?
+
             public var feeType: String?
 
             public var flightNo: String?
 
             public var index: String?
 
+            public var insOrderId: String?
+
             public var insuranceFee: Double?
+
+            public var insuranceNumber: String?
 
             public var invoiceTitle: String?
 
             public var itineraryNum: String?
 
             public var itineraryPrice: Double?
+
+            public var mileage: String?
 
             public var mostDifferenceDeptTime: String?
 
@@ -21649,6 +21967,10 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
             public var orderId: String?
 
             public var overApplyId: String?
+
+            public var personSettlePrice: Double?
+
+            public var preBookTip: String?
 
             public var primaryId: Int64?
 
@@ -21685,6 +22007,8 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
             public var thirdItineraryId: String?
 
             public var ticketId: String?
+
+            public var trade: String?
 
             public var travelerId: String?
 
@@ -21779,6 +22103,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.buildFee != nil {
                     map["build_fee"] = self.buildFee!
                 }
+                if self.businessTripResult != nil {
+                    map["business_trip_result"] = self.businessTripResult!
+                }
                 if self.cabin != nil {
                     map["cabin"] = self.cabin!
                 }
@@ -21794,8 +22121,14 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.changeFee != nil {
                     map["change_fee"] = self.changeFee!
                 }
+                if self.changeResult != nil {
+                    map["change_result"] = self.changeResult!
+                }
                 if self.corpPayOrderFee != nil {
                     map["corp_pay_order_fee"] = self.corpPayOrderFee!
+                }
+                if self.corpSettlePrice != nil {
+                    map["corp_settle_price"] = self.corpSettlePrice!
                 }
                 if self.costCenter != nil {
                     map["cost_center"] = self.costCenter!
@@ -21833,6 +22166,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.discount != nil {
                     map["discount"] = self.discount!
                 }
+                if self.exceedReason != nil {
+                    map["exceed_reason"] = self.exceedReason!
+                }
                 if self.feeType != nil {
                     map["fee_type"] = self.feeType!
                 }
@@ -21842,8 +22178,14 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.index != nil {
                     map["index"] = self.index!
                 }
+                if self.insOrderId != nil {
+                    map["ins_order_id"] = self.insOrderId!
+                }
                 if self.insuranceFee != nil {
                     map["insurance_fee"] = self.insuranceFee!
+                }
+                if self.insuranceNumber != nil {
+                    map["insurance_number"] = self.insuranceNumber!
                 }
                 if self.invoiceTitle != nil {
                     map["invoice_title"] = self.invoiceTitle!
@@ -21853,6 +22195,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.itineraryPrice != nil {
                     map["itinerary_price"] = self.itineraryPrice!
+                }
+                if self.mileage != nil {
+                    map["mileage"] = self.mileage!
                 }
                 if self.mostDifferenceDeptTime != nil {
                     map["most_difference_dept_time"] = self.mostDifferenceDeptTime!
@@ -21883,6 +22228,12 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.personSettlePrice != nil {
+                    map["person_settle_price"] = self.personSettlePrice!
+                }
+                if self.preBookTip != nil {
+                    map["pre_book_tip"] = self.preBookTip!
                 }
                 if self.primaryId != nil {
                     map["primary_id"] = self.primaryId!
@@ -21937,6 +22288,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.ticketId != nil {
                     map["ticket_id"] = self.ticketId!
+                }
+                if self.trade != nil {
+                    map["trade"] = self.trade!
                 }
                 if self.travelerId != nil {
                     map["traveler_id"] = self.travelerId!
@@ -22026,6 +22380,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("build_fee") && dict["build_fee"] != nil {
                     self.buildFee = dict["build_fee"] as! Double
                 }
+                if dict.keys.contains("business_trip_result") && dict["business_trip_result"] != nil {
+                    self.businessTripResult = dict["business_trip_result"] as! String
+                }
                 if dict.keys.contains("cabin") && dict["cabin"] != nil {
                     self.cabin = dict["cabin"] as! String
                 }
@@ -22041,8 +22398,14 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("change_fee") && dict["change_fee"] != nil {
                     self.changeFee = dict["change_fee"] as! Double
                 }
+                if dict.keys.contains("change_result") && dict["change_result"] != nil {
+                    self.changeResult = dict["change_result"] as! String
+                }
                 if dict.keys.contains("corp_pay_order_fee") && dict["corp_pay_order_fee"] != nil {
                     self.corpPayOrderFee = dict["corp_pay_order_fee"] as! Double
+                }
+                if dict.keys.contains("corp_settle_price") && dict["corp_settle_price"] != nil {
+                    self.corpSettlePrice = dict["corp_settle_price"] as! Double
                 }
                 if dict.keys.contains("cost_center") && dict["cost_center"] != nil {
                     self.costCenter = dict["cost_center"] as! String
@@ -22080,6 +22443,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("discount") && dict["discount"] != nil {
                     self.discount = dict["discount"] as! String
                 }
+                if dict.keys.contains("exceed_reason") && dict["exceed_reason"] != nil {
+                    self.exceedReason = dict["exceed_reason"] as! String
+                }
                 if dict.keys.contains("fee_type") && dict["fee_type"] != nil {
                     self.feeType = dict["fee_type"] as! String
                 }
@@ -22089,8 +22455,14 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("index") && dict["index"] != nil {
                     self.index = dict["index"] as! String
                 }
+                if dict.keys.contains("ins_order_id") && dict["ins_order_id"] != nil {
+                    self.insOrderId = dict["ins_order_id"] as! String
+                }
                 if dict.keys.contains("insurance_fee") && dict["insurance_fee"] != nil {
                     self.insuranceFee = dict["insurance_fee"] as! Double
+                }
+                if dict.keys.contains("insurance_number") && dict["insurance_number"] != nil {
+                    self.insuranceNumber = dict["insurance_number"] as! String
                 }
                 if dict.keys.contains("invoice_title") && dict["invoice_title"] != nil {
                     self.invoiceTitle = dict["invoice_title"] as! String
@@ -22100,6 +22472,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("itinerary_price") && dict["itinerary_price"] != nil {
                     self.itineraryPrice = dict["itinerary_price"] as! Double
+                }
+                if dict.keys.contains("mileage") && dict["mileage"] != nil {
+                    self.mileage = dict["mileage"] as! String
                 }
                 if dict.keys.contains("most_difference_dept_time") && dict["most_difference_dept_time"] != nil {
                     self.mostDifferenceDeptTime = dict["most_difference_dept_time"] as! String
@@ -22130,6 +22505,12 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("person_settle_price") && dict["person_settle_price"] != nil {
+                    self.personSettlePrice = dict["person_settle_price"] as! Double
+                }
+                if dict.keys.contains("pre_book_tip") && dict["pre_book_tip"] != nil {
+                    self.preBookTip = dict["pre_book_tip"] as! String
                 }
                 if dict.keys.contains("primary_id") && dict["primary_id"] != nil {
                     self.primaryId = dict["primary_id"] as! Int64
@@ -22184,6 +22565,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ticket_id") && dict["ticket_id"] != nil {
                     self.ticketId = dict["ticket_id"] as! String
+                }
+                if dict.keys.contains("trade") && dict["trade"] != nil {
+                    self.trade = dict["trade"] as! String
                 }
                 if dict.keys.contains("traveler_id") && dict["traveler_id"] != nil {
                     self.travelerId = dict["traveler_id"] as! String
@@ -31447,6 +31831,10 @@ public class FlightModifyListingSearchV2ResponseBody : Tea.TeaModel {
 
             public var arrTime: String?
 
+            public var cabinClass: String?
+
+            public var cabinClassName: String?
+
             public var depAirportInfo: FlightModifyListingSearchV2ResponseBody.Module.DirectFlightList.DepAirportInfo?
 
             public var depCityCode: String?
@@ -31521,6 +31909,12 @@ public class FlightModifyListingSearchV2ResponseBody : Tea.TeaModel {
                 }
                 if self.arrTime != nil {
                     map["arr_time"] = self.arrTime!
+                }
+                if self.cabinClass != nil {
+                    map["cabinClass"] = self.cabinClass!
+                }
+                if self.cabinClassName != nil {
+                    map["cabinClassName"] = self.cabinClassName!
                 }
                 if self.depAirportInfo != nil {
                     map["dep_airport_info"] = self.depAirportInfo?.toMap()
@@ -31604,6 +31998,12 @@ public class FlightModifyListingSearchV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
                     self.arrTime = dict["arr_time"] as! String
+                }
+                if dict.keys.contains("cabinClass") && dict["cabinClass"] != nil {
+                    self.cabinClass = dict["cabinClass"] as! String
+                }
+                if dict.keys.contains("cabinClassName") && dict["cabinClassName"] != nil {
+                    self.cabinClassName = dict["cabinClassName"] as! String
                 }
                 if dict.keys.contains("dep_airport_info") && dict["dep_airport_info"] != nil {
                     var model = FlightModifyListingSearchV2ResponseBody.Module.DirectFlightList.DepAirportInfo()
@@ -32404,6 +32804,10 @@ public class FlightModifyListingSearchV2ResponseBody : Tea.TeaModel {
 
             public var arrTime: String?
 
+            public var cabinClass: String?
+
+            public var cabinClassName: String?
+
             public var depAirportInfo: FlightModifyListingSearchV2ResponseBody.Module.TransferFlightList.DepAirportInfo?
 
             public var depCityCode: String?
@@ -32478,6 +32882,12 @@ public class FlightModifyListingSearchV2ResponseBody : Tea.TeaModel {
                 }
                 if self.arrTime != nil {
                     map["arr_time"] = self.arrTime!
+                }
+                if self.cabinClass != nil {
+                    map["cabinClass"] = self.cabinClass!
+                }
+                if self.cabinClassName != nil {
+                    map["cabinClassName"] = self.cabinClassName!
                 }
                 if self.depAirportInfo != nil {
                     map["dep_airport_info"] = self.depAirportInfo?.toMap()
@@ -32561,6 +32971,12 @@ public class FlightModifyListingSearchV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
                     self.arrTime = dict["arr_time"] as! String
+                }
+                if dict.keys.contains("cabinClass") && dict["cabinClass"] != nil {
+                    self.cabinClass = dict["cabinClass"] as! String
+                }
+                if dict.keys.contains("cabinClassName") && dict["cabinClassName"] != nil {
+                    self.cabinClassName = dict["cabinClassName"] as! String
                 }
                 if dict.keys.contains("dep_airport_info") && dict["dep_airport_info"] != nil {
                     var model = FlightModifyListingSearchV2ResponseBody.Module.TransferFlightList.DepAirportInfo()
@@ -58834,6 +59250,8 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var billRecordTime: String?
 
+            public var bookReason: String?
+
             public var bookTime: String?
 
             public var bookerId: String?
@@ -58841,6 +59259,12 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
             public var bookerJobNo: String?
 
             public var bookerName: String?
+
+            public var brandGroup: String?
+
+            public var brandName: String?
+
+            public var businessTripResult: String?
 
             public var capitalDirection: String?
 
@@ -58854,6 +59278,10 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var cityCode: String?
 
+            public var cityCounty: String?
+
+            public var cityCountyCode: String?
+
             public var corpRefundFee: Double?
 
             public var corpTotalFee: Double?
@@ -58865,6 +59293,8 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
             public var department: String?
 
             public var departmentId: String?
+
+            public var exceedReason: String?
 
             public var feeType: String?
 
@@ -58987,6 +59417,9 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.billRecordTime != nil {
                     map["bill_record_time"] = self.billRecordTime!
                 }
+                if self.bookReason != nil {
+                    map["book_reason"] = self.bookReason!
+                }
                 if self.bookTime != nil {
                     map["book_time"] = self.bookTime!
                 }
@@ -58998,6 +59431,15 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.bookerName != nil {
                     map["booker_name"] = self.bookerName!
+                }
+                if self.brandGroup != nil {
+                    map["brand_group"] = self.brandGroup!
+                }
+                if self.brandName != nil {
+                    map["brand_name"] = self.brandName!
+                }
+                if self.businessTripResult != nil {
+                    map["business_trip_result"] = self.businessTripResult!
                 }
                 if self.capitalDirection != nil {
                     map["capital_direction"] = self.capitalDirection!
@@ -59017,6 +59459,12 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.cityCode != nil {
                     map["city_code"] = self.cityCode!
                 }
+                if self.cityCounty != nil {
+                    map["city_county"] = self.cityCounty!
+                }
+                if self.cityCountyCode != nil {
+                    map["city_county_code"] = self.cityCountyCode!
+                }
                 if self.corpRefundFee != nil {
                     map["corp_refund_fee"] = self.corpRefundFee!
                 }
@@ -59034,6 +59482,9 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.departmentId != nil {
                     map["department_id"] = self.departmentId!
+                }
+                if self.exceedReason != nil {
+                    map["exceed_reason"] = self.exceedReason!
                 }
                 if self.feeType != nil {
                     map["fee_type"] = self.feeType!
@@ -59186,6 +59637,9 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("bill_record_time") && dict["bill_record_time"] != nil {
                     self.billRecordTime = dict["bill_record_time"] as! String
                 }
+                if dict.keys.contains("book_reason") && dict["book_reason"] != nil {
+                    self.bookReason = dict["book_reason"] as! String
+                }
                 if dict.keys.contains("book_time") && dict["book_time"] != nil {
                     self.bookTime = dict["book_time"] as! String
                 }
@@ -59197,6 +59651,15 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("booker_name") && dict["booker_name"] != nil {
                     self.bookerName = dict["booker_name"] as! String
+                }
+                if dict.keys.contains("brand_group") && dict["brand_group"] != nil {
+                    self.brandGroup = dict["brand_group"] as! String
+                }
+                if dict.keys.contains("brand_name") && dict["brand_name"] != nil {
+                    self.brandName = dict["brand_name"] as! String
+                }
+                if dict.keys.contains("business_trip_result") && dict["business_trip_result"] != nil {
+                    self.businessTripResult = dict["business_trip_result"] as! String
                 }
                 if dict.keys.contains("capital_direction") && dict["capital_direction"] != nil {
                     self.capitalDirection = dict["capital_direction"] as! String
@@ -59216,6 +59679,12 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("city_code") && dict["city_code"] != nil {
                     self.cityCode = dict["city_code"] as! String
                 }
+                if dict.keys.contains("city_county") && dict["city_county"] != nil {
+                    self.cityCounty = dict["city_county"] as! String
+                }
+                if dict.keys.contains("city_county_code") && dict["city_county_code"] != nil {
+                    self.cityCountyCode = dict["city_county_code"] as! String
+                }
                 if dict.keys.contains("corp_refund_fee") && dict["corp_refund_fee"] != nil {
                     self.corpRefundFee = dict["corp_refund_fee"] as! Double
                 }
@@ -59233,6 +59702,9 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("department_id") && dict["department_id"] != nil {
                     self.departmentId = dict["department_id"] as! String
+                }
+                if dict.keys.contains("exceed_reason") && dict["exceed_reason"] != nil {
+                    self.exceedReason = dict["exceed_reason"] as! String
                 }
                 if dict.keys.contains("fee_type") && dict["fee_type"] != nil {
                     self.feeType = dict["fee_type"] as! String
@@ -70051,6 +70523,8 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var btripCouponFee: Double?
 
+            public var businessTripResult: String?
+
             public var cabin: String?
 
             public var cabinClass: String?
@@ -70060,6 +70534,8 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
             public var cascadeDepartment: String?
 
             public var changeFee: Double?
+
+            public var changeResult: String?
 
             public var corpPayOrderFee: Double?
 
@@ -70086,6 +70562,8 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
             public var deptTime: String?
 
             public var discount: String?
+
+            public var exceedReason: String?
 
             public var feeType: String?
 
@@ -70126,6 +70604,8 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
             public var projectName: String?
 
             public var refundFee: Double?
+
+            public var refundResult: String?
 
             public var remark: String?
 
@@ -70250,6 +70730,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.btripCouponFee != nil {
                     map["btrip_coupon_fee"] = self.btripCouponFee!
                 }
+                if self.businessTripResult != nil {
+                    map["business_trip_result"] = self.businessTripResult!
+                }
                 if self.cabin != nil {
                     map["cabin"] = self.cabin!
                 }
@@ -70264,6 +70747,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.changeFee != nil {
                     map["change_fee"] = self.changeFee!
+                }
+                if self.changeResult != nil {
+                    map["change_result"] = self.changeResult!
                 }
                 if self.corpPayOrderFee != nil {
                     map["corp_pay_order_fee"] = self.corpPayOrderFee!
@@ -70303,6 +70789,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.discount != nil {
                     map["discount"] = self.discount!
+                }
+                if self.exceedReason != nil {
+                    map["exceed_reason"] = self.exceedReason!
                 }
                 if self.feeType != nil {
                     map["fee_type"] = self.feeType!
@@ -70363,6 +70852,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.refundFee != nil {
                     map["refund_fee"] = self.refundFee!
+                }
+                if self.refundResult != nil {
+                    map["refund_result"] = self.refundResult!
                 }
                 if self.remark != nil {
                     map["remark"] = self.remark!
@@ -70497,6 +70989,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("btrip_coupon_fee") && dict["btrip_coupon_fee"] != nil {
                     self.btripCouponFee = dict["btrip_coupon_fee"] as! Double
                 }
+                if dict.keys.contains("business_trip_result") && dict["business_trip_result"] != nil {
+                    self.businessTripResult = dict["business_trip_result"] as! String
+                }
                 if dict.keys.contains("cabin") && dict["cabin"] != nil {
                     self.cabin = dict["cabin"] as! String
                 }
@@ -70511,6 +71006,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("change_fee") && dict["change_fee"] != nil {
                     self.changeFee = dict["change_fee"] as! Double
+                }
+                if dict.keys.contains("change_result") && dict["change_result"] != nil {
+                    self.changeResult = dict["change_result"] as! String
                 }
                 if dict.keys.contains("corp_pay_order_fee") && dict["corp_pay_order_fee"] != nil {
                     self.corpPayOrderFee = dict["corp_pay_order_fee"] as! Double
@@ -70550,6 +71048,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("discount") && dict["discount"] != nil {
                     self.discount = dict["discount"] as! String
+                }
+                if dict.keys.contains("exceed_reason") && dict["exceed_reason"] != nil {
+                    self.exceedReason = dict["exceed_reason"] as! String
                 }
                 if dict.keys.contains("fee_type") && dict["fee_type"] != nil {
                     self.feeType = dict["fee_type"] as! String
@@ -70610,6 +71111,9 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("refund_fee") && dict["refund_fee"] != nil {
                     self.refundFee = dict["refund_fee"] as! Double
+                }
+                if dict.keys.contains("refund_result") && dict["refund_result"] != nil {
+                    self.refundResult = dict["refund_result"] as! String
                 }
                 if dict.keys.contains("remark") && dict["remark"] != nil {
                     self.remark = dict["remark"] as! String
@@ -75621,6 +76125,8 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
 
                 public var feeType: String?
 
+                public var orderId: String?
+
                 public var remark: String?
 
                 public var remindTagList: [String]?
@@ -75654,6 +76160,9 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
                     if self.feeType != nil {
                         map["fee_type"] = self.feeType!
                     }
+                    if self.orderId != nil {
+                        map["order_id"] = self.orderId!
+                    }
                     if self.remark != nil {
                         map["remark"] = self.remark!
                     }
@@ -75681,6 +76190,9 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("fee_type") && dict["fee_type"] != nil {
                         self.feeType = dict["fee_type"] as! String
+                    }
+                    if dict.keys.contains("order_id") && dict["order_id"] != nil {
+                        self.orderId = dict["order_id"] as! String
                     }
                     if dict.keys.contains("remark") && dict["remark"] != nil {
                         self.remark = dict["remark"] as! String
@@ -75923,7 +76435,17 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
 
         public var corpId: String?
 
+        public var costCenterCode: String?
+
+        public var costCenterName: String?
+
         public var expenses: [QueryReimbursementOrderResponseBody.Module.Expenses]?
+
+        public var expensesCoverDeptId: String?
+
+        public var expensesCoverDeptName: String?
+
+        public var expensesCoverInvoiceTitle: String?
 
         public var gmtCreate: String?
 
@@ -75936,6 +76458,10 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
         public var paymentInfos: [QueryReimbursementOrderResponseBody.Module.PaymentInfos]?
 
         public var personalAmount: String?
+
+        public var projectCode: String?
+
+        public var projectName: String?
 
         public var reason: String?
 
@@ -75974,12 +76500,27 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
             if self.corpId != nil {
                 map["corp_id"] = self.corpId!
             }
+            if self.costCenterCode != nil {
+                map["cost_center_code"] = self.costCenterCode!
+            }
+            if self.costCenterName != nil {
+                map["cost_center_name"] = self.costCenterName!
+            }
             if self.expenses != nil {
                 var tmp : [Any] = []
                 for k in self.expenses! {
                     tmp.append(k.toMap())
                 }
                 map["expenses"] = tmp
+            }
+            if self.expensesCoverDeptId != nil {
+                map["expenses_cover_dept_id"] = self.expensesCoverDeptId!
+            }
+            if self.expensesCoverDeptName != nil {
+                map["expenses_cover_dept_name"] = self.expensesCoverDeptName!
+            }
+            if self.expensesCoverInvoiceTitle != nil {
+                map["expenses_cover_invoice_title"] = self.expensesCoverInvoiceTitle!
             }
             if self.gmtCreate != nil {
                 map["gmt_create"] = self.gmtCreate!
@@ -76006,6 +76547,12 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
             }
             if self.personalAmount != nil {
                 map["personal_amount"] = self.personalAmount!
+            }
+            if self.projectCode != nil {
+                map["project_code"] = self.projectCode!
+            }
+            if self.projectName != nil {
+                map["project_name"] = self.projectName!
             }
             if self.reason != nil {
                 map["reason"] = self.reason!
@@ -76041,6 +76588,12 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
             if dict.keys.contains("corp_id") && dict["corp_id"] != nil {
                 self.corpId = dict["corp_id"] as! String
             }
+            if dict.keys.contains("cost_center_code") && dict["cost_center_code"] != nil {
+                self.costCenterCode = dict["cost_center_code"] as! String
+            }
+            if dict.keys.contains("cost_center_name") && dict["cost_center_name"] != nil {
+                self.costCenterName = dict["cost_center_name"] as! String
+            }
             if dict.keys.contains("expenses") && dict["expenses"] != nil {
                 var tmp : [QueryReimbursementOrderResponseBody.Module.Expenses] = []
                 for v in dict["expenses"] as! [Any] {
@@ -76051,6 +76604,15 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.expenses = tmp
+            }
+            if dict.keys.contains("expenses_cover_dept_id") && dict["expenses_cover_dept_id"] != nil {
+                self.expensesCoverDeptId = dict["expenses_cover_dept_id"] as! String
+            }
+            if dict.keys.contains("expenses_cover_dept_name") && dict["expenses_cover_dept_name"] != nil {
+                self.expensesCoverDeptName = dict["expenses_cover_dept_name"] as! String
+            }
+            if dict.keys.contains("expenses_cover_invoice_title") && dict["expenses_cover_invoice_title"] != nil {
+                self.expensesCoverInvoiceTitle = dict["expenses_cover_invoice_title"] as! String
             }
             if dict.keys.contains("gmt_create") && dict["gmt_create"] != nil {
                 self.gmtCreate = dict["gmt_create"] as! String
@@ -76085,6 +76647,12 @@ public class QueryReimbursementOrderResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("personal_amount") && dict["personal_amount"] != nil {
                 self.personalAmount = dict["personal_amount"] as! String
+            }
+            if dict.keys.contains("project_code") && dict["project_code"] != nil {
+                self.projectCode = dict["project_code"] as! String
+            }
+            if dict.keys.contains("project_name") && dict["project_name"] != nil {
+                self.projectName = dict["project_name"] as! String
             }
             if dict.keys.contains("reason") && dict["reason"] != nil {
                 self.reason = dict["reason"] as! String
@@ -82241,6 +82809,8 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var arrCityCode: String?
 
+            public var arrCityName: String?
+
             public var arrDate: String?
 
             public var arrStation: String?
@@ -82257,11 +82827,15 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var bookerName: String?
 
+            public var businessTripResult: String?
+
             public var capitalDirection: String?
 
             public var cascadeDepartment: String?
 
             public var changeFee: Double?
+
+            public var changeResult: String?
 
             public var coachNo: String?
 
@@ -82273,6 +82847,8 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var depCityCode: String?
 
+            public var depCityName: String?
+
             public var department: String?
 
             public var departmentId: String?
@@ -82283,11 +82859,15 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var deptTime: String?
 
+            public var exceedReason: String?
+
             public var feeType: String?
 
             public var index: String?
 
             public var invoiceTitle: String?
+
+            public var isTransferOrder: String?
 
             public var orderId: String?
 
@@ -82303,7 +82883,11 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var refundFee: Double?
 
+            public var refundReason: String?
+
             public var remark: String?
+
+            public var reserveMode: String?
 
             public var runTime: String?
 
@@ -82329,7 +82913,11 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var thirdItineraryId: String?
 
+            public var ticketCorpPayPrice: String?
+
             public var ticketNo: String?
+
+            public var ticketPersonPayPrice: String?
 
             public var ticketPrice: Double?
 
@@ -82383,6 +82971,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.arrCityCode != nil {
                     map["arr_city_code"] = self.arrCityCode!
                 }
+                if self.arrCityName != nil {
+                    map["arr_city_name"] = self.arrCityName!
+                }
                 if self.arrDate != nil {
                     map["arr_date"] = self.arrDate!
                 }
@@ -82407,6 +82998,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.bookerName != nil {
                     map["booker_name"] = self.bookerName!
                 }
+                if self.businessTripResult != nil {
+                    map["business_trip_result"] = self.businessTripResult!
+                }
                 if self.capitalDirection != nil {
                     map["capital_direction"] = self.capitalDirection!
                 }
@@ -82415,6 +83009,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.changeFee != nil {
                     map["change_fee"] = self.changeFee!
+                }
+                if self.changeResult != nil {
+                    map["change_result"] = self.changeResult!
                 }
                 if self.coachNo != nil {
                     map["coach_no"] = self.coachNo!
@@ -82431,6 +83028,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.depCityCode != nil {
                     map["dep_city_code"] = self.depCityCode!
                 }
+                if self.depCityName != nil {
+                    map["dep_city_name"] = self.depCityName!
+                }
                 if self.department != nil {
                     map["department"] = self.department!
                 }
@@ -82446,6 +83046,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.deptTime != nil {
                     map["dept_time"] = self.deptTime!
                 }
+                if self.exceedReason != nil {
+                    map["exceed_reason"] = self.exceedReason!
+                }
                 if self.feeType != nil {
                     map["fee_type"] = self.feeType!
                 }
@@ -82454,6 +83057,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.invoiceTitle != nil {
                     map["invoice_title"] = self.invoiceTitle!
+                }
+                if self.isTransferOrder != nil {
+                    map["is_transfer_order"] = self.isTransferOrder!
                 }
                 if self.orderId != nil {
                     map["order_id"] = self.orderId!
@@ -82476,8 +83082,14 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.refundFee != nil {
                     map["refund_fee"] = self.refundFee!
                 }
+                if self.refundReason != nil {
+                    map["refund_reason"] = self.refundReason!
+                }
                 if self.remark != nil {
                     map["remark"] = self.remark!
+                }
+                if self.reserveMode != nil {
+                    map["reserve_mode"] = self.reserveMode!
                 }
                 if self.runTime != nil {
                     map["run_time"] = self.runTime!
@@ -82515,8 +83127,14 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if self.thirdItineraryId != nil {
                     map["third_itinerary_id"] = self.thirdItineraryId!
                 }
+                if self.ticketCorpPayPrice != nil {
+                    map["ticket_corp_pay_price"] = self.ticketCorpPayPrice!
+                }
                 if self.ticketNo != nil {
                     map["ticket_no"] = self.ticketNo!
+                }
+                if self.ticketPersonPayPrice != nil {
+                    map["ticket_person_pay_price"] = self.ticketPersonPayPrice!
                 }
                 if self.ticketPrice != nil {
                     map["ticket_price"] = self.ticketPrice!
@@ -82567,6 +83185,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
                     self.arrCityCode = dict["arr_city_code"] as! String
                 }
+                if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                    self.arrCityName = dict["arr_city_name"] as! String
+                }
                 if dict.keys.contains("arr_date") && dict["arr_date"] != nil {
                     self.arrDate = dict["arr_date"] as! String
                 }
@@ -82591,6 +83212,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("booker_name") && dict["booker_name"] != nil {
                     self.bookerName = dict["booker_name"] as! String
                 }
+                if dict.keys.contains("business_trip_result") && dict["business_trip_result"] != nil {
+                    self.businessTripResult = dict["business_trip_result"] as! String
+                }
                 if dict.keys.contains("capital_direction") && dict["capital_direction"] != nil {
                     self.capitalDirection = dict["capital_direction"] as! String
                 }
@@ -82599,6 +83223,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("change_fee") && dict["change_fee"] != nil {
                     self.changeFee = dict["change_fee"] as! Double
+                }
+                if dict.keys.contains("change_result") && dict["change_result"] != nil {
+                    self.changeResult = dict["change_result"] as! String
                 }
                 if dict.keys.contains("coach_no") && dict["coach_no"] != nil {
                     self.coachNo = dict["coach_no"] as! String
@@ -82615,6 +83242,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
                     self.depCityCode = dict["dep_city_code"] as! String
                 }
+                if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                    self.depCityName = dict["dep_city_name"] as! String
+                }
                 if dict.keys.contains("department") && dict["department"] != nil {
                     self.department = dict["department"] as! String
                 }
@@ -82630,6 +83260,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("dept_time") && dict["dept_time"] != nil {
                     self.deptTime = dict["dept_time"] as! String
                 }
+                if dict.keys.contains("exceed_reason") && dict["exceed_reason"] != nil {
+                    self.exceedReason = dict["exceed_reason"] as! String
+                }
                 if dict.keys.contains("fee_type") && dict["fee_type"] != nil {
                     self.feeType = dict["fee_type"] as! String
                 }
@@ -82638,6 +83271,9 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("invoice_title") && dict["invoice_title"] != nil {
                     self.invoiceTitle = dict["invoice_title"] as! String
+                }
+                if dict.keys.contains("is_transfer_order") && dict["is_transfer_order"] != nil {
+                    self.isTransferOrder = dict["is_transfer_order"] as! String
                 }
                 if dict.keys.contains("order_id") && dict["order_id"] != nil {
                     self.orderId = dict["order_id"] as! String
@@ -82660,8 +83296,14 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("refund_fee") && dict["refund_fee"] != nil {
                     self.refundFee = dict["refund_fee"] as! Double
                 }
+                if dict.keys.contains("refund_reason") && dict["refund_reason"] != nil {
+                    self.refundReason = dict["refund_reason"] as! String
+                }
                 if dict.keys.contains("remark") && dict["remark"] != nil {
                     self.remark = dict["remark"] as! String
+                }
+                if dict.keys.contains("reserve_mode") && dict["reserve_mode"] != nil {
+                    self.reserveMode = dict["reserve_mode"] as! String
                 }
                 if dict.keys.contains("run_time") && dict["run_time"] != nil {
                     self.runTime = dict["run_time"] as! String
@@ -82699,8 +83341,14 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("third_itinerary_id") && dict["third_itinerary_id"] != nil {
                     self.thirdItineraryId = dict["third_itinerary_id"] as! String
                 }
+                if dict.keys.contains("ticket_corp_pay_price") && dict["ticket_corp_pay_price"] != nil {
+                    self.ticketCorpPayPrice = dict["ticket_corp_pay_price"] as! String
+                }
                 if dict.keys.contains("ticket_no") && dict["ticket_no"] != nil {
                     self.ticketNo = dict["ticket_no"] as! String
+                }
+                if dict.keys.contains("ticket_person_pay_price") && dict["ticket_person_pay_price"] != nil {
+                    self.ticketPersonPayPrice = dict["ticket_person_pay_price"] as! String
                 }
                 if dict.keys.contains("ticket_price") && dict["ticket_price"] != nil {
                     self.ticketPrice = dict["ticket_price"] as! Double
