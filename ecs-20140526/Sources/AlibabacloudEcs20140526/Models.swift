@@ -14227,6 +14227,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 public class CreateLaunchTemplateResponseBody : Tea.TeaModel {
     public var launchTemplateId: String?
 
+    public var launchTemplateVersionNumber: Int64?
+
     public var requestId: String?
 
     public override init() {
@@ -14246,6 +14248,9 @@ public class CreateLaunchTemplateResponseBody : Tea.TeaModel {
         if self.launchTemplateId != nil {
             map["LaunchTemplateId"] = self.launchTemplateId!
         }
+        if self.launchTemplateVersionNumber != nil {
+            map["LaunchTemplateVersionNumber"] = self.launchTemplateVersionNumber!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -14255,6 +14260,9 @@ public class CreateLaunchTemplateResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("LaunchTemplateId") && dict["LaunchTemplateId"] != nil {
             self.launchTemplateId = dict["LaunchTemplateId"] as! String
+        }
+        if dict.keys.contains("LaunchTemplateVersionNumber") && dict["LaunchTemplateVersionNumber"] != nil {
+            self.launchTemplateVersionNumber = dict["LaunchTemplateVersionNumber"] as! Int64
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
