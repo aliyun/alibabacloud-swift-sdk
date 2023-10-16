@@ -4970,6 +4970,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.funcId)) {
             query["FuncId"] = request.funcId!;
         }
+        if (!TeaUtils.Client.isUnset(request.matchType)) {
+            query["MatchType"] = request.matchType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }

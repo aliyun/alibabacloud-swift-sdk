@@ -29076,6 +29076,8 @@ public class DescribeDcdnUserDomainsByFuncRequest : Tea.TeaModel {
 
     public var funcId: Int32?
 
+    public var matchType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -29105,6 +29107,9 @@ public class DescribeDcdnUserDomainsByFuncRequest : Tea.TeaModel {
         if self.funcId != nil {
             map["FuncId"] = self.funcId!
         }
+        if self.matchType != nil {
+            map["MatchType"] = self.matchType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -29126,6 +29131,9 @@ public class DescribeDcdnUserDomainsByFuncRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FuncId") && dict["FuncId"] != nil {
             self.funcId = dict["FuncId"] as! Int32
+        }
+        if dict.keys.contains("MatchType") && dict["MatchType"] != nil {
+            self.matchType = dict["MatchType"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
