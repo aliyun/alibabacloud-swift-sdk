@@ -12912,6 +12912,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.containerName)) {
             query["ContainerName"] = request.containerName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.createTsEnd)) {
+            query["CreateTsEnd"] = request.createTsEnd!;
+        }
+        if (!TeaUtils.Client.isUnset(request.createTsStart)) {
+            query["CreateTsStart"] = request.createTsStart!;
+        }
         if (!TeaUtils.Client.isUnset(request.cveId)) {
             query["CveId"] = request.cveId ?? "";
         }

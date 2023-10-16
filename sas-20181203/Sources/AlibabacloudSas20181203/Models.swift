@@ -78543,6 +78543,10 @@ public class ExportVulRequest : Tea.TeaModel {
 
     public var containerName: String?
 
+    public var createTsEnd: Int64?
+
+    public var createTsStart: Int64?
+
     public var cveId: String?
 
     public var dealed: String?
@@ -78587,6 +78591,12 @@ public class ExportVulRequest : Tea.TeaModel {
         }
         if self.containerName != nil {
             map["ContainerName"] = self.containerName!
+        }
+        if self.createTsEnd != nil {
+            map["CreateTsEnd"] = self.createTsEnd!
+        }
+        if self.createTsStart != nil {
+            map["CreateTsStart"] = self.createTsStart!
         }
         if self.cveId != nil {
             map["CveId"] = self.cveId!
@@ -78633,6 +78643,12 @@ public class ExportVulRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ContainerName") && dict["ContainerName"] != nil {
             self.containerName = dict["ContainerName"] as! String
+        }
+        if dict.keys.contains("CreateTsEnd") && dict["CreateTsEnd"] != nil {
+            self.createTsEnd = dict["CreateTsEnd"] as! Int64
+        }
+        if dict.keys.contains("CreateTsStart") && dict["CreateTsStart"] != nil {
+            self.createTsStart = dict["CreateTsStart"] as! Int64
         }
         if dict.keys.contains("CveId") && dict["CveId"] != nil {
             self.cveId = dict["CveId"] as! String
