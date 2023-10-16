@@ -18,6 +18,8 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
 
     public var days: Int32?
 
+    public var enableCrl: Int64?
+
     public var immediately: Int32?
 
     public var locality: String?
@@ -70,6 +72,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         if self.days != nil {
             map["Days"] = self.days!
         }
+        if self.enableCrl != nil {
+            map["EnableCrl"] = self.enableCrl!
+        }
         if self.immediately != nil {
             map["Immediately"] = self.immediately!
         }
@@ -121,6 +126,9 @@ public class CreateClientCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Days") && dict["Days"] != nil {
             self.days = dict["Days"] as! Int32
+        }
+        if dict.keys.contains("EnableCrl") && dict["EnableCrl"] != nil {
+            self.enableCrl = dict["EnableCrl"] as! Int64
         }
         if dict.keys.contains("Immediately") && dict["Immediately"] != nil {
             self.immediately = dict["Immediately"] as! Int32
@@ -284,6 +292,8 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
 
     public var days: Int32?
 
+    public var enableCrl: Int64?
+
     public var immediately: Int32?
 
     public var locality: String?
@@ -339,6 +349,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         if self.days != nil {
             map["Days"] = self.days!
         }
+        if self.enableCrl != nil {
+            map["EnableCrl"] = self.enableCrl!
+        }
         if self.immediately != nil {
             map["Immediately"] = self.immediately!
         }
@@ -393,6 +406,9 @@ public class CreateClientCertificateWithCsrRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Days") && dict["Days"] != nil {
             self.days = dict["Days"] as! Int32
+        }
+        if dict.keys.contains("EnableCrl") && dict["EnableCrl"] != nil {
+            self.enableCrl = dict["EnableCrl"] as! Int64
         }
         if dict.keys.contains("Immediately") && dict["Immediately"] != nil {
             self.immediately = dict["Immediately"] as! Int32
@@ -666,6 +682,8 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var criticals: [String]?
+
             public var extendedKeyUsages: [String]?
 
             public var keyUsage: CreateCustomCertificateRequest.ApiPassthrough.Extensions.KeyUsage?
@@ -687,6 +705,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.criticals != nil {
+                    map["Criticals"] = self.criticals!
+                }
                 if self.extendedKeyUsages != nil {
                     map["ExtendedKeyUsages"] = self.extendedKeyUsages!
                 }
@@ -704,6 +725,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Criticals") && dict["Criticals"] != nil {
+                    self.criticals = dict["Criticals"] as! [String]
+                }
                 if dict.keys.contains("ExtendedKeyUsages") && dict["ExtendedKeyUsages"] != nil {
                     self.extendedKeyUsages = dict["ExtendedKeyUsages"] as! [String]
                 }
@@ -726,9 +750,48 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
             }
         }
         public class Subject : Tea.TeaModel {
+            public class CustomAttributes : Tea.TeaModel {
+                public var objectIdentifier: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.objectIdentifier != nil {
+                        map["ObjectIdentifier"] = self.objectIdentifier!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ObjectIdentifier") && dict["ObjectIdentifier"] != nil {
+                        self.objectIdentifier = dict["ObjectIdentifier"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
             public var commonName: String?
 
             public var country: String?
+
+            public var customAttributes: [CreateCustomCertificateRequest.ApiPassthrough.Subject.CustomAttributes]?
 
             public var locality: String?
 
@@ -758,6 +821,13 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
                 if self.country != nil {
                     map["Country"] = self.country!
                 }
+                if self.customAttributes != nil {
+                    var tmp : [Any] = []
+                    for k in self.customAttributes! {
+                        tmp.append(k.toMap())
+                    }
+                    map["CustomAttributes"] = tmp
+                }
                 if self.locality != nil {
                     map["Locality"] = self.locality!
                 }
@@ -780,6 +850,17 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
                 if dict.keys.contains("Country") && dict["Country"] != nil {
                     self.country = dict["Country"] as! String
                 }
+                if dict.keys.contains("CustomAttributes") && dict["CustomAttributes"] != nil {
+                    var tmp : [CreateCustomCertificateRequest.ApiPassthrough.Subject.CustomAttributes] = []
+                    for v in dict["CustomAttributes"] as! [Any] {
+                        var model = CreateCustomCertificateRequest.ApiPassthrough.Subject.CustomAttributes()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.customAttributes = tmp
+                }
                 if dict.keys.contains("Locality") && dict["Locality"] != nil {
                     self.locality = dict["Locality"] as! String
                 }
@@ -795,6 +876,8 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
             }
         }
         public var extensions: CreateCustomCertificateRequest.ApiPassthrough.Extensions?
+
+        public var serialNumber: String?
 
         public var subject: CreateCustomCertificateRequest.ApiPassthrough.Subject?
 
@@ -817,6 +900,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
             if self.extensions != nil {
                 map["Extensions"] = self.extensions?.toMap()
             }
+            if self.serialNumber != nil {
+                map["SerialNumber"] = self.serialNumber!
+            }
             if self.subject != nil {
                 map["Subject"] = self.subject?.toMap()
             }
@@ -829,6 +915,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
                 model.fromMap(dict["Extensions"] as! [String: Any])
                 self.extensions = model
             }
+            if dict.keys.contains("SerialNumber") && dict["SerialNumber"] != nil {
+                self.serialNumber = dict["SerialNumber"] as! String
+            }
             if dict.keys.contains("Subject") && dict["Subject"] != nil {
                 var model = CreateCustomCertificateRequest.ApiPassthrough.Subject()
                 model.fromMap(dict["Subject"] as! [String: Any])
@@ -839,6 +928,8 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
     public var apiPassthrough: CreateCustomCertificateRequest.ApiPassthrough?
 
     public var csr: String?
+
+    public var enableCrl: Int64?
 
     public var immediately: Int32?
 
@@ -867,6 +958,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
         if self.csr != nil {
             map["Csr"] = self.csr!
         }
+        if self.enableCrl != nil {
+            map["EnableCrl"] = self.enableCrl!
+        }
         if self.immediately != nil {
             map["Immediately"] = self.immediately!
         }
@@ -887,6 +981,9 @@ public class CreateCustomCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Csr") && dict["Csr"] != nil {
             self.csr = dict["Csr"] as! String
+        }
+        if dict.keys.contains("EnableCrl") && dict["EnableCrl"] != nil {
+            self.enableCrl = dict["EnableCrl"] as! Int64
         }
         if dict.keys.contains("Immediately") && dict["Immediately"] != nil {
             self.immediately = dict["Immediately"] as! Int32
@@ -1333,6 +1430,8 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var enableCrl: Int64?
+
     public var immediately: Int32?
 
     public var locality: String?
@@ -1384,6 +1483,9 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.enableCrl != nil {
+            map["EnableCrl"] = self.enableCrl!
+        }
         if self.immediately != nil {
             map["Immediately"] = self.immediately!
         }
@@ -1432,6 +1534,9 @@ public class CreateServerCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("EnableCrl") && dict["EnableCrl"] != nil {
+            self.enableCrl = dict["EnableCrl"] as! Int64
         }
         if dict.keys.contains("Immediately") && dict["Immediately"] != nil {
             self.immediately = dict["Immediately"] as! Int32
@@ -1591,6 +1696,8 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var enableCrl: Int64?
+
     public var immediately: Int32?
 
     public var locality: String?
@@ -1645,6 +1752,9 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.enableCrl != nil {
+            map["EnableCrl"] = self.enableCrl!
+        }
         if self.immediately != nil {
             map["Immediately"] = self.immediately!
         }
@@ -1696,6 +1806,9 @@ public class CreateServerCertificateWithCsrRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("EnableCrl") && dict["EnableCrl"] != nil {
+            self.enableCrl = dict["EnableCrl"] as! Int64
         }
         if dict.keys.contains("Immediately") && dict["Immediately"] != nil {
             self.immediately = dict["Immediately"] as! Int32
@@ -1845,6 +1958,10 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
 
     public var countryCode: String?
 
+    public var crlDay: Int32?
+
+    public var enableCrl: Bool?
+
     public var extendedKeyUsages: [String]?
 
     public var locality: String?
@@ -1884,6 +2001,12 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         if self.countryCode != nil {
             map["CountryCode"] = self.countryCode!
         }
+        if self.crlDay != nil {
+            map["CrlDay"] = self.crlDay!
+        }
+        if self.enableCrl != nil {
+            map["EnableCrl"] = self.enableCrl!
+        }
         if self.extendedKeyUsages != nil {
             map["ExtendedKeyUsages"] = self.extendedKeyUsages!
         }
@@ -1920,6 +2043,12 @@ public class CreateSubCACertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CountryCode") && dict["CountryCode"] != nil {
             self.countryCode = dict["CountryCode"] as! String
+        }
+        if dict.keys.contains("CrlDay") && dict["CrlDay"] != nil {
+            self.crlDay = dict["CrlDay"] as! Int32
+        }
+        if dict.keys.contains("EnableCrl") && dict["EnableCrl"] != nil {
+            self.enableCrl = dict["EnableCrl"] as! Bool
         }
         if dict.keys.contains("ExtendedKeyUsages") && dict["ExtendedKeyUsages"] != nil {
             self.extendedKeyUsages = dict["ExtendedKeyUsages"] as! [String]
@@ -2204,6 +2333,12 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
 
         public var beforeDate: Int64?
 
+        public var certIssuedCount: Int64?
+
+        public var certRemainingCount: Int64?
+
+        public var certTotalCount: Int64?
+
         public var certificateType: String?
 
         public var commonName: String?
@@ -2266,6 +2401,15 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
+            }
+            if self.certIssuedCount != nil {
+                map["CertIssuedCount"] = self.certIssuedCount!
+            }
+            if self.certRemainingCount != nil {
+                map["CertRemainingCount"] = self.certRemainingCount!
+            }
+            if self.certTotalCount != nil {
+                map["CertTotalCount"] = self.certTotalCount!
             }
             if self.certificateType != nil {
                 map["CertificateType"] = self.certificateType!
@@ -2339,6 +2483,15 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BeforeDate") && dict["BeforeDate"] != nil {
                 self.beforeDate = dict["BeforeDate"] as! Int64
+            }
+            if dict.keys.contains("CertIssuedCount") && dict["CertIssuedCount"] != nil {
+                self.certIssuedCount = dict["CertIssuedCount"] as! Int64
+            }
+            if dict.keys.contains("CertRemainingCount") && dict["CertRemainingCount"] != nil {
+                self.certRemainingCount = dict["CertRemainingCount"] as! Int64
+            }
+            if dict.keys.contains("CertTotalCount") && dict["CertTotalCount"] != nil {
+                self.certTotalCount = dict["CertTotalCount"] as! Int64
             }
             if dict.keys.contains("CertificateType") && dict["CertificateType"] != nil {
                 self.certificateType = dict["CertificateType"] as! String
@@ -3595,6 +3748,8 @@ public class DescribeClientCertificateStatusResponse : Tea.TeaModel {
 }
 
 public class GetCAInstanceStatusRequest : Tea.TeaModel {
+    public var identifier: String?
+
     public var instanceId: String?
 
     public override init() {
@@ -3611,6 +3766,9 @@ public class GetCAInstanceStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.identifier != nil {
+            map["Identifier"] = self.identifier!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3618,6 +3776,9 @@ public class GetCAInstanceStatusRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Identifier") && dict["Identifier"] != nil {
+            self.identifier = dict["Identifier"] as! String
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }

@@ -98,6 +98,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.days)) {
             query["Days"] = request.days!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableCrl)) {
+            query["EnableCrl"] = request.enableCrl!;
+        }
         if (!TeaUtils.Client.isUnset(request.immediately)) {
             query["Immediately"] = request.immediately!;
         }
@@ -177,6 +180,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.days)) {
             query["Days"] = request.days!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableCrl)) {
+            query["EnableCrl"] = request.enableCrl!;
+        }
         if (!TeaUtils.Client.isUnset(request.immediately)) {
             query["Immediately"] = request.immediately!;
         }
@@ -240,6 +246,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.csr)) {
             query["Csr"] = request.csr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableCrl)) {
+            query["EnableCrl"] = request.enableCrl!;
         }
         if (!TeaUtils.Client.isUnset(request.immediately)) {
             query["Immediately"] = request.immediately!;
@@ -382,6 +391,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["Domain"] = request.domain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableCrl)) {
+            query["EnableCrl"] = request.enableCrl!;
+        }
         if (!TeaUtils.Client.isUnset(request.immediately)) {
             query["Immediately"] = request.immediately!;
         }
@@ -458,6 +470,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.domain)) {
             query["Domain"] = request.domain ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableCrl)) {
+            query["EnableCrl"] = request.enableCrl!;
+        }
         if (!TeaUtils.Client.isUnset(request.immediately)) {
             query["Immediately"] = request.immediately!;
         }
@@ -518,6 +533,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.countryCode)) {
             query["CountryCode"] = request.countryCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.crlDay)) {
+            query["CrlDay"] = request.crlDay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableCrl)) {
+            query["EnableCrl"] = request.enableCrl!;
         }
         if (!TeaUtils.Client.isUnset(request.extendedKeyUsages)) {
             query["ExtendedKeyUsages"] = request.extendedKeyUsages ?? [];
@@ -790,6 +811,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCAInstanceStatusWithOptions(_ request: GetCAInstanceStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCAInstanceStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.identifier)) {
+            query["Identifier"] = request.identifier ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
