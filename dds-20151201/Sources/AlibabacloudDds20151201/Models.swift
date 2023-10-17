@@ -7584,6 +7584,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var tags: DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.Tags?
 
+            public var useClusterBackup: Bool?
+
             public var VPCCloudInstanceIds: String?
 
             public var VPCId: String?
@@ -7748,6 +7750,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
+                if self.useClusterBackup != nil {
+                    map["UseClusterBackup"] = self.useClusterBackup!
+                }
                 if self.VPCCloudInstanceIds != nil {
                     map["VPCCloudInstanceIds"] = self.VPCCloudInstanceIds!
                 }
@@ -7911,6 +7916,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     var model = DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.Tags()
                     model.fromMap(dict["Tags"] as! [String: Any])
                     self.tags = model
+                }
+                if dict.keys.contains("UseClusterBackup") && dict["UseClusterBackup"] != nil {
+                    self.useClusterBackup = dict["UseClusterBackup"] as! Bool
                 }
                 if dict.keys.contains("VPCCloudInstanceIds") && dict["VPCCloudInstanceIds"] != nil {
                     self.VPCCloudInstanceIds = dict["VPCCloudInstanceIds"] as! String
@@ -20437,6 +20445,8 @@ public class ModifyDBInstanceMonitorResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
+    public var category: String?
+
     public var classicExpendExpiredDays: Int32?
 
     public var connectionString: String?
@@ -20467,6 +20477,9 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
         if self.classicExpendExpiredDays != nil {
             map["ClassicExpendExpiredDays"] = self.classicExpendExpiredDays!
         }
@@ -20495,6 +20508,9 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Category") && dict["Category"] != nil {
+            self.category = dict["Category"] as! String
+        }
         if dict.keys.contains("ClassicExpendExpiredDays") && dict["ClassicExpendExpiredDays"] != nil {
             self.classicExpendExpiredDays = dict["ClassicExpendExpiredDays"] as! Int32
         }

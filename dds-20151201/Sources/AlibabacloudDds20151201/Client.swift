@@ -274,6 +274,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sourceDBInstance)) {
             query["SourceDBInstance"] = request.sourceDBInstance ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sourceDBInstance)) {
+            query["SourceDBInstance"] = request.sourceDBInstance ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -1516,6 +1519,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityToken)) {
             query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceDBInstance)) {
+            query["SourceDBInstance"] = request.sourceDBInstance ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sourceDBInstance)) {
             query["SourceDBInstance"] = request.sourceDBInstance ?? "";
@@ -3971,6 +3977,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyDBInstanceNetExpireTimeWithOptions(_ request: ModifyDBInstanceNetExpireTimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyDBInstanceNetExpireTimeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["Category"] = request.category ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.classicExpendExpiredDays)) {
             query["ClassicExpendExpiredDays"] = request.classicExpendExpiredDays!;
         }
