@@ -15706,6 +15706,8 @@ public class DescribeAffectedMaliciousFileImagesRequest : Tea.TeaModel {
 
     public var scanRange: [String]?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -15780,6 +15782,9 @@ public class DescribeAffectedMaliciousFileImagesRequest : Tea.TeaModel {
         if self.scanRange != nil {
             map["ScanRange"] = self.scanRange!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -15843,6 +15848,9 @@ public class DescribeAffectedMaliciousFileImagesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScanRange") && dict["ScanRange"] != nil {
             self.scanRange = dict["ScanRange"] as! [String]
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
         }
     }
 }
@@ -35711,6 +35719,8 @@ public class DescribeGroupedMaliciousFilesResponseBody : Tea.TeaModel {
 
         public var level: String?
 
+        public var maliciousKey: String?
+
         public var maliciousMd5: String?
 
         public var maliciousName: String?
@@ -35743,6 +35753,9 @@ public class DescribeGroupedMaliciousFilesResponseBody : Tea.TeaModel {
             if self.level != nil {
                 map["Level"] = self.level!
             }
+            if self.maliciousKey != nil {
+                map["MaliciousKey"] = self.maliciousKey!
+            }
             if self.maliciousMd5 != nil {
                 map["MaliciousMd5"] = self.maliciousMd5!
             }
@@ -35767,6 +35780,9 @@ public class DescribeGroupedMaliciousFilesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Level") && dict["Level"] != nil {
                 self.level = dict["Level"] as! String
+            }
+            if dict.keys.contains("MaliciousKey") && dict["MaliciousKey"] != nil {
+                self.maliciousKey = dict["MaliciousKey"] as! String
             }
             if dict.keys.contains("MaliciousMd5") && dict["MaliciousMd5"] != nil {
                 self.maliciousMd5 = dict["MaliciousMd5"] as! String
@@ -40988,6 +41004,8 @@ public class DescribeImageListBySensitiveFileRequest : Tea.TeaModel {
 
     public var sensitiveFileKey: String?
 
+    public var status: String?
+
     public override init() {
         super.init()
     }
@@ -41032,6 +41050,9 @@ public class DescribeImageListBySensitiveFileRequest : Tea.TeaModel {
         if self.sensitiveFileKey != nil {
             map["SensitiveFileKey"] = self.sensitiveFileKey!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -41066,6 +41087,9 @@ public class DescribeImageListBySensitiveFileRequest : Tea.TeaModel {
         if dict.keys.contains("SensitiveFileKey") && dict["SensitiveFileKey"] != nil {
             self.sensitiveFileKey = dict["SensitiveFileKey"] as! String
         }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
     }
 }
 
@@ -41089,6 +41113,8 @@ public class DescribeImageListBySensitiveFileShrinkRequest : Tea.TeaModel {
     public var scanRangeShrink: String?
 
     public var sensitiveFileKey: String?
+
+    public var status: String?
 
     public override init() {
         super.init()
@@ -41134,6 +41160,9 @@ public class DescribeImageListBySensitiveFileShrinkRequest : Tea.TeaModel {
         if self.sensitiveFileKey != nil {
             map["SensitiveFileKey"] = self.sensitiveFileKey!
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         return map
     }
 
@@ -41168,6 +41197,9 @@ public class DescribeImageListBySensitiveFileShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("SensitiveFileKey") && dict["SensitiveFileKey"] != nil {
             self.sensitiveFileKey = dict["SensitiveFileKey"] as! String
         }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
     }
 }
 
@@ -41188,6 +41220,8 @@ public class DescribeImageListBySensitiveFileResponseBody : Tea.TeaModel {
         public var repoNamespace: String?
 
         public var riskLevel: String?
+
+        public var status: String?
 
         public var tag: String?
 
@@ -41231,6 +41265,9 @@ public class DescribeImageListBySensitiveFileResponseBody : Tea.TeaModel {
             if self.riskLevel != nil {
                 map["RiskLevel"] = self.riskLevel!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.tag != nil {
                 map["Tag"] = self.tag!
             }
@@ -41264,6 +41301,9 @@ public class DescribeImageListBySensitiveFileResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RiskLevel") && dict["RiskLevel"] != nil {
                 self.riskLevel = dict["RiskLevel"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("Tag") && dict["Tag"] != nil {
                 self.tag = dict["Tag"] as! String
@@ -43411,6 +43451,8 @@ public class DescribeImageSensitiveFileByKeyResponseBody : Tea.TeaModel {
     public class SensitiveFileList : Tea.TeaModel {
         public var advice: String?
 
+        public var description_: String?
+
         public var filePath: String?
 
         public var firstScanTime: Int64?
@@ -43418,6 +43460,8 @@ public class DescribeImageSensitiveFileByKeyResponseBody : Tea.TeaModel {
         public var lastScanTime: Int64?
 
         public var layerDigest: String?
+
+        public var md5: String?
 
         public var promt: String?
 
@@ -43444,6 +43488,9 @@ public class DescribeImageSensitiveFileByKeyResponseBody : Tea.TeaModel {
             if self.advice != nil {
                 map["Advice"] = self.advice!
             }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
             if self.filePath != nil {
                 map["FilePath"] = self.filePath!
             }
@@ -43455,6 +43502,9 @@ public class DescribeImageSensitiveFileByKeyResponseBody : Tea.TeaModel {
             }
             if self.layerDigest != nil {
                 map["LayerDigest"] = self.layerDigest!
+            }
+            if self.md5 != nil {
+                map["Md5"] = self.md5!
             }
             if self.promt != nil {
                 map["Promt"] = self.promt!
@@ -43475,6 +43525,9 @@ public class DescribeImageSensitiveFileByKeyResponseBody : Tea.TeaModel {
             if dict.keys.contains("Advice") && dict["Advice"] != nil {
                 self.advice = dict["Advice"] as! String
             }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
             if dict.keys.contains("FilePath") && dict["FilePath"] != nil {
                 self.filePath = dict["FilePath"] as! String
             }
@@ -43486,6 +43539,9 @@ public class DescribeImageSensitiveFileByKeyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LayerDigest") && dict["LayerDigest"] != nil {
                 self.layerDigest = dict["LayerDigest"] as! String
+            }
+            if dict.keys.contains("Md5") && dict["Md5"] != nil {
+                self.md5 = dict["Md5"] as! String
             }
             if dict.keys.contains("Promt") && dict["Promt"] != nil {
                 self.promt = dict["Promt"] as! String
@@ -43880,6 +43936,10 @@ public class DescribeImageSensitiveFileListResponseBody : Tea.TeaModel {
         }
     }
     public class SensitiveFileList : Tea.TeaModel {
+        public var classKey: String?
+
+        public var className: String?
+
         public var count: Int32?
 
         public var firstScanTime: Int64?
@@ -43906,6 +43966,12 @@ public class DescribeImageSensitiveFileListResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.classKey != nil {
+                map["ClassKey"] = self.classKey!
+            }
+            if self.className != nil {
+                map["ClassName"] = self.className!
+            }
             if self.count != nil {
                 map["Count"] = self.count!
             }
@@ -43928,6 +43994,12 @@ public class DescribeImageSensitiveFileListResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClassKey") && dict["ClassKey"] != nil {
+                self.classKey = dict["ClassKey"] as! String
+            }
+            if dict.keys.contains("ClassName") && dict["ClassName"] != nil {
+                self.className = dict["ClassName"] as! String
+            }
             if dict.keys.contains("Count") && dict["Count"] != nil {
                 self.count = dict["Count"] as! Int32
             }
