@@ -5222,6 +5222,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDcdnUserVipsByDomainWithOptions(_ request: DescribeDcdnUserVipsByDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDcdnUserVipsByDomainResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.available)) {
+            query["Available"] = request.available ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDcdnUserVipsByDomain",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDcdnUserVipsByDomainResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDcdnUserVipsByDomain(_ request: DescribeDcdnUserVipsByDomainRequest) async throws -> DescribeDcdnUserVipsByDomainResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDcdnUserVipsByDomainWithOptions(request as! DescribeDcdnUserVipsByDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDcdnVerifyContentWithOptions(_ request: DescribeDcdnVerifyContentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDcdnVerifyContentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -7078,6 +7112,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func refreshDcdnObjectCachesWithOptions(_ request: RefreshDcdnObjectCachesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshDcdnObjectCachesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["Force"] = request.force!;
+        }
         if (!TeaUtils.Client.isUnset(request.objectPath)) {
             query["ObjectPath"] = request.objectPath ?? "";
         }
