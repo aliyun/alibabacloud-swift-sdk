@@ -20,6 +20,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var gatewayCount: Int64?
 
+    public var initialDatabases: String?
+
     public var instanceName: String?
 
     public var instanceType: String?
@@ -75,6 +77,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.gatewayCount != nil {
             map["gatewayCount"] = self.gatewayCount!
         }
+        if self.initialDatabases != nil {
+            map["initialDatabases"] = self.initialDatabases!
+        }
         if self.instanceName != nil {
             map["instanceName"] = self.instanceName!
         }
@@ -129,6 +134,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("gatewayCount") && dict["gatewayCount"] != nil {
             self.gatewayCount = dict["gatewayCount"] as! Int64
+        }
+        if dict.keys.contains("initialDatabases") && dict["initialDatabases"] != nil {
+            self.initialDatabases = dict["initialDatabases"] as! String
         }
         if dict.keys.contains("instanceName") && dict["instanceName"] != nil {
             self.instanceName = dict["instanceName"] as! String

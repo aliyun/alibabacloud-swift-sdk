@@ -48,6 +48,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.gatewayCount)) {
             body["gatewayCount"] = request.gatewayCount!;
         }
+        if (!TeaUtils.Client.isUnset(request.initialDatabases)) {
+            body["initialDatabases"] = request.initialDatabases ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["instanceName"] = request.instanceName ?? "";
         }
