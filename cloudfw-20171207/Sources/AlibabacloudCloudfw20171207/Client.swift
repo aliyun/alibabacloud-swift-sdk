@@ -390,8 +390,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.trAttachmentMasterCidr)) {
             query["TrAttachmentMasterCidr"] = request.trAttachmentMasterCidr ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.trAttachmentMasterZone)) {
+            query["TrAttachmentMasterZone"] = request.trAttachmentMasterZone ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.trAttachmentSlaveCidr)) {
             query["TrAttachmentSlaveCidr"] = request.trAttachmentSlaveCidr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trAttachmentSlaveZone)) {
+            query["TrAttachmentSlaveZone"] = request.trAttachmentSlaveZone ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.transitRouterId)) {
             query["TransitRouterId"] = request.transitRouterId ?? "";
@@ -1021,6 +1027,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteVpcFirewallControlPolicy(_ request: DeleteVpcFirewallControlPolicyRequest) async throws -> DeleteVpcFirewallControlPolicyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteVpcFirewallControlPolicyWithOptions(request as! DeleteVpcFirewallControlPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeACLProtectTrendWithOptions(_ request: DescribeACLProtectTrendRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeACLProtectTrendResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
+            query["SourceIp"] = request.sourceIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeACLProtectTrend",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeACLProtectTrendResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeACLProtectTrend(_ request: DescribeACLProtectTrendRequest) async throws -> DescribeACLProtectTrendResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeACLProtectTrendWithOptions(request as! DescribeACLProtectTrendRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

@@ -1166,7 +1166,11 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
 
     public var trAttachmentMasterCidr: String?
 
+    public var trAttachmentMasterZone: String?
+
     public var trAttachmentSlaveCidr: String?
+
+    public var trAttachmentSlaveZone: String?
 
     public var transitRouterId: String?
 
@@ -1217,8 +1221,14 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
         if self.trAttachmentMasterCidr != nil {
             map["TrAttachmentMasterCidr"] = self.trAttachmentMasterCidr!
         }
+        if self.trAttachmentMasterZone != nil {
+            map["TrAttachmentMasterZone"] = self.trAttachmentMasterZone!
+        }
         if self.trAttachmentSlaveCidr != nil {
             map["TrAttachmentSlaveCidr"] = self.trAttachmentSlaveCidr!
+        }
+        if self.trAttachmentSlaveZone != nil {
+            map["TrAttachmentSlaveZone"] = self.trAttachmentSlaveZone!
         }
         if self.transitRouterId != nil {
             map["TransitRouterId"] = self.transitRouterId!
@@ -1260,8 +1270,14 @@ public class CreateTrFirewallV2Request : Tea.TeaModel {
         if dict.keys.contains("TrAttachmentMasterCidr") && dict["TrAttachmentMasterCidr"] != nil {
             self.trAttachmentMasterCidr = dict["TrAttachmentMasterCidr"] as! String
         }
+        if dict.keys.contains("TrAttachmentMasterZone") && dict["TrAttachmentMasterZone"] != nil {
+            self.trAttachmentMasterZone = dict["TrAttachmentMasterZone"] as! String
+        }
         if dict.keys.contains("TrAttachmentSlaveCidr") && dict["TrAttachmentSlaveCidr"] != nil {
             self.trAttachmentSlaveCidr = dict["TrAttachmentSlaveCidr"] as! String
+        }
+        if dict.keys.contains("TrAttachmentSlaveZone") && dict["TrAttachmentSlaveZone"] != nil {
+            self.trAttachmentSlaveZone = dict["TrAttachmentSlaveZone"] as! String
         }
         if dict.keys.contains("TransitRouterId") && dict["TransitRouterId"] != nil {
             self.transitRouterId = dict["TransitRouterId"] as! String
@@ -3529,6 +3545,239 @@ public class DeleteVpcFirewallControlPolicyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteVpcFirewallControlPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeACLProtectTrendRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var lang: String?
+
+    public var sourceIp: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.sourceIp != nil {
+            map["SourceIp"] = self.sourceIp!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("SourceIp") && dict["SourceIp"] != nil {
+            self.sourceIp = dict["SourceIp"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeACLProtectTrendResponseBody : Tea.TeaModel {
+    public class TrendList : Tea.TeaModel {
+        public var protectCnt: Int32?
+
+        public var time: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.protectCnt != nil {
+                map["ProtectCnt"] = self.protectCnt!
+            }
+            if self.time != nil {
+                map["Time"] = self.time!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ProtectCnt") && dict["ProtectCnt"] != nil {
+                self.protectCnt = dict["ProtectCnt"] as! Int32
+            }
+            if dict.keys.contains("Time") && dict["Time"] != nil {
+                self.time = dict["Time"] as! Int64
+            }
+        }
+    }
+    public var inProtectCnt: Int64?
+
+    public var interVPCProtectCnt: Int64?
+
+    public var interval: Int32?
+
+    public var outProtectCnt: Int64?
+
+    public var requestId: String?
+
+    public var totalProtectCnt: Int64?
+
+    public var trendList: [DescribeACLProtectTrendResponseBody.TrendList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.inProtectCnt != nil {
+            map["InProtectCnt"] = self.inProtectCnt!
+        }
+        if self.interVPCProtectCnt != nil {
+            map["InterVPCProtectCnt"] = self.interVPCProtectCnt!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.outProtectCnt != nil {
+            map["OutProtectCnt"] = self.outProtectCnt!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalProtectCnt != nil {
+            map["TotalProtectCnt"] = self.totalProtectCnt!
+        }
+        if self.trendList != nil {
+            var tmp : [Any] = []
+            for k in self.trendList! {
+                tmp.append(k.toMap())
+            }
+            map["TrendList"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InProtectCnt") && dict["InProtectCnt"] != nil {
+            self.inProtectCnt = dict["InProtectCnt"] as! Int64
+        }
+        if dict.keys.contains("InterVPCProtectCnt") && dict["InterVPCProtectCnt"] != nil {
+            self.interVPCProtectCnt = dict["InterVPCProtectCnt"] as! Int64
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! Int32
+        }
+        if dict.keys.contains("OutProtectCnt") && dict["OutProtectCnt"] != nil {
+            self.outProtectCnt = dict["OutProtectCnt"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalProtectCnt") && dict["TotalProtectCnt"] != nil {
+            self.totalProtectCnt = dict["TotalProtectCnt"] as! Int64
+        }
+        if dict.keys.contains("TrendList") && dict["TrendList"] != nil {
+            var tmp : [DescribeACLProtectTrendResponseBody.TrendList] = []
+            for v in dict["TrendList"] as! [Any] {
+                var model = DescribeACLProtectTrendResponseBody.TrendList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.trendList = tmp
+        }
+    }
+}
+
+public class DescribeACLProtectTrendResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeACLProtectTrendResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeACLProtectTrendResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
