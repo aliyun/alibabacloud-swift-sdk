@@ -52,6 +52,8 @@ public class Addon : Tea.TeaModel {
 }
 
 public class DataDisk : Tea.TeaModel {
+    public var autoFormat: Bool?
+
     public var autoSnapshotPolicyId: String?
 
     public var burstingEnabled: Bool?
@@ -59,6 +61,10 @@ public class DataDisk : Tea.TeaModel {
     public var category: String?
 
     public var encrypted: String?
+
+    public var fileSystem: String?
+
+    public var mountTarget: String?
 
     public var performanceLevel: String?
 
@@ -80,6 +86,9 @@ public class DataDisk : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoFormat != nil {
+            map["auto_format"] = self.autoFormat!
+        }
         if self.autoSnapshotPolicyId != nil {
             map["auto_snapshot_policy_id"] = self.autoSnapshotPolicyId!
         }
@@ -91,6 +100,12 @@ public class DataDisk : Tea.TeaModel {
         }
         if self.encrypted != nil {
             map["encrypted"] = self.encrypted!
+        }
+        if self.fileSystem != nil {
+            map["file_system"] = self.fileSystem!
+        }
+        if self.mountTarget != nil {
+            map["mount_target"] = self.mountTarget!
         }
         if self.performanceLevel != nil {
             map["performance_level"] = self.performanceLevel!
@@ -105,6 +120,9 @@ public class DataDisk : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("auto_format") && dict["auto_format"] != nil {
+            self.autoFormat = dict["auto_format"] as! Bool
+        }
         if dict.keys.contains("auto_snapshot_policy_id") && dict["auto_snapshot_policy_id"] != nil {
             self.autoSnapshotPolicyId = dict["auto_snapshot_policy_id"] as! String
         }
@@ -116,6 +134,12 @@ public class DataDisk : Tea.TeaModel {
         }
         if dict.keys.contains("encrypted") && dict["encrypted"] != nil {
             self.encrypted = dict["encrypted"] as! String
+        }
+        if dict.keys.contains("file_system") && dict["file_system"] != nil {
+            self.fileSystem = dict["file_system"] as! String
+        }
+        if dict.keys.contains("mount_target") && dict["mount_target"] != nil {
+            self.mountTarget = dict["mount_target"] as! String
         }
         if dict.keys.contains("performance_level") && dict["performance_level"] != nil {
             self.performanceLevel = dict["performance_level"] as! String
@@ -3706,6 +3730,101 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
     }
     public class Management : Tea.TeaModel {
+        public class AutoRepairPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+            }
+        }
+        public class AutoUpgradePolicy : Tea.TeaModel {
+            public var autoUpgradeKubelet: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoUpgradeKubelet != nil {
+                    map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
+                    self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                }
+            }
+        }
+        public class AutoVulFixPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public var vulLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                if self.vulLevel != nil {
+                    map["vul_level"] = self.vulLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+                if dict.keys.contains("vul_level") && dict["vul_level"] != nil {
+                    self.vulLevel = dict["vul_level"] as! String
+                }
+            }
+        }
         public class UpgradeConfig : Tea.TeaModel {
             public var autoUpgrade: Bool?
 
@@ -3761,6 +3880,16 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
         public var autoRepair: Bool?
 
+        public var autoRepairPolicy: CreateClusterNodePoolRequest.Management.AutoRepairPolicy?
+
+        public var autoUpgrade: Bool?
+
+        public var autoUpgradePolicy: CreateClusterNodePoolRequest.Management.AutoUpgradePolicy?
+
+        public var autoVulFix: Bool?
+
+        public var autoVulFixPolicy: CreateClusterNodePoolRequest.Management.AutoVulFixPolicy?
+
         public var enable: Bool?
 
         public var upgradeConfig: CreateClusterNodePoolRequest.Management.UpgradeConfig?
@@ -3775,6 +3904,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.autoRepairPolicy?.validate()
+            try self.autoUpgradePolicy?.validate()
+            try self.autoVulFixPolicy?.validate()
             try self.upgradeConfig?.validate()
         }
 
@@ -3782,6 +3914,21 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
+            }
+            if self.autoRepairPolicy != nil {
+                map["auto_repair_policy"] = self.autoRepairPolicy?.toMap()
+            }
+            if self.autoUpgrade != nil {
+                map["auto_upgrade"] = self.autoUpgrade!
+            }
+            if self.autoUpgradePolicy != nil {
+                map["auto_upgrade_policy"] = self.autoUpgradePolicy?.toMap()
+            }
+            if self.autoVulFix != nil {
+                map["auto_vul_fix"] = self.autoVulFix!
+            }
+            if self.autoVulFixPolicy != nil {
+                map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
             if self.enable != nil {
                 map["enable"] = self.enable!
@@ -3795,6 +3942,27 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("auto_repair") && dict["auto_repair"] != nil {
                 self.autoRepair = dict["auto_repair"] as! Bool
+            }
+            if dict.keys.contains("auto_repair_policy") && dict["auto_repair_policy"] != nil {
+                var model = CreateClusterNodePoolRequest.Management.AutoRepairPolicy()
+                model.fromMap(dict["auto_repair_policy"] as! [String: Any])
+                self.autoRepairPolicy = model
+            }
+            if dict.keys.contains("auto_upgrade") && dict["auto_upgrade"] != nil {
+                self.autoUpgrade = dict["auto_upgrade"] as! Bool
+            }
+            if dict.keys.contains("auto_upgrade_policy") && dict["auto_upgrade_policy"] != nil {
+                var model = CreateClusterNodePoolRequest.Management.AutoUpgradePolicy()
+                model.fromMap(dict["auto_upgrade_policy"] as! [String: Any])
+                self.autoUpgradePolicy = model
+            }
+            if dict.keys.contains("auto_vul_fix") && dict["auto_vul_fix"] != nil {
+                self.autoVulFix = dict["auto_vul_fix"] as! Bool
+            }
+            if dict.keys.contains("auto_vul_fix_policy") && dict["auto_vul_fix_policy"] != nil {
+                var model = CreateClusterNodePoolRequest.Management.AutoVulFixPolicy()
+                model.fromMap(dict["auto_vul_fix_policy"] as! [String: Any])
+                self.autoVulFixPolicy = model
             }
             if dict.keys.contains("enable") && dict["enable"] != nil {
                 self.enable = dict["enable"] as! Bool
@@ -8074,6 +8242,101 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
     }
     public class Management : Tea.TeaModel {
+        public class AutoRepairPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+            }
+        }
+        public class AutoUpgradePolicy : Tea.TeaModel {
+            public var autoUpgradeKubelet: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoUpgradeKubelet != nil {
+                    map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
+                    self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                }
+            }
+        }
+        public class AutoVulFixPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public var vulLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                if self.vulLevel != nil {
+                    map["vul_level"] = self.vulLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+                if dict.keys.contains("vul_level") && dict["vul_level"] != nil {
+                    self.vulLevel = dict["vul_level"] as! String
+                }
+            }
+        }
         public class UpgradeConfig : Tea.TeaModel {
             public var autoUpgrade: Bool?
 
@@ -8129,6 +8392,16 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
         public var autoRepair: Bool?
 
+        public var autoRepairPolicy: DescribeClusterNodePoolDetailResponseBody.Management.AutoRepairPolicy?
+
+        public var autoUpgrade: Bool?
+
+        public var autoUpgradePolicy: DescribeClusterNodePoolDetailResponseBody.Management.AutoUpgradePolicy?
+
+        public var autoVulFix: Bool?
+
+        public var autoVulFixPolicy: DescribeClusterNodePoolDetailResponseBody.Management.AutoVulFixPolicy?
+
         public var enable: Bool?
 
         public var upgradeConfig: DescribeClusterNodePoolDetailResponseBody.Management.UpgradeConfig?
@@ -8143,6 +8416,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.autoRepairPolicy?.validate()
+            try self.autoUpgradePolicy?.validate()
+            try self.autoVulFixPolicy?.validate()
             try self.upgradeConfig?.validate()
         }
 
@@ -8150,6 +8426,21 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
+            }
+            if self.autoRepairPolicy != nil {
+                map["auto_repair_policy"] = self.autoRepairPolicy?.toMap()
+            }
+            if self.autoUpgrade != nil {
+                map["auto_upgrade"] = self.autoUpgrade!
+            }
+            if self.autoUpgradePolicy != nil {
+                map["auto_upgrade_policy"] = self.autoUpgradePolicy?.toMap()
+            }
+            if self.autoVulFix != nil {
+                map["auto_vul_fix"] = self.autoVulFix!
+            }
+            if self.autoVulFixPolicy != nil {
+                map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
             if self.enable != nil {
                 map["enable"] = self.enable!
@@ -8163,6 +8454,27 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("auto_repair") && dict["auto_repair"] != nil {
                 self.autoRepair = dict["auto_repair"] as! Bool
+            }
+            if dict.keys.contains("auto_repair_policy") && dict["auto_repair_policy"] != nil {
+                var model = DescribeClusterNodePoolDetailResponseBody.Management.AutoRepairPolicy()
+                model.fromMap(dict["auto_repair_policy"] as! [String: Any])
+                self.autoRepairPolicy = model
+            }
+            if dict.keys.contains("auto_upgrade") && dict["auto_upgrade"] != nil {
+                self.autoUpgrade = dict["auto_upgrade"] as! Bool
+            }
+            if dict.keys.contains("auto_upgrade_policy") && dict["auto_upgrade_policy"] != nil {
+                var model = DescribeClusterNodePoolDetailResponseBody.Management.AutoUpgradePolicy()
+                model.fromMap(dict["auto_upgrade_policy"] as! [String: Any])
+                self.autoUpgradePolicy = model
+            }
+            if dict.keys.contains("auto_vul_fix") && dict["auto_vul_fix"] != nil {
+                self.autoVulFix = dict["auto_vul_fix"] as! Bool
+            }
+            if dict.keys.contains("auto_vul_fix_policy") && dict["auto_vul_fix_policy"] != nil {
+                var model = DescribeClusterNodePoolDetailResponseBody.Management.AutoVulFixPolicy()
+                model.fromMap(dict["auto_vul_fix_policy"] as! [String: Any])
+                self.autoVulFixPolicy = model
             }
             if dict.keys.contains("enable") && dict["enable"] != nil {
                 self.enable = dict["enable"] as! Bool
@@ -9257,6 +9569,101 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
         }
         public class Management : Tea.TeaModel {
+            public class AutoRepairPolicy : Tea.TeaModel {
+                public var restartNode: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.restartNode != nil {
+                        map["restart_node"] = self.restartNode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                        self.restartNode = dict["restart_node"] as! Bool
+                    }
+                }
+            }
+            public class AutoUpgradePolicy : Tea.TeaModel {
+                public var autoUpgradeKubelet: Bool?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.autoUpgradeKubelet != nil {
+                        map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
+                        self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                    }
+                }
+            }
+            public class AutoVulFixPolicy : Tea.TeaModel {
+                public var restartNode: Bool?
+
+                public var vulLevel: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.restartNode != nil {
+                        map["restart_node"] = self.restartNode!
+                    }
+                    if self.vulLevel != nil {
+                        map["vul_level"] = self.vulLevel!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                        self.restartNode = dict["restart_node"] as! Bool
+                    }
+                    if dict.keys.contains("vul_level") && dict["vul_level"] != nil {
+                        self.vulLevel = dict["vul_level"] as! String
+                    }
+                }
+            }
             public class UpgradeConfig : Tea.TeaModel {
                 public var autoUpgrade: Bool?
 
@@ -9312,6 +9719,16 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
             public var autoRepair: Bool?
 
+            public var autoRepairPolicy: DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoRepairPolicy?
+
+            public var autoUpgrade: Bool?
+
+            public var autoUpgradePolicy: DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoUpgradePolicy?
+
+            public var autoVulFix: Bool?
+
+            public var autoVulFixPolicy: DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoVulFixPolicy?
+
             public var enable: Bool?
 
             public var upgradeConfig: DescribeClusterNodePoolsResponseBody.Nodepools.Management.UpgradeConfig?
@@ -9326,6 +9743,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.autoRepairPolicy?.validate()
+                try self.autoUpgradePolicy?.validate()
+                try self.autoVulFixPolicy?.validate()
                 try self.upgradeConfig?.validate()
             }
 
@@ -9333,6 +9753,21 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.autoRepair != nil {
                     map["auto_repair"] = self.autoRepair!
+                }
+                if self.autoRepairPolicy != nil {
+                    map["auto_repair_policy"] = self.autoRepairPolicy?.toMap()
+                }
+                if self.autoUpgrade != nil {
+                    map["auto_upgrade"] = self.autoUpgrade!
+                }
+                if self.autoUpgradePolicy != nil {
+                    map["auto_upgrade_policy"] = self.autoUpgradePolicy?.toMap()
+                }
+                if self.autoVulFix != nil {
+                    map["auto_vul_fix"] = self.autoVulFix!
+                }
+                if self.autoVulFixPolicy != nil {
+                    map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
                 }
                 if self.enable != nil {
                     map["enable"] = self.enable!
@@ -9346,6 +9781,27 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("auto_repair") && dict["auto_repair"] != nil {
                     self.autoRepair = dict["auto_repair"] as! Bool
+                }
+                if dict.keys.contains("auto_repair_policy") && dict["auto_repair_policy"] != nil {
+                    var model = DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoRepairPolicy()
+                    model.fromMap(dict["auto_repair_policy"] as! [String: Any])
+                    self.autoRepairPolicy = model
+                }
+                if dict.keys.contains("auto_upgrade") && dict["auto_upgrade"] != nil {
+                    self.autoUpgrade = dict["auto_upgrade"] as! Bool
+                }
+                if dict.keys.contains("auto_upgrade_policy") && dict["auto_upgrade_policy"] != nil {
+                    var model = DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoUpgradePolicy()
+                    model.fromMap(dict["auto_upgrade_policy"] as! [String: Any])
+                    self.autoUpgradePolicy = model
+                }
+                if dict.keys.contains("auto_vul_fix") && dict["auto_vul_fix"] != nil {
+                    self.autoVulFix = dict["auto_vul_fix"] as! Bool
+                }
+                if dict.keys.contains("auto_vul_fix_policy") && dict["auto_vul_fix_policy"] != nil {
+                    var model = DescribeClusterNodePoolsResponseBody.Nodepools.Management.AutoVulFixPolicy()
+                    model.fromMap(dict["auto_vul_fix_policy"] as! [String: Any])
+                    self.autoVulFixPolicy = model
                 }
                 if dict.keys.contains("enable") && dict["enable"] != nil {
                     self.enable = dict["enable"] as! Bool
@@ -18431,6 +18887,43 @@ public class MigrateClusterResponse : Tea.TeaModel {
 }
 
 public class ModifyClusterRequest : Tea.TeaModel {
+    public class SystemEventsLogging : Tea.TeaModel {
+        public var enabled: Bool?
+
+        public var loggingProject: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.loggingProject != nil {
+                map["logging_project"] = self.loggingProject!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enabled") && dict["enabled"] != nil {
+                self.enabled = dict["enabled"] as! Bool
+            }
+            if dict.keys.contains("logging_project") && dict["logging_project"] != nil {
+                self.loggingProject = dict["logging_project"] as! String
+            }
+        }
+    }
     public var accessControlList: [String]?
 
     public var apiServerEip: Bool?
@@ -18453,6 +18946,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var systemEventsLogging: ModifyClusterRequest.SystemEventsLogging?
+
     public override init() {
         super.init()
     }
@@ -18464,6 +18959,7 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.maintenanceWindow?.validate()
+        try self.systemEventsLogging?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -18500,6 +18996,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if self.resourceGroupId != nil {
             map["resource_group_id"] = self.resourceGroupId!
+        }
+        if self.systemEventsLogging != nil {
+            map["system_events_logging"] = self.systemEventsLogging?.toMap()
         }
         return map
     }
@@ -18539,6 +19038,11 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("resource_group_id") && dict["resource_group_id"] != nil {
             self.resourceGroupId = dict["resource_group_id"] as! String
+        }
+        if dict.keys.contains("system_events_logging") && dict["system_events_logging"] != nil {
+            var model = ModifyClusterRequest.SystemEventsLogging()
+            model.fromMap(dict["system_events_logging"] as! [String: Any])
+            self.systemEventsLogging = model
         }
     }
 }
@@ -19059,6 +19563,101 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
     }
     public class Management : Tea.TeaModel {
+        public class AutoRepairPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+            }
+        }
+        public class AutoUpgradePolicy : Tea.TeaModel {
+            public var autoUpgradeKubelet: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoUpgradeKubelet != nil {
+                    map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
+                    self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                }
+            }
+        }
+        public class AutoVulFixPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public var vulLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                if self.vulLevel != nil {
+                    map["vul_level"] = self.vulLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+                if dict.keys.contains("vul_level") && dict["vul_level"] != nil {
+                    self.vulLevel = dict["vul_level"] as! String
+                }
+            }
+        }
         public class UpgradeConfig : Tea.TeaModel {
             public var autoUpgrade: Bool?
 
@@ -19114,6 +19713,16 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
         public var autoRepair: Bool?
 
+        public var autoRepairPolicy: ModifyClusterNodePoolRequest.Management.AutoRepairPolicy?
+
+        public var autoUpgrade: Bool?
+
+        public var autoUpgradePolicy: ModifyClusterNodePoolRequest.Management.AutoUpgradePolicy?
+
+        public var autoVulFix: Bool?
+
+        public var autoVulFixPolicy: ModifyClusterNodePoolRequest.Management.AutoVulFixPolicy?
+
         public var enable: Bool?
 
         public var upgradeConfig: ModifyClusterNodePoolRequest.Management.UpgradeConfig?
@@ -19128,6 +19737,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.autoRepairPolicy?.validate()
+            try self.autoUpgradePolicy?.validate()
+            try self.autoVulFixPolicy?.validate()
             try self.upgradeConfig?.validate()
         }
 
@@ -19135,6 +19747,21 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
+            }
+            if self.autoRepairPolicy != nil {
+                map["auto_repair_policy"] = self.autoRepairPolicy?.toMap()
+            }
+            if self.autoUpgrade != nil {
+                map["auto_upgrade"] = self.autoUpgrade!
+            }
+            if self.autoUpgradePolicy != nil {
+                map["auto_upgrade_policy"] = self.autoUpgradePolicy?.toMap()
+            }
+            if self.autoVulFix != nil {
+                map["auto_vul_fix"] = self.autoVulFix!
+            }
+            if self.autoVulFixPolicy != nil {
+                map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
             if self.enable != nil {
                 map["enable"] = self.enable!
@@ -19148,6 +19775,27 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("auto_repair") && dict["auto_repair"] != nil {
                 self.autoRepair = dict["auto_repair"] as! Bool
+            }
+            if dict.keys.contains("auto_repair_policy") && dict["auto_repair_policy"] != nil {
+                var model = ModifyClusterNodePoolRequest.Management.AutoRepairPolicy()
+                model.fromMap(dict["auto_repair_policy"] as! [String: Any])
+                self.autoRepairPolicy = model
+            }
+            if dict.keys.contains("auto_upgrade") && dict["auto_upgrade"] != nil {
+                self.autoUpgrade = dict["auto_upgrade"] as! Bool
+            }
+            if dict.keys.contains("auto_upgrade_policy") && dict["auto_upgrade_policy"] != nil {
+                var model = ModifyClusterNodePoolRequest.Management.AutoUpgradePolicy()
+                model.fromMap(dict["auto_upgrade_policy"] as! [String: Any])
+                self.autoUpgradePolicy = model
+            }
+            if dict.keys.contains("auto_vul_fix") && dict["auto_vul_fix"] != nil {
+                self.autoVulFix = dict["auto_vul_fix"] as! Bool
+            }
+            if dict.keys.contains("auto_vul_fix_policy") && dict["auto_vul_fix_policy"] != nil {
+                var model = ModifyClusterNodePoolRequest.Management.AutoVulFixPolicy()
+                model.fromMap(dict["auto_vul_fix_policy"] as! [String: Any])
+                self.autoVulFixPolicy = model
             }
             if dict.keys.contains("enable") && dict["enable"] != nil {
                 self.enable = dict["enable"] as! Bool
