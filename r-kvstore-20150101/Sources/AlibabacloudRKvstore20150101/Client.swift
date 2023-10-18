@@ -12,13 +12,14 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointMap = [
             "cn-qingdao": "r-kvstore.aliyuncs.com",
             "cn-beijing": "r-kvstore.aliyuncs.com",
+            "cn-wulanchabu": "r-kvstore.aliyuncs.com",
             "cn-hangzhou": "r-kvstore.aliyuncs.com",
             "cn-shanghai": "r-kvstore.aliyuncs.com",
             "cn-shenzhen": "r-kvstore.aliyuncs.com",
             "cn-heyuan": "r-kvstore.aliyuncs.com",
+            "cn-guangzhou": "r-kvstore.aliyuncs.com",
+            "cn-hongkong": "r-kvstore.aliyuncs.com",
             "ap-southeast-1": "r-kvstore.aliyuncs.com",
-            "us-west-1": "r-kvstore.aliyuncs.com",
-            "us-east-1": "r-kvstore.aliyuncs.com",
             "cn-hangzhou-finance": "r-kvstore.aliyuncs.com",
             "cn-shanghai-finance-1": "r-kvstore.aliyuncs.com",
             "cn-shenzhen-finance-1": "r-kvstore.aliyuncs.com",
@@ -38,7 +39,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-internal-test-3": "r-kvstore.aliyuncs.com",
             "cn-hangzhou-test-306": "r-kvstore.aliyuncs.com",
             "cn-hongkong-finance-pop": "r-kvstore.aliyuncs.com",
-            "cn-huhehaote-nebula-1": "r-kvstore.aliyuncs.com",
             "cn-qingdao-nebula": "r-kvstore.aliyuncs.com",
             "cn-shanghai-et15-b01": "r-kvstore.aliyuncs.com",
             "cn-shanghai-et2-b01": "r-kvstore.aliyuncs.com",
@@ -48,8 +48,8 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-shenzhen-st4-d01": "r-kvstore.aliyuncs.com",
             "cn-shenzhen-su18-b01": "r-kvstore.aliyuncs.com",
             "cn-wuhan": "r-kvstore.aliyuncs.com",
-            "cn-wulanchabu": "r-kvstore.aliyuncs.com",
             "cn-yushanfang": "r-kvstore.aliyuncs.com",
+            "cn-zhangbei": "r-kvstore.aliyuncs.com",
             "cn-zhangbei-na61-b01": "r-kvstore.aliyuncs.com",
             "cn-zhangjiakou-na62-a01": "r-kvstore.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "r-kvstore.aliyuncs.com",
@@ -3849,6 +3849,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func lockDBInstanceWriteWithOptions(_ request: LockDBInstanceWriteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> LockDBInstanceWriteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lockReason)) {
+            query["LockReason"] = request.lockReason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "LockDBInstanceWrite",
+            "version": "2015-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(LockDBInstanceWriteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func lockDBInstanceWrite(_ request: LockDBInstanceWriteRequest) async throws -> LockDBInstanceWriteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await lockDBInstanceWriteWithOptions(request as! LockDBInstanceWriteRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func migrateToOtherZoneWithOptions(_ request: MigrateToOtherZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MigrateToOtherZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5906,6 +5955,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func transformToPrePaid(_ request: TransformToPrePaidRequest) async throws -> TransformToPrePaidResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await transformToPrePaidWithOptions(request as! TransformToPrePaidRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unlockDBInstanceWriteWithOptions(_ request: UnlockDBInstanceWriteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnlockDBInstanceWriteResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
+            query["DBInstanceId"] = request.DBInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnlockDBInstanceWrite",
+            "version": "2015-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnlockDBInstanceWriteResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unlockDBInstanceWrite(_ request: UnlockDBInstanceWriteRequest) async throws -> UnlockDBInstanceWriteResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unlockDBInstanceWriteWithOptions(request as! UnlockDBInstanceWriteRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

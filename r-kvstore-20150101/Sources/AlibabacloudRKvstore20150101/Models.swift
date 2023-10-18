@@ -9460,6 +9460,388 @@ public class DescribeEngineVersionRequest : Tea.TeaModel {
 }
 
 public class DescribeEngineVersionResponseBody : Tea.TeaModel {
+    public class DBLatestMinorVersion : Tea.TeaModel {
+        public class VersionRelease : Tea.TeaModel {
+            public class ReleaseInfo : Tea.TeaModel {
+                public class ReleaseInfoList : Tea.TeaModel {
+                    public var createTime: String?
+
+                    public var level: String?
+
+                    public var releaseNote: String?
+
+                    public var releaseNoteEn: String?
+
+                    public var releaseVersion: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.createTime != nil {
+                            map["CreateTime"] = self.createTime!
+                        }
+                        if self.level != nil {
+                            map["Level"] = self.level!
+                        }
+                        if self.releaseNote != nil {
+                            map["ReleaseNote"] = self.releaseNote!
+                        }
+                        if self.releaseNoteEn != nil {
+                            map["ReleaseNoteEn"] = self.releaseNoteEn!
+                        }
+                        if self.releaseVersion != nil {
+                            map["ReleaseVersion"] = self.releaseVersion!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                            self.createTime = dict["CreateTime"] as! String
+                        }
+                        if dict.keys.contains("Level") && dict["Level"] != nil {
+                            self.level = dict["Level"] as! String
+                        }
+                        if dict.keys.contains("ReleaseNote") && dict["ReleaseNote"] != nil {
+                            self.releaseNote = dict["ReleaseNote"] as! String
+                        }
+                        if dict.keys.contains("ReleaseNoteEn") && dict["ReleaseNoteEn"] != nil {
+                            self.releaseNoteEn = dict["ReleaseNoteEn"] as! String
+                        }
+                        if dict.keys.contains("ReleaseVersion") && dict["ReleaseVersion"] != nil {
+                            self.releaseVersion = dict["ReleaseVersion"] as! String
+                        }
+                    }
+                }
+                public var releaseInfoList: [DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease.ReleaseInfo.ReleaseInfoList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.releaseInfoList != nil {
+                        var tmp : [Any] = []
+                        for k in self.releaseInfoList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ReleaseInfoList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ReleaseInfoList") && dict["ReleaseInfoList"] != nil {
+                        var tmp : [DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease.ReleaseInfo.ReleaseInfoList] = []
+                        for v in dict["ReleaseInfoList"] as! [Any] {
+                            var model = DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease.ReleaseInfo.ReleaseInfoList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.releaseInfoList = tmp
+                    }
+                }
+            }
+            public var releaseInfo: DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease.ReleaseInfo?
+
+            public var versionChangesLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.releaseInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.releaseInfo != nil {
+                    map["ReleaseInfo"] = self.releaseInfo?.toMap()
+                }
+                if self.versionChangesLevel != nil {
+                    map["VersionChangesLevel"] = self.versionChangesLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ReleaseInfo") && dict["ReleaseInfo"] != nil {
+                    var model = DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease.ReleaseInfo()
+                    model.fromMap(dict["ReleaseInfo"] as! [String: Any])
+                    self.releaseInfo = model
+                }
+                if dict.keys.contains("VersionChangesLevel") && dict["VersionChangesLevel"] != nil {
+                    self.versionChangesLevel = dict["VersionChangesLevel"] as! String
+                }
+            }
+        }
+        public var level: String?
+
+        public var minorVersion: String?
+
+        public var versionRelease: DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.versionRelease?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.level != nil {
+                map["Level"] = self.level!
+            }
+            if self.minorVersion != nil {
+                map["MinorVersion"] = self.minorVersion!
+            }
+            if self.versionRelease != nil {
+                map["VersionRelease"] = self.versionRelease?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Level") && dict["Level"] != nil {
+                self.level = dict["Level"] as! String
+            }
+            if dict.keys.contains("MinorVersion") && dict["MinorVersion"] != nil {
+                self.minorVersion = dict["MinorVersion"] as! String
+            }
+            if dict.keys.contains("VersionRelease") && dict["VersionRelease"] != nil {
+                var model = DescribeEngineVersionResponseBody.DBLatestMinorVersion.VersionRelease()
+                model.fromMap(dict["VersionRelease"] as! [String: Any])
+                self.versionRelease = model
+            }
+        }
+    }
+    public class ProxyLatestMinorVersion : Tea.TeaModel {
+        public class VersionRelease : Tea.TeaModel {
+            public class ReleaseInfo : Tea.TeaModel {
+                public class ReleaseInfoList : Tea.TeaModel {
+                    public var createTime: String?
+
+                    public var level: String?
+
+                    public var releaseNote: String?
+
+                    public var releaseNoteEn: String?
+
+                    public var releaseVersion: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.createTime != nil {
+                            map["CreateTime"] = self.createTime!
+                        }
+                        if self.level != nil {
+                            map["Level"] = self.level!
+                        }
+                        if self.releaseNote != nil {
+                            map["ReleaseNote"] = self.releaseNote!
+                        }
+                        if self.releaseNoteEn != nil {
+                            map["ReleaseNoteEn"] = self.releaseNoteEn!
+                        }
+                        if self.releaseVersion != nil {
+                            map["ReleaseVersion"] = self.releaseVersion!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                            self.createTime = dict["CreateTime"] as! String
+                        }
+                        if dict.keys.contains("Level") && dict["Level"] != nil {
+                            self.level = dict["Level"] as! String
+                        }
+                        if dict.keys.contains("ReleaseNote") && dict["ReleaseNote"] != nil {
+                            self.releaseNote = dict["ReleaseNote"] as! String
+                        }
+                        if dict.keys.contains("ReleaseNoteEn") && dict["ReleaseNoteEn"] != nil {
+                            self.releaseNoteEn = dict["ReleaseNoteEn"] as! String
+                        }
+                        if dict.keys.contains("ReleaseVersion") && dict["ReleaseVersion"] != nil {
+                            self.releaseVersion = dict["ReleaseVersion"] as! String
+                        }
+                    }
+                }
+                public var releaseInfoList: [DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease.ReleaseInfo.ReleaseInfoList]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.releaseInfoList != nil {
+                        var tmp : [Any] = []
+                        for k in self.releaseInfoList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ReleaseInfoList"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ReleaseInfoList") && dict["ReleaseInfoList"] != nil {
+                        var tmp : [DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease.ReleaseInfo.ReleaseInfoList] = []
+                        for v in dict["ReleaseInfoList"] as! [Any] {
+                            var model = DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease.ReleaseInfo.ReleaseInfoList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.releaseInfoList = tmp
+                    }
+                }
+            }
+            public var releaseInfo: DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease.ReleaseInfo?
+
+            public var versionChangesLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.releaseInfo?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.releaseInfo != nil {
+                    map["ReleaseInfo"] = self.releaseInfo?.toMap()
+                }
+                if self.versionChangesLevel != nil {
+                    map["VersionChangesLevel"] = self.versionChangesLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ReleaseInfo") && dict["ReleaseInfo"] != nil {
+                    var model = DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease.ReleaseInfo()
+                    model.fromMap(dict["ReleaseInfo"] as! [String: Any])
+                    self.releaseInfo = model
+                }
+                if dict.keys.contains("VersionChangesLevel") && dict["VersionChangesLevel"] != nil {
+                    self.versionChangesLevel = dict["VersionChangesLevel"] as! String
+                }
+            }
+        }
+        public var level: String?
+
+        public var minorVersion: String?
+
+        public var versionRelease: DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.versionRelease?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.level != nil {
+                map["Level"] = self.level!
+            }
+            if self.minorVersion != nil {
+                map["MinorVersion"] = self.minorVersion!
+            }
+            if self.versionRelease != nil {
+                map["VersionRelease"] = self.versionRelease?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Level") && dict["Level"] != nil {
+                self.level = dict["Level"] as! String
+            }
+            if dict.keys.contains("MinorVersion") && dict["MinorVersion"] != nil {
+                self.minorVersion = dict["MinorVersion"] as! String
+            }
+            if dict.keys.contains("VersionRelease") && dict["VersionRelease"] != nil {
+                var model = DescribeEngineVersionResponseBody.ProxyLatestMinorVersion.VersionRelease()
+                model.fromMap(dict["VersionRelease"] as! [String: Any])
+                self.versionRelease = model
+            }
+        }
+    }
+    public var DBLatestMinorVersion: DescribeEngineVersionResponseBody.DBLatestMinorVersion?
+
     public var DBVersionRelease: String?
 
     public var enableUpgradeMajorVersion: Bool?
@@ -9467,6 +9849,8 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
     public var enableUpgradeMinorVersion: Bool?
 
     public var engine: String?
+
+    public var isAutoUpgradeOpen: String?
 
     public var isLatestVersion: Bool?
 
@@ -9479,6 +9863,8 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
     public var majorVersion: String?
 
     public var minorVersion: String?
+
+    public var proxyLatestMinorVersion: DescribeEngineVersionResponseBody.ProxyLatestMinorVersion?
 
     public var proxyMinorVersion: String?
 
@@ -9496,10 +9882,15 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.DBLatestMinorVersion?.validate()
+        try self.proxyLatestMinorVersion?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.DBLatestMinorVersion != nil {
+            map["DBLatestMinorVersion"] = self.DBLatestMinorVersion?.toMap()
+        }
         if self.DBVersionRelease != nil {
             map["DBVersionRelease"] = self.DBVersionRelease!
         }
@@ -9511,6 +9902,9 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
         }
         if self.engine != nil {
             map["Engine"] = self.engine!
+        }
+        if self.isAutoUpgradeOpen != nil {
+            map["IsAutoUpgradeOpen"] = self.isAutoUpgradeOpen!
         }
         if self.isLatestVersion != nil {
             map["IsLatestVersion"] = self.isLatestVersion!
@@ -9530,6 +9924,9 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
         if self.minorVersion != nil {
             map["MinorVersion"] = self.minorVersion!
         }
+        if self.proxyLatestMinorVersion != nil {
+            map["ProxyLatestMinorVersion"] = self.proxyLatestMinorVersion?.toMap()
+        }
         if self.proxyMinorVersion != nil {
             map["ProxyMinorVersion"] = self.proxyMinorVersion!
         }
@@ -9543,6 +9940,11 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBLatestMinorVersion") && dict["DBLatestMinorVersion"] != nil {
+            var model = DescribeEngineVersionResponseBody.DBLatestMinorVersion()
+            model.fromMap(dict["DBLatestMinorVersion"] as! [String: Any])
+            self.DBLatestMinorVersion = model
+        }
         if dict.keys.contains("DBVersionRelease") && dict["DBVersionRelease"] != nil {
             self.DBVersionRelease = dict["DBVersionRelease"] as! String
         }
@@ -9554,6 +9956,9 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Engine") && dict["Engine"] != nil {
             self.engine = dict["Engine"] as! String
+        }
+        if dict.keys.contains("IsAutoUpgradeOpen") && dict["IsAutoUpgradeOpen"] != nil {
+            self.isAutoUpgradeOpen = dict["IsAutoUpgradeOpen"] as! String
         }
         if dict.keys.contains("IsLatestVersion") && dict["IsLatestVersion"] != nil {
             self.isLatestVersion = dict["IsLatestVersion"] as! Bool
@@ -9572,6 +9977,11 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("MinorVersion") && dict["MinorVersion"] != nil {
             self.minorVersion = dict["MinorVersion"] as! String
+        }
+        if dict.keys.contains("ProxyLatestMinorVersion") && dict["ProxyLatestMinorVersion"] != nil {
+            var model = DescribeEngineVersionResponseBody.ProxyLatestMinorVersion()
+            model.fromMap(dict["ProxyLatestMinorVersion"] as! [String: Any])
+            self.proxyLatestMinorVersion = model
         }
         if dict.keys.contains("ProxyMinorVersion") && dict["ProxyMinorVersion"] != nil {
             self.proxyMinorVersion = dict["ProxyMinorVersion"] as! String
@@ -11110,6 +11520,10 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var shardCount: Int32?
 
+            public var storage: String?
+
+            public var storageType: String?
+
             public var tags: DescribeInstanceAttributeResponseBody.Instances.DBInstanceAttribute.Tags?
 
             public var vSwitchId: String?
@@ -11268,6 +11682,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.shardCount != nil {
                     map["ShardCount"] = self.shardCount!
                 }
+                if self.storage != nil {
+                    map["Storage"] = self.storage!
+                }
+                if self.storageType != nil {
+                    map["StorageType"] = self.storageType!
+                }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
@@ -11421,6 +11841,12 @@ public class DescribeInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ShardCount") && dict["ShardCount"] != nil {
                     self.shardCount = dict["ShardCount"] as! Int32
+                }
+                if dict.keys.contains("Storage") && dict["Storage"] != nil {
+                    self.storage = dict["Storage"] as! String
+                }
+                if dict.keys.contains("StorageType") && dict["StorageType"] != nil {
+                    self.storageType = dict["StorageType"] as! String
                 }
                 if dict.keys.contains("Tags") && dict["Tags"] != nil {
                     var model = DescribeInstanceAttributeResponseBody.Instances.DBInstanceAttribute.Tags()
@@ -15934,6 +16360,8 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
         public var ruleIds: DescribePriceResponseBody.Order.RuleIds?
 
+        public var showDiscountInfo: Bool?
+
         public var tradeAmount: String?
 
         public override init() {
@@ -15970,6 +16398,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if self.ruleIds != nil {
                 map["RuleIds"] = self.ruleIds?.toMap()
             }
+            if self.showDiscountInfo != nil {
+                map["ShowDiscountInfo"] = self.showDiscountInfo!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -15998,6 +16429,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                 var model = DescribePriceResponseBody.Order.RuleIds()
                 model.fromMap(dict["RuleIds"] as! [String: Any])
                 self.ruleIds = model
+            }
+            if dict.keys.contains("ShowDiscountInfo") && dict["ShowDiscountInfo"] != nil {
+                self.showDiscountInfo = dict["ShowDiscountInfo"] as! Bool
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! String
@@ -20334,6 +20768,190 @@ public class ListTagResourcesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListTagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class LockDBInstanceWriteRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var lockReason: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.lockReason != nil {
+            map["LockReason"] = self.lockReason!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("LockReason") && dict["LockReason"] != nil {
+            self.lockReason = dict["LockReason"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class LockDBInstanceWriteResponseBody : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var lockReason: String?
+
+    public var requestId: String?
+
+    public var taskId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.lockReason != nil {
+            map["LockReason"] = self.lockReason!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceName") && dict["DBInstanceName"] != nil {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("LockReason") && dict["LockReason"] != nil {
+            self.lockReason = dict["LockReason"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! Int64
+        }
+    }
+}
+
+public class LockDBInstanceWriteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: LockDBInstanceWriteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = LockDBInstanceWriteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -27240,6 +27858,174 @@ public class TransformToPrePaidResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = TransformToPrePaidResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UnlockDBInstanceWriteRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class UnlockDBInstanceWriteResponseBody : Tea.TeaModel {
+    public var DBInstanceName: String?
+
+    public var requestId: String?
+
+    public var taskId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceName != nil {
+            map["DBInstanceName"] = self.DBInstanceName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceName") && dict["DBInstanceName"] != nil {
+            self.DBInstanceName = dict["DBInstanceName"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! Int64
+        }
+    }
+}
+
+public class UnlockDBInstanceWriteResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnlockDBInstanceWriteResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UnlockDBInstanceWriteResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
