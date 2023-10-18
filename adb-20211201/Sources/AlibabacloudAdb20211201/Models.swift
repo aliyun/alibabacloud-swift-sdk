@@ -9239,6 +9239,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
             public var storageResourceTotal: String?
 
+            public var supportedFeatures: [String: String]?
+
             public var tags: DescribeDBClusterAttributeResponseBody.Items.DBCluster.Tags?
 
             public var userENIStatus: Bool?
@@ -9342,6 +9344,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 if self.storageResourceTotal != nil {
                     map["StorageResourceTotal"] = self.storageResourceTotal!
                 }
+                if self.supportedFeatures != nil {
+                    map["SupportedFeatures"] = self.supportedFeatures!
+                }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
@@ -9438,6 +9443,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("StorageResourceTotal") && dict["StorageResourceTotal"] != nil {
                     self.storageResourceTotal = dict["StorageResourceTotal"] as! String
+                }
+                if dict.keys.contains("SupportedFeatures") && dict["SupportedFeatures"] != nil {
+                    self.supportedFeatures = dict["SupportedFeatures"] as! [String: String]
                 }
                 if dict.keys.contains("Tags") && dict["Tags"] != nil {
                     var model = DescribeDBClusterAttributeResponseBody.Items.DBCluster.Tags()
