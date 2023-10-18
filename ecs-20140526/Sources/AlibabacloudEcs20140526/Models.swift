@@ -13788,6 +13788,8 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
 
     public var autoReleaseTime: String?
 
+    public var creditSpecification: String?
+
     public var dataDisk: [CreateLaunchTemplateRequest.DataDisk]?
 
     public var deletionProtection: Bool?
@@ -13896,6 +13898,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if self.autoReleaseTime != nil {
             map["AutoReleaseTime"] = self.autoReleaseTime!
+        }
+        if self.creditSpecification != nil {
+            map["CreditSpecification"] = self.creditSpecification!
         }
         if self.dataDisk != nil {
             var tmp : [Any] = []
@@ -14056,6 +14061,9 @@ public class CreateLaunchTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AutoReleaseTime") && dict["AutoReleaseTime"] != nil {
             self.autoReleaseTime = dict["AutoReleaseTime"] as! String
+        }
+        if dict.keys.contains("CreditSpecification") && dict["CreditSpecification"] != nil {
+            self.creditSpecification = dict["CreditSpecification"] as! String
         }
         if dict.keys.contains("DataDisk") && dict["DataDisk"] != nil {
             var tmp : [CreateLaunchTemplateRequest.DataDisk] = []
@@ -14675,6 +14683,8 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
 
     public var autoReleaseTime: String?
 
+    public var creditSpecification: String?
+
     public var dataDisk: [CreateLaunchTemplateVersionRequest.DataDisk]?
 
     public var deletionProtection: Bool?
@@ -14781,6 +14791,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if self.autoReleaseTime != nil {
             map["AutoReleaseTime"] = self.autoReleaseTime!
+        }
+        if self.creditSpecification != nil {
+            map["CreditSpecification"] = self.creditSpecification!
         }
         if self.dataDisk != nil {
             var tmp : [Any] = []
@@ -14934,6 +14947,9 @@ public class CreateLaunchTemplateVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AutoReleaseTime") && dict["AutoReleaseTime"] != nil {
             self.autoReleaseTime = dict["AutoReleaseTime"] as! String
+        }
+        if dict.keys.contains("CreditSpecification") && dict["CreditSpecification"] != nil {
+            self.creditSpecification = dict["CreditSpecification"] as! String
         }
         if dict.keys.contains("DataDisk") && dict["DataDisk"] != nil {
             var tmp : [CreateLaunchTemplateVersionRequest.DataDisk] = []
@@ -59934,6 +59950,8 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
 
                 public var autoReleaseTime: String?
 
+                public var creditSpecification: String?
+
                 public var dataDisks: DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.DataDisks?
 
                 public var deletionProtection: Bool?
@@ -60028,6 +60046,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if self.autoReleaseTime != nil {
                         map["AutoReleaseTime"] = self.autoReleaseTime!
+                    }
+                    if self.creditSpecification != nil {
+                        map["CreditSpecification"] = self.creditSpecification!
                     }
                     if self.dataDisks != nil {
                         map["DataDisks"] = self.dataDisks?.toMap()
@@ -60145,6 +60166,9 @@ public class DescribeLaunchTemplateVersionsResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("AutoReleaseTime") && dict["AutoReleaseTime"] != nil {
                         self.autoReleaseTime = dict["AutoReleaseTime"] as! String
+                    }
+                    if dict.keys.contains("CreditSpecification") && dict["CreditSpecification"] != nil {
+                        self.creditSpecification = dict["CreditSpecification"] as! String
                     }
                     if dict.keys.contains("DataDisks") && dict["DataDisks"] != nil {
                         var model = DescribeLaunchTemplateVersionsResponseBody.LaunchTemplateVersionSets.LaunchTemplateVersionSet.LaunchTemplateData.DataDisks()
