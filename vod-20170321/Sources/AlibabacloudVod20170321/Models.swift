@@ -16336,6 +16336,255 @@ public class GetDefaultAITemplateResponse : Tea.TeaModel {
     }
 }
 
+public class GetDigitalWatermarkExtractResultRequest : Tea.TeaModel {
+    public var extractType: String?
+
+    public var jobId: String?
+
+    public var mediaId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.extractType != nil {
+            map["ExtractType"] = self.extractType!
+        }
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.mediaId != nil {
+            map["MediaId"] = self.mediaId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExtractType") && dict["ExtractType"] != nil {
+            self.extractType = dict["ExtractType"] as! String
+        }
+        if dict.keys.contains("JobId") && dict["JobId"] != nil {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
+            self.mediaId = dict["MediaId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! String
+        }
+    }
+}
+
+public class GetDigitalWatermarkExtractResultResponseBody : Tea.TeaModel {
+    public class AiExtractResultList : Tea.TeaModel {
+        public var createTime: String?
+
+        public var errorMessage: String?
+
+        public var jobId: String?
+
+        public var modifyTime: String?
+
+        public var status: String?
+
+        public var waterMarkText: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.modifyTime != nil {
+                map["ModifyTime"] = self.modifyTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.waterMarkText != nil {
+                map["WaterMarkText"] = self.waterMarkText!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("JobId") && dict["JobId"] != nil {
+                self.jobId = dict["JobId"] as! String
+            }
+            if dict.keys.contains("ModifyTime") && dict["ModifyTime"] != nil {
+                self.modifyTime = dict["ModifyTime"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("WaterMarkText") && dict["WaterMarkText"] != nil {
+                self.waterMarkText = dict["WaterMarkText"] as! String
+            }
+        }
+    }
+    public var aiExtractResultList: [GetDigitalWatermarkExtractResultResponseBody.AiExtractResultList]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aiExtractResultList != nil {
+            var tmp : [Any] = []
+            for k in self.aiExtractResultList! {
+                tmp.append(k.toMap())
+            }
+            map["AiExtractResultList"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AiExtractResultList") && dict["AiExtractResultList"] != nil {
+            var tmp : [GetDigitalWatermarkExtractResultResponseBody.AiExtractResultList] = []
+            for v in dict["AiExtractResultList"] as! [Any] {
+                var model = GetDigitalWatermarkExtractResultResponseBody.AiExtractResultList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.aiExtractResultList = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetDigitalWatermarkExtractResultResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDigitalWatermarkExtractResultResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetDigitalWatermarkExtractResultResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetEditingProjectRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
@@ -21771,6 +22020,8 @@ public class GetPlayInfoRequest : Tea.TeaModel {
 
     public var definition: String?
 
+    public var digitalWatermarkType: String?
+
     public var formats: String?
 
     public var outputType: String?
@@ -21782,6 +22033,8 @@ public class GetPlayInfoRequest : Tea.TeaModel {
     public var resultType: String?
 
     public var streamType: String?
+
+    public var trace: String?
 
     public var videoId: String?
 
@@ -21808,6 +22061,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         if self.definition != nil {
             map["Definition"] = self.definition!
         }
+        if self.digitalWatermarkType != nil {
+            map["DigitalWatermarkType"] = self.digitalWatermarkType!
+        }
         if self.formats != nil {
             map["Formats"] = self.formats!
         }
@@ -21826,6 +22082,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         if self.streamType != nil {
             map["StreamType"] = self.streamType!
         }
+        if self.trace != nil {
+            map["Trace"] = self.trace!
+        }
         if self.videoId != nil {
             map["VideoId"] = self.videoId!
         }
@@ -21841,6 +22100,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Definition") && dict["Definition"] != nil {
             self.definition = dict["Definition"] as! String
+        }
+        if dict.keys.contains("DigitalWatermarkType") && dict["DigitalWatermarkType"] != nil {
+            self.digitalWatermarkType = dict["DigitalWatermarkType"] as! String
         }
         if dict.keys.contains("Formats") && dict["Formats"] != nil {
             self.formats = dict["Formats"] as! String
@@ -21859,6 +22121,9 @@ public class GetPlayInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StreamType") && dict["StreamType"] != nil {
             self.streamType = dict["StreamType"] as! String
+        }
+        if dict.keys.contains("Trace") && dict["Trace"] != nil {
+            self.trace = dict["Trace"] as! String
         }
         if dict.keys.contains("VideoId") && dict["VideoId"] != nil {
             self.videoId = dict["VideoId"] as! String
@@ -21891,7 +22156,11 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
 
             public var height: Int64?
 
+            public var jobExt: String?
+
             public var jobId: String?
+
+            public var jobType: Int32?
 
             public var modificationTime: String?
 
@@ -21958,8 +22227,14 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
                 if self.height != nil {
                     map["Height"] = self.height!
                 }
+                if self.jobExt != nil {
+                    map["JobExt"] = self.jobExt!
+                }
                 if self.jobId != nil {
                     map["JobId"] = self.jobId!
+                }
+                if self.jobType != nil {
+                    map["JobType"] = self.jobType!
                 }
                 if self.modificationTime != nil {
                     map["ModificationTime"] = self.modificationTime!
@@ -22025,8 +22300,14 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Height") && dict["Height"] != nil {
                     self.height = dict["Height"] as! Int64
                 }
+                if dict.keys.contains("JobExt") && dict["JobExt"] != nil {
+                    self.jobExt = dict["JobExt"] as! String
+                }
                 if dict.keys.contains("JobId") && dict["JobId"] != nil {
                     self.jobId = dict["JobId"] as! String
+                }
+                if dict.keys.contains("JobType") && dict["JobType"] != nil {
+                    self.jobType = dict["JobType"] as! Int32
                 }
                 if dict.keys.contains("ModificationTime") && dict["ModificationTime"] != nil {
                     self.modificationTime = dict["ModificationTime"] as! String
@@ -23151,6 +23432,8 @@ public class GetTranscodeTemplateGroupResponseBody : Tea.TeaModel {
 
             public var container: String?
 
+            public var copyrightMark: String?
+
             public var definition: String?
 
             public var encryptSetting: String?
@@ -23164,6 +23447,8 @@ public class GetTranscodeTemplateGroupResponseBody : Tea.TeaModel {
             public var subtitleList: String?
 
             public var templateName: String?
+
+            public var traceMark: String?
 
             public var transConfig: String?
 
@@ -23200,6 +23485,9 @@ public class GetTranscodeTemplateGroupResponseBody : Tea.TeaModel {
                 if self.container != nil {
                     map["Container"] = self.container!
                 }
+                if self.copyrightMark != nil {
+                    map["CopyrightMark"] = self.copyrightMark!
+                }
                 if self.definition != nil {
                     map["Definition"] = self.definition!
                 }
@@ -23220,6 +23508,9 @@ public class GetTranscodeTemplateGroupResponseBody : Tea.TeaModel {
                 }
                 if self.templateName != nil {
                     map["TemplateName"] = self.templateName!
+                }
+                if self.traceMark != nil {
+                    map["TraceMark"] = self.traceMark!
                 }
                 if self.transConfig != nil {
                     map["TransConfig"] = self.transConfig!
@@ -23252,6 +23543,9 @@ public class GetTranscodeTemplateGroupResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Container") && dict["Container"] != nil {
                     self.container = dict["Container"] as! String
                 }
+                if dict.keys.contains("CopyrightMark") && dict["CopyrightMark"] != nil {
+                    self.copyrightMark = dict["CopyrightMark"] as! String
+                }
                 if dict.keys.contains("Definition") && dict["Definition"] != nil {
                     self.definition = dict["Definition"] as! String
                 }
@@ -23272,6 +23566,9 @@ public class GetTranscodeTemplateGroupResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TemplateName") && dict["TemplateName"] != nil {
                     self.templateName = dict["TemplateName"] as! String
+                }
+                if dict.keys.contains("TraceMark") && dict["TraceMark"] != nil {
+                    self.traceMark = dict["TraceMark"] as! String
                 }
                 if dict.keys.contains("TransConfig") && dict["TransConfig"] != nil {
                     self.transConfig = dict["TransConfig"] as! String
@@ -34021,6 +34318,166 @@ public class SubmitAIMediaAuditJobResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = SubmitAIMediaAuditJobResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SubmitDigitalWatermarkExtractJobRequest : Tea.TeaModel {
+    public var extractType: String?
+
+    public var mediaId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.extractType != nil {
+            map["ExtractType"] = self.extractType!
+        }
+        if self.mediaId != nil {
+            map["MediaId"] = self.mediaId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExtractType") && dict["ExtractType"] != nil {
+            self.extractType = dict["ExtractType"] as! String
+        }
+        if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
+            self.mediaId = dict["MediaId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! String
+        }
+    }
+}
+
+public class SubmitDigitalWatermarkExtractJobResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") && dict["JobId"] != nil {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SubmitDigitalWatermarkExtractJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitDigitalWatermarkExtractJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SubmitDigitalWatermarkExtractJobResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

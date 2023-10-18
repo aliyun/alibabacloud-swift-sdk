@@ -2899,6 +2899,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDigitalWatermarkExtractResultWithOptions(_ request: GetDigitalWatermarkExtractResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetDigitalWatermarkExtractResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.extractType)) {
+            query["ExtractType"] = request.extractType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetDigitalWatermarkExtractResult",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetDigitalWatermarkExtractResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getDigitalWatermarkExtractResult(_ request: GetDigitalWatermarkExtractResultRequest) async throws -> GetDigitalWatermarkExtractResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getDigitalWatermarkExtractResultWithOptions(request as! GetDigitalWatermarkExtractResultRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getEditingProjectWithOptions(_ request: GetEditingProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetEditingProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3364,6 +3413,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.definition)) {
             query["Definition"] = request.definition ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.digitalWatermarkType)) {
+            query["DigitalWatermarkType"] = request.digitalWatermarkType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.formats)) {
             query["Formats"] = request.formats ?? "";
         }
@@ -3381,6 +3433,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.streamType)) {
             query["StreamType"] = request.streamType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.trace)) {
+            query["Trace"] = request.trace ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.videoId)) {
             query["VideoId"] = request.videoId ?? "";
@@ -5241,6 +5296,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitAIMediaAuditJob(_ request: SubmitAIMediaAuditJobRequest) async throws -> SubmitAIMediaAuditJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitAIMediaAuditJobWithOptions(request as! SubmitAIMediaAuditJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitDigitalWatermarkExtractJobWithOptions(_ request: SubmitDigitalWatermarkExtractJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitDigitalWatermarkExtractJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.extractType)) {
+            query["ExtractType"] = request.extractType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitDigitalWatermarkExtractJob",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitDigitalWatermarkExtractJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitDigitalWatermarkExtractJob(_ request: SubmitDigitalWatermarkExtractJobRequest) async throws -> SubmitDigitalWatermarkExtractJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitDigitalWatermarkExtractJobWithOptions(request as! SubmitDigitalWatermarkExtractJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
