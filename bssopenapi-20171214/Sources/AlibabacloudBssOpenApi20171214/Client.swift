@@ -1044,6 +1044,64 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(_ request: DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.billOwnerIdList)) {
+            body["BillOwnerIdList"] = request.billOwnerIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.billUserIdList)) {
+            body["BillUserIdList"] = request.billUserIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.billingCycle)) {
+            body["BillingCycle"] = request.billingCycle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.costUnitCode)) {
+            body["CostUnitCode"] = request.costUnitCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceIdList)) {
+            body["InstanceIdList"] = request.instanceIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            body["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            body["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productCode)) {
+            body["ProductCode"] = request.productCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productDetail)) {
+            body["ProductDetail"] = request.productDetail ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subscriptionType)) {
+            body["SubscriptionType"] = request.subscriptionType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeInstanceDeductAmortizedCostByAmortizationPeriod",
+            "version": "2017-12-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeInstanceDeductAmortizedCostByAmortizationPeriod(_ request: DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) async throws -> DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(request as! DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describePricingModuleWithOptions(_ request: DescribePricingModuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribePricingModuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3943,6 +4001,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
         }
         if (!TeaUtils.Client.isUnset(request.parameter)) {
             query["Parameter"] = request.parameter ?? [];

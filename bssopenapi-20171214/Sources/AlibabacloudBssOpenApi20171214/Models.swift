@@ -6892,6 +6892,695 @@ public class DescribeInstanceBillResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest : Tea.TeaModel {
+    public var billOwnerIdList: [String]?
+
+    public var billUserIdList: [String]?
+
+    public var billingCycle: String?
+
+    public var costUnitCode: String?
+
+    public var instanceIdList: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var productCode: String?
+
+    public var productDetail: String?
+
+    public var subscriptionType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.billOwnerIdList != nil {
+            map["BillOwnerIdList"] = self.billOwnerIdList!
+        }
+        if self.billUserIdList != nil {
+            map["BillUserIdList"] = self.billUserIdList!
+        }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.costUnitCode != nil {
+            map["CostUnitCode"] = self.costUnitCode!
+        }
+        if self.instanceIdList != nil {
+            map["InstanceIdList"] = self.instanceIdList!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.productDetail != nil {
+            map["ProductDetail"] = self.productDetail!
+        }
+        if self.subscriptionType != nil {
+            map["SubscriptionType"] = self.subscriptionType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BillOwnerIdList") && dict["BillOwnerIdList"] != nil {
+            self.billOwnerIdList = dict["BillOwnerIdList"] as! [String]
+        }
+        if dict.keys.contains("BillUserIdList") && dict["BillUserIdList"] != nil {
+            self.billUserIdList = dict["BillUserIdList"] as! [String]
+        }
+        if dict.keys.contains("BillingCycle") && dict["BillingCycle"] != nil {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("CostUnitCode") && dict["CostUnitCode"] != nil {
+            self.costUnitCode = dict["CostUnitCode"] as! String
+        }
+        if dict.keys.contains("InstanceIdList") && dict["InstanceIdList"] != nil {
+            self.instanceIdList = dict["InstanceIdList"] as! [String]
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ProductDetail") && dict["ProductDetail"] != nil {
+            self.productDetail = dict["ProductDetail"] as! String
+        }
+        if dict.keys.contains("SubscriptionType") && dict["SubscriptionType"] != nil {
+            self.subscriptionType = dict["SubscriptionType"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Items : Tea.TeaModel {
+            public var amortizationPeriod: String?
+
+            public var amortizationPeriodDay: String?
+
+            public var amortizationStatus: String?
+
+            public var billAccountID: Int64?
+
+            public var billAccountName: String?
+
+            public var billOwnerID: Int64?
+
+            public var billOwnerName: String?
+
+            public var bizType: String?
+
+            public var consumePeriod: String?
+
+            public var costUnit: String?
+
+            public var costUnitCode: String?
+
+            public var currentAmortizationDeductedByCoupons: Double?
+
+            public var currentAmortizationInvoiceDiscount: Double?
+
+            public var currentAmortizationPretaxAmount: Double?
+
+            public var currentAmortizationPretaxGrossAmount: Double?
+
+            public var currentAmortizationRoundDownDiscount: Double?
+
+            public var deductedByCoupons: Double?
+
+            public var instanceConfig: String?
+
+            public var instanceID: String?
+
+            public var internetIP: String?
+
+            public var intranetIP: String?
+
+            public var invoiceDiscount: Double?
+
+            public var pretaxAmount: Double?
+
+            public var pretaxGrossAmount: Double?
+
+            public var productCode: String?
+
+            public var productDetail: String?
+
+            public var productDetailCode: String?
+
+            public var productName: String?
+
+            public var referFrInstanceID: String?
+
+            public var referFrOwnerID: String?
+
+            public var referFrProductDetailCode: String?
+
+            public var region: String?
+
+            public var resourceGroup: String?
+
+            public var roundDownDiscount: Double?
+
+            public var splitAccountName: String?
+
+            public var splitItemID: String?
+
+            public var splitItemName: String?
+
+            public var splitProductDetail: String?
+
+            public var subscriptionType: String?
+
+            public var tag: String?
+
+            public var unusedAmortizationDeductedByCoupons: Double?
+
+            public var unusedAmortizationInvoiceDiscount: Double?
+
+            public var unusedAmortizationPretaxAmount: Double?
+
+            public var unusedAmortizationPretaxGrossAmount: Double?
+
+            public var unusedAmortizationRoundDownDiscount: Double?
+
+            public var zone: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amortizationPeriod != nil {
+                    map["AmortizationPeriod"] = self.amortizationPeriod!
+                }
+                if self.amortizationPeriodDay != nil {
+                    map["AmortizationPeriodDay"] = self.amortizationPeriodDay!
+                }
+                if self.amortizationStatus != nil {
+                    map["AmortizationStatus"] = self.amortizationStatus!
+                }
+                if self.billAccountID != nil {
+                    map["BillAccountID"] = self.billAccountID!
+                }
+                if self.billAccountName != nil {
+                    map["BillAccountName"] = self.billAccountName!
+                }
+                if self.billOwnerID != nil {
+                    map["BillOwnerID"] = self.billOwnerID!
+                }
+                if self.billOwnerName != nil {
+                    map["BillOwnerName"] = self.billOwnerName!
+                }
+                if self.bizType != nil {
+                    map["BizType"] = self.bizType!
+                }
+                if self.consumePeriod != nil {
+                    map["ConsumePeriod"] = self.consumePeriod!
+                }
+                if self.costUnit != nil {
+                    map["CostUnit"] = self.costUnit!
+                }
+                if self.costUnitCode != nil {
+                    map["CostUnitCode"] = self.costUnitCode!
+                }
+                if self.currentAmortizationDeductedByCoupons != nil {
+                    map["CurrentAmortizationDeductedByCoupons"] = self.currentAmortizationDeductedByCoupons!
+                }
+                if self.currentAmortizationInvoiceDiscount != nil {
+                    map["CurrentAmortizationInvoiceDiscount"] = self.currentAmortizationInvoiceDiscount!
+                }
+                if self.currentAmortizationPretaxAmount != nil {
+                    map["CurrentAmortizationPretaxAmount"] = self.currentAmortizationPretaxAmount!
+                }
+                if self.currentAmortizationPretaxGrossAmount != nil {
+                    map["CurrentAmortizationPretaxGrossAmount"] = self.currentAmortizationPretaxGrossAmount!
+                }
+                if self.currentAmortizationRoundDownDiscount != nil {
+                    map["CurrentAmortizationRoundDownDiscount"] = self.currentAmortizationRoundDownDiscount!
+                }
+                if self.deductedByCoupons != nil {
+                    map["DeductedByCoupons"] = self.deductedByCoupons!
+                }
+                if self.instanceConfig != nil {
+                    map["InstanceConfig"] = self.instanceConfig!
+                }
+                if self.instanceID != nil {
+                    map["InstanceID"] = self.instanceID!
+                }
+                if self.internetIP != nil {
+                    map["InternetIP"] = self.internetIP!
+                }
+                if self.intranetIP != nil {
+                    map["IntranetIP"] = self.intranetIP!
+                }
+                if self.invoiceDiscount != nil {
+                    map["InvoiceDiscount"] = self.invoiceDiscount!
+                }
+                if self.pretaxAmount != nil {
+                    map["PretaxAmount"] = self.pretaxAmount!
+                }
+                if self.pretaxGrossAmount != nil {
+                    map["PretaxGrossAmount"] = self.pretaxGrossAmount!
+                }
+                if self.productCode != nil {
+                    map["ProductCode"] = self.productCode!
+                }
+                if self.productDetail != nil {
+                    map["ProductDetail"] = self.productDetail!
+                }
+                if self.productDetailCode != nil {
+                    map["ProductDetailCode"] = self.productDetailCode!
+                }
+                if self.productName != nil {
+                    map["ProductName"] = self.productName!
+                }
+                if self.referFrInstanceID != nil {
+                    map["ReferFrInstanceID"] = self.referFrInstanceID!
+                }
+                if self.referFrOwnerID != nil {
+                    map["ReferFrOwnerID"] = self.referFrOwnerID!
+                }
+                if self.referFrProductDetailCode != nil {
+                    map["ReferFrProductDetailCode"] = self.referFrProductDetailCode!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                if self.resourceGroup != nil {
+                    map["ResourceGroup"] = self.resourceGroup!
+                }
+                if self.roundDownDiscount != nil {
+                    map["RoundDownDiscount"] = self.roundDownDiscount!
+                }
+                if self.splitAccountName != nil {
+                    map["SplitAccountName"] = self.splitAccountName!
+                }
+                if self.splitItemID != nil {
+                    map["SplitItemID"] = self.splitItemID!
+                }
+                if self.splitItemName != nil {
+                    map["SplitItemName"] = self.splitItemName!
+                }
+                if self.splitProductDetail != nil {
+                    map["SplitProductDetail"] = self.splitProductDetail!
+                }
+                if self.subscriptionType != nil {
+                    map["SubscriptionType"] = self.subscriptionType!
+                }
+                if self.tag != nil {
+                    map["Tag"] = self.tag!
+                }
+                if self.unusedAmortizationDeductedByCoupons != nil {
+                    map["UnusedAmortizationDeductedByCoupons"] = self.unusedAmortizationDeductedByCoupons!
+                }
+                if self.unusedAmortizationInvoiceDiscount != nil {
+                    map["UnusedAmortizationInvoiceDiscount"] = self.unusedAmortizationInvoiceDiscount!
+                }
+                if self.unusedAmortizationPretaxAmount != nil {
+                    map["UnusedAmortizationPretaxAmount"] = self.unusedAmortizationPretaxAmount!
+                }
+                if self.unusedAmortizationPretaxGrossAmount != nil {
+                    map["UnusedAmortizationPretaxGrossAmount"] = self.unusedAmortizationPretaxGrossAmount!
+                }
+                if self.unusedAmortizationRoundDownDiscount != nil {
+                    map["UnusedAmortizationRoundDownDiscount"] = self.unusedAmortizationRoundDownDiscount!
+                }
+                if self.zone != nil {
+                    map["Zone"] = self.zone!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AmortizationPeriod") && dict["AmortizationPeriod"] != nil {
+                    self.amortizationPeriod = dict["AmortizationPeriod"] as! String
+                }
+                if dict.keys.contains("AmortizationPeriodDay") && dict["AmortizationPeriodDay"] != nil {
+                    self.amortizationPeriodDay = dict["AmortizationPeriodDay"] as! String
+                }
+                if dict.keys.contains("AmortizationStatus") && dict["AmortizationStatus"] != nil {
+                    self.amortizationStatus = dict["AmortizationStatus"] as! String
+                }
+                if dict.keys.contains("BillAccountID") && dict["BillAccountID"] != nil {
+                    self.billAccountID = dict["BillAccountID"] as! Int64
+                }
+                if dict.keys.contains("BillAccountName") && dict["BillAccountName"] != nil {
+                    self.billAccountName = dict["BillAccountName"] as! String
+                }
+                if dict.keys.contains("BillOwnerID") && dict["BillOwnerID"] != nil {
+                    self.billOwnerID = dict["BillOwnerID"] as! Int64
+                }
+                if dict.keys.contains("BillOwnerName") && dict["BillOwnerName"] != nil {
+                    self.billOwnerName = dict["BillOwnerName"] as! String
+                }
+                if dict.keys.contains("BizType") && dict["BizType"] != nil {
+                    self.bizType = dict["BizType"] as! String
+                }
+                if dict.keys.contains("ConsumePeriod") && dict["ConsumePeriod"] != nil {
+                    self.consumePeriod = dict["ConsumePeriod"] as! String
+                }
+                if dict.keys.contains("CostUnit") && dict["CostUnit"] != nil {
+                    self.costUnit = dict["CostUnit"] as! String
+                }
+                if dict.keys.contains("CostUnitCode") && dict["CostUnitCode"] != nil {
+                    self.costUnitCode = dict["CostUnitCode"] as! String
+                }
+                if dict.keys.contains("CurrentAmortizationDeductedByCoupons") && dict["CurrentAmortizationDeductedByCoupons"] != nil {
+                    self.currentAmortizationDeductedByCoupons = dict["CurrentAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationInvoiceDiscount") && dict["CurrentAmortizationInvoiceDiscount"] != nil {
+                    self.currentAmortizationInvoiceDiscount = dict["CurrentAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxAmount") && dict["CurrentAmortizationPretaxAmount"] != nil {
+                    self.currentAmortizationPretaxAmount = dict["CurrentAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationPretaxGrossAmount") && dict["CurrentAmortizationPretaxGrossAmount"] != nil {
+                    self.currentAmortizationPretaxGrossAmount = dict["CurrentAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("CurrentAmortizationRoundDownDiscount") && dict["CurrentAmortizationRoundDownDiscount"] != nil {
+                    self.currentAmortizationRoundDownDiscount = dict["CurrentAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("DeductedByCoupons") && dict["DeductedByCoupons"] != nil {
+                    self.deductedByCoupons = dict["DeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("InstanceConfig") && dict["InstanceConfig"] != nil {
+                    self.instanceConfig = dict["InstanceConfig"] as! String
+                }
+                if dict.keys.contains("InstanceID") && dict["InstanceID"] != nil {
+                    self.instanceID = dict["InstanceID"] as! String
+                }
+                if dict.keys.contains("InternetIP") && dict["InternetIP"] != nil {
+                    self.internetIP = dict["InternetIP"] as! String
+                }
+                if dict.keys.contains("IntranetIP") && dict["IntranetIP"] != nil {
+                    self.intranetIP = dict["IntranetIP"] as! String
+                }
+                if dict.keys.contains("InvoiceDiscount") && dict["InvoiceDiscount"] != nil {
+                    self.invoiceDiscount = dict["InvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("PretaxAmount") && dict["PretaxAmount"] != nil {
+                    self.pretaxAmount = dict["PretaxAmount"] as! Double
+                }
+                if dict.keys.contains("PretaxGrossAmount") && dict["PretaxGrossAmount"] != nil {
+                    self.pretaxGrossAmount = dict["PretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
+                    self.productCode = dict["ProductCode"] as! String
+                }
+                if dict.keys.contains("ProductDetail") && dict["ProductDetail"] != nil {
+                    self.productDetail = dict["ProductDetail"] as! String
+                }
+                if dict.keys.contains("ProductDetailCode") && dict["ProductDetailCode"] != nil {
+                    self.productDetailCode = dict["ProductDetailCode"] as! String
+                }
+                if dict.keys.contains("ProductName") && dict["ProductName"] != nil {
+                    self.productName = dict["ProductName"] as! String
+                }
+                if dict.keys.contains("ReferFrInstanceID") && dict["ReferFrInstanceID"] != nil {
+                    self.referFrInstanceID = dict["ReferFrInstanceID"] as! String
+                }
+                if dict.keys.contains("ReferFrOwnerID") && dict["ReferFrOwnerID"] != nil {
+                    self.referFrOwnerID = dict["ReferFrOwnerID"] as! String
+                }
+                if dict.keys.contains("ReferFrProductDetailCode") && dict["ReferFrProductDetailCode"] != nil {
+                    self.referFrProductDetailCode = dict["ReferFrProductDetailCode"] as! String
+                }
+                if dict.keys.contains("Region") && dict["Region"] != nil {
+                    self.region = dict["Region"] as! String
+                }
+                if dict.keys.contains("ResourceGroup") && dict["ResourceGroup"] != nil {
+                    self.resourceGroup = dict["ResourceGroup"] as! String
+                }
+                if dict.keys.contains("RoundDownDiscount") && dict["RoundDownDiscount"] != nil {
+                    self.roundDownDiscount = dict["RoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("SplitAccountName") && dict["SplitAccountName"] != nil {
+                    self.splitAccountName = dict["SplitAccountName"] as! String
+                }
+                if dict.keys.contains("SplitItemID") && dict["SplitItemID"] != nil {
+                    self.splitItemID = dict["SplitItemID"] as! String
+                }
+                if dict.keys.contains("SplitItemName") && dict["SplitItemName"] != nil {
+                    self.splitItemName = dict["SplitItemName"] as! String
+                }
+                if dict.keys.contains("SplitProductDetail") && dict["SplitProductDetail"] != nil {
+                    self.splitProductDetail = dict["SplitProductDetail"] as! String
+                }
+                if dict.keys.contains("SubscriptionType") && dict["SubscriptionType"] != nil {
+                    self.subscriptionType = dict["SubscriptionType"] as! String
+                }
+                if dict.keys.contains("Tag") && dict["Tag"] != nil {
+                    self.tag = dict["Tag"] as! String
+                }
+                if dict.keys.contains("UnusedAmortizationDeductedByCoupons") && dict["UnusedAmortizationDeductedByCoupons"] != nil {
+                    self.unusedAmortizationDeductedByCoupons = dict["UnusedAmortizationDeductedByCoupons"] as! Double
+                }
+                if dict.keys.contains("UnusedAmortizationInvoiceDiscount") && dict["UnusedAmortizationInvoiceDiscount"] != nil {
+                    self.unusedAmortizationInvoiceDiscount = dict["UnusedAmortizationInvoiceDiscount"] as! Double
+                }
+                if dict.keys.contains("UnusedAmortizationPretaxAmount") && dict["UnusedAmortizationPretaxAmount"] != nil {
+                    self.unusedAmortizationPretaxAmount = dict["UnusedAmortizationPretaxAmount"] as! Double
+                }
+                if dict.keys.contains("UnusedAmortizationPretaxGrossAmount") && dict["UnusedAmortizationPretaxGrossAmount"] != nil {
+                    self.unusedAmortizationPretaxGrossAmount = dict["UnusedAmortizationPretaxGrossAmount"] as! Double
+                }
+                if dict.keys.contains("UnusedAmortizationRoundDownDiscount") && dict["UnusedAmortizationRoundDownDiscount"] != nil {
+                    self.unusedAmortizationRoundDownDiscount = dict["UnusedAmortizationRoundDownDiscount"] as! Double
+                }
+                if dict.keys.contains("Zone") && dict["Zone"] != nil {
+                    self.zone = dict["Zone"] as! String
+                }
+            }
+        }
+        public var accountID: String?
+
+        public var accountName: String?
+
+        public var items: [DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody.Data.Items]?
+
+        public var maxResults: Int32?
+
+        public var nextToken: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountID != nil {
+                map["AccountID"] = self.accountID!
+            }
+            if self.accountName != nil {
+                map["AccountName"] = self.accountName!
+            }
+            if self.items != nil {
+                var tmp : [Any] = []
+                for k in self.items! {
+                    tmp.append(k.toMap())
+                }
+                map["Items"] = tmp
+            }
+            if self.maxResults != nil {
+                map["MaxResults"] = self.maxResults!
+            }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountID") && dict["AccountID"] != nil {
+                self.accountID = dict["AccountID"] as! String
+            }
+            if dict.keys.contains("AccountName") && dict["AccountName"] != nil {
+                self.accountName = dict["AccountName"] as! String
+            }
+            if dict.keys.contains("Items") && dict["Items"] != nil {
+                var tmp : [DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody.Data.Items] = []
+                for v in dict["Items"] as! [Any] {
+                    var model = DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody.Data.Items()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.items = tmp
+            }
+            if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+                self.maxResults = dict["MaxResults"] as! Int32
+            }
+            if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribePricingModuleRequest : Tea.TeaModel {
     public var ownerId: Int64?
 
@@ -11071,6 +11760,8 @@ public class DescribeSavingsPlansCoverageDetailResponseBody : Tea.TeaModel {
 
             public var instanceSpec: String?
 
+            public var ownerId: Int64?
+
             public var postpaidCost: Double?
 
             public var region: String?
@@ -11115,6 +11806,9 @@ public class DescribeSavingsPlansCoverageDetailResponseBody : Tea.TeaModel {
                 if self.instanceSpec != nil {
                     map["InstanceSpec"] = self.instanceSpec!
                 }
+                if self.ownerId != nil {
+                    map["OwnerId"] = self.ownerId!
+                }
                 if self.postpaidCost != nil {
                     map["PostpaidCost"] = self.postpaidCost!
                 }
@@ -11154,6 +11848,9 @@ public class DescribeSavingsPlansCoverageDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InstanceSpec") && dict["InstanceSpec"] != nil {
                     self.instanceSpec = dict["InstanceSpec"] as! String
+                }
+                if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+                    self.ownerId = dict["OwnerId"] as! Int64
                 }
                 if dict.keys.contains("PostpaidCost") && dict["PostpaidCost"] != nil {
                     self.postpaidCost = dict["PostpaidCost"] as! Double
@@ -33290,6 +33987,8 @@ public class RenewChangeInstanceRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var ownerId: Int64?
+
     public var parameter: [RenewChangeInstanceRequest.Parameter]?
 
     public var productCode: String?
@@ -33318,6 +34017,9 @@ public class RenewChangeInstanceRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
         if self.parameter != nil {
             var tmp : [Any] = []
             for k in self.parameter! {
@@ -33343,6 +34045,9 @@ public class RenewChangeInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
         }
         if dict.keys.contains("Parameter") && dict["Parameter"] != nil {
             var tmp : [RenewChangeInstanceRequest.Parameter] = []
