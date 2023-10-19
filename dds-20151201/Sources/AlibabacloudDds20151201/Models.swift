@@ -9102,7 +9102,13 @@ public class DescribeDBInstanceTDEInfoRequest : Tea.TeaModel {
 }
 
 public class DescribeDBInstanceTDEInfoResponseBody : Tea.TeaModel {
+    public var encryptionKey: String?
+
+    public var encryptorName: String?
+
     public var requestId: String?
+
+    public var roleARN: String?
 
     public var TDEStatus: String?
 
@@ -9120,8 +9126,17 @@ public class DescribeDBInstanceTDEInfoResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.encryptionKey != nil {
+            map["EncryptionKey"] = self.encryptionKey!
+        }
+        if self.encryptorName != nil {
+            map["EncryptorName"] = self.encryptorName!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.roleARN != nil {
+            map["RoleARN"] = self.roleARN!
         }
         if self.TDEStatus != nil {
             map["TDEStatus"] = self.TDEStatus!
@@ -9130,8 +9145,17 @@ public class DescribeDBInstanceTDEInfoResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EncryptionKey") && dict["EncryptionKey"] != nil {
+            self.encryptionKey = dict["EncryptionKey"] as! String
+        }
+        if dict.keys.contains("EncryptorName") && dict["EncryptorName"] != nil {
+            self.encryptorName = dict["EncryptorName"] as! String
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RoleARN") && dict["RoleARN"] != nil {
+            self.roleARN = dict["RoleARN"] as! String
         }
         if dict.keys.contains("TDEStatus") && dict["TDEStatus"] != nil {
             self.TDEStatus = dict["TDEStatus"] as! String
