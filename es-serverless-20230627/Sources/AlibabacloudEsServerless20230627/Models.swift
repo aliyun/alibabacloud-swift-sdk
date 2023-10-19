@@ -194,6 +194,51 @@ public class CreateAppRequest : Tea.TeaModel {
             }
         }
     }
+    public class QuotaInfo : Tea.TeaModel {
+        public var appType: String?
+
+        public var cu: Int32?
+
+        public var storage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appType != nil {
+                map["appType"] = self.appType!
+            }
+            if self.cu != nil {
+                map["cu"] = self.cu!
+            }
+            if self.storage != nil {
+                map["storage"] = self.storage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("appType") && dict["appType"] != nil {
+                self.appType = dict["appType"] as! String
+            }
+            if dict.keys.contains("cu") && dict["cu"] != nil {
+                self.cu = dict["cu"] as! Int32
+            }
+            if dict.keys.contains("storage") && dict["storage"] != nil {
+                self.storage = dict["storage"] as! Int32
+            }
+        }
+    }
     public var appName: String?
 
     public var authentication: CreateAppRequest.Authentication?
@@ -204,9 +249,13 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var network: [CreateAppRequest.Network]?
 
+    public var quotaInfo: CreateAppRequest.QuotaInfo?
+
     public var regionId: String?
 
     public var version: String?
+
+    public var dryRun: Bool?
 
     public override init() {
         super.init()
@@ -219,6 +268,7 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.authentication?.validate()
+        try self.quotaInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -242,11 +292,17 @@ public class CreateAppRequest : Tea.TeaModel {
             }
             map["network"] = tmp
         }
+        if self.quotaInfo != nil {
+            map["quotaInfo"] = self.quotaInfo?.toMap()
+        }
         if self.regionId != nil {
             map["regionId"] = self.regionId!
         }
         if self.version != nil {
             map["version"] = self.version!
+        }
+        if self.dryRun != nil {
+            map["dryRun"] = self.dryRun!
         }
         return map
     }
@@ -277,11 +333,19 @@ public class CreateAppRequest : Tea.TeaModel {
             }
             self.network = tmp
         }
+        if dict.keys.contains("quotaInfo") && dict["quotaInfo"] != nil {
+            var model = CreateAppRequest.QuotaInfo()
+            model.fromMap(dict["quotaInfo"] as! [String: Any])
+            self.quotaInfo = model
+        }
         if dict.keys.contains("regionId") && dict["regionId"] != nil {
             self.regionId = dict["regionId"] as! String
         }
         if dict.keys.contains("version") && dict["version"] != nil {
             self.version = dict["version"] as! String
+        }
+        if dict.keys.contains("dryRun") && dict["dryRun"] != nil {
+            self.dryRun = dict["dryRun"] as! Bool
         }
     }
 }
