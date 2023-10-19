@@ -33993,6 +33993,43 @@ public class ListClustersRequest : Tea.TeaModel {
 
 public class ListClustersResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class MaintenancePeriod : Tea.TeaModel {
+            public var endTime: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endTime != nil {
+                    map["EndTime"] = self.endTime!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                    self.endTime = dict["EndTime"] as! String
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
         public var appVersion: String?
 
         public var canUpdate: Bool?
@@ -34023,6 +34060,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
         public var intranetDomain: String?
 
+        public var maintenancePeriod: ListClustersResponseBody.Data.MaintenancePeriod?
+
         public var mseVersion: String?
 
         public var resourceGroupId: String?
@@ -34043,6 +34082,7 @@ public class ListClustersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.maintenancePeriod?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -34091,6 +34131,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
             if self.intranetDomain != nil {
                 map["IntranetDomain"] = self.intranetDomain!
+            }
+            if self.maintenancePeriod != nil {
+                map["MaintenancePeriod"] = self.maintenancePeriod?.toMap()
             }
             if self.mseVersion != nil {
                 map["MseVersion"] = self.mseVersion!
@@ -34155,6 +34198,11 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IntranetDomain") && dict["IntranetDomain"] != nil {
                 self.intranetDomain = dict["IntranetDomain"] as! String
+            }
+            if dict.keys.contains("MaintenancePeriod") && dict["MaintenancePeriod"] != nil {
+                var model = ListClustersResponseBody.Data.MaintenancePeriod()
+                model.fromMap(dict["MaintenancePeriod"] as! [String: Any])
+                self.maintenancePeriod = model
             }
             if dict.keys.contains("MseVersion") && dict["MseVersion"] != nil {
                 self.mseVersion = dict["MseVersion"] as! String
@@ -50305,6 +50353,8 @@ public class QueryConfigResponseBody : Tea.TeaModel {
 
         public var configSecretSupported: Bool?
 
+        public var consoleUIEnabled: Bool?
+
         public var eurekaSupported: Bool?
 
         public var extendedTypesEnable: Bool?
@@ -50387,6 +50437,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             }
             if self.configSecretSupported != nil {
                 map["ConfigSecretSupported"] = self.configSecretSupported!
+            }
+            if self.consoleUIEnabled != nil {
+                map["ConsoleUIEnabled"] = self.consoleUIEnabled!
             }
             if self.eurekaSupported != nil {
                 map["EurekaSupported"] = self.eurekaSupported!
@@ -50481,6 +50534,9 @@ public class QueryConfigResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ConfigSecretSupported") && dict["ConfigSecretSupported"] != nil {
                 self.configSecretSupported = dict["ConfigSecretSupported"] as! Bool
+            }
+            if dict.keys.contains("ConsoleUIEnabled") && dict["ConsoleUIEnabled"] != nil {
+                self.consoleUIEnabled = dict["ConsoleUIEnabled"] as! Bool
             }
             if dict.keys.contains("EurekaSupported") && dict["EurekaSupported"] != nil {
                 self.eurekaSupported = dict["EurekaSupported"] as! Bool
@@ -55644,6 +55700,8 @@ public class UpdateConfigRequest : Tea.TeaModel {
 
     public var configType: String?
 
+    public var consoleUIEnabled: Bool?
+
     public var eurekaSupported: Bool?
 
     public var extendedTypesEnable: String?
@@ -55714,6 +55772,9 @@ public class UpdateConfigRequest : Tea.TeaModel {
         }
         if self.configType != nil {
             map["ConfigType"] = self.configType!
+        }
+        if self.consoleUIEnabled != nil {
+            map["ConsoleUIEnabled"] = self.consoleUIEnabled!
         }
         if self.eurekaSupported != nil {
             map["EurekaSupported"] = self.eurekaSupported!
@@ -55793,6 +55854,9 @@ public class UpdateConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ConfigType") && dict["ConfigType"] != nil {
             self.configType = dict["ConfigType"] as! String
+        }
+        if dict.keys.contains("ConsoleUIEnabled") && dict["ConsoleUIEnabled"] != nil {
+            self.consoleUIEnabled = dict["ConsoleUIEnabled"] as! Bool
         }
         if dict.keys.contains("EurekaSupported") && dict["EurekaSupported"] != nil {
             self.eurekaSupported = dict["EurekaSupported"] as! Bool

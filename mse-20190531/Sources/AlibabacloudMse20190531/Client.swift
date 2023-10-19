@@ -7546,6 +7546,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.configType)) {
             query["ConfigType"] = request.configType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.consoleUIEnabled)) {
+            query["ConsoleUIEnabled"] = request.consoleUIEnabled!;
+        }
         if (!TeaUtils.Client.isUnset(request.eurekaSupported)) {
             query["EurekaSupported"] = request.eurekaSupported!;
         }
