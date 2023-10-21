@@ -4874,6 +4874,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func hotelPricePullWithOptions(_ tmpReq: HotelPricePullRequest, _ headers: HotelPricePullHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> HotelPricePullResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: HotelPricePullShrinkRequest = HotelPricePullShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.hotelIds)) {
+            request.hotelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.hotelIds, "hotel_ids", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripUserId)) {
+            query["btrip_user_id"] = request.btripUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkIn)) {
+            query["check_in"] = request.checkIn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.checkOut)) {
+            query["check_out"] = request.checkOut ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cityCode)) {
+            query["city_code"] = request.cityCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hotelIdsShrink)) {
+            query["hotel_ids"] = request.hotelIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paymentType)) {
+            query["payment_type"] = request.paymentType!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "HotelPricePull",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/dtb-hotel/v1/prices/action/pull",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(HotelPricePullResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func hotelPricePull(_ request: HotelPricePullRequest) async throws -> HotelPricePullResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: HotelPricePullHeaders = HotelPricePullHeaders([:])
+        return try await hotelPricePullWithOptions(request as! HotelPricePullRequest, headers as! HotelPricePullHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func hotelRoomInfoWithOptions(_ tmpReq: HotelRoomInfoRequest, _ headers: HotelRoomInfoHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> HotelRoomInfoResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: HotelRoomInfoShrinkRequest = HotelRoomInfoShrinkRequest([:])
