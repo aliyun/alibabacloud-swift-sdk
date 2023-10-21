@@ -3252,6 +3252,43 @@ public class CreateWorkspaceResponse : Tea.TeaModel {
 
 public class CreateWorkspaceResourceRequest : Tea.TeaModel {
     public class Resources : Tea.TeaModel {
+        public class Labels : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public class Quotas : Tea.TeaModel {
             public var id: String?
 
@@ -3286,6 +3323,8 @@ public class CreateWorkspaceResourceRequest : Tea.TeaModel {
         public var groupName: String?
 
         public var isDefault: Bool?
+
+        public var labels: [CreateWorkspaceResourceRequest.Resources.Labels]?
 
         public var name: String?
 
@@ -3322,6 +3361,13 @@ public class CreateWorkspaceResourceRequest : Tea.TeaModel {
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
             }
+            if self.labels != nil {
+                var tmp : [Any] = []
+                for k in self.labels! {
+                    tmp.append(k.toMap())
+                }
+                map["Labels"] = tmp
+            }
             if self.name != nil {
                 map["Name"] = self.name!
             }
@@ -3356,6 +3402,17 @@ public class CreateWorkspaceResourceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
                 self.isDefault = dict["IsDefault"] as! Bool
+            }
+            if dict.keys.contains("Labels") && dict["Labels"] != nil {
+                var tmp : [CreateWorkspaceResourceRequest.Resources.Labels] = []
+                for v in dict["Labels"] as! [Any] {
+                    var model = CreateWorkspaceResourceRequest.Resources.Labels()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.labels = tmp
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
@@ -4458,9 +4515,13 @@ public class DeleteWorkspaceResponse : Tea.TeaModel {
 public class DeleteWorkspaceResourceRequest : Tea.TeaModel {
     public var groupName: String?
 
+    public var labels: String?
+
     public var option: String?
 
     public var productType: String?
+
+    public var resourceIds: String?
 
     public var resourceType: String?
 
@@ -4481,11 +4542,17 @@ public class DeleteWorkspaceResourceRequest : Tea.TeaModel {
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
         if self.option != nil {
             map["Option"] = self.option!
         }
         if self.productType != nil {
             map["ProductType"] = self.productType!
+        }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
         }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
@@ -4497,11 +4564,17 @@ public class DeleteWorkspaceResourceRequest : Tea.TeaModel {
         if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
             self.groupName = dict["GroupName"] as! String
         }
+        if dict.keys.contains("Labels") && dict["Labels"] != nil {
+            self.labels = dict["Labels"] as! String
+        }
         if dict.keys.contains("Option") && dict["Option"] != nil {
             self.option = dict["Option"] as! String
         }
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
+        }
+        if dict.keys.contains("ResourceIds") && dict["ResourceIds"] != nil {
+            self.resourceIds = dict["ResourceIds"] as! String
         }
         if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
             self.resourceType = dict["ResourceType"] as! String
@@ -9278,6 +9351,8 @@ public class ListQuotasResponse : Tea.TeaModel {
 public class ListResourcesRequest : Tea.TeaModel {
     public var groupName: String?
 
+    public var labels: String?
+
     public var option: String?
 
     public var pageNumber: Int64?
@@ -9286,11 +9361,15 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public var productTypes: String?
 
+    public var quotaIds: String?
+
     public var resourceName: String?
 
     public var resourceTypes: String?
 
     public var verbose: Bool?
+
+    public var verboseFields: String?
 
     public var workspaceId: String?
 
@@ -9311,6 +9390,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
+        if self.labels != nil {
+            map["Labels"] = self.labels!
+        }
         if self.option != nil {
             map["Option"] = self.option!
         }
@@ -9323,6 +9405,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.productTypes != nil {
             map["ProductTypes"] = self.productTypes!
         }
+        if self.quotaIds != nil {
+            map["QuotaIds"] = self.quotaIds!
+        }
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
         }
@@ -9331,6 +9416,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         }
         if self.verbose != nil {
             map["Verbose"] = self.verbose!
+        }
+        if self.verboseFields != nil {
+            map["VerboseFields"] = self.verboseFields!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -9341,6 +9429,9 @@ public class ListResourcesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
             self.groupName = dict["GroupName"] as! String
+        }
+        if dict.keys.contains("Labels") && dict["Labels"] != nil {
+            self.labels = dict["Labels"] as! String
         }
         if dict.keys.contains("Option") && dict["Option"] != nil {
             self.option = dict["Option"] as! String
@@ -9354,6 +9445,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         if dict.keys.contains("ProductTypes") && dict["ProductTypes"] != nil {
             self.productTypes = dict["ProductTypes"] as! String
         }
+        if dict.keys.contains("QuotaIds") && dict["QuotaIds"] != nil {
+            self.quotaIds = dict["QuotaIds"] as! String
+        }
         if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
             self.resourceName = dict["ResourceName"] as! String
         }
@@ -9362,6 +9456,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Verbose") && dict["Verbose"] != nil {
             self.verbose = dict["Verbose"] as! Bool
+        }
+        if dict.keys.contains("VerboseFields") && dict["VerboseFields"] != nil {
+            self.verboseFields = dict["VerboseFields"] as! String
         }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -9442,6 +9539,43 @@ public class ListResourcesResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
                     self.ownerId = dict["OwnerId"] as! String
+                }
+            }
+        }
+        public class Labels : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    self.value = dict["Value"] as! String
                 }
             }
         }
@@ -9593,6 +9727,8 @@ public class ListResourcesResponseBody : Tea.TeaModel {
 
         public var isDefault: Bool?
 
+        public var labels: [ListResourcesResponseBody.Resources.Labels]?
+
         public var name: String?
 
         public var productType: String?
@@ -9641,6 +9777,13 @@ public class ListResourcesResponseBody : Tea.TeaModel {
             }
             if self.isDefault != nil {
                 map["IsDefault"] = self.isDefault!
+            }
+            if self.labels != nil {
+                var tmp : [Any] = []
+                for k in self.labels! {
+                    tmp.append(k.toMap())
+                }
+                map["Labels"] = tmp
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -9692,6 +9835,17 @@ public class ListResourcesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
                 self.isDefault = dict["IsDefault"] as! Bool
+            }
+            if dict.keys.contains("Labels") && dict["Labels"] != nil {
+                var tmp : [ListResourcesResponseBody.Resources.Labels] = []
+                for v in dict["Labels"] as! [Any] {
+                    var model = ListResourcesResponseBody.Resources.Labels()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.labels = tmp
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
@@ -11761,13 +11915,56 @@ public class UpdateWorkspaceResponse : Tea.TeaModel {
 }
 
 public class UpdateWorkspaceResourceRequest : Tea.TeaModel {
+    public class Labels : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var groupName: String?
 
     public var isDefault: Bool?
 
+    public var labels: [UpdateWorkspaceResourceRequest.Labels]?
+
     public var productType: String?
 
+    public var resourceIds: [String]?
+
     public var resourceType: String?
+
+    public var spec: [String: Any]?
 
     public override init() {
         super.init()
@@ -11789,11 +11986,24 @@ public class UpdateWorkspaceResourceRequest : Tea.TeaModel {
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
         }
+        if self.labels != nil {
+            var tmp : [Any] = []
+            for k in self.labels! {
+                tmp.append(k.toMap())
+            }
+            map["Labels"] = tmp
+        }
         if self.productType != nil {
             map["ProductType"] = self.productType!
         }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
+        }
+        if self.spec != nil {
+            map["Spec"] = self.spec!
         }
         return map
     }
@@ -11805,11 +12015,28 @@ public class UpdateWorkspaceResourceRequest : Tea.TeaModel {
         if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
             self.isDefault = dict["IsDefault"] as! Bool
         }
+        if dict.keys.contains("Labels") && dict["Labels"] != nil {
+            var tmp : [UpdateWorkspaceResourceRequest.Labels] = []
+            for v in dict["Labels"] as! [Any] {
+                var model = UpdateWorkspaceResourceRequest.Labels()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.labels = tmp
+        }
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
         }
+        if dict.keys.contains("ResourceIds") && dict["ResourceIds"] != nil {
+            self.resourceIds = dict["ResourceIds"] as! [String]
+        }
         if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("Spec") && dict["Spec"] != nil {
+            self.spec = dict["Spec"] as! [String: Any]
         }
     }
 }
