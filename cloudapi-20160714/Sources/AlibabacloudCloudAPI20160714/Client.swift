@@ -7602,6 +7602,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId!;
         }
+        if (!TeaUtils.Client.isUnset(request.authValidTime)) {
+            query["AuthValidTime"] = request.authValidTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }

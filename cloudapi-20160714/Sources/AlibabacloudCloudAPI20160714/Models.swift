@@ -46813,6 +46813,8 @@ public class SetApiProductsAuthoritiesRequest : Tea.TeaModel {
 
     public var appId: Int64?
 
+    public var authValidTime: String?
+
     public var description_: String?
 
     public var securityToken: String?
@@ -46837,6 +46839,9 @@ public class SetApiProductsAuthoritiesRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.authValidTime != nil {
+            map["AuthValidTime"] = self.authValidTime!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -46853,6 +46858,9 @@ public class SetApiProductsAuthoritiesRequest : Tea.TeaModel {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! Int64
         }
+        if dict.keys.contains("AuthValidTime") && dict["AuthValidTime"] != nil {
+            self.authValidTime = dict["AuthValidTime"] as! String
+        }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
@@ -46866,6 +46874,8 @@ public class SetApiProductsAuthoritiesShrinkRequest : Tea.TeaModel {
     public var apiProductIdsShrink: String?
 
     public var appId: Int64?
+
+    public var authValidTime: String?
 
     public var description_: String?
 
@@ -46891,6 +46901,9 @@ public class SetApiProductsAuthoritiesShrinkRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.authValidTime != nil {
+            map["AuthValidTime"] = self.authValidTime!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -46906,6 +46919,9 @@ public class SetApiProductsAuthoritiesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! Int64
+        }
+        if dict.keys.contains("AuthValidTime") && dict["AuthValidTime"] != nil {
+            self.authValidTime = dict["AuthValidTime"] as! String
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
