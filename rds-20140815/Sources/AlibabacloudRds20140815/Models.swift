@@ -231,6 +231,8 @@ public class AddTagsToResourceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -275,6 +277,9 @@ public class AddTagsToResourceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -316,6 +321,9 @@ public class AddTagsToResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -1256,6 +1264,8 @@ public class CancelImportRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -1286,6 +1296,9 @@ public class CancelImportRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -1307,6 +1320,9 @@ public class CancelImportRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -9485,6 +9501,404 @@ public class CreateOrderForCreateDBNodesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateOrderForCreateDBNodesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateOrderForDeleteDBNodesRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var businessInfo: String?
+
+    public var clientToken: String?
+
+    public var commodityCode: String?
+
+    public var DBInstanceId: String?
+
+    public var DBNodeId: [String]?
+
+    public var engineVersion: String?
+
+    public var nodeType: String?
+
+    public var ownerId: Int64?
+
+    public var promotionCode: String?
+
+    public var regionId: String?
+
+    public var resource: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.businessInfo != nil {
+            map["BusinessInfo"] = self.businessInfo!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBNodeId != nil {
+            map["DBNodeId"] = self.DBNodeId!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("BusinessInfo") && dict["BusinessInfo"] != nil {
+            self.businessInfo = dict["BusinessInfo"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CommodityCode") && dict["CommodityCode"] != nil {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBNodeId") && dict["DBNodeId"] != nil {
+            self.DBNodeId = dict["DBNodeId"] as! [String]
+        }
+        if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
+            self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("NodeType") && dict["NodeType"] != nil {
+            self.nodeType = dict["NodeType"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PromotionCode") && dict["PromotionCode"] != nil {
+            self.promotionCode = dict["PromotionCode"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Resource") && dict["Resource"] != nil {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class CreateOrderForDeleteDBNodesShrinkRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var businessInfo: String?
+
+    public var clientToken: String?
+
+    public var commodityCode: String?
+
+    public var DBInstanceId: String?
+
+    public var DBNodeIdShrink: String?
+
+    public var engineVersion: String?
+
+    public var nodeType: String?
+
+    public var ownerId: Int64?
+
+    public var promotionCode: String?
+
+    public var regionId: String?
+
+    public var resource: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.businessInfo != nil {
+            map["BusinessInfo"] = self.businessInfo!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.commodityCode != nil {
+            map["CommodityCode"] = self.commodityCode!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBNodeIdShrink != nil {
+            map["DBNodeId"] = self.DBNodeIdShrink!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
+        }
+        if self.nodeType != nil {
+            map["NodeType"] = self.nodeType!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.promotionCode != nil {
+            map["PromotionCode"] = self.promotionCode!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("BusinessInfo") && dict["BusinessInfo"] != nil {
+            self.businessInfo = dict["BusinessInfo"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("CommodityCode") && dict["CommodityCode"] != nil {
+            self.commodityCode = dict["CommodityCode"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBNodeId") && dict["DBNodeId"] != nil {
+            self.DBNodeIdShrink = dict["DBNodeId"] as! String
+        }
+        if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
+            self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("NodeType") && dict["NodeType"] != nil {
+            self.nodeType = dict["NodeType"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PromotionCode") && dict["PromotionCode"] != nil {
+            self.promotionCode = dict["PromotionCode"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Resource") && dict["Resource"] != nil {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class CreateOrderForDeleteDBNodesResponseBody : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var orderId: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateOrderForDeleteDBNodesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateOrderForDeleteDBNodesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateOrderForDeleteDBNodesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -21970,6 +22384,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 public class DBClusterNode : Tea.TeaModel {
                     public var classCode: String?
 
+                    public var classType: String?
+
+                    public var cpu: String?
+
+                    public var memory: String?
+
                     public var nodeId: String?
 
                     public var nodeRegionId: String?
@@ -21977,6 +22397,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     public var nodeRole: String?
 
                     public var nodeZoneId: String?
+
+                    public var status: String?
 
                     public override init() {
                         super.init()
@@ -21995,6 +22417,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         if self.classCode != nil {
                             map["ClassCode"] = self.classCode!
                         }
+                        if self.classType != nil {
+                            map["ClassType"] = self.classType!
+                        }
+                        if self.cpu != nil {
+                            map["Cpu"] = self.cpu!
+                        }
+                        if self.memory != nil {
+                            map["Memory"] = self.memory!
+                        }
                         if self.nodeId != nil {
                             map["NodeId"] = self.nodeId!
                         }
@@ -22007,12 +22438,24 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         if self.nodeZoneId != nil {
                             map["NodeZoneId"] = self.nodeZoneId!
                         }
+                        if self.status != nil {
+                            map["Status"] = self.status!
+                        }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("ClassCode") && dict["ClassCode"] != nil {
                             self.classCode = dict["ClassCode"] as! String
+                        }
+                        if dict.keys.contains("ClassType") && dict["ClassType"] != nil {
+                            self.classType = dict["ClassType"] as! String
+                        }
+                        if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                            self.cpu = dict["Cpu"] as! String
+                        }
+                        if dict.keys.contains("Memory") && dict["Memory"] != nil {
+                            self.memory = dict["Memory"] as! String
                         }
                         if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
                             self.nodeId = dict["NodeId"] as! String
@@ -22025,6 +22468,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("NodeZoneId") && dict["NodeZoneId"] != nil {
                             self.nodeZoneId = dict["NodeZoneId"] as! String
+                        }
+                        if dict.keys.contains("Status") && dict["Status"] != nil {
+                            self.status = dict["Status"] as! String
                         }
                     }
                 }
@@ -61082,6 +61528,397 @@ public class ModifyDBInstanceTDEResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyDBInstanceTDEResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyDBNodeRequest : Tea.TeaModel {
+    public class DBNode : Tea.TeaModel {
+        public var classCode: String?
+
+        public var nodeId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.classCode != nil {
+                map["classCode"] = self.classCode!
+            }
+            if self.nodeId != nil {
+                map["nodeId"] = self.nodeId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("classCode") && dict["classCode"] != nil {
+                self.classCode = dict["classCode"] as! String
+            }
+            if dict.keys.contains("nodeId") && dict["nodeId"] != nil {
+                self.nodeId = dict["nodeId"] as! String
+            }
+        }
+    }
+    public var autoPay: Bool?
+
+    public var clientToken: String?
+
+    public var DBInstanceId: String?
+
+    public var DBInstanceStorage: String?
+
+    public var DBInstanceStorageType: String?
+
+    public var DBNode: [ModifyDBNodeRequest.DBNode]?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var produceAsync: Bool?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBInstanceStorage != nil {
+            map["DBInstanceStorage"] = self.DBInstanceStorage!
+        }
+        if self.DBInstanceStorageType != nil {
+            map["DBInstanceStorageType"] = self.DBInstanceStorageType!
+        }
+        if self.DBNode != nil {
+            var tmp : [Any] = []
+            for k in self.DBNode! {
+                tmp.append(k.toMap())
+            }
+            map["DBNode"] = tmp
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.produceAsync != nil {
+            map["ProduceAsync"] = self.produceAsync!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBInstanceStorage") && dict["DBInstanceStorage"] != nil {
+            self.DBInstanceStorage = dict["DBInstanceStorage"] as! String
+        }
+        if dict.keys.contains("DBInstanceStorageType") && dict["DBInstanceStorageType"] != nil {
+            self.DBInstanceStorageType = dict["DBInstanceStorageType"] as! String
+        }
+        if dict.keys.contains("DBNode") && dict["DBNode"] != nil {
+            var tmp : [ModifyDBNodeRequest.DBNode] = []
+            for v in dict["DBNode"] as! [Any] {
+                var model = ModifyDBNodeRequest.DBNode()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.DBNode = tmp
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ProduceAsync") && dict["ProduceAsync"] != nil {
+            self.produceAsync = dict["ProduceAsync"] as! Bool
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ModifyDBNodeShrinkRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var clientToken: String?
+
+    public var DBInstanceId: String?
+
+    public var DBInstanceStorage: String?
+
+    public var DBInstanceStorageType: String?
+
+    public var DBNodeShrink: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var produceAsync: Bool?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.DBInstanceStorage != nil {
+            map["DBInstanceStorage"] = self.DBInstanceStorage!
+        }
+        if self.DBInstanceStorageType != nil {
+            map["DBInstanceStorageType"] = self.DBInstanceStorageType!
+        }
+        if self.DBNodeShrink != nil {
+            map["DBNode"] = self.DBNodeShrink!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.produceAsync != nil {
+            map["ProduceAsync"] = self.produceAsync!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DBInstanceStorage") && dict["DBInstanceStorage"] != nil {
+            self.DBInstanceStorage = dict["DBInstanceStorage"] as! String
+        }
+        if dict.keys.contains("DBInstanceStorageType") && dict["DBInstanceStorageType"] != nil {
+            self.DBInstanceStorageType = dict["DBInstanceStorageType"] as! String
+        }
+        if dict.keys.contains("DBNode") && dict["DBNode"] != nil {
+            self.DBNodeShrink = dict["DBNode"] as! String
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ProduceAsync") && dict["ProduceAsync"] != nil {
+            self.produceAsync = dict["ProduceAsync"] as! Bool
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ModifyDBNodeResponseBody : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var orderId: Int64?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ModifyDBNodeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyDBNodeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyDBNodeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
