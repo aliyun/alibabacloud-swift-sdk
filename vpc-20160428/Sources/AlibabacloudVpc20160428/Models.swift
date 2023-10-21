@@ -4214,6 +4214,8 @@ public class AssociateRouteTableWithGatewayRequest : Tea.TeaModel {
 
     public var gatewayId: String?
 
+    public var gatewayType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -4249,6 +4251,9 @@ public class AssociateRouteTableWithGatewayRequest : Tea.TeaModel {
         if self.gatewayId != nil {
             map["GatewayId"] = self.gatewayId!
         }
+        if self.gatewayType != nil {
+            map["GatewayType"] = self.gatewayType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -4279,6 +4284,9 @@ public class AssociateRouteTableWithGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
             self.gatewayId = dict["GatewayId"] as! String
+        }
+        if dict.keys.contains("GatewayType") && dict["GatewayType"] != nil {
+            self.gatewayType = dict["GatewayType"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -7567,6 +7575,8 @@ public class CreateCustomerGatewayRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -7614,6 +7624,9 @@ public class CreateCustomerGatewayRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -7657,6 +7670,9 @@ public class CreateCustomerGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -20348,6 +20364,8 @@ public class CreateVpnAttachmentRequest : Tea.TeaModel {
 
     public var remoteSubnet: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -20419,6 +20437,9 @@ public class CreateVpnAttachmentRequest : Tea.TeaModel {
         if self.remoteSubnet != nil {
             map["RemoteSubnet"] = self.remoteSubnet!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -20486,6 +20507,9 @@ public class CreateVpnAttachmentRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RemoteSubnet") && dict["RemoteSubnet"] != nil {
             self.remoteSubnet = dict["RemoteSubnet"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -21322,6 +21346,8 @@ public class CreateVpnGatewayRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -21387,6 +21413,9 @@ public class CreateVpnGatewayRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -21447,6 +21476,9 @@ public class CreateVpnGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -33408,6 +33440,8 @@ public class DescribeCustomerGatewayResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var tags: DescribeCustomerGatewayResponseBody.Tags?
 
     public override init() {
@@ -33449,6 +33483,9 @@ public class DescribeCustomerGatewayResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tags != nil {
             map["Tags"] = self.tags?.toMap()
         }
@@ -33479,6 +33516,9 @@ public class DescribeCustomerGatewayResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             var model = DescribeCustomerGatewayResponseBody.Tags()
@@ -33590,6 +33630,8 @@ public class DescribeCustomerGatewaysRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -33628,6 +33670,9 @@ public class DescribeCustomerGatewaysRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -33662,6 +33707,9 @@ public class DescribeCustomerGatewaysRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -33778,6 +33826,8 @@ public class DescribeCustomerGatewaysResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var resourceGroupId: String?
+
             public var tags: DescribeCustomerGatewaysResponseBody.CustomerGateways.CustomerGateway.Tags?
 
             public override init() {
@@ -33816,6 +33866,9 @@ public class DescribeCustomerGatewaysResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
@@ -33843,6 +33896,9 @@ public class DescribeCustomerGatewaysResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("Tags") && dict["Tags"] != nil {
                     var model = DescribeCustomerGatewaysResponseBody.CustomerGateways.CustomerGateway.Tags()
@@ -40625,6 +40681,43 @@ public class DescribeIPv6TranslatorsResponse : Tea.TeaModel {
 }
 
 public class DescribeIpv6AddressesRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var associatedInstanceId: String?
 
     public var associatedInstanceType: String?
@@ -40651,9 +40744,13 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var tag: [DescribeIpv6AddressesRequest.Tag]?
 
     public var vSwitchId: String?
 
@@ -40712,11 +40809,21 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -40767,11 +40874,25 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [DescribeIpv6AddressesRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeIpv6AddressesRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -40886,6 +41007,84 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
+                    public var key: String?
+
+                    public var value: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.key != nil {
+                            map["Key"] = self.key!
+                        }
+                        if self.value != nil {
+                            map["Value"] = self.value!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Key") && dict["Key"] != nil {
+                            self.key = dict["Key"] as! String
+                        }
+                        if dict.keys.contains("Value") && dict["Value"] != nil {
+                            self.value = dict["Value"] as! String
+                        }
+                    }
+                }
+                public var tag: [DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.Tags.Tag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tag != nil {
+                        var tmp : [Any] = []
+                        for k in self.tag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Tag") && dict["Tag"] != nil {
+                        var tmp : [DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.Tags.Tag] = []
+                        for v in dict["Tag"] as! [Any] {
+                            var model = DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.Tags.Tag()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tag = tmp
+                    }
+                }
+            }
             public var allocationTime: String?
 
             public var associatedInstanceId: String?
@@ -40893,6 +41092,8 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
             public var associatedInstanceType: String?
 
             public var ipv6Address: String?
+
+            public var ipv6AddressDescription: String?
 
             public var ipv6AddressId: String?
 
@@ -40908,7 +41109,11 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
 
             public var realBandwidth: Int32?
 
+            public var resourceGroupId: String?
+
             public var status: String?
+
+            public var tags: DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.Tags?
 
             public var vSwitchId: String?
 
@@ -40925,6 +41130,7 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.ipv6InternetBandwidth?.validate()
+                try self.tags?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -40940,6 +41146,9 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 }
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
+                }
+                if self.ipv6AddressDescription != nil {
+                    map["Ipv6AddressDescription"] = self.ipv6AddressDescription!
                 }
                 if self.ipv6AddressId != nil {
                     map["Ipv6AddressId"] = self.ipv6AddressId!
@@ -40962,8 +41171,14 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 if self.realBandwidth != nil {
                     map["RealBandwidth"] = self.realBandwidth!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
@@ -40986,6 +41201,9 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Ipv6Address") && dict["Ipv6Address"] != nil {
                     self.ipv6Address = dict["Ipv6Address"] as! String
+                }
+                if dict.keys.contains("Ipv6AddressDescription") && dict["Ipv6AddressDescription"] != nil {
+                    self.ipv6AddressDescription = dict["Ipv6AddressDescription"] as! String
                 }
                 if dict.keys.contains("Ipv6AddressId") && dict["Ipv6AddressId"] != nil {
                     self.ipv6AddressId = dict["Ipv6AddressId"] as! String
@@ -41010,8 +41228,16 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("RealBandwidth") && dict["RealBandwidth"] != nil {
                     self.realBandwidth = dict["RealBandwidth"] as! Int32
                 }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
+                }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                    var model = DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
                 if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
                     self.vSwitchId = dict["VSwitchId"] as! String
@@ -41679,6 +41905,8 @@ public class DescribeIpv6GatewayAttributeResponseBody : Tea.TeaModel {
 
     public var expiredTime: String?
 
+    public var gatewayRouteTableId: String?
+
     public var instanceChargeType: String?
 
     public var ipv6GatewayId: String?
@@ -41724,6 +41952,9 @@ public class DescribeIpv6GatewayAttributeResponseBody : Tea.TeaModel {
         if self.expiredTime != nil {
             map["ExpiredTime"] = self.expiredTime!
         }
+        if self.gatewayRouteTableId != nil {
+            map["GatewayRouteTableId"] = self.gatewayRouteTableId!
+        }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
         }
@@ -41766,6 +41997,9 @@ public class DescribeIpv6GatewayAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ExpiredTime") && dict["ExpiredTime"] != nil {
             self.expiredTime = dict["ExpiredTime"] as! String
+        }
+        if dict.keys.contains("GatewayRouteTableId") && dict["GatewayRouteTableId"] != nil {
+            self.gatewayRouteTableId = dict["GatewayRouteTableId"] as! String
         }
         if dict.keys.contains("InstanceChargeType") && dict["InstanceChargeType"] != nil {
             self.instanceChargeType = dict["InstanceChargeType"] as! String
@@ -50530,6 +50764,8 @@ public class DescribeSslVpnClientCertResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var sslVpnClientCertId: String?
 
     public var sslVpnServerId: String?
@@ -50577,6 +50813,9 @@ public class DescribeSslVpnClientCertResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sslVpnClientCertId != nil {
             map["SslVpnClientCertId"] = self.sslVpnClientCertId!
         }
@@ -50616,6 +50855,9 @@ public class DescribeSslVpnClientCertResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SslVpnClientCertId") && dict["SslVpnClientCertId"] != nil {
             self.sslVpnClientCertId = dict["SslVpnClientCertId"] as! String
@@ -50694,6 +50936,8 @@ public class DescribeSslVpnClientCertsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -50734,6 +50978,9 @@ public class DescribeSslVpnClientCertsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -50768,6 +51015,9 @@ public class DescribeSslVpnClientCertsRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -50793,6 +51043,8 @@ public class DescribeSslVpnClientCertsResponseBody : Tea.TeaModel {
             public var name: String?
 
             public var regionId: String?
+
+            public var resourceGroupId: String?
 
             public var sslVpnClientCertId: String?
 
@@ -50826,6 +51078,9 @@ public class DescribeSslVpnClientCertsResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.sslVpnClientCertId != nil {
                     map["SslVpnClientCertId"] = self.sslVpnClientCertId!
                 }
@@ -50850,6 +51105,9 @@ public class DescribeSslVpnClientCertsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("SslVpnClientCertId") && dict["SslVpnClientCertId"] != nil {
                     self.sslVpnClientCertId = dict["SslVpnClientCertId"] as! String
@@ -51344,6 +51602,8 @@ public class DescribeSslVpnServersRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -51384,6 +51644,9 @@ public class DescribeSslVpnServersRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -51417,6 +51680,9 @@ public class DescribeSslVpnServersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -51465,6 +51731,8 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
             public var proto: String?
 
             public var regionId: String?
+
+            public var resourceGroupId: String?
 
             public var sslVpnServerId: String?
 
@@ -51529,6 +51797,9 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.sslVpnServerId != nil {
                     map["SslVpnServerId"] = self.sslVpnServerId!
                 }
@@ -51583,6 +51854,9 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("SslVpnServerId") && dict["SslVpnServerId"] != nil {
                     self.sslVpnServerId = dict["SslVpnServerId"] as! String
@@ -58994,6 +59268,8 @@ public class DescribeVpnConnectionResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var spec: String?
 
     public var state: String?
@@ -59092,6 +59368,9 @@ public class DescribeVpnConnectionResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.spec != nil {
             map["Spec"] = self.spec!
         }
@@ -59189,6 +59468,9 @@ public class DescribeVpnConnectionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Spec") && dict["Spec"] != nil {
             self.spec = dict["Spec"] as! String
@@ -59611,6 +59893,8 @@ public class DescribeVpnConnectionsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -59653,6 +59937,9 @@ public class DescribeVpnConnectionsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -59693,6 +59980,9 @@ public class DescribeVpnConnectionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -60525,6 +60815,8 @@ public class DescribeVpnConnectionsResponseBody : Tea.TeaModel {
 
             public var remoteSubnet: String?
 
+            public var resourceGroupId: String?
+
             public var spec: String?
 
             public var state: String?
@@ -60618,6 +60910,9 @@ public class DescribeVpnConnectionsResponseBody : Tea.TeaModel {
                 if self.remoteSubnet != nil {
                     map["RemoteSubnet"] = self.remoteSubnet!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.spec != nil {
                     map["Spec"] = self.spec!
                 }
@@ -60709,6 +61004,9 @@ public class DescribeVpnConnectionsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RemoteSubnet") && dict["RemoteSubnet"] != nil {
                     self.remoteSubnet = dict["RemoteSubnet"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("Spec") && dict["Spec"] != nil {
                     self.spec = dict["Spec"] as! String
@@ -61454,6 +61752,8 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
 
     public var reservationData: DescribeVpnGatewayResponseBody.ReservationData?
 
+    public var resourceGroupId: String?
+
     public var spec: String?
 
     public var sslMaxConnections: Int64?
@@ -61536,6 +61836,9 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
         }
         if self.reservationData != nil {
             map["ReservationData"] = self.reservationData?.toMap()
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.spec != nil {
             map["Spec"] = self.spec!
@@ -61620,6 +61923,9 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
             var model = DescribeVpnGatewayResponseBody.ReservationData()
             model.fromMap(dict["ReservationData"] as! [String: Any])
             self.reservationData = model
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Spec") && dict["Spec"] != nil {
             self.spec = dict["Spec"] as! String
@@ -61763,6 +62069,8 @@ public class DescribeVpnGatewaysRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -61810,6 +62118,9 @@ public class DescribeVpnGatewaysRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -61856,6 +62167,9 @@ public class DescribeVpnGatewaysRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -62072,6 +62386,8 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
 
             public var reservationData: DescribeVpnGatewaysResponseBody.VpnGateways.VpnGateway.ReservationData?
 
+            public var resourceGroupId: String?
+
             public var spec: String?
 
             public var sslMaxConnections: Int64?
@@ -62151,6 +62467,9 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
                 }
                 if self.reservationData != nil {
                     map["ReservationData"] = self.reservationData?.toMap()
+                }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
                 }
                 if self.spec != nil {
                     map["Spec"] = self.spec!
@@ -62232,6 +62551,9 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
                     var model = DescribeVpnGatewaysResponseBody.VpnGateways.VpnGateway.ReservationData()
                     model.fromMap(dict["ReservationData"] as! [String: Any])
                     self.reservationData = model
+                }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("Spec") && dict["Spec"] != nil {
                     self.spec = dict["Spec"] as! String
@@ -64284,6 +64606,8 @@ public class DissociateRouteTableFromGatewayRequest : Tea.TeaModel {
 
     public var gatewayId: String?
 
+    public var gatewayType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -64319,6 +64643,9 @@ public class DissociateRouteTableFromGatewayRequest : Tea.TeaModel {
         if self.gatewayId != nil {
             map["GatewayId"] = self.gatewayId!
         }
+        if self.gatewayType != nil {
+            map["GatewayType"] = self.gatewayType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -64349,6 +64676,9 @@ public class DissociateRouteTableFromGatewayRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
             self.gatewayId = dict["GatewayId"] as! String
+        }
+        if dict.keys.contains("GatewayType") && dict["GatewayType"] != nil {
+            self.gatewayType = dict["GatewayType"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -71611,6 +71941,8 @@ public class ListIpsecServersRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var vpnGatewayId: String?
 
     public override init() {
@@ -71642,6 +71974,9 @@ public class ListIpsecServersRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.vpnGatewayId != nil {
             map["VpnGatewayId"] = self.vpnGatewayId!
         }
@@ -71663,6 +71998,9 @@ public class ListIpsecServersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("VpnGatewayId") && dict["VpnGatewayId"] != nil {
             self.vpnGatewayId = dict["VpnGatewayId"] as! String
@@ -71842,6 +72180,8 @@ public class ListIpsecServersResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var resourceGroupId: String?
+
         public var vpnGatewayId: String?
 
         public override init() {
@@ -71908,6 +72248,9 @@ public class ListIpsecServersResponseBody : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.vpnGatewayId != nil {
                 map["VpnGatewayId"] = self.vpnGatewayId!
             }
@@ -71966,6 +72309,9 @@ public class ListIpsecServersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("VpnGatewayId") && dict["VpnGatewayId"] != nil {
                 self.vpnGatewayId = dict["VpnGatewayId"] as! String
@@ -78964,6 +79310,8 @@ public class ModifyCustomerGatewayAttributeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -78996,6 +79344,9 @@ public class ModifyCustomerGatewayAttributeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -79017,6 +79368,9 @@ public class ModifyCustomerGatewayAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -84638,6 +84992,8 @@ public class ModifySslVpnServerResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var sslVpnServerId: String?
 
     public var vpnGatewayId: String?
@@ -84701,6 +85057,9 @@ public class ModifySslVpnServerResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sslVpnServerId != nil {
             map["SslVpnServerId"] = self.sslVpnServerId!
         }
@@ -84755,6 +85114,9 @@ public class ModifySslVpnServerResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SslVpnServerId") && dict["SslVpnServerId"] != nil {
             self.sslVpnServerId = dict["SslVpnServerId"] as! String
@@ -87444,6 +87806,8 @@ public class ModifyVpnAttachmentAttributeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var spec: String?
 
     public var status: String?
@@ -87519,6 +87883,9 @@ public class ModifyVpnAttachmentAttributeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.spec != nil {
             map["Spec"] = self.spec!
         }
@@ -87589,6 +87956,9 @@ public class ModifyVpnAttachmentAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Spec") && dict["Spec"] != nil {
             self.spec = dict["Spec"] as! String
@@ -87866,6 +88236,8 @@ public class ModifyVpnConnectionAttributeRequest : Tea.TeaModel {
 
         public var remoteCaCertificate: String?
 
+        public var role: String?
+
         public var tunnelBgpConfig: ModifyVpnConnectionAttributeRequest.TunnelOptionsSpecification.TunnelBgpConfig?
 
         public var tunnelId: String?
@@ -87900,6 +88272,9 @@ public class ModifyVpnConnectionAttributeRequest : Tea.TeaModel {
             if self.remoteCaCertificate != nil {
                 map["RemoteCaCertificate"] = self.remoteCaCertificate!
             }
+            if self.role != nil {
+                map["Role"] = self.role!
+            }
             if self.tunnelBgpConfig != nil {
                 map["TunnelBgpConfig"] = self.tunnelBgpConfig?.toMap()
             }
@@ -87924,6 +88299,9 @@ public class ModifyVpnConnectionAttributeRequest : Tea.TeaModel {
             }
             if dict.keys.contains("RemoteCaCertificate") && dict["RemoteCaCertificate"] != nil {
                 self.remoteCaCertificate = dict["RemoteCaCertificate"] as! String
+            }
+            if dict.keys.contains("Role") && dict["Role"] != nil {
+                self.role = dict["Role"] as! String
             }
             if dict.keys.contains("TunnelBgpConfig") && dict["TunnelBgpConfig"] != nil {
                 var model = ModifyVpnConnectionAttributeRequest.TunnelOptionsSpecification.TunnelBgpConfig()
@@ -88831,6 +89209,8 @@ public class ModifyVpnConnectionAttributeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var tunnelOptionsSpecification: ModifyVpnConnectionAttributeResponseBody.TunnelOptionsSpecification?
 
     public var vcoHealthCheck: ModifyVpnConnectionAttributeResponseBody.VcoHealthCheck?
@@ -88899,6 +89279,9 @@ public class ModifyVpnConnectionAttributeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tunnelOptionsSpecification != nil {
             map["TunnelOptionsSpecification"] = self.tunnelOptionsSpecification?.toMap()
         }
@@ -88960,6 +89343,9 @@ public class ModifyVpnConnectionAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("TunnelOptionsSpecification") && dict["TunnelOptionsSpecification"] != nil {
             var model = ModifyVpnConnectionAttributeResponseBody.TunnelOptionsSpecification()
@@ -89164,6 +89550,8 @@ public class ModifyVpnGatewayAttributeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var spec: String?
 
     public var sslVpnInternetIp: String?
@@ -89226,6 +89614,9 @@ public class ModifyVpnGatewayAttributeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.spec != nil {
             map["Spec"] = self.spec!
         }
@@ -89283,6 +89674,9 @@ public class ModifyVpnGatewayAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Spec") && dict["Spec"] != nil {
             self.spec = dict["Spec"] as! String
@@ -96144,6 +96538,8 @@ public class UpdateGatewayRouteTableEntryAttributeRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var gatewayRouteTableId: String?
+
     public var IPv4GatewayRouteTableId: String?
 
     public var name: String?
@@ -96188,6 +96584,9 @@ public class UpdateGatewayRouteTableEntryAttributeRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.gatewayRouteTableId != nil {
+            map["GatewayRouteTableId"] = self.gatewayRouteTableId!
+        }
         if self.IPv4GatewayRouteTableId != nil {
             map["IPv4GatewayRouteTableId"] = self.IPv4GatewayRouteTableId!
         }
@@ -96230,6 +96629,9 @@ public class UpdateGatewayRouteTableEntryAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("GatewayRouteTableId") && dict["GatewayRouteTableId"] != nil {
+            self.gatewayRouteTableId = dict["GatewayRouteTableId"] as! String
         }
         if dict.keys.contains("IPv4GatewayRouteTableId") && dict["IPv4GatewayRouteTableId"] != nil {
             self.IPv4GatewayRouteTableId = dict["IPv4GatewayRouteTableId"] as! String
