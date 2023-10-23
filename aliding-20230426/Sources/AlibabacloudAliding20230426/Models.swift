@@ -157,6 +157,10 @@ public class AddAttendeeRequest : Tea.TeaModel {
 
     public var eventId: String?
 
+    public var chatNotification: Bool?
+
+    public var pushNotification: Bool?
+
     public override init() {
         super.init()
     }
@@ -184,6 +188,12 @@ public class AddAttendeeRequest : Tea.TeaModel {
         if self.eventId != nil {
             map["EventId"] = self.eventId!
         }
+        if self.chatNotification != nil {
+            map["chatNotification"] = self.chatNotification!
+        }
+        if self.pushNotification != nil {
+            map["pushNotification"] = self.pushNotification!
+        }
         return map
     }
 
@@ -205,6 +215,12 @@ public class AddAttendeeRequest : Tea.TeaModel {
         if dict.keys.contains("EventId") && dict["EventId"] != nil {
             self.eventId = dict["EventId"] as! String
         }
+        if dict.keys.contains("chatNotification") && dict["chatNotification"] != nil {
+            self.chatNotification = dict["chatNotification"] as! Bool
+        }
+        if dict.keys.contains("pushNotification") && dict["pushNotification"] != nil {
+            self.pushNotification = dict["pushNotification"] as! Bool
+        }
     }
 }
 
@@ -214,6 +230,10 @@ public class AddAttendeeShrinkRequest : Tea.TeaModel {
     public var calendarId: String?
 
     public var eventId: String?
+
+    public var chatNotification: Bool?
+
+    public var pushNotification: Bool?
 
     public override init() {
         super.init()
@@ -238,6 +258,12 @@ public class AddAttendeeShrinkRequest : Tea.TeaModel {
         if self.eventId != nil {
             map["EventId"] = self.eventId!
         }
+        if self.chatNotification != nil {
+            map["chatNotification"] = self.chatNotification!
+        }
+        if self.pushNotification != nil {
+            map["pushNotification"] = self.pushNotification!
+        }
         return map
     }
 
@@ -250,6 +276,12 @@ public class AddAttendeeShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EventId") && dict["EventId"] != nil {
             self.eventId = dict["EventId"] as! String
+        }
+        if dict.keys.contains("chatNotification") && dict["chatNotification"] != nil {
+            self.chatNotification = dict["chatNotification"] as! Bool
+        }
+        if dict.keys.contains("pushNotification") && dict["pushNotification"] != nil {
+            self.pushNotification = dict["pushNotification"] as! Bool
         }
     }
 }
@@ -11162,6 +11194,8 @@ public class DeleteEventRequest : Tea.TeaModel {
 
     public var eventId: String?
 
+    public var pushNotification: Bool?
+
     public override init() {
         super.init()
     }
@@ -11182,6 +11216,9 @@ public class DeleteEventRequest : Tea.TeaModel {
         if self.eventId != nil {
             map["EventId"] = self.eventId!
         }
+        if self.pushNotification != nil {
+            map["pushNotification"] = self.pushNotification!
+        }
         return map
     }
 
@@ -11191,6 +11228,9 @@ public class DeleteEventRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EventId") && dict["EventId"] != nil {
             self.eventId = dict["EventId"] as! String
+        }
+        if dict.keys.contains("pushNotification") && dict["pushNotification"] != nil {
+            self.pushNotification = dict["pushNotification"] as! Bool
         }
     }
 }

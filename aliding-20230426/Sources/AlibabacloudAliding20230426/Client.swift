@@ -46,6 +46,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.eventId)) {
             body["EventId"] = request.eventId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.chatNotification)) {
+            body["chatNotification"] = request.chatNotification!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pushNotification)) {
+            body["pushNotification"] = request.pushNotification!;
+        }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
@@ -1696,6 +1702,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.eventId)) {
             body["EventId"] = request.eventId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pushNotification)) {
+            body["pushNotification"] = request.pushNotification!;
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
