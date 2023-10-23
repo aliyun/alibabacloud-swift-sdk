@@ -159,6 +159,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addZoneWithOptions(_ request: AddZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -205,8 +208,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addZoneRecordWithOptions(_ request: AddZoneRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddZoneRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.line)) {
+            query["Line"] = request.line ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.priority)) {
             query["Priority"] = request.priority!;
@@ -228,6 +237,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.value)) {
             query["Value"] = request.value ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.weight)) {
+            query["Weight"] = request.weight!;
         }
         if (!TeaUtils.Client.isUnset(request.zoneId)) {
             query["ZoneId"] = request.zoneId ?? "";
@@ -297,6 +309,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func bindZoneVpcWithOptions(_ request: BindZoneVpcRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BindZoneVpcResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -476,6 +491,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteZoneWithOptions(_ request: DeleteZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -513,6 +531,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteZoneRecordWithOptions(_ request: DeleteZoneRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteZoneRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -613,6 +634,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scene)) {
+            query["Scene"] = request.scene ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userClientIp)) {
             query["UserClientIp"] = request.userClientIp ?? "";
@@ -1269,6 +1293,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func moveResourceGroupWithOptions(_ request: MoveResourceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MoveResourceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -1306,6 +1333,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setProxyPatternWithOptions(_ request: SetProxyPatternRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetProxyPatternResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -1346,6 +1376,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setZoneRecordStatusWithOptions(_ request: SetZoneRecordStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetZoneRecordStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -1472,6 +1505,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateRecordRemarkWithOptions(_ request: UpdateRecordRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRecordRemarkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
@@ -1629,8 +1665,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateZoneRecordWithOptions(_ request: UpdateZoneRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateZoneRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.line)) {
+            query["Line"] = request.line ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.priority)) {
             query["Priority"] = request.priority!;
@@ -1652,6 +1694,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.value)) {
             query["Value"] = request.value ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.weight)) {
+            query["Weight"] = request.weight!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1681,6 +1726,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateZoneRemarkWithOptions(_ request: UpdateZoneRemarkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateZoneRemarkResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }

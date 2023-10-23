@@ -576,6 +576,8 @@ public class AddUserVpcAuthorizationResponse : Tea.TeaModel {
 }
 
 public class AddZoneRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var proxyPattern: String?
@@ -602,6 +604,9 @@ public class AddZoneRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -624,6 +629,9 @@ public class AddZoneRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -752,7 +760,11 @@ public class AddZoneResponse : Tea.TeaModel {
 }
 
 public class AddZoneRecordRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
+
+    public var line: String?
 
     public var priority: Int32?
 
@@ -767,6 +779,8 @@ public class AddZoneRecordRequest : Tea.TeaModel {
     public var userClientIp: String?
 
     public var value: String?
+
+    public var weight: Int32?
 
     public var zoneId: String?
 
@@ -784,8 +798,14 @@ public class AddZoneRecordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
+        }
+        if self.line != nil {
+            map["Line"] = self.line!
         }
         if self.priority != nil {
             map["Priority"] = self.priority!
@@ -808,6 +828,9 @@ public class AddZoneRecordRequest : Tea.TeaModel {
         if self.value != nil {
             map["Value"] = self.value!
         }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -815,8 +838,14 @@ public class AddZoneRecordRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Line") && dict["Line"] != nil {
+            self.line = dict["Line"] as! String
         }
         if dict.keys.contains("Priority") && dict["Priority"] != nil {
             self.priority = dict["Priority"] as! Int32
@@ -838,6 +867,9 @@ public class AddZoneRecordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Value") && dict["Value"] != nil {
             self.value = dict["Value"] as! String
+        }
+        if dict.keys.contains("Weight") && dict["Weight"] != nil {
+            self.weight = dict["Weight"] as! Int32
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
@@ -1174,6 +1206,8 @@ public class BindZoneVpcRequest : Tea.TeaModel {
             }
         }
     }
+    public var clientToken: String?
+
     public var lang: String?
 
     public var userClientIp: String?
@@ -1196,6 +1230,9 @@ public class BindZoneVpcRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -1216,6 +1253,9 @@ public class BindZoneVpcRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -1826,6 +1866,8 @@ public class DeleteUserVpcAuthorizationResponse : Tea.TeaModel {
 }
 
 public class DeleteZoneRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var userClientIp: String?
@@ -1846,6 +1888,9 @@ public class DeleteZoneRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -1859,6 +1904,9 @@ public class DeleteZoneRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -1962,6 +2010,8 @@ public class DeleteZoneResponse : Tea.TeaModel {
 }
 
 public class DeleteZoneRecordRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var recordId: Int64?
@@ -1982,6 +2032,9 @@ public class DeleteZoneRecordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -1995,6 +2048,9 @@ public class DeleteZoneRecordRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -2196,6 +2252,12 @@ public class DescribeChangeLogsResponseBody : Tea.TeaModel {
         public class ChangeLog : Tea.TeaModel {
             public var content: String?
 
+            public var creatorId: String?
+
+            public var creatorSubType: String?
+
+            public var creatorType: String?
+
             public var entityId: String?
 
             public var entityName: String?
@@ -2229,6 +2291,15 @@ public class DescribeChangeLogsResponseBody : Tea.TeaModel {
                 if self.content != nil {
                     map["Content"] = self.content!
                 }
+                if self.creatorId != nil {
+                    map["CreatorId"] = self.creatorId!
+                }
+                if self.creatorSubType != nil {
+                    map["CreatorSubType"] = self.creatorSubType!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
                 if self.entityId != nil {
                     map["EntityId"] = self.entityId!
                 }
@@ -2259,6 +2330,15 @@ public class DescribeChangeLogsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Content") && dict["Content"] != nil {
                     self.content = dict["Content"] as! String
+                }
+                if dict.keys.contains("CreatorId") && dict["CreatorId"] != nil {
+                    self.creatorId = dict["CreatorId"] as! String
+                }
+                if dict.keys.contains("CreatorSubType") && dict["CreatorSubType"] != nil {
+                    self.creatorSubType = dict["CreatorSubType"] as! String
+                }
+                if dict.keys.contains("CreatorType") && dict["CreatorType"] != nil {
+                    self.creatorType = dict["CreatorType"] as! String
                 }
                 if dict.keys.contains("EntityId") && dict["EntityId"] != nil {
                     self.entityId = dict["EntityId"] as! String
@@ -2457,6 +2537,8 @@ public class DescribeRegionsRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var scene: String?
+
     public var userClientIp: String?
 
     public var vpcType: String?
@@ -2484,6 +2566,9 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.scene != nil {
+            map["Scene"] = self.scene!
+        }
         if self.userClientIp != nil {
             map["UserClientIp"] = self.userClientIp!
         }
@@ -2502,6 +2587,9 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Scene") && dict["Scene"] != nil {
+            self.scene = dict["Scene"] as! String
         }
         if dict.keys.contains("UserClientIp") && dict["UserClientIp"] != nil {
             self.userClientIp = dict["UserClientIp"] as! String
@@ -3874,6 +3962,8 @@ public class DescribeResolverRuleResponseBody : Tea.TeaModel {
 
         public var vpcType: String?
 
+        public var vpcUserId: String?
+
         public override init() {
             super.init()
         }
@@ -3903,6 +3993,9 @@ public class DescribeResolverRuleResponseBody : Tea.TeaModel {
             if self.vpcType != nil {
                 map["VpcType"] = self.vpcType!
             }
+            if self.vpcUserId != nil {
+                map["VpcUserId"] = self.vpcUserId!
+            }
             return map
         }
 
@@ -3921,6 +4014,9 @@ public class DescribeResolverRuleResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("VpcType") && dict["VpcType"] != nil {
                 self.vpcType = dict["VpcType"] as! String
+            }
+            if dict.keys.contains("VpcUserId") && dict["VpcUserId"] != nil {
+                self.vpcUserId = dict["VpcUserId"] as! String
             }
         }
     }
@@ -4245,6 +4341,8 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
 
             public var vpcType: String?
 
+            public var vpcUserId: String?
+
             public override init() {
                 super.init()
             }
@@ -4274,6 +4372,9 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
                 if self.vpcType != nil {
                     map["VpcType"] = self.vpcType!
                 }
+                if self.vpcUserId != nil {
+                    map["VpcUserId"] = self.vpcUserId!
+                }
                 return map
             }
 
@@ -4292,6 +4393,9 @@ public class DescribeResolverRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("VpcType") && dict["VpcType"] != nil {
                     self.vpcType = dict["VpcType"] as! String
+                }
+                if dict.keys.contains("VpcUserId") && dict["VpcUserId"] != nil {
+                    self.vpcUserId = dict["VpcUserId"] as! String
                 }
             }
         }
@@ -5535,6 +5639,10 @@ public class DescribeUserVpcAuthorizationsResponseBody : Tea.TeaModel {
 
         public var authorizedUserId: Int64?
 
+        public var createTime: String?
+
+        public var createTimestamp: Int64?
+
         public override init() {
             super.init()
         }
@@ -5558,6 +5666,12 @@ public class DescribeUserVpcAuthorizationsResponseBody : Tea.TeaModel {
             if self.authorizedUserId != nil {
                 map["AuthorizedUserId"] = self.authorizedUserId!
             }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.createTimestamp != nil {
+                map["CreateTimestamp"] = self.createTimestamp!
+            }
             return map
         }
 
@@ -5570,6 +5684,12 @@ public class DescribeUserVpcAuthorizationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AuthorizedUserId") && dict["AuthorizedUserId"] != nil {
                 self.authorizedUserId = dict["AuthorizedUserId"] as! Int64
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
+                self.createTimestamp = dict["CreateTimestamp"] as! Int64
             }
         }
     }
@@ -5861,6 +5981,14 @@ public class DescribeZoneInfoResponseBody : Tea.TeaModel {
 
     public var createTimestamp: Int64?
 
+    public var creator: String?
+
+    public var creatorType: String?
+
+    public var dnsGroup: String?
+
+    public var dnsGroupChanging: Bool?
+
     public var isPtr: Bool?
 
     public var proxyPattern: String?
@@ -5910,6 +6038,18 @@ public class DescribeZoneInfoResponseBody : Tea.TeaModel {
         }
         if self.createTimestamp != nil {
             map["CreateTimestamp"] = self.createTimestamp!
+        }
+        if self.creator != nil {
+            map["Creator"] = self.creator!
+        }
+        if self.creatorType != nil {
+            map["CreatorType"] = self.creatorType!
+        }
+        if self.dnsGroup != nil {
+            map["DnsGroup"] = self.dnsGroup!
+        }
+        if self.dnsGroupChanging != nil {
+            map["DnsGroupChanging"] = self.dnsGroupChanging!
         }
         if self.isPtr != nil {
             map["IsPtr"] = self.isPtr!
@@ -5964,6 +6104,18 @@ public class DescribeZoneInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
             self.createTimestamp = dict["CreateTimestamp"] as! Int64
+        }
+        if dict.keys.contains("Creator") && dict["Creator"] != nil {
+            self.creator = dict["Creator"] as! String
+        }
+        if dict.keys.contains("CreatorType") && dict["CreatorType"] != nil {
+            self.creatorType = dict["CreatorType"] as! String
+        }
+        if dict.keys.contains("DnsGroup") && dict["DnsGroup"] != nil {
+            self.dnsGroup = dict["DnsGroup"] as! String
+        }
+        if dict.keys.contains("DnsGroupChanging") && dict["DnsGroupChanging"] != nil {
+            self.dnsGroupChanging = dict["DnsGroupChanging"] as! Bool
         }
         if dict.keys.contains("IsPtr") && dict["IsPtr"] != nil {
             self.isPtr = dict["IsPtr"] as! Bool
@@ -6148,6 +6300,12 @@ public class DescribeZoneRecordsRequest : Tea.TeaModel {
 public class DescribeZoneRecordsResponseBody : Tea.TeaModel {
     public class Records : Tea.TeaModel {
         public class Record : Tea.TeaModel {
+            public var createTime: String?
+
+            public var createTimestamp: Int64?
+
+            public var line: String?
+
             public var priority: Int32?
 
             public var recordId: Int64?
@@ -6162,7 +6320,15 @@ public class DescribeZoneRecordsResponseBody : Tea.TeaModel {
 
             public var type: String?
 
+            public var updateTime: String?
+
+            public var updateTimestamp: Int64?
+
             public var value: String?
+
+            public var weight: Int32?
+
+            public var zoneId: String?
 
             public override init() {
                 super.init()
@@ -6178,6 +6344,15 @@ public class DescribeZoneRecordsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.createTimestamp != nil {
+                    map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.line != nil {
+                    map["Line"] = self.line!
+                }
                 if self.priority != nil {
                     map["Priority"] = self.priority!
                 }
@@ -6199,13 +6374,34 @@ public class DescribeZoneRecordsResponseBody : Tea.TeaModel {
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                if self.updateTimestamp != nil {
+                    map["UpdateTimestamp"] = self.updateTimestamp!
+                }
                 if self.value != nil {
                     map["Value"] = self.value!
+                }
+                if self.weight != nil {
+                    map["Weight"] = self.weight!
+                }
+                if self.zoneId != nil {
+                    map["ZoneId"] = self.zoneId!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
+                    self.createTimestamp = dict["CreateTimestamp"] as! Int64
+                }
+                if dict.keys.contains("Line") && dict["Line"] != nil {
+                    self.line = dict["Line"] as! String
+                }
                 if dict.keys.contains("Priority") && dict["Priority"] != nil {
                     self.priority = dict["Priority"] as! Int32
                 }
@@ -6227,8 +6423,20 @@ public class DescribeZoneRecordsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
                 }
+                if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
+                    self.updateTime = dict["UpdateTime"] as! String
+                }
+                if dict.keys.contains("UpdateTimestamp") && dict["UpdateTimestamp"] != nil {
+                    self.updateTimestamp = dict["UpdateTimestamp"] as! Int64
+                }
                 if dict.keys.contains("Value") && dict["Value"] != nil {
                     self.value = dict["Value"] as! String
+                }
+                if dict.keys.contains("Weight") && dict["Weight"] != nil {
+                    self.weight = dict["Weight"] as! Int32
+                }
+                if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                    self.zoneId = dict["ZoneId"] as! String
                 }
             }
         }
@@ -6543,6 +6751,14 @@ public class DescribeZoneVpcTreeResponseBody : Tea.TeaModel {
 
             public var createTimestamp: Int64?
 
+            public var creator: String?
+
+            public var creatorType: String?
+
+            public var dnsGroup: String?
+
+            public var dnsGroupChanging: Bool?
+
             public var isPtr: Bool?
 
             public var recordCount: Int32?
@@ -6584,6 +6800,18 @@ public class DescribeZoneVpcTreeResponseBody : Tea.TeaModel {
                 if self.createTimestamp != nil {
                     map["CreateTimestamp"] = self.createTimestamp!
                 }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.creatorType != nil {
+                    map["CreatorType"] = self.creatorType!
+                }
+                if self.dnsGroup != nil {
+                    map["DnsGroup"] = self.dnsGroup!
+                }
+                if self.dnsGroupChanging != nil {
+                    map["DnsGroupChanging"] = self.dnsGroupChanging!
+                }
                 if self.isPtr != nil {
                     map["IsPtr"] = self.isPtr!
                 }
@@ -6623,6 +6851,18 @@ public class DescribeZoneVpcTreeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
                     self.createTimestamp = dict["CreateTimestamp"] as! Int64
+                }
+                if dict.keys.contains("Creator") && dict["Creator"] != nil {
+                    self.creator = dict["Creator"] as! String
+                }
+                if dict.keys.contains("CreatorType") && dict["CreatorType"] != nil {
+                    self.creatorType = dict["CreatorType"] as! String
+                }
+                if dict.keys.contains("DnsGroup") && dict["DnsGroup"] != nil {
+                    self.dnsGroup = dict["DnsGroup"] as! String
+                }
+                if dict.keys.contains("DnsGroupChanging") && dict["DnsGroupChanging"] != nil {
+                    self.dnsGroupChanging = dict["DnsGroupChanging"] as! Bool
                 }
                 if dict.keys.contains("IsPtr") && dict["IsPtr"] != nil {
                     self.isPtr = dict["IsPtr"] as! Bool
@@ -7034,6 +7274,14 @@ public class DescribeZonesResponseBody : Tea.TeaModel {
 
             public var createTimestamp: Int64?
 
+            public var creator: String?
+
+            public var creatorSubType: String?
+
+            public var dnsGroup: String?
+
+            public var dnsGroupChanging: Bool?
+
             public var isPtr: Bool?
 
             public var proxyPattern: String?
@@ -7078,6 +7326,18 @@ public class DescribeZonesResponseBody : Tea.TeaModel {
                 }
                 if self.createTimestamp != nil {
                     map["CreateTimestamp"] = self.createTimestamp!
+                }
+                if self.creator != nil {
+                    map["Creator"] = self.creator!
+                }
+                if self.creatorSubType != nil {
+                    map["CreatorSubType"] = self.creatorSubType!
+                }
+                if self.dnsGroup != nil {
+                    map["DnsGroup"] = self.dnsGroup!
+                }
+                if self.dnsGroupChanging != nil {
+                    map["DnsGroupChanging"] = self.dnsGroupChanging!
                 }
                 if self.isPtr != nil {
                     map["IsPtr"] = self.isPtr!
@@ -7124,6 +7384,18 @@ public class DescribeZonesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
                     self.createTimestamp = dict["CreateTimestamp"] as! Int64
+                }
+                if dict.keys.contains("Creator") && dict["Creator"] != nil {
+                    self.creator = dict["Creator"] as! String
+                }
+                if dict.keys.contains("CreatorSubType") && dict["CreatorSubType"] != nil {
+                    self.creatorSubType = dict["CreatorSubType"] as! String
+                }
+                if dict.keys.contains("DnsGroup") && dict["DnsGroup"] != nil {
+                    self.dnsGroup = dict["DnsGroup"] as! String
+                }
+                if dict.keys.contains("DnsGroupChanging") && dict["DnsGroupChanging"] != nil {
+                    self.dnsGroupChanging = dict["DnsGroupChanging"] as! Bool
                 }
                 if dict.keys.contains("IsPtr") && dict["IsPtr"] != nil {
                     self.isPtr = dict["IsPtr"] as! Bool
@@ -7612,6 +7884,8 @@ public class ListTagResourcesResponse : Tea.TeaModel {
 }
 
 public class MoveResourceGroupRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var newResourceGroupId: String?
@@ -7632,6 +7906,9 @@ public class MoveResourceGroupRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -7645,6 +7922,9 @@ public class MoveResourceGroupRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -7740,6 +8020,8 @@ public class MoveResourceGroupResponse : Tea.TeaModel {
 }
 
 public class SetProxyPatternRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var proxyPattern: String?
@@ -7762,6 +8044,9 @@ public class SetProxyPatternRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -7778,6 +8063,9 @@ public class SetProxyPatternRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -7884,6 +8172,8 @@ public class SetProxyPatternResponse : Tea.TeaModel {
 }
 
 public class SetZoneRecordStatusRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var recordId: Int64?
@@ -7906,6 +8196,9 @@ public class SetZoneRecordStatusRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -7922,6 +8215,9 @@ public class SetZoneRecordStatusRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -8373,6 +8669,8 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateRecordRemarkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var recordId: Int64?
@@ -8393,6 +8691,9 @@ public class UpdateRecordRemarkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -8406,6 +8707,9 @@ public class UpdateRecordRemarkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
@@ -9088,7 +9392,11 @@ public class UpdateSyncEcsHostTaskResponse : Tea.TeaModel {
 }
 
 public class UpdateZoneRecordRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
+
+    public var line: String?
 
     public var priority: Int32?
 
@@ -9104,6 +9412,8 @@ public class UpdateZoneRecordRequest : Tea.TeaModel {
 
     public var value: String?
 
+    public var weight: Int32?
+
     public override init() {
         super.init()
     }
@@ -9118,8 +9428,14 @@ public class UpdateZoneRecordRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
+        }
+        if self.line != nil {
+            map["Line"] = self.line!
         }
         if self.priority != nil {
             map["Priority"] = self.priority!
@@ -9142,12 +9458,21 @@ public class UpdateZoneRecordRequest : Tea.TeaModel {
         if self.value != nil {
             map["Value"] = self.value!
         }
+        if self.weight != nil {
+            map["Weight"] = self.weight!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Line") && dict["Line"] != nil {
+            self.line = dict["Line"] as! String
         }
         if dict.keys.contains("Priority") && dict["Priority"] != nil {
             self.priority = dict["Priority"] as! Int32
@@ -9169,6 +9494,9 @@ public class UpdateZoneRecordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Value") && dict["Value"] != nil {
             self.value = dict["Value"] as! String
+        }
+        if dict.keys.contains("Weight") && dict["Weight"] != nil {
+            self.weight = dict["Weight"] as! Int32
         }
     }
 }
@@ -9264,6 +9592,8 @@ public class UpdateZoneRecordResponse : Tea.TeaModel {
 }
 
 public class UpdateZoneRemarkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var lang: String?
 
     public var remark: String?
@@ -9286,6 +9616,9 @@ public class UpdateZoneRemarkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -9302,6 +9635,9 @@ public class UpdateZoneRemarkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
