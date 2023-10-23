@@ -9002,9 +9002,13 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var regionId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var resourcePools: String?
 
     public var startTime: String?
 
@@ -9037,11 +9041,17 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.resourcePools != nil {
+            map["ResourcePools"] = self.resourcePools!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -9065,11 +9075,17 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
         }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourcePools") && dict["ResourcePools"] != nil {
+            self.resourcePools = dict["ResourcePools"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -9081,6 +9097,8 @@ public class DescribeDBClusterPerformanceResponseBody : Tea.TeaModel {
     public class Performances : Tea.TeaModel {
         public class Series : Tea.TeaModel {
             public var name: String?
+
+            public var tags: String?
 
             public var values: [String]?
 
@@ -9101,6 +9119,9 @@ public class DescribeDBClusterPerformanceResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
+                if self.tags != nil {
+                    map["Tags"] = self.tags!
+                }
                 if self.values != nil {
                     map["Values"] = self.values!
                 }
@@ -9110,6 +9131,9 @@ public class DescribeDBClusterPerformanceResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                    self.tags = dict["Tags"] as! String
                 }
                 if dict.keys.contains("Values") && dict["Values"] != nil {
                     self.values = dict["Values"] as! [String]
@@ -15890,230 +15914,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeRegionsResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class DescribeSQLPatternAttributeRequest : Tea.TeaModel {
-    public var DBClusterId: String?
-
-    public var endTime: String?
-
-    public var lang: String?
-
-    public var patternId: Int64?
-
-    public var regionId: String?
-
-    public var startTime: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.DBClusterId != nil {
-            map["DBClusterId"] = self.DBClusterId!
-        }
-        if self.endTime != nil {
-            map["EndTime"] = self.endTime!
-        }
-        if self.lang != nil {
-            map["Lang"] = self.lang!
-        }
-        if self.patternId != nil {
-            map["PatternId"] = self.patternId!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        if self.startTime != nil {
-            map["StartTime"] = self.startTime!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
-            self.DBClusterId = dict["DBClusterId"] as! String
-        }
-        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
-            self.endTime = dict["EndTime"] as! String
-        }
-        if dict.keys.contains("Lang") && dict["Lang"] != nil {
-            self.lang = dict["Lang"] as! String
-        }
-        if dict.keys.contains("PatternId") && dict["PatternId"] != nil {
-            self.patternId = dict["PatternId"] as! Int64
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
-        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
-            self.startTime = dict["StartTime"] as! String
-        }
-    }
-}
-
-public class DescribeSQLPatternAttributeResponseBody : Tea.TeaModel {
-    public class PatternDetail : Tea.TeaModel {
-        public var averageMemory: String?
-
-        public var averageQueryTime: String?
-
-        public var queryCount: Int64?
-
-        public var SQLPattern: String?
-
-        public var totalQueryTime: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.averageMemory != nil {
-                map["AverageMemory"] = self.averageMemory!
-            }
-            if self.averageQueryTime != nil {
-                map["AverageQueryTime"] = self.averageQueryTime!
-            }
-            if self.queryCount != nil {
-                map["QueryCount"] = self.queryCount!
-            }
-            if self.SQLPattern != nil {
-                map["SQLPattern"] = self.SQLPattern!
-            }
-            if self.totalQueryTime != nil {
-                map["TotalQueryTime"] = self.totalQueryTime!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("AverageMemory") && dict["AverageMemory"] != nil {
-                self.averageMemory = dict["AverageMemory"] as! String
-            }
-            if dict.keys.contains("AverageQueryTime") && dict["AverageQueryTime"] != nil {
-                self.averageQueryTime = dict["AverageQueryTime"] as! String
-            }
-            if dict.keys.contains("QueryCount") && dict["QueryCount"] != nil {
-                self.queryCount = dict["QueryCount"] as! Int64
-            }
-            if dict.keys.contains("SQLPattern") && dict["SQLPattern"] != nil {
-                self.SQLPattern = dict["SQLPattern"] as! String
-            }
-            if dict.keys.contains("TotalQueryTime") && dict["TotalQueryTime"] != nil {
-                self.totalQueryTime = dict["TotalQueryTime"] as! String
-            }
-        }
-    }
-    public var patternDetail: DescribeSQLPatternAttributeResponseBody.PatternDetail?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.patternDetail?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.patternDetail != nil {
-            map["PatternDetail"] = self.patternDetail?.toMap()
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("PatternDetail") && dict["PatternDetail"] != nil {
-            var model = DescribeSQLPatternAttributeResponseBody.PatternDetail()
-            model.fromMap(dict["PatternDetail"] as! [String: Any])
-            self.patternDetail = model
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class DescribeSQLPatternAttributeResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeSQLPatternAttributeResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = DescribeSQLPatternAttributeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
