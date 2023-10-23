@@ -20516,6 +20516,256 @@ public class DescribeDcdnDomainWebsocketTrafficDataResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDcdnDomainsBySourceRequest : Tea.TeaModel {
+    public var sources: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.sources != nil {
+            map["Sources"] = self.sources!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Sources") && dict["Sources"] != nil {
+            self.sources = dict["Sources"] as! String
+        }
+    }
+}
+
+public class DescribeDcdnDomainsBySourceResponseBody : Tea.TeaModel {
+    public class DomainInfo : Tea.TeaModel {
+        public class DomainList : Tea.TeaModel {
+            public var createTime: String?
+
+            public var domainCname: String?
+
+            public var domainName: String?
+
+            public var domainType: String?
+
+            public var status: String?
+
+            public var updateTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
+                if self.domainCname != nil {
+                    map["DomainCname"] = self.domainCname!
+                }
+                if self.domainName != nil {
+                    map["DomainName"] = self.domainName!
+                }
+                if self.domainType != nil {
+                    map["DomainType"] = self.domainType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.updateTime != nil {
+                    map["UpdateTime"] = self.updateTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                    self.createTime = dict["CreateTime"] as! String
+                }
+                if dict.keys.contains("DomainCname") && dict["DomainCname"] != nil {
+                    self.domainCname = dict["DomainCname"] as! String
+                }
+                if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+                    self.domainName = dict["DomainName"] as! String
+                }
+                if dict.keys.contains("DomainType") && dict["DomainType"] != nil {
+                    self.domainType = dict["DomainType"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
+                    self.updateTime = dict["UpdateTime"] as! String
+                }
+            }
+        }
+        public var domainList: [DescribeDcdnDomainsBySourceResponseBody.DomainInfo.DomainList]?
+
+        public var source: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.domainList != nil {
+                var tmp : [Any] = []
+                for k in self.domainList! {
+                    tmp.append(k.toMap())
+                }
+                map["DomainList"] = tmp
+            }
+            if self.source != nil {
+                map["Source"] = self.source!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DomainList") && dict["DomainList"] != nil {
+                var tmp : [DescribeDcdnDomainsBySourceResponseBody.DomainInfo.DomainList] = []
+                for v in dict["DomainList"] as! [Any] {
+                    var model = DescribeDcdnDomainsBySourceResponseBody.DomainInfo.DomainList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.domainList = tmp
+            }
+            if dict.keys.contains("Source") && dict["Source"] != nil {
+                self.source = dict["Source"] as! String
+            }
+        }
+    }
+    public var domainInfo: [DescribeDcdnDomainsBySourceResponseBody.DomainInfo]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainInfo != nil {
+            var tmp : [Any] = []
+            for k in self.domainInfo! {
+                tmp.append(k.toMap())
+            }
+            map["DomainInfo"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainInfo") && dict["DomainInfo"] != nil {
+            var tmp : [DescribeDcdnDomainsBySourceResponseBody.DomainInfo] = []
+            for v in dict["DomainInfo"] as! [Any] {
+                var model = DescribeDcdnDomainsBySourceResponseBody.DomainInfo()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.domainInfo = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDcdnDomainsBySourceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDcdnDomainsBySourceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeDcdnDomainsBySourceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDcdnErUsageDataRequest : Tea.TeaModel {
     public var endTime: String?
 
