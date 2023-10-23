@@ -1339,6 +1339,8 @@ public class Cluster : Tea.TeaModel {
 
     public var stateChangeReason: ClusterStateChangeReason?
 
+    public var status: String?
+
     public var subscriptionConfig: SubscriptionConfig?
 
     public var tags: [Tag]?
@@ -1411,6 +1413,9 @@ public class Cluster : Tea.TeaModel {
         if self.stateChangeReason != nil {
             map["StateChangeReason"] = self.stateChangeReason?.toMap()
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.subscriptionConfig != nil {
             map["SubscriptionConfig"] = self.subscriptionConfig?.toMap()
         }
@@ -1479,6 +1484,9 @@ public class Cluster : Tea.TeaModel {
             var model = ClusterStateChangeReason()
             model.fromMap(dict["StateChangeReason"] as! [String: Any])
             self.stateChangeReason = model
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
         }
         if dict.keys.contains("SubscriptionConfig") && dict["SubscriptionConfig"] != nil {
             var model = SubscriptionConfig()
@@ -1645,6 +1653,8 @@ public class ClusterSummary : Tea.TeaModel {
 
     public var stateChangeReason: ClusterStateChangeReason?
 
+    public var status: String?
+
     public var tags: [Tag]?
 
     public override init() {
@@ -1701,6 +1711,9 @@ public class ClusterSummary : Tea.TeaModel {
         if self.stateChangeReason != nil {
             map["StateChangeReason"] = self.stateChangeReason?.toMap()
         }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
@@ -1752,6 +1765,9 @@ public class ClusterSummary : Tea.TeaModel {
             var model = ClusterStateChangeReason()
             model.fromMap(dict["StateChangeReason"] as! [String: Any])
             self.stateChangeReason = model
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             var tmp : [Tag] = []
