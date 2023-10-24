@@ -1629,6 +1629,91 @@ public class GetProjectResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class StorageTierInfo : Tea.TeaModel {
+                public class StorageTierSize : Tea.TeaModel {
+                    public var longTermSize: Int64?
+
+                    public var lowFrequencySize: Int64?
+
+                    public var standardSize: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.longTermSize != nil {
+                            map["longTermSize"] = self.longTermSize!
+                        }
+                        if self.lowFrequencySize != nil {
+                            map["lowFrequencySize"] = self.lowFrequencySize!
+                        }
+                        if self.standardSize != nil {
+                            map["standardSize"] = self.standardSize!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("longTermSize") && dict["longTermSize"] != nil {
+                            self.longTermSize = dict["longTermSize"] as! Int64
+                        }
+                        if dict.keys.contains("lowFrequencySize") && dict["lowFrequencySize"] != nil {
+                            self.lowFrequencySize = dict["lowFrequencySize"] as! Int64
+                        }
+                        if dict.keys.contains("standardSize") && dict["standardSize"] != nil {
+                            self.standardSize = dict["standardSize"] as! Int64
+                        }
+                    }
+                }
+                public var projectBackupSize: Int64?
+
+                public var storageTierSize: GetProjectResponseBody.Data.Properties.StorageTierInfo.StorageTierSize?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.storageTierSize?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.projectBackupSize != nil {
+                        map["projectBackupSize"] = self.projectBackupSize!
+                    }
+                    if self.storageTierSize != nil {
+                        map["storageTierSize"] = self.storageTierSize?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("projectBackupSize") && dict["projectBackupSize"] != nil {
+                        self.projectBackupSize = dict["projectBackupSize"] as! Int64
+                    }
+                    if dict.keys.contains("storageTierSize") && dict["storageTierSize"] != nil {
+                        var model = GetProjectResponseBody.Data.Properties.StorageTierInfo.StorageTierSize()
+                        model.fromMap(dict["storageTierSize"] as! [String: Any])
+                        self.storageTierSize = model
+                    }
+                }
+            }
             public class TableLifecycle : Tea.TeaModel {
                 public var type: String?
 
@@ -1668,8 +1753,6 @@ public class GetProjectResponseBody : Tea.TeaModel {
             }
             public var allowFullScan: Bool?
 
-            public var elderTunnelQuota: String?
-
             public var enableDecimal2: Bool?
 
             public var enableTunnelQuotaRoute: Bool?
@@ -1679,6 +1762,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
             public var retentionDays: Int64?
 
             public var sqlMeteringMax: String?
+
+            public var storageTierInfo: GetProjectResponseBody.Data.Properties.StorageTierInfo?
 
             public var tableLifecycle: GetProjectResponseBody.Data.Properties.TableLifecycle?
 
@@ -1699,6 +1784,7 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.encryption?.validate()
+                try self.storageTierInfo?.validate()
                 try self.tableLifecycle?.validate()
             }
 
@@ -1706,9 +1792,6 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.allowFullScan != nil {
                     map["allowFullScan"] = self.allowFullScan!
-                }
-                if self.elderTunnelQuota != nil {
-                    map["elderTunnelQuota"] = self.elderTunnelQuota!
                 }
                 if self.enableDecimal2 != nil {
                     map["enableDecimal2"] = self.enableDecimal2!
@@ -1724,6 +1807,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 }
                 if self.sqlMeteringMax != nil {
                     map["sqlMeteringMax"] = self.sqlMeteringMax!
+                }
+                if self.storageTierInfo != nil {
+                    map["storageTierInfo"] = self.storageTierInfo?.toMap()
                 }
                 if self.tableLifecycle != nil {
                     map["tableLifecycle"] = self.tableLifecycle?.toMap()
@@ -1744,9 +1830,6 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 if dict.keys.contains("allowFullScan") && dict["allowFullScan"] != nil {
                     self.allowFullScan = dict["allowFullScan"] as! Bool
                 }
-                if dict.keys.contains("elderTunnelQuota") && dict["elderTunnelQuota"] != nil {
-                    self.elderTunnelQuota = dict["elderTunnelQuota"] as! String
-                }
                 if dict.keys.contains("enableDecimal2") && dict["enableDecimal2"] != nil {
                     self.enableDecimal2 = dict["enableDecimal2"] as! Bool
                 }
@@ -1763,6 +1846,11 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("sqlMeteringMax") && dict["sqlMeteringMax"] != nil {
                     self.sqlMeteringMax = dict["sqlMeteringMax"] as! String
+                }
+                if dict.keys.contains("storageTierInfo") && dict["storageTierInfo"] != nil {
+                    var model = GetProjectResponseBody.Data.Properties.StorageTierInfo()
+                    model.fromMap(dict["storageTierInfo"] as! [String: Any])
+                    self.storageTierInfo = model
                 }
                 if dict.keys.contains("tableLifecycle") && dict["tableLifecycle"] != nil {
                     var model = GetProjectResponseBody.Data.Properties.TableLifecycle()
@@ -2606,8 +2694,6 @@ public class GetQuotaResponseBody : Tea.TeaModel {
 
             public var creatorId: String?
 
-            public var groupName: String?
-
             public var id: String?
 
             public var name: String?
@@ -2662,9 +2748,6 @@ public class GetQuotaResponseBody : Tea.TeaModel {
                 }
                 if self.creatorId != nil {
                     map["creatorId"] = self.creatorId!
-                }
-                if self.groupName != nil {
-                    map["groupName"] = self.groupName!
                 }
                 if self.id != nil {
                     map["id"] = self.id!
@@ -2723,9 +2806,6 @@ public class GetQuotaResponseBody : Tea.TeaModel {
                 if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
                     self.creatorId = dict["creatorId"] as! String
                 }
-                if dict.keys.contains("groupName") && dict["groupName"] != nil {
-                    self.groupName = dict["groupName"] as! String
-                }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! String
                 }
@@ -2778,8 +2858,6 @@ public class GetQuotaResponseBody : Tea.TeaModel {
         public var createTime: Int64?
 
         public var creatorId: String?
-
-        public var groupName: String?
 
         public var id: String?
 
@@ -2837,9 +2915,6 @@ public class GetQuotaResponseBody : Tea.TeaModel {
             }
             if self.creatorId != nil {
                 map["creatorId"] = self.creatorId!
-            }
-            if self.groupName != nil {
-                map["groupName"] = self.groupName!
             }
             if self.id != nil {
                 map["id"] = self.id!
@@ -2904,9 +2979,6 @@ public class GetQuotaResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
                 self.creatorId = dict["creatorId"] as! String
-            }
-            if dict.keys.contains("groupName") && dict["groupName"] != nil {
-                self.groupName = dict["groupName"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! String
@@ -4423,6 +4495,287 @@ public class GetQuotaPlanResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetQuotaPlanResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetQuotaScheduleRequest : Tea.TeaModel {
+    public var displayTimezone: String?
+
+    public var region: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.displayTimezone != nil {
+            map["displayTimezone"] = self.displayTimezone!
+        }
+        if self.region != nil {
+            map["region"] = self.region!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("displayTimezone") && dict["displayTimezone"] != nil {
+            self.displayTimezone = dict["displayTimezone"] as! String
+        }
+        if dict.keys.contains("region") && dict["region"] != nil {
+            self.region = dict["region"] as! String
+        }
+        if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+            self.tenantId = dict["tenantId"] as! String
+        }
+    }
+}
+
+public class GetQuotaScheduleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Condition : Tea.TeaModel {
+            public var after: String?
+
+            public var at: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.after != nil {
+                    map["after"] = self.after!
+                }
+                if self.at != nil {
+                    map["at"] = self.at!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("after") && dict["after"] != nil {
+                    self.after = dict["after"] as! String
+                }
+                if dict.keys.contains("at") && dict["at"] != nil {
+                    self.at = dict["at"] as! String
+                }
+            }
+        }
+        public var condition: GetQuotaScheduleResponseBody.Data.Condition?
+
+        public var id: String?
+
+        public var operator_: String?
+
+        public var plan: String?
+
+        public var timezone: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.condition?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.condition != nil {
+                map["condition"] = self.condition?.toMap()
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.operator_ != nil {
+                map["operator"] = self.operator_!
+            }
+            if self.plan != nil {
+                map["plan"] = self.plan!
+            }
+            if self.timezone != nil {
+                map["timezone"] = self.timezone!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("condition") && dict["condition"] != nil {
+                var model = GetQuotaScheduleResponseBody.Data.Condition()
+                model.fromMap(dict["condition"] as! [String: Any])
+                self.condition = model
+            }
+            if dict.keys.contains("id") && dict["id"] != nil {
+                self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("operator") && dict["operator"] != nil {
+                self.operator_ = dict["operator"] as! String
+            }
+            if dict.keys.contains("plan") && dict["plan"] != nil {
+                self.plan = dict["plan"] as! String
+            }
+            if dict.keys.contains("timezone") && dict["timezone"] != nil {
+                self.timezone = dict["timezone"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+        }
+    }
+    public var data: [GetQuotaScheduleResponseBody.Data]?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpCode: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.httpCode != nil {
+            map["httpCode"] = self.httpCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") && dict["data"] != nil {
+            var tmp : [GetQuotaScheduleResponseBody.Data] = []
+            for v in dict["data"] as! [Any] {
+                var model = GetQuotaScheduleResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMsg") && dict["errorMsg"] != nil {
+            self.errorMsg = dict["errorMsg"] as! String
+        }
+        if dict.keys.contains("httpCode") && dict["httpCode"] != nil {
+            self.httpCode = dict["httpCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class GetQuotaScheduleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetQuotaScheduleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetQuotaScheduleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6720,8 +7073,6 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 }
                 public var allowFullScan: Bool?
 
-                public var elderTunnelQuota: String?
-
                 public var enableDecimal2: Bool?
 
                 public var enableTunnelQuotaRoute: Bool?
@@ -6759,9 +7110,6 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                     if self.allowFullScan != nil {
                         map["allowFullScan"] = self.allowFullScan!
                     }
-                    if self.elderTunnelQuota != nil {
-                        map["elderTunnelQuota"] = self.elderTunnelQuota!
-                    }
                     if self.enableDecimal2 != nil {
                         map["enableDecimal2"] = self.enableDecimal2!
                     }
@@ -6795,9 +7143,6 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("allowFullScan") && dict["allowFullScan"] != nil {
                         self.allowFullScan = dict["allowFullScan"] as! Bool
-                    }
-                    if dict.keys.contains("elderTunnelQuota") && dict["elderTunnelQuota"] != nil {
-                        self.elderTunnelQuota = dict["elderTunnelQuota"] as! String
                     }
                     if dict.keys.contains("enableDecimal2") && dict["enableDecimal2"] != nil {
                         self.enableDecimal2 = dict["enableDecimal2"] as! Bool
@@ -7743,8 +8088,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
 
                 public var creatorId: String?
 
-                public var groupName: String?
-
                 public var id: String?
 
                 public var name: String?
@@ -7799,9 +8142,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     }
                     if self.creatorId != nil {
                         map["creatorId"] = self.creatorId!
-                    }
-                    if self.groupName != nil {
-                        map["groupName"] = self.groupName!
                     }
                     if self.id != nil {
                         map["id"] = self.id!
@@ -7860,9 +8200,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                     if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
                         self.creatorId = dict["creatorId"] as! String
                     }
-                    if dict.keys.contains("groupName") && dict["groupName"] != nil {
-                        self.groupName = dict["groupName"] as! String
-                    }
                     if dict.keys.contains("id") && dict["id"] != nil {
                         self.id = dict["id"] as! String
                     }
@@ -7917,8 +8254,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
             public var createTime: Int64?
 
             public var creatorId: String?
-
-            public var groupName: String?
 
             public var id: String?
 
@@ -7983,9 +8318,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                 }
                 if self.creatorId != nil {
                     map["creatorId"] = self.creatorId!
-                }
-                if self.groupName != nil {
-                    map["groupName"] = self.groupName!
                 }
                 if self.id != nil {
                     map["id"] = self.id!
@@ -8061,9 +8393,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
                     self.creatorId = dict["creatorId"] as! String
-                }
-                if dict.keys.contains("groupName") && dict["groupName"] != nil {
-                    self.groupName = dict["groupName"] as! String
                 }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! String
@@ -8566,8 +8895,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
 
             public var creatorId: String?
 
-            public var groupName: String?
-
             public var id: String?
 
             public var name: String?
@@ -8622,9 +8949,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                 }
                 if self.creatorId != nil {
                     map["creatorId"] = self.creatorId!
-                }
-                if self.groupName != nil {
-                    map["groupName"] = self.groupName!
                 }
                 if self.id != nil {
                     map["id"] = self.id!
@@ -8683,9 +9007,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
                 if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
                     self.creatorId = dict["creatorId"] as! String
                 }
-                if dict.keys.contains("groupName") && dict["groupName"] != nil {
-                    self.groupName = dict["groupName"] as! String
-                }
                 if dict.keys.contains("id") && dict["id"] != nil {
                     self.id = dict["id"] as! String
                 }
@@ -8740,8 +9061,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
         public var createTime: Int64?
 
         public var creatorId: String?
-
-        public var groupName: String?
 
         public var id: String?
 
@@ -8806,9 +9125,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
             }
             if self.creatorId != nil {
                 map["creatorId"] = self.creatorId!
-            }
-            if self.groupName != nil {
-                map["groupName"] = self.groupName!
             }
             if self.id != nil {
                 map["id"] = self.id!
@@ -8884,9 +9200,6 @@ public class ListQuotasResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("creatorId") && dict["creatorId"] != nil {
                 self.creatorId = dict["creatorId"] as! String
-            }
-            if dict.keys.contains("groupName") && dict["groupName"] != nil {
-                self.groupName = dict["groupName"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! String
