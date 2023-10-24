@@ -6467,6 +6467,8 @@ public class CreateActivationRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -6510,6 +6512,9 @@ public class CreateActivationRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -6550,6 +6555,9 @@ public class CreateActivationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -8607,6 +8615,8 @@ public class CreateCommandRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -8657,6 +8667,9 @@ public class CreateCommandRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -8706,6 +8719,9 @@ public class CreateCommandRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -26925,6 +26941,8 @@ public class DescribeActivationsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -26966,6 +26984,9 @@ public class DescribeActivationsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -27003,6 +27024,9 @@ public class DescribeActivationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -27081,6 +27105,8 @@ public class DescribeActivationsResponseBody : Tea.TeaModel {
 
         public var registeredCount: Int32?
 
+        public var resourceGroupId: String?
+
         public var tags: [DescribeActivationsResponseBody.ActivationList.Tags]?
 
         public var timeToLiveInHours: Int64?
@@ -27126,6 +27152,9 @@ public class DescribeActivationsResponseBody : Tea.TeaModel {
             if self.registeredCount != nil {
                 map["RegisteredCount"] = self.registeredCount!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.tags != nil {
                 var tmp : [Any] = []
                 for k in self.tags! {
@@ -27166,6 +27195,9 @@ public class DescribeActivationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegisteredCount") && dict["RegisteredCount"] != nil {
                 self.registeredCount = dict["RegisteredCount"] as! Int32
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Tags") && dict["Tags"] != nil {
                 var tmp : [DescribeActivationsResponseBody.ActivationList.Tags] = []
@@ -32558,6 +32590,8 @@ public class DescribeCommandsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -32613,6 +32647,9 @@ public class DescribeCommandsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -32665,6 +32702,9 @@ public class DescribeCommandsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -32957,6 +32997,8 @@ public class DescribeCommandsResponseBody : Tea.TeaModel {
 
             public var provider: String?
 
+            public var resourceGroupId: String?
+
             public var tags: DescribeCommandsResponseBody.Commands.Command.Tags?
 
             public var timeout: Int64?
@@ -33020,6 +33062,9 @@ public class DescribeCommandsResponseBody : Tea.TeaModel {
                 if self.provider != nil {
                     map["Provider"] = self.provider!
                 }
+                if self.resourceGroupId != nil {
+                    map["ResourceGroupId"] = self.resourceGroupId!
+                }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
@@ -33078,6 +33123,9 @@ public class DescribeCommandsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Provider") && dict["Provider"] != nil {
                     self.provider = dict["Provider"] as! String
+                }
+                if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                    self.resourceGroupId = dict["ResourceGroupId"] as! String
                 }
                 if dict.keys.contains("Tags") && dict["Tags"] != nil {
                     var model = DescribeCommandsResponseBody.Commands.Command.Tags()
