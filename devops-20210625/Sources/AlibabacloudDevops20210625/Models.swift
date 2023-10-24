@@ -17312,6 +17312,8 @@ public class GetFileBlobsResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
         public var content: String?
 
+        public var size: Int64?
+
         public var totalLines: Int32?
 
         public override init() {
@@ -17331,6 +17333,9 @@ public class GetFileBlobsResponseBody : Tea.TeaModel {
             if self.content != nil {
                 map["content"] = self.content!
             }
+            if self.size != nil {
+                map["size"] = self.size!
+            }
             if self.totalLines != nil {
                 map["totalLines"] = self.totalLines!
             }
@@ -17340,6 +17345,9 @@ public class GetFileBlobsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("content") && dict["content"] != nil {
                 self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("size") && dict["size"] != nil {
+                self.size = dict["size"] as! Int64
             }
             if dict.keys.contains("totalLines") && dict["totalLines"] != nil {
                 self.totalLines = dict["totalLines"] as! Int32
