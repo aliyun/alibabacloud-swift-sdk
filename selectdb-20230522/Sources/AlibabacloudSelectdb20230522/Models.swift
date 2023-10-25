@@ -4893,6 +4893,8 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var switchTimeMode: String?
+
     public override init() {
         super.init()
     }
@@ -4919,6 +4921,9 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.switchTimeMode != nil {
+            map["SwitchTimeMode"] = self.switchTimeMode!
+        }
         return map
     }
 
@@ -4934,6 +4939,9 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SwitchTimeMode") && dict["SwitchTimeMode"] != nil {
+            self.switchTimeMode = dict["SwitchTimeMode"] as! String
         }
     }
 }
