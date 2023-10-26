@@ -350,6 +350,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nodeGroupsShrink)) {
             body["NodeGroups"] = request.nodeGroupsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vSwitchZoneId)) {
+            body["VSwitchZoneId"] = request.vSwitchZoneId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.vpdSubnetsShrink)) {
             body["VpdSubnets"] = request.vpdSubnetsShrink ?? "";
         }

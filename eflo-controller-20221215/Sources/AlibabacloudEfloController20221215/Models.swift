@@ -717,6 +717,10 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var newVpdInfo: CreateClusterRequest.Networks.NewVpdInfo?
 
+        public var securityGroupId: String?
+
+        public var vSwitchZoneId: String?
+
         public var vpdInfo: CreateClusterRequest.Networks.VpdInfo?
 
         public override init() {
@@ -745,6 +749,12 @@ public class CreateClusterRequest : Tea.TeaModel {
             if self.newVpdInfo != nil {
                 map["NewVpdInfo"] = self.newVpdInfo?.toMap()
             }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            if self.vSwitchZoneId != nil {
+                map["VSwitchZoneId"] = self.vSwitchZoneId!
+            }
             if self.vpdInfo != nil {
                 map["VpdInfo"] = self.vpdInfo?.toMap()
             }
@@ -767,6 +777,12 @@ public class CreateClusterRequest : Tea.TeaModel {
                 var model = CreateClusterRequest.Networks.NewVpdInfo()
                 model.fromMap(dict["NewVpdInfo"] as! [String: Any])
                 self.newVpdInfo = model
+            }
+            if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
+                self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+            if dict.keys.contains("VSwitchZoneId") && dict["VSwitchZoneId"] != nil {
+                self.vSwitchZoneId = dict["VSwitchZoneId"] as! String
             }
             if dict.keys.contains("VpdInfo") && dict["VpdInfo"] != nil {
                 var model = CreateClusterRequest.Networks.VpdInfo()
@@ -3205,6 +3221,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
 
         public var userData: String?
 
+        public var zoneId: String?
+
         public override init() {
             super.init()
         }
@@ -3232,6 +3250,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
             if self.userData != nil {
                 map["UserData"] = self.userData!
             }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
             return map
         }
 
@@ -3253,6 +3274,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
             if dict.keys.contains("UserData") && dict["UserData"] != nil {
                 self.userData = dict["UserData"] as! String
             }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
         }
     }
     public var clusterId: String?
@@ -3262,6 +3286,8 @@ public class ExtendClusterRequest : Tea.TeaModel {
     public var ipAllocationPolicy: [ExtendClusterRequest.IpAllocationPolicy]?
 
     public var nodeGroups: [ExtendClusterRequest.NodeGroups]?
+
+    public var vSwitchZoneId: String?
 
     public var vpdSubnets: [String]?
 
@@ -3299,6 +3325,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             map["NodeGroups"] = tmp
         }
+        if self.vSwitchZoneId != nil {
+            map["VSwitchZoneId"] = self.vSwitchZoneId!
+        }
         if self.vpdSubnets != nil {
             map["VpdSubnets"] = self.vpdSubnets!
         }
@@ -3334,6 +3363,9 @@ public class ExtendClusterRequest : Tea.TeaModel {
             }
             self.nodeGroups = tmp
         }
+        if dict.keys.contains("VSwitchZoneId") && dict["VSwitchZoneId"] != nil {
+            self.vSwitchZoneId = dict["VSwitchZoneId"] as! String
+        }
         if dict.keys.contains("VpdSubnets") && dict["VpdSubnets"] != nil {
             self.vpdSubnets = dict["VpdSubnets"] as! [String]
         }
@@ -3348,6 +3380,8 @@ public class ExtendClusterShrinkRequest : Tea.TeaModel {
     public var ipAllocationPolicyShrink: String?
 
     public var nodeGroupsShrink: String?
+
+    public var vSwitchZoneId: String?
 
     public var vpdSubnetsShrink: String?
 
@@ -3377,6 +3411,9 @@ public class ExtendClusterShrinkRequest : Tea.TeaModel {
         if self.nodeGroupsShrink != nil {
             map["NodeGroups"] = self.nodeGroupsShrink!
         }
+        if self.vSwitchZoneId != nil {
+            map["VSwitchZoneId"] = self.vSwitchZoneId!
+        }
         if self.vpdSubnetsShrink != nil {
             map["VpdSubnets"] = self.vpdSubnetsShrink!
         }
@@ -3395,6 +3432,9 @@ public class ExtendClusterShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NodeGroups") && dict["NodeGroups"] != nil {
             self.nodeGroupsShrink = dict["NodeGroups"] as! String
+        }
+        if dict.keys.contains("VSwitchZoneId") && dict["VSwitchZoneId"] != nil {
+            self.vSwitchZoneId = dict["VSwitchZoneId"] as! String
         }
         if dict.keys.contains("VpdSubnets") && dict["VpdSubnets"] != nil {
             self.vpdSubnetsShrink = dict["VpdSubnets"] as! String
