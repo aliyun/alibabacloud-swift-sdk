@@ -1428,6 +1428,8 @@ public class AnswerCallResponseBody : Tea.TeaModel {
 
                 public var channelState: String?
 
+                public var channelVariables: String?
+
                 public var destination: String?
 
                 public var jobId: String?
@@ -1469,6 +1471,9 @@ public class AnswerCallResponseBody : Tea.TeaModel {
                     if self.channelState != nil {
                         map["ChannelState"] = self.channelState!
                     }
+                    if self.channelVariables != nil {
+                        map["ChannelVariables"] = self.channelVariables!
+                    }
                     if self.destination != nil {
                         map["Destination"] = self.destination!
                     }
@@ -1508,6 +1513,9 @@ public class AnswerCallResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("ChannelState") && dict["ChannelState"] != nil {
                         self.channelState = dict["ChannelState"] as! String
+                    }
+                    if dict.keys.contains("ChannelVariables") && dict["ChannelVariables"] != nil {
+                        self.channelVariables = dict["ChannelVariables"] as! String
                     }
                     if dict.keys.contains("Destination") && dict["Destination"] != nil {
                         self.destination = dict["Destination"] as! String
@@ -9515,6 +9523,182 @@ public class ExportDoNotCallNumbersResponse : Tea.TeaModel {
     }
 }
 
+public class GetAccessChannelOfStagingRequest : Tea.TeaModel {
+    public var searchPattern: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.searchPattern != nil {
+            map["SearchPattern"] = self.searchPattern!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SearchPattern") && dict["SearchPattern"] != nil {
+            self.searchPattern = dict["SearchPattern"] as! String
+        }
+    }
+}
+
+public class GetAccessChannelOfStagingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var token: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.token != nil {
+                map["Token"] = self.token!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Token") && dict["Token"] != nil {
+                self.token = dict["Token"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: GetAccessChannelOfStagingResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = GetAccessChannelOfStagingResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetAccessChannelOfStagingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAccessChannelOfStagingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetAccessChannelOfStagingResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetAudioFileRequest : Tea.TeaModel {
     public var audioResourceId: String?
 
@@ -15340,6 +15524,8 @@ public class GetLoginDetailsResponse : Tea.TeaModel {
 public class GetMonoRecordingRequest : Tea.TeaModel {
     public var contactId: String?
 
+    public var expireSeconds: Int64?
+
     public var instanceId: String?
 
     public override init() {
@@ -15359,6 +15545,9 @@ public class GetMonoRecordingRequest : Tea.TeaModel {
         if self.contactId != nil {
             map["ContactId"] = self.contactId!
         }
+        if self.expireSeconds != nil {
+            map["ExpireSeconds"] = self.expireSeconds!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -15368,6 +15557,9 @@ public class GetMonoRecordingRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ContactId") && dict["ContactId"] != nil {
             self.contactId = dict["ContactId"] as! String
+        }
+        if dict.keys.contains("ExpireSeconds") && dict["ExpireSeconds"] != nil {
+            self.expireSeconds = dict["ExpireSeconds"] as! Int64
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
@@ -21320,6 +21512,8 @@ public class ListAgentStateLogsRequest : Tea.TeaModel {
 
 public class ListAgentStateLogsResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var breakCode: String?
+
         public var duration: Int64?
 
         public var outboundScenario: Bool?
@@ -21329,6 +21523,8 @@ public class ListAgentStateLogsResponseBody : Tea.TeaModel {
         public var state: String?
 
         public var stateCode: String?
+
+        public var workMode: String?
 
         public override init() {
             super.init()
@@ -21344,6 +21540,9 @@ public class ListAgentStateLogsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.breakCode != nil {
+                map["BreakCode"] = self.breakCode!
+            }
             if self.duration != nil {
                 map["Duration"] = self.duration!
             }
@@ -21359,10 +21558,16 @@ public class ListAgentStateLogsResponseBody : Tea.TeaModel {
             if self.stateCode != nil {
                 map["StateCode"] = self.stateCode!
             }
+            if self.workMode != nil {
+                map["WorkMode"] = self.workMode!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                self.breakCode = dict["BreakCode"] as! String
+            }
             if dict.keys.contains("Duration") && dict["Duration"] != nil {
                 self.duration = dict["Duration"] as! Int64
             }
@@ -21377,6 +21582,9 @@ public class ListAgentStateLogsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("StateCode") && dict["StateCode"] != nil {
                 self.stateCode = dict["StateCode"] as! String
+            }
+            if dict.keys.contains("WorkMode") && dict["WorkMode"] != nil {
+                self.workMode = dict["WorkMode"] as! String
             }
         }
     }
@@ -24013,6 +24221,8 @@ public class ListCallDetailRecordsResponseBody : Tea.TeaModel {
 
             public var establishedTime: Int64?
 
+            public var heldTime: Int64?
+
             public var instanceId: String?
 
             public var ivrTime: Int64?
@@ -24107,6 +24317,9 @@ public class ListCallDetailRecordsResponseBody : Tea.TeaModel {
                 }
                 if self.establishedTime != nil {
                     map["EstablishedTime"] = self.establishedTime!
+                }
+                if self.heldTime != nil {
+                    map["HeldTime"] = self.heldTime!
                 }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
@@ -24210,6 +24423,9 @@ public class ListCallDetailRecordsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EstablishedTime") && dict["EstablishedTime"] != nil {
                     self.establishedTime = dict["EstablishedTime"] as! Int64
+                }
+                if dict.keys.contains("HeldTime") && dict["HeldTime"] != nil {
+                    self.heldTime = dict["HeldTime"] as! Int64
                 }
                 if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
                     self.instanceId = dict["InstanceId"] as! String
@@ -27805,6 +28021,51 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                 }
             }
             public class Overall : Tea.TeaModel {
+                public class BreakCodeDetailList : Tea.TeaModel {
+                    public var breakCode: String?
+
+                    public var count: Int64?
+
+                    public var duration: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.breakCode != nil {
+                            map["BreakCode"] = self.breakCode!
+                        }
+                        if self.count != nil {
+                            map["Count"] = self.count!
+                        }
+                        if self.duration != nil {
+                            map["Duration"] = self.duration!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                            self.breakCode = dict["BreakCode"] as! String
+                        }
+                        if dict.keys.contains("Count") && dict["Count"] != nil {
+                            self.count = dict["Count"] as! Int64
+                        }
+                        if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                            self.duration = dict["Duration"] as! Int64
+                        }
+                    }
+                }
                 public var averageBreakTime: Double?
 
                 public var averageHoldTime: Double?
@@ -27814,6 +28075,12 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                 public var averageTalkTime: Double?
 
                 public var averageWorkTime: Double?
+
+                public var breakCodeDetailList: [ListHistoricalAgentReportResponseBody.Data.List.Overall.BreakCodeDetailList]?
+
+                public var firstCheckInTime: Int64?
+
+                public var lastCheckOutTime: Int64?
 
                 public var maxBreakTime: Int64?
 
@@ -27842,6 +28109,16 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                 public var totalHoldTime: Int64?
 
                 public var totalLoggedInTime: Int64?
+
+                public var totalOffSiteOnlineTime: Int64?
+
+                public var totalOfficePhoneOnlineTime: Int64?
+
+                public var totalOnSiteOnlineTime: Int64?
+
+                public var totalOutboundScenarioReadyTime: Int64?
+
+                public var totalOutboundScenarioTime: Int64?
 
                 public var totalReadyTime: Int64?
 
@@ -27877,6 +28154,19 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     }
                     if self.averageWorkTime != nil {
                         map["AverageWorkTime"] = self.averageWorkTime!
+                    }
+                    if self.breakCodeDetailList != nil {
+                        var tmp : [Any] = []
+                        for k in self.breakCodeDetailList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["BreakCodeDetailList"] = tmp
+                    }
+                    if self.firstCheckInTime != nil {
+                        map["FirstCheckInTime"] = self.firstCheckInTime!
+                    }
+                    if self.lastCheckOutTime != nil {
+                        map["LastCheckOutTime"] = self.lastCheckOutTime!
                     }
                     if self.maxBreakTime != nil {
                         map["MaxBreakTime"] = self.maxBreakTime!
@@ -27920,6 +28210,21 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     if self.totalLoggedInTime != nil {
                         map["TotalLoggedInTime"] = self.totalLoggedInTime!
                     }
+                    if self.totalOffSiteOnlineTime != nil {
+                        map["TotalOffSiteOnlineTime"] = self.totalOffSiteOnlineTime!
+                    }
+                    if self.totalOfficePhoneOnlineTime != nil {
+                        map["TotalOfficePhoneOnlineTime"] = self.totalOfficePhoneOnlineTime!
+                    }
+                    if self.totalOnSiteOnlineTime != nil {
+                        map["TotalOnSiteOnlineTime"] = self.totalOnSiteOnlineTime!
+                    }
+                    if self.totalOutboundScenarioReadyTime != nil {
+                        map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
+                    }
+                    if self.totalOutboundScenarioTime != nil {
+                        map["TotalOutboundScenarioTime"] = self.totalOutboundScenarioTime!
+                    }
                     if self.totalReadyTime != nil {
                         map["TotalReadyTime"] = self.totalReadyTime!
                     }
@@ -27947,6 +28252,23 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
                         self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                    }
+                    if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                        var tmp : [ListHistoricalAgentReportResponseBody.Data.List.Overall.BreakCodeDetailList] = []
+                        for v in dict["BreakCodeDetailList"] as! [Any] {
+                            var model = ListHistoricalAgentReportResponseBody.Data.List.Overall.BreakCodeDetailList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.breakCodeDetailList = tmp
+                    }
+                    if dict.keys.contains("FirstCheckInTime") && dict["FirstCheckInTime"] != nil {
+                        self.firstCheckInTime = dict["FirstCheckInTime"] as! Int64
+                    }
+                    if dict.keys.contains("LastCheckOutTime") && dict["LastCheckOutTime"] != nil {
+                        self.lastCheckOutTime = dict["LastCheckOutTime"] as! Int64
                     }
                     if dict.keys.contains("MaxBreakTime") && dict["MaxBreakTime"] != nil {
                         self.maxBreakTime = dict["MaxBreakTime"] as! Int64
@@ -27989,6 +28311,21 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
                         self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOffSiteOnlineTime") && dict["TotalOffSiteOnlineTime"] != nil {
+                        self.totalOffSiteOnlineTime = dict["TotalOffSiteOnlineTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOfficePhoneOnlineTime") && dict["TotalOfficePhoneOnlineTime"] != nil {
+                        self.totalOfficePhoneOnlineTime = dict["TotalOfficePhoneOnlineTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOnSiteOnlineTime") && dict["TotalOnSiteOnlineTime"] != nil {
+                        self.totalOnSiteOnlineTime = dict["TotalOnSiteOnlineTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
+                        self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOutboundScenarioTime") && dict["TotalOutboundScenarioTime"] != nil {
+                        self.totalOutboundScenarioTime = dict["TotalOutboundScenarioTime"] as! Int64
                     }
                     if dict.keys.contains("TotalReadyTime") && dict["TotalReadyTime"] != nil {
                         self.totalReadyTime = dict["TotalReadyTime"] as! Int64
@@ -28268,6 +28605,1368 @@ public class ListHistoricalAgentReportResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListHistoricalAgentReportResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListHistoricalAgentSkillGroupReportRequest : Tea.TeaModel {
+    public var agentIdList: String?
+
+    public var endTime: Int64?
+
+    public var instanceId: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var skillGroupIdList: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentIdList != nil {
+            map["AgentIdList"] = self.agentIdList!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.skillGroupIdList != nil {
+            map["SkillGroupIdList"] = self.skillGroupIdList!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentIdList") && dict["AgentIdList"] != nil {
+            self.agentIdList = dict["AgentIdList"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SkillGroupIdList") && dict["SkillGroupIdList"] != nil {
+            self.skillGroupIdList = dict["SkillGroupIdList"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public class Back2Back : Tea.TeaModel {
+                public var agentAnswerRate: Double?
+
+                public var answerRate: Double?
+
+                public var averageCustomerRingTime: Double?
+
+                public var averageRingTime: Double?
+
+                public var averageTalkTime: Int64?
+
+                public var callsAnswered: Int64?
+
+                public var callsCustomerHandled: Int64?
+
+                public var callsDialed: Int64?
+
+                public var customerHandleRate: Double?
+
+                public var maxCustomerRingTime: Int64?
+
+                public var maxRingTime: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var totalCustomerRingTime: Int64?
+
+                public var totalRingTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agentAnswerRate != nil {
+                        map["AgentAnswerRate"] = self.agentAnswerRate!
+                    }
+                    if self.answerRate != nil {
+                        map["AnswerRate"] = self.answerRate!
+                    }
+                    if self.averageCustomerRingTime != nil {
+                        map["AverageCustomerRingTime"] = self.averageCustomerRingTime!
+                    }
+                    if self.averageRingTime != nil {
+                        map["AverageRingTime"] = self.averageRingTime!
+                    }
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.callsAnswered != nil {
+                        map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsCustomerHandled != nil {
+                        map["CallsCustomerHandled"] = self.callsCustomerHandled!
+                    }
+                    if self.callsDialed != nil {
+                        map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.customerHandleRate != nil {
+                        map["CustomerHandleRate"] = self.customerHandleRate!
+                    }
+                    if self.maxCustomerRingTime != nil {
+                        map["MaxCustomerRingTime"] = self.maxCustomerRingTime!
+                    }
+                    if self.maxRingTime != nil {
+                        map["MaxRingTime"] = self.maxRingTime!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.totalCustomerRingTime != nil {
+                        map["TotalCustomerRingTime"] = self.totalCustomerRingTime!
+                    }
+                    if self.totalRingTime != nil {
+                        map["TotalRingTime"] = self.totalRingTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AgentAnswerRate") && dict["AgentAnswerRate"] != nil {
+                        self.agentAnswerRate = dict["AgentAnswerRate"] as! Double
+                    }
+                    if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                        self.answerRate = dict["AnswerRate"] as! Double
+                    }
+                    if dict.keys.contains("AverageCustomerRingTime") && dict["AverageCustomerRingTime"] != nil {
+                        self.averageCustomerRingTime = dict["AverageCustomerRingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                        self.averageRingTime = dict["AverageRingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                        self.callsAnswered = dict["CallsAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsCustomerHandled") && dict["CallsCustomerHandled"] != nil {
+                        self.callsCustomerHandled = dict["CallsCustomerHandled"] as! Int64
+                    }
+                    if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                        self.callsDialed = dict["CallsDialed"] as! Int64
+                    }
+                    if dict.keys.contains("CustomerHandleRate") && dict["CustomerHandleRate"] != nil {
+                        self.customerHandleRate = dict["CustomerHandleRate"] as! Double
+                    }
+                    if dict.keys.contains("MaxCustomerRingTime") && dict["MaxCustomerRingTime"] != nil {
+                        self.maxCustomerRingTime = dict["MaxCustomerRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                        self.maxRingTime = dict["MaxRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalCustomerRingTime") && dict["TotalCustomerRingTime"] != nil {
+                        self.totalCustomerRingTime = dict["TotalCustomerRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                        self.totalRingTime = dict["TotalRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                }
+            }
+            public class Inbound : Tea.TeaModel {
+                public var averageHoldTime: Double?
+
+                public var averageRingTime: Double?
+
+                public var averageTalkTime: Double?
+
+                public var averageWorkTime: Double?
+
+                public var callsAttendedTransferIn: Int64?
+
+                public var callsAttendedTransferOut: Int64?
+
+                public var callsBlindTransferIn: Int64?
+
+                public var callsBlindTransferOut: Int64?
+
+                public var callsHandled: Int64?
+
+                public var callsHold: Int64?
+
+                public var callsOffered: Int64?
+
+                public var callsRinged: Int64?
+
+                public var handleRate: Double?
+
+                public var maxHoldTime: Int64?
+
+                public var maxRingTime: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var maxWorkTime: Int64?
+
+                public var satisfactionIndex: Double?
+
+                public var satisfactionRate: Double?
+
+                public var satisfactionSurveysOffered: Int64?
+
+                public var satisfactionSurveysResponded: Int64?
+
+                public var totalHoldTime: Int64?
+
+                public var totalRingTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public var totalWorkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.averageHoldTime != nil {
+                        map["AverageHoldTime"] = self.averageHoldTime!
+                    }
+                    if self.averageRingTime != nil {
+                        map["AverageRingTime"] = self.averageRingTime!
+                    }
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.averageWorkTime != nil {
+                        map["AverageWorkTime"] = self.averageWorkTime!
+                    }
+                    if self.callsAttendedTransferIn != nil {
+                        map["CallsAttendedTransferIn"] = self.callsAttendedTransferIn!
+                    }
+                    if self.callsAttendedTransferOut != nil {
+                        map["CallsAttendedTransferOut"] = self.callsAttendedTransferOut!
+                    }
+                    if self.callsBlindTransferIn != nil {
+                        map["CallsBlindTransferIn"] = self.callsBlindTransferIn!
+                    }
+                    if self.callsBlindTransferOut != nil {
+                        map["CallsBlindTransferOut"] = self.callsBlindTransferOut!
+                    }
+                    if self.callsHandled != nil {
+                        map["CallsHandled"] = self.callsHandled!
+                    }
+                    if self.callsHold != nil {
+                        map["CallsHold"] = self.callsHold!
+                    }
+                    if self.callsOffered != nil {
+                        map["CallsOffered"] = self.callsOffered!
+                    }
+                    if self.callsRinged != nil {
+                        map["CallsRinged"] = self.callsRinged!
+                    }
+                    if self.handleRate != nil {
+                        map["HandleRate"] = self.handleRate!
+                    }
+                    if self.maxHoldTime != nil {
+                        map["MaxHoldTime"] = self.maxHoldTime!
+                    }
+                    if self.maxRingTime != nil {
+                        map["MaxRingTime"] = self.maxRingTime!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.maxWorkTime != nil {
+                        map["MaxWorkTime"] = self.maxWorkTime!
+                    }
+                    if self.satisfactionIndex != nil {
+                        map["SatisfactionIndex"] = self.satisfactionIndex!
+                    }
+                    if self.satisfactionRate != nil {
+                        map["SatisfactionRate"] = self.satisfactionRate!
+                    }
+                    if self.satisfactionSurveysOffered != nil {
+                        map["SatisfactionSurveysOffered"] = self.satisfactionSurveysOffered!
+                    }
+                    if self.satisfactionSurveysResponded != nil {
+                        map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
+                    }
+                    if self.totalHoldTime != nil {
+                        map["TotalHoldTime"] = self.totalHoldTime!
+                    }
+                    if self.totalRingTime != nil {
+                        map["TotalRingTime"] = self.totalRingTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    if self.totalWorkTime != nil {
+                        map["TotalWorkTime"] = self.totalWorkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
+                        self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                        self.averageRingTime = dict["AverageRingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
+                        self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                    }
+                    if dict.keys.contains("CallsAttendedTransferIn") && dict["CallsAttendedTransferIn"] != nil {
+                        self.callsAttendedTransferIn = dict["CallsAttendedTransferIn"] as! Int64
+                    }
+                    if dict.keys.contains("CallsAttendedTransferOut") && dict["CallsAttendedTransferOut"] != nil {
+                        self.callsAttendedTransferOut = dict["CallsAttendedTransferOut"] as! Int64
+                    }
+                    if dict.keys.contains("CallsBlindTransferIn") && dict["CallsBlindTransferIn"] != nil {
+                        self.callsBlindTransferIn = dict["CallsBlindTransferIn"] as! Int64
+                    }
+                    if dict.keys.contains("CallsBlindTransferOut") && dict["CallsBlindTransferOut"] != nil {
+                        self.callsBlindTransferOut = dict["CallsBlindTransferOut"] as! Int64
+                    }
+                    if dict.keys.contains("CallsHandled") && dict["CallsHandled"] != nil {
+                        self.callsHandled = dict["CallsHandled"] as! Int64
+                    }
+                    if dict.keys.contains("CallsHold") && dict["CallsHold"] != nil {
+                        self.callsHold = dict["CallsHold"] as! Int64
+                    }
+                    if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                        self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
+                        self.callsRinged = dict["CallsRinged"] as! Int64
+                    }
+                    if dict.keys.contains("HandleRate") && dict["HandleRate"] != nil {
+                        self.handleRate = dict["HandleRate"] as! Double
+                    }
+                    if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
+                        self.maxHoldTime = dict["MaxHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                        self.maxRingTime = dict["MaxRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxWorkTime") && dict["MaxWorkTime"] != nil {
+                        self.maxWorkTime = dict["MaxWorkTime"] as! Int64
+                    }
+                    if dict.keys.contains("SatisfactionIndex") && dict["SatisfactionIndex"] != nil {
+                        self.satisfactionIndex = dict["SatisfactionIndex"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionRate") && dict["SatisfactionRate"] != nil {
+                        self.satisfactionRate = dict["SatisfactionRate"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionSurveysOffered") && dict["SatisfactionSurveysOffered"] != nil {
+                        self.satisfactionSurveysOffered = dict["SatisfactionSurveysOffered"] as! Int64
+                    }
+                    if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
+                        self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
+                    }
+                    if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
+                        self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                        self.totalRingTime = dict["TotalRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
+                        self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                    }
+                }
+            }
+            public class Internal_ : Tea.TeaModel {
+                public var averageTalkTime: Int64?
+
+                public var callsAnswered: Int64?
+
+                public var callsDialed: Int64?
+
+                public var callsHandled: Int64?
+
+                public var callsOffered: Int64?
+
+                public var callsTalk: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.callsAnswered != nil {
+                        map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsDialed != nil {
+                        map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.callsHandled != nil {
+                        map["CallsHandled"] = self.callsHandled!
+                    }
+                    if self.callsOffered != nil {
+                        map["CallsOffered"] = self.callsOffered!
+                    }
+                    if self.callsTalk != nil {
+                        map["CallsTalk"] = self.callsTalk!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                        self.callsAnswered = dict["CallsAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                        self.callsDialed = dict["CallsDialed"] as! Int64
+                    }
+                    if dict.keys.contains("CallsHandled") && dict["CallsHandled"] != nil {
+                        self.callsHandled = dict["CallsHandled"] as! Int64
+                    }
+                    if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                        self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsTalk") && dict["CallsTalk"] != nil {
+                        self.callsTalk = dict["CallsTalk"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                }
+            }
+            public class Outbound : Tea.TeaModel {
+                public var answerRate: Double?
+
+                public var averageDialingTime: Double?
+
+                public var averageHoldTime: Double?
+
+                public var averageRingTime: Double?
+
+                public var averageTalkTime: Double?
+
+                public var averageWorkTime: Double?
+
+                public var callsAnswered: Int64?
+
+                public var callsAttendedTransferIn: Int64?
+
+                public var callsAttendedTransferOut: Int64?
+
+                public var callsBlindTransferIn: Int64?
+
+                public var callsBlindTransferOut: Int64?
+
+                public var callsDialed: Int64?
+
+                public var callsHold: Int64?
+
+                public var callsRinged: Int64?
+
+                public var maxDialingTime: Int64?
+
+                public var maxHoldTime: Int64?
+
+                public var maxRingTime: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var maxWorkTime: Int64?
+
+                public var satisfactionIndex: Double?
+
+                public var satisfactionRate: Double?
+
+                public var satisfactionSurveysOffered: Int64?
+
+                public var satisfactionSurveysResponded: Int64?
+
+                public var totalDialingTime: Int64?
+
+                public var totalHoldTime: Int64?
+
+                public var totalRingTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public var totalWorkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.answerRate != nil {
+                        map["AnswerRate"] = self.answerRate!
+                    }
+                    if self.averageDialingTime != nil {
+                        map["AverageDialingTime"] = self.averageDialingTime!
+                    }
+                    if self.averageHoldTime != nil {
+                        map["AverageHoldTime"] = self.averageHoldTime!
+                    }
+                    if self.averageRingTime != nil {
+                        map["AverageRingTime"] = self.averageRingTime!
+                    }
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.averageWorkTime != nil {
+                        map["AverageWorkTime"] = self.averageWorkTime!
+                    }
+                    if self.callsAnswered != nil {
+                        map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsAttendedTransferIn != nil {
+                        map["CallsAttendedTransferIn"] = self.callsAttendedTransferIn!
+                    }
+                    if self.callsAttendedTransferOut != nil {
+                        map["CallsAttendedTransferOut"] = self.callsAttendedTransferOut!
+                    }
+                    if self.callsBlindTransferIn != nil {
+                        map["CallsBlindTransferIn"] = self.callsBlindTransferIn!
+                    }
+                    if self.callsBlindTransferOut != nil {
+                        map["CallsBlindTransferOut"] = self.callsBlindTransferOut!
+                    }
+                    if self.callsDialed != nil {
+                        map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.callsHold != nil {
+                        map["CallsHold"] = self.callsHold!
+                    }
+                    if self.callsRinged != nil {
+                        map["CallsRinged"] = self.callsRinged!
+                    }
+                    if self.maxDialingTime != nil {
+                        map["MaxDialingTime"] = self.maxDialingTime!
+                    }
+                    if self.maxHoldTime != nil {
+                        map["MaxHoldTime"] = self.maxHoldTime!
+                    }
+                    if self.maxRingTime != nil {
+                        map["MaxRingTime"] = self.maxRingTime!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.maxWorkTime != nil {
+                        map["MaxWorkTime"] = self.maxWorkTime!
+                    }
+                    if self.satisfactionIndex != nil {
+                        map["SatisfactionIndex"] = self.satisfactionIndex!
+                    }
+                    if self.satisfactionRate != nil {
+                        map["SatisfactionRate"] = self.satisfactionRate!
+                    }
+                    if self.satisfactionSurveysOffered != nil {
+                        map["SatisfactionSurveysOffered"] = self.satisfactionSurveysOffered!
+                    }
+                    if self.satisfactionSurveysResponded != nil {
+                        map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
+                    }
+                    if self.totalDialingTime != nil {
+                        map["TotalDialingTime"] = self.totalDialingTime!
+                    }
+                    if self.totalHoldTime != nil {
+                        map["TotalHoldTime"] = self.totalHoldTime!
+                    }
+                    if self.totalRingTime != nil {
+                        map["TotalRingTime"] = self.totalRingTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    if self.totalWorkTime != nil {
+                        map["TotalWorkTime"] = self.totalWorkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                        self.answerRate = dict["AnswerRate"] as! Double
+                    }
+                    if dict.keys.contains("AverageDialingTime") && dict["AverageDialingTime"] != nil {
+                        self.averageDialingTime = dict["AverageDialingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
+                        self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                        self.averageRingTime = dict["AverageRingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
+                        self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                    }
+                    if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                        self.callsAnswered = dict["CallsAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsAttendedTransferIn") && dict["CallsAttendedTransferIn"] != nil {
+                        self.callsAttendedTransferIn = dict["CallsAttendedTransferIn"] as! Int64
+                    }
+                    if dict.keys.contains("CallsAttendedTransferOut") && dict["CallsAttendedTransferOut"] != nil {
+                        self.callsAttendedTransferOut = dict["CallsAttendedTransferOut"] as! Int64
+                    }
+                    if dict.keys.contains("CallsBlindTransferIn") && dict["CallsBlindTransferIn"] != nil {
+                        self.callsBlindTransferIn = dict["CallsBlindTransferIn"] as! Int64
+                    }
+                    if dict.keys.contains("CallsBlindTransferOut") && dict["CallsBlindTransferOut"] != nil {
+                        self.callsBlindTransferOut = dict["CallsBlindTransferOut"] as! Int64
+                    }
+                    if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                        self.callsDialed = dict["CallsDialed"] as! Int64
+                    }
+                    if dict.keys.contains("CallsHold") && dict["CallsHold"] != nil {
+                        self.callsHold = dict["CallsHold"] as! Int64
+                    }
+                    if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
+                        self.callsRinged = dict["CallsRinged"] as! Int64
+                    }
+                    if dict.keys.contains("MaxDialingTime") && dict["MaxDialingTime"] != nil {
+                        self.maxDialingTime = dict["MaxDialingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
+                        self.maxHoldTime = dict["MaxHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                        self.maxRingTime = dict["MaxRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxWorkTime") && dict["MaxWorkTime"] != nil {
+                        self.maxWorkTime = dict["MaxWorkTime"] as! Int64
+                    }
+                    if dict.keys.contains("SatisfactionIndex") && dict["SatisfactionIndex"] != nil {
+                        self.satisfactionIndex = dict["SatisfactionIndex"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionRate") && dict["SatisfactionRate"] != nil {
+                        self.satisfactionRate = dict["SatisfactionRate"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionSurveysOffered") && dict["SatisfactionSurveysOffered"] != nil {
+                        self.satisfactionSurveysOffered = dict["SatisfactionSurveysOffered"] as! Int64
+                    }
+                    if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
+                        self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
+                    }
+                    if dict.keys.contains("TotalDialingTime") && dict["TotalDialingTime"] != nil {
+                        self.totalDialingTime = dict["TotalDialingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
+                        self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                        self.totalRingTime = dict["TotalRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
+                        self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                    }
+                }
+            }
+            public class Overall : Tea.TeaModel {
+                public class BreakCodeDetailList : Tea.TeaModel {
+                    public var breakCode: String?
+
+                    public var count: Int64?
+
+                    public var duration: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.breakCode != nil {
+                            map["BreakCode"] = self.breakCode!
+                        }
+                        if self.count != nil {
+                            map["Count"] = self.count!
+                        }
+                        if self.duration != nil {
+                            map["Duration"] = self.duration!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                            self.breakCode = dict["BreakCode"] as! String
+                        }
+                        if dict.keys.contains("Count") && dict["Count"] != nil {
+                            self.count = dict["Count"] as! Int64
+                        }
+                        if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                            self.duration = dict["Duration"] as! Int64
+                        }
+                    }
+                }
+                public var averageBreakTime: Double?
+
+                public var averageHoldTime: Double?
+
+                public var averageReadyTime: Double?
+
+                public var averageTalkTime: Double?
+
+                public var averageWorkTime: Double?
+
+                public var breakCodeDetailList: [ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Overall.BreakCodeDetailList]?
+
+                public var firstCheckInTime: Int64?
+
+                public var lastCheckOutTime: Int64?
+
+                public var maxBreakTime: Int64?
+
+                public var maxHoldTime: Int64?
+
+                public var maxReadyTime: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var maxWorkTime: Int64?
+
+                public var occupancyRate: Double?
+
+                public var satisfactionIndex: Double?
+
+                public var satisfactionRate: Double?
+
+                public var satisfactionSurveysOffered: Int64?
+
+                public var satisfactionSurveysResponded: Int64?
+
+                public var totalBreakTime: Int64?
+
+                public var totalCalls: Int64?
+
+                public var totalHoldTime: Int64?
+
+                public var totalLoggedInTime: Int64?
+
+                public var totalOutboundScenarioReadyTime: Int64?
+
+                public var totalOutboundScenarioTime: Int64?
+
+                public var totalReadyTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public var totalWorkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.averageBreakTime != nil {
+                        map["AverageBreakTime"] = self.averageBreakTime!
+                    }
+                    if self.averageHoldTime != nil {
+                        map["AverageHoldTime"] = self.averageHoldTime!
+                    }
+                    if self.averageReadyTime != nil {
+                        map["AverageReadyTime"] = self.averageReadyTime!
+                    }
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.averageWorkTime != nil {
+                        map["AverageWorkTime"] = self.averageWorkTime!
+                    }
+                    if self.breakCodeDetailList != nil {
+                        var tmp : [Any] = []
+                        for k in self.breakCodeDetailList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["BreakCodeDetailList"] = tmp
+                    }
+                    if self.firstCheckInTime != nil {
+                        map["FirstCheckInTime"] = self.firstCheckInTime!
+                    }
+                    if self.lastCheckOutTime != nil {
+                        map["LastCheckOutTime"] = self.lastCheckOutTime!
+                    }
+                    if self.maxBreakTime != nil {
+                        map["MaxBreakTime"] = self.maxBreakTime!
+                    }
+                    if self.maxHoldTime != nil {
+                        map["MaxHoldTime"] = self.maxHoldTime!
+                    }
+                    if self.maxReadyTime != nil {
+                        map["MaxReadyTime"] = self.maxReadyTime!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.maxWorkTime != nil {
+                        map["MaxWorkTime"] = self.maxWorkTime!
+                    }
+                    if self.occupancyRate != nil {
+                        map["OccupancyRate"] = self.occupancyRate!
+                    }
+                    if self.satisfactionIndex != nil {
+                        map["SatisfactionIndex"] = self.satisfactionIndex!
+                    }
+                    if self.satisfactionRate != nil {
+                        map["SatisfactionRate"] = self.satisfactionRate!
+                    }
+                    if self.satisfactionSurveysOffered != nil {
+                        map["SatisfactionSurveysOffered"] = self.satisfactionSurveysOffered!
+                    }
+                    if self.satisfactionSurveysResponded != nil {
+                        map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
+                    }
+                    if self.totalBreakTime != nil {
+                        map["TotalBreakTime"] = self.totalBreakTime!
+                    }
+                    if self.totalCalls != nil {
+                        map["TotalCalls"] = self.totalCalls!
+                    }
+                    if self.totalHoldTime != nil {
+                        map["TotalHoldTime"] = self.totalHoldTime!
+                    }
+                    if self.totalLoggedInTime != nil {
+                        map["TotalLoggedInTime"] = self.totalLoggedInTime!
+                    }
+                    if self.totalOutboundScenarioReadyTime != nil {
+                        map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
+                    }
+                    if self.totalOutboundScenarioTime != nil {
+                        map["TotalOutboundScenarioTime"] = self.totalOutboundScenarioTime!
+                    }
+                    if self.totalReadyTime != nil {
+                        map["TotalReadyTime"] = self.totalReadyTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    if self.totalWorkTime != nil {
+                        map["TotalWorkTime"] = self.totalWorkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AverageBreakTime") && dict["AverageBreakTime"] != nil {
+                        self.averageBreakTime = dict["AverageBreakTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
+                        self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageReadyTime") && dict["AverageReadyTime"] != nil {
+                        self.averageReadyTime = dict["AverageReadyTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
+                        self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                    }
+                    if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                        var tmp : [ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Overall.BreakCodeDetailList] = []
+                        for v in dict["BreakCodeDetailList"] as! [Any] {
+                            var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Overall.BreakCodeDetailList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.breakCodeDetailList = tmp
+                    }
+                    if dict.keys.contains("FirstCheckInTime") && dict["FirstCheckInTime"] != nil {
+                        self.firstCheckInTime = dict["FirstCheckInTime"] as! Int64
+                    }
+                    if dict.keys.contains("LastCheckOutTime") && dict["LastCheckOutTime"] != nil {
+                        self.lastCheckOutTime = dict["LastCheckOutTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxBreakTime") && dict["MaxBreakTime"] != nil {
+                        self.maxBreakTime = dict["MaxBreakTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
+                        self.maxHoldTime = dict["MaxHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxReadyTime") && dict["MaxReadyTime"] != nil {
+                        self.maxReadyTime = dict["MaxReadyTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxWorkTime") && dict["MaxWorkTime"] != nil {
+                        self.maxWorkTime = dict["MaxWorkTime"] as! Int64
+                    }
+                    if dict.keys.contains("OccupancyRate") && dict["OccupancyRate"] != nil {
+                        self.occupancyRate = dict["OccupancyRate"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionIndex") && dict["SatisfactionIndex"] != nil {
+                        self.satisfactionIndex = dict["SatisfactionIndex"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionRate") && dict["SatisfactionRate"] != nil {
+                        self.satisfactionRate = dict["SatisfactionRate"] as! Double
+                    }
+                    if dict.keys.contains("SatisfactionSurveysOffered") && dict["SatisfactionSurveysOffered"] != nil {
+                        self.satisfactionSurveysOffered = dict["SatisfactionSurveysOffered"] as! Int64
+                    }
+                    if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
+                        self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
+                    }
+                    if dict.keys.contains("TotalBreakTime") && dict["TotalBreakTime"] != nil {
+                        self.totalBreakTime = dict["TotalBreakTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalCalls") && dict["TotalCalls"] != nil {
+                        self.totalCalls = dict["TotalCalls"] as! Int64
+                    }
+                    if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
+                        self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
+                        self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
+                        self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOutboundScenarioTime") && dict["TotalOutboundScenarioTime"] != nil {
+                        self.totalOutboundScenarioTime = dict["TotalOutboundScenarioTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalReadyTime") && dict["TotalReadyTime"] != nil {
+                        self.totalReadyTime = dict["TotalReadyTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
+                        self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                    }
+                }
+            }
+            public var agentId: String?
+
+            public var agentName: String?
+
+            public var back2Back: ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Back2Back?
+
+            public var displayId: String?
+
+            public var inbound: ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Inbound?
+
+            public var internal_: ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Internal_?
+
+            public var outbound: ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Outbound?
+
+            public var overall: ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Overall?
+
+            public var skillGroupId: String?
+
+            public var skillGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.back2Back?.validate()
+                try self.inbound?.validate()
+                try self.internal_?.validate()
+                try self.outbound?.validate()
+                try self.overall?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentId != nil {
+                    map["AgentId"] = self.agentId!
+                }
+                if self.agentName != nil {
+                    map["AgentName"] = self.agentName!
+                }
+                if self.back2Back != nil {
+                    map["Back2Back"] = self.back2Back?.toMap()
+                }
+                if self.displayId != nil {
+                    map["DisplayId"] = self.displayId!
+                }
+                if self.inbound != nil {
+                    map["Inbound"] = self.inbound?.toMap()
+                }
+                if self.internal_ != nil {
+                    map["Internal"] = self.internal_?.toMap()
+                }
+                if self.outbound != nil {
+                    map["Outbound"] = self.outbound?.toMap()
+                }
+                if self.overall != nil {
+                    map["Overall"] = self.overall?.toMap()
+                }
+                if self.skillGroupId != nil {
+                    map["SkillGroupId"] = self.skillGroupId!
+                }
+                if self.skillGroupName != nil {
+                    map["SkillGroupName"] = self.skillGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AgentId") && dict["AgentId"] != nil {
+                    self.agentId = dict["AgentId"] as! String
+                }
+                if dict.keys.contains("AgentName") && dict["AgentName"] != nil {
+                    self.agentName = dict["AgentName"] as! String
+                }
+                if dict.keys.contains("Back2Back") && dict["Back2Back"] != nil {
+                    var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Back2Back()
+                    model.fromMap(dict["Back2Back"] as! [String: Any])
+                    self.back2Back = model
+                }
+                if dict.keys.contains("DisplayId") && dict["DisplayId"] != nil {
+                    self.displayId = dict["DisplayId"] as! String
+                }
+                if dict.keys.contains("Inbound") && dict["Inbound"] != nil {
+                    var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Inbound()
+                    model.fromMap(dict["Inbound"] as! [String: Any])
+                    self.inbound = model
+                }
+                if dict.keys.contains("Internal") && dict["Internal"] != nil {
+                    var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Internal_()
+                    model.fromMap(dict["Internal"] as! [String: Any])
+                    self.internal_ = model
+                }
+                if dict.keys.contains("Outbound") && dict["Outbound"] != nil {
+                    var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Outbound()
+                    model.fromMap(dict["Outbound"] as! [String: Any])
+                    self.outbound = model
+                }
+                if dict.keys.contains("Overall") && dict["Overall"] != nil {
+                    var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List.Overall()
+                    model.fromMap(dict["Overall"] as! [String: Any])
+                    self.overall = model
+                }
+                if dict.keys.contains("SkillGroupId") && dict["SkillGroupId"] != nil {
+                    self.skillGroupId = dict["SkillGroupId"] as! String
+                }
+                if dict.keys.contains("SkillGroupName") && dict["SkillGroupName"] != nil {
+                    self.skillGroupName = dict["SkillGroupName"] as! String
+                }
+            }
+        }
+        public var list: [ListHistoricalAgentSkillGroupReportResponseBody.Data.List]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("List") && dict["List"] != nil {
+                var tmp : [ListHistoricalAgentSkillGroupReportResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = ListHistoricalAgentSkillGroupReportResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
+            }
+            if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListHistoricalAgentSkillGroupReportResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ListHistoricalAgentSkillGroupReportResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListHistoricalAgentSkillGroupReportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListHistoricalAgentSkillGroupReportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListHistoricalAgentSkillGroupReportResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -31045,6 +32744,51 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
             }
         }
         public class Overall : Tea.TeaModel {
+            public class BreakCodeDetailList : Tea.TeaModel {
+                public var breakCode: String?
+
+                public var count: Int64?
+
+                public var duration: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.breakCode != nil {
+                        map["BreakCode"] = self.breakCode!
+                    }
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                        self.breakCode = dict["BreakCode"] as! String
+                    }
+                    if dict.keys.contains("Count") && dict["Count"] != nil {
+                        self.count = dict["Count"] as! Int64
+                    }
+                    if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                        self.duration = dict["Duration"] as! Int64
+                    }
+                }
+            }
             public var averageBreakTime: Double?
 
             public var averageHoldTime: Double?
@@ -31054,6 +32798,8 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
             public var averageTalkTime: Double?
 
             public var averageWorkTime: Double?
+
+            public var breakCodeDetailList: [ListIntervalAgentReportResponseBody.Data.Overall.BreakCodeDetailList]?
 
             public var firstCheckInTime: Int64?
 
@@ -31086,6 +32832,16 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
             public var totalHoldTime: Int64?
 
             public var totalLoggedInTime: Int64?
+
+            public var totalOffSiteOnlineTime: Int64?
+
+            public var totalOfficePhoneOnlineTime: Int64?
+
+            public var totalOnSiteOnlineTime: Int64?
+
+            public var totalOutboundScenarioReadyTime: Int64?
+
+            public var totalOutboundScenarioTime: Int64?
 
             public var totalReadyTime: Int64?
 
@@ -31121,6 +32877,13 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 }
                 if self.averageWorkTime != nil {
                     map["AverageWorkTime"] = self.averageWorkTime!
+                }
+                if self.breakCodeDetailList != nil {
+                    var tmp : [Any] = []
+                    for k in self.breakCodeDetailList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["BreakCodeDetailList"] = tmp
                 }
                 if self.firstCheckInTime != nil {
                     map["FirstCheckInTime"] = self.firstCheckInTime!
@@ -31170,6 +32933,21 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if self.totalLoggedInTime != nil {
                     map["TotalLoggedInTime"] = self.totalLoggedInTime!
                 }
+                if self.totalOffSiteOnlineTime != nil {
+                    map["TotalOffSiteOnlineTime"] = self.totalOffSiteOnlineTime!
+                }
+                if self.totalOfficePhoneOnlineTime != nil {
+                    map["TotalOfficePhoneOnlineTime"] = self.totalOfficePhoneOnlineTime!
+                }
+                if self.totalOnSiteOnlineTime != nil {
+                    map["TotalOnSiteOnlineTime"] = self.totalOnSiteOnlineTime!
+                }
+                if self.totalOutboundScenarioReadyTime != nil {
+                    map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
+                }
+                if self.totalOutboundScenarioTime != nil {
+                    map["TotalOutboundScenarioTime"] = self.totalOutboundScenarioTime!
+                }
                 if self.totalReadyTime != nil {
                     map["TotalReadyTime"] = self.totalReadyTime!
                 }
@@ -31197,6 +32975,17 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
                     self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                }
+                if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                    var tmp : [ListIntervalAgentReportResponseBody.Data.Overall.BreakCodeDetailList] = []
+                    for v in dict["BreakCodeDetailList"] as! [Any] {
+                        var model = ListIntervalAgentReportResponseBody.Data.Overall.BreakCodeDetailList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.breakCodeDetailList = tmp
                 }
                 if dict.keys.contains("FirstCheckInTime") && dict["FirstCheckInTime"] != nil {
                     self.firstCheckInTime = dict["FirstCheckInTime"] as! Int64
@@ -31245,6 +33034,21 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
                     self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOffSiteOnlineTime") && dict["TotalOffSiteOnlineTime"] != nil {
+                    self.totalOffSiteOnlineTime = dict["TotalOffSiteOnlineTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOfficePhoneOnlineTime") && dict["TotalOfficePhoneOnlineTime"] != nil {
+                    self.totalOfficePhoneOnlineTime = dict["TotalOfficePhoneOnlineTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOnSiteOnlineTime") && dict["TotalOnSiteOnlineTime"] != nil {
+                    self.totalOnSiteOnlineTime = dict["TotalOnSiteOnlineTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
+                    self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOutboundScenarioTime") && dict["TotalOutboundScenarioTime"] != nil {
+                    self.totalOutboundScenarioTime = dict["TotalOutboundScenarioTime"] as! Int64
                 }
                 if dict.keys.contains("TotalReadyTime") && dict["TotalReadyTime"] != nil {
                     self.totalReadyTime = dict["TotalReadyTime"] as! Int64
@@ -31437,6 +33241,1272 @@ public class ListIntervalAgentReportResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListIntervalAgentReportResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListIntervalAgentSkillGroupReportRequest : Tea.TeaModel {
+    public var agentId: String?
+
+    public var endTime: Int64?
+
+    public var instanceId: String?
+
+    public var interval: String?
+
+    public var skillGroupId: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentId != nil {
+            map["AgentId"] = self.agentId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.skillGroupId != nil {
+            map["SkillGroupId"] = self.skillGroupId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentId") && dict["AgentId"] != nil {
+            self.agentId = dict["AgentId"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! String
+        }
+        if dict.keys.contains("SkillGroupId") && dict["SkillGroupId"] != nil {
+            self.skillGroupId = dict["SkillGroupId"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Back2Back : Tea.TeaModel {
+            public var agentAnswerRate: Double?
+
+            public var answerRate: Double?
+
+            public var averageCustomerRingTime: Double?
+
+            public var averageRingTime: Double?
+
+            public var averageTalkTime: Int64?
+
+            public var callsAnswered: Int64?
+
+            public var callsCustomerHandled: Int64?
+
+            public var callsDialed: Int64?
+
+            public var customerHandleRate: Double?
+
+            public var maxCustomerRingTime: Int64?
+
+            public var maxRingTime: Int64?
+
+            public var maxTalkTime: Int64?
+
+            public var totalCustomerRingTime: Int64?
+
+            public var totalRingTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentAnswerRate != nil {
+                    map["AgentAnswerRate"] = self.agentAnswerRate!
+                }
+                if self.answerRate != nil {
+                    map["AnswerRate"] = self.answerRate!
+                }
+                if self.averageCustomerRingTime != nil {
+                    map["AverageCustomerRingTime"] = self.averageCustomerRingTime!
+                }
+                if self.averageRingTime != nil {
+                    map["AverageRingTime"] = self.averageRingTime!
+                }
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsCustomerHandled != nil {
+                    map["CallsCustomerHandled"] = self.callsCustomerHandled!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                if self.customerHandleRate != nil {
+                    map["CustomerHandleRate"] = self.customerHandleRate!
+                }
+                if self.maxCustomerRingTime != nil {
+                    map["MaxCustomerRingTime"] = self.maxCustomerRingTime!
+                }
+                if self.maxRingTime != nil {
+                    map["MaxRingTime"] = self.maxRingTime!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.totalCustomerRingTime != nil {
+                    map["TotalCustomerRingTime"] = self.totalCustomerRingTime!
+                }
+                if self.totalRingTime != nil {
+                    map["TotalRingTime"] = self.totalRingTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AgentAnswerRate") && dict["AgentAnswerRate"] != nil {
+                    self.agentAnswerRate = dict["AgentAnswerRate"] as! Double
+                }
+                if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                    self.answerRate = dict["AnswerRate"] as! Double
+                }
+                if dict.keys.contains("AverageCustomerRingTime") && dict["AverageCustomerRingTime"] != nil {
+                    self.averageCustomerRingTime = dict["AverageCustomerRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                    self.averageRingTime = dict["AverageRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Int64
+                }
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsCustomerHandled") && dict["CallsCustomerHandled"] != nil {
+                    self.callsCustomerHandled = dict["CallsCustomerHandled"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CustomerHandleRate") && dict["CustomerHandleRate"] != nil {
+                    self.customerHandleRate = dict["CustomerHandleRate"] as! Double
+                }
+                if dict.keys.contains("MaxCustomerRingTime") && dict["MaxCustomerRingTime"] != nil {
+                    self.maxCustomerRingTime = dict["MaxCustomerRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                    self.maxRingTime = dict["MaxRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                }
+                if dict.keys.contains("TotalCustomerRingTime") && dict["TotalCustomerRingTime"] != nil {
+                    self.totalCustomerRingTime = dict["TotalCustomerRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                    self.totalRingTime = dict["TotalRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+            }
+        }
+        public class Inbound : Tea.TeaModel {
+            public var averageHoldTime: Double?
+
+            public var averageRingTime: Double?
+
+            public var averageTalkTime: Double?
+
+            public var averageWorkTime: Double?
+
+            public var callsAttendedTransferIn: Int64?
+
+            public var callsAttendedTransferOut: Int64?
+
+            public var callsBlindTransferIn: Int64?
+
+            public var callsBlindTransferOut: Int64?
+
+            public var callsHandled: Int64?
+
+            public var callsHold: Int64?
+
+            public var callsOffered: Int64?
+
+            public var callsRinged: Int64?
+
+            public var handleRate: Double?
+
+            public var maxHoldTime: Int64?
+
+            public var maxRingTime: Int64?
+
+            public var maxTalkTime: Int64?
+
+            public var maxWorkTime: Int64?
+
+            public var satisfactionIndex: Double?
+
+            public var satisfactionRate: Double?
+
+            public var satisfactionSurveysOffered: Int64?
+
+            public var satisfactionSurveysResponded: Int64?
+
+            public var totalHoldTime: Int64?
+
+            public var totalRingTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public var totalWorkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.averageHoldTime != nil {
+                    map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageRingTime != nil {
+                    map["AverageRingTime"] = self.averageRingTime!
+                }
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.averageWorkTime != nil {
+                    map["AverageWorkTime"] = self.averageWorkTime!
+                }
+                if self.callsAttendedTransferIn != nil {
+                    map["CallsAttendedTransferIn"] = self.callsAttendedTransferIn!
+                }
+                if self.callsAttendedTransferOut != nil {
+                    map["CallsAttendedTransferOut"] = self.callsAttendedTransferOut!
+                }
+                if self.callsBlindTransferIn != nil {
+                    map["CallsBlindTransferIn"] = self.callsBlindTransferIn!
+                }
+                if self.callsBlindTransferOut != nil {
+                    map["CallsBlindTransferOut"] = self.callsBlindTransferOut!
+                }
+                if self.callsHandled != nil {
+                    map["CallsHandled"] = self.callsHandled!
+                }
+                if self.callsHold != nil {
+                    map["CallsHold"] = self.callsHold!
+                }
+                if self.callsOffered != nil {
+                    map["CallsOffered"] = self.callsOffered!
+                }
+                if self.callsRinged != nil {
+                    map["CallsRinged"] = self.callsRinged!
+                }
+                if self.handleRate != nil {
+                    map["HandleRate"] = self.handleRate!
+                }
+                if self.maxHoldTime != nil {
+                    map["MaxHoldTime"] = self.maxHoldTime!
+                }
+                if self.maxRingTime != nil {
+                    map["MaxRingTime"] = self.maxRingTime!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.maxWorkTime != nil {
+                    map["MaxWorkTime"] = self.maxWorkTime!
+                }
+                if self.satisfactionIndex != nil {
+                    map["SatisfactionIndex"] = self.satisfactionIndex!
+                }
+                if self.satisfactionRate != nil {
+                    map["SatisfactionRate"] = self.satisfactionRate!
+                }
+                if self.satisfactionSurveysOffered != nil {
+                    map["SatisfactionSurveysOffered"] = self.satisfactionSurveysOffered!
+                }
+                if self.satisfactionSurveysResponded != nil {
+                    map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
+                }
+                if self.totalHoldTime != nil {
+                    map["TotalHoldTime"] = self.totalHoldTime!
+                }
+                if self.totalRingTime != nil {
+                    map["TotalRingTime"] = self.totalRingTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                if self.totalWorkTime != nil {
+                    map["TotalWorkTime"] = self.totalWorkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
+                    self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                    self.averageRingTime = dict["AverageRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                }
+                if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
+                    self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                }
+                if dict.keys.contains("CallsAttendedTransferIn") && dict["CallsAttendedTransferIn"] != nil {
+                    self.callsAttendedTransferIn = dict["CallsAttendedTransferIn"] as! Int64
+                }
+                if dict.keys.contains("CallsAttendedTransferOut") && dict["CallsAttendedTransferOut"] != nil {
+                    self.callsAttendedTransferOut = dict["CallsAttendedTransferOut"] as! Int64
+                }
+                if dict.keys.contains("CallsBlindTransferIn") && dict["CallsBlindTransferIn"] != nil {
+                    self.callsBlindTransferIn = dict["CallsBlindTransferIn"] as! Int64
+                }
+                if dict.keys.contains("CallsBlindTransferOut") && dict["CallsBlindTransferOut"] != nil {
+                    self.callsBlindTransferOut = dict["CallsBlindTransferOut"] as! Int64
+                }
+                if dict.keys.contains("CallsHandled") && dict["CallsHandled"] != nil {
+                    self.callsHandled = dict["CallsHandled"] as! Int64
+                }
+                if dict.keys.contains("CallsHold") && dict["CallsHold"] != nil {
+                    self.callsHold = dict["CallsHold"] as! Int64
+                }
+                if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                    self.callsOffered = dict["CallsOffered"] as! Int64
+                }
+                if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
+                    self.callsRinged = dict["CallsRinged"] as! Int64
+                }
+                if dict.keys.contains("HandleRate") && dict["HandleRate"] != nil {
+                    self.handleRate = dict["HandleRate"] as! Double
+                }
+                if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
+                    self.maxHoldTime = dict["MaxHoldTime"] as! Int64
+                }
+                if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                    self.maxRingTime = dict["MaxRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                }
+                if dict.keys.contains("MaxWorkTime") && dict["MaxWorkTime"] != nil {
+                    self.maxWorkTime = dict["MaxWorkTime"] as! Int64
+                }
+                if dict.keys.contains("SatisfactionIndex") && dict["SatisfactionIndex"] != nil {
+                    self.satisfactionIndex = dict["SatisfactionIndex"] as! Double
+                }
+                if dict.keys.contains("SatisfactionRate") && dict["SatisfactionRate"] != nil {
+                    self.satisfactionRate = dict["SatisfactionRate"] as! Double
+                }
+                if dict.keys.contains("SatisfactionSurveysOffered") && dict["SatisfactionSurveysOffered"] != nil {
+                    self.satisfactionSurveysOffered = dict["SatisfactionSurveysOffered"] as! Int64
+                }
+                if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
+                    self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
+                }
+                if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
+                    self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                }
+                if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                    self.totalRingTime = dict["TotalRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+                if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
+                    self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                }
+            }
+        }
+        public class Internal_ : Tea.TeaModel {
+            public var averageTalkTime: Double?
+
+            public var callsAnswered: Int64?
+
+            public var callsDialed: Int64?
+
+            public var callsHandled: Int64?
+
+            public var callsOffered: Int64?
+
+            public var callsTalk: Int64?
+
+            public var maxTalkTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                if self.callsHandled != nil {
+                    map["CallsHandled"] = self.callsHandled!
+                }
+                if self.callsOffered != nil {
+                    map["CallsOffered"] = self.callsOffered!
+                }
+                if self.callsTalk != nil {
+                    map["CallsTalk"] = self.callsTalk!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                }
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CallsHandled") && dict["CallsHandled"] != nil {
+                    self.callsHandled = dict["CallsHandled"] as! Int64
+                }
+                if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                    self.callsOffered = dict["CallsOffered"] as! Int64
+                }
+                if dict.keys.contains("CallsTalk") && dict["CallsTalk"] != nil {
+                    self.callsTalk = dict["CallsTalk"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+            }
+        }
+        public class Outbound : Tea.TeaModel {
+            public var answerRate: Double?
+
+            public var averageDialingTime: Double?
+
+            public var averageHoldTime: Double?
+
+            public var averageRingTime: Double?
+
+            public var averageTalkTime: Double?
+
+            public var averageWorkTime: Double?
+
+            public var callsAnswered: Int64?
+
+            public var callsAttendedTransferIn: Int64?
+
+            public var callsAttendedTransferOut: Int64?
+
+            public var callsBlindTransferIn: Int64?
+
+            public var callsBlindTransferOut: Int64?
+
+            public var callsDialed: Int64?
+
+            public var callsHold: Int64?
+
+            public var callsRinged: Int64?
+
+            public var maxDialingTime: Int64?
+
+            public var maxHoldTime: Int64?
+
+            public var maxRingTime: Int64?
+
+            public var maxTalkTime: Int64?
+
+            public var maxWorkTime: Int64?
+
+            public var satisfactionIndex: Double?
+
+            public var satisfactionRate: Double?
+
+            public var satisfactionSurveysOffered: Int64?
+
+            public var satisfactionSurveysResponded: Int64?
+
+            public var totalDialingTime: Int64?
+
+            public var totalHoldTime: Int64?
+
+            public var totalRingTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public var totalWorkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.answerRate != nil {
+                    map["AnswerRate"] = self.answerRate!
+                }
+                if self.averageDialingTime != nil {
+                    map["AverageDialingTime"] = self.averageDialingTime!
+                }
+                if self.averageHoldTime != nil {
+                    map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageRingTime != nil {
+                    map["AverageRingTime"] = self.averageRingTime!
+                }
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.averageWorkTime != nil {
+                    map["AverageWorkTime"] = self.averageWorkTime!
+                }
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsAttendedTransferIn != nil {
+                    map["CallsAttendedTransferIn"] = self.callsAttendedTransferIn!
+                }
+                if self.callsAttendedTransferOut != nil {
+                    map["CallsAttendedTransferOut"] = self.callsAttendedTransferOut!
+                }
+                if self.callsBlindTransferIn != nil {
+                    map["CallsBlindTransferIn"] = self.callsBlindTransferIn!
+                }
+                if self.callsBlindTransferOut != nil {
+                    map["CallsBlindTransferOut"] = self.callsBlindTransferOut!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                if self.callsHold != nil {
+                    map["CallsHold"] = self.callsHold!
+                }
+                if self.callsRinged != nil {
+                    map["CallsRinged"] = self.callsRinged!
+                }
+                if self.maxDialingTime != nil {
+                    map["MaxDialingTime"] = self.maxDialingTime!
+                }
+                if self.maxHoldTime != nil {
+                    map["MaxHoldTime"] = self.maxHoldTime!
+                }
+                if self.maxRingTime != nil {
+                    map["MaxRingTime"] = self.maxRingTime!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.maxWorkTime != nil {
+                    map["MaxWorkTime"] = self.maxWorkTime!
+                }
+                if self.satisfactionIndex != nil {
+                    map["SatisfactionIndex"] = self.satisfactionIndex!
+                }
+                if self.satisfactionRate != nil {
+                    map["SatisfactionRate"] = self.satisfactionRate!
+                }
+                if self.satisfactionSurveysOffered != nil {
+                    map["SatisfactionSurveysOffered"] = self.satisfactionSurveysOffered!
+                }
+                if self.satisfactionSurveysResponded != nil {
+                    map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
+                }
+                if self.totalDialingTime != nil {
+                    map["TotalDialingTime"] = self.totalDialingTime!
+                }
+                if self.totalHoldTime != nil {
+                    map["TotalHoldTime"] = self.totalHoldTime!
+                }
+                if self.totalRingTime != nil {
+                    map["TotalRingTime"] = self.totalRingTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                if self.totalWorkTime != nil {
+                    map["TotalWorkTime"] = self.totalWorkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                    self.answerRate = dict["AnswerRate"] as! Double
+                }
+                if dict.keys.contains("AverageDialingTime") && dict["AverageDialingTime"] != nil {
+                    self.averageDialingTime = dict["AverageDialingTime"] as! Double
+                }
+                if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
+                    self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                    self.averageRingTime = dict["AverageRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                }
+                if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
+                    self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                }
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsAttendedTransferIn") && dict["CallsAttendedTransferIn"] != nil {
+                    self.callsAttendedTransferIn = dict["CallsAttendedTransferIn"] as! Int64
+                }
+                if dict.keys.contains("CallsAttendedTransferOut") && dict["CallsAttendedTransferOut"] != nil {
+                    self.callsAttendedTransferOut = dict["CallsAttendedTransferOut"] as! Int64
+                }
+                if dict.keys.contains("CallsBlindTransferIn") && dict["CallsBlindTransferIn"] != nil {
+                    self.callsBlindTransferIn = dict["CallsBlindTransferIn"] as! Int64
+                }
+                if dict.keys.contains("CallsBlindTransferOut") && dict["CallsBlindTransferOut"] != nil {
+                    self.callsBlindTransferOut = dict["CallsBlindTransferOut"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CallsHold") && dict["CallsHold"] != nil {
+                    self.callsHold = dict["CallsHold"] as! Int64
+                }
+                if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
+                    self.callsRinged = dict["CallsRinged"] as! Int64
+                }
+                if dict.keys.contains("MaxDialingTime") && dict["MaxDialingTime"] != nil {
+                    self.maxDialingTime = dict["MaxDialingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
+                    self.maxHoldTime = dict["MaxHoldTime"] as! Int64
+                }
+                if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                    self.maxRingTime = dict["MaxRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                }
+                if dict.keys.contains("MaxWorkTime") && dict["MaxWorkTime"] != nil {
+                    self.maxWorkTime = dict["MaxWorkTime"] as! Int64
+                }
+                if dict.keys.contains("SatisfactionIndex") && dict["SatisfactionIndex"] != nil {
+                    self.satisfactionIndex = dict["SatisfactionIndex"] as! Double
+                }
+                if dict.keys.contains("SatisfactionRate") && dict["SatisfactionRate"] != nil {
+                    self.satisfactionRate = dict["SatisfactionRate"] as! Double
+                }
+                if dict.keys.contains("SatisfactionSurveysOffered") && dict["SatisfactionSurveysOffered"] != nil {
+                    self.satisfactionSurveysOffered = dict["SatisfactionSurveysOffered"] as! Int64
+                }
+                if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
+                    self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
+                }
+                if dict.keys.contains("TotalDialingTime") && dict["TotalDialingTime"] != nil {
+                    self.totalDialingTime = dict["TotalDialingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
+                    self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                }
+                if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                    self.totalRingTime = dict["TotalRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+                if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
+                    self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                }
+            }
+        }
+        public class Overall : Tea.TeaModel {
+            public class BreakCodeDetailList : Tea.TeaModel {
+                public var breakCode: String?
+
+                public var count: Int64?
+
+                public var duration: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.breakCode != nil {
+                        map["BreakCode"] = self.breakCode!
+                    }
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                        self.breakCode = dict["BreakCode"] as! String
+                    }
+                    if dict.keys.contains("Count") && dict["Count"] != nil {
+                        self.count = dict["Count"] as! Int64
+                    }
+                    if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                        self.duration = dict["Duration"] as! Int64
+                    }
+                }
+            }
+            public var averageBreakTime: Double?
+
+            public var averageHoldTime: Double?
+
+            public var averageReadyTime: Double?
+
+            public var averageTalkTime: Double?
+
+            public var averageWorkTime: Double?
+
+            public var breakCodeDetailList: [ListIntervalAgentSkillGroupReportResponseBody.Data.Overall.BreakCodeDetailList]?
+
+            public var firstCheckInTime: Int64?
+
+            public var lastCheckoutTime: Int64?
+
+            public var maxBreakTime: Int64?
+
+            public var maxHoldTime: Int64?
+
+            public var maxReadyTime: Int64?
+
+            public var maxTalkTime: Int64?
+
+            public var maxWorkTime: Int64?
+
+            public var occupancyRate: Double?
+
+            public var satisfactionIndex: Double?
+
+            public var satisfactionRate: Double?
+
+            public var satisfactionSurveysOffered: Int64?
+
+            public var satisfactionSurveysResponded: Int64?
+
+            public var totalBreakTime: Int64?
+
+            public var totalCalls: Int64?
+
+            public var totalHoldTime: Int64?
+
+            public var totalLoggedInTime: Int64?
+
+            public var totalOutboundScenarioReadyTime: Int64?
+
+            public var totalOutboundScenarioTime: Int64?
+
+            public var totalReadyTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public var totalWorkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.averageBreakTime != nil {
+                    map["AverageBreakTime"] = self.averageBreakTime!
+                }
+                if self.averageHoldTime != nil {
+                    map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageReadyTime != nil {
+                    map["AverageReadyTime"] = self.averageReadyTime!
+                }
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.averageWorkTime != nil {
+                    map["AverageWorkTime"] = self.averageWorkTime!
+                }
+                if self.breakCodeDetailList != nil {
+                    var tmp : [Any] = []
+                    for k in self.breakCodeDetailList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["BreakCodeDetailList"] = tmp
+                }
+                if self.firstCheckInTime != nil {
+                    map["FirstCheckInTime"] = self.firstCheckInTime!
+                }
+                if self.lastCheckoutTime != nil {
+                    map["LastCheckoutTime"] = self.lastCheckoutTime!
+                }
+                if self.maxBreakTime != nil {
+                    map["MaxBreakTime"] = self.maxBreakTime!
+                }
+                if self.maxHoldTime != nil {
+                    map["MaxHoldTime"] = self.maxHoldTime!
+                }
+                if self.maxReadyTime != nil {
+                    map["MaxReadyTime"] = self.maxReadyTime!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.maxWorkTime != nil {
+                    map["MaxWorkTime"] = self.maxWorkTime!
+                }
+                if self.occupancyRate != nil {
+                    map["OccupancyRate"] = self.occupancyRate!
+                }
+                if self.satisfactionIndex != nil {
+                    map["SatisfactionIndex"] = self.satisfactionIndex!
+                }
+                if self.satisfactionRate != nil {
+                    map["SatisfactionRate"] = self.satisfactionRate!
+                }
+                if self.satisfactionSurveysOffered != nil {
+                    map["SatisfactionSurveysOffered"] = self.satisfactionSurveysOffered!
+                }
+                if self.satisfactionSurveysResponded != nil {
+                    map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
+                }
+                if self.totalBreakTime != nil {
+                    map["TotalBreakTime"] = self.totalBreakTime!
+                }
+                if self.totalCalls != nil {
+                    map["TotalCalls"] = self.totalCalls!
+                }
+                if self.totalHoldTime != nil {
+                    map["TotalHoldTime"] = self.totalHoldTime!
+                }
+                if self.totalLoggedInTime != nil {
+                    map["TotalLoggedInTime"] = self.totalLoggedInTime!
+                }
+                if self.totalOutboundScenarioReadyTime != nil {
+                    map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
+                }
+                if self.totalOutboundScenarioTime != nil {
+                    map["TotalOutboundScenarioTime"] = self.totalOutboundScenarioTime!
+                }
+                if self.totalReadyTime != nil {
+                    map["TotalReadyTime"] = self.totalReadyTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                if self.totalWorkTime != nil {
+                    map["TotalWorkTime"] = self.totalWorkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AverageBreakTime") && dict["AverageBreakTime"] != nil {
+                    self.averageBreakTime = dict["AverageBreakTime"] as! Double
+                }
+                if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
+                    self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageReadyTime") && dict["AverageReadyTime"] != nil {
+                    self.averageReadyTime = dict["AverageReadyTime"] as! Double
+                }
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                }
+                if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
+                    self.averageWorkTime = dict["AverageWorkTime"] as! Double
+                }
+                if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                    var tmp : [ListIntervalAgentSkillGroupReportResponseBody.Data.Overall.BreakCodeDetailList] = []
+                    for v in dict["BreakCodeDetailList"] as! [Any] {
+                        var model = ListIntervalAgentSkillGroupReportResponseBody.Data.Overall.BreakCodeDetailList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.breakCodeDetailList = tmp
+                }
+                if dict.keys.contains("FirstCheckInTime") && dict["FirstCheckInTime"] != nil {
+                    self.firstCheckInTime = dict["FirstCheckInTime"] as! Int64
+                }
+                if dict.keys.contains("LastCheckoutTime") && dict["LastCheckoutTime"] != nil {
+                    self.lastCheckoutTime = dict["LastCheckoutTime"] as! Int64
+                }
+                if dict.keys.contains("MaxBreakTime") && dict["MaxBreakTime"] != nil {
+                    self.maxBreakTime = dict["MaxBreakTime"] as! Int64
+                }
+                if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
+                    self.maxHoldTime = dict["MaxHoldTime"] as! Int64
+                }
+                if dict.keys.contains("MaxReadyTime") && dict["MaxReadyTime"] != nil {
+                    self.maxReadyTime = dict["MaxReadyTime"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                }
+                if dict.keys.contains("MaxWorkTime") && dict["MaxWorkTime"] != nil {
+                    self.maxWorkTime = dict["MaxWorkTime"] as! Int64
+                }
+                if dict.keys.contains("OccupancyRate") && dict["OccupancyRate"] != nil {
+                    self.occupancyRate = dict["OccupancyRate"] as! Double
+                }
+                if dict.keys.contains("SatisfactionIndex") && dict["SatisfactionIndex"] != nil {
+                    self.satisfactionIndex = dict["SatisfactionIndex"] as! Double
+                }
+                if dict.keys.contains("SatisfactionRate") && dict["SatisfactionRate"] != nil {
+                    self.satisfactionRate = dict["SatisfactionRate"] as! Double
+                }
+                if dict.keys.contains("SatisfactionSurveysOffered") && dict["SatisfactionSurveysOffered"] != nil {
+                    self.satisfactionSurveysOffered = dict["SatisfactionSurveysOffered"] as! Int64
+                }
+                if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
+                    self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
+                }
+                if dict.keys.contains("TotalBreakTime") && dict["TotalBreakTime"] != nil {
+                    self.totalBreakTime = dict["TotalBreakTime"] as! Int64
+                }
+                if dict.keys.contains("TotalCalls") && dict["TotalCalls"] != nil {
+                    self.totalCalls = dict["TotalCalls"] as! Int64
+                }
+                if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
+                    self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                }
+                if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
+                    self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
+                    self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOutboundScenarioTime") && dict["TotalOutboundScenarioTime"] != nil {
+                    self.totalOutboundScenarioTime = dict["TotalOutboundScenarioTime"] as! Int64
+                }
+                if dict.keys.contains("TotalReadyTime") && dict["TotalReadyTime"] != nil {
+                    self.totalReadyTime = dict["TotalReadyTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+                if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
+                    self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                }
+            }
+        }
+        public var back2Back: ListIntervalAgentSkillGroupReportResponseBody.Data.Back2Back?
+
+        public var inbound: ListIntervalAgentSkillGroupReportResponseBody.Data.Inbound?
+
+        public var internal_: ListIntervalAgentSkillGroupReportResponseBody.Data.Internal_?
+
+        public var outbound: ListIntervalAgentSkillGroupReportResponseBody.Data.Outbound?
+
+        public var overall: ListIntervalAgentSkillGroupReportResponseBody.Data.Overall?
+
+        public var statsTime: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.back2Back?.validate()
+            try self.inbound?.validate()
+            try self.internal_?.validate()
+            try self.outbound?.validate()
+            try self.overall?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.back2Back != nil {
+                map["Back2Back"] = self.back2Back?.toMap()
+            }
+            if self.inbound != nil {
+                map["Inbound"] = self.inbound?.toMap()
+            }
+            if self.internal_ != nil {
+                map["Internal"] = self.internal_?.toMap()
+            }
+            if self.outbound != nil {
+                map["Outbound"] = self.outbound?.toMap()
+            }
+            if self.overall != nil {
+                map["Overall"] = self.overall?.toMap()
+            }
+            if self.statsTime != nil {
+                map["StatsTime"] = self.statsTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Back2Back") && dict["Back2Back"] != nil {
+                var model = ListIntervalAgentSkillGroupReportResponseBody.Data.Back2Back()
+                model.fromMap(dict["Back2Back"] as! [String: Any])
+                self.back2Back = model
+            }
+            if dict.keys.contains("Inbound") && dict["Inbound"] != nil {
+                var model = ListIntervalAgentSkillGroupReportResponseBody.Data.Inbound()
+                model.fromMap(dict["Inbound"] as! [String: Any])
+                self.inbound = model
+            }
+            if dict.keys.contains("Internal") && dict["Internal"] != nil {
+                var model = ListIntervalAgentSkillGroupReportResponseBody.Data.Internal_()
+                model.fromMap(dict["Internal"] as! [String: Any])
+                self.internal_ = model
+            }
+            if dict.keys.contains("Outbound") && dict["Outbound"] != nil {
+                var model = ListIntervalAgentSkillGroupReportResponseBody.Data.Outbound()
+                model.fromMap(dict["Outbound"] as! [String: Any])
+                self.outbound = model
+            }
+            if dict.keys.contains("Overall") && dict["Overall"] != nil {
+                var model = ListIntervalAgentSkillGroupReportResponseBody.Data.Overall()
+                model.fromMap(dict["Overall"] as! [String: Any])
+                self.overall = model
+            }
+            if dict.keys.contains("StatsTime") && dict["StatsTime"] != nil {
+                self.statsTime = dict["StatsTime"] as! Int64
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [ListIntervalAgentSkillGroupReportResponseBody.Data]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [ListIntervalAgentSkillGroupReportResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListIntervalAgentSkillGroupReportResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListIntervalAgentSkillGroupReportResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIntervalAgentSkillGroupReportResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListIntervalAgentSkillGroupReportResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -42513,6 +45583,367 @@ public class ListUsersResponse : Tea.TeaModel {
     }
 }
 
+public class ListVoicemailsRequest : Tea.TeaModel {
+    public var caller: String?
+
+    public var contactId: String?
+
+    public var endTime: Int64?
+
+    public var instanceId: String?
+
+    public var name: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.caller != nil {
+            map["Caller"] = self.caller!
+        }
+        if self.contactId != nil {
+            map["ContactId"] = self.contactId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Caller") && dict["Caller"] != nil {
+            self.caller = dict["Caller"] as! String
+        }
+        if dict.keys.contains("ContactId") && dict["ContactId"] != nil {
+            self.contactId = dict["ContactId"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class ListVoicemailsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class List : Tea.TeaModel {
+            public var callee: String?
+
+            public var caller: String?
+
+            public var cdrStartTime: Int64?
+
+            public var contactId: String?
+
+            public var duration: Int64?
+
+            public var instanceId: String?
+
+            public var name: String?
+
+            public var recordingDuration: Int64?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.callee != nil {
+                    map["Callee"] = self.callee!
+                }
+                if self.caller != nil {
+                    map["Caller"] = self.caller!
+                }
+                if self.cdrStartTime != nil {
+                    map["CdrStartTime"] = self.cdrStartTime!
+                }
+                if self.contactId != nil {
+                    map["ContactId"] = self.contactId!
+                }
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.recordingDuration != nil {
+                    map["RecordingDuration"] = self.recordingDuration!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Callee") && dict["Callee"] != nil {
+                    self.callee = dict["Callee"] as! String
+                }
+                if dict.keys.contains("Caller") && dict["Caller"] != nil {
+                    self.caller = dict["Caller"] as! String
+                }
+                if dict.keys.contains("CdrStartTime") && dict["CdrStartTime"] != nil {
+                    self.cdrStartTime = dict["CdrStartTime"] as! Int64
+                }
+                if dict.keys.contains("ContactId") && dict["ContactId"] != nil {
+                    self.contactId = dict["ContactId"] as! String
+                }
+                if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                    self.duration = dict["Duration"] as! Int64
+                }
+                if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                    self.instanceId = dict["InstanceId"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("RecordingDuration") && dict["RecordingDuration"] != nil {
+                    self.recordingDuration = dict["RecordingDuration"] as! Int64
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
+        public var list: [ListVoicemailsResponseBody.Data.List]?
+
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.list != nil {
+                var tmp : [Any] = []
+                for k in self.list! {
+                    tmp.append(k.toMap())
+                }
+                map["List"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("List") && dict["List"] != nil {
+                var tmp : [ListVoicemailsResponseBody.Data.List] = []
+                for v in dict["List"] as! [Any] {
+                    var model = ListVoicemailsResponseBody.Data.List()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.list = tmp
+            }
+            if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ListVoicemailsResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ListVoicemailsResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListVoicemailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListVoicemailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListVoicemailsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class MakeCallRequest : Tea.TeaModel {
     public var callee: String?
 
@@ -46494,6 +49925,190 @@ public class PollUserStatusResponse : Tea.TeaModel {
     }
 }
 
+public class ProcessAliMeCallbackOfStagingRequest : Tea.TeaModel {
+    public var data: String?
+
+    public var token: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("Token") && dict["Token"] != nil {
+            self.token = dict["Token"] as! String
+        }
+    }
+}
+
+public class ProcessAliMeCallbackOfStagingResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var result: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.result != nil {
+                map["Result"] = self.result!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Result") && dict["Result"] != nil {
+                self.result = dict["Result"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ProcessAliMeCallbackOfStagingResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ProcessAliMeCallbackOfStagingResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ProcessAliMeCallbackOfStagingResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ProcessAliMeCallbackOfStagingResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ProcessAliMeCallbackOfStagingResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PublishContactFlowRequest : Tea.TeaModel {
     public var contactFlowId: String?
 
@@ -47879,6 +51494,8 @@ public class ReleaseCallResponseBody : Tea.TeaModel {
 
                 public var channelState: String?
 
+                public var channelVariables: String?
+
                 public var destination: String?
 
                 public var jobId: String?
@@ -47918,6 +51535,9 @@ public class ReleaseCallResponseBody : Tea.TeaModel {
                     if self.channelState != nil {
                         map["ChannelState"] = self.channelState!
                     }
+                    if self.channelVariables != nil {
+                        map["ChannelVariables"] = self.channelVariables!
+                    }
                     if self.destination != nil {
                         map["Destination"] = self.destination!
                     }
@@ -47954,6 +51574,9 @@ public class ReleaseCallResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("ChannelState") && dict["ChannelState"] != nil {
                         self.channelState = dict["ChannelState"] as! String
+                    }
+                    if dict.keys.contains("ChannelVariables") && dict["ChannelVariables"] != nil {
+                        self.channelVariables = dict["ChannelVariables"] as! String
                     }
                     if dict.keys.contains("Destination") && dict["Destination"] != nil {
                         self.destination = dict["Destination"] as! String
@@ -56506,6 +60129,198 @@ public class UnregisterDeviceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UnregisterDeviceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateCampaignRequest : Tea.TeaModel {
+    public var callableTime: String?
+
+    public var campaignId: String?
+
+    public var contactFlowId: String?
+
+    public var endTime: String?
+
+    public var instanceId: String?
+
+    public var name: String?
+
+    public var startTime: String?
+
+    public var strategyParameters: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.callableTime != nil {
+            map["CallableTime"] = self.callableTime!
+        }
+        if self.campaignId != nil {
+            map["CampaignId"] = self.campaignId!
+        }
+        if self.contactFlowId != nil {
+            map["ContactFlowId"] = self.contactFlowId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.strategyParameters != nil {
+            map["StrategyParameters"] = self.strategyParameters!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CallableTime") && dict["CallableTime"] != nil {
+            self.callableTime = dict["CallableTime"] as! String
+        }
+        if dict.keys.contains("CampaignId") && dict["CampaignId"] != nil {
+            self.campaignId = dict["CampaignId"] as! String
+        }
+        if dict.keys.contains("ContactFlowId") && dict["ContactFlowId"] != nil {
+            self.contactFlowId = dict["ContactFlowId"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("StrategyParameters") && dict["StrategyParameters"] != nil {
+            self.strategyParameters = dict["StrategyParameters"] as! String
+        }
+    }
+}
+
+public class UpdateCampaignResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var httpStatusCode: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int64
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateCampaignResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateCampaignResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateCampaignResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
