@@ -2809,6 +2809,206 @@ public class StartExecutionResponse : Tea.TeaModel {
     }
 }
 
+public class StartSyncExecutionRequest : Tea.TeaModel {
+    public var executionName: String?
+
+    public var flowName: String?
+
+    public var input: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.executionName != nil {
+            map["ExecutionName"] = self.executionName!
+        }
+        if self.flowName != nil {
+            map["FlowName"] = self.flowName!
+        }
+        if self.input != nil {
+            map["Input"] = self.input!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExecutionName") && dict["ExecutionName"] != nil {
+            self.executionName = dict["ExecutionName"] as! String
+        }
+        if dict.keys.contains("FlowName") && dict["FlowName"] != nil {
+            self.flowName = dict["FlowName"] as! String
+        }
+        if dict.keys.contains("Input") && dict["Input"] != nil {
+            self.input = dict["Input"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class StartSyncExecutionResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var flowName: String?
+
+    public var name: String?
+
+    public var output: String?
+
+    public var requestId: String?
+
+    public var startedTime: String?
+
+    public var status: String?
+
+    public var stoppedTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.flowName != nil {
+            map["FlowName"] = self.flowName!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.output != nil {
+            map["Output"] = self.output!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.startedTime != nil {
+            map["StartedTime"] = self.startedTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.stoppedTime != nil {
+            map["StoppedTime"] = self.stoppedTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("FlowName") && dict["FlowName"] != nil {
+            self.flowName = dict["FlowName"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Output") && dict["Output"] != nil {
+            self.output = dict["Output"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StartedTime") && dict["StartedTime"] != nil {
+            self.startedTime = dict["StartedTime"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("StoppedTime") && dict["StoppedTime"] != nil {
+            self.stoppedTime = dict["StoppedTime"] as! String
+        }
+    }
+}
+
+public class StartSyncExecutionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartSyncExecutionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = StartSyncExecutionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class StopExecutionRequest : Tea.TeaModel {
     public var cause: String?
 

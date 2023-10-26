@@ -514,6 +514,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startSyncExecutionWithOptions(_ request: StartSyncExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartSyncExecutionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            query["RequestId"] = request.requestId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.executionName)) {
+            body["ExecutionName"] = request.executionName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flowName)) {
+            body["FlowName"] = request.flowName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.input)) {
+            body["Input"] = request.input ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "StartSyncExecution",
+            "version": "2019-03-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(StartSyncExecutionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func startSyncExecution(_ request: StartSyncExecutionRequest) async throws -> StartSyncExecutionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await startSyncExecutionWithOptions(request as! StartSyncExecutionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopExecutionWithOptions(_ request: StopExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopExecutionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
