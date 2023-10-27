@@ -44448,6 +44448,209 @@ public class ListWorkItemWorkFlowStatusResponse : Tea.TeaModel {
     }
 }
 
+public class ListWorkitemAttachmentsResponseBody : Tea.TeaModel {
+    public class Attachments : Tea.TeaModel {
+        public var creator: String?
+
+        public var fileIdentifier: String?
+
+        public var fileName: String?
+
+        public var fileSuffix: String?
+
+        public var gmtCreate: Int64?
+
+        public var size: String?
+
+        public var url: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.creator != nil {
+                map["creator"] = self.creator!
+            }
+            if self.fileIdentifier != nil {
+                map["fileIdentifier"] = self.fileIdentifier!
+            }
+            if self.fileName != nil {
+                map["fileName"] = self.fileName!
+            }
+            if self.fileSuffix != nil {
+                map["fileSuffix"] = self.fileSuffix!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
+            }
+            if self.size != nil {
+                map["size"] = self.size!
+            }
+            if self.url != nil {
+                map["url"] = self.url!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("creator") && dict["creator"] != nil {
+                self.creator = dict["creator"] as! String
+            }
+            if dict.keys.contains("fileIdentifier") && dict["fileIdentifier"] != nil {
+                self.fileIdentifier = dict["fileIdentifier"] as! String
+            }
+            if dict.keys.contains("fileName") && dict["fileName"] != nil {
+                self.fileName = dict["fileName"] as! String
+            }
+            if dict.keys.contains("fileSuffix") && dict["fileSuffix"] != nil {
+                self.fileSuffix = dict["fileSuffix"] as! String
+            }
+            if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
+                self.gmtCreate = dict["gmtCreate"] as! Int64
+            }
+            if dict.keys.contains("size") && dict["size"] != nil {
+                self.size = dict["size"] as! String
+            }
+            if dict.keys.contains("url") && dict["url"] != nil {
+                self.url = dict["url"] as! String
+            }
+        }
+    }
+    public var attachments: [ListWorkitemAttachmentsResponseBody.Attachments]?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.attachments != nil {
+            var tmp : [Any] = []
+            for k in self.attachments! {
+                tmp.append(k.toMap())
+            }
+            map["attachments"] = tmp
+        }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("attachments") && dict["attachments"] != nil {
+            var tmp : [ListWorkitemAttachmentsResponseBody.Attachments] = []
+            for v in dict["attachments"] as! [Any] {
+                var model = ListWorkitemAttachmentsResponseBody.Attachments()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.attachments = tmp
+        }
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMsg") && dict["errorMsg"] != nil {
+            self.errorMsg = dict["errorMsg"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ListWorkitemAttachmentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListWorkitemAttachmentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListWorkitemAttachmentsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListWorkitemEstimateResponseBody : Tea.TeaModel {
     public class WorkitemTimeEstimate : Tea.TeaModel {
         public class RecordUser : Tea.TeaModel {

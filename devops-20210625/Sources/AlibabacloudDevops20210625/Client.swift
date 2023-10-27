@@ -5851,6 +5851,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWorkitemAttachmentsWithOptions(_ organizationId: String, _ workitemIdentifier: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkitemAttachmentsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListWorkitemAttachments",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/organization/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(organizationId) + "/workitem/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workitemIdentifier) + "/attachments",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListWorkitemAttachmentsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWorkitemAttachments(_ organizationId: String, _ workitemIdentifier: String) async throws -> ListWorkitemAttachmentsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listWorkitemAttachmentsWithOptions(organizationId as! String, workitemIdentifier as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listWorkitemEstimateWithOptions(_ organizationId: String, _ workitemId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWorkitemEstimateResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
