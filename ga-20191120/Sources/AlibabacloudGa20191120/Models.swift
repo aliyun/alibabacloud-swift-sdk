@@ -6177,6 +6177,88 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SystemTag : Tea.TeaModel {
+            public var key: String?
+
+            public var scope: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.scope != nil {
+                    map["Scope"] = self.scope!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Scope") && dict["Scope"] != nil {
+                    self.scope = dict["Scope"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public class Tag : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
         public var enableClientIPPreservationProxyProtocol: Bool?
 
         public var enableClientIPPreservationToa: Bool?
@@ -6204,6 +6286,10 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
         public var healthCheckProtocol: String?
 
         public var portOverrides: [CreateEndpointGroupsRequest.EndpointGroupConfigurations.PortOverrides]?
+
+        public var systemTag: [CreateEndpointGroupsRequest.EndpointGroupConfigurations.SystemTag]?
+
+        public var tag: [CreateEndpointGroupsRequest.EndpointGroupConfigurations.Tag]?
 
         public var thresholdCount: Int64?
 
@@ -6273,6 +6359,20 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
                 }
                 map["PortOverrides"] = tmp
             }
+            if self.systemTag != nil {
+                var tmp : [Any] = []
+                for k in self.systemTag! {
+                    tmp.append(k.toMap())
+                }
+                map["SystemTag"] = tmp
+            }
+            if self.tag != nil {
+                var tmp : [Any] = []
+                for k in self.tag! {
+                    tmp.append(k.toMap())
+                }
+                map["Tag"] = tmp
+            }
             if self.thresholdCount != nil {
                 map["ThresholdCount"] = self.thresholdCount!
             }
@@ -6340,6 +6440,28 @@ public class CreateEndpointGroupsRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.portOverrides = tmp
+            }
+            if dict.keys.contains("SystemTag") && dict["SystemTag"] != nil {
+                var tmp : [CreateEndpointGroupsRequest.EndpointGroupConfigurations.SystemTag] = []
+                for v in dict["SystemTag"] as! [Any] {
+                    var model = CreateEndpointGroupsRequest.EndpointGroupConfigurations.SystemTag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.systemTag = tmp
+            }
+            if dict.keys.contains("Tag") && dict["Tag"] != nil {
+                var tmp : [CreateEndpointGroupsRequest.EndpointGroupConfigurations.Tag] = []
+                for v in dict["Tag"] as! [Any] {
+                    var model = CreateEndpointGroupsRequest.EndpointGroupConfigurations.Tag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tag = tmp
             }
             if dict.keys.contains("ThresholdCount") && dict["ThresholdCount"] != nil {
                 self.thresholdCount = dict["ThresholdCount"] as! Int64
@@ -7650,6 +7772,8 @@ public class CreateListenerRequest : Tea.TeaModel {
         public class EndpointConfigurations : Tea.TeaModel {
             public var endpoint: String?
 
+            public var subAddress: String?
+
             public var type: String?
 
             public var weight: Int64?
@@ -7671,6 +7795,9 @@ public class CreateListenerRequest : Tea.TeaModel {
                 if self.endpoint != nil {
                     map["Endpoint"] = self.endpoint!
                 }
+                if self.subAddress != nil {
+                    map["SubAddress"] = self.subAddress!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -7683,6 +7810,9 @@ public class CreateListenerRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
                     self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("SubAddress") && dict["SubAddress"] != nil {
+                    self.subAddress = dict["SubAddress"] as! String
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
