@@ -91,11 +91,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.diskType)) {
             body["DiskType"] = request.diskType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceClass)) {
             body["InstanceClass"] = request.instanceClass ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isolationOptimization)) {
+            body["IsolationOptimization"] = request.isolationOptimization ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.obVersion)) {
             body["ObVersion"] = request.obVersion ?? "";
@@ -105,6 +111,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.periodUnit)) {
             body["PeriodUnit"] = request.periodUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replicaMode)) {
+            body["ReplicaMode"] = request.replicaMode ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             body["ResourceGroupId"] = request.resourceGroupId ?? "";
@@ -598,11 +607,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.logDisk)) {
+            body["LogDisk"] = request.logDisk!;
+        }
         if (!TeaUtils.Client.isUnset(request.memory)) {
             body["Memory"] = request.memory!;
         }
         if (!TeaUtils.Client.isUnset(request.primaryZone)) {
             body["PrimaryZone"] = request.primaryZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.readOnlyZoneList)) {
+            body["ReadOnlyZoneList"] = request.readOnlyZoneList ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantMode)) {
             body["TenantMode"] = request.tenantMode ?? "";
@@ -824,6 +839,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.backupRetainMode)) {
             body["BackupRetainMode"] = request.backupRetainMode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceIds)) {
             body["InstanceIds"] = request.instanceIds ?? "";
@@ -1270,6 +1288,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.databaseName)) {
             body["DatabaseName"] = request.databaseName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             body["PageNumber"] = request.pageNumber!;
         }
@@ -1409,6 +1430,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeInstanceSecurityConfigsWithOptions(_ request: DescribeInstanceSecurityConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInstanceSecurityConfigsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkId)) {
+            body["CheckId"] = request.checkId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
@@ -2908,6 +2932,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeTenantSecurityConfigsWithOptions(_ request: DescribeTenantSecurityConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeTenantSecurityConfigsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkId)) {
+            body["CheckId"] = request.checkId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
@@ -3746,6 +3773,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyInstanceNodeNumWithOptions(_ request: ModifyInstanceNodeNumRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceNodeNumResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
@@ -3782,6 +3812,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.diskSize)) {
             body["DiskSize"] = request.diskSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            body["DryRun"] = request.dryRun!;
         }
         if (!TeaUtils.Client.isUnset(request.instanceClass)) {
             body["InstanceClass"] = request.instanceClass ?? "";
@@ -4020,8 +4053,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.logDisk)) {
+            body["LogDisk"] = request.logDisk!;
+        }
         if (!TeaUtils.Client.isUnset(request.memory)) {
             body["Memory"] = request.memory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.readOnlyZoneList)) {
+            body["ReadOnlyZoneList"] = request.readOnlyZoneList ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             body["TenantId"] = request.tenantId ?? "";
