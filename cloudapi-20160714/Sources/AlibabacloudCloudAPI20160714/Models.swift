@@ -41710,6 +41710,174 @@ public class ModifyApiGroupResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyApiGroupNetworkPolicyRequest : Tea.TeaModel {
+    public var groupId: String?
+
+    public var httpsPolicy: String?
+
+    public var innerDomainEnable: Bool?
+
+    public var internetEnable: Bool?
+
+    public var internetIPV6Enable: Bool?
+
+    public var securityToken: String?
+
+    public var vpcIntranetEnable: Bool?
+
+    public var vpcSlbIntranetEnable: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.groupId != nil {
+            map["GroupId"] = self.groupId!
+        }
+        if self.httpsPolicy != nil {
+            map["HttpsPolicy"] = self.httpsPolicy!
+        }
+        if self.innerDomainEnable != nil {
+            map["InnerDomainEnable"] = self.innerDomainEnable!
+        }
+        if self.internetEnable != nil {
+            map["InternetEnable"] = self.internetEnable!
+        }
+        if self.internetIPV6Enable != nil {
+            map["InternetIPV6Enable"] = self.internetIPV6Enable!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        if self.vpcIntranetEnable != nil {
+            map["VpcIntranetEnable"] = self.vpcIntranetEnable!
+        }
+        if self.vpcSlbIntranetEnable != nil {
+            map["VpcSlbIntranetEnable"] = self.vpcSlbIntranetEnable!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
+            self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("HttpsPolicy") && dict["HttpsPolicy"] != nil {
+            self.httpsPolicy = dict["HttpsPolicy"] as! String
+        }
+        if dict.keys.contains("InnerDomainEnable") && dict["InnerDomainEnable"] != nil {
+            self.innerDomainEnable = dict["InnerDomainEnable"] as! Bool
+        }
+        if dict.keys.contains("InternetEnable") && dict["InternetEnable"] != nil {
+            self.internetEnable = dict["InternetEnable"] as! Bool
+        }
+        if dict.keys.contains("InternetIPV6Enable") && dict["InternetIPV6Enable"] != nil {
+            self.internetIPV6Enable = dict["InternetIPV6Enable"] as! Bool
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+        if dict.keys.contains("VpcIntranetEnable") && dict["VpcIntranetEnable"] != nil {
+            self.vpcIntranetEnable = dict["VpcIntranetEnable"] as! Bool
+        }
+        if dict.keys.contains("VpcSlbIntranetEnable") && dict["VpcSlbIntranetEnable"] != nil {
+            self.vpcSlbIntranetEnable = dict["VpcSlbIntranetEnable"] as! Bool
+        }
+    }
+}
+
+public class ModifyApiGroupNetworkPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyApiGroupNetworkPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyApiGroupNetworkPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyApiGroupNetworkPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ModifyApiGroupVpcWhitelistRequest : Tea.TeaModel {
     public var groupId: String?
 

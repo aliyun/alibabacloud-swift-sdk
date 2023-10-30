@@ -6272,6 +6272,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyApiGroupNetworkPolicyWithOptions(_ request: ModifyApiGroupNetworkPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyApiGroupNetworkPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.httpsPolicy)) {
+            query["HttpsPolicy"] = request.httpsPolicy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.innerDomainEnable)) {
+            query["InnerDomainEnable"] = request.innerDomainEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.internetEnable)) {
+            query["InternetEnable"] = request.internetEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.internetIPV6Enable)) {
+            query["InternetIPV6Enable"] = request.internetIPV6Enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcIntranetEnable)) {
+            query["VpcIntranetEnable"] = request.vpcIntranetEnable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcSlbIntranetEnable)) {
+            query["VpcSlbIntranetEnable"] = request.vpcSlbIntranetEnable!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyApiGroupNetworkPolicy",
+            "version": "2016-07-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyApiGroupNetworkPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyApiGroupNetworkPolicy(_ request: ModifyApiGroupNetworkPolicyRequest) async throws -> ModifyApiGroupNetworkPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyApiGroupNetworkPolicyWithOptions(request as! ModifyApiGroupNetworkPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func modifyApiGroupVpcWhitelistWithOptions(_ request: ModifyApiGroupVpcWhitelistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyApiGroupVpcWhitelistResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
