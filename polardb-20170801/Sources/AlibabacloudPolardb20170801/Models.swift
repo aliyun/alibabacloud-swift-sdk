@@ -9461,6 +9461,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     public class DBNodes : Tea.TeaModel {
         public var addedCpuCores: String?
 
+        public var cpuCores: String?
+
         public var creationTime: String?
 
         public var DBNodeClass: String?
@@ -9482,6 +9484,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         public var maxConnections: Int32?
 
         public var maxIOPS: Int32?
+
+        public var memorySize: String?
 
         public var sccMode: String?
 
@@ -9507,6 +9511,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.addedCpuCores != nil {
                 map["AddedCpuCores"] = self.addedCpuCores!
+            }
+            if self.cpuCores != nil {
+                map["CpuCores"] = self.cpuCores!
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
@@ -9541,6 +9548,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.maxIOPS != nil {
                 map["MaxIOPS"] = self.maxIOPS!
             }
+            if self.memorySize != nil {
+                map["MemorySize"] = self.memorySize!
+            }
             if self.sccMode != nil {
                 map["SccMode"] = self.sccMode!
             }
@@ -9559,6 +9569,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AddedCpuCores") && dict["AddedCpuCores"] != nil {
                 self.addedCpuCores = dict["AddedCpuCores"] as! String
+            }
+            if dict.keys.contains("CpuCores") && dict["CpuCores"] != nil {
+                self.cpuCores = dict["CpuCores"] as! String
             }
             if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
                 self.creationTime = dict["CreationTime"] as! String
@@ -9592,6 +9605,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MaxIOPS") && dict["MaxIOPS"] != nil {
                 self.maxIOPS = dict["MaxIOPS"] as! Int32
+            }
+            if dict.keys.contains("MemorySize") && dict["MemorySize"] != nil {
+                self.memorySize = dict["MemorySize"] as! String
             }
             if dict.keys.contains("SccMode") && dict["SccMode"] != nil {
                 self.sccMode = dict["SccMode"] as! String
