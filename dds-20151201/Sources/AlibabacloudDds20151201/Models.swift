@@ -21176,8 +21176,6 @@ public class ModifyDBInstanceMonitorResponse : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
-    public var category: String?
-
     public var classicExpendExpiredDays: Int32?
 
     public var connectionString: String?
@@ -21208,9 +21206,6 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.category != nil {
-            map["Category"] = self.category!
-        }
         if self.classicExpendExpiredDays != nil {
             map["ClassicExpendExpiredDays"] = self.classicExpendExpiredDays!
         }
@@ -21239,9 +21234,6 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Category") && dict["Category"] != nil {
-            self.category = dict["Category"] as! String
-        }
         if dict.keys.contains("ClassicExpendExpiredDays") && dict["ClassicExpendExpiredDays"] != nil {
             self.classicExpendExpiredDays = dict["ClassicExpendExpiredDays"] as! Int32
         }
