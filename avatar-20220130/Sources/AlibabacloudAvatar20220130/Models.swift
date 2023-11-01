@@ -1811,6 +1811,8 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
         public class TaskResult : Tea.TeaModel {
             public var alphaUrl: String?
 
+            public var attachmentUrl: String?
+
             public var failCode: String?
 
             public var failReason: String?
@@ -1842,6 +1844,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
                 if self.alphaUrl != nil {
                     map["AlphaUrl"] = self.alphaUrl!
                 }
+                if self.attachmentUrl != nil {
+                    map["AttachmentUrl"] = self.attachmentUrl!
+                }
                 if self.failCode != nil {
                     map["FailCode"] = self.failCode!
                 }
@@ -1869,6 +1874,9 @@ public class GetVideoTaskInfoResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AlphaUrl") && dict["AlphaUrl"] != nil {
                     self.alphaUrl = dict["AlphaUrl"] as! String
+                }
+                if dict.keys.contains("AttachmentUrl") && dict["AttachmentUrl"] != nil {
+                    self.attachmentUrl = dict["AttachmentUrl"] as! String
                 }
                 if dict.keys.contains("FailCode") && dict["FailCode"] != nil {
                     self.failCode = dict["FailCode"] as! String
@@ -3449,6 +3457,8 @@ public class QueryRunningInstanceResponseBody : Tea.TeaModel {
 
         public var sessionId: String?
 
+        public var token: String?
+
         public var user: QueryRunningInstanceResponseBody.Data.User?
 
         public override init() {
@@ -3473,6 +3483,9 @@ public class QueryRunningInstanceResponseBody : Tea.TeaModel {
             if self.sessionId != nil {
                 map["SessionId"] = self.sessionId!
             }
+            if self.token != nil {
+                map["Token"] = self.token!
+            }
             if self.user != nil {
                 map["User"] = self.user?.toMap()
             }
@@ -3487,6 +3500,9 @@ public class QueryRunningInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
                 self.sessionId = dict["SessionId"] as! String
+            }
+            if dict.keys.contains("Token") && dict["Token"] != nil {
+                self.token = dict["Token"] as! String
             }
             if dict.keys.contains("User") && dict["User"] != nil {
                 var model = QueryRunningInstanceResponseBody.Data.User()
@@ -4054,6 +4070,8 @@ public class QueryVideoTaskInfoResponseBody : Tea.TeaModel {
             public class TaskResult : Tea.TeaModel {
                 public var alphaUrl: String?
 
+                public var attachmentUrl: String?
+
                 public var failCode: String?
 
                 public var failReason: String?
@@ -4085,6 +4103,9 @@ public class QueryVideoTaskInfoResponseBody : Tea.TeaModel {
                     if self.alphaUrl != nil {
                         map["AlphaUrl"] = self.alphaUrl!
                     }
+                    if self.attachmentUrl != nil {
+                        map["AttachmentUrl"] = self.attachmentUrl!
+                    }
                     if self.failCode != nil {
                         map["FailCode"] = self.failCode!
                     }
@@ -4112,6 +4133,9 @@ public class QueryVideoTaskInfoResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("AlphaUrl") && dict["AlphaUrl"] != nil {
                         self.alphaUrl = dict["AlphaUrl"] as! String
+                    }
+                    if dict.keys.contains("AttachmentUrl") && dict["AttachmentUrl"] != nil {
+                        self.attachmentUrl = dict["AttachmentUrl"] as! String
                     }
                     if dict.keys.contains("FailCode") && dict["FailCode"] != nil {
                         self.failCode = dict["FailCode"] as! String
@@ -7681,6 +7705,340 @@ public class SubmitAudioTo3DAvatarVideoTaskResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = SubmitAudioTo3DAvatarVideoTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SubmitAvatarVideoTaskRequest : Tea.TeaModel {
+    public class App : Tea.TeaModel {
+        public var appId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                self.appId = dict["AppId"] as! String
+            }
+        }
+    }
+    public var app: SubmitAvatarVideoTaskRequest.App?
+
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
+
+    public var tenantId: Int64?
+
+    public var title: String?
+
+    public var videoParams: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.app?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.app != nil {
+            map["App"] = self.app?.toMap()
+        }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.videoParams != nil {
+            map["VideoParams"] = self.videoParams!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("App") && dict["App"] != nil {
+            var model = SubmitAvatarVideoTaskRequest.App()
+            model.fromMap(dict["App"] as! [String: Any])
+            self.app = model
+        }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
+        }
+        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
+            self.tenantId = dict["TenantId"] as! Int64
+        }
+        if dict.keys.contains("Title") && dict["Title"] != nil {
+            self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("VideoParams") && dict["VideoParams"] != nil {
+            self.videoParams = dict["VideoParams"] as! String
+        }
+    }
+}
+
+public class SubmitAvatarVideoTaskShrinkRequest : Tea.TeaModel {
+    public var appShrink: String?
+
+    public var callback: Bool?
+
+    public var callbackParams: String?
+
+    public var extParams: String?
+
+    public var tenantId: Int64?
+
+    public var title: String?
+
+    public var videoParams: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appShrink != nil {
+            map["App"] = self.appShrink!
+        }
+        if self.callback != nil {
+            map["Callback"] = self.callback!
+        }
+        if self.callbackParams != nil {
+            map["CallbackParams"] = self.callbackParams!
+        }
+        if self.extParams != nil {
+            map["ExtParams"] = self.extParams!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.videoParams != nil {
+            map["VideoParams"] = self.videoParams!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("App") && dict["App"] != nil {
+            self.appShrink = dict["App"] as! String
+        }
+        if dict.keys.contains("Callback") && dict["Callback"] != nil {
+            self.callback = dict["Callback"] as! Bool
+        }
+        if dict.keys.contains("CallbackParams") && dict["CallbackParams"] != nil {
+            self.callbackParams = dict["CallbackParams"] as! String
+        }
+        if dict.keys.contains("ExtParams") && dict["ExtParams"] != nil {
+            self.extParams = dict["ExtParams"] as! String
+        }
+        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
+            self.tenantId = dict["TenantId"] as! Int64
+        }
+        if dict.keys.contains("Title") && dict["Title"] != nil {
+            self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("VideoParams") && dict["VideoParams"] != nil {
+            self.videoParams = dict["VideoParams"] as! String
+        }
+    }
+}
+
+public class SubmitAvatarVideoTaskResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var taskUuid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.taskUuid != nil {
+                map["TaskUuid"] = self.taskUuid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TaskUuid") && dict["TaskUuid"] != nil {
+                self.taskUuid = dict["TaskUuid"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: SubmitAvatarVideoTaskResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = SubmitAvatarVideoTaskResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class SubmitAvatarVideoTaskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitAvatarVideoTaskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SubmitAvatarVideoTaskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

@@ -1108,6 +1108,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAvatarVideoTaskWithOptions(_ tmpReq: SubmitAvatarVideoTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitAvatarVideoTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitAvatarVideoTaskShrinkRequest = SubmitAvatarVideoTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.app)) {
+            request.appShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.app, "App", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appShrink)) {
+            query["App"] = request.appShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.callback)) {
+            query["Callback"] = request.callback!;
+        }
+        if (!TeaUtils.Client.isUnset(request.callbackParams)) {
+            query["CallbackParams"] = request.callbackParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.extParams)) {
+            query["ExtParams"] = request.extParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["TenantId"] = request.tenantId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.videoParams)) {
+            query["VideoParams"] = request.videoParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitAvatarVideoTask",
+            "version": "2022-01-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitAvatarVideoTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitAvatarVideoTask(_ request: SubmitAvatarVideoTaskRequest) async throws -> SubmitAvatarVideoTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitAvatarVideoTaskWithOptions(request as! SubmitAvatarVideoTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitTextTo2DAvatarVideoTaskWithOptions(_ tmpReq: SubmitTextTo2DAvatarVideoTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitTextTo2DAvatarVideoTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitTextTo2DAvatarVideoTaskShrinkRequest = SubmitTextTo2DAvatarVideoTaskShrinkRequest([:])
