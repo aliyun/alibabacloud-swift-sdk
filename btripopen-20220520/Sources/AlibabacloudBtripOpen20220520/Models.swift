@@ -68190,7 +68190,11 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
 
             public var cityAdCode: String?
 
+            public var hotelAddress: String?
+
             public var hotelName: String?
+
+            public var hotelPhone: String?
 
             public var hotelSupportVatInvoiceType: Int32?
 
@@ -68226,8 +68230,14 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 if self.cityAdCode != nil {
                     map["city_ad_code"] = self.cityAdCode!
                 }
+                if self.hotelAddress != nil {
+                    map["hotel_address"] = self.hotelAddress!
+                }
                 if self.hotelName != nil {
                     map["hotel_name"] = self.hotelName!
+                }
+                if self.hotelPhone != nil {
+                    map["hotel_phone"] = self.hotelPhone!
                 }
                 if self.hotelSupportVatInvoiceType != nil {
                     map["hotel_support_vat_invoice_type"] = self.hotelSupportVatInvoiceType!
@@ -68257,8 +68267,14 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("city_ad_code") && dict["city_ad_code"] != nil {
                     self.cityAdCode = dict["city_ad_code"] as! String
                 }
+                if dict.keys.contains("hotel_address") && dict["hotel_address"] != nil {
+                    self.hotelAddress = dict["hotel_address"] as! String
+                }
                 if dict.keys.contains("hotel_name") && dict["hotel_name"] != nil {
                     self.hotelName = dict["hotel_name"] as! String
+                }
+                if dict.keys.contains("hotel_phone") && dict["hotel_phone"] != nil {
+                    self.hotelPhone = dict["hotel_phone"] as! String
                 }
                 if dict.keys.contains("hotel_support_vat_invoice_type") && dict["hotel_support_vat_invoice_type"] != nil {
                     self.hotelSupportVatInvoiceType = dict["hotel_support_vat_invoice_type"] as! Int32
@@ -68324,6 +68340,8 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
 
             public var departName: String?
 
+            public var exceedApplyNos: [String]?
+
             public var extendField: String?
 
             public var gmtCreate: Int64?
@@ -68379,6 +68397,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if self.departName != nil {
                     map["depart_name"] = self.departName!
+                }
+                if self.exceedApplyNos != nil {
+                    map["exceed_apply_nos"] = self.exceedApplyNos!
                 }
                 if self.extendField != nil {
                     map["extend_field"] = self.extendField!
@@ -68437,6 +68458,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("depart_name") && dict["depart_name"] != nil {
                     self.departName = dict["depart_name"] as! String
+                }
+                if dict.keys.contains("exceed_apply_nos") && dict["exceed_apply_nos"] != nil {
+                    self.exceedApplyNos = dict["exceed_apply_nos"] as! [String]
                 }
                 if dict.keys.contains("extend_field") && dict["extend_field"] != nil {
                     self.extendField = dict["extend_field"] as! String
