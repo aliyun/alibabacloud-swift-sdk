@@ -132,14 +132,22 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createArtifactBuildRuleWithOptions(_ request: CreateArtifactBuildRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateArtifactBuildRuleResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createArtifactBuildRuleWithOptions(_ tmpReq: CreateArtifactBuildRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateArtifactBuildRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateArtifactBuildRuleShrinkRequest = CreateArtifactBuildRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
+            request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.artifactType)) {
             query["ArtifactType"] = request.artifactType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
+            query["Parameters"] = request.parametersShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scopeId)) {
             query["ScopeId"] = request.scopeId ?? "";

@@ -418,6 +418,8 @@ public class CreateArtifactBuildRuleRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var parameters: [String: Any]?
+
     public var scopeId: String?
 
     public var scopeType: String?
@@ -442,6 +444,9 @@ public class CreateArtifactBuildRuleRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
         if self.scopeId != nil {
             map["ScopeId"] = self.scopeId!
         }
@@ -457,6 +462,71 @@ public class CreateArtifactBuildRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parameters = dict["Parameters"] as! [String: Any]
+        }
+        if dict.keys.contains("ScopeId") && dict["ScopeId"] != nil {
+            self.scopeId = dict["ScopeId"] as! String
+        }
+        if dict.keys.contains("ScopeType") && dict["ScopeType"] != nil {
+            self.scopeType = dict["ScopeType"] as! String
+        }
+    }
+}
+
+public class CreateArtifactBuildRuleShrinkRequest : Tea.TeaModel {
+    public var artifactType: String?
+
+    public var instanceId: String?
+
+    public var parametersShrink: String?
+
+    public var scopeId: String?
+
+    public var scopeType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.artifactType != nil {
+            map["ArtifactType"] = self.artifactType!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.scopeId != nil {
+            map["ScopeId"] = self.scopeId!
+        }
+        if self.scopeType != nil {
+            map["ScopeType"] = self.scopeType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArtifactType") && dict["ArtifactType"] != nil {
+            self.artifactType = dict["ArtifactType"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parametersShrink = dict["Parameters"] as! String
         }
         if dict.keys.contains("ScopeId") && dict["ScopeId"] != nil {
             self.scopeId = dict["ScopeId"] as! String
