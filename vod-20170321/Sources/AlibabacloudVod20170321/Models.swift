@@ -29604,6 +29604,8 @@ public class PreloadVodObjectCachesResponse : Tea.TeaModel {
 }
 
 public class ProduceEditingProjectVideoRequest : Tea.TeaModel {
+    public var appId: String?
+
     public var coverURL: String?
 
     public var description_: String?
@@ -29640,6 +29642,9 @@ public class ProduceEditingProjectVideoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
         if self.coverURL != nil {
             map["CoverURL"] = self.coverURL!
         }
@@ -29677,6 +29682,9 @@ public class ProduceEditingProjectVideoRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
         if dict.keys.contains("CoverURL") && dict["CoverURL"] != nil {
             self.coverURL = dict["CoverURL"] as! String
         }

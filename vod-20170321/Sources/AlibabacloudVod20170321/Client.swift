@@ -11,6 +11,7 @@ open class Client : AlibabacloudOpenApi.Client {
         self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         self._endpointMap = [
+            "cn-hangzhou": "vod.cn-shanghai.aliyuncs.com",
             "ap-northeast-2-pop": "vod.aliyuncs.com",
             "ap-southeast-2": "vod.aliyuncs.com",
             "ap-southeast-3": "vod.aliyuncs.com",
@@ -22,7 +23,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-edge-1": "vod.aliyuncs.com",
             "cn-fujian": "vod.aliyuncs.com",
             "cn-haidian-cm12-c01": "vod.aliyuncs.com",
-            "cn-hangzhou": "vod.aliyuncs.com",
             "cn-hangzhou-bj-b01": "vod.aliyuncs.com",
             "cn-hangzhou-finance": "vod.aliyuncs.com",
             "cn-hangzhou-internal-prod-1": "vod.aliyuncs.com",
@@ -30,7 +30,6 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-internal-test-2": "vod.aliyuncs.com",
             "cn-hangzhou-internal-test-3": "vod.aliyuncs.com",
             "cn-hangzhou-test-306": "vod.aliyuncs.com",
-            "cn-hongkong": "vod.aliyuncs.com",
             "cn-hongkong-finance-pop": "vod.aliyuncs.com",
             "cn-huhehaote": "vod.aliyuncs.com",
             "cn-huhehaote-nebula-1": "vod.aliyuncs.com",
@@ -50,15 +49,12 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-yushanfang": "vod.aliyuncs.com",
             "cn-zhangbei": "vod.aliyuncs.com",
             "cn-zhangbei-na61-b01": "vod.aliyuncs.com",
-            "cn-zhangjiakou": "vod.aliyuncs.com",
             "cn-zhangjiakou-na62-a01": "vod.aliyuncs.com",
             "cn-zhengzhou-nebula-1": "vod.aliyuncs.com",
-            "eu-west-1": "vod.aliyuncs.com",
             "eu-west-1-oxs": "vod.aliyuncs.com",
             "me-east-1": "vod.aliyuncs.com",
             "rus-west-1-pop": "vod.aliyuncs.com",
-            "us-east-1": "vod.aliyuncs.com",
-            "us-west-1": "vod.aliyuncs.com"
+            "us-east-1": "vod.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("vod", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -4391,6 +4387,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func produceEditingProjectVideoWithOptions(_ request: ProduceEditingProjectVideoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ProduceEditingProjectVideoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.coverURL)) {
             query["CoverURL"] = request.coverURL ?? "";
         }
