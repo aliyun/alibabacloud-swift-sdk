@@ -1064,6 +1064,191 @@ public class AttachCommonBandwidthPackageToLoadBalancerResponse : Tea.TeaModel {
     }
 }
 
+public class CancelShiftLoadBalancerZonesRequest : Tea.TeaModel {
+    public class ZoneMappings : Tea.TeaModel {
+        public var vSwitchId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var loadBalancerId: String?
+
+    public var zoneMappings: [CancelShiftLoadBalancerZonesRequest.ZoneMappings]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.zoneMappings != nil {
+            var tmp : [Any] = []
+            for k in self.zoneMappings! {
+                tmp.append(k.toMap())
+            }
+            map["ZoneMappings"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("LoadBalancerId") && dict["LoadBalancerId"] != nil {
+            self.loadBalancerId = dict["LoadBalancerId"] as! String
+        }
+        if dict.keys.contains("ZoneMappings") && dict["ZoneMappings"] != nil {
+            var tmp : [CancelShiftLoadBalancerZonesRequest.ZoneMappings] = []
+            for v in dict["ZoneMappings"] as! [Any] {
+                var model = CancelShiftLoadBalancerZonesRequest.ZoneMappings()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.zoneMappings = tmp
+        }
+    }
+}
+
+public class CancelShiftLoadBalancerZonesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CancelShiftLoadBalancerZonesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CancelShiftLoadBalancerZonesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CancelShiftLoadBalancerZonesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateAScriptsRequest : Tea.TeaModel {
     public class AScripts : Tea.TeaModel {
         public var AScriptName: String?
@@ -2611,6 +2796,10 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
     }
     public class ZoneMappings : Tea.TeaModel {
+        public var allocationId: String?
+
+        public var intranetAddress: String?
+
         public var vSwitchId: String?
 
         public var zoneId: String?
@@ -2629,6 +2818,12 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.allocationId != nil {
+                map["AllocationId"] = self.allocationId!
+            }
+            if self.intranetAddress != nil {
+                map["IntranetAddress"] = self.intranetAddress!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -2639,6 +2834,12 @@ public class CreateLoadBalancerRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllocationId") && dict["AllocationId"] != nil {
+                self.allocationId = dict["AllocationId"] as! String
+            }
+            if dict.keys.contains("IntranetAddress") && dict["IntranetAddress"] != nil {
+                self.intranetAddress = dict["IntranetAddress"] as! String
+            }
             if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
                 self.vSwitchId = dict["VSwitchId"] as! String
             }
@@ -6226,6 +6427,8 @@ public class CreateServerGroupRequest : Tea.TeaModel {
 
     public var uchConfig: CreateServerGroupRequest.UchConfig?
 
+    public var upstreamKeepaliveEnabled: Bool?
+
     public var vpcId: String?
 
     public override init() {
@@ -6285,6 +6488,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
         if self.uchConfig != nil {
             map["UchConfig"] = self.uchConfig?.toMap()
         }
+        if self.upstreamKeepaliveEnabled != nil {
+            map["UpstreamKeepaliveEnabled"] = self.upstreamKeepaliveEnabled!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -6341,6 +6547,9 @@ public class CreateServerGroupRequest : Tea.TeaModel {
             var model = CreateServerGroupRequest.UchConfig()
             model.fromMap(dict["UchConfig"] as! [String: Any])
             self.uchConfig = model
+        }
+        if dict.keys.contains("UpstreamKeepaliveEnabled") && dict["UpstreamKeepaliveEnabled"] != nil {
+            self.upstreamKeepaliveEnabled = dict["UpstreamKeepaliveEnabled"] as! Bool
         }
         if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
             self.vpcId = dict["VpcId"] as! String
@@ -11355,6 +11564,8 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
 
             public var eipType: String?
 
+            public var intranetAddress: String?
+
             public var ipv6Address: String?
 
             public override init() {
@@ -11380,6 +11591,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 if self.eipType != nil {
                     map["EipType"] = self.eipType!
                 }
+                if self.intranetAddress != nil {
+                    map["IntranetAddress"] = self.intranetAddress!
+                }
                 if self.ipv6Address != nil {
                     map["Ipv6Address"] = self.ipv6Address!
                 }
@@ -11395,6 +11609,9 @@ public class GetLoadBalancerAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EipType") && dict["EipType"] != nil {
                     self.eipType = dict["EipType"] as! String
+                }
+                if dict.keys.contains("IntranetAddress") && dict["IntranetAddress"] != nil {
+                    self.intranetAddress = dict["IntranetAddress"] as! String
                 }
                 if dict.keys.contains("Ipv6Address") && dict["Ipv6Address"] != nil {
                     self.ipv6Address = dict["Ipv6Address"] as! String
@@ -20355,6 +20572,191 @@ public class StartListenerResponse : Tea.TeaModel {
     }
 }
 
+public class StartShiftLoadBalancerZonesRequest : Tea.TeaModel {
+    public class ZoneMappings : Tea.TeaModel {
+        public var vSwitchId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var loadBalancerId: String?
+
+    public var zoneMappings: [StartShiftLoadBalancerZonesRequest.ZoneMappings]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.zoneMappings != nil {
+            var tmp : [Any] = []
+            for k in self.zoneMappings! {
+                tmp.append(k.toMap())
+            }
+            map["ZoneMappings"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("LoadBalancerId") && dict["LoadBalancerId"] != nil {
+            self.loadBalancerId = dict["LoadBalancerId"] as! String
+        }
+        if dict.keys.contains("ZoneMappings") && dict["ZoneMappings"] != nil {
+            var tmp : [StartShiftLoadBalancerZonesRequest.ZoneMappings] = []
+            for v in dict["ZoneMappings"] as! [Any] {
+                var model = StartShiftLoadBalancerZonesRequest.ZoneMappings()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.zoneMappings = tmp
+        }
+    }
+}
+
+public class StartShiftLoadBalancerZonesResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class StartShiftLoadBalancerZonesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: StartShiftLoadBalancerZonesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = StartShiftLoadBalancerZonesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class StopListenerRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -22774,6 +23176,8 @@ public class UpdateLoadBalancerEditionResponse : Tea.TeaModel {
 
 public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
     public class ZoneMappings : Tea.TeaModel {
+        public var intranetAddress: String?
+
         public var vSwitchId: String?
 
         public var zoneId: String?
@@ -22792,6 +23196,9 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.intranetAddress != nil {
+                map["IntranetAddress"] = self.intranetAddress!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -22802,6 +23209,9 @@ public class UpdateLoadBalancerZonesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IntranetAddress") && dict["IntranetAddress"] != nil {
+                self.intranetAddress = dict["IntranetAddress"] as! String
+            }
             if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
                 self.vSwitchId = dict["VSwitchId"] as! String
             }
@@ -26084,6 +26494,8 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
 
     public var uchConfig: UpdateServerGroupAttributeRequest.UchConfig?
 
+    public var upstreamKeepaliveEnabled: Bool?
+
     public override init() {
         super.init()
     }
@@ -26128,6 +26540,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
         if self.uchConfig != nil {
             map["UchConfig"] = self.uchConfig?.toMap()
         }
+        if self.upstreamKeepaliveEnabled != nil {
+            map["UpstreamKeepaliveEnabled"] = self.upstreamKeepaliveEnabled!
+        }
         return map
     }
 
@@ -26164,6 +26579,9 @@ public class UpdateServerGroupAttributeRequest : Tea.TeaModel {
             var model = UpdateServerGroupAttributeRequest.UchConfig()
             model.fromMap(dict["UchConfig"] as! [String: Any])
             self.uchConfig = model
+        }
+        if dict.keys.contains("UpstreamKeepaliveEnabled") && dict["UpstreamKeepaliveEnabled"] != nil {
+            self.upstreamKeepaliveEnabled = dict["UpstreamKeepaliveEnabled"] as! Bool
         }
     }
 }
