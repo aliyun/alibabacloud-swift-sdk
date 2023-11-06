@@ -315,6 +315,8 @@ public class CreateNetworkPathRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var sourceId: String?
 
     public var sourceIpAddress: String?
@@ -358,6 +360,9 @@ public class CreateNetworkPathRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
         }
         if self.sourceId != nil {
             map["SourceId"] = self.sourceId!
@@ -405,6 +410,9 @@ public class CreateNetworkPathRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("SourceId") && dict["SourceId"] != nil {
             self.sourceId = dict["SourceId"] as! String
