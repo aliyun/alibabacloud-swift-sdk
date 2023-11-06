@@ -8143,6 +8143,8 @@ public class CreateListenerRequest : Tea.TeaModel {
 
     public var endpointGroupConfigurations: [CreateListenerRequest.EndpointGroupConfigurations]?
 
+    public var idleTimeout: Int32?
+
     public var name: String?
 
     public var portRanges: [CreateListenerRequest.PortRanges]?
@@ -8152,6 +8154,8 @@ public class CreateListenerRequest : Tea.TeaModel {
     public var proxyProtocol: Bool?
 
     public var regionId: String?
+
+    public var requestTimeout: Int32?
 
     public var securityPolicyId: String?
 
@@ -8207,6 +8211,9 @@ public class CreateListenerRequest : Tea.TeaModel {
             }
             map["EndpointGroupConfigurations"] = tmp
         }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
@@ -8225,6 +8232,9 @@ public class CreateListenerRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.requestTimeout != nil {
+            map["RequestTimeout"] = self.requestTimeout!
         }
         if self.securityPolicyId != nil {
             map["SecurityPolicyId"] = self.securityPolicyId!
@@ -8284,6 +8294,9 @@ public class CreateListenerRequest : Tea.TeaModel {
             }
             self.endpointGroupConfigurations = tmp
         }
+        if dict.keys.contains("IdleTimeout") && dict["IdleTimeout"] != nil {
+            self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
         }
@@ -8306,6 +8319,9 @@ public class CreateListenerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RequestTimeout") && dict["RequestTimeout"] != nil {
+            self.requestTimeout = dict["RequestTimeout"] as! Int32
         }
         if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
             self.securityPolicyId = dict["SecurityPolicyId"] as! String
@@ -16656,6 +16672,8 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
 
     public var description_: String?
 
+    public var idleTimeout: Int32?
+
     public var listenerId: String?
 
     public var name: String?
@@ -16669,6 +16687,8 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
     public var relatedAcls: [DescribeListenerResponseBody.RelatedAcls]?
 
     public var requestId: String?
+
+    public var requestTimeout: Int32?
 
     public var securityPolicyId: String?
 
@@ -16728,6 +16748,9 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
         if self.listenerId != nil {
             map["ListenerId"] = self.listenerId!
         }
@@ -16756,6 +16779,9 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.requestTimeout != nil {
+            map["RequestTimeout"] = self.requestTimeout!
         }
         if self.securityPolicyId != nil {
             map["SecurityPolicyId"] = self.securityPolicyId!
@@ -16823,6 +16849,9 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("IdleTimeout") && dict["IdleTimeout"] != nil {
+            self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
         if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
             self.listenerId = dict["ListenerId"] as! String
         }
@@ -16859,6 +16888,9 @@ public class DescribeListenerResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RequestTimeout") && dict["RequestTimeout"] != nil {
+            self.requestTimeout = dict["RequestTimeout"] as! Int32
         }
         if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
             self.securityPolicyId = dict["SecurityPolicyId"] as! String
@@ -30990,6 +31022,8 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var idleTimeout: Int32?
+
         public var listenerId: String?
 
         public var name: String?
@@ -30999,6 +31033,8 @@ public class ListListenersResponseBody : Tea.TeaModel {
         public var protocol_: String?
 
         public var proxyProtocol: Bool?
+
+        public var requestTimeout: Int32?
 
         public var securityPolicyId: String?
 
@@ -31055,6 +31091,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.idleTimeout != nil {
+                map["IdleTimeout"] = self.idleTimeout!
+            }
             if self.listenerId != nil {
                 map["ListenerId"] = self.listenerId!
             }
@@ -31073,6 +31112,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
             }
             if self.proxyProtocol != nil {
                 map["ProxyProtocol"] = self.proxyProtocol!
+            }
+            if self.requestTimeout != nil {
+                map["RequestTimeout"] = self.requestTimeout!
             }
             if self.securityPolicyId != nil {
                 map["SecurityPolicyId"] = self.securityPolicyId!
@@ -31137,6 +31179,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
             }
+            if dict.keys.contains("IdleTimeout") && dict["IdleTimeout"] != nil {
+                self.idleTimeout = dict["IdleTimeout"] as! Int32
+            }
             if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
                 self.listenerId = dict["ListenerId"] as! String
             }
@@ -31159,6 +31204,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProxyProtocol") && dict["ProxyProtocol"] != nil {
                 self.proxyProtocol = dict["ProxyProtocol"] as! Bool
+            }
+            if dict.keys.contains("RequestTimeout") && dict["RequestTimeout"] != nil {
+                self.requestTimeout = dict["RequestTimeout"] as! Int32
             }
             if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
                 self.securityPolicyId = dict["SecurityPolicyId"] as! String
@@ -38324,6 +38372,8 @@ public class UpdateListenerRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var idleTimeout: Int32?
+
     public var listenerId: String?
 
     public var name: String?
@@ -38335,6 +38385,8 @@ public class UpdateListenerRequest : Tea.TeaModel {
     public var proxyProtocol: String?
 
     public var regionId: String?
+
+    public var requestTimeout: Int32?
 
     public var securityPolicyId: String?
 
@@ -38378,6 +38430,9 @@ public class UpdateListenerRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
         if self.listenerId != nil {
             map["ListenerId"] = self.listenerId!
         }
@@ -38399,6 +38454,9 @@ public class UpdateListenerRequest : Tea.TeaModel {
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.requestTimeout != nil {
+            map["RequestTimeout"] = self.requestTimeout!
         }
         if self.securityPolicyId != nil {
             map["SecurityPolicyId"] = self.securityPolicyId!
@@ -38441,6 +38499,9 @@ public class UpdateListenerRequest : Tea.TeaModel {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("IdleTimeout") && dict["IdleTimeout"] != nil {
+            self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
         if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
             self.listenerId = dict["ListenerId"] as! String
         }
@@ -38466,6 +38527,9 @@ public class UpdateListenerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RequestTimeout") && dict["RequestTimeout"] != nil {
+            self.requestTimeout = dict["RequestTimeout"] as! Int32
         }
         if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
             self.securityPolicyId = dict["SecurityPolicyId"] as! String
