@@ -2052,8 +2052,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listLoadBalancersWithOptions(_ request: ListLoadBalancersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListLoadBalancersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.addressIpVersion)) {
+            query["AddressIpVersion"] = request.addressIpVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.addressType)) {
             query["AddressType"] = request.addressType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.DNSName)) {
+            query["DNSName"] = request.DNSName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv6AddressType)) {
+            query["Ipv6AddressType"] = request.ipv6AddressType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.loadBalancerBussinessStatus)) {
             query["LoadBalancerBussinessStatus"] = request.loadBalancerBussinessStatus ?? "";

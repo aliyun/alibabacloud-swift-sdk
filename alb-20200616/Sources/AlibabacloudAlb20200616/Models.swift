@@ -1991,6 +1991,7 @@ public class CreateHealthCheckTemplateResponse : Tea.TeaModel {
 
 public class CreateListenerRequest : Tea.TeaModel {
     public class CaCertificates : Tea.TeaModel {
+        public var certificateId: String?
 
         public override init() {
             super.init()
@@ -2006,10 +2007,16 @@ public class CreateListenerRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.certificateId != nil {
+                map["CertificateId"] = self.certificateId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CertificateId") && dict["CertificateId"] != nil {
+                self.certificateId = dict["CertificateId"] as! String
+            }
         }
     }
     public class Certificates : Tea.TeaModel {
@@ -14922,7 +14929,13 @@ public class ListLoadBalancersRequest : Tea.TeaModel {
             }
         }
     }
+    public var addressIpVersion: String?
+
     public var addressType: String?
+
+    public var DNSName: String?
+
+    public var ipv6AddressType: String?
 
     public var loadBalancerBussinessStatus: String?
 
@@ -14960,8 +14973,17 @@ public class ListLoadBalancersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addressIpVersion != nil {
+            map["AddressIpVersion"] = self.addressIpVersion!
+        }
         if self.addressType != nil {
             map["AddressType"] = self.addressType!
+        }
+        if self.DNSName != nil {
+            map["DNSName"] = self.DNSName!
+        }
+        if self.ipv6AddressType != nil {
+            map["Ipv6AddressType"] = self.ipv6AddressType!
         }
         if self.loadBalancerBussinessStatus != nil {
             map["LoadBalancerBussinessStatus"] = self.loadBalancerBussinessStatus!
@@ -15004,8 +15026,17 @@ public class ListLoadBalancersRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddressIpVersion") && dict["AddressIpVersion"] != nil {
+            self.addressIpVersion = dict["AddressIpVersion"] as! String
+        }
         if dict.keys.contains("AddressType") && dict["AddressType"] != nil {
             self.addressType = dict["AddressType"] as! String
+        }
+        if dict.keys.contains("DNSName") && dict["DNSName"] != nil {
+            self.DNSName = dict["DNSName"] as! String
+        }
+        if dict.keys.contains("Ipv6AddressType") && dict["Ipv6AddressType"] != nil {
+            self.ipv6AddressType = dict["Ipv6AddressType"] as! String
         }
         if dict.keys.contains("LoadBalancerBussinessStatus") && dict["LoadBalancerBussinessStatus"] != nil {
             self.loadBalancerBussinessStatus = dict["LoadBalancerBussinessStatus"] as! String
@@ -21826,6 +21857,7 @@ public class UpdateHealthCheckTemplateAttributeResponse : Tea.TeaModel {
 
 public class UpdateListenerAttributeRequest : Tea.TeaModel {
     public class CaCertificates : Tea.TeaModel {
+        public var certificateId: String?
 
         public override init() {
             super.init()
@@ -21841,10 +21873,16 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.certificateId != nil {
+                map["CertificateId"] = self.certificateId!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CertificateId") && dict["CertificateId"] != nil {
+                self.certificateId = dict["CertificateId"] as! String
+            }
         }
     }
     public class Certificates : Tea.TeaModel {
