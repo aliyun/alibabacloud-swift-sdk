@@ -62456,6 +62456,83 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 }
             }
         }
+        public class Stream : Tea.TeaModel {
+            public var customHeaderContent: [String: String]?
+
+            public var playerType: Int32?
+
+            public var streamAddressType: Int32?
+
+            public var streamMonitorTimeout: Int32?
+
+            public var streamType: Int32?
+
+            public var targetUrl: String?
+
+            public var whiteList: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.customHeaderContent != nil {
+                    map["CustomHeaderContent"] = self.customHeaderContent!
+                }
+                if self.playerType != nil {
+                    map["PlayerType"] = self.playerType!
+                }
+                if self.streamAddressType != nil {
+                    map["StreamAddressType"] = self.streamAddressType!
+                }
+                if self.streamMonitorTimeout != nil {
+                    map["StreamMonitorTimeout"] = self.streamMonitorTimeout!
+                }
+                if self.streamType != nil {
+                    map["StreamType"] = self.streamType!
+                }
+                if self.targetUrl != nil {
+                    map["TargetUrl"] = self.targetUrl!
+                }
+                if self.whiteList != nil {
+                    map["WhiteList"] = self.whiteList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CustomHeaderContent") && dict["CustomHeaderContent"] != nil {
+                    self.customHeaderContent = dict["CustomHeaderContent"] as! [String: String]
+                }
+                if dict.keys.contains("PlayerType") && dict["PlayerType"] != nil {
+                    self.playerType = dict["PlayerType"] as! Int32
+                }
+                if dict.keys.contains("StreamAddressType") && dict["StreamAddressType"] != nil {
+                    self.streamAddressType = dict["StreamAddressType"] as! Int32
+                }
+                if dict.keys.contains("StreamMonitorTimeout") && dict["StreamMonitorTimeout"] != nil {
+                    self.streamMonitorTimeout = dict["StreamMonitorTimeout"] as! Int32
+                }
+                if dict.keys.contains("StreamType") && dict["StreamType"] != nil {
+                    self.streamType = dict["StreamType"] as! Int32
+                }
+                if dict.keys.contains("TargetUrl") && dict["TargetUrl"] != nil {
+                    self.targetUrl = dict["TargetUrl"] as! String
+                }
+                if dict.keys.contains("WhiteList") && dict["WhiteList"] != nil {
+                    self.whiteList = dict["WhiteList"] as! String
+                }
+            }
+        }
         public class Website : Tea.TeaModel {
             public var automaticScrolling: Int32?
 
@@ -62639,6 +62716,8 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
 
         public var netTCP: UpdateTimingSyntheticTaskRequest.MonitorConf.NetTCP?
 
+        public var stream: UpdateTimingSyntheticTaskRequest.MonitorConf.Stream?
+
         public var website: UpdateTimingSyntheticTaskRequest.MonitorConf.Website?
 
         public override init() {
@@ -62656,6 +62735,7 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
             try self.netDNS?.validate()
             try self.netICMP?.validate()
             try self.netTCP?.validate()
+            try self.stream?.validate()
             try self.website?.validate()
         }
 
@@ -62675,6 +62755,9 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
             }
             if self.netTCP != nil {
                 map["NetTCP"] = self.netTCP?.toMap()
+            }
+            if self.stream != nil {
+                map["Stream"] = self.stream?.toMap()
             }
             if self.website != nil {
                 map["Website"] = self.website?.toMap()
@@ -62707,6 +62790,11 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
                 var model = UpdateTimingSyntheticTaskRequest.MonitorConf.NetTCP()
                 model.fromMap(dict["NetTCP"] as! [String: Any])
                 self.netTCP = model
+            }
+            if dict.keys.contains("Stream") && dict["Stream"] != nil {
+                var model = UpdateTimingSyntheticTaskRequest.MonitorConf.Stream()
+                model.fromMap(dict["Stream"] as! [String: Any])
+                self.stream = model
             }
             if dict.keys.contains("Website") && dict["Website"] != nil {
                 var model = UpdateTimingSyntheticTaskRequest.MonitorConf.Website()
