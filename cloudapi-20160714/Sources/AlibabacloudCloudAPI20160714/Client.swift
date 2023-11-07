@@ -7861,6 +7861,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAppsAuthToApiProductWithOptions(_ request: SetAppsAuthToApiProductRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetAppsAuthToApiProductResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.apiProductId)) {
+            query["ApiProductId"] = request.apiProductId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appIds)) {
+            query["AppIds"] = request.appIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.authValidTime)) {
+            query["AuthValidTime"] = request.authValidTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetAppsAuthToApiProduct",
+            "version": "2016-07-14",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetAppsAuthToApiProductResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setAppsAuthToApiProduct(_ request: SetAppsAuthToApiProductRequest) async throws -> SetAppsAuthToApiProductResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setAppsAuthToApiProductWithOptions(request as! SetAppsAuthToApiProductRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setAppsAuthoritiesWithOptions(_ request: SetAppsAuthoritiesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetAppsAuthoritiesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
