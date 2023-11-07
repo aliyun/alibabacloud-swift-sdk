@@ -616,6 +616,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWebTerminalWithOptions(_ JobId: String, _ PodId: String, _ request: GetWebTerminalRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWebTerminalResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isShared)) {
+            query["IsShared"] = request.isShared!;
+        }
         if (!TeaUtils.Client.isUnset(request.podUid)) {
             query["PodUid"] = request.podUid ?? "";
         }

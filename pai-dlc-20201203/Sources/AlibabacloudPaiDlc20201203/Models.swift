@@ -856,6 +856,68 @@ public class EnvVar : Tea.TeaModel {
     }
 }
 
+public class EventInfo : Tea.TeaModel {
+    public var content: String?
+
+    public var id: String?
+
+    public var podId: String?
+
+    public var podUid: String?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.podId != nil {
+            map["PodId"] = self.podId!
+        }
+        if self.podUid != nil {
+            map["PodUid"] = self.podUid!
+        }
+        if self.time != nil {
+            map["Time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("PodId") && dict["PodId"] != nil {
+            self.podId = dict["PodId"] as! String
+        }
+        if dict.keys.contains("PodUid") && dict["PodUid"] != nil {
+            self.podUid = dict["PodUid"] as! String
+        }
+        if dict.keys.contains("Time") && dict["Time"] != nil {
+            self.time = dict["Time"] as! String
+        }
+    }
+}
+
 public class ExtraPodSpec : Tea.TeaModel {
     public var initContainers: [ContainerSpec]?
 
@@ -2125,6 +2187,76 @@ public class JobSpec : Tea.TeaModel {
         }
         if dict.keys.contains("UseSpotInstance") && dict["UseSpotInstance"] != nil {
             self.useSpotInstance = dict["UseSpotInstance"] as! Bool
+        }
+    }
+}
+
+public class LogInfo : Tea.TeaModel {
+    public var content: String?
+
+    public var id: String?
+
+    public var podId: String?
+
+    public var podUid: String?
+
+    public var source: String?
+
+    public var time: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.podId != nil {
+            map["PodId"] = self.podId!
+        }
+        if self.podUid != nil {
+            map["PodUid"] = self.podUid!
+        }
+        if self.source != nil {
+            map["Source"] = self.source!
+        }
+        if self.time != nil {
+            map["Time"] = self.time!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("PodId") && dict["PodId"] != nil {
+            self.podId = dict["PodId"] as! String
+        }
+        if dict.keys.contains("PodUid") && dict["PodUid"] != nil {
+            self.podUid = dict["PodUid"] as! String
+        }
+        if dict.keys.contains("Source") && dict["Source"] != nil {
+            self.source = dict["Source"] as! String
+        }
+        if dict.keys.contains("Time") && dict["Time"] != nil {
+            self.time = dict["Time"] as! String
         }
     }
 }
@@ -5912,6 +6044,8 @@ public class GetTokenResponse : Tea.TeaModel {
 }
 
 public class GetWebTerminalRequest : Tea.TeaModel {
+    public var isShared: Bool?
+
     public var podUid: String?
 
     public override init() {
@@ -5928,6 +6062,9 @@ public class GetWebTerminalRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.isShared != nil {
+            map["IsShared"] = self.isShared!
+        }
         if self.podUid != nil {
             map["PodUid"] = self.podUid!
         }
@@ -5935,6 +6072,9 @@ public class GetWebTerminalRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IsShared") && dict["IsShared"] != nil {
+            self.isShared = dict["IsShared"] as! Bool
+        }
         if dict.keys.contains("PodUid") && dict["PodUid"] != nil {
             self.podUid = dict["PodUid"] as! String
         }
