@@ -6693,8 +6693,6 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
 
         public var accountName: String?
 
-        public var accountPassword: String?
-
         public var accountPasswordValidTime: String?
 
         public var accountStatus: String?
@@ -6726,9 +6724,6 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
             if self.accountName != nil {
                 map["AccountName"] = self.accountName!
             }
-            if self.accountPassword != nil {
-                map["AccountPassword"] = self.accountPassword!
-            }
             if self.accountPasswordValidTime != nil {
                 map["AccountPasswordValidTime"] = self.accountPasswordValidTime!
             }
@@ -6757,9 +6752,6 @@ public class DescribeAccountsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AccountName") && dict["AccountName"] != nil {
                 self.accountName = dict["AccountName"] as! String
-            }
-            if dict.keys.contains("AccountPassword") && dict["AccountPassword"] != nil {
-                self.accountPassword = dict["AccountPassword"] as! String
             }
             if dict.keys.contains("AccountPasswordValidTime") && dict["AccountPasswordValidTime"] != nil {
                 self.accountPasswordValidTime = dict["AccountPasswordValidTime"] as! String
@@ -9696,8 +9688,6 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var deletionLock: Int32?
 
-    public var deployUnit: String?
-
     public var engine: String?
 
     public var expireTime: String?
@@ -9839,9 +9829,6 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.deletionLock != nil {
             map["DeletionLock"] = self.deletionLock!
-        }
-        if self.deployUnit != nil {
-            map["DeployUnit"] = self.deployUnit!
         }
         if self.engine != nil {
             map["Engine"] = self.engine!
@@ -10017,9 +10004,6 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DeletionLock") && dict["DeletionLock"] != nil {
             self.deletionLock = dict["DeletionLock"] as! Int32
-        }
-        if dict.keys.contains("DeployUnit") && dict["DeployUnit"] != nil {
-            self.deployUnit = dict["DeployUnit"] as! String
         }
         if dict.keys.contains("Engine") && dict["Engine"] != nil {
             self.engine = dict["Engine"] as! String
@@ -13462,6 +13446,8 @@ public class DescribeDBClusterTDEResponse : Tea.TeaModel {
 public class DescribeDBClusterVersionRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var describeType: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -13487,6 +13473,9 @@ public class DescribeDBClusterVersionRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.describeType != nil {
+            map["DescribeType"] = self.describeType!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -13505,6 +13494,9 @@ public class DescribeDBClusterVersionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("DescribeType") && dict["DescribeType"] != nil {
+            self.describeType = dict["DescribeType"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -31794,8 +31786,6 @@ public class ModifyPendingMaintenanceActionResponse : Tea.TeaModel {
 public class OpenAITaskRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
-    public var describeType: String?
-
     public var nodeType: String?
 
     public var ownerAccount: String?
@@ -31831,9 +31821,6 @@ public class OpenAITaskRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
-        if self.describeType != nil {
-            map["DescribeType"] = self.describeType!
-        }
         if self.nodeType != nil {
             map["NodeType"] = self.nodeType!
         }
@@ -31867,9 +31854,6 @@ public class OpenAITaskRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
-        }
-        if dict.keys.contains("DescribeType") && dict["DescribeType"] != nil {
-            self.describeType = dict["DescribeType"] as! String
         }
         if dict.keys.contains("NodeType") && dict["NodeType"] != nil {
             self.nodeType = dict["NodeType"] as! String
