@@ -63529,6 +63529,8 @@ public class HotelOrderCancelHeaders : Tea.TeaModel {
 }
 
 public class HotelOrderCancelRequest : Tea.TeaModel {
+    public var btripOrderId: String?
+
     public var disOrderId: String?
 
     public override init() {
@@ -63545,6 +63547,9 @@ public class HotelOrderCancelRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.btripOrderId != nil {
+            map["btrip_order_id"] = self.btripOrderId!
+        }
         if self.disOrderId != nil {
             map["dis_order_id"] = self.disOrderId!
         }
@@ -63552,6 +63557,9 @@ public class HotelOrderCancelRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_order_id") && dict["btrip_order_id"] != nil {
+            self.btripOrderId = dict["btrip_order_id"] as! String
+        }
         if dict.keys.contains("dis_order_id") && dict["dis_order_id"] != nil {
             self.disOrderId = dict["dis_order_id"] as! String
         }
@@ -64805,6 +64813,8 @@ public class HotelOrderDetailInfoHeaders : Tea.TeaModel {
 }
 
 public class HotelOrderDetailInfoRequest : Tea.TeaModel {
+    public var btripOrderId: String?
+
     public var disOrderId: String?
 
     public override init() {
@@ -64821,6 +64831,9 @@ public class HotelOrderDetailInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.btripOrderId != nil {
+            map["btrip_order_id"] = self.btripOrderId!
+        }
         if self.disOrderId != nil {
             map["dis_order_id"] = self.disOrderId!
         }
@@ -64828,6 +64841,9 @@ public class HotelOrderDetailInfoRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_order_id") && dict["btrip_order_id"] != nil {
+            self.btripOrderId = dict["btrip_order_id"] as! String
+        }
         if dict.keys.contains("dis_order_id") && dict["dis_order_id"] != nil {
             self.disOrderId = dict["dis_order_id"] as! String
         }
@@ -79693,9 +79709,13 @@ public class IsvRuleSaveRequest : Tea.TeaModel {
             }
         }
     }
+    public var applyNeed: Bool?
+
     public var bookType: String?
 
     public var bookuserList: [IsvRuleSaveRequest.BookuserList]?
+
+    public var ruleNeed: Bool?
 
     public var status: Int32?
 
@@ -79715,6 +79735,9 @@ public class IsvRuleSaveRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applyNeed != nil {
+            map["apply_need"] = self.applyNeed!
+        }
         if self.bookType != nil {
             map["book_type"] = self.bookType!
         }
@@ -79724,6 +79747,9 @@ public class IsvRuleSaveRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["bookuser_list"] = tmp
+        }
+        if self.ruleNeed != nil {
+            map["rule_need"] = self.ruleNeed!
         }
         if self.status != nil {
             map["status"] = self.status!
@@ -79735,6 +79761,9 @@ public class IsvRuleSaveRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apply_need") && dict["apply_need"] != nil {
+            self.applyNeed = dict["apply_need"] as! Bool
+        }
         if dict.keys.contains("book_type") && dict["book_type"] != nil {
             self.bookType = dict["book_type"] as! String
         }
@@ -79749,6 +79778,9 @@ public class IsvRuleSaveRequest : Tea.TeaModel {
             }
             self.bookuserList = tmp
         }
+        if dict.keys.contains("rule_need") && dict["rule_need"] != nil {
+            self.ruleNeed = dict["rule_need"] as! Bool
+        }
         if dict.keys.contains("status") && dict["status"] != nil {
             self.status = dict["status"] as! Int32
         }
@@ -79759,9 +79791,13 @@ public class IsvRuleSaveRequest : Tea.TeaModel {
 }
 
 public class IsvRuleSaveShrinkRequest : Tea.TeaModel {
+    public var applyNeed: Bool?
+
     public var bookType: String?
 
     public var bookuserListShrink: String?
+
+    public var ruleNeed: Bool?
 
     public var status: Int32?
 
@@ -79781,11 +79817,17 @@ public class IsvRuleSaveShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applyNeed != nil {
+            map["apply_need"] = self.applyNeed!
+        }
         if self.bookType != nil {
             map["book_type"] = self.bookType!
         }
         if self.bookuserListShrink != nil {
             map["bookuser_list"] = self.bookuserListShrink!
+        }
+        if self.ruleNeed != nil {
+            map["rule_need"] = self.ruleNeed!
         }
         if self.status != nil {
             map["status"] = self.status!
@@ -79797,11 +79839,17 @@ public class IsvRuleSaveShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("apply_need") && dict["apply_need"] != nil {
+            self.applyNeed = dict["apply_need"] as! Bool
+        }
         if dict.keys.contains("book_type") && dict["book_type"] != nil {
             self.bookType = dict["book_type"] as! String
         }
         if dict.keys.contains("bookuser_list") && dict["bookuser_list"] != nil {
             self.bookuserListShrink = dict["bookuser_list"] as! String
+        }
+        if dict.keys.contains("rule_need") && dict["rule_need"] != nil {
+            self.ruleNeed = dict["rule_need"] as! Bool
         }
         if dict.keys.contains("status") && dict["status"] != nil {
             self.status = dict["status"] as! Int32

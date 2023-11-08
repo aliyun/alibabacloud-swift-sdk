@@ -4469,6 +4469,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func hotelOrderCancelWithOptions(_ request: HotelOrderCancelRequest, _ headers: HotelOrderCancelHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> HotelOrderCancelResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripOrderId)) {
+            query["btrip_order_id"] = request.btripOrderId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.disOrderId)) {
             query["dis_order_id"] = request.disOrderId ?? "";
         }
@@ -4623,6 +4626,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func hotelOrderDetailInfoWithOptions(_ request: HotelOrderDetailInfoRequest, _ headers: HotelOrderDetailInfoHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> HotelOrderDetailInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripOrderId)) {
+            query["btrip_order_id"] = request.btripOrderId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.disOrderId)) {
             query["dis_order_id"] = request.disOrderId ?? "";
         }
@@ -6090,11 +6096,17 @@ open class Client : AlibabacloudOpenApi.Client {
             request.bookuserListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.bookuserList, "bookuser_list", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applyNeed)) {
+            body["apply_need"] = request.applyNeed!;
+        }
         if (!TeaUtils.Client.isUnset(request.bookType)) {
             body["book_type"] = request.bookType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.bookuserListShrink)) {
             body["bookuser_list"] = request.bookuserListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleNeed)) {
+            body["rule_need"] = request.ruleNeed!;
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             body["status"] = request.status!;
