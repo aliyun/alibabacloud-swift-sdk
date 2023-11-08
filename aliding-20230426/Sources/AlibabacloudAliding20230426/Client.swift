@@ -370,6 +370,346 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetFormDataByIdListWithOptions(_ tmpReq: BatchGetFormDataByIdListRequest, _ tmpHeader: BatchGetFormDataByIdListHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchGetFormDataByIdListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchGetFormDataByIdListShrinkRequest = BatchGetFormDataByIdListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: BatchGetFormDataByIdListShrinkHeaders = BatchGetFormDataByIdListShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.formInstanceIdList)) {
+            request.formInstanceIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.formInstanceIdList, "FormInstanceIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceIdListShrink)) {
+            body["FormInstanceIdList"] = request.formInstanceIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needFormInstanceValue)) {
+            body["NeedFormInstanceValue"] = request.needFormInstanceValue!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchGetFormDataByIdList",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/batchGetFormDataByIdList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchGetFormDataByIdListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchGetFormDataByIdList(_ request: BatchGetFormDataByIdListRequest) async throws -> BatchGetFormDataByIdListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BatchGetFormDataByIdListHeaders = BatchGetFormDataByIdListHeaders([:])
+        return try await batchGetFormDataByIdListWithOptions(request as! BatchGetFormDataByIdListRequest, headers as! BatchGetFormDataByIdListHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchRemovalByFormInstanceIdListWithOptions(_ tmpReq: BatchRemovalByFormInstanceIdListRequest, _ tmpHeader: BatchRemovalByFormInstanceIdListHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchRemovalByFormInstanceIdListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchRemovalByFormInstanceIdListShrinkRequest = BatchRemovalByFormInstanceIdListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: BatchRemovalByFormInstanceIdListShrinkHeaders = BatchRemovalByFormInstanceIdListShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.formInstanceIdList)) {
+            request.formInstanceIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.formInstanceIdList, "FormInstanceIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asynchronousExecution)) {
+            body["AsynchronousExecution"] = request.asynchronousExecution!;
+        }
+        if (!TeaUtils.Client.isUnset(request.executeExpression)) {
+            body["ExecuteExpression"] = request.executeExpression!;
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceIdListShrink)) {
+            body["FormInstanceIdList"] = request.formInstanceIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchRemovalByFormInstanceIdList",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/batchRemovalByFormInstanceIdList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchRemovalByFormInstanceIdListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchRemovalByFormInstanceIdList(_ request: BatchRemovalByFormInstanceIdListRequest) async throws -> BatchRemovalByFormInstanceIdListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BatchRemovalByFormInstanceIdListHeaders = BatchRemovalByFormInstanceIdListHeaders([:])
+        return try await batchRemovalByFormInstanceIdListWithOptions(request as! BatchRemovalByFormInstanceIdListRequest, headers as! BatchRemovalByFormInstanceIdListHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchSaveFormDataWithOptions(_ tmpReq: BatchSaveFormDataRequest, _ tmpHeader: BatchSaveFormDataHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSaveFormDataResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchSaveFormDataShrinkRequest = BatchSaveFormDataShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: BatchSaveFormDataShrinkHeaders = BatchSaveFormDataShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.formDataJsonList)) {
+            request.formDataJsonListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.formDataJsonList, "FormDataJsonList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asynchronousExecution)) {
+            body["AsynchronousExecution"] = request.asynchronousExecution!;
+        }
+        if (!TeaUtils.Client.isUnset(request.formDataJsonListShrink)) {
+            body["FormDataJsonList"] = request.formDataJsonListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keepRunningAfterException)) {
+            body["KeepRunningAfterException"] = request.keepRunningAfterException!;
+        }
+        if (!TeaUtils.Client.isUnset(request.noExecuteExpression)) {
+            body["NoExecuteExpression"] = request.noExecuteExpression!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchSaveFormData",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/batchSaveFormData",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchSaveFormDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchSaveFormData(_ request: BatchSaveFormDataRequest) async throws -> BatchSaveFormDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BatchSaveFormDataHeaders = BatchSaveFormDataHeaders([:])
+        return try await batchSaveFormDataWithOptions(request as! BatchSaveFormDataRequest, headers as! BatchSaveFormDataHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateFormDataByInstanceIdWithOptions(_ tmpReq: BatchUpdateFormDataByInstanceIdRequest, _ tmpHeader: BatchUpdateFormDataByInstanceIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUpdateFormDataByInstanceIdResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchUpdateFormDataByInstanceIdShrinkRequest = BatchUpdateFormDataByInstanceIdShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: BatchUpdateFormDataByInstanceIdShrinkHeaders = BatchUpdateFormDataByInstanceIdShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.formInstanceIdList)) {
+            request.formInstanceIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.formInstanceIdList, "FormInstanceIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asynchronousExecution)) {
+            body["AsynchronousExecution"] = request.asynchronousExecution!;
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceIdListShrink)) {
+            body["FormInstanceIdList"] = request.formInstanceIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreEmpty)) {
+            body["IgnoreEmpty"] = request.ignoreEmpty!;
+        }
+        if (!TeaUtils.Client.isUnset(request.noExecuteExpression)) {
+            body["NoExecuteExpression"] = request.noExecuteExpression!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateFormDataJson)) {
+            body["UpdateFormDataJson"] = request.updateFormDataJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useLatestFormSchemaVersion)) {
+            body["UseLatestFormSchemaVersion"] = request.useLatestFormSchemaVersion!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUpdateFormDataByInstanceId",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/batchUpdateFormDataByInstanceId",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUpdateFormDataByInstanceIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateFormDataByInstanceId(_ request: BatchUpdateFormDataByInstanceIdRequest) async throws -> BatchUpdateFormDataByInstanceIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BatchUpdateFormDataByInstanceIdHeaders = BatchUpdateFormDataByInstanceIdHeaders([:])
+        return try await batchUpdateFormDataByInstanceIdWithOptions(request as! BatchUpdateFormDataByInstanceIdRequest, headers as! BatchUpdateFormDataByInstanceIdHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateFormDataByInstanceMapWithOptions(_ tmpReq: BatchUpdateFormDataByInstanceMapRequest, _ tmpHeader: BatchUpdateFormDataByInstanceMapHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUpdateFormDataByInstanceMapResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: BatchUpdateFormDataByInstanceMapShrinkRequest = BatchUpdateFormDataByInstanceMapShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: BatchUpdateFormDataByInstanceMapShrinkHeaders = BatchUpdateFormDataByInstanceMapShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.updateFormDataJsonMap)) {
+            request.updateFormDataJsonMapShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.updateFormDataJsonMap, "UpdateFormDataJsonMap", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.asynchronousExecution)) {
+            body["AsynchronousExecution"] = request.asynchronousExecution!;
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ignoreEmpty)) {
+            body["IgnoreEmpty"] = request.ignoreEmpty!;
+        }
+        if (!TeaUtils.Client.isUnset(request.noExecuteExpression)) {
+            body["NoExecuteExpression"] = request.noExecuteExpression!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateFormDataJsonMapShrink)) {
+            body["UpdateFormDataJsonMap"] = request.updateFormDataJsonMapShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useLatestFormSchemaVersion)) {
+            body["UseLatestFormSchemaVersion"] = request.useLatestFormSchemaVersion!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUpdateFormDataByInstanceMap",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/batchUpdateFormDataByInstanceMap",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUpdateFormDataByInstanceMapResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateFormDataByInstanceMap(_ request: BatchUpdateFormDataByInstanceMapRequest) async throws -> BatchUpdateFormDataByInstanceMapResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BatchUpdateFormDataByInstanceMapHeaders = BatchUpdateFormDataByInstanceMapHeaders([:])
+        return try await batchUpdateFormDataByInstanceMapWithOptions(request as! BatchUpdateFormDataByInstanceMapRequest, headers as! BatchUpdateFormDataByInstanceMapHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cancelScheduleConferenceWithOptions(_ tmpReq: CancelScheduleConferenceRequest, _ tmpHeader: CancelScheduleConferenceHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CancelScheduleConferenceResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CancelScheduleConferenceShrinkRequest = CancelScheduleConferenceShrinkRequest([:])
@@ -911,6 +1251,69 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: CreateMeetingRoomGroupHeaders = CreateMeetingRoomGroupHeaders([:])
         return try await createMeetingRoomGroupWithOptions(request as! CreateMeetingRoomGroupRequest, headers as! CreateMeetingRoomGroupHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOrUpdateFormDataWithOptions(_ request: CreateOrUpdateFormDataRequest, _ tmpHeader: CreateOrUpdateFormDataHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrUpdateFormDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: CreateOrUpdateFormDataShrinkHeaders = CreateOrUpdateFormDataShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formDataJson)) {
+            body["FormDataJson"] = request.formDataJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.noExecuteExpression)) {
+            body["NoExecuteExpression"] = request.noExecuteExpression!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchCondition)) {
+            body["SearchCondition"] = request.searchCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            body["UserId"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateOrUpdateFormData",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/createOrUpdateFormData",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateOrUpdateFormDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createOrUpdateFormData(_ request: CreateOrUpdateFormDataRequest) async throws -> CreateOrUpdateFormDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateOrUpdateFormDataHeaders = CreateOrUpdateFormDataHeaders([:])
+        return try await createOrUpdateFormDataWithOptions(request as! CreateOrUpdateFormDataRequest, headers as! CreateOrUpdateFormDataHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1740,6 +2143,60 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFormDataWithOptions(_ request: DeleteFormDataRequest, _ tmpHeader: DeleteFormDataHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFormDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: DeleteFormDataShrinkHeaders = DeleteFormDataShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceId)) {
+            body["FormInstanceId"] = request.formInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteFormData",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/deleteFormData",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteFormDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteFormData(_ request: DeleteFormDataRequest) async throws -> DeleteFormDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteFormDataHeaders = DeleteFormDataHeaders([:])
+        return try await deleteFormDataWithOptions(request as! DeleteFormDataRequest, headers as! DeleteFormDataHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteLiveWithOptions(_ tmpReq: DeleteLiveRequest, _ tmpHeader: DeleteLiveHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteLiveResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeleteLiveShrinkRequest = DeleteLiveShrinkRequest([:])
@@ -2390,6 +2847,222 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: GetEventHeaders = GetEventHeaders([:])
         return try await getEventWithOptions(request as! GetEventRequest, headers as! GetEventHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFieldDefByUuidWithOptions(_ request: GetFieldDefByUuidRequest, _ tmpHeader: GetFieldDefByUuidHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFieldDefByUuidResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: GetFieldDefByUuidShrinkHeaders = GetFieldDefByUuidShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFieldDefByUuid",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/getFieldDefByUuid",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFieldDefByUuidResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFieldDefByUuid(_ request: GetFieldDefByUuidRequest) async throws -> GetFieldDefByUuidResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetFieldDefByUuidHeaders = GetFieldDefByUuidHeaders([:])
+        return try await getFieldDefByUuidWithOptions(request as! GetFieldDefByUuidRequest, headers as! GetFieldDefByUuidHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFormComponentDefinitionListWithOptions(_ request: GetFormComponentDefinitionListRequest, _ tmpHeader: GetFormComponentDefinitionListHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFormComponentDefinitionListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: GetFormComponentDefinitionListShrinkHeaders = GetFormComponentDefinitionListShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFormComponentDefinitionList",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/getFormComponentDefinitionList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFormComponentDefinitionListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFormComponentDefinitionList(_ request: GetFormComponentDefinitionListRequest) async throws -> GetFormComponentDefinitionListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetFormComponentDefinitionListHeaders = GetFormComponentDefinitionListHeaders([:])
+        return try await getFormComponentDefinitionListWithOptions(request as! GetFormComponentDefinitionListRequest, headers as! GetFormComponentDefinitionListHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFormDataByIDWithOptions(_ request: GetFormDataByIDRequest, _ tmpHeader: GetFormDataByIDHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFormDataByIDResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: GetFormDataByIDShrinkHeaders = GetFormDataByIDShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFormDataByID",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/getFormDataByID",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFormDataByIDResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFormDataByID(_ request: GetFormDataByIDRequest) async throws -> GetFormDataByIDResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetFormDataByIDHeaders = GetFormDataByIDHeaders([:])
+        return try await getFormDataByIDWithOptions(request as! GetFormDataByIDRequest, headers as! GetFormDataByIDHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFormListInAppWithOptions(_ request: GetFormListInAppRequest, _ tmpHeader: GetFormListInAppHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetFormListInAppResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: GetFormListInAppShrinkHeaders = GetFormListInAppShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formTypes)) {
+            body["FormTypes"] = request.formTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetFormListInApp",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/getFormListInApp",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetFormListInAppResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getFormListInApp(_ request: GetFormListInAppRequest) async throws -> GetFormListInAppResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetFormListInAppHeaders = GetFormListInAppHeaders([:])
+        return try await getFormListInAppWithOptions(request as! GetFormListInAppRequest, headers as! GetFormListInAppHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3751,6 +4424,119 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFormRemarksWithOptions(_ tmpReq: ListFormRemarksRequest, _ tmpHeader: ListFormRemarksHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListFormRemarksResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListFormRemarksShrinkRequest = ListFormRemarksShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: ListFormRemarksShrinkHeaders = ListFormRemarksShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.formInstanceIdList)) {
+            request.formInstanceIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.formInstanceIdList, "FormInstanceIdList", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceIdListShrink)) {
+            body["FormInstanceIdList"] = request.formInstanceIdListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListFormRemarks",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/listFormRemarks",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListFormRemarksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listFormRemarks(_ request: ListFormRemarksRequest) async throws -> ListFormRemarksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListFormRemarksHeaders = ListFormRemarksHeaders([:])
+        return try await listFormRemarksWithOptions(request as! ListFormRemarksRequest, headers as! ListFormRemarksHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNavigationByFormTypeWithOptions(_ request: ListNavigationByFormTypeRequest, _ tmpHeader: ListNavigationByFormTypeHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNavigationByFormTypeResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: ListNavigationByFormTypeShrinkHeaders = ListNavigationByFormTypeShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formType)) {
+            body["FormType"] = request.formType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListNavigationByFormType",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/listNavigationByFormType",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListNavigationByFormTypeResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listNavigationByFormType(_ request: ListNavigationByFormTypeRequest) async throws -> ListNavigationByFormTypeResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListNavigationByFormTypeHeaders = ListNavigationByFormTypeHeaders([:])
+        return try await listNavigationByFormTypeWithOptions(request as! ListNavigationByFormTypeRequest, headers as! ListNavigationByFormTypeHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listNodesWithOptions(_ tmpReq: ListNodesRequest, _ tmpHeader: ListNodesHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListNodesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ListNodesShrinkRequest = ListNodesShrinkRequest([:])
@@ -3881,6 +4667,69 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ListReportHeaders = ListReportHeaders([:])
         return try await listReportWithOptions(request as! ListReportRequest, headers as! ListReportHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTableDataByFormInstanceIdTableIdWithOptions(_ request: ListTableDataByFormInstanceIdTableIdRequest, _ tmpHeader: ListTableDataByFormInstanceIdTableIdHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTableDataByFormInstanceIdTableIdResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: ListTableDataByFormInstanceIdTableIdShrinkHeaders = ListTableDataByFormInstanceIdTableIdShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceId)) {
+            body["FormInstanceId"] = request.formInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tableFieldId)) {
+            body["TableFieldId"] = request.tableFieldId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTableDataByFormInstanceIdTableId",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/listTableDataByFormInstanceIdTableId",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTableDataByFormInstanceIdTableIdResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTableDataByFormInstanceIdTableId(_ request: ListTableDataByFormInstanceIdTableIdRequest) async throws -> ListTableDataByFormInstanceIdTableIdResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListTableDataByFormInstanceIdTableIdHeaders = ListTableDataByFormInstanceIdTableIdHeaders([:])
+        return try await listTableDataByFormInstanceIdTableIdWithOptions(request as! ListTableDataByFormInstanceIdTableIdRequest, headers as! ListTableDataByFormInstanceIdTableIdHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5295,6 +6144,453 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveFormDataWithOptions(_ request: SaveFormDataRequest, _ tmpHeader: SaveFormDataHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveFormDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: SaveFormDataShrinkHeaders = SaveFormDataShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formDataJson)) {
+            body["FormDataJson"] = request.formDataJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SaveFormData",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/saveFormData",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SaveFormDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func saveFormData(_ request: SaveFormDataRequest) async throws -> SaveFormDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SaveFormDataHeaders = SaveFormDataHeaders([:])
+        return try await saveFormDataWithOptions(request as! SaveFormDataRequest, headers as! SaveFormDataHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchEmployeeFieldValuesWithOptions(_ request: SearchEmployeeFieldValuesRequest, _ tmpHeader: SearchEmployeeFieldValuesHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchEmployeeFieldValuesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: SearchEmployeeFieldValuesShrinkHeaders = SearchEmployeeFieldValuesShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createFromTimeGMT)) {
+            body["CreateFromTimeGMT"] = request.createFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createToTimeGMT)) {
+            body["CreateToTimeGMT"] = request.createToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedFromTimeGMT)) {
+            body["ModifiedFromTimeGMT"] = request.modifiedFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedToTimeGMT)) {
+            body["ModifiedToTimeGMT"] = request.modifiedToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originatorId)) {
+            body["OriginatorId"] = request.originatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchFieldJson)) {
+            body["SearchFieldJson"] = request.searchFieldJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetFieldJson)) {
+            body["TargetFieldJson"] = request.targetFieldJson ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchEmployeeFieldValues",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/searchEmployeeFieldValues",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchEmployeeFieldValuesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchEmployeeFieldValues(_ request: SearchEmployeeFieldValuesRequest) async throws -> SearchEmployeeFieldValuesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SearchEmployeeFieldValuesHeaders = SearchEmployeeFieldValuesHeaders([:])
+        return try await searchEmployeeFieldValuesWithOptions(request as! SearchEmployeeFieldValuesRequest, headers as! SearchEmployeeFieldValuesHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDataIdListWithOptions(_ request: SearchFormDataIdListRequest, _ tmpHeader: SearchFormDataIdListHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchFormDataIdListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: SearchFormDataIdListShrinkHeaders = SearchFormDataIdListShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createFromTimeGMT)) {
+            body["CreateFromTimeGMT"] = request.createFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createToTimeGMT)) {
+            body["CreateToTimeGMT"] = request.createToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedFromTimeGMT)) {
+            body["ModifiedFromTimeGMT"] = request.modifiedFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedToTimeGMT)) {
+            body["ModifiedToTimeGMT"] = request.modifiedToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originatorId)) {
+            body["OriginatorId"] = request.originatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchFieldJson)) {
+            body["SearchFieldJson"] = request.searchFieldJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchFormDataIdList",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/searchFormDataIdList",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchFormDataIdListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDataIdList(_ request: SearchFormDataIdListRequest) async throws -> SearchFormDataIdListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SearchFormDataIdListHeaders = SearchFormDataIdListHeaders([:])
+        return try await searchFormDataIdListWithOptions(request as! SearchFormDataIdListRequest, headers as! SearchFormDataIdListHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDataSecondGenerationWithOptions(_ request: SearchFormDataSecondGenerationRequest, _ tmpHeader: SearchFormDataSecondGenerationHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchFormDataSecondGenerationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: SearchFormDataSecondGenerationShrinkHeaders = SearchFormDataSecondGenerationShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createFromTimeGMT)) {
+            body["CreateFromTimeGMT"] = request.createFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createToTimeGMT)) {
+            body["CreateToTimeGMT"] = request.createToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedFromTimeGMT)) {
+            body["ModifiedFromTimeGMT"] = request.modifiedFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedToTimeGMT)) {
+            body["ModifiedToTimeGMT"] = request.modifiedToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderConfigJson)) {
+            body["OrderConfigJson"] = request.orderConfigJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originatorId)) {
+            body["OriginatorId"] = request.originatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchCondition)) {
+            body["SearchCondition"] = request.searchCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchFormDataSecondGeneration",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/searchFormDataSecondGeneration",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchFormDataSecondGenerationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDataSecondGeneration(_ request: SearchFormDataSecondGenerationRequest) async throws -> SearchFormDataSecondGenerationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SearchFormDataSecondGenerationHeaders = SearchFormDataSecondGenerationHeaders([:])
+        return try await searchFormDataSecondGenerationWithOptions(request as! SearchFormDataSecondGenerationRequest, headers as! SearchFormDataSecondGenerationHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDataSecondGenerationNoTableFieldWithOptions(_ request: SearchFormDataSecondGenerationNoTableFieldRequest, _ tmpHeader: SearchFormDataSecondGenerationNoTableFieldHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchFormDataSecondGenerationNoTableFieldResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: SearchFormDataSecondGenerationNoTableFieldShrinkHeaders = SearchFormDataSecondGenerationNoTableFieldShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createFromTimeGMT)) {
+            body["CreateFromTimeGMT"] = request.createFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createToTimeGMT)) {
+            body["CreateToTimeGMT"] = request.createToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedFromTimeGMT)) {
+            body["ModifiedFromTimeGMT"] = request.modifiedFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedToTimeGMT)) {
+            body["ModifiedToTimeGMT"] = request.modifiedToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orderConfigJson)) {
+            body["OrderConfigJson"] = request.orderConfigJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originatorId)) {
+            body["OriginatorId"] = request.originatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            body["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchCondition)) {
+            body["SearchCondition"] = request.searchCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchFormDataSecondGenerationNoTableField",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/searchFormDataSecondGenerationNoTableField",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchFormDataSecondGenerationNoTableFieldResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDataSecondGenerationNoTableField(_ request: SearchFormDataSecondGenerationNoTableFieldRequest) async throws -> SearchFormDataSecondGenerationNoTableFieldResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SearchFormDataSecondGenerationNoTableFieldHeaders = SearchFormDataSecondGenerationNoTableFieldHeaders([:])
+        return try await searchFormDataSecondGenerationNoTableFieldWithOptions(request as! SearchFormDataSecondGenerationNoTableFieldRequest, headers as! SearchFormDataSecondGenerationNoTableFieldHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDatasWithOptions(_ request: SearchFormDatasRequest, _ tmpHeader: SearchFormDatasHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchFormDatasResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: SearchFormDatasShrinkHeaders = SearchFormDatasShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createFromTimeGMT)) {
+            body["CreateFromTimeGMT"] = request.createFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createToTimeGMT)) {
+            body["CreateToTimeGMT"] = request.createToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            body["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dynamicOrder)) {
+            body["DynamicOrder"] = request.dynamicOrder ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formUuid)) {
+            body["FormUuid"] = request.formUuid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedFromTimeGMT)) {
+            body["ModifiedFromTimeGMT"] = request.modifiedFromTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.modifiedToTimeGMT)) {
+            body["ModifiedToTimeGMT"] = request.modifiedToTimeGMT ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.originatorId)) {
+            body["OriginatorId"] = request.originatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            body["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchFieldJson)) {
+            body["SearchFieldJson"] = request.searchFieldJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SearchFormDatas",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/searchFormDatas",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SearchFormDatasResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchFormDatas(_ request: SearchFormDatasRequest) async throws -> SearchFormDatasResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: SearchFormDatasHeaders = SearchFormDatasHeaders([:])
+        return try await searchFormDatasWithOptions(request as! SearchFormDatasRequest, headers as! SearchFormDatasHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setColumnsVisibilityWithOptions(_ tmpReq: SetColumnsVisibilityRequest, _ tmpHeader: SetColumnsVisibilityHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetColumnsVisibilityResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SetColumnsVisibilityShrinkRequest = SetColumnsVisibilityShrinkRequest([:])
@@ -5807,6 +7103,66 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFormDataWithOptions(_ request: UpdateFormDataRequest, _ tmpHeader: UpdateFormDataHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFormDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var headers: UpdateFormDataShrinkHeaders = UpdateFormDataShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.formInstanceId)) {
+            body["FormInstanceId"] = request.formInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.updateFormDataJson)) {
+            body["UpdateFormDataJson"] = request.updateFormDataJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useLatestVersion)) {
+            body["UseLatestVersion"] = request.useLatestVersion!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateFormData",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/updateFormData",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateFormDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateFormData(_ request: UpdateFormDataRequest) async throws -> UpdateFormDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateFormDataHeaders = UpdateFormDataHeaders([:])
+        return try await updateFormDataWithOptions(request as! UpdateFormDataRequest, headers as! UpdateFormDataHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateLiveWithOptions(_ tmpReq: UpdateLiveRequest, _ tmpHeader: UpdateLiveHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateLiveResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpdateLiveShrinkRequest = UpdateLiveShrinkRequest([:])
@@ -6153,6 +7509,71 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateScheduleConferenceHeaders = UpdateScheduleConferenceHeaders([:])
         return try await updateScheduleConferenceWithOptions(request as! UpdateScheduleConferenceRequest, headers as! UpdateScheduleConferenceHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateStatusWithOptions(_ tmpReq: UpdateStatusRequest, _ tmpHeader: UpdateStatusHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateStatusResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateStatusShrinkRequest = UpdateStatusShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: UpdateStatusShrinkHeaders = UpdateStatusShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.errorLines)) {
+            request.errorLinesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.errorLines, "ErrorLines", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            body["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.errorLinesShrink)) {
+            body["ErrorLines"] = request.errorLinesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.importSequence)) {
+            body["ImportSequence"] = request.importSequence ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            body["Language"] = request.language ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            body["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.systemToken)) {
+            body["SystemToken"] = request.systemToken ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateStatus",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/yida/updateStatus",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateStatus(_ request: UpdateStatusRequest) async throws -> UpdateStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateStatusHeaders = UpdateStatusHeaders([:])
+        return try await updateStatusWithOptions(request as! UpdateStatusRequest, headers as! UpdateStatusHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
