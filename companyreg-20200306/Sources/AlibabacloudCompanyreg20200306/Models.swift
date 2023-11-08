@@ -6133,6 +6133,8 @@ public class SubmitSolutionRequest : Tea.TeaModel {
 
     public var intentionBizId: String?
 
+    public var operateType: String?
+
     public var solution: String?
 
     public var userId: String?
@@ -6157,6 +6159,9 @@ public class SubmitSolutionRequest : Tea.TeaModel {
         if self.intentionBizId != nil {
             map["IntentionBizId"] = self.intentionBizId!
         }
+        if self.operateType != nil {
+            map["OperateType"] = self.operateType!
+        }
         if self.solution != nil {
             map["Solution"] = self.solution!
         }
@@ -6172,6 +6177,9 @@ public class SubmitSolutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IntentionBizId") && dict["IntentionBizId"] != nil {
             self.intentionBizId = dict["IntentionBizId"] as! String
+        }
+        if dict.keys.contains("OperateType") && dict["OperateType"] != nil {
+            self.operateType = dict["OperateType"] as! String
         }
         if dict.keys.contains("Solution") && dict["Solution"] != nil {
             self.solution = dict["Solution"] as! String

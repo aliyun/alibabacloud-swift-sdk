@@ -1266,6 +1266,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.intentionBizId)) {
             query["IntentionBizId"] = request.intentionBizId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.operateType)) {
+            query["OperateType"] = request.operateType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.solution)) {
             query["Solution"] = request.solution ?? "";
         }
