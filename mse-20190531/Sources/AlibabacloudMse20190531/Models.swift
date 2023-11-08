@@ -46029,8 +46029,6 @@ public class ListZnodeChildrenResponse : Tea.TeaModel {
 
 public class ModifyGovernanceKubernetesClusterRequest : Tea.TeaModel {
     public class NamespaceInfos : Tea.TeaModel {
-        public var labels: [String: String]?
-
         public var mseNamespace: String?
 
         public var name: String?
@@ -46049,27 +46047,21 @@ public class ModifyGovernanceKubernetesClusterRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.labels != nil {
-                map["labels"] = self.labels!
-            }
             if self.mseNamespace != nil {
-                map["mseNamespace"] = self.mseNamespace!
+                map["MseNamespace"] = self.mseNamespace!
             }
             if self.name != nil {
-                map["name"] = self.name!
+                map["Name"] = self.name!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("labels") && dict["labels"] != nil {
-                self.labels = dict["labels"] as! [String: String]
+            if dict.keys.contains("MseNamespace") && dict["MseNamespace"] != nil {
+                self.mseNamespace = dict["MseNamespace"] as! String
             }
-            if dict.keys.contains("mseNamespace") && dict["mseNamespace"] != nil {
-                self.mseNamespace = dict["mseNamespace"] as! String
-            }
-            if dict.keys.contains("name") && dict["name"] != nil {
-                self.name = dict["name"] as! String
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
             }
         }
     }
