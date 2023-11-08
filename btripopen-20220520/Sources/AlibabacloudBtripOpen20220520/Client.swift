@@ -4066,10 +4066,25 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GroupUserSaveShrinkRequest = GroupUserSaveShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.certList)) {
+            request.certListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.certList, "cert_list", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.subCorpIdList)) {
             request.subCorpIdListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.subCorpIdList, "sub_corp_id_list", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseCityCode)) {
+            body["base_city_code"] = request.baseCityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.birthday)) {
+            body["birthday"] = request.birthday ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certListShrink)) {
+            body["cert_list"] = request.certListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            body["gender"] = request.gender ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.jobNo)) {
             body["job_no"] = request.jobNo ?? "";
         }

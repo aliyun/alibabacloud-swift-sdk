@@ -59140,6 +59140,67 @@ public class GroupUserSaveHeaders : Tea.TeaModel {
 }
 
 public class GroupUserSaveRequest : Tea.TeaModel {
+    public class CertList : Tea.TeaModel {
+        public var certExpiredTime: String?
+
+        public var certNation: String?
+
+        public var certNo: String?
+
+        public var certType: Int32?
+
+        public var nationality: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.certExpiredTime != nil {
+                map["cert_expired_time"] = self.certExpiredTime!
+            }
+            if self.certNation != nil {
+                map["cert_nation"] = self.certNation!
+            }
+            if self.certNo != nil {
+                map["cert_no"] = self.certNo!
+            }
+            if self.certType != nil {
+                map["cert_type"] = self.certType!
+            }
+            if self.nationality != nil {
+                map["nationality"] = self.nationality!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cert_expired_time") && dict["cert_expired_time"] != nil {
+                self.certExpiredTime = dict["cert_expired_time"] as! String
+            }
+            if dict.keys.contains("cert_nation") && dict["cert_nation"] != nil {
+                self.certNation = dict["cert_nation"] as! String
+            }
+            if dict.keys.contains("cert_no") && dict["cert_no"] != nil {
+                self.certNo = dict["cert_no"] as! String
+            }
+            if dict.keys.contains("cert_type") && dict["cert_type"] != nil {
+                self.certType = dict["cert_type"] as! Int32
+            }
+            if dict.keys.contains("nationality") && dict["nationality"] != nil {
+                self.nationality = dict["nationality"] as! String
+            }
+        }
+    }
     public class SubCorpIdList : Tea.TeaModel {
         public var departIds: [String]?
 
@@ -59209,6 +59270,14 @@ public class GroupUserSaveRequest : Tea.TeaModel {
             }
         }
     }
+    public var baseCityCode: String?
+
+    public var birthday: String?
+
+    public var certList: [GroupUserSaveRequest.CertList]?
+
+    public var gender: String?
+
     public var jobNo: String?
 
     public var phone: String?
@@ -59235,6 +59304,22 @@ public class GroupUserSaveRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.baseCityCode != nil {
+            map["base_city_code"] = self.baseCityCode!
+        }
+        if self.birthday != nil {
+            map["birthday"] = self.birthday!
+        }
+        if self.certList != nil {
+            var tmp : [Any] = []
+            for k in self.certList! {
+                tmp.append(k.toMap())
+            }
+            map["cert_list"] = tmp
+        }
+        if self.gender != nil {
+            map["gender"] = self.gender!
+        }
         if self.jobNo != nil {
             map["job_no"] = self.jobNo!
         }
@@ -59261,6 +59346,26 @@ public class GroupUserSaveRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("base_city_code") && dict["base_city_code"] != nil {
+            self.baseCityCode = dict["base_city_code"] as! String
+        }
+        if dict.keys.contains("birthday") && dict["birthday"] != nil {
+            self.birthday = dict["birthday"] as! String
+        }
+        if dict.keys.contains("cert_list") && dict["cert_list"] != nil {
+            var tmp : [GroupUserSaveRequest.CertList] = []
+            for v in dict["cert_list"] as! [Any] {
+                var model = GroupUserSaveRequest.CertList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.certList = tmp
+        }
+        if dict.keys.contains("gender") && dict["gender"] != nil {
+            self.gender = dict["gender"] as! String
+        }
         if dict.keys.contains("job_no") && dict["job_no"] != nil {
             self.jobNo = dict["job_no"] as! String
         }
@@ -59291,6 +59396,14 @@ public class GroupUserSaveRequest : Tea.TeaModel {
 }
 
 public class GroupUserSaveShrinkRequest : Tea.TeaModel {
+    public var baseCityCode: String?
+
+    public var birthday: String?
+
+    public var certListShrink: String?
+
+    public var gender: String?
+
     public var jobNo: String?
 
     public var phone: String?
@@ -59317,6 +59430,18 @@ public class GroupUserSaveShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.baseCityCode != nil {
+            map["base_city_code"] = self.baseCityCode!
+        }
+        if self.birthday != nil {
+            map["birthday"] = self.birthday!
+        }
+        if self.certListShrink != nil {
+            map["cert_list"] = self.certListShrink!
+        }
+        if self.gender != nil {
+            map["gender"] = self.gender!
+        }
         if self.jobNo != nil {
             map["job_no"] = self.jobNo!
         }
@@ -59339,6 +59464,18 @@ public class GroupUserSaveShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("base_city_code") && dict["base_city_code"] != nil {
+            self.baseCityCode = dict["base_city_code"] as! String
+        }
+        if dict.keys.contains("birthday") && dict["birthday"] != nil {
+            self.birthday = dict["birthday"] as! String
+        }
+        if dict.keys.contains("cert_list") && dict["cert_list"] != nil {
+            self.certListShrink = dict["cert_list"] as! String
+        }
+        if dict.keys.contains("gender") && dict["gender"] != nil {
+            self.gender = dict["gender"] as! String
+        }
         if dict.keys.contains("job_no") && dict["job_no"] != nil {
             self.jobNo = dict["job_no"] as! String
         }
