@@ -6012,6 +6012,8 @@ public class StartInstanceRequest : Tea.TeaModel {
     }
     public var app: StartInstanceRequest.App?
 
+    public var bizId: String?
+
     public var channel: StartInstanceRequest.Channel?
 
     public var commandRequest: StartInstanceRequest.CommandRequest?
@@ -6041,6 +6043,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         if self.app != nil {
             map["App"] = self.app?.toMap()
         }
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.channel != nil {
             map["Channel"] = self.channel?.toMap()
         }
@@ -6061,6 +6066,9 @@ public class StartInstanceRequest : Tea.TeaModel {
             var model = StartInstanceRequest.App()
             model.fromMap(dict["App"] as! [String: Any])
             self.app = model
+        }
+        if dict.keys.contains("BizId") && dict["BizId"] != nil {
+            self.bizId = dict["BizId"] as! String
         }
         if dict.keys.contains("Channel") && dict["Channel"] != nil {
             var model = StartInstanceRequest.Channel()
@@ -6085,6 +6093,8 @@ public class StartInstanceRequest : Tea.TeaModel {
 
 public class StartInstanceShrinkRequest : Tea.TeaModel {
     public var appShrink: String?
+
+    public var bizId: String?
 
     public var channelShrink: String?
 
@@ -6111,6 +6121,9 @@ public class StartInstanceShrinkRequest : Tea.TeaModel {
         if self.appShrink != nil {
             map["App"] = self.appShrink!
         }
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
         if self.channelShrink != nil {
             map["Channel"] = self.channelShrink!
         }
@@ -6129,6 +6142,9 @@ public class StartInstanceShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("App") && dict["App"] != nil {
             self.appShrink = dict["App"] as! String
+        }
+        if dict.keys.contains("BizId") && dict["BizId"] != nil {
+            self.bizId = dict["BizId"] as! String
         }
         if dict.keys.contains("Channel") && dict["Channel"] != nil {
             self.channelShrink = dict["Channel"] as! String

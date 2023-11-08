@@ -871,6 +871,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appShrink)) {
             query["App"] = request.appShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            query["BizId"] = request.bizId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.channelShrink)) {
             query["Channel"] = request.channelShrink ?? "";
         }
