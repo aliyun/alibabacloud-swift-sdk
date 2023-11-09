@@ -80083,6 +80083,8 @@ public class IsvUserSaveRequest : Tea.TeaModel {
                 }
             }
         }
+        public var baseCityCode: String?
+
         public var birthday: String?
 
         public var certList: [IsvUserSaveRequest.UserList.CertList]?
@@ -80131,6 +80133,9 @@ public class IsvUserSaveRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.baseCityCode != nil {
+                map["base_city_code"] = self.baseCityCode!
+            }
             if self.birthday != nil {
                 map["birthday"] = self.birthday!
             }
@@ -80190,6 +80195,9 @@ public class IsvUserSaveRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("base_city_code") && dict["base_city_code"] != nil {
+                self.baseCityCode = dict["base_city_code"] as! String
+            }
             if dict.keys.contains("birthday") && dict["birthday"] != nil {
                 self.birthday = dict["birthday"] as! String
             }
@@ -80719,6 +80727,8 @@ public class MonthBillGetResponseBody : Tea.TeaModel {
 
             public var ieFlightAmount: Double?
 
+            public var ieHotelAmount: Double?
+
             public var mailBillDate: Int64?
 
             public var serviceAmount: Double?
@@ -80760,6 +80770,9 @@ public class MonthBillGetResponseBody : Tea.TeaModel {
                 if self.ieFlightAmount != nil {
                     map["ieFlightAmount"] = self.ieFlightAmount!
                 }
+                if self.ieHotelAmount != nil {
+                    map["ieHotelAmount"] = self.ieHotelAmount!
+                }
                 if self.mailBillDate != nil {
                     map["mailBillDate"] = self.mailBillDate!
                 }
@@ -80793,6 +80806,9 @@ public class MonthBillGetResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ieFlightAmount") && dict["ieFlightAmount"] != nil {
                     self.ieFlightAmount = dict["ieFlightAmount"] as! Double
+                }
+                if dict.keys.contains("ieHotelAmount") && dict["ieHotelAmount"] != nil {
+                    self.ieHotelAmount = dict["ieHotelAmount"] as! Double
                 }
                 if dict.keys.contains("mailBillDate") && dict["mailBillDate"] != nil {
                     self.mailBillDate = dict["mailBillDate"] as! Int64
