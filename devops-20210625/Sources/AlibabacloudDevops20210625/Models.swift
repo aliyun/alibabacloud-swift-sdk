@@ -26895,6 +26895,8 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
 
         public var document: String?
 
+        public var finishTime: Int64?
+
         public var gmtCreate: Int64?
 
         public var gmtModified: Int64?
@@ -26969,6 +26971,9 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
             }
             if self.document != nil {
                 map["document"] = self.document!
+            }
+            if self.finishTime != nil {
+                map["finishTime"] = self.finishTime!
             }
             if self.gmtCreate != nil {
                 map["gmtCreate"] = self.gmtCreate!
@@ -27059,6 +27064,9 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("document") && dict["document"] != nil {
                 self.document = dict["document"] as! String
+            }
+            if dict.keys.contains("finishTime") && dict["finishTime"] != nil {
+                self.finishTime = dict["finishTime"] as! Int64
             }
             if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
                 self.gmtCreate = dict["gmtCreate"] as! Int64
@@ -45273,6 +45281,8 @@ public class ListWorkitemsResponseBody : Tea.TeaModel {
 
         public var document: String?
 
+        public var finishTime: Int64?
+
         public var gmtCreate: Int64?
 
         public var gmtModified: Int64?
@@ -45332,6 +45342,9 @@ public class ListWorkitemsResponseBody : Tea.TeaModel {
             }
             if self.document != nil {
                 map["document"] = self.document!
+            }
+            if self.finishTime != nil {
+                map["finishTime"] = self.finishTime!
             }
             if self.gmtCreate != nil {
                 map["gmtCreate"] = self.gmtCreate!
@@ -45399,6 +45412,9 @@ public class ListWorkitemsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("document") && dict["document"] != nil {
                 self.document = dict["document"] as! String
+            }
+            if dict.keys.contains("finishTime") && dict["finishTime"] != nil {
+                self.finishTime = dict["finishTime"] as! Int64
             }
             if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
                 self.gmtCreate = dict["gmtCreate"] as! Int64
