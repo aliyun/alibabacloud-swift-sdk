@@ -60,6 +60,42 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMemberWithOptions(_ namespace: String, _ request: CreateMemberRequest, _ headers: CreateMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMemberResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMember",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMemberResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMember(_ namespace: String, _ request: CreateMemberRequest) async throws -> CreateMemberResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreateMemberHeaders = CreateMemberHeaders([:])
+        return try await createMemberWithOptions(namespace as! String, request as! CreateMemberRequest, headers as! CreateMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createSavepointWithOptions(_ namespace: String, _ request: CreateSavepointRequest, _ headers: CreateSavepointHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSavepointResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -207,6 +243,40 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: DeleteJobHeaders = DeleteJobHeaders([:])
         return try await deleteJobWithOptions(namespace as! String, jobId as! String, headers as! DeleteJobHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMemberWithOptions(_ namespace: String, _ member: String, _ headers: DeleteMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMemberResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMember",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(member),
+            "method": "DELETE",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMemberResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMember(_ namespace: String, _ member: String) async throws -> DeleteMemberResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: DeleteMemberHeaders = DeleteMemberHeaders([:])
+        return try await deleteMemberWithOptions(namespace as! String, member as! String, headers as! DeleteMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -465,6 +535,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMemberWithOptions(_ namespace: String, _ member: String, _ headers: GetMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMemberResponse {
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMember",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(member),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMemberResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMember(_ namespace: String, _ member: String) async throws -> GetMemberResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: GetMemberHeaders = GetMemberHeaders([:])
+        return try await getMemberWithOptions(namespace as! String, member as! String, headers as! GetMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getSavepointWithOptions(_ namespace: String, _ savepointId: String, _ headers: GetSavepointHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSavepointResponse {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -668,6 +772,49 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: ListJobsHeaders = ListJobsHeaders([:])
         return try await listJobsWithOptions(namespace as! String, request as! ListJobsRequest, headers as! ListJobsHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMembersWithOptions(_ namespace: String, _ request: ListMembersRequest, _ headers: ListMembersHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMembersResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageIndex)) {
+            query["pageIndex"] = request.pageIndex!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMembers",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMembersResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMembers(_ namespace: String, _ request: ListMembersRequest) async throws -> ListMembersResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ListMembersHeaders = ListMembersHeaders([:])
+        return try await listMembersWithOptions(namespace as! String, request as! ListMembersRequest, headers as! ListMembersHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -904,5 +1051,41 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: UpdateDeploymentHeaders = UpdateDeploymentHeaders([:])
         return try await updateDeploymentWithOptions(namespace as! String, deploymentId as! String, request as! UpdateDeploymentRequest, headers as! UpdateDeploymentHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMemberWithOptions(_ namespace: String, _ request: UpdateMemberRequest, _ headers: UpdateMemberHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMemberResponse {
+        try TeaUtils.Client.validateModel(request)
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.workspace)) {
+            realHeaders["workspace"] = TeaUtils.Client.toJSONString(headers.workspace);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMember",
+            "version": "2022-07-18",
+            "protocol": "HTTPS",
+            "pathname": "/gateway/v2/namespaces/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(namespace) + "/members",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMemberResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMember(_ namespace: String, _ request: UpdateMemberRequest) async throws -> UpdateMemberResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: UpdateMemberHeaders = UpdateMemberHeaders([:])
+        return try await updateMemberWithOptions(namespace as! String, request as! UpdateMemberRequest, headers as! UpdateMemberHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 }
