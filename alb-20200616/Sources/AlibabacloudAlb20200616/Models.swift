@@ -3464,6 +3464,35 @@ public class CreateRuleRequest : Tea.TeaModel {
                 }
             }
         }
+        public class RemoveHeaderConfig : Tea.TeaModel {
+            public var key: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+            }
+        }
         public class RewriteConfig : Tea.TeaModel {
             public var host: String?
 
@@ -3668,6 +3697,8 @@ public class CreateRuleRequest : Tea.TeaModel {
 
         public var redirectConfig: CreateRuleRequest.RuleActions.RedirectConfig?
 
+        public var removeHeaderConfig: CreateRuleRequest.RuleActions.RemoveHeaderConfig?
+
         public var rewriteConfig: CreateRuleRequest.RuleActions.RewriteConfig?
 
         public var trafficLimitConfig: CreateRuleRequest.RuleActions.TrafficLimitConfig?
@@ -3691,6 +3722,7 @@ public class CreateRuleRequest : Tea.TeaModel {
             try self.forwardGroupConfig?.validate()
             try self.insertHeaderConfig?.validate()
             try self.redirectConfig?.validate()
+            try self.removeHeaderConfig?.validate()
             try self.rewriteConfig?.validate()
             try self.trafficLimitConfig?.validate()
             try self.trafficMirrorConfig?.validate()
@@ -3715,6 +3747,9 @@ public class CreateRuleRequest : Tea.TeaModel {
             }
             if self.redirectConfig != nil {
                 map["RedirectConfig"] = self.redirectConfig?.toMap()
+            }
+            if self.removeHeaderConfig != nil {
+                map["RemoveHeaderConfig"] = self.removeHeaderConfig?.toMap()
             }
             if self.rewriteConfig != nil {
                 map["RewriteConfig"] = self.rewriteConfig?.toMap()
@@ -3759,6 +3794,11 @@ public class CreateRuleRequest : Tea.TeaModel {
                 var model = CreateRuleRequest.RuleActions.RedirectConfig()
                 model.fromMap(dict["RedirectConfig"] as! [String: Any])
                 self.redirectConfig = model
+            }
+            if dict.keys.contains("RemoveHeaderConfig") && dict["RemoveHeaderConfig"] != nil {
+                var model = CreateRuleRequest.RuleActions.RemoveHeaderConfig()
+                model.fromMap(dict["RemoveHeaderConfig"] as! [String: Any])
+                self.removeHeaderConfig = model
             }
             if dict.keys.contains("RewriteConfig") && dict["RewriteConfig"] != nil {
                 var model = CreateRuleRequest.RuleActions.RewriteConfig()
@@ -4061,6 +4101,72 @@ public class CreateRuleRequest : Tea.TeaModel {
                 }
             }
         }
+        public class ResponseHeaderConfig : Tea.TeaModel {
+            public var key: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Values") && dict["Values"] != nil {
+                    self.values = dict["Values"] as! [String]
+                }
+            }
+        }
+        public class ResponseStatusCodeConfig : Tea.TeaModel {
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Values") && dict["Values"] != nil {
+                    self.values = dict["Values"] as! [String]
+                }
+            }
+        }
         public class SourceIpConfig : Tea.TeaModel {
             public var values: [String]?
 
@@ -4102,6 +4208,10 @@ public class CreateRuleRequest : Tea.TeaModel {
 
         public var queryStringConfig: CreateRuleRequest.RuleConditions.QueryStringConfig?
 
+        public var responseHeaderConfig: CreateRuleRequest.RuleConditions.ResponseHeaderConfig?
+
+        public var responseStatusCodeConfig: CreateRuleRequest.RuleConditions.ResponseStatusCodeConfig?
+
         public var sourceIpConfig: CreateRuleRequest.RuleConditions.SourceIpConfig?
 
         public var type: String?
@@ -4122,6 +4232,8 @@ public class CreateRuleRequest : Tea.TeaModel {
             try self.methodConfig?.validate()
             try self.pathConfig?.validate()
             try self.queryStringConfig?.validate()
+            try self.responseHeaderConfig?.validate()
+            try self.responseStatusCodeConfig?.validate()
             try self.sourceIpConfig?.validate()
         }
 
@@ -4144,6 +4256,12 @@ public class CreateRuleRequest : Tea.TeaModel {
             }
             if self.queryStringConfig != nil {
                 map["QueryStringConfig"] = self.queryStringConfig?.toMap()
+            }
+            if self.responseHeaderConfig != nil {
+                map["ResponseHeaderConfig"] = self.responseHeaderConfig?.toMap()
+            }
+            if self.responseStatusCodeConfig != nil {
+                map["ResponseStatusCodeConfig"] = self.responseStatusCodeConfig?.toMap()
             }
             if self.sourceIpConfig != nil {
                 map["SourceIpConfig"] = self.sourceIpConfig?.toMap()
@@ -4184,6 +4302,16 @@ public class CreateRuleRequest : Tea.TeaModel {
                 var model = CreateRuleRequest.RuleConditions.QueryStringConfig()
                 model.fromMap(dict["QueryStringConfig"] as! [String: Any])
                 self.queryStringConfig = model
+            }
+            if dict.keys.contains("ResponseHeaderConfig") && dict["ResponseHeaderConfig"] != nil {
+                var model = CreateRuleRequest.RuleConditions.ResponseHeaderConfig()
+                model.fromMap(dict["ResponseHeaderConfig"] as! [String: Any])
+                self.responseHeaderConfig = model
+            }
+            if dict.keys.contains("ResponseStatusCodeConfig") && dict["ResponseStatusCodeConfig"] != nil {
+                var model = CreateRuleRequest.RuleConditions.ResponseStatusCodeConfig()
+                model.fromMap(dict["ResponseStatusCodeConfig"] as! [String: Any])
+                self.responseStatusCodeConfig = model
             }
             if dict.keys.contains("SourceIpConfig") && dict["SourceIpConfig"] != nil {
                 var model = CreateRuleRequest.RuleConditions.SourceIpConfig()
@@ -4816,6 +4944,35 @@ public class CreateRulesRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class RemoveHeaderConfig : Tea.TeaModel {
+                public var key: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Key") && dict["Key"] != nil {
+                        self.key = dict["Key"] as! String
+                    }
+                }
+            }
             public class RewriteConfig : Tea.TeaModel {
                 public var host: String?
 
@@ -5020,6 +5177,8 @@ public class CreateRulesRequest : Tea.TeaModel {
 
             public var redirectConfig: CreateRulesRequest.Rules.RuleActions.RedirectConfig?
 
+            public var removeHeaderConfig: CreateRulesRequest.Rules.RuleActions.RemoveHeaderConfig?
+
             public var rewriteConfig: CreateRulesRequest.Rules.RuleActions.RewriteConfig?
 
             public var trafficLimitConfig: CreateRulesRequest.Rules.RuleActions.TrafficLimitConfig?
@@ -5043,6 +5202,7 @@ public class CreateRulesRequest : Tea.TeaModel {
                 try self.forwardGroupConfig?.validate()
                 try self.insertHeaderConfig?.validate()
                 try self.redirectConfig?.validate()
+                try self.removeHeaderConfig?.validate()
                 try self.rewriteConfig?.validate()
                 try self.trafficLimitConfig?.validate()
                 try self.trafficMirrorConfig?.validate()
@@ -5067,6 +5227,9 @@ public class CreateRulesRequest : Tea.TeaModel {
                 }
                 if self.redirectConfig != nil {
                     map["RedirectConfig"] = self.redirectConfig?.toMap()
+                }
+                if self.removeHeaderConfig != nil {
+                    map["RemoveHeaderConfig"] = self.removeHeaderConfig?.toMap()
                 }
                 if self.rewriteConfig != nil {
                     map["RewriteConfig"] = self.rewriteConfig?.toMap()
@@ -5111,6 +5274,11 @@ public class CreateRulesRequest : Tea.TeaModel {
                     var model = CreateRulesRequest.Rules.RuleActions.RedirectConfig()
                     model.fromMap(dict["RedirectConfig"] as! [String: Any])
                     self.redirectConfig = model
+                }
+                if dict.keys.contains("RemoveHeaderConfig") && dict["RemoveHeaderConfig"] != nil {
+                    var model = CreateRulesRequest.Rules.RuleActions.RemoveHeaderConfig()
+                    model.fromMap(dict["RemoveHeaderConfig"] as! [String: Any])
+                    self.removeHeaderConfig = model
                 }
                 if dict.keys.contains("RewriteConfig") && dict["RewriteConfig"] != nil {
                     var model = CreateRulesRequest.Rules.RuleActions.RewriteConfig()
@@ -5450,6 +5618,35 @@ public class CreateRulesRequest : Tea.TeaModel {
                     }
                 }
             }
+            public class ResponseStatusCodeConfig : Tea.TeaModel {
+                public var values: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.values != nil {
+                        map["Values"] = self.values!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Values") && dict["Values"] != nil {
+                        self.values = dict["Values"] as! [String]
+                    }
+                }
+            }
             public class SourceIpConfig : Tea.TeaModel {
                 public var values: [String]?
 
@@ -5493,6 +5690,8 @@ public class CreateRulesRequest : Tea.TeaModel {
 
             public var responseHeaderConfig: CreateRulesRequest.Rules.RuleConditions.ResponseHeaderConfig?
 
+            public var responseStatusCodeConfig: CreateRulesRequest.Rules.RuleConditions.ResponseStatusCodeConfig?
+
             public var sourceIpConfig: CreateRulesRequest.Rules.RuleConditions.SourceIpConfig?
 
             public var type: String?
@@ -5514,6 +5713,7 @@ public class CreateRulesRequest : Tea.TeaModel {
                 try self.pathConfig?.validate()
                 try self.queryStringConfig?.validate()
                 try self.responseHeaderConfig?.validate()
+                try self.responseStatusCodeConfig?.validate()
                 try self.sourceIpConfig?.validate()
             }
 
@@ -5539,6 +5739,9 @@ public class CreateRulesRequest : Tea.TeaModel {
                 }
                 if self.responseHeaderConfig != nil {
                     map["ResponseHeaderConfig"] = self.responseHeaderConfig?.toMap()
+                }
+                if self.responseStatusCodeConfig != nil {
+                    map["ResponseStatusCodeConfig"] = self.responseStatusCodeConfig?.toMap()
                 }
                 if self.sourceIpConfig != nil {
                     map["SourceIpConfig"] = self.sourceIpConfig?.toMap()
@@ -5584,6 +5787,11 @@ public class CreateRulesRequest : Tea.TeaModel {
                     var model = CreateRulesRequest.Rules.RuleConditions.ResponseHeaderConfig()
                     model.fromMap(dict["ResponseHeaderConfig"] as! [String: Any])
                     self.responseHeaderConfig = model
+                }
+                if dict.keys.contains("ResponseStatusCodeConfig") && dict["ResponseStatusCodeConfig"] != nil {
+                    var model = CreateRulesRequest.Rules.RuleConditions.ResponseStatusCodeConfig()
+                    model.fromMap(dict["ResponseStatusCodeConfig"] as! [String: Any])
+                    self.responseStatusCodeConfig = model
                 }
                 if dict.keys.contains("SourceIpConfig") && dict["SourceIpConfig"] != nil {
                     var model = CreateRulesRequest.Rules.RuleConditions.SourceIpConfig()
@@ -23656,6 +23864,8 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
             }
         }
         public class InsertHeaderConfig : Tea.TeaModel {
+            public var coverEnabled: Bool?
+
             public var key: String?
 
             public var value: String?
@@ -23676,6 +23886,9 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.coverEnabled != nil {
+                    map["CoverEnabled"] = self.coverEnabled!
+                }
                 if self.key != nil {
                     map["Key"] = self.key!
                 }
@@ -23689,6 +23902,9 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CoverEnabled") && dict["CoverEnabled"] != nil {
+                    self.coverEnabled = dict["CoverEnabled"] as! Bool
+                }
                 if dict.keys.contains("Key") && dict["Key"] != nil {
                     self.key = dict["Key"] as! String
                 }
@@ -23766,6 +23982,35 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("Query") && dict["Query"] != nil {
                     self.query = dict["Query"] as! String
+                }
+            }
+        }
+        public class RemoveHeaderConfig : Tea.TeaModel {
+            public var key: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
                 }
             }
         }
@@ -23973,6 +24218,8 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
 
         public var redirectConfig: UpdateRuleAttributeRequest.RuleActions.RedirectConfig?
 
+        public var removeHeaderConfig: UpdateRuleAttributeRequest.RuleActions.RemoveHeaderConfig?
+
         public var rewriteConfig: UpdateRuleAttributeRequest.RuleActions.RewriteConfig?
 
         public var trafficLimitConfig: UpdateRuleAttributeRequest.RuleActions.TrafficLimitConfig?
@@ -23996,6 +24243,7 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
             try self.forwardGroupConfig?.validate()
             try self.insertHeaderConfig?.validate()
             try self.redirectConfig?.validate()
+            try self.removeHeaderConfig?.validate()
             try self.rewriteConfig?.validate()
             try self.trafficLimitConfig?.validate()
             try self.trafficMirrorConfig?.validate()
@@ -24020,6 +24268,9 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
             }
             if self.redirectConfig != nil {
                 map["RedirectConfig"] = self.redirectConfig?.toMap()
+            }
+            if self.removeHeaderConfig != nil {
+                map["RemoveHeaderConfig"] = self.removeHeaderConfig?.toMap()
             }
             if self.rewriteConfig != nil {
                 map["RewriteConfig"] = self.rewriteConfig?.toMap()
@@ -24064,6 +24315,11 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
                 var model = UpdateRuleAttributeRequest.RuleActions.RedirectConfig()
                 model.fromMap(dict["RedirectConfig"] as! [String: Any])
                 self.redirectConfig = model
+            }
+            if dict.keys.contains("RemoveHeaderConfig") && dict["RemoveHeaderConfig"] != nil {
+                var model = UpdateRuleAttributeRequest.RuleActions.RemoveHeaderConfig()
+                model.fromMap(dict["RemoveHeaderConfig"] as! [String: Any])
+                self.removeHeaderConfig = model
             }
             if dict.keys.contains("RewriteConfig") && dict["RewriteConfig"] != nil {
                 var model = UpdateRuleAttributeRequest.RuleActions.RewriteConfig()
@@ -24366,6 +24622,72 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
                 }
             }
         }
+        public class ResponseHeaderConfig : Tea.TeaModel {
+            public var key: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Values") && dict["Values"] != nil {
+                    self.values = dict["Values"] as! [String]
+                }
+            }
+        }
+        public class ResponseStatusCodeConfig : Tea.TeaModel {
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.values != nil {
+                    map["Values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Values") && dict["Values"] != nil {
+                    self.values = dict["Values"] as! [String]
+                }
+            }
+        }
         public class SourceIpConfig : Tea.TeaModel {
             public var values: [String]?
 
@@ -24407,6 +24729,10 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
 
         public var queryStringConfig: UpdateRuleAttributeRequest.RuleConditions.QueryStringConfig?
 
+        public var responseHeaderConfig: UpdateRuleAttributeRequest.RuleConditions.ResponseHeaderConfig?
+
+        public var responseStatusCodeConfig: UpdateRuleAttributeRequest.RuleConditions.ResponseStatusCodeConfig?
+
         public var sourceIpConfig: UpdateRuleAttributeRequest.RuleConditions.SourceIpConfig?
 
         public var type: String?
@@ -24427,6 +24753,8 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
             try self.methodConfig?.validate()
             try self.pathConfig?.validate()
             try self.queryStringConfig?.validate()
+            try self.responseHeaderConfig?.validate()
+            try self.responseStatusCodeConfig?.validate()
             try self.sourceIpConfig?.validate()
         }
 
@@ -24449,6 +24777,12 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
             }
             if self.queryStringConfig != nil {
                 map["QueryStringConfig"] = self.queryStringConfig?.toMap()
+            }
+            if self.responseHeaderConfig != nil {
+                map["ResponseHeaderConfig"] = self.responseHeaderConfig?.toMap()
+            }
+            if self.responseStatusCodeConfig != nil {
+                map["ResponseStatusCodeConfig"] = self.responseStatusCodeConfig?.toMap()
             }
             if self.sourceIpConfig != nil {
                 map["SourceIpConfig"] = self.sourceIpConfig?.toMap()
@@ -24489,6 +24823,16 @@ public class UpdateRuleAttributeRequest : Tea.TeaModel {
                 var model = UpdateRuleAttributeRequest.RuleConditions.QueryStringConfig()
                 model.fromMap(dict["QueryStringConfig"] as! [String: Any])
                 self.queryStringConfig = model
+            }
+            if dict.keys.contains("ResponseHeaderConfig") && dict["ResponseHeaderConfig"] != nil {
+                var model = UpdateRuleAttributeRequest.RuleConditions.ResponseHeaderConfig()
+                model.fromMap(dict["ResponseHeaderConfig"] as! [String: Any])
+                self.responseHeaderConfig = model
+            }
+            if dict.keys.contains("ResponseStatusCodeConfig") && dict["ResponseStatusCodeConfig"] != nil {
+                var model = UpdateRuleAttributeRequest.RuleConditions.ResponseStatusCodeConfig()
+                model.fromMap(dict["ResponseStatusCodeConfig"] as! [String: Any])
+                self.responseStatusCodeConfig = model
             }
             if dict.keys.contains("SourceIpConfig") && dict["SourceIpConfig"] != nil {
                 var model = UpdateRuleAttributeRequest.RuleConditions.SourceIpConfig()
