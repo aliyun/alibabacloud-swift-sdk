@@ -73357,6 +73357,997 @@ public class IeFlightBillSettlementQueryResponse : Tea.TeaModel {
     }
 }
 
+public class IeHotelBillSettlementQueryHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripSoCorpToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripSoCorpToken != nil {
+            map["x-acs-btrip-so-corp-token"] = self.xAcsBtripSoCorpToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-so-corp-token") && dict["x-acs-btrip-so-corp-token"] != nil {
+            self.xAcsBtripSoCorpToken = dict["x-acs-btrip-so-corp-token"] as! String
+        }
+    }
+}
+
+public class IeHotelBillSettlementQueryRequest : Tea.TeaModel {
+    public var category: Int32?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var periodEnd: String?
+
+    public var periodStart: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.category != nil {
+            map["category"] = self.category!
+        }
+        if self.pageNo != nil {
+            map["page_no"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["page_size"] = self.pageSize!
+        }
+        if self.periodEnd != nil {
+            map["period_end"] = self.periodEnd!
+        }
+        if self.periodStart != nil {
+            map["period_start"] = self.periodStart!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("category") && dict["category"] != nil {
+            self.category = dict["category"] as! Int32
+        }
+        if dict.keys.contains("page_no") && dict["page_no"] != nil {
+            self.pageNo = dict["page_no"] as! Int32
+        }
+        if dict.keys.contains("page_size") && dict["page_size"] != nil {
+            self.pageSize = dict["page_size"] as! Int32
+        }
+        if dict.keys.contains("period_end") && dict["period_end"] != nil {
+            self.periodEnd = dict["period_end"] as! String
+        }
+        if dict.keys.contains("period_start") && dict["period_start"] != nil {
+            self.periodStart = dict["period_start"] as! String
+        }
+    }
+}
+
+public class IeHotelBillSettlementQueryResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public class DataList : Tea.TeaModel {
+            public var alipayTradeNo: String?
+
+            public var amountCurrency: String?
+
+            public var applyArrCityCode: String?
+
+            public var applyArrCityName: String?
+
+            public var applyDepCityCode: String?
+
+            public var applyDepCityName: String?
+
+            public var applyExtendField: String?
+
+            public var applyId: String?
+
+            public var averageNights: Double?
+
+            public var billRecordTime: String?
+
+            public var bookReason: String?
+
+            public var bookTime: String?
+
+            public var bookerId: String?
+
+            public var bookerJobNo: String?
+
+            public var bookerName: String?
+
+            public var brandGroup: String?
+
+            public var brandName: String?
+
+            public var businessExpense: Int64?
+
+            public var businessTripResult: String?
+
+            public var capitalDirection: String?
+
+            public var cascadeDepartment: String?
+
+            public var checkInDate: String?
+
+            public var checkoutDate: String?
+
+            public var city: String?
+
+            public var cityCode: String?
+
+            public var corpRefundFee: Double?
+
+            public var corpTotalFee: Double?
+
+            public var costCenter: String?
+
+            public var costCenterNumber: String?
+
+            public var country: String?
+
+            public var countryCode: String?
+
+            public var department: String?
+
+            public var departmentId: String?
+
+            public var exceedReason: String?
+
+            public var feeType: String?
+
+            public var fines: Double?
+
+            public var foreignBusinessExpense: Int64?
+
+            public var hotelName: String?
+
+            public var hotelStar: String?
+
+            public var index: String?
+
+            public var invoiceTitle: String?
+
+            public var isEarlyDeparture: String?
+
+            public var isNegotiation: String?
+
+            public var isShareStr: String?
+
+            public var mainApplyId: String?
+
+            public var nights: Int32?
+
+            public var orderId: String?
+
+            public var orderPrice: Double?
+
+            public var orderStatusDesc: String?
+
+            public var orderType: String?
+
+            public var overApplyId: String?
+
+            public var personRefundFee: Double?
+
+            public var personSettlePrice: Double?
+
+            public var primaryId: Int64?
+
+            public var projectCode: String?
+
+            public var projectName: String?
+
+            public var promotionFee: Double?
+
+            public var rate: String?
+
+            public var remark: String?
+
+            public var reserveRule: Int32?
+
+            public var roomNo: String?
+
+            public var roomNumber: Int32?
+
+            public var roomPrice: Double?
+
+            public var roomType: String?
+
+            public var serviceFee: Double?
+
+            public var settlementFee: Double?
+
+            public var settlementGrantFee: Double?
+
+            public var settlementTime: String?
+
+            public var settlementType: String?
+
+            public var status: Int32?
+
+            public var subOrderId: String?
+
+            public var taxRate: String?
+
+            public var thirdInvoiceId: String?
+
+            public var thirdItineraryId: String?
+
+            public var thirdPartBusinessId: String?
+
+            public var thirdpartApplyId: String?
+
+            public var totalNights: Int32?
+
+            public var travelerId: String?
+
+            public var travelerJobNo: String?
+
+            public var travelerMemberType: String?
+
+            public var travelerName: String?
+
+            public var voucherType: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alipayTradeNo != nil {
+                    map["alipay_trade_no"] = self.alipayTradeNo!
+                }
+                if self.amountCurrency != nil {
+                    map["amount_currency"] = self.amountCurrency!
+                }
+                if self.applyArrCityCode != nil {
+                    map["apply_arr_city_code"] = self.applyArrCityCode!
+                }
+                if self.applyArrCityName != nil {
+                    map["apply_arr_city_name"] = self.applyArrCityName!
+                }
+                if self.applyDepCityCode != nil {
+                    map["apply_dep_city_code"] = self.applyDepCityCode!
+                }
+                if self.applyDepCityName != nil {
+                    map["apply_dep_city_name"] = self.applyDepCityName!
+                }
+                if self.applyExtendField != nil {
+                    map["apply_extend_field"] = self.applyExtendField!
+                }
+                if self.applyId != nil {
+                    map["apply_id"] = self.applyId!
+                }
+                if self.averageNights != nil {
+                    map["average_nights"] = self.averageNights!
+                }
+                if self.billRecordTime != nil {
+                    map["bill_record_time"] = self.billRecordTime!
+                }
+                if self.bookReason != nil {
+                    map["book_reason"] = self.bookReason!
+                }
+                if self.bookTime != nil {
+                    map["book_time"] = self.bookTime!
+                }
+                if self.bookerId != nil {
+                    map["booker_id"] = self.bookerId!
+                }
+                if self.bookerJobNo != nil {
+                    map["booker_job_no"] = self.bookerJobNo!
+                }
+                if self.bookerName != nil {
+                    map["booker_name"] = self.bookerName!
+                }
+                if self.brandGroup != nil {
+                    map["brand_group"] = self.brandGroup!
+                }
+                if self.brandName != nil {
+                    map["brand_name"] = self.brandName!
+                }
+                if self.businessExpense != nil {
+                    map["business_expense"] = self.businessExpense!
+                }
+                if self.businessTripResult != nil {
+                    map["business_trip_result"] = self.businessTripResult!
+                }
+                if self.capitalDirection != nil {
+                    map["capital_direction"] = self.capitalDirection!
+                }
+                if self.cascadeDepartment != nil {
+                    map["cascade_department"] = self.cascadeDepartment!
+                }
+                if self.checkInDate != nil {
+                    map["check_in_date"] = self.checkInDate!
+                }
+                if self.checkoutDate != nil {
+                    map["checkout_date"] = self.checkoutDate!
+                }
+                if self.city != nil {
+                    map["city"] = self.city!
+                }
+                if self.cityCode != nil {
+                    map["city_code"] = self.cityCode!
+                }
+                if self.corpRefundFee != nil {
+                    map["corp_refund_fee"] = self.corpRefundFee!
+                }
+                if self.corpTotalFee != nil {
+                    map["corp_total_fee"] = self.corpTotalFee!
+                }
+                if self.costCenter != nil {
+                    map["cost_center"] = self.costCenter!
+                }
+                if self.costCenterNumber != nil {
+                    map["cost_center_number"] = self.costCenterNumber!
+                }
+                if self.country != nil {
+                    map["country"] = self.country!
+                }
+                if self.countryCode != nil {
+                    map["country_code"] = self.countryCode!
+                }
+                if self.department != nil {
+                    map["department"] = self.department!
+                }
+                if self.departmentId != nil {
+                    map["department_id"] = self.departmentId!
+                }
+                if self.exceedReason != nil {
+                    map["exceed_reason"] = self.exceedReason!
+                }
+                if self.feeType != nil {
+                    map["fee_type"] = self.feeType!
+                }
+                if self.fines != nil {
+                    map["fines"] = self.fines!
+                }
+                if self.foreignBusinessExpense != nil {
+                    map["foreign_business_expense"] = self.foreignBusinessExpense!
+                }
+                if self.hotelName != nil {
+                    map["hotel_name"] = self.hotelName!
+                }
+                if self.hotelStar != nil {
+                    map["hotel_star"] = self.hotelStar!
+                }
+                if self.index != nil {
+                    map["index"] = self.index!
+                }
+                if self.invoiceTitle != nil {
+                    map["invoice_title"] = self.invoiceTitle!
+                }
+                if self.isEarlyDeparture != nil {
+                    map["is_early_departure"] = self.isEarlyDeparture!
+                }
+                if self.isNegotiation != nil {
+                    map["is_negotiation"] = self.isNegotiation!
+                }
+                if self.isShareStr != nil {
+                    map["is_share_str"] = self.isShareStr!
+                }
+                if self.mainApplyId != nil {
+                    map["main_apply_id"] = self.mainApplyId!
+                }
+                if self.nights != nil {
+                    map["nights"] = self.nights!
+                }
+                if self.orderId != nil {
+                    map["order_id"] = self.orderId!
+                }
+                if self.orderPrice != nil {
+                    map["order_price"] = self.orderPrice!
+                }
+                if self.orderStatusDesc != nil {
+                    map["order_status_desc"] = self.orderStatusDesc!
+                }
+                if self.orderType != nil {
+                    map["order_type"] = self.orderType!
+                }
+                if self.overApplyId != nil {
+                    map["over_apply_id"] = self.overApplyId!
+                }
+                if self.personRefundFee != nil {
+                    map["person_refund_fee"] = self.personRefundFee!
+                }
+                if self.personSettlePrice != nil {
+                    map["person_settle_price"] = self.personSettlePrice!
+                }
+                if self.primaryId != nil {
+                    map["primary_id"] = self.primaryId!
+                }
+                if self.projectCode != nil {
+                    map["project_code"] = self.projectCode!
+                }
+                if self.projectName != nil {
+                    map["project_name"] = self.projectName!
+                }
+                if self.promotionFee != nil {
+                    map["promotion_fee"] = self.promotionFee!
+                }
+                if self.rate != nil {
+                    map["rate"] = self.rate!
+                }
+                if self.remark != nil {
+                    map["remark"] = self.remark!
+                }
+                if self.reserveRule != nil {
+                    map["reserve_rule"] = self.reserveRule!
+                }
+                if self.roomNo != nil {
+                    map["room_no"] = self.roomNo!
+                }
+                if self.roomNumber != nil {
+                    map["room_number"] = self.roomNumber!
+                }
+                if self.roomPrice != nil {
+                    map["room_price"] = self.roomPrice!
+                }
+                if self.roomType != nil {
+                    map["room_type"] = self.roomType!
+                }
+                if self.serviceFee != nil {
+                    map["service_fee"] = self.serviceFee!
+                }
+                if self.settlementFee != nil {
+                    map["settlement_fee"] = self.settlementFee!
+                }
+                if self.settlementGrantFee != nil {
+                    map["settlement_grant_fee"] = self.settlementGrantFee!
+                }
+                if self.settlementTime != nil {
+                    map["settlement_time"] = self.settlementTime!
+                }
+                if self.settlementType != nil {
+                    map["settlement_type"] = self.settlementType!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.subOrderId != nil {
+                    map["sub_order_id"] = self.subOrderId!
+                }
+                if self.taxRate != nil {
+                    map["tax_rate"] = self.taxRate!
+                }
+                if self.thirdInvoiceId != nil {
+                    map["third_invoice_id"] = self.thirdInvoiceId!
+                }
+                if self.thirdItineraryId != nil {
+                    map["third_itinerary_id"] = self.thirdItineraryId!
+                }
+                if self.thirdPartBusinessId != nil {
+                    map["third_part_business_id"] = self.thirdPartBusinessId!
+                }
+                if self.thirdpartApplyId != nil {
+                    map["thirdpart_apply_id"] = self.thirdpartApplyId!
+                }
+                if self.totalNights != nil {
+                    map["total_nights"] = self.totalNights!
+                }
+                if self.travelerId != nil {
+                    map["traveler_id"] = self.travelerId!
+                }
+                if self.travelerJobNo != nil {
+                    map["traveler_job_no"] = self.travelerJobNo!
+                }
+                if self.travelerMemberType != nil {
+                    map["traveler_member_type"] = self.travelerMemberType!
+                }
+                if self.travelerName != nil {
+                    map["traveler_name"] = self.travelerName!
+                }
+                if self.voucherType != nil {
+                    map["voucher_type"] = self.voucherType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("alipay_trade_no") && dict["alipay_trade_no"] != nil {
+                    self.alipayTradeNo = dict["alipay_trade_no"] as! String
+                }
+                if dict.keys.contains("amount_currency") && dict["amount_currency"] != nil {
+                    self.amountCurrency = dict["amount_currency"] as! String
+                }
+                if dict.keys.contains("apply_arr_city_code") && dict["apply_arr_city_code"] != nil {
+                    self.applyArrCityCode = dict["apply_arr_city_code"] as! String
+                }
+                if dict.keys.contains("apply_arr_city_name") && dict["apply_arr_city_name"] != nil {
+                    self.applyArrCityName = dict["apply_arr_city_name"] as! String
+                }
+                if dict.keys.contains("apply_dep_city_code") && dict["apply_dep_city_code"] != nil {
+                    self.applyDepCityCode = dict["apply_dep_city_code"] as! String
+                }
+                if dict.keys.contains("apply_dep_city_name") && dict["apply_dep_city_name"] != nil {
+                    self.applyDepCityName = dict["apply_dep_city_name"] as! String
+                }
+                if dict.keys.contains("apply_extend_field") && dict["apply_extend_field"] != nil {
+                    self.applyExtendField = dict["apply_extend_field"] as! String
+                }
+                if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
+                    self.applyId = dict["apply_id"] as! String
+                }
+                if dict.keys.contains("average_nights") && dict["average_nights"] != nil {
+                    self.averageNights = dict["average_nights"] as! Double
+                }
+                if dict.keys.contains("bill_record_time") && dict["bill_record_time"] != nil {
+                    self.billRecordTime = dict["bill_record_time"] as! String
+                }
+                if dict.keys.contains("book_reason") && dict["book_reason"] != nil {
+                    self.bookReason = dict["book_reason"] as! String
+                }
+                if dict.keys.contains("book_time") && dict["book_time"] != nil {
+                    self.bookTime = dict["book_time"] as! String
+                }
+                if dict.keys.contains("booker_id") && dict["booker_id"] != nil {
+                    self.bookerId = dict["booker_id"] as! String
+                }
+                if dict.keys.contains("booker_job_no") && dict["booker_job_no"] != nil {
+                    self.bookerJobNo = dict["booker_job_no"] as! String
+                }
+                if dict.keys.contains("booker_name") && dict["booker_name"] != nil {
+                    self.bookerName = dict["booker_name"] as! String
+                }
+                if dict.keys.contains("brand_group") && dict["brand_group"] != nil {
+                    self.brandGroup = dict["brand_group"] as! String
+                }
+                if dict.keys.contains("brand_name") && dict["brand_name"] != nil {
+                    self.brandName = dict["brand_name"] as! String
+                }
+                if dict.keys.contains("business_expense") && dict["business_expense"] != nil {
+                    self.businessExpense = dict["business_expense"] as! Int64
+                }
+                if dict.keys.contains("business_trip_result") && dict["business_trip_result"] != nil {
+                    self.businessTripResult = dict["business_trip_result"] as! String
+                }
+                if dict.keys.contains("capital_direction") && dict["capital_direction"] != nil {
+                    self.capitalDirection = dict["capital_direction"] as! String
+                }
+                if dict.keys.contains("cascade_department") && dict["cascade_department"] != nil {
+                    self.cascadeDepartment = dict["cascade_department"] as! String
+                }
+                if dict.keys.contains("check_in_date") && dict["check_in_date"] != nil {
+                    self.checkInDate = dict["check_in_date"] as! String
+                }
+                if dict.keys.contains("checkout_date") && dict["checkout_date"] != nil {
+                    self.checkoutDate = dict["checkout_date"] as! String
+                }
+                if dict.keys.contains("city") && dict["city"] != nil {
+                    self.city = dict["city"] as! String
+                }
+                if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                    self.cityCode = dict["city_code"] as! String
+                }
+                if dict.keys.contains("corp_refund_fee") && dict["corp_refund_fee"] != nil {
+                    self.corpRefundFee = dict["corp_refund_fee"] as! Double
+                }
+                if dict.keys.contains("corp_total_fee") && dict["corp_total_fee"] != nil {
+                    self.corpTotalFee = dict["corp_total_fee"] as! Double
+                }
+                if dict.keys.contains("cost_center") && dict["cost_center"] != nil {
+                    self.costCenter = dict["cost_center"] as! String
+                }
+                if dict.keys.contains("cost_center_number") && dict["cost_center_number"] != nil {
+                    self.costCenterNumber = dict["cost_center_number"] as! String
+                }
+                if dict.keys.contains("country") && dict["country"] != nil {
+                    self.country = dict["country"] as! String
+                }
+                if dict.keys.contains("country_code") && dict["country_code"] != nil {
+                    self.countryCode = dict["country_code"] as! String
+                }
+                if dict.keys.contains("department") && dict["department"] != nil {
+                    self.department = dict["department"] as! String
+                }
+                if dict.keys.contains("department_id") && dict["department_id"] != nil {
+                    self.departmentId = dict["department_id"] as! String
+                }
+                if dict.keys.contains("exceed_reason") && dict["exceed_reason"] != nil {
+                    self.exceedReason = dict["exceed_reason"] as! String
+                }
+                if dict.keys.contains("fee_type") && dict["fee_type"] != nil {
+                    self.feeType = dict["fee_type"] as! String
+                }
+                if dict.keys.contains("fines") && dict["fines"] != nil {
+                    self.fines = dict["fines"] as! Double
+                }
+                if dict.keys.contains("foreign_business_expense") && dict["foreign_business_expense"] != nil {
+                    self.foreignBusinessExpense = dict["foreign_business_expense"] as! Int64
+                }
+                if dict.keys.contains("hotel_name") && dict["hotel_name"] != nil {
+                    self.hotelName = dict["hotel_name"] as! String
+                }
+                if dict.keys.contains("hotel_star") && dict["hotel_star"] != nil {
+                    self.hotelStar = dict["hotel_star"] as! String
+                }
+                if dict.keys.contains("index") && dict["index"] != nil {
+                    self.index = dict["index"] as! String
+                }
+                if dict.keys.contains("invoice_title") && dict["invoice_title"] != nil {
+                    self.invoiceTitle = dict["invoice_title"] as! String
+                }
+                if dict.keys.contains("is_early_departure") && dict["is_early_departure"] != nil {
+                    self.isEarlyDeparture = dict["is_early_departure"] as! String
+                }
+                if dict.keys.contains("is_negotiation") && dict["is_negotiation"] != nil {
+                    self.isNegotiation = dict["is_negotiation"] as! String
+                }
+                if dict.keys.contains("is_share_str") && dict["is_share_str"] != nil {
+                    self.isShareStr = dict["is_share_str"] as! String
+                }
+                if dict.keys.contains("main_apply_id") && dict["main_apply_id"] != nil {
+                    self.mainApplyId = dict["main_apply_id"] as! String
+                }
+                if dict.keys.contains("nights") && dict["nights"] != nil {
+                    self.nights = dict["nights"] as! Int32
+                }
+                if dict.keys.contains("order_id") && dict["order_id"] != nil {
+                    self.orderId = dict["order_id"] as! String
+                }
+                if dict.keys.contains("order_price") && dict["order_price"] != nil {
+                    self.orderPrice = dict["order_price"] as! Double
+                }
+                if dict.keys.contains("order_status_desc") && dict["order_status_desc"] != nil {
+                    self.orderStatusDesc = dict["order_status_desc"] as! String
+                }
+                if dict.keys.contains("order_type") && dict["order_type"] != nil {
+                    self.orderType = dict["order_type"] as! String
+                }
+                if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
+                    self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("person_refund_fee") && dict["person_refund_fee"] != nil {
+                    self.personRefundFee = dict["person_refund_fee"] as! Double
+                }
+                if dict.keys.contains("person_settle_price") && dict["person_settle_price"] != nil {
+                    self.personSettlePrice = dict["person_settle_price"] as! Double
+                }
+                if dict.keys.contains("primary_id") && dict["primary_id"] != nil {
+                    self.primaryId = dict["primary_id"] as! Int64
+                }
+                if dict.keys.contains("project_code") && dict["project_code"] != nil {
+                    self.projectCode = dict["project_code"] as! String
+                }
+                if dict.keys.contains("project_name") && dict["project_name"] != nil {
+                    self.projectName = dict["project_name"] as! String
+                }
+                if dict.keys.contains("promotion_fee") && dict["promotion_fee"] != nil {
+                    self.promotionFee = dict["promotion_fee"] as! Double
+                }
+                if dict.keys.contains("rate") && dict["rate"] != nil {
+                    self.rate = dict["rate"] as! String
+                }
+                if dict.keys.contains("remark") && dict["remark"] != nil {
+                    self.remark = dict["remark"] as! String
+                }
+                if dict.keys.contains("reserve_rule") && dict["reserve_rule"] != nil {
+                    self.reserveRule = dict["reserve_rule"] as! Int32
+                }
+                if dict.keys.contains("room_no") && dict["room_no"] != nil {
+                    self.roomNo = dict["room_no"] as! String
+                }
+                if dict.keys.contains("room_number") && dict["room_number"] != nil {
+                    self.roomNumber = dict["room_number"] as! Int32
+                }
+                if dict.keys.contains("room_price") && dict["room_price"] != nil {
+                    self.roomPrice = dict["room_price"] as! Double
+                }
+                if dict.keys.contains("room_type") && dict["room_type"] != nil {
+                    self.roomType = dict["room_type"] as! String
+                }
+                if dict.keys.contains("service_fee") && dict["service_fee"] != nil {
+                    self.serviceFee = dict["service_fee"] as! Double
+                }
+                if dict.keys.contains("settlement_fee") && dict["settlement_fee"] != nil {
+                    self.settlementFee = dict["settlement_fee"] as! Double
+                }
+                if dict.keys.contains("settlement_grant_fee") && dict["settlement_grant_fee"] != nil {
+                    self.settlementGrantFee = dict["settlement_grant_fee"] as! Double
+                }
+                if dict.keys.contains("settlement_time") && dict["settlement_time"] != nil {
+                    self.settlementTime = dict["settlement_time"] as! String
+                }
+                if dict.keys.contains("settlement_type") && dict["settlement_type"] != nil {
+                    self.settlementType = dict["settlement_type"] as! String
+                }
+                if dict.keys.contains("status") && dict["status"] != nil {
+                    self.status = dict["status"] as! Int32
+                }
+                if dict.keys.contains("sub_order_id") && dict["sub_order_id"] != nil {
+                    self.subOrderId = dict["sub_order_id"] as! String
+                }
+                if dict.keys.contains("tax_rate") && dict["tax_rate"] != nil {
+                    self.taxRate = dict["tax_rate"] as! String
+                }
+                if dict.keys.contains("third_invoice_id") && dict["third_invoice_id"] != nil {
+                    self.thirdInvoiceId = dict["third_invoice_id"] as! String
+                }
+                if dict.keys.contains("third_itinerary_id") && dict["third_itinerary_id"] != nil {
+                    self.thirdItineraryId = dict["third_itinerary_id"] as! String
+                }
+                if dict.keys.contains("third_part_business_id") && dict["third_part_business_id"] != nil {
+                    self.thirdPartBusinessId = dict["third_part_business_id"] as! String
+                }
+                if dict.keys.contains("thirdpart_apply_id") && dict["thirdpart_apply_id"] != nil {
+                    self.thirdpartApplyId = dict["thirdpart_apply_id"] as! String
+                }
+                if dict.keys.contains("total_nights") && dict["total_nights"] != nil {
+                    self.totalNights = dict["total_nights"] as! Int32
+                }
+                if dict.keys.contains("traveler_id") && dict["traveler_id"] != nil {
+                    self.travelerId = dict["traveler_id"] as! String
+                }
+                if dict.keys.contains("traveler_job_no") && dict["traveler_job_no"] != nil {
+                    self.travelerJobNo = dict["traveler_job_no"] as! String
+                }
+                if dict.keys.contains("traveler_member_type") && dict["traveler_member_type"] != nil {
+                    self.travelerMemberType = dict["traveler_member_type"] as! String
+                }
+                if dict.keys.contains("traveler_name") && dict["traveler_name"] != nil {
+                    self.travelerName = dict["traveler_name"] as! String
+                }
+                if dict.keys.contains("voucher_type") && dict["voucher_type"] != nil {
+                    self.voucherType = dict["voucher_type"] as! Int32
+                }
+            }
+        }
+        public var category: Int32?
+
+        public var corpId: String?
+
+        public var dataList: [IeHotelBillSettlementQueryResponseBody.Module.DataList]?
+
+        public var orderId: String?
+
+        public var periodEnd: String?
+
+        public var periodStart: String?
+
+        public var totalSize: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.category != nil {
+                map["category"] = self.category!
+            }
+            if self.corpId != nil {
+                map["corp_id"] = self.corpId!
+            }
+            if self.dataList != nil {
+                var tmp : [Any] = []
+                for k in self.dataList! {
+                    tmp.append(k.toMap())
+                }
+                map["data_list"] = tmp
+            }
+            if self.orderId != nil {
+                map["order_id"] = self.orderId!
+            }
+            if self.periodEnd != nil {
+                map["period_end"] = self.periodEnd!
+            }
+            if self.periodStart != nil {
+                map["period_start"] = self.periodStart!
+            }
+            if self.totalSize != nil {
+                map["total_size"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("category") && dict["category"] != nil {
+                self.category = dict["category"] as! Int32
+            }
+            if dict.keys.contains("corp_id") && dict["corp_id"] != nil {
+                self.corpId = dict["corp_id"] as! String
+            }
+            if dict.keys.contains("data_list") && dict["data_list"] != nil {
+                var tmp : [IeHotelBillSettlementQueryResponseBody.Module.DataList] = []
+                for v in dict["data_list"] as! [Any] {
+                    var model = IeHotelBillSettlementQueryResponseBody.Module.DataList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dataList = tmp
+            }
+            if dict.keys.contains("order_id") && dict["order_id"] != nil {
+                self.orderId = dict["order_id"] as! String
+            }
+            if dict.keys.contains("period_end") && dict["period_end"] != nil {
+                self.periodEnd = dict["period_end"] as! String
+            }
+            if dict.keys.contains("period_start") && dict["period_start"] != nil {
+                self.periodStart = dict["period_start"] as! String
+            }
+            if dict.keys.contains("total_size") && dict["total_size"] != nil {
+                self.totalSize = dict["total_size"] as! Int64
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: IeHotelBillSettlementQueryResponseBody.Module?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") && dict["module"] != nil {
+            var model = IeHotelBillSettlementQueryResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") && dict["traceId"] != nil {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class IeHotelBillSettlementQueryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: IeHotelBillSettlementQueryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = IeHotelBillSettlementQueryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class InsInvoiceScanQueryHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 

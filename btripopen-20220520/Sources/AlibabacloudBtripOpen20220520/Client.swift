@@ -5228,6 +5228,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ieHotelBillSettlementQueryWithOptions(_ request: IeHotelBillSettlementQueryRequest, _ headers: IeHotelBillSettlementQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IeHotelBillSettlementQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["category"] = request.category!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["page_no"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["page_size"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodEnd)) {
+            query["period_end"] = request.periodEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.periodStart)) {
+            query["period_start"] = request.periodStart ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripSoCorpToken)) {
+            realHeaders["x-acs-btrip-so-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripSoCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IeHotelBillSettlementQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/ie-hotel/v1/bill-settlement",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IeHotelBillSettlementQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func ieHotelBillSettlementQuery(_ request: IeHotelBillSettlementQueryRequest) async throws -> IeHotelBillSettlementQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IeHotelBillSettlementQueryHeaders = IeHotelBillSettlementQueryHeaders([:])
+        return try await ieHotelBillSettlementQueryWithOptions(request as! IeHotelBillSettlementQueryRequest, headers as! IeHotelBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func insInvoiceScanQueryWithOptions(_ request: InsInvoiceScanQueryRequest, _ headers: InsInvoiceScanQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsInvoiceScanQueryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
