@@ -334,6 +334,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             body["ChargeType"] = request.chargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterDomain)) {
+            body["ClusterDomain"] = request.clusterDomain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
             body["ClusterSpec"] = request.clusterSpec ?? "";
         }
@@ -635,6 +638,79 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWaypointWithOptions(_ request: CreateWaypointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWaypointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.HPAEnabled)) {
+            body["HPAEnabled"] = request.HPAEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPAMaxReplicas)) {
+            body["HPAMaxReplicas"] = request.HPAMaxReplicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPAMinReplicas)) {
+            body["HPAMinReplicas"] = request.HPAMinReplicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPATargetCPU)) {
+            body["HPATargetCPU"] = request.HPATargetCPU!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPATargetMemory)) {
+            body["HPATargetMemory"] = request.HPATargetMemory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limitCPU)) {
+            body["LimitCPU"] = request.limitCPU ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limitMemory)) {
+            body["LimitMemory"] = request.limitMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            body["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preferECI)) {
+            body["PreferECI"] = request.preferECI!;
+        }
+        if (!TeaUtils.Client.isUnset(request.replicas)) {
+            body["Replicas"] = request.replicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.requestCPU)) {
+            body["RequestCPU"] = request.requestCPU ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestMemory)) {
+            body["RequestMemory"] = request.requestMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceAccount)) {
+            body["ServiceAccount"] = request.serviceAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateWaypoint",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateWaypointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createWaypoint(_ request: CreateWaypointRequest) async throws -> CreateWaypointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createWaypointWithOptions(request as! CreateWaypointRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteGatewayRouteWithOptions(_ request: DeleteGatewayRouteRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayRouteResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -860,6 +936,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteSwimLaneGroup(_ request: DeleteSwimLaneGroupRequest) async throws -> DeleteSwimLaneGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteSwimLaneGroupWithOptions(request as! DeleteSwimLaneGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWaypointWithOptions(_ request: DeleteWaypointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWaypointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            body["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteWaypoint",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteWaypointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteWaypoint(_ request: DeleteWaypointRequest) async throws -> DeleteWaypointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteWaypointWithOptions(request as! DeleteWaypointRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2449,6 +2565,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceAccountsWithOptions(_ request: ListServiceAccountsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListServiceAccountsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            body["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListServiceAccounts",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListServiceAccountsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listServiceAccounts(_ request: ListServiceAccountsRequest) async throws -> ListServiceAccountsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listServiceAccountsWithOptions(request as! ListServiceAccountsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listTagResourcesWithOptions(_ request: ListTagResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2489,6 +2642,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTagResources(_ request: ListTagResourcesRequest) async throws -> ListTagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listTagResourcesWithOptions(request as! ListTagResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWaypointsWithOptions(_ request: ListWaypointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWaypointsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.continue_)) {
+            body["Continue"] = request.continue_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limit)) {
+            body["Limit"] = request.limit!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            body["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListWaypoints",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListWaypointsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listWaypoints(_ request: ListWaypointsRequest) async throws -> ListWaypointsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listWaypointsWithOptions(request as! ListWaypointsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3691,6 +3890,79 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSwimLaneGroup(_ request: UpdateSwimLaneGroupRequest) async throws -> UpdateSwimLaneGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateSwimLaneGroupWithOptions(request as! UpdateSwimLaneGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWaypointWithOptions(_ request: UpdateWaypointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWaypointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            body["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.HPAEnabled)) {
+            body["HPAEnabled"] = request.HPAEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPAMaxReplicas)) {
+            body["HPAMaxReplicas"] = request.HPAMaxReplicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPAMinReplicas)) {
+            body["HPAMinReplicas"] = request.HPAMinReplicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPATargetCPU)) {
+            body["HPATargetCPU"] = request.HPATargetCPU!;
+        }
+        if (!TeaUtils.Client.isUnset(request.HPATargetMemory)) {
+            body["HPATargetMemory"] = request.HPATargetMemory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.limitCPU)) {
+            body["LimitCPU"] = request.limitCPU ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.limitMemory)) {
+            body["LimitMemory"] = request.limitMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            body["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preferECI)) {
+            body["PreferECI"] = request.preferECI!;
+        }
+        if (!TeaUtils.Client.isUnset(request.replicas)) {
+            body["Replicas"] = request.replicas!;
+        }
+        if (!TeaUtils.Client.isUnset(request.requestCPU)) {
+            body["RequestCPU"] = request.requestCPU ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestMemory)) {
+            body["RequestMemory"] = request.requestMemory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceMeshId)) {
+            body["ServiceMeshId"] = request.serviceMeshId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateWaypoint",
+            "version": "2020-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateWaypointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateWaypoint(_ request: UpdateWaypointRequest) async throws -> UpdateWaypointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateWaypointWithOptions(request as! UpdateWaypointRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
