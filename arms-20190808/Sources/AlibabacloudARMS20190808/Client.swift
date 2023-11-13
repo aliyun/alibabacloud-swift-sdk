@@ -2588,6 +2588,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEnvironmentWithOptions(_ request: DeleteEnvironmentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEnvironmentResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deletePromInstance)) {
+            query["DeletePromInstance"] = request.deletePromInstance!;
+        }
         if (!TeaUtils.Client.isUnset(request.environmentId)) {
             query["EnvironmentId"] = request.environmentId ?? "";
         }
@@ -4099,6 +4102,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getClusterAllUrl(_ request: GetClusterAllUrlRequest) async throws -> GetClusterAllUrlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getClusterAllUrlWithOptions(request as! GetClusterAllUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCommercialStatusWithOptions(_ request: GetCommercialStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCommercialStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commodityCode)) {
+            query["CommodityCode"] = request.commodityCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetCommercialStatus",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetCommercialStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getCommercialStatus(_ request: GetCommercialStatusRequest) async throws -> GetCommercialStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getCommercialStatusWithOptions(request as! GetCommercialStatusRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
