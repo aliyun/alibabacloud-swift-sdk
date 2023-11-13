@@ -3721,6 +3721,8 @@ public class Node : Tea.TeaModel {
 public class NodeAttributes : Tea.TeaModel {
     public var keyPairName: String?
 
+    public var masterRootPassword: String?
+
     public var ramRole: String?
 
     public var securityGroupId: String?
@@ -3746,6 +3748,9 @@ public class NodeAttributes : Tea.TeaModel {
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
         }
+        if self.masterRootPassword != nil {
+            map["MasterRootPassword"] = self.masterRootPassword!
+        }
         if self.ramRole != nil {
             map["RamRole"] = self.ramRole!
         }
@@ -3764,6 +3769,9 @@ public class NodeAttributes : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("KeyPairName") && dict["KeyPairName"] != nil {
             self.keyPairName = dict["KeyPairName"] as! String
+        }
+        if dict.keys.contains("MasterRootPassword") && dict["MasterRootPassword"] != nil {
+            self.masterRootPassword = dict["MasterRootPassword"] as! String
         }
         if dict.keys.contains("RamRole") && dict["RamRole"] != nil {
             self.ramRole = dict["RamRole"] as! String
