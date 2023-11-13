@@ -1149,6 +1149,8 @@ public class JobMetric : Tea.TeaModel {
 public class JobStartParameters : Tea.TeaModel {
     public var deploymentId: String?
 
+    public var resourceQueueName: String?
+
     public var restoreStrategy: DeploymentRestoreStrategy?
 
     public override init() {
@@ -1169,6 +1171,9 @@ public class JobStartParameters : Tea.TeaModel {
         if self.deploymentId != nil {
             map["deploymentId"] = self.deploymentId!
         }
+        if self.resourceQueueName != nil {
+            map["resourceQueueName"] = self.resourceQueueName!
+        }
         if self.restoreStrategy != nil {
             map["restoreStrategy"] = self.restoreStrategy?.toMap()
         }
@@ -1178,6 +1183,9 @@ public class JobStartParameters : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("deploymentId") && dict["deploymentId"] != nil {
             self.deploymentId = dict["deploymentId"] as! String
+        }
+        if dict.keys.contains("resourceQueueName") && dict["resourceQueueName"] != nil {
+            self.resourceQueueName = dict["resourceQueueName"] as! String
         }
         if dict.keys.contains("restoreStrategy") && dict["restoreStrategy"] != nil {
             var model = DeploymentRestoreStrategy()
