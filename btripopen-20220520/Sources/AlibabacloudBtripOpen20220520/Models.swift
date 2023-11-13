@@ -40800,6 +40800,8 @@ public class FlightOrderQueryRequest : Tea.TeaModel {
 public class FlightOrderQueryResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
         public class FlightChangeTicketInfoList : Tea.TeaModel {
+            public var applyId: String?
+
             public var arrTime: String?
 
             public var changeCabin: String?
@@ -40824,7 +40826,13 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
 
             public var originTicketNo: String?
 
+            public var outApplyId: String?
+
             public var ticketNo: String?
+
+            public var ticketStatus: String?
+
+            public var ticketStatusCode: Int32?
 
             public var upgradeFee: Double?
 
@@ -40842,6 +40850,9 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.applyId != nil {
+                    map["apply_id"] = self.applyId!
+                }
                 if self.arrTime != nil {
                     map["arr_time"] = self.arrTime!
                 }
@@ -40878,8 +40889,17 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if self.originTicketNo != nil {
                     map["origin_ticket_no"] = self.originTicketNo!
                 }
+                if self.outApplyId != nil {
+                    map["out_apply_id"] = self.outApplyId!
+                }
                 if self.ticketNo != nil {
                     map["ticket_no"] = self.ticketNo!
+                }
+                if self.ticketStatus != nil {
+                    map["ticket_status"] = self.ticketStatus!
+                }
+                if self.ticketStatusCode != nil {
+                    map["ticket_status_code"] = self.ticketStatusCode!
                 }
                 if self.upgradeFee != nil {
                     map["upgrade_fee"] = self.upgradeFee!
@@ -40888,6 +40908,9 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
+                    self.applyId = dict["apply_id"] as! String
+                }
                 if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
                     self.arrTime = dict["arr_time"] as! String
                 }
@@ -40924,8 +40947,17 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("origin_ticket_no") && dict["origin_ticket_no"] != nil {
                     self.originTicketNo = dict["origin_ticket_no"] as! String
                 }
+                if dict.keys.contains("out_apply_id") && dict["out_apply_id"] != nil {
+                    self.outApplyId = dict["out_apply_id"] as! String
+                }
                 if dict.keys.contains("ticket_no") && dict["ticket_no"] != nil {
                     self.ticketNo = dict["ticket_no"] as! String
+                }
+                if dict.keys.contains("ticket_status") && dict["ticket_status"] != nil {
+                    self.ticketStatus = dict["ticket_status"] as! String
+                }
+                if dict.keys.contains("ticket_status_code") && dict["ticket_status_code"] != nil {
+                    self.ticketStatusCode = dict["ticket_status_code"] as! Int32
                 }
                 if dict.keys.contains("upgrade_fee") && dict["upgrade_fee"] != nil {
                     self.upgradeFee = dict["upgrade_fee"] as! Double
@@ -41098,9 +41130,13 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             }
         }
         public class FlightRefundTicketInfoList : Tea.TeaModel {
+            public var applyId: String?
+
             public var gmtCreate: String?
 
             public var gmtModify: String?
+
+            public var outApplyId: String?
 
             public var refundOrderId: Int64?
 
@@ -41126,11 +41162,17 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.applyId != nil {
+                    map["apply_id"] = self.applyId!
+                }
                 if self.gmtCreate != nil {
                     map["gmt_create"] = self.gmtCreate!
                 }
                 if self.gmtModify != nil {
                     map["gmt_modify"] = self.gmtModify!
+                }
+                if self.outApplyId != nil {
+                    map["out_apply_id"] = self.outApplyId!
                 }
                 if self.refundOrderId != nil {
                     map["refund_order_id"] = self.refundOrderId!
@@ -41151,11 +41193,17 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
+                    self.applyId = dict["apply_id"] as! String
+                }
                 if dict.keys.contains("gmt_create") && dict["gmt_create"] != nil {
                     self.gmtCreate = dict["gmt_create"] as! String
                 }
                 if dict.keys.contains("gmt_modify") && dict["gmt_modify"] != nil {
                     self.gmtModify = dict["gmt_modify"] as! String
+                }
+                if dict.keys.contains("out_apply_id") && dict["out_apply_id"] != nil {
+                    self.outApplyId = dict["out_apply_id"] as! String
                 }
                 if dict.keys.contains("refund_order_id") && dict["refund_order_id"] != nil {
                     self.refundOrderId = dict["refund_order_id"] as! Int64
@@ -41180,6 +41228,8 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             public var changed: Bool?
 
             public var discount: Int32?
+
+            public var flightNo: String?
 
             public var gmtCreate: String?
 
@@ -41224,6 +41274,9 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if self.discount != nil {
                     map["discount"] = self.discount!
                 }
+                if self.flightNo != nil {
+                    map["flight_no"] = self.flightNo!
+                }
                 if self.gmtCreate != nil {
                     map["gmt_create"] = self.gmtCreate!
                 }
@@ -41266,6 +41319,9 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("discount") && dict["discount"] != nil {
                     self.discount = dict["discount"] as! Int32
+                }
+                if dict.keys.contains("flight_no") && dict["flight_no"] != nil {
+                    self.flightNo = dict["flight_no"] as! String
                 }
                 if dict.keys.contains("gmt_create") && dict["gmt_create"] != nil {
                     self.gmtCreate = dict["gmt_create"] as! String
@@ -41404,6 +41460,10 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
 
             public var departName: String?
 
+            public var exceedApplyId: String?
+
+            public var exceedThirdPartApplyId: String?
+
             public var gmtCreate: String?
 
             public var gmtModify: String?
@@ -41459,6 +41519,12 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if self.departName != nil {
                     map["depart_name"] = self.departName!
                 }
+                if self.exceedApplyId != nil {
+                    map["exceed_apply_id"] = self.exceedApplyId!
+                }
+                if self.exceedThirdPartApplyId != nil {
+                    map["exceed_third_part_apply_id"] = self.exceedThirdPartApplyId!
+                }
                 if self.gmtCreate != nil {
                     map["gmt_create"] = self.gmtCreate!
                 }
@@ -41513,6 +41579,12 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("depart_name") && dict["depart_name"] != nil {
                     self.departName = dict["depart_name"] as! String
+                }
+                if dict.keys.contains("exceed_apply_id") && dict["exceed_apply_id"] != nil {
+                    self.exceedApplyId = dict["exceed_apply_id"] as! String
+                }
+                if dict.keys.contains("exceed_third_part_apply_id") && dict["exceed_third_part_apply_id"] != nil {
+                    self.exceedThirdPartApplyId = dict["exceed_third_part_apply_id"] as! String
                 }
                 if dict.keys.contains("gmt_create") && dict["gmt_create"] != nil {
                     self.gmtCreate = dict["gmt_create"] as! String
