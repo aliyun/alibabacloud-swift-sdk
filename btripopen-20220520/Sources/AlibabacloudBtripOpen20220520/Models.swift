@@ -8070,6 +8070,8 @@ public class ApplyInvoiceTaskRequest : Tea.TeaModel {
 
         public var internationalFlightInvoiceFee: String?
 
+        public var internationalHotelInvoiceFee: String?
+
         public var invoiceThirdPartId: String?
 
         public var mailAddress: String?
@@ -8126,6 +8128,9 @@ public class ApplyInvoiceTaskRequest : Tea.TeaModel {
             }
             if self.internationalFlightInvoiceFee != nil {
                 map["international_flight_invoice_fee"] = self.internationalFlightInvoiceFee!
+            }
+            if self.internationalHotelInvoiceFee != nil {
+                map["international_hotel_invoice_fee"] = self.internationalHotelInvoiceFee!
             }
             if self.invoiceThirdPartId != nil {
                 map["invoice_third_part_id"] = self.invoiceThirdPartId!
@@ -8184,6 +8189,9 @@ public class ApplyInvoiceTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("international_flight_invoice_fee") && dict["international_flight_invoice_fee"] != nil {
                 self.internationalFlightInvoiceFee = dict["international_flight_invoice_fee"] as! String
+            }
+            if dict.keys.contains("international_hotel_invoice_fee") && dict["international_hotel_invoice_fee"] != nil {
+                self.internationalHotelInvoiceFee = dict["international_hotel_invoice_fee"] as! String
             }
             if dict.keys.contains("invoice_third_part_id") && dict["invoice_third_part_id"] != nil {
                 self.invoiceThirdPartId = dict["invoice_third_part_id"] as! String
@@ -96307,6 +96315,8 @@ public class WaitApplyInvoiceTaskDetailQueryResponseBody : Tea.TeaModel {
 
         public var internationalFlightInvoiceFee: String?
 
+        public var internationalHotelInvoiceFee: String?
+
         public var invoiceThirdPartId: String?
 
         public var invoiceTitle: String?
@@ -96365,6 +96375,9 @@ public class WaitApplyInvoiceTaskDetailQueryResponseBody : Tea.TeaModel {
             }
             if self.internationalFlightInvoiceFee != nil {
                 map["international_flight_invoice_fee"] = self.internationalFlightInvoiceFee!
+            }
+            if self.internationalHotelInvoiceFee != nil {
+                map["international_hotel_invoice_fee"] = self.internationalHotelInvoiceFee!
             }
             if self.invoiceThirdPartId != nil {
                 map["invoice_third_part_id"] = self.invoiceThirdPartId!
@@ -96426,6 +96439,9 @@ public class WaitApplyInvoiceTaskDetailQueryResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("international_flight_invoice_fee") && dict["international_flight_invoice_fee"] != nil {
                 self.internationalFlightInvoiceFee = dict["international_flight_invoice_fee"] as! String
+            }
+            if dict.keys.contains("international_hotel_invoice_fee") && dict["international_hotel_invoice_fee"] != nil {
+                self.internationalHotelInvoiceFee = dict["international_hotel_invoice_fee"] as! String
             }
             if dict.keys.contains("invoice_third_part_id") && dict["invoice_third_part_id"] != nil {
                 self.invoiceThirdPartId = dict["invoice_third_part_id"] as! String
