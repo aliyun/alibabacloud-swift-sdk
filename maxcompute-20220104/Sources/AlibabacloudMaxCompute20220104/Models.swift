@@ -6152,6 +6152,8 @@ public class ListFunctionsRequest : Tea.TeaModel {
 
     public var prefix_: String?
 
+    public var schemaName: String?
+
     public override init() {
         super.init()
     }
@@ -6175,6 +6177,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
         if self.prefix_ != nil {
             map["prefix"] = self.prefix_!
         }
+        if self.schemaName != nil {
+            map["schemaName"] = self.schemaName!
+        }
         return map
     }
 
@@ -6188,6 +6193,9 @@ public class ListFunctionsRequest : Tea.TeaModel {
         if dict.keys.contains("prefix") && dict["prefix"] != nil {
             self.prefix_ = dict["prefix"] as! String
         }
+        if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+            self.schemaName = dict["schemaName"] as! String
+        }
     }
 }
 
@@ -6197,6 +6205,8 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
             public var class_: String?
 
             public var creationTime: Int64?
+
+            public var displayName: String?
 
             public var name: String?
 
@@ -6226,6 +6236,9 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
                 if self.creationTime != nil {
                     map["creationTime"] = self.creationTime!
                 }
+                if self.displayName != nil {
+                    map["displayName"] = self.displayName!
+                }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
@@ -6247,6 +6260,9 @@ public class ListFunctionsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("creationTime") && dict["creationTime"] != nil {
                     self.creationTime = dict["creationTime"] as! Int64
+                }
+                if dict.keys.contains("displayName") && dict["displayName"] != nil {
+                    self.displayName = dict["displayName"] as! String
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
@@ -6818,6 +6834,8 @@ public class ListProjectUsersResponse : Tea.TeaModel {
 }
 
 public class ListProjectsRequest : Tea.TeaModel {
+    public var listSystemCatalog: Bool?
+
     public var marker: String?
 
     public var maxItem: Int32?
@@ -6850,6 +6868,9 @@ public class ListProjectsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.listSystemCatalog != nil {
+            map["listSystemCatalog"] = self.listSystemCatalog!
+        }
         if self.marker != nil {
             map["marker"] = self.marker!
         }
@@ -6881,6 +6902,9 @@ public class ListProjectsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("listSystemCatalog") && dict["listSystemCatalog"] != nil {
+            self.listSystemCatalog = dict["listSystemCatalog"] as! Bool
+        }
         if dict.keys.contains("marker") && dict["marker"] != nil {
             self.marker = dict["marker"] as! String
         }
@@ -7353,6 +7377,8 @@ public class ListProjectsResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var threeTierModel: Bool?
+
             public var type: String?
 
             public override init() {
@@ -7410,6 +7436,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["status"] = self.status!
                 }
+                if self.threeTierModel != nil {
+                    map["threeTierModel"] = self.threeTierModel!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
                 }
@@ -7465,6 +7494,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("status") && dict["status"] != nil {
                     self.status = dict["status"] as! String
+                }
+                if dict.keys.contains("threeTierModel") && dict["threeTierModel"] != nil {
+                    self.threeTierModel = dict["threeTierModel"] as! Bool
                 }
                 if dict.keys.contains("type") && dict["type"] != nil {
                     self.type = dict["type"] as! String
@@ -10194,6 +10226,8 @@ public class ListResourcesRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var schemaName: String?
+
     public override init() {
         super.init()
     }
@@ -10217,6 +10251,9 @@ public class ListResourcesRequest : Tea.TeaModel {
         if self.name != nil {
             map["name"] = self.name!
         }
+        if self.schemaName != nil {
+            map["schemaName"] = self.schemaName!
+        }
         return map
     }
 
@@ -10230,19 +10267,34 @@ public class ListResourcesRequest : Tea.TeaModel {
         if dict.keys.contains("name") && dict["name"] != nil {
             self.name = dict["name"] as! String
         }
+        if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+            self.schemaName = dict["schemaName"] as! String
+        }
     }
 }
 
 public class ListResourcesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Resources : Tea.TeaModel {
+            public var comment: String?
+
+            public var contentMD5: String?
+
             public var creationTime: Int64?
+
+            public var displayName: String?
+
+            public var lastModifiedTime: Int64?
+
+            public var lastUpdator: String?
 
             public var name: String?
 
             public var owner: String?
 
             public var schema: String?
+
+            public var size: Int64?
 
             public var type: String?
 
@@ -10260,8 +10312,23 @@ public class ListResourcesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.comment != nil {
+                    map["comment"] = self.comment!
+                }
+                if self.contentMD5 != nil {
+                    map["contentMD5"] = self.contentMD5!
+                }
                 if self.creationTime != nil {
                     map["creationTime"] = self.creationTime!
+                }
+                if self.displayName != nil {
+                    map["displayName"] = self.displayName!
+                }
+                if self.lastModifiedTime != nil {
+                    map["lastModifiedTime"] = self.lastModifiedTime!
+                }
+                if self.lastUpdator != nil {
+                    map["lastUpdator"] = self.lastUpdator!
                 }
                 if self.name != nil {
                     map["name"] = self.name!
@@ -10272,6 +10339,9 @@ public class ListResourcesResponseBody : Tea.TeaModel {
                 if self.schema != nil {
                     map["schema"] = self.schema!
                 }
+                if self.size != nil {
+                    map["size"] = self.size!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
                 }
@@ -10279,8 +10349,23 @@ public class ListResourcesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("comment") && dict["comment"] != nil {
+                    self.comment = dict["comment"] as! String
+                }
+                if dict.keys.contains("contentMD5") && dict["contentMD5"] != nil {
+                    self.contentMD5 = dict["contentMD5"] as! String
+                }
                 if dict.keys.contains("creationTime") && dict["creationTime"] != nil {
                     self.creationTime = dict["creationTime"] as! Int64
+                }
+                if dict.keys.contains("displayName") && dict["displayName"] != nil {
+                    self.displayName = dict["displayName"] as! String
+                }
+                if dict.keys.contains("lastModifiedTime") && dict["lastModifiedTime"] != nil {
+                    self.lastModifiedTime = dict["lastModifiedTime"] as! Int64
+                }
+                if dict.keys.contains("lastUpdator") && dict["lastUpdator"] != nil {
+                    self.lastUpdator = dict["lastUpdator"] as! String
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
@@ -10290,6 +10375,9 @@ public class ListResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("schema") && dict["schema"] != nil {
                     self.schema = dict["schema"] as! String
+                }
+                if dict.keys.contains("size") && dict["size"] != nil {
+                    self.size = dict["size"] as! Int64
                 }
                 if dict.keys.contains("type") && dict["type"] != nil {
                     self.type = dict["type"] as! String
@@ -11004,6 +11092,8 @@ public class ListTablesRequest : Tea.TeaModel {
 
     public var prefix_: String?
 
+    public var schemaName: String?
+
     public var type: String?
 
     public override init() {
@@ -11029,6 +11119,9 @@ public class ListTablesRequest : Tea.TeaModel {
         if self.prefix_ != nil {
             map["prefix"] = self.prefix_!
         }
+        if self.schemaName != nil {
+            map["schemaName"] = self.schemaName!
+        }
         if self.type != nil {
             map["type"] = self.type!
         }
@@ -11045,6 +11138,9 @@ public class ListTablesRequest : Tea.TeaModel {
         if dict.keys.contains("prefix") && dict["prefix"] != nil {
             self.prefix_ = dict["prefix"] as! String
         }
+        if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+            self.schemaName = dict["schemaName"] as! String
+        }
         if dict.keys.contains("type") && dict["type"] != nil {
             self.type = dict["type"] as! String
         }
@@ -11054,15 +11150,175 @@ public class ListTablesRequest : Tea.TeaModel {
 public class ListTablesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Tables : Tea.TeaModel {
+            public class NativeColumns : Tea.TeaModel {
+                public var comment: String?
+
+                public var label: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.comment != nil {
+                        map["comment"] = self.comment!
+                    }
+                    if self.label != nil {
+                        map["label"] = self.label!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("comment") && dict["comment"] != nil {
+                        self.comment = dict["comment"] as! String
+                    }
+                    if dict.keys.contains("label") && dict["label"] != nil {
+                        self.label = dict["label"] as! String
+                    }
+                    if dict.keys.contains("name") && dict["name"] != nil {
+                        self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("type") && dict["type"] != nil {
+                        self.type = dict["type"] as! String
+                    }
+                }
+            }
+            public class PartitionColumns : Tea.TeaModel {
+                public var comment: String?
+
+                public var label: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.comment != nil {
+                        map["comment"] = self.comment!
+                    }
+                    if self.label != nil {
+                        map["label"] = self.label!
+                    }
+                    if self.name != nil {
+                        map["name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("comment") && dict["comment"] != nil {
+                        self.comment = dict["comment"] as! String
+                    }
+                    if dict.keys.contains("label") && dict["label"] != nil {
+                        self.label = dict["label"] as! String
+                    }
+                    if dict.keys.contains("name") && dict["name"] != nil {
+                        self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("type") && dict["type"] != nil {
+                        self.type = dict["type"] as! String
+                    }
+                }
+            }
+            public var autoRefreshEnabled: Bool?
+
+            public var createTableDDL: String?
+
             public var creationTime: Int64?
+
+            public var displayName: String?
+
+            public var fileNum: Int64?
+
+            public var isExternalTable: Bool?
+
+            public var isOutdated: Bool?
+
+            public var lastAccessTime: Int64?
+
+            public var lastDDLTime: Int64?
+
+            public var lastModifiedTime: Int64?
+
+            public var lifecycle: String?
+
+            public var location: String?
+
+            public var materializedView: Bool?
 
             public var name: String?
 
+            public var nativeColumns: [ListTablesResponseBody.Data.Tables.NativeColumns]?
+
+            public var odpsPropertiesRolearn: String?
+
+            public var odpsSqlTextOptionFlushHeader: Bool?
+
+            public var odpsTextOptionHeaderLinesCount: Int64?
+
             public var owner: String?
+
+            public var partitionColumns: [ListTablesResponseBody.Data.Tables.PartitionColumns]?
+
+            public var physicalSize: Int64?
+
+            public var projectName: String?
+
+            public var rewriteEnabled: Bool?
 
             public var schema: String?
 
+            public var size: Int64?
+
+            public var storageHandler: String?
+
+            public var tableComment: String?
+
+            public var tableLabel: String?
+
+            public var tablesotreTableName: String?
+
+            public var tablestoreColumnsMapping: String?
+
             public var type: String?
+
+            public var viewText: String?
 
             public override init() {
                 super.init()
@@ -11078,39 +11334,225 @@ public class ListTablesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.autoRefreshEnabled != nil {
+                    map["autoRefreshEnabled"] = self.autoRefreshEnabled!
+                }
+                if self.createTableDDL != nil {
+                    map["createTableDDL"] = self.createTableDDL!
+                }
                 if self.creationTime != nil {
                     map["creationTime"] = self.creationTime!
+                }
+                if self.displayName != nil {
+                    map["displayName"] = self.displayName!
+                }
+                if self.fileNum != nil {
+                    map["fileNum"] = self.fileNum!
+                }
+                if self.isExternalTable != nil {
+                    map["isExternalTable"] = self.isExternalTable!
+                }
+                if self.isOutdated != nil {
+                    map["isOutdated"] = self.isOutdated!
+                }
+                if self.lastAccessTime != nil {
+                    map["lastAccessTime"] = self.lastAccessTime!
+                }
+                if self.lastDDLTime != nil {
+                    map["lastDDLTime"] = self.lastDDLTime!
+                }
+                if self.lastModifiedTime != nil {
+                    map["lastModifiedTime"] = self.lastModifiedTime!
+                }
+                if self.lifecycle != nil {
+                    map["lifecycle"] = self.lifecycle!
+                }
+                if self.location != nil {
+                    map["location"] = self.location!
+                }
+                if self.materializedView != nil {
+                    map["materializedView"] = self.materializedView!
                 }
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.nativeColumns != nil {
+                    var tmp : [Any] = []
+                    for k in self.nativeColumns! {
+                        tmp.append(k.toMap())
+                    }
+                    map["nativeColumns"] = tmp
+                }
+                if self.odpsPropertiesRolearn != nil {
+                    map["odpsPropertiesRolearn"] = self.odpsPropertiesRolearn!
+                }
+                if self.odpsSqlTextOptionFlushHeader != nil {
+                    map["odpsSqlTextOptionFlushHeader"] = self.odpsSqlTextOptionFlushHeader!
+                }
+                if self.odpsTextOptionHeaderLinesCount != nil {
+                    map["odpsTextOptionHeaderLinesCount"] = self.odpsTextOptionHeaderLinesCount!
+                }
                 if self.owner != nil {
                     map["owner"] = self.owner!
+                }
+                if self.partitionColumns != nil {
+                    var tmp : [Any] = []
+                    for k in self.partitionColumns! {
+                        tmp.append(k.toMap())
+                    }
+                    map["partitionColumns"] = tmp
+                }
+                if self.physicalSize != nil {
+                    map["physicalSize"] = self.physicalSize!
+                }
+                if self.projectName != nil {
+                    map["projectName"] = self.projectName!
+                }
+                if self.rewriteEnabled != nil {
+                    map["rewriteEnabled"] = self.rewriteEnabled!
                 }
                 if self.schema != nil {
                     map["schema"] = self.schema!
                 }
+                if self.size != nil {
+                    map["size"] = self.size!
+                }
+                if self.storageHandler != nil {
+                    map["storageHandler"] = self.storageHandler!
+                }
+                if self.tableComment != nil {
+                    map["tableComment"] = self.tableComment!
+                }
+                if self.tableLabel != nil {
+                    map["tableLabel"] = self.tableLabel!
+                }
+                if self.tablesotreTableName != nil {
+                    map["tablesotreTableName"] = self.tablesotreTableName!
+                }
+                if self.tablestoreColumnsMapping != nil {
+                    map["tablestoreColumnsMapping"] = self.tablestoreColumnsMapping!
+                }
                 if self.type != nil {
                     map["type"] = self.type!
+                }
+                if self.viewText != nil {
+                    map["viewText"] = self.viewText!
                 }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("autoRefreshEnabled") && dict["autoRefreshEnabled"] != nil {
+                    self.autoRefreshEnabled = dict["autoRefreshEnabled"] as! Bool
+                }
+                if dict.keys.contains("createTableDDL") && dict["createTableDDL"] != nil {
+                    self.createTableDDL = dict["createTableDDL"] as! String
+                }
                 if dict.keys.contains("creationTime") && dict["creationTime"] != nil {
                     self.creationTime = dict["creationTime"] as! Int64
+                }
+                if dict.keys.contains("displayName") && dict["displayName"] != nil {
+                    self.displayName = dict["displayName"] as! String
+                }
+                if dict.keys.contains("fileNum") && dict["fileNum"] != nil {
+                    self.fileNum = dict["fileNum"] as! Int64
+                }
+                if dict.keys.contains("isExternalTable") && dict["isExternalTable"] != nil {
+                    self.isExternalTable = dict["isExternalTable"] as! Bool
+                }
+                if dict.keys.contains("isOutdated") && dict["isOutdated"] != nil {
+                    self.isOutdated = dict["isOutdated"] as! Bool
+                }
+                if dict.keys.contains("lastAccessTime") && dict["lastAccessTime"] != nil {
+                    self.lastAccessTime = dict["lastAccessTime"] as! Int64
+                }
+                if dict.keys.contains("lastDDLTime") && dict["lastDDLTime"] != nil {
+                    self.lastDDLTime = dict["lastDDLTime"] as! Int64
+                }
+                if dict.keys.contains("lastModifiedTime") && dict["lastModifiedTime"] != nil {
+                    self.lastModifiedTime = dict["lastModifiedTime"] as! Int64
+                }
+                if dict.keys.contains("lifecycle") && dict["lifecycle"] != nil {
+                    self.lifecycle = dict["lifecycle"] as! String
+                }
+                if dict.keys.contains("location") && dict["location"] != nil {
+                    self.location = dict["location"] as! String
+                }
+                if dict.keys.contains("materializedView") && dict["materializedView"] != nil {
+                    self.materializedView = dict["materializedView"] as! Bool
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
                 }
+                if dict.keys.contains("nativeColumns") && dict["nativeColumns"] != nil {
+                    var tmp : [ListTablesResponseBody.Data.Tables.NativeColumns] = []
+                    for v in dict["nativeColumns"] as! [Any] {
+                        var model = ListTablesResponseBody.Data.Tables.NativeColumns()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.nativeColumns = tmp
+                }
+                if dict.keys.contains("odpsPropertiesRolearn") && dict["odpsPropertiesRolearn"] != nil {
+                    self.odpsPropertiesRolearn = dict["odpsPropertiesRolearn"] as! String
+                }
+                if dict.keys.contains("odpsSqlTextOptionFlushHeader") && dict["odpsSqlTextOptionFlushHeader"] != nil {
+                    self.odpsSqlTextOptionFlushHeader = dict["odpsSqlTextOptionFlushHeader"] as! Bool
+                }
+                if dict.keys.contains("odpsTextOptionHeaderLinesCount") && dict["odpsTextOptionHeaderLinesCount"] != nil {
+                    self.odpsTextOptionHeaderLinesCount = dict["odpsTextOptionHeaderLinesCount"] as! Int64
+                }
                 if dict.keys.contains("owner") && dict["owner"] != nil {
                     self.owner = dict["owner"] as! String
+                }
+                if dict.keys.contains("partitionColumns") && dict["partitionColumns"] != nil {
+                    var tmp : [ListTablesResponseBody.Data.Tables.PartitionColumns] = []
+                    for v in dict["partitionColumns"] as! [Any] {
+                        var model = ListTablesResponseBody.Data.Tables.PartitionColumns()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.partitionColumns = tmp
+                }
+                if dict.keys.contains("physicalSize") && dict["physicalSize"] != nil {
+                    self.physicalSize = dict["physicalSize"] as! Int64
+                }
+                if dict.keys.contains("projectName") && dict["projectName"] != nil {
+                    self.projectName = dict["projectName"] as! String
+                }
+                if dict.keys.contains("rewriteEnabled") && dict["rewriteEnabled"] != nil {
+                    self.rewriteEnabled = dict["rewriteEnabled"] as! Bool
                 }
                 if dict.keys.contains("schema") && dict["schema"] != nil {
                     self.schema = dict["schema"] as! String
                 }
+                if dict.keys.contains("size") && dict["size"] != nil {
+                    self.size = dict["size"] as! Int64
+                }
+                if dict.keys.contains("storageHandler") && dict["storageHandler"] != nil {
+                    self.storageHandler = dict["storageHandler"] as! String
+                }
+                if dict.keys.contains("tableComment") && dict["tableComment"] != nil {
+                    self.tableComment = dict["tableComment"] as! String
+                }
+                if dict.keys.contains("tableLabel") && dict["tableLabel"] != nil {
+                    self.tableLabel = dict["tableLabel"] as! String
+                }
+                if dict.keys.contains("tablesotreTableName") && dict["tablesotreTableName"] != nil {
+                    self.tablesotreTableName = dict["tablesotreTableName"] as! String
+                }
+                if dict.keys.contains("tablestoreColumnsMapping") && dict["tablestoreColumnsMapping"] != nil {
+                    self.tablestoreColumnsMapping = dict["tablestoreColumnsMapping"] as! String
+                }
                 if dict.keys.contains("type") && dict["type"] != nil {
                     self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("viewText") && dict["viewText"] != nil {
+                    self.viewText = dict["viewText"] as! String
                 }
             }
         }

@@ -734,6 +734,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.prefix_)) {
             query["prefix"] = request.prefix_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            query["schemaName"] = request.schemaName ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -818,6 +821,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listProjectsWithOptions(_ request: ListProjectsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListProjectsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.listSystemCatalog)) {
+            query["listSystemCatalog"] = request.listSystemCatalog!;
+        }
         if (!TeaUtils.Client.isUnset(request.marker)) {
             query["marker"] = request.marker ?? "";
         }
@@ -971,6 +977,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["name"] = request.name ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            query["schemaName"] = request.schemaName ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1036,6 +1045,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.prefix_)) {
             query["prefix"] = request.prefix_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaName)) {
+            query["schemaName"] = request.schemaName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["type"] = request.type ?? "";
