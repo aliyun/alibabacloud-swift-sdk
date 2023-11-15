@@ -23616,6 +23616,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var DBInstanceDescription: String?
 
+            public var DBInstanceDiskUsed: String?
+
             public var DBInstanceId: String?
 
             public var DBInstanceMemory: Int64?
@@ -23794,6 +23796,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.DBInstanceDescription != nil {
                     map["DBInstanceDescription"] = self.DBInstanceDescription!
+                }
+                if self.DBInstanceDiskUsed != nil {
+                    map["DBInstanceDiskUsed"] = self.DBInstanceDiskUsed!
                 }
                 if self.DBInstanceId != nil {
                     map["DBInstanceId"] = self.DBInstanceId!
@@ -24012,6 +24017,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DBInstanceDescription") && dict["DBInstanceDescription"] != nil {
                     self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
+                }
+                if dict.keys.contains("DBInstanceDiskUsed") && dict["DBInstanceDiskUsed"] != nil {
+                    self.DBInstanceDiskUsed = dict["DBInstanceDiskUsed"] as! String
                 }
                 if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
                     self.DBInstanceId = dict["DBInstanceId"] as! String
