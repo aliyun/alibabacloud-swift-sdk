@@ -8199,6 +8199,8 @@ public class ListPrivateAccessTagsRequest : Tea.TeaModel {
 
     public var policyId: String?
 
+    public var simpleMode: Bool?
+
     public var tagIds: [String]?
 
     public override init() {
@@ -8230,6 +8232,9 @@ public class ListPrivateAccessTagsRequest : Tea.TeaModel {
         if self.policyId != nil {
             map["PolicyId"] = self.policyId!
         }
+        if self.simpleMode != nil {
+            map["SimpleMode"] = self.simpleMode!
+        }
         if self.tagIds != nil {
             map["TagIds"] = self.tagIds!
         }
@@ -8251,6 +8256,9 @@ public class ListPrivateAccessTagsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PolicyId") && dict["PolicyId"] != nil {
             self.policyId = dict["PolicyId"] as! String
+        }
+        if dict.keys.contains("SimpleMode") && dict["SimpleMode"] != nil {
+            self.simpleMode = dict["SimpleMode"] as! Bool
         }
         if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
             self.tagIds = dict["TagIds"] as! [String]
@@ -10202,6 +10210,8 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
     public var sharingStatus: Bool?
 
+    public var sortBy: String?
+
     public var username: String?
 
     public override init() {
@@ -10266,6 +10276,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         if self.sharingStatus != nil {
             map["SharingStatus"] = self.sharingStatus!
         }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
         if self.username != nil {
             map["Username"] = self.username!
         }
@@ -10320,6 +10333,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SharingStatus") && dict["SharingStatus"] != nil {
             self.sharingStatus = dict["SharingStatus"] as! Bool
+        }
+        if dict.keys.contains("SortBy") && dict["SortBy"] != nil {
+            self.sortBy = dict["SortBy"] as! String
         }
         if dict.keys.contains("Username") && dict["Username"] != nil {
             self.username = dict["Username"] as! String
