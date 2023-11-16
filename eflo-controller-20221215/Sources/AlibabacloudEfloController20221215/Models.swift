@@ -2059,6 +2059,8 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var resourceGroupId: String?
+
     public var sn: String?
 
     public var zoneId: String?
@@ -2126,6 +2128,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.sn != nil {
             map["Sn"] = self.sn!
         }
@@ -2188,6 +2193,9 @@ public class DescribeNodeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Sn") && dict["Sn"] != nil {
             self.sn = dict["Sn"] as! String
@@ -4312,6 +4320,8 @@ public class ListFreeNodesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -4338,6 +4348,9 @@ public class ListFreeNodesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
@@ -4354,6 +4367,9 @@ public class ListFreeNodesRequest : Tea.TeaModel {
         if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
             self.nextToken = dict["NextToken"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
     }
 }
 
@@ -4368,6 +4384,8 @@ public class ListFreeNodesResponseBody : Tea.TeaModel {
         public var machineType: String?
 
         public var nodeId: String?
+
+        public var resourceGroupId: String?
 
         public var sn: String?
 
@@ -4402,6 +4420,9 @@ public class ListFreeNodesResponseBody : Tea.TeaModel {
             if self.nodeId != nil {
                 map["NodeId"] = self.nodeId!
             }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
             if self.sn != nil {
                 map["Sn"] = self.sn!
             }
@@ -4426,6 +4447,9 @@ public class ListFreeNodesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
                 self.nodeId = dict["NodeId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("Sn") && dict["Sn"] != nil {
                 self.sn = dict["Sn"] as! String

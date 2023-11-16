@@ -507,6 +507,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
             body["NextToken"] = request.nextToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
