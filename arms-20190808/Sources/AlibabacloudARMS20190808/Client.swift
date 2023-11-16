@@ -8129,6 +8129,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uninstallPromClusterWithOptions(_ request: UninstallPromClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UninstallPromClusterResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliyunLang)) {
+            query["AliyunLang"] = request.aliyunLang ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterId)) {
             query["ClusterId"] = request.clusterId ?? "";
         }

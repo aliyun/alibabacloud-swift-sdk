@@ -58289,6 +58289,8 @@ public class UninstallManagedPrometheusResponse : Tea.TeaModel {
 }
 
 public class UninstallPromClusterRequest : Tea.TeaModel {
+    public var aliyunLang: String?
+
     public var clusterId: String?
 
     public var regionId: String?
@@ -58307,6 +58309,9 @@ public class UninstallPromClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aliyunLang != nil {
+            map["AliyunLang"] = self.aliyunLang!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -58317,6 +58322,9 @@ public class UninstallPromClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AliyunLang") && dict["AliyunLang"] != nil {
+            self.aliyunLang = dict["AliyunLang"] as! String
+        }
         if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
             self.clusterId = dict["ClusterId"] as! String
         }
