@@ -18949,6 +18949,8 @@ public class CostCenterModifyHeaders : Tea.TeaModel {
 public class CostCenterModifyRequest : Tea.TeaModel {
     public var alipayNo: String?
 
+    public var disable: Int64?
+
     public var number: String?
 
     public var scope: Int64?
@@ -18974,6 +18976,9 @@ public class CostCenterModifyRequest : Tea.TeaModel {
         if self.alipayNo != nil {
             map["alipay_no"] = self.alipayNo!
         }
+        if self.disable != nil {
+            map["disable"] = self.disable!
+        }
         if self.number != nil {
             map["number"] = self.number!
         }
@@ -18992,6 +18997,9 @@ public class CostCenterModifyRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("alipay_no") && dict["alipay_no"] != nil {
             self.alipayNo = dict["alipay_no"] as! String
+        }
+        if dict.keys.contains("disable") && dict["disable"] != nil {
+            self.disable = dict["disable"] as! Int64
         }
         if dict.keys.contains("number") && dict["number"] != nil {
             self.number = dict["number"] as! String
@@ -19161,6 +19169,8 @@ public class CostCenterQueryHeaders : Tea.TeaModel {
 }
 
 public class CostCenterQueryRequest : Tea.TeaModel {
+    public var disable: Int64?
+
     public var needOrgEntity: Bool?
 
     public var thirdpartId: String?
@@ -19183,6 +19193,9 @@ public class CostCenterQueryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.disable != nil {
+            map["disable"] = self.disable!
+        }
         if self.needOrgEntity != nil {
             map["need_org_entity"] = self.needOrgEntity!
         }
@@ -19199,6 +19212,9 @@ public class CostCenterQueryRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("disable") && dict["disable"] != nil {
+            self.disable = dict["disable"] as! Int64
+        }
         if dict.keys.contains("need_org_entity") && dict["need_org_entity"] != nil {
             self.needOrgEntity = dict["need_org_entity"] as! Bool
         }
@@ -19281,6 +19297,8 @@ public class CostCenterQueryResponseBody : Tea.TeaModel {
 
         public var corpId: String?
 
+        public var disable: Int64?
+
         public var entityDOS: [CostCenterQueryResponseBody.Module.EntityDOS]?
 
         public var id: Int64?
@@ -19314,6 +19332,9 @@ public class CostCenterQueryResponseBody : Tea.TeaModel {
             }
             if self.corpId != nil {
                 map["corp_id"] = self.corpId!
+            }
+            if self.disable != nil {
+                map["disable"] = self.disable!
             }
             if self.entityDOS != nil {
                 var tmp : [Any] = []
@@ -19349,6 +19370,9 @@ public class CostCenterQueryResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("corp_id") && dict["corp_id"] != nil {
                 self.corpId = dict["corp_id"] as! String
+            }
+            if dict.keys.contains("disable") && dict["disable"] != nil {
+                self.disable = dict["disable"] as! Int64
             }
             if dict.keys.contains("entity_d_o_s") && dict["entity_d_o_s"] != nil {
                 var tmp : [CostCenterQueryResponseBody.Module.EntityDOS] = []
@@ -19563,6 +19587,8 @@ public class CostCenterSaveHeaders : Tea.TeaModel {
 public class CostCenterSaveRequest : Tea.TeaModel {
     public var alipayNo: String?
 
+    public var disable: Int64?
+
     public var number: String?
 
     public var scope: Int64?
@@ -19588,6 +19614,9 @@ public class CostCenterSaveRequest : Tea.TeaModel {
         if self.alipayNo != nil {
             map["alipay_no"] = self.alipayNo!
         }
+        if self.disable != nil {
+            map["disable"] = self.disable!
+        }
         if self.number != nil {
             map["number"] = self.number!
         }
@@ -19606,6 +19635,9 @@ public class CostCenterSaveRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("alipay_no") && dict["alipay_no"] != nil {
             self.alipayNo = dict["alipay_no"] as! String
+        }
+        if dict.keys.contains("disable") && dict["disable"] != nil {
+            self.disable = dict["disable"] as! Int64
         }
         if dict.keys.contains("number") && dict["number"] != nil {
             self.number = dict["number"] as! String

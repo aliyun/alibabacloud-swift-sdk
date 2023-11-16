@@ -1527,6 +1527,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.alipayNo)) {
             body["alipay_no"] = request.alipayNo ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.disable)) {
+            body["disable"] = request.disable!;
+        }
         if (!TeaUtils.Client.isUnset(request.number)) {
             body["number"] = request.number ?? "";
         }
@@ -1576,6 +1579,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func costCenterQueryWithOptions(_ request: CostCenterQueryRequest, _ headers: CostCenterQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CostCenterQueryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.disable)) {
+            query["disable"] = request.disable!;
+        }
         if (!TeaUtils.Client.isUnset(request.needOrgEntity)) {
             query["need_org_entity"] = request.needOrgEntity!;
         }
@@ -1627,6 +1633,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.alipayNo)) {
             body["alipay_no"] = request.alipayNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.disable)) {
+            body["disable"] = request.disable!;
         }
         if (!TeaUtils.Client.isUnset(request.number)) {
             body["number"] = request.number ?? "";
