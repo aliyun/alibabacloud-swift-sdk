@@ -1485,7 +1485,7 @@ public class GetInternetTupleResponseBody : Tea.TeaModel {
 
         public var protocol_: String?
 
-        public var retranCount: Double?
+        public var retransmitRate: Double?
 
         public var rtt: Double?
 
@@ -1593,8 +1593,8 @@ public class GetInternetTupleResponseBody : Tea.TeaModel {
             if self.protocol_ != nil {
                 map["Protocol"] = self.protocol_!
             }
-            if self.retranCount != nil {
-                map["RetranCount"] = self.retranCount!
+            if self.retransmitRate != nil {
+                map["RetransmitRate"] = self.retransmitRate!
             }
             if self.rtt != nil {
                 map["Rtt"] = self.rtt!
@@ -1693,8 +1693,8 @@ public class GetInternetTupleResponseBody : Tea.TeaModel {
             if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
                 self.protocol_ = dict["Protocol"] as! String
             }
-            if dict.keys.contains("RetranCount") && dict["RetranCount"] != nil {
-                self.retranCount = dict["RetranCount"] as! Double
+            if dict.keys.contains("RetransmitRate") && dict["RetransmitRate"] != nil {
+                self.retransmitRate = dict["RetransmitRate"] as! Double
             }
             if dict.keys.contains("Rtt") && dict["Rtt"] != nil {
                 self.rtt = dict["Rtt"] as! Double
