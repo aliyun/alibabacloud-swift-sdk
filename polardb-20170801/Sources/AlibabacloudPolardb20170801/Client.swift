@@ -643,6 +643,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.provisionedIops)) {
+            query["ProvisionedIops"] = request.provisionedIops!;
+        }
         if (!TeaUtils.Client.isUnset(request.proxyClass)) {
             query["ProxyClass"] = request.proxyClass ?? "";
         }

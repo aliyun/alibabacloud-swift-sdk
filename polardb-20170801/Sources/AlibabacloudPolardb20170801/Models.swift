@@ -1761,6 +1761,8 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var period: String?
 
+    public var provisionedIops: Int64?
+
     public var proxyClass: String?
 
     public var proxyType: String?
@@ -1907,6 +1909,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if self.period != nil {
             map["Period"] = self.period!
+        }
+        if self.provisionedIops != nil {
+            map["ProvisionedIops"] = self.provisionedIops!
         }
         if self.proxyClass != nil {
             map["ProxyClass"] = self.proxyClass!
@@ -2074,6 +2079,9 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Period") && dict["Period"] != nil {
             self.period = dict["Period"] as! String
+        }
+        if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+            self.provisionedIops = dict["ProvisionedIops"] as! Int64
         }
         if dict.keys.contains("ProxyClass") && dict["ProxyClass"] != nil {
             self.proxyClass = dict["ProxyClass"] as! String
