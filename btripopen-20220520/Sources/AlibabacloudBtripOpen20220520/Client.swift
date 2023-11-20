@@ -6069,6 +6069,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.entitiesShrink)) {
             body["entities"] = request.entitiesShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.scope)) {
+            body["scope"] = request.scope!;
+        }
         if (!TeaUtils.Client.isUnset(request.thirdPartId)) {
             body["third_part_id"] = request.thirdPartId ?? "";
         }

@@ -80220,6 +80220,8 @@ public class InvoiceRuleSaveRequest : Tea.TeaModel {
 
     public var entities: [InvoiceRuleSaveRequest.Entities]?
 
+    public var scope: Int32?
+
     public var thirdPartId: String?
 
     public override init() {
@@ -80246,6 +80248,9 @@ public class InvoiceRuleSaveRequest : Tea.TeaModel {
             }
             map["entities"] = tmp
         }
+        if self.scope != nil {
+            map["scope"] = self.scope!
+        }
         if self.thirdPartId != nil {
             map["third_part_id"] = self.thirdPartId!
         }
@@ -80267,6 +80272,9 @@ public class InvoiceRuleSaveRequest : Tea.TeaModel {
             }
             self.entities = tmp
         }
+        if dict.keys.contains("scope") && dict["scope"] != nil {
+            self.scope = dict["scope"] as! Int32
+        }
         if dict.keys.contains("third_part_id") && dict["third_part_id"] != nil {
             self.thirdPartId = dict["third_part_id"] as! String
         }
@@ -80277,6 +80285,8 @@ public class InvoiceRuleSaveShrinkRequest : Tea.TeaModel {
     public var allEmploye: Bool?
 
     public var entitiesShrink: String?
+
+    public var scope: Int32?
 
     public var thirdPartId: String?
 
@@ -80300,6 +80310,9 @@ public class InvoiceRuleSaveShrinkRequest : Tea.TeaModel {
         if self.entitiesShrink != nil {
             map["entities"] = self.entitiesShrink!
         }
+        if self.scope != nil {
+            map["scope"] = self.scope!
+        }
         if self.thirdPartId != nil {
             map["third_part_id"] = self.thirdPartId!
         }
@@ -80312,6 +80325,9 @@ public class InvoiceRuleSaveShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("entities") && dict["entities"] != nil {
             self.entitiesShrink = dict["entities"] as! String
+        }
+        if dict.keys.contains("scope") && dict["scope"] != nil {
+            self.scope = dict["scope"] as! Int32
         }
         if dict.keys.contains("third_part_id") && dict["third_part_id"] != nil {
             self.thirdPartId = dict["third_part_id"] as! String
