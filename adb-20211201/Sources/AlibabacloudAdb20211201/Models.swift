@@ -945,6 +945,168 @@ public class LogAnalyzeResult : Tea.TeaModel {
     }
 }
 
+public class OperatorNode : Tea.TeaModel {
+    public class Stats : Tea.TeaModel {
+        public var bytes: Int64?
+
+        public var outputRows: Int64?
+
+        public var parameters: String?
+
+        public var peakMemory: Int64?
+
+        public var timeCost: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bytes != nil {
+                map["bytes"] = self.bytes!
+            }
+            if self.outputRows != nil {
+                map["outputRows"] = self.outputRows!
+            }
+            if self.parameters != nil {
+                map["parameters"] = self.parameters!
+            }
+            if self.peakMemory != nil {
+                map["peakMemory"] = self.peakMemory!
+            }
+            if self.timeCost != nil {
+                map["timeCost"] = self.timeCost!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("bytes") && dict["bytes"] != nil {
+                self.bytes = dict["bytes"] as! Int64
+            }
+            if dict.keys.contains("outputRows") && dict["outputRows"] != nil {
+                self.outputRows = dict["outputRows"] as! Int64
+            }
+            if dict.keys.contains("parameters") && dict["parameters"] != nil {
+                self.parameters = dict["parameters"] as! String
+            }
+            if dict.keys.contains("peakMemory") && dict["peakMemory"] != nil {
+                self.peakMemory = dict["peakMemory"] as! Int64
+            }
+            if dict.keys.contains("timeCost") && dict["timeCost"] != nil {
+                self.timeCost = dict["timeCost"] as! Int64
+            }
+        }
+    }
+    public var children: [OperatorNode]?
+
+    public var id: Int32?
+
+    public var levelWidth: Int32?
+
+    public var nodeDepth: Int32?
+
+    public var nodeName: String?
+
+    public var nodeWidth: Int32?
+
+    public var parentId: Int32?
+
+    public var stats: OperatorNode.Stats?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.stats?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.children != nil {
+            var tmp : [Any] = []
+            for k in self.children! {
+                tmp.append(k.toMap())
+            }
+            map["children"] = tmp
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.levelWidth != nil {
+            map["levelWidth"] = self.levelWidth!
+        }
+        if self.nodeDepth != nil {
+            map["nodeDepth"] = self.nodeDepth!
+        }
+        if self.nodeName != nil {
+            map["nodeName"] = self.nodeName!
+        }
+        if self.nodeWidth != nil {
+            map["nodeWidth"] = self.nodeWidth!
+        }
+        if self.parentId != nil {
+            map["parentId"] = self.parentId!
+        }
+        if self.stats != nil {
+            map["stats"] = self.stats?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("children") && dict["children"] != nil {
+            var tmp : [OperatorNode] = []
+            for v in dict["children"] as! [Any] {
+                var model = OperatorNode()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.children = tmp
+        }
+        if dict.keys.contains("id") && dict["id"] != nil {
+            self.id = dict["id"] as! Int32
+        }
+        if dict.keys.contains("levelWidth") && dict["levelWidth"] != nil {
+            self.levelWidth = dict["levelWidth"] as! Int32
+        }
+        if dict.keys.contains("nodeDepth") && dict["nodeDepth"] != nil {
+            self.nodeDepth = dict["nodeDepth"] as! Int32
+        }
+        if dict.keys.contains("nodeName") && dict["nodeName"] != nil {
+            self.nodeName = dict["nodeName"] as! String
+        }
+        if dict.keys.contains("nodeWidth") && dict["nodeWidth"] != nil {
+            self.nodeWidth = dict["nodeWidth"] as! Int32
+        }
+        if dict.keys.contains("parentId") && dict["parentId"] != nil {
+            self.parentId = dict["parentId"] as! Int32
+        }
+        if dict.keys.contains("stats") && dict["stats"] != nil {
+            var model = OperatorNode.Stats()
+            model.fromMap(dict["stats"] as! [String: Any])
+            self.stats = model
+        }
+    }
+}
+
 public class SerDeInfoModel : Tea.TeaModel {
     public var name: String?
 
@@ -1246,6 +1408,44 @@ public class SparkAttemptInfo : Tea.TeaModel {
         }
         if dict.keys.contains("State") && dict["State"] != nil {
             self.state = dict["State"] as! String
+        }
+    }
+}
+
+public class SparkOperatorInfo : Tea.TeaModel {
+    public var metricValue: Int64?
+
+    public var operatorName: [UInt8]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.metricValue != nil {
+            map["MetricValue"] = self.metricValue!
+        }
+        if self.operatorName != nil {
+            map["OperatorName"] = self.operatorName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MetricValue") && dict["MetricValue"] != nil {
+            self.metricValue = dict["MetricValue"] as! Int64
+        }
+        if dict.keys.contains("OperatorName") && dict["OperatorName"] != nil {
+            self.operatorName = dict["OperatorName"] as! [UInt8]
         }
     }
 }
@@ -16151,6 +16351,8 @@ public class DescribeTablesResponse : Tea.TeaModel {
 public class DescribeUserQuotaRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -16168,12 +16370,18 @@ public class DescribeUserQuotaRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
         }
     }
 }
