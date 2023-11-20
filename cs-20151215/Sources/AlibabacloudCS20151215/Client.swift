@@ -2719,6 +2719,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func fixNodePoolVulsWithOptions(_ clusterId: String, _ nodepoolId: String, _ request: FixNodePoolVulsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> FixNodePoolVulsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRestart)) {
+            body["auto_restart"] = request.autoRestart!;
+        }
         if (!TeaUtils.Client.isUnset(request.nodes)) {
             body["nodes"] = request.nodes ?? [];
         }
@@ -2752,6 +2755,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await fixNodePoolVulsWithOptions(clusterId as! String, nodepoolId as! String, request as! FixNodePoolVulsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterCheckWithOptions(_ clusterId: String, _ checkId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetClusterCheckResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetClusterCheck",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/%5Bcluster_id%5D/checks/%5Bcheck_id%5D",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetClusterCheckResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getClusterCheck(_ clusterId: String, _ checkId: String) async throws -> GetClusterCheckResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getClusterCheckWithOptions(clusterId as! String, checkId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2879,6 +2909,39 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await installClusterAddonsWithOptions(ClusterId as! String, request as! InstallClusterAddonsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listClusterChecksWithOptions(_ clusterId: String, _ request: ListClusterChecksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterChecksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListClusterChecks",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/%5Bcluster_id%5D/checks",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListClusterChecksResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listClusterChecks(_ clusterId: String, _ request: ListClusterChecksRequest) async throws -> ListClusterChecksResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listClusterChecksWithOptions(clusterId as! String, request as! ListClusterChecksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3494,6 +3557,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func repairClusterNodePoolWithOptions(_ clusterId: String, _ nodepoolId: String, _ request: RepairClusterNodePoolRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RepairClusterNodePoolResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoRestart)) {
+            body["auto_restart"] = request.autoRestart!;
+        }
         if (!TeaUtils.Client.isUnset(request.nodes)) {
             body["nodes"] = request.nodes ?? [];
         }
@@ -3602,6 +3668,42 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await resumeUpgradeClusterWithOptions(ClusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runClusterCheckWithOptions(_ clusterId: String, _ request: RunClusterCheckRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> RunClusterCheckResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.options)) {
+            body["options"] = request.options ?? [:];
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            body["type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RunClusterCheck",
+            "version": "2015-12-15",
+            "protocol": "HTTPS",
+            "pathname": "/clusters/%5Bcluster_id%5D/checks",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RunClusterCheckResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func runClusterCheck(_ clusterId: String, _ request: RunClusterCheckRequest) async throws -> RunClusterCheckResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await runClusterCheckWithOptions(clusterId as! String, request as! RunClusterCheckRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
