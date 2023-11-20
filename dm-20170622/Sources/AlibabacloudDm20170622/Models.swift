@@ -2206,6 +2206,8 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
 
     public var receivers: Int32?
 
+    public var remainFreeQuota: Int32?
+
     public var requestId: String?
 
     public var smsRecord: Int32?
@@ -2261,6 +2263,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         if self.receivers != nil {
             map["Receivers"] = self.receivers!
         }
+        if self.remainFreeQuota != nil {
+            map["RemainFreeQuota"] = self.remainFreeQuota!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -2312,6 +2317,9 @@ public class DescAccountSummaryResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Receivers") && dict["Receivers"] != nil {
             self.receivers = dict["Receivers"] as! Int32
+        }
+        if dict.keys.contains("RemainFreeQuota") && dict["RemainFreeQuota"] != nil {
+            self.remainFreeQuota = dict["RemainFreeQuota"] as! Int32
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
@@ -8036,6 +8044,445 @@ public class SingleSendMailResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = SingleSendMailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SingleSendMailV2Request : Tea.TeaModel {
+    public class HtmlBodyPlaceHolders : Tea.TeaModel {
+        public var placeHolders: [String: String]?
+
+        public var toAddress: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.placeHolders != nil {
+                map["PlaceHolders"] = self.placeHolders!
+            }
+            if self.toAddress != nil {
+                map["ToAddress"] = self.toAddress!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PlaceHolders") && dict["PlaceHolders"] != nil {
+                self.placeHolders = dict["PlaceHolders"] as! [String: String]
+            }
+            if dict.keys.contains("ToAddress") && dict["ToAddress"] != nil {
+                self.toAddress = dict["ToAddress"] as! String
+            }
+        }
+    }
+    public var accountName: String?
+
+    public var addressType: Int32?
+
+    public var clickTrace: String?
+
+    public var fromAlias: String?
+
+    public var htmlBody: String?
+
+    public var htmlBodyPlaceHolders: [SingleSendMailV2Request.HtmlBodyPlaceHolders]?
+
+    public var ownerId: Int64?
+
+    public var replyAddress: String?
+
+    public var replyAddressAlias: String?
+
+    public var replyToAddress: Bool?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var subject: String?
+
+    public var tagName: String?
+
+    public var textBody: String?
+
+    public var toAddress: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
+        if self.clickTrace != nil {
+            map["ClickTrace"] = self.clickTrace!
+        }
+        if self.fromAlias != nil {
+            map["FromAlias"] = self.fromAlias!
+        }
+        if self.htmlBody != nil {
+            map["HtmlBody"] = self.htmlBody!
+        }
+        if self.htmlBodyPlaceHolders != nil {
+            var tmp : [Any] = []
+            for k in self.htmlBodyPlaceHolders! {
+                tmp.append(k.toMap())
+            }
+            map["HtmlBodyPlaceHolders"] = tmp
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.replyAddress != nil {
+            map["ReplyAddress"] = self.replyAddress!
+        }
+        if self.replyAddressAlias != nil {
+            map["ReplyAddressAlias"] = self.replyAddressAlias!
+        }
+        if self.replyToAddress != nil {
+            map["ReplyToAddress"] = self.replyToAddress!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.subject != nil {
+            map["Subject"] = self.subject!
+        }
+        if self.tagName != nil {
+            map["TagName"] = self.tagName!
+        }
+        if self.textBody != nil {
+            map["TextBody"] = self.textBody!
+        }
+        if self.toAddress != nil {
+            map["ToAddress"] = self.toAddress!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountName") && dict["AccountName"] != nil {
+            self.accountName = dict["AccountName"] as! String
+        }
+        if dict.keys.contains("AddressType") && dict["AddressType"] != nil {
+            self.addressType = dict["AddressType"] as! Int32
+        }
+        if dict.keys.contains("ClickTrace") && dict["ClickTrace"] != nil {
+            self.clickTrace = dict["ClickTrace"] as! String
+        }
+        if dict.keys.contains("FromAlias") && dict["FromAlias"] != nil {
+            self.fromAlias = dict["FromAlias"] as! String
+        }
+        if dict.keys.contains("HtmlBody") && dict["HtmlBody"] != nil {
+            self.htmlBody = dict["HtmlBody"] as! String
+        }
+        if dict.keys.contains("HtmlBodyPlaceHolders") && dict["HtmlBodyPlaceHolders"] != nil {
+            var tmp : [SingleSendMailV2Request.HtmlBodyPlaceHolders] = []
+            for v in dict["HtmlBodyPlaceHolders"] as! [Any] {
+                var model = SingleSendMailV2Request.HtmlBodyPlaceHolders()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.htmlBodyPlaceHolders = tmp
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReplyAddress") && dict["ReplyAddress"] != nil {
+            self.replyAddress = dict["ReplyAddress"] as! String
+        }
+        if dict.keys.contains("ReplyAddressAlias") && dict["ReplyAddressAlias"] != nil {
+            self.replyAddressAlias = dict["ReplyAddressAlias"] as! String
+        }
+        if dict.keys.contains("ReplyToAddress") && dict["ReplyToAddress"] != nil {
+            self.replyToAddress = dict["ReplyToAddress"] as! Bool
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Subject") && dict["Subject"] != nil {
+            self.subject = dict["Subject"] as! String
+        }
+        if dict.keys.contains("TagName") && dict["TagName"] != nil {
+            self.tagName = dict["TagName"] as! String
+        }
+        if dict.keys.contains("TextBody") && dict["TextBody"] != nil {
+            self.textBody = dict["TextBody"] as! String
+        }
+        if dict.keys.contains("ToAddress") && dict["ToAddress"] != nil {
+            self.toAddress = dict["ToAddress"] as! String
+        }
+    }
+}
+
+public class SingleSendMailV2ShrinkRequest : Tea.TeaModel {
+    public var accountName: String?
+
+    public var addressType: Int32?
+
+    public var clickTrace: String?
+
+    public var fromAlias: String?
+
+    public var htmlBody: String?
+
+    public var htmlBodyPlaceHoldersShrink: String?
+
+    public var ownerId: Int64?
+
+    public var replyAddress: String?
+
+    public var replyAddressAlias: String?
+
+    public var replyToAddress: Bool?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var subject: String?
+
+    public var tagName: String?
+
+    public var textBody: String?
+
+    public var toAddress: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.addressType != nil {
+            map["AddressType"] = self.addressType!
+        }
+        if self.clickTrace != nil {
+            map["ClickTrace"] = self.clickTrace!
+        }
+        if self.fromAlias != nil {
+            map["FromAlias"] = self.fromAlias!
+        }
+        if self.htmlBody != nil {
+            map["HtmlBody"] = self.htmlBody!
+        }
+        if self.htmlBodyPlaceHoldersShrink != nil {
+            map["HtmlBodyPlaceHolders"] = self.htmlBodyPlaceHoldersShrink!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.replyAddress != nil {
+            map["ReplyAddress"] = self.replyAddress!
+        }
+        if self.replyAddressAlias != nil {
+            map["ReplyAddressAlias"] = self.replyAddressAlias!
+        }
+        if self.replyToAddress != nil {
+            map["ReplyToAddress"] = self.replyToAddress!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.subject != nil {
+            map["Subject"] = self.subject!
+        }
+        if self.tagName != nil {
+            map["TagName"] = self.tagName!
+        }
+        if self.textBody != nil {
+            map["TextBody"] = self.textBody!
+        }
+        if self.toAddress != nil {
+            map["ToAddress"] = self.toAddress!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountName") && dict["AccountName"] != nil {
+            self.accountName = dict["AccountName"] as! String
+        }
+        if dict.keys.contains("AddressType") && dict["AddressType"] != nil {
+            self.addressType = dict["AddressType"] as! Int32
+        }
+        if dict.keys.contains("ClickTrace") && dict["ClickTrace"] != nil {
+            self.clickTrace = dict["ClickTrace"] as! String
+        }
+        if dict.keys.contains("FromAlias") && dict["FromAlias"] != nil {
+            self.fromAlias = dict["FromAlias"] as! String
+        }
+        if dict.keys.contains("HtmlBody") && dict["HtmlBody"] != nil {
+            self.htmlBody = dict["HtmlBody"] as! String
+        }
+        if dict.keys.contains("HtmlBodyPlaceHolders") && dict["HtmlBodyPlaceHolders"] != nil {
+            self.htmlBodyPlaceHoldersShrink = dict["HtmlBodyPlaceHolders"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ReplyAddress") && dict["ReplyAddress"] != nil {
+            self.replyAddress = dict["ReplyAddress"] as! String
+        }
+        if dict.keys.contains("ReplyAddressAlias") && dict["ReplyAddressAlias"] != nil {
+            self.replyAddressAlias = dict["ReplyAddressAlias"] as! String
+        }
+        if dict.keys.contains("ReplyToAddress") && dict["ReplyToAddress"] != nil {
+            self.replyToAddress = dict["ReplyToAddress"] as! Bool
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Subject") && dict["Subject"] != nil {
+            self.subject = dict["Subject"] as! String
+        }
+        if dict.keys.contains("TagName") && dict["TagName"] != nil {
+            self.tagName = dict["TagName"] as! String
+        }
+        if dict.keys.contains("TextBody") && dict["TextBody"] != nil {
+            self.textBody = dict["TextBody"] as! String
+        }
+        if dict.keys.contains("ToAddress") && dict["ToAddress"] != nil {
+            self.toAddress = dict["ToAddress"] as! String
+        }
+    }
+}
+
+public class SingleSendMailV2ResponseBody : Tea.TeaModel {
+    public var envId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.envId != nil {
+            map["EnvId"] = self.envId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnvId") && dict["EnvId"] != nil {
+            self.envId = dict["EnvId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SingleSendMailV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SingleSendMailV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SingleSendMailV2ResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

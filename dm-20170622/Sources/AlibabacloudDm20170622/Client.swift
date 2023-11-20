@@ -1732,4 +1732,85 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await singleSendMailWithOptions(request as! SingleSendMailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func singleSendMailV2WithOptions(_ tmpReq: SingleSendMailV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> SingleSendMailV2Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SingleSendMailV2ShrinkRequest = SingleSendMailV2ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.htmlBodyPlaceHolders)) {
+            request.htmlBodyPlaceHoldersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.htmlBodyPlaceHolders, "HtmlBodyPlaceHolders", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accountName)) {
+            query["AccountName"] = request.accountName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.addressType)) {
+            query["AddressType"] = request.addressType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.clickTrace)) {
+            query["ClickTrace"] = request.clickTrace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fromAlias)) {
+            query["FromAlias"] = request.fromAlias ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.htmlBody)) {
+            query["HtmlBody"] = request.htmlBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.htmlBodyPlaceHoldersShrink)) {
+            query["HtmlBodyPlaceHolders"] = request.htmlBodyPlaceHoldersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.replyAddress)) {
+            query["ReplyAddress"] = request.replyAddress ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replyAddressAlias)) {
+            query["ReplyAddressAlias"] = request.replyAddressAlias ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.replyToAddress)) {
+            query["ReplyToAddress"] = request.replyToAddress!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.subject)) {
+            query["Subject"] = request.subject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagName)) {
+            query["TagName"] = request.tagName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.textBody)) {
+            query["TextBody"] = request.textBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toAddress)) {
+            query["ToAddress"] = request.toAddress ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SingleSendMailV2",
+            "version": "2017-06-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SingleSendMailV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func singleSendMailV2(_ request: SingleSendMailV2Request) async throws -> SingleSendMailV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await singleSendMailV2WithOptions(request as! SingleSendMailV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
 }
