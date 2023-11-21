@@ -38053,7 +38053,7 @@ public class DescribeHistoryTasksResponseBody : Tea.TeaModel {
 
         public var startTime: String?
 
-        public var status: Int32?
+        public var status: String?
 
         public var taskDetail: String?
 
@@ -38187,7 +38187,7 @@ public class DescribeHistoryTasksResponseBody : Tea.TeaModel {
                 self.startTime = dict["StartTime"] as! String
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
-                self.status = dict["Status"] as! Int32
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("TaskDetail") && dict["TaskDetail"] != nil {
                 self.taskDetail = dict["TaskDetail"] as! String
