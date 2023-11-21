@@ -399,6 +399,8 @@ public class EscalationRule : Tea.TeaModel {
                 }
             }
         }
+        public var backupContactGroups: [String]?
+
         public var contactGroups: [String]?
 
         public var contactGroupsByLevel: EscalationRule.Escalations.ContactGroupsByLevel?
@@ -420,6 +422,9 @@ public class EscalationRule : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.backupContactGroups != nil {
+                map["BackupContactGroups"] = self.backupContactGroups!
+            }
             if self.contactGroups != nil {
                 map["ContactGroups"] = self.contactGroups!
             }
@@ -433,6 +438,9 @@ public class EscalationRule : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackupContactGroups") && dict["BackupContactGroups"] != nil {
+                self.backupContactGroups = dict["BackupContactGroups"] as! [String]
+            }
             if dict.keys.contains("ContactGroups") && dict["ContactGroups"] != nil {
                 self.contactGroups = dict["ContactGroups"] as! [String]
             }
@@ -6866,6 +6874,10 @@ public class CreateHybridMonitorNamespaceRequest : Tea.TeaModel {
 
     public var namespace: String?
 
+    public var namespaceRegion: String?
+
+    public var namespaceType: String?
+
     public var regionId: String?
 
     public var spec: String?
@@ -6890,6 +6902,12 @@ public class CreateHybridMonitorNamespaceRequest : Tea.TeaModel {
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
+        if self.namespaceRegion != nil {
+            map["NamespaceRegion"] = self.namespaceRegion!
+        }
+        if self.namespaceType != nil {
+            map["NamespaceType"] = self.namespaceType!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -6905,6 +6923,12 @@ public class CreateHybridMonitorNamespaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
             self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("NamespaceRegion") && dict["NamespaceRegion"] != nil {
+            self.namespaceRegion = dict["NamespaceRegion"] as! String
+        }
+        if dict.keys.contains("NamespaceType") && dict["NamespaceType"] != nil {
+            self.namespaceType = dict["NamespaceType"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -17874,6 +17898,8 @@ public class DescribeAlertLogListResponse : Tea.TeaModel {
 }
 
 public class DescribeAlertingMetricRuleResourcesRequest : Tea.TeaModel {
+    public var alertBeforeTime: String?
+
     public var dimensions: String?
 
     public var groupId: String?
@@ -17902,6 +17928,9 @@ public class DescribeAlertingMetricRuleResourcesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.alertBeforeTime != nil {
+            map["AlertBeforeTime"] = self.alertBeforeTime!
+        }
         if self.dimensions != nil {
             map["Dimensions"] = self.dimensions!
         }
@@ -17927,6 +17956,9 @@ public class DescribeAlertingMetricRuleResourcesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AlertBeforeTime") && dict["AlertBeforeTime"] != nil {
+            self.alertBeforeTime = dict["AlertBeforeTime"] as! String
+        }
         if dict.keys.contains("Dimensions") && dict["Dimensions"] != nil {
             self.dimensions = dict["Dimensions"] as! String
         }
@@ -25768,6 +25800,10 @@ public class DescribeHybridMonitorNamespaceListResponseBody : Tea.TeaModel {
             }
         }
         public class Detail : Tea.TeaModel {
+            public var namespaceRegion: String?
+
+            public var SLSProject: String?
+
             public var spec: String?
 
             public override init() {
@@ -25784,6 +25820,12 @@ public class DescribeHybridMonitorNamespaceListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.namespaceRegion != nil {
+                    map["NamespaceRegion"] = self.namespaceRegion!
+                }
+                if self.SLSProject != nil {
+                    map["SLSProject"] = self.SLSProject!
+                }
                 if self.spec != nil {
                     map["Spec"] = self.spec!
                 }
@@ -25791,6 +25833,12 @@ public class DescribeHybridMonitorNamespaceListResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NamespaceRegion") && dict["NamespaceRegion"] != nil {
+                    self.namespaceRegion = dict["NamespaceRegion"] as! String
+                }
+                if dict.keys.contains("SLSProject") && dict["SLSProject"] != nil {
+                    self.SLSProject = dict["SLSProject"] as! String
+                }
                 if dict.keys.contains("Spec") && dict["Spec"] != nil {
                     self.spec = dict["Spec"] as! String
                 }
@@ -25811,6 +25859,8 @@ public class DescribeHybridMonitorNamespaceListResponseBody : Tea.TeaModel {
         public var modifyTime: String?
 
         public var namespace: String?
+
+        public var namespaceType: String?
 
         public var notAliyunTaskNumber: Int64?
 
@@ -25857,6 +25907,9 @@ public class DescribeHybridMonitorNamespaceListResponseBody : Tea.TeaModel {
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
+            if self.namespaceType != nil {
+                map["NamespaceType"] = self.namespaceType!
+            }
             if self.notAliyunTaskNumber != nil {
                 map["NotAliyunTaskNumber"] = self.notAliyunTaskNumber!
             }
@@ -25897,6 +25950,9 @@ public class DescribeHybridMonitorNamespaceListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
                 self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("NamespaceType") && dict["NamespaceType"] != nil {
+                self.namespaceType = dict["NamespaceType"] as! String
             }
             if dict.keys.contains("NotAliyunTaskNumber") && dict["NotAliyunTaskNumber"] != nil {
                 self.notAliyunTaskNumber = dict["NotAliyunTaskNumber"] as! Int64
@@ -35163,7 +35219,97 @@ public class DescribeMonitorResourceQuotaAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class SiteMonitorBrowser : Tea.TeaModel {
+            public var quotaLimit: Int32?
+
+            public var quotaPackage: Int32?
+
+            public var quotaUsed: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.quotaLimit != nil {
+                    map["QuotaLimit"] = self.quotaLimit!
+                }
+                if self.quotaPackage != nil {
+                    map["QuotaPackage"] = self.quotaPackage!
+                }
+                if self.quotaUsed != nil {
+                    map["QuotaUsed"] = self.quotaUsed!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("QuotaLimit") && dict["QuotaLimit"] != nil {
+                    self.quotaLimit = dict["QuotaLimit"] as! Int32
+                }
+                if dict.keys.contains("QuotaPackage") && dict["QuotaPackage"] != nil {
+                    self.quotaPackage = dict["QuotaPackage"] as! Int32
+                }
+                if dict.keys.contains("QuotaUsed") && dict["QuotaUsed"] != nil {
+                    self.quotaUsed = dict["QuotaUsed"] as! Int32
+                }
+            }
+        }
         public class SiteMonitorEcsProbe : Tea.TeaModel {
+            public var quotaLimit: Int32?
+
+            public var quotaPackage: Int32?
+
+            public var quotaUsed: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.quotaLimit != nil {
+                    map["QuotaLimit"] = self.quotaLimit!
+                }
+                if self.quotaPackage != nil {
+                    map["QuotaPackage"] = self.quotaPackage!
+                }
+                if self.quotaUsed != nil {
+                    map["QuotaUsed"] = self.quotaUsed!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("QuotaLimit") && dict["QuotaLimit"] != nil {
+                    self.quotaLimit = dict["QuotaLimit"] as! Int32
+                }
+                if dict.keys.contains("QuotaPackage") && dict["QuotaPackage"] != nil {
+                    self.quotaPackage = dict["QuotaPackage"] as! Int32
+                }
+                if dict.keys.contains("QuotaUsed") && dict["QuotaUsed"] != nil {
+                    self.quotaUsed = dict["QuotaUsed"] as! Int32
+                }
+            }
+        }
+        public class SiteMonitorMobile : Tea.TeaModel {
             public var quotaLimit: Int32?
 
             public var quotaPackage: Int32?
@@ -35316,7 +35462,11 @@ public class DescribeMonitorResourceQuotaAttributeResponseBody : Tea.TeaModel {
 
         public var SMS: DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SMS?
 
+        public var siteMonitorBrowser: DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorBrowser?
+
         public var siteMonitorEcsProbe: DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorEcsProbe?
+
+        public var siteMonitorMobile: DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorMobile?
 
         public var siteMonitorOperatorProbe: DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorOperatorProbe?
 
@@ -35341,7 +35491,9 @@ public class DescribeMonitorResourceQuotaAttributeResponseBody : Tea.TeaModel {
             try self.logMonitor?.validate()
             try self.phone?.validate()
             try self.SMS?.validate()
+            try self.siteMonitorBrowser?.validate()
             try self.siteMonitorEcsProbe?.validate()
+            try self.siteMonitorMobile?.validate()
             try self.siteMonitorOperatorProbe?.validate()
             try self.siteMonitorTask?.validate()
         }
@@ -35375,8 +35527,14 @@ public class DescribeMonitorResourceQuotaAttributeResponseBody : Tea.TeaModel {
             if self.SMS != nil {
                 map["SMS"] = self.SMS?.toMap()
             }
+            if self.siteMonitorBrowser != nil {
+                map["SiteMonitorBrowser"] = self.siteMonitorBrowser?.toMap()
+            }
             if self.siteMonitorEcsProbe != nil {
                 map["SiteMonitorEcsProbe"] = self.siteMonitorEcsProbe?.toMap()
+            }
+            if self.siteMonitorMobile != nil {
+                map["SiteMonitorMobile"] = self.siteMonitorMobile?.toMap()
             }
             if self.siteMonitorOperatorProbe != nil {
                 map["SiteMonitorOperatorProbe"] = self.siteMonitorOperatorProbe?.toMap()
@@ -35432,10 +35590,20 @@ public class DescribeMonitorResourceQuotaAttributeResponseBody : Tea.TeaModel {
                 model.fromMap(dict["SMS"] as! [String: Any])
                 self.SMS = model
             }
+            if dict.keys.contains("SiteMonitorBrowser") && dict["SiteMonitorBrowser"] != nil {
+                var model = DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorBrowser()
+                model.fromMap(dict["SiteMonitorBrowser"] as! [String: Any])
+                self.siteMonitorBrowser = model
+            }
             if dict.keys.contains("SiteMonitorEcsProbe") && dict["SiteMonitorEcsProbe"] != nil {
                 var model = DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorEcsProbe()
                 model.fromMap(dict["SiteMonitorEcsProbe"] as! [String: Any])
                 self.siteMonitorEcsProbe = model
+            }
+            if dict.keys.contains("SiteMonitorMobile") && dict["SiteMonitorMobile"] != nil {
+                var model = DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorMobile()
+                model.fromMap(dict["SiteMonitorMobile"] as! [String: Any])
+                self.siteMonitorMobile = model
             }
             if dict.keys.contains("SiteMonitorOperatorProbe") && dict["SiteMonitorOperatorProbe"] != nil {
                 var model = DescribeMonitorResourceQuotaAttributeResponseBody.ResourceQuota.SiteMonitorOperatorProbe()
@@ -37238,7 +37406,11 @@ public class DescribeProductsOfActiveMetricRuleResponseBody : Tea.TeaModel {
         public class AllProductInitMetricRule : Tea.TeaModel {
             public class AlertInitConfigList : Tea.TeaModel {
                 public class AlertInitConfig : Tea.TeaModel {
+                    public var comparisonOperator: String?
+
                     public var evaluationCount: String?
+
+                    public var level: String?
 
                     public var metricName: String?
 
@@ -37264,8 +37436,14 @@ public class DescribeProductsOfActiveMetricRuleResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.comparisonOperator != nil {
+                            map["ComparisonOperator"] = self.comparisonOperator!
+                        }
                         if self.evaluationCount != nil {
                             map["EvaluationCount"] = self.evaluationCount!
+                        }
+                        if self.level != nil {
+                            map["Level"] = self.level!
                         }
                         if self.metricName != nil {
                             map["MetricName"] = self.metricName!
@@ -37286,8 +37464,14 @@ public class DescribeProductsOfActiveMetricRuleResponseBody : Tea.TeaModel {
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ComparisonOperator") && dict["ComparisonOperator"] != nil {
+                            self.comparisonOperator = dict["ComparisonOperator"] as! String
+                        }
                         if dict.keys.contains("EvaluationCount") && dict["EvaluationCount"] != nil {
                             self.evaluationCount = dict["EvaluationCount"] as! String
+                        }
+                        if dict.keys.contains("Level") && dict["Level"] != nil {
+                            self.level = dict["Level"] as! String
                         }
                         if dict.keys.contains("MetricName") && dict["MetricName"] != nil {
                             self.metricName = dict["MetricName"] as! String

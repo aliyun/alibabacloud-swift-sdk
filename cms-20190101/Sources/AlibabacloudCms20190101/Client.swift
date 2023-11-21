@@ -584,6 +584,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespace)) {
             query["Namespace"] = request.namespace ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.namespaceRegion)) {
+            query["NamespaceRegion"] = request.namespaceRegion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceType)) {
+            query["NamespaceType"] = request.namespaceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.spec)) {
             query["Spec"] = request.spec ?? "";
         }
