@@ -5,6 +5,98 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class WafQuotaInteger : Tea.TeaModel {
+    public var equal: Int32?
+
+    public var greaterThan: Int32?
+
+    public var greaterThanOrEqual: Int32?
+
+    public var lessThan: Int32?
+
+    public var lessThanOrEqual: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.equal != nil {
+            map["Equal"] = self.equal!
+        }
+        if self.greaterThan != nil {
+            map["GreaterThan"] = self.greaterThan!
+        }
+        if self.greaterThanOrEqual != nil {
+            map["GreaterThanOrEqual"] = self.greaterThanOrEqual!
+        }
+        if self.lessThan != nil {
+            map["LessThan"] = self.lessThan!
+        }
+        if self.lessThanOrEqual != nil {
+            map["LessThanOrEqual"] = self.lessThanOrEqual!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Equal") && dict["Equal"] != nil {
+            self.equal = dict["Equal"] as! Int32
+        }
+        if dict.keys.contains("GreaterThan") && dict["GreaterThan"] != nil {
+            self.greaterThan = dict["GreaterThan"] as! Int32
+        }
+        if dict.keys.contains("GreaterThanOrEqual") && dict["GreaterThanOrEqual"] != nil {
+            self.greaterThanOrEqual = dict["GreaterThanOrEqual"] as! Int32
+        }
+        if dict.keys.contains("LessThan") && dict["LessThan"] != nil {
+            self.lessThan = dict["LessThan"] as! Int32
+        }
+        if dict.keys.contains("LessThanOrEqual") && dict["LessThanOrEqual"] != nil {
+            self.lessThanOrEqual = dict["LessThanOrEqual"] as! Int32
+        }
+    }
+}
+
+public class WafQuotaString : Tea.TeaModel {
+    public var regexp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.regexp != nil {
+            map["Regexp"] = self.regexp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Regexp") && dict["Regexp"] != nil {
+            self.regexp = dict["Regexp"] as! String
+        }
+    }
+}
+
 public class AddDcdnDomainRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -24047,6 +24139,175 @@ public class DescribeDcdnL2VipsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDcdnOriginSiteHealthStatusRequest : Tea.TeaModel {
+    public var domainName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+            self.domainName = dict["DomainName"] as! String
+        }
+    }
+}
+
+public class DescribeDcdnOriginSiteHealthStatusResponseBody : Tea.TeaModel {
+    public class OriginSiteStatus : Tea.TeaModel {
+        public var healthStatus: String?
+
+        public var host: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.healthStatus != nil {
+                map["HealthStatus"] = self.healthStatus!
+            }
+            if self.host != nil {
+                map["Host"] = self.host!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("HealthStatus") && dict["HealthStatus"] != nil {
+                self.healthStatus = dict["HealthStatus"] as! String
+            }
+            if dict.keys.contains("Host") && dict["Host"] != nil {
+                self.host = dict["Host"] as! String
+            }
+        }
+    }
+    public var originSiteStatus: [DescribeDcdnOriginSiteHealthStatusResponseBody.OriginSiteStatus]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.originSiteStatus != nil {
+            var tmp : [Any] = []
+            for k in self.originSiteStatus! {
+                tmp.append(k.toMap())
+            }
+            map["OriginSiteStatus"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OriginSiteStatus") && dict["OriginSiteStatus"] != nil {
+            var tmp : [DescribeDcdnOriginSiteHealthStatusResponseBody.OriginSiteStatus] = []
+            for v in dict["OriginSiteStatus"] as! [Any] {
+                var model = DescribeDcdnOriginSiteHealthStatusResponseBody.OriginSiteStatus()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.originSiteStatus = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeDcdnOriginSiteHealthStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDcdnOriginSiteHealthStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeDcdnOriginSiteHealthStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDcdnRealTimeDeliveryFieldRequest : Tea.TeaModel {
     public var businessType: String?
 
@@ -32397,6 +32658,8 @@ public class DescribeDcdnWafFilterInfoResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var attributes: Int32?
+
                 public var description_: String?
 
                 public var maxLength: Int32?
@@ -32424,6 +32687,9 @@ public class DescribeDcdnWafFilterInfoResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.attributes != nil {
+                        map["Attributes"] = self.attributes!
+                    }
                     if self.description_ != nil {
                         map["Description"] = self.description_!
                     }
@@ -32446,6 +32712,9 @@ public class DescribeDcdnWafFilterInfoResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
+                        self.attributes = dict["Attributes"] as! Int32
+                    }
                     if dict.keys.contains("Description") && dict["Description"] != nil {
                         self.description_ = dict["Description"] as! String
                     }

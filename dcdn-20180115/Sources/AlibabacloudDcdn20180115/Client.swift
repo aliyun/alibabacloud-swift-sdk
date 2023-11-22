@@ -4182,6 +4182,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDcdnOriginSiteHealthStatusWithOptions(_ request: DescribeDcdnOriginSiteHealthStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDcdnOriginSiteHealthStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDcdnOriginSiteHealthStatus",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDcdnOriginSiteHealthStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDcdnOriginSiteHealthStatus(_ request: DescribeDcdnOriginSiteHealthStatusRequest) async throws -> DescribeDcdnOriginSiteHealthStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDcdnOriginSiteHealthStatusWithOptions(request as! DescribeDcdnOriginSiteHealthStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDcdnRealTimeDeliveryFieldWithOptions(_ request: DescribeDcdnRealTimeDeliveryFieldRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDcdnRealTimeDeliveryFieldResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8017,7 +8048,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateDcdnUserRealTimeDeliveryFieldWithOptions(_ request: UpdateDcdnUserRealTimeDeliveryFieldRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateDcdnUserRealTimeDeliveryFieldResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessType)) {
+            query["BusinessType"] = request.businessType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fields)) {
+            query["Fields"] = request.fields ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -8026,7 +8063,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2018-01-15",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
