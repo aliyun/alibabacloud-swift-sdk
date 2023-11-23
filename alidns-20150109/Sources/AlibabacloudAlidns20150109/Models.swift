@@ -12777,6 +12777,8 @@ public class DescribeDnsProductInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var autoRenewal: Bool?
+
     public var bindCount: Int64?
 
     public var bindDomainCount: Int64?
@@ -12862,6 +12864,9 @@ public class DescribeDnsProductInstanceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRenewal != nil {
+            map["AutoRenewal"] = self.autoRenewal!
+        }
         if self.bindCount != nil {
             map["BindCount"] = self.bindCount!
         }
@@ -12971,6 +12976,9 @@ public class DescribeDnsProductInstanceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoRenewal") && dict["AutoRenewal"] != nil {
+            self.autoRenewal = dict["AutoRenewal"] as! Bool
+        }
         if dict.keys.contains("BindCount") && dict["BindCount"] != nil {
             self.bindCount = dict["BindCount"] as! Int64
         }
