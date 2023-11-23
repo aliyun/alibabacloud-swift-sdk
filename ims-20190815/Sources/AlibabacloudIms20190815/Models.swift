@@ -1230,6 +1230,8 @@ public class CreateApplicationRequest : Tea.TeaModel {
 
     public var refreshTokenValidity: Int32?
 
+    public var requiredScopes: String?
+
     public var secretRequired: Bool?
 
     public override init() {
@@ -1270,6 +1272,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if self.refreshTokenValidity != nil {
             map["RefreshTokenValidity"] = self.refreshTokenValidity!
         }
+        if self.requiredScopes != nil {
+            map["RequiredScopes"] = self.requiredScopes!
+        }
         if self.secretRequired != nil {
             map["SecretRequired"] = self.secretRequired!
         }
@@ -1301,6 +1306,9 @@ public class CreateApplicationRequest : Tea.TeaModel {
         if dict.keys.contains("RefreshTokenValidity") && dict["RefreshTokenValidity"] != nil {
             self.refreshTokenValidity = dict["RefreshTokenValidity"] as! Int32
         }
+        if dict.keys.contains("RequiredScopes") && dict["RequiredScopes"] != nil {
+            self.requiredScopes = dict["RequiredScopes"] as! String
+        }
         if dict.keys.contains("SecretRequired") && dict["SecretRequired"] != nil {
             self.secretRequired = dict["SecretRequired"] as! Bool
         }
@@ -1315,6 +1323,8 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
                     public var description_: String?
 
                     public var name: String?
+
+                    public var required_: Bool?
 
                     public override init() {
                         super.init()
@@ -1336,6 +1346,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
                         if self.name != nil {
                             map["Name"] = self.name!
                         }
+                        if self.required_ != nil {
+                            map["Required"] = self.required_!
+                        }
                         return map
                     }
 
@@ -1345,6 +1358,9 @@ public class CreateApplicationResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("Name") && dict["Name"] != nil {
                             self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Required") && dict["Required"] != nil {
+                            self.required_ = dict["Required"] as! Bool
                         }
                     }
                 }
@@ -5359,6 +5375,8 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
                     public var name: String?
 
+                    public var required_: Bool?
+
                     public override init() {
                         super.init()
                     }
@@ -5379,6 +5397,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         if self.name != nil {
                             map["Name"] = self.name!
                         }
+                        if self.required_ != nil {
+                            map["Required"] = self.required_!
+                        }
                         return map
                     }
 
@@ -5388,6 +5409,9 @@ public class GetApplicationResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("Name") && dict["Name"] != nil {
                             self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Required") && dict["Required"] != nil {
+                            self.required_ = dict["Required"] as! Bool
                         }
                     }
                 }
@@ -8390,6 +8414,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
                         public var name: String?
 
+                        public var required_: Bool?
+
                         public override init() {
                             super.init()
                         }
@@ -8410,6 +8436,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                             if self.name != nil {
                                 map["Name"] = self.name!
                             }
+                            if self.required_ != nil {
+                                map["Required"] = self.required_!
+                            }
                             return map
                         }
 
@@ -8419,6 +8448,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
                             }
                             if dict.keys.contains("Name") && dict["Name"] != nil {
                                 self.name = dict["Name"] as! String
+                            }
+                            if dict.keys.contains("Required") && dict["Required"] != nil {
+                                self.required_ = dict["Required"] as! Bool
                             }
                         }
                     }
@@ -13988,6 +14020,8 @@ public class UpdateApplicationRequest : Tea.TeaModel {
 
     public var newRefreshTokenValidity: Int32?
 
+    public var newRequiredScopes: String?
+
     public var newSecretRequired: Bool?
 
     public override init() {
@@ -14025,6 +14059,9 @@ public class UpdateApplicationRequest : Tea.TeaModel {
         if self.newRefreshTokenValidity != nil {
             map["NewRefreshTokenValidity"] = self.newRefreshTokenValidity!
         }
+        if self.newRequiredScopes != nil {
+            map["NewRequiredScopes"] = self.newRequiredScopes!
+        }
         if self.newSecretRequired != nil {
             map["NewSecretRequired"] = self.newSecretRequired!
         }
@@ -14053,6 +14090,9 @@ public class UpdateApplicationRequest : Tea.TeaModel {
         if dict.keys.contains("NewRefreshTokenValidity") && dict["NewRefreshTokenValidity"] != nil {
             self.newRefreshTokenValidity = dict["NewRefreshTokenValidity"] as! Int32
         }
+        if dict.keys.contains("NewRequiredScopes") && dict["NewRequiredScopes"] != nil {
+            self.newRequiredScopes = dict["NewRequiredScopes"] as! String
+        }
         if dict.keys.contains("NewSecretRequired") && dict["NewSecretRequired"] != nil {
             self.newSecretRequired = dict["NewSecretRequired"] as! Bool
         }
@@ -14067,6 +14107,8 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
                     public var description_: String?
 
                     public var name: String?
+
+                    public var required_: Bool?
 
                     public override init() {
                         super.init()
@@ -14088,6 +14130,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
                         if self.name != nil {
                             map["Name"] = self.name!
                         }
+                        if self.required_ != nil {
+                            map["Required"] = self.required_!
+                        }
                         return map
                     }
 
@@ -14097,6 +14142,9 @@ public class UpdateApplicationResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("Name") && dict["Name"] != nil {
                             self.name = dict["Name"] as! String
+                        }
+                        if dict.keys.contains("Required") && dict["Required"] != nil {
+                            self.required_ = dict["Required"] as! Bool
                         }
                     }
                 }

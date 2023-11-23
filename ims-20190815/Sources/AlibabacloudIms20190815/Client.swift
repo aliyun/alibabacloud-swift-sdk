@@ -289,6 +289,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.refreshTokenValidity)) {
             query["RefreshTokenValidity"] = request.refreshTokenValidity!;
         }
+        if (!TeaUtils.Client.isUnset(request.requiredScopes)) {
+            query["RequiredScopes"] = request.requiredScopes ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.secretRequired)) {
             query["SecretRequired"] = request.secretRequired!;
         }
@@ -2302,6 +2305,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.newRefreshTokenValidity)) {
             query["NewRefreshTokenValidity"] = request.newRefreshTokenValidity!;
+        }
+        if (!TeaUtils.Client.isUnset(request.newRequiredScopes)) {
+            query["NewRequiredScopes"] = request.newRequiredScopes ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.newSecretRequired)) {
             query["NewSecretRequired"] = request.newSecretRequired!;
