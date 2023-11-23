@@ -19428,6 +19428,8 @@ public class QueryTradeMarkApplicationsRequest : Tea.TeaModel {
 
     public var status: Int32?
 
+    public var statusList: [Int32]?
+
     public var supplementStatus: Int32?
 
     public var tmName: String?
@@ -19492,6 +19494,9 @@ public class QueryTradeMarkApplicationsRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.statusList != nil {
+            map["StatusList"] = self.statusList!
+        }
         if self.supplementStatus != nil {
             map["SupplementStatus"] = self.supplementStatus!
         }
@@ -19549,6 +19554,183 @@ public class QueryTradeMarkApplicationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! Int32
+        }
+        if dict.keys.contains("StatusList") && dict["StatusList"] != nil {
+            self.statusList = dict["StatusList"] as! [Int32]
+        }
+        if dict.keys.contains("SupplementStatus") && dict["SupplementStatus"] != nil {
+            self.supplementStatus = dict["SupplementStatus"] as! Int32
+        }
+        if dict.keys.contains("TmName") && dict["TmName"] != nil {
+            self.tmName = dict["TmName"] as! String
+        }
+        if dict.keys.contains("TmNumber") && dict["TmNumber"] != nil {
+            self.tmNumber = dict["TmNumber"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class QueryTradeMarkApplicationsShrinkRequest : Tea.TeaModel {
+    public var bizId: String?
+
+    public var classificationCode: String?
+
+    public var hidden: Int32?
+
+    public var intentionBizId: String?
+
+    public var logisticsNo: String?
+
+    public var materialName: String?
+
+    public var orderId: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var productType: Int32?
+
+    public var sortFiled: String?
+
+    public var sortOrder: String?
+
+    public var specification: Int32?
+
+    public var status: Int32?
+
+    public var statusListShrink: String?
+
+    public var supplementStatus: Int32?
+
+    public var tmName: String?
+
+    public var tmNumber: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.classificationCode != nil {
+            map["ClassificationCode"] = self.classificationCode!
+        }
+        if self.hidden != nil {
+            map["Hidden"] = self.hidden!
+        }
+        if self.intentionBizId != nil {
+            map["IntentionBizId"] = self.intentionBizId!
+        }
+        if self.logisticsNo != nil {
+            map["LogisticsNo"] = self.logisticsNo!
+        }
+        if self.materialName != nil {
+            map["MaterialName"] = self.materialName!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productType != nil {
+            map["ProductType"] = self.productType!
+        }
+        if self.sortFiled != nil {
+            map["SortFiled"] = self.sortFiled!
+        }
+        if self.sortOrder != nil {
+            map["SortOrder"] = self.sortOrder!
+        }
+        if self.specification != nil {
+            map["Specification"] = self.specification!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.statusListShrink != nil {
+            map["StatusList"] = self.statusListShrink!
+        }
+        if self.supplementStatus != nil {
+            map["SupplementStatus"] = self.supplementStatus!
+        }
+        if self.tmName != nil {
+            map["TmName"] = self.tmName!
+        }
+        if self.tmNumber != nil {
+            map["TmNumber"] = self.tmNumber!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizId") && dict["BizId"] != nil {
+            self.bizId = dict["BizId"] as! String
+        }
+        if dict.keys.contains("ClassificationCode") && dict["ClassificationCode"] != nil {
+            self.classificationCode = dict["ClassificationCode"] as! String
+        }
+        if dict.keys.contains("Hidden") && dict["Hidden"] != nil {
+            self.hidden = dict["Hidden"] as! Int32
+        }
+        if dict.keys.contains("IntentionBizId") && dict["IntentionBizId"] != nil {
+            self.intentionBizId = dict["IntentionBizId"] as! String
+        }
+        if dict.keys.contains("LogisticsNo") && dict["LogisticsNo"] != nil {
+            self.logisticsNo = dict["LogisticsNo"] as! String
+        }
+        if dict.keys.contains("MaterialName") && dict["MaterialName"] != nil {
+            self.materialName = dict["MaterialName"] as! String
+        }
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
+            self.productType = dict["ProductType"] as! Int32
+        }
+        if dict.keys.contains("SortFiled") && dict["SortFiled"] != nil {
+            self.sortFiled = dict["SortFiled"] as! String
+        }
+        if dict.keys.contains("SortOrder") && dict["SortOrder"] != nil {
+            self.sortOrder = dict["SortOrder"] as! String
+        }
+        if dict.keys.contains("Specification") && dict["Specification"] != nil {
+            self.specification = dict["Specification"] as! Int32
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+        if dict.keys.contains("StatusList") && dict["StatusList"] != nil {
+            self.statusListShrink = dict["StatusList"] as! String
         }
         if dict.keys.contains("SupplementStatus") && dict["SupplementStatus"] != nil {
             self.supplementStatus = dict["SupplementStatus"] as! Int32
@@ -24241,11 +24423,17 @@ public class QueryTrademarkModelEspDetailResponse : Tea.TeaModel {
 }
 
 public class QueryTrademarkModelEspListRequest : Tea.TeaModel {
+    public var additionalSubmitStatus: String?
+
+    public var additionalSubmitTime: String?
+
     public var bizId: String?
 
     public var bizType: String?
 
     public var env: String?
+
+    public var existStatus: [String]?
 
     public var orderId: String?
 
@@ -24281,6 +24469,12 @@ public class QueryTrademarkModelEspListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.additionalSubmitStatus != nil {
+            map["AdditionalSubmitStatus"] = self.additionalSubmitStatus!
+        }
+        if self.additionalSubmitTime != nil {
+            map["AdditionalSubmitTime"] = self.additionalSubmitTime!
+        }
         if self.bizId != nil {
             map["BizId"] = self.bizId!
         }
@@ -24289,6 +24483,9 @@ public class QueryTrademarkModelEspListRequest : Tea.TeaModel {
         }
         if self.env != nil {
             map["Env"] = self.env!
+        }
+        if self.existStatus != nil {
+            map["ExistStatus"] = self.existStatus!
         }
         if self.orderId != nil {
             map["OrderId"] = self.orderId!
@@ -24324,6 +24521,12 @@ public class QueryTrademarkModelEspListRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdditionalSubmitStatus") && dict["AdditionalSubmitStatus"] != nil {
+            self.additionalSubmitStatus = dict["AdditionalSubmitStatus"] as! String
+        }
+        if dict.keys.contains("AdditionalSubmitTime") && dict["AdditionalSubmitTime"] != nil {
+            self.additionalSubmitTime = dict["AdditionalSubmitTime"] as! String
+        }
         if dict.keys.contains("BizId") && dict["BizId"] != nil {
             self.bizId = dict["BizId"] as! String
         }
@@ -24332,6 +24535,159 @@ public class QueryTrademarkModelEspListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Env") && dict["Env"] != nil {
             self.env = dict["Env"] as! String
+        }
+        if dict.keys.contains("ExistStatus") && dict["ExistStatus"] != nil {
+            self.existStatus = dict["ExistStatus"] as! [String]
+        }
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("OrderIdsStr") && dict["OrderIdsStr"] != nil {
+            self.orderIdsStr = dict["OrderIdsStr"] as! String
+        }
+        if dict.keys.contains("OrderInstanceId") && dict["OrderInstanceId"] != nil {
+            self.orderInstanceId = dict["OrderInstanceId"] as! String
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PrincipalKey") && dict["PrincipalKey"] != nil {
+            self.principalKey = dict["PrincipalKey"] as! String
+        }
+        if dict.keys.contains("PrincipalName") && dict["PrincipalName"] != nil {
+            self.principalName = dict["PrincipalName"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("SubmitStatus") && dict["SubmitStatus"] != nil {
+            self.submitStatus = dict["SubmitStatus"] as! String
+        }
+        if dict.keys.contains("SubmitTime") && dict["SubmitTime"] != nil {
+            self.submitTime = dict["SubmitTime"] as! String
+        }
+    }
+}
+
+public class QueryTrademarkModelEspListShrinkRequest : Tea.TeaModel {
+    public var additionalSubmitStatus: String?
+
+    public var additionalSubmitTime: String?
+
+    public var bizId: String?
+
+    public var bizType: String?
+
+    public var env: String?
+
+    public var existStatusShrink: String?
+
+    public var orderId: String?
+
+    public var orderIdsStr: String?
+
+    public var orderInstanceId: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public var principalKey: String?
+
+    public var principalName: String?
+
+    public var status: String?
+
+    public var submitStatus: String?
+
+    public var submitTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.additionalSubmitStatus != nil {
+            map["AdditionalSubmitStatus"] = self.additionalSubmitStatus!
+        }
+        if self.additionalSubmitTime != nil {
+            map["AdditionalSubmitTime"] = self.additionalSubmitTime!
+        }
+        if self.bizId != nil {
+            map["BizId"] = self.bizId!
+        }
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
+        if self.env != nil {
+            map["Env"] = self.env!
+        }
+        if self.existStatusShrink != nil {
+            map["ExistStatus"] = self.existStatusShrink!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.orderIdsStr != nil {
+            map["OrderIdsStr"] = self.orderIdsStr!
+        }
+        if self.orderInstanceId != nil {
+            map["OrderInstanceId"] = self.orderInstanceId!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.principalKey != nil {
+            map["PrincipalKey"] = self.principalKey!
+        }
+        if self.principalName != nil {
+            map["PrincipalName"] = self.principalName!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.submitStatus != nil {
+            map["SubmitStatus"] = self.submitStatus!
+        }
+        if self.submitTime != nil {
+            map["SubmitTime"] = self.submitTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdditionalSubmitStatus") && dict["AdditionalSubmitStatus"] != nil {
+            self.additionalSubmitStatus = dict["AdditionalSubmitStatus"] as! String
+        }
+        if dict.keys.contains("AdditionalSubmitTime") && dict["AdditionalSubmitTime"] != nil {
+            self.additionalSubmitTime = dict["AdditionalSubmitTime"] as! String
+        }
+        if dict.keys.contains("BizId") && dict["BizId"] != nil {
+            self.bizId = dict["BizId"] as! String
+        }
+        if dict.keys.contains("BizType") && dict["BizType"] != nil {
+            self.bizType = dict["BizType"] as! String
+        }
+        if dict.keys.contains("Env") && dict["Env"] != nil {
+            self.env = dict["Env"] as! String
+        }
+        if dict.keys.contains("ExistStatus") && dict["ExistStatus"] != nil {
+            self.existStatusShrink = dict["ExistStatus"] as! String
         }
         if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
             self.orderId = dict["OrderId"] as! String
@@ -32997,6 +33353,8 @@ public class UpdateProduceRequest : Tea.TeaModel {
 
     public var extMap: String?
 
+    public var operateType: String?
+
     public override init() {
         super.init()
     }
@@ -33020,6 +33378,9 @@ public class UpdateProduceRequest : Tea.TeaModel {
         if self.extMap != nil {
             map["ExtMap"] = self.extMap!
         }
+        if self.operateType != nil {
+            map["OperateType"] = self.operateType!
+        }
         return map
     }
 
@@ -33032,6 +33393,9 @@ public class UpdateProduceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ExtMap") && dict["ExtMap"] != nil {
             self.extMap = dict["ExtMap"] as! String
+        }
+        if dict.keys.contains("OperateType") && dict["OperateType"] != nil {
+            self.operateType = dict["OperateType"] as! String
         }
     }
 }

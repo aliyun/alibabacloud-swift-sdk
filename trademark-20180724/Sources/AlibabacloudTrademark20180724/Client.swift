@@ -3094,8 +3094,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryTradeMarkApplicationsWithOptions(_ request: QueryTradeMarkApplicationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTradeMarkApplicationsResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func queryTradeMarkApplicationsWithOptions(_ tmpReq: QueryTradeMarkApplicationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTradeMarkApplicationsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryTradeMarkApplicationsShrinkRequest = QueryTradeMarkApplicationsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.statusList)) {
+            request.statusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statusList, "StatusList", "simple")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
@@ -3138,6 +3143,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status!;
+        }
+        if (!TeaUtils.Client.isUnset(request.statusListShrink)) {
+            query["StatusList"] = request.statusListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.supplementStatus)) {
             query["SupplementStatus"] = request.supplementStatus!;
@@ -3444,9 +3452,20 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryTrademarkModelEspListWithOptions(_ request: QueryTrademarkModelEspListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTrademarkModelEspListResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func queryTrademarkModelEspListWithOptions(_ tmpReq: QueryTrademarkModelEspListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryTrademarkModelEspListResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryTrademarkModelEspListShrinkRequest = QueryTrademarkModelEspListShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.existStatus)) {
+            request.existStatusShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.existStatus, "ExistStatus", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalSubmitStatus)) {
+            query["AdditionalSubmitStatus"] = request.additionalSubmitStatus ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.additionalSubmitTime)) {
+            query["AdditionalSubmitTime"] = request.additionalSubmitTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.bizId)) {
             query["BizId"] = request.bizId ?? "";
         }
@@ -3455,6 +3474,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.env)) {
             query["Env"] = request.env ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.existStatusShrink)) {
+            query["ExistStatus"] = request.existStatusShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.orderId)) {
             query["OrderId"] = request.orderId ?? "";
@@ -5101,6 +5123,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.extMap)) {
             query["ExtMap"] = request.extMap ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operateType)) {
+            query["OperateType"] = request.operateType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
