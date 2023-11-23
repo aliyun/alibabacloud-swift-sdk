@@ -5954,6 +5954,8 @@ public class CreateAudioFileRequest : Tea.TeaModel {
 
     public var ossFileKey: String?
 
+    public var usage: String?
+
     public override init() {
         super.init()
     }
@@ -5980,6 +5982,9 @@ public class CreateAudioFileRequest : Tea.TeaModel {
         if self.ossFileKey != nil {
             map["OssFileKey"] = self.ossFileKey!
         }
+        if self.usage != nil {
+            map["Usage"] = self.usage!
+        }
         return map
     }
 
@@ -5995,6 +6000,9 @@ public class CreateAudioFileRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OssFileKey") && dict["OssFileKey"] != nil {
             self.ossFileKey = dict["OssFileKey"] as! String
+        }
+        if dict.keys.contains("Usage") && dict["Usage"] != nil {
+            self.usage = dict["Usage"] as! String
         }
     }
 }
@@ -11287,7 +11295,11 @@ public class GetCampaignResponseBody : Tea.TeaModel {
 
         public var casesUncompleted: Int64?
 
+        public var casesUncompletedAfterAttempt: String?
+
         public var casesUncompletedAfterAttempted: Int64?
+
+        public var completionRate: Double?
 
         public var maxAttemptCount: Int64?
 
@@ -11347,8 +11359,14 @@ public class GetCampaignResponseBody : Tea.TeaModel {
             if self.casesUncompleted != nil {
                 map["CasesUncompleted"] = self.casesUncompleted!
             }
+            if self.casesUncompletedAfterAttempt != nil {
+                map["CasesUncompletedAfterAttempt"] = self.casesUncompletedAfterAttempt!
+            }
             if self.casesUncompletedAfterAttempted != nil {
                 map["CasesUncompletedAfterAttempted"] = self.casesUncompletedAfterAttempted!
+            }
+            if self.completionRate != nil {
+                map["CompletionRate"] = self.completionRate!
             }
             if self.maxAttemptCount != nil {
                 map["MaxAttemptCount"] = self.maxAttemptCount!
@@ -11411,8 +11429,14 @@ public class GetCampaignResponseBody : Tea.TeaModel {
             if dict.keys.contains("CasesUncompleted") && dict["CasesUncompleted"] != nil {
                 self.casesUncompleted = dict["CasesUncompleted"] as! Int64
             }
+            if dict.keys.contains("CasesUncompletedAfterAttempt") && dict["CasesUncompletedAfterAttempt"] != nil {
+                self.casesUncompletedAfterAttempt = dict["CasesUncompletedAfterAttempt"] as! String
+            }
             if dict.keys.contains("CasesUncompletedAfterAttempted") && dict["CasesUncompletedAfterAttempted"] != nil {
                 self.casesUncompletedAfterAttempted = dict["CasesUncompletedAfterAttempted"] as! Int64
+            }
+            if dict.keys.contains("CompletionRate") && dict["CompletionRate"] != nil {
+                self.completionRate = dict["CompletionRate"] as! Double
             }
             if dict.keys.contains("MaxAttemptCount") && dict["MaxAttemptCount"] != nil {
                 self.maxAttemptCount = dict["MaxAttemptCount"] as! Int64
@@ -13164,7 +13188,11 @@ public class GetHistoricalCampaignReportRequest : Tea.TeaModel {
 
 public class GetHistoricalCampaignReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var abandonRate: Double?
+
         public var abandonedRate: Double?
+
+        public var answerRate: Double?
 
         public var callsAbandoned: Int64?
 
@@ -13190,8 +13218,14 @@ public class GetHistoricalCampaignReportResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.abandonRate != nil {
+                map["AbandonRate"] = self.abandonRate!
+            }
             if self.abandonedRate != nil {
                 map["AbandonedRate"] = self.abandonedRate!
+            }
+            if self.answerRate != nil {
+                map["AnswerRate"] = self.answerRate!
             }
             if self.callsAbandoned != nil {
                 map["CallsAbandoned"] = self.callsAbandoned!
@@ -13212,8 +13246,14 @@ public class GetHistoricalCampaignReportResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AbandonRate") && dict["AbandonRate"] != nil {
+                self.abandonRate = dict["AbandonRate"] as! Double
+            }
             if dict.keys.contains("AbandonedRate") && dict["AbandonedRate"] != nil {
                 self.abandonedRate = dict["AbandonedRate"] as! Double
+            }
+            if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                self.answerRate = dict["AnswerRate"] as! Double
             }
             if dict.keys.contains("CallsAbandoned") && dict["CallsAbandoned"] != nil {
                 self.callsAbandoned = dict["CallsAbandoned"] as! Int64
@@ -13353,6 +13393,8 @@ public class GetHistoricalInstanceReportRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var mediaType: String?
+
     public var startTime: Int64?
 
     public override init() {
@@ -13375,6 +13417,9 @@ public class GetHistoricalInstanceReportRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -13388,6 +13433,9 @@ public class GetHistoricalInstanceReportRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("MediaType") && dict["MediaType"] != nil {
+            self.mediaType = dict["MediaType"] as! String
+        }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
         }
@@ -13397,7 +13445,46 @@ public class GetHistoricalInstanceReportRequest : Tea.TeaModel {
 public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Inbound : Tea.TeaModel {
+            public class AccessChannelTypeDetailList : Tea.TeaModel {
+                public var accessChannelType: String?
+
+                public var callsOffered: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessChannelType != nil {
+                        map["AccessChannelType"] = self.accessChannelType!
+                    }
+                    if self.callsOffered != nil {
+                        map["CallsOffered"] = self.callsOffered!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccessChannelType") && dict["AccessChannelType"] != nil {
+                        self.accessChannelType = dict["AccessChannelType"] as! String
+                    }
+                    if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                        self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                }
+            }
             public var abandonRate: Double?
+
+            public var accessChannelTypeDetailList: [GetHistoricalInstanceReportResponseBody.Data.Inbound.AccessChannelTypeDetailList]?
 
             public var averageAbandonTime: Double?
 
@@ -13407,7 +13494,11 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
 
             public var averageAbandonedInRingTime: Double?
 
+            public var averageFirstResponseTime: Double?
+
             public var averageHoldTime: Double?
+
+            public var averageResponseTime: Double?
 
             public var averageRingTime: Double?
 
@@ -13431,6 +13522,8 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
 
             public var callsBlindTransferred: Int64?
 
+            public var callsCausedIVRException: Int64?
+
             public var callsForwardToOutsideNumber: Int64?
 
             public var callsHandled: Int64?
@@ -13450,6 +13543,8 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
             public var callsQueuingTimeout: Int64?
 
             public var callsRinged: Int64?
+
+            public var callsToVoicemail: Int64?
 
             public var callsVoicemail: Int64?
 
@@ -13481,7 +13576,11 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
 
             public var satisfactionSurveysResponded: Int64?
 
+            public var serviceLevel15: Double?
+
             public var serviceLevel20: Double?
+
+            public var serviceLevel30: Double?
 
             public var totalAbandonTime: Int64?
 
@@ -13492,6 +13591,12 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
             public var totalAbandonedInRingTime: Int64?
 
             public var totalHoldTime: Int64?
+
+            public var totalMessagesSent: Int64?
+
+            public var totalMessagesSentByAgent: Int64?
+
+            public var totalMessagesSentByCustomer: Int64?
 
             public var totalRingTime: Int64?
 
@@ -13518,6 +13623,13 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if self.abandonRate != nil {
                     map["AbandonRate"] = self.abandonRate!
                 }
+                if self.accessChannelTypeDetailList != nil {
+                    var tmp : [Any] = []
+                    for k in self.accessChannelTypeDetailList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AccessChannelTypeDetailList"] = tmp
+                }
                 if self.averageAbandonTime != nil {
                     map["AverageAbandonTime"] = self.averageAbandonTime!
                 }
@@ -13530,8 +13642,14 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if self.averageAbandonedInRingTime != nil {
                     map["AverageAbandonedInRingTime"] = self.averageAbandonedInRingTime!
                 }
+                if self.averageFirstResponseTime != nil {
+                    map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                }
                 if self.averageHoldTime != nil {
                     map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageResponseTime != nil {
+                    map["AverageResponseTime"] = self.averageResponseTime!
                 }
                 if self.averageRingTime != nil {
                     map["AverageRingTime"] = self.averageRingTime!
@@ -13566,6 +13684,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if self.callsBlindTransferred != nil {
                     map["CallsBlindTransferred"] = self.callsBlindTransferred!
                 }
+                if self.callsCausedIVRException != nil {
+                    map["CallsCausedIVRException"] = self.callsCausedIVRException!
+                }
                 if self.callsForwardToOutsideNumber != nil {
                     map["CallsForwardToOutsideNumber"] = self.callsForwardToOutsideNumber!
                 }
@@ -13595,6 +13716,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if self.callsRinged != nil {
                     map["CallsRinged"] = self.callsRinged!
+                }
+                if self.callsToVoicemail != nil {
+                    map["CallsToVoicemail"] = self.callsToVoicemail!
                 }
                 if self.callsVoicemail != nil {
                     map["CallsVoicemail"] = self.callsVoicemail!
@@ -13641,8 +13765,14 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if self.satisfactionSurveysResponded != nil {
                     map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
                 }
+                if self.serviceLevel15 != nil {
+                    map["ServiceLevel15"] = self.serviceLevel15!
+                }
                 if self.serviceLevel20 != nil {
                     map["ServiceLevel20"] = self.serviceLevel20!
+                }
+                if self.serviceLevel30 != nil {
+                    map["ServiceLevel30"] = self.serviceLevel30!
                 }
                 if self.totalAbandonTime != nil {
                     map["TotalAbandonTime"] = self.totalAbandonTime!
@@ -13658,6 +13788,15 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if self.totalHoldTime != nil {
                     map["TotalHoldTime"] = self.totalHoldTime!
+                }
+                if self.totalMessagesSent != nil {
+                    map["TotalMessagesSent"] = self.totalMessagesSent!
+                }
+                if self.totalMessagesSentByAgent != nil {
+                    map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                }
+                if self.totalMessagesSentByCustomer != nil {
+                    map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
                 }
                 if self.totalRingTime != nil {
                     map["TotalRingTime"] = self.totalRingTime!
@@ -13678,6 +13817,17 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AbandonRate") && dict["AbandonRate"] != nil {
                     self.abandonRate = dict["AbandonRate"] as! Double
                 }
+                if dict.keys.contains("AccessChannelTypeDetailList") && dict["AccessChannelTypeDetailList"] != nil {
+                    var tmp : [GetHistoricalInstanceReportResponseBody.Data.Inbound.AccessChannelTypeDetailList] = []
+                    for v in dict["AccessChannelTypeDetailList"] as! [Any] {
+                        var model = GetHistoricalInstanceReportResponseBody.Data.Inbound.AccessChannelTypeDetailList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.accessChannelTypeDetailList = tmp
+                }
                 if dict.keys.contains("AverageAbandonTime") && dict["AverageAbandonTime"] != nil {
                     self.averageAbandonTime = dict["AverageAbandonTime"] as! Double
                 }
@@ -13690,8 +13840,14 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AverageAbandonedInRingTime") && dict["AverageAbandonedInRingTime"] != nil {
                     self.averageAbandonedInRingTime = dict["AverageAbandonedInRingTime"] as! Double
                 }
+                if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                    self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                }
                 if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                     self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                    self.averageResponseTime = dict["AverageResponseTime"] as! Double
                 }
                 if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                     self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -13726,6 +13882,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("CallsBlindTransferred") && dict["CallsBlindTransferred"] != nil {
                     self.callsBlindTransferred = dict["CallsBlindTransferred"] as! Int64
                 }
+                if dict.keys.contains("CallsCausedIVRException") && dict["CallsCausedIVRException"] != nil {
+                    self.callsCausedIVRException = dict["CallsCausedIVRException"] as! Int64
+                }
                 if dict.keys.contains("CallsForwardToOutsideNumber") && dict["CallsForwardToOutsideNumber"] != nil {
                     self.callsForwardToOutsideNumber = dict["CallsForwardToOutsideNumber"] as! Int64
                 }
@@ -13755,6 +13914,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
                     self.callsRinged = dict["CallsRinged"] as! Int64
+                }
+                if dict.keys.contains("CallsToVoicemail") && dict["CallsToVoicemail"] != nil {
+                    self.callsToVoicemail = dict["CallsToVoicemail"] as! Int64
                 }
                 if dict.keys.contains("CallsVoicemail") && dict["CallsVoicemail"] != nil {
                     self.callsVoicemail = dict["CallsVoicemail"] as! Int64
@@ -13801,8 +13963,14 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
                     self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
                 }
+                if dict.keys.contains("ServiceLevel15") && dict["ServiceLevel15"] != nil {
+                    self.serviceLevel15 = dict["ServiceLevel15"] as! Double
+                }
                 if dict.keys.contains("ServiceLevel20") && dict["ServiceLevel20"] != nil {
                     self.serviceLevel20 = dict["ServiceLevel20"] as! Double
+                }
+                if dict.keys.contains("ServiceLevel30") && dict["ServiceLevel30"] != nil {
+                    self.serviceLevel30 = dict["ServiceLevel30"] as! Double
                 }
                 if dict.keys.contains("TotalAbandonTime") && dict["TotalAbandonTime"] != nil {
                     self.totalAbandonTime = dict["TotalAbandonTime"] as! Int64
@@ -13819,6 +13987,15 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                     self.totalHoldTime = dict["TotalHoldTime"] as! Int64
                 }
+                if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                    self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                    self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                    self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
+                }
                 if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                     self.totalRingTime = dict["TotalRingTime"] as! Int64
                 }
@@ -13830,6 +14007,43 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
                     self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                }
+            }
+        }
+        public class Internal_ : Tea.TeaModel {
+            public var callsAnswered: Int64?
+
+            public var callsDialed: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
                 }
             }
         }
@@ -14077,6 +14291,8 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
 
             public var maxHoldTime: Int64?
 
+            public var maxLoggedInAgents: Int64?
+
             public var maxReadyTime: Int64?
 
             public var maxTalkTime: Int64?
@@ -14141,6 +14357,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if self.maxHoldTime != nil {
                     map["MaxHoldTime"] = self.maxHoldTime!
+                }
+                if self.maxLoggedInAgents != nil {
+                    map["MaxLoggedInAgents"] = self.maxLoggedInAgents!
                 }
                 if self.maxReadyTime != nil {
                     map["MaxReadyTime"] = self.maxReadyTime!
@@ -14212,6 +14431,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("MaxHoldTime") && dict["MaxHoldTime"] != nil {
                     self.maxHoldTime = dict["MaxHoldTime"] as! Int64
                 }
+                if dict.keys.contains("MaxLoggedInAgents") && dict["MaxLoggedInAgents"] != nil {
+                    self.maxLoggedInAgents = dict["MaxLoggedInAgents"] as! Int64
+                }
                 if dict.keys.contains("MaxReadyTime") && dict["MaxReadyTime"] != nil {
                     self.maxReadyTime = dict["MaxReadyTime"] as! Int64
                 }
@@ -14261,6 +14483,8 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
         }
         public var inbound: GetHistoricalInstanceReportResponseBody.Data.Inbound?
 
+        public var internal_: GetHistoricalInstanceReportResponseBody.Data.Internal_?
+
         public var outbound: GetHistoricalInstanceReportResponseBody.Data.Outbound?
 
         public var overall: GetHistoricalInstanceReportResponseBody.Data.Overall?
@@ -14276,6 +14500,7 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.inbound?.validate()
+            try self.internal_?.validate()
             try self.outbound?.validate()
             try self.overall?.validate()
         }
@@ -14284,6 +14509,9 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.inbound != nil {
                 map["Inbound"] = self.inbound?.toMap()
+            }
+            if self.internal_ != nil {
+                map["Internal"] = self.internal_?.toMap()
             }
             if self.outbound != nil {
                 map["Outbound"] = self.outbound?.toMap()
@@ -14299,6 +14527,11 @@ public class GetHistoricalInstanceReportResponseBody : Tea.TeaModel {
                 var model = GetHistoricalInstanceReportResponseBody.Data.Inbound()
                 model.fromMap(dict["Inbound"] as! [String: Any])
                 self.inbound = model
+            }
+            if dict.keys.contains("Internal") && dict["Internal"] != nil {
+                var model = GetHistoricalInstanceReportResponseBody.Data.Internal_()
+                model.fromMap(dict["Internal"] as! [String: Any])
+                self.internal_ = model
             }
             if dict.keys.contains("Outbound") && dict["Outbound"] != nil {
                 var model = GetHistoricalInstanceReportResponseBody.Data.Outbound()
@@ -25420,17 +25653,33 @@ public class ListCampaignTrendingReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var breakAgents: Int64?
 
+        public var breakingAgents: Int64?
+
         public var concurrency: Int64?
 
         public var datetime: Int64?
 
         public var loggedInAgents: Int64?
 
+        public var outboundScenarioBreakingAgents: Int64?
+
+        public var outboundScenarioReadyAgents: Int64?
+
+        public var outboundScenarioTalkingAgents: Int64?
+
+        public var outboundScenarioWorkingAgents: Int64?
+
         public var readyAgents: Int64?
+
+        public var statsTime: Int64?
 
         public var talkAgents: Int64?
 
+        public var talkingAgents: Int64?
+
         public var workAgents: Int64?
+
+        public var workingAgents: Int64?
 
         public override init() {
             super.init()
@@ -25449,6 +25698,9 @@ public class ListCampaignTrendingReportResponseBody : Tea.TeaModel {
             if self.breakAgents != nil {
                 map["BreakAgents"] = self.breakAgents!
             }
+            if self.breakingAgents != nil {
+                map["BreakingAgents"] = self.breakingAgents!
+            }
             if self.concurrency != nil {
                 map["Concurrency"] = self.concurrency!
             }
@@ -25458,14 +25710,35 @@ public class ListCampaignTrendingReportResponseBody : Tea.TeaModel {
             if self.loggedInAgents != nil {
                 map["LoggedInAgents"] = self.loggedInAgents!
             }
+            if self.outboundScenarioBreakingAgents != nil {
+                map["OutboundScenarioBreakingAgents"] = self.outboundScenarioBreakingAgents!
+            }
+            if self.outboundScenarioReadyAgents != nil {
+                map["OutboundScenarioReadyAgents"] = self.outboundScenarioReadyAgents!
+            }
+            if self.outboundScenarioTalkingAgents != nil {
+                map["OutboundScenarioTalkingAgents"] = self.outboundScenarioTalkingAgents!
+            }
+            if self.outboundScenarioWorkingAgents != nil {
+                map["OutboundScenarioWorkingAgents"] = self.outboundScenarioWorkingAgents!
+            }
             if self.readyAgents != nil {
                 map["ReadyAgents"] = self.readyAgents!
+            }
+            if self.statsTime != nil {
+                map["StatsTime"] = self.statsTime!
             }
             if self.talkAgents != nil {
                 map["TalkAgents"] = self.talkAgents!
             }
+            if self.talkingAgents != nil {
+                map["TalkingAgents"] = self.talkingAgents!
+            }
             if self.workAgents != nil {
                 map["WorkAgents"] = self.workAgents!
+            }
+            if self.workingAgents != nil {
+                map["WorkingAgents"] = self.workingAgents!
             }
             return map
         }
@@ -25473,6 +25746,9 @@ public class ListCampaignTrendingReportResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("BreakAgents") && dict["BreakAgents"] != nil {
                 self.breakAgents = dict["BreakAgents"] as! Int64
+            }
+            if dict.keys.contains("BreakingAgents") && dict["BreakingAgents"] != nil {
+                self.breakingAgents = dict["BreakingAgents"] as! Int64
             }
             if dict.keys.contains("Concurrency") && dict["Concurrency"] != nil {
                 self.concurrency = dict["Concurrency"] as! Int64
@@ -25483,14 +25759,35 @@ public class ListCampaignTrendingReportResponseBody : Tea.TeaModel {
             if dict.keys.contains("LoggedInAgents") && dict["LoggedInAgents"] != nil {
                 self.loggedInAgents = dict["LoggedInAgents"] as! Int64
             }
+            if dict.keys.contains("OutboundScenarioBreakingAgents") && dict["OutboundScenarioBreakingAgents"] != nil {
+                self.outboundScenarioBreakingAgents = dict["OutboundScenarioBreakingAgents"] as! Int64
+            }
+            if dict.keys.contains("OutboundScenarioReadyAgents") && dict["OutboundScenarioReadyAgents"] != nil {
+                self.outboundScenarioReadyAgents = dict["OutboundScenarioReadyAgents"] as! Int64
+            }
+            if dict.keys.contains("OutboundScenarioTalkingAgents") && dict["OutboundScenarioTalkingAgents"] != nil {
+                self.outboundScenarioTalkingAgents = dict["OutboundScenarioTalkingAgents"] as! Int64
+            }
+            if dict.keys.contains("OutboundScenarioWorkingAgents") && dict["OutboundScenarioWorkingAgents"] != nil {
+                self.outboundScenarioWorkingAgents = dict["OutboundScenarioWorkingAgents"] as! Int64
+            }
             if dict.keys.contains("ReadyAgents") && dict["ReadyAgents"] != nil {
                 self.readyAgents = dict["ReadyAgents"] as! Int64
+            }
+            if dict.keys.contains("StatsTime") && dict["StatsTime"] != nil {
+                self.statsTime = dict["StatsTime"] as! Int64
             }
             if dict.keys.contains("TalkAgents") && dict["TalkAgents"] != nil {
                 self.talkAgents = dict["TalkAgents"] as! Int64
             }
+            if dict.keys.contains("TalkingAgents") && dict["TalkingAgents"] != nil {
+                self.talkingAgents = dict["TalkingAgents"] as! Int64
+            }
             if dict.keys.contains("WorkAgents") && dict["WorkAgents"] != nil {
                 self.workAgents = dict["WorkAgents"] as! Int64
+            }
+            if dict.keys.contains("WorkingAgents") && dict["WorkingAgents"] != nil {
+                self.workingAgents = dict["WorkingAgents"] as! Int64
             }
         }
     }
@@ -26157,6 +26454,8 @@ public class ListCasesRequest : Tea.TeaModel {
 public class ListCasesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public var abandonPhase: String?
+
             public var abandonType: String?
 
             public var attemptCount: Int64?
@@ -26185,6 +26484,9 @@ public class ListCasesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.abandonPhase != nil {
+                    map["AbandonPhase"] = self.abandonPhase!
+                }
                 if self.abandonType != nil {
                     map["AbandonType"] = self.abandonType!
                 }
@@ -26210,6 +26512,9 @@ public class ListCasesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AbandonPhase") && dict["AbandonPhase"] != nil {
+                    self.abandonPhase = dict["AbandonPhase"] as! String
+                }
                 if dict.keys.contains("AbandonType") && dict["AbandonType"] != nil {
                     self.abandonType = dict["AbandonType"] as! String
                 }
@@ -27968,9 +28273,13 @@ public class ListHistoricalAgentReportRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var mediaType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var skillGroupId: String?
 
     public var startTime: Int64?
 
@@ -27996,11 +28305,17 @@ public class ListHistoricalAgentReportRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.skillGroupId != nil {
+            map["SkillGroupId"] = self.skillGroupId!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
@@ -28018,11 +28333,17 @@ public class ListHistoricalAgentReportRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("MediaType") && dict["MediaType"] != nil {
+            self.mediaType = dict["MediaType"] as! String
+        }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SkillGroupId") && dict["SkillGroupId"] != nil {
+            self.skillGroupId = dict["SkillGroupId"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
@@ -28036,8 +28357,200 @@ public class ListHistoricalAgentReportRequest : Tea.TeaModel {
 public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public class Back2Back : Tea.TeaModel {
+                public var agentHandleRate: String?
+
+                public var answerRate: String?
+
+                public var averageCustomerRingTime: String?
+
+                public var averageRingTime: String?
+
+                public var averageTalkTime: String?
+
+                public var callsAgentHandled: String?
+
+                public var callsAnswered: String?
+
+                public var callsCustomerAnswered: String?
+
+                public var callsDialed: String?
+
+                public var customerAnswerRate: String?
+
+                public var maxCustomerRingTime: String?
+
+                public var maxRingTime: String?
+
+                public var maxTalkTime: String?
+
+                public var totalCustomerRingTime: String?
+
+                public var totalRingTime: String?
+
+                public var totalTalkTime: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agentHandleRate != nil {
+                        map["AgentHandleRate"] = self.agentHandleRate!
+                    }
+                    if self.answerRate != nil {
+                        map["AnswerRate"] = self.answerRate!
+                    }
+                    if self.averageCustomerRingTime != nil {
+                        map["AverageCustomerRingTime"] = self.averageCustomerRingTime!
+                    }
+                    if self.averageRingTime != nil {
+                        map["AverageRingTime"] = self.averageRingTime!
+                    }
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.callsAgentHandled != nil {
+                        map["CallsAgentHandled"] = self.callsAgentHandled!
+                    }
+                    if self.callsAnswered != nil {
+                        map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsCustomerAnswered != nil {
+                        map["CallsCustomerAnswered"] = self.callsCustomerAnswered!
+                    }
+                    if self.callsDialed != nil {
+                        map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.customerAnswerRate != nil {
+                        map["CustomerAnswerRate"] = self.customerAnswerRate!
+                    }
+                    if self.maxCustomerRingTime != nil {
+                        map["MaxCustomerRingTime"] = self.maxCustomerRingTime!
+                    }
+                    if self.maxRingTime != nil {
+                        map["MaxRingTime"] = self.maxRingTime!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.totalCustomerRingTime != nil {
+                        map["TotalCustomerRingTime"] = self.totalCustomerRingTime!
+                    }
+                    if self.totalRingTime != nil {
+                        map["TotalRingTime"] = self.totalRingTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AgentHandleRate") && dict["AgentHandleRate"] != nil {
+                        self.agentHandleRate = dict["AgentHandleRate"] as! String
+                    }
+                    if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                        self.answerRate = dict["AnswerRate"] as! String
+                    }
+                    if dict.keys.contains("AverageCustomerRingTime") && dict["AverageCustomerRingTime"] != nil {
+                        self.averageCustomerRingTime = dict["AverageCustomerRingTime"] as! String
+                    }
+                    if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                        self.averageRingTime = dict["AverageRingTime"] as! String
+                    }
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! String
+                    }
+                    if dict.keys.contains("CallsAgentHandled") && dict["CallsAgentHandled"] != nil {
+                        self.callsAgentHandled = dict["CallsAgentHandled"] as! String
+                    }
+                    if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                        self.callsAnswered = dict["CallsAnswered"] as! String
+                    }
+                    if dict.keys.contains("CallsCustomerAnswered") && dict["CallsCustomerAnswered"] != nil {
+                        self.callsCustomerAnswered = dict["CallsCustomerAnswered"] as! String
+                    }
+                    if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                        self.callsDialed = dict["CallsDialed"] as! String
+                    }
+                    if dict.keys.contains("CustomerAnswerRate") && dict["CustomerAnswerRate"] != nil {
+                        self.customerAnswerRate = dict["CustomerAnswerRate"] as! String
+                    }
+                    if dict.keys.contains("MaxCustomerRingTime") && dict["MaxCustomerRingTime"] != nil {
+                        self.maxCustomerRingTime = dict["MaxCustomerRingTime"] as! String
+                    }
+                    if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                        self.maxRingTime = dict["MaxRingTime"] as! String
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! String
+                    }
+                    if dict.keys.contains("TotalCustomerRingTime") && dict["TotalCustomerRingTime"] != nil {
+                        self.totalCustomerRingTime = dict["TotalCustomerRingTime"] as! String
+                    }
+                    if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                        self.totalRingTime = dict["TotalRingTime"] as! String
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! String
+                    }
+                }
+            }
             public class Inbound : Tea.TeaModel {
+                public class AccessChannelTypeDetails : Tea.TeaModel {
+                    public var accessChannelType: String?
+
+                    public var callsOffered: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessChannelType != nil {
+                            map["AccessChannelType"] = self.accessChannelType!
+                        }
+                        if self.callsOffered != nil {
+                            map["CallsOffered"] = self.callsOffered!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AccessChannelType") && dict["AccessChannelType"] != nil {
+                            self.accessChannelType = dict["AccessChannelType"] as! String
+                        }
+                        if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                            self.callsOffered = dict["CallsOffered"] as! Int64
+                        }
+                    }
+                }
+                public var accessChannelTypeDetails: [ListHistoricalAgentReportResponseBody.Data.List.Inbound.AccessChannelTypeDetails]?
+
+                public var averageFirstResponseTime: Double?
+
                 public var averageHoldTime: Double?
+
+                public var averageResponseTime: Double?
 
                 public var averageRingTime: Double?
 
@@ -28079,7 +28592,15 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
 
                 public var satisfactionSurveysResponded: Int64?
 
+                public var serviceLevel15: Double?
+
                 public var totalHoldTime: Int64?
+
+                public var totalMessagesSent: Int64?
+
+                public var totalMessagesSentByAgent: Int64?
+
+                public var totalMessagesSentByCustomer: String?
 
                 public var totalRingTime: Int64?
 
@@ -28101,8 +28622,21 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.accessChannelTypeDetails != nil {
+                        var tmp : [Any] = []
+                        for k in self.accessChannelTypeDetails! {
+                            tmp.append(k.toMap())
+                        }
+                        map["AccessChannelTypeDetails"] = tmp
+                    }
+                    if self.averageFirstResponseTime != nil {
+                        map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                    }
                     if self.averageHoldTime != nil {
                         map["AverageHoldTime"] = self.averageHoldTime!
+                    }
+                    if self.averageResponseTime != nil {
+                        map["AverageResponseTime"] = self.averageResponseTime!
                     }
                     if self.averageRingTime != nil {
                         map["AverageRingTime"] = self.averageRingTime!
@@ -28164,8 +28698,20 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     if self.satisfactionSurveysResponded != nil {
                         map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
                     }
+                    if self.serviceLevel15 != nil {
+                        map["ServiceLevel15"] = self.serviceLevel15!
+                    }
                     if self.totalHoldTime != nil {
                         map["TotalHoldTime"] = self.totalHoldTime!
+                    }
+                    if self.totalMessagesSent != nil {
+                        map["TotalMessagesSent"] = self.totalMessagesSent!
+                    }
+                    if self.totalMessagesSentByAgent != nil {
+                        map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                    }
+                    if self.totalMessagesSentByCustomer != nil {
+                        map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
                     }
                     if self.totalRingTime != nil {
                         map["TotalRingTime"] = self.totalRingTime!
@@ -28180,8 +28726,25 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccessChannelTypeDetails") && dict["AccessChannelTypeDetails"] != nil {
+                        var tmp : [ListHistoricalAgentReportResponseBody.Data.List.Inbound.AccessChannelTypeDetails] = []
+                        for v in dict["AccessChannelTypeDetails"] as! [Any] {
+                            var model = ListHistoricalAgentReportResponseBody.Data.List.Inbound.AccessChannelTypeDetails()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.accessChannelTypeDetails = tmp
+                    }
+                    if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                        self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                    }
                     if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                         self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                        self.averageResponseTime = dict["AverageResponseTime"] as! Double
                     }
                     if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                         self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -28243,8 +28806,20 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
                         self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
                     }
+                    if dict.keys.contains("ServiceLevel15") && dict["ServiceLevel15"] != nil {
+                        self.serviceLevel15 = dict["ServiceLevel15"] as! Double
+                    }
                     if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                         self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                        self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                        self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                        self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! String
                     }
                     if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                         self.totalRingTime = dict["TotalRingTime"] as! Int64
@@ -28254,6 +28829,91 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
                         self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                    }
+                }
+            }
+            public class Internal_ : Tea.TeaModel {
+                public var averageTalkTime: Double?
+
+                public var callsAnswered: Int64?
+
+                public var callsDialed: Int64?
+
+                public var callsHandled: Int64?
+
+                public var callsOffered: Int64?
+
+                public var callsTalked: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.callsAnswered != nil {
+                        map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsDialed != nil {
+                        map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.callsHandled != nil {
+                        map["CallsHandled"] = self.callsHandled!
+                    }
+                    if self.callsOffered != nil {
+                        map["CallsOffered"] = self.callsOffered!
+                    }
+                    if self.callsTalked != nil {
+                        map["CallsTalked"] = self.callsTalked!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                    }
+                    if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                        self.callsAnswered = dict["CallsAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                        self.callsDialed = dict["CallsDialed"] as! Int64
+                    }
+                    if dict.keys.contains("CallsHandled") && dict["CallsHandled"] != nil {
+                        self.callsHandled = dict["CallsHandled"] as! Int64
+                    }
+                    if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                        self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsTalked") && dict["CallsTalked"] != nil {
+                        self.callsTalked = dict["CallsTalked"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
                     }
                 }
             }
@@ -28592,11 +29252,19 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
 
                 public var totalLoggedInTime: Int64?
 
+                public var totalOffSiteLoggedInTime: Int64?
+
                 public var totalOffSiteOnlineTime: Int64?
+
+                public var totalOfficePhoneLoggedInTime: Int64?
 
                 public var totalOfficePhoneOnlineTime: Int64?
 
+                public var totalOnSiteLoggedInTime: Int64?
+
                 public var totalOnSiteOnlineTime: Int64?
+
+                public var totalOutboundScenarioLoggedInTime: Int64?
 
                 public var totalOutboundScenarioReadyTime: Int64?
 
@@ -28692,14 +29360,26 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     if self.totalLoggedInTime != nil {
                         map["TotalLoggedInTime"] = self.totalLoggedInTime!
                     }
+                    if self.totalOffSiteLoggedInTime != nil {
+                        map["TotalOffSiteLoggedInTime"] = self.totalOffSiteLoggedInTime!
+                    }
                     if self.totalOffSiteOnlineTime != nil {
                         map["TotalOffSiteOnlineTime"] = self.totalOffSiteOnlineTime!
+                    }
+                    if self.totalOfficePhoneLoggedInTime != nil {
+                        map["TotalOfficePhoneLoggedInTime"] = self.totalOfficePhoneLoggedInTime!
                     }
                     if self.totalOfficePhoneOnlineTime != nil {
                         map["TotalOfficePhoneOnlineTime"] = self.totalOfficePhoneOnlineTime!
                     }
+                    if self.totalOnSiteLoggedInTime != nil {
+                        map["TotalOnSiteLoggedInTime"] = self.totalOnSiteLoggedInTime!
+                    }
                     if self.totalOnSiteOnlineTime != nil {
                         map["TotalOnSiteOnlineTime"] = self.totalOnSiteOnlineTime!
+                    }
+                    if self.totalOutboundScenarioLoggedInTime != nil {
+                        map["TotalOutboundScenarioLoggedInTime"] = self.totalOutboundScenarioLoggedInTime!
                     }
                     if self.totalOutboundScenarioReadyTime != nil {
                         map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
@@ -28794,14 +29474,26 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
                         self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
                     }
+                    if dict.keys.contains("TotalOffSiteLoggedInTime") && dict["TotalOffSiteLoggedInTime"] != nil {
+                        self.totalOffSiteLoggedInTime = dict["TotalOffSiteLoggedInTime"] as! Int64
+                    }
                     if dict.keys.contains("TotalOffSiteOnlineTime") && dict["TotalOffSiteOnlineTime"] != nil {
                         self.totalOffSiteOnlineTime = dict["TotalOffSiteOnlineTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOfficePhoneLoggedInTime") && dict["TotalOfficePhoneLoggedInTime"] != nil {
+                        self.totalOfficePhoneLoggedInTime = dict["TotalOfficePhoneLoggedInTime"] as! Int64
                     }
                     if dict.keys.contains("TotalOfficePhoneOnlineTime") && dict["TotalOfficePhoneOnlineTime"] != nil {
                         self.totalOfficePhoneOnlineTime = dict["TotalOfficePhoneOnlineTime"] as! Int64
                     }
+                    if dict.keys.contains("TotalOnSiteLoggedInTime") && dict["TotalOnSiteLoggedInTime"] != nil {
+                        self.totalOnSiteLoggedInTime = dict["TotalOnSiteLoggedInTime"] as! Int64
+                    }
                     if dict.keys.contains("TotalOnSiteOnlineTime") && dict["TotalOnSiteOnlineTime"] != nil {
                         self.totalOnSiteOnlineTime = dict["TotalOnSiteOnlineTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOutboundScenarioLoggedInTime") && dict["TotalOutboundScenarioLoggedInTime"] != nil {
+                        self.totalOutboundScenarioLoggedInTime = dict["TotalOutboundScenarioLoggedInTime"] as! Int64
                     }
                     if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
                         self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
@@ -28824,9 +29516,13 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
 
             public var agentName: String?
 
+            public var back2Back: ListHistoricalAgentReportResponseBody.Data.List.Back2Back?
+
             public var displayId: String?
 
             public var inbound: ListHistoricalAgentReportResponseBody.Data.List.Inbound?
+
+            public var internal_: ListHistoricalAgentReportResponseBody.Data.List.Internal_?
 
             public var outbound: ListHistoricalAgentReportResponseBody.Data.List.Outbound?
 
@@ -28846,7 +29542,9 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.back2Back?.validate()
                 try self.inbound?.validate()
+                try self.internal_?.validate()
                 try self.outbound?.validate()
                 try self.overall?.validate()
             }
@@ -28859,11 +29557,17 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                 if self.agentName != nil {
                     map["AgentName"] = self.agentName!
                 }
+                if self.back2Back != nil {
+                    map["Back2Back"] = self.back2Back?.toMap()
+                }
                 if self.displayId != nil {
                     map["DisplayId"] = self.displayId!
                 }
                 if self.inbound != nil {
                     map["Inbound"] = self.inbound?.toMap()
+                }
+                if self.internal_ != nil {
+                    map["Internal"] = self.internal_?.toMap()
                 }
                 if self.outbound != nil {
                     map["Outbound"] = self.outbound?.toMap()
@@ -28887,6 +29591,11 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AgentName") && dict["AgentName"] != nil {
                     self.agentName = dict["AgentName"] as! String
                 }
+                if dict.keys.contains("Back2Back") && dict["Back2Back"] != nil {
+                    var model = ListHistoricalAgentReportResponseBody.Data.List.Back2Back()
+                    model.fromMap(dict["Back2Back"] as! [String: Any])
+                    self.back2Back = model
+                }
                 if dict.keys.contains("DisplayId") && dict["DisplayId"] != nil {
                     self.displayId = dict["DisplayId"] as! String
                 }
@@ -28894,6 +29603,11 @@ public class ListHistoricalAgentReportResponseBody : Tea.TeaModel {
                     var model = ListHistoricalAgentReportResponseBody.Data.List.Inbound()
                     model.fromMap(dict["Inbound"] as! [String: Any])
                     self.inbound = model
+                }
+                if dict.keys.contains("Internal") && dict["Internal"] != nil {
+                    var model = ListHistoricalAgentReportResponseBody.Data.List.Internal_()
+                    model.fromMap(dict["Internal"] as! [String: Any])
+                    self.internal_ = model
                 }
                 if dict.keys.contains("Outbound") && dict["Outbound"] != nil {
                     var model = ListHistoricalAgentReportResponseBody.Data.List.Outbound()
@@ -29100,6 +29814,8 @@ public class ListHistoricalAgentSkillGroupReportRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var mediaType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -29131,6 +29847,9 @@ public class ListHistoricalAgentSkillGroupReportRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -29156,6 +29875,9 @@ public class ListHistoricalAgentSkillGroupReportRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("MediaType") && dict["MediaType"] != nil {
+            self.mediaType = dict["MediaType"] as! String
+        }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
@@ -29177,6 +29899,8 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
             public class Back2Back : Tea.TeaModel {
                 public var agentAnswerRate: Double?
 
+                public var agentHandleRate: Double?
+
                 public var answerRate: Double?
 
                 public var averageCustomerRingTime: Double?
@@ -29185,11 +29909,17 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public var averageTalkTime: Int64?
 
+                public var callsAgentHandled: Int64?
+
                 public var callsAnswered: Int64?
+
+                public var callsCustomerAnswered: Int64?
 
                 public var callsCustomerHandled: Int64?
 
                 public var callsDialed: Int64?
+
+                public var customerAnswerRate: Double?
 
                 public var customerHandleRate: Double?
 
@@ -29222,6 +29952,9 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.agentAnswerRate != nil {
                         map["AgentAnswerRate"] = self.agentAnswerRate!
                     }
+                    if self.agentHandleRate != nil {
+                        map["AgentHandleRate"] = self.agentHandleRate!
+                    }
                     if self.answerRate != nil {
                         map["AnswerRate"] = self.answerRate!
                     }
@@ -29234,14 +29967,23 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.averageTalkTime != nil {
                         map["AverageTalkTime"] = self.averageTalkTime!
                     }
+                    if self.callsAgentHandled != nil {
+                        map["CallsAgentHandled"] = self.callsAgentHandled!
+                    }
                     if self.callsAnswered != nil {
                         map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsCustomerAnswered != nil {
+                        map["CallsCustomerAnswered"] = self.callsCustomerAnswered!
                     }
                     if self.callsCustomerHandled != nil {
                         map["CallsCustomerHandled"] = self.callsCustomerHandled!
                     }
                     if self.callsDialed != nil {
                         map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.customerAnswerRate != nil {
+                        map["CustomerAnswerRate"] = self.customerAnswerRate!
                     }
                     if self.customerHandleRate != nil {
                         map["CustomerHandleRate"] = self.customerHandleRate!
@@ -29271,6 +30013,9 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AgentAnswerRate") && dict["AgentAnswerRate"] != nil {
                         self.agentAnswerRate = dict["AgentAnswerRate"] as! Double
                     }
+                    if dict.keys.contains("AgentHandleRate") && dict["AgentHandleRate"] != nil {
+                        self.agentHandleRate = dict["AgentHandleRate"] as! Double
+                    }
                     if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
                         self.answerRate = dict["AnswerRate"] as! Double
                     }
@@ -29283,14 +30028,23 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
                         self.averageTalkTime = dict["AverageTalkTime"] as! Int64
                     }
+                    if dict.keys.contains("CallsAgentHandled") && dict["CallsAgentHandled"] != nil {
+                        self.callsAgentHandled = dict["CallsAgentHandled"] as! Int64
+                    }
                     if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
                         self.callsAnswered = dict["CallsAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsCustomerAnswered") && dict["CallsCustomerAnswered"] != nil {
+                        self.callsCustomerAnswered = dict["CallsCustomerAnswered"] as! Int64
                     }
                     if dict.keys.contains("CallsCustomerHandled") && dict["CallsCustomerHandled"] != nil {
                         self.callsCustomerHandled = dict["CallsCustomerHandled"] as! Int64
                     }
                     if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
                         self.callsDialed = dict["CallsDialed"] as! Int64
+                    }
+                    if dict.keys.contains("CustomerAnswerRate") && dict["CustomerAnswerRate"] != nil {
+                        self.customerAnswerRate = dict["CustomerAnswerRate"] as! Double
                     }
                     if dict.keys.contains("CustomerHandleRate") && dict["CustomerHandleRate"] != nil {
                         self.customerHandleRate = dict["CustomerHandleRate"] as! Double
@@ -29316,7 +30070,11 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 }
             }
             public class Inbound : Tea.TeaModel {
+                public var averageFirstResponseTime: Double?
+
                 public var averageHoldTime: Double?
+
+                public var averageResponseTime: Double?
 
                 public var averageRingTime: Double?
 
@@ -29360,6 +30118,12 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public var totalHoldTime: Int64?
 
+                public var totalMessagesSent: Int64?
+
+                public var totalMessagesSentByAgent: Int64?
+
+                public var totalMessagesSentByCustomer: Int64?
+
                 public var totalRingTime: Int64?
 
                 public var totalTalkTime: Int64?
@@ -29380,8 +30144,14 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.averageFirstResponseTime != nil {
+                        map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                    }
                     if self.averageHoldTime != nil {
                         map["AverageHoldTime"] = self.averageHoldTime!
+                    }
+                    if self.averageResponseTime != nil {
+                        map["AverageResponseTime"] = self.averageResponseTime!
                     }
                     if self.averageRingTime != nil {
                         map["AverageRingTime"] = self.averageRingTime!
@@ -29446,6 +30216,15 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.totalHoldTime != nil {
                         map["TotalHoldTime"] = self.totalHoldTime!
                     }
+                    if self.totalMessagesSent != nil {
+                        map["TotalMessagesSent"] = self.totalMessagesSent!
+                    }
+                    if self.totalMessagesSentByAgent != nil {
+                        map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                    }
+                    if self.totalMessagesSentByCustomer != nil {
+                        map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
+                    }
                     if self.totalRingTime != nil {
                         map["TotalRingTime"] = self.totalRingTime!
                     }
@@ -29459,8 +30238,14 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                        self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                    }
                     if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                         self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                        self.averageResponseTime = dict["AverageResponseTime"] as! Double
                     }
                     if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                         self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -29525,6 +30310,15 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                         self.totalHoldTime = dict["TotalHoldTime"] as! Int64
                     }
+                    if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                        self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                        self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                        self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
+                    }
                     if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                         self.totalRingTime = dict["TotalRingTime"] as! Int64
                     }
@@ -29548,6 +30342,8 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 public var callsOffered: Int64?
 
                 public var callsTalk: Int64?
+
+                public var callsTalked: Int64?
 
                 public var maxTalkTime: Int64?
 
@@ -29585,6 +30381,9 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.callsTalk != nil {
                         map["CallsTalk"] = self.callsTalk!
                     }
+                    if self.callsTalked != nil {
+                        map["CallsTalked"] = self.callsTalked!
+                    }
                     if self.maxTalkTime != nil {
                         map["MaxTalkTime"] = self.maxTalkTime!
                     }
@@ -29612,6 +30411,9 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("CallsTalk") && dict["CallsTalk"] != nil {
                         self.callsTalk = dict["CallsTalk"] as! Int64
+                    }
+                    if dict.keys.contains("CallsTalked") && dict["CallsTalked"] != nil {
+                        self.callsTalked = dict["CallsTalked"] as! Int64
                     }
                     if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
                         self.maxTalkTime = dict["MaxTalkTime"] as! Int64
@@ -29956,6 +30758,14 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public var totalLoggedInTime: Int64?
 
+                public var totalOffSiteLggedInTime: Int64?
+
+                public var totalOfficePhoneLoggedInTime: Int64?
+
+                public var totalOnSiteLoggedInTime: String?
+
+                public var totalOutboundScenarioLoggedInTime: Int64?
+
                 public var totalOutboundScenarioReadyTime: Int64?
 
                 public var totalOutboundScenarioTime: Int64?
@@ -30050,6 +30860,18 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.totalLoggedInTime != nil {
                         map["TotalLoggedInTime"] = self.totalLoggedInTime!
                     }
+                    if self.totalOffSiteLggedInTime != nil {
+                        map["TotalOffSiteLggedInTime"] = self.totalOffSiteLggedInTime!
+                    }
+                    if self.totalOfficePhoneLoggedInTime != nil {
+                        map["TotalOfficePhoneLoggedInTime"] = self.totalOfficePhoneLoggedInTime!
+                    }
+                    if self.totalOnSiteLoggedInTime != nil {
+                        map["TotalOnSiteLoggedInTime"] = self.totalOnSiteLoggedInTime!
+                    }
+                    if self.totalOutboundScenarioLoggedInTime != nil {
+                        map["TotalOutboundScenarioLoggedInTime"] = self.totalOutboundScenarioLoggedInTime!
+                    }
                     if self.totalOutboundScenarioReadyTime != nil {
                         map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
                     }
@@ -30142,6 +30964,18 @@ public class ListHistoricalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
                         self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOffSiteLggedInTime") && dict["TotalOffSiteLggedInTime"] != nil {
+                        self.totalOffSiteLggedInTime = dict["TotalOffSiteLggedInTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOfficePhoneLoggedInTime") && dict["TotalOfficePhoneLoggedInTime"] != nil {
+                        self.totalOfficePhoneLoggedInTime = dict["TotalOfficePhoneLoggedInTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalOnSiteLoggedInTime") && dict["TotalOnSiteLoggedInTime"] != nil {
+                        self.totalOnSiteLoggedInTime = dict["TotalOnSiteLoggedInTime"] as! String
+                    }
+                    if dict.keys.contains("TotalOutboundScenarioLoggedInTime") && dict["TotalOutboundScenarioLoggedInTime"] != nil {
+                        self.totalOutboundScenarioLoggedInTime = dict["TotalOutboundScenarioLoggedInTime"] as! Int64
                     }
                     if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
                         self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
@@ -30460,6 +31294,8 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var mediaType: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -30488,6 +31324,9 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -30510,6 +31349,9 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
+        if dict.keys.contains("MediaType") && dict["MediaType"] != nil {
+            self.mediaType = dict["MediaType"] as! String
+        }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
@@ -30528,8 +31370,188 @@ public class ListHistoricalSkillGroupReportRequest : Tea.TeaModel {
 public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public class Back2Back : Tea.TeaModel {
+                public var agentHandleRate: Double?
+
+                public var answerRate: Double?
+
+                public var averageCustomerRingTime: Double?
+
+                public var averageRingTime: Double?
+
+                public var averageTalkTime: Double?
+
+                public var callsAnswered: Int64?
+
+                public var callsCustomerAnswered: Int64?
+
+                public var callsDialed: Int64?
+
+                public var customerAnswerRate: Double?
+
+                public var maxCustomerRingTime: Int64?
+
+                public var maxRingTime: Int64?
+
+                public var maxTalkTime: Int64?
+
+                public var totalCustomerRingTime: Int64?
+
+                public var totalRingTime: Int64?
+
+                public var totalTalkTime: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agentHandleRate != nil {
+                        map["AgentHandleRate"] = self.agentHandleRate!
+                    }
+                    if self.answerRate != nil {
+                        map["AnswerRate"] = self.answerRate!
+                    }
+                    if self.averageCustomerRingTime != nil {
+                        map["AverageCustomerRingTime"] = self.averageCustomerRingTime!
+                    }
+                    if self.averageRingTime != nil {
+                        map["AverageRingTime"] = self.averageRingTime!
+                    }
+                    if self.averageTalkTime != nil {
+                        map["AverageTalkTime"] = self.averageTalkTime!
+                    }
+                    if self.callsAnswered != nil {
+                        map["CallsAnswered"] = self.callsAnswered!
+                    }
+                    if self.callsCustomerAnswered != nil {
+                        map["CallsCustomerAnswered"] = self.callsCustomerAnswered!
+                    }
+                    if self.callsDialed != nil {
+                        map["CallsDialed"] = self.callsDialed!
+                    }
+                    if self.customerAnswerRate != nil {
+                        map["CustomerAnswerRate"] = self.customerAnswerRate!
+                    }
+                    if self.maxCustomerRingTime != nil {
+                        map["MaxCustomerRingTime"] = self.maxCustomerRingTime!
+                    }
+                    if self.maxRingTime != nil {
+                        map["MaxRingTime"] = self.maxRingTime!
+                    }
+                    if self.maxTalkTime != nil {
+                        map["MaxTalkTime"] = self.maxTalkTime!
+                    }
+                    if self.totalCustomerRingTime != nil {
+                        map["TotalCustomerRingTime"] = self.totalCustomerRingTime!
+                    }
+                    if self.totalRingTime != nil {
+                        map["TotalRingTime"] = self.totalRingTime!
+                    }
+                    if self.totalTalkTime != nil {
+                        map["TotalTalkTime"] = self.totalTalkTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AgentHandleRate") && dict["AgentHandleRate"] != nil {
+                        self.agentHandleRate = dict["AgentHandleRate"] as! Double
+                    }
+                    if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                        self.answerRate = dict["AnswerRate"] as! Double
+                    }
+                    if dict.keys.contains("AverageCustomerRingTime") && dict["AverageCustomerRingTime"] != nil {
+                        self.averageCustomerRingTime = dict["AverageCustomerRingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                        self.averageRingTime = dict["AverageRingTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                        self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                    }
+                    if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                        self.callsAnswered = dict["CallsAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsCustomerAnswered") && dict["CallsCustomerAnswered"] != nil {
+                        self.callsCustomerAnswered = dict["CallsCustomerAnswered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                        self.callsDialed = dict["CallsDialed"] as! Int64
+                    }
+                    if dict.keys.contains("CustomerAnswerRate") && dict["CustomerAnswerRate"] != nil {
+                        self.customerAnswerRate = dict["CustomerAnswerRate"] as! Double
+                    }
+                    if dict.keys.contains("MaxCustomerRingTime") && dict["MaxCustomerRingTime"] != nil {
+                        self.maxCustomerRingTime = dict["MaxCustomerRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                        self.maxRingTime = dict["MaxRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                        self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalCustomerRingTime") && dict["TotalCustomerRingTime"] != nil {
+                        self.totalCustomerRingTime = dict["TotalCustomerRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                        self.totalRingTime = dict["TotalRingTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                        self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                }
+            }
             public class Inbound : Tea.TeaModel {
+                public class AccessChannelTypeDetails : Tea.TeaModel {
+                    public var accessChannelType: String?
+
+                    public var callsOffered: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.accessChannelType != nil {
+                            map["AccessChannelType"] = self.accessChannelType!
+                        }
+                        if self.callsOffered != nil {
+                            map["CallsOffered"] = self.callsOffered!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AccessChannelType") && dict["AccessChannelType"] != nil {
+                            self.accessChannelType = dict["AccessChannelType"] as! String
+                        }
+                        if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                            self.callsOffered = dict["CallsOffered"] as! Int64
+                        }
+                    }
+                }
                 public var abandonRate: Double?
+
+                public var accessChannelTypeDetails: [ListHistoricalSkillGroupReportResponseBody.Data.List.Inbound.AccessChannelTypeDetails]?
 
                 public var averageAbandonTime: Double?
 
@@ -30537,7 +31559,11 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public var averageAbandonedInRingTime: Double?
 
+                public var averageFirstResponseTime: Double?
+
                 public var averageHoldTime: Double?
+
+                public var averageResponseTime: Double?
 
                 public var averageRingTime: Double?
 
@@ -30571,6 +31597,12 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public var callsQueued: Int64?
 
+                public var callsQueuingFailed: Int64?
+
+                public var callsQueuingOverflow: Int64?
+
+                public var callsQueuingTimeout: Int64?
+
                 public var callsRinged: Int64?
 
                 public var callsTimeout: Int64?
@@ -30601,7 +31633,11 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
 
                 public var satisfactionSurveysResponded: Int64?
 
+                public var serviceLevel15: Double?
+
                 public var serviceLevel20: Double?
+
+                public var serviceLevel30: Double?
 
                 public var totalAbandonTime: Int64?
 
@@ -30610,6 +31646,12 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                 public var totalAbandonedInRingTime: Int64?
 
                 public var totalHoldTime: Int64?
+
+                public var totalMessagesSent: Int64?
+
+                public var totalMessagesSentByAgent: Int64?
+
+                public var totalMessagesSentByCustomer: Int64?
 
                 public var totalRingTime: Int64?
 
@@ -30636,6 +31678,13 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.abandonRate != nil {
                         map["AbandonRate"] = self.abandonRate!
                     }
+                    if self.accessChannelTypeDetails != nil {
+                        var tmp : [Any] = []
+                        for k in self.accessChannelTypeDetails! {
+                            tmp.append(k.toMap())
+                        }
+                        map["AccessChannelTypeDetails"] = tmp
+                    }
                     if self.averageAbandonTime != nil {
                         map["AverageAbandonTime"] = self.averageAbandonTime!
                     }
@@ -30645,8 +31694,14 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.averageAbandonedInRingTime != nil {
                         map["AverageAbandonedInRingTime"] = self.averageAbandonedInRingTime!
                     }
+                    if self.averageFirstResponseTime != nil {
+                        map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                    }
                     if self.averageHoldTime != nil {
                         map["AverageHoldTime"] = self.averageHoldTime!
+                    }
+                    if self.averageResponseTime != nil {
+                        map["AverageResponseTime"] = self.averageResponseTime!
                     }
                     if self.averageRingTime != nil {
                         map["AverageRingTime"] = self.averageRingTime!
@@ -30696,6 +31751,15 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.callsQueued != nil {
                         map["CallsQueued"] = self.callsQueued!
                     }
+                    if self.callsQueuingFailed != nil {
+                        map["CallsQueuingFailed"] = self.callsQueuingFailed!
+                    }
+                    if self.callsQueuingOverflow != nil {
+                        map["CallsQueuingOverflow"] = self.callsQueuingOverflow!
+                    }
+                    if self.callsQueuingTimeout != nil {
+                        map["CallsQueuingTimeout"] = self.callsQueuingTimeout!
+                    }
                     if self.callsRinged != nil {
                         map["CallsRinged"] = self.callsRinged!
                     }
@@ -30741,8 +31805,14 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if self.satisfactionSurveysResponded != nil {
                         map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
                     }
+                    if self.serviceLevel15 != nil {
+                        map["ServiceLevel15"] = self.serviceLevel15!
+                    }
                     if self.serviceLevel20 != nil {
                         map["ServiceLevel20"] = self.serviceLevel20!
+                    }
+                    if self.serviceLevel30 != nil {
+                        map["ServiceLevel30"] = self.serviceLevel30!
                     }
                     if self.totalAbandonTime != nil {
                         map["TotalAbandonTime"] = self.totalAbandonTime!
@@ -30755,6 +31825,15 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     }
                     if self.totalHoldTime != nil {
                         map["TotalHoldTime"] = self.totalHoldTime!
+                    }
+                    if self.totalMessagesSent != nil {
+                        map["TotalMessagesSent"] = self.totalMessagesSent!
+                    }
+                    if self.totalMessagesSentByAgent != nil {
+                        map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                    }
+                    if self.totalMessagesSentByCustomer != nil {
+                        map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
                     }
                     if self.totalRingTime != nil {
                         map["TotalRingTime"] = self.totalRingTime!
@@ -30775,6 +31854,17 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AbandonRate") && dict["AbandonRate"] != nil {
                         self.abandonRate = dict["AbandonRate"] as! Double
                     }
+                    if dict.keys.contains("AccessChannelTypeDetails") && dict["AccessChannelTypeDetails"] != nil {
+                        var tmp : [ListHistoricalSkillGroupReportResponseBody.Data.List.Inbound.AccessChannelTypeDetails] = []
+                        for v in dict["AccessChannelTypeDetails"] as! [Any] {
+                            var model = ListHistoricalSkillGroupReportResponseBody.Data.List.Inbound.AccessChannelTypeDetails()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.accessChannelTypeDetails = tmp
+                    }
                     if dict.keys.contains("AverageAbandonTime") && dict["AverageAbandonTime"] != nil {
                         self.averageAbandonTime = dict["AverageAbandonTime"] as! Double
                     }
@@ -30784,8 +31874,14 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AverageAbandonedInRingTime") && dict["AverageAbandonedInRingTime"] != nil {
                         self.averageAbandonedInRingTime = dict["AverageAbandonedInRingTime"] as! Double
                     }
+                    if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                        self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                    }
                     if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                         self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                    }
+                    if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                        self.averageResponseTime = dict["AverageResponseTime"] as! Double
                     }
                     if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                         self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -30835,6 +31931,15 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("CallsQueued") && dict["CallsQueued"] != nil {
                         self.callsQueued = dict["CallsQueued"] as! Int64
                     }
+                    if dict.keys.contains("CallsQueuingFailed") && dict["CallsQueuingFailed"] != nil {
+                        self.callsQueuingFailed = dict["CallsQueuingFailed"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingOverflow") && dict["CallsQueuingOverflow"] != nil {
+                        self.callsQueuingOverflow = dict["CallsQueuingOverflow"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingTimeout") && dict["CallsQueuingTimeout"] != nil {
+                        self.callsQueuingTimeout = dict["CallsQueuingTimeout"] as! Int64
+                    }
                     if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
                         self.callsRinged = dict["CallsRinged"] as! Int64
                     }
@@ -30880,8 +31985,14 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
                         self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
                     }
+                    if dict.keys.contains("ServiceLevel15") && dict["ServiceLevel15"] != nil {
+                        self.serviceLevel15 = dict["ServiceLevel15"] as! Double
+                    }
                     if dict.keys.contains("ServiceLevel20") && dict["ServiceLevel20"] != nil {
                         self.serviceLevel20 = dict["ServiceLevel20"] as! Double
+                    }
+                    if dict.keys.contains("ServiceLevel30") && dict["ServiceLevel30"] != nil {
+                        self.serviceLevel30 = dict["ServiceLevel30"] as! Double
                     }
                     if dict.keys.contains("TotalAbandonTime") && dict["TotalAbandonTime"] != nil {
                         self.totalAbandonTime = dict["TotalAbandonTime"] as! Int64
@@ -30894,6 +32005,15 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                         self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                        self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                        self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                        self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
                     }
                     if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                         self.totalRingTime = dict["TotalRingTime"] as! Int64
@@ -31155,6 +32275,51 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                 }
             }
             public class Overall : Tea.TeaModel {
+                public class BreakCodeDetailList : Tea.TeaModel {
+                    public var breakCode: String?
+
+                    public var count: Int64?
+
+                    public var duration: Int64?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.breakCode != nil {
+                            map["BreakCode"] = self.breakCode!
+                        }
+                        if self.count != nil {
+                            map["Count"] = self.count!
+                        }
+                        if self.duration != nil {
+                            map["Duration"] = self.duration!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                            self.breakCode = dict["BreakCode"] as! String
+                        }
+                        if dict.keys.contains("Count") && dict["Count"] != nil {
+                            self.count = dict["Count"] as! Int64
+                        }
+                        if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                            self.duration = dict["Duration"] as! Int64
+                        }
+                    }
+                }
                 public var averageBreakTime: Double?
 
                 public var averageHoldTime: Double?
@@ -31164,6 +32329,8 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                 public var averageTalkTime: Double?
 
                 public var averageWorkTime: Double?
+
+                public var breakCodeDetailList: [ListHistoricalSkillGroupReportResponseBody.Data.List.Overall.BreakCodeDetailList]?
 
                 public var maxBreakTime: Int64?
 
@@ -31227,6 +32394,13 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     }
                     if self.averageWorkTime != nil {
                         map["AverageWorkTime"] = self.averageWorkTime!
+                    }
+                    if self.breakCodeDetailList != nil {
+                        var tmp : [Any] = []
+                        for k in self.breakCodeDetailList! {
+                            tmp.append(k.toMap())
+                        }
+                        map["BreakCodeDetailList"] = tmp
                     }
                     if self.maxBreakTime != nil {
                         map["MaxBreakTime"] = self.maxBreakTime!
@@ -31298,6 +32472,17 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
                         self.averageWorkTime = dict["AverageWorkTime"] as! Double
                     }
+                    if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                        var tmp : [ListHistoricalSkillGroupReportResponseBody.Data.List.Overall.BreakCodeDetailList] = []
+                        for v in dict["BreakCodeDetailList"] as! [Any] {
+                            var model = ListHistoricalSkillGroupReportResponseBody.Data.List.Overall.BreakCodeDetailList()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.breakCodeDetailList = tmp
+                    }
                     if dict.keys.contains("MaxBreakTime") && dict["MaxBreakTime"] != nil {
                         self.maxBreakTime = dict["MaxBreakTime"] as! Int64
                     }
@@ -31351,6 +32536,8 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var back2Back: ListHistoricalSkillGroupReportResponseBody.Data.List.Back2Back?
+
             public var inbound: ListHistoricalSkillGroupReportResponseBody.Data.List.Inbound?
 
             public var outbound: ListHistoricalSkillGroupReportResponseBody.Data.List.Outbound?
@@ -31371,6 +32558,7 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.back2Back?.validate()
                 try self.inbound?.validate()
                 try self.outbound?.validate()
                 try self.overall?.validate()
@@ -31378,6 +32566,9 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.back2Back != nil {
+                    map["Back2Back"] = self.back2Back?.toMap()
+                }
                 if self.inbound != nil {
                     map["Inbound"] = self.inbound?.toMap()
                 }
@@ -31397,6 +32588,11 @@ public class ListHistoricalSkillGroupReportResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Back2Back") && dict["Back2Back"] != nil {
+                    var model = ListHistoricalSkillGroupReportResponseBody.Data.List.Back2Back()
+                    model.fromMap(dict["Back2Back"] as! [String: Any])
+                    self.back2Back = model
+                }
                 if dict.keys.contains("Inbound") && dict["Inbound"] != nil {
                     var model = ListHistoricalSkillGroupReportResponseBody.Data.List.Inbound()
                     model.fromMap(dict["Inbound"] as! [String: Any])
@@ -32704,6 +33900,8 @@ public class ListIntervalAgentReportRequest : Tea.TeaModel {
 
     public var interval: String?
 
+    public var mediaType: String?
+
     public var startTime: Int64?
 
     public override init() {
@@ -32732,6 +33930,9 @@ public class ListIntervalAgentReportRequest : Tea.TeaModel {
         if self.interval != nil {
             map["Interval"] = self.interval!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -32751,6 +33952,9 @@ public class ListIntervalAgentReportRequest : Tea.TeaModel {
         if dict.keys.contains("Interval") && dict["Interval"] != nil {
             self.interval = dict["Interval"] as! String
         }
+        if dict.keys.contains("MediaType") && dict["MediaType"] != nil {
+            self.mediaType = dict["MediaType"] as! String
+        }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
         }
@@ -32759,8 +33963,200 @@ public class ListIntervalAgentReportRequest : Tea.TeaModel {
 
 public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Back2Back : Tea.TeaModel {
+            public var agentHandleRate: Double?
+
+            public var answerRate: Double?
+
+            public var averageCustomerRingTime: Double?
+
+            public var averageRingTime: Double?
+
+            public var averageTalkTime: Double?
+
+            public var callsAgentHandled: Int64?
+
+            public var callsAnswered: Int64?
+
+            public var callsCustomerAnswered: Int64?
+
+            public var callsDialed: Int64?
+
+            public var customerAnswerRate: Double?
+
+            public var maxCustomerRingTime: Int64?
+
+            public var maxRingTime: Int64?
+
+            public var maxTalkTime: Int64?
+
+            public var totalCustomerRingTime: Int64?
+
+            public var totalRingTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentHandleRate != nil {
+                    map["AgentHandleRate"] = self.agentHandleRate!
+                }
+                if self.answerRate != nil {
+                    map["AnswerRate"] = self.answerRate!
+                }
+                if self.averageCustomerRingTime != nil {
+                    map["AverageCustomerRingTime"] = self.averageCustomerRingTime!
+                }
+                if self.averageRingTime != nil {
+                    map["AverageRingTime"] = self.averageRingTime!
+                }
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.callsAgentHandled != nil {
+                    map["CallsAgentHandled"] = self.callsAgentHandled!
+                }
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsCustomerAnswered != nil {
+                    map["CallsCustomerAnswered"] = self.callsCustomerAnswered!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                if self.customerAnswerRate != nil {
+                    map["CustomerAnswerRate"] = self.customerAnswerRate!
+                }
+                if self.maxCustomerRingTime != nil {
+                    map["MaxCustomerRingTime"] = self.maxCustomerRingTime!
+                }
+                if self.maxRingTime != nil {
+                    map["MaxRingTime"] = self.maxRingTime!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.totalCustomerRingTime != nil {
+                    map["TotalCustomerRingTime"] = self.totalCustomerRingTime!
+                }
+                if self.totalRingTime != nil {
+                    map["TotalRingTime"] = self.totalRingTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AgentHandleRate") && dict["AgentHandleRate"] != nil {
+                    self.agentHandleRate = dict["AgentHandleRate"] as! Double
+                }
+                if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                    self.answerRate = dict["AnswerRate"] as! Double
+                }
+                if dict.keys.contains("AverageCustomerRingTime") && dict["AverageCustomerRingTime"] != nil {
+                    self.averageCustomerRingTime = dict["AverageCustomerRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                    self.averageRingTime = dict["AverageRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                }
+                if dict.keys.contains("CallsAgentHandled") && dict["CallsAgentHandled"] != nil {
+                    self.callsAgentHandled = dict["CallsAgentHandled"] as! Int64
+                }
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsCustomerAnswered") && dict["CallsCustomerAnswered"] != nil {
+                    self.callsCustomerAnswered = dict["CallsCustomerAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CustomerAnswerRate") && dict["CustomerAnswerRate"] != nil {
+                    self.customerAnswerRate = dict["CustomerAnswerRate"] as! Double
+                }
+                if dict.keys.contains("MaxCustomerRingTime") && dict["MaxCustomerRingTime"] != nil {
+                    self.maxCustomerRingTime = dict["MaxCustomerRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                    self.maxRingTime = dict["MaxRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! Int64
+                }
+                if dict.keys.contains("TotalCustomerRingTime") && dict["TotalCustomerRingTime"] != nil {
+                    self.totalCustomerRingTime = dict["TotalCustomerRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                    self.totalRingTime = dict["TotalRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+            }
+        }
         public class Inbound : Tea.TeaModel {
+            public class AccessChannelTypeDetails : Tea.TeaModel {
+                public var accessChannelType: String?
+
+                public var callsOffered: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.accessChannelType != nil {
+                        map["AccessChannelType"] = self.accessChannelType!
+                    }
+                    if self.callsOffered != nil {
+                        map["CallsOffered"] = self.callsOffered!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AccessChannelType") && dict["AccessChannelType"] != nil {
+                        self.accessChannelType = dict["AccessChannelType"] as! String
+                    }
+                    if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                        self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                }
+            }
+            public var accessChannelTypeDetails: [ListIntervalAgentReportResponseBody.Data.Inbound.AccessChannelTypeDetails]?
+
+            public var averageFirstResponseTime: Double?
+
             public var averageHoldTime: Double?
+
+            public var averageResponseTime: Double?
 
             public var averageRingTime: Double?
 
@@ -32802,7 +34198,15 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
 
             public var satisfactionSurveysResponded: Int64?
 
+            public var serviceLevel15: Double?
+
             public var totalHoldTime: Int64?
+
+            public var totalMessagesSent: Int64?
+
+            public var totalMessagesSentByAgent: Int64?
+
+            public var totalMessagesSentByCustomer: Int64?
 
             public var totalRingTime: Int64?
 
@@ -32824,8 +34228,21 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.accessChannelTypeDetails != nil {
+                    var tmp : [Any] = []
+                    for k in self.accessChannelTypeDetails! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AccessChannelTypeDetails"] = tmp
+                }
+                if self.averageFirstResponseTime != nil {
+                    map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                }
                 if self.averageHoldTime != nil {
                     map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageResponseTime != nil {
+                    map["AverageResponseTime"] = self.averageResponseTime!
                 }
                 if self.averageRingTime != nil {
                     map["AverageRingTime"] = self.averageRingTime!
@@ -32887,8 +34304,20 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if self.satisfactionSurveysResponded != nil {
                     map["SatisfactionSurveysResponded"] = self.satisfactionSurveysResponded!
                 }
+                if self.serviceLevel15 != nil {
+                    map["ServiceLevel15"] = self.serviceLevel15!
+                }
                 if self.totalHoldTime != nil {
                     map["TotalHoldTime"] = self.totalHoldTime!
+                }
+                if self.totalMessagesSent != nil {
+                    map["TotalMessagesSent"] = self.totalMessagesSent!
+                }
+                if self.totalMessagesSentByAgent != nil {
+                    map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                }
+                if self.totalMessagesSentByCustomer != nil {
+                    map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
                 }
                 if self.totalRingTime != nil {
                     map["TotalRingTime"] = self.totalRingTime!
@@ -32903,8 +34332,25 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessChannelTypeDetails") && dict["AccessChannelTypeDetails"] != nil {
+                    var tmp : [ListIntervalAgentReportResponseBody.Data.Inbound.AccessChannelTypeDetails] = []
+                    for v in dict["AccessChannelTypeDetails"] as! [Any] {
+                        var model = ListIntervalAgentReportResponseBody.Data.Inbound.AccessChannelTypeDetails()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.accessChannelTypeDetails = tmp
+                }
+                if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                    self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                }
                 if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                     self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                    self.averageResponseTime = dict["AverageResponseTime"] as! Double
                 }
                 if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                     self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -32966,8 +34412,20 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("SatisfactionSurveysResponded") && dict["SatisfactionSurveysResponded"] != nil {
                     self.satisfactionSurveysResponded = dict["SatisfactionSurveysResponded"] as! Int64
                 }
+                if dict.keys.contains("ServiceLevel15") && dict["ServiceLevel15"] != nil {
+                    self.serviceLevel15 = dict["ServiceLevel15"] as! Double
+                }
                 if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                     self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                    self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                    self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                    self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
                 }
                 if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                     self.totalRingTime = dict["TotalRingTime"] as! Int64
@@ -32977,6 +34435,75 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
                     self.totalWorkTime = dict["TotalWorkTime"] as! Int64
+                }
+            }
+        }
+        public class Internal_ : Tea.TeaModel {
+            public var averageTalkTime: Double?
+
+            public var callsAnswered: Int64?
+
+            public var callsDialed: Int64?
+
+            public var callsHandled: Int64?
+
+            public var callsOffered: Int64?
+
+            public var callsTalked: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                if self.callsHandled != nil {
+                    map["CallsHandled"] = self.callsHandled!
+                }
+                if self.callsOffered != nil {
+                    map["CallsOffered"] = self.callsOffered!
+                }
+                if self.callsTalked != nil {
+                    map["CallsTalked"] = self.callsTalked!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! Double
+                }
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CallsHandled") && dict["CallsHandled"] != nil {
+                    self.callsHandled = dict["CallsHandled"] as! Int64
+                }
+                if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                    self.callsOffered = dict["CallsOffered"] as! Int64
+                }
+                if dict.keys.contains("CallsTalked") && dict["CallsTalked"] != nil {
+                    self.callsTalked = dict["CallsTalked"] as! Int64
                 }
             }
         }
@@ -33285,6 +34812,8 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
 
             public var firstCheckInTime: Int64?
 
+            public var lastCheckOutTime: Int64?
+
             public var lastCheckoutTime: Int64?
 
             public var maxBreakTime: Int64?
@@ -33315,11 +34844,19 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
 
             public var totalLoggedInTime: Int64?
 
+            public var totalOffSiteLoggedInTime: Int64?
+
             public var totalOffSiteOnlineTime: Int64?
+
+            public var totalOfficePhoneLoggedInTime: Int64?
 
             public var totalOfficePhoneOnlineTime: Int64?
 
+            public var totalOnSiteLoggedInTime: Int64?
+
             public var totalOnSiteOnlineTime: Int64?
+
+            public var totalOutboundScenarioLoggedInTime: Int64?
 
             public var totalOutboundScenarioReadyTime: Int64?
 
@@ -33370,6 +34907,9 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if self.firstCheckInTime != nil {
                     map["FirstCheckInTime"] = self.firstCheckInTime!
                 }
+                if self.lastCheckOutTime != nil {
+                    map["LastCheckOutTime"] = self.lastCheckOutTime!
+                }
                 if self.lastCheckoutTime != nil {
                     map["LastCheckoutTime"] = self.lastCheckoutTime!
                 }
@@ -33415,14 +34955,26 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if self.totalLoggedInTime != nil {
                     map["TotalLoggedInTime"] = self.totalLoggedInTime!
                 }
+                if self.totalOffSiteLoggedInTime != nil {
+                    map["TotalOffSiteLoggedInTime"] = self.totalOffSiteLoggedInTime!
+                }
                 if self.totalOffSiteOnlineTime != nil {
                     map["TotalOffSiteOnlineTime"] = self.totalOffSiteOnlineTime!
+                }
+                if self.totalOfficePhoneLoggedInTime != nil {
+                    map["TotalOfficePhoneLoggedInTime"] = self.totalOfficePhoneLoggedInTime!
                 }
                 if self.totalOfficePhoneOnlineTime != nil {
                     map["TotalOfficePhoneOnlineTime"] = self.totalOfficePhoneOnlineTime!
                 }
+                if self.totalOnSiteLoggedInTime != nil {
+                    map["TotalOnSiteLoggedInTime"] = self.totalOnSiteLoggedInTime!
+                }
                 if self.totalOnSiteOnlineTime != nil {
                     map["TotalOnSiteOnlineTime"] = self.totalOnSiteOnlineTime!
+                }
+                if self.totalOutboundScenarioLoggedInTime != nil {
+                    map["TotalOutboundScenarioLoggedInTime"] = self.totalOutboundScenarioLoggedInTime!
                 }
                 if self.totalOutboundScenarioReadyTime != nil {
                     map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
@@ -33472,6 +35024,9 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("FirstCheckInTime") && dict["FirstCheckInTime"] != nil {
                     self.firstCheckInTime = dict["FirstCheckInTime"] as! Int64
                 }
+                if dict.keys.contains("LastCheckOutTime") && dict["LastCheckOutTime"] != nil {
+                    self.lastCheckOutTime = dict["LastCheckOutTime"] as! Int64
+                }
                 if dict.keys.contains("LastCheckoutTime") && dict["LastCheckoutTime"] != nil {
                     self.lastCheckoutTime = dict["LastCheckoutTime"] as! Int64
                 }
@@ -33517,14 +35072,26 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
                     self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
                 }
+                if dict.keys.contains("TotalOffSiteLoggedInTime") && dict["TotalOffSiteLoggedInTime"] != nil {
+                    self.totalOffSiteLoggedInTime = dict["TotalOffSiteLoggedInTime"] as! Int64
+                }
                 if dict.keys.contains("TotalOffSiteOnlineTime") && dict["TotalOffSiteOnlineTime"] != nil {
                     self.totalOffSiteOnlineTime = dict["TotalOffSiteOnlineTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOfficePhoneLoggedInTime") && dict["TotalOfficePhoneLoggedInTime"] != nil {
+                    self.totalOfficePhoneLoggedInTime = dict["TotalOfficePhoneLoggedInTime"] as! Int64
                 }
                 if dict.keys.contains("TotalOfficePhoneOnlineTime") && dict["TotalOfficePhoneOnlineTime"] != nil {
                     self.totalOfficePhoneOnlineTime = dict["TotalOfficePhoneOnlineTime"] as! Int64
                 }
+                if dict.keys.contains("TotalOnSiteLoggedInTime") && dict["TotalOnSiteLoggedInTime"] != nil {
+                    self.totalOnSiteLoggedInTime = dict["TotalOnSiteLoggedInTime"] as! Int64
+                }
                 if dict.keys.contains("TotalOnSiteOnlineTime") && dict["TotalOnSiteOnlineTime"] != nil {
                     self.totalOnSiteOnlineTime = dict["TotalOnSiteOnlineTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOutboundScenarioLoggedInTime") && dict["TotalOutboundScenarioLoggedInTime"] != nil {
+                    self.totalOutboundScenarioLoggedInTime = dict["TotalOutboundScenarioLoggedInTime"] as! Int64
                 }
                 if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
                     self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
@@ -33543,7 +35110,11 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var back2Back: ListIntervalAgentReportResponseBody.Data.Back2Back?
+
         public var inbound: ListIntervalAgentReportResponseBody.Data.Inbound?
+
+        public var internal_: ListIntervalAgentReportResponseBody.Data.Internal_?
 
         public var outbound: ListIntervalAgentReportResponseBody.Data.Outbound?
 
@@ -33561,15 +35132,23 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.back2Back?.validate()
             try self.inbound?.validate()
+            try self.internal_?.validate()
             try self.outbound?.validate()
             try self.overall?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.back2Back != nil {
+                map["Back2Back"] = self.back2Back?.toMap()
+            }
             if self.inbound != nil {
                 map["Inbound"] = self.inbound?.toMap()
+            }
+            if self.internal_ != nil {
+                map["Internal"] = self.internal_?.toMap()
             }
             if self.outbound != nil {
                 map["Outbound"] = self.outbound?.toMap()
@@ -33584,10 +35163,20 @@ public class ListIntervalAgentReportResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Back2Back") && dict["Back2Back"] != nil {
+                var model = ListIntervalAgentReportResponseBody.Data.Back2Back()
+                model.fromMap(dict["Back2Back"] as! [String: Any])
+                self.back2Back = model
+            }
             if dict.keys.contains("Inbound") && dict["Inbound"] != nil {
                 var model = ListIntervalAgentReportResponseBody.Data.Inbound()
                 model.fromMap(dict["Inbound"] as! [String: Any])
                 self.inbound = model
+            }
+            if dict.keys.contains("Internal") && dict["Internal"] != nil {
+                var model = ListIntervalAgentReportResponseBody.Data.Internal_()
+                model.fromMap(dict["Internal"] as! [String: Any])
+                self.internal_ = model
             }
             if dict.keys.contains("Outbound") && dict["Outbound"] != nil {
                 var model = ListIntervalAgentReportResponseBody.Data.Outbound()
@@ -33804,6 +35393,8 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
         public class Back2Back : Tea.TeaModel {
             public var agentAnswerRate: Double?
 
+            public var agentHandleRate: Double?
+
             public var answerRate: Double?
 
             public var averageCustomerRingTime: Double?
@@ -33812,11 +35403,17 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
             public var averageTalkTime: Int64?
 
+            public var callsAgentHandled: Int64?
+
             public var callsAnswered: Int64?
+
+            public var callsCustomerAnswered: Int64?
 
             public var callsCustomerHandled: Int64?
 
             public var callsDialed: Int64?
+
+            public var customerAnswerRate: Double?
 
             public var customerHandleRate: Double?
 
@@ -33849,6 +35446,9 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.agentAnswerRate != nil {
                     map["AgentAnswerRate"] = self.agentAnswerRate!
                 }
+                if self.agentHandleRate != nil {
+                    map["AgentHandleRate"] = self.agentHandleRate!
+                }
                 if self.answerRate != nil {
                     map["AnswerRate"] = self.answerRate!
                 }
@@ -33861,14 +35461,23 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.averageTalkTime != nil {
                     map["AverageTalkTime"] = self.averageTalkTime!
                 }
+                if self.callsAgentHandled != nil {
+                    map["CallsAgentHandled"] = self.callsAgentHandled!
+                }
                 if self.callsAnswered != nil {
                     map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsCustomerAnswered != nil {
+                    map["CallsCustomerAnswered"] = self.callsCustomerAnswered!
                 }
                 if self.callsCustomerHandled != nil {
                     map["CallsCustomerHandled"] = self.callsCustomerHandled!
                 }
                 if self.callsDialed != nil {
                     map["CallsDialed"] = self.callsDialed!
+                }
+                if self.customerAnswerRate != nil {
+                    map["CustomerAnswerRate"] = self.customerAnswerRate!
                 }
                 if self.customerHandleRate != nil {
                     map["CustomerHandleRate"] = self.customerHandleRate!
@@ -33898,6 +35507,9 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AgentAnswerRate") && dict["AgentAnswerRate"] != nil {
                     self.agentAnswerRate = dict["AgentAnswerRate"] as! Double
                 }
+                if dict.keys.contains("AgentHandleRate") && dict["AgentHandleRate"] != nil {
+                    self.agentHandleRate = dict["AgentHandleRate"] as! Double
+                }
                 if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
                     self.answerRate = dict["AnswerRate"] as! Double
                 }
@@ -33910,14 +35522,23 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
                     self.averageTalkTime = dict["AverageTalkTime"] as! Int64
                 }
+                if dict.keys.contains("CallsAgentHandled") && dict["CallsAgentHandled"] != nil {
+                    self.callsAgentHandled = dict["CallsAgentHandled"] as! Int64
+                }
                 if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
                     self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsCustomerAnswered") && dict["CallsCustomerAnswered"] != nil {
+                    self.callsCustomerAnswered = dict["CallsCustomerAnswered"] as! Int64
                 }
                 if dict.keys.contains("CallsCustomerHandled") && dict["CallsCustomerHandled"] != nil {
                     self.callsCustomerHandled = dict["CallsCustomerHandled"] as! Int64
                 }
                 if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
                     self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CustomerAnswerRate") && dict["CustomerAnswerRate"] != nil {
+                    self.customerAnswerRate = dict["CustomerAnswerRate"] as! Double
                 }
                 if dict.keys.contains("CustomerHandleRate") && dict["CustomerHandleRate"] != nil {
                     self.customerHandleRate = dict["CustomerHandleRate"] as! Double
@@ -33943,7 +35564,11 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
             }
         }
         public class Inbound : Tea.TeaModel {
+            public var averageFirstResponseTime: Double?
+
             public var averageHoldTime: Double?
+
+            public var averageResponseTime: Double?
 
             public var averageRingTime: Double?
 
@@ -33987,6 +35612,12 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
             public var totalHoldTime: Int64?
 
+            public var totalMessagesSent: Int64?
+
+            public var totalMessagesSentByAgent: Int64?
+
+            public var totalMessagesSentByCustomer: Int64?
+
             public var totalRingTime: Int64?
 
             public var totalTalkTime: Int64?
@@ -34007,8 +35638,14 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.averageFirstResponseTime != nil {
+                    map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                }
                 if self.averageHoldTime != nil {
                     map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageResponseTime != nil {
+                    map["AverageResponseTime"] = self.averageResponseTime!
                 }
                 if self.averageRingTime != nil {
                     map["AverageRingTime"] = self.averageRingTime!
@@ -34073,6 +35710,15 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.totalHoldTime != nil {
                     map["TotalHoldTime"] = self.totalHoldTime!
                 }
+                if self.totalMessagesSent != nil {
+                    map["TotalMessagesSent"] = self.totalMessagesSent!
+                }
+                if self.totalMessagesSentByAgent != nil {
+                    map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                }
+                if self.totalMessagesSentByCustomer != nil {
+                    map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
+                }
                 if self.totalRingTime != nil {
                     map["TotalRingTime"] = self.totalRingTime!
                 }
@@ -34086,8 +35732,14 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                    self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                }
                 if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                     self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                    self.averageResponseTime = dict["AverageResponseTime"] as! Double
                 }
                 if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                     self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -34152,6 +35804,15 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                     self.totalHoldTime = dict["TotalHoldTime"] as! Int64
                 }
+                if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                    self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                    self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                    self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
+                }
                 if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                     self.totalRingTime = dict["TotalRingTime"] as! Int64
                 }
@@ -34175,6 +35836,8 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
             public var callsOffered: Int64?
 
             public var callsTalk: Int64?
+
+            public var callsTalked: Int64?
 
             public var maxTalkTime: Int64?
 
@@ -34212,6 +35875,9 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.callsTalk != nil {
                     map["CallsTalk"] = self.callsTalk!
                 }
+                if self.callsTalked != nil {
+                    map["CallsTalked"] = self.callsTalked!
+                }
                 if self.maxTalkTime != nil {
                     map["MaxTalkTime"] = self.maxTalkTime!
                 }
@@ -34239,6 +35905,9 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CallsTalk") && dict["CallsTalk"] != nil {
                     self.callsTalk = dict["CallsTalk"] as! Int64
+                }
+                if dict.keys.contains("CallsTalked") && dict["CallsTalked"] != nil {
+                    self.callsTalked = dict["CallsTalked"] as! Int64
                 }
                 if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
                     self.maxTalkTime = dict["MaxTalkTime"] as! Int64
@@ -34553,6 +36222,8 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
 
             public var firstCheckInTime: Int64?
 
+            public var lastCheckOutTime: Int64?
+
             public var lastCheckoutTime: Int64?
 
             public var maxBreakTime: Int64?
@@ -34582,6 +36253,14 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
             public var totalHoldTime: Int64?
 
             public var totalLoggedInTime: Int64?
+
+            public var totalOffSiteLoggedInTime: String?
+
+            public var totalOfficePhoneLoggedInTime: String?
+
+            public var totalOnSiteLoggedInTime: String?
+
+            public var totalOutboundScenarioLoggedInTime: Int64?
 
             public var totalOutboundScenarioReadyTime: Int64?
 
@@ -34632,6 +36311,9 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.firstCheckInTime != nil {
                     map["FirstCheckInTime"] = self.firstCheckInTime!
                 }
+                if self.lastCheckOutTime != nil {
+                    map["LastCheckOutTime"] = self.lastCheckOutTime!
+                }
                 if self.lastCheckoutTime != nil {
                     map["LastCheckoutTime"] = self.lastCheckoutTime!
                 }
@@ -34676,6 +36358,18 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if self.totalLoggedInTime != nil {
                     map["TotalLoggedInTime"] = self.totalLoggedInTime!
+                }
+                if self.totalOffSiteLoggedInTime != nil {
+                    map["TotalOffSiteLoggedInTime"] = self.totalOffSiteLoggedInTime!
+                }
+                if self.totalOfficePhoneLoggedInTime != nil {
+                    map["TotalOfficePhoneLoggedInTime"] = self.totalOfficePhoneLoggedInTime!
+                }
+                if self.totalOnSiteLoggedInTime != nil {
+                    map["TotalOnSiteLoggedInTime"] = self.totalOnSiteLoggedInTime!
+                }
+                if self.totalOutboundScenarioLoggedInTime != nil {
+                    map["TotalOutboundScenarioLoggedInTime"] = self.totalOutboundScenarioLoggedInTime!
                 }
                 if self.totalOutboundScenarioReadyTime != nil {
                     map["TotalOutboundScenarioReadyTime"] = self.totalOutboundScenarioReadyTime!
@@ -34725,6 +36419,9 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("FirstCheckInTime") && dict["FirstCheckInTime"] != nil {
                     self.firstCheckInTime = dict["FirstCheckInTime"] as! Int64
                 }
+                if dict.keys.contains("LastCheckOutTime") && dict["LastCheckOutTime"] != nil {
+                    self.lastCheckOutTime = dict["LastCheckOutTime"] as! Int64
+                }
                 if dict.keys.contains("LastCheckoutTime") && dict["LastCheckoutTime"] != nil {
                     self.lastCheckoutTime = dict["LastCheckoutTime"] as! Int64
                 }
@@ -34769,6 +36466,18 @@ public class ListIntervalAgentSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TotalLoggedInTime") && dict["TotalLoggedInTime"] != nil {
                     self.totalLoggedInTime = dict["TotalLoggedInTime"] as! Int64
+                }
+                if dict.keys.contains("TotalOffSiteLoggedInTime") && dict["TotalOffSiteLoggedInTime"] != nil {
+                    self.totalOffSiteLoggedInTime = dict["TotalOffSiteLoggedInTime"] as! String
+                }
+                if dict.keys.contains("TotalOfficePhoneLoggedInTime") && dict["TotalOfficePhoneLoggedInTime"] != nil {
+                    self.totalOfficePhoneLoggedInTime = dict["TotalOfficePhoneLoggedInTime"] as! String
+                }
+                if dict.keys.contains("TotalOnSiteLoggedInTime") && dict["TotalOnSiteLoggedInTime"] != nil {
+                    self.totalOnSiteLoggedInTime = dict["TotalOnSiteLoggedInTime"] as! String
+                }
+                if dict.keys.contains("TotalOutboundScenarioLoggedInTime") && dict["TotalOutboundScenarioLoggedInTime"] != nil {
+                    self.totalOutboundScenarioLoggedInTime = dict["TotalOutboundScenarioLoggedInTime"] as! Int64
                 }
                 if dict.keys.contains("TotalOutboundScenarioReadyTime") && dict["TotalOutboundScenarioReadyTime"] != nil {
                     self.totalOutboundScenarioReadyTime = dict["TotalOutboundScenarioReadyTime"] as! Int64
@@ -35052,6 +36761,8 @@ public class ListIntervalInstanceReportRequest : Tea.TeaModel {
 public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Inbound : Tea.TeaModel {
+            public var abandonRate: Double?
+
             public var abandonedRate: Double?
 
             public var averageAbandonTime: Double?
@@ -35062,7 +36773,11 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
 
             public var averageAbandonedInRingTime: Double?
 
+            public var averageFirstResponseTime: Double?
+
             public var averageHoldTime: Double?
+
+            public var averageResponseTime: Double?
 
             public var averageRingTime: Double?
 
@@ -35086,6 +36801,8 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
 
             public var callsBlindTransferred: Int64?
 
+            public var callsCausedIVRException: Int64?
+
             public var callsForwardToOutsideNumber: Int64?
 
             public var callsHandled: Int64?
@@ -35105,6 +36822,8 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
             public var callsQueuingTimeout: Int64?
 
             public var callsRinged: Int64?
+
+            public var callsToVoicemail: Int64?
 
             public var callsVoicemail: Int64?
 
@@ -35148,6 +36867,12 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
 
             public var totalHoldTime: Int64?
 
+            public var totalMessagesSent: Int64?
+
+            public var totalMessagesSentByAgent: Int64?
+
+            public var totalMessagesSentByCustomer: Int64?
+
             public var totalRingTime: Int64?
 
             public var totalTalkTime: Int64?
@@ -35170,6 +36895,9 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.abandonRate != nil {
+                    map["AbandonRate"] = self.abandonRate!
+                }
                 if self.abandonedRate != nil {
                     map["AbandonedRate"] = self.abandonedRate!
                 }
@@ -35185,8 +36913,14 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 if self.averageAbandonedInRingTime != nil {
                     map["AverageAbandonedInRingTime"] = self.averageAbandonedInRingTime!
                 }
+                if self.averageFirstResponseTime != nil {
+                    map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                }
                 if self.averageHoldTime != nil {
                     map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageResponseTime != nil {
+                    map["AverageResponseTime"] = self.averageResponseTime!
                 }
                 if self.averageRingTime != nil {
                     map["AverageRingTime"] = self.averageRingTime!
@@ -35221,6 +36955,9 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 if self.callsBlindTransferred != nil {
                     map["CallsBlindTransferred"] = self.callsBlindTransferred!
                 }
+                if self.callsCausedIVRException != nil {
+                    map["CallsCausedIVRException"] = self.callsCausedIVRException!
+                }
                 if self.callsForwardToOutsideNumber != nil {
                     map["CallsForwardToOutsideNumber"] = self.callsForwardToOutsideNumber!
                 }
@@ -35250,6 +36987,9 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if self.callsRinged != nil {
                     map["CallsRinged"] = self.callsRinged!
+                }
+                if self.callsToVoicemail != nil {
+                    map["CallsToVoicemail"] = self.callsToVoicemail!
                 }
                 if self.callsVoicemail != nil {
                     map["CallsVoicemail"] = self.callsVoicemail!
@@ -35314,6 +37054,15 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 if self.totalHoldTime != nil {
                     map["TotalHoldTime"] = self.totalHoldTime!
                 }
+                if self.totalMessagesSent != nil {
+                    map["TotalMessagesSent"] = self.totalMessagesSent!
+                }
+                if self.totalMessagesSentByAgent != nil {
+                    map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                }
+                if self.totalMessagesSentByCustomer != nil {
+                    map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
+                }
                 if self.totalRingTime != nil {
                     map["TotalRingTime"] = self.totalRingTime!
                 }
@@ -35330,6 +37079,9 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AbandonRate") && dict["AbandonRate"] != nil {
+                    self.abandonRate = dict["AbandonRate"] as! Double
+                }
                 if dict.keys.contains("AbandonedRate") && dict["AbandonedRate"] != nil {
                     self.abandonedRate = dict["AbandonedRate"] as! Double
                 }
@@ -35345,8 +37097,14 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AverageAbandonedInRingTime") && dict["AverageAbandonedInRingTime"] != nil {
                     self.averageAbandonedInRingTime = dict["AverageAbandonedInRingTime"] as! Double
                 }
+                if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                    self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                }
                 if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                     self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                    self.averageResponseTime = dict["AverageResponseTime"] as! Double
                 }
                 if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                     self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -35381,6 +37139,9 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("CallsBlindTransferred") && dict["CallsBlindTransferred"] != nil {
                     self.callsBlindTransferred = dict["CallsBlindTransferred"] as! Int64
                 }
+                if dict.keys.contains("CallsCausedIVRException") && dict["CallsCausedIVRException"] != nil {
+                    self.callsCausedIVRException = dict["CallsCausedIVRException"] as! Int64
+                }
                 if dict.keys.contains("CallsForwardToOutsideNumber") && dict["CallsForwardToOutsideNumber"] != nil {
                     self.callsForwardToOutsideNumber = dict["CallsForwardToOutsideNumber"] as! Int64
                 }
@@ -35410,6 +37171,9 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
                     self.callsRinged = dict["CallsRinged"] as! Int64
+                }
+                if dict.keys.contains("CallsToVoicemail") && dict["CallsToVoicemail"] != nil {
+                    self.callsToVoicemail = dict["CallsToVoicemail"] as! Int64
                 }
                 if dict.keys.contains("CallsVoicemail") && dict["CallsVoicemail"] != nil {
                     self.callsVoicemail = dict["CallsVoicemail"] as! Int64
@@ -35473,6 +37237,15 @@ public class ListIntervalInstanceReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                     self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                    self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                    self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                    self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
                 }
                 if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                     self.totalRingTime = dict["TotalRingTime"] as! Int64
@@ -36107,6 +37880,8 @@ public class ListIntervalSkillGroupReportRequest : Tea.TeaModel {
 
     public var interval: String?
 
+    public var mediaType: String?
+
     public var skillGroupId: String?
 
     public var startTime: Int64?
@@ -36134,6 +37909,9 @@ public class ListIntervalSkillGroupReportRequest : Tea.TeaModel {
         if self.interval != nil {
             map["Interval"] = self.interval!
         }
+        if self.mediaType != nil {
+            map["MediaType"] = self.mediaType!
+        }
         if self.skillGroupId != nil {
             map["SkillGroupId"] = self.skillGroupId!
         }
@@ -36153,6 +37931,9 @@ public class ListIntervalSkillGroupReportRequest : Tea.TeaModel {
         if dict.keys.contains("Interval") && dict["Interval"] != nil {
             self.interval = dict["Interval"] as! String
         }
+        if dict.keys.contains("MediaType") && dict["MediaType"] != nil {
+            self.mediaType = dict["MediaType"] as! String
+        }
         if dict.keys.contains("SkillGroupId") && dict["SkillGroupId"] != nil {
             self.skillGroupId = dict["SkillGroupId"] as! String
         }
@@ -36164,6 +37945,155 @@ public class ListIntervalSkillGroupReportRequest : Tea.TeaModel {
 
 public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Back2Back : Tea.TeaModel {
+            public var agentHandleRate: Double?
+
+            public var answerRate: String?
+
+            public var averageCustomerRingTime: Double?
+
+            public var averageRingTime: Double?
+
+            public var averageTalkTime: String?
+
+            public var callsAgentHandled: Int64?
+
+            public var callsAnswered: Int64?
+
+            public var callsCustomerAnswered: Int64?
+
+            public var callsDialed: Int64?
+
+            public var customerAnswerRate: Double?
+
+            public var maxCustomerRingTime: Int64?
+
+            public var maxRingTime: Int64?
+
+            public var maxTalkTime: String?
+
+            public var totalCustomerRingTime: Int64?
+
+            public var totalRingTime: Int64?
+
+            public var totalTalkTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agentHandleRate != nil {
+                    map["AgentHandleRate"] = self.agentHandleRate!
+                }
+                if self.answerRate != nil {
+                    map["AnswerRate"] = self.answerRate!
+                }
+                if self.averageCustomerRingTime != nil {
+                    map["AverageCustomerRingTime"] = self.averageCustomerRingTime!
+                }
+                if self.averageRingTime != nil {
+                    map["AverageRingTime"] = self.averageRingTime!
+                }
+                if self.averageTalkTime != nil {
+                    map["AverageTalkTime"] = self.averageTalkTime!
+                }
+                if self.callsAgentHandled != nil {
+                    map["CallsAgentHandled"] = self.callsAgentHandled!
+                }
+                if self.callsAnswered != nil {
+                    map["CallsAnswered"] = self.callsAnswered!
+                }
+                if self.callsCustomerAnswered != nil {
+                    map["CallsCustomerAnswered"] = self.callsCustomerAnswered!
+                }
+                if self.callsDialed != nil {
+                    map["CallsDialed"] = self.callsDialed!
+                }
+                if self.customerAnswerRate != nil {
+                    map["CustomerAnswerRate"] = self.customerAnswerRate!
+                }
+                if self.maxCustomerRingTime != nil {
+                    map["MaxCustomerRingTime"] = self.maxCustomerRingTime!
+                }
+                if self.maxRingTime != nil {
+                    map["MaxRingTime"] = self.maxRingTime!
+                }
+                if self.maxTalkTime != nil {
+                    map["MaxTalkTime"] = self.maxTalkTime!
+                }
+                if self.totalCustomerRingTime != nil {
+                    map["TotalCustomerRingTime"] = self.totalCustomerRingTime!
+                }
+                if self.totalRingTime != nil {
+                    map["TotalRingTime"] = self.totalRingTime!
+                }
+                if self.totalTalkTime != nil {
+                    map["TotalTalkTime"] = self.totalTalkTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AgentHandleRate") && dict["AgentHandleRate"] != nil {
+                    self.agentHandleRate = dict["AgentHandleRate"] as! Double
+                }
+                if dict.keys.contains("AnswerRate") && dict["AnswerRate"] != nil {
+                    self.answerRate = dict["AnswerRate"] as! String
+                }
+                if dict.keys.contains("AverageCustomerRingTime") && dict["AverageCustomerRingTime"] != nil {
+                    self.averageCustomerRingTime = dict["AverageCustomerRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
+                    self.averageRingTime = dict["AverageRingTime"] as! Double
+                }
+                if dict.keys.contains("AverageTalkTime") && dict["AverageTalkTime"] != nil {
+                    self.averageTalkTime = dict["AverageTalkTime"] as! String
+                }
+                if dict.keys.contains("CallsAgentHandled") && dict["CallsAgentHandled"] != nil {
+                    self.callsAgentHandled = dict["CallsAgentHandled"] as! Int64
+                }
+                if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
+                    self.callsAnswered = dict["CallsAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsCustomerAnswered") && dict["CallsCustomerAnswered"] != nil {
+                    self.callsCustomerAnswered = dict["CallsCustomerAnswered"] as! Int64
+                }
+                if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
+                    self.callsDialed = dict["CallsDialed"] as! Int64
+                }
+                if dict.keys.contains("CustomerAnswerRate") && dict["CustomerAnswerRate"] != nil {
+                    self.customerAnswerRate = dict["CustomerAnswerRate"] as! Double
+                }
+                if dict.keys.contains("MaxCustomerRingTime") && dict["MaxCustomerRingTime"] != nil {
+                    self.maxCustomerRingTime = dict["MaxCustomerRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxRingTime") && dict["MaxRingTime"] != nil {
+                    self.maxRingTime = dict["MaxRingTime"] as! Int64
+                }
+                if dict.keys.contains("MaxTalkTime") && dict["MaxTalkTime"] != nil {
+                    self.maxTalkTime = dict["MaxTalkTime"] as! String
+                }
+                if dict.keys.contains("TotalCustomerRingTime") && dict["TotalCustomerRingTime"] != nil {
+                    self.totalCustomerRingTime = dict["TotalCustomerRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
+                    self.totalRingTime = dict["TotalRingTime"] as! Int64
+                }
+                if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
+                    self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                }
+            }
+        }
         public class Inbound : Tea.TeaModel {
             public var abandonRate: Double?
 
@@ -36173,7 +38103,11 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
 
             public var averageAbandonedInRingTime: Double?
 
+            public var averageFirstResponseTime: Double?
+
             public var averageHoldTime: Double?
+
+            public var averageResponseTime: Double?
 
             public var averageRingTime: Double?
 
@@ -36206,6 +38140,10 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
             public var callsOverflow: Int64?
 
             public var callsQueued: Int64?
+
+            public var callsQueuingOverflow: Int64?
+
+            public var callsQueuingTimeout: Int64?
 
             public var callsRinged: Int64?
 
@@ -36247,6 +38185,12 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
 
             public var totalHoldTime: Int64?
 
+            public var totalMessagesSent: Int64?
+
+            public var totalMessagesSentByAgent: Int64?
+
+            public var totalMessagesSentByCustomer: Int64?
+
             public var totalRingTime: Int64?
 
             public var totalTalkTime: Int64?
@@ -36281,8 +38225,14 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.averageAbandonedInRingTime != nil {
                     map["AverageAbandonedInRingTime"] = self.averageAbandonedInRingTime!
                 }
+                if self.averageFirstResponseTime != nil {
+                    map["AverageFirstResponseTime"] = self.averageFirstResponseTime!
+                }
                 if self.averageHoldTime != nil {
                     map["AverageHoldTime"] = self.averageHoldTime!
+                }
+                if self.averageResponseTime != nil {
+                    map["AverageResponseTime"] = self.averageResponseTime!
                 }
                 if self.averageRingTime != nil {
                     map["AverageRingTime"] = self.averageRingTime!
@@ -36331,6 +38281,12 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if self.callsQueued != nil {
                     map["CallsQueued"] = self.callsQueued!
+                }
+                if self.callsQueuingOverflow != nil {
+                    map["CallsQueuingOverflow"] = self.callsQueuingOverflow!
+                }
+                if self.callsQueuingTimeout != nil {
+                    map["CallsQueuingTimeout"] = self.callsQueuingTimeout!
                 }
                 if self.callsRinged != nil {
                     map["CallsRinged"] = self.callsRinged!
@@ -36392,6 +38348,15 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 if self.totalHoldTime != nil {
                     map["TotalHoldTime"] = self.totalHoldTime!
                 }
+                if self.totalMessagesSent != nil {
+                    map["TotalMessagesSent"] = self.totalMessagesSent!
+                }
+                if self.totalMessagesSentByAgent != nil {
+                    map["TotalMessagesSentByAgent"] = self.totalMessagesSentByAgent!
+                }
+                if self.totalMessagesSentByCustomer != nil {
+                    map["TotalMessagesSentByCustomer"] = self.totalMessagesSentByCustomer!
+                }
                 if self.totalRingTime != nil {
                     map["TotalRingTime"] = self.totalRingTime!
                 }
@@ -36420,8 +38385,14 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AverageAbandonedInRingTime") && dict["AverageAbandonedInRingTime"] != nil {
                     self.averageAbandonedInRingTime = dict["AverageAbandonedInRingTime"] as! Double
                 }
+                if dict.keys.contains("AverageFirstResponseTime") && dict["AverageFirstResponseTime"] != nil {
+                    self.averageFirstResponseTime = dict["AverageFirstResponseTime"] as! Double
+                }
                 if dict.keys.contains("AverageHoldTime") && dict["AverageHoldTime"] != nil {
                     self.averageHoldTime = dict["AverageHoldTime"] as! Double
+                }
+                if dict.keys.contains("AverageResponseTime") && dict["AverageResponseTime"] != nil {
+                    self.averageResponseTime = dict["AverageResponseTime"] as! Double
                 }
                 if dict.keys.contains("AverageRingTime") && dict["AverageRingTime"] != nil {
                     self.averageRingTime = dict["AverageRingTime"] as! Double
@@ -36470,6 +38441,12 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CallsQueued") && dict["CallsQueued"] != nil {
                     self.callsQueued = dict["CallsQueued"] as! Int64
+                }
+                if dict.keys.contains("CallsQueuingOverflow") && dict["CallsQueuingOverflow"] != nil {
+                    self.callsQueuingOverflow = dict["CallsQueuingOverflow"] as! Int64
+                }
+                if dict.keys.contains("CallsQueuingTimeout") && dict["CallsQueuingTimeout"] != nil {
+                    self.callsQueuingTimeout = dict["CallsQueuingTimeout"] as! Int64
                 }
                 if dict.keys.contains("CallsRinged") && dict["CallsRinged"] != nil {
                     self.callsRinged = dict["CallsRinged"] as! Int64
@@ -36530,6 +38507,15 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TotalHoldTime") && dict["TotalHoldTime"] != nil {
                     self.totalHoldTime = dict["TotalHoldTime"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSent") && dict["TotalMessagesSent"] != nil {
+                    self.totalMessagesSent = dict["TotalMessagesSent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByAgent") && dict["TotalMessagesSentByAgent"] != nil {
+                    self.totalMessagesSentByAgent = dict["TotalMessagesSentByAgent"] as! Int64
+                }
+                if dict.keys.contains("TotalMessagesSentByCustomer") && dict["TotalMessagesSentByCustomer"] != nil {
+                    self.totalMessagesSentByCustomer = dict["TotalMessagesSentByCustomer"] as! Int64
                 }
                 if dict.keys.contains("TotalRingTime") && dict["TotalRingTime"] != nil {
                     self.totalRingTime = dict["TotalRingTime"] as! Int64
@@ -36791,6 +38777,51 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
             }
         }
         public class Overall : Tea.TeaModel {
+            public class BreakCodeDetailList : Tea.TeaModel {
+                public var breakCode: String?
+
+                public var count: Int64?
+
+                public var duration: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.breakCode != nil {
+                        map["BreakCode"] = self.breakCode!
+                    }
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.duration != nil {
+                        map["Duration"] = self.duration!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                        self.breakCode = dict["BreakCode"] as! String
+                    }
+                    if dict.keys.contains("Count") && dict["Count"] != nil {
+                        self.count = dict["Count"] as! Int64
+                    }
+                    if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                        self.duration = dict["Duration"] as! Int64
+                    }
+                }
+            }
             public var averageBreakTime: Double?
 
             public var averageHoldTime: Double?
@@ -36800,6 +38831,8 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
             public var averageTalkTime: Double?
 
             public var averageWorkTime: Double?
+
+            public var breakCodeDetailList: [ListIntervalSkillGroupReportResponseBody.Data.Overall.BreakCodeDetailList]?
 
             public var maxBreakTime: Int64?
 
@@ -36863,6 +38896,13 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 }
                 if self.averageWorkTime != nil {
                     map["AverageWorkTime"] = self.averageWorkTime!
+                }
+                if self.breakCodeDetailList != nil {
+                    var tmp : [Any] = []
+                    for k in self.breakCodeDetailList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["BreakCodeDetailList"] = tmp
                 }
                 if self.maxBreakTime != nil {
                     map["MaxBreakTime"] = self.maxBreakTime!
@@ -36934,6 +38974,17 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
                     self.averageWorkTime = dict["AverageWorkTime"] as! Double
                 }
+                if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                    var tmp : [ListIntervalSkillGroupReportResponseBody.Data.Overall.BreakCodeDetailList] = []
+                    for v in dict["BreakCodeDetailList"] as! [Any] {
+                        var model = ListIntervalSkillGroupReportResponseBody.Data.Overall.BreakCodeDetailList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.breakCodeDetailList = tmp
+                }
                 if dict.keys.contains("MaxBreakTime") && dict["MaxBreakTime"] != nil {
                     self.maxBreakTime = dict["MaxBreakTime"] as! Int64
                 }
@@ -36987,6 +39038,8 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var back2Back: ListIntervalSkillGroupReportResponseBody.Data.Back2Back?
+
         public var inbound: ListIntervalSkillGroupReportResponseBody.Data.Inbound?
 
         public var outbound: ListIntervalSkillGroupReportResponseBody.Data.Outbound?
@@ -37005,6 +39058,7 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.back2Back?.validate()
             try self.inbound?.validate()
             try self.outbound?.validate()
             try self.overall?.validate()
@@ -37012,6 +39066,9 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.back2Back != nil {
+                map["Back2Back"] = self.back2Back?.toMap()
+            }
             if self.inbound != nil {
                 map["Inbound"] = self.inbound?.toMap()
             }
@@ -37028,6 +39085,11 @@ public class ListIntervalSkillGroupReportResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Back2Back") && dict["Back2Back"] != nil {
+                var model = ListIntervalSkillGroupReportResponseBody.Data.Back2Back()
+                model.fromMap(dict["Back2Back"] as! [String: Any])
+                self.back2Back = model
+            }
             if dict.keys.contains("Inbound") && dict["Inbound"] != nil {
                 var model = ListIntervalSkillGroupReportResponseBody.Data.Inbound()
                 model.fromMap(dict["Inbound"] as! [String: Any])
@@ -42190,6 +44252,45 @@ public class ListRealtimeSkillGroupStatesRequest : Tea.TeaModel {
 public class ListRealtimeSkillGroupStatesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class List : Tea.TeaModel {
+            public class BreakCodeDetailList : Tea.TeaModel {
+                public var breakCode: String?
+
+                public var count: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.breakCode != nil {
+                        map["BreakCode"] = self.breakCode!
+                    }
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                        self.breakCode = dict["BreakCode"] as! String
+                    }
+                    if dict.keys.contains("Count") && dict["Count"] != nil {
+                        self.count = dict["Count"] as! Int64
+                    }
+                }
+            }
+            public var breakCodeDetailList: [ListRealtimeSkillGroupStatesResponseBody.Data.List.BreakCodeDetailList]?
+
             public var breakingAgents: Int64?
 
             public var instanceId: String?
@@ -42207,6 +44308,8 @@ public class ListRealtimeSkillGroupStatesResponseBody : Tea.TeaModel {
             public var skillGroupName: String?
 
             public var talkingAgents: Int64?
+
+            public var totalAgents: Int64?
 
             public var waitingCalls: Int64?
 
@@ -42226,6 +44329,13 @@ public class ListRealtimeSkillGroupStatesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.breakCodeDetailList != nil {
+                    var tmp : [Any] = []
+                    for k in self.breakCodeDetailList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["BreakCodeDetailList"] = tmp
+                }
                 if self.breakingAgents != nil {
                     map["BreakingAgents"] = self.breakingAgents!
                 }
@@ -42253,6 +44363,9 @@ public class ListRealtimeSkillGroupStatesResponseBody : Tea.TeaModel {
                 if self.talkingAgents != nil {
                     map["TalkingAgents"] = self.talkingAgents!
                 }
+                if self.totalAgents != nil {
+                    map["TotalAgents"] = self.totalAgents!
+                }
                 if self.waitingCalls != nil {
                     map["WaitingCalls"] = self.waitingCalls!
                 }
@@ -42263,6 +44376,17 @@ public class ListRealtimeSkillGroupStatesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BreakCodeDetailList") && dict["BreakCodeDetailList"] != nil {
+                    var tmp : [ListRealtimeSkillGroupStatesResponseBody.Data.List.BreakCodeDetailList] = []
+                    for v in dict["BreakCodeDetailList"] as! [Any] {
+                        var model = ListRealtimeSkillGroupStatesResponseBody.Data.List.BreakCodeDetailList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.breakCodeDetailList = tmp
+                }
                 if dict.keys.contains("BreakingAgents") && dict["BreakingAgents"] != nil {
                     self.breakingAgents = dict["BreakingAgents"] as! Int64
                 }
@@ -42289,6 +44413,9 @@ public class ListRealtimeSkillGroupStatesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TalkingAgents") && dict["TalkingAgents"] != nil {
                     self.talkingAgents = dict["TalkingAgents"] as! Int64
+                }
+                if dict.keys.contains("TotalAgents") && dict["TotalAgents"] != nil {
+                    self.totalAgents = dict["TotalAgents"] as! Int64
                 }
                 if dict.keys.contains("WaitingCalls") && dict["WaitingCalls"] != nil {
                     self.waitingCalls = dict["WaitingCalls"] as! Int64
@@ -45583,6 +47710,8 @@ public class ListUsersRequest : Tea.TeaModel {
 
     public var searchPattern: String?
 
+    public var skillGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -45609,6 +47738,9 @@ public class ListUsersRequest : Tea.TeaModel {
         if self.searchPattern != nil {
             map["SearchPattern"] = self.searchPattern!
         }
+        if self.skillGroupId != nil {
+            map["SkillGroupId"] = self.skillGroupId!
+        }
         return map
     }
 
@@ -45624,6 +47756,9 @@ public class ListUsersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SearchPattern") && dict["SearchPattern"] != nil {
             self.searchPattern = dict["SearchPattern"] as! String
+        }
+        if dict.keys.contains("SkillGroupId") && dict["SkillGroupId"] != nil {
+            self.skillGroupId = dict["SkillGroupId"] as! String
         }
     }
 }
@@ -45757,6 +47892,8 @@ public class ListUsersResponseBody : Tea.TeaModel {
 
             public var personalOutboundNumberList: [ListUsersResponseBody.Data.List.PersonalOutboundNumberList]?
 
+            public var primary: Bool?
+
             public var primaryAccount: Bool?
 
             public var ramId: Int64?
@@ -45818,6 +47955,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["PersonalOutboundNumberList"] = tmp
+                }
+                if self.primary != nil {
+                    map["Primary"] = self.primary!
                 }
                 if self.primaryAccount != nil {
                     map["PrimaryAccount"] = self.primaryAccount!
@@ -45885,6 +48025,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.personalOutboundNumberList = tmp
+                }
+                if dict.keys.contains("Primary") && dict["Primary"] != nil {
+                    self.primary = dict["Primary"] as! Bool
                 }
                 if dict.keys.contains("PrimaryAccount") && dict["PrimaryAccount"] != nil {
                     self.primaryAccount = dict["PrimaryAccount"] as! Bool
@@ -45989,6 +48132,8 @@ public class ListUsersResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var params: [String]?
+
     public var requestId: String?
 
     public override init() {
@@ -46018,6 +48163,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
         if self.message != nil {
             map["Message"] = self.message!
         }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -46038,6 +48186,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Params") && dict["Params"] != nil {
+            self.params = dict["Params"] as! [String]
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String

@@ -877,6 +877,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ossFileKey)) {
             query["OssFileKey"] = request.ossFileKey ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.usage)) {
+            query["Usage"] = request.usage ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2040,6 +2043,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
@@ -3626,11 +3632,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.skillGroupId)) {
+            query["SkillGroupId"] = request.skillGroupId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
@@ -3676,6 +3688,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
@@ -3727,6 +3742,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
@@ -3850,6 +3868,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.interval)) {
             query["Interval"] = request.interval ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime!;
         }
@@ -3957,6 +3978,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.interval)) {
             query["Interval"] = request.interval ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mediaType)) {
+            query["MediaType"] = request.mediaType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.skillGroupId)) {
             query["SkillGroupId"] = request.skillGroupId ?? "";
@@ -4959,6 +4983,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.searchPattern)) {
             query["SearchPattern"] = request.searchPattern ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.skillGroupId)) {
+            query["SkillGroupId"] = request.skillGroupId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
