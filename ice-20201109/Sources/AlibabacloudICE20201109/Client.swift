@@ -222,9 +222,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addTemplateWithOptions(_ request: AddTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.config)) {
-            query["Config"] = request.config ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.coverUrl)) {
             query["CoverUrl"] = request.coverUrl ?? "";
         }
@@ -246,8 +243,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            body["Config"] = request.config ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "AddTemplate",
@@ -274,8 +276,8 @@ open class Client : AlibabacloudOpenApi.Client {
     public func alterSearchIndexWithOptions(_ request: AlterSearchIndexRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AlterSearchIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.indexConfig)) {
-            query["IndexConfig"] = request.indexConfig ?? "";
+        if (!TeaUtils.Client.isUnset(request.indexStatus)) {
+            query["IndexStatus"] = request.indexStatus ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.indexType)) {
             query["IndexType"] = request.indexType ?? "";
@@ -655,14 +657,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateType)) {
             query["TemplateType"] = request.templateType ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.timeline)) {
-            query["Timeline"] = request.timeline ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.title)) {
             query["Title"] = request.title ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.timeline)) {
+            body["Timeline"] = request.timeline ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CreateEditingProject",
@@ -847,8 +851,8 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSearchIndexWithOptions(_ request: CreateSearchIndexRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSearchIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.indexConfig)) {
-            query["IndexConfig"] = request.indexConfig ?? "";
+        if (!TeaUtils.Client.isUnset(request.indexStatus)) {
+            query["IndexStatus"] = request.indexStatus ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.indexType)) {
             query["IndexType"] = request.indexType ?? "";
@@ -1521,9 +1525,6 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mediaId)) {
             query["MediaId"] = request.mediaId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.msgBody)) {
-            query["MsgBody"] = request.msgBody ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.searchLibName)) {
             query["SearchLibName"] = request.searchLibName ?? "";
@@ -3620,6 +3621,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3653,6 +3657,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -4816,6 +4823,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryMediaCensorJobList(_ request: QueryMediaCensorJobListRequest) async throws -> QueryMediaCensorJobListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryMediaCensorJobListWithOptions(request as! QueryMediaCensorJobListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryMediaIndexJobWithOptions(_ request: QueryMediaIndexJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryMediaIndexJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mediaId)) {
+            query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchLibName)) {
+            query["SearchLibName"] = request.searchLibName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryMediaIndexJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryMediaIndexJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryMediaIndexJob(_ request: QueryMediaIndexJobRequest) async throws -> QueryMediaIndexJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryMediaIndexJobWithOptions(request as! QueryMediaIndexJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6478,14 +6519,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.timeline)) {
-            query["Timeline"] = request.timeline ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.userData)) {
             query["UserData"] = request.userData ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.timeline)) {
+            body["Timeline"] = request.timeline ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "SubmitMediaProducingJob",
@@ -6686,6 +6729,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitSnapshotJob(_ request: SubmitSnapshotJobRequest) async throws -> SubmitSnapshotJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await submitSnapshotJobWithOptions(request as! SubmitSnapshotJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitStandardCustomizedVoiceJobWithOptions(_ request: SubmitStandardCustomizedVoiceJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitStandardCustomizedVoiceJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.audios)) {
+            query["Audios"] = request.audios ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authentication)) {
+            query["Authentication"] = request.authentication ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.demoAudioMediaURL)) {
+            query["DemoAudioMediaURL"] = request.demoAudioMediaURL ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gender)) {
+            query["Gender"] = request.gender ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.voiceName)) {
+            query["VoiceName"] = request.voiceName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitStandardCustomizedVoiceJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitStandardCustomizedVoiceJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitStandardCustomizedVoiceJob(_ request: SubmitStandardCustomizedVoiceJobRequest) async throws -> SubmitStandardCustomizedVoiceJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitStandardCustomizedVoiceJobWithOptions(request as! SubmitStandardCustomizedVoiceJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -7021,14 +7107,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.timeline)) {
-            query["Timeline"] = request.timeline ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.title)) {
             query["Title"] = request.title ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.timeline)) {
+            body["Timeline"] = request.timeline ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateEditingProject",
@@ -7411,9 +7499,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTemplateWithOptions(_ request: UpdateTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.config)) {
-            query["Config"] = request.config ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.coverUrl)) {
             query["CoverUrl"] = request.coverUrl ?? "";
         }
@@ -7435,8 +7520,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.templateId)) {
             query["TemplateId"] = request.templateId ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.config)) {
+            body["Config"] = request.config ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "UpdateTemplate",
