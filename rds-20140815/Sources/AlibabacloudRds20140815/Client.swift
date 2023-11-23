@@ -12041,6 +12041,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            query["EffectiveTime"] = request.effectiveTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }

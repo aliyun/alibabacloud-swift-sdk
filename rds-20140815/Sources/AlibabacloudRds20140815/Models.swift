@@ -64046,6 +64046,8 @@ public class ModifyDBNodeRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var effectiveTime: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -64095,6 +64097,9 @@ public class ModifyDBNodeRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -64143,6 +64148,9 @@ public class ModifyDBNodeRequest : Tea.TeaModel {
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
         }
+        if dict.keys.contains("EffectiveTime") && dict["EffectiveTime"] != nil {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -64175,6 +64183,8 @@ public class ModifyDBNodeShrinkRequest : Tea.TeaModel {
     public var DBNodeShrink: String?
 
     public var dryRun: Bool?
+
+    public var effectiveTime: String?
 
     public var ownerAccount: String?
 
@@ -64221,6 +64231,9 @@ public class ModifyDBNodeShrinkRequest : Tea.TeaModel {
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -64260,6 +64273,9 @@ public class ModifyDBNodeShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("EffectiveTime") && dict["EffectiveTime"] != nil {
+            self.effectiveTime = dict["EffectiveTime"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
