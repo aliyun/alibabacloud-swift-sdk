@@ -276,6 +276,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func alterSearchIndexWithOptions(_ request: AlterSearchIndexRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AlterSearchIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.indexConfig)) {
+            query["IndexConfig"] = request.indexConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.indexStatus)) {
             query["IndexStatus"] = request.indexStatus ?? "";
         }
@@ -851,6 +854,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSearchIndexWithOptions(_ request: CreateSearchIndexRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSearchIndexResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.indexConfig)) {
+            query["IndexConfig"] = request.indexConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.indexStatus)) {
             query["IndexStatus"] = request.indexStatus ?? "";
         }
@@ -1525,6 +1531,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.mediaId)) {
             query["MediaId"] = request.mediaId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.msgBody)) {
+            query["MsgBody"] = request.msgBody ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.searchLibName)) {
             query["SearchLibName"] = request.searchLibName ?? "";

@@ -1329,6 +1329,8 @@ public class AddTemplateResponse : Tea.TeaModel {
 }
 
 public class AlterSearchIndexRequest : Tea.TeaModel {
+    public var indexConfig: String?
+
     public var indexStatus: String?
 
     public var indexType: String?
@@ -1349,6 +1351,9 @@ public class AlterSearchIndexRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.indexConfig != nil {
+            map["IndexConfig"] = self.indexConfig!
+        }
         if self.indexStatus != nil {
             map["IndexStatus"] = self.indexStatus!
         }
@@ -1362,6 +1367,9 @@ public class AlterSearchIndexRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IndexConfig") && dict["IndexConfig"] != nil {
+            self.indexConfig = dict["IndexConfig"] as! String
+        }
         if dict.keys.contains("IndexStatus") && dict["IndexStatus"] != nil {
             self.indexStatus = dict["IndexStatus"] as! String
         }
@@ -4576,6 +4584,8 @@ public class CreatePipelineResponse : Tea.TeaModel {
 }
 
 public class CreateSearchIndexRequest : Tea.TeaModel {
+    public var indexConfig: String?
+
     public var indexStatus: String?
 
     public var indexType: String?
@@ -4596,6 +4606,9 @@ public class CreateSearchIndexRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.indexConfig != nil {
+            map["IndexConfig"] = self.indexConfig!
+        }
         if self.indexStatus != nil {
             map["IndexStatus"] = self.indexStatus!
         }
@@ -4609,6 +4622,9 @@ public class CreateSearchIndexRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("IndexConfig") && dict["IndexConfig"] != nil {
+            self.indexConfig = dict["IndexConfig"] as! String
+        }
         if dict.keys.contains("IndexStatus") && dict["IndexStatus"] != nil {
             self.indexStatus = dict["IndexStatus"] as! String
         }
@@ -7314,6 +7330,8 @@ public class DeleteLiveTranscodeTemplateResponse : Tea.TeaModel {
 public class DeleteMediaFromSearchLibRequest : Tea.TeaModel {
     public var mediaId: String?
 
+    public var msgBody: String?
+
     public var searchLibName: String?
 
     public override init() {
@@ -7333,6 +7351,9 @@ public class DeleteMediaFromSearchLibRequest : Tea.TeaModel {
         if self.mediaId != nil {
             map["MediaId"] = self.mediaId!
         }
+        if self.msgBody != nil {
+            map["MsgBody"] = self.msgBody!
+        }
         if self.searchLibName != nil {
             map["SearchLibName"] = self.searchLibName!
         }
@@ -7342,6 +7363,9 @@ public class DeleteMediaFromSearchLibRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("MediaId") && dict["MediaId"] != nil {
             self.mediaId = dict["MediaId"] as! String
+        }
+        if dict.keys.contains("MsgBody") && dict["MsgBody"] != nil {
+            self.msgBody = dict["MsgBody"] as! String
         }
         if dict.keys.contains("SearchLibName") && dict["SearchLibName"] != nil {
             self.searchLibName = dict["SearchLibName"] as! String
