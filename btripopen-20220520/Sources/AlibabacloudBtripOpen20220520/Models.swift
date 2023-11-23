@@ -8074,6 +8074,8 @@ public class ApplyInvoiceTaskRequest : Tea.TeaModel {
 
         public var invoiceThirdPartId: String?
 
+        public var invoiceType: Int32?
+
         public var mailAddress: String?
 
         public var mailCity: String?
@@ -8135,6 +8137,9 @@ public class ApplyInvoiceTaskRequest : Tea.TeaModel {
             if self.invoiceThirdPartId != nil {
                 map["invoice_third_part_id"] = self.invoiceThirdPartId!
             }
+            if self.invoiceType != nil {
+                map["invoice_type"] = self.invoiceType!
+            }
             if self.mailAddress != nil {
                 map["mail_address"] = self.mailAddress!
             }
@@ -8195,6 +8200,9 @@ public class ApplyInvoiceTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("invoice_third_part_id") && dict["invoice_third_part_id"] != nil {
                 self.invoiceThirdPartId = dict["invoice_third_part_id"] as! String
+            }
+            if dict.keys.contains("invoice_type") && dict["invoice_type"] != nil {
+                self.invoiceType = dict["invoice_type"] as! Int32
             }
             if dict.keys.contains("mail_address") && dict["mail_address"] != nil {
                 self.mailAddress = dict["mail_address"] as! String
