@@ -33195,6 +33195,8 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
 
     public var DBProxyInstanceType: String?
 
+    public var DBProxyPersistentConnectionSupport: String?
+
     public var DBProxyServiceStatus: String?
 
     public var dbProxyEndpointItems: DescribeDBProxyResponseBody.DbProxyEndpointItems?
@@ -33250,6 +33252,9 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
         if self.DBProxyInstanceType != nil {
             map["DBProxyInstanceType"] = self.DBProxyInstanceType!
         }
+        if self.DBProxyPersistentConnectionSupport != nil {
+            map["DBProxyPersistentConnectionSupport"] = self.DBProxyPersistentConnectionSupport!
+        }
         if self.DBProxyServiceStatus != nil {
             map["DBProxyServiceStatus"] = self.DBProxyServiceStatus!
         }
@@ -33299,6 +33304,9 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DBProxyInstanceType") && dict["DBProxyInstanceType"] != nil {
             self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
+        }
+        if dict.keys.contains("DBProxyPersistentConnectionSupport") && dict["DBProxyPersistentConnectionSupport"] != nil {
+            self.DBProxyPersistentConnectionSupport = dict["DBProxyPersistentConnectionSupport"] as! String
         }
         if dict.keys.contains("DBProxyServiceStatus") && dict["DBProxyServiceStatus"] != nil {
             self.DBProxyServiceStatus = dict["DBProxyServiceStatus"] as! String
@@ -64410,6 +64418,8 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
 
     public var DBProxyInstanceNum: String?
 
+    public var DBProxyInstanceType: String?
+
     public var instanceNetworkType: String?
 
     public var ownerId: Int64?
@@ -64452,6 +64462,9 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
         if self.DBProxyInstanceNum != nil {
             map["DBProxyInstanceNum"] = self.DBProxyInstanceNum!
         }
+        if self.DBProxyInstanceType != nil {
+            map["DBProxyInstanceType"] = self.DBProxyInstanceType!
+        }
         if self.instanceNetworkType != nil {
             map["InstanceNetworkType"] = self.instanceNetworkType!
         }
@@ -64491,6 +64504,9 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBProxyInstanceNum") && dict["DBProxyInstanceNum"] != nil {
             self.DBProxyInstanceNum = dict["DBProxyInstanceNum"] as! String
+        }
+        if dict.keys.contains("DBProxyInstanceType") && dict["DBProxyInstanceType"] != nil {
+            self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
         }
         if dict.keys.contains("InstanceNetworkType") && dict["InstanceNetworkType"] != nil {
             self.instanceNetworkType = dict["InstanceNetworkType"] as! String

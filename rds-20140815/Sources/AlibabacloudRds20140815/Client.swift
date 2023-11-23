@@ -12102,6 +12102,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBProxyInstanceNum)) {
             query["DBProxyInstanceNum"] = request.DBProxyInstanceNum ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBProxyInstanceType)) {
+            query["DBProxyInstanceType"] = request.DBProxyInstanceType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceNetworkType)) {
             query["InstanceNetworkType"] = request.instanceNetworkType ?? "";
         }
