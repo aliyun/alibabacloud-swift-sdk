@@ -5677,9 +5677,15 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var canNotCreateColumnar: Bool?
+
         public var cnNodeClassCode: String?
 
         public var cnNodeCount: Int32?
+
+        public var columnarInstanceName: String?
+
+        public var columnarReadDBInstances: [String]?
 
         public var commodityCode: String?
 
@@ -5702,6 +5708,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public var DBVersion: String?
 
         public var description_: String?
+
+        public var differentDNSpec: Bool?
 
         public var dnNodeClassCode: String?
 
@@ -5735,6 +5743,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var port: String?
 
+        public var primaryZone: String?
+
         public var readDBInstances: [String]?
 
         public var regionId: String?
@@ -5745,6 +5755,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public var rightsSeparationStatus: String?
 
+        public var secondaryZone: String?
+
         public var series: String?
 
         public var status: String?
@@ -5752,6 +5764,10 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public var storageUsed: Int64?
 
         public var tagSet: [DescribeDBInstanceAttributeResponseBody.DBInstance.TagSet]?
+
+        public var tertiaryZone: String?
+
+        public var topologyType: String?
 
         public var type: String?
 
@@ -5775,11 +5791,20 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.canNotCreateColumnar != nil {
+                map["CanNotCreateColumnar"] = self.canNotCreateColumnar!
+            }
             if self.cnNodeClassCode != nil {
                 map["CnNodeClassCode"] = self.cnNodeClassCode!
             }
             if self.cnNodeCount != nil {
                 map["CnNodeCount"] = self.cnNodeCount!
+            }
+            if self.columnarInstanceName != nil {
+                map["ColumnarInstanceName"] = self.columnarInstanceName!
+            }
+            if self.columnarReadDBInstances != nil {
+                map["ColumnarReadDBInstances"] = self.columnarReadDBInstances!
             }
             if self.commodityCode != nil {
                 map["CommodityCode"] = self.commodityCode!
@@ -5821,6 +5846,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.differentDNSpec != nil {
+                map["DifferentDNSpec"] = self.differentDNSpec!
             }
             if self.dnNodeClassCode != nil {
                 map["DnNodeClassCode"] = self.dnNodeClassCode!
@@ -5870,6 +5898,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if self.port != nil {
                 map["Port"] = self.port!
             }
+            if self.primaryZone != nil {
+                map["PrimaryZone"] = self.primaryZone!
+            }
             if self.readDBInstances != nil {
                 map["ReadDBInstances"] = self.readDBInstances!
             }
@@ -5884,6 +5915,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if self.rightsSeparationStatus != nil {
                 map["RightsSeparationStatus"] = self.rightsSeparationStatus!
+            }
+            if self.secondaryZone != nil {
+                map["SecondaryZone"] = self.secondaryZone!
             }
             if self.series != nil {
                 map["Series"] = self.series!
@@ -5901,6 +5935,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 map["TagSet"] = tmp
             }
+            if self.tertiaryZone != nil {
+                map["TertiaryZone"] = self.tertiaryZone!
+            }
+            if self.topologyType != nil {
+                map["TopologyType"] = self.topologyType!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -5917,11 +5957,20 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CanNotCreateColumnar") && dict["CanNotCreateColumnar"] != nil {
+                self.canNotCreateColumnar = dict["CanNotCreateColumnar"] as! Bool
+            }
             if dict.keys.contains("CnNodeClassCode") && dict["CnNodeClassCode"] != nil {
                 self.cnNodeClassCode = dict["CnNodeClassCode"] as! String
             }
             if dict.keys.contains("CnNodeCount") && dict["CnNodeCount"] != nil {
                 self.cnNodeCount = dict["CnNodeCount"] as! Int32
+            }
+            if dict.keys.contains("ColumnarInstanceName") && dict["ColumnarInstanceName"] != nil {
+                self.columnarInstanceName = dict["ColumnarInstanceName"] as! String
+            }
+            if dict.keys.contains("ColumnarReadDBInstances") && dict["ColumnarReadDBInstances"] != nil {
+                self.columnarReadDBInstances = dict["ColumnarReadDBInstances"] as! [String]
             }
             if dict.keys.contains("CommodityCode") && dict["CommodityCode"] != nil {
                 self.commodityCode = dict["CommodityCode"] as! String
@@ -5972,6 +6021,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
             }
+            if dict.keys.contains("DifferentDNSpec") && dict["DifferentDNSpec"] != nil {
+                self.differentDNSpec = dict["DifferentDNSpec"] as! Bool
+            }
             if dict.keys.contains("DnNodeClassCode") && dict["DnNodeClassCode"] != nil {
                 self.dnNodeClassCode = dict["DnNodeClassCode"] as! String
             }
@@ -6020,6 +6072,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("Port") && dict["Port"] != nil {
                 self.port = dict["Port"] as! String
             }
+            if dict.keys.contains("PrimaryZone") && dict["PrimaryZone"] != nil {
+                self.primaryZone = dict["PrimaryZone"] as! String
+            }
             if dict.keys.contains("ReadDBInstances") && dict["ReadDBInstances"] != nil {
                 self.readDBInstances = dict["ReadDBInstances"] as! [String]
             }
@@ -6034,6 +6089,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RightsSeparationStatus") && dict["RightsSeparationStatus"] != nil {
                 self.rightsSeparationStatus = dict["RightsSeparationStatus"] as! String
+            }
+            if dict.keys.contains("SecondaryZone") && dict["SecondaryZone"] != nil {
+                self.secondaryZone = dict["SecondaryZone"] as! String
             }
             if dict.keys.contains("Series") && dict["Series"] != nil {
                 self.series = dict["Series"] as! String
@@ -6054,6 +6112,12 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tagSet = tmp
+            }
+            if dict.keys.contains("TertiaryZone") && dict["TertiaryZone"] != nil {
+                self.tertiaryZone = dict["TertiaryZone"] as! String
+            }
+            if dict.keys.contains("TopologyType") && dict["TopologyType"] != nil {
+                self.topologyType = dict["TopologyType"] as! String
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
@@ -8552,6 +8616,10 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var cnNodeCount: Int32?
 
+        public var columnarInstanceName: String?
+
+        public var columnarReadDBInstances: [String]?
+
         public var commodityCode: String?
 
         public var containBinlogX: Bool?
@@ -8594,11 +8662,15 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var payType: String?
 
+        public var primaryZone: String?
+
         public var readDBInstances: [String]?
 
         public var regionId: String?
 
         public var resourceGroupId: String?
+
+        public var secondaryZone: String?
 
         public var series: String?
 
@@ -8609,6 +8681,10 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
         public var supportBinlogX: Bool?
 
         public var tagSet: [DescribeDBInstancesResponseBody.DBInstances.TagSet]?
+
+        public var tertiaryZone: String?
+
+        public var topologyType: String?
 
         public var type: String?
 
@@ -8638,6 +8714,12 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if self.cnNodeCount != nil {
                 map["CnNodeCount"] = self.cnNodeCount!
+            }
+            if self.columnarInstanceName != nil {
+                map["ColumnarInstanceName"] = self.columnarInstanceName!
+            }
+            if self.columnarReadDBInstances != nil {
+                map["ColumnarReadDBInstances"] = self.columnarReadDBInstances!
             }
             if self.commodityCode != nil {
                 map["CommodityCode"] = self.commodityCode!
@@ -8706,6 +8788,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             if self.payType != nil {
                 map["PayType"] = self.payType!
             }
+            if self.primaryZone != nil {
+                map["PrimaryZone"] = self.primaryZone!
+            }
             if self.readDBInstances != nil {
                 map["ReadDBInstances"] = self.readDBInstances!
             }
@@ -8714,6 +8799,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.secondaryZone != nil {
+                map["SecondaryZone"] = self.secondaryZone!
             }
             if self.series != nil {
                 map["Series"] = self.series!
@@ -8733,6 +8821,12 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["TagSet"] = tmp
+            }
+            if self.tertiaryZone != nil {
+                map["TertiaryZone"] = self.tertiaryZone!
+            }
+            if self.topologyType != nil {
+                map["TopologyType"] = self.topologyType!
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -8755,6 +8849,12 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CnNodeCount") && dict["CnNodeCount"] != nil {
                 self.cnNodeCount = dict["CnNodeCount"] as! Int32
+            }
+            if dict.keys.contains("ColumnarInstanceName") && dict["ColumnarInstanceName"] != nil {
+                self.columnarInstanceName = dict["ColumnarInstanceName"] as! String
+            }
+            if dict.keys.contains("ColumnarReadDBInstances") && dict["ColumnarReadDBInstances"] != nil {
+                self.columnarReadDBInstances = dict["ColumnarReadDBInstances"] as! [String]
             }
             if dict.keys.contains("CommodityCode") && dict["CommodityCode"] != nil {
                 self.commodityCode = dict["CommodityCode"] as! String
@@ -8827,6 +8927,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("PayType") && dict["PayType"] != nil {
                 self.payType = dict["PayType"] as! String
             }
+            if dict.keys.contains("PrimaryZone") && dict["PrimaryZone"] != nil {
+                self.primaryZone = dict["PrimaryZone"] as! String
+            }
             if dict.keys.contains("ReadDBInstances") && dict["ReadDBInstances"] != nil {
                 self.readDBInstances = dict["ReadDBInstances"] as! [String]
             }
@@ -8835,6 +8938,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("SecondaryZone") && dict["SecondaryZone"] != nil {
+                self.secondaryZone = dict["SecondaryZone"] as! String
             }
             if dict.keys.contains("Series") && dict["Series"] != nil {
                 self.series = dict["Series"] as! String
@@ -8858,6 +8964,12 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tagSet = tmp
+            }
+            if dict.keys.contains("TertiaryZone") && dict["TertiaryZone"] != nil {
+                self.tertiaryZone = dict["TertiaryZone"] as! String
+            }
+            if dict.keys.contains("TopologyType") && dict["TopologyType"] != nil {
+                self.topologyType = dict["TopologyType"] as! String
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
