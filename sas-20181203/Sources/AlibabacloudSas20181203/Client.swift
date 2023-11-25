@@ -770,6 +770,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteMaliciousFileWhitelistConfigWithOptions(_ request: BatchDeleteMaliciousFileWhitelistConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchDeleteMaliciousFileWhitelistConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configIdList)) {
+            query["ConfigIdList"] = request.configIdList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchDeleteMaliciousFileWhitelistConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchDeleteMaliciousFileWhitelistConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteMaliciousFileWhitelistConfig(_ request: BatchDeleteMaliciousFileWhitelistConfigRequest) async throws -> BatchDeleteMaliciousFileWhitelistConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchDeleteMaliciousFileWhitelistConfigWithOptions(request as! BatchDeleteMaliciousFileWhitelistConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func batchOperateCommonOverallConfigWithOptions(_ request: BatchOperateCommonOverallConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchOperateCommonOverallConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -801,6 +832,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchOperateCommonOverallConfig(_ request: BatchOperateCommonOverallConfigRequest) async throws -> BatchOperateCommonOverallConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await batchOperateCommonOverallConfigWithOptions(request as! BatchOperateCommonOverallConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateMaliciousFileWhitelistConfigWithOptions(_ request: BatchUpdateMaliciousFileWhitelistConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchUpdateMaliciousFileWhitelistConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configList)) {
+            query["ConfigList"] = request.configList ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchUpdateMaliciousFileWhitelistConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchUpdateMaliciousFileWhitelistConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchUpdateMaliciousFileWhitelistConfig(_ request: BatchUpdateMaliciousFileWhitelistConfigRequest) async throws -> BatchUpdateMaliciousFileWhitelistConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchUpdateMaliciousFileWhitelistConfigWithOptions(request as! BatchUpdateMaliciousFileWhitelistConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2200,6 +2262,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createJenkinsImageRegistry(_ request: CreateJenkinsImageRegistryRequest) async throws -> CreateJenkinsImageRegistryResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createJenkinsImageRegistryWithOptions(request as! CreateJenkinsImageRegistryRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMaliciousFileWhitelistConfigWithOptions(_ request: CreateMaliciousFileWhitelistConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateMaliciousFileWhitelistConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eventName)) {
+            query["EventName"] = request.eventName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.field)) {
+            query["Field"] = request.field ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldValue)) {
+            query["FieldValue"] = request.fieldValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operator_)) {
+            query["Operator"] = request.operator_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetValue)) {
+            query["TargetValue"] = request.targetValue ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateMaliciousFileWhitelistConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateMaliciousFileWhitelistConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createMaliciousFileWhitelistConfig(_ request: CreateMaliciousFileWhitelistConfigRequest) async throws -> CreateMaliciousFileWhitelistConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createMaliciousFileWhitelistConfigWithOptions(request as! CreateMaliciousFileWhitelistConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3674,6 +3785,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteLoginBaseConfig(_ request: DeleteLoginBaseConfigRequest) async throws -> DeleteLoginBaseConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteLoginBaseConfigWithOptions(request as! DeleteLoginBaseConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMaliciousFileWhitelistConfigWithOptions(_ request: DeleteMaliciousFileWhitelistConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteMaliciousFileWhitelistConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteMaliciousFileWhitelistConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteMaliciousFileWhitelistConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteMaliciousFileWhitelistConfig(_ request: DeleteMaliciousFileWhitelistConfigRequest) async throws -> DeleteMaliciousFileWhitelistConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteMaliciousFileWhitelistConfigWithOptions(request as! DeleteMaliciousFileWhitelistConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -15861,6 +16003,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMaliciousFileWhitelistConfigWithOptions(_ request: GetMaliciousFileWhitelistConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMaliciousFileWhitelistConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetMaliciousFileWhitelistConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetMaliciousFileWhitelistConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getMaliciousFileWhitelistConfig(_ request: GetMaliciousFileWhitelistConfigRequest) async throws -> GetMaliciousFileWhitelistConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getMaliciousFileWhitelistConfigWithOptions(request as! GetMaliciousFileWhitelistConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getModuleConfigWithOptions(_ request: GetModuleConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetModuleConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -19340,6 +19513,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listK8sAccessInfo(_ request: ListK8sAccessInfoRequest) async throws -> ListK8sAccessInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listK8sAccessInfoWithOptions(request as! ListK8sAccessInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMaliciousFileWhitelistConfigsWithOptions(_ request: ListMaliciousFileWhitelistConfigsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListMaliciousFileWhitelistConfigsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eventName)) {
+            query["EventName"] = request.eventName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListMaliciousFileWhitelistConfigs",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListMaliciousFileWhitelistConfigsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listMaliciousFileWhitelistConfigs(_ request: ListMaliciousFileWhitelistConfigsRequest) async throws -> ListMaliciousFileWhitelistConfigsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listMaliciousFileWhitelistConfigsWithOptions(request as! ListMaliciousFileWhitelistConfigsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -25812,6 +26028,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateJenkinsImageRegistryPersistenceDay(_ request: UpdateJenkinsImageRegistryPersistenceDayRequest) async throws -> UpdateJenkinsImageRegistryPersistenceDayResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateJenkinsImageRegistryPersistenceDayWithOptions(request as! UpdateJenkinsImageRegistryPersistenceDayRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMaliciousFileWhitelistConfigWithOptions(_ request: UpdateMaliciousFileWhitelistConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMaliciousFileWhitelistConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.configId)) {
+            query["ConfigId"] = request.configId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.eventName)) {
+            query["EventName"] = request.eventName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.field)) {
+            query["Field"] = request.field ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldValue)) {
+            query["FieldValue"] = request.fieldValue ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operator_)) {
+            query["Operator"] = request.operator_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetValue)) {
+            query["TargetValue"] = request.targetValue ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateMaliciousFileWhitelistConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateMaliciousFileWhitelistConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateMaliciousFileWhitelistConfig(_ request: UpdateMaliciousFileWhitelistConfigRequest) async throws -> UpdateMaliciousFileWhitelistConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateMaliciousFileWhitelistConfigWithOptions(request as! UpdateMaliciousFileWhitelistConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
