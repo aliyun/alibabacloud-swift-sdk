@@ -17659,6 +17659,8 @@ public class GetSparkAppAttemptLogResponse : Tea.TeaModel {
 public class GetSparkAppInfoRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -17676,12 +17678,18 @@ public class GetSparkAppInfoRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
     }
 }
@@ -17782,6 +17790,8 @@ public class GetSparkAppInfoResponse : Tea.TeaModel {
 public class GetSparkAppLogRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public var logLength: Int64?
 
     public override init() {
@@ -17801,6 +17811,9 @@ public class GetSparkAppLogRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         if self.logLength != nil {
             map["LogLength"] = self.logLength!
         }
@@ -17810,6 +17823,9 @@ public class GetSparkAppLogRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
         if dict.keys.contains("LogLength") && dict["LogLength"] != nil {
             self.logLength = dict["LogLength"] as! Int64
@@ -17958,6 +17974,8 @@ public class GetSparkAppLogResponse : Tea.TeaModel {
 public class GetSparkAppMetricsRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -17975,12 +17993,18 @@ public class GetSparkAppMetricsRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
     }
 }
@@ -18182,6 +18206,8 @@ public class GetSparkAppMetricsResponse : Tea.TeaModel {
 public class GetSparkAppStateRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -18199,12 +18225,18 @@ public class GetSparkAppStateRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
     }
 }
@@ -18366,6 +18398,8 @@ public class GetSparkAppStateResponse : Tea.TeaModel {
 public class GetSparkAppWebUiAddressRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -18383,12 +18417,18 @@ public class GetSparkAppWebUiAddressRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
     }
 }
@@ -20887,6 +20927,8 @@ public class GetViewObjectsResponse : Tea.TeaModel {
 public class KillSparkAppRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -20904,12 +20946,18 @@ public class KillSparkAppRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
     }
 }
@@ -21322,6 +21370,8 @@ public class KillSparkSQLEngineResponse : Tea.TeaModel {
 public class ListSparkAppAttemptsRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
@@ -21343,6 +21393,9 @@ public class ListSparkAppAttemptsRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -21355,6 +21408,9 @@ public class ListSparkAppAttemptsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int64
@@ -23725,6 +23781,8 @@ public class ModifyElasticPlanResponse : Tea.TeaModel {
 public class PreloadSparkAppMetricsRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var DBClusterId: String?
+
     public override init() {
         super.init()
     }
@@ -23742,12 +23800,18 @@ public class PreloadSparkAppMetricsRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
         }
     }
 }
