@@ -11290,6 +11290,44 @@ public class DescribeClusterResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeClusterTasksRequest : Tea.TeaModel {
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.pageNumber != nil {
+            map["page_number"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["page_size"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("page_number") && dict["page_number"] != nil {
+            self.pageNumber = dict["page_number"] as! Int32
+        }
+        if dict.keys.contains("page_size") && dict["page_size"] != nil {
+            self.pageSize = dict["page_size"] as! Int32
+        }
+    }
+}
+
 public class DescribeClusterTasksResponseBody : Tea.TeaModel {
     public class PageInfo : Tea.TeaModel {
         public var pageNumber: Int64?
@@ -12378,6 +12416,8 @@ public class DescribeClustersResponse : Tea.TeaModel {
 }
 
 public class DescribeClustersV1Request : Tea.TeaModel {
+    public var clusterId: String?
+
     public var clusterSpec: String?
 
     public var clusterType: String?
@@ -12406,6 +12446,9 @@ public class DescribeClustersV1Request : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
         if self.clusterSpec != nil {
             map["cluster_spec"] = self.clusterSpec!
         }
@@ -12431,6 +12474,9 @@ public class DescribeClustersV1Request : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+            self.clusterId = dict["cluster_id"] as! String
+        }
         if dict.keys.contains("cluster_spec") && dict["cluster_spec"] != nil {
             self.clusterSpec = dict["cluster_spec"] as! String
         }

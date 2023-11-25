@@ -1750,9 +1750,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeClusterTasksWithOptions(_ clusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterTasksResponse {
+    public func describeClusterTasksWithOptions(_ clusterId: String, _ request: DescribeClusterTasksRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterTasksResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["page_number"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["page_size"] = request.pageSize!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DescribeClusterTasks",
@@ -1770,10 +1779,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeClusterTasks(_ clusterId: String) async throws -> DescribeClusterTasksResponse {
+    public func describeClusterTasks(_ clusterId: String, _ request: DescribeClusterTasksRequest) async throws -> DescribeClusterTasksResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeClusterTasksWithOptions(clusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeClusterTasksWithOptions(clusterId as! String, request as! DescribeClusterTasksRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1912,6 +1921,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeClustersV1WithOptions(_ request: DescribeClustersV1Request, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClustersV1Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["cluster_id"] = request.clusterId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.clusterSpec)) {
             query["cluster_spec"] = request.clusterSpec ?? "";
         }
@@ -2766,7 +2778,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "GetClusterCheck",
             "version": "2015-12-15",
             "protocol": "HTTPS",
-            "pathname": "/clusters/%5Bcluster_id%5D/checks/%5Bcheck_id%5D",
+            "pathname": "/clusters/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId) + "/checks/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(checkId),
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -2926,7 +2938,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListClusterChecks",
             "version": "2015-12-15",
             "protocol": "HTTPS",
-            "pathname": "/clusters/%5Bcluster_id%5D/checks",
+            "pathname": "/clusters/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId) + "/checks",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -3688,7 +3700,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "RunClusterCheck",
             "version": "2015-12-15",
             "protocol": "HTTPS",
-            "pathname": "/clusters/%5Bcluster_id%5D/checks",
+            "pathname": "/clusters/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId) + "/checks",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
