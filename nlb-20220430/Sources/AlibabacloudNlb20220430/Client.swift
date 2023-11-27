@@ -198,8 +198,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createListenerWithOptions(_ request: CreateListenerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateListenerResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createListenerWithOptions(_ tmpReq: CreateListenerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateListenerResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateListenerShrinkRequest = CreateListenerShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.proxyProtocolV2Config)) {
+            request.proxyProtocolV2ConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.proxyProtocolV2Config, "ProxyProtocolV2Config", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.alpnEnabled)) {
             body["AlpnEnabled"] = request.alpnEnabled!;
@@ -248,6 +253,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.proxyProtocolEnabled)) {
             body["ProxyProtocolEnabled"] = request.proxyProtocolEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.proxyProtocolV2ConfigShrink)) {
+            body["ProxyProtocolV2Config"] = request.proxyProtocolV2ConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
@@ -1848,8 +1856,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func updateListenerAttributeWithOptions(_ request: UpdateListenerAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateListenerAttributeResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func updateListenerAttributeWithOptions(_ tmpReq: UpdateListenerAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateListenerAttributeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateListenerAttributeShrinkRequest = UpdateListenerAttributeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.proxyProtocolV2Config)) {
+            request.proxyProtocolV2ConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.proxyProtocolV2Config, "ProxyProtocolV2Config", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.alpnEnabled)) {
             body["AlpnEnabled"] = request.alpnEnabled!;
@@ -1889,6 +1902,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.proxyProtocolEnabled)) {
             body["ProxyProtocolEnabled"] = request.proxyProtocolEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.proxyProtocolV2ConfigShrink)) {
+            body["ProxyProtocolV2Config"] = request.proxyProtocolV2ConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";

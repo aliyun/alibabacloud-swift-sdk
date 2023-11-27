@@ -744,6 +744,51 @@ public class CancelShiftLoadBalancerZonesResponse : Tea.TeaModel {
 }
 
 public class CreateListenerRequest : Tea.TeaModel {
+    public class ProxyProtocolV2Config : Tea.TeaModel {
+        public var ppv2PrivateLinkEpIdEnabled: Bool?
+
+        public var ppv2PrivateLinkEpsIdEnabled: Bool?
+
+        public var ppv2VpcIdEnabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ppv2PrivateLinkEpIdEnabled != nil {
+                map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
+            }
+            if self.ppv2PrivateLinkEpsIdEnabled != nil {
+                map["Ppv2PrivateLinkEpsIdEnabled"] = self.ppv2PrivateLinkEpsIdEnabled!
+            }
+            if self.ppv2VpcIdEnabled != nil {
+                map["Ppv2VpcIdEnabled"] = self.ppv2VpcIdEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Ppv2PrivateLinkEpIdEnabled") && dict["Ppv2PrivateLinkEpIdEnabled"] != nil {
+                self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! Bool
+            }
+            if dict.keys.contains("Ppv2PrivateLinkEpsIdEnabled") && dict["Ppv2PrivateLinkEpsIdEnabled"] != nil {
+                self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! Bool
+            }
+            if dict.keys.contains("Ppv2VpcIdEnabled") && dict["Ppv2VpcIdEnabled"] != nil {
+                self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! Bool
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -813,6 +858,8 @@ public class CreateListenerRequest : Tea.TeaModel {
 
     public var proxyProtocolEnabled: Bool?
 
+    public var proxyProtocolV2Config: CreateListenerRequest.ProxyProtocolV2Config?
+
     public var regionId: String?
 
     public var secSensorEnabled: Bool?
@@ -835,6 +882,7 @@ public class CreateListenerRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.proxyProtocolV2Config?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -886,6 +934,9 @@ public class CreateListenerRequest : Tea.TeaModel {
         }
         if self.proxyProtocolEnabled != nil {
             map["ProxyProtocolEnabled"] = self.proxyProtocolEnabled!
+        }
+        if self.proxyProtocolV2Config != nil {
+            map["ProxyProtocolV2Config"] = self.proxyProtocolV2Config?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -961,6 +1012,11 @@ public class CreateListenerRequest : Tea.TeaModel {
         if dict.keys.contains("ProxyProtocolEnabled") && dict["ProxyProtocolEnabled"] != nil {
             self.proxyProtocolEnabled = dict["ProxyProtocolEnabled"] as! Bool
         }
+        if dict.keys.contains("ProxyProtocolV2Config") && dict["ProxyProtocolV2Config"] != nil {
+            var model = CreateListenerRequest.ProxyProtocolV2Config()
+            model.fromMap(dict["ProxyProtocolV2Config"] as! [String: Any])
+            self.proxyProtocolV2Config = model
+        }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
@@ -980,6 +1036,261 @@ public class CreateListenerRequest : Tea.TeaModel {
             var tmp : [CreateListenerRequest.Tag] = []
             for v in dict["Tag"] as! [Any] {
                 var model = CreateListenerRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+    }
+}
+
+public class CreateListenerShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var alpnEnabled: Bool?
+
+    public var alpnPolicy: String?
+
+    public var caCertificateIds: [String]?
+
+    public var caEnabled: Bool?
+
+    public var certificateIds: [String]?
+
+    public var clientToken: String?
+
+    public var cps: Int32?
+
+    public var dryRun: Bool?
+
+    public var endPort: Int32?
+
+    public var idleTimeout: Int32?
+
+    public var listenerDescription: String?
+
+    public var listenerPort: Int32?
+
+    public var listenerProtocol: String?
+
+    public var loadBalancerId: String?
+
+    public var mss: Int32?
+
+    public var proxyProtocolEnabled: Bool?
+
+    public var proxyProtocolV2ConfigShrink: String?
+
+    public var regionId: String?
+
+    public var secSensorEnabled: Bool?
+
+    public var securityPolicyId: String?
+
+    public var serverGroupId: String?
+
+    public var startPort: Int32?
+
+    public var tag: [CreateListenerShrinkRequest.Tag]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alpnEnabled != nil {
+            map["AlpnEnabled"] = self.alpnEnabled!
+        }
+        if self.alpnPolicy != nil {
+            map["AlpnPolicy"] = self.alpnPolicy!
+        }
+        if self.caCertificateIds != nil {
+            map["CaCertificateIds"] = self.caCertificateIds!
+        }
+        if self.caEnabled != nil {
+            map["CaEnabled"] = self.caEnabled!
+        }
+        if self.certificateIds != nil {
+            map["CertificateIds"] = self.certificateIds!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cps != nil {
+            map["Cps"] = self.cps!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.endPort != nil {
+            map["EndPort"] = self.endPort!
+        }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
+        if self.listenerDescription != nil {
+            map["ListenerDescription"] = self.listenerDescription!
+        }
+        if self.listenerPort != nil {
+            map["ListenerPort"] = self.listenerPort!
+        }
+        if self.listenerProtocol != nil {
+            map["ListenerProtocol"] = self.listenerProtocol!
+        }
+        if self.loadBalancerId != nil {
+            map["LoadBalancerId"] = self.loadBalancerId!
+        }
+        if self.mss != nil {
+            map["Mss"] = self.mss!
+        }
+        if self.proxyProtocolEnabled != nil {
+            map["ProxyProtocolEnabled"] = self.proxyProtocolEnabled!
+        }
+        if self.proxyProtocolV2ConfigShrink != nil {
+            map["ProxyProtocolV2Config"] = self.proxyProtocolV2ConfigShrink!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.secSensorEnabled != nil {
+            map["SecSensorEnabled"] = self.secSensorEnabled!
+        }
+        if self.securityPolicyId != nil {
+            map["SecurityPolicyId"] = self.securityPolicyId!
+        }
+        if self.serverGroupId != nil {
+            map["ServerGroupId"] = self.serverGroupId!
+        }
+        if self.startPort != nil {
+            map["StartPort"] = self.startPort!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AlpnEnabled") && dict["AlpnEnabled"] != nil {
+            self.alpnEnabled = dict["AlpnEnabled"] as! Bool
+        }
+        if dict.keys.contains("AlpnPolicy") && dict["AlpnPolicy"] != nil {
+            self.alpnPolicy = dict["AlpnPolicy"] as! String
+        }
+        if dict.keys.contains("CaCertificateIds") && dict["CaCertificateIds"] != nil {
+            self.caCertificateIds = dict["CaCertificateIds"] as! [String]
+        }
+        if dict.keys.contains("CaEnabled") && dict["CaEnabled"] != nil {
+            self.caEnabled = dict["CaEnabled"] as! Bool
+        }
+        if dict.keys.contains("CertificateIds") && dict["CertificateIds"] != nil {
+            self.certificateIds = dict["CertificateIds"] as! [String]
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Cps") && dict["Cps"] != nil {
+            self.cps = dict["Cps"] as! Int32
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("EndPort") && dict["EndPort"] != nil {
+            self.endPort = dict["EndPort"] as! Int32
+        }
+        if dict.keys.contains("IdleTimeout") && dict["IdleTimeout"] != nil {
+            self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
+        if dict.keys.contains("ListenerDescription") && dict["ListenerDescription"] != nil {
+            self.listenerDescription = dict["ListenerDescription"] as! String
+        }
+        if dict.keys.contains("ListenerPort") && dict["ListenerPort"] != nil {
+            self.listenerPort = dict["ListenerPort"] as! Int32
+        }
+        if dict.keys.contains("ListenerProtocol") && dict["ListenerProtocol"] != nil {
+            self.listenerProtocol = dict["ListenerProtocol"] as! String
+        }
+        if dict.keys.contains("LoadBalancerId") && dict["LoadBalancerId"] != nil {
+            self.loadBalancerId = dict["LoadBalancerId"] as! String
+        }
+        if dict.keys.contains("Mss") && dict["Mss"] != nil {
+            self.mss = dict["Mss"] as! Int32
+        }
+        if dict.keys.contains("ProxyProtocolEnabled") && dict["ProxyProtocolEnabled"] != nil {
+            self.proxyProtocolEnabled = dict["ProxyProtocolEnabled"] as! Bool
+        }
+        if dict.keys.contains("ProxyProtocolV2Config") && dict["ProxyProtocolV2Config"] != nil {
+            self.proxyProtocolV2ConfigShrink = dict["ProxyProtocolV2Config"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SecSensorEnabled") && dict["SecSensorEnabled"] != nil {
+            self.secSensorEnabled = dict["SecSensorEnabled"] as! Bool
+        }
+        if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
+            self.securityPolicyId = dict["SecurityPolicyId"] as! String
+        }
+        if dict.keys.contains("ServerGroupId") && dict["ServerGroupId"] != nil {
+            self.serverGroupId = dict["ServerGroupId"] as! String
+        }
+        if dict.keys.contains("StartPort") && dict["StartPort"] != nil {
+            self.startPort = dict["StartPort"] as! Int32
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [CreateListenerShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateListenerShrinkRequest.Tag()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
@@ -3909,6 +4220,51 @@ public class GetListenerAttributeRequest : Tea.TeaModel {
 }
 
 public class GetListenerAttributeResponseBody : Tea.TeaModel {
+    public class ProxyProtocolV2Config : Tea.TeaModel {
+        public var ppv2PrivateLinkEpIdEnabled: String?
+
+        public var ppv2PrivateLinkEpsIdEnabled: String?
+
+        public var ppv2VpcIdEnabled: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ppv2PrivateLinkEpIdEnabled != nil {
+                map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
+            }
+            if self.ppv2PrivateLinkEpsIdEnabled != nil {
+                map["Ppv2PrivateLinkEpsIdEnabled"] = self.ppv2PrivateLinkEpsIdEnabled!
+            }
+            if self.ppv2VpcIdEnabled != nil {
+                map["Ppv2VpcIdEnabled"] = self.ppv2VpcIdEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Ppv2PrivateLinkEpIdEnabled") && dict["Ppv2PrivateLinkEpIdEnabled"] != nil {
+                self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! String
+            }
+            if dict.keys.contains("Ppv2PrivateLinkEpsIdEnabled") && dict["Ppv2PrivateLinkEpsIdEnabled"] != nil {
+                self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! String
+            }
+            if dict.keys.contains("Ppv2VpcIdEnabled") && dict["Ppv2VpcIdEnabled"] != nil {
+                self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! String
+            }
+        }
+    }
     public class Tags : Tea.TeaModel {
         public var tagKey: String?
 
@@ -3978,6 +4334,8 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
 
     public var proxyProtocolEnabled: Bool?
 
+    public var proxyProtocolV2Config: GetListenerAttributeResponseBody.ProxyProtocolV2Config?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -4002,6 +4360,7 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.proxyProtocolV2Config?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4053,6 +4412,9 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
         }
         if self.proxyProtocolEnabled != nil {
             map["ProxyProtocolEnabled"] = self.proxyProtocolEnabled!
+        }
+        if self.proxyProtocolV2Config != nil {
+            map["ProxyProtocolV2Config"] = self.proxyProtocolV2Config?.toMap()
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -4130,6 +4492,11 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ProxyProtocolEnabled") && dict["ProxyProtocolEnabled"] != nil {
             self.proxyProtocolEnabled = dict["ProxyProtocolEnabled"] as! Bool
+        }
+        if dict.keys.contains("ProxyProtocolV2Config") && dict["ProxyProtocolV2Config"] != nil {
+            var model = GetListenerAttributeResponseBody.ProxyProtocolV2Config()
+            model.fromMap(dict["ProxyProtocolV2Config"] as! [String: Any])
+            self.proxyProtocolV2Config = model
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -5688,6 +6055,51 @@ public class ListListenersRequest : Tea.TeaModel {
 
 public class ListListenersResponseBody : Tea.TeaModel {
     public class Listeners : Tea.TeaModel {
+        public class ProxyProtocolV2Config : Tea.TeaModel {
+            public var ppv2PrivateLinkEpIdEnabled: String?
+
+            public var ppv2PrivateLinkEpsIdEnabled: String?
+
+            public var ppv2VpcIdEnabled: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ppv2PrivateLinkEpIdEnabled != nil {
+                    map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
+                }
+                if self.ppv2PrivateLinkEpsIdEnabled != nil {
+                    map["Ppv2PrivateLinkEpsIdEnabled"] = self.ppv2PrivateLinkEpsIdEnabled!
+                }
+                if self.ppv2VpcIdEnabled != nil {
+                    map["Ppv2VpcIdEnabled"] = self.ppv2VpcIdEnabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Ppv2PrivateLinkEpIdEnabled") && dict["Ppv2PrivateLinkEpIdEnabled"] != nil {
+                    self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! String
+                }
+                if dict.keys.contains("Ppv2PrivateLinkEpsIdEnabled") && dict["Ppv2PrivateLinkEpsIdEnabled"] != nil {
+                    self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! String
+                }
+                if dict.keys.contains("Ppv2VpcIdEnabled") && dict["Ppv2VpcIdEnabled"] != nil {
+                    self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! String
+                }
+            }
+        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -5757,6 +6169,8 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
         public var proxyProtocolEnabled: Bool?
 
+        public var proxyProtocolV2Config: ListListenersResponseBody.Listeners.ProxyProtocolV2Config?
+
         public var regionId: String?
 
         public var secSensorEnabled: Bool?
@@ -5779,6 +6193,7 @@ public class ListListenersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.proxyProtocolV2Config?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -5830,6 +6245,9 @@ public class ListListenersResponseBody : Tea.TeaModel {
             }
             if self.proxyProtocolEnabled != nil {
                 map["ProxyProtocolEnabled"] = self.proxyProtocolEnabled!
+            }
+            if self.proxyProtocolV2Config != nil {
+                map["ProxyProtocolV2Config"] = self.proxyProtocolV2Config?.toMap()
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -5904,6 +6322,11 @@ public class ListListenersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProxyProtocolEnabled") && dict["ProxyProtocolEnabled"] != nil {
                 self.proxyProtocolEnabled = dict["ProxyProtocolEnabled"] as! Bool
+            }
+            if dict.keys.contains("ProxyProtocolV2Config") && dict["ProxyProtocolV2Config"] != nil {
+                var model = ListListenersResponseBody.Listeners.ProxyProtocolV2Config()
+                model.fromMap(dict["ProxyProtocolV2Config"] as! [String: Any])
+                self.proxyProtocolV2Config = model
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
@@ -10407,6 +10830,51 @@ public class UntagResourcesResponse : Tea.TeaModel {
 }
 
 public class UpdateListenerAttributeRequest : Tea.TeaModel {
+    public class ProxyProtocolV2Config : Tea.TeaModel {
+        public var ppv2PrivateLinkEpIdEnabled: Bool?
+
+        public var ppv2PrivateLinkEpsIdEnabled: Bool?
+
+        public var ppv2VpcIdEnabled: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ppv2PrivateLinkEpIdEnabled != nil {
+                map["Ppv2PrivateLinkEpIdEnabled"] = self.ppv2PrivateLinkEpIdEnabled!
+            }
+            if self.ppv2PrivateLinkEpsIdEnabled != nil {
+                map["Ppv2PrivateLinkEpsIdEnabled"] = self.ppv2PrivateLinkEpsIdEnabled!
+            }
+            if self.ppv2VpcIdEnabled != nil {
+                map["Ppv2VpcIdEnabled"] = self.ppv2VpcIdEnabled!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Ppv2PrivateLinkEpIdEnabled") && dict["Ppv2PrivateLinkEpIdEnabled"] != nil {
+                self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! Bool
+            }
+            if dict.keys.contains("Ppv2PrivateLinkEpsIdEnabled") && dict["Ppv2PrivateLinkEpsIdEnabled"] != nil {
+                self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! Bool
+            }
+            if dict.keys.contains("Ppv2VpcIdEnabled") && dict["Ppv2VpcIdEnabled"] != nil {
+                self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! Bool
+            }
+        }
+    }
     public var alpnEnabled: Bool?
 
     public var alpnPolicy: String?
@@ -10432,6 +10900,177 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
     public var mss: Int32?
 
     public var proxyProtocolEnabled: Bool?
+
+    public var proxyProtocolV2Config: UpdateListenerAttributeRequest.ProxyProtocolV2Config?
+
+    public var regionId: String?
+
+    public var secSensorEnabled: Bool?
+
+    public var securityPolicyId: String?
+
+    public var serverGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.proxyProtocolV2Config?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.alpnEnabled != nil {
+            map["AlpnEnabled"] = self.alpnEnabled!
+        }
+        if self.alpnPolicy != nil {
+            map["AlpnPolicy"] = self.alpnPolicy!
+        }
+        if self.caCertificateIds != nil {
+            map["CaCertificateIds"] = self.caCertificateIds!
+        }
+        if self.caEnabled != nil {
+            map["CaEnabled"] = self.caEnabled!
+        }
+        if self.certificateIds != nil {
+            map["CertificateIds"] = self.certificateIds!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.cps != nil {
+            map["Cps"] = self.cps!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.idleTimeout != nil {
+            map["IdleTimeout"] = self.idleTimeout!
+        }
+        if self.listenerDescription != nil {
+            map["ListenerDescription"] = self.listenerDescription!
+        }
+        if self.listenerId != nil {
+            map["ListenerId"] = self.listenerId!
+        }
+        if self.mss != nil {
+            map["Mss"] = self.mss!
+        }
+        if self.proxyProtocolEnabled != nil {
+            map["ProxyProtocolEnabled"] = self.proxyProtocolEnabled!
+        }
+        if self.proxyProtocolV2Config != nil {
+            map["ProxyProtocolV2Config"] = self.proxyProtocolV2Config?.toMap()
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.secSensorEnabled != nil {
+            map["SecSensorEnabled"] = self.secSensorEnabled!
+        }
+        if self.securityPolicyId != nil {
+            map["SecurityPolicyId"] = self.securityPolicyId!
+        }
+        if self.serverGroupId != nil {
+            map["ServerGroupId"] = self.serverGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AlpnEnabled") && dict["AlpnEnabled"] != nil {
+            self.alpnEnabled = dict["AlpnEnabled"] as! Bool
+        }
+        if dict.keys.contains("AlpnPolicy") && dict["AlpnPolicy"] != nil {
+            self.alpnPolicy = dict["AlpnPolicy"] as! String
+        }
+        if dict.keys.contains("CaCertificateIds") && dict["CaCertificateIds"] != nil {
+            self.caCertificateIds = dict["CaCertificateIds"] as! [String]
+        }
+        if dict.keys.contains("CaEnabled") && dict["CaEnabled"] != nil {
+            self.caEnabled = dict["CaEnabled"] as! Bool
+        }
+        if dict.keys.contains("CertificateIds") && dict["CertificateIds"] != nil {
+            self.certificateIds = dict["CertificateIds"] as! [String]
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Cps") && dict["Cps"] != nil {
+            self.cps = dict["Cps"] as! Int32
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("IdleTimeout") && dict["IdleTimeout"] != nil {
+            self.idleTimeout = dict["IdleTimeout"] as! Int32
+        }
+        if dict.keys.contains("ListenerDescription") && dict["ListenerDescription"] != nil {
+            self.listenerDescription = dict["ListenerDescription"] as! String
+        }
+        if dict.keys.contains("ListenerId") && dict["ListenerId"] != nil {
+            self.listenerId = dict["ListenerId"] as! String
+        }
+        if dict.keys.contains("Mss") && dict["Mss"] != nil {
+            self.mss = dict["Mss"] as! Int32
+        }
+        if dict.keys.contains("ProxyProtocolEnabled") && dict["ProxyProtocolEnabled"] != nil {
+            self.proxyProtocolEnabled = dict["ProxyProtocolEnabled"] as! Bool
+        }
+        if dict.keys.contains("ProxyProtocolV2Config") && dict["ProxyProtocolV2Config"] != nil {
+            var model = UpdateListenerAttributeRequest.ProxyProtocolV2Config()
+            model.fromMap(dict["ProxyProtocolV2Config"] as! [String: Any])
+            self.proxyProtocolV2Config = model
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SecSensorEnabled") && dict["SecSensorEnabled"] != nil {
+            self.secSensorEnabled = dict["SecSensorEnabled"] as! Bool
+        }
+        if dict.keys.contains("SecurityPolicyId") && dict["SecurityPolicyId"] != nil {
+            self.securityPolicyId = dict["SecurityPolicyId"] as! String
+        }
+        if dict.keys.contains("ServerGroupId") && dict["ServerGroupId"] != nil {
+            self.serverGroupId = dict["ServerGroupId"] as! String
+        }
+    }
+}
+
+public class UpdateListenerAttributeShrinkRequest : Tea.TeaModel {
+    public var alpnEnabled: Bool?
+
+    public var alpnPolicy: String?
+
+    public var caCertificateIds: [String]?
+
+    public var caEnabled: Bool?
+
+    public var certificateIds: [String]?
+
+    public var clientToken: String?
+
+    public var cps: Int32?
+
+    public var dryRun: Bool?
+
+    public var idleTimeout: Int32?
+
+    public var listenerDescription: String?
+
+    public var listenerId: String?
+
+    public var mss: Int32?
+
+    public var proxyProtocolEnabled: Bool?
+
+    public var proxyProtocolV2ConfigShrink: String?
 
     public var regionId: String?
 
@@ -10494,6 +11133,9 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
         if self.proxyProtocolEnabled != nil {
             map["ProxyProtocolEnabled"] = self.proxyProtocolEnabled!
         }
+        if self.proxyProtocolV2ConfigShrink != nil {
+            map["ProxyProtocolV2Config"] = self.proxyProtocolV2ConfigShrink!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -10548,6 +11190,9 @@ public class UpdateListenerAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProxyProtocolEnabled") && dict["ProxyProtocolEnabled"] != nil {
             self.proxyProtocolEnabled = dict["ProxyProtocolEnabled"] as! Bool
+        }
+        if dict.keys.contains("ProxyProtocolV2Config") && dict["ProxyProtocolV2Config"] != nil {
+            self.proxyProtocolV2ConfigShrink = dict["ProxyProtocolV2Config"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
