@@ -10992,6 +10992,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.routeTableName)) {
             query["RouteTableName"] = request.routeTableName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.routeTableType)) {
+            query["RouteTableType"] = request.routeTableType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.routerId)) {
             query["RouterId"] = request.routerId ?? "";
         }

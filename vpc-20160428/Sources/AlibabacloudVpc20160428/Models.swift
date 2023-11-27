@@ -48851,6 +48851,8 @@ public class DescribeRouteTableListRequest : Tea.TeaModel {
 
     public var routeTableName: String?
 
+    public var routeTableType: String?
+
     public var routerId: String?
 
     public var routerType: String?
@@ -48903,6 +48905,9 @@ public class DescribeRouteTableListRequest : Tea.TeaModel {
         if self.routeTableName != nil {
             map["RouteTableName"] = self.routeTableName!
         }
+        if self.routeTableType != nil {
+            map["RouteTableType"] = self.routeTableType!
+        }
         if self.routerId != nil {
             map["RouterId"] = self.routerId!
         }
@@ -48952,6 +48957,9 @@ public class DescribeRouteTableListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RouteTableName") && dict["RouteTableName"] != nil {
             self.routeTableName = dict["RouteTableName"] as! String
+        }
+        if dict.keys.contains("RouteTableType") && dict["RouteTableType"] != nil {
+            self.routeTableType = dict["RouteTableType"] as! String
         }
         if dict.keys.contains("RouterId") && dict["RouterId"] != nil {
             self.routerId = dict["RouterId"] as! String
