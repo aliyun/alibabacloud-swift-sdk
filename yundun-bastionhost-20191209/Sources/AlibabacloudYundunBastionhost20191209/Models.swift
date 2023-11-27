@@ -2303,6 +2303,8 @@ public class CreateHostRequest : Tea.TeaModel {
 
     public var instanceRegionId: String?
 
+    public var networkDomainId: String?
+
     public var OSType: String?
 
     public var regionId: String?
@@ -2346,6 +2348,9 @@ public class CreateHostRequest : Tea.TeaModel {
         if self.instanceRegionId != nil {
             map["InstanceRegionId"] = self.instanceRegionId!
         }
+        if self.networkDomainId != nil {
+            map["NetworkDomainId"] = self.networkDomainId!
+        }
         if self.OSType != nil {
             map["OSType"] = self.OSType!
         }
@@ -2382,6 +2387,9 @@ public class CreateHostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceRegionId") && dict["InstanceRegionId"] != nil {
             self.instanceRegionId = dict["InstanceRegionId"] as! String
+        }
+        if dict.keys.contains("NetworkDomainId") && dict["NetworkDomainId"] != nil {
+            self.networkDomainId = dict["NetworkDomainId"] as! String
         }
         if dict.keys.contains("OSType") && dict["OSType"] != nil {
             self.OSType = dict["OSType"] as! String
@@ -7078,6 +7086,8 @@ public class GetHostResponseBody : Tea.TeaModel {
 
         public var hostPublicAddress: String?
 
+        public var networkDomainId: String?
+
         public var OSType: String?
 
         public var protocols: [GetHostResponseBody.Host.Protocols]?
@@ -7120,6 +7130,9 @@ public class GetHostResponseBody : Tea.TeaModel {
             if self.hostPublicAddress != nil {
                 map["HostPublicAddress"] = self.hostPublicAddress!
             }
+            if self.networkDomainId != nil {
+                map["NetworkDomainId"] = self.networkDomainId!
+            }
             if self.OSType != nil {
                 map["OSType"] = self.OSType!
             }
@@ -7160,6 +7173,9 @@ public class GetHostResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("HostPublicAddress") && dict["HostPublicAddress"] != nil {
                 self.hostPublicAddress = dict["HostPublicAddress"] as! String
+            }
+            if dict.keys.contains("NetworkDomainId") && dict["NetworkDomainId"] != nil {
+                self.networkDomainId = dict["NetworkDomainId"] as! String
             }
             if dict.keys.contains("OSType") && dict["OSType"] != nil {
                 self.OSType = dict["OSType"] as! String
@@ -14207,6 +14223,8 @@ public class ModifyHostRequest : Tea.TeaModel {
 
     public var instanceId: String?
 
+    public var networkDomainId: String?
+
     public var OSType: String?
 
     public var regionId: String?
@@ -14243,6 +14261,9 @@ public class ModifyHostRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.networkDomainId != nil {
+            map["NetworkDomainId"] = self.networkDomainId!
+        }
         if self.OSType != nil {
             map["OSType"] = self.OSType!
         }
@@ -14270,6 +14291,9 @@ public class ModifyHostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NetworkDomainId") && dict["NetworkDomainId"] != nil {
+            self.networkDomainId = dict["NetworkDomainId"] as! String
         }
         if dict.keys.contains("OSType") && dict["OSType"] != nil {
             self.OSType = dict["OSType"] as! String
