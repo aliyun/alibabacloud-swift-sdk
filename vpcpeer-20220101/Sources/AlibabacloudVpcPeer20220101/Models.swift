@@ -156,6 +156,8 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
 
     public var acceptingVpcId: String?
 
+    public var bandwidth: Int32?
+
     public var clientToken: String?
 
     public var description_: String?
@@ -193,6 +195,9 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
         if self.acceptingVpcId != nil {
             map["AcceptingVpcId"] = self.acceptingVpcId!
         }
+        if self.bandwidth != nil {
+            map["Bandwidth"] = self.bandwidth!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -226,6 +231,9 @@ public class CreateVpcPeerConnectionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AcceptingVpcId") && dict["AcceptingVpcId"] != nil {
             self.acceptingVpcId = dict["AcceptingVpcId"] as! String
+        }
+        if dict.keys.contains("Bandwidth") && dict["Bandwidth"] != nil {
+            self.bandwidth = dict["Bandwidth"] as! Int32
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
@@ -1575,7 +1583,7 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public var acceptingOwnerUid: Int32?
+        public var acceptingOwnerUid: Int64?
 
         public var acceptingRegionId: String?
 
@@ -1597,7 +1605,7 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
 
         public var name: String?
 
-        public var ownerId: Int32?
+        public var ownerId: Int64?
 
         public var regionId: String?
 
@@ -1685,7 +1693,7 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AcceptingOwnerUid") && dict["AcceptingOwnerUid"] != nil {
-                self.acceptingOwnerUid = dict["AcceptingOwnerUid"] as! Int32
+                self.acceptingOwnerUid = dict["AcceptingOwnerUid"] as! Int64
             }
             if dict.keys.contains("AcceptingRegionId") && dict["AcceptingRegionId"] != nil {
                 self.acceptingRegionId = dict["AcceptingRegionId"] as! String
@@ -1720,7 +1728,7 @@ public class ListVpcPeerConnectionsResponseBody : Tea.TeaModel {
                 self.name = dict["Name"] as! String
             }
             if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
-                self.ownerId = dict["OwnerId"] as! Int32
+                self.ownerId = dict["OwnerId"] as! Int64
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String

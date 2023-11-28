@@ -79,6 +79,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acceptingVpcId)) {
             body["AcceptingVpcId"] = request.acceptingVpcId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.bandwidth)) {
+            body["Bandwidth"] = request.bandwidth!;
+        }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";
         }
