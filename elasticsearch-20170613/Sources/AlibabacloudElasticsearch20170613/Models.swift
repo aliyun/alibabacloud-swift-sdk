@@ -1597,6 +1597,245 @@ public class MasterNodeConfiguration : Tea.TeaModel {
     }
 }
 
+public class MigrationJob : Tea.TeaModel {
+    public class SourceCluster : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["instanceId"] = self.instanceId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("instanceId") && dict["instanceId"] != nil {
+                self.instanceId = dict["instanceId"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+        }
+    }
+    public class StatusResult : Tea.TeaModel {
+        public var code: String?
+
+        public var success: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.success != nil {
+                map["success"] = self.success!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("code") && dict["code"] != nil {
+                self.code = dict["code"] as! String
+            }
+            if dict.keys.contains("success") && dict["success"] != nil {
+                self.success = dict["success"] as! Bool
+            }
+        }
+    }
+    public class TargetCluster : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["instanceId"] = self.instanceId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("instanceId") && dict["instanceId"] != nil {
+                self.instanceId = dict["instanceId"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+        }
+    }
+    public var currentState: String?
+
+    public var disableSourceClusterAuth: Bool?
+
+    public var disableTargetClusterAuth: Bool?
+
+    public var endTime: Int64?
+
+    public var migrationJobId: String?
+
+    public var phase: String?
+
+    public var sourceCluster: MigrationJob.SourceCluster?
+
+    public var startTime: Int64?
+
+    public var statusResult: [MigrationJob.StatusResult]?
+
+    public var targetCluster: MigrationJob.TargetCluster?
+
+    public var updateTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sourceCluster?.validate()
+        try self.targetCluster?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.currentState != nil {
+            map["currentState"] = self.currentState!
+        }
+        if self.disableSourceClusterAuth != nil {
+            map["disableSourceClusterAuth"] = self.disableSourceClusterAuth!
+        }
+        if self.disableTargetClusterAuth != nil {
+            map["disableTargetClusterAuth"] = self.disableTargetClusterAuth!
+        }
+        if self.endTime != nil {
+            map["endTime"] = self.endTime!
+        }
+        if self.migrationJobId != nil {
+            map["migrationJobId"] = self.migrationJobId!
+        }
+        if self.phase != nil {
+            map["phase"] = self.phase!
+        }
+        if self.sourceCluster != nil {
+            map["sourceCluster"] = self.sourceCluster?.toMap()
+        }
+        if self.startTime != nil {
+            map["startTime"] = self.startTime!
+        }
+        if self.statusResult != nil {
+            var tmp : [Any] = []
+            for k in self.statusResult! {
+                tmp.append(k.toMap())
+            }
+            map["statusResult"] = tmp
+        }
+        if self.targetCluster != nil {
+            map["targetCluster"] = self.targetCluster?.toMap()
+        }
+        if self.updateTime != nil {
+            map["updateTime"] = self.updateTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("currentState") && dict["currentState"] != nil {
+            self.currentState = dict["currentState"] as! String
+        }
+        if dict.keys.contains("disableSourceClusterAuth") && dict["disableSourceClusterAuth"] != nil {
+            self.disableSourceClusterAuth = dict["disableSourceClusterAuth"] as! Bool
+        }
+        if dict.keys.contains("disableTargetClusterAuth") && dict["disableTargetClusterAuth"] != nil {
+            self.disableTargetClusterAuth = dict["disableTargetClusterAuth"] as! Bool
+        }
+        if dict.keys.contains("endTime") && dict["endTime"] != nil {
+            self.endTime = dict["endTime"] as! Int64
+        }
+        if dict.keys.contains("migrationJobId") && dict["migrationJobId"] != nil {
+            self.migrationJobId = dict["migrationJobId"] as! String
+        }
+        if dict.keys.contains("phase") && dict["phase"] != nil {
+            self.phase = dict["phase"] as! String
+        }
+        if dict.keys.contains("sourceCluster") && dict["sourceCluster"] != nil {
+            var model = MigrationJob.SourceCluster()
+            model.fromMap(dict["sourceCluster"] as! [String: Any])
+            self.sourceCluster = model
+        }
+        if dict.keys.contains("startTime") && dict["startTime"] != nil {
+            self.startTime = dict["startTime"] as! Int64
+        }
+        if dict.keys.contains("statusResult") && dict["statusResult"] != nil {
+            var tmp : [MigrationJob.StatusResult] = []
+            for v in dict["statusResult"] as! [Any] {
+                var model = MigrationJob.StatusResult()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.statusResult = tmp
+        }
+        if dict.keys.contains("targetCluster") && dict["targetCluster"] != nil {
+            var model = MigrationJob.TargetCluster()
+            model.fromMap(dict["targetCluster"] as! [String: Any])
+            self.targetCluster = model
+        }
+        if dict.keys.contains("updateTime") && dict["updateTime"] != nil {
+            self.updateTime = dict["updateTime"] as! Int64
+        }
+    }
+}
+
 public class NetworkConfig : Tea.TeaModel {
     public var type: String?
 
@@ -35540,6 +35779,8 @@ public class UninstallPluginRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var force: Bool?
+
     public override init() {
         super.init()
     }
@@ -35560,6 +35801,9 @@ public class UninstallPluginRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["clientToken"] = self.clientToken!
         }
+        if self.force != nil {
+            map["force"] = self.force!
+        }
         return map
     }
 
@@ -35569,6 +35813,9 @@ public class UninstallPluginRequest : Tea.TeaModel {
         }
         if dict.keys.contains("clientToken") && dict["clientToken"] != nil {
             self.clientToken = dict["clientToken"] as! String
+        }
+        if dict.keys.contains("force") && dict["force"] != nil {
+            self.force = dict["force"] as! Bool
         }
     }
 }
@@ -43755,6 +44002,43 @@ public class ValidateTransferableNodesResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["tagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["tagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tagKey") && dict["tagKey"] != nil {
+                self.tagKey = dict["tagKey"] as! String
+            }
+            if dict.keys.contains("tagValue") && dict["tagValue"] != nil {
+                self.tagValue = dict["tagValue"] as! String
+            }
+        }
+    }
     public var clientNodeConfiguration: ClientNodeConfiguration?
 
     public var description_: String?
@@ -43782,6 +44066,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var paymentType: String?
 
     public var resourceGroupId: String?
+
+    public var tags: [CreateInstanceRequest.Tags]?
 
     public var warmNodeConfiguration: WarmNodeConfiguration?
 
@@ -43853,6 +44139,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["resourceGroupId"] = self.resourceGroupId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["tags"] = tmp
+        }
         if self.warmNodeConfiguration != nil {
             map["warmNodeConfiguration"] = self.warmNodeConfiguration?.toMap()
         }
@@ -43921,6 +44214,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("resourceGroupId") && dict["resourceGroupId"] != nil {
             self.resourceGroupId = dict["resourceGroupId"] as! String
+        }
+        if dict.keys.contains("tags") && dict["tags"] != nil {
+            var tmp : [CreateInstanceRequest.Tags] = []
+            for v in dict["tags"] as! [Any] {
+                var model = CreateInstanceRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
         if dict.keys.contains("warmNodeConfiguration") && dict["warmNodeConfiguration"] != nil {
             var model = WarmNodeConfiguration()
