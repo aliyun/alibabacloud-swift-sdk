@@ -5788,6 +5788,217 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightListingSearchWithOptions(_ tmpReq: IntlFlightListingSearchRequest, _ headers: IntlFlightListingSearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightListingSearchResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: IntlFlightListingSearchShrinkRequest = IntlFlightListingSearchShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.searchJourneys)) {
+            request.searchJourneysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchJourneys, "search_journeys", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.searchPassengerList)) {
+            request.searchPassengerListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchPassengerList, "search_passenger_list", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripUserId)) {
+            query["btrip_user_id"] = request.btripUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buyerName)) {
+            query["buyer_name"] = request.buyerName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cabinType)) {
+            query["cabin_type"] = request.cabinType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.directOnly)) {
+            query["direct_only"] = request.directOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isvName)) {
+            query["isv_name"] = request.isvName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needShareFlight)) {
+            query["need_share_flight"] = request.needShareFlight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.outWheelSearch)) {
+            query["out_wheel_search"] = request.outWheelSearch!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryRecordId)) {
+            query["query_record_id"] = request.queryRecordId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchJourneysShrink)) {
+            query["search_journeys"] = request.searchJourneysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchMode)) {
+            query["search_mode"] = request.searchMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchPassengerListShrink)) {
+            query["search_passenger_list"] = request.searchPassengerListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supplierCode)) {
+            query["supplier_code"] = request.supplierCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.token)) {
+            query["token"] = request.token ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tripType)) {
+            query["trip_type"] = request.tripType!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IntlFlightListingSearch",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/intl-flight/v1/flights/action/listing-search",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IntlFlightListingSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightListingSearch(_ request: IntlFlightListingSearchRequest) async throws -> IntlFlightListingSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IntlFlightListingSearchHeaders = IntlFlightListingSearchHeaders([:])
+        return try await intlFlightListingSearchWithOptions(request as! IntlFlightListingSearchRequest, headers as! IntlFlightListingSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightOtaItemDetailWithOptions(_ otaItemId: String, _ request: IntlFlightOtaItemDetailRequest, _ headers: IntlFlightOtaItemDetailHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightOtaItemDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripUserId)) {
+            query["btrip_user_id"] = request.btripUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buyerName)) {
+            query["buyer_name"] = request.buyerName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isvName)) {
+            query["isv_name"] = request.isvName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supplierCode)) {
+            query["supplier_code"] = request.supplierCode ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IntlFlightOtaItemDetail",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/intl-flight/v1/items/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(otaItemId) + "/action/ota-get",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IntlFlightOtaItemDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightOtaItemDetail(_ otaItemId: String, _ request: IntlFlightOtaItemDetailRequest) async throws -> IntlFlightOtaItemDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IntlFlightOtaItemDetailHeaders = IntlFlightOtaItemDetailHeaders([:])
+        return try await intlFlightOtaItemDetailWithOptions(otaItemId as! String, request as! IntlFlightOtaItemDetailRequest, headers as! IntlFlightOtaItemDetailHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightOtaSearchWithOptions(_ tmpReq: IntlFlightOtaSearchRequest, _ headers: IntlFlightOtaSearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> IntlFlightOtaSearchResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: IntlFlightOtaSearchShrinkRequest = IntlFlightOtaSearchShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.searchJourneys)) {
+            request.searchJourneysShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchJourneys, "search_journeys", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.searchPassengerList)) {
+            request.searchPassengerListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.searchPassengerList, "search_passenger_list", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.btripUserId)) {
+            query["btrip_user_id"] = request.btripUserId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.buyerName)) {
+            query["buyer_name"] = request.buyerName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cabinType)) {
+            query["cabin_type"] = request.cabinType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.directOnly)) {
+            query["direct_only"] = request.directOnly!;
+        }
+        if (!TeaUtils.Client.isUnset(request.isvName)) {
+            query["isv_name"] = request.isvName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.needShareFlight)) {
+            query["need_share_flight"] = request.needShareFlight!;
+        }
+        if (!TeaUtils.Client.isUnset(request.searchJourneysShrink)) {
+            query["search_journeys"] = request.searchJourneysShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.searchPassengerListShrink)) {
+            query["search_passenger_list"] = request.searchPassengerListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.supplierCode)) {
+            query["supplier_code"] = request.supplierCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tripType)) {
+            query["trip_type"] = request.tripType!;
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "IntlFlightOtaSearch",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/intl-flight/v1/flights/action/ota-search",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(IntlFlightOtaSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func intlFlightOtaSearch(_ request: IntlFlightOtaSearchRequest) async throws -> IntlFlightOtaSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: IntlFlightOtaSearchHeaders = IntlFlightOtaSearchHeaders([:])
+        return try await intlFlightOtaSearchWithOptions(request as! IntlFlightOtaSearchRequest, headers as! IntlFlightOtaSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func invoiceAddWithOptions(_ request: InvoiceAddRequest, _ headers: InvoiceAddHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvoiceAddResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

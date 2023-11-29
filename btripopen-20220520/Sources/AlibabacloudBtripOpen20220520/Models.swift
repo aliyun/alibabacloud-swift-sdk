@@ -44,6 +44,139 @@ public class ModuleFlightItemListBestPriceItemFlightRuleInfosValue : Tea.TeaMode
 }
 
 public class ModuleFlightItemListBestPriceItemShoppingItemMapValue : Tea.TeaModel {
+    public class CabinQuantityList : Tea.TeaModel {
+        public class SegmentPosition : Tea.TeaModel {
+            public var segmentIndex: Int32?
+
+            public var journeyIndex: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.segmentIndex != nil {
+                    map["segment_index"] = self.segmentIndex!
+                }
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                    self.segmentIndex = dict["segment_index"] as! Int32
+                }
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+            }
+        }
+        public class Cabin : Tea.TeaModel {
+            public var cabin: String?
+
+            public var cabinClass: String?
+
+            public var cabinClassName: String?
+
+            public var quantity: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cabin != nil {
+                    map["cabin"] = self.cabin!
+                }
+                if self.cabinClass != nil {
+                    map["cabin_class"] = self.cabinClass!
+                }
+                if self.cabinClassName != nil {
+                    map["cabin_class_name"] = self.cabinClassName!
+                }
+                if self.quantity != nil {
+                    map["quantity"] = self.quantity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cabin") && dict["cabin"] != nil {
+                    self.cabin = dict["cabin"] as! String
+                }
+                if dict.keys.contains("cabin_class") && dict["cabin_class"] != nil {
+                    self.cabinClass = dict["cabin_class"] as! String
+                }
+                if dict.keys.contains("cabin_class_name") && dict["cabin_class_name"] != nil {
+                    self.cabinClassName = dict["cabin_class_name"] as! String
+                }
+                if dict.keys.contains("quantity") && dict["quantity"] != nil {
+                    self.quantity = dict["quantity"] as! String
+                }
+            }
+        }
+        public var segmentPosition: ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList.SegmentPosition?
+
+        public var cabin: ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList.Cabin?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.segmentPosition?.validate()
+            try self.cabin?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.segmentPosition != nil {
+                map["segment_position"] = self.segmentPosition?.toMap()
+            }
+            if self.cabin != nil {
+                map["cabin"] = self.cabin?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList.SegmentPosition()
+                model.fromMap(dict["segment_position"] as! [String: Any])
+                self.segmentPosition = model
+            }
+            if dict.keys.contains("cabin") && dict["cabin"] != nil {
+                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList.Cabin()
+                model.fromMap(dict["cabin"] as! [String: Any])
+                self.cabin = model
+            }
+        }
+    }
     public class SearchPrice : Tea.TeaModel {
         public class PriceShowInfo : Tea.TeaModel {
             public var discountInfo: String?
@@ -305,11 +438,140 @@ public class ModuleFlightItemListBestPriceItemShoppingItemMapValue : Tea.TeaMode
             }
         }
     }
+    public class SegmentPriceList : Tea.TeaModel {
+        public class SegmentPosition : Tea.TeaModel {
+            public var journeyIndex: Int32?
+
+            public var segmentIndex: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.segmentIndex != nil {
+                    map["segment_index"] = self.segmentIndex!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                    self.segmentIndex = dict["segment_index"] as! Int32
+                }
+            }
+        }
+        public class SearchPrice : Tea.TeaModel {
+            public var ticketPrice: Int32?
+
+            public var sellPrice: Int32?
+
+            public var tax: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ticketPrice != nil {
+                    map["ticket_price"] = self.ticketPrice!
+                }
+                if self.sellPrice != nil {
+                    map["sell_price"] = self.sellPrice!
+                }
+                if self.tax != nil {
+                    map["tax"] = self.tax!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ticket_price") && dict["ticket_price"] != nil {
+                    self.ticketPrice = dict["ticket_price"] as! Int32
+                }
+                if dict.keys.contains("sell_price") && dict["sell_price"] != nil {
+                    self.sellPrice = dict["sell_price"] as! Int32
+                }
+                if dict.keys.contains("tax") && dict["tax"] != nil {
+                    self.tax = dict["tax"] as! Int32
+                }
+            }
+        }
+        public var segmentPosition: ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList.SegmentPosition?
+
+        public var searchPrice: ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList.SearchPrice?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.segmentPosition?.validate()
+            try self.searchPrice?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.segmentPosition != nil {
+                map["segment_position"] = self.segmentPosition?.toMap()
+            }
+            if self.searchPrice != nil {
+                map["search_price"] = self.searchPrice?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList.SegmentPosition()
+                model.fromMap(dict["segment_position"] as! [String: Any])
+                self.segmentPosition = model
+            }
+            if dict.keys.contains("search_price") && dict["search_price"] != nil {
+                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList.SearchPrice()
+                model.fromMap(dict["search_price"] as! [String: Any])
+                self.searchPrice = model
+            }
+        }
+    }
+    public var cabinQuantityList: [ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList]?
+
+    public var searchPrice: ModuleFlightItemListBestPriceItemShoppingItemMapValue.SearchPrice?
+
+    public var segmentPriceList: [ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList]?
+
     public var id: String?
 
     public var cabinQuantity: [String: ModuleFlightItemListBestPriceItemShoppingItemMapValueCabinQuantityValue]?
-
-    public var searchPrice: ModuleFlightItemListBestPriceItemShoppingItemMapValue.SearchPrice?
 
     public var segmentPrice: [String: ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue]?
 
@@ -328,6 +590,23 @@ public class ModuleFlightItemListBestPriceItemShoppingItemMapValue : Tea.TeaMode
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cabinQuantityList != nil {
+            var tmp : [Any] = []
+            for k in self.cabinQuantityList! {
+                tmp.append(k.toMap())
+            }
+            map["cabin_quantity_list"] = tmp
+        }
+        if self.searchPrice != nil {
+            map["search_price"] = self.searchPrice?.toMap()
+        }
+        if self.segmentPriceList != nil {
+            var tmp : [Any] = []
+            for k in self.segmentPriceList! {
+                tmp.append(k.toMap())
+            }
+            map["segment_price_list"] = tmp
+        }
         if self.id != nil {
             map["id"] = self.id!
         }
@@ -337,9 +616,6 @@ public class ModuleFlightItemListBestPriceItemShoppingItemMapValue : Tea.TeaMode
                 tmp[k] = v.toMap()
             }
             map["cabin_quantity"] = tmp
-        }
-        if self.searchPrice != nil {
-            map["search_price"] = self.searchPrice?.toMap()
         }
         if self.segmentPrice != nil {
             var tmp : [String: Any] = [:]
@@ -352,6 +628,33 @@ public class ModuleFlightItemListBestPriceItemShoppingItemMapValue : Tea.TeaMode
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cabin_quantity_list") && dict["cabin_quantity_list"] != nil {
+            var tmp : [ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList] = []
+            for v in dict["cabin_quantity_list"] as! [Any] {
+                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.CabinQuantityList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.cabinQuantityList = tmp
+        }
+        if dict.keys.contains("search_price") && dict["search_price"] != nil {
+            var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.SearchPrice()
+            model.fromMap(dict["search_price"] as! [String: Any])
+            self.searchPrice = model
+        }
+        if dict.keys.contains("segment_price_list") && dict["segment_price_list"] != nil {
+            var tmp : [ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList] = []
+            for v in dict["segment_price_list"] as! [Any] {
+                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.SegmentPriceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.segmentPriceList = tmp
+        }
         if dict.keys.contains("id") && dict["id"] != nil {
             self.id = dict["id"] as! String
         }
@@ -365,11 +668,6 @@ public class ModuleFlightItemListBestPriceItemShoppingItemMapValue : Tea.TeaMode
                 }
             }
             self.cabinQuantity = tmp
-        }
-        if dict.keys.contains("search_price") && dict["search_price"] != nil {
-            var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue.SearchPrice()
-            model.fromMap(dict["search_price"] as! [String: Any])
-            self.searchPrice = model
         }
         if dict.keys.contains("segment_price") && dict["segment_price"] != nil {
             var tmp : [String: ModuleFlightItemListBestPriceItemShoppingItemMapValueSegmentPriceValue] = [:]
@@ -1610,6 +1908,139 @@ public class ModuleItemListFlightRuleInfosValue : Tea.TeaModel {
 }
 
 public class ModuleItemListShoppingItemMapValue : Tea.TeaModel {
+    public class CabinQuantityList : Tea.TeaModel {
+        public class SegmentPosition : Tea.TeaModel {
+            public var journeyIndex: Int32?
+
+            public var segmentIndex: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.segmentIndex != nil {
+                    map["segment_index"] = self.segmentIndex!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                    self.segmentIndex = dict["segment_index"] as! Int32
+                }
+            }
+        }
+        public class Cabin : Tea.TeaModel {
+            public var cabin: String?
+
+            public var cabinClass: String?
+
+            public var cabinClassName: String?
+
+            public var quantity: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cabin != nil {
+                    map["cabin"] = self.cabin!
+                }
+                if self.cabinClass != nil {
+                    map["cabin_class"] = self.cabinClass!
+                }
+                if self.cabinClassName != nil {
+                    map["cabin_class_name"] = self.cabinClassName!
+                }
+                if self.quantity != nil {
+                    map["quantity"] = self.quantity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cabin") && dict["cabin"] != nil {
+                    self.cabin = dict["cabin"] as! String
+                }
+                if dict.keys.contains("cabin_class") && dict["cabin_class"] != nil {
+                    self.cabinClass = dict["cabin_class"] as! String
+                }
+                if dict.keys.contains("cabin_class_name") && dict["cabin_class_name"] != nil {
+                    self.cabinClassName = dict["cabin_class_name"] as! String
+                }
+                if dict.keys.contains("quantity") && dict["quantity"] != nil {
+                    self.quantity = dict["quantity"] as! String
+                }
+            }
+        }
+        public var segmentPosition: ModuleItemListShoppingItemMapValue.CabinQuantityList.SegmentPosition?
+
+        public var cabin: ModuleItemListShoppingItemMapValue.CabinQuantityList.Cabin?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.segmentPosition?.validate()
+            try self.cabin?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.segmentPosition != nil {
+                map["segment_position"] = self.segmentPosition?.toMap()
+            }
+            if self.cabin != nil {
+                map["cabin"] = self.cabin?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                var model = ModuleItemListShoppingItemMapValue.CabinQuantityList.SegmentPosition()
+                model.fromMap(dict["segment_position"] as! [String: Any])
+                self.segmentPosition = model
+            }
+            if dict.keys.contains("cabin") && dict["cabin"] != nil {
+                var model = ModuleItemListShoppingItemMapValue.CabinQuantityList.Cabin()
+                model.fromMap(dict["cabin"] as! [String: Any])
+                self.cabin = model
+            }
+        }
+    }
     public class SearchPrice : Tea.TeaModel {
         public class PriceShowInfo : Tea.TeaModel {
             public var discountInfo: String?
@@ -1871,11 +2302,140 @@ public class ModuleItemListShoppingItemMapValue : Tea.TeaModel {
             }
         }
     }
+    public class SegmentPriceList : Tea.TeaModel {
+        public class SegmentPosition : Tea.TeaModel {
+            public var journeyIndex: Int32?
+
+            public var segmentIndex: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.segmentIndex != nil {
+                    map["segment_index"] = self.segmentIndex!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                    self.segmentIndex = dict["segment_index"] as! Int32
+                }
+            }
+        }
+        public class SearchPrice : Tea.TeaModel {
+            public var ticketPrice: Int32?
+
+            public var sellPrice: Int32?
+
+            public var tax: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ticketPrice != nil {
+                    map["ticket_price"] = self.ticketPrice!
+                }
+                if self.sellPrice != nil {
+                    map["sell_price"] = self.sellPrice!
+                }
+                if self.tax != nil {
+                    map["tax"] = self.tax!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ticket_price") && dict["ticket_price"] != nil {
+                    self.ticketPrice = dict["ticket_price"] as! Int32
+                }
+                if dict.keys.contains("sell_price") && dict["sell_price"] != nil {
+                    self.sellPrice = dict["sell_price"] as! Int32
+                }
+                if dict.keys.contains("tax") && dict["tax"] != nil {
+                    self.tax = dict["tax"] as! Int32
+                }
+            }
+        }
+        public var segmentPosition: ModuleItemListShoppingItemMapValue.SegmentPriceList.SegmentPosition?
+
+        public var searchPrice: ModuleItemListShoppingItemMapValue.SegmentPriceList.SearchPrice?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.segmentPosition?.validate()
+            try self.searchPrice?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.segmentPosition != nil {
+                map["segment_position"] = self.segmentPosition?.toMap()
+            }
+            if self.searchPrice != nil {
+                map["search_price"] = self.searchPrice?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                var model = ModuleItemListShoppingItemMapValue.SegmentPriceList.SegmentPosition()
+                model.fromMap(dict["segment_position"] as! [String: Any])
+                self.segmentPosition = model
+            }
+            if dict.keys.contains("search_price") && dict["search_price"] != nil {
+                var model = ModuleItemListShoppingItemMapValue.SegmentPriceList.SearchPrice()
+                model.fromMap(dict["search_price"] as! [String: Any])
+                self.searchPrice = model
+            }
+        }
+    }
+    public var cabinQuantityList: [ModuleItemListShoppingItemMapValue.CabinQuantityList]?
+
+    public var searchPrice: ModuleItemListShoppingItemMapValue.SearchPrice?
+
+    public var segmentPriceList: [ModuleItemListShoppingItemMapValue.SegmentPriceList]?
+
     public var id: String?
 
     public var cabinQuantity: [String: ModuleItemListShoppingItemMapValueCabinQuantityValue]?
-
-    public var searchPrice: ModuleItemListShoppingItemMapValue.SearchPrice?
 
     public var segmentPrice: [String: ModuleItemListShoppingItemMapValueSegmentPriceValue]?
 
@@ -1894,6 +2454,23 @@ public class ModuleItemListShoppingItemMapValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cabinQuantityList != nil {
+            var tmp : [Any] = []
+            for k in self.cabinQuantityList! {
+                tmp.append(k.toMap())
+            }
+            map["cabin_quantity_list"] = tmp
+        }
+        if self.searchPrice != nil {
+            map["search_price"] = self.searchPrice?.toMap()
+        }
+        if self.segmentPriceList != nil {
+            var tmp : [Any] = []
+            for k in self.segmentPriceList! {
+                tmp.append(k.toMap())
+            }
+            map["segment_price_list"] = tmp
+        }
         if self.id != nil {
             map["id"] = self.id!
         }
@@ -1903,9 +2480,6 @@ public class ModuleItemListShoppingItemMapValue : Tea.TeaModel {
                 tmp[k] = v.toMap()
             }
             map["cabin_quantity"] = tmp
-        }
-        if self.searchPrice != nil {
-            map["search_price"] = self.searchPrice?.toMap()
         }
         if self.segmentPrice != nil {
             var tmp : [String: Any] = [:]
@@ -1918,6 +2492,33 @@ public class ModuleItemListShoppingItemMapValue : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cabin_quantity_list") && dict["cabin_quantity_list"] != nil {
+            var tmp : [ModuleItemListShoppingItemMapValue.CabinQuantityList] = []
+            for v in dict["cabin_quantity_list"] as! [Any] {
+                var model = ModuleItemListShoppingItemMapValue.CabinQuantityList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.cabinQuantityList = tmp
+        }
+        if dict.keys.contains("search_price") && dict["search_price"] != nil {
+            var model = ModuleItemListShoppingItemMapValue.SearchPrice()
+            model.fromMap(dict["search_price"] as! [String: Any])
+            self.searchPrice = model
+        }
+        if dict.keys.contains("segment_price_list") && dict["segment_price_list"] != nil {
+            var tmp : [ModuleItemListShoppingItemMapValue.SegmentPriceList] = []
+            for v in dict["segment_price_list"] as! [Any] {
+                var model = ModuleItemListShoppingItemMapValue.SegmentPriceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.segmentPriceList = tmp
+        }
         if dict.keys.contains("id") && dict["id"] != nil {
             self.id = dict["id"] as! String
         }
@@ -1931,11 +2532,6 @@ public class ModuleItemListShoppingItemMapValue : Tea.TeaModel {
                 }
             }
             self.cabinQuantity = tmp
-        }
-        if dict.keys.contains("search_price") && dict["search_price"] != nil {
-            var model = ModuleItemListShoppingItemMapValue.SearchPrice()
-            model.fromMap(dict["search_price"] as! [String: Any])
-            self.searchPrice = model
         }
         if dict.keys.contains("segment_price") && dict["segment_price"] != nil {
             var tmp : [String: ModuleItemListShoppingItemMapValueSegmentPriceValue] = [:]
@@ -2251,11 +2847,11 @@ public class ModuleItemListSubItemsShoppingItemMapValue : Tea.TeaModel {
             }
         }
     }
+    public var searchPrice: ModuleItemListSubItemsShoppingItemMapValue.SearchPrice?
+
     public var id: String?
 
     public var cabinQuantity: [String: ModuleItemListSubItemsShoppingItemMapValueCabinQuantityValue]?
-
-    public var searchPrice: ModuleItemListSubItemsShoppingItemMapValue.SearchPrice?
 
     public var segmentPrice: [String: ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue]?
 
@@ -2274,6 +2870,9 @@ public class ModuleItemListSubItemsShoppingItemMapValue : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.searchPrice != nil {
+            map["search_price"] = self.searchPrice?.toMap()
+        }
         if self.id != nil {
             map["id"] = self.id!
         }
@@ -2283,9 +2882,6 @@ public class ModuleItemListSubItemsShoppingItemMapValue : Tea.TeaModel {
                 tmp[k] = v.toMap()
             }
             map["cabin_quantity"] = tmp
-        }
-        if self.searchPrice != nil {
-            map["search_price"] = self.searchPrice?.toMap()
         }
         if self.segmentPrice != nil {
             var tmp : [String: Any] = [:]
@@ -2298,6 +2894,11 @@ public class ModuleItemListSubItemsShoppingItemMapValue : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("search_price") && dict["search_price"] != nil {
+            var model = ModuleItemListSubItemsShoppingItemMapValue.SearchPrice()
+            model.fromMap(dict["search_price"] as! [String: Any])
+            self.searchPrice = model
+        }
         if dict.keys.contains("id") && dict["id"] != nil {
             self.id = dict["id"] as! String
         }
@@ -2312,11 +2913,6 @@ public class ModuleItemListSubItemsShoppingItemMapValue : Tea.TeaModel {
             }
             self.cabinQuantity = tmp
         }
-        if dict.keys.contains("search_price") && dict["search_price"] != nil {
-            var model = ModuleItemListSubItemsShoppingItemMapValue.SearchPrice()
-            model.fromMap(dict["search_price"] as! [String: Any])
-            self.searchPrice = model
-        }
         if dict.keys.contains("segment_price") && dict["segment_price"] != nil {
             var tmp : [String: ModuleItemListSubItemsShoppingItemMapValueSegmentPriceValue] = [:]
             for (k, v) in dict["segment_price"] as! [String: Any] {
@@ -2327,6 +2923,1034 @@ public class ModuleItemListSubItemsShoppingItemMapValue : Tea.TeaModel {
                 }
             }
             self.segmentPrice = tmp
+        }
+    }
+}
+
+public class ModuleGroupItemShoppingItemMapValue : Tea.TeaModel {
+    public class CabinQuantityList : Tea.TeaModel {
+        public class SegmentPosition : Tea.TeaModel {
+            public var journeyIndex: Int32?
+
+            public var segmentIndex: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.segmentIndex != nil {
+                    map["segment_index"] = self.segmentIndex!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                    self.segmentIndex = dict["segment_index"] as! Int32
+                }
+            }
+        }
+        public class Cabin : Tea.TeaModel {
+            public var cabin: String?
+
+            public var cabinClass: String?
+
+            public var cabinClassName: String?
+
+            public var quantity: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cabin != nil {
+                    map["cabin"] = self.cabin!
+                }
+                if self.cabinClass != nil {
+                    map["cabin_class"] = self.cabinClass!
+                }
+                if self.cabinClassName != nil {
+                    map["cabin_class_name"] = self.cabinClassName!
+                }
+                if self.quantity != nil {
+                    map["quantity"] = self.quantity!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cabin") && dict["cabin"] != nil {
+                    self.cabin = dict["cabin"] as! String
+                }
+                if dict.keys.contains("cabin_class") && dict["cabin_class"] != nil {
+                    self.cabinClass = dict["cabin_class"] as! String
+                }
+                if dict.keys.contains("cabin_class_name") && dict["cabin_class_name"] != nil {
+                    self.cabinClassName = dict["cabin_class_name"] as! String
+                }
+                if dict.keys.contains("quantity") && dict["quantity"] != nil {
+                    self.quantity = dict["quantity"] as! String
+                }
+            }
+        }
+        public var segmentPosition: ModuleGroupItemShoppingItemMapValue.CabinQuantityList.SegmentPosition?
+
+        public var cabin: ModuleGroupItemShoppingItemMapValue.CabinQuantityList.Cabin?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.segmentPosition?.validate()
+            try self.cabin?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.segmentPosition != nil {
+                map["segment_position"] = self.segmentPosition?.toMap()
+            }
+            if self.cabin != nil {
+                map["cabin"] = self.cabin?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                var model = ModuleGroupItemShoppingItemMapValue.CabinQuantityList.SegmentPosition()
+                model.fromMap(dict["segment_position"] as! [String: Any])
+                self.segmentPosition = model
+            }
+            if dict.keys.contains("cabin") && dict["cabin"] != nil {
+                var model = ModuleGroupItemShoppingItemMapValue.CabinQuantityList.Cabin()
+                model.fromMap(dict["cabin"] as! [String: Any])
+                self.cabin = model
+            }
+        }
+    }
+    public class SearchPrice : Tea.TeaModel {
+        public var ticketPrice: Int32?
+
+        public var sellPrice: Int32?
+
+        public var tax: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ticketPrice != nil {
+                map["ticket_price"] = self.ticketPrice!
+            }
+            if self.sellPrice != nil {
+                map["sell_price"] = self.sellPrice!
+            }
+            if self.tax != nil {
+                map["tax"] = self.tax!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ticket_price") && dict["ticket_price"] != nil {
+                self.ticketPrice = dict["ticket_price"] as! Int32
+            }
+            if dict.keys.contains("sell_price") && dict["sell_price"] != nil {
+                self.sellPrice = dict["sell_price"] as! Int32
+            }
+            if dict.keys.contains("tax") && dict["tax"] != nil {
+                self.tax = dict["tax"] as! Int32
+            }
+        }
+    }
+    public class SegmentPriceList : Tea.TeaModel {
+        public class SegmentPosition : Tea.TeaModel {
+            public var journeyIndex: Int32?
+
+            public var segmentIndex: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.segmentIndex != nil {
+                    map["segment_index"] = self.segmentIndex!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                    self.segmentIndex = dict["segment_index"] as! Int32
+                }
+            }
+        }
+        public class SearchPrice : Tea.TeaModel {
+            public var ticketPrice: Int32?
+
+            public var sellPrice: Int32?
+
+            public var tax: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.ticketPrice != nil {
+                    map["ticket_price"] = self.ticketPrice!
+                }
+                if self.sellPrice != nil {
+                    map["sell_price"] = self.sellPrice!
+                }
+                if self.tax != nil {
+                    map["tax"] = self.tax!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ticket_price") && dict["ticket_price"] != nil {
+                    self.ticketPrice = dict["ticket_price"] as! Int32
+                }
+                if dict.keys.contains("sell_price") && dict["sell_price"] != nil {
+                    self.sellPrice = dict["sell_price"] as! Int32
+                }
+                if dict.keys.contains("tax") && dict["tax"] != nil {
+                    self.tax = dict["tax"] as! Int32
+                }
+            }
+        }
+        public var segmentPosition: ModuleGroupItemShoppingItemMapValue.SegmentPriceList.SegmentPosition?
+
+        public var searchPrice: ModuleGroupItemShoppingItemMapValue.SegmentPriceList.SearchPrice?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.segmentPosition?.validate()
+            try self.searchPrice?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.segmentPosition != nil {
+                map["segment_position"] = self.segmentPosition?.toMap()
+            }
+            if self.searchPrice != nil {
+                map["search_price"] = self.searchPrice?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                var model = ModuleGroupItemShoppingItemMapValue.SegmentPriceList.SegmentPosition()
+                model.fromMap(dict["segment_position"] as! [String: Any])
+                self.segmentPosition = model
+            }
+            if dict.keys.contains("search_price") && dict["search_price"] != nil {
+                var model = ModuleGroupItemShoppingItemMapValue.SegmentPriceList.SearchPrice()
+                model.fromMap(dict["search_price"] as! [String: Any])
+                self.searchPrice = model
+            }
+        }
+    }
+    public var cabinQuantityList: [ModuleGroupItemShoppingItemMapValue.CabinQuantityList]?
+
+    public var searchPrice: ModuleGroupItemShoppingItemMapValue.SearchPrice?
+
+    public var segmentPriceList: [ModuleGroupItemShoppingItemMapValue.SegmentPriceList]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.searchPrice?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cabinQuantityList != nil {
+            var tmp : [Any] = []
+            for k in self.cabinQuantityList! {
+                tmp.append(k.toMap())
+            }
+            map["cabin_quantity_list"] = tmp
+        }
+        if self.searchPrice != nil {
+            map["search_price"] = self.searchPrice?.toMap()
+        }
+        if self.segmentPriceList != nil {
+            var tmp : [Any] = []
+            for k in self.segmentPriceList! {
+                tmp.append(k.toMap())
+            }
+            map["segment_price_list"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cabin_quantity_list") && dict["cabin_quantity_list"] != nil {
+            var tmp : [ModuleGroupItemShoppingItemMapValue.CabinQuantityList] = []
+            for v in dict["cabin_quantity_list"] as! [Any] {
+                var model = ModuleGroupItemShoppingItemMapValue.CabinQuantityList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.cabinQuantityList = tmp
+        }
+        if dict.keys.contains("search_price") && dict["search_price"] != nil {
+            var model = ModuleGroupItemShoppingItemMapValue.SearchPrice()
+            model.fromMap(dict["search_price"] as! [String: Any])
+            self.searchPrice = model
+        }
+        if dict.keys.contains("segment_price_list") && dict["segment_price_list"] != nil {
+            var tmp : [ModuleGroupItemShoppingItemMapValue.SegmentPriceList] = []
+            for v in dict["segment_price_list"] as! [Any] {
+                var model = ModuleGroupItemShoppingItemMapValue.SegmentPriceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.segmentPriceList = tmp
+        }
+    }
+}
+
+public class ModuleGroupItemSubItemPositionMapValue : Tea.TeaModel {
+    public var journeyIndex: Int32?
+
+    public var segmentIndex: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.journeyIndex != nil {
+            map["journey_index"] = self.journeyIndex!
+        }
+        if self.segmentIndex != nil {
+            map["segment_index"] = self.segmentIndex!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+            self.journeyIndex = dict["journey_index"] as! Int32
+        }
+        if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+            self.segmentIndex = dict["segment_index"] as! Int32
+        }
+    }
+}
+
+public class ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue : Tea.TeaModel {
+    public var carryFreepc: Int32?
+
+    public var carryBagWeight: Int32?
+
+    public var carryBagSize: String?
+
+    public var isAllCarryBagWeight: Bool?
+
+    public var airline: String?
+
+    public var startAirport: String?
+
+    public var endAirport: String?
+
+    public var startCityCode: String?
+
+    public var endCityCode: String?
+
+    public var freePcs: Int64?
+
+    public var baggageWeight: Int64?
+
+    public var baggageUnit: String?
+
+    public var baggageSize: String?
+
+    public var allWeight: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.carryFreepc != nil {
+            map["carry_freepc"] = self.carryFreepc!
+        }
+        if self.carryBagWeight != nil {
+            map["carry_bag_weight"] = self.carryBagWeight!
+        }
+        if self.carryBagSize != nil {
+            map["carry_bag_size"] = self.carryBagSize!
+        }
+        if self.isAllCarryBagWeight != nil {
+            map["is_all_carry_bag_weight"] = self.isAllCarryBagWeight!
+        }
+        if self.airline != nil {
+            map["airline"] = self.airline!
+        }
+        if self.startAirport != nil {
+            map["start_airport"] = self.startAirport!
+        }
+        if self.endAirport != nil {
+            map["end_airport"] = self.endAirport!
+        }
+        if self.startCityCode != nil {
+            map["start_city_code"] = self.startCityCode!
+        }
+        if self.endCityCode != nil {
+            map["end_city_code"] = self.endCityCode!
+        }
+        if self.freePcs != nil {
+            map["free_pcs"] = self.freePcs!
+        }
+        if self.baggageWeight != nil {
+            map["baggage_weight"] = self.baggageWeight!
+        }
+        if self.baggageUnit != nil {
+            map["baggage_unit"] = self.baggageUnit!
+        }
+        if self.baggageSize != nil {
+            map["baggage_size"] = self.baggageSize!
+        }
+        if self.allWeight != nil {
+            map["all_weight"] = self.allWeight!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("carry_freepc") && dict["carry_freepc"] != nil {
+            self.carryFreepc = dict["carry_freepc"] as! Int32
+        }
+        if dict.keys.contains("carry_bag_weight") && dict["carry_bag_weight"] != nil {
+            self.carryBagWeight = dict["carry_bag_weight"] as! Int32
+        }
+        if dict.keys.contains("carry_bag_size") && dict["carry_bag_size"] != nil {
+            self.carryBagSize = dict["carry_bag_size"] as! String
+        }
+        if dict.keys.contains("is_all_carry_bag_weight") && dict["is_all_carry_bag_weight"] != nil {
+            self.isAllCarryBagWeight = dict["is_all_carry_bag_weight"] as! Bool
+        }
+        if dict.keys.contains("airline") && dict["airline"] != nil {
+            self.airline = dict["airline"] as! String
+        }
+        if dict.keys.contains("start_airport") && dict["start_airport"] != nil {
+            self.startAirport = dict["start_airport"] as! String
+        }
+        if dict.keys.contains("end_airport") && dict["end_airport"] != nil {
+            self.endAirport = dict["end_airport"] as! String
+        }
+        if dict.keys.contains("start_city_code") && dict["start_city_code"] != nil {
+            self.startCityCode = dict["start_city_code"] as! String
+        }
+        if dict.keys.contains("end_city_code") && dict["end_city_code"] != nil {
+            self.endCityCode = dict["end_city_code"] as! String
+        }
+        if dict.keys.contains("free_pcs") && dict["free_pcs"] != nil {
+            self.freePcs = dict["free_pcs"] as! Int64
+        }
+        if dict.keys.contains("baggage_weight") && dict["baggage_weight"] != nil {
+            self.baggageWeight = dict["baggage_weight"] as! Int64
+        }
+        if dict.keys.contains("baggage_unit") && dict["baggage_unit"] != nil {
+            self.baggageUnit = dict["baggage_unit"] as! String
+        }
+        if dict.keys.contains("baggage_size") && dict["baggage_size"] != nil {
+            self.baggageSize = dict["baggage_size"] as! String
+        }
+        if dict.keys.contains("all_weight") && dict["all_weight"] != nil {
+            self.allWeight = dict["all_weight"] as! Bool
+        }
+    }
+}
+
+public class ModuleGroupItemSubItemsRefundChangeRuleOfferPenaltyInfoMapValue : Tea.TeaModel {
+    public var struct_: Bool?
+
+    public var cancelFeeInd: Bool?
+
+    public var changeFeeInd: Bool?
+
+    public var upgradeFeeInd: Bool?
+
+    public var reissueInd: Bool?
+
+    public var penaltyTypeCode: Int32?
+
+    public var penaltyApplyRangeCode: Int32?
+
+    public var penaltyChargeTypeCode: Int32?
+
+    public var fee: Double?
+
+    public var currency: String?
+
+    public var penaltyPercent: Double?
+
+    public var startTime: Int32?
+
+    public var endTime: Int32?
+
+    public var timeUnitCode: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.struct_ != nil {
+            map["struct"] = self.struct_!
+        }
+        if self.cancelFeeInd != nil {
+            map["cancel_fee_ind"] = self.cancelFeeInd!
+        }
+        if self.changeFeeInd != nil {
+            map["change_fee_ind"] = self.changeFeeInd!
+        }
+        if self.upgradeFeeInd != nil {
+            map["upgrade_fee_ind"] = self.upgradeFeeInd!
+        }
+        if self.reissueInd != nil {
+            map["reissue_ind"] = self.reissueInd!
+        }
+        if self.penaltyTypeCode != nil {
+            map["penalty_type_code"] = self.penaltyTypeCode!
+        }
+        if self.penaltyApplyRangeCode != nil {
+            map["penalty_apply_range_code"] = self.penaltyApplyRangeCode!
+        }
+        if self.penaltyChargeTypeCode != nil {
+            map["penalty_charge_type_code"] = self.penaltyChargeTypeCode!
+        }
+        if self.fee != nil {
+            map["fee"] = self.fee!
+        }
+        if self.currency != nil {
+            map["currency"] = self.currency!
+        }
+        if self.penaltyPercent != nil {
+            map["penalty_percent"] = self.penaltyPercent!
+        }
+        if self.startTime != nil {
+            map["start_time"] = self.startTime!
+        }
+        if self.endTime != nil {
+            map["end_time"] = self.endTime!
+        }
+        if self.timeUnitCode != nil {
+            map["time_unit_code"] = self.timeUnitCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("struct") && dict["struct"] != nil {
+            self.struct_ = dict["struct"] as! Bool
+        }
+        if dict.keys.contains("cancel_fee_ind") && dict["cancel_fee_ind"] != nil {
+            self.cancelFeeInd = dict["cancel_fee_ind"] as! Bool
+        }
+        if dict.keys.contains("change_fee_ind") && dict["change_fee_ind"] != nil {
+            self.changeFeeInd = dict["change_fee_ind"] as! Bool
+        }
+        if dict.keys.contains("upgrade_fee_ind") && dict["upgrade_fee_ind"] != nil {
+            self.upgradeFeeInd = dict["upgrade_fee_ind"] as! Bool
+        }
+        if dict.keys.contains("reissue_ind") && dict["reissue_ind"] != nil {
+            self.reissueInd = dict["reissue_ind"] as! Bool
+        }
+        if dict.keys.contains("penalty_type_code") && dict["penalty_type_code"] != nil {
+            self.penaltyTypeCode = dict["penalty_type_code"] as! Int32
+        }
+        if dict.keys.contains("penalty_apply_range_code") && dict["penalty_apply_range_code"] != nil {
+            self.penaltyApplyRangeCode = dict["penalty_apply_range_code"] as! Int32
+        }
+        if dict.keys.contains("penalty_charge_type_code") && dict["penalty_charge_type_code"] != nil {
+            self.penaltyChargeTypeCode = dict["penalty_charge_type_code"] as! Int32
+        }
+        if dict.keys.contains("fee") && dict["fee"] != nil {
+            self.fee = dict["fee"] as! Double
+        }
+        if dict.keys.contains("currency") && dict["currency"] != nil {
+            self.currency = dict["currency"] as! String
+        }
+        if dict.keys.contains("penalty_percent") && dict["penalty_percent"] != nil {
+            self.penaltyPercent = dict["penalty_percent"] as! Double
+        }
+        if dict.keys.contains("start_time") && dict["start_time"] != nil {
+            self.startTime = dict["start_time"] as! Int32
+        }
+        if dict.keys.contains("end_time") && dict["end_time"] != nil {
+            self.endTime = dict["end_time"] as! Int32
+        }
+        if dict.keys.contains("time_unit_code") && dict["time_unit_code"] != nil {
+            self.timeUnitCode = dict["time_unit_code"] as! Int32
+        }
+    }
+}
+
+public class ModuleGroupItemSubItemsShoppingItemMapValue : Tea.TeaModel {
+    public class SearchPrice : Tea.TeaModel {
+        public var ticketPrice: Int32?
+
+        public var sellPrice: Int32?
+
+        public var tax: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.ticketPrice != nil {
+                map["ticket_price"] = self.ticketPrice!
+            }
+            if self.sellPrice != nil {
+                map["sell_price"] = self.sellPrice!
+            }
+            if self.tax != nil {
+                map["tax"] = self.tax!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ticket_price") && dict["ticket_price"] != nil {
+                self.ticketPrice = dict["ticket_price"] as! Int32
+            }
+            if dict.keys.contains("sell_price") && dict["sell_price"] != nil {
+                self.sellPrice = dict["sell_price"] as! Int32
+            }
+            if dict.keys.contains("tax") && dict["tax"] != nil {
+                self.tax = dict["tax"] as! Int32
+            }
+        }
+    }
+    public var searchPrice: ModuleGroupItemSubItemsShoppingItemMapValue.SearchPrice?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.searchPrice?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.searchPrice != nil {
+            map["search_price"] = self.searchPrice?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("search_price") && dict["search_price"] != nil {
+            var model = ModuleGroupItemSubItemsShoppingItemMapValue.SearchPrice()
+            model.fromMap(dict["search_price"] as! [String: Any])
+            self.searchPrice = model
+        }
+    }
+}
+
+public class ModuleItemListSubItemsBaggageRuleBaggageInfoMapValue : Tea.TeaModel {
+    public var carryFreepc: Int32?
+
+    public var carryBagWeight: Int32?
+
+    public var carryBagSize: String?
+
+    public var isAllCarryBagWeight: Bool?
+
+    public var airline: String?
+
+    public var startAirport: String?
+
+    public var endAirport: String?
+
+    public var startCityCode: String?
+
+    public var endCityCode: String?
+
+    public var freePcs: Int64?
+
+    public var baggageWeight: Int64?
+
+    public var baggageUnit: String?
+
+    public var baggageSize: String?
+
+    public var allWeight: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.carryFreepc != nil {
+            map["carry_freepc"] = self.carryFreepc!
+        }
+        if self.carryBagWeight != nil {
+            map["carry_bag_weight"] = self.carryBagWeight!
+        }
+        if self.carryBagSize != nil {
+            map["carry_bag_size"] = self.carryBagSize!
+        }
+        if self.isAllCarryBagWeight != nil {
+            map["is_all_carry_bag_weight"] = self.isAllCarryBagWeight!
+        }
+        if self.airline != nil {
+            map["airline"] = self.airline!
+        }
+        if self.startAirport != nil {
+            map["start_airport"] = self.startAirport!
+        }
+        if self.endAirport != nil {
+            map["end_airport"] = self.endAirport!
+        }
+        if self.startCityCode != nil {
+            map["start_city_code"] = self.startCityCode!
+        }
+        if self.endCityCode != nil {
+            map["end_city_code"] = self.endCityCode!
+        }
+        if self.freePcs != nil {
+            map["free_pcs"] = self.freePcs!
+        }
+        if self.baggageWeight != nil {
+            map["baggage_weight"] = self.baggageWeight!
+        }
+        if self.baggageUnit != nil {
+            map["baggage_unit"] = self.baggageUnit!
+        }
+        if self.baggageSize != nil {
+            map["baggage_size"] = self.baggageSize!
+        }
+        if self.allWeight != nil {
+            map["all_weight"] = self.allWeight!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("carry_freepc") && dict["carry_freepc"] != nil {
+            self.carryFreepc = dict["carry_freepc"] as! Int32
+        }
+        if dict.keys.contains("carry_bag_weight") && dict["carry_bag_weight"] != nil {
+            self.carryBagWeight = dict["carry_bag_weight"] as! Int32
+        }
+        if dict.keys.contains("carry_bag_size") && dict["carry_bag_size"] != nil {
+            self.carryBagSize = dict["carry_bag_size"] as! String
+        }
+        if dict.keys.contains("is_all_carry_bag_weight") && dict["is_all_carry_bag_weight"] != nil {
+            self.isAllCarryBagWeight = dict["is_all_carry_bag_weight"] as! Bool
+        }
+        if dict.keys.contains("airline") && dict["airline"] != nil {
+            self.airline = dict["airline"] as! String
+        }
+        if dict.keys.contains("start_airport") && dict["start_airport"] != nil {
+            self.startAirport = dict["start_airport"] as! String
+        }
+        if dict.keys.contains("end_airport") && dict["end_airport"] != nil {
+            self.endAirport = dict["end_airport"] as! String
+        }
+        if dict.keys.contains("start_city_code") && dict["start_city_code"] != nil {
+            self.startCityCode = dict["start_city_code"] as! String
+        }
+        if dict.keys.contains("end_city_code") && dict["end_city_code"] != nil {
+            self.endCityCode = dict["end_city_code"] as! String
+        }
+        if dict.keys.contains("free_pcs") && dict["free_pcs"] != nil {
+            self.freePcs = dict["free_pcs"] as! Int64
+        }
+        if dict.keys.contains("baggage_weight") && dict["baggage_weight"] != nil {
+            self.baggageWeight = dict["baggage_weight"] as! Int64
+        }
+        if dict.keys.contains("baggage_unit") && dict["baggage_unit"] != nil {
+            self.baggageUnit = dict["baggage_unit"] as! String
+        }
+        if dict.keys.contains("baggage_size") && dict["baggage_size"] != nil {
+            self.baggageSize = dict["baggage_size"] as! String
+        }
+        if dict.keys.contains("all_weight") && dict["all_weight"] != nil {
+            self.allWeight = dict["all_weight"] as! Bool
+        }
+    }
+}
+
+public class ModuleItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue : Tea.TeaModel {
+    public var struct_: Bool?
+
+    public var cancelFeeInd: Bool?
+
+    public var changeFeeInd: Bool?
+
+    public var upgradeFeeInd: Bool?
+
+    public var reissueInd: Bool?
+
+    public var penaltyTypeCode: Int32?
+
+    public var penaltyApplyRangeCode: Int32?
+
+    public var penaltyChargeTypeCode: Int32?
+
+    public var fee: Double?
+
+    public var currency: String?
+
+    public var penaltyPercent: Double?
+
+    public var startTime: Int32?
+
+    public var endTime: Int32?
+
+    public var timeUnitCode: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.struct_ != nil {
+            map["struct"] = self.struct_!
+        }
+        if self.cancelFeeInd != nil {
+            map["cancel_fee_ind"] = self.cancelFeeInd!
+        }
+        if self.changeFeeInd != nil {
+            map["change_fee_ind"] = self.changeFeeInd!
+        }
+        if self.upgradeFeeInd != nil {
+            map["upgrade_fee_ind"] = self.upgradeFeeInd!
+        }
+        if self.reissueInd != nil {
+            map["reissue_ind"] = self.reissueInd!
+        }
+        if self.penaltyTypeCode != nil {
+            map["penalty_type_code"] = self.penaltyTypeCode!
+        }
+        if self.penaltyApplyRangeCode != nil {
+            map["penalty_apply_range_code"] = self.penaltyApplyRangeCode!
+        }
+        if self.penaltyChargeTypeCode != nil {
+            map["penalty_charge_type_code"] = self.penaltyChargeTypeCode!
+        }
+        if self.fee != nil {
+            map["fee"] = self.fee!
+        }
+        if self.currency != nil {
+            map["currency"] = self.currency!
+        }
+        if self.penaltyPercent != nil {
+            map["penalty_percent"] = self.penaltyPercent!
+        }
+        if self.startTime != nil {
+            map["start_time"] = self.startTime!
+        }
+        if self.endTime != nil {
+            map["end_time"] = self.endTime!
+        }
+        if self.timeUnitCode != nil {
+            map["time_unit_code"] = self.timeUnitCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("struct") && dict["struct"] != nil {
+            self.struct_ = dict["struct"] as! Bool
+        }
+        if dict.keys.contains("cancel_fee_ind") && dict["cancel_fee_ind"] != nil {
+            self.cancelFeeInd = dict["cancel_fee_ind"] as! Bool
+        }
+        if dict.keys.contains("change_fee_ind") && dict["change_fee_ind"] != nil {
+            self.changeFeeInd = dict["change_fee_ind"] as! Bool
+        }
+        if dict.keys.contains("upgrade_fee_ind") && dict["upgrade_fee_ind"] != nil {
+            self.upgradeFeeInd = dict["upgrade_fee_ind"] as! Bool
+        }
+        if dict.keys.contains("reissue_ind") && dict["reissue_ind"] != nil {
+            self.reissueInd = dict["reissue_ind"] as! Bool
+        }
+        if dict.keys.contains("penalty_type_code") && dict["penalty_type_code"] != nil {
+            self.penaltyTypeCode = dict["penalty_type_code"] as! Int32
+        }
+        if dict.keys.contains("penalty_apply_range_code") && dict["penalty_apply_range_code"] != nil {
+            self.penaltyApplyRangeCode = dict["penalty_apply_range_code"] as! Int32
+        }
+        if dict.keys.contains("penalty_charge_type_code") && dict["penalty_charge_type_code"] != nil {
+            self.penaltyChargeTypeCode = dict["penalty_charge_type_code"] as! Int32
+        }
+        if dict.keys.contains("fee") && dict["fee"] != nil {
+            self.fee = dict["fee"] as! Double
+        }
+        if dict.keys.contains("currency") && dict["currency"] != nil {
+            self.currency = dict["currency"] as! String
+        }
+        if dict.keys.contains("penalty_percent") && dict["penalty_percent"] != nil {
+            self.penaltyPercent = dict["penalty_percent"] as! Double
+        }
+        if dict.keys.contains("start_time") && dict["start_time"] != nil {
+            self.startTime = dict["start_time"] as! Int32
+        }
+        if dict.keys.contains("end_time") && dict["end_time"] != nil {
+            self.endTime = dict["end_time"] as! Int32
+        }
+        if dict.keys.contains("time_unit_code") && dict["time_unit_code"] != nil {
+            self.timeUnitCode = dict["time_unit_code"] as! Int32
         }
     }
 }
@@ -78786,6 +80410,5251 @@ public class InsureRefundDetailResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = InsureRefundDetailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class IntlFlightListingSearchHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripCorpToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripCorpToken != nil {
+            map["x-acs-btrip-corp-token"] = self.xAcsBtripCorpToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-corp-token") && dict["x-acs-btrip-corp-token"] != nil {
+            self.xAcsBtripCorpToken = dict["x-acs-btrip-corp-token"] as! String
+        }
+    }
+}
+
+public class IntlFlightListingSearchRequest : Tea.TeaModel {
+    public class SearchJourneys : Tea.TeaModel {
+        public class SelectedFlights : Tea.TeaModel {
+            public var arrAirportCode: String?
+
+            public var arrCityCode: String?
+
+            public var cabinType: Int32?
+
+            public var depAirportCode: String?
+
+            public var depCityCode: String?
+
+            public var flightTime: String?
+
+            public var marketFlightNo: String?
+
+            public var operateFlightNo: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.arrAirportCode != nil {
+                    map["arr_airport_code"] = self.arrAirportCode!
+                }
+                if self.arrCityCode != nil {
+                    map["arr_city_code"] = self.arrCityCode!
+                }
+                if self.cabinType != nil {
+                    map["cabin_type"] = self.cabinType!
+                }
+                if self.depAirportCode != nil {
+                    map["dep_airport_code"] = self.depAirportCode!
+                }
+                if self.depCityCode != nil {
+                    map["dep_city_code"] = self.depCityCode!
+                }
+                if self.flightTime != nil {
+                    map["flight_time"] = self.flightTime!
+                }
+                if self.marketFlightNo != nil {
+                    map["market_flight_no"] = self.marketFlightNo!
+                }
+                if self.operateFlightNo != nil {
+                    map["operate_flight_no"] = self.operateFlightNo!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("arr_airport_code") && dict["arr_airport_code"] != nil {
+                    self.arrAirportCode = dict["arr_airport_code"] as! String
+                }
+                if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                    self.arrCityCode = dict["arr_city_code"] as! String
+                }
+                if dict.keys.contains("cabin_type") && dict["cabin_type"] != nil {
+                    self.cabinType = dict["cabin_type"] as! Int32
+                }
+                if dict.keys.contains("dep_airport_code") && dict["dep_airport_code"] != nil {
+                    self.depAirportCode = dict["dep_airport_code"] as! String
+                }
+                if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                    self.depCityCode = dict["dep_city_code"] as! String
+                }
+                if dict.keys.contains("flight_time") && dict["flight_time"] != nil {
+                    self.flightTime = dict["flight_time"] as! String
+                }
+                if dict.keys.contains("market_flight_no") && dict["market_flight_no"] != nil {
+                    self.marketFlightNo = dict["market_flight_no"] as! String
+                }
+                if dict.keys.contains("operate_flight_no") && dict["operate_flight_no"] != nil {
+                    self.operateFlightNo = dict["operate_flight_no"] as! String
+                }
+            }
+        }
+        public var arrCityCode: String?
+
+        public var depCityCode: String?
+
+        public var depDate: String?
+
+        public var selectedFlights: [IntlFlightListingSearchRequest.SearchJourneys.SelectedFlights]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arrCityCode != nil {
+                map["arr_city_code"] = self.arrCityCode!
+            }
+            if self.depCityCode != nil {
+                map["dep_city_code"] = self.depCityCode!
+            }
+            if self.depDate != nil {
+                map["dep_date"] = self.depDate!
+            }
+            if self.selectedFlights != nil {
+                var tmp : [Any] = []
+                for k in self.selectedFlights! {
+                    tmp.append(k.toMap())
+                }
+                map["selected_flights"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                self.arrCityCode = dict["arr_city_code"] as! String
+            }
+            if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                self.depCityCode = dict["dep_city_code"] as! String
+            }
+            if dict.keys.contains("dep_date") && dict["dep_date"] != nil {
+                self.depDate = dict["dep_date"] as! String
+            }
+            if dict.keys.contains("selected_flights") && dict["selected_flights"] != nil {
+                var tmp : [IntlFlightListingSearchRequest.SearchJourneys.SelectedFlights] = []
+                for v in dict["selected_flights"] as! [Any] {
+                    var model = IntlFlightListingSearchRequest.SearchJourneys.SelectedFlights()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.selectedFlights = tmp
+            }
+        }
+    }
+    public class SearchPassengerList : Tea.TeaModel {
+        public var certNo: String?
+
+        public var certType: Int32?
+
+        public var fullName: String?
+
+        public var type: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.certNo != nil {
+                map["cert_no"] = self.certNo!
+            }
+            if self.certType != nil {
+                map["cert_type"] = self.certType!
+            }
+            if self.fullName != nil {
+                map["full_name"] = self.fullName!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cert_no") && dict["cert_no"] != nil {
+                self.certNo = dict["cert_no"] as! String
+            }
+            if dict.keys.contains("cert_type") && dict["cert_type"] != nil {
+                self.certType = dict["cert_type"] as! Int32
+            }
+            if dict.keys.contains("full_name") && dict["full_name"] != nil {
+                self.fullName = dict["full_name"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! Int32
+            }
+        }
+    }
+    public var btripUserId: String?
+
+    public var buyerName: String?
+
+    public var cabinType: Int32?
+
+    public var directOnly: Bool?
+
+    public var isvName: String?
+
+    public var needShareFlight: Bool?
+
+    public var outWheelSearch: Bool?
+
+    public var queryRecordId: String?
+
+    public var searchJourneys: [IntlFlightListingSearchRequest.SearchJourneys]?
+
+    public var searchMode: Int32?
+
+    public var searchPassengerList: [IntlFlightListingSearchRequest.SearchPassengerList]?
+
+    public var supplierCode: String?
+
+    public var token: String?
+
+    public var tripType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.btripUserId != nil {
+            map["btrip_user_id"] = self.btripUserId!
+        }
+        if self.buyerName != nil {
+            map["buyer_name"] = self.buyerName!
+        }
+        if self.cabinType != nil {
+            map["cabin_type"] = self.cabinType!
+        }
+        if self.directOnly != nil {
+            map["direct_only"] = self.directOnly!
+        }
+        if self.isvName != nil {
+            map["isv_name"] = self.isvName!
+        }
+        if self.needShareFlight != nil {
+            map["need_share_flight"] = self.needShareFlight!
+        }
+        if self.outWheelSearch != nil {
+            map["out_wheel_search"] = self.outWheelSearch!
+        }
+        if self.queryRecordId != nil {
+            map["query_record_id"] = self.queryRecordId!
+        }
+        if self.searchJourneys != nil {
+            var tmp : [Any] = []
+            for k in self.searchJourneys! {
+                tmp.append(k.toMap())
+            }
+            map["search_journeys"] = tmp
+        }
+        if self.searchMode != nil {
+            map["search_mode"] = self.searchMode!
+        }
+        if self.searchPassengerList != nil {
+            var tmp : [Any] = []
+            for k in self.searchPassengerList! {
+                tmp.append(k.toMap())
+            }
+            map["search_passenger_list"] = tmp
+        }
+        if self.supplierCode != nil {
+            map["supplier_code"] = self.supplierCode!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.tripType != nil {
+            map["trip_type"] = self.tripType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_user_id") && dict["btrip_user_id"] != nil {
+            self.btripUserId = dict["btrip_user_id"] as! String
+        }
+        if dict.keys.contains("buyer_name") && dict["buyer_name"] != nil {
+            self.buyerName = dict["buyer_name"] as! String
+        }
+        if dict.keys.contains("cabin_type") && dict["cabin_type"] != nil {
+            self.cabinType = dict["cabin_type"] as! Int32
+        }
+        if dict.keys.contains("direct_only") && dict["direct_only"] != nil {
+            self.directOnly = dict["direct_only"] as! Bool
+        }
+        if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
+            self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
+            self.needShareFlight = dict["need_share_flight"] as! Bool
+        }
+        if dict.keys.contains("out_wheel_search") && dict["out_wheel_search"] != nil {
+            self.outWheelSearch = dict["out_wheel_search"] as! Bool
+        }
+        if dict.keys.contains("query_record_id") && dict["query_record_id"] != nil {
+            self.queryRecordId = dict["query_record_id"] as! String
+        }
+        if dict.keys.contains("search_journeys") && dict["search_journeys"] != nil {
+            var tmp : [IntlFlightListingSearchRequest.SearchJourneys] = []
+            for v in dict["search_journeys"] as! [Any] {
+                var model = IntlFlightListingSearchRequest.SearchJourneys()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.searchJourneys = tmp
+        }
+        if dict.keys.contains("search_mode") && dict["search_mode"] != nil {
+            self.searchMode = dict["search_mode"] as! Int32
+        }
+        if dict.keys.contains("search_passenger_list") && dict["search_passenger_list"] != nil {
+            var tmp : [IntlFlightListingSearchRequest.SearchPassengerList] = []
+            for v in dict["search_passenger_list"] as! [Any] {
+                var model = IntlFlightListingSearchRequest.SearchPassengerList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.searchPassengerList = tmp
+        }
+        if dict.keys.contains("supplier_code") && dict["supplier_code"] != nil {
+            self.supplierCode = dict["supplier_code"] as! String
+        }
+        if dict.keys.contains("token") && dict["token"] != nil {
+            self.token = dict["token"] as! String
+        }
+        if dict.keys.contains("trip_type") && dict["trip_type"] != nil {
+            self.tripType = dict["trip_type"] as! Int32
+        }
+    }
+}
+
+public class IntlFlightListingSearchShrinkRequest : Tea.TeaModel {
+    public var btripUserId: String?
+
+    public var buyerName: String?
+
+    public var cabinType: Int32?
+
+    public var directOnly: Bool?
+
+    public var isvName: String?
+
+    public var needShareFlight: Bool?
+
+    public var outWheelSearch: Bool?
+
+    public var queryRecordId: String?
+
+    public var searchJourneysShrink: String?
+
+    public var searchMode: Int32?
+
+    public var searchPassengerListShrink: String?
+
+    public var supplierCode: String?
+
+    public var token: String?
+
+    public var tripType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.btripUserId != nil {
+            map["btrip_user_id"] = self.btripUserId!
+        }
+        if self.buyerName != nil {
+            map["buyer_name"] = self.buyerName!
+        }
+        if self.cabinType != nil {
+            map["cabin_type"] = self.cabinType!
+        }
+        if self.directOnly != nil {
+            map["direct_only"] = self.directOnly!
+        }
+        if self.isvName != nil {
+            map["isv_name"] = self.isvName!
+        }
+        if self.needShareFlight != nil {
+            map["need_share_flight"] = self.needShareFlight!
+        }
+        if self.outWheelSearch != nil {
+            map["out_wheel_search"] = self.outWheelSearch!
+        }
+        if self.queryRecordId != nil {
+            map["query_record_id"] = self.queryRecordId!
+        }
+        if self.searchJourneysShrink != nil {
+            map["search_journeys"] = self.searchJourneysShrink!
+        }
+        if self.searchMode != nil {
+            map["search_mode"] = self.searchMode!
+        }
+        if self.searchPassengerListShrink != nil {
+            map["search_passenger_list"] = self.searchPassengerListShrink!
+        }
+        if self.supplierCode != nil {
+            map["supplier_code"] = self.supplierCode!
+        }
+        if self.token != nil {
+            map["token"] = self.token!
+        }
+        if self.tripType != nil {
+            map["trip_type"] = self.tripType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_user_id") && dict["btrip_user_id"] != nil {
+            self.btripUserId = dict["btrip_user_id"] as! String
+        }
+        if dict.keys.contains("buyer_name") && dict["buyer_name"] != nil {
+            self.buyerName = dict["buyer_name"] as! String
+        }
+        if dict.keys.contains("cabin_type") && dict["cabin_type"] != nil {
+            self.cabinType = dict["cabin_type"] as! Int32
+        }
+        if dict.keys.contains("direct_only") && dict["direct_only"] != nil {
+            self.directOnly = dict["direct_only"] as! Bool
+        }
+        if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
+            self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
+            self.needShareFlight = dict["need_share_flight"] as! Bool
+        }
+        if dict.keys.contains("out_wheel_search") && dict["out_wheel_search"] != nil {
+            self.outWheelSearch = dict["out_wheel_search"] as! Bool
+        }
+        if dict.keys.contains("query_record_id") && dict["query_record_id"] != nil {
+            self.queryRecordId = dict["query_record_id"] as! String
+        }
+        if dict.keys.contains("search_journeys") && dict["search_journeys"] != nil {
+            self.searchJourneysShrink = dict["search_journeys"] as! String
+        }
+        if dict.keys.contains("search_mode") && dict["search_mode"] != nil {
+            self.searchMode = dict["search_mode"] as! Int32
+        }
+        if dict.keys.contains("search_passenger_list") && dict["search_passenger_list"] != nil {
+            self.searchPassengerListShrink = dict["search_passenger_list"] as! String
+        }
+        if dict.keys.contains("supplier_code") && dict["supplier_code"] != nil {
+            self.supplierCode = dict["supplier_code"] as! String
+        }
+        if dict.keys.contains("token") && dict["token"] != nil {
+            self.token = dict["token"] as! String
+        }
+        if dict.keys.contains("trip_type") && dict["trip_type"] != nil {
+            self.tripType = dict["trip_type"] as! Int32
+        }
+    }
+}
+
+public class IntlFlightListingSearchResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public class FlightItemList : Tea.TeaModel {
+            public class BestPriceItem : Tea.TeaModel {
+                public var agreementPriceCodes: [String]?
+
+                public var shoppingItemMap: [String: ModuleFlightItemListBestPriceItemShoppingItemMapValue]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.agreementPriceCodes != nil {
+                        map["agreement_price_codes"] = self.agreementPriceCodes!
+                    }
+                    if self.shoppingItemMap != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.shoppingItemMap! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["shopping_item_map"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("agreement_price_codes") && dict["agreement_price_codes"] != nil {
+                        self.agreementPriceCodes = dict["agreement_price_codes"] as! [String]
+                    }
+                    if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
+                        var tmp : [String: ModuleFlightItemListBestPriceItemShoppingItemMapValue] = [:]
+                        for (k, v) in dict["shopping_item_map"] as! [String: Any] {
+                            if v != nil {
+                                var model = ModuleFlightItemListBestPriceItemShoppingItemMapValue()
+                                model.fromMap(v as! [String: Any])
+                                tmp[k] = model
+                            }
+                        }
+                        self.shoppingItemMap = tmp
+                    }
+                }
+            }
+            public class FlightJourneyInfos : Tea.TeaModel {
+                public class FlightSegmentInfos : Tea.TeaModel {
+                    public class AirlineInfo : Tea.TeaModel {
+                        public var airlineChineseName: String?
+
+                        public var airlineChineseShortName: String?
+
+                        public var airlineCode: String?
+
+                        public var airlineIcon: String?
+
+                        public var cheapFlight: Bool?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.airlineChineseName != nil {
+                                map["airline_chinese_name"] = self.airlineChineseName!
+                            }
+                            if self.airlineChineseShortName != nil {
+                                map["airline_chinese_short_name"] = self.airlineChineseShortName!
+                            }
+                            if self.airlineCode != nil {
+                                map["airline_code"] = self.airlineCode!
+                            }
+                            if self.airlineIcon != nil {
+                                map["airline_icon"] = self.airlineIcon!
+                            }
+                            if self.cheapFlight != nil {
+                                map["cheap_flight"] = self.cheapFlight!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("airline_chinese_name") && dict["airline_chinese_name"] != nil {
+                                self.airlineChineseName = dict["airline_chinese_name"] as! String
+                            }
+                            if dict.keys.contains("airline_chinese_short_name") && dict["airline_chinese_short_name"] != nil {
+                                self.airlineChineseShortName = dict["airline_chinese_short_name"] as! String
+                            }
+                            if dict.keys.contains("airline_code") && dict["airline_code"] != nil {
+                                self.airlineCode = dict["airline_code"] as! String
+                            }
+                            if dict.keys.contains("airline_icon") && dict["airline_icon"] != nil {
+                                self.airlineIcon = dict["airline_icon"] as! String
+                            }
+                            if dict.keys.contains("cheap_flight") && dict["cheap_flight"] != nil {
+                                self.cheapFlight = dict["cheap_flight"] as! Bool
+                            }
+                        }
+                    }
+                    public class ArrAirportInfo : Tea.TeaModel {
+                        public var airportCode: String?
+
+                        public var airportName: String?
+
+                        public var airportShortName: String?
+
+                        public var terminal: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.airportCode != nil {
+                                map["airport_code"] = self.airportCode!
+                            }
+                            if self.airportName != nil {
+                                map["airport_name"] = self.airportName!
+                            }
+                            if self.airportShortName != nil {
+                                map["airport_short_name"] = self.airportShortName!
+                            }
+                            if self.terminal != nil {
+                                map["terminal"] = self.terminal!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("airport_code") && dict["airport_code"] != nil {
+                                self.airportCode = dict["airport_code"] as! String
+                            }
+                            if dict.keys.contains("airport_name") && dict["airport_name"] != nil {
+                                self.airportName = dict["airport_name"] as! String
+                            }
+                            if dict.keys.contains("airport_short_name") && dict["airport_short_name"] != nil {
+                                self.airportShortName = dict["airport_short_name"] as! String
+                            }
+                            if dict.keys.contains("terminal") && dict["terminal"] != nil {
+                                self.terminal = dict["terminal"] as! String
+                            }
+                        }
+                    }
+                    public class DepAirportInfo : Tea.TeaModel {
+                        public var airportCode: String?
+
+                        public var airportName: String?
+
+                        public var airportShortName: String?
+
+                        public var terminal: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.airportCode != nil {
+                                map["airport_code"] = self.airportCode!
+                            }
+                            if self.airportName != nil {
+                                map["airport_name"] = self.airportName!
+                            }
+                            if self.airportShortName != nil {
+                                map["airport_short_name"] = self.airportShortName!
+                            }
+                            if self.terminal != nil {
+                                map["terminal"] = self.terminal!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("airport_code") && dict["airport_code"] != nil {
+                                self.airportCode = dict["airport_code"] as! String
+                            }
+                            if dict.keys.contains("airport_name") && dict["airport_name"] != nil {
+                                self.airportName = dict["airport_name"] as! String
+                            }
+                            if dict.keys.contains("airport_short_name") && dict["airport_short_name"] != nil {
+                                self.airportShortName = dict["airport_short_name"] as! String
+                            }
+                            if dict.keys.contains("terminal") && dict["terminal"] != nil {
+                                self.terminal = dict["terminal"] as! String
+                            }
+                        }
+                    }
+                    public class FlightShareInfo : Tea.TeaModel {
+                        public class OperatingAirlineInfo : Tea.TeaModel {
+                            public var airlineChineseName: String?
+
+                            public var airlineChineseShortName: String?
+
+                            public var airlineCode: String?
+
+                            public var airlineIcon: String?
+
+                            public var cheapFlight: Bool?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.airlineChineseName != nil {
+                                    map["airline_chinese_name"] = self.airlineChineseName!
+                                }
+                                if self.airlineChineseShortName != nil {
+                                    map["airline_chinese_short_name"] = self.airlineChineseShortName!
+                                }
+                                if self.airlineCode != nil {
+                                    map["airline_code"] = self.airlineCode!
+                                }
+                                if self.airlineIcon != nil {
+                                    map["airline_icon"] = self.airlineIcon!
+                                }
+                                if self.cheapFlight != nil {
+                                    map["cheap_flight"] = self.cheapFlight!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("airline_chinese_name") && dict["airline_chinese_name"] != nil {
+                                    self.airlineChineseName = dict["airline_chinese_name"] as! String
+                                }
+                                if dict.keys.contains("airline_chinese_short_name") && dict["airline_chinese_short_name"] != nil {
+                                    self.airlineChineseShortName = dict["airline_chinese_short_name"] as! String
+                                }
+                                if dict.keys.contains("airline_code") && dict["airline_code"] != nil {
+                                    self.airlineCode = dict["airline_code"] as! String
+                                }
+                                if dict.keys.contains("airline_icon") && dict["airline_icon"] != nil {
+                                    self.airlineIcon = dict["airline_icon"] as! String
+                                }
+                                if dict.keys.contains("cheap_flight") && dict["cheap_flight"] != nil {
+                                    self.cheapFlight = dict["cheap_flight"] as! Bool
+                                }
+                            }
+                        }
+                        public var operatingAirlineInfo: IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo.OperatingAirlineInfo?
+
+                        public var operatingFlightNo: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.operatingAirlineInfo?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.operatingAirlineInfo != nil {
+                                map["operating_airline_info"] = self.operatingAirlineInfo?.toMap()
+                            }
+                            if self.operatingFlightNo != nil {
+                                map["operating_flight_no"] = self.operatingFlightNo!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("operating_airline_info") && dict["operating_airline_info"] != nil {
+                                var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo.OperatingAirlineInfo()
+                                model.fromMap(dict["operating_airline_info"] as! [String: Any])
+                                self.operatingAirlineInfo = model
+                            }
+                            if dict.keys.contains("operating_flight_no") && dict["operating_flight_no"] != nil {
+                                self.operatingFlightNo = dict["operating_flight_no"] as! String
+                            }
+                        }
+                    }
+                    public class FlightStopInfo : Tea.TeaModel {
+                        public var stopAirport: String?
+
+                        public var stopAirportName: String?
+
+                        public var stopArrTerm: String?
+
+                        public var stopArrTime: String?
+
+                        public var stopCityCode: String?
+
+                        public var stopCityName: String?
+
+                        public var stopCityNames: [String]?
+
+                        public var stopDepTerm: String?
+
+                        public var stopDepTime: String?
+
+                        public var stopTime: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.stopAirport != nil {
+                                map["stop_airport"] = self.stopAirport!
+                            }
+                            if self.stopAirportName != nil {
+                                map["stop_airport_name"] = self.stopAirportName!
+                            }
+                            if self.stopArrTerm != nil {
+                                map["stop_arr_term"] = self.stopArrTerm!
+                            }
+                            if self.stopArrTime != nil {
+                                map["stop_arr_time"] = self.stopArrTime!
+                            }
+                            if self.stopCityCode != nil {
+                                map["stop_city_code"] = self.stopCityCode!
+                            }
+                            if self.stopCityName != nil {
+                                map["stop_city_name"] = self.stopCityName!
+                            }
+                            if self.stopCityNames != nil {
+                                map["stop_city_names"] = self.stopCityNames!
+                            }
+                            if self.stopDepTerm != nil {
+                                map["stop_dep_term"] = self.stopDepTerm!
+                            }
+                            if self.stopDepTime != nil {
+                                map["stop_dep_time"] = self.stopDepTime!
+                            }
+                            if self.stopTime != nil {
+                                map["stop_time"] = self.stopTime!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("stop_airport") && dict["stop_airport"] != nil {
+                                self.stopAirport = dict["stop_airport"] as! String
+                            }
+                            if dict.keys.contains("stop_airport_name") && dict["stop_airport_name"] != nil {
+                                self.stopAirportName = dict["stop_airport_name"] as! String
+                            }
+                            if dict.keys.contains("stop_arr_term") && dict["stop_arr_term"] != nil {
+                                self.stopArrTerm = dict["stop_arr_term"] as! String
+                            }
+                            if dict.keys.contains("stop_arr_time") && dict["stop_arr_time"] != nil {
+                                self.stopArrTime = dict["stop_arr_time"] as! String
+                            }
+                            if dict.keys.contains("stop_city_code") && dict["stop_city_code"] != nil {
+                                self.stopCityCode = dict["stop_city_code"] as! String
+                            }
+                            if dict.keys.contains("stop_city_name") && dict["stop_city_name"] != nil {
+                                self.stopCityName = dict["stop_city_name"] as! String
+                            }
+                            if dict.keys.contains("stop_city_names") && dict["stop_city_names"] != nil {
+                                self.stopCityNames = dict["stop_city_names"] as! [String]
+                            }
+                            if dict.keys.contains("stop_dep_term") && dict["stop_dep_term"] != nil {
+                                self.stopDepTerm = dict["stop_dep_term"] as! String
+                            }
+                            if dict.keys.contains("stop_dep_time") && dict["stop_dep_time"] != nil {
+                                self.stopDepTime = dict["stop_dep_time"] as! String
+                            }
+                            if dict.keys.contains("stop_time") && dict["stop_time"] != nil {
+                                self.stopTime = dict["stop_time"] as! String
+                            }
+                        }
+                    }
+                    public var airlineInfo: IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.AirlineInfo?
+
+                    public var arrAirportInfo: IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.ArrAirportInfo?
+
+                    public var arrCityCode: String?
+
+                    public var arrCityName: String?
+
+                    public var arrTime: String?
+
+                    public var baggageDesc: String?
+
+                    public var depAirportInfo: IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.DepAirportInfo?
+
+                    public var depCityCode: String?
+
+                    public var depCityName: String?
+
+                    public var depTime: String?
+
+                    public var duration: Int32?
+
+                    public var flightNo: String?
+
+                    public var flightShareInfo: IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo?
+
+                    public var flightSize: String?
+
+                    public var flightStopInfo: IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.FlightStopInfo?
+
+                    public var flightType: String?
+
+                    public var manufacturer: String?
+
+                    public var mealDesc: String?
+
+                    public var miles: Int32?
+
+                    public var onTimeRate: String?
+
+                    public var oneMore: Int32?
+
+                    public var oneMoreShow: String?
+
+                    public var segmentIndex: Int32?
+
+                    public var segmentKey: String?
+
+                    public var share: Bool?
+
+                    public var shortFlightSize: String?
+
+                    public var stop: Bool?
+
+                    public var totalTime: String?
+
+                    public var transferTime: String?
+
+                    public var transferTimeNumber: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.airlineInfo?.validate()
+                        try self.arrAirportInfo?.validate()
+                        try self.depAirportInfo?.validate()
+                        try self.flightShareInfo?.validate()
+                        try self.flightStopInfo?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airlineInfo != nil {
+                            map["airline_info"] = self.airlineInfo?.toMap()
+                        }
+                        if self.arrAirportInfo != nil {
+                            map["arr_airport_info"] = self.arrAirportInfo?.toMap()
+                        }
+                        if self.arrCityCode != nil {
+                            map["arr_city_code"] = self.arrCityCode!
+                        }
+                        if self.arrCityName != nil {
+                            map["arr_city_name"] = self.arrCityName!
+                        }
+                        if self.arrTime != nil {
+                            map["arr_time"] = self.arrTime!
+                        }
+                        if self.baggageDesc != nil {
+                            map["baggage_desc"] = self.baggageDesc!
+                        }
+                        if self.depAirportInfo != nil {
+                            map["dep_airport_info"] = self.depAirportInfo?.toMap()
+                        }
+                        if self.depCityCode != nil {
+                            map["dep_city_code"] = self.depCityCode!
+                        }
+                        if self.depCityName != nil {
+                            map["dep_city_name"] = self.depCityName!
+                        }
+                        if self.depTime != nil {
+                            map["dep_time"] = self.depTime!
+                        }
+                        if self.duration != nil {
+                            map["duration"] = self.duration!
+                        }
+                        if self.flightNo != nil {
+                            map["flight_no"] = self.flightNo!
+                        }
+                        if self.flightShareInfo != nil {
+                            map["flight_share_info"] = self.flightShareInfo?.toMap()
+                        }
+                        if self.flightSize != nil {
+                            map["flight_size"] = self.flightSize!
+                        }
+                        if self.flightStopInfo != nil {
+                            map["flight_stop_info"] = self.flightStopInfo?.toMap()
+                        }
+                        if self.flightType != nil {
+                            map["flight_type"] = self.flightType!
+                        }
+                        if self.manufacturer != nil {
+                            map["manufacturer"] = self.manufacturer!
+                        }
+                        if self.mealDesc != nil {
+                            map["meal_desc"] = self.mealDesc!
+                        }
+                        if self.miles != nil {
+                            map["miles"] = self.miles!
+                        }
+                        if self.onTimeRate != nil {
+                            map["on_time_rate"] = self.onTimeRate!
+                        }
+                        if self.oneMore != nil {
+                            map["one_more"] = self.oneMore!
+                        }
+                        if self.oneMoreShow != nil {
+                            map["one_more_show"] = self.oneMoreShow!
+                        }
+                        if self.segmentIndex != nil {
+                            map["segment_index"] = self.segmentIndex!
+                        }
+                        if self.segmentKey != nil {
+                            map["segment_key"] = self.segmentKey!
+                        }
+                        if self.share != nil {
+                            map["share"] = self.share!
+                        }
+                        if self.shortFlightSize != nil {
+                            map["short_flight_size"] = self.shortFlightSize!
+                        }
+                        if self.stop != nil {
+                            map["stop"] = self.stop!
+                        }
+                        if self.totalTime != nil {
+                            map["total_time"] = self.totalTime!
+                        }
+                        if self.transferTime != nil {
+                            map["transfer_time"] = self.transferTime!
+                        }
+                        if self.transferTimeNumber != nil {
+                            map["transfer_time_number"] = self.transferTimeNumber!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airline_info") && dict["airline_info"] != nil {
+                            var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.AirlineInfo()
+                            model.fromMap(dict["airline_info"] as! [String: Any])
+                            self.airlineInfo = model
+                        }
+                        if dict.keys.contains("arr_airport_info") && dict["arr_airport_info"] != nil {
+                            var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.ArrAirportInfo()
+                            model.fromMap(dict["arr_airport_info"] as! [String: Any])
+                            self.arrAirportInfo = model
+                        }
+                        if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                            self.arrCityCode = dict["arr_city_code"] as! String
+                        }
+                        if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                            self.arrCityName = dict["arr_city_name"] as! String
+                        }
+                        if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
+                            self.arrTime = dict["arr_time"] as! String
+                        }
+                        if dict.keys.contains("baggage_desc") && dict["baggage_desc"] != nil {
+                            self.baggageDesc = dict["baggage_desc"] as! String
+                        }
+                        if dict.keys.contains("dep_airport_info") && dict["dep_airport_info"] != nil {
+                            var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.DepAirportInfo()
+                            model.fromMap(dict["dep_airport_info"] as! [String: Any])
+                            self.depAirportInfo = model
+                        }
+                        if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                            self.depCityCode = dict["dep_city_code"] as! String
+                        }
+                        if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                            self.depCityName = dict["dep_city_name"] as! String
+                        }
+                        if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
+                            self.depTime = dict["dep_time"] as! String
+                        }
+                        if dict.keys.contains("duration") && dict["duration"] != nil {
+                            self.duration = dict["duration"] as! Int32
+                        }
+                        if dict.keys.contains("flight_no") && dict["flight_no"] != nil {
+                            self.flightNo = dict["flight_no"] as! String
+                        }
+                        if dict.keys.contains("flight_share_info") && dict["flight_share_info"] != nil {
+                            var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo()
+                            model.fromMap(dict["flight_share_info"] as! [String: Any])
+                            self.flightShareInfo = model
+                        }
+                        if dict.keys.contains("flight_size") && dict["flight_size"] != nil {
+                            self.flightSize = dict["flight_size"] as! String
+                        }
+                        if dict.keys.contains("flight_stop_info") && dict["flight_stop_info"] != nil {
+                            var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos.FlightStopInfo()
+                            model.fromMap(dict["flight_stop_info"] as! [String: Any])
+                            self.flightStopInfo = model
+                        }
+                        if dict.keys.contains("flight_type") && dict["flight_type"] != nil {
+                            self.flightType = dict["flight_type"] as! String
+                        }
+                        if dict.keys.contains("manufacturer") && dict["manufacturer"] != nil {
+                            self.manufacturer = dict["manufacturer"] as! String
+                        }
+                        if dict.keys.contains("meal_desc") && dict["meal_desc"] != nil {
+                            self.mealDesc = dict["meal_desc"] as! String
+                        }
+                        if dict.keys.contains("miles") && dict["miles"] != nil {
+                            self.miles = dict["miles"] as! Int32
+                        }
+                        if dict.keys.contains("on_time_rate") && dict["on_time_rate"] != nil {
+                            self.onTimeRate = dict["on_time_rate"] as! String
+                        }
+                        if dict.keys.contains("one_more") && dict["one_more"] != nil {
+                            self.oneMore = dict["one_more"] as! Int32
+                        }
+                        if dict.keys.contains("one_more_show") && dict["one_more_show"] != nil {
+                            self.oneMoreShow = dict["one_more_show"] as! String
+                        }
+                        if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                            self.segmentIndex = dict["segment_index"] as! Int32
+                        }
+                        if dict.keys.contains("segment_key") && dict["segment_key"] != nil {
+                            self.segmentKey = dict["segment_key"] as! String
+                        }
+                        if dict.keys.contains("share") && dict["share"] != nil {
+                            self.share = dict["share"] as! Bool
+                        }
+                        if dict.keys.contains("short_flight_size") && dict["short_flight_size"] != nil {
+                            self.shortFlightSize = dict["short_flight_size"] as! String
+                        }
+                        if dict.keys.contains("stop") && dict["stop"] != nil {
+                            self.stop = dict["stop"] as! Bool
+                        }
+                        if dict.keys.contains("total_time") && dict["total_time"] != nil {
+                            self.totalTime = dict["total_time"] as! String
+                        }
+                        if dict.keys.contains("transfer_time") && dict["transfer_time"] != nil {
+                            self.transferTime = dict["transfer_time"] as! String
+                        }
+                        if dict.keys.contains("transfer_time_number") && dict["transfer_time_number"] != nil {
+                            self.transferTimeNumber = dict["transfer_time_number"] as! Int32
+                        }
+                    }
+                }
+                public var arrCityCode: String?
+
+                public var arrCityName: String?
+
+                public var arrTime: String?
+
+                public var depCityCode: String?
+
+                public var depCityName: String?
+
+                public var depTime: String?
+
+                public var duration: Int32?
+
+                public var flightSegmentInfos: [IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos]?
+
+                public var journeyIndex: Int32?
+
+                public var transferTime: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.arrCityCode != nil {
+                        map["arr_city_code"] = self.arrCityCode!
+                    }
+                    if self.arrCityName != nil {
+                        map["arr_city_name"] = self.arrCityName!
+                    }
+                    if self.arrTime != nil {
+                        map["arr_time"] = self.arrTime!
+                    }
+                    if self.depCityCode != nil {
+                        map["dep_city_code"] = self.depCityCode!
+                    }
+                    if self.depCityName != nil {
+                        map["dep_city_name"] = self.depCityName!
+                    }
+                    if self.depTime != nil {
+                        map["dep_time"] = self.depTime!
+                    }
+                    if self.duration != nil {
+                        map["duration"] = self.duration!
+                    }
+                    if self.flightSegmentInfos != nil {
+                        var tmp : [Any] = []
+                        for k in self.flightSegmentInfos! {
+                            tmp.append(k.toMap())
+                        }
+                        map["flight_segment_infos"] = tmp
+                    }
+                    if self.journeyIndex != nil {
+                        map["journey_index"] = self.journeyIndex!
+                    }
+                    if self.transferTime != nil {
+                        map["transfer_time"] = self.transferTime!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                        self.arrCityCode = dict["arr_city_code"] as! String
+                    }
+                    if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                        self.arrCityName = dict["arr_city_name"] as! String
+                    }
+                    if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
+                        self.arrTime = dict["arr_time"] as! String
+                    }
+                    if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                        self.depCityCode = dict["dep_city_code"] as! String
+                    }
+                    if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                        self.depCityName = dict["dep_city_name"] as! String
+                    }
+                    if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
+                        self.depTime = dict["dep_time"] as! String
+                    }
+                    if dict.keys.contains("duration") && dict["duration"] != nil {
+                        self.duration = dict["duration"] as! Int32
+                    }
+                    if dict.keys.contains("flight_segment_infos") && dict["flight_segment_infos"] != nil {
+                        var tmp : [IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos] = []
+                        for v in dict["flight_segment_infos"] as! [Any] {
+                            var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos.FlightSegmentInfos()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.flightSegmentInfos = tmp
+                    }
+                    if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                        self.journeyIndex = dict["journey_index"] as! Int32
+                    }
+                    if dict.keys.contains("transfer_time") && dict["transfer_time"] != nil {
+                        self.transferTime = dict["transfer_time"] as! Int32
+                    }
+                }
+            }
+            public var bestPriceItem: IntlFlightListingSearchResponseBody.Module.FlightItemList.BestPriceItem?
+
+            public var flightJourneyInfos: [IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.bestPriceItem?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.bestPriceItem != nil {
+                    map["best_price_item"] = self.bestPriceItem?.toMap()
+                }
+                if self.flightJourneyInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.flightJourneyInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["flight_journey_infos"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("best_price_item") && dict["best_price_item"] != nil {
+                    var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.BestPriceItem()
+                    model.fromMap(dict["best_price_item"] as! [String: Any])
+                    self.bestPriceItem = model
+                }
+                if dict.keys.contains("flight_journey_infos") && dict["flight_journey_infos"] != nil {
+                    var tmp : [IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos] = []
+                    for v in dict["flight_journey_infos"] as! [Any] {
+                        var model = IntlFlightListingSearchResponseBody.Module.FlightItemList.FlightJourneyInfos()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.flightJourneyInfos = tmp
+                }
+            }
+        }
+        public var flightItemList: [IntlFlightListingSearchResponseBody.Module.FlightItemList]?
+
+        public var needContinue: Bool?
+
+        public var queryRecordId: String?
+
+        public var token: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.flightItemList != nil {
+                var tmp : [Any] = []
+                for k in self.flightItemList! {
+                    tmp.append(k.toMap())
+                }
+                map["flight_item_list"] = tmp
+            }
+            if self.needContinue != nil {
+                map["need_continue"] = self.needContinue!
+            }
+            if self.queryRecordId != nil {
+                map["query_record_id"] = self.queryRecordId!
+            }
+            if self.token != nil {
+                map["token"] = self.token!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("flight_item_list") && dict["flight_item_list"] != nil {
+                var tmp : [IntlFlightListingSearchResponseBody.Module.FlightItemList] = []
+                for v in dict["flight_item_list"] as! [Any] {
+                    var model = IntlFlightListingSearchResponseBody.Module.FlightItemList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.flightItemList = tmp
+            }
+            if dict.keys.contains("need_continue") && dict["need_continue"] != nil {
+                self.needContinue = dict["need_continue"] as! Bool
+            }
+            if dict.keys.contains("query_record_id") && dict["query_record_id"] != nil {
+                self.queryRecordId = dict["query_record_id"] as! String
+            }
+            if dict.keys.contains("token") && dict["token"] != nil {
+                self.token = dict["token"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: IntlFlightListingSearchResponseBody.Module?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") && dict["module"] != nil {
+            var model = IntlFlightListingSearchResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") && dict["traceId"] != nil {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class IntlFlightListingSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: IntlFlightListingSearchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = IntlFlightListingSearchResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class IntlFlightOtaItemDetailHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripCorpToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripCorpToken != nil {
+            map["x-acs-btrip-corp-token"] = self.xAcsBtripCorpToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-corp-token") && dict["x-acs-btrip-corp-token"] != nil {
+            self.xAcsBtripCorpToken = dict["x-acs-btrip-corp-token"] as! String
+        }
+    }
+}
+
+public class IntlFlightOtaItemDetailRequest : Tea.TeaModel {
+    public var btripUserId: String?
+
+    public var buyerName: String?
+
+    public var isvName: String?
+
+    public var supplierCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.btripUserId != nil {
+            map["btrip_user_id"] = self.btripUserId!
+        }
+        if self.buyerName != nil {
+            map["buyer_name"] = self.buyerName!
+        }
+        if self.isvName != nil {
+            map["isv_name"] = self.isvName!
+        }
+        if self.supplierCode != nil {
+            map["supplier_code"] = self.supplierCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_user_id") && dict["btrip_user_id"] != nil {
+            self.btripUserId = dict["btrip_user_id"] as! String
+        }
+        if dict.keys.contains("buyer_name") && dict["buyer_name"] != nil {
+            self.buyerName = dict["buyer_name"] as! String
+        }
+        if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
+            self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("supplier_code") && dict["supplier_code"] != nil {
+            self.supplierCode = dict["supplier_code"] as! String
+        }
+    }
+}
+
+public class IntlFlightOtaItemDetailResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public class FlightJourneyInfos : Tea.TeaModel {
+            public class FlightSegmentInfos : Tea.TeaModel {
+                public class AirlineInfo : Tea.TeaModel {
+                    public var airlineChineseName: String?
+
+                    public var airlineChineseShortName: String?
+
+                    public var airlineCode: String?
+
+                    public var airlineIcon: String?
+
+                    public var cheapFlight: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airlineChineseName != nil {
+                            map["airline_chinese_name"] = self.airlineChineseName!
+                        }
+                        if self.airlineChineseShortName != nil {
+                            map["airline_chinese_short_name"] = self.airlineChineseShortName!
+                        }
+                        if self.airlineCode != nil {
+                            map["airline_code"] = self.airlineCode!
+                        }
+                        if self.airlineIcon != nil {
+                            map["airline_icon"] = self.airlineIcon!
+                        }
+                        if self.cheapFlight != nil {
+                            map["cheap_flight"] = self.cheapFlight!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airline_chinese_name") && dict["airline_chinese_name"] != nil {
+                            self.airlineChineseName = dict["airline_chinese_name"] as! String
+                        }
+                        if dict.keys.contains("airline_chinese_short_name") && dict["airline_chinese_short_name"] != nil {
+                            self.airlineChineseShortName = dict["airline_chinese_short_name"] as! String
+                        }
+                        if dict.keys.contains("airline_code") && dict["airline_code"] != nil {
+                            self.airlineCode = dict["airline_code"] as! String
+                        }
+                        if dict.keys.contains("airline_icon") && dict["airline_icon"] != nil {
+                            self.airlineIcon = dict["airline_icon"] as! String
+                        }
+                        if dict.keys.contains("cheap_flight") && dict["cheap_flight"] != nil {
+                            self.cheapFlight = dict["cheap_flight"] as! Bool
+                        }
+                    }
+                }
+                public class ArrAirportInfo : Tea.TeaModel {
+                    public var airportCode: String?
+
+                    public var airportName: String?
+
+                    public var airportShortName: String?
+
+                    public var terminal: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airportCode != nil {
+                            map["airport_code"] = self.airportCode!
+                        }
+                        if self.airportName != nil {
+                            map["airport_name"] = self.airportName!
+                        }
+                        if self.airportShortName != nil {
+                            map["airport_short_name"] = self.airportShortName!
+                        }
+                        if self.terminal != nil {
+                            map["terminal"] = self.terminal!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airport_code") && dict["airport_code"] != nil {
+                            self.airportCode = dict["airport_code"] as! String
+                        }
+                        if dict.keys.contains("airport_name") && dict["airport_name"] != nil {
+                            self.airportName = dict["airport_name"] as! String
+                        }
+                        if dict.keys.contains("airport_short_name") && dict["airport_short_name"] != nil {
+                            self.airportShortName = dict["airport_short_name"] as! String
+                        }
+                        if dict.keys.contains("terminal") && dict["terminal"] != nil {
+                            self.terminal = dict["terminal"] as! String
+                        }
+                    }
+                }
+                public class DepAirportInfo : Tea.TeaModel {
+                    public var airportCode: String?
+
+                    public var airportName: String?
+
+                    public var airportShortName: String?
+
+                    public var terminal: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airportCode != nil {
+                            map["airport_code"] = self.airportCode!
+                        }
+                        if self.airportName != nil {
+                            map["airport_name"] = self.airportName!
+                        }
+                        if self.airportShortName != nil {
+                            map["airport_short_name"] = self.airportShortName!
+                        }
+                        if self.terminal != nil {
+                            map["terminal"] = self.terminal!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airport_code") && dict["airport_code"] != nil {
+                            self.airportCode = dict["airport_code"] as! String
+                        }
+                        if dict.keys.contains("airport_name") && dict["airport_name"] != nil {
+                            self.airportName = dict["airport_name"] as! String
+                        }
+                        if dict.keys.contains("airport_short_name") && dict["airport_short_name"] != nil {
+                            self.airportShortName = dict["airport_short_name"] as! String
+                        }
+                        if dict.keys.contains("terminal") && dict["terminal"] != nil {
+                            self.terminal = dict["terminal"] as! String
+                        }
+                    }
+                }
+                public class FlightShareInfo : Tea.TeaModel {
+                    public class OperatingAirlineInfo : Tea.TeaModel {
+                        public var airlineChineseName: String?
+
+                        public var airlineChineseShortName: String?
+
+                        public var airlineCode: String?
+
+                        public var airlineIcon: String?
+
+                        public var cheapFlight: Bool?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.airlineChineseName != nil {
+                                map["airline_chinese_name"] = self.airlineChineseName!
+                            }
+                            if self.airlineChineseShortName != nil {
+                                map["airline_chinese_short_name"] = self.airlineChineseShortName!
+                            }
+                            if self.airlineCode != nil {
+                                map["airline_code"] = self.airlineCode!
+                            }
+                            if self.airlineIcon != nil {
+                                map["airline_icon"] = self.airlineIcon!
+                            }
+                            if self.cheapFlight != nil {
+                                map["cheap_flight"] = self.cheapFlight!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("airline_chinese_name") && dict["airline_chinese_name"] != nil {
+                                self.airlineChineseName = dict["airline_chinese_name"] as! String
+                            }
+                            if dict.keys.contains("airline_chinese_short_name") && dict["airline_chinese_short_name"] != nil {
+                                self.airlineChineseShortName = dict["airline_chinese_short_name"] as! String
+                            }
+                            if dict.keys.contains("airline_code") && dict["airline_code"] != nil {
+                                self.airlineCode = dict["airline_code"] as! String
+                            }
+                            if dict.keys.contains("airline_icon") && dict["airline_icon"] != nil {
+                                self.airlineIcon = dict["airline_icon"] as! String
+                            }
+                            if dict.keys.contains("cheap_flight") && dict["cheap_flight"] != nil {
+                                self.cheapFlight = dict["cheap_flight"] as! Bool
+                            }
+                        }
+                    }
+                    public var operatingAirlineInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo.OperatingAirlineInfo?
+
+                    public var operatingFlightNo: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.operatingAirlineInfo?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.operatingAirlineInfo != nil {
+                            map["operating_airline_info"] = self.operatingAirlineInfo?.toMap()
+                        }
+                        if self.operatingFlightNo != nil {
+                            map["operating_flight_no"] = self.operatingFlightNo!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("operating_airline_info") && dict["operating_airline_info"] != nil {
+                            var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo.OperatingAirlineInfo()
+                            model.fromMap(dict["operating_airline_info"] as! [String: Any])
+                            self.operatingAirlineInfo = model
+                        }
+                        if dict.keys.contains("operating_flight_no") && dict["operating_flight_no"] != nil {
+                            self.operatingFlightNo = dict["operating_flight_no"] as! String
+                        }
+                    }
+                }
+                public class FlightStopInfo : Tea.TeaModel {
+                    public var stopAirport: String?
+
+                    public var stopAirportName: String?
+
+                    public var stopArrTerm: String?
+
+                    public var stopArrTime: String?
+
+                    public var stopCityCode: String?
+
+                    public var stopCityName: String?
+
+                    public var stopCityNames: [String]?
+
+                    public var stopDepTerm: String?
+
+                    public var stopDepTime: String?
+
+                    public var stopTime: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.stopAirport != nil {
+                            map["stop_airport"] = self.stopAirport!
+                        }
+                        if self.stopAirportName != nil {
+                            map["stop_airport_name"] = self.stopAirportName!
+                        }
+                        if self.stopArrTerm != nil {
+                            map["stop_arr_term"] = self.stopArrTerm!
+                        }
+                        if self.stopArrTime != nil {
+                            map["stop_arr_time"] = self.stopArrTime!
+                        }
+                        if self.stopCityCode != nil {
+                            map["stop_city_code"] = self.stopCityCode!
+                        }
+                        if self.stopCityName != nil {
+                            map["stop_city_name"] = self.stopCityName!
+                        }
+                        if self.stopCityNames != nil {
+                            map["stop_city_names"] = self.stopCityNames!
+                        }
+                        if self.stopDepTerm != nil {
+                            map["stop_dep_term"] = self.stopDepTerm!
+                        }
+                        if self.stopDepTime != nil {
+                            map["stop_dep_time"] = self.stopDepTime!
+                        }
+                        if self.stopTime != nil {
+                            map["stop_time"] = self.stopTime!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("stop_airport") && dict["stop_airport"] != nil {
+                            self.stopAirport = dict["stop_airport"] as! String
+                        }
+                        if dict.keys.contains("stop_airport_name") && dict["stop_airport_name"] != nil {
+                            self.stopAirportName = dict["stop_airport_name"] as! String
+                        }
+                        if dict.keys.contains("stop_arr_term") && dict["stop_arr_term"] != nil {
+                            self.stopArrTerm = dict["stop_arr_term"] as! String
+                        }
+                        if dict.keys.contains("stop_arr_time") && dict["stop_arr_time"] != nil {
+                            self.stopArrTime = dict["stop_arr_time"] as! String
+                        }
+                        if dict.keys.contains("stop_city_code") && dict["stop_city_code"] != nil {
+                            self.stopCityCode = dict["stop_city_code"] as! String
+                        }
+                        if dict.keys.contains("stop_city_name") && dict["stop_city_name"] != nil {
+                            self.stopCityName = dict["stop_city_name"] as! String
+                        }
+                        if dict.keys.contains("stop_city_names") && dict["stop_city_names"] != nil {
+                            self.stopCityNames = dict["stop_city_names"] as! [String]
+                        }
+                        if dict.keys.contains("stop_dep_term") && dict["stop_dep_term"] != nil {
+                            self.stopDepTerm = dict["stop_dep_term"] as! String
+                        }
+                        if dict.keys.contains("stop_dep_time") && dict["stop_dep_time"] != nil {
+                            self.stopDepTime = dict["stop_dep_time"] as! String
+                        }
+                        if dict.keys.contains("stop_time") && dict["stop_time"] != nil {
+                            self.stopTime = dict["stop_time"] as! String
+                        }
+                    }
+                }
+                public class LuggageDirectInfo : Tea.TeaModel {
+                    public var depCityLuggageDirect: Int32?
+
+                    public var stopCityLuggageDirect: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.depCityLuggageDirect != nil {
+                            map["dep_city_luggage_direct"] = self.depCityLuggageDirect!
+                        }
+                        if self.stopCityLuggageDirect != nil {
+                            map["stop_city_luggage_direct"] = self.stopCityLuggageDirect!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("dep_city_luggage_direct") && dict["dep_city_luggage_direct"] != nil {
+                            self.depCityLuggageDirect = dict["dep_city_luggage_direct"] as! Int32
+                        }
+                        if dict.keys.contains("stop_city_luggage_direct") && dict["stop_city_luggage_direct"] != nil {
+                            self.stopCityLuggageDirect = dict["stop_city_luggage_direct"] as! Int32
+                        }
+                    }
+                }
+                public class SegmentVisaRemark : Tea.TeaModel {
+                    public var depCityVisaRemark: String?
+
+                    public var depCityVisaType: Int32?
+
+                    public var stopCityVisaRemarks: [String]?
+
+                    public var stopCityVisaTypes: [Int32]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.depCityVisaRemark != nil {
+                            map["dep_city_visa_remark"] = self.depCityVisaRemark!
+                        }
+                        if self.depCityVisaType != nil {
+                            map["dep_city_visa_type"] = self.depCityVisaType!
+                        }
+                        if self.stopCityVisaRemarks != nil {
+                            map["stop_city_visa_remarks"] = self.stopCityVisaRemarks!
+                        }
+                        if self.stopCityVisaTypes != nil {
+                            map["stop_city_visa_types"] = self.stopCityVisaTypes!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("dep_city_visa_remark") && dict["dep_city_visa_remark"] != nil {
+                            self.depCityVisaRemark = dict["dep_city_visa_remark"] as! String
+                        }
+                        if dict.keys.contains("dep_city_visa_type") && dict["dep_city_visa_type"] != nil {
+                            self.depCityVisaType = dict["dep_city_visa_type"] as! Int32
+                        }
+                        if dict.keys.contains("stop_city_visa_remarks") && dict["stop_city_visa_remarks"] != nil {
+                            self.stopCityVisaRemarks = dict["stop_city_visa_remarks"] as! [String]
+                        }
+                        if dict.keys.contains("stop_city_visa_types") && dict["stop_city_visa_types"] != nil {
+                            self.stopCityVisaTypes = dict["stop_city_visa_types"] as! [Int32]
+                        }
+                    }
+                }
+                public var airlineInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.AirlineInfo?
+
+                public var arrAirportInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.ArrAirportInfo?
+
+                public var arrCityCode: String?
+
+                public var arrCityName: String?
+
+                public var arrTime: String?
+
+                public var baggageDesc: String?
+
+                public var depAirportInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.DepAirportInfo?
+
+                public var depCityCode: String?
+
+                public var depCityName: String?
+
+                public var depTime: String?
+
+                public var duration: Int32?
+
+                public var flightNo: String?
+
+                public var flightShareInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo?
+
+                public var flightSize: String?
+
+                public var flightStopInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightStopInfo?
+
+                public var flightType: String?
+
+                public var luggageDirectInfo: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.LuggageDirectInfo?
+
+                public var manufacturer: String?
+
+                public var mealDesc: String?
+
+                public var onTimeRate: String?
+
+                public var oneMore: Int32?
+
+                public var oneMoreShow: String?
+
+                public var segmentIndex: Int32?
+
+                public var segmentKey: String?
+
+                public var segmentVisaRemark: IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.SegmentVisaRemark?
+
+                public var share: Bool?
+
+                public var shortFlightSize: String?
+
+                public var stop: Bool?
+
+                public var totalTime: String?
+
+                public var transferTime: String?
+
+                public var transferTimeNumber: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.airlineInfo?.validate()
+                    try self.arrAirportInfo?.validate()
+                    try self.depAirportInfo?.validate()
+                    try self.flightShareInfo?.validate()
+                    try self.flightStopInfo?.validate()
+                    try self.luggageDirectInfo?.validate()
+                    try self.segmentVisaRemark?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.airlineInfo != nil {
+                        map["airline_info"] = self.airlineInfo?.toMap()
+                    }
+                    if self.arrAirportInfo != nil {
+                        map["arr_airport_info"] = self.arrAirportInfo?.toMap()
+                    }
+                    if self.arrCityCode != nil {
+                        map["arr_city_code"] = self.arrCityCode!
+                    }
+                    if self.arrCityName != nil {
+                        map["arr_city_name"] = self.arrCityName!
+                    }
+                    if self.arrTime != nil {
+                        map["arr_time"] = self.arrTime!
+                    }
+                    if self.baggageDesc != nil {
+                        map["baggage_desc"] = self.baggageDesc!
+                    }
+                    if self.depAirportInfo != nil {
+                        map["dep_airport_info"] = self.depAirportInfo?.toMap()
+                    }
+                    if self.depCityCode != nil {
+                        map["dep_city_code"] = self.depCityCode!
+                    }
+                    if self.depCityName != nil {
+                        map["dep_city_name"] = self.depCityName!
+                    }
+                    if self.depTime != nil {
+                        map["dep_time"] = self.depTime!
+                    }
+                    if self.duration != nil {
+                        map["duration"] = self.duration!
+                    }
+                    if self.flightNo != nil {
+                        map["flight_no"] = self.flightNo!
+                    }
+                    if self.flightShareInfo != nil {
+                        map["flight_share_info"] = self.flightShareInfo?.toMap()
+                    }
+                    if self.flightSize != nil {
+                        map["flight_size"] = self.flightSize!
+                    }
+                    if self.flightStopInfo != nil {
+                        map["flight_stop_info"] = self.flightStopInfo?.toMap()
+                    }
+                    if self.flightType != nil {
+                        map["flight_type"] = self.flightType!
+                    }
+                    if self.luggageDirectInfo != nil {
+                        map["luggage_direct_info"] = self.luggageDirectInfo?.toMap()
+                    }
+                    if self.manufacturer != nil {
+                        map["manufacturer"] = self.manufacturer!
+                    }
+                    if self.mealDesc != nil {
+                        map["meal_desc"] = self.mealDesc!
+                    }
+                    if self.onTimeRate != nil {
+                        map["on_time_rate"] = self.onTimeRate!
+                    }
+                    if self.oneMore != nil {
+                        map["one_more"] = self.oneMore!
+                    }
+                    if self.oneMoreShow != nil {
+                        map["one_more_show"] = self.oneMoreShow!
+                    }
+                    if self.segmentIndex != nil {
+                        map["segment_index"] = self.segmentIndex!
+                    }
+                    if self.segmentKey != nil {
+                        map["segment_key"] = self.segmentKey!
+                    }
+                    if self.segmentVisaRemark != nil {
+                        map["segment_visa_remark"] = self.segmentVisaRemark?.toMap()
+                    }
+                    if self.share != nil {
+                        map["share"] = self.share!
+                    }
+                    if self.shortFlightSize != nil {
+                        map["short_flight_size"] = self.shortFlightSize!
+                    }
+                    if self.stop != nil {
+                        map["stop"] = self.stop!
+                    }
+                    if self.totalTime != nil {
+                        map["total_time"] = self.totalTime!
+                    }
+                    if self.transferTime != nil {
+                        map["transfer_time"] = self.transferTime!
+                    }
+                    if self.transferTimeNumber != nil {
+                        map["transfer_time_number"] = self.transferTimeNumber!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("airline_info") && dict["airline_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.AirlineInfo()
+                        model.fromMap(dict["airline_info"] as! [String: Any])
+                        self.airlineInfo = model
+                    }
+                    if dict.keys.contains("arr_airport_info") && dict["arr_airport_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.ArrAirportInfo()
+                        model.fromMap(dict["arr_airport_info"] as! [String: Any])
+                        self.arrAirportInfo = model
+                    }
+                    if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                        self.arrCityCode = dict["arr_city_code"] as! String
+                    }
+                    if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                        self.arrCityName = dict["arr_city_name"] as! String
+                    }
+                    if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
+                        self.arrTime = dict["arr_time"] as! String
+                    }
+                    if dict.keys.contains("baggage_desc") && dict["baggage_desc"] != nil {
+                        self.baggageDesc = dict["baggage_desc"] as! String
+                    }
+                    if dict.keys.contains("dep_airport_info") && dict["dep_airport_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.DepAirportInfo()
+                        model.fromMap(dict["dep_airport_info"] as! [String: Any])
+                        self.depAirportInfo = model
+                    }
+                    if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                        self.depCityCode = dict["dep_city_code"] as! String
+                    }
+                    if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                        self.depCityName = dict["dep_city_name"] as! String
+                    }
+                    if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
+                        self.depTime = dict["dep_time"] as! String
+                    }
+                    if dict.keys.contains("duration") && dict["duration"] != nil {
+                        self.duration = dict["duration"] as! Int32
+                    }
+                    if dict.keys.contains("flight_no") && dict["flight_no"] != nil {
+                        self.flightNo = dict["flight_no"] as! String
+                    }
+                    if dict.keys.contains("flight_share_info") && dict["flight_share_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo()
+                        model.fromMap(dict["flight_share_info"] as! [String: Any])
+                        self.flightShareInfo = model
+                    }
+                    if dict.keys.contains("flight_size") && dict["flight_size"] != nil {
+                        self.flightSize = dict["flight_size"] as! String
+                    }
+                    if dict.keys.contains("flight_stop_info") && dict["flight_stop_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightStopInfo()
+                        model.fromMap(dict["flight_stop_info"] as! [String: Any])
+                        self.flightStopInfo = model
+                    }
+                    if dict.keys.contains("flight_type") && dict["flight_type"] != nil {
+                        self.flightType = dict["flight_type"] as! String
+                    }
+                    if dict.keys.contains("luggage_direct_info") && dict["luggage_direct_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.LuggageDirectInfo()
+                        model.fromMap(dict["luggage_direct_info"] as! [String: Any])
+                        self.luggageDirectInfo = model
+                    }
+                    if dict.keys.contains("manufacturer") && dict["manufacturer"] != nil {
+                        self.manufacturer = dict["manufacturer"] as! String
+                    }
+                    if dict.keys.contains("meal_desc") && dict["meal_desc"] != nil {
+                        self.mealDesc = dict["meal_desc"] as! String
+                    }
+                    if dict.keys.contains("on_time_rate") && dict["on_time_rate"] != nil {
+                        self.onTimeRate = dict["on_time_rate"] as! String
+                    }
+                    if dict.keys.contains("one_more") && dict["one_more"] != nil {
+                        self.oneMore = dict["one_more"] as! Int32
+                    }
+                    if dict.keys.contains("one_more_show") && dict["one_more_show"] != nil {
+                        self.oneMoreShow = dict["one_more_show"] as! String
+                    }
+                    if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                        self.segmentIndex = dict["segment_index"] as! Int32
+                    }
+                    if dict.keys.contains("segment_key") && dict["segment_key"] != nil {
+                        self.segmentKey = dict["segment_key"] as! String
+                    }
+                    if dict.keys.contains("segment_visa_remark") && dict["segment_visa_remark"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.SegmentVisaRemark()
+                        model.fromMap(dict["segment_visa_remark"] as! [String: Any])
+                        self.segmentVisaRemark = model
+                    }
+                    if dict.keys.contains("share") && dict["share"] != nil {
+                        self.share = dict["share"] as! Bool
+                    }
+                    if dict.keys.contains("short_flight_size") && dict["short_flight_size"] != nil {
+                        self.shortFlightSize = dict["short_flight_size"] as! String
+                    }
+                    if dict.keys.contains("stop") && dict["stop"] != nil {
+                        self.stop = dict["stop"] as! Bool
+                    }
+                    if dict.keys.contains("total_time") && dict["total_time"] != nil {
+                        self.totalTime = dict["total_time"] as! String
+                    }
+                    if dict.keys.contains("transfer_time") && dict["transfer_time"] != nil {
+                        self.transferTime = dict["transfer_time"] as! String
+                    }
+                    if dict.keys.contains("transfer_time_number") && dict["transfer_time_number"] != nil {
+                        self.transferTimeNumber = dict["transfer_time_number"] as! Int32
+                    }
+                }
+            }
+            public var arrCityCode: String?
+
+            public var arrCityName: String?
+
+            public var arrTime: String?
+
+            public var depCityCode: String?
+
+            public var depCityName: String?
+
+            public var depTime: String?
+
+            public var duration: Int32?
+
+            public var extensions: [String: String]?
+
+            public var flightSegmentInfos: [IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos]?
+
+            public var journeyIndex: Int32?
+
+            public var transferTime: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.arrCityCode != nil {
+                    map["arr_city_code"] = self.arrCityCode!
+                }
+                if self.arrCityName != nil {
+                    map["arr_city_name"] = self.arrCityName!
+                }
+                if self.arrTime != nil {
+                    map["arr_time"] = self.arrTime!
+                }
+                if self.depCityCode != nil {
+                    map["dep_city_code"] = self.depCityCode!
+                }
+                if self.depCityName != nil {
+                    map["dep_city_name"] = self.depCityName!
+                }
+                if self.depTime != nil {
+                    map["dep_time"] = self.depTime!
+                }
+                if self.duration != nil {
+                    map["duration"] = self.duration!
+                }
+                if self.extensions != nil {
+                    map["extensions"] = self.extensions!
+                }
+                if self.flightSegmentInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.flightSegmentInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["flight_segment_infos"] = tmp
+                }
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.transferTime != nil {
+                    map["transfer_time"] = self.transferTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                    self.arrCityCode = dict["arr_city_code"] as! String
+                }
+                if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                    self.arrCityName = dict["arr_city_name"] as! String
+                }
+                if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
+                    self.arrTime = dict["arr_time"] as! String
+                }
+                if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                    self.depCityCode = dict["dep_city_code"] as! String
+                }
+                if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                    self.depCityName = dict["dep_city_name"] as! String
+                }
+                if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
+                    self.depTime = dict["dep_time"] as! String
+                }
+                if dict.keys.contains("duration") && dict["duration"] != nil {
+                    self.duration = dict["duration"] as! Int32
+                }
+                if dict.keys.contains("extensions") && dict["extensions"] != nil {
+                    self.extensions = dict["extensions"] as! [String: String]
+                }
+                if dict.keys.contains("flight_segment_infos") && dict["flight_segment_infos"] != nil {
+                    var tmp : [IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos] = []
+                    for v in dict["flight_segment_infos"] as! [Any] {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.flightSegmentInfos = tmp
+                }
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("transfer_time") && dict["transfer_time"] != nil {
+                    self.transferTime = dict["transfer_time"] as! Int32
+                }
+            }
+        }
+        public class GroupItem : Tea.TeaModel {
+            public class FlightRuleInfoList : Tea.TeaModel {
+                public class FlightRuleInfo : Tea.TeaModel {
+                    public var baggageDesc: String?
+
+                    public var refundChangeRuleDesc: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.baggageDesc != nil {
+                            map["baggage_desc"] = self.baggageDesc!
+                        }
+                        if self.refundChangeRuleDesc != nil {
+                            map["refund_change_rule_desc"] = self.refundChangeRuleDesc!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("baggage_desc") && dict["baggage_desc"] != nil {
+                            self.baggageDesc = dict["baggage_desc"] as! String
+                        }
+                        if dict.keys.contains("refund_change_rule_desc") && dict["refund_change_rule_desc"] != nil {
+                            self.refundChangeRuleDesc = dict["refund_change_rule_desc"] as! String
+                        }
+                    }
+                }
+                public class SegmentPosition : Tea.TeaModel {
+                    public var journeyIndex: Int32?
+
+                    public var segmentIndex: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.journeyIndex != nil {
+                            map["journey_index"] = self.journeyIndex!
+                        }
+                        if self.segmentIndex != nil {
+                            map["segment_index"] = self.segmentIndex!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                            self.journeyIndex = dict["journey_index"] as! Int32
+                        }
+                        if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                            self.segmentIndex = dict["segment_index"] as! Int32
+                        }
+                    }
+                }
+                public var flightRuleInfo: IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList.FlightRuleInfo?
+
+                public var segmentPosition: IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList.SegmentPosition?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.flightRuleInfo?.validate()
+                    try self.segmentPosition?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.flightRuleInfo != nil {
+                        map["flight_rule_info"] = self.flightRuleInfo?.toMap()
+                    }
+                    if self.segmentPosition != nil {
+                        map["segment_position"] = self.segmentPosition?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("flight_rule_info") && dict["flight_rule_info"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList.FlightRuleInfo()
+                        model.fromMap(dict["flight_rule_info"] as! [String: Any])
+                        self.flightRuleInfo = model
+                    }
+                    if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList.SegmentPosition()
+                        model.fromMap(dict["segment_position"] as! [String: Any])
+                        self.segmentPosition = model
+                    }
+                }
+            }
+            public class SubItems : Tea.TeaModel {
+                public class BaggageRule : Tea.TeaModel {
+                    public var baggageDigest: String?
+
+                    public var baggageInfoMap: [String: [ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue]]?
+
+                    public var structuredBaggage: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.baggageDigest != nil {
+                            map["baggage_digest"] = self.baggageDigest!
+                        }
+                        if self.baggageInfoMap != nil {
+                            var tmp : [String: Any] = [:]
+                            for (k, v) in self.baggageInfoMap! {
+                                var l1 : [Any] = []
+                                for k1 in v {
+                                    l1.append(k1.toMap())
+                                }
+                                tmp[k] = l1
+                            }
+                            map["baggage_info_map"] = tmp
+                        }
+                        if self.structuredBaggage != nil {
+                            map["structured_baggage"] = self.structuredBaggage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("baggage_digest") && dict["baggage_digest"] != nil {
+                            self.baggageDigest = dict["baggage_digest"] as! String
+                        }
+                        if dict.keys.contains("baggage_info_map") && dict["baggage_info_map"] != nil {
+                            var tmp : [String: [ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue]] = [:]
+                            for (k, v) in dict["baggage_info_map"] as! [String: Any] {
+                                var l1 : [ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue] = []
+                                for v1 in v as! [Any] {
+                                    var model = ModuleGroupItemSubItemsBaggageRuleBaggageInfoMapValue()
+                                    if v1 != nil {
+                                        model.fromMap(v1 as! [String: Any])
+                                    }
+                                    l1.append(model)
+                                }
+                                tmp[k] = l1
+                            }
+                            self.baggageInfoMap = tmp
+                        }
+                        if dict.keys.contains("structured_baggage") && dict["structured_baggage"] != nil {
+                            self.structuredBaggage = dict["structured_baggage"] as! Bool
+                        }
+                    }
+                }
+                public class RefundChangeRule : Tea.TeaModel {
+                    public var cancelFeeInd: Bool?
+
+                    public var changeFeeInd: Bool?
+
+                    public var offerPenaltyInfoMap: [String: [ModuleGroupItemSubItemsRefundChangeRuleOfferPenaltyInfoMapValue]]?
+
+                    public var refundChangeDigest: String?
+
+                    public var structuredRefund: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cancelFeeInd != nil {
+                            map["cancel_fee_ind"] = self.cancelFeeInd!
+                        }
+                        if self.changeFeeInd != nil {
+                            map["change_fee_ind"] = self.changeFeeInd!
+                        }
+                        if self.offerPenaltyInfoMap != nil {
+                            var tmp : [String: Any] = [:]
+                            for (k, v) in self.offerPenaltyInfoMap! {
+                                var l1 : [Any] = []
+                                for k1 in v {
+                                    l1.append(k1.toMap())
+                                }
+                                tmp[k] = l1
+                            }
+                            map["offer_penalty_info_map"] = tmp
+                        }
+                        if self.refundChangeDigest != nil {
+                            map["refund_change_digest"] = self.refundChangeDigest!
+                        }
+                        if self.structuredRefund != nil {
+                            map["structured_refund"] = self.structuredRefund!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("cancel_fee_ind") && dict["cancel_fee_ind"] != nil {
+                            self.cancelFeeInd = dict["cancel_fee_ind"] as! Bool
+                        }
+                        if dict.keys.contains("change_fee_ind") && dict["change_fee_ind"] != nil {
+                            self.changeFeeInd = dict["change_fee_ind"] as! Bool
+                        }
+                        if dict.keys.contains("offer_penalty_info_map") && dict["offer_penalty_info_map"] != nil {
+                            var tmp : [String: [ModuleGroupItemSubItemsRefundChangeRuleOfferPenaltyInfoMapValue]] = [:]
+                            for (k, v) in dict["offer_penalty_info_map"] as! [String: Any] {
+                                var l1 : [ModuleGroupItemSubItemsRefundChangeRuleOfferPenaltyInfoMapValue] = []
+                                for v1 in v as! [Any] {
+                                    var model = ModuleGroupItemSubItemsRefundChangeRuleOfferPenaltyInfoMapValue()
+                                    if v1 != nil {
+                                        model.fromMap(v1 as! [String: Any])
+                                    }
+                                    l1.append(model)
+                                }
+                                tmp[k] = l1
+                            }
+                            self.offerPenaltyInfoMap = tmp
+                        }
+                        if dict.keys.contains("refund_change_digest") && dict["refund_change_digest"] != nil {
+                            self.refundChangeDigest = dict["refund_change_digest"] as! String
+                        }
+                        if dict.keys.contains("structured_refund") && dict["structured_refund"] != nil {
+                            self.structuredRefund = dict["structured_refund"] as! Bool
+                        }
+                    }
+                }
+                public var baggageRule: IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems.BaggageRule?
+
+                public var refundChangeRule: IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems.RefundChangeRule?
+
+                public var segmentKeys: [String]?
+
+                public var shoppingItemMap: [String: ModuleGroupItemSubItemsShoppingItemMapValue]?
+
+                public var uniqKey: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.baggageRule?.validate()
+                    try self.refundChangeRule?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.baggageRule != nil {
+                        map["baggage_rule"] = self.baggageRule?.toMap()
+                    }
+                    if self.refundChangeRule != nil {
+                        map["refund_change_rule"] = self.refundChangeRule?.toMap()
+                    }
+                    if self.segmentKeys != nil {
+                        map["segment_keys"] = self.segmentKeys!
+                    }
+                    if self.shoppingItemMap != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.shoppingItemMap! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["shopping_item_map"] = tmp
+                    }
+                    if self.uniqKey != nil {
+                        map["uniq_key"] = self.uniqKey!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("baggage_rule") && dict["baggage_rule"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems.BaggageRule()
+                        model.fromMap(dict["baggage_rule"] as! [String: Any])
+                        self.baggageRule = model
+                    }
+                    if dict.keys.contains("refund_change_rule") && dict["refund_change_rule"] != nil {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems.RefundChangeRule()
+                        model.fromMap(dict["refund_change_rule"] as! [String: Any])
+                        self.refundChangeRule = model
+                    }
+                    if dict.keys.contains("segment_keys") && dict["segment_keys"] != nil {
+                        self.segmentKeys = dict["segment_keys"] as! [String]
+                    }
+                    if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
+                        var tmp : [String: ModuleGroupItemSubItemsShoppingItemMapValue] = [:]
+                        for (k, v) in dict["shopping_item_map"] as! [String: Any] {
+                            if v != nil {
+                                var model = ModuleGroupItemSubItemsShoppingItemMapValue()
+                                model.fromMap(v as! [String: Any])
+                                tmp[k] = model
+                            }
+                        }
+                        self.shoppingItemMap = tmp
+                    }
+                    if dict.keys.contains("uniq_key") && dict["uniq_key"] != nil {
+                        self.uniqKey = dict["uniq_key"] as! String
+                    }
+                }
+            }
+            public var agreementPriceCodes: [String]?
+
+            public var flightRuleInfoList: [IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList]?
+
+            public var itemId: String?
+
+            public var shoppingItemMap: [String: ModuleGroupItemShoppingItemMapValue]?
+
+            public var subItemPositionMap: [String: [ModuleGroupItemSubItemPositionMapValue]]?
+
+            public var subItems: [IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agreementPriceCodes != nil {
+                    map["agreement_price_codes"] = self.agreementPriceCodes!
+                }
+                if self.flightRuleInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.flightRuleInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["flight_rule_info_list"] = tmp
+                }
+                if self.itemId != nil {
+                    map["item_id"] = self.itemId!
+                }
+                if self.shoppingItemMap != nil {
+                    var tmp : [String: Any] = [:]
+                    for (k, v) in self.shoppingItemMap! {
+                        tmp[k] = v.toMap()
+                    }
+                    map["shopping_item_map"] = tmp
+                }
+                if self.subItemPositionMap != nil {
+                    var tmp : [String: Any] = [:]
+                    for (k, v) in self.subItemPositionMap! {
+                        var l1 : [Any] = []
+                        for k1 in v {
+                            l1.append(k1.toMap())
+                        }
+                        tmp[k] = l1
+                    }
+                    map["sub_item_position_map"] = tmp
+                }
+                if self.subItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.subItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["sub_items"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("agreement_price_codes") && dict["agreement_price_codes"] != nil {
+                    self.agreementPriceCodes = dict["agreement_price_codes"] as! [String]
+                }
+                if dict.keys.contains("flight_rule_info_list") && dict["flight_rule_info_list"] != nil {
+                    var tmp : [IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList] = []
+                    for v in dict["flight_rule_info_list"] as! [Any] {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem.FlightRuleInfoList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.flightRuleInfoList = tmp
+                }
+                if dict.keys.contains("item_id") && dict["item_id"] != nil {
+                    self.itemId = dict["item_id"] as! String
+                }
+                if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
+                    var tmp : [String: ModuleGroupItemShoppingItemMapValue] = [:]
+                    for (k, v) in dict["shopping_item_map"] as! [String: Any] {
+                        if v != nil {
+                            var model = ModuleGroupItemShoppingItemMapValue()
+                            model.fromMap(v as! [String: Any])
+                            tmp[k] = model
+                        }
+                    }
+                    self.shoppingItemMap = tmp
+                }
+                if dict.keys.contains("sub_item_position_map") && dict["sub_item_position_map"] != nil {
+                    var tmp : [String: [ModuleGroupItemSubItemPositionMapValue]] = [:]
+                    for (k, v) in dict["sub_item_position_map"] as! [String: Any] {
+                        var l1 : [ModuleGroupItemSubItemPositionMapValue] = []
+                        for v1 in v as! [Any] {
+                            var model = ModuleGroupItemSubItemPositionMapValue()
+                            if v1 != nil {
+                                model.fromMap(v1 as! [String: Any])
+                            }
+                            l1.append(model)
+                        }
+                        tmp[k] = l1
+                    }
+                    self.subItemPositionMap = tmp
+                }
+                if dict.keys.contains("sub_items") && dict["sub_items"] != nil {
+                    var tmp : [IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems] = []
+                    for v in dict["sub_items"] as! [Any] {
+                        var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem.SubItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.subItems = tmp
+                }
+            }
+        }
+        public class ShutterDocs : Tea.TeaModel {
+            public var contents: [String]?
+
+            public var mainTitle: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.contents != nil {
+                    map["contents"] = self.contents!
+                }
+                if self.mainTitle != nil {
+                    map["main_title"] = self.mainTitle!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("contents") && dict["contents"] != nil {
+                    self.contents = dict["contents"] as! [String]
+                }
+                if dict.keys.contains("main_title") && dict["main_title"] != nil {
+                    self.mainTitle = dict["main_title"] as! String
+                }
+            }
+        }
+        public var flightJourneyInfos: [IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos]?
+
+        public var groupItem: IntlFlightOtaItemDetailResponseBody.Module.GroupItem?
+
+        public var shutterDocs: [IntlFlightOtaItemDetailResponseBody.Module.ShutterDocs]?
+
+        public var tripType: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.groupItem?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.flightJourneyInfos != nil {
+                var tmp : [Any] = []
+                for k in self.flightJourneyInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["flight_journey_infos"] = tmp
+            }
+            if self.groupItem != nil {
+                map["group_item"] = self.groupItem?.toMap()
+            }
+            if self.shutterDocs != nil {
+                var tmp : [Any] = []
+                for k in self.shutterDocs! {
+                    tmp.append(k.toMap())
+                }
+                map["shutter_docs"] = tmp
+            }
+            if self.tripType != nil {
+                map["trip_type"] = self.tripType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("flight_journey_infos") && dict["flight_journey_infos"] != nil {
+                var tmp : [IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos] = []
+                for v in dict["flight_journey_infos"] as! [Any] {
+                    var model = IntlFlightOtaItemDetailResponseBody.Module.FlightJourneyInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.flightJourneyInfos = tmp
+            }
+            if dict.keys.contains("group_item") && dict["group_item"] != nil {
+                var model = IntlFlightOtaItemDetailResponseBody.Module.GroupItem()
+                model.fromMap(dict["group_item"] as! [String: Any])
+                self.groupItem = model
+            }
+            if dict.keys.contains("shutter_docs") && dict["shutter_docs"] != nil {
+                var tmp : [IntlFlightOtaItemDetailResponseBody.Module.ShutterDocs] = []
+                for v in dict["shutter_docs"] as! [Any] {
+                    var model = IntlFlightOtaItemDetailResponseBody.Module.ShutterDocs()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.shutterDocs = tmp
+            }
+            if dict.keys.contains("trip_type") && dict["trip_type"] != nil {
+                self.tripType = dict["trip_type"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: IntlFlightOtaItemDetailResponseBody.Module?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") && dict["module"] != nil {
+            var model = IntlFlightOtaItemDetailResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") && dict["traceId"] != nil {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class IntlFlightOtaItemDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: IntlFlightOtaItemDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = IntlFlightOtaItemDetailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class IntlFlightOtaSearchHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripCorpToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripCorpToken != nil {
+            map["x-acs-btrip-corp-token"] = self.xAcsBtripCorpToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-corp-token") && dict["x-acs-btrip-corp-token"] != nil {
+            self.xAcsBtripCorpToken = dict["x-acs-btrip-corp-token"] as! String
+        }
+    }
+}
+
+public class IntlFlightOtaSearchRequest : Tea.TeaModel {
+    public class SearchJourneys : Tea.TeaModel {
+        public class SelectedFlights : Tea.TeaModel {
+            public var arrAirportCode: String?
+
+            public var arrCityCode: String?
+
+            public var cabinType: Int32?
+
+            public var depAirportCode: String?
+
+            public var depCityCode: String?
+
+            public var flightTime: String?
+
+            public var marketFlightNo: String?
+
+            public var operateFlightNo: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.arrAirportCode != nil {
+                    map["arr_airport_code"] = self.arrAirportCode!
+                }
+                if self.arrCityCode != nil {
+                    map["arr_city_code"] = self.arrCityCode!
+                }
+                if self.cabinType != nil {
+                    map["cabin_type"] = self.cabinType!
+                }
+                if self.depAirportCode != nil {
+                    map["dep_airport_code"] = self.depAirportCode!
+                }
+                if self.depCityCode != nil {
+                    map["dep_city_code"] = self.depCityCode!
+                }
+                if self.flightTime != nil {
+                    map["flight_time"] = self.flightTime!
+                }
+                if self.marketFlightNo != nil {
+                    map["market_flight_no"] = self.marketFlightNo!
+                }
+                if self.operateFlightNo != nil {
+                    map["operate_flight_no"] = self.operateFlightNo!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("arr_airport_code") && dict["arr_airport_code"] != nil {
+                    self.arrAirportCode = dict["arr_airport_code"] as! String
+                }
+                if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                    self.arrCityCode = dict["arr_city_code"] as! String
+                }
+                if dict.keys.contains("cabin_type") && dict["cabin_type"] != nil {
+                    self.cabinType = dict["cabin_type"] as! Int32
+                }
+                if dict.keys.contains("dep_airport_code") && dict["dep_airport_code"] != nil {
+                    self.depAirportCode = dict["dep_airport_code"] as! String
+                }
+                if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                    self.depCityCode = dict["dep_city_code"] as! String
+                }
+                if dict.keys.contains("flight_time") && dict["flight_time"] != nil {
+                    self.flightTime = dict["flight_time"] as! String
+                }
+                if dict.keys.contains("market_flight_no") && dict["market_flight_no"] != nil {
+                    self.marketFlightNo = dict["market_flight_no"] as! String
+                }
+                if dict.keys.contains("operate_flight_no") && dict["operate_flight_no"] != nil {
+                    self.operateFlightNo = dict["operate_flight_no"] as! String
+                }
+            }
+        }
+        public var arrCityCode: String?
+
+        public var depCityCode: String?
+
+        public var depDate: String?
+
+        public var selectedFlights: [IntlFlightOtaSearchRequest.SearchJourneys.SelectedFlights]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arrCityCode != nil {
+                map["arr_city_code"] = self.arrCityCode!
+            }
+            if self.depCityCode != nil {
+                map["dep_city_code"] = self.depCityCode!
+            }
+            if self.depDate != nil {
+                map["dep_date"] = self.depDate!
+            }
+            if self.selectedFlights != nil {
+                var tmp : [Any] = []
+                for k in self.selectedFlights! {
+                    tmp.append(k.toMap())
+                }
+                map["selected_flights"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                self.arrCityCode = dict["arr_city_code"] as! String
+            }
+            if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                self.depCityCode = dict["dep_city_code"] as! String
+            }
+            if dict.keys.contains("dep_date") && dict["dep_date"] != nil {
+                self.depDate = dict["dep_date"] as! String
+            }
+            if dict.keys.contains("selected_flights") && dict["selected_flights"] != nil {
+                var tmp : [IntlFlightOtaSearchRequest.SearchJourneys.SelectedFlights] = []
+                for v in dict["selected_flights"] as! [Any] {
+                    var model = IntlFlightOtaSearchRequest.SearchJourneys.SelectedFlights()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.selectedFlights = tmp
+            }
+        }
+    }
+    public class SearchPassengerList : Tea.TeaModel {
+        public var certNo: String?
+
+        public var certType: Int32?
+
+        public var fullName: String?
+
+        public var type: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.certNo != nil {
+                map["cert_no"] = self.certNo!
+            }
+            if self.certType != nil {
+                map["cert_type"] = self.certType!
+            }
+            if self.fullName != nil {
+                map["full_name"] = self.fullName!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cert_no") && dict["cert_no"] != nil {
+                self.certNo = dict["cert_no"] as! String
+            }
+            if dict.keys.contains("cert_type") && dict["cert_type"] != nil {
+                self.certType = dict["cert_type"] as! Int32
+            }
+            if dict.keys.contains("full_name") && dict["full_name"] != nil {
+                self.fullName = dict["full_name"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! Int32
+            }
+        }
+    }
+    public var btripUserId: String?
+
+    public var buyerName: String?
+
+    public var cabinType: Int32?
+
+    public var directOnly: Bool?
+
+    public var isvName: String?
+
+    public var needShareFlight: Bool?
+
+    public var searchJourneys: [IntlFlightOtaSearchRequest.SearchJourneys]?
+
+    public var searchPassengerList: [IntlFlightOtaSearchRequest.SearchPassengerList]?
+
+    public var supplierCode: String?
+
+    public var tripType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.btripUserId != nil {
+            map["btrip_user_id"] = self.btripUserId!
+        }
+        if self.buyerName != nil {
+            map["buyer_name"] = self.buyerName!
+        }
+        if self.cabinType != nil {
+            map["cabin_type"] = self.cabinType!
+        }
+        if self.directOnly != nil {
+            map["direct_only"] = self.directOnly!
+        }
+        if self.isvName != nil {
+            map["isv_name"] = self.isvName!
+        }
+        if self.needShareFlight != nil {
+            map["need_share_flight"] = self.needShareFlight!
+        }
+        if self.searchJourneys != nil {
+            var tmp : [Any] = []
+            for k in self.searchJourneys! {
+                tmp.append(k.toMap())
+            }
+            map["search_journeys"] = tmp
+        }
+        if self.searchPassengerList != nil {
+            var tmp : [Any] = []
+            for k in self.searchPassengerList! {
+                tmp.append(k.toMap())
+            }
+            map["search_passenger_list"] = tmp
+        }
+        if self.supplierCode != nil {
+            map["supplier_code"] = self.supplierCode!
+        }
+        if self.tripType != nil {
+            map["trip_type"] = self.tripType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_user_id") && dict["btrip_user_id"] != nil {
+            self.btripUserId = dict["btrip_user_id"] as! String
+        }
+        if dict.keys.contains("buyer_name") && dict["buyer_name"] != nil {
+            self.buyerName = dict["buyer_name"] as! String
+        }
+        if dict.keys.contains("cabin_type") && dict["cabin_type"] != nil {
+            self.cabinType = dict["cabin_type"] as! Int32
+        }
+        if dict.keys.contains("direct_only") && dict["direct_only"] != nil {
+            self.directOnly = dict["direct_only"] as! Bool
+        }
+        if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
+            self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
+            self.needShareFlight = dict["need_share_flight"] as! Bool
+        }
+        if dict.keys.contains("search_journeys") && dict["search_journeys"] != nil {
+            var tmp : [IntlFlightOtaSearchRequest.SearchJourneys] = []
+            for v in dict["search_journeys"] as! [Any] {
+                var model = IntlFlightOtaSearchRequest.SearchJourneys()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.searchJourneys = tmp
+        }
+        if dict.keys.contains("search_passenger_list") && dict["search_passenger_list"] != nil {
+            var tmp : [IntlFlightOtaSearchRequest.SearchPassengerList] = []
+            for v in dict["search_passenger_list"] as! [Any] {
+                var model = IntlFlightOtaSearchRequest.SearchPassengerList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.searchPassengerList = tmp
+        }
+        if dict.keys.contains("supplier_code") && dict["supplier_code"] != nil {
+            self.supplierCode = dict["supplier_code"] as! String
+        }
+        if dict.keys.contains("trip_type") && dict["trip_type"] != nil {
+            self.tripType = dict["trip_type"] as! Int32
+        }
+    }
+}
+
+public class IntlFlightOtaSearchShrinkRequest : Tea.TeaModel {
+    public var btripUserId: String?
+
+    public var buyerName: String?
+
+    public var cabinType: Int32?
+
+    public var directOnly: Bool?
+
+    public var isvName: String?
+
+    public var needShareFlight: Bool?
+
+    public var searchJourneysShrink: String?
+
+    public var searchPassengerListShrink: String?
+
+    public var supplierCode: String?
+
+    public var tripType: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.btripUserId != nil {
+            map["btrip_user_id"] = self.btripUserId!
+        }
+        if self.buyerName != nil {
+            map["buyer_name"] = self.buyerName!
+        }
+        if self.cabinType != nil {
+            map["cabin_type"] = self.cabinType!
+        }
+        if self.directOnly != nil {
+            map["direct_only"] = self.directOnly!
+        }
+        if self.isvName != nil {
+            map["isv_name"] = self.isvName!
+        }
+        if self.needShareFlight != nil {
+            map["need_share_flight"] = self.needShareFlight!
+        }
+        if self.searchJourneysShrink != nil {
+            map["search_journeys"] = self.searchJourneysShrink!
+        }
+        if self.searchPassengerListShrink != nil {
+            map["search_passenger_list"] = self.searchPassengerListShrink!
+        }
+        if self.supplierCode != nil {
+            map["supplier_code"] = self.supplierCode!
+        }
+        if self.tripType != nil {
+            map["trip_type"] = self.tripType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("btrip_user_id") && dict["btrip_user_id"] != nil {
+            self.btripUserId = dict["btrip_user_id"] as! String
+        }
+        if dict.keys.contains("buyer_name") && dict["buyer_name"] != nil {
+            self.buyerName = dict["buyer_name"] as! String
+        }
+        if dict.keys.contains("cabin_type") && dict["cabin_type"] != nil {
+            self.cabinType = dict["cabin_type"] as! Int32
+        }
+        if dict.keys.contains("direct_only") && dict["direct_only"] != nil {
+            self.directOnly = dict["direct_only"] as! Bool
+        }
+        if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
+            self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
+            self.needShareFlight = dict["need_share_flight"] as! Bool
+        }
+        if dict.keys.contains("search_journeys") && dict["search_journeys"] != nil {
+            self.searchJourneysShrink = dict["search_journeys"] as! String
+        }
+        if dict.keys.contains("search_passenger_list") && dict["search_passenger_list"] != nil {
+            self.searchPassengerListShrink = dict["search_passenger_list"] as! String
+        }
+        if dict.keys.contains("supplier_code") && dict["supplier_code"] != nil {
+            self.supplierCode = dict["supplier_code"] as! String
+        }
+        if dict.keys.contains("trip_type") && dict["trip_type"] != nil {
+            self.tripType = dict["trip_type"] as! Int32
+        }
+    }
+}
+
+public class IntlFlightOtaSearchResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public class FlightJourneyInfos : Tea.TeaModel {
+            public class FlightSegmentInfos : Tea.TeaModel {
+                public class AirlineInfo : Tea.TeaModel {
+                    public var airlineChineseName: String?
+
+                    public var airlineChineseShortName: String?
+
+                    public var airlineCode: String?
+
+                    public var airlineIcon: String?
+
+                    public var cheapFlight: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airlineChineseName != nil {
+                            map["airline_chinese_name"] = self.airlineChineseName!
+                        }
+                        if self.airlineChineseShortName != nil {
+                            map["airline_chinese_short_name"] = self.airlineChineseShortName!
+                        }
+                        if self.airlineCode != nil {
+                            map["airline_code"] = self.airlineCode!
+                        }
+                        if self.airlineIcon != nil {
+                            map["airline_icon"] = self.airlineIcon!
+                        }
+                        if self.cheapFlight != nil {
+                            map["cheap_flight"] = self.cheapFlight!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airline_chinese_name") && dict["airline_chinese_name"] != nil {
+                            self.airlineChineseName = dict["airline_chinese_name"] as! String
+                        }
+                        if dict.keys.contains("airline_chinese_short_name") && dict["airline_chinese_short_name"] != nil {
+                            self.airlineChineseShortName = dict["airline_chinese_short_name"] as! String
+                        }
+                        if dict.keys.contains("airline_code") && dict["airline_code"] != nil {
+                            self.airlineCode = dict["airline_code"] as! String
+                        }
+                        if dict.keys.contains("airline_icon") && dict["airline_icon"] != nil {
+                            self.airlineIcon = dict["airline_icon"] as! String
+                        }
+                        if dict.keys.contains("cheap_flight") && dict["cheap_flight"] != nil {
+                            self.cheapFlight = dict["cheap_flight"] as! Bool
+                        }
+                    }
+                }
+                public class ArrAirportInfo : Tea.TeaModel {
+                    public var airportCode: String?
+
+                    public var airportName: String?
+
+                    public var airportShortName: String?
+
+                    public var terminal: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airportCode != nil {
+                            map["airport_code"] = self.airportCode!
+                        }
+                        if self.airportName != nil {
+                            map["airport_name"] = self.airportName!
+                        }
+                        if self.airportShortName != nil {
+                            map["airport_short_name"] = self.airportShortName!
+                        }
+                        if self.terminal != nil {
+                            map["terminal"] = self.terminal!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airport_code") && dict["airport_code"] != nil {
+                            self.airportCode = dict["airport_code"] as! String
+                        }
+                        if dict.keys.contains("airport_name") && dict["airport_name"] != nil {
+                            self.airportName = dict["airport_name"] as! String
+                        }
+                        if dict.keys.contains("airport_short_name") && dict["airport_short_name"] != nil {
+                            self.airportShortName = dict["airport_short_name"] as! String
+                        }
+                        if dict.keys.contains("terminal") && dict["terminal"] != nil {
+                            self.terminal = dict["terminal"] as! String
+                        }
+                    }
+                }
+                public class DepAirportInfo : Tea.TeaModel {
+                    public var airportCode: String?
+
+                    public var airportName: String?
+
+                    public var airportShortName: String?
+
+                    public var terminal: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.airportCode != nil {
+                            map["airport_code"] = self.airportCode!
+                        }
+                        if self.airportName != nil {
+                            map["airport_name"] = self.airportName!
+                        }
+                        if self.airportShortName != nil {
+                            map["airport_short_name"] = self.airportShortName!
+                        }
+                        if self.terminal != nil {
+                            map["terminal"] = self.terminal!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("airport_code") && dict["airport_code"] != nil {
+                            self.airportCode = dict["airport_code"] as! String
+                        }
+                        if dict.keys.contains("airport_name") && dict["airport_name"] != nil {
+                            self.airportName = dict["airport_name"] as! String
+                        }
+                        if dict.keys.contains("airport_short_name") && dict["airport_short_name"] != nil {
+                            self.airportShortName = dict["airport_short_name"] as! String
+                        }
+                        if dict.keys.contains("terminal") && dict["terminal"] != nil {
+                            self.terminal = dict["terminal"] as! String
+                        }
+                    }
+                }
+                public class FlightShareInfo : Tea.TeaModel {
+                    public class OperatingAirlineInfo : Tea.TeaModel {
+                        public var airlineChineseName: String?
+
+                        public var airlineChineseShortName: String?
+
+                        public var airlineCode: String?
+
+                        public var airlineIcon: String?
+
+                        public var cheapFlight: Bool?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.airlineChineseName != nil {
+                                map["airline_chinese_name"] = self.airlineChineseName!
+                            }
+                            if self.airlineChineseShortName != nil {
+                                map["airline_chinese_short_name"] = self.airlineChineseShortName!
+                            }
+                            if self.airlineCode != nil {
+                                map["airline_code"] = self.airlineCode!
+                            }
+                            if self.airlineIcon != nil {
+                                map["airline_icon"] = self.airlineIcon!
+                            }
+                            if self.cheapFlight != nil {
+                                map["cheap_flight"] = self.cheapFlight!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("airline_chinese_name") && dict["airline_chinese_name"] != nil {
+                                self.airlineChineseName = dict["airline_chinese_name"] as! String
+                            }
+                            if dict.keys.contains("airline_chinese_short_name") && dict["airline_chinese_short_name"] != nil {
+                                self.airlineChineseShortName = dict["airline_chinese_short_name"] as! String
+                            }
+                            if dict.keys.contains("airline_code") && dict["airline_code"] != nil {
+                                self.airlineCode = dict["airline_code"] as! String
+                            }
+                            if dict.keys.contains("airline_icon") && dict["airline_icon"] != nil {
+                                self.airlineIcon = dict["airline_icon"] as! String
+                            }
+                            if dict.keys.contains("cheap_flight") && dict["cheap_flight"] != nil {
+                                self.cheapFlight = dict["cheap_flight"] as! Bool
+                            }
+                        }
+                    }
+                    public var operatingAirlineInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo.OperatingAirlineInfo?
+
+                    public var operatingFlightNo: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.operatingAirlineInfo?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.operatingAirlineInfo != nil {
+                            map["operating_airline_info"] = self.operatingAirlineInfo?.toMap()
+                        }
+                        if self.operatingFlightNo != nil {
+                            map["operating_flight_no"] = self.operatingFlightNo!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("operating_airline_info") && dict["operating_airline_info"] != nil {
+                            var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo.OperatingAirlineInfo()
+                            model.fromMap(dict["operating_airline_info"] as! [String: Any])
+                            self.operatingAirlineInfo = model
+                        }
+                        if dict.keys.contains("operating_flight_no") && dict["operating_flight_no"] != nil {
+                            self.operatingFlightNo = dict["operating_flight_no"] as! String
+                        }
+                    }
+                }
+                public class FlightStopInfo : Tea.TeaModel {
+                    public var stopAirport: String?
+
+                    public var stopAirportName: String?
+
+                    public var stopArrTerm: String?
+
+                    public var stopArrTime: String?
+
+                    public var stopCityCode: String?
+
+                    public var stopCityName: String?
+
+                    public var stopCityNames: [String]?
+
+                    public var stopDepTerm: String?
+
+                    public var stopDepTime: String?
+
+                    public var stopTime: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.stopAirport != nil {
+                            map["stop_airport"] = self.stopAirport!
+                        }
+                        if self.stopAirportName != nil {
+                            map["stop_airport_name"] = self.stopAirportName!
+                        }
+                        if self.stopArrTerm != nil {
+                            map["stop_arr_term"] = self.stopArrTerm!
+                        }
+                        if self.stopArrTime != nil {
+                            map["stop_arr_time"] = self.stopArrTime!
+                        }
+                        if self.stopCityCode != nil {
+                            map["stop_city_code"] = self.stopCityCode!
+                        }
+                        if self.stopCityName != nil {
+                            map["stop_city_name"] = self.stopCityName!
+                        }
+                        if self.stopCityNames != nil {
+                            map["stop_city_names"] = self.stopCityNames!
+                        }
+                        if self.stopDepTerm != nil {
+                            map["stop_dep_term"] = self.stopDepTerm!
+                        }
+                        if self.stopDepTime != nil {
+                            map["stop_dep_time"] = self.stopDepTime!
+                        }
+                        if self.stopTime != nil {
+                            map["stop_time"] = self.stopTime!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("stop_airport") && dict["stop_airport"] != nil {
+                            self.stopAirport = dict["stop_airport"] as! String
+                        }
+                        if dict.keys.contains("stop_airport_name") && dict["stop_airport_name"] != nil {
+                            self.stopAirportName = dict["stop_airport_name"] as! String
+                        }
+                        if dict.keys.contains("stop_arr_term") && dict["stop_arr_term"] != nil {
+                            self.stopArrTerm = dict["stop_arr_term"] as! String
+                        }
+                        if dict.keys.contains("stop_arr_time") && dict["stop_arr_time"] != nil {
+                            self.stopArrTime = dict["stop_arr_time"] as! String
+                        }
+                        if dict.keys.contains("stop_city_code") && dict["stop_city_code"] != nil {
+                            self.stopCityCode = dict["stop_city_code"] as! String
+                        }
+                        if dict.keys.contains("stop_city_name") && dict["stop_city_name"] != nil {
+                            self.stopCityName = dict["stop_city_name"] as! String
+                        }
+                        if dict.keys.contains("stop_city_names") && dict["stop_city_names"] != nil {
+                            self.stopCityNames = dict["stop_city_names"] as! [String]
+                        }
+                        if dict.keys.contains("stop_dep_term") && dict["stop_dep_term"] != nil {
+                            self.stopDepTerm = dict["stop_dep_term"] as! String
+                        }
+                        if dict.keys.contains("stop_dep_time") && dict["stop_dep_time"] != nil {
+                            self.stopDepTime = dict["stop_dep_time"] as! String
+                        }
+                        if dict.keys.contains("stop_time") && dict["stop_time"] != nil {
+                            self.stopTime = dict["stop_time"] as! String
+                        }
+                    }
+                }
+                public class LuggageDirectInfo : Tea.TeaModel {
+                    public var depCityLuggageDirect: Int32?
+
+                    public var stopCityLuggageDirect: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.depCityLuggageDirect != nil {
+                            map["dep_city_luggage_direct"] = self.depCityLuggageDirect!
+                        }
+                        if self.stopCityLuggageDirect != nil {
+                            map["stop_city_luggage_direct"] = self.stopCityLuggageDirect!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("dep_city_luggage_direct") && dict["dep_city_luggage_direct"] != nil {
+                            self.depCityLuggageDirect = dict["dep_city_luggage_direct"] as! Int32
+                        }
+                        if dict.keys.contains("stop_city_luggage_direct") && dict["stop_city_luggage_direct"] != nil {
+                            self.stopCityLuggageDirect = dict["stop_city_luggage_direct"] as! Int32
+                        }
+                    }
+                }
+                public class SegmentVisaRemark : Tea.TeaModel {
+                    public var depCityVisaRemark: String?
+
+                    public var depCityVisaType: Int32?
+
+                    public var stopCityVisaRemarks: [String]?
+
+                    public var stopCityVisaTypes: [Int32]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.depCityVisaRemark != nil {
+                            map["dep_city_visa_remark"] = self.depCityVisaRemark!
+                        }
+                        if self.depCityVisaType != nil {
+                            map["dep_city_visa_type"] = self.depCityVisaType!
+                        }
+                        if self.stopCityVisaRemarks != nil {
+                            map["stop_city_visa_remarks"] = self.stopCityVisaRemarks!
+                        }
+                        if self.stopCityVisaTypes != nil {
+                            map["stop_city_visa_types"] = self.stopCityVisaTypes!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("dep_city_visa_remark") && dict["dep_city_visa_remark"] != nil {
+                            self.depCityVisaRemark = dict["dep_city_visa_remark"] as! String
+                        }
+                        if dict.keys.contains("dep_city_visa_type") && dict["dep_city_visa_type"] != nil {
+                            self.depCityVisaType = dict["dep_city_visa_type"] as! Int32
+                        }
+                        if dict.keys.contains("stop_city_visa_remarks") && dict["stop_city_visa_remarks"] != nil {
+                            self.stopCityVisaRemarks = dict["stop_city_visa_remarks"] as! [String]
+                        }
+                        if dict.keys.contains("stop_city_visa_types") && dict["stop_city_visa_types"] != nil {
+                            self.stopCityVisaTypes = dict["stop_city_visa_types"] as! [Int32]
+                        }
+                    }
+                }
+                public var airlineInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.AirlineInfo?
+
+                public var arrAirportInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.ArrAirportInfo?
+
+                public var arrCityCode: String?
+
+                public var arrCityName: String?
+
+                public var arrTime: String?
+
+                public var baggageDesc: String?
+
+                public var depAirportInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.DepAirportInfo?
+
+                public var depCityCode: String?
+
+                public var depCityName: String?
+
+                public var depTime: String?
+
+                public var duration: Int32?
+
+                public var flightNo: String?
+
+                public var flightShareInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo?
+
+                public var flightSize: String?
+
+                public var flightStopInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightStopInfo?
+
+                public var flightType: String?
+
+                public var luggageDirectInfo: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.LuggageDirectInfo?
+
+                public var manufacturer: String?
+
+                public var mealDesc: String?
+
+                public var miles: Int32?
+
+                public var onTimeRate: String?
+
+                public var oneMore: Int32?
+
+                public var oneMoreShow: String?
+
+                public var segmentIndex: Int32?
+
+                public var segmentKey: String?
+
+                public var segmentVisaRemark: IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.SegmentVisaRemark?
+
+                public var share: Bool?
+
+                public var shortFlightSize: String?
+
+                public var stop: Bool?
+
+                public var totalTime: String?
+
+                public var transferTime: String?
+
+                public var transferTimeNumber: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.airlineInfo?.validate()
+                    try self.arrAirportInfo?.validate()
+                    try self.depAirportInfo?.validate()
+                    try self.flightShareInfo?.validate()
+                    try self.flightStopInfo?.validate()
+                    try self.luggageDirectInfo?.validate()
+                    try self.segmentVisaRemark?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.airlineInfo != nil {
+                        map["airline_info"] = self.airlineInfo?.toMap()
+                    }
+                    if self.arrAirportInfo != nil {
+                        map["arr_airport_info"] = self.arrAirportInfo?.toMap()
+                    }
+                    if self.arrCityCode != nil {
+                        map["arr_city_code"] = self.arrCityCode!
+                    }
+                    if self.arrCityName != nil {
+                        map["arr_city_name"] = self.arrCityName!
+                    }
+                    if self.arrTime != nil {
+                        map["arr_time"] = self.arrTime!
+                    }
+                    if self.baggageDesc != nil {
+                        map["baggage_desc"] = self.baggageDesc!
+                    }
+                    if self.depAirportInfo != nil {
+                        map["dep_airport_info"] = self.depAirportInfo?.toMap()
+                    }
+                    if self.depCityCode != nil {
+                        map["dep_city_code"] = self.depCityCode!
+                    }
+                    if self.depCityName != nil {
+                        map["dep_city_name"] = self.depCityName!
+                    }
+                    if self.depTime != nil {
+                        map["dep_time"] = self.depTime!
+                    }
+                    if self.duration != nil {
+                        map["duration"] = self.duration!
+                    }
+                    if self.flightNo != nil {
+                        map["flight_no"] = self.flightNo!
+                    }
+                    if self.flightShareInfo != nil {
+                        map["flight_share_info"] = self.flightShareInfo?.toMap()
+                    }
+                    if self.flightSize != nil {
+                        map["flight_size"] = self.flightSize!
+                    }
+                    if self.flightStopInfo != nil {
+                        map["flight_stop_info"] = self.flightStopInfo?.toMap()
+                    }
+                    if self.flightType != nil {
+                        map["flight_type"] = self.flightType!
+                    }
+                    if self.luggageDirectInfo != nil {
+                        map["luggage_direct_info"] = self.luggageDirectInfo?.toMap()
+                    }
+                    if self.manufacturer != nil {
+                        map["manufacturer"] = self.manufacturer!
+                    }
+                    if self.mealDesc != nil {
+                        map["meal_desc"] = self.mealDesc!
+                    }
+                    if self.miles != nil {
+                        map["miles"] = self.miles!
+                    }
+                    if self.onTimeRate != nil {
+                        map["on_time_rate"] = self.onTimeRate!
+                    }
+                    if self.oneMore != nil {
+                        map["one_more"] = self.oneMore!
+                    }
+                    if self.oneMoreShow != nil {
+                        map["one_more_show"] = self.oneMoreShow!
+                    }
+                    if self.segmentIndex != nil {
+                        map["segment_index"] = self.segmentIndex!
+                    }
+                    if self.segmentKey != nil {
+                        map["segment_key"] = self.segmentKey!
+                    }
+                    if self.segmentVisaRemark != nil {
+                        map["segment_visa_remark"] = self.segmentVisaRemark?.toMap()
+                    }
+                    if self.share != nil {
+                        map["share"] = self.share!
+                    }
+                    if self.shortFlightSize != nil {
+                        map["short_flight_size"] = self.shortFlightSize!
+                    }
+                    if self.stop != nil {
+                        map["stop"] = self.stop!
+                    }
+                    if self.totalTime != nil {
+                        map["total_time"] = self.totalTime!
+                    }
+                    if self.transferTime != nil {
+                        map["transfer_time"] = self.transferTime!
+                    }
+                    if self.transferTimeNumber != nil {
+                        map["transfer_time_number"] = self.transferTimeNumber!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("airline_info") && dict["airline_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.AirlineInfo()
+                        model.fromMap(dict["airline_info"] as! [String: Any])
+                        self.airlineInfo = model
+                    }
+                    if dict.keys.contains("arr_airport_info") && dict["arr_airport_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.ArrAirportInfo()
+                        model.fromMap(dict["arr_airport_info"] as! [String: Any])
+                        self.arrAirportInfo = model
+                    }
+                    if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                        self.arrCityCode = dict["arr_city_code"] as! String
+                    }
+                    if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                        self.arrCityName = dict["arr_city_name"] as! String
+                    }
+                    if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
+                        self.arrTime = dict["arr_time"] as! String
+                    }
+                    if dict.keys.contains("baggage_desc") && dict["baggage_desc"] != nil {
+                        self.baggageDesc = dict["baggage_desc"] as! String
+                    }
+                    if dict.keys.contains("dep_airport_info") && dict["dep_airport_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.DepAirportInfo()
+                        model.fromMap(dict["dep_airport_info"] as! [String: Any])
+                        self.depAirportInfo = model
+                    }
+                    if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                        self.depCityCode = dict["dep_city_code"] as! String
+                    }
+                    if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                        self.depCityName = dict["dep_city_name"] as! String
+                    }
+                    if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
+                        self.depTime = dict["dep_time"] as! String
+                    }
+                    if dict.keys.contains("duration") && dict["duration"] != nil {
+                        self.duration = dict["duration"] as! Int32
+                    }
+                    if dict.keys.contains("flight_no") && dict["flight_no"] != nil {
+                        self.flightNo = dict["flight_no"] as! String
+                    }
+                    if dict.keys.contains("flight_share_info") && dict["flight_share_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightShareInfo()
+                        model.fromMap(dict["flight_share_info"] as! [String: Any])
+                        self.flightShareInfo = model
+                    }
+                    if dict.keys.contains("flight_size") && dict["flight_size"] != nil {
+                        self.flightSize = dict["flight_size"] as! String
+                    }
+                    if dict.keys.contains("flight_stop_info") && dict["flight_stop_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.FlightStopInfo()
+                        model.fromMap(dict["flight_stop_info"] as! [String: Any])
+                        self.flightStopInfo = model
+                    }
+                    if dict.keys.contains("flight_type") && dict["flight_type"] != nil {
+                        self.flightType = dict["flight_type"] as! String
+                    }
+                    if dict.keys.contains("luggage_direct_info") && dict["luggage_direct_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.LuggageDirectInfo()
+                        model.fromMap(dict["luggage_direct_info"] as! [String: Any])
+                        self.luggageDirectInfo = model
+                    }
+                    if dict.keys.contains("manufacturer") && dict["manufacturer"] != nil {
+                        self.manufacturer = dict["manufacturer"] as! String
+                    }
+                    if dict.keys.contains("meal_desc") && dict["meal_desc"] != nil {
+                        self.mealDesc = dict["meal_desc"] as! String
+                    }
+                    if dict.keys.contains("miles") && dict["miles"] != nil {
+                        self.miles = dict["miles"] as! Int32
+                    }
+                    if dict.keys.contains("on_time_rate") && dict["on_time_rate"] != nil {
+                        self.onTimeRate = dict["on_time_rate"] as! String
+                    }
+                    if dict.keys.contains("one_more") && dict["one_more"] != nil {
+                        self.oneMore = dict["one_more"] as! Int32
+                    }
+                    if dict.keys.contains("one_more_show") && dict["one_more_show"] != nil {
+                        self.oneMoreShow = dict["one_more_show"] as! String
+                    }
+                    if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                        self.segmentIndex = dict["segment_index"] as! Int32
+                    }
+                    if dict.keys.contains("segment_key") && dict["segment_key"] != nil {
+                        self.segmentKey = dict["segment_key"] as! String
+                    }
+                    if dict.keys.contains("segment_visa_remark") && dict["segment_visa_remark"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos.SegmentVisaRemark()
+                        model.fromMap(dict["segment_visa_remark"] as! [String: Any])
+                        self.segmentVisaRemark = model
+                    }
+                    if dict.keys.contains("share") && dict["share"] != nil {
+                        self.share = dict["share"] as! Bool
+                    }
+                    if dict.keys.contains("short_flight_size") && dict["short_flight_size"] != nil {
+                        self.shortFlightSize = dict["short_flight_size"] as! String
+                    }
+                    if dict.keys.contains("stop") && dict["stop"] != nil {
+                        self.stop = dict["stop"] as! Bool
+                    }
+                    if dict.keys.contains("total_time") && dict["total_time"] != nil {
+                        self.totalTime = dict["total_time"] as! String
+                    }
+                    if dict.keys.contains("transfer_time") && dict["transfer_time"] != nil {
+                        self.transferTime = dict["transfer_time"] as! String
+                    }
+                    if dict.keys.contains("transfer_time_number") && dict["transfer_time_number"] != nil {
+                        self.transferTimeNumber = dict["transfer_time_number"] as! Int32
+                    }
+                }
+            }
+            public var arrCityCode: String?
+
+            public var arrCityName: String?
+
+            public var arrTime: String?
+
+            public var depCityCode: String?
+
+            public var depCityName: String?
+
+            public var depTime: String?
+
+            public var duration: Int32?
+
+            public var flightSegmentInfos: [IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos]?
+
+            public var journeyIndex: Int32?
+
+            public var transferTime: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.arrCityCode != nil {
+                    map["arr_city_code"] = self.arrCityCode!
+                }
+                if self.arrCityName != nil {
+                    map["arr_city_name"] = self.arrCityName!
+                }
+                if self.arrTime != nil {
+                    map["arr_time"] = self.arrTime!
+                }
+                if self.depCityCode != nil {
+                    map["dep_city_code"] = self.depCityCode!
+                }
+                if self.depCityName != nil {
+                    map["dep_city_name"] = self.depCityName!
+                }
+                if self.depTime != nil {
+                    map["dep_time"] = self.depTime!
+                }
+                if self.duration != nil {
+                    map["duration"] = self.duration!
+                }
+                if self.flightSegmentInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.flightSegmentInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["flight_segment_infos"] = tmp
+                }
+                if self.journeyIndex != nil {
+                    map["journey_index"] = self.journeyIndex!
+                }
+                if self.transferTime != nil {
+                    map["transfer_time"] = self.transferTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("arr_city_code") && dict["arr_city_code"] != nil {
+                    self.arrCityCode = dict["arr_city_code"] as! String
+                }
+                if dict.keys.contains("arr_city_name") && dict["arr_city_name"] != nil {
+                    self.arrCityName = dict["arr_city_name"] as! String
+                }
+                if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
+                    self.arrTime = dict["arr_time"] as! String
+                }
+                if dict.keys.contains("dep_city_code") && dict["dep_city_code"] != nil {
+                    self.depCityCode = dict["dep_city_code"] as! String
+                }
+                if dict.keys.contains("dep_city_name") && dict["dep_city_name"] != nil {
+                    self.depCityName = dict["dep_city_name"] as! String
+                }
+                if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
+                    self.depTime = dict["dep_time"] as! String
+                }
+                if dict.keys.contains("duration") && dict["duration"] != nil {
+                    self.duration = dict["duration"] as! Int32
+                }
+                if dict.keys.contains("flight_segment_infos") && dict["flight_segment_infos"] != nil {
+                    var tmp : [IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos] = []
+                    for v in dict["flight_segment_infos"] as! [Any] {
+                        var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos.FlightSegmentInfos()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.flightSegmentInfos = tmp
+                }
+                if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                    self.journeyIndex = dict["journey_index"] as! Int32
+                }
+                if dict.keys.contains("transfer_time") && dict["transfer_time"] != nil {
+                    self.transferTime = dict["transfer_time"] as! Int32
+                }
+            }
+        }
+        public class ItemList : Tea.TeaModel {
+            public class FlightRuleInfoList : Tea.TeaModel {
+                public class FlightRuleInfo : Tea.TeaModel {
+                    public var baggageDesc: String?
+
+                    public var refundChangeRuleDesc: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.baggageDesc != nil {
+                            map["baggage_desc"] = self.baggageDesc!
+                        }
+                        if self.refundChangeRuleDesc != nil {
+                            map["refund_change_rule_desc"] = self.refundChangeRuleDesc!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("baggage_desc") && dict["baggage_desc"] != nil {
+                            self.baggageDesc = dict["baggage_desc"] as! String
+                        }
+                        if dict.keys.contains("refund_change_rule_desc") && dict["refund_change_rule_desc"] != nil {
+                            self.refundChangeRuleDesc = dict["refund_change_rule_desc"] as! String
+                        }
+                    }
+                }
+                public class SegmentPosition : Tea.TeaModel {
+                    public var journeyIndex: Int32?
+
+                    public var segmentIndex: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.journeyIndex != nil {
+                            map["journey_index"] = self.journeyIndex!
+                        }
+                        if self.segmentIndex != nil {
+                            map["segment_index"] = self.segmentIndex!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("journey_index") && dict["journey_index"] != nil {
+                            self.journeyIndex = dict["journey_index"] as! Int32
+                        }
+                        if dict.keys.contains("segment_index") && dict["segment_index"] != nil {
+                            self.segmentIndex = dict["segment_index"] as! Int32
+                        }
+                    }
+                }
+                public var flightRuleInfo: IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList.FlightRuleInfo?
+
+                public var segmentPosition: IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList.SegmentPosition?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.flightRuleInfo?.validate()
+                    try self.segmentPosition?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.flightRuleInfo != nil {
+                        map["flight_rule_info"] = self.flightRuleInfo?.toMap()
+                    }
+                    if self.segmentPosition != nil {
+                        map["segment_position"] = self.segmentPosition?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("flight_rule_info") && dict["flight_rule_info"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList.FlightRuleInfo()
+                        model.fromMap(dict["flight_rule_info"] as! [String: Any])
+                        self.flightRuleInfo = model
+                    }
+                    if dict.keys.contains("segment_position") && dict["segment_position"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList.SegmentPosition()
+                        model.fromMap(dict["segment_position"] as! [String: Any])
+                        self.segmentPosition = model
+                    }
+                }
+            }
+            public class SubItems : Tea.TeaModel {
+                public class BaggageRule : Tea.TeaModel {
+                    public var baggageDigest: String?
+
+                    public var baggageInfoMap: [String: [ModuleItemListSubItemsBaggageRuleBaggageInfoMapValue]]?
+
+                    public var structuredBaggage: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.baggageDigest != nil {
+                            map["baggage_digest"] = self.baggageDigest!
+                        }
+                        if self.baggageInfoMap != nil {
+                            var tmp : [String: Any] = [:]
+                            for (k, v) in self.baggageInfoMap! {
+                                var l1 : [Any] = []
+                                for k1 in v {
+                                    l1.append(k1.toMap())
+                                }
+                                tmp[k] = l1
+                            }
+                            map["baggage_info_map"] = tmp
+                        }
+                        if self.structuredBaggage != nil {
+                            map["structured_baggage"] = self.structuredBaggage!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("baggage_digest") && dict["baggage_digest"] != nil {
+                            self.baggageDigest = dict["baggage_digest"] as! String
+                        }
+                        if dict.keys.contains("baggage_info_map") && dict["baggage_info_map"] != nil {
+                            var tmp : [String: [ModuleItemListSubItemsBaggageRuleBaggageInfoMapValue]] = [:]
+                            for (k, v) in dict["baggage_info_map"] as! [String: Any] {
+                                var l1 : [ModuleItemListSubItemsBaggageRuleBaggageInfoMapValue] = []
+                                for v1 in v as! [Any] {
+                                    var model = ModuleItemListSubItemsBaggageRuleBaggageInfoMapValue()
+                                    if v1 != nil {
+                                        model.fromMap(v1 as! [String: Any])
+                                    }
+                                    l1.append(model)
+                                }
+                                tmp[k] = l1
+                            }
+                            self.baggageInfoMap = tmp
+                        }
+                        if dict.keys.contains("structured_baggage") && dict["structured_baggage"] != nil {
+                            self.structuredBaggage = dict["structured_baggage"] as! Bool
+                        }
+                    }
+                }
+                public class RefundChangeRule : Tea.TeaModel {
+                    public var cancelFeeInd: Bool?
+
+                    public var changeFeeInd: Bool?
+
+                    public var offerPenaltyInfoMap: [String: [ModuleItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue]]?
+
+                    public var refundChangeDigest: String?
+
+                    public var structuredRefund: Bool?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.cancelFeeInd != nil {
+                            map["cancel_fee_ind"] = self.cancelFeeInd!
+                        }
+                        if self.changeFeeInd != nil {
+                            map["change_fee_ind"] = self.changeFeeInd!
+                        }
+                        if self.offerPenaltyInfoMap != nil {
+                            var tmp : [String: Any] = [:]
+                            for (k, v) in self.offerPenaltyInfoMap! {
+                                var l1 : [Any] = []
+                                for k1 in v {
+                                    l1.append(k1.toMap())
+                                }
+                                tmp[k] = l1
+                            }
+                            map["offer_penalty_info_map"] = tmp
+                        }
+                        if self.refundChangeDigest != nil {
+                            map["refund_change_digest"] = self.refundChangeDigest!
+                        }
+                        if self.structuredRefund != nil {
+                            map["structured_refund"] = self.structuredRefund!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("cancel_fee_ind") && dict["cancel_fee_ind"] != nil {
+                            self.cancelFeeInd = dict["cancel_fee_ind"] as! Bool
+                        }
+                        if dict.keys.contains("change_fee_ind") && dict["change_fee_ind"] != nil {
+                            self.changeFeeInd = dict["change_fee_ind"] as! Bool
+                        }
+                        if dict.keys.contains("offer_penalty_info_map") && dict["offer_penalty_info_map"] != nil {
+                            var tmp : [String: [ModuleItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue]] = [:]
+                            for (k, v) in dict["offer_penalty_info_map"] as! [String: Any] {
+                                var l1 : [ModuleItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue] = []
+                                for v1 in v as! [Any] {
+                                    var model = ModuleItemListSubItemsRefundChangeRuleOfferPenaltyInfoMapValue()
+                                    if v1 != nil {
+                                        model.fromMap(v1 as! [String: Any])
+                                    }
+                                    l1.append(model)
+                                }
+                                tmp[k] = l1
+                            }
+                            self.offerPenaltyInfoMap = tmp
+                        }
+                        if dict.keys.contains("refund_change_digest") && dict["refund_change_digest"] != nil {
+                            self.refundChangeDigest = dict["refund_change_digest"] as! String
+                        }
+                        if dict.keys.contains("structured_refund") && dict["structured_refund"] != nil {
+                            self.structuredRefund = dict["structured_refund"] as! Bool
+                        }
+                    }
+                }
+                public var baggageRule: IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems.BaggageRule?
+
+                public var refundChangeRule: IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems.RefundChangeRule?
+
+                public var segmentKeys: [String]?
+
+                public var shoppingItemMap: [String: ModuleItemListSubItemsShoppingItemMapValue]?
+
+                public var uniqKey: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.baggageRule?.validate()
+                    try self.refundChangeRule?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.baggageRule != nil {
+                        map["baggage_rule"] = self.baggageRule?.toMap()
+                    }
+                    if self.refundChangeRule != nil {
+                        map["refund_change_rule"] = self.refundChangeRule?.toMap()
+                    }
+                    if self.segmentKeys != nil {
+                        map["segment_keys"] = self.segmentKeys!
+                    }
+                    if self.shoppingItemMap != nil {
+                        var tmp : [String: Any] = [:]
+                        for (k, v) in self.shoppingItemMap! {
+                            tmp[k] = v.toMap()
+                        }
+                        map["shopping_item_map"] = tmp
+                    }
+                    if self.uniqKey != nil {
+                        map["uniq_key"] = self.uniqKey!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("baggage_rule") && dict["baggage_rule"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems.BaggageRule()
+                        model.fromMap(dict["baggage_rule"] as! [String: Any])
+                        self.baggageRule = model
+                    }
+                    if dict.keys.contains("refund_change_rule") && dict["refund_change_rule"] != nil {
+                        var model = IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems.RefundChangeRule()
+                        model.fromMap(dict["refund_change_rule"] as! [String: Any])
+                        self.refundChangeRule = model
+                    }
+                    if dict.keys.contains("segment_keys") && dict["segment_keys"] != nil {
+                        self.segmentKeys = dict["segment_keys"] as! [String]
+                    }
+                    if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
+                        var tmp : [String: ModuleItemListSubItemsShoppingItemMapValue] = [:]
+                        for (k, v) in dict["shopping_item_map"] as! [String: Any] {
+                            if v != nil {
+                                var model = ModuleItemListSubItemsShoppingItemMapValue()
+                                model.fromMap(v as! [String: Any])
+                                tmp[k] = model
+                            }
+                        }
+                        self.shoppingItemMap = tmp
+                    }
+                    if dict.keys.contains("uniq_key") && dict["uniq_key"] != nil {
+                        self.uniqKey = dict["uniq_key"] as! String
+                    }
+                }
+            }
+            public var agreementPriceCodes: [String]?
+
+            public var flightRuleInfoList: [IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList]?
+
+            public var itemId: String?
+
+            public var shoppingItemMap: [String: ModuleItemListShoppingItemMapValue]?
+
+            public var subItemPositionMap: [String: [ModuleItemListSubItemPositionMapValue]]?
+
+            public var subItems: [IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.agreementPriceCodes != nil {
+                    map["agreement_price_codes"] = self.agreementPriceCodes!
+                }
+                if self.flightRuleInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.flightRuleInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["flight_rule_info_list"] = tmp
+                }
+                if self.itemId != nil {
+                    map["item_id"] = self.itemId!
+                }
+                if self.shoppingItemMap != nil {
+                    var tmp : [String: Any] = [:]
+                    for (k, v) in self.shoppingItemMap! {
+                        tmp[k] = v.toMap()
+                    }
+                    map["shopping_item_map"] = tmp
+                }
+                if self.subItemPositionMap != nil {
+                    var tmp : [String: Any] = [:]
+                    for (k, v) in self.subItemPositionMap! {
+                        var l1 : [Any] = []
+                        for k1 in v {
+                            l1.append(k1.toMap())
+                        }
+                        tmp[k] = l1
+                    }
+                    map["sub_item_position_map"] = tmp
+                }
+                if self.subItems != nil {
+                    var tmp : [Any] = []
+                    for k in self.subItems! {
+                        tmp.append(k.toMap())
+                    }
+                    map["sub_items"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("agreement_price_codes") && dict["agreement_price_codes"] != nil {
+                    self.agreementPriceCodes = dict["agreement_price_codes"] as! [String]
+                }
+                if dict.keys.contains("flight_rule_info_list") && dict["flight_rule_info_list"] != nil {
+                    var tmp : [IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList] = []
+                    for v in dict["flight_rule_info_list"] as! [Any] {
+                        var model = IntlFlightOtaSearchResponseBody.Module.ItemList.FlightRuleInfoList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.flightRuleInfoList = tmp
+                }
+                if dict.keys.contains("item_id") && dict["item_id"] != nil {
+                    self.itemId = dict["item_id"] as! String
+                }
+                if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
+                    var tmp : [String: ModuleItemListShoppingItemMapValue] = [:]
+                    for (k, v) in dict["shopping_item_map"] as! [String: Any] {
+                        if v != nil {
+                            var model = ModuleItemListShoppingItemMapValue()
+                            model.fromMap(v as! [String: Any])
+                            tmp[k] = model
+                        }
+                    }
+                    self.shoppingItemMap = tmp
+                }
+                if dict.keys.contains("sub_item_position_map") && dict["sub_item_position_map"] != nil {
+                    var tmp : [String: [ModuleItemListSubItemPositionMapValue]] = [:]
+                    for (k, v) in dict["sub_item_position_map"] as! [String: Any] {
+                        var l1 : [ModuleItemListSubItemPositionMapValue] = []
+                        for v1 in v as! [Any] {
+                            var model = ModuleItemListSubItemPositionMapValue()
+                            if v1 != nil {
+                                model.fromMap(v1 as! [String: Any])
+                            }
+                            l1.append(model)
+                        }
+                        tmp[k] = l1
+                    }
+                    self.subItemPositionMap = tmp
+                }
+                if dict.keys.contains("sub_items") && dict["sub_items"] != nil {
+                    var tmp : [IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems] = []
+                    for v in dict["sub_items"] as! [Any] {
+                        var model = IntlFlightOtaSearchResponseBody.Module.ItemList.SubItems()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.subItems = tmp
+                }
+            }
+        }
+        public var flightJourneyInfos: [IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos]?
+
+        public var itemList: [IntlFlightOtaSearchResponseBody.Module.ItemList]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.flightJourneyInfos != nil {
+                var tmp : [Any] = []
+                for k in self.flightJourneyInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["flight_journey_infos"] = tmp
+            }
+            if self.itemList != nil {
+                var tmp : [Any] = []
+                for k in self.itemList! {
+                    tmp.append(k.toMap())
+                }
+                map["item_list"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("flight_journey_infos") && dict["flight_journey_infos"] != nil {
+                var tmp : [IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos] = []
+                for v in dict["flight_journey_infos"] as! [Any] {
+                    var model = IntlFlightOtaSearchResponseBody.Module.FlightJourneyInfos()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.flightJourneyInfos = tmp
+            }
+            if dict.keys.contains("item_list") && dict["item_list"] != nil {
+                var tmp : [IntlFlightOtaSearchResponseBody.Module.ItemList] = []
+                for v in dict["item_list"] as! [Any] {
+                    var model = IntlFlightOtaSearchResponseBody.Module.ItemList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.itemList = tmp
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: IntlFlightOtaSearchResponseBody.Module?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") && dict["module"] != nil {
+            var model = IntlFlightOtaSearchResponseBody.Module()
+            model.fromMap(dict["module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") && dict["traceId"] != nil {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class IntlFlightOtaSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: IntlFlightOtaSearchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = IntlFlightOtaSearchResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
