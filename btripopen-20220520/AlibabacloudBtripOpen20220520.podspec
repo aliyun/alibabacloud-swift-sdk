@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudBtripOpen20220520"
-  spec.version      = "1.2.0"
+  spec.version      = "1.2.1"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud btripOpen (20220520) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/btripopen-20220520" 

@@ -88115,6 +88115,8 @@ public class IsvUserSaveRequest : Tea.TeaModel {
 
         public var userName: String?
 
+        public var userNick: String?
+
         public override init() {
             super.init()
         }
@@ -88187,6 +88189,9 @@ public class IsvUserSaveRequest : Tea.TeaModel {
             if self.userName != nil {
                 map["user_name"] = self.userName!
             }
+            if self.userNick != nil {
+                map["user_nick"] = self.userNick!
+            }
             return map
         }
 
@@ -88252,6 +88257,9 @@ public class IsvUserSaveRequest : Tea.TeaModel {
             }
             if dict.keys.contains("user_name") && dict["user_name"] != nil {
                 self.userName = dict["user_name"] as! String
+            }
+            if dict.keys.contains("user_nick") && dict["user_nick"] != nil {
+                self.userNick = dict["user_nick"] as! String
             }
         }
     }
