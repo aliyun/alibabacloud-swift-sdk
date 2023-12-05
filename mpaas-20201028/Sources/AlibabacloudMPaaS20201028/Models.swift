@@ -21872,6 +21872,198 @@ public class LogMsaQueryResponse : Tea.TeaModel {
     }
 }
 
+public class MTRSOCRServiceRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var imageRaw: String?
+
+    public var mask: Bool?
+
+    public var tenantId: String?
+
+    public var type: String?
+
+    public var workspaceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.imageRaw != nil {
+            map["ImageRaw"] = self.imageRaw!
+        }
+        if self.mask != nil {
+            map["Mask"] = self.mask!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.workspaceId != nil {
+            map["WorkspaceId"] = self.workspaceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("ImageRaw") && dict["ImageRaw"] != nil {
+            self.imageRaw = dict["ImageRaw"] as! String
+        }
+        if dict.keys.contains("Mask") && dict["Mask"] != nil {
+            self.mask = dict["Mask"] as! Bool
+        }
+        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
+            self.tenantId = dict["TenantId"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
+            self.workspaceId = dict["WorkspaceId"] as! String
+        }
+    }
+}
+
+public class MTRSOCRServiceResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var result: String?
+
+    public var status: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.traceId != nil {
+            map["TraceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Msg") && dict["Msg"] != nil {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            self.result = dict["Result"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Bool
+        }
+        if dict.keys.contains("TraceId") && dict["TraceId"] != nil {
+            self.traceId = dict["TraceId"] as! String
+        }
+    }
+}
+
+public class MTRSOCRServiceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: MTRSOCRServiceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = MTRSOCRServiceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class OpenApiAddActiveCodeRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -35795,6 +35987,8 @@ public class UploadBitcodeToMsaRequest : Tea.TeaModel {
 
     public var tenantId: String?
 
+    public var type: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -35826,6 +36020,9 @@ public class UploadBitcodeToMsaRequest : Tea.TeaModel {
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -35847,6 +36044,9 @@ public class UploadBitcodeToMsaRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
         }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
