@@ -16092,6 +16092,43 @@ public class ListRulesResponseBody : Tea.TeaModel {
                 }
             }
             public class ForwardGroupConfig : Tea.TeaModel {
+                public class ServerGroupStickySession : Tea.TeaModel {
+                    public var enabled: Bool?
+
+                    public var timeout: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.enabled != nil {
+                            map["Enabled"] = self.enabled!
+                        }
+                        if self.timeout != nil {
+                            map["Timeout"] = self.timeout!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Enabled") && dict["Enabled"] != nil {
+                            self.enabled = dict["Enabled"] as! Bool
+                        }
+                        if dict.keys.contains("Timeout") && dict["Timeout"] != nil {
+                            self.timeout = dict["Timeout"] as! Int32
+                        }
+                    }
+                }
                 public class ServerGroupTuples : Tea.TeaModel {
                     public var serverGroupId: String?
 
@@ -16129,6 +16166,8 @@ public class ListRulesResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var serverGroupStickySession: ListRulesResponseBody.Rules.RuleActions.ForwardGroupConfig.ServerGroupStickySession?
+
                 public var serverGroupTuples: [ListRulesResponseBody.Rules.RuleActions.ForwardGroupConfig.ServerGroupTuples]?
 
                 public override init() {
@@ -16141,10 +16180,14 @@ public class ListRulesResponseBody : Tea.TeaModel {
                 }
 
                 public override func validate() throws -> Void {
+                    try self.serverGroupStickySession?.validate()
                 }
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.serverGroupStickySession != nil {
+                        map["ServerGroupStickySession"] = self.serverGroupStickySession?.toMap()
+                    }
                     if self.serverGroupTuples != nil {
                         var tmp : [Any] = []
                         for k in self.serverGroupTuples! {
@@ -16156,6 +16199,11 @@ public class ListRulesResponseBody : Tea.TeaModel {
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ServerGroupStickySession") && dict["ServerGroupStickySession"] != nil {
+                        var model = ListRulesResponseBody.Rules.RuleActions.ForwardGroupConfig.ServerGroupStickySession()
+                        model.fromMap(dict["ServerGroupStickySession"] as! [String: Any])
+                        self.serverGroupStickySession = model
+                    }
                     if dict.keys.contains("ServerGroupTuples") && dict["ServerGroupTuples"] != nil {
                         var tmp : [ListRulesResponseBody.Rules.RuleActions.ForwardGroupConfig.ServerGroupTuples] = []
                         for v in dict["ServerGroupTuples"] as! [Any] {
@@ -16475,6 +16523,8 @@ public class ListRulesResponseBody : Tea.TeaModel {
                 }
                 public var mirrorGroupConfig: ListRulesResponseBody.Rules.RuleActions.TrafficMirrorConfig.MirrorGroupConfig?
 
+                public var targetType: String?
+
                 public override init() {
                     super.init()
                 }
@@ -16493,6 +16543,9 @@ public class ListRulesResponseBody : Tea.TeaModel {
                     if self.mirrorGroupConfig != nil {
                         map["MirrorGroupConfig"] = self.mirrorGroupConfig?.toMap()
                     }
+                    if self.targetType != nil {
+                        map["TargetType"] = self.targetType!
+                    }
                     return map
                 }
 
@@ -16501,6 +16554,9 @@ public class ListRulesResponseBody : Tea.TeaModel {
                         var model = ListRulesResponseBody.Rules.RuleActions.TrafficMirrorConfig.MirrorGroupConfig()
                         model.fromMap(dict["MirrorGroupConfig"] as! [String: Any])
                         self.mirrorGroupConfig = model
+                    }
+                    if dict.keys.contains("TargetType") && dict["TargetType"] != nil {
+                        self.targetType = dict["TargetType"] as! String
                     }
                 }
             }
