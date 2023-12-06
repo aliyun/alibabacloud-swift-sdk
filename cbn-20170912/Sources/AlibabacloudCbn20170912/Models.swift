@@ -5088,6 +5088,8 @@ public class CreateTransitRouterPeerAttachmentRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var defaultLinkType: String?
+
     public var dryRun: Bool?
 
     public var ownerAccount: String?
@@ -5143,6 +5145,9 @@ public class CreateTransitRouterPeerAttachmentRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.defaultLinkType != nil {
+            map["DefaultLinkType"] = self.defaultLinkType!
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
@@ -5205,6 +5210,9 @@ public class CreateTransitRouterPeerAttachmentRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DefaultLinkType") && dict["DefaultLinkType"] != nil {
+            self.defaultLinkType = dict["DefaultLinkType"] as! String
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
@@ -26404,6 +26412,8 @@ public class ListTransitRouterPeerAttachmentsResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var defaultLinkType: String?
+
         public var geographicSpanId: String?
 
         public var peerTransitRouterId: String?
@@ -26459,6 +26469,9 @@ public class ListTransitRouterPeerAttachmentsResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.defaultLinkType != nil {
+                map["DefaultLinkType"] = self.defaultLinkType!
             }
             if self.geographicSpanId != nil {
                 map["GeographicSpanId"] = self.geographicSpanId!
@@ -26521,6 +26534,9 @@ public class ListTransitRouterPeerAttachmentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
                 self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("DefaultLinkType") && dict["DefaultLinkType"] != nil {
+                self.defaultLinkType = dict["DefaultLinkType"] as! String
             }
             if dict.keys.contains("GeographicSpanId") && dict["GeographicSpanId"] != nil {
                 self.geographicSpanId = dict["GeographicSpanId"] as! String
@@ -36339,6 +36355,8 @@ public class UpdateTransitRouterPeerAttachmentAttributeRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var defaultLinkType: String?
+
     public var dryRun: Bool?
 
     public var ownerAccount: String?
@@ -36384,6 +36402,9 @@ public class UpdateTransitRouterPeerAttachmentAttributeRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.defaultLinkType != nil {
+            map["DefaultLinkType"] = self.defaultLinkType!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -36426,6 +36447,9 @@ public class UpdateTransitRouterPeerAttachmentAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DefaultLinkType") && dict["DefaultLinkType"] != nil {
+            self.defaultLinkType = dict["DefaultLinkType"] as! String
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
