@@ -1971,6 +1971,8 @@ public class OrderResult : Tea.TeaModel {
 }
 
 public class Product : Tea.TeaModel {
+    public var brandName: String?
+
     public var canSell: Bool?
 
     public var categoryChain: [Category]?
@@ -2027,6 +2029,9 @@ public class Product : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.brandName != nil {
+            map["brandName"] = self.brandName!
+        }
         if self.canSell != nil {
             map["canSell"] = self.canSell!
         }
@@ -2110,6 +2115,9 @@ public class Product : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("brandName") && dict["brandName"] != nil {
+            self.brandName = dict["brandName"] as! String
+        }
         if dict.keys.contains("canSell") && dict["canSell"] != nil {
             self.canSell = dict["canSell"] as! Bool
         }
@@ -3980,6 +3988,8 @@ public class ShopPageResult : Tea.TeaModel {
 }
 
 public class Sku : Tea.TeaModel {
+    public var barcode: String?
+
     public var canSell: Bool?
 
     public var divisionCode: String?
@@ -4024,6 +4034,9 @@ public class Sku : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.barcode != nil {
+            map["barcode"] = self.barcode!
+        }
         if self.canSell != nil {
             map["canSell"] = self.canSell!
         }
@@ -4077,6 +4090,9 @@ public class Sku : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("barcode") && dict["barcode"] != nil {
+            self.barcode = dict["barcode"] as! String
+        }
         if dict.keys.contains("canSell") && dict["canSell"] != nil {
             self.canSell = dict["canSell"] as! Bool
         }
