@@ -1044,7 +1044,7 @@ public class DeleteNetworkReachableAnalysisResponse : Tea.TeaModel {
 }
 
 public class GetInternetTupleRequest : Tea.TeaModel {
-    public var accountIds: [String]?
+    public var accountIds: [Int64]?
 
     public var beginTime: Int64?
 
@@ -1168,7 +1168,7 @@ public class GetInternetTupleRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountIds") && dict["AccountIds"] != nil {
-            self.accountIds = dict["AccountIds"] as! [String]
+            self.accountIds = dict["AccountIds"] as! [Int64]
         }
         if dict.keys.contains("BeginTime") && dict["BeginTime"] != nil {
             self.beginTime = dict["BeginTime"] as! Int64
@@ -1234,7 +1234,7 @@ public class GetInternetTupleRequest : Tea.TeaModel {
 }
 
 public class GetInternetTupleShrinkRequest : Tea.TeaModel {
-    public var accountIds: [String]?
+    public var accountIds: [Int64]?
 
     public var beginTime: Int64?
 
@@ -1358,7 +1358,7 @@ public class GetInternetTupleShrinkRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountIds") && dict["AccountIds"] != nil {
-            self.accountIds = dict["AccountIds"] as! [String]
+            self.accountIds = dict["AccountIds"] as! [Int64]
         }
         if dict.keys.contains("BeginTime") && dict["BeginTime"] != nil {
             self.beginTime = dict["BeginTime"] as! Int64
@@ -2268,7 +2268,7 @@ public class GetNetworkReachableAnalysisResponse : Tea.TeaModel {
 }
 
 public class GetTransitRouterFlowTopNRequest : Tea.TeaModel {
-    public var accountIds: [String]?
+    public var accountIds: [Int64]?
 
     public var bandwithPackageId: String?
 
@@ -2377,7 +2377,7 @@ public class GetTransitRouterFlowTopNRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountIds") && dict["AccountIds"] != nil {
-            self.accountIds = dict["AccountIds"] as! [String]
+            self.accountIds = dict["AccountIds"] as! [Int64]
         }
         if dict.keys.contains("BandwithPackageId") && dict["BandwithPackageId"] != nil {
             self.bandwithPackageId = dict["BandwithPackageId"] as! String
@@ -2835,7 +2835,7 @@ public class GetTransitRouterFlowTopNResponse : Tea.TeaModel {
 }
 
 public class GetVbrFlowTopNRequest : Tea.TeaModel {
-    public var accountIds: [String]?
+    public var accountIds: [Int64]?
 
     public var attachmentId: String?
 
@@ -2944,7 +2944,7 @@ public class GetVbrFlowTopNRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountIds") && dict["AccountIds"] != nil {
-            self.accountIds = dict["AccountIds"] as! [String]
+            self.accountIds = dict["AccountIds"] as! [Int64]
         }
         if dict.keys.contains("AttachmentId") && dict["AttachmentId"] != nil {
             self.attachmentId = dict["AttachmentId"] as! String
