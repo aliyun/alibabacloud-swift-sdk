@@ -12279,6 +12279,8 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
 
         public var aclRuleCount: Int32?
 
+        public var isDefault: Bool?
+
         public var memberUid: String?
 
         public override init() {
@@ -12304,6 +12306,9 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
             if self.aclRuleCount != nil {
                 map["AclRuleCount"] = self.aclRuleCount!
             }
+            if self.isDefault != nil {
+                map["IsDefault"] = self.isDefault!
+            }
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
             }
@@ -12319,6 +12324,9 @@ public class DescribeVpcFirewallAclGroupListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AclRuleCount") && dict["AclRuleCount"] != nil {
                 self.aclRuleCount = dict["AclRuleCount"] as! Int32
+            }
+            if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
+                self.isDefault = dict["IsDefault"] as! Bool
             }
             if dict.keys.contains("MemberUid") && dict["MemberUid"] != nil {
                 self.memberUid = dict["MemberUid"] as! String
@@ -17441,6 +17449,8 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
 
     public var destinationType: String?
 
+    public var direction: String?
+
     public var domainResolveType: String?
 
     public var endTime: Int64?
@@ -17507,6 +17517,9 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
+        }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
         }
         if self.domainResolveType != nil {
             map["DomainResolveType"] = self.domainResolveType!
@@ -17577,6 +17590,9 @@ public class ModifyNatFirewallControlPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String
+        }
+        if dict.keys.contains("Direction") && dict["Direction"] != nil {
+            self.direction = dict["Direction"] as! String
         }
         if dict.keys.contains("DomainResolveType") && dict["DomainResolveType"] != nil {
             self.domainResolveType = dict["DomainResolveType"] as! String
@@ -17705,6 +17721,8 @@ public class ModifyNatFirewallControlPolicyResponse : Tea.TeaModel {
 public class ModifyNatFirewallControlPolicyPositionRequest : Tea.TeaModel {
     public var aclUuid: String?
 
+    public var direction: String?
+
     public var lang: String?
 
     public var natGatewayId: String?
@@ -17728,6 +17746,9 @@ public class ModifyNatFirewallControlPolicyPositionRequest : Tea.TeaModel {
         if self.aclUuid != nil {
             map["AclUuid"] = self.aclUuid!
         }
+        if self.direction != nil {
+            map["Direction"] = self.direction!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -17743,6 +17764,9 @@ public class ModifyNatFirewallControlPolicyPositionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AclUuid") && dict["AclUuid"] != nil {
             self.aclUuid = dict["AclUuid"] as! String
+        }
+        if dict.keys.contains("Direction") && dict["Direction"] != nil {
+            self.direction = dict["Direction"] as! String
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
