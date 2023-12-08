@@ -2543,11 +2543,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createOssBucketScanTaskWithOptions(_ request: CreateOssBucketScanTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOssBucketScanTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allKeyPrefix)) {
+            query["AllKeyPrefix"] = request.allKeyPrefix!;
+        }
         if (!TeaUtils.Client.isUnset(request.bucketNameList)) {
             query["BucketNameList"] = request.bucketNameList ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.excludeKeySuffixList)) {
             query["ExcludeKeySuffixList"] = request.excludeKeySuffixList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.keyPrefixList)) {
+            query["KeyPrefixList"] = request.keyPrefixList ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.keySuffixList)) {
             query["KeySuffixList"] = request.keySuffixList ?? [];
@@ -2583,6 +2589,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createOssScanConfigWithOptions(_ request: CreateOssScanConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOssScanConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allKeyPrefix)) {
+            query["AllKeyPrefix"] = request.allKeyPrefix!;
+        }
         if (!TeaUtils.Client.isUnset(request.bucketNameList)) {
             query["BucketNameList"] = request.bucketNameList ?? [];
         }
@@ -2592,8 +2601,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keyPrefixList)) {
+            query["KeyPrefixList"] = request.keyPrefixList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.keySuffixList)) {
             query["KeySuffixList"] = request.keySuffixList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scanDayList)) {
             query["ScanDayList"] = request.scanDayList ?? [];
@@ -5447,6 +5462,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeCheckWarningDetailWithOptions(_ request: DescribeCheckWarningDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeCheckWarningDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.checkId)) {
+            query["CheckId"] = request.checkId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.checkWarningId)) {
             query["CheckWarningId"] = request.checkWarningId!;
         }
@@ -5458,6 +5476,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sourceIp)) {
             query["SourceIp"] = request.sourceIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uuid)) {
+            query["Uuid"] = request.uuid ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -16437,8 +16458,18 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getOssScanConfigWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> GetOssScanConfigResponse {
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+    public func getOssScanConfigWithOptions(_ request: GetOssScanConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOssScanConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bucketName)) {
+            query["BucketName"] = request.bucketName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetOssScanConfig",
             "version": "2018-12-03",
@@ -16455,9 +16486,9 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getOssScanConfig() async throws -> GetOssScanConfigResponse {
+    public func getOssScanConfig(_ request: GetOssScanConfigRequest) async throws -> GetOssScanConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getOssScanConfigWithOptions(runtime as! TeaUtils.RuntimeOptions)
+        return try await getOssScanConfigWithOptions(request as! GetOssScanConfigRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -17020,6 +17051,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.checkAndRiskTypeList)) {
             query["CheckAndRiskTypeList"] = request.checkAndRiskTypeList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.checkIds)) {
+            query["CheckIds"] = request.checkIds ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
@@ -17993,6 +18027,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status!;
         }
+        if (!TeaUtils.Client.isUnset(request.uuidList)) {
+            query["UuidList"] = request.uuidList ?? [];
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -18215,6 +18252,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.riskId)) {
             query["RiskId"] = request.riskId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.showChecks)) {
+            query["ShowChecks"] = request.showChecks!;
+        }
+        if (!TeaUtils.Client.isUnset(request.source)) {
+            query["Source"] = request.source ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
@@ -26210,6 +26253,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateOssScanConfigWithOptions(_ request: UpdateOssScanConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateOssScanConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allKeyPrefix)) {
+            query["AllKeyPrefix"] = request.allKeyPrefix!;
+        }
         if (!TeaUtils.Client.isUnset(request.bucketNameList)) {
             query["BucketNameList"] = request.bucketNameList ?? [];
         }
@@ -26219,8 +26265,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.keyPrefixList)) {
+            query["KeyPrefixList"] = request.keyPrefixList ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.keySuffixList)) {
             query["KeySuffixList"] = request.keySuffixList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scanDayList)) {
             query["ScanDayList"] = request.scanDayList ?? [];
