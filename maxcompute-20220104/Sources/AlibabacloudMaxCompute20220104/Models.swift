@@ -1215,6 +1215,8 @@ public class GetPackageResponseBody : Tea.TeaModel {
 
                 public var name: String?
 
+                public var schemaName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -1235,6 +1237,9 @@ public class GetPackageResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["name"] = self.name!
                     }
+                    if self.schemaName != nil {
+                        map["schemaName"] = self.schemaName!
+                    }
                     return map
                 }
 
@@ -1244,6 +1249,9 @@ public class GetPackageResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("name") && dict["name"] != nil {
                         self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                        self.schemaName = dict["schemaName"] as! String
                     }
                 }
             }
@@ -1252,6 +1260,8 @@ public class GetPackageResponseBody : Tea.TeaModel {
 
                 public var name: String?
 
+                public var schemaName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -1272,6 +1282,9 @@ public class GetPackageResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["name"] = self.name!
                     }
+                    if self.schemaName != nil {
+                        map["schemaName"] = self.schemaName!
+                    }
                     return map
                 }
 
@@ -1281,6 +1294,9 @@ public class GetPackageResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("name") && dict["name"] != nil {
                         self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                        self.schemaName = dict["schemaName"] as! String
                     }
                 }
             }
@@ -1289,6 +1305,8 @@ public class GetPackageResponseBody : Tea.TeaModel {
 
                 public var name: String?
 
+                public var schemaName: String?
+
                 public override init() {
                     super.init()
                 }
@@ -1309,6 +1327,9 @@ public class GetPackageResponseBody : Tea.TeaModel {
                     if self.name != nil {
                         map["name"] = self.name!
                     }
+                    if self.schemaName != nil {
+                        map["schemaName"] = self.schemaName!
+                    }
                     return map
                 }
 
@@ -1318,6 +1339,9 @@ public class GetPackageResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("name") && dict["name"] != nil {
                         self.name = dict["name"] as! String
+                    }
+                    if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                        self.schemaName = dict["schemaName"] as! String
                     }
                 }
             }
@@ -1454,6 +1478,12 @@ public class GetPackageResponseBody : Tea.TeaModel {
     }
     public var data: GetPackageResponseBody.Data?
 
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpCode: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -1474,6 +1504,15 @@ public class GetPackageResponseBody : Tea.TeaModel {
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.httpCode != nil {
+            map["httpCode"] = self.httpCode!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -1485,6 +1524,15 @@ public class GetPackageResponseBody : Tea.TeaModel {
             var model = GetPackageResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
             self.data = model
+        }
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMsg") && dict["errorMsg"] != nil {
+            self.errorMsg = dict["errorMsg"] as! String
+        }
+        if dict.keys.contains("httpCode") && dict["httpCode"] != nil {
+            self.httpCode = dict["httpCode"] as! Int32
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
@@ -2044,6 +2092,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var superAdmins: [String]?
+
         public var type: String?
 
         public override init() {
@@ -2097,6 +2147,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["status"] = self.status!
             }
+            if self.superAdmins != nil {
+                map["superAdmins"] = self.superAdmins!
+            }
             if self.type != nil {
                 map["type"] = self.type!
             }
@@ -2144,6 +2197,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("status") && dict["status"] != nil {
                 self.status = dict["status"] as! String
+            }
+            if dict.keys.contains("superAdmins") && dict["superAdmins"] != nil {
+                self.superAdmins = dict["superAdmins"] as! [String]
             }
             if dict.keys.contains("type") && dict["type"] != nil {
                 self.type = dict["type"] as! String
@@ -4789,6 +4845,8 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var schemaName: String?
+
             public override init() {
                 super.init()
             }
@@ -4809,6 +4867,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.schemaName != nil {
+                    map["schemaName"] = self.schemaName!
+                }
                 return map
             }
 
@@ -4818,6 +4879,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                    self.schemaName = dict["schemaName"] as! String
                 }
             }
         }
@@ -4826,6 +4890,8 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var schemaName: String?
+
             public override init() {
                 super.init()
             }
@@ -4846,6 +4912,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.schemaName != nil {
+                    map["schemaName"] = self.schemaName!
+                }
                 return map
             }
 
@@ -4855,6 +4924,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                    self.schemaName = dict["schemaName"] as! String
                 }
             }
         }
@@ -4863,6 +4935,8 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var schemaName: String?
+
             public override init() {
                 super.init()
             }
@@ -4883,6 +4957,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.schemaName != nil {
+                    map["schemaName"] = self.schemaName!
+                }
                 return map
             }
 
@@ -4892,6 +4969,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                    self.schemaName = dict["schemaName"] as! String
                 }
             }
         }
@@ -4900,6 +4980,8 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var schemaName: String?
+
             public override init() {
                 super.init()
             }
@@ -4920,6 +5002,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.schemaName != nil {
+                    map["schemaName"] = self.schemaName!
+                }
                 return map
             }
 
@@ -4929,6 +5014,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                    self.schemaName = dict["schemaName"] as! String
                 }
             }
         }
@@ -4937,6 +5025,8 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var schemaName: String?
+
             public override init() {
                 super.init()
             }
@@ -4957,6 +5047,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.schemaName != nil {
+                    map["schemaName"] = self.schemaName!
+                }
                 return map
             }
 
@@ -4966,6 +5059,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                    self.schemaName = dict["schemaName"] as! String
                 }
             }
         }
@@ -4974,6 +5070,8 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var schemaName: String?
+
             public override init() {
                 super.init()
             }
@@ -4994,6 +5092,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.schemaName != nil {
+                    map["schemaName"] = self.schemaName!
+                }
                 return map
             }
 
@@ -5003,6 +5104,9 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("schemaName") && dict["schemaName"] != nil {
+                    self.schemaName = dict["schemaName"] as! String
                 }
             }
         }
@@ -5148,6 +5252,12 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
     }
     public var data: GetRoleAclResponseBody.Data?
 
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpCode: Int32?
+
     public var requestId: String?
 
     public override init() {
@@ -5168,6 +5278,15 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.httpCode != nil {
+            map["httpCode"] = self.httpCode!
+        }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
@@ -5179,6 +5298,15 @@ public class GetRoleAclResponseBody : Tea.TeaModel {
             var model = GetRoleAclResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
             self.data = model
+        }
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMsg") && dict["errorMsg"] != nil {
+            self.errorMsg = dict["errorMsg"] as! String
+        }
+        if dict.keys.contains("httpCode") && dict["httpCode"] != nil {
+            self.httpCode = dict["httpCode"] as! Int32
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
