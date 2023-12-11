@@ -6073,6 +6073,51 @@ public class AddServiceSourceRequest : Tea.TeaModel {
             }
         }
     }
+    public class ToAuthorizeSecurityGroups : Tea.TeaModel {
+        public var description_: String?
+
+        public var portRange: String?
+
+        public var securityGroupId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.portRange != nil {
+                map["PortRange"] = self.portRange!
+            }
+            if self.securityGroupId != nil {
+                map["SecurityGroupId"] = self.securityGroupId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("PortRange") && dict["PortRange"] != nil {
+                self.portRange = dict["PortRange"] as! String
+            }
+            if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
+                self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
 
     public var address: String?
@@ -6088,6 +6133,8 @@ public class AddServiceSourceRequest : Tea.TeaModel {
     public var pathList: [String]?
 
     public var source: String?
+
+    public var toAuthorizeSecurityGroups: [AddServiceSourceRequest.ToAuthorizeSecurityGroups]?
 
     public var type: String?
 
@@ -6130,6 +6177,13 @@ public class AddServiceSourceRequest : Tea.TeaModel {
         if self.source != nil {
             map["Source"] = self.source!
         }
+        if self.toAuthorizeSecurityGroups != nil {
+            var tmp : [Any] = []
+            for k in self.toAuthorizeSecurityGroups! {
+                tmp.append(k.toMap())
+            }
+            map["ToAuthorizeSecurityGroups"] = tmp
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -6163,6 +6217,17 @@ public class AddServiceSourceRequest : Tea.TeaModel {
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
         }
+        if dict.keys.contains("ToAuthorizeSecurityGroups") && dict["ToAuthorizeSecurityGroups"] != nil {
+            var tmp : [AddServiceSourceRequest.ToAuthorizeSecurityGroups] = []
+            for v in dict["ToAuthorizeSecurityGroups"] as! [Any] {
+                var model = AddServiceSourceRequest.ToAuthorizeSecurityGroups()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.toAuthorizeSecurityGroups = tmp
+        }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
         }
@@ -6185,6 +6250,8 @@ public class AddServiceSourceShrinkRequest : Tea.TeaModel {
     public var pathListShrink: String?
 
     public var source: String?
+
+    public var toAuthorizeSecurityGroupsShrink: String?
 
     public var type: String?
 
@@ -6226,6 +6293,9 @@ public class AddServiceSourceShrinkRequest : Tea.TeaModel {
         if self.source != nil {
             map["Source"] = self.source!
         }
+        if self.toAuthorizeSecurityGroupsShrink != nil {
+            map["ToAuthorizeSecurityGroups"] = self.toAuthorizeSecurityGroupsShrink!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -6256,6 +6326,9 @@ public class AddServiceSourceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
+        }
+        if dict.keys.contains("ToAuthorizeSecurityGroups") && dict["ToAuthorizeSecurityGroups"] != nil {
+            self.toAuthorizeSecurityGroupsShrink = dict["ToAuthorizeSecurityGroups"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
@@ -15803,6 +15876,8 @@ public class DeleteNamespaceResponse : Tea.TeaModel {
 public class DeleteSecurityGroupRuleRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var cascadingDelete: Bool?
+
     public var gatewayUniqueId: String?
 
     public var id: Int64?
@@ -15824,6 +15899,9 @@ public class DeleteSecurityGroupRuleRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.cascadingDelete != nil {
+            map["CascadingDelete"] = self.cascadingDelete!
+        }
         if self.gatewayUniqueId != nil {
             map["GatewayUniqueId"] = self.gatewayUniqueId!
         }
@@ -15836,6 +15914,9 @@ public class DeleteSecurityGroupRuleRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("CascadingDelete") && dict["CascadingDelete"] != nil {
+            self.cascadingDelete = dict["CascadingDelete"] as! Bool
         }
         if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
             self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
@@ -44477,6 +44558,8 @@ public class ListSecurityGroupRuleRequest : Tea.TeaModel {
 
 public class ListSecurityGroupRuleResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var authCidrs: [String]?
+
         public var description_: String?
 
         public var gatewayId: Int64?
@@ -44509,6 +44592,9 @@ public class ListSecurityGroupRuleResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authCidrs != nil {
+                map["AuthCidrs"] = self.authCidrs!
+            }
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
@@ -44540,6 +44626,9 @@ public class ListSecurityGroupRuleResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthCidrs") && dict["AuthCidrs"] != nil {
+                self.authCidrs = dict["AuthCidrs"] as! [String]
+            }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
             }

@@ -839,6 +839,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.pathList)) {
             request.pathListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.pathList, "PathList", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.toAuthorizeSecurityGroups)) {
+            request.toAuthorizeSecurityGroupsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.toAuthorizeSecurityGroups, "ToAuthorizeSecurityGroups", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
@@ -863,6 +866,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.source)) {
             query["Source"] = request.source ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.toAuthorizeSecurityGroupsShrink)) {
+            query["ToAuthorizeSecurityGroups"] = request.toAuthorizeSecurityGroupsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
@@ -2542,6 +2548,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cascadingDelete)) {
+            query["CascadingDelete"] = request.cascadingDelete!;
         }
         if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
             query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
