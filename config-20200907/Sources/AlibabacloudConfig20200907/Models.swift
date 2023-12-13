@@ -1604,6 +1604,8 @@ public class CreateAggregateCompliancePackRequest : Tea.TeaModel {
 
     public var tagValueScope: String?
 
+    public var templateContent: String?
+
     public override init() {
         super.init()
     }
@@ -1661,6 +1663,9 @@ public class CreateAggregateCompliancePackRequest : Tea.TeaModel {
         if self.tagValueScope != nil {
             map["TagValueScope"] = self.tagValueScope!
         }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
         return map
     }
 
@@ -1712,6 +1717,9 @@ public class CreateAggregateCompliancePackRequest : Tea.TeaModel {
         if dict.keys.contains("TagValueScope") && dict["TagValueScope"] != nil {
             self.tagValueScope = dict["TagValueScope"] as! String
         }
+        if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+            self.templateContent = dict["TemplateContent"] as! String
+        }
     }
 }
 
@@ -1741,6 +1749,8 @@ public class CreateAggregateCompliancePackShrinkRequest : Tea.TeaModel {
     public var tagKeyScope: String?
 
     public var tagValueScope: String?
+
+    public var templateContent: String?
 
     public override init() {
         super.init()
@@ -1795,6 +1805,9 @@ public class CreateAggregateCompliancePackShrinkRequest : Tea.TeaModel {
         if self.tagValueScope != nil {
             map["TagValueScope"] = self.tagValueScope!
         }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
         return map
     }
 
@@ -1837,6 +1850,9 @@ public class CreateAggregateCompliancePackShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TagValueScope") && dict["TagValueScope"] != nil {
             self.tagValueScope = dict["TagValueScope"] as! String
+        }
+        if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+            self.templateContent = dict["TemplateContent"] as! String
         }
     }
 }
@@ -3183,6 +3199,8 @@ public class CreateCompliancePackRequest : Tea.TeaModel {
 
     public var tagValueScope: String?
 
+    public var templateContent: String?
+
     public override init() {
         super.init()
     }
@@ -3237,6 +3255,9 @@ public class CreateCompliancePackRequest : Tea.TeaModel {
         if self.tagValueScope != nil {
             map["TagValueScope"] = self.tagValueScope!
         }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
         return map
     }
 
@@ -3285,6 +3306,9 @@ public class CreateCompliancePackRequest : Tea.TeaModel {
         if dict.keys.contains("TagValueScope") && dict["TagValueScope"] != nil {
             self.tagValueScope = dict["TagValueScope"] as! String
         }
+        if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+            self.templateContent = dict["TemplateContent"] as! String
+        }
     }
 }
 
@@ -3312,6 +3336,8 @@ public class CreateCompliancePackShrinkRequest : Tea.TeaModel {
     public var tagKeyScope: String?
 
     public var tagValueScope: String?
+
+    public var templateContent: String?
 
     public override init() {
         super.init()
@@ -3363,6 +3389,9 @@ public class CreateCompliancePackShrinkRequest : Tea.TeaModel {
         if self.tagValueScope != nil {
             map["TagValueScope"] = self.tagValueScope!
         }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
         return map
     }
 
@@ -3402,6 +3431,9 @@ public class CreateCompliancePackShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TagValueScope") && dict["TagValueScope"] != nil {
             self.tagValueScope = dict["TagValueScope"] as! String
+        }
+        if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+            self.templateContent = dict["TemplateContent"] as! String
         }
     }
 }
@@ -9271,6 +9303,8 @@ public class GetAggregateCompliancePackResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var templateContent: String?
+
         public override init() {
             super.init()
         }
@@ -9323,6 +9357,9 @@ public class GetAggregateCompliancePackResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.templateContent != nil {
+                map["TemplateContent"] = self.templateContent!
+            }
             return map
         }
 
@@ -9369,6 +9406,9 @@ public class GetAggregateCompliancePackResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+                self.templateContent = dict["TemplateContent"] as! String
             }
         }
     }
@@ -14685,6 +14725,8 @@ public class GetCompliancePackResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var templateContent: String?
+
         public override init() {
             super.init()
         }
@@ -14734,6 +14776,9 @@ public class GetCompliancePackResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.templateContent != nil {
+                map["TemplateContent"] = self.templateContent!
+            }
             return map
         }
 
@@ -14777,6 +14822,9 @@ public class GetCompliancePackResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+                self.templateContent = dict["TemplateContent"] as! String
             }
         }
     }

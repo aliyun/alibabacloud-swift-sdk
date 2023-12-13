@@ -350,6 +350,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.tagValueScope)) {
             body["TagValueScope"] = request.tagValueScope ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateContent)) {
+            body["TemplateContent"] = request.templateContent ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
@@ -678,6 +681,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tagValueScope)) {
             body["TagValueScope"] = request.tagValueScope ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.templateContent)) {
+            body["TemplateContent"] = request.templateContent ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
