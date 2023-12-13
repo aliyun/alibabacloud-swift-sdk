@@ -22,8 +22,6 @@ public class AllocateNodePrivateNetworkAddressRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var zoneId: String?
 
     public override init() {
@@ -64,9 +62,6 @@ public class AllocateNodePrivateNetworkAddressRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -97,9 +92,6 @@ public class AllocateNodePrivateNetworkAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
@@ -202,8 +194,6 @@ public class AllocatePublicNetworkAddressRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -236,9 +226,6 @@ public class AllocatePublicNetworkAddressRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -260,9 +247,6 @@ public class AllocatePublicNetworkAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -360,8 +344,6 @@ public class CheckCloudResourceAuthorizedRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var targetRegionId: String?
 
     public override init() {
@@ -393,9 +375,6 @@ public class CheckCloudResourceAuthorizedRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.targetRegionId != nil {
             map["TargetRegionId"] = self.targetRegionId!
         }
@@ -417,9 +396,6 @@ public class CheckCloudResourceAuthorizedRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("TargetRegionId") && dict["TargetRegionId"] != nil {
             self.targetRegionId = dict["TargetRegionId"] as! String
@@ -542,8 +518,6 @@ public class CheckRecoveryConditionRequest : Tea.TeaModel {
 
     public var restoreTime: String?
 
-    public var securityToken: String?
-
     public var sourceDBInstance: String?
 
     public override init() {
@@ -584,9 +558,6 @@ public class CheckRecoveryConditionRequest : Tea.TeaModel {
         if self.restoreTime != nil {
             map["RestoreTime"] = self.restoreTime!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.sourceDBInstance != nil {
             map["SourceDBInstance"] = self.sourceDBInstance!
         }
@@ -617,9 +588,6 @@ public class CheckRecoveryConditionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RestoreTime") && dict["RestoreTime"] != nil {
             self.restoreTime = dict["RestoreTime"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SourceDBInstance") && dict["SourceDBInstance"] != nil {
             self.sourceDBInstance = dict["SourceDBInstance"] as! String
@@ -725,6 +693,166 @@ public class CheckRecoveryConditionResponse : Tea.TeaModel {
     }
 }
 
+public class CreateAccountRequest : Tea.TeaModel {
+    public var accountName: String?
+
+    public var accountPassword: String?
+
+    public var DBInstanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountName != nil {
+            map["AccountName"] = self.accountName!
+        }
+        if self.accountPassword != nil {
+            map["AccountPassword"] = self.accountPassword!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccountName") && dict["AccountName"] != nil {
+            self.accountName = dict["AccountName"] as! String
+        }
+        if dict.keys.contains("AccountPassword") && dict["AccountPassword"] != nil {
+            self.accountPassword = dict["AccountPassword"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class CreateAccountResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateAccountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAccountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateAccountResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateBackupRequest : Tea.TeaModel {
     public var backupMethod: String?
 
@@ -737,8 +865,6 @@ public class CreateBackupRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public override init() {
         super.init()
@@ -772,9 +898,6 @@ public class CreateBackupRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -796,9 +919,6 @@ public class CreateBackupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -995,8 +1115,6 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var securityIPList: String?
 
-    public var securityToken: String?
-
     public var srcDBInstanceId: String?
 
     public var storageEngine: String?
@@ -1120,9 +1238,6 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.securityIPList != nil {
             map["SecurityIPList"] = self.securityIPList!
-        }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
         }
         if self.srcDBInstanceId != nil {
             map["SrcDBInstanceId"] = self.srcDBInstanceId!
@@ -1248,9 +1363,6 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityIPList") && dict["SecurityIPList"] != nil {
             self.securityIPList = dict["SecurityIPList"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SrcDBInstanceId") && dict["SrcDBInstanceId"] != nil {
             self.srcDBInstanceId = dict["SrcDBInstanceId"] as! String
@@ -1654,8 +1766,6 @@ public class CreateNodeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var shardDirect: Bool?
 
     public override init() {
@@ -1717,9 +1827,6 @@ public class CreateNodeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.shardDirect != nil {
             map["ShardDirect"] = self.shardDirect!
         }
@@ -1771,9 +1878,6 @@ public class CreateNodeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ShardDirect") && dict["ShardDirect"] != nil {
             self.shardDirect = dict["ShardDirect"] as! Bool
@@ -1906,8 +2010,6 @@ public class CreateNodeBatchRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var shardDirect: Bool?
 
     public override init() {
@@ -1963,9 +2065,6 @@ public class CreateNodeBatchRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.shardDirect != nil {
             map["ShardDirect"] = self.shardDirect!
         }
@@ -2011,9 +2110,6 @@ public class CreateNodeBatchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ShardDirect") && dict["ShardDirect"] != nil {
             self.shardDirect = dict["ShardDirect"] as! Bool
@@ -2322,8 +2418,6 @@ public class CreateShardingDBInstanceRequest : Tea.TeaModel {
 
     public var securityIPList: String?
 
-    public var securityToken: String?
-
     public var srcDBInstanceId: String?
 
     public var storageEngine: String?
@@ -2444,9 +2538,6 @@ public class CreateShardingDBInstanceRequest : Tea.TeaModel {
         }
         if self.securityIPList != nil {
             map["SecurityIPList"] = self.securityIPList!
-        }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
         }
         if self.srcDBInstanceId != nil {
             map["SrcDBInstanceId"] = self.srcDBInstanceId!
@@ -2581,9 +2672,6 @@ public class CreateShardingDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityIPList") && dict["SecurityIPList"] != nil {
             self.securityIPList = dict["SecurityIPList"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SrcDBInstanceId") && dict["SrcDBInstanceId"] != nil {
             self.srcDBInstanceId = dict["SrcDBInstanceId"] as! String
@@ -2728,8 +2816,6 @@ public class DeleteDBInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -2762,9 +2848,6 @@ public class DeleteDBInstanceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -2786,9 +2869,6 @@ public class DeleteDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3058,8 +3138,6 @@ public class DeleteNodeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -3095,9 +3173,6 @@ public class DeleteNodeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -3122,9 +3197,6 @@ public class DeleteNodeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3240,8 +3312,6 @@ public class DescribeAccountsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -3274,9 +3344,6 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -3298,9 +3365,6 @@ public class DescribeAccountsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3511,8 +3575,6 @@ public class DescribeActiveOperationTaskCountRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -3542,9 +3604,6 @@ public class DescribeActiveOperationTaskCountRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -3563,9 +3622,6 @@ public class DescribeActiveOperationTaskCountRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3681,8 +3737,6 @@ public class DescribeActiveOperationTaskTypeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -3715,9 +3769,6 @@ public class DescribeActiveOperationTaskTypeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -3739,9 +3790,6 @@ public class DescribeActiveOperationTaskTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3901,6 +3949,503 @@ public class DescribeActiveOperationTaskTypeResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeActiveOperationTasksRequest : Tea.TeaModel {
+    public var allowCancel: Int32?
+
+    public var allowChange: Int32?
+
+    public var changeLevel: String?
+
+    public var dbType: String?
+
+    public var insName: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var productId: String?
+
+    public var region: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var status: Int32?
+
+    public var taskType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowCancel != nil {
+            map["AllowCancel"] = self.allowCancel!
+        }
+        if self.allowChange != nil {
+            map["AllowChange"] = self.allowChange!
+        }
+        if self.changeLevel != nil {
+            map["ChangeLevel"] = self.changeLevel!
+        }
+        if self.dbType != nil {
+            map["DbType"] = self.dbType!
+        }
+        if self.insName != nil {
+            map["InsName"] = self.insName!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.productId != nil {
+            map["ProductId"] = self.productId!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskType != nil {
+            map["TaskType"] = self.taskType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowCancel") && dict["AllowCancel"] != nil {
+            self.allowCancel = dict["AllowCancel"] as! Int32
+        }
+        if dict.keys.contains("AllowChange") && dict["AllowChange"] != nil {
+            self.allowChange = dict["AllowChange"] as! Int32
+        }
+        if dict.keys.contains("ChangeLevel") && dict["ChangeLevel"] != nil {
+            self.changeLevel = dict["ChangeLevel"] as! String
+        }
+        if dict.keys.contains("DbType") && dict["DbType"] != nil {
+            self.dbType = dict["DbType"] as! String
+        }
+        if dict.keys.contains("InsName") && dict["InsName"] != nil {
+            self.insName = dict["InsName"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ProductId") && dict["ProductId"] != nil {
+            self.productId = dict["ProductId"] as! String
+        }
+        if dict.keys.contains("Region") && dict["Region"] != nil {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+        if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
+            self.taskType = dict["TaskType"] as! String
+        }
+    }
+}
+
+public class DescribeActiveOperationTasksResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var allowCancel: String?
+
+        public var allowChange: String?
+
+        public var changeLevel: String?
+
+        public var changeLevelEn: String?
+
+        public var changeLevelZh: String?
+
+        public var createdTime: String?
+
+        public var currentAVZ: String?
+
+        public var dbType: String?
+
+        public var dbVersion: String?
+
+        public var deadline: String?
+
+        public var id: Int32?
+
+        public var impactEn: String?
+
+        public var impactZh: String?
+
+        public var insComment: String?
+
+        public var insName: String?
+
+        public var modifiedTime: String?
+
+        public var prepareInterval: String?
+
+        public var region: String?
+
+        public var resultInfo: String?
+
+        public var startTime: String?
+
+        public var status: Int32?
+
+        public var subInsNames: [String]?
+
+        public var switchTime: String?
+
+        public var taskType: String?
+
+        public var taskTypeEn: String?
+
+        public var taskTypeZh: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowCancel != nil {
+                map["AllowCancel"] = self.allowCancel!
+            }
+            if self.allowChange != nil {
+                map["AllowChange"] = self.allowChange!
+            }
+            if self.changeLevel != nil {
+                map["ChangeLevel"] = self.changeLevel!
+            }
+            if self.changeLevelEn != nil {
+                map["ChangeLevelEn"] = self.changeLevelEn!
+            }
+            if self.changeLevelZh != nil {
+                map["ChangeLevelZh"] = self.changeLevelZh!
+            }
+            if self.createdTime != nil {
+                map["CreatedTime"] = self.createdTime!
+            }
+            if self.currentAVZ != nil {
+                map["CurrentAVZ"] = self.currentAVZ!
+            }
+            if self.dbType != nil {
+                map["DbType"] = self.dbType!
+            }
+            if self.dbVersion != nil {
+                map["DbVersion"] = self.dbVersion!
+            }
+            if self.deadline != nil {
+                map["Deadline"] = self.deadline!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.impactEn != nil {
+                map["ImpactEn"] = self.impactEn!
+            }
+            if self.impactZh != nil {
+                map["ImpactZh"] = self.impactZh!
+            }
+            if self.insComment != nil {
+                map["InsComment"] = self.insComment!
+            }
+            if self.insName != nil {
+                map["InsName"] = self.insName!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.prepareInterval != nil {
+                map["PrepareInterval"] = self.prepareInterval!
+            }
+            if self.region != nil {
+                map["Region"] = self.region!
+            }
+            if self.resultInfo != nil {
+                map["ResultInfo"] = self.resultInfo!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.subInsNames != nil {
+                map["SubInsNames"] = self.subInsNames!
+            }
+            if self.switchTime != nil {
+                map["SwitchTime"] = self.switchTime!
+            }
+            if self.taskType != nil {
+                map["TaskType"] = self.taskType!
+            }
+            if self.taskTypeEn != nil {
+                map["TaskTypeEn"] = self.taskTypeEn!
+            }
+            if self.taskTypeZh != nil {
+                map["TaskTypeZh"] = self.taskTypeZh!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllowCancel") && dict["AllowCancel"] != nil {
+                self.allowCancel = dict["AllowCancel"] as! String
+            }
+            if dict.keys.contains("AllowChange") && dict["AllowChange"] != nil {
+                self.allowChange = dict["AllowChange"] as! String
+            }
+            if dict.keys.contains("ChangeLevel") && dict["ChangeLevel"] != nil {
+                self.changeLevel = dict["ChangeLevel"] as! String
+            }
+            if dict.keys.contains("ChangeLevelEn") && dict["ChangeLevelEn"] != nil {
+                self.changeLevelEn = dict["ChangeLevelEn"] as! String
+            }
+            if dict.keys.contains("ChangeLevelZh") && dict["ChangeLevelZh"] != nil {
+                self.changeLevelZh = dict["ChangeLevelZh"] as! String
+            }
+            if dict.keys.contains("CreatedTime") && dict["CreatedTime"] != nil {
+                self.createdTime = dict["CreatedTime"] as! String
+            }
+            if dict.keys.contains("CurrentAVZ") && dict["CurrentAVZ"] != nil {
+                self.currentAVZ = dict["CurrentAVZ"] as! String
+            }
+            if dict.keys.contains("DbType") && dict["DbType"] != nil {
+                self.dbType = dict["DbType"] as! String
+            }
+            if dict.keys.contains("DbVersion") && dict["DbVersion"] != nil {
+                self.dbVersion = dict["DbVersion"] as! String
+            }
+            if dict.keys.contains("Deadline") && dict["Deadline"] != nil {
+                self.deadline = dict["Deadline"] as! String
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int32
+            }
+            if dict.keys.contains("ImpactEn") && dict["ImpactEn"] != nil {
+                self.impactEn = dict["ImpactEn"] as! String
+            }
+            if dict.keys.contains("ImpactZh") && dict["ImpactZh"] != nil {
+                self.impactZh = dict["ImpactZh"] as! String
+            }
+            if dict.keys.contains("InsComment") && dict["InsComment"] != nil {
+                self.insComment = dict["InsComment"] as! String
+            }
+            if dict.keys.contains("InsName") && dict["InsName"] != nil {
+                self.insName = dict["InsName"] as! String
+            }
+            if dict.keys.contains("ModifiedTime") && dict["ModifiedTime"] != nil {
+                self.modifiedTime = dict["ModifiedTime"] as! String
+            }
+            if dict.keys.contains("PrepareInterval") && dict["PrepareInterval"] != nil {
+                self.prepareInterval = dict["PrepareInterval"] as! String
+            }
+            if dict.keys.contains("Region") && dict["Region"] != nil {
+                self.region = dict["Region"] as! String
+            }
+            if dict.keys.contains("ResultInfo") && dict["ResultInfo"] != nil {
+                self.resultInfo = dict["ResultInfo"] as! String
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! Int32
+            }
+            if dict.keys.contains("SubInsNames") && dict["SubInsNames"] != nil {
+                self.subInsNames = dict["SubInsNames"] as! [String]
+            }
+            if dict.keys.contains("SwitchTime") && dict["SwitchTime"] != nil {
+                self.switchTime = dict["SwitchTime"] as! String
+            }
+            if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
+                self.taskType = dict["TaskType"] as! String
+            }
+            if dict.keys.contains("TaskTypeEn") && dict["TaskTypeEn"] != nil {
+                self.taskTypeEn = dict["TaskTypeEn"] as! String
+            }
+            if dict.keys.contains("TaskTypeZh") && dict["TaskTypeZh"] != nil {
+                self.taskTypeZh = dict["TaskTypeZh"] as! String
+            }
+        }
+    }
+    public var items: [DescribeActiveOperationTasksResponseBody.Items]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalRecordCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalRecordCount != nil {
+            map["TotalRecordCount"] = self.totalRecordCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Items") && dict["Items"] != nil {
+            var tmp : [DescribeActiveOperationTasksResponseBody.Items] = []
+            for v in dict["Items"] as! [Any] {
+                var model = DescribeActiveOperationTasksResponseBody.Items()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.items = tmp
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalRecordCount") && dict["TotalRecordCount"] != nil {
+            self.totalRecordCount = dict["TotalRecordCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeActiveOperationTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeActiveOperationTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeActiveOperationTasksResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeAuditLogFilterRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -3913,8 +4458,6 @@ public class DescribeAuditLogFilterRequest : Tea.TeaModel {
     public var resourceOwnerId: Int64?
 
     public var roleType: String?
-
-    public var securityToken: String?
 
     public override init() {
         super.init()
@@ -3948,9 +4491,6 @@ public class DescribeAuditLogFilterRequest : Tea.TeaModel {
         if self.roleType != nil {
             map["RoleType"] = self.roleType!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -3972,9 +4512,6 @@ public class DescribeAuditLogFilterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleType") && dict["RoleType"] != nil {
             self.roleType = dict["RoleType"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -4088,8 +4625,6 @@ public class DescribeAuditPolicyRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -4119,9 +4654,6 @@ public class DescribeAuditPolicyRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -4140,9 +4672,6 @@ public class DescribeAuditPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -4264,8 +4793,6 @@ public class DescribeAuditRecordsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public var user: String?
@@ -4323,9 +4850,6 @@ public class DescribeAuditRecordsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -4374,9 +4898,6 @@ public class DescribeAuditRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -4641,7 +5162,11 @@ public class DescribeAuditRecordsResponse : Tea.TeaModel {
 public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var DBInstanceClass: String?
+
     public var dbType: String?
+
+    public var engineVersion: String?
 
     public var excludeSecondaryZoneId: String?
 
@@ -4662,8 +5187,6 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public var storageSupport: String?
 
@@ -4688,8 +5211,14 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.DBInstanceClass != nil {
+            map["DBInstanceClass"] = self.DBInstanceClass!
+        }
         if self.dbType != nil {
             map["DbType"] = self.dbType!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
         }
         if self.excludeSecondaryZoneId != nil {
             map["ExcludeSecondaryZoneId"] = self.excludeSecondaryZoneId!
@@ -4721,9 +5250,6 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.storageSupport != nil {
             map["StorageSupport"] = self.storageSupport!
         }
@@ -4740,8 +5266,14 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
         }
+        if dict.keys.contains("DBInstanceClass") && dict["DBInstanceClass"] != nil {
+            self.DBInstanceClass = dict["DBInstanceClass"] as! String
+        }
         if dict.keys.contains("DbType") && dict["DbType"] != nil {
             self.dbType = dict["DbType"] as! String
+        }
+        if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
+            self.engineVersion = dict["EngineVersion"] as! String
         }
         if dict.keys.contains("ExcludeSecondaryZoneId") && dict["ExcludeSecondaryZoneId"] != nil {
             self.excludeSecondaryZoneId = dict["ExcludeSecondaryZoneId"] as! String
@@ -4772,9 +5304,6 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StorageSupport") && dict["StorageSupport"] != nil {
             self.storageSupport = dict["StorageSupport"] as! String
@@ -4946,8 +5475,6 @@ public class DescribeAvailableEngineVersionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -4977,9 +5504,6 @@ public class DescribeAvailableEngineVersionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -4998,9 +5522,6 @@ public class DescribeAvailableEngineVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -5128,7 +5649,11 @@ public class DescribeAvailableEngineVersionResponse : Tea.TeaModel {
 }
 
 public class DescribeAvailableResourceRequest : Tea.TeaModel {
+    public var DBInstanceClass: String?
+
     public var dbType: String?
+
+    public var engineVersion: String?
 
     public var instanceChargeType: String?
 
@@ -5143,8 +5668,6 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public var storageType: String?
 
@@ -5164,8 +5687,14 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.DBInstanceClass != nil {
+            map["DBInstanceClass"] = self.DBInstanceClass!
+        }
         if self.dbType != nil {
             map["DbType"] = self.dbType!
+        }
+        if self.engineVersion != nil {
+            map["EngineVersion"] = self.engineVersion!
         }
         if self.instanceChargeType != nil {
             map["InstanceChargeType"] = self.instanceChargeType!
@@ -5188,9 +5717,6 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.storageType != nil {
             map["StorageType"] = self.storageType!
         }
@@ -5201,8 +5727,14 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceClass") && dict["DBInstanceClass"] != nil {
+            self.DBInstanceClass = dict["DBInstanceClass"] as! String
+        }
         if dict.keys.contains("DbType") && dict["DbType"] != nil {
             self.dbType = dict["DbType"] as! String
+        }
+        if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
+            self.engineVersion = dict["EngineVersion"] as! String
         }
         if dict.keys.contains("InstanceChargeType") && dict["InstanceChargeType"] != nil {
             self.instanceChargeType = dict["InstanceChargeType"] as! String
@@ -5224,9 +5756,6 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StorageType") && dict["StorageType"] != nil {
             self.storageType = dict["StorageType"] as! String
@@ -5904,8 +6433,6 @@ public class DescribeBackupDBsRequest : Tea.TeaModel {
 
     public var restoreTime: String?
 
-    public var securityToken: String?
-
     public var sourceDBInstance: String?
 
     public override init() {
@@ -5949,9 +6476,6 @@ public class DescribeBackupDBsRequest : Tea.TeaModel {
         if self.restoreTime != nil {
             map["RestoreTime"] = self.restoreTime!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.sourceDBInstance != nil {
             map["SourceDBInstance"] = self.sourceDBInstance!
         }
@@ -5985,9 +6509,6 @@ public class DescribeBackupDBsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RestoreTime") && dict["RestoreTime"] != nil {
             self.restoreTime = dict["RestoreTime"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SourceDBInstance") && dict["SourceDBInstance"] != nil {
             self.sourceDBInstance = dict["SourceDBInstance"] as! String
@@ -6411,8 +6932,6 @@ public class DescribeBackupsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -6459,9 +6978,6 @@ public class DescribeBackupsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -6498,9 +7014,6 @@ public class DescribeBackupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -6796,8 +7309,6 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -6844,9 +7355,6 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -6883,9 +7391,6 @@ public class DescribeClusterBackupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -7276,8 +7781,6 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -7307,9 +7810,6 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -7328,9 +7828,6 @@ public class DescribeClusterRecoverTimeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -8789,8 +9286,6 @@ public class DescribeDBInstanceEncryptionKeyRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -8823,9 +9318,6 @@ public class DescribeDBInstanceEncryptionKeyRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -8847,9 +9339,6 @@ public class DescribeDBInstanceEncryptionKeyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -9011,8 +9500,6 @@ public class DescribeDBInstanceMonitorRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -9042,9 +9529,6 @@ public class DescribeDBInstanceMonitorRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -9063,9 +9547,6 @@ public class DescribeDBInstanceMonitorRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -9181,8 +9662,6 @@ public class DescribeDBInstancePerformanceRequest : Tea.TeaModel {
 
     public var roleId: String?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -9229,9 +9708,6 @@ public class DescribeDBInstancePerformanceRequest : Tea.TeaModel {
         if self.roleId != nil {
             map["RoleId"] = self.roleId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -9268,9 +9744,6 @@ public class DescribeDBInstancePerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleId") && dict["RoleId"] != nil {
             self.roleId = dict["RoleId"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -9573,8 +10046,6 @@ public class DescribeDBInstanceSSLRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -9604,9 +10075,6 @@ public class DescribeDBInstanceSSLRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -9625,9 +10093,6 @@ public class DescribeDBInstanceSSLRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -9738,6 +10203,263 @@ public class DescribeDBInstanceSSLResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDBInstanceSwitchLogRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var endTime: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var resourceOwnerId: Int64?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeDBInstanceSwitchLogResponseBody : Tea.TeaModel {
+    public class LogItems : Tea.TeaModel {
+        public var nodeId: String?
+
+        public var switchCode: String?
+
+        public var switchStatus: String?
+
+        public var switchTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nodeId != nil {
+                map["NodeId"] = self.nodeId!
+            }
+            if self.switchCode != nil {
+                map["SwitchCode"] = self.switchCode!
+            }
+            if self.switchStatus != nil {
+                map["SwitchStatus"] = self.switchStatus!
+            }
+            if self.switchTime != nil {
+                map["SwitchTime"] = self.switchTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
+                self.nodeId = dict["NodeId"] as! String
+            }
+            if dict.keys.contains("SwitchCode") && dict["SwitchCode"] != nil {
+                self.switchCode = dict["SwitchCode"] as! String
+            }
+            if dict.keys.contains("SwitchStatus") && dict["SwitchStatus"] != nil {
+                self.switchStatus = dict["SwitchStatus"] as! String
+            }
+            if dict.keys.contains("SwitchTime") && dict["SwitchTime"] != nil {
+                self.switchTime = dict["SwitchTime"] as! String
+            }
+        }
+    }
+    public var DBInstanceId: String?
+
+    public var logItems: [DescribeDBInstanceSwitchLogResponseBody.LogItems]?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.logItems != nil {
+            var tmp : [Any] = []
+            for k in self.logItems! {
+                tmp.append(k.toMap())
+            }
+            map["LogItems"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("LogItems") && dict["LogItems"] != nil {
+            var tmp : [DescribeDBInstanceSwitchLogResponseBody.LogItems] = []
+            for v in dict["LogItems"] as! [Any] {
+                var model = DescribeDBInstanceSwitchLogResponseBody.LogItems()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.logItems = tmp
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int64
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class DescribeDBInstanceSwitchLogResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDBInstanceSwitchLogResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeDBInstanceSwitchLogResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDBInstanceTDEInfoRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -9748,8 +10470,6 @@ public class DescribeDBInstanceTDEInfoRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public override init() {
         super.init()
@@ -9780,9 +10500,6 @@ public class DescribeDBInstanceTDEInfoRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -9801,9 +10518,6 @@ public class DescribeDBInstanceTDEInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -10004,8 +10718,6 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var tag: [DescribeDBInstancesRequest.Tag]?
 
     public var vSwitchId: String?
@@ -10094,9 +10806,6 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -10182,9 +10891,6 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Tag") && dict["Tag"] != nil {
             var tmp : [DescribeDBInstancesRequest.Tag] = []
@@ -10914,8 +11620,6 @@ public class DescribeDBInstancesOverviewRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var vSwitchId: String?
 
     public var vpcId: String?
@@ -10975,9 +11679,6 @@ public class DescribeDBInstancesOverviewRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -11029,9 +11730,6 @@ public class DescribeDBInstancesOverviewRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -11580,8 +12278,6 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
 
     public var roleType: String?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -11634,9 +12330,6 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
         if self.roleType != nil {
             map["RoleType"] = self.roleType!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -11679,9 +12372,6 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleType") && dict["RoleType"] != nil {
             self.roleType = dict["RoleType"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -11929,8 +12619,6 @@ public class DescribeGlobalSecurityIPGroupRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -11963,9 +12651,6 @@ public class DescribeGlobalSecurityIPGroupRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -11987,9 +12672,6 @@ public class DescribeGlobalSecurityIPGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -12170,8 +12852,6 @@ public class DescribeGlobalSecurityIPGroupRelationRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -12204,9 +12884,6 @@ public class DescribeGlobalSecurityIPGroupRelationRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -12228,9 +12905,6 @@ public class DescribeGlobalSecurityIPGroupRelationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -12398,6 +13072,696 @@ public class DescribeGlobalSecurityIPGroupRelationResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeHistoryTasksRequest : Tea.TeaModel {
+    public var fromExecTime: Int32?
+
+    public var fromStartTime: String?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var status: String?
+
+    public var taskId: String?
+
+    public var taskType: String?
+
+    public var toExecTime: Int32?
+
+    public var toStartTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fromExecTime != nil {
+            map["FromExecTime"] = self.fromExecTime!
+        }
+        if self.fromStartTime != nil {
+            map["FromStartTime"] = self.fromStartTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.taskType != nil {
+            map["TaskType"] = self.taskType!
+        }
+        if self.toExecTime != nil {
+            map["ToExecTime"] = self.toExecTime!
+        }
+        if self.toStartTime != nil {
+            map["ToStartTime"] = self.toStartTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FromExecTime") && dict["FromExecTime"] != nil {
+            self.fromExecTime = dict["FromExecTime"] as! Int32
+        }
+        if dict.keys.contains("FromStartTime") && dict["FromStartTime"] != nil {
+            self.fromStartTime = dict["FromStartTime"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! String
+        }
+        if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
+            self.taskType = dict["TaskType"] as! String
+        }
+        if dict.keys.contains("ToExecTime") && dict["ToExecTime"] != nil {
+            self.toExecTime = dict["ToExecTime"] as! Int32
+        }
+        if dict.keys.contains("ToStartTime") && dict["ToStartTime"] != nil {
+            self.toStartTime = dict["ToStartTime"] as! String
+        }
+    }
+}
+
+public class DescribeHistoryTasksResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var actionInfo: String?
+
+        public var callerSource: String?
+
+        public var callerUid: String?
+
+        public var currentStepName: String?
+
+        public var dbType: String?
+
+        public var endTime: String?
+
+        public var instanceId: String?
+
+        public var instanceName: String?
+
+        public var instanceType: String?
+
+        public var product: String?
+
+        public var progress: Double?
+
+        public var reasonCode: String?
+
+        public var regionId: String?
+
+        public var remainTime: Int32?
+
+        public var startTime: String?
+
+        public var status: Int32?
+
+        public var taskDetail: String?
+
+        public var taskId: String?
+
+        public var taskType: String?
+
+        public var uid: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actionInfo != nil {
+                map["ActionInfo"] = self.actionInfo!
+            }
+            if self.callerSource != nil {
+                map["CallerSource"] = self.callerSource!
+            }
+            if self.callerUid != nil {
+                map["CallerUid"] = self.callerUid!
+            }
+            if self.currentStepName != nil {
+                map["CurrentStepName"] = self.currentStepName!
+            }
+            if self.dbType != nil {
+                map["DbType"] = self.dbType!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.product != nil {
+                map["Product"] = self.product!
+            }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
+            if self.reasonCode != nil {
+                map["ReasonCode"] = self.reasonCode!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.remainTime != nil {
+                map["RemainTime"] = self.remainTime!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.taskDetail != nil {
+                map["TaskDetail"] = self.taskDetail!
+            }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
+            if self.taskType != nil {
+                map["TaskType"] = self.taskType!
+            }
+            if self.uid != nil {
+                map["Uid"] = self.uid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActionInfo") && dict["ActionInfo"] != nil {
+                self.actionInfo = dict["ActionInfo"] as! String
+            }
+            if dict.keys.contains("CallerSource") && dict["CallerSource"] != nil {
+                self.callerSource = dict["CallerSource"] as! String
+            }
+            if dict.keys.contains("CallerUid") && dict["CallerUid"] != nil {
+                self.callerUid = dict["CallerUid"] as! String
+            }
+            if dict.keys.contains("CurrentStepName") && dict["CurrentStepName"] != nil {
+                self.currentStepName = dict["CurrentStepName"] as! String
+            }
+            if dict.keys.contains("DbType") && dict["DbType"] != nil {
+                self.dbType = dict["DbType"] as! String
+            }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Product") && dict["Product"] != nil {
+                self.product = dict["Product"] as! String
+            }
+            if dict.keys.contains("Progress") && dict["Progress"] != nil {
+                self.progress = dict["Progress"] as! Double
+            }
+            if dict.keys.contains("ReasonCode") && dict["ReasonCode"] != nil {
+                self.reasonCode = dict["ReasonCode"] as! String
+            }
+            if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RemainTime") && dict["RemainTime"] != nil {
+                self.remainTime = dict["RemainTime"] as! Int32
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! Int32
+            }
+            if dict.keys.contains("TaskDetail") && dict["TaskDetail"] != nil {
+                self.taskDetail = dict["TaskDetail"] as! String
+            }
+            if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+                self.taskId = dict["TaskId"] as! String
+            }
+            if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
+                self.taskType = dict["TaskType"] as! String
+            }
+            if dict.keys.contains("Uid") && dict["Uid"] != nil {
+                self.uid = dict["Uid"] as! String
+            }
+        }
+    }
+    public var items: [DescribeHistoryTasksResponseBody.Items]?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Items") && dict["Items"] != nil {
+            var tmp : [DescribeHistoryTasksResponseBody.Items] = []
+            for v in dict["Items"] as! [Any] {
+                var model = DescribeHistoryTasksResponseBody.Items()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.items = tmp
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeHistoryTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHistoryTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeHistoryTasksResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeHistoryTasksStatRequest : Tea.TeaModel {
+    public var fromExecTime: Int32?
+
+    public var fromStartTime: String?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var status: String?
+
+    public var taskId: String?
+
+    public var taskType: String?
+
+    public var toExecTime: Int32?
+
+    public var toStartTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.fromExecTime != nil {
+            map["FromExecTime"] = self.fromExecTime!
+        }
+        if self.fromStartTime != nil {
+            map["FromStartTime"] = self.fromStartTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.taskType != nil {
+            map["TaskType"] = self.taskType!
+        }
+        if self.toExecTime != nil {
+            map["ToExecTime"] = self.toExecTime!
+        }
+        if self.toStartTime != nil {
+            map["ToStartTime"] = self.toStartTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FromExecTime") && dict["FromExecTime"] != nil {
+            self.fromExecTime = dict["FromExecTime"] as! Int32
+        }
+        if dict.keys.contains("FromStartTime") && dict["FromStartTime"] != nil {
+            self.fromStartTime = dict["FromStartTime"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! String
+        }
+        if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
+            self.taskType = dict["TaskType"] as! String
+        }
+        if dict.keys.contains("ToExecTime") && dict["ToExecTime"] != nil {
+            self.toExecTime = dict["ToExecTime"] as! Int32
+        }
+        if dict.keys.contains("ToStartTime") && dict["ToStartTime"] != nil {
+            self.toStartTime = dict["ToStartTime"] as! String
+        }
+    }
+}
+
+public class DescribeHistoryTasksStatResponseBody : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var status: String?
+
+        public var totalCount: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.totalCount != nil {
+                map["TotalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+                self.totalCount = dict["TotalCount"] as! Int32
+            }
+        }
+    }
+    public var items: [DescribeHistoryTasksStatResponseBody.Items]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Items") && dict["Items"] != nil {
+            var tmp : [DescribeHistoryTasksStatResponseBody.Items] = []
+            for v in dict["Items"] as! [Any] {
+                var model = DescribeHistoryTasksStatResponseBody.Items()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.items = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeHistoryTasksStatResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeHistoryTasksStatResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeHistoryTasksStatResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -12416,8 +13780,6 @@ public class DescribeInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public override init() {
         super.init()
@@ -12460,9 +13822,6 @@ public class DescribeInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -12493,9 +13852,6 @@ public class DescribeInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -12730,8 +14086,6 @@ public class DescribeKernelReleaseNotesRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -12761,9 +14115,6 @@ public class DescribeKernelReleaseNotesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -12782,9 +14133,6 @@ public class DescribeKernelReleaseNotesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -12960,6 +14308,199 @@ public class DescribeKernelReleaseNotesResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeKmsKeysRequest : Tea.TeaModel {
+    public var ownerAccount: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DescribeKmsKeysResponseBody : Tea.TeaModel {
+    public class KmsKeys : Tea.TeaModel {
+        public var keyAlias: String?
+
+        public var keyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.keyAlias != nil {
+                map["KeyAlias"] = self.keyAlias!
+            }
+            if self.keyId != nil {
+                map["KeyId"] = self.keyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("KeyAlias") && dict["KeyAlias"] != nil {
+                self.keyAlias = dict["KeyAlias"] as! String
+            }
+            if dict.keys.contains("KeyId") && dict["KeyId"] != nil {
+                self.keyId = dict["KeyId"] as! String
+            }
+        }
+    }
+    public var kmsKeys: [DescribeKmsKeysResponseBody.KmsKeys]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.kmsKeys != nil {
+            var tmp : [Any] = []
+            for k in self.kmsKeys! {
+                tmp.append(k.toMap())
+            }
+            map["KmsKeys"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("KmsKeys") && dict["KmsKeys"] != nil {
+            var tmp : [DescribeKmsKeysResponseBody.KmsKeys] = []
+            for v in dict["KmsKeys"] as! [Any] {
+                var model = DescribeKmsKeysResponseBody.KmsKeys()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.kmsKeys = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeKmsKeysResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeKmsKeysResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeKmsKeysResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeMongoDBLogConfigRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -12970,8 +14511,6 @@ public class DescribeMongoDBLogConfigRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public override init() {
         super.init()
@@ -13002,9 +14541,6 @@ public class DescribeMongoDBLogConfigRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -13023,9 +14559,6 @@ public class DescribeMongoDBLogConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -13217,8 +14750,6 @@ public class DescribeParameterModificationHistoryRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -13259,9 +14790,6 @@ public class DescribeParameterModificationHistoryRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -13292,9 +14820,6 @@ public class DescribeParameterModificationHistoryRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -13504,8 +15029,6 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -13541,9 +15064,6 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -13568,9 +15088,6 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -13819,8 +15336,6 @@ public class DescribeParametersRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -13859,9 +15374,6 @@ public class DescribeParametersRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -13889,9 +15401,6 @@ public class DescribeParametersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -14271,8 +15780,6 @@ public class DescribePriceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -14326,9 +15833,6 @@ public class DescribePriceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -14371,9 +15875,6 @@ public class DescribePriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -15012,8 +16513,6 @@ public class DescribeRegionsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -15046,9 +16545,6 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -15070,9 +16566,6 @@ public class DescribeRegionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -15368,8 +16861,6 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -15405,9 +16896,6 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -15432,9 +16920,6 @@ public class DescribeRenewalPriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -15983,8 +17468,6 @@ public class DescribeReplicaSetRoleRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -16014,9 +17497,6 @@ public class DescribeReplicaSetRoleRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -16035,9 +17515,6 @@ public class DescribeReplicaSetRoleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -16264,8 +17741,6 @@ public class DescribeRoleZoneInfoRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -16295,9 +17770,6 @@ public class DescribeRoleZoneInfoRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -16316,9 +17788,6 @@ public class DescribeRoleZoneInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -16547,8 +18016,6 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
 
     public var roleType: String?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -16607,9 +18074,6 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
         if self.roleType != nil {
             map["RoleType"] = self.roleType!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -16658,9 +18122,6 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleType") && dict["RoleType"] != nil {
             self.roleType = dict["RoleType"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -16898,8 +18359,6 @@ public class DescribeSecurityGroupConfigurationRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -16929,9 +18388,6 @@ public class DescribeSecurityGroupConfigurationRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -16950,9 +18406,6 @@ public class DescribeSecurityGroupConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -17147,8 +18600,6 @@ public class DescribeSecurityIpsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -17178,9 +18629,6 @@ public class DescribeSecurityIpsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -17199,9 +18647,6 @@ public class DescribeSecurityIpsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -17406,8 +18851,6 @@ public class DescribeShardingNetworkAddressRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -17440,9 +18883,6 @@ public class DescribeShardingNetworkAddressRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -17464,9 +18904,6 @@ public class DescribeShardingNetworkAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -17860,8 +19297,6 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var startTime: String?
 
     public override init() {
@@ -17914,9 +19349,6 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -17959,9 +19391,6 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -18480,8 +19909,6 @@ public class DescribeUserEncryptionKeyListRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var targetRegionId: String?
 
     public override init() {
@@ -18513,9 +19940,6 @@ public class DescribeUserEncryptionKeyListRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.targetRegionId != nil {
             map["TargetRegionId"] = self.targetRegionId!
         }
@@ -18537,9 +19961,6 @@ public class DescribeUserEncryptionKeyListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("TargetRegionId") && dict["TargetRegionId"] != nil {
             self.targetRegionId = dict["TargetRegionId"] as! String
@@ -18686,8 +20107,6 @@ public class DestroyInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -18726,9 +20145,6 @@ public class DestroyInstanceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -18756,9 +20172,6 @@ public class DestroyInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -18868,8 +20281,6 @@ public class EvaluateResourceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var shardsInfo: String?
 
     public var storage: String?
@@ -18923,9 +20334,6 @@ public class EvaluateResourceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.shardsInfo != nil {
             map["ShardsInfo"] = self.shardsInfo!
         }
@@ -18971,9 +20379,6 @@ public class EvaluateResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ShardsInfo") && dict["ShardsInfo"] != nil {
             self.shardsInfo = dict["ShardsInfo"] as! String
@@ -19782,8 +21187,6 @@ public class ModifyAccountDescriptionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -19819,9 +21222,6 @@ public class ModifyAccountDescriptionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -19846,9 +21246,6 @@ public class ModifyAccountDescriptionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -19950,8 +21347,6 @@ public class ModifyAuditLogFilterRequest : Tea.TeaModel {
 
     public var roleType: String?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -19987,9 +21382,6 @@ public class ModifyAuditLogFilterRequest : Tea.TeaModel {
         if self.roleType != nil {
             map["RoleType"] = self.roleType!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -20014,9 +21406,6 @@ public class ModifyAuditLogFilterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleType") && dict["RoleType"] != nil {
             self.roleType = dict["RoleType"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -20118,8 +21507,6 @@ public class ModifyAuditPolicyRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var serviceType: String?
 
     public var storagePeriod: Int32?
@@ -20159,9 +21546,6 @@ public class ModifyAuditPolicyRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.serviceType != nil {
             map["ServiceType"] = self.serviceType!
         }
@@ -20192,9 +21576,6 @@ public class ModifyAuditPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServiceType") && dict["ServiceType"] != nil {
             self.serviceType = dict["ServiceType"] as! String
@@ -20514,8 +21895,6 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -20557,9 +21936,6 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -20590,9 +21966,6 @@ public class ModifyDBInstanceConnectionStringRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -20694,8 +22067,6 @@ public class ModifyDBInstanceDescriptionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -20731,9 +22102,6 @@ public class ModifyDBInstanceDescriptionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -20758,9 +22126,6 @@ public class ModifyDBInstanceDescriptionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -20862,8 +22227,6 @@ public class ModifyDBInstanceMaintainTimeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -20899,9 +22262,6 @@ public class ModifyDBInstanceMaintainTimeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -20926,9 +22286,6 @@ public class ModifyDBInstanceMaintainTimeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -21028,8 +22385,6 @@ public class ModifyDBInstanceMonitorRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -21062,9 +22417,6 @@ public class ModifyDBInstanceMonitorRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -21086,9 +22438,6 @@ public class ModifyDBInstanceMonitorRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -21190,8 +22539,6 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -21227,9 +22574,6 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -21254,9 +22598,6 @@ public class ModifyDBInstanceNetExpireTimeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -21360,8 +22701,6 @@ public class ModifyDBInstanceNetworkTypeRequest : Tea.TeaModel {
 
     public var retainClassic: String?
 
-    public var securityToken: String?
-
     public var vSwitchId: String?
 
     public var vpcId: String?
@@ -21406,9 +22745,6 @@ public class ModifyDBInstanceNetworkTypeRequest : Tea.TeaModel {
         if self.retainClassic != nil {
             map["RetainClassic"] = self.retainClassic!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
@@ -21445,9 +22781,6 @@ public class ModifyDBInstanceNetworkTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RetainClassic") && dict["RetainClassic"] != nil {
             self.retainClassic = dict["RetainClassic"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -21556,8 +22889,6 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
 
     public var SSLAction: String?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -21590,9 +22921,6 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         if self.SSLAction != nil {
             map["SSLAction"] = self.SSLAction!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -21614,9 +22942,6 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SSLAction") && dict["SSLAction"] != nil {
             self.SSLAction = dict["SSLAction"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -21734,8 +23059,6 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -21795,9 +23118,6 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -21846,9 +23166,6 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -21960,8 +23277,6 @@ public class ModifyDBInstanceTDERequest : Tea.TeaModel {
 
     public var roleARN: String?
 
-    public var securityToken: String?
-
     public var TDEStatus: String?
 
     public override init() {
@@ -22002,9 +23317,6 @@ public class ModifyDBInstanceTDERequest : Tea.TeaModel {
         if self.roleARN != nil {
             map["RoleARN"] = self.roleARN!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.TDEStatus != nil {
             map["TDEStatus"] = self.TDEStatus!
         }
@@ -22035,9 +23347,6 @@ public class ModifyDBInstanceTDERequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleARN") && dict["RoleARN"] != nil {
             self.roleARN = dict["RoleARN"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("TDEStatus") && dict["TDEStatus"] != nil {
             self.TDEStatus = dict["TDEStatus"] as! String
@@ -22144,8 +23453,6 @@ public class ModifyGlobalSecurityIPGroupRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -22184,9 +23491,6 @@ public class ModifyGlobalSecurityIPGroupRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -22214,9 +23518,6 @@ public class ModifyGlobalSecurityIPGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -22318,8 +23619,6 @@ public class ModifyGlobalSecurityIPGroupNameRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -22355,9 +23654,6 @@ public class ModifyGlobalSecurityIPGroupNameRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -22382,9 +23678,6 @@ public class ModifyGlobalSecurityIPGroupNameRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -22559,8 +23852,6 @@ public class ModifyGlobalSecurityIPGroupRelationRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -22596,9 +23887,6 @@ public class ModifyGlobalSecurityIPGroupRelationRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -22623,9 +23911,6 @@ public class ModifyGlobalSecurityIPGroupRelationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -22729,8 +24014,6 @@ public class ModifyInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -22769,9 +24052,6 @@ public class ModifyInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -22799,9 +24079,6 @@ public class ModifyInstanceAutoRenewalAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -22901,8 +24178,6 @@ public class ModifyInstanceVpcAuthModeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var vpcAuthMode: String?
 
     public override init() {
@@ -22937,9 +24212,6 @@ public class ModifyInstanceVpcAuthModeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.vpcAuthMode != nil {
             map["VpcAuthMode"] = self.vpcAuthMode!
         }
@@ -22964,9 +24236,6 @@ public class ModifyInstanceVpcAuthModeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("VpcAuthMode") && dict["VpcAuthMode"] != nil {
             self.vpcAuthMode = dict["VpcAuthMode"] as! String
@@ -23089,8 +24358,6 @@ public class ModifyNodeSpecRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public var switchTime: String?
 
     public override init() {
@@ -23155,9 +24422,6 @@ public class ModifyNodeSpecRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.switchTime != nil {
             map["SwitchTime"] = self.switchTime!
         }
@@ -23212,9 +24476,6 @@ public class ModifyNodeSpecRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SwitchTime") && dict["SwitchTime"] != nil {
             self.switchTime = dict["SwitchTime"] as! String
@@ -23339,8 +24600,6 @@ public class ModifyNodeSpecBatchRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -23394,9 +24653,6 @@ public class ModifyNodeSpecBatchRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -23439,9 +24695,6 @@ public class ModifyNodeSpecBatchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23555,8 +24808,6 @@ public class ModifyParametersRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -23598,9 +24849,6 @@ public class ModifyParametersRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -23631,9 +24879,6 @@ public class ModifyParametersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23735,8 +24980,6 @@ public class ModifyResourceGroupRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -23772,9 +25015,6 @@ public class ModifyResourceGroupRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -23799,9 +25039,6 @@ public class ModifyResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23901,8 +25138,6 @@ public class ModifySecurityGroupConfigurationRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -23935,9 +25170,6 @@ public class ModifySecurityGroupConfigurationRequest : Tea.TeaModel {
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -23959,9 +25191,6 @@ public class ModifySecurityGroupConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
             self.securityGroupId = dict["SecurityGroupId"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24067,8 +25296,6 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
 
     public var securityIps: String?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -24110,9 +25337,6 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
         if self.securityIps != nil {
             map["SecurityIps"] = self.securityIps!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -24143,9 +25367,6 @@ public class ModifySecurityIpsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityIps") && dict["SecurityIps"] != nil {
             self.securityIps = dict["SecurityIps"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24232,6 +25453,190 @@ public class ModifySecurityIpsResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyTaskInfoRequest : Tea.TeaModel {
+    public var actionParams: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var stepName: String?
+
+    public var taskAction: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.actionParams != nil {
+            map["ActionParams"] = self.actionParams!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.stepName != nil {
+            map["StepName"] = self.stepName!
+        }
+        if self.taskAction != nil {
+            map["TaskAction"] = self.taskAction!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActionParams") && dict["ActionParams"] != nil {
+            self.actionParams = dict["ActionParams"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("StepName") && dict["StepName"] != nil {
+            self.stepName = dict["StepName"] as! String
+        }
+        if dict.keys.contains("TaskAction") && dict["TaskAction"] != nil {
+            self.taskAction = dict["TaskAction"] as! String
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class ModifyTaskInfoResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorTaskId: String?
+
+    public var requestId: String?
+
+    public var successCount: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorTaskId != nil {
+            map["ErrorTaskId"] = self.errorTaskId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.successCount != nil {
+            map["SuccessCount"] = self.successCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorTaskId") && dict["ErrorTaskId"] != nil {
+            self.errorTaskId = dict["ErrorTaskId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SuccessCount") && dict["SuccessCount"] != nil {
+            self.successCount = dict["SuccessCount"] as! String
+        }
+    }
+}
+
+public class ModifyTaskInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyTaskInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyTaskInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ReleaseNodePrivateNetworkAddressRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
@@ -24246,8 +25651,6 @@ public class ReleaseNodePrivateNetworkAddressRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public override init() {
         super.init()
@@ -24284,9 +25687,6 @@ public class ReleaseNodePrivateNetworkAddressRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -24311,9 +25711,6 @@ public class ReleaseNodePrivateNetworkAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24413,8 +25810,6 @@ public class ReleasePublicNetworkAddressRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -24447,9 +25842,6 @@ public class ReleasePublicNetworkAddressRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -24471,9 +25863,6 @@ public class ReleasePublicNetworkAddressRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24581,8 +25970,6 @@ public class RenewDBInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -24627,9 +26014,6 @@ public class RenewDBInstanceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -24663,9 +26047,6 @@ public class RenewDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24777,8 +26158,6 @@ public class ResetAccountPasswordRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -24817,9 +26196,6 @@ public class ResetAccountPasswordRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -24847,9 +26223,6 @@ public class ResetAccountPasswordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24949,8 +26322,6 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -24983,9 +26354,6 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -25007,9 +26375,6 @@ public class RestartDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25109,8 +26474,6 @@ public class RestoreDBInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -25143,9 +26506,6 @@ public class RestoreDBInstanceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -25167,9 +26527,6 @@ public class RestoreDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25271,8 +26628,6 @@ public class SwitchDBInstanceHARequest : Tea.TeaModel {
 
     public var roleIds: String?
 
-    public var securityToken: String?
-
     public var switchMode: Int32?
 
     public override init() {
@@ -25310,9 +26665,6 @@ public class SwitchDBInstanceHARequest : Tea.TeaModel {
         if self.roleIds != nil {
             map["RoleIds"] = self.roleIds!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.switchMode != nil {
             map["SwitchMode"] = self.switchMode!
         }
@@ -25340,9 +26692,6 @@ public class SwitchDBInstanceHARequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleIds") && dict["RoleIds"] != nil {
             self.roleIds = dict["RoleIds"] as! String
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SwitchMode") && dict["SwitchMode"] != nil {
             self.switchMode = dict["SwitchMode"] as! Int32
@@ -25668,8 +27017,6 @@ public class TransferClusterBackupRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -25699,9 +27046,6 @@ public class TransferClusterBackupRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -25720,9 +27064,6 @@ public class TransferClusterBackupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25842,8 +27183,6 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -25894,9 +27233,6 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -25936,9 +27272,6 @@ public class TransformInstanceChargeTypeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -26054,8 +27387,6 @@ public class TransformToPrePaidRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -26100,9 +27431,6 @@ public class TransformToPrePaidRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -26136,9 +27464,6 @@ public class TransformToPrePaidRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -26430,8 +27755,6 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -26464,9 +27787,6 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -26488,9 +27808,6 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -26588,8 +27905,6 @@ public class UpgradeDBInstanceKernelVersionRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var securityToken: String?
-
     public override init() {
         super.init()
     }
@@ -26619,9 +27934,6 @@ public class UpgradeDBInstanceKernelVersionRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         return map
     }
 
@@ -26640,9 +27952,6 @@ public class UpgradeDBInstanceKernelVersionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
