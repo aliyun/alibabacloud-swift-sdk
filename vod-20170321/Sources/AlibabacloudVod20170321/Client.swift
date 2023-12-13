@@ -341,6 +341,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addVodStorageForAppWithOptions(_ request: AddVodStorageForAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddVodStorageForAppResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageLocation)) {
+            query["StorageLocation"] = request.storageLocation ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddVodStorageForApp",
+            "version": "2017-03-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddVodStorageForAppResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addVodStorageForApp(_ request: AddVodStorageForAppRequest) async throws -> AddVodStorageForAppResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addVodStorageForAppWithOptions(request as! AddVodStorageForAppRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addVodTemplateWithOptions(_ request: AddVodTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddVodTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5827,6 +5864,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateMediaStorageClassWithOptions(_ request: UpdateMediaStorageClassRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateMediaStorageClassResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.allowUpdateWithoutTimeLimit)) {
+            query["AllowUpdateWithoutTimeLimit"] = request.allowUpdateWithoutTimeLimit!;
+        }
         if (!TeaUtils.Client.isUnset(request.mediaIds)) {
             query["MediaIds"] = request.mediaIds ?? "";
         }

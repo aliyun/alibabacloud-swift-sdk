@@ -1246,6 +1246,142 @@ public class AddVodDomainResponse : Tea.TeaModel {
     }
 }
 
+public class AddVodStorageForAppRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var storageLocation: String?
+
+    public var storageType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.storageLocation != nil {
+            map["StorageLocation"] = self.storageLocation!
+        }
+        if self.storageType != nil {
+            map["StorageType"] = self.storageType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
+            self.storageLocation = dict["StorageLocation"] as! String
+        }
+        if dict.keys.contains("StorageType") && dict["StorageType"] != nil {
+            self.storageType = dict["StorageType"] as! String
+        }
+    }
+}
+
+public class AddVodStorageForAppResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var storageLocation: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.storageLocation != nil {
+            map["StorageLocation"] = self.storageLocation!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StorageLocation") && dict["StorageLocation"] != nil {
+            self.storageLocation = dict["StorageLocation"] as! String
+        }
+    }
+}
+
+public class AddVodStorageForAppResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddVodStorageForAppResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = AddVodStorageForAppResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AddVodTemplateRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -22391,6 +22527,8 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
 
         public var status: String?
 
+        public var storageClass: String?
+
         public var title: String?
 
         public var videoId: String?
@@ -22427,6 +22565,9 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.storageClass != nil {
+                map["StorageClass"] = self.storageClass!
+            }
             if self.title != nil {
                 map["Title"] = self.title!
             }
@@ -22454,6 +22595,9 @@ public class GetPlayInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("StorageClass") && dict["StorageClass"] != nil {
+                self.storageClass = dict["StorageClass"] as! String
             }
             if dict.keys.contains("Title") && dict["Title"] != nil {
                 self.title = dict["Title"] as! String
@@ -36439,6 +36583,8 @@ public class UpdateImageInfosResponse : Tea.TeaModel {
 }
 
 public class UpdateMediaStorageClassRequest : Tea.TeaModel {
+    public var allowUpdateWithoutTimeLimit: Bool?
+
     public var mediaIds: String?
 
     public var restoreTier: String?
@@ -36461,6 +36607,9 @@ public class UpdateMediaStorageClassRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.allowUpdateWithoutTimeLimit != nil {
+            map["AllowUpdateWithoutTimeLimit"] = self.allowUpdateWithoutTimeLimit!
+        }
         if self.mediaIds != nil {
             map["MediaIds"] = self.mediaIds!
         }
@@ -36477,6 +36626,9 @@ public class UpdateMediaStorageClassRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowUpdateWithoutTimeLimit") && dict["AllowUpdateWithoutTimeLimit"] != nil {
+            self.allowUpdateWithoutTimeLimit = dict["AllowUpdateWithoutTimeLimit"] as! Bool
+        }
         if dict.keys.contains("MediaIds") && dict["MediaIds"] != nil {
             self.mediaIds = dict["MediaIds"] as! String
         }
