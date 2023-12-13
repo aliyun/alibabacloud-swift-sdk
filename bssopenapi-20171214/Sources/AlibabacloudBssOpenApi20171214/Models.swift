@@ -6192,6 +6192,8 @@ public class DescribeInstanceBillRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var pipCode: String?
+
     public var productCode: String?
 
     public var productType: String?
@@ -6242,6 +6244,9 @@ public class DescribeInstanceBillRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.pipCode != nil {
+            map["PipCode"] = self.pipCode!
+        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
         }
@@ -6284,6 +6289,9 @@ public class DescribeInstanceBillRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PipCode") && dict["PipCode"] != nil {
+            self.pipCode = dict["PipCode"] as! String
         }
         if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
             self.productCode = dict["ProductCode"] as! String
@@ -13071,6 +13079,8 @@ public class DescribeSplitItemBillRequest : Tea.TeaModel {
 
     public var instanceID: String?
 
+    public var isHideZeroCharge: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -13115,6 +13125,9 @@ public class DescribeSplitItemBillRequest : Tea.TeaModel {
         }
         if self.instanceID != nil {
             map["InstanceID"] = self.instanceID!
+        }
+        if self.isHideZeroCharge != nil {
+            map["IsHideZeroCharge"] = self.isHideZeroCharge!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -13162,6 +13175,9 @@ public class DescribeSplitItemBillRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceID") && dict["InstanceID"] != nil {
             self.instanceID = dict["InstanceID"] as! String
+        }
+        if dict.keys.contains("IsHideZeroCharge") && dict["IsHideZeroCharge"] != nil {
+            self.isHideZeroCharge = dict["IsHideZeroCharge"] as! Bool
         }
         if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
             self.maxResults = dict["MaxResults"] as! Int32
@@ -17562,6 +17578,8 @@ public class QueryAccountBalanceResponseBody : Tea.TeaModel {
 
         public var mybankCreditAmount: String?
 
+        public var quotaLimit: String?
+
         public override init() {
             super.init()
         }
@@ -17591,6 +17609,9 @@ public class QueryAccountBalanceResponseBody : Tea.TeaModel {
             if self.mybankCreditAmount != nil {
                 map["MybankCreditAmount"] = self.mybankCreditAmount!
             }
+            if self.quotaLimit != nil {
+                map["QuotaLimit"] = self.quotaLimit!
+            }
             return map
         }
 
@@ -17609,6 +17630,9 @@ public class QueryAccountBalanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MybankCreditAmount") && dict["MybankCreditAmount"] != nil {
                 self.mybankCreditAmount = dict["MybankCreditAmount"] as! String
+            }
+            if dict.keys.contains("QuotaLimit") && dict["QuotaLimit"] != nil {
+                self.quotaLimit = dict["QuotaLimit"] as! String
             }
         }
     }
@@ -29868,6 +29892,10 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
         public class Items : Tea.TeaModel {
             public var billModule: String?
 
+            public var billingCycle: String?
+
+            public var billingOfficialPrice: String?
+
             public var deductCommodity: String?
 
             public var deductFee: String?
@@ -29876,13 +29904,21 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
 
             public var deductRate: String?
 
+            public var deductedOfficialPrice: String?
+
             public var discountRate: String?
 
             public var endTime: String?
 
             public var instanceId: String?
 
+            public var instanceSpec: String?
+
+            public var instanceTypeFamily: String?
+
             public var ownerId: Int64?
+
+            public var region: String?
 
             public var savingsType: String?
 
@@ -29907,6 +29943,12 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
                 if self.billModule != nil {
                     map["BillModule"] = self.billModule!
                 }
+                if self.billingCycle != nil {
+                    map["BillingCycle"] = self.billingCycle!
+                }
+                if self.billingOfficialPrice != nil {
+                    map["BillingOfficialPrice"] = self.billingOfficialPrice!
+                }
                 if self.deductCommodity != nil {
                     map["DeductCommodity"] = self.deductCommodity!
                 }
@@ -29919,6 +29961,9 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
                 if self.deductRate != nil {
                     map["DeductRate"] = self.deductRate!
                 }
+                if self.deductedOfficialPrice != nil {
+                    map["DeductedOfficialPrice"] = self.deductedOfficialPrice!
+                }
                 if self.discountRate != nil {
                     map["DiscountRate"] = self.discountRate!
                 }
@@ -29928,8 +29973,17 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.instanceSpec != nil {
+                    map["InstanceSpec"] = self.instanceSpec!
+                }
+                if self.instanceTypeFamily != nil {
+                    map["InstanceTypeFamily"] = self.instanceTypeFamily!
+                }
                 if self.ownerId != nil {
                     map["OwnerId"] = self.ownerId!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
                 }
                 if self.savingsType != nil {
                     map["SavingsType"] = self.savingsType!
@@ -29947,6 +30001,12 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
                 if dict.keys.contains("BillModule") && dict["BillModule"] != nil {
                     self.billModule = dict["BillModule"] as! String
                 }
+                if dict.keys.contains("BillingCycle") && dict["BillingCycle"] != nil {
+                    self.billingCycle = dict["BillingCycle"] as! String
+                }
+                if dict.keys.contains("BillingOfficialPrice") && dict["BillingOfficialPrice"] != nil {
+                    self.billingOfficialPrice = dict["BillingOfficialPrice"] as! String
+                }
                 if dict.keys.contains("DeductCommodity") && dict["DeductCommodity"] != nil {
                     self.deductCommodity = dict["DeductCommodity"] as! String
                 }
@@ -29959,6 +30019,9 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
                 if dict.keys.contains("DeductRate") && dict["DeductRate"] != nil {
                     self.deductRate = dict["DeductRate"] as! String
                 }
+                if dict.keys.contains("DeductedOfficialPrice") && dict["DeductedOfficialPrice"] != nil {
+                    self.deductedOfficialPrice = dict["DeductedOfficialPrice"] as! String
+                }
                 if dict.keys.contains("DiscountRate") && dict["DiscountRate"] != nil {
                     self.discountRate = dict["DiscountRate"] as! String
                 }
@@ -29968,8 +30031,17 @@ public class QuerySavingsPlansDeductLogResponseBody : Tea.TeaModel {
                 if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
                     self.instanceId = dict["InstanceId"] as! String
                 }
+                if dict.keys.contains("InstanceSpec") && dict["InstanceSpec"] != nil {
+                    self.instanceSpec = dict["InstanceSpec"] as! String
+                }
+                if dict.keys.contains("InstanceTypeFamily") && dict["InstanceTypeFamily"] != nil {
+                    self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
+                }
                 if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
                     self.ownerId = dict["OwnerId"] as! Int64
+                }
+                if dict.keys.contains("Region") && dict["Region"] != nil {
+                    self.region = dict["Region"] as! String
                 }
                 if dict.keys.contains("SavingsType") && dict["SavingsType"] != nil {
                     self.savingsType = dict["SavingsType"] as! String
