@@ -6828,6 +6828,14 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
     public class AvatarInfo : Tea.TeaModel {
         public var code: String?
 
+        public var height: Int32?
+
+        public var width: Int32?
+
+        public var x: Int32?
+
+        public var y: Int32?
+
         public override init() {
             super.init()
         }
@@ -6845,12 +6853,36 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.code != nil {
                 map["Code"] = self.code!
             }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            if self.x != nil {
+                map["X"] = self.x!
+            }
+            if self.y != nil {
+                map["Y"] = self.y!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Code") && dict["Code"] != nil {
                 self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("Height") && dict["Height"] != nil {
+                self.height = dict["Height"] as! Int32
+            }
+            if dict.keys.contains("Width") && dict["Width"] != nil {
+                self.width = dict["Width"] as! Int32
+            }
+            if dict.keys.contains("X") && dict["X"] != nil {
+                self.x = dict["X"] as! Int32
+            }
+            if dict.keys.contains("Y") && dict["Y"] != nil {
+                self.y = dict["Y"] as! Int32
             }
         }
     }
@@ -8147,6 +8179,14 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
     public class AvatarInfo : Tea.TeaModel {
         public var code: String?
 
+        public var height: Int32?
+
+        public var width: Int32?
+
+        public var x: Int32?
+
+        public var y: Int32?
+
         public override init() {
             super.init()
         }
@@ -8164,12 +8204,36 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.code != nil {
                 map["Code"] = self.code!
             }
+            if self.height != nil {
+                map["Height"] = self.height!
+            }
+            if self.width != nil {
+                map["Width"] = self.width!
+            }
+            if self.x != nil {
+                map["X"] = self.x!
+            }
+            if self.y != nil {
+                map["Y"] = self.y!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Code") && dict["Code"] != nil {
                 self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("Height") && dict["Height"] != nil {
+                self.height = dict["Height"] as! Int32
+            }
+            if dict.keys.contains("Width") && dict["Width"] != nil {
+                self.width = dict["Width"] as! Int32
+            }
+            if dict.keys.contains("X") && dict["X"] != nil {
+                self.x = dict["X"] as! Int32
+            }
+            if dict.keys.contains("Y") && dict["Y"] != nil {
+                self.y = dict["Y"] as! Int32
             }
         }
     }
