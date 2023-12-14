@@ -1997,6 +1997,10 @@ public class JobSettings : Tea.TeaModel {
 
     public var errorMonitoringArgs: String?
 
+    public var jobReservedMinutes: Int32?
+
+    public var jobReservedPolicy: String?
+
     public var oversoldType: String?
 
     public var pipelineId: String?
@@ -2044,6 +2048,12 @@ public class JobSettings : Tea.TeaModel {
         if self.errorMonitoringArgs != nil {
             map["ErrorMonitoringArgs"] = self.errorMonitoringArgs!
         }
+        if self.jobReservedMinutes != nil {
+            map["JobReservedMinutes"] = self.jobReservedMinutes!
+        }
+        if self.jobReservedPolicy != nil {
+            map["JobReservedPolicy"] = self.jobReservedPolicy!
+        }
         if self.oversoldType != nil {
             map["OversoldType"] = self.oversoldType!
         }
@@ -2083,6 +2093,12 @@ public class JobSettings : Tea.TeaModel {
         }
         if dict.keys.contains("ErrorMonitoringArgs") && dict["ErrorMonitoringArgs"] != nil {
             self.errorMonitoringArgs = dict["ErrorMonitoringArgs"] as! String
+        }
+        if dict.keys.contains("JobReservedMinutes") && dict["JobReservedMinutes"] != nil {
+            self.jobReservedMinutes = dict["JobReservedMinutes"] as! Int32
+        }
+        if dict.keys.contains("JobReservedPolicy") && dict["JobReservedPolicy"] != nil {
+            self.jobReservedPolicy = dict["JobReservedPolicy"] as! String
         }
         if dict.keys.contains("OversoldType") && dict["OversoldType"] != nil {
             self.oversoldType = dict["OversoldType"] as! String
@@ -3426,6 +3442,8 @@ public class CreateJobRequest : Tea.TeaModel {
 
         public var mountPath: String?
 
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -3446,6 +3464,9 @@ public class CreateJobRequest : Tea.TeaModel {
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -3455,6 +3476,9 @@ public class CreateJobRequest : Tea.TeaModel {
             }
             if dict.keys.contains("MountPath") && dict["MountPath"] != nil {
                 self.mountPath = dict["MountPath"] as! String
+            }
+            if dict.keys.contains("Uri") && dict["Uri"] != nil {
+                self.uri = dict["Uri"] as! String
             }
         }
     }
@@ -4377,6 +4401,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
         public var mountPath: String?
 
+        public var uri: String?
+
         public override init() {
             super.init()
         }
@@ -4397,6 +4423,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             if self.mountPath != nil {
                 map["MountPath"] = self.mountPath!
             }
+            if self.uri != nil {
+                map["Uri"] = self.uri!
+            }
             return map
         }
 
@@ -4406,6 +4435,9 @@ public class GetJobResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MountPath") && dict["MountPath"] != nil {
                 self.mountPath = dict["MountPath"] as! String
+            }
+            if dict.keys.contains("Uri") && dict["Uri"] != nil {
+                self.uri = dict["Uri"] as! String
             }
         }
     }
@@ -6378,6 +6410,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var tags: [String: String]?
 
+    public var userIdForFilter: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -6445,6 +6479,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.tags != nil {
             map["Tags"] = self.tags!
         }
+        if self.userIdForFilter != nil {
+            map["UserIdForFilter"] = self.userIdForFilter!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -6503,6 +6540,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             self.tags = dict["Tags"] as! [String: String]
         }
+        if dict.keys.contains("UserIdForFilter") && dict["UserIdForFilter"] != nil {
+            self.userIdForFilter = dict["UserIdForFilter"] as! String
+        }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
         }
@@ -6543,6 +6583,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var status: String?
 
     public var tagsShrink: String?
+
+    public var userIdForFilter: String?
 
     public var workspaceId: String?
 
@@ -6611,6 +6653,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
+        if self.userIdForFilter != nil {
+            map["UserIdForFilter"] = self.userIdForFilter!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -6668,6 +6713,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             self.tagsShrink = dict["Tags"] as! String
+        }
+        if dict.keys.contains("UserIdForFilter") && dict["UserIdForFilter"] != nil {
+            self.userIdForFilter = dict["UserIdForFilter"] as! String
         }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
