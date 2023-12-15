@@ -2485,6 +2485,8 @@ public class CreateBackendRequest : Tea.TeaModel {
 
     public var backendType: String?
 
+    public var createEventBridgeServiceLinkedRole: Bool?
+
     public var createSlr: Bool?
 
     public var description_: String?
@@ -2513,6 +2515,9 @@ public class CreateBackendRequest : Tea.TeaModel {
         if self.backendType != nil {
             map["BackendType"] = self.backendType!
         }
+        if self.createEventBridgeServiceLinkedRole != nil {
+            map["CreateEventBridgeServiceLinkedRole"] = self.createEventBridgeServiceLinkedRole!
+        }
         if self.createSlr != nil {
             map["CreateSlr"] = self.createSlr!
         }
@@ -2538,6 +2543,9 @@ public class CreateBackendRequest : Tea.TeaModel {
         }
         if dict.keys.contains("BackendType") && dict["BackendType"] != nil {
             self.backendType = dict["BackendType"] as! String
+        }
+        if dict.keys.contains("CreateEventBridgeServiceLinkedRole") && dict["CreateEventBridgeServiceLinkedRole"] != nil {
+            self.createEventBridgeServiceLinkedRole = dict["CreateEventBridgeServiceLinkedRole"] as! Bool
         }
         if dict.keys.contains("CreateSlr") && dict["CreateSlr"] != nil {
             self.createSlr = dict["CreateSlr"] as! Bool

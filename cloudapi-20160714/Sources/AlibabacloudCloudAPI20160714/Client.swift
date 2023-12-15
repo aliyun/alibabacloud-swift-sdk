@@ -712,6 +712,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backendType)) {
             query["BackendType"] = request.backendType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.createEventBridgeServiceLinkedRole)) {
+            query["CreateEventBridgeServiceLinkedRole"] = request.createEventBridgeServiceLinkedRole!;
+        }
         if (!TeaUtils.Client.isUnset(request.createSlr)) {
             query["CreateSlr"] = request.createSlr!;
         }
