@@ -10118,6 +10118,8 @@ public class CreatePostgresExtensionsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var riskConfirmed: Bool?
+
     public var sourceDatabase: String?
 
     public override init() {
@@ -10164,6 +10166,9 @@ public class CreatePostgresExtensionsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.riskConfirmed != nil {
+            map["RiskConfirmed"] = self.riskConfirmed!
+        }
         if self.sourceDatabase != nil {
             map["SourceDatabase"] = self.sourceDatabase!
         }
@@ -10200,6 +10205,9 @@ public class CreatePostgresExtensionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RiskConfirmed") && dict["RiskConfirmed"] != nil {
+            self.riskConfirmed = dict["RiskConfirmed"] as! Bool
         }
         if dict.keys.contains("SourceDatabase") && dict["SourceDatabase"] != nil {
             self.sourceDatabase = dict["SourceDatabase"] as! String
@@ -32604,6 +32612,8 @@ public class DescribeDBMiniEngineVersionsResponseBody : Tea.TeaModel {
 
         public var engineVersion: String?
 
+        public var expireDate: String?
+
         public var expireStatus: String?
 
         public var isHotfixVersion: Bool?
@@ -32643,6 +32653,9 @@ public class DescribeDBMiniEngineVersionsResponseBody : Tea.TeaModel {
             if self.engineVersion != nil {
                 map["EngineVersion"] = self.engineVersion!
             }
+            if self.expireDate != nil {
+                map["ExpireDate"] = self.expireDate!
+            }
             if self.expireStatus != nil {
                 map["ExpireStatus"] = self.expireStatus!
             }
@@ -32679,6 +32692,9 @@ public class DescribeDBMiniEngineVersionsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
                 self.engineVersion = dict["EngineVersion"] as! String
+            }
+            if dict.keys.contains("ExpireDate") && dict["ExpireDate"] != nil {
+                self.expireDate = dict["ExpireDate"] as! String
             }
             if dict.keys.contains("ExpireStatus") && dict["ExpireStatus"] != nil {
                 self.expireStatus = dict["ExpireStatus"] as! String
@@ -33195,7 +33211,7 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
 
     public var DBProxyInstanceType: String?
 
-    public var DBProxyPersistentConnectionSupport: String?
+    public var DBProxyPersistentConnectionStatus: String?
 
     public var DBProxyServiceStatus: String?
 
@@ -33252,8 +33268,8 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
         if self.DBProxyInstanceType != nil {
             map["DBProxyInstanceType"] = self.DBProxyInstanceType!
         }
-        if self.DBProxyPersistentConnectionSupport != nil {
-            map["DBProxyPersistentConnectionSupport"] = self.DBProxyPersistentConnectionSupport!
+        if self.DBProxyPersistentConnectionStatus != nil {
+            map["DBProxyPersistentConnectionStatus"] = self.DBProxyPersistentConnectionStatus!
         }
         if self.DBProxyServiceStatus != nil {
             map["DBProxyServiceStatus"] = self.DBProxyServiceStatus!
@@ -33305,8 +33321,8 @@ public class DescribeDBProxyResponseBody : Tea.TeaModel {
         if dict.keys.contains("DBProxyInstanceType") && dict["DBProxyInstanceType"] != nil {
             self.DBProxyInstanceType = dict["DBProxyInstanceType"] as! String
         }
-        if dict.keys.contains("DBProxyPersistentConnectionSupport") && dict["DBProxyPersistentConnectionSupport"] != nil {
-            self.DBProxyPersistentConnectionSupport = dict["DBProxyPersistentConnectionSupport"] as! String
+        if dict.keys.contains("DBProxyPersistentConnectionStatus") && dict["DBProxyPersistentConnectionStatus"] != nil {
+            self.DBProxyPersistentConnectionStatus = dict["DBProxyPersistentConnectionStatus"] as! String
         }
         if dict.keys.contains("DBProxyServiceStatus") && dict["DBProxyServiceStatus"] != nil {
             self.DBProxyServiceStatus = dict["DBProxyServiceStatus"] as! String
@@ -65499,6 +65515,8 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var persistentConnectionStatus: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -65546,6 +65564,9 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.persistentConnectionStatus != nil {
+            map["PersistentConnectionStatus"] = self.persistentConnectionStatus!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -65588,6 +65609,9 @@ public class ModifyDBProxyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PersistentConnectionStatus") && dict["PersistentConnectionStatus"] != nil {
+            self.persistentConnectionStatus = dict["PersistentConnectionStatus"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
