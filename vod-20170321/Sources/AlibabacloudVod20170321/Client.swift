@@ -5495,8 +5495,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitSnapshotJobWithOptions(_ request: SubmitSnapshotJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitSnapshotJobResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func submitSnapshotJobWithOptions(_ tmpReq: SubmitSnapshotJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitSnapshotJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: SubmitSnapshotJobShrinkRequest = SubmitSnapshotJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.specifiedOffsetTimes)) {
+            request.specifiedOffsetTimesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.specifiedOffsetTimes, "SpecifiedOffsetTimes", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.count)) {
             query["Count"] = request.count!;
@@ -5512,6 +5517,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.specifiedOffsetTime)) {
             query["SpecifiedOffsetTime"] = request.specifiedOffsetTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.specifiedOffsetTimesShrink)) {
+            query["SpecifiedOffsetTimes"] = request.specifiedOffsetTimesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.spriteSnapshotConfig)) {
             query["SpriteSnapshotConfig"] = request.spriteSnapshotConfig ?? "";

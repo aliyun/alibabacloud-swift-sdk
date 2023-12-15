@@ -35168,6 +35168,8 @@ public class SubmitSnapshotJobRequest : Tea.TeaModel {
 
     public var specifiedOffsetTime: Int64?
 
+    public var specifiedOffsetTimes: [Int64]?
+
     public var spriteSnapshotConfig: String?
 
     public var userData: String?
@@ -35205,6 +35207,9 @@ public class SubmitSnapshotJobRequest : Tea.TeaModel {
         if self.specifiedOffsetTime != nil {
             map["SpecifiedOffsetTime"] = self.specifiedOffsetTime!
         }
+        if self.specifiedOffsetTimes != nil {
+            map["SpecifiedOffsetTimes"] = self.specifiedOffsetTimes!
+        }
         if self.spriteSnapshotConfig != nil {
             map["SpriteSnapshotConfig"] = self.spriteSnapshotConfig!
         }
@@ -35235,6 +35240,111 @@ public class SubmitSnapshotJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SpecifiedOffsetTime") && dict["SpecifiedOffsetTime"] != nil {
             self.specifiedOffsetTime = dict["SpecifiedOffsetTime"] as! Int64
+        }
+        if dict.keys.contains("SpecifiedOffsetTimes") && dict["SpecifiedOffsetTimes"] != nil {
+            self.specifiedOffsetTimes = dict["SpecifiedOffsetTimes"] as! [Int64]
+        }
+        if dict.keys.contains("SpriteSnapshotConfig") && dict["SpriteSnapshotConfig"] != nil {
+            self.spriteSnapshotConfig = dict["SpriteSnapshotConfig"] as! String
+        }
+        if dict.keys.contains("UserData") && dict["UserData"] != nil {
+            self.userData = dict["UserData"] as! String
+        }
+        if dict.keys.contains("VideoId") && dict["VideoId"] != nil {
+            self.videoId = dict["VideoId"] as! String
+        }
+        if dict.keys.contains("Width") && dict["Width"] != nil {
+            self.width = dict["Width"] as! String
+        }
+    }
+}
+
+public class SubmitSnapshotJobShrinkRequest : Tea.TeaModel {
+    public var count: Int64?
+
+    public var height: String?
+
+    public var interval: Int64?
+
+    public var snapshotTemplateId: String?
+
+    public var specifiedOffsetTime: Int64?
+
+    public var specifiedOffsetTimesShrink: String?
+
+    public var spriteSnapshotConfig: String?
+
+    public var userData: String?
+
+    public var videoId: String?
+
+    public var width: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.count != nil {
+            map["Count"] = self.count!
+        }
+        if self.height != nil {
+            map["Height"] = self.height!
+        }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
+        if self.snapshotTemplateId != nil {
+            map["SnapshotTemplateId"] = self.snapshotTemplateId!
+        }
+        if self.specifiedOffsetTime != nil {
+            map["SpecifiedOffsetTime"] = self.specifiedOffsetTime!
+        }
+        if self.specifiedOffsetTimesShrink != nil {
+            map["SpecifiedOffsetTimes"] = self.specifiedOffsetTimesShrink!
+        }
+        if self.spriteSnapshotConfig != nil {
+            map["SpriteSnapshotConfig"] = self.spriteSnapshotConfig!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        if self.videoId != nil {
+            map["VideoId"] = self.videoId!
+        }
+        if self.width != nil {
+            map["Width"] = self.width!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Count") && dict["Count"] != nil {
+            self.count = dict["Count"] as! Int64
+        }
+        if dict.keys.contains("Height") && dict["Height"] != nil {
+            self.height = dict["Height"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! Int64
+        }
+        if dict.keys.contains("SnapshotTemplateId") && dict["SnapshotTemplateId"] != nil {
+            self.snapshotTemplateId = dict["SnapshotTemplateId"] as! String
+        }
+        if dict.keys.contains("SpecifiedOffsetTime") && dict["SpecifiedOffsetTime"] != nil {
+            self.specifiedOffsetTime = dict["SpecifiedOffsetTime"] as! Int64
+        }
+        if dict.keys.contains("SpecifiedOffsetTimes") && dict["SpecifiedOffsetTimes"] != nil {
+            self.specifiedOffsetTimesShrink = dict["SpecifiedOffsetTimes"] as! String
         }
         if dict.keys.contains("SpriteSnapshotConfig") && dict["SpriteSnapshotConfig"] != nil {
             self.spriteSnapshotConfig = dict["SpriteSnapshotConfig"] as! String
