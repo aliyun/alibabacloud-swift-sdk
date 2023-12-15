@@ -816,6 +816,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func baseCityInfoSearchWithOptions(_ request: BaseCityInfoSearchRequest, _ headers: BaseCityInfoSearchHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BaseCityInfoSearchResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyword)) {
+            query["keyword"] = request.keyword ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["region"] = request.region ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripAccessToken)) {
+            realHeaders["x-acs-btrip-access-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripAccessToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BaseCityInfoSearch",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/city/v1/cities/action/search",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BaseCityInfoSearchResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func baseCityInfoSearch(_ request: BaseCityInfoSearchRequest) async throws -> BaseCityInfoSearchResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: BaseCityInfoSearchHeaders = BaseCityInfoSearchHeaders([:])
+        return try await baseCityInfoSearchWithOptions(request as! BaseCityInfoSearchRequest, headers as! BaseCityInfoSearchHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func btripBillInfoAdjustWithOptions(_ request: BtripBillInfoAdjustRequest, _ headers: BtripBillInfoAdjustHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> BtripBillInfoAdjustResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]

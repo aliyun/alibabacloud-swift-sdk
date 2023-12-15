@@ -14244,6 +14244,269 @@ public class ApplyQueryResponse : Tea.TeaModel {
     }
 }
 
+public class BaseCityInfoSearchHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripAccessToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripAccessToken != nil {
+            map["x-acs-btrip-access-token"] = self.xAcsBtripAccessToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-access-token") && dict["x-acs-btrip-access-token"] != nil {
+            self.xAcsBtripAccessToken = dict["x-acs-btrip-access-token"] as! String
+        }
+    }
+}
+
+public class BaseCityInfoSearchRequest : Tea.TeaModel {
+    public var keyword: String?
+
+    public var region: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.keyword != nil {
+            map["keyword"] = self.keyword!
+        }
+        if self.region != nil {
+            map["region"] = self.region!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("keyword") && dict["keyword"] != nil {
+            self.keyword = dict["keyword"] as! String
+        }
+        if dict.keys.contains("region") && dict["region"] != nil {
+            self.region = dict["region"] as! String
+        }
+    }
+}
+
+public class BaseCityInfoSearchResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public var code: String?
+
+        public var name: String?
+
+        public var nameTree: String?
+
+        public var region: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            if self.nameTree != nil {
+                map["nameTree"] = self.nameTree!
+            }
+            if self.region != nil {
+                map["region"] = self.region!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("code") && dict["code"] != nil {
+                self.code = dict["code"] as! String
+            }
+            if dict.keys.contains("name") && dict["name"] != nil {
+                self.name = dict["name"] as! String
+            }
+            if dict.keys.contains("nameTree") && dict["nameTree"] != nil {
+                self.nameTree = dict["nameTree"] as! String
+            }
+            if dict.keys.contains("region") && dict["region"] != nil {
+                self.region = dict["region"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var message: String?
+
+    public var module: [BaseCityInfoSearchResponseBody.Module]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            var tmp : [Any] = []
+            for k in self.module! {
+                tmp.append(k.toMap())
+            }
+            map["module"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") && dict["module"] != nil {
+            var tmp : [BaseCityInfoSearchResponseBody.Module] = []
+            for v in dict["module"] as! [Any] {
+                var model = BaseCityInfoSearchResponseBody.Module()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.module = tmp
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") && dict["traceId"] != nil {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class BaseCityInfoSearchResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BaseCityInfoSearchResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = BaseCityInfoSearchResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class BtripBillInfoAdjustHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 
@@ -24338,6 +24601,8 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var airlineCorpName: String?
 
+            public var alipayId: String?
+
             public var alipayTradeNo: String?
 
             public var applyArrCityCode: String?
@@ -24542,6 +24807,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.airlineCorpName != nil {
                     map["airline_corp_name"] = self.airlineCorpName!
+                }
+                if self.alipayId != nil {
+                    map["alipay_id"] = self.alipayId!
                 }
                 if self.alipayTradeNo != nil {
                     map["alipay_trade_no"] = self.alipayTradeNo!
@@ -24828,6 +25096,9 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("airline_corp_name") && dict["airline_corp_name"] != nil {
                     self.airlineCorpName = dict["airline_corp_name"] as! String
+                }
+                if dict.keys.contains("alipay_id") && dict["alipay_id"] != nil {
+                    self.alipayId = dict["alipay_id"] as! String
                 }
                 if dict.keys.contains("alipay_trade_no") && dict["alipay_trade_no"] != nil {
                     self.alipayTradeNo = dict["alipay_trade_no"] as! String
@@ -99954,6 +100225,8 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
 
             public var ticketNo: String?
 
+            public var ticketStatus: Int32?
+
             public var toCityName: String?
 
             public var toStationName: String?
@@ -100036,6 +100309,9 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
                 if self.ticketNo != nil {
                     map["ticket_no"] = self.ticketNo!
                 }
+                if self.ticketStatus != nil {
+                    map["ticket_status"] = self.ticketStatus!
+                }
                 if self.toCityName != nil {
                     map["to_city_name"] = self.toCityName!
                 }
@@ -100111,6 +100387,9 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ticket_no") && dict["ticket_no"] != nil {
                     self.ticketNo = dict["ticket_no"] as! String
+                }
+                if dict.keys.contains("ticket_status") && dict["ticket_status"] != nil {
+                    self.ticketStatus = dict["ticket_status"] as! Int32
                 }
                 if dict.keys.contains("to_city_name") && dict["to_city_name"] != nil {
                     self.toCityName = dict["to_city_name"] as! String
