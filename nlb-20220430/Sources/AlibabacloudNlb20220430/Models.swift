@@ -4221,11 +4221,11 @@ public class GetListenerAttributeRequest : Tea.TeaModel {
 
 public class GetListenerAttributeResponseBody : Tea.TeaModel {
     public class ProxyProtocolV2Config : Tea.TeaModel {
-        public var ppv2PrivateLinkEpIdEnabled: String?
+        public var ppv2PrivateLinkEpIdEnabled: Bool?
 
-        public var ppv2PrivateLinkEpsIdEnabled: String?
+        public var ppv2PrivateLinkEpsIdEnabled: Bool?
 
-        public var ppv2VpcIdEnabled: String?
+        public var ppv2VpcIdEnabled: Bool?
 
         public override init() {
             super.init()
@@ -4255,13 +4255,13 @@ public class GetListenerAttributeResponseBody : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("Ppv2PrivateLinkEpIdEnabled") && dict["Ppv2PrivateLinkEpIdEnabled"] != nil {
-                self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! String
+                self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! Bool
             }
             if dict.keys.contains("Ppv2PrivateLinkEpsIdEnabled") && dict["Ppv2PrivateLinkEpsIdEnabled"] != nil {
-                self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! String
+                self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! Bool
             }
             if dict.keys.contains("Ppv2VpcIdEnabled") && dict["Ppv2VpcIdEnabled"] != nil {
-                self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! String
+                self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! Bool
             }
         }
     }
@@ -6056,11 +6056,11 @@ public class ListListenersRequest : Tea.TeaModel {
 public class ListListenersResponseBody : Tea.TeaModel {
     public class Listeners : Tea.TeaModel {
         public class ProxyProtocolV2Config : Tea.TeaModel {
-            public var ppv2PrivateLinkEpIdEnabled: String?
+            public var ppv2PrivateLinkEpIdEnabled: Bool?
 
-            public var ppv2PrivateLinkEpsIdEnabled: String?
+            public var ppv2PrivateLinkEpsIdEnabled: Bool?
 
-            public var ppv2VpcIdEnabled: String?
+            public var ppv2VpcIdEnabled: Bool?
 
             public override init() {
                 super.init()
@@ -6090,13 +6090,13 @@ public class ListListenersResponseBody : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Ppv2PrivateLinkEpIdEnabled") && dict["Ppv2PrivateLinkEpIdEnabled"] != nil {
-                    self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! String
+                    self.ppv2PrivateLinkEpIdEnabled = dict["Ppv2PrivateLinkEpIdEnabled"] as! Bool
                 }
                 if dict.keys.contains("Ppv2PrivateLinkEpsIdEnabled") && dict["Ppv2PrivateLinkEpsIdEnabled"] != nil {
-                    self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! String
+                    self.ppv2PrivateLinkEpsIdEnabled = dict["Ppv2PrivateLinkEpsIdEnabled"] as! Bool
                 }
                 if dict.keys.contains("Ppv2VpcIdEnabled") && dict["Ppv2VpcIdEnabled"] != nil {
-                    self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! String
+                    self.ppv2VpcIdEnabled = dict["Ppv2VpcIdEnabled"] as! Bool
                 }
             }
         }
