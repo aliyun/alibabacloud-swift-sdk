@@ -739,6 +739,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var DBInstanceMode: String?
 
+    public var enableSSL: Bool?
+
     public var encryptionKey: String?
 
     public var encryptionType: String?
@@ -836,6 +838,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.DBInstanceMode != nil {
             map["DBInstanceMode"] = self.DBInstanceMode!
+        }
+        if self.enableSSL != nil {
+            map["EnableSSL"] = self.enableSSL!
         }
         if self.encryptionKey != nil {
             map["EncryptionKey"] = self.encryptionKey!
@@ -958,6 +963,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceMode") && dict["DBInstanceMode"] != nil {
             self.DBInstanceMode = dict["DBInstanceMode"] as! String
+        }
+        if dict.keys.contains("EnableSSL") && dict["EnableSSL"] != nil {
+            self.enableSSL = dict["EnableSSL"] as! Bool
         }
         if dict.keys.contains("EncryptionKey") && dict["EncryptionKey"] != nil {
             self.encryptionKey = dict["EncryptionKey"] as! String
@@ -4838,6 +4846,8 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
 
     public var nodes: String?
 
+    public var resourceGroupName: String?
+
     public var startTime: String?
 
     public override init() {
@@ -4869,6 +4879,9 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         if self.nodes != nil {
             map["Nodes"] = self.nodes!
         }
+        if self.resourceGroupName != nil {
+            map["ResourceGroupName"] = self.resourceGroupName!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -4890,6 +4903,9 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Nodes") && dict["Nodes"] != nil {
             self.nodes = dict["Nodes"] as! String
+        }
+        if dict.keys.contains("ResourceGroupName") && dict["ResourceGroupName"] != nil {
+            self.resourceGroupName = dict["ResourceGroupName"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -8969,6 +8985,8 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
 
     public var tag: [DescribeDBInstancesRequest.Tag]?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -9026,6 +9044,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -9076,6 +9097,9 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
         }
     }
 }
@@ -9144,6 +9168,8 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
 
     public var tag: [DescribeDBInstancesShrinkRequest.Tag]?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -9201,6 +9227,9 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
             }
             map["Tag"] = tmp
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -9251,6 +9280,9 @@ public class DescribeDBInstancesShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
         }
     }
 }
