@@ -1782,6 +1782,8 @@ public class MassPushRequest : Tea.TeaModel {
 
         public var androidVivoPushMode: Int32?
 
+        public var androidVivoReceiptId: String?
+
         public var androidXiaoMiActivity: String?
 
         public var androidXiaoMiNotifyBody: String?
@@ -1960,6 +1962,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if self.androidVivoPushMode != nil {
                 map["AndroidVivoPushMode"] = self.androidVivoPushMode!
+            }
+            if self.androidVivoReceiptId != nil {
+                map["AndroidVivoReceiptId"] = self.androidVivoReceiptId!
             }
             if self.androidXiaoMiActivity != nil {
                 map["AndroidXiaoMiActivity"] = self.androidXiaoMiActivity!
@@ -2162,6 +2167,9 @@ public class MassPushRequest : Tea.TeaModel {
             }
             if dict.keys.contains("AndroidVivoPushMode") && dict["AndroidVivoPushMode"] != nil {
                 self.androidVivoPushMode = dict["AndroidVivoPushMode"] as! Int32
+            }
+            if dict.keys.contains("AndroidVivoReceiptId") && dict["AndroidVivoReceiptId"] != nil {
+                self.androidVivoReceiptId = dict["AndroidVivoReceiptId"] as! String
             }
             if dict.keys.contains("AndroidXiaoMiActivity") && dict["AndroidXiaoMiActivity"] != nil {
                 self.androidXiaoMiActivity = dict["AndroidXiaoMiActivity"] as! String
@@ -2502,6 +2510,8 @@ public class PushRequest : Tea.TeaModel {
 
     public var androidVivoPushMode: Int32?
 
+    public var androidVivoReceiptId: String?
+
     public var androidXiaoMiActivity: String?
 
     public var androidXiaoMiNotifyBody: String?
@@ -2692,6 +2702,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if self.androidVivoPushMode != nil {
             map["AndroidVivoPushMode"] = self.androidVivoPushMode!
+        }
+        if self.androidVivoReceiptId != nil {
+            map["AndroidVivoReceiptId"] = self.androidVivoReceiptId!
         }
         if self.androidXiaoMiActivity != nil {
             map["AndroidXiaoMiActivity"] = self.androidXiaoMiActivity!
@@ -2912,6 +2925,9 @@ public class PushRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AndroidVivoPushMode") && dict["AndroidVivoPushMode"] != nil {
             self.androidVivoPushMode = dict["AndroidVivoPushMode"] as! Int32
+        }
+        if dict.keys.contains("AndroidVivoReceiptId") && dict["AndroidVivoReceiptId"] != nil {
+            self.androidVivoReceiptId = dict["AndroidVivoReceiptId"] as! String
         }
         if dict.keys.contains("AndroidXiaoMiActivity") && dict["AndroidXiaoMiActivity"] != nil {
             self.androidXiaoMiActivity = dict["AndroidXiaoMiActivity"] as! String

@@ -594,6 +594,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.androidVivoPushMode)) {
             query["AndroidVivoPushMode"] = request.androidVivoPushMode!;
         }
+        if (!TeaUtils.Client.isUnset(request.androidVivoReceiptId)) {
+            query["AndroidVivoReceiptId"] = request.androidVivoReceiptId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.androidXiaoMiActivity)) {
             query["AndroidXiaoMiActivity"] = request.androidXiaoMiActivity ?? "";
         }
