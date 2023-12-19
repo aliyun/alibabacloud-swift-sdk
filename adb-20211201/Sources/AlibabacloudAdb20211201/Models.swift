@@ -3705,6 +3705,8 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
 
     public var minComputeResource: String?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -3746,6 +3748,9 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if self.minComputeResource != nil {
             map["MinComputeResource"] = self.minComputeResource!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
@@ -3776,6 +3781,9 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
             self.minComputeResource = dict["MinComputeResource"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
         }
     }
 }
@@ -25715,6 +25723,8 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
 
     public var minComputeResource: String?
 
+    public var regionId: String?
+
     public override init() {
         super.init()
     }
@@ -25756,6 +25766,9 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         if self.minComputeResource != nil {
             map["MinComputeResource"] = self.minComputeResource!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         return map
     }
 
@@ -25786,6 +25799,9 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
             self.minComputeResource = dict["MinComputeResource"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
         }
     }
 }
