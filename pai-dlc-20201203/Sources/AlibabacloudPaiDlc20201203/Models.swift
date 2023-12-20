@@ -5,6 +5,76 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class AIMasterMessage : Tea.TeaModel {
+    public var extended: String?
+
+    public var jobRestartCount: Int32?
+
+    public var messageContent: String?
+
+    public var messageEvent: String?
+
+    public var messageVersion: Int32?
+
+    public var restartType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.extended != nil {
+            map["Extended"] = self.extended!
+        }
+        if self.jobRestartCount != nil {
+            map["JobRestartCount"] = self.jobRestartCount!
+        }
+        if self.messageContent != nil {
+            map["MessageContent"] = self.messageContent!
+        }
+        if self.messageEvent != nil {
+            map["MessageEvent"] = self.messageEvent!
+        }
+        if self.messageVersion != nil {
+            map["MessageVersion"] = self.messageVersion!
+        }
+        if self.restartType != nil {
+            map["RestartType"] = self.restartType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Extended") && dict["Extended"] != nil {
+            self.extended = dict["Extended"] as! String
+        }
+        if dict.keys.contains("JobRestartCount") && dict["JobRestartCount"] != nil {
+            self.jobRestartCount = dict["JobRestartCount"] as! Int32
+        }
+        if dict.keys.contains("MessageContent") && dict["MessageContent"] != nil {
+            self.messageContent = dict["MessageContent"] as! String
+        }
+        if dict.keys.contains("MessageEvent") && dict["MessageEvent"] != nil {
+            self.messageEvent = dict["MessageEvent"] as! String
+        }
+        if dict.keys.contains("MessageVersion") && dict["MessageVersion"] != nil {
+            self.messageVersion = dict["MessageVersion"] as! Int32
+        }
+        if dict.keys.contains("RestartType") && dict["RestartType"] != nil {
+            self.restartType = dict["RestartType"] as! String
+        }
+    }
+}
+
 public class AliyunAccounts : Tea.TeaModel {
     public var aliyunUid: String?
 
@@ -1993,6 +2063,8 @@ public class JobSettings : Tea.TeaModel {
 
     public var enableRDMA: Bool?
 
+    public var enableSanityCheck: Bool?
+
     public var enableTideResource: Bool?
 
     public var errorMonitoringArgs: String?
@@ -2004,6 +2076,8 @@ public class JobSettings : Tea.TeaModel {
     public var oversoldType: String?
 
     public var pipelineId: String?
+
+    public var sanityCheckArgs: String?
 
     public var tags: [String: String]?
 
@@ -2042,6 +2116,9 @@ public class JobSettings : Tea.TeaModel {
         if self.enableRDMA != nil {
             map["EnableRDMA"] = self.enableRDMA!
         }
+        if self.enableSanityCheck != nil {
+            map["EnableSanityCheck"] = self.enableSanityCheck!
+        }
         if self.enableTideResource != nil {
             map["EnableTideResource"] = self.enableTideResource!
         }
@@ -2059,6 +2136,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if self.pipelineId != nil {
             map["PipelineId"] = self.pipelineId!
+        }
+        if self.sanityCheckArgs != nil {
+            map["SanityCheckArgs"] = self.sanityCheckArgs!
         }
         if self.tags != nil {
             map["Tags"] = self.tags!
@@ -2088,6 +2168,9 @@ public class JobSettings : Tea.TeaModel {
         if dict.keys.contains("EnableRDMA") && dict["EnableRDMA"] != nil {
             self.enableRDMA = dict["EnableRDMA"] as! Bool
         }
+        if dict.keys.contains("EnableSanityCheck") && dict["EnableSanityCheck"] != nil {
+            self.enableSanityCheck = dict["EnableSanityCheck"] as! Bool
+        }
         if dict.keys.contains("EnableTideResource") && dict["EnableTideResource"] != nil {
             self.enableTideResource = dict["EnableTideResource"] as! Bool
         }
@@ -2105,6 +2188,9 @@ public class JobSettings : Tea.TeaModel {
         }
         if dict.keys.contains("PipelineId") && dict["PipelineId"] != nil {
             self.pipelineId = dict["PipelineId"] as! String
+        }
+        if dict.keys.contains("SanityCheckArgs") && dict["SanityCheckArgs"] != nil {
+            self.sanityCheckArgs = dict["SanityCheckArgs"] as! String
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             self.tags = dict["Tags"] as! [String: String]
@@ -3112,6 +3198,68 @@ public class SmartCache : Tea.TeaModel {
         }
         if dict.keys.contains("UserId") && dict["UserId"] != nil {
             self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class StatusTransitionItem : Tea.TeaModel {
+    public var endTime: String?
+
+    public var reasonCode: String?
+
+    public var reasonMessage: String?
+
+    public var startTime: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.reasonCode != nil {
+            map["ReasonCode"] = self.reasonCode!
+        }
+        if self.reasonMessage != nil {
+            map["ReasonMessage"] = self.reasonMessage!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("ReasonCode") && dict["ReasonCode"] != nil {
+            self.reasonCode = dict["ReasonCode"] as! String
+        }
+        if dict.keys.contains("ReasonMessage") && dict["ReasonMessage"] != nil {
+            self.reasonMessage = dict["ReasonMessage"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
         }
     }
 }
