@@ -12571,6 +12571,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpnGatewayAvailableZonesWithOptions(_ request: DescribeVpnGatewayAvailableZonesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpnGatewayAvailableZonesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeVpnGatewayAvailableZones",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeVpnGatewayAvailableZonesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeVpnGatewayAvailableZones(_ request: DescribeVpnGatewayAvailableZonesRequest) async throws -> DescribeVpnGatewayAvailableZonesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeVpnGatewayAvailableZonesWithOptions(request as! DescribeVpnGatewayAvailableZonesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeVpnGatewaysWithOptions(_ request: DescribeVpnGatewaysRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpnGatewaysResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -12913,6 +12941,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func detachDhcpOptionsSetFromVpc(_ request: DetachDhcpOptionsSetFromVpcRequest) async throws -> DetachDhcpOptionsSetFromVpcResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await detachDhcpOptionsSetFromVpcWithOptions(request as! DetachDhcpOptionsSetFromVpcRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func diagnoseVpnConnectionsWithOptions(_ request: DiagnoseVpnConnectionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DiagnoseVpnConnectionsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tunnelIds)) {
+            query["TunnelIds"] = request.tunnelIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpnConnectionIds)) {
+            query["VpnConnectionIds"] = request.vpnConnectionIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpnGatewayId)) {
+            query["VpnGatewayId"] = request.vpnGatewayId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DiagnoseVpnConnections",
+            "version": "2016-04-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DiagnoseVpnConnectionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func diagnoseVpnConnections(_ request: DiagnoseVpnConnectionsRequest) async throws -> DiagnoseVpnConnectionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await diagnoseVpnConnectionsWithOptions(request as! DiagnoseVpnConnectionsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -14316,6 +14393,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
             query["NatGatewayId"] = request.natGatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natIp)) {
+            query["NatIp"] = request.natIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natIpPort)) {
+            query["NatIpPort"] = request.natIpPort ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.networkInterfaceIds)) {
             query["NetworkInterfaceIds"] = request.networkInterfaceIds ?? [];
