@@ -865,7 +865,7 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listClusterNamesWithOptions(_ instanceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterNamesResponse {
+    public func listClusterNamesWithOptions(_ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListClusterNamesResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
         ])
@@ -873,7 +873,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "ListClusterNames",
             "version": "2021-10-25",
             "protocol": "HTTPS",
-            "pathname": "/openapi/ha3/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId) + "/cluster-names",
+            "pathname": "/openapi/ha3/cluster-names",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -885,10 +885,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listClusterNames(_ instanceId: String) async throws -> ListClusterNamesResponse {
+    public func listClusterNames() async throws -> ListClusterNamesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listClusterNamesWithOptions(instanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listClusterNamesWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1337,8 +1337,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.config)) {
             body["config"] = request.config ?? [:];
         }
-        if (!TeaUtils.Client.isUnset(request.dataSource)) {
-            body["dataSource"] = request.dataSource ?? "";
+        if (!TeaUtils.Client.isUnset(request.dataSourceName)) {
+            body["dataSourceName"] = request.dataSourceName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.dataSourceType)) {
             body["dataSourceType"] = request.dataSourceType ?? "";
@@ -1355,8 +1355,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.partition)) {
             body["partition"] = request.partition ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.triggerBuild)) {
-            body["triggerBuild"] = request.triggerBuild!;
+        if (!TeaUtils.Client.isUnset(request.pushMode)) {
+            body["pushMode"] = request.pushMode ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],

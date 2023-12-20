@@ -10202,7 +10202,7 @@ public class ModifyClusterOfflineConfigRequest : Tea.TeaModel {
 
     public var config: [String: Int32]?
 
-    public var dataSource: String?
+    public var dataSourceName: String?
 
     public var dataSourceType: String?
 
@@ -10214,7 +10214,7 @@ public class ModifyClusterOfflineConfigRequest : Tea.TeaModel {
 
     public var partition: String?
 
-    public var triggerBuild: Bool?
+    public var pushMode: String?
 
     public override init() {
         super.init()
@@ -10236,8 +10236,8 @@ public class ModifyClusterOfflineConfigRequest : Tea.TeaModel {
         if self.config != nil {
             map["config"] = self.config!
         }
-        if self.dataSource != nil {
-            map["dataSource"] = self.dataSource!
+        if self.dataSourceName != nil {
+            map["dataSourceName"] = self.dataSourceName!
         }
         if self.dataSourceType != nil {
             map["dataSourceType"] = self.dataSourceType!
@@ -10254,8 +10254,8 @@ public class ModifyClusterOfflineConfigRequest : Tea.TeaModel {
         if self.partition != nil {
             map["partition"] = self.partition!
         }
-        if self.triggerBuild != nil {
-            map["triggerBuild"] = self.triggerBuild!
+        if self.pushMode != nil {
+            map["pushMode"] = self.pushMode!
         }
         return map
     }
@@ -10267,8 +10267,8 @@ public class ModifyClusterOfflineConfigRequest : Tea.TeaModel {
         if dict.keys.contains("config") && dict["config"] != nil {
             self.config = dict["config"] as! [String: Int32]
         }
-        if dict.keys.contains("dataSource") && dict["dataSource"] != nil {
-            self.dataSource = dict["dataSource"] as! String
+        if dict.keys.contains("dataSourceName") && dict["dataSourceName"] != nil {
+            self.dataSourceName = dict["dataSourceName"] as! String
         }
         if dict.keys.contains("dataSourceType") && dict["dataSourceType"] != nil {
             self.dataSourceType = dict["dataSourceType"] as! String
@@ -10285,8 +10285,8 @@ public class ModifyClusterOfflineConfigRequest : Tea.TeaModel {
         if dict.keys.contains("partition") && dict["partition"] != nil {
             self.partition = dict["partition"] as! String
         }
-        if dict.keys.contains("triggerBuild") && dict["triggerBuild"] != nil {
-            self.triggerBuild = dict["triggerBuild"] as! Bool
+        if dict.keys.contains("pushMode") && dict["pushMode"] != nil {
+            self.pushMode = dict["pushMode"] as! String
         }
     }
 }
