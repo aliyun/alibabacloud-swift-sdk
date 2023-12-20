@@ -7750,6 +7750,8 @@ public class CreateCircuitBreakerRuleRequest : Tea.TeaModel {
 
     public var resource: String?
 
+    public var resourceType: Int32?
+
     public var retryTimeoutMs: Int32?
 
     public var statIntervalMs: Int32?
@@ -7805,6 +7807,9 @@ public class CreateCircuitBreakerRuleRequest : Tea.TeaModel {
         if self.resource != nil {
             map["Resource"] = self.resource!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.retryTimeoutMs != nil {
             map["RetryTimeoutMs"] = self.retryTimeoutMs!
         }
@@ -7853,6 +7858,9 @@ public class CreateCircuitBreakerRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Resource") && dict["Resource"] != nil {
             self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! Int32
         }
         if dict.keys.contains("RetryTimeoutMs") && dict["RetryTimeoutMs"] != nil {
             self.retryTimeoutMs = dict["RetryTimeoutMs"] as! Int32
@@ -8795,6 +8803,8 @@ public class CreateFlowRuleRequest : Tea.TeaModel {
 
     public var resource: String?
 
+    public var resourceType: Int32?
+
     public var threshold: Int32?
 
     public override init() {
@@ -8838,6 +8848,9 @@ public class CreateFlowRuleRequest : Tea.TeaModel {
         if self.resource != nil {
             map["Resource"] = self.resource!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         if self.threshold != nil {
             map["Threshold"] = self.threshold!
         }
@@ -8871,6 +8884,9 @@ public class CreateFlowRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Resource") && dict["Resource"] != nil {
             self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! Int32
         }
         if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
             self.threshold = dict["Threshold"] as! Int32
@@ -32338,6 +32354,8 @@ public class ListCircuitBreakerRulesResponseBody : Tea.TeaModel {
 
             public var resource: String?
 
+            public var resourceType: Int32?
+
             public var retryTimeoutMs: Int32?
 
             public var ruleId: Int64?
@@ -32395,6 +32413,9 @@ public class ListCircuitBreakerRulesResponseBody : Tea.TeaModel {
                 if self.resource != nil {
                     map["Resource"] = self.resource!
                 }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
                 if self.retryTimeoutMs != nil {
                     map["RetryTimeoutMs"] = self.retryTimeoutMs!
                 }
@@ -32446,6 +32467,9 @@ public class ListCircuitBreakerRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Resource") && dict["Resource"] != nil {
                     self.resource = dict["Resource"] as! String
+                }
+                if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                    self.resourceType = dict["ResourceType"] as! Int32
                 }
                 if dict.keys.contains("RetryTimeoutMs") && dict["RetryTimeoutMs"] != nil {
                     self.retryTimeoutMs = dict["RetryTimeoutMs"] as! Int32
@@ -36173,6 +36197,8 @@ public class ListFlowRulesResponseBody : Tea.TeaModel {
 
             public var resource: String?
 
+            public var resourceType: Int32?
+
             public var ruleId: Int64?
 
             public var threshold: Double?
@@ -36223,6 +36249,9 @@ public class ListFlowRulesResponseBody : Tea.TeaModel {
                 if self.resource != nil {
                     map["Resource"] = self.resource!
                 }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
                 if self.ruleId != nil {
                     map["RuleId"] = self.ruleId!
                 }
@@ -36265,6 +36294,9 @@ public class ListFlowRulesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Resource") && dict["Resource"] != nil {
                     self.resource = dict["Resource"] as! String
+                }
+                if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                    self.resourceType = dict["ResourceType"] as! Int32
                 }
                 if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
                     self.ruleId = dict["RuleId"] as! Int64
@@ -49611,6 +49643,8 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
 
         public var appVersion: String?
 
+        public var canUpdate: Bool?
+
         public var chargeType: String?
 
         public var clusterAliasName: String?
@@ -49685,6 +49719,8 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
 
         public var vSwitchId: String?
 
+        public var versionCode: String?
+
         public var vpcId: String?
 
         public override init() {
@@ -49710,6 +49746,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             }
             if self.appVersion != nil {
                 map["AppVersion"] = self.appVersion!
+            }
+            if self.canUpdate != nil {
+                map["CanUpdate"] = self.canUpdate!
             }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
@@ -49826,6 +49865,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
+            if self.versionCode != nil {
+                map["VersionCode"] = self.versionCode!
+            }
             if self.vpcId != nil {
                 map["VpcId"] = self.vpcId!
             }
@@ -49841,6 +49883,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppVersion") && dict["AppVersion"] != nil {
                 self.appVersion = dict["AppVersion"] as! String
+            }
+            if dict.keys.contains("CanUpdate") && dict["CanUpdate"] != nil {
+                self.canUpdate = dict["CanUpdate"] as! Bool
             }
             if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
                 self.chargeType = dict["ChargeType"] as! String
@@ -49962,6 +50007,9 @@ public class QueryClusterInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
                 self.vSwitchId = dict["VSwitchId"] as! String
+            }
+            if dict.keys.contains("VersionCode") && dict["VersionCode"] != nil {
+                self.versionCode = dict["VersionCode"] as! String
             }
             if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
                 self.vpcId = dict["VpcId"] as! String
