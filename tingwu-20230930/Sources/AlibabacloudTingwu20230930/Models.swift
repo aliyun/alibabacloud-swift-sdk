@@ -114,7 +114,7 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
         public class Summarization : Tea.TeaModel {
-            public var types: [String: Any]?
+            public var types: [String]?
 
             public override init() {
                 super.init()
@@ -138,7 +138,7 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Types") && dict["Types"] != nil {
-                    self.types = dict["Types"] as! [String: Any]
+                    self.types = dict["Types"] as! [String]
                 }
             }
         }
@@ -291,7 +291,7 @@ public class CreateTaskRequest : Tea.TeaModel {
         public class Translation : Tea.TeaModel {
             public var outputLevel: Int32?
 
-            public var targetLanguages: [String: Any]?
+            public var targetLanguages: [String]?
 
             public override init() {
                 super.init()
@@ -321,7 +321,7 @@ public class CreateTaskRequest : Tea.TeaModel {
                     self.outputLevel = dict["OutputLevel"] as! Int32
                 }
                 if dict.keys.contains("TargetLanguages") && dict["TargetLanguages"] != nil {
-                    self.targetLanguages = dict["TargetLanguages"] as! [String: Any]
+                    self.targetLanguages = dict["TargetLanguages"] as! [String]
                 }
             }
         }
