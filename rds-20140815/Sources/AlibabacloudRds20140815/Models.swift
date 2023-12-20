@@ -29000,6 +29000,8 @@ public class DescribeDBInstanceSSLResponseBody : Tea.TeaModel {
 
     public var connectionString: String?
 
+    public var forceEncryption: String?
+
     public var lastModifyStatus: String?
 
     public var modifyStatusReason: String?
@@ -29025,6 +29027,8 @@ public class DescribeDBInstanceSSLResponseBody : Tea.TeaModel {
     public var serverCert: String?
 
     public var serverKey: String?
+
+    public var tlsVersion: String?
 
     public override init() {
         super.init()
@@ -29057,6 +29061,9 @@ public class DescribeDBInstanceSSLResponseBody : Tea.TeaModel {
         }
         if self.connectionString != nil {
             map["ConnectionString"] = self.connectionString!
+        }
+        if self.forceEncryption != nil {
+            map["ForceEncryption"] = self.forceEncryption!
         }
         if self.lastModifyStatus != nil {
             map["LastModifyStatus"] = self.lastModifyStatus!
@@ -29097,6 +29104,9 @@ public class DescribeDBInstanceSSLResponseBody : Tea.TeaModel {
         if self.serverKey != nil {
             map["ServerKey"] = self.serverKey!
         }
+        if self.tlsVersion != nil {
+            map["TlsVersion"] = self.tlsVersion!
+        }
         return map
     }
 
@@ -29118,6 +29128,9 @@ public class DescribeDBInstanceSSLResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ConnectionString") && dict["ConnectionString"] != nil {
             self.connectionString = dict["ConnectionString"] as! String
+        }
+        if dict.keys.contains("ForceEncryption") && dict["ForceEncryption"] != nil {
+            self.forceEncryption = dict["ForceEncryption"] as! String
         }
         if dict.keys.contains("LastModifyStatus") && dict["LastModifyStatus"] != nil {
             self.lastModifyStatus = dict["LastModifyStatus"] as! String
@@ -29157,6 +29170,9 @@ public class DescribeDBInstanceSSLResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ServerKey") && dict["ServerKey"] != nil {
             self.serverKey = dict["ServerKey"] as! String
+        }
+        if dict.keys.contains("TlsVersion") && dict["TlsVersion"] != nil {
+            self.tlsVersion = dict["TlsVersion"] as! String
         }
     }
 }
@@ -64104,6 +64120,8 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
 
     public var DBInstanceId: String?
 
+    public var forceEncryption: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -64119,6 +64137,8 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
     public var serverCert: String?
 
     public var serverKey: String?
+
+    public var tlsVersion: String?
 
     public override init() {
         super.init()
@@ -64158,6 +64178,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
+        if self.forceEncryption != nil {
+            map["ForceEncryption"] = self.forceEncryption!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -64181,6 +64204,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         }
         if self.serverKey != nil {
             map["ServerKey"] = self.serverKey!
+        }
+        if self.tlsVersion != nil {
+            map["TlsVersion"] = self.tlsVersion!
         }
         return map
     }
@@ -64210,6 +64236,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
+        if dict.keys.contains("ForceEncryption") && dict["ForceEncryption"] != nil {
+            self.forceEncryption = dict["ForceEncryption"] as! String
+        }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -64233,6 +64262,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServerKey") && dict["ServerKey"] != nil {
             self.serverKey = dict["ServerKey"] as! String
+        }
+        if dict.keys.contains("TlsVersion") && dict["TlsVersion"] != nil {
+            self.tlsVersion = dict["TlsVersion"] as! String
         }
     }
 }
