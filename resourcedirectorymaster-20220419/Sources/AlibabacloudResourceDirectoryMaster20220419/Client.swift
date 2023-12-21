@@ -830,6 +830,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enableResourceDirectoryWithOptions(_ request: EnableResourceDirectoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableResourceDirectoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dryRun)) {
+            query["DryRun"] = request.dryRun!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableMode)) {
             query["EnableMode"] = request.enableMode ?? "";
         }

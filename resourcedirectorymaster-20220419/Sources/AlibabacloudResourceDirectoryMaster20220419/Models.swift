@@ -3733,6 +3733,8 @@ public class EnableControlPolicyResponse : Tea.TeaModel {
 }
 
 public class EnableResourceDirectoryRequest : Tea.TeaModel {
+    public var dryRun: Bool?
+
     public var enableMode: String?
 
     public var MAName: String?
@@ -3755,6 +3757,9 @@ public class EnableResourceDirectoryRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
         if self.enableMode != nil {
             map["EnableMode"] = self.enableMode!
         }
@@ -3771,6 +3776,9 @@ public class EnableResourceDirectoryRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
         if dict.keys.contains("EnableMode") && dict["EnableMode"] != nil {
             self.enableMode = dict["EnableMode"] as! String
         }
