@@ -5984,6 +5984,35 @@ public class CreateDeliveryPlanShrinkHeaders : Tea.TeaModel {
 }
 
 public class CreateDeliveryPlanRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
     public var content: [String: Any]?
 
     public var endTime: Int64?
@@ -5991,6 +6020,8 @@ public class CreateDeliveryPlanRequest : Tea.TeaModel {
     public var resId: String?
 
     public var startTime: Int64?
+
+    public var tenantContext: CreateDeliveryPlanRequest.TenantContext?
 
     public var userIdList: [String]?
 
@@ -6004,6 +6035,7 @@ public class CreateDeliveryPlanRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6019,6 +6051,9 @@ public class CreateDeliveryPlanRequest : Tea.TeaModel {
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
         }
         if self.userIdList != nil {
             map["UserIdList"] = self.userIdList!
@@ -6039,6 +6074,11 @@ public class CreateDeliveryPlanRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
         }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            var model = CreateDeliveryPlanRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
         if dict.keys.contains("UserIdList") && dict["UserIdList"] != nil {
             self.userIdList = dict["UserIdList"] as! [String]
         }
@@ -6053,6 +6093,8 @@ public class CreateDeliveryPlanShrinkRequest : Tea.TeaModel {
     public var resId: String?
 
     public var startTime: Int64?
+
+    public var tenantContextShrink: String?
 
     public var userIdListShrink: String?
 
@@ -6082,6 +6124,9 @@ public class CreateDeliveryPlanShrinkRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
         if self.userIdListShrink != nil {
             map["UserIdList"] = self.userIdListShrink!
         }
@@ -6100,6 +6145,9 @@ public class CreateDeliveryPlanShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            self.tenantContextShrink = dict["TenantContext"] as! String
         }
         if dict.keys.contains("UserIdList") && dict["UserIdList"] != nil {
             self.userIdListShrink = dict["UserIdList"] as! String
@@ -56350,11 +56398,42 @@ public class SendBannerShrinkHeaders : Tea.TeaModel {
 }
 
 public class SendBannerRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
     public var content: [String: Any]?
 
     public var endTime: Int64?
 
     public var startTime: Int64?
+
+    public var tenantContext: SendBannerRequest.TenantContext?
 
     public override init() {
         super.init()
@@ -56366,6 +56445,7 @@ public class SendBannerRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -56378,6 +56458,9 @@ public class SendBannerRequest : Tea.TeaModel {
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
         }
         return map
     }
@@ -56392,6 +56475,11 @@ public class SendBannerRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
         }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            var model = SendBannerRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
     }
 }
 
@@ -56401,6 +56489,8 @@ public class SendBannerShrinkRequest : Tea.TeaModel {
     public var endTime: Int64?
 
     public var startTime: Int64?
+
+    public var tenantContextShrink: String?
 
     public override init() {
         super.init()
@@ -56425,6 +56515,9 @@ public class SendBannerShrinkRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
         return map
     }
 
@@ -56437,6 +56530,9 @@ public class SendBannerShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            self.tenantContextShrink = dict["TenantContext"] as! String
         }
     }
 }
@@ -56664,11 +56760,42 @@ public class SendPopupShrinkHeaders : Tea.TeaModel {
 }
 
 public class SendPopupRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
     public var content: [String: Any]?
 
     public var endTime: Int64?
 
     public var startTime: Int64?
+
+    public var tenantContext: SendPopupRequest.TenantContext?
 
     public override init() {
         super.init()
@@ -56680,6 +56807,7 @@ public class SendPopupRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -56692,6 +56820,9 @@ public class SendPopupRequest : Tea.TeaModel {
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
         }
         return map
     }
@@ -56706,6 +56837,11 @@ public class SendPopupRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
         }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            var model = SendPopupRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
     }
 }
 
@@ -56715,6 +56851,8 @@ public class SendPopupShrinkRequest : Tea.TeaModel {
     public var endTime: Int64?
 
     public var startTime: Int64?
+
+    public var tenantContextShrink: String?
 
     public override init() {
         super.init()
@@ -56739,6 +56877,9 @@ public class SendPopupShrinkRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
         return map
     }
 
@@ -56751,6 +56892,9 @@ public class SendPopupShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            self.tenantContextShrink = dict["TenantContext"] as! String
         }
     }
 }
@@ -56978,11 +57122,42 @@ public class SendSearchShadeShrinkHeaders : Tea.TeaModel {
 }
 
 public class SendSearchShadeRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
     public var content: [String: Any]?
 
     public var endTime: Int64?
 
     public var startTime: Int64?
+
+    public var tenantContext: SendSearchShadeRequest.TenantContext?
 
     public override init() {
         super.init()
@@ -56994,6 +57169,7 @@ public class SendSearchShadeRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -57006,6 +57182,9 @@ public class SendSearchShadeRequest : Tea.TeaModel {
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
         }
         return map
     }
@@ -57020,6 +57199,11 @@ public class SendSearchShadeRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
         }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            var model = SendSearchShadeRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
     }
 }
 
@@ -57029,6 +57213,8 @@ public class SendSearchShadeShrinkRequest : Tea.TeaModel {
     public var endTime: Int64?
 
     public var startTime: Int64?
+
+    public var tenantContextShrink: String?
 
     public override init() {
         super.init()
@@ -57053,6 +57239,9 @@ public class SendSearchShadeShrinkRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
         return map
     }
 
@@ -57065,6 +57254,9 @@ public class SendSearchShadeShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            self.tenantContextShrink = dict["TenantContext"] as! String
         }
     }
 }
