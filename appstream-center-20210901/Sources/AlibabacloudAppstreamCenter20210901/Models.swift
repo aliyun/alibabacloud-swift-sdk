@@ -2723,6 +2723,8 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
 
     public var appInstanceId: String?
 
+    public var appInstancePersistentId: String?
+
     public var appStartParam: String?
 
     public var appVersion: String?
@@ -2758,6 +2760,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         if self.appInstanceId != nil {
             map["AppInstanceId"] = self.appInstanceId!
         }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
         if self.appStartParam != nil {
             map["AppStartParam"] = self.appStartParam!
         }
@@ -2789,6 +2794,9 @@ public class GetConnectionTicketRequest : Tea.TeaModel {
         if dict.keys.contains("AppInstanceId") && dict["AppInstanceId"] != nil {
             self.appInstanceId = dict["AppInstanceId"] as! String
         }
+        if dict.keys.contains("AppInstancePersistentId") && dict["AppInstancePersistentId"] != nil {
+            self.appInstancePersistentId = dict["AppInstancePersistentId"] as! String
+        }
         if dict.keys.contains("AppStartParam") && dict["AppStartParam"] != nil {
             self.appStartParam = dict["AppStartParam"] as! String
         }
@@ -2814,6 +2822,8 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
     public var appInstanceGroupId: String?
 
     public var appInstanceId: String?
+
+    public var appInstancePersistentId: String?
 
     public var bizRegionId: String?
 
@@ -2849,6 +2859,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         if self.appInstanceId != nil {
             map["AppInstanceId"] = self.appInstanceId!
         }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
         if self.bizRegionId != nil {
             map["BizRegionId"] = self.bizRegionId!
         }
@@ -2879,6 +2892,9 @@ public class GetConnectionTicketResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("AppInstanceId") && dict["AppInstanceId"] != nil {
             self.appInstanceId = dict["AppInstanceId"] as! String
+        }
+        if dict.keys.contains("AppInstancePersistentId") && dict["AppInstancePersistentId"] != nil {
+            self.appInstancePersistentId = dict["AppInstancePersistentId"] as! String
         }
         if dict.keys.contains("BizRegionId") && dict["BizRegionId"] != nil {
             self.bizRegionId = dict["BizRegionId"] as! String
@@ -4322,6 +4338,8 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
 
     public var appInstanceGroupName: String?
 
+    public var bizRegionId: String?
+
     public var nodeInstanceType: String?
 
     public var pageNumber: Int32?
@@ -4329,8 +4347,6 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var productType: String?
-
-    public var regionId: String?
 
     public var status: [String]?
 
@@ -4357,6 +4373,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         if self.appInstanceGroupName != nil {
             map["AppInstanceGroupName"] = self.appInstanceGroupName!
         }
+        if self.bizRegionId != nil {
+            map["BizRegionId"] = self.bizRegionId!
+        }
         if self.nodeInstanceType != nil {
             map["NodeInstanceType"] = self.nodeInstanceType!
         }
@@ -4368,9 +4387,6 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         }
         if self.productType != nil {
             map["ProductType"] = self.productType!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -4388,6 +4404,9 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         if dict.keys.contains("AppInstanceGroupName") && dict["AppInstanceGroupName"] != nil {
             self.appInstanceGroupName = dict["AppInstanceGroupName"] as! String
         }
+        if dict.keys.contains("BizRegionId") && dict["BizRegionId"] != nil {
+            self.bizRegionId = dict["BizRegionId"] as! String
+        }
         if dict.keys.contains("NodeInstanceType") && dict["NodeInstanceType"] != nil {
             self.nodeInstanceType = dict["NodeInstanceType"] as! String
         }
@@ -4399,9 +4418,6 @@ public class ListAppInstanceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProductType") && dict["ProductType"] != nil {
             self.productType = dict["ProductType"] as! String
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! [String]
@@ -7812,6 +7828,8 @@ public class UnbindRequest : Tea.TeaModel {
 
     public var appInstanceId: String?
 
+    public var appInstancePersistentId: String?
+
     public var endUserId: String?
 
     public var productType: String?
@@ -7836,6 +7854,9 @@ public class UnbindRequest : Tea.TeaModel {
         if self.appInstanceId != nil {
             map["AppInstanceId"] = self.appInstanceId!
         }
+        if self.appInstancePersistentId != nil {
+            map["AppInstancePersistentId"] = self.appInstancePersistentId!
+        }
         if self.endUserId != nil {
             map["EndUserId"] = self.endUserId!
         }
@@ -7851,6 +7872,9 @@ public class UnbindRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppInstanceId") && dict["AppInstanceId"] != nil {
             self.appInstanceId = dict["AppInstanceId"] as! String
+        }
+        if dict.keys.contains("AppInstancePersistentId") && dict["AppInstancePersistentId"] != nil {
+            self.appInstancePersistentId = dict["AppInstancePersistentId"] as! String
         }
         if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
             self.endUserId = dict["EndUserId"] as! String

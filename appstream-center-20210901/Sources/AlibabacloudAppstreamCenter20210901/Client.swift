@@ -8,6 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._signatureAlgorithm = "v2"
         self._endpointRule = ""
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("appstream-center", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -403,6 +404,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appInstanceId)) {
             body["AppInstanceId"] = request.appInstanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.appInstancePersistentId)) {
+            body["AppInstancePersistentId"] = request.appInstancePersistentId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appStartParam)) {
             body["AppStartParam"] = request.appStartParam ?? "";
         }
@@ -615,6 +619,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appInstanceGroupName)) {
             query["AppInstanceGroupName"] = request.appInstanceGroupName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.bizRegionId)) {
+            query["BizRegionId"] = request.bizRegionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.nodeInstanceType)) {
             query["NodeInstanceType"] = request.nodeInstanceType ?? "";
         }
@@ -626,9 +633,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.productType)) {
             query["ProductType"] = request.productType ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.regionId)) {
-            query["RegionId"] = request.regionId ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.status)) {
@@ -1129,6 +1133,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.appInstanceId)) {
             body["AppInstanceId"] = request.appInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appInstancePersistentId)) {
+            body["AppInstancePersistentId"] = request.appInstancePersistentId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.endUserId)) {
             body["EndUserId"] = request.endUserId ?? "";
