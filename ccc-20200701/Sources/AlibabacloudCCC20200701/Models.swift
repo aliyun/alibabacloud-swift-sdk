@@ -4351,6 +4351,278 @@ public class CancelAttendedTransferResponse : Tea.TeaModel {
     }
 }
 
+public class ChangeVisibilityRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var invisible: Bool?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.invisible != nil {
+            map["Invisible"] = self.invisible!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Invisible") && dict["Invisible"] != nil {
+            self.invisible = dict["Invisible"] as! Bool
+        }
+        if dict.keys.contains("UserId") && dict["UserId"] != nil {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class ChangeVisibilityResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var breakCode: String?
+
+        public var deviceId: String?
+
+        public var extension_: String?
+
+        public var instanceId: String?
+
+        public var jobId: String?
+
+        public var outboundScenario: Bool?
+
+        public var signedSkillGroupIdList: [String]?
+
+        public var userId: String?
+
+        public var userState: String?
+
+        public var workMode: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.breakCode != nil {
+                map["BreakCode"] = self.breakCode!
+            }
+            if self.deviceId != nil {
+                map["DeviceId"] = self.deviceId!
+            }
+            if self.extension_ != nil {
+                map["Extension"] = self.extension_!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.outboundScenario != nil {
+                map["OutboundScenario"] = self.outboundScenario!
+            }
+            if self.signedSkillGroupIdList != nil {
+                map["SignedSkillGroupIdList"] = self.signedSkillGroupIdList!
+            }
+            if self.userId != nil {
+                map["UserId"] = self.userId!
+            }
+            if self.userState != nil {
+                map["UserState"] = self.userState!
+            }
+            if self.workMode != nil {
+                map["WorkMode"] = self.workMode!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BreakCode") && dict["BreakCode"] != nil {
+                self.breakCode = dict["BreakCode"] as! String
+            }
+            if dict.keys.contains("DeviceId") && dict["DeviceId"] != nil {
+                self.deviceId = dict["DeviceId"] as! String
+            }
+            if dict.keys.contains("Extension") && dict["Extension"] != nil {
+                self.extension_ = dict["Extension"] as! String
+            }
+            if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("JobId") && dict["JobId"] != nil {
+                self.jobId = dict["JobId"] as! String
+            }
+            if dict.keys.contains("OutboundScenario") && dict["OutboundScenario"] != nil {
+                self.outboundScenario = dict["OutboundScenario"] as! Bool
+            }
+            if dict.keys.contains("SignedSkillGroupIdList") && dict["SignedSkillGroupIdList"] != nil {
+                self.signedSkillGroupIdList = dict["SignedSkillGroupIdList"] as! [String]
+            }
+            if dict.keys.contains("UserId") && dict["UserId"] != nil {
+                self.userId = dict["UserId"] as! String
+            }
+            if dict.keys.contains("UserState") && dict["UserState"] != nil {
+                self.userState = dict["UserState"] as! String
+            }
+            if dict.keys.contains("WorkMode") && dict["WorkMode"] != nil {
+                self.workMode = dict["WorkMode"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ChangeVisibilityResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var params: [String]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.params != nil {
+            map["Params"] = self.params!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ChangeVisibilityResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("Params") && dict["Params"] != nil {
+            self.params = dict["Params"] as! [String]
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ChangeVisibilityResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ChangeVisibilityResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ChangeVisibilityResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ChangeWorkModeRequest : Tea.TeaModel {
     public var deviceId: String?
 
