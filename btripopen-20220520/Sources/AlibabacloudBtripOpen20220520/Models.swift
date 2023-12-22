@@ -16425,6 +16425,10 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var overApplyId: String?
 
+            public var paymentDepartmentId: String?
+
+            public var paymentDepartmentName: String?
+
             public var personSettleFee: Double?
 
             public var primaryId: Int64?
@@ -16629,6 +16633,12 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.paymentDepartmentId != nil {
+                    map["payment_department_id"] = self.paymentDepartmentId!
+                }
+                if self.paymentDepartmentName != nil {
+                    map["payment_department_name"] = self.paymentDepartmentName!
                 }
                 if self.personSettleFee != nil {
                     map["person_settle_fee"] = self.personSettleFee!
@@ -16852,6 +16862,12 @@ public class CarBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("payment_department_id") && dict["payment_department_id"] != nil {
+                    self.paymentDepartmentId = dict["payment_department_id"] as! String
+                }
+                if dict.keys.contains("payment_department_name") && dict["payment_department_name"] != nil {
+                    self.paymentDepartmentName = dict["payment_department_name"] as! String
                 }
                 if dict.keys.contains("person_settle_fee") && dict["person_settle_fee"] != nil {
                     self.personSettleFee = dict["person_settle_fee"] as! Double
@@ -24729,6 +24745,10 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var overApplyId: String?
 
+            public var paymentDepartmentId: String?
+
+            public var paymentDepartmentName: String?
+
             public var personSettlePrice: Double?
 
             public var preBookTip: String?
@@ -24999,6 +25019,12 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.paymentDepartmentId != nil {
+                    map["payment_department_id"] = self.paymentDepartmentId!
+                }
+                if self.paymentDepartmentName != nil {
+                    map["payment_department_name"] = self.paymentDepartmentName!
                 }
                 if self.personSettlePrice != nil {
                     map["person_settle_price"] = self.personSettlePrice!
@@ -25288,6 +25314,12 @@ public class FlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("payment_department_id") && dict["payment_department_id"] != nil {
+                    self.paymentDepartmentId = dict["payment_department_id"] as! String
+                }
+                if dict.keys.contains("payment_department_name") && dict["payment_department_name"] != nil {
+                    self.paymentDepartmentName = dict["payment_department_name"] as! String
                 }
                 if dict.keys.contains("person_settle_price") && dict["person_settle_price"] != nil {
                     self.personSettlePrice = dict["person_settle_price"] as! Double
@@ -62332,6 +62364,10 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var overApplyId: String?
 
+            public var paymentDepartmentId: String?
+
+            public var paymentDepartmentName: String?
+
             public var personRefundFee: Double?
 
             public var personSettlePrice: Double?
@@ -62540,6 +62576,12 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.paymentDepartmentId != nil {
+                    map["payment_department_id"] = self.paymentDepartmentId!
+                }
+                if self.paymentDepartmentName != nil {
+                    map["payment_department_name"] = self.paymentDepartmentName!
                 }
                 if self.personRefundFee != nil {
                     map["person_refund_fee"] = self.personRefundFee!
@@ -62766,6 +62808,12 @@ public class HotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("payment_department_id") && dict["payment_department_id"] != nil {
+                    self.paymentDepartmentId = dict["payment_department_id"] as! String
+                }
+                if dict.keys.contains("payment_department_name") && dict["payment_department_name"] != nil {
+                    self.paymentDepartmentName = dict["payment_department_name"] as! String
                 }
                 if dict.keys.contains("person_refund_fee") && dict["person_refund_fee"] != nil {
                     self.personRefundFee = dict["person_refund_fee"] as! Double
@@ -74580,6 +74628,10 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var overApplyId: String?
 
+            public var paymentDepartmentId: String?
+
+            public var paymentDepartmentName: String?
+
             public var primaryId: Int64?
 
             public var projectCode: String?
@@ -74823,6 +74875,12 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.paymentDepartmentId != nil {
+                    map["payment_department_id"] = self.paymentDepartmentId!
+                }
+                if self.paymentDepartmentName != nil {
+                    map["payment_department_name"] = self.paymentDepartmentName!
                 }
                 if self.primaryId != nil {
                     map["primary_id"] = self.primaryId!
@@ -75082,6 +75140,12 @@ public class IeFlightBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("payment_department_id") && dict["payment_department_id"] != nil {
+                    self.paymentDepartmentId = dict["payment_department_id"] as! String
+                }
+                if dict.keys.contains("payment_department_name") && dict["payment_department_name"] != nil {
+                    self.paymentDepartmentName = dict["payment_department_name"] as! String
                 }
                 if dict.keys.contains("primary_id") && dict["primary_id"] != nil {
                     self.primaryId = dict["primary_id"] as! Int64
@@ -75577,6 +75641,10 @@ public class IeHotelBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var overApplyId: String?
 
+            public var paymentDepartmentId: String?
+
+            public var paymentDepartmentName: String?
+
             public var personRefundFee: Double?
 
             public var personSettlePrice: Double?
@@ -75805,6 +75873,12 @@ public class IeHotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.paymentDepartmentId != nil {
+                    map["payment_department_id"] = self.paymentDepartmentId!
+                }
+                if self.paymentDepartmentName != nil {
+                    map["payment_department_name"] = self.paymentDepartmentName!
                 }
                 if self.personRefundFee != nil {
                     map["person_refund_fee"] = self.personRefundFee!
@@ -76055,6 +76129,12 @@ public class IeHotelBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("payment_department_id") && dict["payment_department_id"] != nil {
+                    self.paymentDepartmentId = dict["payment_department_id"] as! String
+                }
+                if dict.keys.contains("payment_department_name") && dict["payment_department_name"] != nil {
+                    self.paymentDepartmentName = dict["payment_department_name"] as! String
                 }
                 if dict.keys.contains("person_refund_fee") && dict["person_refund_fee"] != nil {
                     self.personRefundFee = dict["person_refund_fee"] as! Double
@@ -96762,6 +96842,10 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
 
             public var overApplyId: String?
 
+            public var paymentDepartmentId: String?
+
+            public var paymentDepartmentName: String?
+
             public var primaryId: Int64?
 
             public var printTicketPrice: Double?
@@ -96960,6 +97044,12 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if self.overApplyId != nil {
                     map["over_apply_id"] = self.overApplyId!
+                }
+                if self.paymentDepartmentId != nil {
+                    map["payment_department_id"] = self.paymentDepartmentId!
+                }
+                if self.paymentDepartmentName != nil {
+                    map["payment_department_name"] = self.paymentDepartmentName!
                 }
                 if self.primaryId != nil {
                     map["primary_id"] = self.primaryId!
@@ -97180,6 +97270,12 @@ public class TrainBillSettlementQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("over_apply_id") && dict["over_apply_id"] != nil {
                     self.overApplyId = dict["over_apply_id"] as! String
+                }
+                if dict.keys.contains("payment_department_id") && dict["payment_department_id"] != nil {
+                    self.paymentDepartmentId = dict["payment_department_id"] as! String
+                }
+                if dict.keys.contains("payment_department_name") && dict["payment_department_name"] != nil {
+                    self.paymentDepartmentName = dict["payment_department_name"] as! String
                 }
                 if dict.keys.contains("primary_id") && dict["primary_id"] != nil {
                     self.primaryId = dict["primary_id"] as! Int64
@@ -100223,6 +100319,8 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
 
             public var startTime: String?
 
+            public var ticketEntrance: String?
+
             public var ticketNo: String?
 
             public var ticketStatus: Int32?
@@ -100306,6 +100404,9 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
                 if self.startTime != nil {
                     map["start_time"] = self.startTime!
                 }
+                if self.ticketEntrance != nil {
+                    map["ticket_entrance"] = self.ticketEntrance!
+                }
                 if self.ticketNo != nil {
                     map["ticket_no"] = self.ticketNo!
                 }
@@ -100384,6 +100485,9 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("start_time") && dict["start_time"] != nil {
                     self.startTime = dict["start_time"] as! String
+                }
+                if dict.keys.contains("ticket_entrance") && dict["ticket_entrance"] != nil {
+                    self.ticketEntrance = dict["ticket_entrance"] as! String
                 }
                 if dict.keys.contains("ticket_no") && dict["ticket_no"] != nil {
                     self.ticketNo = dict["ticket_no"] as! String
@@ -100917,6 +101021,8 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
 
                     public var startTime: String?
 
+                    public var ticketEntrance: String?
+
                     public var ticketNo: String?
 
                     public var ticketPrice: Double?
@@ -100985,6 +101091,9 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
                         if self.startTime != nil {
                             map["start_time"] = self.startTime!
                         }
+                        if self.ticketEntrance != nil {
+                            map["ticket_entrance"] = self.ticketEntrance!
+                        }
                         if self.ticketNo != nil {
                             map["ticket_no"] = self.ticketNo!
                         }
@@ -101048,6 +101157,9 @@ public class TrainOrderQueryV2ResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("start_time") && dict["start_time"] != nil {
                             self.startTime = dict["start_time"] as! String
+                        }
+                        if dict.keys.contains("ticket_entrance") && dict["ticket_entrance"] != nil {
+                            self.ticketEntrance = dict["ticket_entrance"] as! String
                         }
                         if dict.keys.contains("ticket_no") && dict["ticket_no"] != nil {
                             self.ticketNo = dict["ticket_no"] as! String
