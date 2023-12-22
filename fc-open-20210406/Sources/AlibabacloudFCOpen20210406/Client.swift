@@ -1654,9 +1654,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.qualifier)) {
             query["qualifier"] = request.qualifier ?? "";
         }
-        var body: String = ""
+        var body: [UInt8]? = nil
         if (!TeaUtils.Client.isUnset(request.body)) {
-            body = TeaUtils.Client.toString(request.body)
+            body = request.body!
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -1686,7 +1686,7 @@ open class Client : AlibabacloudOpenApi.Client {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query),
-            "body": body as! String
+            "body": body as! [UInt8]
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "InvokeFunction",
@@ -1696,7 +1696,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
-            "reqBodyType": "json",
+            "reqBodyType": "byte",
             "bodyType": "byte"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
