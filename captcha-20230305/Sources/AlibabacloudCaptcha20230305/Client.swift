@@ -61,6 +61,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.captchaVerifyParam)) {
             body["CaptchaVerifyParam"] = request.captchaVerifyParam ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.sceneId)) {
+            body["SceneId"] = request.sceneId ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])

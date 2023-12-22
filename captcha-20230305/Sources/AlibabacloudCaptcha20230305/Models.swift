@@ -184,6 +184,8 @@ public class VerifyCaptchaResponse : Tea.TeaModel {
 public class VerifyIntelligentCaptchaRequest : Tea.TeaModel {
     public var captchaVerifyParam: String?
 
+    public var sceneId: String?
+
     public override init() {
         super.init()
     }
@@ -201,6 +203,9 @@ public class VerifyIntelligentCaptchaRequest : Tea.TeaModel {
         if self.captchaVerifyParam != nil {
             map["CaptchaVerifyParam"] = self.captchaVerifyParam!
         }
+        if self.sceneId != nil {
+            map["SceneId"] = self.sceneId!
+        }
         return map
     }
 
@@ -208,11 +213,16 @@ public class VerifyIntelligentCaptchaRequest : Tea.TeaModel {
         if dict.keys.contains("CaptchaVerifyParam") && dict["CaptchaVerifyParam"] != nil {
             self.captchaVerifyParam = dict["CaptchaVerifyParam"] as! String
         }
+        if dict.keys.contains("SceneId") && dict["SceneId"] != nil {
+            self.sceneId = dict["SceneId"] as! String
+        }
     }
 }
 
 public class VerifyIntelligentCaptchaResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public var verifyCode: String?
+
         public var verifyResult: Bool?
 
         public override init() {
@@ -229,6 +239,9 @@ public class VerifyIntelligentCaptchaResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.verifyCode != nil {
+                map["VerifyCode"] = self.verifyCode!
+            }
             if self.verifyResult != nil {
                 map["VerifyResult"] = self.verifyResult!
             }
@@ -236,6 +249,9 @@ public class VerifyIntelligentCaptchaResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("VerifyCode") && dict["VerifyCode"] != nil {
+                self.verifyCode = dict["VerifyCode"] as! String
+            }
             if dict.keys.contains("VerifyResult") && dict["VerifyResult"] != nil {
                 self.verifyResult = dict["VerifyResult"] as! Bool
             }
