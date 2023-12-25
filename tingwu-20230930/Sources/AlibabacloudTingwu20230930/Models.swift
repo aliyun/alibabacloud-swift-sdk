@@ -961,6 +961,77 @@ public class DeleteTranscriptionPhrasesResponse : Tea.TeaModel {
 
 public class GetTaskInfoResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var autoChapters: String?
+
+            public var meetingAssistance: String?
+
+            public var pptExtraction: String?
+
+            public var summarization: String?
+
+            public var transcription: String?
+
+            public var translation: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoChapters != nil {
+                    map["AutoChapters"] = self.autoChapters!
+                }
+                if self.meetingAssistance != nil {
+                    map["MeetingAssistance"] = self.meetingAssistance!
+                }
+                if self.pptExtraction != nil {
+                    map["PptExtraction"] = self.pptExtraction!
+                }
+                if self.summarization != nil {
+                    map["Summarization"] = self.summarization!
+                }
+                if self.transcription != nil {
+                    map["Transcription"] = self.transcription!
+                }
+                if self.translation != nil {
+                    map["Translation"] = self.translation!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AutoChapters") && dict["AutoChapters"] != nil {
+                    self.autoChapters = dict["AutoChapters"] as! String
+                }
+                if dict.keys.contains("MeetingAssistance") && dict["MeetingAssistance"] != nil {
+                    self.meetingAssistance = dict["MeetingAssistance"] as! String
+                }
+                if dict.keys.contains("PptExtraction") && dict["PptExtraction"] != nil {
+                    self.pptExtraction = dict["PptExtraction"] as! String
+                }
+                if dict.keys.contains("Summarization") && dict["Summarization"] != nil {
+                    self.summarization = dict["Summarization"] as! String
+                }
+                if dict.keys.contains("Transcription") && dict["Transcription"] != nil {
+                    self.transcription = dict["Transcription"] as! String
+                }
+                if dict.keys.contains("Translation") && dict["Translation"] != nil {
+                    self.translation = dict["Translation"] as! String
+                }
+            }
+        }
+        public var result: GetTaskInfoResponseBody.Data.Result?
+
         public var taskId: String?
 
         public var taskKey: String?
@@ -977,10 +1048,14 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.result?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.result != nil {
+                map["Result"] = self.result?.toMap()
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -994,6 +1069,11 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Result") && dict["Result"] != nil {
+                var model = GetTaskInfoResponseBody.Data.Result()
+                model.fromMap(dict["Result"] as! [String: Any])
+                self.result = model
+            }
             if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
                 self.taskId = dict["TaskId"] as! String
             }
