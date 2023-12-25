@@ -1198,6 +1198,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
             headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.reservationAuthority)) {
+            request.reservationAuthorityShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reservationAuthority, "ReservationAuthority", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.roomLabelIds)) {
             request.roomLabelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.roomLabelIds, "RoomLabelIds", "json")
         }
@@ -1208,11 +1211,17 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableCycleReservation)) {
+            body["EnableCycleReservation"] = request.enableCycleReservation!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             body["GroupId"] = request.groupId!;
         }
         if (!TeaUtils.Client.isUnset(request.isvRoomId)) {
             body["IsvRoomId"] = request.isvRoomId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reservationAuthorityShrink)) {
+            body["ReservationAuthority"] = request.reservationAuthorityShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.roomCapacity)) {
             body["RoomCapacity"] = request.roomCapacity!;
@@ -8397,6 +8406,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
             headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.reservationAuthority)) {
+            request.reservationAuthorityShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reservationAuthority, "ReservationAuthority", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.roomLabelIds)) {
             request.roomLabelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.roomLabelIds, "RoomLabelIds", "json")
         }
@@ -8407,11 +8419,17 @@ open class Client : AlibabacloudOpenApi.Client {
             request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableCycleReservation)) {
+            body["EnableCycleReservation"] = request.enableCycleReservation!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupId)) {
             body["GroupId"] = request.groupId!;
         }
         if (!TeaUtils.Client.isUnset(request.isvRoomId)) {
             body["IsvRoomId"] = request.isvRoomId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reservationAuthorityShrink)) {
+            body["ReservationAuthority"] = request.reservationAuthorityShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.roomCapacity)) {
             body["RoomCapacity"] = request.roomCapacity!;

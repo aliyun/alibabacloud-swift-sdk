@@ -8340,6 +8340,92 @@ public class CreateMeetingRoomShrinkHeaders : Tea.TeaModel {
 }
 
 public class CreateMeetingRoomRequest : Tea.TeaModel {
+    public class ReservationAuthority : Tea.TeaModel {
+        public class AuthorizedMembers : Tea.TeaModel {
+            public var memberId: String?
+
+            public var memberName: String?
+
+            public var memberType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.memberId != nil {
+                    map["MemberId"] = self.memberId!
+                }
+                if self.memberName != nil {
+                    map["MemberName"] = self.memberName!
+                }
+                if self.memberType != nil {
+                    map["MemberType"] = self.memberType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MemberId") && dict["MemberId"] != nil {
+                    self.memberId = dict["MemberId"] as! String
+                }
+                if dict.keys.contains("MemberName") && dict["MemberName"] != nil {
+                    self.memberName = dict["MemberName"] as! String
+                }
+                if dict.keys.contains("MemberType") && dict["MemberType"] != nil {
+                    self.memberType = dict["MemberType"] as! String
+                }
+            }
+        }
+        public var authorizedMembers: [CreateMeetingRoomRequest.ReservationAuthority.AuthorizedMembers]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authorizedMembers != nil {
+                var tmp : [Any] = []
+                for k in self.authorizedMembers! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthorizedMembers"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthorizedMembers") && dict["AuthorizedMembers"] != nil {
+                var tmp : [CreateMeetingRoomRequest.ReservationAuthority.AuthorizedMembers] = []
+                for v in dict["AuthorizedMembers"] as! [Any] {
+                    var model = CreateMeetingRoomRequest.ReservationAuthority.AuthorizedMembers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authorizedMembers = tmp
+            }
+        }
+    }
     public class RoomLocation : Tea.TeaModel {
         public var desc: String?
 
@@ -8406,9 +8492,13 @@ public class CreateMeetingRoomRequest : Tea.TeaModel {
             }
         }
     }
+    public var enableCycleReservation: Bool?
+
     public var groupId: Int64?
 
     public var isvRoomId: String?
+
+    public var reservationAuthority: CreateMeetingRoomRequest.ReservationAuthority?
 
     public var roomCapacity: Int32?
 
@@ -8434,17 +8524,24 @@ public class CreateMeetingRoomRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.reservationAuthority?.validate()
         try self.roomLocation?.validate()
         try self.tenantContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableCycleReservation != nil {
+            map["EnableCycleReservation"] = self.enableCycleReservation!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
         if self.isvRoomId != nil {
             map["IsvRoomId"] = self.isvRoomId!
+        }
+        if self.reservationAuthority != nil {
+            map["ReservationAuthority"] = self.reservationAuthority?.toMap()
         }
         if self.roomCapacity != nil {
             map["RoomCapacity"] = self.roomCapacity!
@@ -8471,11 +8568,19 @@ public class CreateMeetingRoomRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableCycleReservation") && dict["EnableCycleReservation"] != nil {
+            self.enableCycleReservation = dict["EnableCycleReservation"] as! Bool
+        }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! Int64
         }
         if dict.keys.contains("IsvRoomId") && dict["IsvRoomId"] != nil {
             self.isvRoomId = dict["IsvRoomId"] as! String
+        }
+        if dict.keys.contains("ReservationAuthority") && dict["ReservationAuthority"] != nil {
+            var model = CreateMeetingRoomRequest.ReservationAuthority()
+            model.fromMap(dict["ReservationAuthority"] as! [String: Any])
+            self.reservationAuthority = model
         }
         if dict.keys.contains("RoomCapacity") && dict["RoomCapacity"] != nil {
             self.roomCapacity = dict["RoomCapacity"] as! Int32
@@ -8506,9 +8611,13 @@ public class CreateMeetingRoomRequest : Tea.TeaModel {
 }
 
 public class CreateMeetingRoomShrinkRequest : Tea.TeaModel {
+    public var enableCycleReservation: Bool?
+
     public var groupId: Int64?
 
     public var isvRoomId: String?
+
+    public var reservationAuthorityShrink: String?
 
     public var roomCapacity: Int32?
 
@@ -8538,11 +8647,17 @@ public class CreateMeetingRoomShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableCycleReservation != nil {
+            map["EnableCycleReservation"] = self.enableCycleReservation!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
         if self.isvRoomId != nil {
             map["IsvRoomId"] = self.isvRoomId!
+        }
+        if self.reservationAuthorityShrink != nil {
+            map["ReservationAuthority"] = self.reservationAuthorityShrink!
         }
         if self.roomCapacity != nil {
             map["RoomCapacity"] = self.roomCapacity!
@@ -8569,11 +8684,17 @@ public class CreateMeetingRoomShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableCycleReservation") && dict["EnableCycleReservation"] != nil {
+            self.enableCycleReservation = dict["EnableCycleReservation"] as! Bool
+        }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! Int64
         }
         if dict.keys.contains("IsvRoomId") && dict["IsvRoomId"] != nil {
             self.isvRoomId = dict["IsvRoomId"] as! String
+        }
+        if dict.keys.contains("ReservationAuthority") && dict["ReservationAuthority"] != nil {
+            self.reservationAuthorityShrink = dict["ReservationAuthority"] as! String
         }
         if dict.keys.contains("RoomCapacity") && dict["RoomCapacity"] != nil {
             self.roomCapacity = dict["RoomCapacity"] as! Int32
@@ -8604,6 +8725,10 @@ public class CreateMeetingRoomResponseBody : Tea.TeaModel {
 
     public var result: String?
 
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
     public override init() {
         super.init()
     }
@@ -8624,6 +8749,12 @@ public class CreateMeetingRoomResponseBody : Tea.TeaModel {
         if self.result != nil {
             map["result"] = self.result!
         }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
         return map
     }
 
@@ -8633,6 +8764,12 @@ public class CreateMeetingRoomResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("result") && dict["result"] != nil {
             self.result = dict["result"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") && dict["vendorRequestId"] != nil {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") && dict["vendorType"] != nil {
+            self.vendorType = dict["vendorType"] as! String
         }
     }
 }
@@ -48092,6 +48229,92 @@ public class QueryMeetingRoomShrinkRequest : Tea.TeaModel {
 
 public class QueryMeetingRoomResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public class ReservationAuthority : Tea.TeaModel {
+            public class AuthorizedMembers : Tea.TeaModel {
+                public var memberId: String?
+
+                public var memberName: String?
+
+                public var memberType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.memberId != nil {
+                        map["MemberId"] = self.memberId!
+                    }
+                    if self.memberName != nil {
+                        map["MemberName"] = self.memberName!
+                    }
+                    if self.memberType != nil {
+                        map["MemberType"] = self.memberType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MemberId") && dict["MemberId"] != nil {
+                        self.memberId = dict["MemberId"] as! String
+                    }
+                    if dict.keys.contains("MemberName") && dict["MemberName"] != nil {
+                        self.memberName = dict["MemberName"] as! String
+                    }
+                    if dict.keys.contains("MemberType") && dict["MemberType"] != nil {
+                        self.memberType = dict["MemberType"] as! String
+                    }
+                }
+            }
+            public var authorizedMembers: [QueryMeetingRoomResponseBody.Result.ReservationAuthority.AuthorizedMembers]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authorizedMembers != nil {
+                    var tmp : [Any] = []
+                    for k in self.authorizedMembers! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AuthorizedMembers"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuthorizedMembers") && dict["AuthorizedMembers"] != nil {
+                    var tmp : [QueryMeetingRoomResponseBody.Result.ReservationAuthority.AuthorizedMembers] = []
+                    for v in dict["AuthorizedMembers"] as! [Any] {
+                        var model = QueryMeetingRoomResponseBody.Result.ReservationAuthority.AuthorizedMembers()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.authorizedMembers = tmp
+                }
+            }
+        }
         public class RoomGroup : Tea.TeaModel {
             public var groupId: Int64?
 
@@ -48213,7 +48436,13 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
         }
         public var corpId: String?
 
+        public var deviceUnionIds: [String]?
+
+        public var enableCycleReservation: Bool?
+
         public var isvRoomId: String?
+
+        public var reservationAuthority: QueryMeetingRoomResponseBody.Result.ReservationAuthority?
 
         public var roomCapacity: Int32?
 
@@ -48243,6 +48472,7 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.reservationAuthority?.validate()
             try self.roomGroup?.validate()
             try self.roomLocation?.validate()
         }
@@ -48252,8 +48482,17 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
             if self.corpId != nil {
                 map["CorpId"] = self.corpId!
             }
+            if self.deviceUnionIds != nil {
+                map["DeviceUnionIds"] = self.deviceUnionIds!
+            }
+            if self.enableCycleReservation != nil {
+                map["EnableCycleReservation"] = self.enableCycleReservation!
+            }
             if self.isvRoomId != nil {
                 map["IsvRoomId"] = self.isvRoomId!
+            }
+            if self.reservationAuthority != nil {
+                map["ReservationAuthority"] = self.reservationAuthority?.toMap()
             }
             if self.roomCapacity != nil {
                 map["RoomCapacity"] = self.roomCapacity!
@@ -48293,8 +48532,19 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
             if dict.keys.contains("CorpId") && dict["CorpId"] != nil {
                 self.corpId = dict["CorpId"] as! String
             }
+            if dict.keys.contains("DeviceUnionIds") && dict["DeviceUnionIds"] != nil {
+                self.deviceUnionIds = dict["DeviceUnionIds"] as! [String]
+            }
+            if dict.keys.contains("EnableCycleReservation") && dict["EnableCycleReservation"] != nil {
+                self.enableCycleReservation = dict["EnableCycleReservation"] as! Bool
+            }
             if dict.keys.contains("IsvRoomId") && dict["IsvRoomId"] != nil {
                 self.isvRoomId = dict["IsvRoomId"] as! String
+            }
+            if dict.keys.contains("ReservationAuthority") && dict["ReservationAuthority"] != nil {
+                var model = QueryMeetingRoomResponseBody.Result.ReservationAuthority()
+                model.fromMap(dict["ReservationAuthority"] as! [String: Any])
+                self.reservationAuthority = model
             }
             if dict.keys.contains("RoomCapacity") && dict["RoomCapacity"] != nil {
                 self.roomCapacity = dict["RoomCapacity"] as! Int32
@@ -48341,6 +48591,10 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
 
     public var result: QueryMeetingRoomResponseBody.Result?
 
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
     public override init() {
         super.init()
     }
@@ -48362,6 +48616,12 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
         if self.result != nil {
             map["result"] = self.result?.toMap()
         }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
         return map
     }
 
@@ -48373,6 +48633,12 @@ public class QueryMeetingRoomResponseBody : Tea.TeaModel {
             var model = QueryMeetingRoomResponseBody.Result()
             model.fromMap(dict["result"] as! [String: Any])
             self.result = model
+        }
+        if dict.keys.contains("vendorRequestId") && dict["vendorRequestId"] != nil {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") && dict["vendorType"] != nil {
+            self.vendorType = dict["vendorType"] as! String
         }
     }
 }
@@ -61981,6 +62247,92 @@ public class UpdateMeetingRoomShrinkHeaders : Tea.TeaModel {
 }
 
 public class UpdateMeetingRoomRequest : Tea.TeaModel {
+    public class ReservationAuthority : Tea.TeaModel {
+        public class AuthorizedMembers : Tea.TeaModel {
+            public var memberId: String?
+
+            public var memberName: String?
+
+            public var memberType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.memberId != nil {
+                    map["MemberId"] = self.memberId!
+                }
+                if self.memberName != nil {
+                    map["MemberName"] = self.memberName!
+                }
+                if self.memberType != nil {
+                    map["MemberType"] = self.memberType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MemberId") && dict["MemberId"] != nil {
+                    self.memberId = dict["MemberId"] as! String
+                }
+                if dict.keys.contains("MemberName") && dict["MemberName"] != nil {
+                    self.memberName = dict["MemberName"] as! String
+                }
+                if dict.keys.contains("MemberType") && dict["MemberType"] != nil {
+                    self.memberType = dict["MemberType"] as! String
+                }
+            }
+        }
+        public var authorizedMembers: [UpdateMeetingRoomRequest.ReservationAuthority.AuthorizedMembers]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authorizedMembers != nil {
+                var tmp : [Any] = []
+                for k in self.authorizedMembers! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthorizedMembers"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthorizedMembers") && dict["AuthorizedMembers"] != nil {
+                var tmp : [UpdateMeetingRoomRequest.ReservationAuthority.AuthorizedMembers] = []
+                for v in dict["AuthorizedMembers"] as! [Any] {
+                    var model = UpdateMeetingRoomRequest.ReservationAuthority.AuthorizedMembers()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authorizedMembers = tmp
+            }
+        }
+    }
     public class RoomLocation : Tea.TeaModel {
         public var desc: String?
 
@@ -62047,9 +62399,13 @@ public class UpdateMeetingRoomRequest : Tea.TeaModel {
             }
         }
     }
+    public var enableCycleReservation: Bool?
+
     public var groupId: Int64?
 
     public var isvRoomId: String?
+
+    public var reservationAuthority: UpdateMeetingRoomRequest.ReservationAuthority?
 
     public var roomCapacity: Int32?
 
@@ -62077,17 +62433,24 @@ public class UpdateMeetingRoomRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.reservationAuthority?.validate()
         try self.roomLocation?.validate()
         try self.tenantContext?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableCycleReservation != nil {
+            map["EnableCycleReservation"] = self.enableCycleReservation!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
         if self.isvRoomId != nil {
             map["IsvRoomId"] = self.isvRoomId!
+        }
+        if self.reservationAuthority != nil {
+            map["ReservationAuthority"] = self.reservationAuthority?.toMap()
         }
         if self.roomCapacity != nil {
             map["RoomCapacity"] = self.roomCapacity!
@@ -62117,11 +62480,19 @@ public class UpdateMeetingRoomRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableCycleReservation") && dict["EnableCycleReservation"] != nil {
+            self.enableCycleReservation = dict["EnableCycleReservation"] as! Bool
+        }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! Int64
         }
         if dict.keys.contains("IsvRoomId") && dict["IsvRoomId"] != nil {
             self.isvRoomId = dict["IsvRoomId"] as! String
+        }
+        if dict.keys.contains("ReservationAuthority") && dict["ReservationAuthority"] != nil {
+            var model = UpdateMeetingRoomRequest.ReservationAuthority()
+            model.fromMap(dict["ReservationAuthority"] as! [String: Any])
+            self.reservationAuthority = model
         }
         if dict.keys.contains("RoomCapacity") && dict["RoomCapacity"] != nil {
             self.roomCapacity = dict["RoomCapacity"] as! Int32
@@ -62155,9 +62526,13 @@ public class UpdateMeetingRoomRequest : Tea.TeaModel {
 }
 
 public class UpdateMeetingRoomShrinkRequest : Tea.TeaModel {
+    public var enableCycleReservation: Bool?
+
     public var groupId: Int64?
 
     public var isvRoomId: String?
+
+    public var reservationAuthorityShrink: String?
 
     public var roomCapacity: Int32?
 
@@ -62189,11 +62564,17 @@ public class UpdateMeetingRoomShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableCycleReservation != nil {
+            map["EnableCycleReservation"] = self.enableCycleReservation!
+        }
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
         if self.isvRoomId != nil {
             map["IsvRoomId"] = self.isvRoomId!
+        }
+        if self.reservationAuthorityShrink != nil {
+            map["ReservationAuthority"] = self.reservationAuthorityShrink!
         }
         if self.roomCapacity != nil {
             map["RoomCapacity"] = self.roomCapacity!
@@ -62223,11 +62604,17 @@ public class UpdateMeetingRoomShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableCycleReservation") && dict["EnableCycleReservation"] != nil {
+            self.enableCycleReservation = dict["EnableCycleReservation"] as! Bool
+        }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! Int64
         }
         if dict.keys.contains("IsvRoomId") && dict["IsvRoomId"] != nil {
             self.isvRoomId = dict["IsvRoomId"] as! String
+        }
+        if dict.keys.contains("ReservationAuthority") && dict["ReservationAuthority"] != nil {
+            self.reservationAuthorityShrink = dict["ReservationAuthority"] as! String
         }
         if dict.keys.contains("RoomCapacity") && dict["RoomCapacity"] != nil {
             self.roomCapacity = dict["RoomCapacity"] as! Int32
@@ -62261,6 +62648,10 @@ public class UpdateMeetingRoomResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
     public override init() {
         super.init()
     }
@@ -62281,6 +62672,12 @@ public class UpdateMeetingRoomResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
         return map
     }
 
@@ -62290,6 +62687,12 @@ public class UpdateMeetingRoomResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") && dict["vendorRequestId"] != nil {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") && dict["vendorType"] != nil {
+            self.vendorType = dict["vendorType"] as! String
         }
     }
 }
