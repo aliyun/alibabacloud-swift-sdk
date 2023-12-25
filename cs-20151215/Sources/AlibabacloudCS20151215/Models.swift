@@ -72,6 +72,8 @@ public class DataDisk : Tea.TeaModel {
 
     public var fileSystem: String?
 
+    public var kmsKeyId: String?
+
     public var mountTarget: String?
 
     public var performanceLevel: String?
@@ -112,6 +114,9 @@ public class DataDisk : Tea.TeaModel {
         if self.fileSystem != nil {
             map["file_system"] = self.fileSystem!
         }
+        if self.kmsKeyId != nil {
+            map["kms_key_id"] = self.kmsKeyId!
+        }
         if self.mountTarget != nil {
             map["mount_target"] = self.mountTarget!
         }
@@ -145,6 +150,9 @@ public class DataDisk : Tea.TeaModel {
         }
         if dict.keys.contains("file_system") && dict["file_system"] != nil {
             self.fileSystem = dict["file_system"] as! String
+        }
+        if dict.keys.contains("kms_key_id") && dict["kms_key_id"] != nil {
+            self.kmsKeyId = dict["kms_key_id"] as! String
         }
         if dict.keys.contains("mount_target") && dict["mount_target"] != nil {
             self.mountTarget = dict["mount_target"] as! String
@@ -638,6 +646,101 @@ public class Nodepool : Tea.TeaModel {
         }
     }
     public class Management : Tea.TeaModel {
+        public class AutoRepairPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+            }
+        }
+        public class AutoUpgradePolicy : Tea.TeaModel {
+            public var autoUpgradeKubelet: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoUpgradeKubelet != nil {
+                    map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
+                    self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                }
+            }
+        }
+        public class AutoVulFixPolicy : Tea.TeaModel {
+            public var restartNode: Bool?
+
+            public var vulLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.restartNode != nil {
+                    map["restart_node"] = self.restartNode!
+                }
+                if self.vulLevel != nil {
+                    map["vul_level"] = self.vulLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("restart_node") && dict["restart_node"] != nil {
+                    self.restartNode = dict["restart_node"] as! Bool
+                }
+                if dict.keys.contains("vul_level") && dict["vul_level"] != nil {
+                    self.vulLevel = dict["vul_level"] as! String
+                }
+            }
+        }
         public class UpgradeConfig : Tea.TeaModel {
             public var autoUpgrade: Bool?
 
@@ -693,6 +796,16 @@ public class Nodepool : Tea.TeaModel {
         }
         public var autoRepair: Bool?
 
+        public var autoRepairPolicy: Nodepool.Management.AutoRepairPolicy?
+
+        public var autoUpgrade: Bool?
+
+        public var autoUpgradePolicy: Nodepool.Management.AutoUpgradePolicy?
+
+        public var autoVulFix: Bool?
+
+        public var autoVulFixPolicy: Nodepool.Management.AutoVulFixPolicy?
+
         public var enable: Bool?
 
         public var upgradeConfig: Nodepool.Management.UpgradeConfig?
@@ -707,6 +820,9 @@ public class Nodepool : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.autoRepairPolicy?.validate()
+            try self.autoUpgradePolicy?.validate()
+            try self.autoVulFixPolicy?.validate()
             try self.upgradeConfig?.validate()
         }
 
@@ -714,6 +830,21 @@ public class Nodepool : Tea.TeaModel {
             var map = super.toMap()
             if self.autoRepair != nil {
                 map["auto_repair"] = self.autoRepair!
+            }
+            if self.autoRepairPolicy != nil {
+                map["auto_repair_policy"] = self.autoRepairPolicy?.toMap()
+            }
+            if self.autoUpgrade != nil {
+                map["auto_upgrade"] = self.autoUpgrade!
+            }
+            if self.autoUpgradePolicy != nil {
+                map["auto_upgrade_policy"] = self.autoUpgradePolicy?.toMap()
+            }
+            if self.autoVulFix != nil {
+                map["auto_vul_fix"] = self.autoVulFix!
+            }
+            if self.autoVulFixPolicy != nil {
+                map["auto_vul_fix_policy"] = self.autoVulFixPolicy?.toMap()
             }
             if self.enable != nil {
                 map["enable"] = self.enable!
@@ -728,6 +859,27 @@ public class Nodepool : Tea.TeaModel {
             if dict.keys.contains("auto_repair") && dict["auto_repair"] != nil {
                 self.autoRepair = dict["auto_repair"] as! Bool
             }
+            if dict.keys.contains("auto_repair_policy") && dict["auto_repair_policy"] != nil {
+                var model = Nodepool.Management.AutoRepairPolicy()
+                model.fromMap(dict["auto_repair_policy"] as! [String: Any])
+                self.autoRepairPolicy = model
+            }
+            if dict.keys.contains("auto_upgrade") && dict["auto_upgrade"] != nil {
+                self.autoUpgrade = dict["auto_upgrade"] as! Bool
+            }
+            if dict.keys.contains("auto_upgrade_policy") && dict["auto_upgrade_policy"] != nil {
+                var model = Nodepool.Management.AutoUpgradePolicy()
+                model.fromMap(dict["auto_upgrade_policy"] as! [String: Any])
+                self.autoUpgradePolicy = model
+            }
+            if dict.keys.contains("auto_vul_fix") && dict["auto_vul_fix"] != nil {
+                self.autoVulFix = dict["auto_vul_fix"] as! Bool
+            }
+            if dict.keys.contains("auto_vul_fix_policy") && dict["auto_vul_fix_policy"] != nil {
+                var model = Nodepool.Management.AutoVulFixPolicy()
+                model.fromMap(dict["auto_vul_fix_policy"] as! [String: Any])
+                self.autoVulFixPolicy = model
+            }
             if dict.keys.contains("enable") && dict["enable"] != nil {
                 self.enable = dict["enable"] as! Bool
             }
@@ -735,6 +887,38 @@ public class Nodepool : Tea.TeaModel {
                 var model = Nodepool.Management.UpgradeConfig()
                 model.fromMap(dict["upgrade_config"] as! [String: Any])
                 self.upgradeConfig = model
+            }
+        }
+    }
+    public class NodeConfig : Tea.TeaModel {
+        public var kubeletConfiguration: KubeletConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.kubeletConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.kubeletConfiguration != nil {
+                map["kubelet_configuration"] = self.kubeletConfiguration?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("kubelet_configuration") && dict["kubelet_configuration"] != nil {
+                var model = KubeletConfig()
+                model.fromMap(dict["kubelet_configuration"] as! [String: Any])
+                self.kubeletConfiguration = model
             }
         }
     }
@@ -921,6 +1105,8 @@ public class Nodepool : Tea.TeaModel {
 
         public var keyPair: String?
 
+        public var loginAsNonRoot: Bool?
+
         public var loginPassword: String?
 
         public var multiAzPolicy: String?
@@ -955,7 +1141,15 @@ public class Nodepool : Tea.TeaModel {
 
         public var systemDiskBurstingEnabled: Bool?
 
+        public var systemDiskCategories: [String]?
+
         public var systemDiskCategory: String?
+
+        public var systemDiskEncryptAlgorithm: String?
+
+        public var systemDiskEncrypted: Bool?
+
+        public var systemDiskKmsKeyId: String?
 
         public var systemDiskPerformanceLevel: String?
 
@@ -1025,6 +1219,9 @@ public class Nodepool : Tea.TeaModel {
             if self.keyPair != nil {
                 map["key_pair"] = self.keyPair!
             }
+            if self.loginAsNonRoot != nil {
+                map["login_as_non_root"] = self.loginAsNonRoot!
+            }
             if self.loginPassword != nil {
                 map["login_password"] = self.loginPassword!
             }
@@ -1080,8 +1277,20 @@ public class Nodepool : Tea.TeaModel {
             if self.systemDiskBurstingEnabled != nil {
                 map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
             }
+            if self.systemDiskCategories != nil {
+                map["system_disk_categories"] = self.systemDiskCategories!
+            }
             if self.systemDiskCategory != nil {
                 map["system_disk_category"] = self.systemDiskCategory!
+            }
+            if self.systemDiskEncryptAlgorithm != nil {
+                map["system_disk_encrypt_algorithm"] = self.systemDiskEncryptAlgorithm!
+            }
+            if self.systemDiskEncrypted != nil {
+                map["system_disk_encrypted"] = self.systemDiskEncrypted!
+            }
+            if self.systemDiskKmsKeyId != nil {
+                map["system_disk_kms_key_id"] = self.systemDiskKmsKeyId!
             }
             if self.systemDiskPerformanceLevel != nil {
                 map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
@@ -1153,6 +1362,9 @@ public class Nodepool : Tea.TeaModel {
             if dict.keys.contains("key_pair") && dict["key_pair"] != nil {
                 self.keyPair = dict["key_pair"] as! String
             }
+            if dict.keys.contains("login_as_non_root") && dict["login_as_non_root"] != nil {
+                self.loginAsNonRoot = dict["login_as_non_root"] as! Bool
+            }
             if dict.keys.contains("login_password") && dict["login_password"] != nil {
                 self.loginPassword = dict["login_password"] as! String
             }
@@ -1214,8 +1426,20 @@ public class Nodepool : Tea.TeaModel {
             if dict.keys.contains("system_disk_bursting_enabled") && dict["system_disk_bursting_enabled"] != nil {
                 self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
             }
+            if dict.keys.contains("system_disk_categories") && dict["system_disk_categories"] != nil {
+                self.systemDiskCategories = dict["system_disk_categories"] as! [String]
+            }
             if dict.keys.contains("system_disk_category") && dict["system_disk_category"] != nil {
                 self.systemDiskCategory = dict["system_disk_category"] as! String
+            }
+            if dict.keys.contains("system_disk_encrypt_algorithm") && dict["system_disk_encrypt_algorithm"] != nil {
+                self.systemDiskEncryptAlgorithm = dict["system_disk_encrypt_algorithm"] as! String
+            }
+            if dict.keys.contains("system_disk_encrypted") && dict["system_disk_encrypted"] != nil {
+                self.systemDiskEncrypted = dict["system_disk_encrypted"] as! Bool
+            }
+            if dict.keys.contains("system_disk_kms_key_id") && dict["system_disk_kms_key_id"] != nil {
+                self.systemDiskKmsKeyId = dict["system_disk_kms_key_id"] as! String
             }
             if dict.keys.contains("system_disk_performance_level") && dict["system_disk_performance_level"] != nil {
                 self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
@@ -1285,6 +1509,8 @@ public class Nodepool : Tea.TeaModel {
 
     public var maxNodes: Int64?
 
+    public var nodeConfig: Nodepool.NodeConfig?
+
     public var nodepoolInfo: Nodepool.NodepoolInfo?
 
     public var scalingGroup: Nodepool.ScalingGroup?
@@ -1305,6 +1531,7 @@ public class Nodepool : Tea.TeaModel {
         try self.interconnectConfig?.validate()
         try self.kubernetesConfig?.validate()
         try self.management?.validate()
+        try self.nodeConfig?.validate()
         try self.nodepoolInfo?.validate()
         try self.scalingGroup?.validate()
         try self.teeConfig?.validate()
@@ -1332,6 +1559,9 @@ public class Nodepool : Tea.TeaModel {
         }
         if self.maxNodes != nil {
             map["max_nodes"] = self.maxNodes!
+        }
+        if self.nodeConfig != nil {
+            map["node_config"] = self.nodeConfig?.toMap()
         }
         if self.nodepoolInfo != nil {
             map["nodepool_info"] = self.nodepoolInfo?.toMap()
@@ -1374,6 +1604,11 @@ public class Nodepool : Tea.TeaModel {
         }
         if dict.keys.contains("max_nodes") && dict["max_nodes"] != nil {
             self.maxNodes = dict["max_nodes"] as! Int64
+        }
+        if dict.keys.contains("node_config") && dict["node_config"] != nil {
+            var model = Nodepool.NodeConfig()
+            model.fromMap(dict["node_config"] as! [String: Any])
+            self.nodeConfig = model
         }
         if dict.keys.contains("nodepool_info") && dict["nodepool_info"] != nil {
             var model = Nodepool.NodepoolInfo()
@@ -3725,6 +3960,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var taints: [Taint]?
 
+        public var unschedulable: Bool?
+
         public var userData: String?
 
         public override init() {
@@ -3770,6 +4007,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 }
                 map["taints"] = tmp
             }
+            if self.unschedulable != nil {
+                map["unschedulable"] = self.unschedulable!
+            }
             if self.userData != nil {
                 map["user_data"] = self.userData!
             }
@@ -3813,6 +4053,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.taints = tmp
+            }
+            if dict.keys.contains("unschedulable") && dict["unschedulable"] != nil {
+                self.unschedulable = dict["unschedulable"] as! Bool
             }
             if dict.keys.contains("user_data") && dict["user_data"] != nil {
                 self.userData = dict["user_data"] as! String
@@ -4064,6 +4307,38 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
         }
     }
+    public class NodeConfig : Tea.TeaModel {
+        public var kubeletConfiguration: KubeletConfig?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.kubeletConfiguration?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.kubeletConfiguration != nil {
+                map["kubelet_configuration"] = self.kubeletConfiguration?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("kubelet_configuration") && dict["kubelet_configuration"] != nil {
+                var model = KubeletConfig()
+                model.fromMap(dict["kubelet_configuration"] as! [String: Any])
+                self.kubeletConfiguration = model
+            }
+        }
+    }
     public class NodepoolInfo : Tea.TeaModel {
         public var name: String?
 
@@ -4225,6 +4500,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var autoRenewPeriod: Int64?
 
+        public var cisEnabled: Bool?
+
         public var compensateWithOnDemand: Bool?
 
         public var dataDisks: [DataDisk]?
@@ -4246,6 +4523,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         public var internetMaxBandwidthOut: Int64?
 
         public var keyPair: String?
+
+        public var loginAsNonRoot: Bool?
 
         public var loginPassword: String?
 
@@ -4271,6 +4550,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var securityGroupIds: [String]?
 
+        public var socEnabled: Bool?
+
         public var spotInstancePools: Int64?
 
         public var spotInstanceRemedy: Bool?
@@ -4281,7 +4562,15 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var systemDiskBurstingEnabled: Bool?
 
+        public var systemDiskCategories: [String]?
+
         public var systemDiskCategory: String?
+
+        public var systemDiskEncryptAlgorithm: String?
+
+        public var systemDiskEncrypted: Bool?
+
+        public var systemDiskKmsKeyId: String?
 
         public var systemDiskPerformanceLevel: String?
 
@@ -4313,6 +4602,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.autoRenewPeriod != nil {
                 map["auto_renew_period"] = self.autoRenewPeriod!
+            }
+            if self.cisEnabled != nil {
+                map["cis_enabled"] = self.cisEnabled!
             }
             if self.compensateWithOnDemand != nil {
                 map["compensate_with_on_demand"] = self.compensateWithOnDemand!
@@ -4351,6 +4643,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if self.keyPair != nil {
                 map["key_pair"] = self.keyPair!
             }
+            if self.loginAsNonRoot != nil {
+                map["login_as_non_root"] = self.loginAsNonRoot!
+            }
             if self.loginPassword != nil {
                 map["login_password"] = self.loginPassword!
             }
@@ -4387,6 +4682,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if self.securityGroupIds != nil {
                 map["security_group_ids"] = self.securityGroupIds!
             }
+            if self.socEnabled != nil {
+                map["soc_enabled"] = self.socEnabled!
+            }
             if self.spotInstancePools != nil {
                 map["spot_instance_pools"] = self.spotInstancePools!
             }
@@ -4406,8 +4704,20 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if self.systemDiskBurstingEnabled != nil {
                 map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
             }
+            if self.systemDiskCategories != nil {
+                map["system_disk_categories"] = self.systemDiskCategories!
+            }
             if self.systemDiskCategory != nil {
                 map["system_disk_category"] = self.systemDiskCategory!
+            }
+            if self.systemDiskEncryptAlgorithm != nil {
+                map["system_disk_encrypt_algorithm"] = self.systemDiskEncryptAlgorithm!
+            }
+            if self.systemDiskEncrypted != nil {
+                map["system_disk_encrypted"] = self.systemDiskEncrypted!
+            }
+            if self.systemDiskKmsKeyId != nil {
+                map["system_disk_kms_key_id"] = self.systemDiskKmsKeyId!
             }
             if self.systemDiskPerformanceLevel != nil {
                 map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
@@ -4437,6 +4747,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if dict.keys.contains("auto_renew_period") && dict["auto_renew_period"] != nil {
                 self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
+            }
+            if dict.keys.contains("cis_enabled") && dict["cis_enabled"] != nil {
+                self.cisEnabled = dict["cis_enabled"] as! Bool
             }
             if dict.keys.contains("compensate_with_on_demand") && dict["compensate_with_on_demand"] != nil {
                 self.compensateWithOnDemand = dict["compensate_with_on_demand"] as! Bool
@@ -4479,6 +4792,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if dict.keys.contains("key_pair") && dict["key_pair"] != nil {
                 self.keyPair = dict["key_pair"] as! String
             }
+            if dict.keys.contains("login_as_non_root") && dict["login_as_non_root"] != nil {
+                self.loginAsNonRoot = dict["login_as_non_root"] as! Bool
+            }
             if dict.keys.contains("login_password") && dict["login_password"] != nil {
                 self.loginPassword = dict["login_password"] as! String
             }
@@ -4517,6 +4833,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if dict.keys.contains("security_group_ids") && dict["security_group_ids"] != nil {
                 self.securityGroupIds = dict["security_group_ids"] as! [String]
             }
+            if dict.keys.contains("soc_enabled") && dict["soc_enabled"] != nil {
+                self.socEnabled = dict["soc_enabled"] as! Bool
+            }
             if dict.keys.contains("spot_instance_pools") && dict["spot_instance_pools"] != nil {
                 self.spotInstancePools = dict["spot_instance_pools"] as! Int64
             }
@@ -4540,8 +4859,20 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             if dict.keys.contains("system_disk_bursting_enabled") && dict["system_disk_bursting_enabled"] != nil {
                 self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
             }
+            if dict.keys.contains("system_disk_categories") && dict["system_disk_categories"] != nil {
+                self.systemDiskCategories = dict["system_disk_categories"] as! [String]
+            }
             if dict.keys.contains("system_disk_category") && dict["system_disk_category"] != nil {
                 self.systemDiskCategory = dict["system_disk_category"] as! String
+            }
+            if dict.keys.contains("system_disk_encrypt_algorithm") && dict["system_disk_encrypt_algorithm"] != nil {
+                self.systemDiskEncryptAlgorithm = dict["system_disk_encrypt_algorithm"] as! String
+            }
+            if dict.keys.contains("system_disk_encrypted") && dict["system_disk_encrypted"] != nil {
+                self.systemDiskEncrypted = dict["system_disk_encrypted"] as! Bool
+            }
+            if dict.keys.contains("system_disk_kms_key_id") && dict["system_disk_kms_key_id"] != nil {
+                self.systemDiskKmsKeyId = dict["system_disk_kms_key_id"] as! String
             }
             if dict.keys.contains("system_disk_performance_level") && dict["system_disk_performance_level"] != nil {
                 self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
@@ -4611,6 +4942,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
     public var maxNodes: Int64?
 
+    public var nodeConfig: CreateClusterNodePoolRequest.NodeConfig?
+
     public var nodepoolInfo: CreateClusterNodePoolRequest.NodepoolInfo?
 
     public var scalingGroup: CreateClusterNodePoolRequest.ScalingGroup?
@@ -4631,6 +4964,7 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         try self.interconnectConfig?.validate()
         try self.kubernetesConfig?.validate()
         try self.management?.validate()
+        try self.nodeConfig?.validate()
         try self.nodepoolInfo?.validate()
         try self.scalingGroup?.validate()
         try self.teeConfig?.validate()
@@ -4658,6 +4992,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
         if self.maxNodes != nil {
             map["max_nodes"] = self.maxNodes!
+        }
+        if self.nodeConfig != nil {
+            map["node_config"] = self.nodeConfig?.toMap()
         }
         if self.nodepoolInfo != nil {
             map["nodepool_info"] = self.nodepoolInfo?.toMap()
@@ -4700,6 +5037,11 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("max_nodes") && dict["max_nodes"] != nil {
             self.maxNodes = dict["max_nodes"] as! Int64
+        }
+        if dict.keys.contains("node_config") && dict["node_config"] != nil {
+            var model = CreateClusterNodePoolRequest.NodeConfig()
+            model.fromMap(dict["node_config"] as! [String: Any])
+            self.nodeConfig = model
         }
         if dict.keys.contains("nodepool_info") && dict["nodepool_info"] != nil {
             var model = CreateClusterNodePoolRequest.NodepoolInfo()
@@ -5598,6 +5940,10 @@ public class DeleteClusterShrinkRequest : Tea.TeaModel {
 }
 
 public class DeleteClusterResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
     public var taskId: String?
 
     public override init() {
@@ -5614,6 +5960,12 @@ public class DeleteClusterResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
         if self.taskId != nil {
             map["task_id"] = self.taskId!
         }
@@ -5621,6 +5973,12 @@ public class DeleteClusterResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") && dict["request_id"] != nil {
+            self.requestId = dict["request_id"] as! String
+        }
         if dict.keys.contains("task_id") && dict["task_id"] != nil {
             self.taskId = dict["task_id"] as! String
         }
@@ -5712,6 +6070,8 @@ public class DeleteClusterNodepoolRequest : Tea.TeaModel {
 public class DeleteClusterNodepoolResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var taskId: String?
+
     public override init() {
         super.init()
     }
@@ -5729,12 +6089,18 @@ public class DeleteClusterNodepoolResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["request_id"] = self.requestId!
         }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("request_id") && dict["request_id"] != nil {
             self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") && dict["task_id"] != nil {
+            self.taskId = dict["task_id"] as! String
         }
     }
 }
@@ -6521,6 +6887,287 @@ public class DescirbeWorkflowResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescirbeWorkflowResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeAddonRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var clusterSpec: String?
+
+    public var clusterType: String?
+
+    public var clusterVersion: String?
+
+    public var profile: String?
+
+    public var regionId: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.clusterSpec != nil {
+            map["cluster_spec"] = self.clusterSpec!
+        }
+        if self.clusterType != nil {
+            map["cluster_type"] = self.clusterType!
+        }
+        if self.clusterVersion != nil {
+            map["cluster_version"] = self.clusterVersion!
+        }
+        if self.profile != nil {
+            map["profile"] = self.profile!
+        }
+        if self.regionId != nil {
+            map["region_id"] = self.regionId!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("cluster_spec") && dict["cluster_spec"] != nil {
+            self.clusterSpec = dict["cluster_spec"] as! String
+        }
+        if dict.keys.contains("cluster_type") && dict["cluster_type"] != nil {
+            self.clusterType = dict["cluster_type"] as! String
+        }
+        if dict.keys.contains("cluster_version") && dict["cluster_version"] != nil {
+            self.clusterVersion = dict["cluster_version"] as! String
+        }
+        if dict.keys.contains("profile") && dict["profile"] != nil {
+            self.profile = dict["profile"] as! String
+        }
+        if dict.keys.contains("region_id") && dict["region_id"] != nil {
+            self.regionId = dict["region_id"] as! String
+        }
+        if dict.keys.contains("version") && dict["version"] != nil {
+            self.version = dict["version"] as! String
+        }
+    }
+}
+
+public class DescribeAddonResponseBody : Tea.TeaModel {
+    public class NewerVersions : Tea.TeaModel {
+        public var minimumClusterVersion: String?
+
+        public var upgradable: Bool?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.minimumClusterVersion != nil {
+                map["minimum_cluster_version"] = self.minimumClusterVersion!
+            }
+            if self.upgradable != nil {
+                map["upgradable"] = self.upgradable!
+            }
+            if self.version != nil {
+                map["version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("minimum_cluster_version") && dict["minimum_cluster_version"] != nil {
+                self.minimumClusterVersion = dict["minimum_cluster_version"] as! String
+            }
+            if dict.keys.contains("upgradable") && dict["upgradable"] != nil {
+                self.upgradable = dict["upgradable"] as! Bool
+            }
+            if dict.keys.contains("version") && dict["version"] != nil {
+                self.version = dict["version"] as! String
+            }
+        }
+    }
+    public var architecture: [String]?
+
+    public var category: String?
+
+    public var configSchema: String?
+
+    public var installByDefault: Bool?
+
+    public var managed: Bool?
+
+    public var name: String?
+
+    public var newerVersions: [DescribeAddonResponseBody.NewerVersions]?
+
+    public var supportedActions: [String]?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.architecture != nil {
+            map["architecture"] = self.architecture!
+        }
+        if self.category != nil {
+            map["category"] = self.category!
+        }
+        if self.configSchema != nil {
+            map["config_schema"] = self.configSchema!
+        }
+        if self.installByDefault != nil {
+            map["install_by_default"] = self.installByDefault!
+        }
+        if self.managed != nil {
+            map["managed"] = self.managed!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.newerVersions != nil {
+            var tmp : [Any] = []
+            for k in self.newerVersions! {
+                tmp.append(k.toMap())
+            }
+            map["newer_versions"] = tmp
+        }
+        if self.supportedActions != nil {
+            map["supported_actions"] = self.supportedActions!
+        }
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("architecture") && dict["architecture"] != nil {
+            self.architecture = dict["architecture"] as! [String]
+        }
+        if dict.keys.contains("category") && dict["category"] != nil {
+            self.category = dict["category"] as! String
+        }
+        if dict.keys.contains("config_schema") && dict["config_schema"] != nil {
+            self.configSchema = dict["config_schema"] as! String
+        }
+        if dict.keys.contains("install_by_default") && dict["install_by_default"] != nil {
+            self.installByDefault = dict["install_by_default"] as! Bool
+        }
+        if dict.keys.contains("managed") && dict["managed"] != nil {
+            self.managed = dict["managed"] as! Bool
+        }
+        if dict.keys.contains("name") && dict["name"] != nil {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("newer_versions") && dict["newer_versions"] != nil {
+            var tmp : [DescribeAddonResponseBody.NewerVersions] = []
+            for v in dict["newer_versions"] as! [Any] {
+                var model = DescribeAddonResponseBody.NewerVersions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.newerVersions = tmp
+        }
+        if dict.keys.contains("supported_actions") && dict["supported_actions"] != nil {
+            self.supportedActions = dict["supported_actions"] as! [String]
+        }
+        if dict.keys.contains("version") && dict["version"] != nil {
+            self.version = dict["version"] as! String
+        }
+    }
+}
+
+public class DescribeAddonResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAddonResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeAddonResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -8237,6 +8884,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var taints: [Taint]?
 
+        public var unschedulable: Bool?
+
         public var userData: String?
 
         public override init() {
@@ -8282,6 +8931,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                 }
                 map["taints"] = tmp
             }
+            if self.unschedulable != nil {
+                map["unschedulable"] = self.unschedulable!
+            }
             if self.userData != nil {
                 map["user_data"] = self.userData!
             }
@@ -8325,6 +8977,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.taints = tmp
+            }
+            if dict.keys.contains("unschedulable") && dict["unschedulable"] != nil {
+                self.unschedulable = dict["unschedulable"] as! Bool
             }
             if dict.keys.contains("user_data") && dict["user_data"] != nil {
                 self.userData = dict["user_data"] as! String
@@ -8772,6 +9427,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var autoRenewPeriod: Int64?
 
+        public var cisEnabled: Bool?
+
         public var compensateWithOnDemand: Bool?
 
         public var dataDisks: [DataDisk]?
@@ -8782,6 +9439,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var imageId: String?
 
+        public var imageType: String?
+
         public var instanceChargeType: String?
 
         public var instanceTypes: [String]?
@@ -8791,6 +9450,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
         public var internetMaxBandwidthOut: Int64?
 
         public var keyPair: String?
+
+        public var loginAsNonRoot: Bool?
 
         public var loginPassword: String?
 
@@ -8820,6 +9481,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var securityGroupIds: [String]?
 
+        public var socEnabled: Bool?
+
         public var spotInstancePools: Int64?
 
         public var spotInstanceRemedy: Bool?
@@ -8828,9 +9491,21 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var spotStrategy: String?
 
+        public var systemDiskBurstingEnabled: Bool?
+
+        public var systemDiskCategories: [String]?
+
         public var systemDiskCategory: String?
 
+        public var systemDiskEncryptAlgorithm: String?
+
+        public var systemDiskEncrypted: Bool?
+
+        public var systemDiskKmsKeyId: String?
+
         public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskProvisionedIops: Int64?
 
         public var systemDiskSize: Int64?
 
@@ -8859,6 +9534,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if self.autoRenewPeriod != nil {
                 map["auto_renew_period"] = self.autoRenewPeriod!
             }
+            if self.cisEnabled != nil {
+                map["cis_enabled"] = self.cisEnabled!
+            }
             if self.compensateWithOnDemand != nil {
                 map["compensate_with_on_demand"] = self.compensateWithOnDemand!
             }
@@ -8878,6 +9556,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
             }
+            if self.imageType != nil {
+                map["image_type"] = self.imageType!
+            }
             if self.instanceChargeType != nil {
                 map["instance_charge_type"] = self.instanceChargeType!
             }
@@ -8892,6 +9573,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.keyPair != nil {
                 map["key_pair"] = self.keyPair!
+            }
+            if self.loginAsNonRoot != nil {
+                map["login_as_non_root"] = self.loginAsNonRoot!
             }
             if self.loginPassword != nil {
                 map["login_password"] = self.loginPassword!
@@ -8935,6 +9619,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if self.securityGroupIds != nil {
                 map["security_group_ids"] = self.securityGroupIds!
             }
+            if self.socEnabled != nil {
+                map["soc_enabled"] = self.socEnabled!
+            }
             if self.spotInstancePools != nil {
                 map["spot_instance_pools"] = self.spotInstancePools!
             }
@@ -8951,11 +9638,29 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if self.spotStrategy != nil {
                 map["spot_strategy"] = self.spotStrategy!
             }
+            if self.systemDiskBurstingEnabled != nil {
+                map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+            }
+            if self.systemDiskCategories != nil {
+                map["system_disk_categories"] = self.systemDiskCategories!
+            }
             if self.systemDiskCategory != nil {
                 map["system_disk_category"] = self.systemDiskCategory!
             }
+            if self.systemDiskEncryptAlgorithm != nil {
+                map["system_disk_encrypt_algorithm"] = self.systemDiskEncryptAlgorithm!
+            }
+            if self.systemDiskEncrypted != nil {
+                map["system_disk_encrypted"] = self.systemDiskEncrypted!
+            }
+            if self.systemDiskKmsKeyId != nil {
+                map["system_disk_kms_key_id"] = self.systemDiskKmsKeyId!
+            }
             if self.systemDiskPerformanceLevel != nil {
                 map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskProvisionedIops != nil {
+                map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
             }
             if self.systemDiskSize != nil {
                 map["system_disk_size"] = self.systemDiskSize!
@@ -8980,6 +9685,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("auto_renew_period") && dict["auto_renew_period"] != nil {
                 self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
             }
+            if dict.keys.contains("cis_enabled") && dict["cis_enabled"] != nil {
+                self.cisEnabled = dict["cis_enabled"] as! Bool
+            }
             if dict.keys.contains("compensate_with_on_demand") && dict["compensate_with_on_demand"] != nil {
                 self.compensateWithOnDemand = dict["compensate_with_on_demand"] as! Bool
             }
@@ -9003,6 +9711,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("image_id") && dict["image_id"] != nil {
                 self.imageId = dict["image_id"] as! String
             }
+            if dict.keys.contains("image_type") && dict["image_type"] != nil {
+                self.imageType = dict["image_type"] as! String
+            }
             if dict.keys.contains("instance_charge_type") && dict["instance_charge_type"] != nil {
                 self.instanceChargeType = dict["instance_charge_type"] as! String
             }
@@ -9017,6 +9728,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("key_pair") && dict["key_pair"] != nil {
                 self.keyPair = dict["key_pair"] as! String
+            }
+            if dict.keys.contains("login_as_non_root") && dict["login_as_non_root"] != nil {
+                self.loginAsNonRoot = dict["login_as_non_root"] as! Bool
             }
             if dict.keys.contains("login_password") && dict["login_password"] != nil {
                 self.loginPassword = dict["login_password"] as! String
@@ -9062,6 +9776,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("security_group_ids") && dict["security_group_ids"] != nil {
                 self.securityGroupIds = dict["security_group_ids"] as! [String]
             }
+            if dict.keys.contains("soc_enabled") && dict["soc_enabled"] != nil {
+                self.socEnabled = dict["soc_enabled"] as! Bool
+            }
             if dict.keys.contains("spot_instance_pools") && dict["spot_instance_pools"] != nil {
                 self.spotInstancePools = dict["spot_instance_pools"] as! Int64
             }
@@ -9082,11 +9799,29 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             if dict.keys.contains("spot_strategy") && dict["spot_strategy"] != nil {
                 self.spotStrategy = dict["spot_strategy"] as! String
             }
+            if dict.keys.contains("system_disk_bursting_enabled") && dict["system_disk_bursting_enabled"] != nil {
+                self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_categories") && dict["system_disk_categories"] != nil {
+                self.systemDiskCategories = dict["system_disk_categories"] as! [String]
+            }
             if dict.keys.contains("system_disk_category") && dict["system_disk_category"] != nil {
                 self.systemDiskCategory = dict["system_disk_category"] as! String
             }
+            if dict.keys.contains("system_disk_encrypt_algorithm") && dict["system_disk_encrypt_algorithm"] != nil {
+                self.systemDiskEncryptAlgorithm = dict["system_disk_encrypt_algorithm"] as! String
+            }
+            if dict.keys.contains("system_disk_encrypted") && dict["system_disk_encrypted"] != nil {
+                self.systemDiskEncrypted = dict["system_disk_encrypted"] as! Bool
+            }
+            if dict.keys.contains("system_disk_kms_key_id") && dict["system_disk_kms_key_id"] != nil {
+                self.systemDiskKmsKeyId = dict["system_disk_kms_key_id"] as! String
+            }
             if dict.keys.contains("system_disk_performance_level") && dict["system_disk_performance_level"] != nil {
                 self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+            }
+            if dict.keys.contains("system_disk_provisioned_iops") && dict["system_disk_provisioned_iops"] != nil {
+                self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
             }
             if dict.keys.contains("system_disk_size") && dict["system_disk_size"] != nil {
                 self.systemDiskSize = dict["system_disk_size"] as! Int64
@@ -9564,6 +10299,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var taints: [Taint]?
 
+            public var unschedulable: Bool?
+
             public var userData: String?
 
             public override init() {
@@ -9609,6 +10346,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                     }
                     map["taints"] = tmp
                 }
+                if self.unschedulable != nil {
+                    map["unschedulable"] = self.unschedulable!
+                }
                 if self.userData != nil {
                     map["user_data"] = self.userData!
                 }
@@ -9652,6 +10392,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.taints = tmp
+                }
+                if dict.keys.contains("unschedulable") && dict["unschedulable"] != nil {
+                    self.unschedulable = dict["unschedulable"] as! Bool
                 }
                 if dict.keys.contains("user_data") && dict["user_data"] != nil {
                     self.userData = dict["user_data"] as! String
@@ -10099,6 +10842,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var autoRenewPeriod: Int64?
 
+            public var cisEnabled: Bool?
+
             public var compensateWithOnDemand: Bool?
 
             public var dataDisks: [DataDisk]?
@@ -10109,6 +10854,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var imageId: String?
 
+            public var imageType: String?
+
             public var instanceChargeType: String?
 
             public var instanceTypes: [String]?
@@ -10118,6 +10865,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
             public var internetMaxBandwidthOut: Int64?
 
             public var keyPair: String?
+
+            public var loginAsNonRoot: Bool?
 
             public var loginPassword: String?
 
@@ -10147,6 +10896,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var securityGroupIds: [String]?
 
+            public var socEnabled: Bool?
+
             public var spotInstancePools: Int64?
 
             public var spotInstanceRemedy: Bool?
@@ -10155,9 +10906,21 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var spotStrategy: String?
 
+            public var systemDiskBurstingEnabled: Bool?
+
+            public var systemDiskCategories: [String]?
+
             public var systemDiskCategory: String?
 
+            public var systemDiskEncryptAlgorithm: String?
+
+            public var systemDiskEncrypted: Bool?
+
+            public var systemDiskKmsKeyId: String?
+
             public var systemDiskPerformanceLevel: String?
+
+            public var systemDiskProvisionedIops: Int64?
 
             public var systemDiskSize: Int64?
 
@@ -10186,6 +10949,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if self.autoRenewPeriod != nil {
                     map["auto_renew_period"] = self.autoRenewPeriod!
                 }
+                if self.cisEnabled != nil {
+                    map["cis_enabled"] = self.cisEnabled!
+                }
                 if self.compensateWithOnDemand != nil {
                     map["compensate_with_on_demand"] = self.compensateWithOnDemand!
                 }
@@ -10205,6 +10971,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if self.imageId != nil {
                     map["image_id"] = self.imageId!
                 }
+                if self.imageType != nil {
+                    map["image_type"] = self.imageType!
+                }
                 if self.instanceChargeType != nil {
                     map["instance_charge_type"] = self.instanceChargeType!
                 }
@@ -10219,6 +10988,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.keyPair != nil {
                     map["key_pair"] = self.keyPair!
+                }
+                if self.loginAsNonRoot != nil {
+                    map["login_as_non_root"] = self.loginAsNonRoot!
                 }
                 if self.loginPassword != nil {
                     map["login_password"] = self.loginPassword!
@@ -10262,6 +11034,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if self.securityGroupIds != nil {
                     map["security_group_ids"] = self.securityGroupIds!
                 }
+                if self.socEnabled != nil {
+                    map["soc_enabled"] = self.socEnabled!
+                }
                 if self.spotInstancePools != nil {
                     map["spot_instance_pools"] = self.spotInstancePools!
                 }
@@ -10278,11 +11053,29 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if self.spotStrategy != nil {
                     map["spot_strategy"] = self.spotStrategy!
                 }
+                if self.systemDiskBurstingEnabled != nil {
+                    map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+                }
+                if self.systemDiskCategories != nil {
+                    map["system_disk_categories"] = self.systemDiskCategories!
+                }
                 if self.systemDiskCategory != nil {
                     map["system_disk_category"] = self.systemDiskCategory!
                 }
+                if self.systemDiskEncryptAlgorithm != nil {
+                    map["system_disk_encrypt_algorithm"] = self.systemDiskEncryptAlgorithm!
+                }
+                if self.systemDiskEncrypted != nil {
+                    map["system_disk_encrypted"] = self.systemDiskEncrypted!
+                }
+                if self.systemDiskKmsKeyId != nil {
+                    map["system_disk_kms_key_id"] = self.systemDiskKmsKeyId!
+                }
                 if self.systemDiskPerformanceLevel != nil {
                     map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+                }
+                if self.systemDiskProvisionedIops != nil {
+                    map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
                 }
                 if self.systemDiskSize != nil {
                     map["system_disk_size"] = self.systemDiskSize!
@@ -10307,6 +11100,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("auto_renew_period") && dict["auto_renew_period"] != nil {
                     self.autoRenewPeriod = dict["auto_renew_period"] as! Int64
                 }
+                if dict.keys.contains("cis_enabled") && dict["cis_enabled"] != nil {
+                    self.cisEnabled = dict["cis_enabled"] as! Bool
+                }
                 if dict.keys.contains("compensate_with_on_demand") && dict["compensate_with_on_demand"] != nil {
                     self.compensateWithOnDemand = dict["compensate_with_on_demand"] as! Bool
                 }
@@ -10330,6 +11126,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("image_id") && dict["image_id"] != nil {
                     self.imageId = dict["image_id"] as! String
                 }
+                if dict.keys.contains("image_type") && dict["image_type"] != nil {
+                    self.imageType = dict["image_type"] as! String
+                }
                 if dict.keys.contains("instance_charge_type") && dict["instance_charge_type"] != nil {
                     self.instanceChargeType = dict["instance_charge_type"] as! String
                 }
@@ -10344,6 +11143,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("key_pair") && dict["key_pair"] != nil {
                     self.keyPair = dict["key_pair"] as! String
+                }
+                if dict.keys.contains("login_as_non_root") && dict["login_as_non_root"] != nil {
+                    self.loginAsNonRoot = dict["login_as_non_root"] as! Bool
                 }
                 if dict.keys.contains("login_password") && dict["login_password"] != nil {
                     self.loginPassword = dict["login_password"] as! String
@@ -10389,6 +11191,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("security_group_ids") && dict["security_group_ids"] != nil {
                     self.securityGroupIds = dict["security_group_ids"] as! [String]
                 }
+                if dict.keys.contains("soc_enabled") && dict["soc_enabled"] != nil {
+                    self.socEnabled = dict["soc_enabled"] as! Bool
+                }
                 if dict.keys.contains("spot_instance_pools") && dict["spot_instance_pools"] != nil {
                     self.spotInstancePools = dict["spot_instance_pools"] as! Int64
                 }
@@ -10409,11 +11214,29 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("spot_strategy") && dict["spot_strategy"] != nil {
                     self.spotStrategy = dict["spot_strategy"] as! String
                 }
+                if dict.keys.contains("system_disk_bursting_enabled") && dict["system_disk_bursting_enabled"] != nil {
+                    self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+                }
+                if dict.keys.contains("system_disk_categories") && dict["system_disk_categories"] != nil {
+                    self.systemDiskCategories = dict["system_disk_categories"] as! [String]
+                }
                 if dict.keys.contains("system_disk_category") && dict["system_disk_category"] != nil {
                     self.systemDiskCategory = dict["system_disk_category"] as! String
                 }
+                if dict.keys.contains("system_disk_encrypt_algorithm") && dict["system_disk_encrypt_algorithm"] != nil {
+                    self.systemDiskEncryptAlgorithm = dict["system_disk_encrypt_algorithm"] as! String
+                }
+                if dict.keys.contains("system_disk_encrypted") && dict["system_disk_encrypted"] != nil {
+                    self.systemDiskEncrypted = dict["system_disk_encrypted"] as! Bool
+                }
+                if dict.keys.contains("system_disk_kms_key_id") && dict["system_disk_kms_key_id"] != nil {
+                    self.systemDiskKmsKeyId = dict["system_disk_kms_key_id"] as! String
+                }
                 if dict.keys.contains("system_disk_performance_level") && dict["system_disk_performance_level"] != nil {
                     self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+                }
+                if dict.keys.contains("system_disk_provisioned_iops") && dict["system_disk_provisioned_iops"] != nil {
+                    self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
                 }
                 if dict.keys.contains("system_disk_size") && dict["system_disk_size"] != nil {
                     self.systemDiskSize = dict["system_disk_size"] as! Int64
@@ -19453,6 +20276,231 @@ public class ListClusterChecksResponse : Tea.TeaModel {
     }
 }
 
+public class ListOperationPlansRequest : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.type != nil {
+            map["type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("type") && dict["type"] != nil {
+            self.type = dict["type"] as! String
+        }
+    }
+}
+
+public class ListOperationPlansResponseBody : Tea.TeaModel {
+    public class Plans : Tea.TeaModel {
+        public var clusterId: String?
+
+        public var created: String?
+
+        public var endTime: String?
+
+        public var planId: String?
+
+        public var startTime: String?
+
+        public var state: String?
+
+        public var targetId: String?
+
+        public var targetType: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["cluster_id"] = self.clusterId!
+            }
+            if self.created != nil {
+                map["created"] = self.created!
+            }
+            if self.endTime != nil {
+                map["end_time"] = self.endTime!
+            }
+            if self.planId != nil {
+                map["plan_id"] = self.planId!
+            }
+            if self.startTime != nil {
+                map["start_time"] = self.startTime!
+            }
+            if self.state != nil {
+                map["state"] = self.state!
+            }
+            if self.targetId != nil {
+                map["target_id"] = self.targetId!
+            }
+            if self.targetType != nil {
+                map["target_type"] = self.targetType!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+                self.clusterId = dict["cluster_id"] as! String
+            }
+            if dict.keys.contains("created") && dict["created"] != nil {
+                self.created = dict["created"] as! String
+            }
+            if dict.keys.contains("end_time") && dict["end_time"] != nil {
+                self.endTime = dict["end_time"] as! String
+            }
+            if dict.keys.contains("plan_id") && dict["plan_id"] != nil {
+                self.planId = dict["plan_id"] as! String
+            }
+            if dict.keys.contains("start_time") && dict["start_time"] != nil {
+                self.startTime = dict["start_time"] as! String
+            }
+            if dict.keys.contains("state") && dict["state"] != nil {
+                self.state = dict["state"] as! String
+            }
+            if dict.keys.contains("target_id") && dict["target_id"] != nil {
+                self.targetId = dict["target_id"] as! String
+            }
+            if dict.keys.contains("target_type") && dict["target_type"] != nil {
+                self.targetType = dict["target_type"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+        }
+    }
+    public var plans: [ListOperationPlansResponseBody.Plans]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.plans != nil {
+            var tmp : [Any] = []
+            for k in self.plans! {
+                tmp.append(k.toMap())
+            }
+            map["plans"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("plans") && dict["plans"] != nil {
+            var tmp : [ListOperationPlansResponseBody.Plans] = []
+            for v in dict["plans"] as! [Any] {
+                var model = ListOperationPlansResponseBody.Plans()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.plans = tmp
+        }
+    }
+}
+
+public class ListOperationPlansResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListOperationPlansResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListOperationPlansResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListTagResourcesRequest : Tea.TeaModel {
     public var nextToken: String?
 
@@ -20965,6 +22013,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var imageId: String?
 
+        public var imageType: String?
+
         public var instanceChargeType: String?
 
         public var instanceTypes: [String]?
@@ -21003,9 +22053,21 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var spotStrategy: String?
 
+        public var systemDiskBurstingEnabled: Bool?
+
+        public var systemDiskCategories: [String]?
+
         public var systemDiskCategory: String?
 
+        public var systemDiskEncryptAlgorithm: String?
+
+        public var systemDiskEncrypted: Bool?
+
+        public var systemDiskKmsKeyId: String?
+
         public var systemDiskPerformanceLevel: String?
+
+        public var systemDiskProvisionedIops: Int64?
 
         public var systemDiskSize: Int64?
 
@@ -21049,6 +22111,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.imageId != nil {
                 map["image_id"] = self.imageId!
+            }
+            if self.imageType != nil {
+                map["image_type"] = self.imageType!
             }
             if self.instanceChargeType != nil {
                 map["instance_charge_type"] = self.instanceChargeType!
@@ -21111,11 +22176,29 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             if self.spotStrategy != nil {
                 map["spot_strategy"] = self.spotStrategy!
             }
+            if self.systemDiskBurstingEnabled != nil {
+                map["system_disk_bursting_enabled"] = self.systemDiskBurstingEnabled!
+            }
+            if self.systemDiskCategories != nil {
+                map["system_disk_categories"] = self.systemDiskCategories!
+            }
             if self.systemDiskCategory != nil {
                 map["system_disk_category"] = self.systemDiskCategory!
             }
+            if self.systemDiskEncryptAlgorithm != nil {
+                map["system_disk_encrypt_algorithm"] = self.systemDiskEncryptAlgorithm!
+            }
+            if self.systemDiskEncrypted != nil {
+                map["system_disk_encrypted"] = self.systemDiskEncrypted!
+            }
+            if self.systemDiskKmsKeyId != nil {
+                map["system_disk_kms_key_id"] = self.systemDiskKmsKeyId!
+            }
             if self.systemDiskPerformanceLevel != nil {
                 map["system_disk_performance_level"] = self.systemDiskPerformanceLevel!
+            }
+            if self.systemDiskProvisionedIops != nil {
+                map["system_disk_provisioned_iops"] = self.systemDiskProvisionedIops!
             }
             if self.systemDiskSize != nil {
                 map["system_disk_size"] = self.systemDiskSize!
@@ -21159,6 +22242,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             }
             if dict.keys.contains("image_id") && dict["image_id"] != nil {
                 self.imageId = dict["image_id"] as! String
+            }
+            if dict.keys.contains("image_type") && dict["image_type"] != nil {
+                self.imageType = dict["image_type"] as! String
             }
             if dict.keys.contains("instance_charge_type") && dict["instance_charge_type"] != nil {
                 self.instanceChargeType = dict["instance_charge_type"] as! String
@@ -21227,11 +22313,29 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             if dict.keys.contains("spot_strategy") && dict["spot_strategy"] != nil {
                 self.spotStrategy = dict["spot_strategy"] as! String
             }
+            if dict.keys.contains("system_disk_bursting_enabled") && dict["system_disk_bursting_enabled"] != nil {
+                self.systemDiskBurstingEnabled = dict["system_disk_bursting_enabled"] as! Bool
+            }
+            if dict.keys.contains("system_disk_categories") && dict["system_disk_categories"] != nil {
+                self.systemDiskCategories = dict["system_disk_categories"] as! [String]
+            }
             if dict.keys.contains("system_disk_category") && dict["system_disk_category"] != nil {
                 self.systemDiskCategory = dict["system_disk_category"] as! String
             }
+            if dict.keys.contains("system_disk_encrypt_algorithm") && dict["system_disk_encrypt_algorithm"] != nil {
+                self.systemDiskEncryptAlgorithm = dict["system_disk_encrypt_algorithm"] as! String
+            }
+            if dict.keys.contains("system_disk_encrypted") && dict["system_disk_encrypted"] != nil {
+                self.systemDiskEncrypted = dict["system_disk_encrypted"] as! Bool
+            }
+            if dict.keys.contains("system_disk_kms_key_id") && dict["system_disk_kms_key_id"] != nil {
+                self.systemDiskKmsKeyId = dict["system_disk_kms_key_id"] as! String
+            }
             if dict.keys.contains("system_disk_performance_level") && dict["system_disk_performance_level"] != nil {
                 self.systemDiskPerformanceLevel = dict["system_disk_performance_level"] as! String
+            }
+            if dict.keys.contains("system_disk_provisioned_iops") && dict["system_disk_provisioned_iops"] != nil {
+                self.systemDiskProvisionedIops = dict["system_disk_provisioned_iops"] as! Int64
             }
             if dict.keys.contains("system_disk_size") && dict["system_disk_size"] != nil {
                 self.systemDiskSize = dict["system_disk_size"] as! Int64
@@ -21283,6 +22387,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
     }
     public var autoScaling: ModifyClusterNodePoolRequest.AutoScaling?
 
+    public var concurrency: Bool?
+
     public var kubernetesConfig: ModifyClusterNodePoolRequest.KubernetesConfig?
 
     public var management: ModifyClusterNodePoolRequest.Management?
@@ -21318,6 +22424,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         if self.autoScaling != nil {
             map["auto_scaling"] = self.autoScaling?.toMap()
         }
+        if self.concurrency != nil {
+            map["concurrency"] = self.concurrency!
+        }
         if self.kubernetesConfig != nil {
             map["kubernetes_config"] = self.kubernetesConfig?.toMap()
         }
@@ -21344,6 +22453,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
             var model = ModifyClusterNodePoolRequest.AutoScaling()
             model.fromMap(dict["auto_scaling"] as! [String: Any])
             self.autoScaling = model
+        }
+        if dict.keys.contains("concurrency") && dict["concurrency"] != nil {
+            self.concurrency = dict["concurrency"] as! Bool
         }
         if dict.keys.contains("kubernetes_config") && dict["kubernetes_config"] != nil {
             var model = ModifyClusterNodePoolRequest.KubernetesConfig()
@@ -22182,6 +23294,8 @@ public class RemoveClusterNodesResponse : Tea.TeaModel {
 }
 
 public class RemoveNodePoolNodesRequest : Tea.TeaModel {
+    public var concurrency: Bool?
+
     public var drainNode: Bool?
 
     public var instanceIds: [String]?
@@ -22204,6 +23318,9 @@ public class RemoveNodePoolNodesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.concurrency != nil {
+            map["concurrency"] = self.concurrency!
+        }
         if self.drainNode != nil {
             map["drain_node"] = self.drainNode!
         }
@@ -22220,6 +23337,9 @@ public class RemoveNodePoolNodesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("concurrency") && dict["concurrency"] != nil {
+            self.concurrency = dict["concurrency"] as! Bool
+        }
         if dict.keys.contains("drain_node") && dict["drain_node"] != nil {
             self.drainNode = dict["drain_node"] as! Bool
         }
@@ -22236,6 +23356,8 @@ public class RemoveNodePoolNodesRequest : Tea.TeaModel {
 }
 
 public class RemoveNodePoolNodesShrinkRequest : Tea.TeaModel {
+    public var concurrency: Bool?
+
     public var drainNode: Bool?
 
     public var instanceIdsShrink: String?
@@ -22258,6 +23380,9 @@ public class RemoveNodePoolNodesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.concurrency != nil {
+            map["concurrency"] = self.concurrency!
+        }
         if self.drainNode != nil {
             map["drain_node"] = self.drainNode!
         }
@@ -22274,6 +23399,9 @@ public class RemoveNodePoolNodesShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("concurrency") && dict["concurrency"] != nil {
+            self.concurrency = dict["concurrency"] as! Bool
+        }
         if dict.keys.contains("drain_node") && dict["drain_node"] != nil {
             self.drainNode = dict["drain_node"] as! Bool
         }
@@ -24889,10 +26017,58 @@ public class UpdateControlPlaneLogRequest : Tea.TeaModel {
     }
 }
 
+public class UpdateControlPlaneLogResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") && dict["request_id"] != nil {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") && dict["task_id"] != nil {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
 public class UpdateControlPlaneLogResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
     public var statusCode: Int32?
+
+    public var body: UpdateControlPlaneLogResponseBody?
 
     public override init() {
         super.init()
@@ -24906,6 +26082,8 @@ public class UpdateControlPlaneLogResponse : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.validateRequired(self.headers, "headers")
         try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -24916,6 +26094,9 @@ public class UpdateControlPlaneLogResponse : Tea.TeaModel {
         if self.statusCode != nil {
             map["statusCode"] = self.statusCode!
         }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
         return map
     }
 
@@ -24925,6 +26106,11 @@ public class UpdateControlPlaneLogResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateControlPlaneLogResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
