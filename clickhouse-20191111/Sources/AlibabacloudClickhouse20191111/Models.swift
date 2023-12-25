@@ -11060,9 +11060,15 @@ public class DescribeSynDbsResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public var requestId: String?
 
     public var synDbs: [DescribeSynDbsResponseBody.SynDbs]?
+
+    public var totalCount: Int32?
 
     public override init() {
         super.init()
@@ -11078,6 +11084,12 @@ public class DescribeSynDbsResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -11088,10 +11100,19 @@ public class DescribeSynDbsResponseBody : Tea.TeaModel {
             }
             map["SynDbs"] = tmp
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -11105,6 +11126,9 @@ public class DescribeSynDbsResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.synDbs = tmp
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
         }
     }
 }
