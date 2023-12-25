@@ -4501,6 +4501,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acceleratorId)) {
             query["AcceleratorId"] = request.acceleratorId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.accessLogSwitch)) {
+            query["AccessLogSwitch"] = request.accessLogSwitch ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endpointGroupId)) {
             query["EndpointGroupId"] = request.endpointGroupId ?? "";
         }

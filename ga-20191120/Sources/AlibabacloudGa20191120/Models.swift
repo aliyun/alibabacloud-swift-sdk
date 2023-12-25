@@ -26306,6 +26306,8 @@ public class ListCustomRoutingEndpointGroupDestinationsResponse : Tea.TeaModel {
 public class ListCustomRoutingEndpointGroupsRequest : Tea.TeaModel {
     public var acceleratorId: String?
 
+    public var accessLogSwitch: String?
+
     public var endpointGroupId: String?
 
     public var listenerId: String?
@@ -26333,6 +26335,9 @@ public class ListCustomRoutingEndpointGroupsRequest : Tea.TeaModel {
         if self.acceleratorId != nil {
             map["AcceleratorId"] = self.acceleratorId!
         }
+        if self.accessLogSwitch != nil {
+            map["AccessLogSwitch"] = self.accessLogSwitch!
+        }
         if self.endpointGroupId != nil {
             map["EndpointGroupId"] = self.endpointGroupId!
         }
@@ -26354,6 +26359,9 @@ public class ListCustomRoutingEndpointGroupsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceleratorId") && dict["AcceleratorId"] != nil {
             self.acceleratorId = dict["AcceleratorId"] as! String
+        }
+        if dict.keys.contains("AccessLogSwitch") && dict["AccessLogSwitch"] != nil {
+            self.accessLogSwitch = dict["AccessLogSwitch"] as! String
         }
         if dict.keys.contains("EndpointGroupId") && dict["EndpointGroupId"] != nil {
             self.endpointGroupId = dict["EndpointGroupId"] as! String
