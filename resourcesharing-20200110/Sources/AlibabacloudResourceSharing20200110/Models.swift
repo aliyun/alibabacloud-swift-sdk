@@ -37,6 +37,69 @@ public class AcceptResourceShareInvitationRequest : Tea.TeaModel {
 
 public class AcceptResourceShareInvitationResponseBody : Tea.TeaModel {
     public class ResourceShareInvitation : Tea.TeaModel {
+        public class AcceptInvitationFailedDetails : Tea.TeaModel {
+            public var associateType: String?
+
+            public var resourceId: String?
+
+            public var resourceType: String?
+
+            public var status: String?
+
+            public var statusMessage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.associateType != nil {
+                    map["AssociateType"] = self.associateType!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusMessage != nil {
+                    map["StatusMessage"] = self.statusMessage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssociateType") && dict["AssociateType"] != nil {
+                    self.associateType = dict["AssociateType"] as! String
+                }
+                if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StatusMessage") && dict["StatusMessage"] != nil {
+                    self.statusMessage = dict["StatusMessage"] as! String
+                }
+            }
+        }
+        public var acceptInvitationFailedDetails: [AcceptResourceShareInvitationResponseBody.ResourceShareInvitation.AcceptInvitationFailedDetails]?
+
         public var createTime: String?
 
         public var receiverAccountId: String?
@@ -65,6 +128,13 @@ public class AcceptResourceShareInvitationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.acceptInvitationFailedDetails != nil {
+                var tmp : [Any] = []
+                for k in self.acceptInvitationFailedDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["AcceptInvitationFailedDetails"] = tmp
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -90,6 +160,17 @@ public class AcceptResourceShareInvitationResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AcceptInvitationFailedDetails") && dict["AcceptInvitationFailedDetails"] != nil {
+                var tmp : [AcceptResourceShareInvitationResponseBody.ResourceShareInvitation.AcceptInvitationFailedDetails] = []
+                for v in dict["AcceptInvitationFailedDetails"] as! [Any] {
+                    var model = AcceptResourceShareInvitationResponseBody.ResourceShareInvitation.AcceptInvitationFailedDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.acceptInvitationFailedDetails = tmp
+            }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
             }
@@ -2946,7 +3027,70 @@ public class ListResourceShareInvitationsRequest : Tea.TeaModel {
 
 public class ListResourceShareInvitationsResponseBody : Tea.TeaModel {
     public class ResourceShareInvitations : Tea.TeaModel {
+        public class InvitationFailedDetails : Tea.TeaModel {
+            public var associateType: String?
+
+            public var resourceId: String?
+
+            public var resourceType: String?
+
+            public var status: String?
+
+            public var statusMessage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.associateType != nil {
+                    map["AssociateType"] = self.associateType!
+                }
+                if self.resourceId != nil {
+                    map["ResourceId"] = self.resourceId!
+                }
+                if self.resourceType != nil {
+                    map["ResourceType"] = self.resourceType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusMessage != nil {
+                    map["StatusMessage"] = self.statusMessage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssociateType") && dict["AssociateType"] != nil {
+                    self.associateType = dict["AssociateType"] as! String
+                }
+                if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+                    self.resourceId = dict["ResourceId"] as! String
+                }
+                if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                    self.resourceType = dict["ResourceType"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StatusMessage") && dict["StatusMessage"] != nil {
+                    self.statusMessage = dict["StatusMessage"] as! String
+                }
+            }
+        }
         public var createTime: String?
+
+        public var invitationFailedDetails: [ListResourceShareInvitationsResponseBody.ResourceShareInvitations.InvitationFailedDetails]?
 
         public var receiverAccountId: String?
 
@@ -2977,6 +3121,13 @@ public class ListResourceShareInvitationsResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
+            if self.invitationFailedDetails != nil {
+                var tmp : [Any] = []
+                for k in self.invitationFailedDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["InvitationFailedDetails"] = tmp
+            }
             if self.receiverAccountId != nil {
                 map["ReceiverAccountId"] = self.receiverAccountId!
             }
@@ -3001,6 +3152,17 @@ public class ListResourceShareInvitationsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("InvitationFailedDetails") && dict["InvitationFailedDetails"] != nil {
+                var tmp : [ListResourceShareInvitationsResponseBody.ResourceShareInvitations.InvitationFailedDetails] = []
+                for v in dict["InvitationFailedDetails"] as! [Any] {
+                    var model = ListResourceShareInvitationsResponseBody.ResourceShareInvitations.InvitationFailedDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.invitationFailedDetails = tmp
             }
             if dict.keys.contains("ReceiverAccountId") && dict["ReceiverAccountId"] != nil {
                 self.receiverAccountId = dict["ReceiverAccountId"] as! String
