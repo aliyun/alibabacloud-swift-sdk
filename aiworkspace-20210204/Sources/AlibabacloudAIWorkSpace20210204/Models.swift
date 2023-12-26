@@ -139,6 +139,68 @@ public class CodeSourceItem : Tea.TeaModel {
     }
 }
 
+public class Collection : Tea.TeaModel {
+    public var collectionName: String?
+
+    public var gmtCreateTime: String?
+
+    public var gmtModifiedTime: String?
+
+    public var ownerId: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.collectionName != nil {
+            map["CollectionName"] = self.collectionName!
+        }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtModifiedTime != nil {
+            map["GmtModifiedTime"] = self.gmtModifiedTime!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CollectionName") && dict["CollectionName"] != nil {
+            self.collectionName = dict["CollectionName"] as! String
+        }
+        if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
+            self.gmtCreateTime = dict["GmtCreateTime"] as! String
+        }
+        if dict.keys.contains("GmtModifiedTime") && dict["GmtModifiedTime"] != nil {
+            self.gmtModifiedTime = dict["GmtModifiedTime"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! String
+        }
+        if dict.keys.contains("UserId") && dict["UserId"] != nil {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
 public class Dataset : Tea.TeaModel {
     public var accessibility: String?
 
@@ -398,6 +460,8 @@ public class Model : Tea.TeaModel {
 
     public var domain: String?
 
+    public var extraInfo: [String: Any]?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -414,6 +478,8 @@ public class Model : Tea.TeaModel {
 
     public var modelName: String?
 
+    public var modelType: String?
+
     public var orderNumber: Int64?
 
     public var origin: String?
@@ -421,10 +487,6 @@ public class Model : Tea.TeaModel {
     public var ownerId: String?
 
     public var provider: String?
-
-    public var sourceId: String?
-
-    public var sourceType: String?
 
     public var task: String?
 
@@ -452,6 +514,9 @@ public class Model : Tea.TeaModel {
         }
         if self.domain != nil {
             map["Domain"] = self.domain!
+        }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
         }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
@@ -481,6 +546,9 @@ public class Model : Tea.TeaModel {
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
         }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
         if self.orderNumber != nil {
             map["OrderNumber"] = self.orderNumber!
         }
@@ -492,12 +560,6 @@ public class Model : Tea.TeaModel {
         }
         if self.provider != nil {
             map["Provider"] = self.provider!
-        }
-        if self.sourceId != nil {
-            map["SourceId"] = self.sourceId!
-        }
-        if self.sourceType != nil {
-            map["SourceType"] = self.sourceType!
         }
         if self.task != nil {
             map["Task"] = self.task!
@@ -517,6 +579,9 @@ public class Model : Tea.TeaModel {
         }
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
         }
         if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
             self.gmtCreateTime = dict["GmtCreateTime"] as! String
@@ -552,6 +617,9 @@ public class Model : Tea.TeaModel {
         if dict.keys.contains("ModelName") && dict["ModelName"] != nil {
             self.modelName = dict["ModelName"] as! String
         }
+        if dict.keys.contains("ModelType") && dict["ModelType"] != nil {
+            self.modelType = dict["ModelType"] as! String
+        }
         if dict.keys.contains("OrderNumber") && dict["OrderNumber"] != nil {
             self.orderNumber = dict["OrderNumber"] as! Int64
         }
@@ -563,12 +631,6 @@ public class Model : Tea.TeaModel {
         }
         if dict.keys.contains("Provider") && dict["Provider"] != nil {
             self.provider = dict["Provider"] as! String
-        }
-        if dict.keys.contains("SourceId") && dict["SourceId"] != nil {
-            self.sourceId = dict["SourceId"] as! String
-        }
-        if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
-            self.sourceType = dict["SourceType"] as! String
         }
         if dict.keys.contains("Task") && dict["Task"] != nil {
             self.task = dict["Task"] as! String
@@ -584,6 +646,10 @@ public class Model : Tea.TeaModel {
 
 public class ModelVersion : Tea.TeaModel {
     public var approvalStatus: String?
+
+    public var evaluationSpec: [String: Any]?
+
+    public var extraInfo: [String: Any]?
 
     public var formatType: String?
 
@@ -633,6 +699,12 @@ public class ModelVersion : Tea.TeaModel {
         var map = super.toMap()
         if self.approvalStatus != nil {
             map["ApprovalStatus"] = self.approvalStatus!
+        }
+        if self.evaluationSpec != nil {
+            map["EvaluationSpec"] = self.evaluationSpec!
+        }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
         }
         if self.formatType != nil {
             map["FormatType"] = self.formatType!
@@ -692,6 +764,12 @@ public class ModelVersion : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApprovalStatus") && dict["ApprovalStatus"] != nil {
             self.approvalStatus = dict["ApprovalStatus"] as! String
+        }
+        if dict.keys.contains("EvaluationSpec") && dict["EvaluationSpec"] != nil {
+            self.evaluationSpec = dict["EvaluationSpec"] as! [String: Any]
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
         }
         if dict.keys.contains("FormatType") && dict["FormatType"] != nil {
             self.formatType = dict["FormatType"] as! String
@@ -2125,6 +2203,8 @@ public class CreateModelRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var extraInfo: [String: Any]?
+
     public var labels: [Label]?
 
     public var modelDescription: String?
@@ -2133,13 +2213,11 @@ public class CreateModelRequest : Tea.TeaModel {
 
     public var modelName: String?
 
+    public var modelType: String?
+
     public var orderNumber: Int64?
 
     public var origin: String?
-
-    public var sourceId: String?
-
-    public var sourceType: String?
 
     public var task: String?
 
@@ -2165,6 +2243,9 @@ public class CreateModelRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
+        }
         if self.labels != nil {
             var tmp : [Any] = []
             for k in self.labels! {
@@ -2181,17 +2262,14 @@ public class CreateModelRequest : Tea.TeaModel {
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
         }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
         if self.orderNumber != nil {
             map["OrderNumber"] = self.orderNumber!
         }
         if self.origin != nil {
             map["Origin"] = self.origin!
-        }
-        if self.sourceId != nil {
-            map["SourceId"] = self.sourceId!
-        }
-        if self.sourceType != nil {
-            map["SourceType"] = self.sourceType!
         }
         if self.task != nil {
             map["Task"] = self.task!
@@ -2208,6 +2286,9 @@ public class CreateModelRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
         }
         if dict.keys.contains("Labels") && dict["Labels"] != nil {
             var tmp : [Label] = []
@@ -2229,17 +2310,14 @@ public class CreateModelRequest : Tea.TeaModel {
         if dict.keys.contains("ModelName") && dict["ModelName"] != nil {
             self.modelName = dict["ModelName"] as! String
         }
+        if dict.keys.contains("ModelType") && dict["ModelType"] != nil {
+            self.modelType = dict["ModelType"] as! String
+        }
         if dict.keys.contains("OrderNumber") && dict["OrderNumber"] != nil {
             self.orderNumber = dict["OrderNumber"] as! Int64
         }
         if dict.keys.contains("Origin") && dict["Origin"] != nil {
             self.origin = dict["Origin"] as! String
-        }
-        if dict.keys.contains("SourceId") && dict["SourceId"] != nil {
-            self.sourceId = dict["SourceId"] as! String
-        }
-        if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
-            self.sourceType = dict["SourceType"] as! String
         }
         if dict.keys.contains("Task") && dict["Task"] != nil {
             self.task = dict["Task"] as! String
@@ -2467,6 +2545,10 @@ public class CreateModelLabelsResponse : Tea.TeaModel {
 public class CreateModelVersionRequest : Tea.TeaModel {
     public var approvalStatus: String?
 
+    public var evaluationSpec: [String: Any]?
+
+    public var extraInfo: [String: Any]?
+
     public var formatType: String?
 
     public var frameworkType: String?
@@ -2507,6 +2589,12 @@ public class CreateModelVersionRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.approvalStatus != nil {
             map["ApprovalStatus"] = self.approvalStatus!
+        }
+        if self.evaluationSpec != nil {
+            map["EvaluationSpec"] = self.evaluationSpec!
+        }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
         }
         if self.formatType != nil {
             map["FormatType"] = self.formatType!
@@ -2554,6 +2642,12 @@ public class CreateModelVersionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApprovalStatus") && dict["ApprovalStatus"] != nil {
             self.approvalStatus = dict["ApprovalStatus"] as! String
+        }
+        if dict.keys.contains("EvaluationSpec") && dict["EvaluationSpec"] != nil {
+            self.evaluationSpec = dict["EvaluationSpec"] as! [String: Any]
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
         }
         if dict.keys.contains("FormatType") && dict["FormatType"] != nil {
             self.formatType = dict["FormatType"] as! String
@@ -4585,6 +4679,8 @@ public class DeleteWorkspaceResourceRequest : Tea.TeaModel {
 public class DeleteWorkspaceResourceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var resourceIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -4602,12 +4698,18 @@ public class DeleteWorkspaceResourceResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceIds") && dict["ResourceIds"] != nil {
+            self.resourceIds = dict["ResourceIds"] as! [String]
         }
     }
 }
@@ -5823,6 +5925,8 @@ public class GetModelResponseBody : Tea.TeaModel {
 
     public var domain: String?
 
+    public var extraInfo: [String: Any]?
+
     public var gmtCreateTime: String?
 
     public var gmtModifiedTime: String?
@@ -5838,6 +5942,10 @@ public class GetModelResponseBody : Tea.TeaModel {
     public var modelId: String?
 
     public var modelName: String?
+
+    public var modelType: String?
+
+    public var orderNumber: Int64?
 
     public var origin: String?
 
@@ -5874,6 +5982,9 @@ public class GetModelResponseBody : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -5901,6 +6012,12 @@ public class GetModelResponseBody : Tea.TeaModel {
         }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
+        if self.orderNumber != nil {
+            map["OrderNumber"] = self.orderNumber!
         }
         if self.origin != nil {
             map["Origin"] = self.origin!
@@ -5932,6 +6049,9 @@ public class GetModelResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
         }
         if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
             self.gmtCreateTime = dict["GmtCreateTime"] as! String
@@ -5966,6 +6086,12 @@ public class GetModelResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ModelName") && dict["ModelName"] != nil {
             self.modelName = dict["ModelName"] as! String
+        }
+        if dict.keys.contains("ModelType") && dict["ModelType"] != nil {
+            self.modelType = dict["ModelType"] as! String
+        }
+        if dict.keys.contains("OrderNumber") && dict["OrderNumber"] != nil {
+            self.orderNumber = dict["OrderNumber"] as! Int64
         }
         if dict.keys.contains("Origin") && dict["Origin"] != nil {
             self.origin = dict["Origin"] as! String
@@ -6046,6 +6172,10 @@ public class GetModelResponse : Tea.TeaModel {
 public class GetModelVersionResponseBody : Tea.TeaModel {
     public var approvalStatus: String?
 
+    public var evaluationSpec: [String: Any]?
+
+    public var extraInfo: [String: Any]?
+
     public var formatType: String?
 
     public var frameworkType: String?
@@ -6057,6 +6187,8 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
     public var inferenceSpec: [String: Any]?
 
     public var labels: [Label]?
+
+    public var metrics: [String: Any]?
 
     public var options: String?
 
@@ -6095,6 +6227,12 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
         if self.approvalStatus != nil {
             map["ApprovalStatus"] = self.approvalStatus!
         }
+        if self.evaluationSpec != nil {
+            map["EvaluationSpec"] = self.evaluationSpec!
+        }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
+        }
         if self.formatType != nil {
             map["FormatType"] = self.formatType!
         }
@@ -6116,6 +6254,9 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Labels"] = tmp
+        }
+        if self.metrics != nil {
+            map["Metrics"] = self.metrics!
         }
         if self.options != nil {
             map["Options"] = self.options!
@@ -6154,6 +6295,12 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
         if dict.keys.contains("ApprovalStatus") && dict["ApprovalStatus"] != nil {
             self.approvalStatus = dict["ApprovalStatus"] as! String
         }
+        if dict.keys.contains("EvaluationSpec") && dict["EvaluationSpec"] != nil {
+            self.evaluationSpec = dict["EvaluationSpec"] as! [String: Any]
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
+        }
         if dict.keys.contains("FormatType") && dict["FormatType"] != nil {
             self.formatType = dict["FormatType"] as! String
         }
@@ -6179,6 +6326,9 @@ public class GetModelVersionResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.labels = tmp
+        }
+        if dict.keys.contains("Metrics") && dict["Metrics"] != nil {
+            self.metrics = dict["Metrics"] as! [String: Any]
         }
         if dict.keys.contains("Options") && dict["Options"] != nil {
             self.options = dict["Options"] as! String
@@ -8361,11 +8511,15 @@ public class ListModelVersionsResponse : Tea.TeaModel {
 }
 
 public class ListModelsRequest : Tea.TeaModel {
+    public var collections: String?
+
     public var domain: String?
 
     public var label: String?
 
     public var modelName: String?
+
+    public var modelType: String?
 
     public var order: String?
 
@@ -8380,10 +8534,6 @@ public class ListModelsRequest : Tea.TeaModel {
     public var query: String?
 
     public var sortBy: String?
-
-    public var souceType: String?
-
-    public var sourceId: String?
 
     public var task: String?
 
@@ -8403,6 +8553,9 @@ public class ListModelsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.collections != nil {
+            map["Collections"] = self.collections!
+        }
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
@@ -8411,6 +8564,9 @@ public class ListModelsRequest : Tea.TeaModel {
         }
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
+        }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
         }
         if self.order != nil {
             map["Order"] = self.order!
@@ -8433,12 +8589,6 @@ public class ListModelsRequest : Tea.TeaModel {
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
         }
-        if self.souceType != nil {
-            map["SouceType"] = self.souceType!
-        }
-        if self.sourceId != nil {
-            map["SourceId"] = self.sourceId!
-        }
         if self.task != nil {
             map["Task"] = self.task!
         }
@@ -8449,6 +8599,9 @@ public class ListModelsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Collections") && dict["Collections"] != nil {
+            self.collections = dict["Collections"] as! String
+        }
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
         }
@@ -8457,6 +8610,9 @@ public class ListModelsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ModelName") && dict["ModelName"] != nil {
             self.modelName = dict["ModelName"] as! String
+        }
+        if dict.keys.contains("ModelType") && dict["ModelType"] != nil {
+            self.modelType = dict["ModelType"] as! String
         }
         if dict.keys.contains("Order") && dict["Order"] != nil {
             self.order = dict["Order"] as! String
@@ -8478,12 +8634,6 @@ public class ListModelsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SortBy") && dict["SortBy"] != nil {
             self.sortBy = dict["SortBy"] as! String
-        }
-        if dict.keys.contains("SouceType") && dict["SouceType"] != nil {
-            self.souceType = dict["SouceType"] as! String
-        }
-        if dict.keys.contains("SourceId") && dict["SourceId"] != nil {
-            self.sourceId = dict["SourceId"] as! String
         }
         if dict.keys.contains("Task") && dict["Task"] != nil {
             self.task = dict["Task"] as! String
@@ -11447,19 +11597,19 @@ public class UpdateModelRequest : Tea.TeaModel {
 
     public var domain: String?
 
+    public var extraInfo: [String: Any]?
+
     public var modelDescription: String?
 
     public var modelDoc: String?
 
     public var modelName: String?
 
+    public var modelType: String?
+
     public var orderNumber: Int64?
 
     public var origin: String?
-
-    public var sourceId: String?
-
-    public var sourceType: String?
 
     public var task: String?
 
@@ -11483,6 +11633,9 @@ public class UpdateModelRequest : Tea.TeaModel {
         if self.domain != nil {
             map["Domain"] = self.domain!
         }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
+        }
         if self.modelDescription != nil {
             map["ModelDescription"] = self.modelDescription!
         }
@@ -11492,17 +11645,14 @@ public class UpdateModelRequest : Tea.TeaModel {
         if self.modelName != nil {
             map["ModelName"] = self.modelName!
         }
+        if self.modelType != nil {
+            map["ModelType"] = self.modelType!
+        }
         if self.orderNumber != nil {
             map["OrderNumber"] = self.orderNumber!
         }
         if self.origin != nil {
             map["Origin"] = self.origin!
-        }
-        if self.sourceId != nil {
-            map["SourceId"] = self.sourceId!
-        }
-        if self.sourceType != nil {
-            map["SourceType"] = self.sourceType!
         }
         if self.task != nil {
             map["Task"] = self.task!
@@ -11517,6 +11667,9 @@ public class UpdateModelRequest : Tea.TeaModel {
         if dict.keys.contains("Domain") && dict["Domain"] != nil {
             self.domain = dict["Domain"] as! String
         }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
+        }
         if dict.keys.contains("ModelDescription") && dict["ModelDescription"] != nil {
             self.modelDescription = dict["ModelDescription"] as! String
         }
@@ -11526,17 +11679,14 @@ public class UpdateModelRequest : Tea.TeaModel {
         if dict.keys.contains("ModelName") && dict["ModelName"] != nil {
             self.modelName = dict["ModelName"] as! String
         }
+        if dict.keys.contains("ModelType") && dict["ModelType"] != nil {
+            self.modelType = dict["ModelType"] as! String
+        }
         if dict.keys.contains("OrderNumber") && dict["OrderNumber"] != nil {
             self.orderNumber = dict["OrderNumber"] as! Int64
         }
         if dict.keys.contains("Origin") && dict["Origin"] != nil {
             self.origin = dict["Origin"] as! String
-        }
-        if dict.keys.contains("SourceId") && dict["SourceId"] != nil {
-            self.sourceId = dict["SourceId"] as! String
-        }
-        if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
-            self.sourceType = dict["SourceType"] as! String
         }
         if dict.keys.contains("Task") && dict["Task"] != nil {
             self.task = dict["Task"] as! String
@@ -11629,6 +11779,10 @@ public class UpdateModelResponse : Tea.TeaModel {
 public class UpdateModelVersionRequest : Tea.TeaModel {
     public var approvalStatus: String?
 
+    public var evaluationSpec: [String: Any]?
+
+    public var extraInfo: [String: Any]?
+
     public var inferenceSpec: [String: Any]?
 
     public var metrics: [String: Any]?
@@ -11660,6 +11814,12 @@ public class UpdateModelVersionRequest : Tea.TeaModel {
         if self.approvalStatus != nil {
             map["ApprovalStatus"] = self.approvalStatus!
         }
+        if self.evaluationSpec != nil {
+            map["EvaluationSpec"] = self.evaluationSpec!
+        }
+        if self.extraInfo != nil {
+            map["ExtraInfo"] = self.extraInfo!
+        }
         if self.inferenceSpec != nil {
             map["InferenceSpec"] = self.inferenceSpec!
         }
@@ -11687,6 +11847,12 @@ public class UpdateModelVersionRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApprovalStatus") && dict["ApprovalStatus"] != nil {
             self.approvalStatus = dict["ApprovalStatus"] as! String
+        }
+        if dict.keys.contains("EvaluationSpec") && dict["EvaluationSpec"] != nil {
+            self.evaluationSpec = dict["EvaluationSpec"] as! [String: Any]
+        }
+        if dict.keys.contains("ExtraInfo") && dict["ExtraInfo"] != nil {
+            self.extraInfo = dict["ExtraInfo"] as! [String: Any]
         }
         if dict.keys.contains("InferenceSpec") && dict["InferenceSpec"] != nil {
             self.inferenceSpec = dict["InferenceSpec"] as! [String: Any]
@@ -12044,6 +12210,8 @@ public class UpdateWorkspaceResourceRequest : Tea.TeaModel {
 public class UpdateWorkspaceResourceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
+    public var resourceIds: [String]?
+
     public override init() {
         super.init()
     }
@@ -12061,12 +12229,18 @@ public class UpdateWorkspaceResourceResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.resourceIds != nil {
+            map["ResourceIds"] = self.resourceIds!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResourceIds") && dict["ResourceIds"] != nil {
+            self.resourceIds = dict["ResourceIds"] as! [String]
         }
     }
 }
