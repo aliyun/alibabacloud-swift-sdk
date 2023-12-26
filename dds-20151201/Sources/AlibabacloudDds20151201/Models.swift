@@ -18600,6 +18600,8 @@ public class DescribeSecurityIpsRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var showHDMIps: Bool?
+
     public override init() {
         super.init()
     }
@@ -18629,6 +18631,9 @@ public class DescribeSecurityIpsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.showHDMIps != nil {
+            map["ShowHDMIps"] = self.showHDMIps!
+        }
         return map
     }
 
@@ -18647,6 +18652,9 @@ public class DescribeSecurityIpsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ShowHDMIps") && dict["ShowHDMIps"] != nil {
+            self.showHDMIps = dict["ShowHDMIps"] as! Bool
         }
     }
 }
