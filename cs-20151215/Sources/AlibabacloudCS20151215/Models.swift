@@ -68,6 +68,8 @@ public class DataDisk : Tea.TeaModel {
 
     public var category: String?
 
+    public var device: String?
+
     public var encrypted: String?
 
     public var fileSystem: String?
@@ -76,11 +78,15 @@ public class DataDisk : Tea.TeaModel {
 
     public var mountTarget: String?
 
+    public var name: String?
+
     public var performanceLevel: String?
 
     public var provisionedIops: Int64?
 
     public var size: Int64?
+
+    public var snapshotId: String?
 
     public override init() {
         super.init()
@@ -108,6 +114,9 @@ public class DataDisk : Tea.TeaModel {
         if self.category != nil {
             map["category"] = self.category!
         }
+        if self.device != nil {
+            map["device"] = self.device!
+        }
         if self.encrypted != nil {
             map["encrypted"] = self.encrypted!
         }
@@ -120,6 +129,9 @@ public class DataDisk : Tea.TeaModel {
         if self.mountTarget != nil {
             map["mount_target"] = self.mountTarget!
         }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
         if self.performanceLevel != nil {
             map["performance_level"] = self.performanceLevel!
         }
@@ -128,6 +140,9 @@ public class DataDisk : Tea.TeaModel {
         }
         if self.size != nil {
             map["size"] = self.size!
+        }
+        if self.snapshotId != nil {
+            map["snapshot_id"] = self.snapshotId!
         }
         return map
     }
@@ -145,6 +160,9 @@ public class DataDisk : Tea.TeaModel {
         if dict.keys.contains("category") && dict["category"] != nil {
             self.category = dict["category"] as! String
         }
+        if dict.keys.contains("device") && dict["device"] != nil {
+            self.device = dict["device"] as! String
+        }
         if dict.keys.contains("encrypted") && dict["encrypted"] != nil {
             self.encrypted = dict["encrypted"] as! String
         }
@@ -157,6 +175,9 @@ public class DataDisk : Tea.TeaModel {
         if dict.keys.contains("mount_target") && dict["mount_target"] != nil {
             self.mountTarget = dict["mount_target"] as! String
         }
+        if dict.keys.contains("name") && dict["name"] != nil {
+            self.name = dict["name"] as! String
+        }
         if dict.keys.contains("performance_level") && dict["performance_level"] != nil {
             self.performanceLevel = dict["performance_level"] as! String
         }
@@ -165,6 +186,9 @@ public class DataDisk : Tea.TeaModel {
         }
         if dict.keys.contains("size") && dict["size"] != nil {
             self.size = dict["size"] as! Int64
+        }
+        if dict.keys.contains("snapshot_id") && dict["snapshot_id"] != nil {
+            self.snapshotId = dict["snapshot_id"] as! String
         }
     }
 }
