@@ -9493,6 +9493,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var serverlessType: String?
 
+        public var subCluster: String?
+
         public var zoneId: String?
 
         public override init() {
@@ -9560,6 +9562,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.serverlessType != nil {
                 map["ServerlessType"] = self.serverlessType!
             }
+            if self.subCluster != nil {
+                map["SubCluster"] = self.subCluster!
+            }
             if self.zoneId != nil {
                 map["ZoneId"] = self.zoneId!
             }
@@ -9618,6 +9623,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("ServerlessType") && dict["ServerlessType"] != nil {
                 self.serverlessType = dict["ServerlessType"] as! String
             }
+            if dict.keys.contains("SubCluster") && dict["SubCluster"] != nil {
+                self.subCluster = dict["SubCluster"] as! String
+            }
             if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
                 self.zoneId = dict["ZoneId"] as! String
             }
@@ -9671,6 +9679,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     public var category: String?
 
     public var compressStorageMode: String?
+
+    public var compressStorageUsed: Int64?
 
     public var creationTime: String?
 
@@ -9797,6 +9807,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.compressStorageMode != nil {
             map["CompressStorageMode"] = self.compressStorageMode!
+        }
+        if self.compressStorageUsed != nil {
+            map["CompressStorageUsed"] = self.compressStorageUsed!
         }
         if self.creationTime != nil {
             map["CreationTime"] = self.creationTime!
@@ -9968,6 +9981,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CompressStorageMode") && dict["CompressStorageMode"] != nil {
             self.compressStorageMode = dict["CompressStorageMode"] as! String
+        }
+        if dict.keys.contains("CompressStorageUsed") && dict["CompressStorageUsed"] != nil {
+            self.compressStorageUsed = dict["CompressStorageUsed"] as! Int64
         }
         if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
             self.creationTime = dict["CreationTime"] as! String
@@ -11405,6 +11421,8 @@ public class DescribeDBClusterMigrationResponseBody : Tea.TeaModel {
 
         public var endpointType: String?
 
+        public var readWriteMode: String?
+
         public override init() {
             super.init()
         }
@@ -11432,6 +11450,9 @@ public class DescribeDBClusterMigrationResponseBody : Tea.TeaModel {
             if self.endpointType != nil {
                 map["EndpointType"] = self.endpointType!
             }
+            if self.readWriteMode != nil {
+                map["ReadWriteMode"] = self.readWriteMode!
+            }
             return map
         }
 
@@ -11452,6 +11473,9 @@ public class DescribeDBClusterMigrationResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EndpointType") && dict["EndpointType"] != nil {
                 self.endpointType = dict["EndpointType"] as! String
+            }
+            if dict.keys.contains("ReadWriteMode") && dict["ReadWriteMode"] != nil {
+                self.readWriteMode = dict["ReadWriteMode"] as! String
             }
         }
     }
@@ -11535,6 +11559,8 @@ public class DescribeDBClusterMigrationResponseBody : Tea.TeaModel {
         }
         public var addressItems: [DescribeDBClusterMigrationResponseBody.RdsEndpointList.AddressItems]?
 
+        public var custinsType: String?
+
         public var DBEndpointId: String?
 
         public var endpointType: String?
@@ -11560,6 +11586,9 @@ public class DescribeDBClusterMigrationResponseBody : Tea.TeaModel {
                 }
                 map["AddressItems"] = tmp
             }
+            if self.custinsType != nil {
+                map["CustinsType"] = self.custinsType!
+            }
             if self.DBEndpointId != nil {
                 map["DBEndpointId"] = self.DBEndpointId!
             }
@@ -11580,6 +11609,9 @@ public class DescribeDBClusterMigrationResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.addressItems = tmp
+            }
+            if dict.keys.contains("CustinsType") && dict["CustinsType"] != nil {
+                self.custinsType = dict["CustinsType"] as! String
             }
             if dict.keys.contains("DBEndpointId") && dict["DBEndpointId"] != nil {
                 self.DBEndpointId = dict["DBEndpointId"] as! String
@@ -13816,6 +13848,8 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
 
     public var DBVersion: String?
 
+    public var describeType: String?
+
     public var expired: Bool?
 
     public var ownerAccount: String?
@@ -13876,6 +13910,9 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
         }
         if self.DBVersion != nil {
             map["DBVersion"] = self.DBVersion!
+        }
+        if self.describeType != nil {
+            map["DescribeType"] = self.describeType!
         }
         if self.expired != nil {
             map["Expired"] = self.expired!
@@ -13944,6 +13981,9 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBVersion") && dict["DBVersion"] != nil {
             self.DBVersion = dict["DBVersion"] as! String
+        }
+        if dict.keys.contains("DescribeType") && dict["DescribeType"] != nil {
+            self.describeType = dict["DescribeType"] as! String
         }
         if dict.keys.contains("Expired") && dict["Expired"] != nil {
             self.expired = dict["Expired"] as! Bool
@@ -16659,6 +16699,166 @@ public class DescribeDBProxyPerformanceResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeDBProxyPerformanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDasConfigRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class DescribeDasConfigResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var storageAutoScale: String?
+
+    public var storageUpperBound: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.storageAutoScale != nil {
+            map["StorageAutoScale"] = self.storageAutoScale!
+        }
+        if self.storageUpperBound != nil {
+            map["StorageUpperBound"] = self.storageUpperBound!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StorageAutoScale") && dict["StorageAutoScale"] != nil {
+            self.storageAutoScale = dict["StorageAutoScale"] as! String
+        }
+        if dict.keys.contains("StorageUpperBound") && dict["StorageUpperBound"] != nil {
+            self.storageUpperBound = dict["StorageUpperBound"] as! Int64
+        }
+    }
+}
+
+public class DescribeDasConfigResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDasConfigResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeDasConfigResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -24542,6 +24742,8 @@ public class FailoverDBClusterRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var rollBackForDisaster: Bool?
+
     public var targetDBNodeId: String?
 
     public override init() {
@@ -24576,6 +24778,9 @@ public class FailoverDBClusterRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.rollBackForDisaster != nil {
+            map["RollBackForDisaster"] = self.rollBackForDisaster!
+        }
         if self.targetDBNodeId != nil {
             map["TargetDBNodeId"] = self.targetDBNodeId!
         }
@@ -24600,6 +24805,9 @@ public class FailoverDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RollBackForDisaster") && dict["RollBackForDisaster"] != nil {
+            self.rollBackForDisaster = dict["RollBackForDisaster"] as! Bool
         }
         if dict.keys.contains("TargetDBNodeId") && dict["TargetDBNodeId"] != nil {
             self.targetDBNodeId = dict["TargetDBNodeId"] as! String
@@ -26092,6 +26300,8 @@ public class ModifyBackupPolicyResponse : Tea.TeaModel {
 }
 
 public class ModifyDBClusterRequest : Tea.TeaModel {
+    public var compressStorage: String?
+
     public var DBClusterId: String?
 
     public var dataSyncMode: String?
@@ -26126,6 +26336,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.compressStorage != nil {
+            map["CompressStorage"] = self.compressStorage!
+        }
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
@@ -26160,6 +26373,9 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CompressStorage") && dict["CompressStorage"] != nil {
+            self.compressStorage = dict["CompressStorage"] as! String
+        }
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
         }
