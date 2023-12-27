@@ -71,6 +71,290 @@ public class DemoCategory : Tea.TeaModel {
     }
 }
 
+public class ForwardInfo : Tea.TeaModel {
+    public var containerName: String?
+
+    public var eipAllocationId: String?
+
+    public var enable: Bool?
+
+    public var natGatewayId: String?
+
+    public var port: String?
+
+    public var SSHPublicKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.containerName != nil {
+            map["ContainerName"] = self.containerName!
+        }
+        if self.eipAllocationId != nil {
+            map["EipAllocationId"] = self.eipAllocationId!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.SSHPublicKey != nil {
+            map["SSHPublicKey"] = self.SSHPublicKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ContainerName") && dict["ContainerName"] != nil {
+            self.containerName = dict["ContainerName"] as! String
+        }
+        if dict.keys.contains("EipAllocationId") && dict["EipAllocationId"] != nil {
+            self.eipAllocationId = dict["EipAllocationId"] as! String
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("Port") && dict["Port"] != nil {
+            self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("SSHPublicKey") && dict["SSHPublicKey"] != nil {
+            self.SSHPublicKey = dict["SSHPublicKey"] as! String
+        }
+    }
+}
+
+public class ForwardInfoResponse : Tea.TeaModel {
+    public class ConnectInfo : Tea.TeaModel {
+        public class Internet : Tea.TeaModel {
+            public var endpoint: String?
+
+            public var port: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpoint != nil {
+                    map["Endpoint"] = self.endpoint!
+                }
+                if self.port != nil {
+                    map["Port"] = self.port!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
+                    self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("Port") && dict["Port"] != nil {
+                    self.port = dict["Port"] as! String
+                }
+            }
+        }
+        public class Intranet : Tea.TeaModel {
+            public var endpoint: String?
+
+            public var port: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.endpoint != nil {
+                    map["Endpoint"] = self.endpoint!
+                }
+                if self.port != nil {
+                    map["Port"] = self.port!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Endpoint") && dict["Endpoint"] != nil {
+                    self.endpoint = dict["Endpoint"] as! String
+                }
+                if dict.keys.contains("Port") && dict["Port"] != nil {
+                    self.port = dict["Port"] as! String
+                }
+            }
+        }
+        public var internet: ForwardInfoResponse.ConnectInfo.Internet?
+
+        public var intranet: ForwardInfoResponse.ConnectInfo.Intranet?
+
+        public var message: String?
+
+        public var phase: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.internet?.validate()
+            try self.intranet?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.internet != nil {
+                map["Internet"] = self.internet?.toMap()
+            }
+            if self.intranet != nil {
+                map["Intranet"] = self.intranet?.toMap()
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.phase != nil {
+                map["Phase"] = self.phase!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Internet") && dict["Internet"] != nil {
+                var model = ForwardInfoResponse.ConnectInfo.Internet()
+                model.fromMap(dict["Internet"] as! [String: Any])
+                self.internet = model
+            }
+            if dict.keys.contains("Intranet") && dict["Intranet"] != nil {
+                var model = ForwardInfoResponse.ConnectInfo.Intranet()
+                model.fromMap(dict["Intranet"] as! [String: Any])
+                self.intranet = model
+            }
+            if dict.keys.contains("Message") && dict["Message"] != nil {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Phase") && dict["Phase"] != nil {
+                self.phase = dict["Phase"] as! String
+            }
+        }
+    }
+    public var connectInfo: ForwardInfoResponse.ConnectInfo?
+
+    public var containerName: String?
+
+    public var eipAllocationId: String?
+
+    public var enable: Bool?
+
+    public var natGatewayId: String?
+
+    public var port: String?
+
+    public var SSHPublicKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.connectInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.connectInfo != nil {
+            map["ConnectInfo"] = self.connectInfo?.toMap()
+        }
+        if self.containerName != nil {
+            map["ContainerName"] = self.containerName!
+        }
+        if self.eipAllocationId != nil {
+            map["EipAllocationId"] = self.eipAllocationId!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.SSHPublicKey != nil {
+            map["SSHPublicKey"] = self.SSHPublicKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConnectInfo") && dict["ConnectInfo"] != nil {
+            var model = ForwardInfoResponse.ConnectInfo()
+            model.fromMap(dict["ConnectInfo"] as! [String: Any])
+            self.connectInfo = model
+        }
+        if dict.keys.contains("ContainerName") && dict["ContainerName"] != nil {
+            self.containerName = dict["ContainerName"] as! String
+        }
+        if dict.keys.contains("EipAllocationId") && dict["EipAllocationId"] != nil {
+            self.eipAllocationId = dict["EipAllocationId"] as! String
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("Port") && dict["Port"] != nil {
+            self.port = dict["Port"] as! String
+        }
+        if dict.keys.contains("SSHPublicKey") && dict["SSHPublicKey"] != nil {
+            self.SSHPublicKey = dict["SSHPublicKey"] as! String
+        }
+    }
+}
+
 public class CreateIdleInstanceCullerRequest : Tea.TeaModel {
     public var cpuPercentThreshold: Int32?
 
@@ -425,6 +709,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
         public var extendedCIDRs: [String]?
 
+        public var forwardInfos: [ForwardInfo]?
+
         public var securityGroupId: String?
 
         public var vSwitchId: String?
@@ -451,6 +737,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if self.extendedCIDRs != nil {
                 map["ExtendedCIDRs"] = self.extendedCIDRs!
             }
+            if self.forwardInfos != nil {
+                var tmp : [Any] = []
+                for k in self.forwardInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ForwardInfos"] = tmp
+            }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
@@ -470,6 +763,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
             if dict.keys.contains("ExtendedCIDRs") && dict["ExtendedCIDRs"] != nil {
                 self.extendedCIDRs = dict["ExtendedCIDRs"] as! [String]
             }
+            if dict.keys.contains("ForwardInfos") && dict["ForwardInfos"] != nil {
+                var tmp : [ForwardInfo] = []
+                for v in dict["ForwardInfos"] as! [Any] {
+                    var model = ForwardInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.forwardInfos = tmp
+            }
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
             }
@@ -486,6 +790,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var cloudDisks: [CreateInstanceRequest.CloudDisks]?
 
     public var datasets: [CreateInstanceRequest.Datasets]?
+
+    public var driver: String?
 
     public var ecsSpec: String?
 
@@ -545,6 +851,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Datasets"] = tmp
+        }
+        if self.driver != nil {
+            map["Driver"] = self.driver!
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -617,6 +926,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.datasets = tmp
+        }
+        if dict.keys.contains("Driver") && dict["Driver"] != nil {
+            self.driver = dict["Driver"] as! String
         }
         if dict.keys.contains("EcsSpec") && dict["EcsSpec"] != nil {
             self.ecsSpec = dict["EcsSpec"] as! String
@@ -992,9 +1304,13 @@ public class CreateInstanceSnapshotRequest : Tea.TeaModel {
             }
         }
     }
+    public var excludePaths: [String]?
+
     public var imageUrl: String?
 
     public var labels: [CreateInstanceSnapshotRequest.Labels]?
+
+    public var overwrite: Bool?
 
     public var snapshotDescription: String?
 
@@ -1014,6 +1330,9 @@ public class CreateInstanceSnapshotRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.excludePaths != nil {
+            map["ExcludePaths"] = self.excludePaths!
+        }
         if self.imageUrl != nil {
             map["ImageUrl"] = self.imageUrl!
         }
@@ -1023,6 +1342,9 @@ public class CreateInstanceSnapshotRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Labels"] = tmp
+        }
+        if self.overwrite != nil {
+            map["Overwrite"] = self.overwrite!
         }
         if self.snapshotDescription != nil {
             map["SnapshotDescription"] = self.snapshotDescription!
@@ -1034,6 +1356,9 @@ public class CreateInstanceSnapshotRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExcludePaths") && dict["ExcludePaths"] != nil {
+            self.excludePaths = dict["ExcludePaths"] as! [String]
+        }
         if dict.keys.contains("ImageUrl") && dict["ImageUrl"] != nil {
             self.imageUrl = dict["ImageUrl"] as! String
         }
@@ -1047,6 +1372,9 @@ public class CreateInstanceSnapshotRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.labels = tmp
+        }
+        if dict.keys.contains("Overwrite") && dict["Overwrite"] != nil {
+            self.overwrite = dict["Overwrite"] as! Bool
         }
         if dict.keys.contains("SnapshotDescription") && dict["SnapshotDescription"] != nil {
             self.snapshotDescription = dict["SnapshotDescription"] as! String
@@ -2323,6 +2651,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var extendedCIDRs: [String]?
 
+        public var forwardInfos: [ForwardInfoResponse]?
+
         public var securityGroupId: String?
 
         public var vSwitchId: String?
@@ -2349,6 +2679,13 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             if self.extendedCIDRs != nil {
                 map["ExtendedCIDRs"] = self.extendedCIDRs!
             }
+            if self.forwardInfos != nil {
+                var tmp : [Any] = []
+                for k in self.forwardInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ForwardInfos"] = tmp
+            }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
@@ -2367,6 +2704,17 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExtendedCIDRs") && dict["ExtendedCIDRs"] != nil {
                 self.extendedCIDRs = dict["ExtendedCIDRs"] as! [String]
+            }
+            if dict.keys.contains("ForwardInfos") && dict["ForwardInfos"] != nil {
+                var tmp : [ForwardInfoResponse] = []
+                for v in dict["ForwardInfos"] as! [Any] {
+                    var model = ForwardInfoResponse()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.forwardInfos = tmp
             }
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -2390,6 +2738,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public var code: String?
 
     public var datasets: [GetInstanceResponseBody.Datasets]?
+
+    public var driver: String?
 
     public var ecsSpec: String?
 
@@ -2507,6 +2857,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Datasets"] = tmp
+        }
+        if self.driver != nil {
+            map["Driver"] = self.driver!
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -2661,6 +3014,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.datasets = tmp
+        }
+        if dict.keys.contains("Driver") && dict["Driver"] != nil {
+            self.driver = dict["Driver"] as! String
         }
         if dict.keys.contains("EcsSpec") && dict["EcsSpec"] != nil {
             self.ecsSpec = dict["EcsSpec"] as! String
@@ -3288,7 +3644,46 @@ public class GetInstanceShutdownTimerResponse : Tea.TeaModel {
 }
 
 public class GetInstanceSnapshotResponseBody : Tea.TeaModel {
+    public class Labels : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var code: String?
+
+    public var excludePaths: [String]?
 
     public var gmtCreateTime: String?
 
@@ -3301,6 +3696,8 @@ public class GetInstanceSnapshotResponseBody : Tea.TeaModel {
     public var imageUrl: String?
 
     public var instanceId: String?
+
+    public var labels: [GetInstanceSnapshotResponseBody.Labels]?
 
     public var message: String?
 
@@ -3335,6 +3732,9 @@ public class GetInstanceSnapshotResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.excludePaths != nil {
+            map["ExcludePaths"] = self.excludePaths!
+        }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
         }
@@ -3352,6 +3752,13 @@ public class GetInstanceSnapshotResponseBody : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.labels != nil {
+            var tmp : [Any] = []
+            for k in self.labels! {
+                tmp.append(k.toMap())
+            }
+            map["Labels"] = tmp
         }
         if self.message != nil {
             map["Message"] = self.message!
@@ -3384,6 +3791,9 @@ public class GetInstanceSnapshotResponseBody : Tea.TeaModel {
         if dict.keys.contains("Code") && dict["Code"] != nil {
             self.code = dict["Code"] as! String
         }
+        if dict.keys.contains("ExcludePaths") && dict["ExcludePaths"] != nil {
+            self.excludePaths = dict["ExcludePaths"] as! [String]
+        }
         if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
             self.gmtCreateTime = dict["GmtCreateTime"] as! String
         }
@@ -3401,6 +3811,17 @@ public class GetInstanceSnapshotResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Labels") && dict["Labels"] != nil {
+            var tmp : [GetInstanceSnapshotResponseBody.Labels] = []
+            for v in dict["Labels"] as! [Any] {
+                var model = GetInstanceSnapshotResponseBody.Labels()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.labels = tmp
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
@@ -4795,6 +5216,8 @@ public class ListInstanceSnapshotResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var excludePaths: [String]?
+
         public var gmtCreateTime: String?
 
         public var gmtModifiedTime: String?
@@ -4831,6 +5254,9 @@ public class ListInstanceSnapshotResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.excludePaths != nil {
+                map["ExcludePaths"] = self.excludePaths!
+            }
             if self.gmtCreateTime != nil {
                 map["GmtCreateTime"] = self.gmtCreateTime!
             }
@@ -4872,6 +5298,9 @@ public class ListInstanceSnapshotResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ExcludePaths") && dict["ExcludePaths"] != nil {
+                self.excludePaths = dict["ExcludePaths"] as! [String]
+            }
             if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
                 self.gmtCreateTime = dict["GmtCreateTime"] as! String
             }
@@ -5829,6 +6258,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
 
             public var extendedCIDRs: [String]?
 
+            public var forwardInfos: [ForwardInfoResponse]?
+
             public var securityGroupId: String?
 
             public var vSwitchId: String?
@@ -5855,6 +6286,13 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 if self.extendedCIDRs != nil {
                     map["ExtendedCIDRs"] = self.extendedCIDRs!
                 }
+                if self.forwardInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.forwardInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ForwardInfos"] = tmp
+                }
                 if self.securityGroupId != nil {
                     map["SecurityGroupId"] = self.securityGroupId!
                 }
@@ -5873,6 +6311,17 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ExtendedCIDRs") && dict["ExtendedCIDRs"] != nil {
                     self.extendedCIDRs = dict["ExtendedCIDRs"] as! [String]
+                }
+                if dict.keys.contains("ForwardInfos") && dict["ForwardInfos"] != nil {
+                    var tmp : [ForwardInfoResponse] = []
+                    for v in dict["ForwardInfos"] as! [Any] {
+                        var model = ForwardInfoResponse()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.forwardInfos = tmp
                 }
                 if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                     self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -5894,6 +6343,8 @@ public class ListInstancesResponseBody : Tea.TeaModel {
         public var cloudDisks: [ListInstancesResponseBody.Instances.CloudDisks]?
 
         public var datasets: [ListInstancesResponseBody.Instances.Datasets]?
+
+        public var driver: String?
 
         public var ecsSpec: String?
 
@@ -6000,6 +6451,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["Datasets"] = tmp
+            }
+            if self.driver != nil {
+                map["Driver"] = self.driver!
             }
             if self.ecsSpec != nil {
                 map["EcsSpec"] = self.ecsSpec!
@@ -6139,6 +6593,9 @@ public class ListInstancesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.datasets = tmp
+            }
+            if dict.keys.contains("Driver") && dict["Driver"] != nil {
+                self.driver = dict["Driver"] as! String
             }
             if dict.keys.contains("EcsSpec") && dict["EcsSpec"] != nil {
                 self.ecsSpec = dict["EcsSpec"] as! String
@@ -6783,6 +7240,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
         public var extendedCIDRs: [String]?
 
+        public var forwardInfos: [ForwardInfo]?
+
         public var securityGroupId: String?
 
         public var vSwitchId: String?
@@ -6809,6 +7268,13 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if self.extendedCIDRs != nil {
                 map["ExtendedCIDRs"] = self.extendedCIDRs!
             }
+            if self.forwardInfos != nil {
+                var tmp : [Any] = []
+                for k in self.forwardInfos! {
+                    tmp.append(k.toMap())
+                }
+                map["ForwardInfos"] = tmp
+            }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
@@ -6828,6 +7294,17 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             if dict.keys.contains("ExtendedCIDRs") && dict["ExtendedCIDRs"] != nil {
                 self.extendedCIDRs = dict["ExtendedCIDRs"] as! [String]
             }
+            if dict.keys.contains("ForwardInfos") && dict["ForwardInfos"] != nil {
+                var tmp : [ForwardInfo] = []
+                for v in dict["ForwardInfos"] as! [Any] {
+                    var model = ForwardInfo()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.forwardInfos = tmp
+            }
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
             }
@@ -6845,7 +7322,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
 
     public var disassociateDatasets: Bool?
 
+    public var disassociateDriver: Bool?
+
     public var disassociateVpc: Bool?
+
+    public var driver: String?
 
     public var ecsSpec: String?
 
@@ -6854,6 +7335,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     public var imageUrl: String?
 
     public var instanceName: String?
+
+    public var priority: Int64?
 
     public var requestedResource: UpdateInstanceRequest.RequestedResource?
 
@@ -6892,8 +7375,14 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.disassociateDatasets != nil {
             map["DisassociateDatasets"] = self.disassociateDatasets!
         }
+        if self.disassociateDriver != nil {
+            map["DisassociateDriver"] = self.disassociateDriver!
+        }
         if self.disassociateVpc != nil {
             map["DisassociateVpc"] = self.disassociateVpc!
+        }
+        if self.driver != nil {
+            map["Driver"] = self.driver!
         }
         if self.ecsSpec != nil {
             map["EcsSpec"] = self.ecsSpec!
@@ -6906,6 +7395,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.priority != nil {
+            map["Priority"] = self.priority!
         }
         if self.requestedResource != nil {
             map["RequestedResource"] = self.requestedResource?.toMap()
@@ -6940,8 +7432,14 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("DisassociateDatasets") && dict["DisassociateDatasets"] != nil {
             self.disassociateDatasets = dict["DisassociateDatasets"] as! Bool
         }
+        if dict.keys.contains("DisassociateDriver") && dict["DisassociateDriver"] != nil {
+            self.disassociateDriver = dict["DisassociateDriver"] as! Bool
+        }
         if dict.keys.contains("DisassociateVpc") && dict["DisassociateVpc"] != nil {
             self.disassociateVpc = dict["DisassociateVpc"] as! Bool
+        }
+        if dict.keys.contains("Driver") && dict["Driver"] != nil {
+            self.driver = dict["Driver"] as! String
         }
         if dict.keys.contains("EcsSpec") && dict["EcsSpec"] != nil {
             self.ecsSpec = dict["EcsSpec"] as! String
@@ -6954,6 +7452,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
             self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("Priority") && dict["Priority"] != nil {
+            self.priority = dict["Priority"] as! Int64
         }
         if dict.keys.contains("RequestedResource") && dict["RequestedResource"] != nil {
             var model = UpdateInstanceRequest.RequestedResource()

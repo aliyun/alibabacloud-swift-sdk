@@ -75,6 +75,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.datasets)) {
             body["Datasets"] = request.datasets ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.driver)) {
+            body["Driver"] = request.driver ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ecsSpec)) {
             body["EcsSpec"] = request.ecsSpec ?? "";
         }
@@ -180,11 +183,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createInstanceSnapshotWithOptions(_ InstanceId: String, _ request: CreateInstanceSnapshotRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateInstanceSnapshotResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.excludePaths)) {
+            body["ExcludePaths"] = request.excludePaths ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.imageUrl)) {
             body["ImageUrl"] = request.imageUrl ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.labels)) {
             body["Labels"] = request.labels ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.overwrite)) {
+            body["Overwrite"] = request.overwrite!;
         }
         if (!TeaUtils.Client.isUnset(request.snapshotDescription)) {
             body["SnapshotDescription"] = request.snapshotDescription ?? "";
@@ -885,8 +894,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.disassociateDatasets)) {
             body["DisassociateDatasets"] = request.disassociateDatasets!;
         }
+        if (!TeaUtils.Client.isUnset(request.disassociateDriver)) {
+            body["DisassociateDriver"] = request.disassociateDriver!;
+        }
         if (!TeaUtils.Client.isUnset(request.disassociateVpc)) {
             body["DisassociateVpc"] = request.disassociateVpc!;
+        }
+        if (!TeaUtils.Client.isUnset(request.driver)) {
+            body["Driver"] = request.driver ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ecsSpec)) {
             body["EcsSpec"] = request.ecsSpec ?? "";
@@ -899,6 +914,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.priority)) {
+            body["Priority"] = request.priority!;
         }
         if (!TeaUtils.Client.isUnset(request.requestedResource)) {
             body["RequestedResource"] = request.requestedResource!;
