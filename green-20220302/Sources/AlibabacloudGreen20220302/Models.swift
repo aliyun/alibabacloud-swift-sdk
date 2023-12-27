@@ -2456,6 +2456,43 @@ public class VideoModerationResultRequest : Tea.TeaModel {
 public class VideoModerationResultResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class AudioResult : Tea.TeaModel {
+            public class AudioSummarys : Tea.TeaModel {
+                public var label: String?
+
+                public var labelSum: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    if self.labelSum != nil {
+                        map["LabelSum"] = self.labelSum!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Label") && dict["Label"] != nil {
+                        self.label = dict["Label"] as! String
+                    }
+                    if dict.keys.contains("LabelSum") && dict["LabelSum"] != nil {
+                        self.labelSum = dict["LabelSum"] as! Int32
+                    }
+                }
+            }
             public class SliceDetails : Tea.TeaModel {
                 public var endTime: Int64?
 
@@ -2565,6 +2602,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var audioSummarys: [VideoModerationResultResponseBody.Data.AudioResult.AudioSummarys]?
+
             public var sliceDetails: [VideoModerationResultResponseBody.Data.AudioResult.SliceDetails]?
 
             public override init() {
@@ -2581,6 +2620,13 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.audioSummarys != nil {
+                    var tmp : [Any] = []
+                    for k in self.audioSummarys! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AudioSummarys"] = tmp
+                }
                 if self.sliceDetails != nil {
                     var tmp : [Any] = []
                     for k in self.sliceDetails! {
@@ -2592,6 +2638,17 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AudioSummarys") && dict["AudioSummarys"] != nil {
+                    var tmp : [VideoModerationResultResponseBody.Data.AudioResult.AudioSummarys] = []
+                    for v in dict["AudioSummarys"] as! [Any] {
+                        var model = VideoModerationResultResponseBody.Data.AudioResult.AudioSummarys()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.audioSummarys = tmp
+                }
                 if dict.keys.contains("SliceDetails") && dict["SliceDetails"] != nil {
                     var tmp : [VideoModerationResultResponseBody.Data.AudioResult.SliceDetails] = []
                     for v in dict["SliceDetails"] as! [Any] {
@@ -2606,6 +2663,43 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
         }
         public class FrameResult : Tea.TeaModel {
+            public class FrameSummarys : Tea.TeaModel {
+                public var label: String?
+
+                public var labelSum: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.label != nil {
+                        map["Label"] = self.label!
+                    }
+                    if self.labelSum != nil {
+                        map["LabelSum"] = self.labelSum!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Label") && dict["Label"] != nil {
+                        self.label = dict["Label"] as! String
+                    }
+                    if dict.keys.contains("LabelSum") && dict["LabelSum"] != nil {
+                        self.labelSum = dict["LabelSum"] as! Int32
+                    }
+                }
+            }
             public class Frames : Tea.TeaModel {
                 public class Results : Tea.TeaModel {
                     public class Result : Tea.TeaModel {
@@ -2699,6 +2793,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                 public var tempUrl: String?
 
+                public var timestamp: Int64?
+
                 public override init() {
                     super.init()
                 }
@@ -2726,6 +2822,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     if self.tempUrl != nil {
                         map["TempUrl"] = self.tempUrl!
                     }
+                    if self.timestamp != nil {
+                        map["Timestamp"] = self.timestamp!
+                    }
                     return map
                 }
 
@@ -2747,9 +2846,14 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                     if dict.keys.contains("TempUrl") && dict["TempUrl"] != nil {
                         self.tempUrl = dict["TempUrl"] as! String
                     }
+                    if dict.keys.contains("Timestamp") && dict["Timestamp"] != nil {
+                        self.timestamp = dict["Timestamp"] as! Int64
+                    }
                 }
             }
             public var frameNum: Int32?
+
+            public var frameSummarys: [VideoModerationResultResponseBody.Data.FrameResult.FrameSummarys]?
 
             public var frames: [VideoModerationResultResponseBody.Data.FrameResult.Frames]?
 
@@ -2770,6 +2874,13 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                 if self.frameNum != nil {
                     map["FrameNum"] = self.frameNum!
                 }
+                if self.frameSummarys != nil {
+                    var tmp : [Any] = []
+                    for k in self.frameSummarys! {
+                        tmp.append(k.toMap())
+                    }
+                    map["FrameSummarys"] = tmp
+                }
                 if self.frames != nil {
                     var tmp : [Any] = []
                     for k in self.frames! {
@@ -2783,6 +2894,17 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("FrameNum") && dict["FrameNum"] != nil {
                     self.frameNum = dict["FrameNum"] as! Int32
+                }
+                if dict.keys.contains("FrameSummarys") && dict["FrameSummarys"] != nil {
+                    var tmp : [VideoModerationResultResponseBody.Data.FrameResult.FrameSummarys] = []
+                    for v in dict["FrameSummarys"] as! [Any] {
+                        var model = VideoModerationResultResponseBody.Data.FrameResult.FrameSummarys()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.frameSummarys = tmp
                 }
                 if dict.keys.contains("Frames") && dict["Frames"] != nil {
                     var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames] = []
