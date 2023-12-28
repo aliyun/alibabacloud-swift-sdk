@@ -612,6 +612,10 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var periodUnit: String?
 
+    public var primaryInstance: String?
+
+    public var primaryRegion: String?
+
     public var replicaMode: String?
 
     public var resourceGroupId: String?
@@ -670,6 +674,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.periodUnit != nil {
             map["PeriodUnit"] = self.periodUnit!
         }
+        if self.primaryInstance != nil {
+            map["PrimaryInstance"] = self.primaryInstance!
+        }
+        if self.primaryRegion != nil {
+            map["PrimaryRegion"] = self.primaryRegion!
+        }
         if self.replicaMode != nil {
             map["ReplicaMode"] = self.replicaMode!
         }
@@ -721,6 +731,12 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PeriodUnit") && dict["PeriodUnit"] != nil {
             self.periodUnit = dict["PeriodUnit"] as! String
+        }
+        if dict.keys.contains("PrimaryInstance") && dict["PrimaryInstance"] != nil {
+            self.primaryInstance = dict["PrimaryInstance"] as! String
+        }
+        if dict.keys.contains("PrimaryRegion") && dict["PrimaryRegion"] != nil {
+            self.primaryRegion = dict["PrimaryRegion"] as! String
         }
         if dict.keys.contains("ReplicaMode") && dict["ReplicaMode"] != nil {
             self.replicaMode = dict["ReplicaMode"] as! String
@@ -6610,7 +6626,7 @@ public class CreateTenantUserResponseBody : Tea.TeaModel {
     }
     public var requestId: String?
 
-    public var tenantUser: [CreateTenantUserResponseBody.TenantUser]?
+    public var tenantUser: CreateTenantUserResponseBody.TenantUser?
 
     public override init() {
         super.init()
@@ -6622,6 +6638,7 @@ public class CreateTenantUserResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tenantUser?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -6630,11 +6647,7 @@ public class CreateTenantUserResponseBody : Tea.TeaModel {
             map["RequestId"] = self.requestId!
         }
         if self.tenantUser != nil {
-            var tmp : [Any] = []
-            for k in self.tenantUser! {
-                tmp.append(k.toMap())
-            }
-            map["TenantUser"] = tmp
+            map["TenantUser"] = self.tenantUser?.toMap()
         }
         return map
     }
@@ -6644,15 +6657,9 @@ public class CreateTenantUserResponseBody : Tea.TeaModel {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("TenantUser") && dict["TenantUser"] != nil {
-            var tmp : [CreateTenantUserResponseBody.TenantUser] = []
-            for v in dict["TenantUser"] as! [Any] {
-                var model = CreateTenantUserResponseBody.TenantUser()
-                if v != nil {
-                    model.fromMap(v as! [String: Any])
-                }
-                tmp.append(model)
-            }
-            self.tenantUser = tmp
+            var model = CreateTenantUserResponseBody.TenantUser()
+            model.fromMap(dict["TenantUser"] as! [String: Any])
+            self.tenantUser = model
         }
     }
 }
@@ -9282,6 +9289,8 @@ public class DescribeAvailableSpecResponseBody : Tea.TeaModel {
             }
             public var diskSizeRange: DescribeAvailableSpecResponseBody.Data.AvailableSpecifications.DiskSizeRange?
 
+            public var diskTypes: [String]?
+
             public var instanceClass: String?
 
             public var logDiskSizeRange: DescribeAvailableSpecResponseBody.Data.AvailableSpecifications.LogDiskSizeRange?
@@ -9309,6 +9318,9 @@ public class DescribeAvailableSpecResponseBody : Tea.TeaModel {
                 if self.diskSizeRange != nil {
                     map["DiskSizeRange"] = self.diskSizeRange?.toMap()
                 }
+                if self.diskTypes != nil {
+                    map["DiskTypes"] = self.diskTypes!
+                }
                 if self.instanceClass != nil {
                     map["InstanceClass"] = self.instanceClass!
                 }
@@ -9329,6 +9341,9 @@ public class DescribeAvailableSpecResponseBody : Tea.TeaModel {
                     var model = DescribeAvailableSpecResponseBody.Data.AvailableSpecifications.DiskSizeRange()
                     model.fromMap(dict["DiskSizeRange"] as! [String: Any])
                     self.diskSizeRange = model
+                }
+                if dict.keys.contains("DiskTypes") && dict["DiskTypes"] != nil {
+                    self.diskTypes = dict["DiskTypes"] as! [String]
                 }
                 if dict.keys.contains("InstanceClass") && dict["InstanceClass"] != nil {
                     self.instanceClass = dict["InstanceClass"] as! String
@@ -10658,7 +10673,7 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                 }
             }
         }
-        public class Resource : Tea.TeaModel {
+        public class ReadOnlyResource : Tea.TeaModel {
             public class CapacityUnit : Tea.TeaModel {
                 public var maxCapacityUnit: Int32?
 
@@ -10956,6 +10971,395 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var capacityUnit: DescribeInstanceResponseBody.Instance.ReadOnlyResource.CapacityUnit?
+
+            public var cpu: DescribeInstanceResponseBody.Instance.ReadOnlyResource.Cpu?
+
+            public var diskSize: DescribeInstanceResponseBody.Instance.ReadOnlyResource.DiskSize?
+
+            public var logDiskSize: DescribeInstanceResponseBody.Instance.ReadOnlyResource.LogDiskSize?
+
+            public var memory: DescribeInstanceResponseBody.Instance.ReadOnlyResource.Memory?
+
+            public var unitCount: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.capacityUnit?.validate()
+                try self.cpu?.validate()
+                try self.diskSize?.validate()
+                try self.logDiskSize?.validate()
+                try self.memory?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.capacityUnit != nil {
+                    map["CapacityUnit"] = self.capacityUnit?.toMap()
+                }
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu?.toMap()
+                }
+                if self.diskSize != nil {
+                    map["DiskSize"] = self.diskSize?.toMap()
+                }
+                if self.logDiskSize != nil {
+                    map["LogDiskSize"] = self.logDiskSize?.toMap()
+                }
+                if self.memory != nil {
+                    map["Memory"] = self.memory?.toMap()
+                }
+                if self.unitCount != nil {
+                    map["UnitCount"] = self.unitCount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CapacityUnit") && dict["CapacityUnit"] != nil {
+                    var model = DescribeInstanceResponseBody.Instance.ReadOnlyResource.CapacityUnit()
+                    model.fromMap(dict["CapacityUnit"] as! [String: Any])
+                    self.capacityUnit = model
+                }
+                if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                    var model = DescribeInstanceResponseBody.Instance.ReadOnlyResource.Cpu()
+                    model.fromMap(dict["Cpu"] as! [String: Any])
+                    self.cpu = model
+                }
+                if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
+                    var model = DescribeInstanceResponseBody.Instance.ReadOnlyResource.DiskSize()
+                    model.fromMap(dict["DiskSize"] as! [String: Any])
+                    self.diskSize = model
+                }
+                if dict.keys.contains("LogDiskSize") && dict["LogDiskSize"] != nil {
+                    var model = DescribeInstanceResponseBody.Instance.ReadOnlyResource.LogDiskSize()
+                    model.fromMap(dict["LogDiskSize"] as! [String: Any])
+                    self.logDiskSize = model
+                }
+                if dict.keys.contains("Memory") && dict["Memory"] != nil {
+                    var model = DescribeInstanceResponseBody.Instance.ReadOnlyResource.Memory()
+                    model.fromMap(dict["Memory"] as! [String: Any])
+                    self.memory = model
+                }
+                if dict.keys.contains("UnitCount") && dict["UnitCount"] != nil {
+                    self.unitCount = dict["UnitCount"] as! Int64
+                }
+            }
+        }
+        public class Resource : Tea.TeaModel {
+            public class CapacityUnit : Tea.TeaModel {
+                public var maxCapacityUnit: Int32?
+
+                public var minCapacityUnit: Int32?
+
+                public var usedCapacityUnit: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.maxCapacityUnit != nil {
+                        map["MaxCapacityUnit"] = self.maxCapacityUnit!
+                    }
+                    if self.minCapacityUnit != nil {
+                        map["MinCapacityUnit"] = self.minCapacityUnit!
+                    }
+                    if self.usedCapacityUnit != nil {
+                        map["UsedCapacityUnit"] = self.usedCapacityUnit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MaxCapacityUnit") && dict["MaxCapacityUnit"] != nil {
+                        self.maxCapacityUnit = dict["MaxCapacityUnit"] as! Int32
+                    }
+                    if dict.keys.contains("MinCapacityUnit") && dict["MinCapacityUnit"] != nil {
+                        self.minCapacityUnit = dict["MinCapacityUnit"] as! Int32
+                    }
+                    if dict.keys.contains("UsedCapacityUnit") && dict["UsedCapacityUnit"] != nil {
+                        self.usedCapacityUnit = dict["UsedCapacityUnit"] as! String
+                    }
+                }
+            }
+            public class Cpu : Tea.TeaModel {
+                public var originalTotalCpu: Int64?
+
+                public var totalCpu: Int64?
+
+                public var unitCpu: Int64?
+
+                public var usedCpu: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.originalTotalCpu != nil {
+                        map["OriginalTotalCpu"] = self.originalTotalCpu!
+                    }
+                    if self.totalCpu != nil {
+                        map["TotalCpu"] = self.totalCpu!
+                    }
+                    if self.unitCpu != nil {
+                        map["UnitCpu"] = self.unitCpu!
+                    }
+                    if self.usedCpu != nil {
+                        map["UsedCpu"] = self.usedCpu!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("OriginalTotalCpu") && dict["OriginalTotalCpu"] != nil {
+                        self.originalTotalCpu = dict["OriginalTotalCpu"] as! Int64
+                    }
+                    if dict.keys.contains("TotalCpu") && dict["TotalCpu"] != nil {
+                        self.totalCpu = dict["TotalCpu"] as! Int64
+                    }
+                    if dict.keys.contains("UnitCpu") && dict["UnitCpu"] != nil {
+                        self.unitCpu = dict["UnitCpu"] as! Int64
+                    }
+                    if dict.keys.contains("UsedCpu") && dict["UsedCpu"] != nil {
+                        self.usedCpu = dict["UsedCpu"] as! Int64
+                    }
+                }
+            }
+            public class DiskSize : Tea.TeaModel {
+                public var dataUsedSize: Double?
+
+                public var maxDiskSize: Double?
+
+                public var maxDiskUsedObServer: [String]?
+
+                public var maxDiskUsedPercent: Double?
+
+                public var originalTotalDiskSize: Int64?
+
+                public var totalDiskSize: Int64?
+
+                public var unitDiskSize: Int64?
+
+                public var usedDiskSize: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.dataUsedSize != nil {
+                        map["DataUsedSize"] = self.dataUsedSize!
+                    }
+                    if self.maxDiskSize != nil {
+                        map["MaxDiskSize"] = self.maxDiskSize!
+                    }
+                    if self.maxDiskUsedObServer != nil {
+                        map["MaxDiskUsedObServer"] = self.maxDiskUsedObServer!
+                    }
+                    if self.maxDiskUsedPercent != nil {
+                        map["MaxDiskUsedPercent"] = self.maxDiskUsedPercent!
+                    }
+                    if self.originalTotalDiskSize != nil {
+                        map["OriginalTotalDiskSize"] = self.originalTotalDiskSize!
+                    }
+                    if self.totalDiskSize != nil {
+                        map["TotalDiskSize"] = self.totalDiskSize!
+                    }
+                    if self.unitDiskSize != nil {
+                        map["UnitDiskSize"] = self.unitDiskSize!
+                    }
+                    if self.usedDiskSize != nil {
+                        map["UsedDiskSize"] = self.usedDiskSize!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DataUsedSize") && dict["DataUsedSize"] != nil {
+                        self.dataUsedSize = dict["DataUsedSize"] as! Double
+                    }
+                    if dict.keys.contains("MaxDiskSize") && dict["MaxDiskSize"] != nil {
+                        self.maxDiskSize = dict["MaxDiskSize"] as! Double
+                    }
+                    if dict.keys.contains("MaxDiskUsedObServer") && dict["MaxDiskUsedObServer"] != nil {
+                        self.maxDiskUsedObServer = dict["MaxDiskUsedObServer"] as! [String]
+                    }
+                    if dict.keys.contains("MaxDiskUsedPercent") && dict["MaxDiskUsedPercent"] != nil {
+                        self.maxDiskUsedPercent = dict["MaxDiskUsedPercent"] as! Double
+                    }
+                    if dict.keys.contains("OriginalTotalDiskSize") && dict["OriginalTotalDiskSize"] != nil {
+                        self.originalTotalDiskSize = dict["OriginalTotalDiskSize"] as! Int64
+                    }
+                    if dict.keys.contains("TotalDiskSize") && dict["TotalDiskSize"] != nil {
+                        self.totalDiskSize = dict["TotalDiskSize"] as! Int64
+                    }
+                    if dict.keys.contains("UnitDiskSize") && dict["UnitDiskSize"] != nil {
+                        self.unitDiskSize = dict["UnitDiskSize"] as! Int64
+                    }
+                    if dict.keys.contains("UsedDiskSize") && dict["UsedDiskSize"] != nil {
+                        self.usedDiskSize = dict["UsedDiskSize"] as! Int64
+                    }
+                }
+            }
+            public class LogDiskSize : Tea.TeaModel {
+                public var logAssignedSize: String?
+
+                public var maxLogAssignedObServer: [String]?
+
+                public var maxLogAssignedPercent: String?
+
+                public var originalTotalDiskSize: Int32?
+
+                public var totalDiskSize: Int64?
+
+                public var unitDiskSize: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.logAssignedSize != nil {
+                        map["LogAssignedSize"] = self.logAssignedSize!
+                    }
+                    if self.maxLogAssignedObServer != nil {
+                        map["MaxLogAssignedObServer"] = self.maxLogAssignedObServer!
+                    }
+                    if self.maxLogAssignedPercent != nil {
+                        map["MaxLogAssignedPercent"] = self.maxLogAssignedPercent!
+                    }
+                    if self.originalTotalDiskSize != nil {
+                        map["OriginalTotalDiskSize"] = self.originalTotalDiskSize!
+                    }
+                    if self.totalDiskSize != nil {
+                        map["TotalDiskSize"] = self.totalDiskSize!
+                    }
+                    if self.unitDiskSize != nil {
+                        map["UnitDiskSize"] = self.unitDiskSize!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("LogAssignedSize") && dict["LogAssignedSize"] != nil {
+                        self.logAssignedSize = dict["LogAssignedSize"] as! String
+                    }
+                    if dict.keys.contains("MaxLogAssignedObServer") && dict["MaxLogAssignedObServer"] != nil {
+                        self.maxLogAssignedObServer = dict["MaxLogAssignedObServer"] as! [String]
+                    }
+                    if dict.keys.contains("MaxLogAssignedPercent") && dict["MaxLogAssignedPercent"] != nil {
+                        self.maxLogAssignedPercent = dict["MaxLogAssignedPercent"] as! String
+                    }
+                    if dict.keys.contains("OriginalTotalDiskSize") && dict["OriginalTotalDiskSize"] != nil {
+                        self.originalTotalDiskSize = dict["OriginalTotalDiskSize"] as! Int32
+                    }
+                    if dict.keys.contains("TotalDiskSize") && dict["TotalDiskSize"] != nil {
+                        self.totalDiskSize = dict["TotalDiskSize"] as! Int64
+                    }
+                    if dict.keys.contains("UnitDiskSize") && dict["UnitDiskSize"] != nil {
+                        self.unitDiskSize = dict["UnitDiskSize"] as! Int64
+                    }
+                }
+            }
+            public class Memory : Tea.TeaModel {
+                public var originalTotalMemory: Int64?
+
+                public var totalMemory: Int64?
+
+                public var unitMemory: Int64?
+
+                public var usedMemory: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.originalTotalMemory != nil {
+                        map["OriginalTotalMemory"] = self.originalTotalMemory!
+                    }
+                    if self.totalMemory != nil {
+                        map["TotalMemory"] = self.totalMemory!
+                    }
+                    if self.unitMemory != nil {
+                        map["UnitMemory"] = self.unitMemory!
+                    }
+                    if self.usedMemory != nil {
+                        map["UsedMemory"] = self.usedMemory!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("OriginalTotalMemory") && dict["OriginalTotalMemory"] != nil {
+                        self.originalTotalMemory = dict["OriginalTotalMemory"] as! Int64
+                    }
+                    if dict.keys.contains("TotalMemory") && dict["TotalMemory"] != nil {
+                        self.totalMemory = dict["TotalMemory"] as! Int64
+                    }
+                    if dict.keys.contains("UnitMemory") && dict["UnitMemory"] != nil {
+                        self.unitMemory = dict["UnitMemory"] as! Int64
+                    }
+                    if dict.keys.contains("UsedMemory") && dict["UsedMemory"] != nil {
+                        self.usedMemory = dict["UsedMemory"] as! Int64
+                    }
+                }
+            }
             public var capacityUnit: DescribeInstanceResponseBody.Instance.Resource.CapacityUnit?
 
             public var cpu: DescribeInstanceResponseBody.Instance.Resource.Cpu?
@@ -11134,6 +11538,8 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public var proxyServiceStatus: String?
 
+        public var readOnlyResource: DescribeInstanceResponseBody.Instance.ReadOnlyResource?
+
         public var replicaMode: String?
 
         public var resource: DescribeInstanceResponseBody.Instance.Resource?
@@ -11159,6 +11565,7 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.dataDiskAutoScaleConfig?.validate()
+            try self.readOnlyResource?.validate()
             try self.resource?.validate()
             try self.tenantCreatable?.validate()
         }
@@ -11251,6 +11658,9 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if self.proxyServiceStatus != nil {
                 map["ProxyServiceStatus"] = self.proxyServiceStatus!
+            }
+            if self.readOnlyResource != nil {
+                map["ReadOnlyResource"] = self.readOnlyResource?.toMap()
             }
             if self.replicaMode != nil {
                 map["ReplicaMode"] = self.replicaMode!
@@ -11365,6 +11775,11 @@ public class DescribeInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ProxyServiceStatus") && dict["ProxyServiceStatus"] != nil {
                 self.proxyServiceStatus = dict["ProxyServiceStatus"] as! String
+            }
+            if dict.keys.contains("ReadOnlyResource") && dict["ReadOnlyResource"] != nil {
+                var model = DescribeInstanceResponseBody.Instance.ReadOnlyResource()
+                model.fromMap(dict["ReadOnlyResource"] as! [String: Any])
+                self.readOnlyResource = model
             }
             if dict.keys.contains("ReplicaMode") && dict["ReplicaMode"] != nil {
                 self.replicaMode = dict["ReplicaMode"] as! String
@@ -12475,6 +12890,8 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
 
                     public var nodeId: String?
 
+                    public var replicaType: String?
+
                     public var unitCpu: Double?
 
                     public var unitDataSize: Int64?
@@ -12511,6 +12928,9 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                         if self.nodeId != nil {
                             map["NodeId"] = self.nodeId!
                         }
+                        if self.replicaType != nil {
+                            map["ReplicaType"] = self.replicaType!
+                        }
                         if self.unitCpu != nil {
                             map["UnitCpu"] = self.unitCpu!
                         }
@@ -12541,6 +12961,9 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
                             self.nodeId = dict["NodeId"] as! String
+                        }
+                        if dict.keys.contains("ReplicaType") && dict["ReplicaType"] != nil {
+                            self.replicaType = dict["ReplicaType"] as! String
                         }
                         if dict.keys.contains("UnitCpu") && dict["UnitCpu"] != nil {
                             self.unitCpu = dict["UnitCpu"] as! Double
@@ -12902,6 +13325,8 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public var fullCopyId: Int64?
+
                 public var nodeCopyId: Int64?
 
                 public var nodeId: String?
@@ -12909,6 +13334,10 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                 public var nodeResource: [DescribeInstanceTopologyResponseBody.InstanceTopology.Zones.Nodes.NodeResource]?
 
                 public var nodeStatus: String?
+
+                public var readOnlyCopyId: Int64?
+
+                public var replicaType: String?
 
                 public override init() {
                     super.init()
@@ -12924,6 +13353,9 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.fullCopyId != nil {
+                        map["FullCopyId"] = self.fullCopyId!
+                    }
                     if self.nodeCopyId != nil {
                         map["NodeCopyId"] = self.nodeCopyId!
                     }
@@ -12940,10 +13372,19 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                     if self.nodeStatus != nil {
                         map["NodeStatus"] = self.nodeStatus!
                     }
+                    if self.readOnlyCopyId != nil {
+                        map["ReadOnlyCopyId"] = self.readOnlyCopyId!
+                    }
+                    if self.replicaType != nil {
+                        map["ReplicaType"] = self.replicaType!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FullCopyId") && dict["FullCopyId"] != nil {
+                        self.fullCopyId = dict["FullCopyId"] as! Int64
+                    }
                     if dict.keys.contains("NodeCopyId") && dict["NodeCopyId"] != nil {
                         self.nodeCopyId = dict["NodeCopyId"] as! Int64
                     }
@@ -12963,6 +13404,12 @@ public class DescribeInstanceTopologyResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("NodeStatus") && dict["NodeStatus"] != nil {
                         self.nodeStatus = dict["NodeStatus"] as! String
+                    }
+                    if dict.keys.contains("ReadOnlyCopyId") && dict["ReadOnlyCopyId"] != nil {
+                        self.readOnlyCopyId = dict["ReadOnlyCopyId"] as! Int64
+                    }
+                    if dict.keys.contains("ReplicaType") && dict["ReplicaType"] != nil {
+                        self.replicaType = dict["ReplicaType"] as! String
                     }
                 }
             }
@@ -14068,6 +14515,8 @@ public class DescribeMetricsDataRequest : Tea.TeaModel {
 
     public var metrics: String?
 
+    public var replicaType: String?
+
     public var sortMetricKey: String?
 
     public var sortOrder: String?
@@ -14106,6 +14555,9 @@ public class DescribeMetricsDataRequest : Tea.TeaModel {
         if self.metrics != nil {
             map["Metrics"] = self.metrics!
         }
+        if self.replicaType != nil {
+            map["ReplicaType"] = self.replicaType!
+        }
         if self.sortMetricKey != nil {
             map["SortMetricKey"] = self.sortMetricKey!
         }
@@ -14136,6 +14588,9 @@ public class DescribeMetricsDataRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Metrics") && dict["Metrics"] != nil {
             self.metrics = dict["Metrics"] as! String
+        }
+        if dict.keys.contains("ReplicaType") && dict["ReplicaType"] != nil {
+            self.replicaType = dict["ReplicaType"] as! String
         }
         if dict.keys.contains("SortMetricKey") && dict["SortMetricKey"] != nil {
             self.sortMetricKey = dict["SortMetricKey"] as! String
@@ -33276,8 +33731,295 @@ public class DescribeTenantRequest : Tea.TeaModel {
 
 public class DescribeTenantResponseBody : Tea.TeaModel {
     public class Tenant : Tea.TeaModel {
+        public class ReadOnlyResource : Tea.TeaModel {
+            public class CapacityUnit : Tea.TeaModel {
+                public var maxCapacityUnit: Int32?
+
+                public var minCapacityUnit: Int32?
+
+                public var usedCapacit: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.maxCapacityUnit != nil {
+                        map["MaxCapacityUnit"] = self.maxCapacityUnit!
+                    }
+                    if self.minCapacityUnit != nil {
+                        map["MinCapacityUnit"] = self.minCapacityUnit!
+                    }
+                    if self.usedCapacit != nil {
+                        map["UsedCapacit"] = self.usedCapacit!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("MaxCapacityUnit") && dict["MaxCapacityUnit"] != nil {
+                        self.maxCapacityUnit = dict["MaxCapacityUnit"] as! Int32
+                    }
+                    if dict.keys.contains("MinCapacityUnit") && dict["MinCapacityUnit"] != nil {
+                        self.minCapacityUnit = dict["MinCapacityUnit"] as! Int32
+                    }
+                    if dict.keys.contains("UsedCapacit") && dict["UsedCapacit"] != nil {
+                        self.usedCapacit = dict["UsedCapacit"] as! Int32
+                    }
+                }
+            }
+            public class Cpu : Tea.TeaModel {
+                public var totalCpu: Double?
+
+                public var unitCpu: Double?
+
+                public var usedCpu: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.totalCpu != nil {
+                        map["TotalCpu"] = self.totalCpu!
+                    }
+                    if self.unitCpu != nil {
+                        map["UnitCpu"] = self.unitCpu!
+                    }
+                    if self.usedCpu != nil {
+                        map["UsedCpu"] = self.usedCpu!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TotalCpu") && dict["TotalCpu"] != nil {
+                        self.totalCpu = dict["TotalCpu"] as! Double
+                    }
+                    if dict.keys.contains("UnitCpu") && dict["UnitCpu"] != nil {
+                        self.unitCpu = dict["UnitCpu"] as! Double
+                    }
+                    if dict.keys.contains("UsedCpu") && dict["UsedCpu"] != nil {
+                        self.usedCpu = dict["UsedCpu"] as! Double
+                    }
+                }
+            }
+            public class DiskSize : Tea.TeaModel {
+                public var usedDiskSize: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.usedDiskSize != nil {
+                        map["UsedDiskSize"] = self.usedDiskSize!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("UsedDiskSize") && dict["UsedDiskSize"] != nil {
+                        self.usedDiskSize = dict["UsedDiskSize"] as! Double
+                    }
+                }
+            }
+            public class LogDiskSize : Tea.TeaModel {
+                public var totalLogDisk: Int32?
+
+                public var unitLogDisk: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.totalLogDisk != nil {
+                        map["TotalLogDisk"] = self.totalLogDisk!
+                    }
+                    if self.unitLogDisk != nil {
+                        map["UnitLogDisk"] = self.unitLogDisk!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TotalLogDisk") && dict["TotalLogDisk"] != nil {
+                        self.totalLogDisk = dict["TotalLogDisk"] as! Int32
+                    }
+                    if dict.keys.contains("UnitLogDisk") && dict["UnitLogDisk"] != nil {
+                        self.unitLogDisk = dict["UnitLogDisk"] as! Int32
+                    }
+                }
+            }
+            public class Memory : Tea.TeaModel {
+                public var totalMemory: Double?
+
+                public var unitMemory: Double?
+
+                public var usedMemory: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.totalMemory != nil {
+                        map["TotalMemory"] = self.totalMemory!
+                    }
+                    if self.unitMemory != nil {
+                        map["UnitMemory"] = self.unitMemory!
+                    }
+                    if self.usedMemory != nil {
+                        map["UsedMemory"] = self.usedMemory!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TotalMemory") && dict["TotalMemory"] != nil {
+                        self.totalMemory = dict["TotalMemory"] as! Double
+                    }
+                    if dict.keys.contains("UnitMemory") && dict["UnitMemory"] != nil {
+                        self.unitMemory = dict["UnitMemory"] as! Double
+                    }
+                    if dict.keys.contains("UsedMemory") && dict["UsedMemory"] != nil {
+                        self.usedMemory = dict["UsedMemory"] as! Double
+                    }
+                }
+            }
+            public var capacityUnit: DescribeTenantResponseBody.Tenant.ReadOnlyResource.CapacityUnit?
+
+            public var cpu: DescribeTenantResponseBody.Tenant.ReadOnlyResource.Cpu?
+
+            public var diskSize: DescribeTenantResponseBody.Tenant.ReadOnlyResource.DiskSize?
+
+            public var logDiskSize: DescribeTenantResponseBody.Tenant.ReadOnlyResource.LogDiskSize?
+
+            public var memory: DescribeTenantResponseBody.Tenant.ReadOnlyResource.Memory?
+
+            public var unitNum: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.capacityUnit?.validate()
+                try self.cpu?.validate()
+                try self.diskSize?.validate()
+                try self.logDiskSize?.validate()
+                try self.memory?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.capacityUnit != nil {
+                    map["CapacityUnit"] = self.capacityUnit?.toMap()
+                }
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu?.toMap()
+                }
+                if self.diskSize != nil {
+                    map["DiskSize"] = self.diskSize?.toMap()
+                }
+                if self.logDiskSize != nil {
+                    map["LogDiskSize"] = self.logDiskSize?.toMap()
+                }
+                if self.memory != nil {
+                    map["Memory"] = self.memory?.toMap()
+                }
+                if self.unitNum != nil {
+                    map["UnitNum"] = self.unitNum!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CapacityUnit") && dict["CapacityUnit"] != nil {
+                    var model = DescribeTenantResponseBody.Tenant.ReadOnlyResource.CapacityUnit()
+                    model.fromMap(dict["CapacityUnit"] as! [String: Any])
+                    self.capacityUnit = model
+                }
+                if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                    var model = DescribeTenantResponseBody.Tenant.ReadOnlyResource.Cpu()
+                    model.fromMap(dict["Cpu"] as! [String: Any])
+                    self.cpu = model
+                }
+                if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
+                    var model = DescribeTenantResponseBody.Tenant.ReadOnlyResource.DiskSize()
+                    model.fromMap(dict["DiskSize"] as! [String: Any])
+                    self.diskSize = model
+                }
+                if dict.keys.contains("LogDiskSize") && dict["LogDiskSize"] != nil {
+                    var model = DescribeTenantResponseBody.Tenant.ReadOnlyResource.LogDiskSize()
+                    model.fromMap(dict["LogDiskSize"] as! [String: Any])
+                    self.logDiskSize = model
+                }
+                if dict.keys.contains("Memory") && dict["Memory"] != nil {
+                    var model = DescribeTenantResponseBody.Tenant.ReadOnlyResource.Memory()
+                    model.fromMap(dict["Memory"] as! [String: Any])
+                    self.memory = model
+                }
+                if dict.keys.contains("UnitNum") && dict["UnitNum"] != nil {
+                    self.unitNum = dict["UnitNum"] as! Int32
+                }
+            }
+        }
         public class TenantConnections : Tea.TeaModel {
             public var addressType: String?
+
+            public var connectionReplicaType: String?
 
             public var connectionZones: [String]?
 
@@ -33327,6 +34069,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.addressType != nil {
                     map["AddressType"] = self.addressType!
+                }
+                if self.connectionReplicaType != nil {
+                    map["ConnectionReplicaType"] = self.connectionReplicaType!
                 }
                 if self.connectionZones != nil {
                     map["ConnectionZones"] = self.connectionZones!
@@ -33382,6 +34127,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AddressType") && dict["AddressType"] != nil {
                     self.addressType = dict["AddressType"] as! String
+                }
+                if dict.keys.contains("ConnectionReplicaType") && dict["ConnectionReplicaType"] != nil {
+                    self.connectionReplicaType = dict["ConnectionReplicaType"] as! String
                 }
                 if dict.keys.contains("ConnectionZones") && dict["ConnectionZones"] != nil {
                     self.connectionZones = dict["ConnectionZones"] as! [String]
@@ -33719,9 +34467,80 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
         }
         public class TenantZones : Tea.TeaModel {
+            public class TenantZoneReplicas : Tea.TeaModel {
+                public var fullCopyId: Int32?
+
+                public var logicZoneName: String?
+
+                public var readOnlyCopyId: String?
+
+                public var zoneCopyId: Int32?
+
+                public var zoneNodes: String?
+
+                public var zoneReplicaType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.fullCopyId != nil {
+                        map["FullCopyId"] = self.fullCopyId!
+                    }
+                    if self.logicZoneName != nil {
+                        map["LogicZoneName"] = self.logicZoneName!
+                    }
+                    if self.readOnlyCopyId != nil {
+                        map["ReadOnlyCopyId"] = self.readOnlyCopyId!
+                    }
+                    if self.zoneCopyId != nil {
+                        map["ZoneCopyId"] = self.zoneCopyId!
+                    }
+                    if self.zoneNodes != nil {
+                        map["ZoneNodes"] = self.zoneNodes!
+                    }
+                    if self.zoneReplicaType != nil {
+                        map["ZoneReplicaType"] = self.zoneReplicaType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("FullCopyId") && dict["FullCopyId"] != nil {
+                        self.fullCopyId = dict["FullCopyId"] as! Int32
+                    }
+                    if dict.keys.contains("LogicZoneName") && dict["LogicZoneName"] != nil {
+                        self.logicZoneName = dict["LogicZoneName"] as! String
+                    }
+                    if dict.keys.contains("ReadOnlyCopyId") && dict["ReadOnlyCopyId"] != nil {
+                        self.readOnlyCopyId = dict["ReadOnlyCopyId"] as! String
+                    }
+                    if dict.keys.contains("ZoneCopyId") && dict["ZoneCopyId"] != nil {
+                        self.zoneCopyId = dict["ZoneCopyId"] as! Int32
+                    }
+                    if dict.keys.contains("ZoneNodes") && dict["ZoneNodes"] != nil {
+                        self.zoneNodes = dict["ZoneNodes"] as! String
+                    }
+                    if dict.keys.contains("ZoneReplicaType") && dict["ZoneReplicaType"] != nil {
+                        self.zoneReplicaType = dict["ZoneReplicaType"] as! String
+                    }
+                }
+            }
             public var region: String?
 
             public var tenantZoneId: String?
+
+            public var tenantZoneReplicas: [DescribeTenantResponseBody.Tenant.TenantZones.TenantZoneReplicas]?
 
             public var tenantZoneRole: String?
 
@@ -33745,6 +34564,13 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
                 if self.tenantZoneId != nil {
                     map["TenantZoneId"] = self.tenantZoneId!
                 }
+                if self.tenantZoneReplicas != nil {
+                    var tmp : [Any] = []
+                    for k in self.tenantZoneReplicas! {
+                        tmp.append(k.toMap())
+                    }
+                    map["TenantZoneReplicas"] = tmp
+                }
                 if self.tenantZoneRole != nil {
                     map["TenantZoneRole"] = self.tenantZoneRole!
                 }
@@ -33757,6 +34583,17 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TenantZoneId") && dict["TenantZoneId"] != nil {
                     self.tenantZoneId = dict["TenantZoneId"] as! String
+                }
+                if dict.keys.contains("TenantZoneReplicas") && dict["TenantZoneReplicas"] != nil {
+                    var tmp : [DescribeTenantResponseBody.Tenant.TenantZones.TenantZoneReplicas] = []
+                    for v in dict["TenantZoneReplicas"] as! [Any] {
+                        var model = DescribeTenantResponseBody.Tenant.TenantZones.TenantZoneReplicas()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.tenantZoneReplicas = tmp
                 }
                 if dict.keys.contains("TenantZoneRole") && dict["TenantZoneRole"] != nil {
                     self.tenantZoneRole = dict["TenantZoneRole"] as! String
@@ -33772,6 +34609,8 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
         public var collation: String?
 
         public var createTime: String?
+
+        public var dataMergeTime: String?
 
         public var deployMode: String?
 
@@ -33803,6 +34642,8 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
 
         public var primaryZoneDeployType: String?
 
+        public var readOnlyResource: DescribeTenantResponseBody.Tenant.ReadOnlyResource?
+
         public var series: String?
 
         public var status: String?
@@ -33833,6 +34674,7 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.readOnlyResource?.validate()
             try self.tenantResource?.validate()
         }
 
@@ -33852,6 +34694,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
+            }
+            if self.dataMergeTime != nil {
+                map["DataMergeTime"] = self.dataMergeTime!
             }
             if self.deployMode != nil {
                 map["DeployMode"] = self.deployMode!
@@ -33897,6 +34742,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if self.primaryZoneDeployType != nil {
                 map["PrimaryZoneDeployType"] = self.primaryZoneDeployType!
+            }
+            if self.readOnlyResource != nil {
+                map["ReadOnlyResource"] = self.readOnlyResource?.toMap()
             }
             if self.series != nil {
                 map["Series"] = self.series!
@@ -33955,6 +34803,9 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
             }
+            if dict.keys.contains("DataMergeTime") && dict["DataMergeTime"] != nil {
+                self.dataMergeTime = dict["DataMergeTime"] as! String
+            }
             if dict.keys.contains("DeployMode") && dict["DeployMode"] != nil {
                 self.deployMode = dict["DeployMode"] as! String
             }
@@ -33999,6 +34850,11 @@ public class DescribeTenantResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("PrimaryZoneDeployType") && dict["PrimaryZoneDeployType"] != nil {
                 self.primaryZoneDeployType = dict["PrimaryZoneDeployType"] as! String
+            }
+            if dict.keys.contains("ReadOnlyResource") && dict["ReadOnlyResource"] != nil {
+                var model = DescribeTenantResponseBody.Tenant.ReadOnlyResource()
+                model.fromMap(dict["ReadOnlyResource"] as! [String: Any])
+                self.readOnlyResource = model
             }
             if dict.keys.contains("Series") && dict["Series"] != nil {
                 self.series = dict["Series"] as! String
@@ -43154,6 +44010,8 @@ public class ModifyInstanceNodeNumResponse : Tea.TeaModel {
 public class ModifyInstanceSpecRequest : Tea.TeaModel {
     public var diskSize: Int64?
 
+    public var diskType: String?
+
     public var dryRun: Bool?
 
     public var instanceClass: String?
@@ -43177,6 +44035,9 @@ public class ModifyInstanceSpecRequest : Tea.TeaModel {
         if self.diskSize != nil {
             map["DiskSize"] = self.diskSize!
         }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
         }
@@ -43192,6 +44053,9 @@ public class ModifyInstanceSpecRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
             self.diskSize = dict["DiskSize"] as! Int64
+        }
+        if dict.keys.contains("DiskType") && dict["DiskType"] != nil {
+            self.diskType = dict["DiskType"] as! String
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
@@ -43464,6 +44328,8 @@ public class ModifyInstanceTagsResponse : Tea.TeaModel {
 }
 
 public class ModifyInstanceTemporaryCapacityRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
     public var diskSize: String?
 
     public var instanceId: String?
@@ -43484,6 +44350,9 @@ public class ModifyInstanceTemporaryCapacityRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
         if self.diskSize != nil {
             map["DiskSize"] = self.diskSize!
         }
@@ -43497,6 +44366,9 @@ public class ModifyInstanceTemporaryCapacityRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
         if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
             self.diskSize = dict["DiskSize"] as! String
         }
@@ -44158,9 +45030,13 @@ public class ModifyTenantPrimaryZoneRequest : Tea.TeaModel {
 
     public var primaryZone: String?
 
+    public var tenantEndpointDirectId: String?
+
     public var tenantEndpointId: String?
 
     public var tenantId: String?
+
+    public var userDirectVSwitchId: String?
 
     public var userVSwitchId: String?
 
@@ -44187,11 +45063,17 @@ public class ModifyTenantPrimaryZoneRequest : Tea.TeaModel {
         if self.primaryZone != nil {
             map["PrimaryZone"] = self.primaryZone!
         }
+        if self.tenantEndpointDirectId != nil {
+            map["TenantEndpointDirectId"] = self.tenantEndpointDirectId!
+        }
         if self.tenantEndpointId != nil {
             map["TenantEndpointId"] = self.tenantEndpointId!
         }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
+        }
+        if self.userDirectVSwitchId != nil {
+            map["UserDirectVSwitchId"] = self.userDirectVSwitchId!
         }
         if self.userVSwitchId != nil {
             map["UserVSwitchId"] = self.userVSwitchId!
@@ -44209,11 +45091,17 @@ public class ModifyTenantPrimaryZoneRequest : Tea.TeaModel {
         if dict.keys.contains("PrimaryZone") && dict["PrimaryZone"] != nil {
             self.primaryZone = dict["PrimaryZone"] as! String
         }
+        if dict.keys.contains("TenantEndpointDirectId") && dict["TenantEndpointDirectId"] != nil {
+            self.tenantEndpointDirectId = dict["TenantEndpointDirectId"] as! String
+        }
         if dict.keys.contains("TenantEndpointId") && dict["TenantEndpointId"] != nil {
             self.tenantEndpointId = dict["TenantEndpointId"] as! String
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! String
+        }
+        if dict.keys.contains("UserDirectVSwitchId") && dict["UserDirectVSwitchId"] != nil {
+            self.userDirectVSwitchId = dict["UserDirectVSwitchId"] as! String
         }
         if dict.keys.contains("UserVSwitchId") && dict["UserVSwitchId"] != nil {
             self.userVSwitchId = dict["UserVSwitchId"] as! String

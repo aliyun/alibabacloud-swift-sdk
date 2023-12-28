@@ -112,6 +112,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.periodUnit)) {
             body["PeriodUnit"] = request.periodUnit ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.primaryInstance)) {
+            body["PrimaryInstance"] = request.primaryInstance ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.primaryRegion)) {
+            body["PrimaryRegion"] = request.primaryRegion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.replicaMode)) {
             body["ReplicaMode"] = request.replicaMode ?? "";
         }
@@ -1713,8 +1719,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.replicaType)) {
+            body["ReplicaType"] = request.replicaType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DescribeMetricsData",
@@ -3936,6 +3947,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.diskSize)) {
             body["DiskSize"] = request.diskSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.diskType)) {
+            body["DiskType"] = request.diskType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             body["DryRun"] = request.dryRun!;
         }
@@ -4007,6 +4021,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyInstanceTemporaryCapacityWithOptions(_ request: ModifyInstanceTemporaryCapacityRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyInstanceTemporaryCapacityResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            body["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.diskSize)) {
             body["DiskSize"] = request.diskSize ?? "";
         }
@@ -4170,11 +4187,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.primaryZone)) {
             body["PrimaryZone"] = request.primaryZone ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tenantEndpointDirectId)) {
+            body["TenantEndpointDirectId"] = request.tenantEndpointDirectId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tenantEndpointId)) {
             body["TenantEndpointId"] = request.tenantEndpointId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             body["TenantId"] = request.tenantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userDirectVSwitchId)) {
+            body["UserDirectVSwitchId"] = request.userDirectVSwitchId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userVSwitchId)) {
             body["UserVSwitchId"] = request.userVSwitchId ?? "";
