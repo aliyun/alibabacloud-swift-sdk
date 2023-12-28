@@ -1969,9 +1969,15 @@ public class GetAppInstanceGroupRequest : Tea.TeaModel {
 public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
     public class AppInstanceGroupModels : Tea.TeaModel {
         public class Apps : Tea.TeaModel {
+            public var appIcon: String?
+
             public var appId: String?
 
             public var appName: String?
+
+            public var appVersion: String?
+
+            public var appVersionName: String?
 
             public override init() {
                 super.init()
@@ -1987,21 +1993,39 @@ public class GetAppInstanceGroupResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.appIcon != nil {
+                    map["AppIcon"] = self.appIcon!
+                }
                 if self.appId != nil {
                     map["AppId"] = self.appId!
                 }
                 if self.appName != nil {
                     map["AppName"] = self.appName!
                 }
+                if self.appVersion != nil {
+                    map["AppVersion"] = self.appVersion!
+                }
+                if self.appVersionName != nil {
+                    map["AppVersionName"] = self.appVersionName!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppIcon") && dict["AppIcon"] != nil {
+                    self.appIcon = dict["AppIcon"] as! String
+                }
                 if dict.keys.contains("AppId") && dict["AppId"] != nil {
                     self.appId = dict["AppId"] as! String
                 }
                 if dict.keys.contains("AppName") && dict["AppName"] != nil {
                     self.appName = dict["AppName"] as! String
+                }
+                if dict.keys.contains("AppVersion") && dict["AppVersion"] != nil {
+                    self.appVersion = dict["AppVersion"] as! String
+                }
+                if dict.keys.contains("AppVersionName") && dict["AppVersionName"] != nil {
+                    self.appVersionName = dict["AppVersionName"] as! String
                 }
             }
         }
