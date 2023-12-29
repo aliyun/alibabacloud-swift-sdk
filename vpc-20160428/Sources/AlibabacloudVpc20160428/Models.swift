@@ -56910,6 +56910,10 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
 
             public var eccId: String?
 
+            public var ecrAttatchStatus: String?
+
+            public var ecrId: String?
+
             public var enableIpv6: Bool?
 
             public var localGatewayIp: String?
@@ -56947,6 +56951,8 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
             public var resourceGroupId: String?
 
             public var routeTableId: String?
+
+            public var sitelinkEnable: Bool?
 
             public var status: String?
 
@@ -57012,6 +57018,12 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 if self.eccId != nil {
                     map["EccId"] = self.eccId!
                 }
+                if self.ecrAttatchStatus != nil {
+                    map["EcrAttatchStatus"] = self.ecrAttatchStatus!
+                }
+                if self.ecrId != nil {
+                    map["EcrId"] = self.ecrId!
+                }
                 if self.enableIpv6 != nil {
                     map["EnableIpv6"] = self.enableIpv6!
                 }
@@ -57068,6 +57080,9 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 }
                 if self.routeTableId != nil {
                     map["RouteTableId"] = self.routeTableId!
+                }
+                if self.sitelinkEnable != nil {
+                    map["SitelinkEnable"] = self.sitelinkEnable!
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -57131,6 +57146,12 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 if dict.keys.contains("EccId") && dict["EccId"] != nil {
                     self.eccId = dict["EccId"] as! String
                 }
+                if dict.keys.contains("EcrAttatchStatus") && dict["EcrAttatchStatus"] != nil {
+                    self.ecrAttatchStatus = dict["EcrAttatchStatus"] as! String
+                }
+                if dict.keys.contains("EcrId") && dict["EcrId"] != nil {
+                    self.ecrId = dict["EcrId"] as! String
+                }
                 if dict.keys.contains("EnableIpv6") && dict["EnableIpv6"] != nil {
                     self.enableIpv6 = dict["EnableIpv6"] as! Bool
                 }
@@ -57187,6 +57208,9 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RouteTableId") && dict["RouteTableId"] != nil {
                     self.routeTableId = dict["RouteTableId"] as! String
+                }
+                if dict.keys.contains("SitelinkEnable") && dict["SitelinkEnable"] != nil {
+                    self.sitelinkEnable = dict["SitelinkEnable"] as! Bool
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
@@ -72907,7 +72931,46 @@ public class ListDhcpOptionsSetsResponse : Tea.TeaModel {
 }
 
 public class ListEnhanhcedNatGatewayAvailableZonesRequest : Tea.TeaModel {
+    public class Filter : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var acceptLanguage: String?
+
+    public var filter: [ListEnhanhcedNatGatewayAvailableZonesRequest.Filter]?
 
     public var ownerAccount: String?
 
@@ -72936,6 +72999,13 @@ public class ListEnhanhcedNatGatewayAvailableZonesRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.filter != nil {
+            var tmp : [Any] = []
+            for k in self.filter! {
+                tmp.append(k.toMap())
+            }
+            map["Filter"] = tmp
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -72957,6 +73027,17 @@ public class ListEnhanhcedNatGatewayAvailableZonesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Filter") && dict["Filter"] != nil {
+            var tmp : [ListEnhanhcedNatGatewayAvailableZonesRequest.Filter] = []
+            for v in dict["Filter"] as! [Any] {
+                var model = ListEnhanhcedNatGatewayAvailableZonesRequest.Filter()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.filter = tmp
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -89471,6 +89552,8 @@ public class ModifyVirtualBorderRouterAttributeRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var sitelinkEnable: Bool?
+
     public var vbrId: String?
 
     public var vlanId: Int32?
@@ -89552,6 +89635,9 @@ public class ModifyVirtualBorderRouterAttributeRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.sitelinkEnable != nil {
+            map["SitelinkEnable"] = self.sitelinkEnable!
+        }
         if self.vbrId != nil {
             map["VbrId"] = self.vbrId!
         }
@@ -89624,6 +89710,9 @@ public class ModifyVirtualBorderRouterAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SitelinkEnable") && dict["SitelinkEnable"] != nil {
+            self.sitelinkEnable = dict["SitelinkEnable"] as! Bool
         }
         if dict.keys.contains("VbrId") && dict["VbrId"] != nil {
             self.vbrId = dict["VbrId"] as! String
