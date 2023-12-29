@@ -3566,6 +3566,8 @@ public class StatefulAsyncInvocation : Tea.TeaModel {
 
     public var destinationStatus: String?
 
+    public var durationMs: Int64?
+
     public var endTime: Int64?
 
     public var events: [StatefulAsyncInvocationEvent]?
@@ -3583,6 +3585,8 @@ public class StatefulAsyncInvocation : Tea.TeaModel {
     public var qualifier: String?
 
     public var requestId: String?
+
+    public var returnPayload: String?
 
     public var serviceName: String?
 
@@ -3609,6 +3613,9 @@ public class StatefulAsyncInvocation : Tea.TeaModel {
         }
         if self.destinationStatus != nil {
             map["destinationStatus"] = self.destinationStatus!
+        }
+        if self.durationMs != nil {
+            map["durationMs"] = self.durationMs!
         }
         if self.endTime != nil {
             map["endTime"] = self.endTime!
@@ -3641,6 +3648,9 @@ public class StatefulAsyncInvocation : Tea.TeaModel {
         if self.requestId != nil {
             map["requestId"] = self.requestId!
         }
+        if self.returnPayload != nil {
+            map["returnPayload"] = self.returnPayload!
+        }
         if self.serviceName != nil {
             map["serviceName"] = self.serviceName!
         }
@@ -3659,6 +3669,9 @@ public class StatefulAsyncInvocation : Tea.TeaModel {
         }
         if dict.keys.contains("destinationStatus") && dict["destinationStatus"] != nil {
             self.destinationStatus = dict["destinationStatus"] as! String
+        }
+        if dict.keys.contains("durationMs") && dict["durationMs"] != nil {
+            self.durationMs = dict["durationMs"] as! Int64
         }
         if dict.keys.contains("endTime") && dict["endTime"] != nil {
             self.endTime = dict["endTime"] as! Int64
@@ -3694,6 +3707,9 @@ public class StatefulAsyncInvocation : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("returnPayload") && dict["returnPayload"] != nil {
+            self.returnPayload = dict["returnPayload"] as! String
         }
         if dict.keys.contains("serviceName") && dict["serviceName"] != nil {
             self.serviceName = dict["serviceName"] as! String
@@ -4636,6 +4652,10 @@ public class CreateAliasResponseBody : Tea.TeaModel {
 
     public var lastModifiedTime: String?
 
+    public var resolvePolicy: String?
+
+    public var routePolicy: RoutePolicy?
+
     public var versionId: String?
 
     public override init() {
@@ -4648,6 +4668,7 @@ public class CreateAliasResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.routePolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4666,6 +4687,12 @@ public class CreateAliasResponseBody : Tea.TeaModel {
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.resolvePolicy != nil {
+            map["resolvePolicy"] = self.resolvePolicy!
+        }
+        if self.routePolicy != nil {
+            map["routePolicy"] = self.routePolicy?.toMap()
         }
         if self.versionId != nil {
             map["versionId"] = self.versionId!
@@ -4688,6 +4715,14 @@ public class CreateAliasResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("lastModifiedTime") && dict["lastModifiedTime"] != nil {
             self.lastModifiedTime = dict["lastModifiedTime"] as! String
+        }
+        if dict.keys.contains("resolvePolicy") && dict["resolvePolicy"] != nil {
+            self.resolvePolicy = dict["resolvePolicy"] as! String
+        }
+        if dict.keys.contains("routePolicy") && dict["routePolicy"] != nil {
+            var model = RoutePolicy()
+            model.fromMap(dict["routePolicy"] as! [String: Any])
+            self.routePolicy = model
         }
         if dict.keys.contains("versionId") && dict["versionId"] != nil {
             self.versionId = dict["versionId"] as! String
@@ -6094,6 +6129,8 @@ public class CreateServiceResponseBody : Tea.TeaModel {
 
     public var tracingConfig: TracingConfig?
 
+    public var useSLRAuthentication: Bool?
+
     public var vpcConfig: VPCConfig?
 
     public override init() {
@@ -6148,6 +6185,9 @@ public class CreateServiceResponseBody : Tea.TeaModel {
         if self.tracingConfig != nil {
             map["tracingConfig"] = self.tracingConfig?.toMap()
         }
+        if self.useSLRAuthentication != nil {
+            map["useSLRAuthentication"] = self.useSLRAuthentication!
+        }
         if self.vpcConfig != nil {
             map["vpcConfig"] = self.vpcConfig?.toMap()
         }
@@ -6195,6 +6235,9 @@ public class CreateServiceResponseBody : Tea.TeaModel {
             var model = TracingConfig()
             model.fromMap(dict["tracingConfig"] as! [String: Any])
             self.tracingConfig = model
+        }
+        if dict.keys.contains("useSLRAuthentication") && dict["useSLRAuthentication"] != nil {
+            self.useSLRAuthentication = dict["useSLRAuthentication"] as! Bool
         }
         if dict.keys.contains("vpcConfig") && dict["vpcConfig"] != nil {
             var model = VPCConfig()
@@ -10016,6 +10059,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var tracingConfig: TracingConfig?
 
+    public var useSLRAuthentication: Bool?
+
     public var vpcConfig: VPCConfig?
 
     public override init() {
@@ -10070,6 +10115,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if self.tracingConfig != nil {
             map["tracingConfig"] = self.tracingConfig?.toMap()
         }
+        if self.useSLRAuthentication != nil {
+            map["useSLRAuthentication"] = self.useSLRAuthentication!
+        }
         if self.vpcConfig != nil {
             map["vpcConfig"] = self.vpcConfig?.toMap()
         }
@@ -10117,6 +10165,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
             var model = TracingConfig()
             model.fromMap(dict["tracingConfig"] as! [String: Any])
             self.tracingConfig = model
+        }
+        if dict.keys.contains("useSLRAuthentication") && dict["useSLRAuthentication"] != nil {
+            self.useSLRAuthentication = dict["useSLRAuthentication"] as! Bool
         }
         if dict.keys.contains("vpcConfig") && dict["vpcConfig"] != nil {
             var model = VPCConfig()
@@ -14124,6 +14175,8 @@ public class ListServicesResponseBody : Tea.TeaModel {
 
         public var tracingConfig: TracingConfig?
 
+        public var useSLRAuthentication: Bool?
+
         public var vpcConfig: VPCConfig?
 
         public override init() {
@@ -14178,6 +14231,9 @@ public class ListServicesResponseBody : Tea.TeaModel {
             if self.tracingConfig != nil {
                 map["tracingConfig"] = self.tracingConfig?.toMap()
             }
+            if self.useSLRAuthentication != nil {
+                map["useSLRAuthentication"] = self.useSLRAuthentication!
+            }
             if self.vpcConfig != nil {
                 map["vpcConfig"] = self.vpcConfig?.toMap()
             }
@@ -14225,6 +14281,9 @@ public class ListServicesResponseBody : Tea.TeaModel {
                 var model = TracingConfig()
                 model.fromMap(dict["tracingConfig"] as! [String: Any])
                 self.tracingConfig = model
+            }
+            if dict.keys.contains("useSLRAuthentication") && dict["useSLRAuthentication"] != nil {
+                self.useSLRAuthentication = dict["useSLRAuthentication"] as! Bool
             }
             if dict.keys.contains("vpcConfig") && dict["vpcConfig"] != nil {
                 var model = VPCConfig()
@@ -17343,6 +17402,10 @@ public class UpdateAliasResponseBody : Tea.TeaModel {
 
     public var lastModifiedTime: String?
 
+    public var resolvePolicy: String?
+
+    public var routePolicy: RoutePolicy?
+
     public var versionId: String?
 
     public override init() {
@@ -17355,6 +17418,7 @@ public class UpdateAliasResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.routePolicy?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -17373,6 +17437,12 @@ public class UpdateAliasResponseBody : Tea.TeaModel {
         }
         if self.lastModifiedTime != nil {
             map["lastModifiedTime"] = self.lastModifiedTime!
+        }
+        if self.resolvePolicy != nil {
+            map["resolvePolicy"] = self.resolvePolicy!
+        }
+        if self.routePolicy != nil {
+            map["routePolicy"] = self.routePolicy?.toMap()
         }
         if self.versionId != nil {
             map["versionId"] = self.versionId!
@@ -17395,6 +17465,14 @@ public class UpdateAliasResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("lastModifiedTime") && dict["lastModifiedTime"] != nil {
             self.lastModifiedTime = dict["lastModifiedTime"] as! String
+        }
+        if dict.keys.contains("resolvePolicy") && dict["resolvePolicy"] != nil {
+            self.resolvePolicy = dict["resolvePolicy"] as! String
+        }
+        if dict.keys.contains("routePolicy") && dict["routePolicy"] != nil {
+            var model = RoutePolicy()
+            model.fromMap(dict["routePolicy"] as! [String: Any])
+            self.routePolicy = model
         }
         if dict.keys.contains("versionId") && dict["versionId"] != nil {
             self.versionId = dict["versionId"] as! String
@@ -18533,6 +18611,8 @@ public class UpdateServiceResponseBody : Tea.TeaModel {
 
     public var tracingConfig: TracingConfig?
 
+    public var useSLRAuthentication: Bool?
+
     public var vpcConfig: VPCConfig?
 
     public override init() {
@@ -18587,6 +18667,9 @@ public class UpdateServiceResponseBody : Tea.TeaModel {
         if self.tracingConfig != nil {
             map["tracingConfig"] = self.tracingConfig?.toMap()
         }
+        if self.useSLRAuthentication != nil {
+            map["useSLRAuthentication"] = self.useSLRAuthentication!
+        }
         if self.vpcConfig != nil {
             map["vpcConfig"] = self.vpcConfig?.toMap()
         }
@@ -18634,6 +18717,9 @@ public class UpdateServiceResponseBody : Tea.TeaModel {
             var model = TracingConfig()
             model.fromMap(dict["tracingConfig"] as! [String: Any])
             self.tracingConfig = model
+        }
+        if dict.keys.contains("useSLRAuthentication") && dict["useSLRAuthentication"] != nil {
+            self.useSLRAuthentication = dict["useSLRAuthentication"] as! Bool
         }
         if dict.keys.contains("vpcConfig") && dict["vpcConfig"] != nil {
             var model = VPCConfig()
@@ -18826,6 +18912,10 @@ public class UpdateTriggerResponseBody : Tea.TeaModel {
 
     public var sourceArn: String?
 
+    public var status: String?
+
+    public var targetArn: String?
+
     public var triggerConfig: String?
 
     public var triggerId: String?
@@ -18873,6 +18963,12 @@ public class UpdateTriggerResponseBody : Tea.TeaModel {
         if self.sourceArn != nil {
             map["sourceArn"] = self.sourceArn!
         }
+        if self.status != nil {
+            map["status"] = self.status!
+        }
+        if self.targetArn != nil {
+            map["targetArn"] = self.targetArn!
+        }
         if self.triggerConfig != nil {
             map["triggerConfig"] = self.triggerConfig!
         }
@@ -18915,6 +19011,12 @@ public class UpdateTriggerResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("sourceArn") && dict["sourceArn"] != nil {
             self.sourceArn = dict["sourceArn"] as! String
+        }
+        if dict.keys.contains("status") && dict["status"] != nil {
+            self.status = dict["status"] as! String
+        }
+        if dict.keys.contains("targetArn") && dict["targetArn"] != nil {
+            self.targetArn = dict["targetArn"] as! String
         }
         if dict.keys.contains("triggerConfig") && dict["triggerConfig"] != nil {
             self.triggerConfig = dict["triggerConfig"] as! String

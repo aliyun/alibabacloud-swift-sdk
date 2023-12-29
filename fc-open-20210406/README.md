@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudFCOpen20210406` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/fc-open-20210406" "2.0.10"
+github "alibabacloud-sdk-swift/fc-open-20210406" "2.0.11"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudFCOpen20210406` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/fc-open-20210406.git", from: "2.0.10")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/fc-open-20210406.git", from: "2.0.11")
 ]
 ```
 
