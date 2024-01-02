@@ -536,6 +536,228 @@ public class AddRecordTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class CreateAppStreamingOutTemplateRequest : Tea.TeaModel {
+    public class StreamingOutTemplate : Tea.TeaModel {
+        public var enableVad: Bool?
+
+        public var layoutIds: [String]?
+
+        public var mediaEncode: Int32?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableVad != nil {
+                map["EnableVad"] = self.enableVad!
+            }
+            if self.layoutIds != nil {
+                map["LayoutIds"] = self.layoutIds!
+            }
+            if self.mediaEncode != nil {
+                map["MediaEncode"] = self.mediaEncode!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableVad") && dict["EnableVad"] != nil {
+                self.enableVad = dict["EnableVad"] as! Bool
+            }
+            if dict.keys.contains("LayoutIds") && dict["LayoutIds"] != nil {
+                self.layoutIds = dict["LayoutIds"] as! [String]
+            }
+            if dict.keys.contains("MediaEncode") && dict["MediaEncode"] != nil {
+                self.mediaEncode = dict["MediaEncode"] as! Int32
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+        }
+    }
+    public var appId: String?
+
+    public var streamingOutTemplate: CreateAppStreamingOutTemplateRequest.StreamingOutTemplate?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.streamingOutTemplate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.streamingOutTemplate != nil {
+            map["StreamingOutTemplate"] = self.streamingOutTemplate?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StreamingOutTemplate") && dict["StreamingOutTemplate"] != nil {
+            var model = CreateAppStreamingOutTemplateRequest.StreamingOutTemplate()
+            model.fromMap(dict["StreamingOutTemplate"] as! [String: Any])
+            self.streamingOutTemplate = model
+        }
+    }
+}
+
+public class CreateAppStreamingOutTemplateShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var streamingOutTemplateShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.streamingOutTemplateShrink != nil {
+            map["StreamingOutTemplate"] = self.streamingOutTemplateShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StreamingOutTemplate") && dict["StreamingOutTemplate"] != nil {
+            self.streamingOutTemplateShrink = dict["StreamingOutTemplate"] as! String
+        }
+    }
+}
+
+public class CreateAppStreamingOutTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+            self.templateId = dict["TemplateId"] as! String
+        }
+    }
+}
+
+public class CreateAppStreamingOutTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAppStreamingOutTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateAppStreamingOutTemplateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateAutoLiveStreamRuleRequest : Tea.TeaModel {
     public var appId: String?
 
@@ -1131,6 +1353,196 @@ public class CreateMPULayoutResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateMPULayoutResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteAppStreamingOutTemplateRequest : Tea.TeaModel {
+    public class StreamingOutTemplate : Tea.TeaModel {
+        public var templateId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+                self.templateId = dict["TemplateId"] as! String
+            }
+        }
+    }
+    public var appId: String?
+
+    public var streamingOutTemplate: DeleteAppStreamingOutTemplateRequest.StreamingOutTemplate?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.streamingOutTemplate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.streamingOutTemplate != nil {
+            map["StreamingOutTemplate"] = self.streamingOutTemplate?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StreamingOutTemplate") && dict["StreamingOutTemplate"] != nil {
+            var model = DeleteAppStreamingOutTemplateRequest.StreamingOutTemplate()
+            model.fromMap(dict["StreamingOutTemplate"] as! [String: Any])
+            self.streamingOutTemplate = model
+        }
+    }
+}
+
+public class DeleteAppStreamingOutTemplateShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var streamingOutTemplateShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.streamingOutTemplateShrink != nil {
+            map["StreamingOutTemplate"] = self.streamingOutTemplateShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StreamingOutTemplate") && dict["StreamingOutTemplate"] != nil {
+            self.streamingOutTemplateShrink = dict["StreamingOutTemplate"] as! String
+        }
+    }
+}
+
+public class DeleteAppStreamingOutTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteAppStreamingOutTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteAppStreamingOutTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteAppStreamingOutTemplateResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -1899,6 +2311,341 @@ public class DescribeAppKeyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeAppKeyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeAppStreamingOutTemplatesRequest : Tea.TeaModel {
+    public class Condition : Tea.TeaModel {
+        public var name: String?
+
+        public var templateId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+                self.templateId = dict["TemplateId"] as! String
+            }
+        }
+    }
+    public var appId: String?
+
+    public var condition: DescribeAppStreamingOutTemplatesRequest.Condition?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.condition?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.condition != nil {
+            map["Condition"] = self.condition?.toMap()
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("Condition") && dict["Condition"] != nil {
+            var model = DescribeAppStreamingOutTemplatesRequest.Condition()
+            model.fromMap(dict["Condition"] as! [String: Any])
+            self.condition = model
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class DescribeAppStreamingOutTemplatesShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var conditionShrink: String?
+
+    public var pageNum: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.conditionShrink != nil {
+            map["Condition"] = self.conditionShrink!
+        }
+        if self.pageNum != nil {
+            map["PageNum"] = self.pageNum!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("Condition") && dict["Condition"] != nil {
+            self.conditionShrink = dict["Condition"] as! String
+        }
+        if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
+            self.pageNum = dict["PageNum"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class DescribeAppStreamingOutTemplatesResponseBody : Tea.TeaModel {
+    public class Templates : Tea.TeaModel {
+        public var createTime: String?
+
+        public var enableVad: Bool?
+
+        public var layoutIds: [String]?
+
+        public var mediaEncode: Int32?
+
+        public var name: String?
+
+        public var templateId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.enableVad != nil {
+                map["EnableVad"] = self.enableVad!
+            }
+            if self.layoutIds != nil {
+                map["LayoutIds"] = self.layoutIds!
+            }
+            if self.mediaEncode != nil {
+                map["MediaEncode"] = self.mediaEncode!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
+            }
+            if dict.keys.contains("EnableVad") && dict["EnableVad"] != nil {
+                self.enableVad = dict["EnableVad"] as! Bool
+            }
+            if dict.keys.contains("LayoutIds") && dict["LayoutIds"] != nil {
+                self.layoutIds = dict["LayoutIds"] as! [String]
+            }
+            if dict.keys.contains("MediaEncode") && dict["MediaEncode"] != nil {
+                self.mediaEncode = dict["MediaEncode"] as! Int32
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+                self.templateId = dict["TemplateId"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var templates: [DescribeAppStreamingOutTemplatesResponseBody.Templates]?
+
+    public var totalNum: Int64?
+
+    public var totalPage: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templates != nil {
+            var tmp : [Any] = []
+            for k in self.templates! {
+                tmp.append(k.toMap())
+            }
+            map["Templates"] = tmp
+        }
+        if self.totalNum != nil {
+            map["TotalNum"] = self.totalNum!
+        }
+        if self.totalPage != nil {
+            map["TotalPage"] = self.totalPage!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Templates") && dict["Templates"] != nil {
+            var tmp : [DescribeAppStreamingOutTemplatesResponseBody.Templates] = []
+            for v in dict["Templates"] as! [Any] {
+                var model = DescribeAppStreamingOutTemplatesResponseBody.Templates()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.templates = tmp
+        }
+        if dict.keys.contains("TotalNum") && dict["TotalNum"] != nil {
+            self.totalNum = dict["TotalNum"] as! Int64
+        }
+        if dict.keys.contains("TotalPage") && dict["TotalPage"] != nil {
+            self.totalPage = dict["TotalPage"] as! Int64
+        }
+    }
+}
+
+public class DescribeAppStreamingOutTemplatesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeAppStreamingOutTemplatesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeAppStreamingOutTemplatesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -14040,6 +14787,236 @@ public class ModifyAppResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyAppResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyAppStreamingOutTemplateRequest : Tea.TeaModel {
+    public class StreamingOutTemplate : Tea.TeaModel {
+        public var enableVad: Bool?
+
+        public var layoutIds: [String]?
+
+        public var mediaEncode: Int32?
+
+        public var name: String?
+
+        public var templateId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableVad != nil {
+                map["EnableVad"] = self.enableVad!
+            }
+            if self.layoutIds != nil {
+                map["LayoutIds"] = self.layoutIds!
+            }
+            if self.mediaEncode != nil {
+                map["MediaEncode"] = self.mediaEncode!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.templateId != nil {
+                map["TemplateId"] = self.templateId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableVad") && dict["EnableVad"] != nil {
+                self.enableVad = dict["EnableVad"] as! Bool
+            }
+            if dict.keys.contains("LayoutIds") && dict["LayoutIds"] != nil {
+                self.layoutIds = dict["LayoutIds"] as! [String]
+            }
+            if dict.keys.contains("MediaEncode") && dict["MediaEncode"] != nil {
+                self.mediaEncode = dict["MediaEncode"] as! Int32
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+                self.templateId = dict["TemplateId"] as! String
+            }
+        }
+    }
+    public var appId: String?
+
+    public var streamingOutTemplate: ModifyAppStreamingOutTemplateRequest.StreamingOutTemplate?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.streamingOutTemplate?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.streamingOutTemplate != nil {
+            map["StreamingOutTemplate"] = self.streamingOutTemplate?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StreamingOutTemplate") && dict["StreamingOutTemplate"] != nil {
+            var model = ModifyAppStreamingOutTemplateRequest.StreamingOutTemplate()
+            model.fromMap(dict["StreamingOutTemplate"] as! [String: Any])
+            self.streamingOutTemplate = model
+        }
+    }
+}
+
+public class ModifyAppStreamingOutTemplateShrinkRequest : Tea.TeaModel {
+    public var appId: String?
+
+    public var streamingOutTemplateShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.streamingOutTemplateShrink != nil {
+            map["StreamingOutTemplate"] = self.streamingOutTemplateShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("StreamingOutTemplate") && dict["StreamingOutTemplate"] != nil {
+            self.streamingOutTemplateShrink = dict["StreamingOutTemplate"] as! String
+        }
+    }
+}
+
+public class ModifyAppStreamingOutTemplateResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var templateId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+            self.templateId = dict["TemplateId"] as! String
+        }
+    }
+}
+
+public class ModifyAppStreamingOutTemplateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyAppStreamingOutTemplateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyAppStreamingOutTemplateResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

@@ -109,6 +109,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAppStreamingOutTemplateWithOptions(_ tmpReq: CreateAppStreamingOutTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAppStreamingOutTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateAppStreamingOutTemplateShrinkRequest = CreateAppStreamingOutTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.streamingOutTemplate)) {
+            request.streamingOutTemplateShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.streamingOutTemplate, "StreamingOutTemplate", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamingOutTemplateShrink)) {
+            query["StreamingOutTemplate"] = request.streamingOutTemplateShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAppStreamingOutTemplate",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAppStreamingOutTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAppStreamingOutTemplate(_ request: CreateAppStreamingOutTemplateRequest) async throws -> CreateAppStreamingOutTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAppStreamingOutTemplateWithOptions(request as! CreateAppStreamingOutTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAutoLiveStreamRuleWithOptions(_ request: CreateAutoLiveStreamRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAutoLiveStreamRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -256,6 +295,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createMPULayout(_ request: CreateMPULayoutRequest) async throws -> CreateMPULayoutResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createMPULayoutWithOptions(request as! CreateMPULayoutRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAppStreamingOutTemplateWithOptions(_ tmpReq: DeleteAppStreamingOutTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAppStreamingOutTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DeleteAppStreamingOutTemplateShrinkRequest = DeleteAppStreamingOutTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.streamingOutTemplate)) {
+            request.streamingOutTemplateShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.streamingOutTemplate, "StreamingOutTemplate", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamingOutTemplateShrink)) {
+            query["StreamingOutTemplate"] = request.streamingOutTemplateShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAppStreamingOutTemplate",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAppStreamingOutTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAppStreamingOutTemplate(_ request: DeleteAppStreamingOutTemplateRequest) async throws -> DeleteAppStreamingOutTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteAppStreamingOutTemplateWithOptions(request as! DeleteAppStreamingOutTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -475,6 +553,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAppKey(_ request: DescribeAppKeyRequest) async throws -> DescribeAppKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeAppKeyWithOptions(request as! DescribeAppKeyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAppStreamingOutTemplatesWithOptions(_ tmpReq: DescribeAppStreamingOutTemplatesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAppStreamingOutTemplatesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: DescribeAppStreamingOutTemplatesShrinkRequest = DescribeAppStreamingOutTemplatesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.condition)) {
+            request.conditionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.condition, "Condition", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.conditionShrink)) {
+            query["Condition"] = request.conditionShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNum)) {
+            query["PageNum"] = request.pageNum!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAppStreamingOutTemplates",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAppStreamingOutTemplatesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAppStreamingOutTemplates(_ request: DescribeAppStreamingOutTemplatesRequest) async throws -> DescribeAppStreamingOutTemplatesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAppStreamingOutTemplatesWithOptions(request as! DescribeAppStreamingOutTemplatesRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2180,6 +2303,45 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyApp(_ request: ModifyAppRequest) async throws -> ModifyAppResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyAppWithOptions(request as! ModifyAppRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAppStreamingOutTemplateWithOptions(_ tmpReq: ModifyAppStreamingOutTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAppStreamingOutTemplateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyAppStreamingOutTemplateShrinkRequest = ModifyAppStreamingOutTemplateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.streamingOutTemplate)) {
+            request.streamingOutTemplateShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.streamingOutTemplate, "StreamingOutTemplate", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamingOutTemplateShrink)) {
+            query["StreamingOutTemplate"] = request.streamingOutTemplateShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyAppStreamingOutTemplate",
+            "version": "2018-01-11",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyAppStreamingOutTemplateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAppStreamingOutTemplate(_ request: ModifyAppStreamingOutTemplateRequest) async throws -> ModifyAppStreamingOutTemplateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyAppStreamingOutTemplateWithOptions(request as! ModifyAppStreamingOutTemplateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
