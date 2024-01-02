@@ -10299,6 +10299,8 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
 
         public var applicationSourceType: String?
 
+        public var applicationTemplateId: String?
+
         public var clientId: String?
 
         public var createTime: Int64?
@@ -10343,6 +10345,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             }
             if self.applicationSourceType != nil {
                 map["ApplicationSourceType"] = self.applicationSourceType!
+            }
+            if self.applicationTemplateId != nil {
+                map["ApplicationTemplateId"] = self.applicationTemplateId!
             }
             if self.clientId != nil {
                 map["ClientId"] = self.clientId!
@@ -10389,6 +10394,9 @@ public class ListApplicationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ApplicationSourceType") && dict["ApplicationSourceType"] != nil {
                 self.applicationSourceType = dict["ApplicationSourceType"] as! String
+            }
+            if dict.keys.contains("ApplicationTemplateId") && dict["ApplicationTemplateId"] != nil {
+                self.applicationTemplateId = dict["ApplicationTemplateId"] as! String
             }
             if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
                 self.clientId = dict["ClientId"] as! String
