@@ -19325,6 +19325,8 @@ public class DescribeMaskingRulesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var ruleList: [String]?
 
+        public var ruleVersion: String?
+
         public override init() {
             super.init()
         }
@@ -19342,12 +19344,18 @@ public class DescribeMaskingRulesResponseBody : Tea.TeaModel {
             if self.ruleList != nil {
                 map["RuleList"] = self.ruleList!
             }
+            if self.ruleVersion != nil {
+                map["RuleVersion"] = self.ruleVersion!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("RuleList") && dict["RuleList"] != nil {
                 self.ruleList = dict["RuleList"] as! [String]
+            }
+            if dict.keys.contains("RuleVersion") && dict["RuleVersion"] != nil {
+                self.ruleVersion = dict["RuleVersion"] as! String
             }
         }
     }
@@ -31674,6 +31682,8 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
 
     public var ruleNameList: String?
 
+    public var ruleVersion: String?
+
     public override init() {
         super.init()
     }
@@ -31703,6 +31713,9 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         if self.ruleNameList != nil {
             map["RuleNameList"] = self.ruleNameList!
         }
+        if self.ruleVersion != nil {
+            map["RuleVersion"] = self.ruleVersion!
+        }
         return map
     }
 
@@ -31721,6 +31734,9 @@ public class ModifyMaskingRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RuleNameList") && dict["RuleNameList"] != nil {
             self.ruleNameList = dict["RuleNameList"] as! String
+        }
+        if dict.keys.contains("RuleVersion") && dict["RuleVersion"] != nil {
+            self.ruleVersion = dict["RuleVersion"] as! String
         }
     }
 }

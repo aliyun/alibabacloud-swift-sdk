@@ -6849,6 +6849,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ruleNameList)) {
             query["RuleNameList"] = request.ruleNameList ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.ruleVersion)) {
+            query["RuleVersion"] = request.ruleVersion ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
