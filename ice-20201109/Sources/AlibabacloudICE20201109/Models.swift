@@ -18350,6 +18350,8 @@ public class GetMediaProducingJobResponseBody : Tea.TeaModel {
 
         public var timeline: String?
 
+        public var userData: String?
+
         public var vodMediaId: String?
 
         public override init() {
@@ -18408,6 +18410,9 @@ public class GetMediaProducingJobResponseBody : Tea.TeaModel {
             if self.timeline != nil {
                 map["Timeline"] = self.timeline!
             }
+            if self.userData != nil {
+                map["UserData"] = self.userData!
+            }
             if self.vodMediaId != nil {
                 map["VodMediaId"] = self.vodMediaId!
             }
@@ -18456,6 +18461,9 @@ public class GetMediaProducingJobResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Timeline") && dict["Timeline"] != nil {
                 self.timeline = dict["Timeline"] as! String
+            }
+            if dict.keys.contains("UserData") && dict["UserData"] != nil {
+                self.userData = dict["UserData"] as! String
             }
             if dict.keys.contains("VodMediaId") && dict["VodMediaId"] != nil {
                 self.vodMediaId = dict["VodMediaId"] as! String
