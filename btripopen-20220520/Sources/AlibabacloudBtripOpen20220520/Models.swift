@@ -7757,6 +7757,8 @@ public class ApplyAddRequest : Tea.TeaModel {
     public class ExternalTravelerList : Tea.TeaModel {
         public var userName: String?
 
+        public var userNameEn: String?
+
         public override init() {
             super.init()
         }
@@ -7774,12 +7776,18 @@ public class ApplyAddRequest : Tea.TeaModel {
             if self.userName != nil {
                 map["user_name"] = self.userName!
             }
+            if self.userNameEn != nil {
+                map["user_name_en"] = self.userNameEn!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("user_name") && dict["user_name"] != nil {
                 self.userName = dict["user_name"] as! String
+            }
+            if dict.keys.contains("user_name_en") && dict["user_name_en"] != nil {
+                self.userNameEn = dict["user_name_en"] as! String
             }
         }
     }
@@ -11209,6 +11217,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
     public class ExternalTravelerList : Tea.TeaModel {
         public var userName: String?
 
+        public var userNameEn: String?
+
         public override init() {
             super.init()
         }
@@ -11226,12 +11236,18 @@ public class ApplyModifyRequest : Tea.TeaModel {
             if self.userName != nil {
                 map["user_name"] = self.userName!
             }
+            if self.userNameEn != nil {
+                map["user_name_en"] = self.userNameEn!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("user_name") && dict["user_name"] != nil {
                 self.userName = dict["user_name"] as! String
+            }
+            if dict.keys.contains("user_name_en") && dict["user_name_en"] != nil {
+                self.userNameEn = dict["user_name_en"] as! String
             }
         }
     }
