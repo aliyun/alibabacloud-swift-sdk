@@ -407,6 +407,8 @@ public class AssociateResourceShareResponseBody : Tea.TeaModel {
 
         public var resourceShareName: String?
 
+        public var targetProperty: String?
+
         public var updateTime: String?
 
         public override init() {
@@ -447,6 +449,9 @@ public class AssociateResourceShareResponseBody : Tea.TeaModel {
             if self.resourceShareName != nil {
                 map["ResourceShareName"] = self.resourceShareName!
             }
+            if self.targetProperty != nil {
+                map["TargetProperty"] = self.targetProperty!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -477,6 +482,9 @@ public class AssociateResourceShareResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceShareName") && dict["ResourceShareName"] != nil {
                 self.resourceShareName = dict["ResourceShareName"] as! String
+            }
+            if dict.keys.contains("TargetProperty") && dict["TargetProperty"] != nil {
+                self.targetProperty = dict["TargetProperty"] as! String
             }
             if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
                 self.updateTime = dict["UpdateTime"] as! String
@@ -1621,6 +1629,8 @@ public class DisassociateResourceShareResponseBody : Tea.TeaModel {
 
         public var resourceShareName: String?
 
+        public var targetProperty: String?
+
         public var updateTime: String?
 
         public override init() {
@@ -1661,6 +1671,9 @@ public class DisassociateResourceShareResponseBody : Tea.TeaModel {
             if self.resourceShareName != nil {
                 map["ResourceShareName"] = self.resourceShareName!
             }
+            if self.targetProperty != nil {
+                map["TargetProperty"] = self.targetProperty!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -1691,6 +1704,9 @@ public class DisassociateResourceShareResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceShareName") && dict["ResourceShareName"] != nil {
                 self.resourceShareName = dict["ResourceShareName"] as! String
+            }
+            if dict.keys.contains("TargetProperty") && dict["TargetProperty"] != nil {
+                self.targetProperty = dict["TargetProperty"] as! String
             }
             if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
                 self.updateTime = dict["UpdateTime"] as! String
@@ -2762,6 +2778,69 @@ public class ListResourceShareAssociationsRequest : Tea.TeaModel {
 
 public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
     public class ResourceShareAssociations : Tea.TeaModel {
+        public class AssociationFailedDetails : Tea.TeaModel {
+            public var associateType: String?
+
+            public var entityId: String?
+
+            public var entityType: String?
+
+            public var status: String?
+
+            public var statusMessage: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.associateType != nil {
+                    map["AssociateType"] = self.associateType!
+                }
+                if self.entityId != nil {
+                    map["EntityId"] = self.entityId!
+                }
+                if self.entityType != nil {
+                    map["EntityType"] = self.entityType!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.statusMessage != nil {
+                    map["StatusMessage"] = self.statusMessage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssociateType") && dict["AssociateType"] != nil {
+                    self.associateType = dict["AssociateType"] as! String
+                }
+                if dict.keys.contains("EntityId") && dict["EntityId"] != nil {
+                    self.entityId = dict["EntityId"] as! String
+                }
+                if dict.keys.contains("EntityType") && dict["EntityType"] != nil {
+                    self.entityType = dict["EntityType"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("StatusMessage") && dict["StatusMessage"] != nil {
+                    self.statusMessage = dict["StatusMessage"] as! String
+                }
+            }
+        }
+        public var associationFailedDetails: [ListResourceShareAssociationsResponseBody.ResourceShareAssociations.AssociationFailedDetails]?
+
         public var associationStatus: String?
 
         public var associationStatusMessage: String?
@@ -2780,6 +2859,8 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
 
         public var resourceShareName: String?
 
+        public var targetProperty: String?
+
         public var updateTime: String?
 
         public override init() {
@@ -2796,6 +2877,13 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.associationFailedDetails != nil {
+                var tmp : [Any] = []
+                for k in self.associationFailedDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["AssociationFailedDetails"] = tmp
+            }
             if self.associationStatus != nil {
                 map["AssociationStatus"] = self.associationStatus!
             }
@@ -2823,6 +2911,9 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
             if self.resourceShareName != nil {
                 map["ResourceShareName"] = self.resourceShareName!
             }
+            if self.targetProperty != nil {
+                map["TargetProperty"] = self.targetProperty!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -2830,6 +2921,17 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AssociationFailedDetails") && dict["AssociationFailedDetails"] != nil {
+                var tmp : [ListResourceShareAssociationsResponseBody.ResourceShareAssociations.AssociationFailedDetails] = []
+                for v in dict["AssociationFailedDetails"] as! [Any] {
+                    var model = ListResourceShareAssociationsResponseBody.ResourceShareAssociations.AssociationFailedDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.associationFailedDetails = tmp
+            }
             if dict.keys.contains("AssociationStatus") && dict["AssociationStatus"] != nil {
                 self.associationStatus = dict["AssociationStatus"] as! String
             }
@@ -2856,6 +2958,9 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceShareName") && dict["ResourceShareName"] != nil {
                 self.resourceShareName = dict["ResourceShareName"] as! String
+            }
+            if dict.keys.contains("TargetProperty") && dict["TargetProperty"] != nil {
+                self.targetProperty = dict["TargetProperty"] as! String
             }
             if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
                 self.updateTime = dict["UpdateTime"] as! String
@@ -4152,6 +4257,8 @@ public class ListSharedTargetsResponseBody : Tea.TeaModel {
 
         public var targetId: String?
 
+        public var targetProperty: String?
+
         public var updateTime: String?
 
         public override init() {
@@ -4180,6 +4287,9 @@ public class ListSharedTargetsResponseBody : Tea.TeaModel {
             if self.targetId != nil {
                 map["TargetId"] = self.targetId!
             }
+            if self.targetProperty != nil {
+                map["TargetProperty"] = self.targetProperty!
+            }
             if self.updateTime != nil {
                 map["UpdateTime"] = self.updateTime!
             }
@@ -4198,6 +4308,9 @@ public class ListSharedTargetsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TargetId") && dict["TargetId"] != nil {
                 self.targetId = dict["TargetId"] as! String
+            }
+            if dict.keys.contains("TargetProperty") && dict["TargetProperty"] != nil {
+                self.targetProperty = dict["TargetProperty"] as! String
             }
             if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
                 self.updateTime = dict["UpdateTime"] as! String
