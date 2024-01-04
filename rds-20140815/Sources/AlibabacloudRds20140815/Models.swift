@@ -2529,6 +2529,8 @@ public class CloneDBInstanceRequest : Tea.TeaModel {
 
     public var instanceNetworkType: String?
 
+    public var ioAccelerationEnabled: String?
+
     public var payType: String?
 
     public var period: String?
@@ -2615,6 +2617,9 @@ public class CloneDBInstanceRequest : Tea.TeaModel {
         }
         if self.instanceNetworkType != nil {
             map["InstanceNetworkType"] = self.instanceNetworkType!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -2707,6 +2712,9 @@ public class CloneDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceNetworkType") && dict["InstanceNetworkType"] != nil {
             self.instanceNetworkType = dict["InstanceNetworkType"] as! String
         }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
+        }
         if dict.keys.contains("PayType") && dict["PayType"] != nil {
             self.payType = dict["PayType"] as! String
         }
@@ -2785,6 +2793,8 @@ public class CloneDBInstanceShrinkRequest : Tea.TeaModel {
     public var deletionProtection: Bool?
 
     public var instanceNetworkType: String?
+
+    public var ioAccelerationEnabled: String?
 
     public var payType: String?
 
@@ -2871,6 +2881,9 @@ public class CloneDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.instanceNetworkType != nil {
             map["InstanceNetworkType"] = self.instanceNetworkType!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -2962,6 +2975,9 @@ public class CloneDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceNetworkType") && dict["InstanceNetworkType"] != nil {
             self.instanceNetworkType = dict["InstanceNetworkType"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("PayType") && dict["PayType"] != nil {
             self.payType = dict["PayType"] as! String
@@ -4600,6 +4616,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var coldDataEnabled: Bool?
+
     public var connectionMode: String?
 
     public var connectionString: String?
@@ -4635,6 +4653,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     public var engineVersion: String?
 
     public var instanceNetworkType: String?
+
+    public var ioAccelerationEnabled: String?
 
     public var payType: String?
 
@@ -4730,6 +4750,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.coldDataEnabled != nil {
+            map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
         if self.connectionMode != nil {
             map["ConnectionMode"] = self.connectionMode!
         }
@@ -4783,6 +4806,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.instanceNetworkType != nil {
             map["InstanceNetworkType"] = self.instanceNetworkType!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -4897,6 +4923,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("ColdDataEnabled") && dict["ColdDataEnabled"] != nil {
+            self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
+        }
         if dict.keys.contains("ConnectionMode") && dict["ConnectionMode"] != nil {
             self.connectionMode = dict["ConnectionMode"] as! String
         }
@@ -4950,6 +4979,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceNetworkType") && dict["InstanceNetworkType"] != nil {
             self.instanceNetworkType = dict["InstanceNetworkType"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("PayType") && dict["PayType"] != nil {
             self.payType = dict["PayType"] as! String
@@ -5098,6 +5130,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
 
     public var clientToken: String?
 
+    public var coldDataEnabled: Bool?
+
     public var connectionMode: String?
 
     public var connectionString: String?
@@ -5133,6 +5167,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var engineVersion: String?
 
     public var instanceNetworkType: String?
+
+    public var ioAccelerationEnabled: String?
 
     public var payType: String?
 
@@ -5227,6 +5263,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.coldDataEnabled != nil {
+            map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
         if self.connectionMode != nil {
             map["ConnectionMode"] = self.connectionMode!
         }
@@ -5280,6 +5319,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if self.instanceNetworkType != nil {
             map["InstanceNetworkType"] = self.instanceNetworkType!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.payType != nil {
             map["PayType"] = self.payType!
@@ -5394,6 +5436,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
+        if dict.keys.contains("ColdDataEnabled") && dict["ColdDataEnabled"] != nil {
+            self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
+        }
         if dict.keys.contains("ConnectionMode") && dict["ConnectionMode"] != nil {
             self.connectionMode = dict["ConnectionMode"] as! String
         }
@@ -5447,6 +5492,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceNetworkType") && dict["InstanceNetworkType"] != nil {
             self.instanceNetworkType = dict["InstanceNetworkType"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("PayType") && dict["PayType"] != nil {
             self.payType = dict["PayType"] as! String
@@ -10332,6 +10380,8 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
 
     public var instructionSetArch: String?
 
+    public var ioAccelerationEnabled: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -10430,6 +10480,9 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
         }
         if self.instructionSetArch != nil {
             map["InstructionSetArch"] = self.instructionSetArch!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -10536,6 +10589,9 @@ public class CreateReadOnlyDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstructionSetArch") && dict["InstructionSetArch"] != nil {
             self.instructionSetArch = dict["InstructionSetArch"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -23602,6 +23658,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var category: String?
 
+            public var coldDataEnabled: Bool?
+
             public var collation: String?
 
             public var connectionMode: String?
@@ -23665,6 +23723,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             public var instanceNetworkType: String?
 
             public var instructionSetArch: String?
+
+            public var ioAccelerationEnabled: String?
 
             public var latestKernelVersion: String?
 
@@ -23772,6 +23832,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if self.category != nil {
                     map["Category"] = self.category!
                 }
+                if self.coldDataEnabled != nil {
+                    map["ColdDataEnabled"] = self.coldDataEnabled!
+                }
                 if self.collation != nil {
                     map["Collation"] = self.collation!
                 }
@@ -23867,6 +23930,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.instructionSetArch != nil {
                     map["InstructionSetArch"] = self.instructionSetArch!
+                }
+                if self.ioAccelerationEnabled != nil {
+                    map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
                 }
                 if self.latestKernelVersion != nil {
                     map["LatestKernelVersion"] = self.latestKernelVersion!
@@ -23991,6 +24057,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Category") && dict["Category"] != nil {
                     self.category = dict["Category"] as! String
                 }
+                if dict.keys.contains("ColdDataEnabled") && dict["ColdDataEnabled"] != nil {
+                    self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
+                }
                 if dict.keys.contains("Collation") && dict["Collation"] != nil {
                     self.collation = dict["Collation"] as! String
                 }
@@ -24090,6 +24159,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InstructionSetArch") && dict["InstructionSetArch"] != nil {
                     self.instructionSetArch = dict["InstructionSetArch"] as! String
+                }
+                if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+                    self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
                 }
                 if dict.keys.contains("LatestKernelVersion") && dict["LatestKernelVersion"] != nil {
                     self.latestKernelVersion = dict["LatestKernelVersion"] as! String
@@ -29843,6 +29915,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var category: String?
 
+            public var coldDataEnabled: Bool?
+
             public var connectionMode: String?
 
             public var connectionString: String?
@@ -29901,6 +29975,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var instanceNetworkType: String?
 
+            public var ioAccelerationEnabled: String?
+
             public var lockMode: String?
 
             public var lockReason: String?
@@ -29958,6 +30034,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.category != nil {
                     map["Category"] = self.category!
+                }
+                if self.coldDataEnabled != nil {
+                    map["ColdDataEnabled"] = self.coldDataEnabled!
                 }
                 if self.connectionMode != nil {
                     map["ConnectionMode"] = self.connectionMode!
@@ -30046,6 +30125,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.instanceNetworkType != nil {
                     map["InstanceNetworkType"] = self.instanceNetworkType!
                 }
+                if self.ioAccelerationEnabled != nil {
+                    map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
+                }
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
                 }
@@ -30109,6 +30191,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Category") && dict["Category"] != nil {
                     self.category = dict["Category"] as! String
+                }
+                if dict.keys.contains("ColdDataEnabled") && dict["ColdDataEnabled"] != nil {
+                    self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
                 }
                 if dict.keys.contains("ConnectionMode") && dict["ConnectionMode"] != nil {
                     self.connectionMode = dict["ConnectionMode"] as! String
@@ -30196,6 +30281,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("InstanceNetworkType") && dict["InstanceNetworkType"] != nil {
                     self.instanceNetworkType = dict["InstanceNetworkType"] as! String
+                }
+                if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+                    self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
                 }
                 if dict.keys.contains("LockMode") && dict["LockMode"] != nil {
                     self.lockMode = dict["LockMode"] as! String
@@ -59275,6 +59363,8 @@ public class MigrateToOtherZoneRequest : Tea.TeaModel {
 
     public var effectiveTime: String?
 
+    public var ioAccelerationEnabled: String?
+
     public var isModifySpec: String?
 
     public var ownerAccount: String?
@@ -59325,6 +59415,9 @@ public class MigrateToOtherZoneRequest : Tea.TeaModel {
         }
         if self.effectiveTime != nil {
             map["EffectiveTime"] = self.effectiveTime!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.isModifySpec != nil {
             map["IsModifySpec"] = self.isModifySpec!
@@ -59377,6 +59470,9 @@ public class MigrateToOtherZoneRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EffectiveTime") && dict["EffectiveTime"] != nil {
             self.effectiveTime = dict["EffectiveTime"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("IsModifySpec") && dict["IsModifySpec"] != nil {
             self.isModifySpec = dict["IsModifySpec"] as! String
@@ -64411,6 +64507,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
 
     public var category: String?
 
+    public var coldDataEnabled: Bool?
+
     public var DBInstanceClass: String?
 
     public var DBInstanceId: String?
@@ -64426,6 +64524,8 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
     public var effectiveTime: String?
 
     public var engineVersion: String?
+
+    public var ioAccelerationEnabled: String?
 
     public var ownerAccount: String?
 
@@ -64475,6 +64575,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if self.category != nil {
             map["Category"] = self.category!
         }
+        if self.coldDataEnabled != nil {
+            map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
         }
@@ -64498,6 +64601,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -64548,6 +64654,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         if dict.keys.contains("Category") && dict["Category"] != nil {
             self.category = dict["Category"] as! String
         }
+        if dict.keys.contains("ColdDataEnabled") && dict["ColdDataEnabled"] != nil {
+            self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
+        }
         if dict.keys.contains("DBInstanceClass") && dict["DBInstanceClass"] != nil {
             self.DBInstanceClass = dict["DBInstanceClass"] as! String
         }
@@ -64571,6 +64680,9 @@ public class ModifyDBInstanceSpecRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
             self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -64620,6 +64732,8 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public var category: String?
 
+    public var coldDataEnabled: Bool?
+
     public var DBInstanceClass: String?
 
     public var DBInstanceId: String?
@@ -64635,6 +64749,8 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
     public var effectiveTime: String?
 
     public var engineVersion: String?
+
+    public var ioAccelerationEnabled: String?
 
     public var ownerAccount: String?
 
@@ -64683,6 +64799,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         if self.category != nil {
             map["Category"] = self.category!
         }
+        if self.coldDataEnabled != nil {
+            map["ColdDataEnabled"] = self.coldDataEnabled!
+        }
         if self.DBInstanceClass != nil {
             map["DBInstanceClass"] = self.DBInstanceClass!
         }
@@ -64706,6 +64825,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if self.engineVersion != nil {
             map["EngineVersion"] = self.engineVersion!
+        }
+        if self.ioAccelerationEnabled != nil {
+            map["IoAccelerationEnabled"] = self.ioAccelerationEnabled!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -64756,6 +64878,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Category") && dict["Category"] != nil {
             self.category = dict["Category"] as! String
         }
+        if dict.keys.contains("ColdDataEnabled") && dict["ColdDataEnabled"] != nil {
+            self.coldDataEnabled = dict["ColdDataEnabled"] as! Bool
+        }
         if dict.keys.contains("DBInstanceClass") && dict["DBInstanceClass"] != nil {
             self.DBInstanceClass = dict["DBInstanceClass"] as! String
         }
@@ -64779,6 +64904,9 @@ public class ModifyDBInstanceSpecShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EngineVersion") && dict["EngineVersion"] != nil {
             self.engineVersion = dict["EngineVersion"] as! String
+        }
+        if dict.keys.contains("IoAccelerationEnabled") && dict["IoAccelerationEnabled"] != nil {
+            self.ioAccelerationEnabled = dict["IoAccelerationEnabled"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
