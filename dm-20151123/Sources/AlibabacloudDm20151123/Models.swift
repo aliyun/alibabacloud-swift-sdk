@@ -1252,6 +1252,8 @@ public class CreateTagRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var tagDescription: String?
+
     public var tagName: String?
 
     public override init() {
@@ -1277,6 +1279,9 @@ public class CreateTagRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tagDescription != nil {
+            map["TagDescription"] = self.tagDescription!
+        }
         if self.tagName != nil {
             map["TagName"] = self.tagName!
         }
@@ -1292,6 +1297,9 @@ public class CreateTagRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TagDescription") && dict["TagDescription"] != nil {
+            self.tagDescription = dict["TagDescription"] as! String
         }
         if dict.keys.contains("TagName") && dict["TagName"] != nil {
             self.tagName = dict["TagName"] as! String
@@ -2618,6 +2626,8 @@ public class DescDomainRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var requireRealTimeDnsRecords: Bool?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -2642,6 +2652,9 @@ public class DescDomainRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.requireRealTimeDnsRecords != nil {
+            map["RequireRealTimeDnsRecords"] = self.requireRealTimeDnsRecords!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -2657,6 +2670,9 @@ public class DescDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RequireRealTimeDnsRecords") && dict["RequireRealTimeDnsRecords"] != nil {
+            self.requireRealTimeDnsRecords = dict["RequireRealTimeDnsRecords"] as! Bool
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -4439,6 +4455,8 @@ public class ModifyTagRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var tagDescription: String?
+
     public var tagId: Int32?
 
     public var tagName: String?
@@ -4466,6 +4484,9 @@ public class ModifyTagRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tagDescription != nil {
+            map["TagDescription"] = self.tagDescription!
+        }
         if self.tagId != nil {
             map["TagId"] = self.tagId!
         }
@@ -4484,6 +4505,9 @@ public class ModifyTagRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TagDescription") && dict["TagDescription"] != nil {
+            self.tagDescription = dict["TagDescription"] as! String
         }
         if dict.keys.contains("TagId") && dict["TagId"] != nil {
             self.tagId = dict["TagId"] as! Int32
@@ -6238,6 +6262,8 @@ public class QueryTagByParamRequest : Tea.TeaModel {
 public class QueryTagByParamResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
+            public var tagDescription: String?
+
             public var tagId: String?
 
             public var tagName: String?
@@ -6256,6 +6282,9 @@ public class QueryTagByParamResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.tagDescription != nil {
+                    map["TagDescription"] = self.tagDescription!
+                }
                 if self.tagId != nil {
                     map["TagId"] = self.tagId!
                 }
@@ -6266,6 +6295,9 @@ public class QueryTagByParamResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagDescription") && dict["TagDescription"] != nil {
+                    self.tagDescription = dict["TagDescription"] as! String
+                }
                 if dict.keys.contains("TagId") && dict["TagId"] != nil {
                     self.tagId = dict["TagId"] as! String
                 }
