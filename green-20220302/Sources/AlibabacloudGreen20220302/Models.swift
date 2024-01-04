@@ -678,7 +678,7 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: String?
+    public var code: Int32?
 
     public var data: DescribeImageModerationResultResponseBody.Data?
 
@@ -718,7 +718,7 @@ public class DescribeImageModerationResultResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
+            self.code = dict["Code"] as! Int32
         }
         if dict.keys.contains("Data") && dict["Data"] != nil {
             var model = DescribeImageModerationResultResponseBody.Data()
