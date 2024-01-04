@@ -6987,6 +6987,69 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAppTopologyWithOptions(_ tmpReq: QueryAppTopologyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryAppTopologyResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryAppTopologyShrinkRequest = QueryAppTopologyShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.filters)) {
+            request.filtersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.filters, "Filters", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appType)) {
+            query["AppType"] = request.appType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.db)) {
+            query["Db"] = request.db ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dbName)) {
+            query["DbName"] = request.dbName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filtersShrink)) {
+            query["Filters"] = request.filtersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pid)) {
+            query["Pid"] = request.pid ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.rpc)) {
+            query["Rpc"] = request.rpc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryAppTopology",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryAppTopologyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryAppTopology(_ request: QueryAppTopologyRequest) async throws -> QueryAppTopologyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryAppTopologyWithOptions(request as! QueryAppTopologyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryCommercialUsageWithOptions(_ request: QueryCommercialUsageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCommercialUsageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
