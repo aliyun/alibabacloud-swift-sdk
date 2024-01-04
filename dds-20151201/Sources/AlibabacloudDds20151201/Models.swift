@@ -5182,6 +5182,8 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var replicationFactor: String?
+
     public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
@@ -5241,6 +5243,9 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.replicationFactor != nil {
+            map["ReplicationFactor"] = self.replicationFactor!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -5295,6 +5300,9 @@ public class DescribeAvailabilityZonesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ReplicationFactor") && dict["ReplicationFactor"] != nil {
+            self.replicationFactor = dict["ReplicationFactor"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -5663,6 +5671,8 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var replicationFactor: String?
+
     public var resourceGroupId: String?
 
     public var resourceOwnerAccount: String?
@@ -5708,6 +5718,9 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.replicationFactor != nil {
+            map["ReplicationFactor"] = self.replicationFactor!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -5747,6 +5760,9 @@ public class DescribeAvailableResourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ReplicationFactor") && dict["ReplicationFactor"] != nil {
+            self.replicationFactor = dict["ReplicationFactor"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -8484,6 +8500,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
                     public var maxConnections: Int32?
 
+                    public var maxDiskMbps: String?
+
                     public var maxIOPS: Int32?
 
                     public var nodeClass: String?
@@ -8520,6 +8538,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         if self.maxConnections != nil {
                             map["MaxConnections"] = self.maxConnections!
                         }
+                        if self.maxDiskMbps != nil {
+                            map["MaxDiskMbps"] = self.maxDiskMbps!
+                        }
                         if self.maxIOPS != nil {
                             map["MaxIOPS"] = self.maxIOPS!
                         }
@@ -8553,6 +8574,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("MaxConnections") && dict["MaxConnections"] != nil {
                             self.maxConnections = dict["MaxConnections"] as! Int32
+                        }
+                        if dict.keys.contains("MaxDiskMbps") && dict["MaxDiskMbps"] != nil {
+                            self.maxDiskMbps = dict["MaxDiskMbps"] as! String
                         }
                         if dict.keys.contains("MaxIOPS") && dict["MaxIOPS"] != nil {
                             self.maxIOPS = dict["MaxIOPS"] as! Int32
@@ -8754,6 +8778,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var maxIOPS: Int32?
 
+            public var maxMBPS: Int32?
+
             public var mongosList: DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.MongosList?
 
             public var networkType: String?
@@ -8902,6 +8928,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.maxIOPS != nil {
                     map["MaxIOPS"] = self.maxIOPS!
+                }
+                if self.maxMBPS != nil {
+                    map["MaxMBPS"] = self.maxMBPS!
                 }
                 if self.mongosList != nil {
                     map["MongosList"] = self.mongosList?.toMap()
@@ -9061,6 +9090,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("MaxIOPS") && dict["MaxIOPS"] != nil {
                     self.maxIOPS = dict["MaxIOPS"] as! Int32
+                }
+                if dict.keys.contains("MaxMBPS") && dict["MaxMBPS"] != nil {
+                    self.maxMBPS = dict["MaxMBPS"] as! Int32
                 }
                 if dict.keys.contains("MongosList") && dict["MongosList"] != nil {
                     var model = DescribeDBInstanceAttributeResponseBody.DBInstances.DBInstance.MongosList()
