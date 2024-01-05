@@ -9727,6 +9727,8 @@ public class UpdatePublicPatchBaselineResponse : Tea.TeaModel {
 }
 
 public class UpdatePublicTemplateRequest : Tea.TeaModel {
+    public var category: String?
+
     public var content: String?
 
     public var popularity: Int32?
@@ -9751,6 +9753,9 @@ public class UpdatePublicTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
         if self.content != nil {
             map["Content"] = self.content!
         }
@@ -9770,6 +9775,9 @@ public class UpdatePublicTemplateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Category") && dict["Category"] != nil {
+            self.category = dict["Category"] as! String
+        }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
         }
@@ -9790,6 +9798,8 @@ public class UpdatePublicTemplateRequest : Tea.TeaModel {
 
 public class UpdatePublicTemplateResponseBody : Tea.TeaModel {
     public class Template : Tea.TeaModel {
+        public var category: String?
+
         public var createdBy: String?
 
         public var createdDate: String?
@@ -9828,6 +9838,9 @@ public class UpdatePublicTemplateResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
             if self.createdBy != nil {
                 map["CreatedBy"] = self.createdBy!
             }
@@ -9868,6 +9881,9 @@ public class UpdatePublicTemplateResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Category") && dict["Category"] != nil {
+                self.category = dict["Category"] as! String
+            }
             if dict.keys.contains("CreatedBy") && dict["CreatedBy"] != nil {
                 self.createdBy = dict["CreatedBy"] as! String
             }

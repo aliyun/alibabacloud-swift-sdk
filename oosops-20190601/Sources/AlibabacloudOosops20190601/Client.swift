@@ -1852,6 +1852,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updatePublicTemplateWithOptions(_ request: UpdatePublicTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePublicTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.category)) {
+            query["Category"] = request.category ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.content)) {
             query["Content"] = request.content ?? "";
         }
