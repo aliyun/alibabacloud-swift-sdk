@@ -727,6 +727,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getText2ImageJobWithOptions(_ request: GetText2ImageJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetText2ImageJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetText2ImageJob",
+            "version": "2023-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetText2ImageJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getText2ImageJob(_ request: GetText2ImageJobRequest) async throws -> GetText2ImageJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getText2ImageJobWithOptions(request as! GetText2ImageJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func importEnterpriseDocumentWithOptions(_ tmpReq: ImportEnterpriseDocumentRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportEnterpriseDocumentResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ImportEnterpriseDocumentShrinkRequest = ImportEnterpriseDocumentShrinkRequest([:])
@@ -1116,6 +1144,58 @@ open class Client : AlibabacloudOpenApi.Client {
     public func searchEnterpriseData(_ request: SearchEnterpriseDataRequest) async throws -> SearchEnterpriseDataResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await searchEnterpriseDataWithOptions(request as! SearchEnterpriseDataRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitText2ImageJobWithOptions(_ request: SubmitText2ImageJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitText2ImageJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.agentKey)) {
+            query["AgentKey"] = request.agentKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.n)) {
+            query["N"] = request.n!;
+        }
+        if (!TeaUtils.Client.isUnset(request.negativePrompt)) {
+            query["NegativePrompt"] = request.negativePrompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.prompt)) {
+            query["Prompt"] = request.prompt ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.seed)) {
+            query["Seed"] = request.seed!;
+        }
+        if (!TeaUtils.Client.isUnset(request.size)) {
+            query["Size"] = request.size ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.style)) {
+            query["Style"] = request.style ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitText2ImageJob",
+            "version": "2023-06-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitText2ImageJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitText2ImageJob(_ request: SubmitText2ImageJobRequest) async throws -> SubmitText2ImageJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitText2ImageJobWithOptions(request as! SubmitText2ImageJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
