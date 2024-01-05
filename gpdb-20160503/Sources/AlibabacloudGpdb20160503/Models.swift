@@ -767,6 +767,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var privateIpAddress: String?
 
+    public var prodType: String?
+
     public var regionId: String?
 
     public var resourceGroupId: String?
@@ -880,6 +882,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if self.privateIpAddress != nil {
             map["PrivateIpAddress"] = self.privateIpAddress!
+        }
+        if self.prodType != nil {
+            map["ProdType"] = self.prodType!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -1005,6 +1010,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PrivateIpAddress") && dict["PrivateIpAddress"] != nil {
             self.privateIpAddress = dict["PrivateIpAddress"] as! String
+        }
+        if dict.keys.contains("ProdType") && dict["ProdType"] != nil {
+            self.prodType = dict["ProdType"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -3839,6 +3847,319 @@ public class DescribeAccountsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeActiveSQLRecordsRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var database: String?
+
+    public var endTime: String?
+
+    public var keyword: String?
+
+    public var maxDuration: String?
+
+    public var minDuration: String?
+
+    public var order: String?
+
+    public var startTime: String?
+
+    public var user: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.database != nil {
+            map["Database"] = self.database!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
+        if self.maxDuration != nil {
+            map["MaxDuration"] = self.maxDuration!
+        }
+        if self.minDuration != nil {
+            map["MinDuration"] = self.minDuration!
+        }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.user != nil {
+            map["User"] = self.user!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Database") && dict["Database"] != nil {
+            self.database = dict["Database"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Keyword") && dict["Keyword"] != nil {
+            self.keyword = dict["Keyword"] as! String
+        }
+        if dict.keys.contains("MaxDuration") && dict["MaxDuration"] != nil {
+            self.maxDuration = dict["MaxDuration"] as! String
+        }
+        if dict.keys.contains("MinDuration") && dict["MinDuration"] != nil {
+            self.minDuration = dict["MinDuration"] as! String
+        }
+        if dict.keys.contains("Order") && dict["Order"] != nil {
+            self.order = dict["Order"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("User") && dict["User"] != nil {
+            self.user = dict["User"] as! String
+        }
+    }
+}
+
+public class DescribeActiveSQLRecordsResponseBody : Tea.TeaModel {
+    public class Queries : Tea.TeaModel {
+        public var clientAddr: String?
+
+        public var database: String?
+
+        public var PID: String?
+
+        public var query: String?
+
+        public var queryDuration: String?
+
+        public var queryStart: String?
+
+        public var sessionID: String?
+
+        public var sqlTruncated: String?
+
+        public var sqlTruncatedThreshold: String?
+
+        public var state: String?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientAddr != nil {
+                map["ClientAddr"] = self.clientAddr!
+            }
+            if self.database != nil {
+                map["Database"] = self.database!
+            }
+            if self.PID != nil {
+                map["PID"] = self.PID!
+            }
+            if self.query != nil {
+                map["Query"] = self.query!
+            }
+            if self.queryDuration != nil {
+                map["QueryDuration"] = self.queryDuration!
+            }
+            if self.queryStart != nil {
+                map["QueryStart"] = self.queryStart!
+            }
+            if self.sessionID != nil {
+                map["SessionID"] = self.sessionID!
+            }
+            if self.sqlTruncated != nil {
+                map["SqlTruncated"] = self.sqlTruncated!
+            }
+            if self.sqlTruncatedThreshold != nil {
+                map["SqlTruncatedThreshold"] = self.sqlTruncatedThreshold!
+            }
+            if self.state != nil {
+                map["State"] = self.state!
+            }
+            if self.user != nil {
+                map["User"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClientAddr") && dict["ClientAddr"] != nil {
+                self.clientAddr = dict["ClientAddr"] as! String
+            }
+            if dict.keys.contains("Database") && dict["Database"] != nil {
+                self.database = dict["Database"] as! String
+            }
+            if dict.keys.contains("PID") && dict["PID"] != nil {
+                self.PID = dict["PID"] as! String
+            }
+            if dict.keys.contains("Query") && dict["Query"] != nil {
+                self.query = dict["Query"] as! String
+            }
+            if dict.keys.contains("QueryDuration") && dict["QueryDuration"] != nil {
+                self.queryDuration = dict["QueryDuration"] as! String
+            }
+            if dict.keys.contains("QueryStart") && dict["QueryStart"] != nil {
+                self.queryStart = dict["QueryStart"] as! String
+            }
+            if dict.keys.contains("SessionID") && dict["SessionID"] != nil {
+                self.sessionID = dict["SessionID"] as! String
+            }
+            if dict.keys.contains("SqlTruncated") && dict["SqlTruncated"] != nil {
+                self.sqlTruncated = dict["SqlTruncated"] as! String
+            }
+            if dict.keys.contains("SqlTruncatedThreshold") && dict["SqlTruncatedThreshold"] != nil {
+                self.sqlTruncatedThreshold = dict["SqlTruncatedThreshold"] as! String
+            }
+            if dict.keys.contains("State") && dict["State"] != nil {
+                self.state = dict["State"] as! String
+            }
+            if dict.keys.contains("User") && dict["User"] != nil {
+                self.user = dict["User"] as! String
+            }
+        }
+    }
+    public var DBInstanceId: String?
+
+    public var queries: [DescribeActiveSQLRecordsResponseBody.Queries]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.queries != nil {
+            var tmp : [Any] = []
+            for k in self.queries! {
+                tmp.append(k.toMap())
+            }
+            map["Queries"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("Queries") && dict["Queries"] != nil {
+            var tmp : [DescribeActiveSQLRecordsResponseBody.Queries] = []
+            for v in dict["Queries"] as! [Any] {
+                var model = DescribeActiveSQLRecordsResponseBody.Queries()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.queries = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeActiveSQLRecordsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeActiveSQLRecordsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeActiveSQLRecordsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeAvailableResourcesRequest : Tea.TeaModel {
     public var chargeType: String?
 
@@ -5391,6 +5712,8 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
 
             public var port: String?
 
+            public var prodType: String?
+
             public var readDelayTime: String?
 
             public var regionId: String?
@@ -5570,6 +5893,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if self.port != nil {
                     map["Port"] = self.port!
+                }
+                if self.prodType != nil {
+                    map["ProdType"] = self.prodType!
                 }
                 if self.readDelayTime != nil {
                     map["ReadDelayTime"] = self.readDelayTime!
@@ -5760,6 +6086,9 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Port") && dict["Port"] != nil {
                     self.port = dict["Port"] as! String
+                }
+                if dict.keys.contains("ProdType") && dict["ProdType"] != nil {
+                    self.prodType = dict["ProdType"] as! String
                 }
                 if dict.keys.contains("ReadDelayTime") && dict["ReadDelayTime"] != nil {
                     self.readDelayTime = dict["ReadDelayTime"] as! String
@@ -9402,6 +9731,8 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var payType: String?
 
+            public var prodType: String?
+
             public var regionId: String?
 
             public var resourceGroupId: String?
@@ -9488,6 +9819,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.payType != nil {
                     map["PayType"] = self.payType!
                 }
+                if self.prodType != nil {
+                    map["ProdType"] = self.prodType!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
@@ -9572,6 +9906,9 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PayType") && dict["PayType"] != nil {
                     self.payType = dict["PayType"] as! String
+                }
+                if dict.keys.contains("ProdType") && dict["ProdType"] != nil {
+                    self.prodType = dict["ProdType"] as! String
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
