@@ -635,6 +635,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.elasticPlanEndDay)) {
             query["ElasticPlanEndDay"] = request.elasticPlanEndDay ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.elasticPlanMonthlyRepeat)) {
+            query["ElasticPlanMonthlyRepeat"] = request.elasticPlanMonthlyRepeat ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.elasticPlanName)) {
             query["ElasticPlanName"] = request.elasticPlanName ?? "";
         }
@@ -4870,6 +4873,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.elasticPlanEndDay)) {
             query["ElasticPlanEndDay"] = request.elasticPlanEndDay ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.elasticPlanMonthlyRepeat)) {
+            query["ElasticPlanMonthlyRepeat"] = request.elasticPlanMonthlyRepeat ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.elasticPlanName)) {
             query["ElasticPlanName"] = request.elasticPlanName ?? "";

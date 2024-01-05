@@ -1885,6 +1885,8 @@ public class CreateElasticPlanRequest : Tea.TeaModel {
 
     public var elasticPlanEndDay: String?
 
+    public var elasticPlanMonthlyRepeat: String?
+
     public var elasticPlanName: String?
 
     public var elasticPlanNodeNum: Int32?
@@ -1933,6 +1935,9 @@ public class CreateElasticPlanRequest : Tea.TeaModel {
         }
         if self.elasticPlanEndDay != nil {
             map["ElasticPlanEndDay"] = self.elasticPlanEndDay!
+        }
+        if self.elasticPlanMonthlyRepeat != nil {
+            map["ElasticPlanMonthlyRepeat"] = self.elasticPlanMonthlyRepeat!
         }
         if self.elasticPlanName != nil {
             map["ElasticPlanName"] = self.elasticPlanName!
@@ -1985,6 +1990,9 @@ public class CreateElasticPlanRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ElasticPlanEndDay") && dict["ElasticPlanEndDay"] != nil {
             self.elasticPlanEndDay = dict["ElasticPlanEndDay"] as! String
+        }
+        if dict.keys.contains("ElasticPlanMonthlyRepeat") && dict["ElasticPlanMonthlyRepeat"] != nil {
+            self.elasticPlanMonthlyRepeat = dict["ElasticPlanMonthlyRepeat"] as! String
         }
         if dict.keys.contains("ElasticPlanName") && dict["ElasticPlanName"] != nil {
             self.elasticPlanName = dict["ElasticPlanName"] as! String
@@ -13571,6 +13579,8 @@ public class DescribeElasticPlanResponseBody : Tea.TeaModel {
 
         public var endTime: String?
 
+        public var monthlyRepeat: String?
+
         public var planName: String?
 
         public var resourcePoolName: String?
@@ -13613,6 +13623,9 @@ public class DescribeElasticPlanResponseBody : Tea.TeaModel {
             if self.endTime != nil {
                 map["EndTime"] = self.endTime!
             }
+            if self.monthlyRepeat != nil {
+                map["MonthlyRepeat"] = self.monthlyRepeat!
+            }
             if self.planName != nil {
                 map["PlanName"] = self.planName!
             }
@@ -13649,6 +13662,9 @@ public class DescribeElasticPlanResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
                 self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("MonthlyRepeat") && dict["MonthlyRepeat"] != nil {
+                self.monthlyRepeat = dict["MonthlyRepeat"] as! String
             }
             if dict.keys.contains("PlanName") && dict["PlanName"] != nil {
                 self.planName = dict["PlanName"] as! String
@@ -24648,6 +24664,8 @@ public class ModifyElasticPlanRequest : Tea.TeaModel {
 
     public var elasticPlanEndDay: String?
 
+    public var elasticPlanMonthlyRepeat: String?
+
     public var elasticPlanName: String?
 
     public var elasticPlanNodeNum: Int32?
@@ -24696,6 +24714,9 @@ public class ModifyElasticPlanRequest : Tea.TeaModel {
         }
         if self.elasticPlanEndDay != nil {
             map["ElasticPlanEndDay"] = self.elasticPlanEndDay!
+        }
+        if self.elasticPlanMonthlyRepeat != nil {
+            map["ElasticPlanMonthlyRepeat"] = self.elasticPlanMonthlyRepeat!
         }
         if self.elasticPlanName != nil {
             map["ElasticPlanName"] = self.elasticPlanName!
@@ -24748,6 +24769,9 @@ public class ModifyElasticPlanRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ElasticPlanEndDay") && dict["ElasticPlanEndDay"] != nil {
             self.elasticPlanEndDay = dict["ElasticPlanEndDay"] as! String
+        }
+        if dict.keys.contains("ElasticPlanMonthlyRepeat") && dict["ElasticPlanMonthlyRepeat"] != nil {
+            self.elasticPlanMonthlyRepeat = dict["ElasticPlanMonthlyRepeat"] as! String
         }
         if dict.keys.contains("ElasticPlanName") && dict["ElasticPlanName"] != nil {
             self.elasticPlanName = dict["ElasticPlanName"] as! String
