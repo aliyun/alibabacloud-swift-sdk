@@ -4941,6 +4941,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var subStatus: String?
 
+    public var tenantId: String?
+
     public var thirdpartyLibDir: String?
 
     public var thirdpartyLibs: [String]?
@@ -5075,6 +5077,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.subStatus != nil {
             map["SubStatus"] = self.subStatus!
+        }
+        if self.tenantId != nil {
+            map["TenantId"] = self.tenantId!
         }
         if self.thirdpartyLibDir != nil {
             map["ThirdpartyLibDir"] = self.thirdpartyLibDir!
@@ -5225,6 +5230,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SubStatus") && dict["SubStatus"] != nil {
             self.subStatus = dict["SubStatus"] as! String
+        }
+        if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
+            self.tenantId = dict["TenantId"] as! String
         }
         if dict.keys.contains("ThirdpartyLibDir") && dict["ThirdpartyLibDir"] != nil {
             self.thirdpartyLibDir = dict["ThirdpartyLibDir"] as! String
