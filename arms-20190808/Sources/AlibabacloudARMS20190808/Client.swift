@@ -410,6 +410,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addTagToFlinkClusterWithOptions(_ request: AddTagToFlinkClusterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddTagToFlinkClusterResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clusterId)) {
+            query["ClusterId"] = request.clusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flinkWorkSpaceId)) {
+            query["FlinkWorkSpaceId"] = request.flinkWorkSpaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.flinkWorkSpaceName)) {
+            query["FlinkWorkSpaceName"] = request.flinkWorkSpaceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetUserId)) {
+            query["TargetUserId"] = request.targetUserId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddTagToFlinkCluster",
+            "version": "2019-08-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddTagToFlinkClusterResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addTagToFlinkCluster(_ request: AddTagToFlinkClusterRequest) async throws -> AddTagToFlinkClusterResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addTagToFlinkClusterWithOptions(request as! AddTagToFlinkClusterRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func appendInstancesToPrometheusGlobalViewWithOptions(_ request: AppendInstancesToPrometheusGlobalViewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AppendInstancesToPrometheusGlobalViewResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
