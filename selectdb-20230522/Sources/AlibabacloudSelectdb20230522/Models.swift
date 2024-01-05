@@ -216,8 +216,6 @@ public class CheckCreateDBInstanceRequest : Tea.TeaModel {
 
     public var securityIPList: String?
 
-    public var storageSize: String?
-
     public var usedTime: Int32?
 
     public var vSwitchId: String?
@@ -279,9 +277,6 @@ public class CheckCreateDBInstanceRequest : Tea.TeaModel {
         if self.securityIPList != nil {
             map["SecurityIPList"] = self.securityIPList!
         }
-        if self.storageSize != nil {
-            map["StorageSize"] = self.storageSize!
-        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -336,9 +331,6 @@ public class CheckCreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityIPList") && dict["SecurityIPList"] != nil {
             self.securityIPList = dict["SecurityIPList"] as! String
-        }
-        if dict.keys.contains("StorageSize") && dict["StorageSize"] != nil {
-            self.storageSize = dict["StorageSize"] as! String
         }
         if dict.keys.contains("UsedTime") && dict["UsedTime"] != nil {
             self.usedTime = dict["UsedTime"] as! Int32
@@ -612,8 +604,6 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
-    public var storageSize: String?
-
     public var usedTime: String?
 
     public var vSwitchId: String?
@@ -669,9 +659,6 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.storageSize != nil {
-            map["StorageSize"] = self.storageSize!
-        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -720,9 +707,6 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("StorageSize") && dict["StorageSize"] != nil {
-            self.storageSize = dict["StorageSize"] as! String
         }
         if dict.keys.contains("UsedTime") && dict["UsedTime"] != nil {
             self.usedTime = dict["UsedTime"] as! String
@@ -896,8 +880,6 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var securityIPList: String?
 
-    public var storageSize: String?
-
     public var usedTime: Int32?
 
     public var vSwitchId: String?
@@ -959,9 +941,6 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.securityIPList != nil {
             map["SecurityIPList"] = self.securityIPList!
         }
-        if self.storageSize != nil {
-            map["StorageSize"] = self.storageSize!
-        }
         if self.usedTime != nil {
             map["UsedTime"] = self.usedTime!
         }
@@ -1016,9 +995,6 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityIPList") && dict["SecurityIPList"] != nil {
             self.securityIPList = dict["SecurityIPList"] as! String
-        }
-        if dict.keys.contains("StorageSize") && dict["StorageSize"] != nil {
-            self.storageSize = dict["StorageSize"] as! String
         }
         if dict.keys.contains("UsedTime") && dict["UsedTime"] != nil {
             self.usedTime = dict["UsedTime"] as! Int32
@@ -1655,8 +1631,6 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
     public class DBClusterList : Tea.TeaModel {
         public var cacheStorageSizeGB: String?
 
-        public var cacheStorageSizeGiB: Int64?
-
         public var cacheStorageType: String?
 
         public var chargeType: String?
@@ -1674,8 +1648,6 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public var dbInstanceName: String?
 
         public var memory: Int64?
-
-        public var objectStoreSizeGiB: Int64?
 
         public var performanceLevel: String?
 
@@ -1699,9 +1671,6 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.cacheStorageSizeGB != nil {
                 map["CacheStorageSizeGB"] = self.cacheStorageSizeGB!
-            }
-            if self.cacheStorageSizeGiB != nil {
-                map["CacheStorageSizeGiB"] = self.cacheStorageSizeGiB!
             }
             if self.cacheStorageType != nil {
                 map["CacheStorageType"] = self.cacheStorageType!
@@ -1730,9 +1699,6 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             if self.memory != nil {
                 map["Memory"] = self.memory!
             }
-            if self.objectStoreSizeGiB != nil {
-                map["ObjectStoreSizeGiB"] = self.objectStoreSizeGiB!
-            }
             if self.performanceLevel != nil {
                 map["PerformanceLevel"] = self.performanceLevel!
             }
@@ -1748,9 +1714,6 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CacheStorageSizeGB") && dict["CacheStorageSizeGB"] != nil {
                 self.cacheStorageSizeGB = dict["CacheStorageSizeGB"] as! String
-            }
-            if dict.keys.contains("CacheStorageSizeGiB") && dict["CacheStorageSizeGiB"] != nil {
-                self.cacheStorageSizeGiB = dict["CacheStorageSizeGiB"] as! Int64
             }
             if dict.keys.contains("CacheStorageType") && dict["CacheStorageType"] != nil {
                 self.cacheStorageType = dict["CacheStorageType"] as! String
@@ -1778,9 +1741,6 @@ public class DescribeDBInstanceAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Memory") && dict["Memory"] != nil {
                 self.memory = dict["Memory"] as! Int64
-            }
-            if dict.keys.contains("ObjectStoreSizeGiB") && dict["ObjectStoreSizeGiB"] != nil {
-                self.objectStoreSizeGiB = dict["ObjectStoreSizeGiB"] as! Int64
             }
             if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
                 self.performanceLevel = dict["PerformanceLevel"] as! String
@@ -2093,6 +2053,148 @@ public class DescribeDBInstanceNetInfoRequest : Tea.TeaModel {
 }
 
 public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
+    public class DBClustersNetInfos : Tea.TeaModel {
+        public class PortList : Tea.TeaModel {
+            public var port: Int32?
+
+            public var protocol_: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.port != nil {
+                    map["Port"] = self.port!
+                }
+                if self.protocol_ != nil {
+                    map["Protocol"] = self.protocol_!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Port") && dict["Port"] != nil {
+                    self.port = dict["Port"] as! Int32
+                }
+                if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
+                    self.protocol_ = dict["Protocol"] as! String
+                }
+            }
+        }
+        public var clusterId: String?
+
+        public var connectionString: String?
+
+        public var ip: String?
+
+        public var netType: String?
+
+        public var portList: [DescribeDBInstanceNetInfoResponseBody.DBClustersNetInfos.PortList]?
+
+        public var userVisible: Bool?
+
+        public var vpcId: String?
+
+        public var vpcInstanceId: String?
+
+        public var vswitchId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
+            if self.connectionString != nil {
+                map["ConnectionString"] = self.connectionString!
+            }
+            if self.ip != nil {
+                map["Ip"] = self.ip!
+            }
+            if self.netType != nil {
+                map["NetType"] = self.netType!
+            }
+            if self.portList != nil {
+                var tmp : [Any] = []
+                for k in self.portList! {
+                    tmp.append(k.toMap())
+                }
+                map["PortList"] = tmp
+            }
+            if self.userVisible != nil {
+                map["UserVisible"] = self.userVisible!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
+            }
+            if self.vpcInstanceId != nil {
+                map["VpcInstanceId"] = self.vpcInstanceId!
+            }
+            if self.vswitchId != nil {
+                map["VswitchId"] = self.vswitchId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
+                self.clusterId = dict["ClusterId"] as! String
+            }
+            if dict.keys.contains("ConnectionString") && dict["ConnectionString"] != nil {
+                self.connectionString = dict["ConnectionString"] as! String
+            }
+            if dict.keys.contains("Ip") && dict["Ip"] != nil {
+                self.ip = dict["Ip"] as! String
+            }
+            if dict.keys.contains("NetType") && dict["NetType"] != nil {
+                self.netType = dict["NetType"] as! String
+            }
+            if dict.keys.contains("PortList") && dict["PortList"] != nil {
+                var tmp : [DescribeDBInstanceNetInfoResponseBody.DBClustersNetInfos.PortList] = []
+                for v in dict["PortList"] as! [Any] {
+                    var model = DescribeDBInstanceNetInfoResponseBody.DBClustersNetInfos.PortList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.portList = tmp
+            }
+            if dict.keys.contains("UserVisible") && dict["UserVisible"] != nil {
+                self.userVisible = dict["UserVisible"] as! Bool
+            }
+            if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                self.vpcId = dict["VpcId"] as! String
+            }
+            if dict.keys.contains("VpcInstanceId") && dict["VpcInstanceId"] != nil {
+                self.vpcInstanceId = dict["VpcInstanceId"] as! String
+            }
+            if dict.keys.contains("VswitchId") && dict["VswitchId"] != nil {
+                self.vswitchId = dict["VswitchId"] as! String
+            }
+        }
+    }
     public class DBInstanceNetInfos : Tea.TeaModel {
         public class PortList : Tea.TeaModel {
             public var port: Int32?
@@ -2131,6 +2233,8 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var clusterId: String?
+
         public var connectionString: String?
 
         public var ip: String?
@@ -2161,6 +2265,9 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.clusterId != nil {
+                map["ClusterId"] = self.clusterId!
+            }
             if self.connectionString != nil {
                 map["ConnectionString"] = self.connectionString!
             }
@@ -2193,6 +2300,9 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
+                self.clusterId = dict["ClusterId"] as! String
+            }
             if dict.keys.contains("ConnectionString") && dict["ConnectionString"] != nil {
                 self.connectionString = dict["ConnectionString"] as! String
             }
@@ -2227,6 +2337,8 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var DBClustersNetInfos: [DescribeDBInstanceNetInfoResponseBody.DBClustersNetInfos]?
+
     public var DBInstanceNetInfos: [DescribeDBInstanceNetInfoResponseBody.DBInstanceNetInfos]?
 
     public var requestId: String?
@@ -2245,6 +2357,13 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.DBClustersNetInfos != nil {
+            var tmp : [Any] = []
+            for k in self.DBClustersNetInfos! {
+                tmp.append(k.toMap())
+            }
+            map["DBClustersNetInfos"] = tmp
+        }
         if self.DBInstanceNetInfos != nil {
             var tmp : [Any] = []
             for k in self.DBInstanceNetInfos! {
@@ -2259,6 +2378,17 @@ public class DescribeDBInstanceNetInfoResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClustersNetInfos") && dict["DBClustersNetInfos"] != nil {
+            var tmp : [DescribeDBInstanceNetInfoResponseBody.DBClustersNetInfos] = []
+            for v in dict["DBClustersNetInfos"] as! [Any] {
+                var model = DescribeDBInstanceNetInfoResponseBody.DBClustersNetInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.DBClustersNetInfos = tmp
+        }
         if dict.keys.contains("DBInstanceNetInfos") && dict["DBInstanceNetInfos"] != nil {
             var tmp : [DescribeDBInstanceNetInfoResponseBody.DBInstanceNetInfos] = []
             for v in dict["DBInstanceNetInfos"] as! [Any] {
@@ -2416,123 +2546,6 @@ public class DescribeDBInstancesRequest : Tea.TeaModel {
 
 public class DescribeDBInstancesResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
-        public class DBClusterList : Tea.TeaModel {
-            public var cacheStorageSizeGiB: Int64?
-
-            public var cacheStorageType: String?
-
-            public var cpuCores: Int64?
-
-            public var createdTime: String?
-
-            public var DBInstanceId: String?
-
-            public var dbClusterClass: String?
-
-            public var dbClusterId: String?
-
-            public var dbClusterName: String?
-
-            public var memory: Int64?
-
-            public var performanceLevel: String?
-
-            public var status: String?
-
-            public var objectStoreSizeGiB: Int64?
-
-            public override init() {
-                super.init()
-            }
-
-            public init(_ dict: [String: Any]) {
-                super.init()
-                self.fromMap(dict)
-            }
-
-            public override func validate() throws -> Void {
-            }
-
-            public override func toMap() -> [String : Any] {
-                var map = super.toMap()
-                if self.cacheStorageSizeGiB != nil {
-                    map["CacheStorageSizeGiB"] = self.cacheStorageSizeGiB!
-                }
-                if self.cacheStorageType != nil {
-                    map["CacheStorageType"] = self.cacheStorageType!
-                }
-                if self.cpuCores != nil {
-                    map["CpuCores"] = self.cpuCores!
-                }
-                if self.createdTime != nil {
-                    map["CreatedTime"] = self.createdTime!
-                }
-                if self.DBInstanceId != nil {
-                    map["DBInstanceId"] = self.DBInstanceId!
-                }
-                if self.dbClusterClass != nil {
-                    map["DbClusterClass"] = self.dbClusterClass!
-                }
-                if self.dbClusterId != nil {
-                    map["DbClusterId"] = self.dbClusterId!
-                }
-                if self.dbClusterName != nil {
-                    map["DbClusterName"] = self.dbClusterName!
-                }
-                if self.memory != nil {
-                    map["Memory"] = self.memory!
-                }
-                if self.performanceLevel != nil {
-                    map["PerformanceLevel"] = self.performanceLevel!
-                }
-                if self.status != nil {
-                    map["Status"] = self.status!
-                }
-                if self.objectStoreSizeGiB != nil {
-                    map["objectStoreSizeGiB"] = self.objectStoreSizeGiB!
-                }
-                return map
-            }
-
-            public override func fromMap(_ dict: [String: Any]) -> Void {
-                if dict.keys.contains("CacheStorageSizeGiB") && dict["CacheStorageSizeGiB"] != nil {
-                    self.cacheStorageSizeGiB = dict["CacheStorageSizeGiB"] as! Int64
-                }
-                if dict.keys.contains("CacheStorageType") && dict["CacheStorageType"] != nil {
-                    self.cacheStorageType = dict["CacheStorageType"] as! String
-                }
-                if dict.keys.contains("CpuCores") && dict["CpuCores"] != nil {
-                    self.cpuCores = dict["CpuCores"] as! Int64
-                }
-                if dict.keys.contains("CreatedTime") && dict["CreatedTime"] != nil {
-                    self.createdTime = dict["CreatedTime"] as! String
-                }
-                if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
-                    self.DBInstanceId = dict["DBInstanceId"] as! String
-                }
-                if dict.keys.contains("DbClusterClass") && dict["DbClusterClass"] != nil {
-                    self.dbClusterClass = dict["DbClusterClass"] as! String
-                }
-                if dict.keys.contains("DbClusterId") && dict["DbClusterId"] != nil {
-                    self.dbClusterId = dict["DbClusterId"] as! String
-                }
-                if dict.keys.contains("DbClusterName") && dict["DbClusterName"] != nil {
-                    self.dbClusterName = dict["DbClusterName"] as! String
-                }
-                if dict.keys.contains("Memory") && dict["Memory"] != nil {
-                    self.memory = dict["Memory"] as! Int64
-                }
-                if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
-                    self.performanceLevel = dict["PerformanceLevel"] as! String
-                }
-                if dict.keys.contains("Status") && dict["Status"] != nil {
-                    self.status = dict["Status"] as! String
-                }
-                if dict.keys.contains("objectStoreSizeGiB") && dict["objectStoreSizeGiB"] != nil {
-                    self.objectStoreSizeGiB = dict["objectStoreSizeGiB"] as! Int64
-                }
-            }
-        }
         public class Tags : Tea.TeaModel {
             public var key: String?
 
@@ -2576,10 +2589,6 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
         public var clusterCount: Int32?
 
-        public var createTime: String?
-
-        public var DBClusterList: [DescribeDBInstancesResponseBody.Items.DBClusterList]?
-
         public var DBInstanceId: String?
 
         public var description_: String?
@@ -2593,8 +2602,6 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
         public var gmtCreated: String?
 
         public var gmtModified: String?
-
-        public var instanceClass: String?
 
         public var instanceUsedType: String?
 
@@ -2675,16 +2682,6 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             if self.clusterCount != nil {
                 map["ClusterCount"] = self.clusterCount!
             }
-            if self.createTime != nil {
-                map["CreateTime"] = self.createTime!
-            }
-            if self.DBClusterList != nil {
-                var tmp : [Any] = []
-                for k in self.DBClusterList! {
-                    tmp.append(k.toMap())
-                }
-                map["DBClusterList"] = tmp
-            }
             if self.DBInstanceId != nil {
                 map["DBInstanceId"] = self.DBInstanceId!
             }
@@ -2705,9 +2702,6 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
-            }
-            if self.instanceClass != nil {
-                map["InstanceClass"] = self.instanceClass!
             }
             if self.instanceUsedType != nil {
                 map["InstanceUsedType"] = self.instanceUsedType!
@@ -2810,20 +2804,6 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             if dict.keys.contains("ClusterCount") && dict["ClusterCount"] != nil {
                 self.clusterCount = dict["ClusterCount"] as! Int32
             }
-            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
-                self.createTime = dict["CreateTime"] as! String
-            }
-            if dict.keys.contains("DBClusterList") && dict["DBClusterList"] != nil {
-                var tmp : [DescribeDBInstancesResponseBody.Items.DBClusterList] = []
-                for v in dict["DBClusterList"] as! [Any] {
-                    var model = DescribeDBInstancesResponseBody.Items.DBClusterList()
-                    if v != nil {
-                        model.fromMap(v as! [String: Any])
-                    }
-                    tmp.append(model)
-                }
-                self.DBClusterList = tmp
-            }
             if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
                 self.DBInstanceId = dict["DBInstanceId"] as! String
             }
@@ -2844,9 +2824,6 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! String
-            }
-            if dict.keys.contains("InstanceClass") && dict["InstanceClass"] != nil {
-                self.instanceClass = dict["InstanceClass"] as! String
             }
             if dict.keys.contains("InstanceUsedType") && dict["InstanceUsedType"] != nil {
                 self.instanceUsedType = dict["InstanceUsedType"] as! String

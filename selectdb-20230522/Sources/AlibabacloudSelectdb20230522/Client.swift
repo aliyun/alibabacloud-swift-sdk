@@ -109,9 +109,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityIPList)) {
             query["SecurityIPList"] = request.securityIPList ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.storageSize)) {
-            query["StorageSize"] = request.storageSize ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime!;
         }
@@ -213,9 +210,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
         }
-        if (!TeaUtils.Client.isUnset(request.storageSize)) {
-            query["StorageSize"] = request.storageSize ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime ?? "";
         }
@@ -299,9 +293,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.securityIPList)) {
             query["SecurityIPList"] = request.securityIPList ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.storageSize)) {
-            query["StorageSize"] = request.storageSize ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.usedTime)) {
             query["UsedTime"] = request.usedTime!;
