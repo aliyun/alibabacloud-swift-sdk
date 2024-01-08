@@ -368,9 +368,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProjectWithOptions(_ projectName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProjectResponse {
+    public func getProjectWithOptions(_ projectName: String, _ request: GetProjectRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetProjectResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.verbose)) {
+            query["verbose"] = request.verbose!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "GetProject",
@@ -388,10 +394,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getProject(_ projectName: String) async throws -> GetProjectResponse {
+    public func getProject(_ projectName: String, _ request: GetProjectRequest) async throws -> GetProjectResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await getProjectWithOptions(projectName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await getProjectWithOptions(projectName as! String, request as! GetProjectRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -761,6 +767,55 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listFunctionsWithOptions(projectName as! String, request as! ListFunctionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listJobInfosWithOptions(_ request: ListJobInfosRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListJobInfosResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ascOrder)) {
+            query["ascOrder"] = request.ascOrder!;
+        }
+        if (!TeaUtils.Client.isUnset(request.orderColumn)) {
+            query["orderColumn"] = request.orderColumn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["pageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["pageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.region)) {
+            query["region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            query["tenantId"] = request.tenantId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": request.body ?? ""
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListJobInfos",
+            "version": "2022-01-04",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/jobs",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListJobInfosResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listJobInfos(_ request: ListJobInfosRequest) async throws -> ListJobInfosResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listJobInfosWithOptions(request as! ListJobInfosRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

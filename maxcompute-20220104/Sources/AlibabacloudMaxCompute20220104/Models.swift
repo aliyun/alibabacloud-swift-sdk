@@ -1592,6 +1592,36 @@ public class GetPackageResponse : Tea.TeaModel {
     }
 }
 
+public class GetProjectRequest : Tea.TeaModel {
+    public var verbose: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.verbose != nil {
+            map["verbose"] = self.verbose!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("verbose") && dict["verbose"] != nil {
+            self.verbose = dict["verbose"] as! Bool
+        }
+    }
+}
+
 public class GetProjectResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class IpWhiteList : Tea.TeaModel {
@@ -1725,6 +1755,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 }
                 public var projectBackupSize: Int64?
 
+                public var projectTotalSize: Int64?
+
                 public var storageTierSize: GetProjectResponseBody.Data.Properties.StorageTierInfo.StorageTierSize?
 
                 public override init() {
@@ -1745,6 +1777,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                     if self.projectBackupSize != nil {
                         map["projectBackupSize"] = self.projectBackupSize!
                     }
+                    if self.projectTotalSize != nil {
+                        map["projectTotalSize"] = self.projectTotalSize!
+                    }
                     if self.storageTierSize != nil {
                         map["storageTierSize"] = self.storageTierSize?.toMap()
                     }
@@ -1754,6 +1789,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("projectBackupSize") && dict["projectBackupSize"] != nil {
                         self.projectBackupSize = dict["projectBackupSize"] as! Int64
+                    }
+                    if dict.keys.contains("projectTotalSize") && dict["projectTotalSize"] != nil {
+                        self.projectTotalSize = dict["projectTotalSize"] as! Int64
                     }
                     if dict.keys.contains("storageTierSize") && dict["storageTierSize"] != nil {
                         var model = GetProjectResponseBody.Data.Properties.StorageTierInfo.StorageTierSize()
@@ -1801,6 +1839,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
             }
             public var allowFullScan: Bool?
 
+            public var elderTunnelQuota: String?
+
             public var enableDecimal2: Bool?
 
             public var enableTunnelQuotaRoute: Bool?
@@ -1841,6 +1881,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 if self.allowFullScan != nil {
                     map["allowFullScan"] = self.allowFullScan!
                 }
+                if self.elderTunnelQuota != nil {
+                    map["elderTunnelQuota"] = self.elderTunnelQuota!
+                }
                 if self.enableDecimal2 != nil {
                     map["enableDecimal2"] = self.enableDecimal2!
                 }
@@ -1877,6 +1920,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("allowFullScan") && dict["allowFullScan"] != nil {
                     self.allowFullScan = dict["allowFullScan"] as! Bool
+                }
+                if dict.keys.contains("elderTunnelQuota") && dict["elderTunnelQuota"] != nil {
+                    self.elderTunnelQuota = dict["elderTunnelQuota"] as! String
                 }
                 if dict.keys.contains("enableDecimal2") && dict["enableDecimal2"] != nil {
                     self.enableDecimal2 = dict["enableDecimal2"] as! Bool
@@ -2074,6 +2120,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
         public var costStorage: String?
 
+        public var createdTime: Int64?
+
         public var defaultQuota: String?
 
         public var ipWhiteList: GetProjectResponseBody.Data.IpWhiteList?
@@ -2086,6 +2134,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
         public var properties: GetProjectResponseBody.Data.Properties?
 
+        public var regionId: String?
+
         public var saleTag: GetProjectResponseBody.Data.SaleTag?
 
         public var securityProperties: GetProjectResponseBody.Data.SecurityProperties?
@@ -2093,6 +2143,8 @@ public class GetProjectResponseBody : Tea.TeaModel {
         public var status: String?
 
         public var superAdmins: [String]?
+
+        public var threeTierModel: Bool?
 
         public var type: String?
 
@@ -2120,6 +2172,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             if self.costStorage != nil {
                 map["costStorage"] = self.costStorage!
             }
+            if self.createdTime != nil {
+                map["createdTime"] = self.createdTime!
+            }
             if self.defaultQuota != nil {
                 map["defaultQuota"] = self.defaultQuota!
             }
@@ -2138,6 +2193,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             if self.properties != nil {
                 map["properties"] = self.properties?.toMap()
             }
+            if self.regionId != nil {
+                map["regionId"] = self.regionId!
+            }
             if self.saleTag != nil {
                 map["saleTag"] = self.saleTag?.toMap()
             }
@@ -2149,6 +2207,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             }
             if self.superAdmins != nil {
                 map["superAdmins"] = self.superAdmins!
+            }
+            if self.threeTierModel != nil {
+                map["threeTierModel"] = self.threeTierModel!
             }
             if self.type != nil {
                 map["type"] = self.type!
@@ -2162,6 +2223,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("costStorage") && dict["costStorage"] != nil {
                 self.costStorage = dict["costStorage"] as! String
+            }
+            if dict.keys.contains("createdTime") && dict["createdTime"] != nil {
+                self.createdTime = dict["createdTime"] as! Int64
             }
             if dict.keys.contains("defaultQuota") && dict["defaultQuota"] != nil {
                 self.defaultQuota = dict["defaultQuota"] as! String
@@ -2185,6 +2249,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 model.fromMap(dict["properties"] as! [String: Any])
                 self.properties = model
             }
+            if dict.keys.contains("regionId") && dict["regionId"] != nil {
+                self.regionId = dict["regionId"] as! String
+            }
             if dict.keys.contains("saleTag") && dict["saleTag"] != nil {
                 var model = GetProjectResponseBody.Data.SaleTag()
                 model.fromMap(dict["saleTag"] as! [String: Any])
@@ -2201,12 +2268,19 @@ public class GetProjectResponseBody : Tea.TeaModel {
             if dict.keys.contains("superAdmins") && dict["superAdmins"] != nil {
                 self.superAdmins = dict["superAdmins"] as! [String]
             }
+            if dict.keys.contains("threeTierModel") && dict["threeTierModel"] != nil {
+                self.threeTierModel = dict["threeTierModel"] as! Bool
+            }
             if dict.keys.contains("type") && dict["type"] != nil {
                 self.type = dict["type"] as! String
             }
         }
     }
     public var data: GetProjectResponseBody.Data?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
 
     public var httpCode: Int32?
 
@@ -2230,6 +2304,12 @@ public class GetProjectResponseBody : Tea.TeaModel {
         if self.data != nil {
             map["data"] = self.data?.toMap()
         }
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
         if self.httpCode != nil {
             map["httpCode"] = self.httpCode!
         }
@@ -2244,6 +2324,12 @@ public class GetProjectResponseBody : Tea.TeaModel {
             var model = GetProjectResponseBody.Data()
             model.fromMap(dict["data"] as! [String: Any])
             self.data = model
+        }
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMsg") && dict["errorMsg"] != nil {
+            self.errorMsg = dict["errorMsg"] as! String
         }
         if dict.keys.contains("httpCode") && dict["httpCode"] != nil {
             self.httpCode = dict["httpCode"] as! Int32
@@ -6554,6 +6640,487 @@ public class ListFunctionsResponse : Tea.TeaModel {
     }
 }
 
+public class ListJobInfosRequest : Tea.TeaModel {
+    public var ascOrder: Bool?
+
+    public var body: String?
+
+    public var orderColumn: String?
+
+    public var pageNumber: Int64?
+
+    public var pageSize: Int64?
+
+    public var region: String?
+
+    public var tenantId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ascOrder != nil {
+            map["ascOrder"] = self.ascOrder!
+        }
+        if self.body != nil {
+            map["body"] = self.body!
+        }
+        if self.orderColumn != nil {
+            map["orderColumn"] = self.orderColumn!
+        }
+        if self.pageNumber != nil {
+            map["pageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["pageSize"] = self.pageSize!
+        }
+        if self.region != nil {
+            map["region"] = self.region!
+        }
+        if self.tenantId != nil {
+            map["tenantId"] = self.tenantId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ascOrder") && dict["ascOrder"] != nil {
+            self.ascOrder = dict["ascOrder"] as! Bool
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            self.body = dict["body"] as! String
+        }
+        if dict.keys.contains("orderColumn") && dict["orderColumn"] != nil {
+            self.orderColumn = dict["orderColumn"] as! String
+        }
+        if dict.keys.contains("pageNumber") && dict["pageNumber"] != nil {
+            self.pageNumber = dict["pageNumber"] as! Int64
+        }
+        if dict.keys.contains("pageSize") && dict["pageSize"] != nil {
+            self.pageSize = dict["pageSize"] as! Int64
+        }
+        if dict.keys.contains("region") && dict["region"] != nil {
+            self.region = dict["region"] as! String
+        }
+        if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+            self.tenantId = dict["tenantId"] as! String
+        }
+    }
+}
+
+public class ListJobInfosResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class JobInfoList : Tea.TeaModel {
+            public var cluster: String?
+
+            public var cuSnapshot: Double?
+
+            public var cuUsage: Int64?
+
+            public var endAtTime: Int64?
+
+            public var extNodeId: String?
+
+            public var extNodeOnDuty: String?
+
+            public var extPlantFrom: String?
+
+            public var instanceId: String?
+
+            public var jobOwner: String?
+
+            public var jobType: String?
+
+            public var memorySnapshot: Double?
+
+            public var memoryUsage: Int64?
+
+            public var priority: Int64?
+
+            public var project: String?
+
+            public var quotaNickname: String?
+
+            public var quotaType: String?
+
+            public var region: String?
+
+            public var runningAtTime: Int64?
+
+            public var runningTime: Int64?
+
+            public var signature: String?
+
+            public var status: String?
+
+            public var statusSnapshot: String?
+
+            public var submittedAtTime: Int64?
+
+            public var tags: String?
+
+            public var tenantId: String?
+
+            public var totalTime: Int64?
+
+            public var waitingTime: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cluster != nil {
+                    map["cluster"] = self.cluster!
+                }
+                if self.cuSnapshot != nil {
+                    map["cuSnapshot"] = self.cuSnapshot!
+                }
+                if self.cuUsage != nil {
+                    map["cuUsage"] = self.cuUsage!
+                }
+                if self.endAtTime != nil {
+                    map["endAtTime"] = self.endAtTime!
+                }
+                if self.extNodeId != nil {
+                    map["extNodeId"] = self.extNodeId!
+                }
+                if self.extNodeOnDuty != nil {
+                    map["extNodeOnDuty"] = self.extNodeOnDuty!
+                }
+                if self.extPlantFrom != nil {
+                    map["extPlantFrom"] = self.extPlantFrom!
+                }
+                if self.instanceId != nil {
+                    map["instanceId"] = self.instanceId!
+                }
+                if self.jobOwner != nil {
+                    map["jobOwner"] = self.jobOwner!
+                }
+                if self.jobType != nil {
+                    map["jobType"] = self.jobType!
+                }
+                if self.memorySnapshot != nil {
+                    map["memorySnapshot"] = self.memorySnapshot!
+                }
+                if self.memoryUsage != nil {
+                    map["memoryUsage"] = self.memoryUsage!
+                }
+                if self.priority != nil {
+                    map["priority"] = self.priority!
+                }
+                if self.project != nil {
+                    map["project"] = self.project!
+                }
+                if self.quotaNickname != nil {
+                    map["quotaNickname"] = self.quotaNickname!
+                }
+                if self.quotaType != nil {
+                    map["quotaType"] = self.quotaType!
+                }
+                if self.region != nil {
+                    map["region"] = self.region!
+                }
+                if self.runningAtTime != nil {
+                    map["runningAtTime"] = self.runningAtTime!
+                }
+                if self.runningTime != nil {
+                    map["runningTime"] = self.runningTime!
+                }
+                if self.signature != nil {
+                    map["signature"] = self.signature!
+                }
+                if self.status != nil {
+                    map["status"] = self.status!
+                }
+                if self.statusSnapshot != nil {
+                    map["statusSnapshot"] = self.statusSnapshot!
+                }
+                if self.submittedAtTime != nil {
+                    map["submittedAtTime"] = self.submittedAtTime!
+                }
+                if self.tags != nil {
+                    map["tags"] = self.tags!
+                }
+                if self.tenantId != nil {
+                    map["tenantId"] = self.tenantId!
+                }
+                if self.totalTime != nil {
+                    map["totalTime"] = self.totalTime!
+                }
+                if self.waitingTime != nil {
+                    map["waitingTime"] = self.waitingTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("cluster") && dict["cluster"] != nil {
+                    self.cluster = dict["cluster"] as! String
+                }
+                if dict.keys.contains("cuSnapshot") && dict["cuSnapshot"] != nil {
+                    self.cuSnapshot = dict["cuSnapshot"] as! Double
+                }
+                if dict.keys.contains("cuUsage") && dict["cuUsage"] != nil {
+                    self.cuUsage = dict["cuUsage"] as! Int64
+                }
+                if dict.keys.contains("endAtTime") && dict["endAtTime"] != nil {
+                    self.endAtTime = dict["endAtTime"] as! Int64
+                }
+                if dict.keys.contains("extNodeId") && dict["extNodeId"] != nil {
+                    self.extNodeId = dict["extNodeId"] as! String
+                }
+                if dict.keys.contains("extNodeOnDuty") && dict["extNodeOnDuty"] != nil {
+                    self.extNodeOnDuty = dict["extNodeOnDuty"] as! String
+                }
+                if dict.keys.contains("extPlantFrom") && dict["extPlantFrom"] != nil {
+                    self.extPlantFrom = dict["extPlantFrom"] as! String
+                }
+                if dict.keys.contains("instanceId") && dict["instanceId"] != nil {
+                    self.instanceId = dict["instanceId"] as! String
+                }
+                if dict.keys.contains("jobOwner") && dict["jobOwner"] != nil {
+                    self.jobOwner = dict["jobOwner"] as! String
+                }
+                if dict.keys.contains("jobType") && dict["jobType"] != nil {
+                    self.jobType = dict["jobType"] as! String
+                }
+                if dict.keys.contains("memorySnapshot") && dict["memorySnapshot"] != nil {
+                    self.memorySnapshot = dict["memorySnapshot"] as! Double
+                }
+                if dict.keys.contains("memoryUsage") && dict["memoryUsage"] != nil {
+                    self.memoryUsage = dict["memoryUsage"] as! Int64
+                }
+                if dict.keys.contains("priority") && dict["priority"] != nil {
+                    self.priority = dict["priority"] as! Int64
+                }
+                if dict.keys.contains("project") && dict["project"] != nil {
+                    self.project = dict["project"] as! String
+                }
+                if dict.keys.contains("quotaNickname") && dict["quotaNickname"] != nil {
+                    self.quotaNickname = dict["quotaNickname"] as! String
+                }
+                if dict.keys.contains("quotaType") && dict["quotaType"] != nil {
+                    self.quotaType = dict["quotaType"] as! String
+                }
+                if dict.keys.contains("region") && dict["region"] != nil {
+                    self.region = dict["region"] as! String
+                }
+                if dict.keys.contains("runningAtTime") && dict["runningAtTime"] != nil {
+                    self.runningAtTime = dict["runningAtTime"] as! Int64
+                }
+                if dict.keys.contains("runningTime") && dict["runningTime"] != nil {
+                    self.runningTime = dict["runningTime"] as! Int64
+                }
+                if dict.keys.contains("signature") && dict["signature"] != nil {
+                    self.signature = dict["signature"] as! String
+                }
+                if dict.keys.contains("status") && dict["status"] != nil {
+                    self.status = dict["status"] as! String
+                }
+                if dict.keys.contains("statusSnapshot") && dict["statusSnapshot"] != nil {
+                    self.statusSnapshot = dict["statusSnapshot"] as! String
+                }
+                if dict.keys.contains("submittedAtTime") && dict["submittedAtTime"] != nil {
+                    self.submittedAtTime = dict["submittedAtTime"] as! Int64
+                }
+                if dict.keys.contains("tags") && dict["tags"] != nil {
+                    self.tags = dict["tags"] as! String
+                }
+                if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+                    self.tenantId = dict["tenantId"] as! String
+                }
+                if dict.keys.contains("totalTime") && dict["totalTime"] != nil {
+                    self.totalTime = dict["totalTime"] as! Int64
+                }
+                if dict.keys.contains("waitingTime") && dict["waitingTime"] != nil {
+                    self.waitingTime = dict["waitingTime"] as! Int64
+                }
+            }
+        }
+        public var jobInfoList: [ListJobInfosResponseBody.Data.JobInfoList]?
+
+        public var pageNumber: Int64?
+
+        public var pageSize: Int64?
+
+        public var totalCount: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.jobInfoList != nil {
+                var tmp : [Any] = []
+                for k in self.jobInfoList! {
+                    tmp.append(k.toMap())
+                }
+                map["jobInfoList"] = tmp
+            }
+            if self.pageNumber != nil {
+                map["pageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["pageSize"] = self.pageSize!
+            }
+            if self.totalCount != nil {
+                map["totalCount"] = self.totalCount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("jobInfoList") && dict["jobInfoList"] != nil {
+                var tmp : [ListJobInfosResponseBody.Data.JobInfoList] = []
+                for v in dict["jobInfoList"] as! [Any] {
+                    var model = ListJobInfosResponseBody.Data.JobInfoList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.jobInfoList = tmp
+            }
+            if dict.keys.contains("pageNumber") && dict["pageNumber"] != nil {
+                self.pageNumber = dict["pageNumber"] as! Int64
+            }
+            if dict.keys.contains("pageSize") && dict["pageSize"] != nil {
+                self.pageSize = dict["pageSize"] as! Int64
+            }
+            if dict.keys.contains("totalCount") && dict["totalCount"] != nil {
+                self.totalCount = dict["totalCount"] as! Int64
+            }
+        }
+    }
+    public var data: ListJobInfosResponseBody.Data?
+
+    public var httpCode: Int32?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["data"] = self.data?.toMap()
+        }
+        if self.httpCode != nil {
+            map["httpCode"] = self.httpCode!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("data") && dict["data"] != nil {
+            var model = ListJobInfosResponseBody.Data()
+            model.fromMap(dict["data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("httpCode") && dict["httpCode"] != nil {
+            self.httpCode = dict["httpCode"] as! Int32
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class ListJobInfosResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListJobInfosResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListJobInfosResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListPackagesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class CreatedPackages : Tea.TeaModel {
@@ -7489,6 +8056,8 @@ public class ListProjectsResponseBody : Tea.TeaModel {
 
             public var costStorage: String?
 
+            public var createdTime: Int64?
+
             public var defaultQuota: String?
 
             public var ipWhiteList: ListProjectsResponseBody.Data.Projects.IpWhiteList?
@@ -7498,6 +8067,8 @@ public class ListProjectsResponseBody : Tea.TeaModel {
             public var owner: String?
 
             public var properties: ListProjectsResponseBody.Data.Projects.Properties?
+
+            public var regionId: String?
 
             public var saleTag: ListProjectsResponseBody.Data.Projects.SaleTag?
 
@@ -7540,6 +8111,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 if self.costStorage != nil {
                     map["costStorage"] = self.costStorage!
                 }
+                if self.createdTime != nil {
+                    map["createdTime"] = self.createdTime!
+                }
                 if self.defaultQuota != nil {
                     map["defaultQuota"] = self.defaultQuota!
                 }
@@ -7554,6 +8128,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 }
                 if self.properties != nil {
                     map["properties"] = self.properties?.toMap()
+                }
+                if self.regionId != nil {
+                    map["regionId"] = self.regionId!
                 }
                 if self.saleTag != nil {
                     map["saleTag"] = self.saleTag?.toMap()
@@ -7591,6 +8168,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("costStorage") && dict["costStorage"] != nil {
                     self.costStorage = dict["costStorage"] as! String
                 }
+                if dict.keys.contains("createdTime") && dict["createdTime"] != nil {
+                    self.createdTime = dict["createdTime"] as! Int64
+                }
                 if dict.keys.contains("defaultQuota") && dict["defaultQuota"] != nil {
                     self.defaultQuota = dict["defaultQuota"] as! String
                 }
@@ -7609,6 +8189,9 @@ public class ListProjectsResponseBody : Tea.TeaModel {
                     var model = ListProjectsResponseBody.Data.Projects.Properties()
                     model.fromMap(dict["properties"] as! [String: Any])
                     self.properties = model
+                }
+                if dict.keys.contains("regionId") && dict["regionId"] != nil {
+                    self.regionId = dict["regionId"] as! String
                 }
                 if dict.keys.contains("saleTag") && dict["saleTag"] != nil {
                     var model = ListProjectsResponseBody.Data.Projects.SaleTag()
