@@ -1023,6 +1023,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.app)) {
             request.appShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.app, "App", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.audioInfo)) {
+            request.audioInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.audioInfo, "AudioInfo", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.avatarInfo)) {
             request.avatarInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.avatarInfo, "AvatarInfo", "json")
         }
@@ -1032,6 +1035,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appShrink)) {
             query["App"] = request.appShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.audioInfoShrink)) {
+            query["AudioInfo"] = request.audioInfoShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.avatarInfoShrink)) {
             query["AvatarInfo"] = request.avatarInfoShrink ?? "";
@@ -1089,6 +1095,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.app)) {
             request.appShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.app, "App", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.audioInfo)) {
+            request.audioInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.audioInfo, "AudioInfo", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.avatarInfo)) {
             request.avatarInfoShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.avatarInfo, "AvatarInfo", "json")
         }
@@ -1098,6 +1107,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appShrink)) {
             query["App"] = request.appShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.audioInfoShrink)) {
+            query["AudioInfo"] = request.audioInfoShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.avatarInfoShrink)) {
             query["AvatarInfo"] = request.avatarInfoShrink ?? "";

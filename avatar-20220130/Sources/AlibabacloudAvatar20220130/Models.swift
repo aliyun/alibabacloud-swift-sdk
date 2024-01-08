@@ -6977,6 +6977,35 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class AudioInfo : Tea.TeaModel {
+        public var sampleRate: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sampleRate != nil {
+                map["SampleRate"] = self.sampleRate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SampleRate") && dict["SampleRate"] != nil {
+                self.sampleRate = dict["SampleRate"] as! Int32
+            }
+        }
+    }
     public class AvatarInfo : Tea.TeaModel {
         public var code: String?
 
@@ -7093,6 +7122,8 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
     }
     public var app: SubmitAudioTo2DAvatarVideoTaskRequest.App?
 
+    public var audioInfo: SubmitAudioTo2DAvatarVideoTaskRequest.AudioInfo?
+
     public var avatarInfo: SubmitAudioTo2DAvatarVideoTaskRequest.AvatarInfo?
 
     public var callback: Bool?
@@ -7120,6 +7151,7 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.app?.validate()
+        try self.audioInfo?.validate()
         try self.avatarInfo?.validate()
         try self.videoInfo?.validate()
     }
@@ -7128,6 +7160,9 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.app != nil {
             map["App"] = self.app?.toMap()
+        }
+        if self.audioInfo != nil {
+            map["AudioInfo"] = self.audioInfo?.toMap()
         }
         if self.avatarInfo != nil {
             map["AvatarInfo"] = self.avatarInfo?.toMap()
@@ -7161,6 +7196,11 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             var model = SubmitAudioTo2DAvatarVideoTaskRequest.App()
             model.fromMap(dict["App"] as! [String: Any])
             self.app = model
+        }
+        if dict.keys.contains("AudioInfo") && dict["AudioInfo"] != nil {
+            var model = SubmitAudioTo2DAvatarVideoTaskRequest.AudioInfo()
+            model.fromMap(dict["AudioInfo"] as! [String: Any])
+            self.audioInfo = model
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             var model = SubmitAudioTo2DAvatarVideoTaskRequest.AvatarInfo()
@@ -7196,6 +7236,8 @@ public class SubmitAudioTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 public class SubmitAudioTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public var appShrink: String?
 
+    public var audioInfoShrink: String?
+
     public var avatarInfoShrink: String?
 
     public var callback: Bool?
@@ -7229,6 +7271,9 @@ public class SubmitAudioTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         if self.appShrink != nil {
             map["App"] = self.appShrink!
         }
+        if self.audioInfoShrink != nil {
+            map["AudioInfo"] = self.audioInfoShrink!
+        }
         if self.avatarInfoShrink != nil {
             map["AvatarInfo"] = self.avatarInfoShrink!
         }
@@ -7259,6 +7304,9 @@ public class SubmitAudioTo2DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("App") && dict["App"] != nil {
             self.appShrink = dict["App"] as! String
+        }
+        if dict.keys.contains("AudioInfo") && dict["AudioInfo"] != nil {
+            self.audioInfoShrink = dict["AudioInfo"] as! String
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             self.avatarInfoShrink = dict["AvatarInfo"] as! String
@@ -7463,6 +7511,35 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             }
         }
     }
+    public class AudioInfo : Tea.TeaModel {
+        public var sampleRate: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sampleRate != nil {
+                map["SampleRate"] = self.sampleRate!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SampleRate") && dict["SampleRate"] != nil {
+                self.sampleRate = dict["SampleRate"] as! Int32
+            }
+        }
+    }
     public class AvatarInfo : Tea.TeaModel {
         public var angle: Int32?
 
@@ -7571,6 +7648,8 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
     }
     public var app: SubmitAudioTo3DAvatarVideoTaskRequest.App?
 
+    public var audioInfo: SubmitAudioTo3DAvatarVideoTaskRequest.AudioInfo?
+
     public var avatarInfo: SubmitAudioTo3DAvatarVideoTaskRequest.AvatarInfo?
 
     public var callback: Bool?
@@ -7598,6 +7677,7 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.app?.validate()
+        try self.audioInfo?.validate()
         try self.avatarInfo?.validate()
         try self.videoInfo?.validate()
     }
@@ -7606,6 +7686,9 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.app != nil {
             map["App"] = self.app?.toMap()
+        }
+        if self.audioInfo != nil {
+            map["AudioInfo"] = self.audioInfo?.toMap()
         }
         if self.avatarInfo != nil {
             map["AvatarInfo"] = self.avatarInfo?.toMap()
@@ -7639,6 +7722,11 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             var model = SubmitAudioTo3DAvatarVideoTaskRequest.App()
             model.fromMap(dict["App"] as! [String: Any])
             self.app = model
+        }
+        if dict.keys.contains("AudioInfo") && dict["AudioInfo"] != nil {
+            var model = SubmitAudioTo3DAvatarVideoTaskRequest.AudioInfo()
+            model.fromMap(dict["AudioInfo"] as! [String: Any])
+            self.audioInfo = model
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             var model = SubmitAudioTo3DAvatarVideoTaskRequest.AvatarInfo()
@@ -7674,6 +7762,8 @@ public class SubmitAudioTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 public class SubmitAudioTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public var appShrink: String?
 
+    public var audioInfoShrink: String?
+
     public var avatarInfoShrink: String?
 
     public var callback: Bool?
@@ -7707,6 +7797,9 @@ public class SubmitAudioTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
         if self.appShrink != nil {
             map["App"] = self.appShrink!
         }
+        if self.audioInfoShrink != nil {
+            map["AudioInfo"] = self.audioInfoShrink!
+        }
         if self.avatarInfoShrink != nil {
             map["AvatarInfo"] = self.avatarInfoShrink!
         }
@@ -7737,6 +7830,9 @@ public class SubmitAudioTo3DAvatarVideoTaskShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("App") && dict["App"] != nil {
             self.appShrink = dict["App"] as! String
+        }
+        if dict.keys.contains("AudioInfo") && dict["AudioInfo"] != nil {
+            self.audioInfoShrink = dict["AudioInfo"] as! String
         }
         if dict.keys.contains("AvatarInfo") && dict["AvatarInfo"] != nil {
             self.avatarInfoShrink = dict["AvatarInfo"] as! String
@@ -8278,6 +8374,8 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
     public class AudioInfo : Tea.TeaModel {
         public var pitchRate: Int32?
 
+        public var sampleRate: Int32?
+
         public var speechRate: Int32?
 
         public var voice: String?
@@ -8301,6 +8399,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.pitchRate != nil {
                 map["PitchRate"] = self.pitchRate!
             }
+            if self.sampleRate != nil {
+                map["SampleRate"] = self.sampleRate!
+            }
             if self.speechRate != nil {
                 map["SpeechRate"] = self.speechRate!
             }
@@ -8316,6 +8417,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("PitchRate") && dict["PitchRate"] != nil {
                 self.pitchRate = dict["PitchRate"] as! Int32
+            }
+            if dict.keys.contains("SampleRate") && dict["SampleRate"] != nil {
+                self.sampleRate = dict["SampleRate"] as! Int32
             }
             if dict.keys.contains("SpeechRate") && dict["SpeechRate"] != nil {
                 self.speechRate = dict["SpeechRate"] as! Int32
@@ -8390,6 +8494,67 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         }
     }
     public class VideoInfo : Tea.TeaModel {
+        public class SubtitleStyle : Tea.TeaModel {
+            public var color: String?
+
+            public var name: String?
+
+            public var outlineColor: String?
+
+            public var size: Int32?
+
+            public var y: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.color != nil {
+                    map["Color"] = self.color!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.outlineColor != nil {
+                    map["OutlineColor"] = self.outlineColor!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Color") && dict["Color"] != nil {
+                    self.color = dict["Color"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("OutlineColor") && dict["OutlineColor"] != nil {
+                    self.outlineColor = dict["OutlineColor"] as! String
+                }
+                if dict.keys.contains("Size") && dict["Size"] != nil {
+                    self.size = dict["Size"] as! Int32
+                }
+                if dict.keys.contains("Y") && dict["Y"] != nil {
+                    self.y = dict["Y"] as! Int32
+                }
+            }
+        }
         public var alphaFormat: Int32?
 
         public var backgroundImageUrl: String?
@@ -8402,6 +8567,8 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
 
         public var subtitleEmbedded: Bool?
 
+        public var subtitleStyle: SubmitTextTo2DAvatarVideoTaskRequest.VideoInfo.SubtitleStyle?
+
         public override init() {
             super.init()
         }
@@ -8412,6 +8579,7 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.subtitleStyle?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -8434,6 +8602,9 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.subtitleEmbedded != nil {
                 map["SubtitleEmbedded"] = self.subtitleEmbedded!
             }
+            if self.subtitleStyle != nil {
+                map["SubtitleStyle"] = self.subtitleStyle?.toMap()
+            }
             return map
         }
 
@@ -8455,6 +8626,11 @@ public class SubmitTextTo2DAvatarVideoTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("SubtitleEmbedded") && dict["SubtitleEmbedded"] != nil {
                 self.subtitleEmbedded = dict["SubtitleEmbedded"] as! Bool
+            }
+            if dict.keys.contains("SubtitleStyle") && dict["SubtitleStyle"] != nil {
+                var model = SubmitTextTo2DAvatarVideoTaskRequest.VideoInfo.SubtitleStyle()
+                model.fromMap(dict["SubtitleStyle"] as! [String: Any])
+                self.subtitleStyle = model
             }
         }
     }
@@ -8852,6 +9028,8 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
     public class AudioInfo : Tea.TeaModel {
         public var pitchRate: Int32?
 
+        public var sampleRate: Int32?
+
         public var speechRate: Int32?
 
         public var voice: String?
@@ -8875,6 +9053,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.pitchRate != nil {
                 map["PitchRate"] = self.pitchRate!
             }
+            if self.sampleRate != nil {
+                map["SampleRate"] = self.sampleRate!
+            }
             if self.speechRate != nil {
                 map["SpeechRate"] = self.speechRate!
             }
@@ -8890,6 +9071,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("PitchRate") && dict["PitchRate"] != nil {
                 self.pitchRate = dict["PitchRate"] as! Int32
+            }
+            if dict.keys.contains("SampleRate") && dict["SampleRate"] != nil {
+                self.sampleRate = dict["SampleRate"] as! Int32
             }
             if dict.keys.contains("SpeechRate") && dict["SpeechRate"] != nil {
                 self.speechRate = dict["SpeechRate"] as! Int32
@@ -8956,6 +9140,67 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         }
     }
     public class VideoInfo : Tea.TeaModel {
+        public class SubtitleStyle : Tea.TeaModel {
+            public var color: String?
+
+            public var name: String?
+
+            public var outlineColor: String?
+
+            public var size: Int32?
+
+            public var y: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.color != nil {
+                    map["Color"] = self.color!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.outlineColor != nil {
+                    map["OutlineColor"] = self.outlineColor!
+                }
+                if self.size != nil {
+                    map["Size"] = self.size!
+                }
+                if self.y != nil {
+                    map["Y"] = self.y!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Color") && dict["Color"] != nil {
+                    self.color = dict["Color"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("OutlineColor") && dict["OutlineColor"] != nil {
+                    self.outlineColor = dict["OutlineColor"] as! String
+                }
+                if dict.keys.contains("Size") && dict["Size"] != nil {
+                    self.size = dict["Size"] as! Int32
+                }
+                if dict.keys.contains("Y") && dict["Y"] != nil {
+                    self.y = dict["Y"] as! Int32
+                }
+            }
+        }
         public var alphaFormat: Int32?
 
         public var backgroundImageUrl: String?
@@ -8968,6 +9213,8 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
 
         public var subtitleEmbedded: Bool?
 
+        public var subtitleStyle: SubmitTextTo3DAvatarVideoTaskRequest.VideoInfo.SubtitleStyle?
+
         public override init() {
             super.init()
         }
@@ -8978,6 +9225,7 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.subtitleStyle?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -9000,6 +9248,9 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             if self.subtitleEmbedded != nil {
                 map["SubtitleEmbedded"] = self.subtitleEmbedded!
             }
+            if self.subtitleStyle != nil {
+                map["SubtitleStyle"] = self.subtitleStyle?.toMap()
+            }
             return map
         }
 
@@ -9021,6 +9272,11 @@ public class SubmitTextTo3DAvatarVideoTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("SubtitleEmbedded") && dict["SubtitleEmbedded"] != nil {
                 self.subtitleEmbedded = dict["SubtitleEmbedded"] as! Bool
+            }
+            if dict.keys.contains("SubtitleStyle") && dict["SubtitleStyle"] != nil {
+                var model = SubmitTextTo3DAvatarVideoTaskRequest.VideoInfo.SubtitleStyle()
+                model.fromMap(dict["SubtitleStyle"] as! [String: Any])
+                self.subtitleStyle = model
             }
         }
     }
