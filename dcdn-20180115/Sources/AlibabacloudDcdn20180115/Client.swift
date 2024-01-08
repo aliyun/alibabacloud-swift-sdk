@@ -752,6 +752,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDcdnCertificateSigningRequestWithOptions(_ request: CreateDcdnCertificateSigningRequestRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDcdnCertificateSigningRequestResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.city)) {
+            query["City"] = request.city ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commonName)) {
+            query["CommonName"] = request.commonName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.country)) {
+            query["Country"] = request.country ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.email)) {
+            query["Email"] = request.email ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organization)) {
+            query["Organization"] = request.organization ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationUnit)) {
+            query["OrganizationUnit"] = request.organizationUnit ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.SANs)) {
+            query["SANs"] = request.SANs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.state)) {
+            query["State"] = request.state ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDcdnCertificateSigningRequest",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDcdnCertificateSigningRequestResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDcdnCertificateSigningRequest(_ request: CreateDcdnCertificateSigningRequestRequest) async throws -> CreateDcdnCertificateSigningRequestResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDcdnCertificateSigningRequestWithOptions(request as! CreateDcdnCertificateSigningRequestRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDcdnDeliverTaskWithOptions(_ request: CreateDcdnDeliverTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDcdnDeliverTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -7408,6 +7460,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func rollbackDcdnStagingConfig(_ request: RollbackDcdnStagingConfigRequest) async throws -> RollbackDcdnStagingConfigResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await rollbackDcdnStagingConfigWithOptions(request as! RollbackDcdnStagingConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDcdnDomainCSRCertificateWithOptions(_ request: SetDcdnDomainCSRCertificateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDcdnDomainCSRCertificateResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverCertificate)) {
+            query["ServerCertificate"] = request.serverCertificate ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetDcdnDomainCSRCertificate",
+            "version": "2018-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetDcdnDomainCSRCertificateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDcdnDomainCSRCertificate(_ request: SetDcdnDomainCSRCertificateRequest) async throws -> SetDcdnDomainCSRCertificateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setDcdnDomainCSRCertificateWithOptions(request as! SetDcdnDomainCSRCertificateRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
