@@ -5628,6 +5628,8 @@ public class GetJobSanityCheckResultRequest : Tea.TeaModel {
 
     public var sanityCheckPhase: String?
 
+    public var token: String?
+
     public override init() {
         super.init()
     }
@@ -5648,6 +5650,9 @@ public class GetJobSanityCheckResultRequest : Tea.TeaModel {
         if self.sanityCheckPhase != nil {
             map["SanityCheckPhase"] = self.sanityCheckPhase!
         }
+        if self.token != nil {
+            map["Token"] = self.token!
+        }
         return map
     }
 
@@ -5657,6 +5662,9 @@ public class GetJobSanityCheckResultRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SanityCheckPhase") && dict["SanityCheckPhase"] != nil {
             self.sanityCheckPhase = dict["SanityCheckPhase"] as! String
+        }
+        if dict.keys.contains("Token") && dict["Token"] != nil {
+            self.token = dict["Token"] as! String
         }
     }
 }
