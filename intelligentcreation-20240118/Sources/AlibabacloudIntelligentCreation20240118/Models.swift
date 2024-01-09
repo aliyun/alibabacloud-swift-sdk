@@ -60,9 +60,9 @@ public class ActualDeductResourceCmd : Tea.TeaModel {
 }
 
 public class ActualDeductResourceResult : Tea.TeaModel {
-    public var errorMessage: String?
+    public var errorCode: String?
 
-    public var errorcode: String?
+    public var errorMessage: String?
 
     public var requestId: String?
 
@@ -82,11 +82,11 @@ public class ActualDeductResourceResult : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
-        }
-        if self.errorcode != nil {
-            map["errorcode"] = self.errorcode!
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -98,11 +98,11 @@ public class ActualDeductResourceResult : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
         if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
             self.errorMessage = dict["errorMessage"] as! String
-        }
-        if dict.keys.contains("errorcode") && dict["errorcode"] != nil {
-            self.errorcode = dict["errorcode"] as! String
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
@@ -192,9 +192,9 @@ public class DirectDeductResourceCmd : Tea.TeaModel {
 }
 
 public class DirectDeductResourceResult : Tea.TeaModel {
-    public var errorMessage: String?
+    public var errorCode: String?
 
-    public var errorcode: String?
+    public var errorMessage: String?
 
     public var requestId: String?
 
@@ -214,11 +214,11 @@ public class DirectDeductResourceResult : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
-        }
-        if self.errorcode != nil {
-            map["errorcode"] = self.errorcode!
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -230,11 +230,11 @@ public class DirectDeductResourceResult : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
         if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
             self.errorMessage = dict["errorMessage"] as! String
-        }
-        if dict.keys.contains("errorcode") && dict["errorcode"] != nil {
-            self.errorcode = dict["errorcode"] as! String
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
@@ -324,9 +324,9 @@ public class ExpectDeductResourceCmd : Tea.TeaModel {
 }
 
 public class ExpectDeductResourceResult : Tea.TeaModel {
-    public var errorMessage: String?
+    public var errorCode: String?
 
-    public var errorcode: String?
+    public var errorMessage: String?
 
     public var requestId: String?
 
@@ -348,11 +348,11 @@ public class ExpectDeductResourceResult : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
         if self.errorMessage != nil {
             map["errorMessage"] = self.errorMessage!
-        }
-        if self.errorcode != nil {
-            map["errorcode"] = self.errorcode!
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
@@ -367,11 +367,11 @@ public class ExpectDeductResourceResult : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
         if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
             self.errorMessage = dict["errorMessage"] as! String
-        }
-        if dict.keys.contains("errorcode") && dict["errorcode"] != nil {
-            self.errorcode = dict["errorcode"] as! String
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
