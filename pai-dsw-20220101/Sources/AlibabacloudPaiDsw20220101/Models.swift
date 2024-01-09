@@ -517,11 +517,58 @@ public class CreateIdleInstanceCullerResponse : Tea.TeaModel {
 
 public class CreateInstanceRequest : Tea.TeaModel {
     public class CloudDisks : Tea.TeaModel {
+        public class Status : Tea.TeaModel {
+            public var available: Int64?
+
+            public var capacity: Int64?
+
+            public var usage: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.available != nil {
+                    map["Available"] = self.available!
+                }
+                if self.capacity != nil {
+                    map["Capacity"] = self.capacity!
+                }
+                if self.usage != nil {
+                    map["Usage"] = self.usage!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Available") && dict["Available"] != nil {
+                    self.available = dict["Available"] as! Int64
+                }
+                if dict.keys.contains("Capacity") && dict["Capacity"] != nil {
+                    self.capacity = dict["Capacity"] as! Int64
+                }
+                if dict.keys.contains("Usage") && dict["Usage"] != nil {
+                    self.usage = dict["Usage"] as! Int64
+                }
+            }
+        }
         public var capacity: String?
 
         public var mountPath: String?
 
         public var path: String?
+
+        public var status: CreateInstanceRequest.CloudDisks.Status?
 
         public var subType: String?
 
@@ -535,6 +582,7 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.status?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -547,6 +595,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if self.path != nil {
                 map["Path"] = self.path!
+            }
+            if self.status != nil {
+                map["Status"] = self.status?.toMap()
             }
             if self.subType != nil {
                 map["SubType"] = self.subType!
@@ -563,6 +614,11 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Path") && dict["Path"] != nil {
                 self.path = dict["Path"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                var model = CreateInstanceRequest.CloudDisks.Status()
+                model.fromMap(dict["Status"] as! [String: Any])
+                self.status = model
             }
             if dict.keys.contains("SubType") && dict["SubType"] != nil {
                 self.subType = dict["SubType"] as! String
@@ -7137,6 +7193,43 @@ public class StopInstanceResponse : Tea.TeaModel {
 }
 
 public class UpdateInstanceRequest : Tea.TeaModel {
+    public class CloudDisks : Tea.TeaModel {
+        public var capacity: String?
+
+        public var subType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.capacity != nil {
+                map["Capacity"] = self.capacity!
+            }
+            if self.subType != nil {
+                map["SubType"] = self.subType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Capacity") && dict["Capacity"] != nil {
+                self.capacity = dict["Capacity"] as! String
+            }
+            if dict.keys.contains("SubType") && dict["SubType"] != nil {
+                self.subType = dict["SubType"] as! String
+            }
+        }
+    }
     public class Datasets : Tea.TeaModel {
         public var datasetId: String?
 
@@ -7318,11 +7411,15 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
     public var accessibility: String?
 
+    public var cloudDisks: [UpdateInstanceRequest.CloudDisks]?
+
     public var datasets: [UpdateInstanceRequest.Datasets]?
 
     public var disassociateDatasets: Bool?
 
     public var disassociateDriver: Bool?
+
+    public var disassociateForwardInfos: Bool?
 
     public var disassociateVpc: Bool?
 
@@ -7365,6 +7462,13 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if self.accessibility != nil {
             map["Accessibility"] = self.accessibility!
         }
+        if self.cloudDisks != nil {
+            var tmp : [Any] = []
+            for k in self.cloudDisks! {
+                tmp.append(k.toMap())
+            }
+            map["CloudDisks"] = tmp
+        }
         if self.datasets != nil {
             var tmp : [Any] = []
             for k in self.datasets! {
@@ -7377,6 +7481,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if self.disassociateDriver != nil {
             map["DisassociateDriver"] = self.disassociateDriver!
+        }
+        if self.disassociateForwardInfos != nil {
+            map["DisassociateForwardInfos"] = self.disassociateForwardInfos!
         }
         if self.disassociateVpc != nil {
             map["DisassociateVpc"] = self.disassociateVpc!
@@ -7418,6 +7525,17 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("Accessibility") && dict["Accessibility"] != nil {
             self.accessibility = dict["Accessibility"] as! String
         }
+        if dict.keys.contains("CloudDisks") && dict["CloudDisks"] != nil {
+            var tmp : [UpdateInstanceRequest.CloudDisks] = []
+            for v in dict["CloudDisks"] as! [Any] {
+                var model = UpdateInstanceRequest.CloudDisks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.cloudDisks = tmp
+        }
         if dict.keys.contains("Datasets") && dict["Datasets"] != nil {
             var tmp : [UpdateInstanceRequest.Datasets] = []
             for v in dict["Datasets"] as! [Any] {
@@ -7434,6 +7552,9 @@ public class UpdateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DisassociateDriver") && dict["DisassociateDriver"] != nil {
             self.disassociateDriver = dict["DisassociateDriver"] as! Bool
+        }
+        if dict.keys.contains("DisassociateForwardInfos") && dict["DisassociateForwardInfos"] != nil {
+            self.disassociateForwardInfos = dict["DisassociateForwardInfos"] as! Bool
         }
         if dict.keys.contains("DisassociateVpc") && dict["DisassociateVpc"] != nil {
             self.disassociateVpc = dict["DisassociateVpc"] as! Bool
