@@ -101,6 +101,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isOrganizationTrail)) {
             query["IsOrganizationTrail"] = request.isOrganizationTrail!;
         }
+        if (!TeaUtils.Client.isUnset(request.maxComputeProjectArn)) {
+            query["MaxComputeProjectArn"] = request.maxComputeProjectArn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxComputeWriteRoleArn)) {
+            query["MaxComputeWriteRoleArn"] = request.maxComputeWriteRoleArn ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
         }
@@ -490,6 +496,30 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGlobalEventsStorageRegionWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> GetGlobalEventsStorageRegionResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGlobalEventsStorageRegion",
+            "version": "2020-07-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGlobalEventsStorageRegionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGlobalEventsStorageRegion() async throws -> GetGlobalEventsStorageRegionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGlobalEventsStorageRegionWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTrailStatusWithOptions(_ request: GetTrailStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTrailStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -663,11 +693,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGlobalEventsStorageRegionWithOptions(_ request: UpdateGlobalEventsStorageRegionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGlobalEventsStorageRegionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.storageRegion)) {
+            query["StorageRegion"] = request.storageRegion ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGlobalEventsStorageRegion",
+            "version": "2020-07-06",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGlobalEventsStorageRegionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGlobalEventsStorageRegion(_ request: UpdateGlobalEventsStorageRegionRequest) async throws -> UpdateGlobalEventsStorageRegionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGlobalEventsStorageRegionWithOptions(request as! UpdateGlobalEventsStorageRegionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateTrailWithOptions(_ request: UpdateTrailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTrailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.eventRW)) {
             query["EventRW"] = request.eventRW ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxComputeProjectArn)) {
+            query["MaxComputeProjectArn"] = request.maxComputeProjectArn ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxComputeWriteRoleArn)) {
+            query["MaxComputeWriteRoleArn"] = request.maxComputeWriteRoleArn ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
