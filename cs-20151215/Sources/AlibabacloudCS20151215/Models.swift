@@ -70,6 +70,8 @@ public class DataDisk : Tea.TeaModel {
 
     public var device: String?
 
+    public var diskName: String?
+
     public var encrypted: String?
 
     public var fileSystem: String?
@@ -77,8 +79,6 @@ public class DataDisk : Tea.TeaModel {
     public var kmsKeyId: String?
 
     public var mountTarget: String?
-
-    public var name: String?
 
     public var performanceLevel: String?
 
@@ -117,6 +117,9 @@ public class DataDisk : Tea.TeaModel {
         if self.device != nil {
             map["device"] = self.device!
         }
+        if self.diskName != nil {
+            map["disk_name"] = self.diskName!
+        }
         if self.encrypted != nil {
             map["encrypted"] = self.encrypted!
         }
@@ -128,9 +131,6 @@ public class DataDisk : Tea.TeaModel {
         }
         if self.mountTarget != nil {
             map["mount_target"] = self.mountTarget!
-        }
-        if self.name != nil {
-            map["name"] = self.name!
         }
         if self.performanceLevel != nil {
             map["performance_level"] = self.performanceLevel!
@@ -163,6 +163,9 @@ public class DataDisk : Tea.TeaModel {
         if dict.keys.contains("device") && dict["device"] != nil {
             self.device = dict["device"] as! String
         }
+        if dict.keys.contains("disk_name") && dict["disk_name"] != nil {
+            self.diskName = dict["disk_name"] as! String
+        }
         if dict.keys.contains("encrypted") && dict["encrypted"] != nil {
             self.encrypted = dict["encrypted"] as! String
         }
@@ -174,9 +177,6 @@ public class DataDisk : Tea.TeaModel {
         }
         if dict.keys.contains("mount_target") && dict["mount_target"] != nil {
             self.mountTarget = dict["mount_target"] as! String
-        }
-        if dict.keys.contains("name") && dict["name"] != nil {
-            self.name = dict["name"] as! String
         }
         if dict.keys.contains("performance_level") && dict["performance_level"] != nil {
             self.performanceLevel = dict["performance_level"] as! String
