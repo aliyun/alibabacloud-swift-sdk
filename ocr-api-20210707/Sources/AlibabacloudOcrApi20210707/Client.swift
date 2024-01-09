@@ -124,11 +124,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.idCardConfig)) {
             request.idCardConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.idCardConfig, "IdCardConfig", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.internationalBusinessLicenseConfig)) {
+            request.internationalBusinessLicenseConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.internationalBusinessLicenseConfig, "InternationalBusinessLicenseConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.internationalIdCardConfig)) {
             request.internationalIdCardConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.internationalIdCardConfig, "InternationalIdCardConfig", "json")
         }
         if (!TeaUtils.Client.isUnset(tmpReq.multiLanConfig)) {
             request.multiLanConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.multiLanConfig, "MultiLanConfig", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tableConfig)) {
+            request.tableConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tableConfig, "TableConfig", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.advancedConfigShrink)) {
@@ -136,6 +142,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.idCardConfigShrink)) {
             query["IdCardConfig"] = request.idCardConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.internationalBusinessLicenseConfigShrink)) {
+            query["InternationalBusinessLicenseConfig"] = request.internationalBusinessLicenseConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.internationalIdCardConfigShrink)) {
             query["InternationalIdCardConfig"] = request.internationalIdCardConfigShrink ?? "";
@@ -166,6 +175,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tableConfigShrink)) {
+            query["TableConfig"] = request.tableConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";

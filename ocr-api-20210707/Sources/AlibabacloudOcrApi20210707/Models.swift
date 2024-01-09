@@ -871,6 +871,35 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
             }
         }
     }
+    public class InternationalBusinessLicenseConfig : Tea.TeaModel {
+        public var country: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.country != nil {
+                map["Country"] = self.country!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Country") && dict["Country"] != nil {
+                self.country = dict["Country"] as! String
+            }
+        }
+    }
     public class InternationalIdCardConfig : Tea.TeaModel {
         public var country: String?
 
@@ -929,9 +958,64 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
             }
         }
     }
+    public class TableConfig : Tea.TeaModel {
+        public var isHandWritingTable: Bool?
+
+        public var isLineLessTable: Bool?
+
+        public var outputTableExcel: Bool?
+
+        public var outputTableHtml: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.isHandWritingTable != nil {
+                map["IsHandWritingTable"] = self.isHandWritingTable!
+            }
+            if self.isLineLessTable != nil {
+                map["IsLineLessTable"] = self.isLineLessTable!
+            }
+            if self.outputTableExcel != nil {
+                map["OutputTableExcel"] = self.outputTableExcel!
+            }
+            if self.outputTableHtml != nil {
+                map["OutputTableHtml"] = self.outputTableHtml!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("IsHandWritingTable") && dict["IsHandWritingTable"] != nil {
+                self.isHandWritingTable = dict["IsHandWritingTable"] as! Bool
+            }
+            if dict.keys.contains("IsLineLessTable") && dict["IsLineLessTable"] != nil {
+                self.isLineLessTable = dict["IsLineLessTable"] as! Bool
+            }
+            if dict.keys.contains("OutputTableExcel") && dict["OutputTableExcel"] != nil {
+                self.outputTableExcel = dict["OutputTableExcel"] as! Bool
+            }
+            if dict.keys.contains("OutputTableHtml") && dict["OutputTableHtml"] != nil {
+                self.outputTableHtml = dict["OutputTableHtml"] as! Bool
+            }
+        }
+    }
     public var advancedConfig: RecognizeAllTextRequest.AdvancedConfig?
 
     public var idCardConfig: RecognizeAllTextRequest.IdCardConfig?
+
+    public var internationalBusinessLicenseConfig: RecognizeAllTextRequest.InternationalBusinessLicenseConfig?
 
     public var internationalIdCardConfig: RecognizeAllTextRequest.InternationalIdCardConfig?
 
@@ -953,6 +1037,8 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
 
     public var pageNo: Int32?
 
+    public var tableConfig: RecognizeAllTextRequest.TableConfig?
+
     public var type: String?
 
     public var url: String?
@@ -971,8 +1057,10 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.advancedConfig?.validate()
         try self.idCardConfig?.validate()
+        try self.internationalBusinessLicenseConfig?.validate()
         try self.internationalIdCardConfig?.validate()
         try self.multiLanConfig?.validate()
+        try self.tableConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -982,6 +1070,9 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
         }
         if self.idCardConfig != nil {
             map["IdCardConfig"] = self.idCardConfig?.toMap()
+        }
+        if self.internationalBusinessLicenseConfig != nil {
+            map["InternationalBusinessLicenseConfig"] = self.internationalBusinessLicenseConfig?.toMap()
         }
         if self.internationalIdCardConfig != nil {
             map["InternationalIdCardConfig"] = self.internationalIdCardConfig?.toMap()
@@ -1013,6 +1104,9 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
+        if self.tableConfig != nil {
+            map["TableConfig"] = self.tableConfig?.toMap()
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -1035,6 +1129,11 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
             var model = RecognizeAllTextRequest.IdCardConfig()
             model.fromMap(dict["IdCardConfig"] as! [String: Any])
             self.idCardConfig = model
+        }
+        if dict.keys.contains("InternationalBusinessLicenseConfig") && dict["InternationalBusinessLicenseConfig"] != nil {
+            var model = RecognizeAllTextRequest.InternationalBusinessLicenseConfig()
+            model.fromMap(dict["InternationalBusinessLicenseConfig"] as! [String: Any])
+            self.internationalBusinessLicenseConfig = model
         }
         if dict.keys.contains("InternationalIdCardConfig") && dict["InternationalIdCardConfig"] != nil {
             var model = RecognizeAllTextRequest.InternationalIdCardConfig()
@@ -1070,6 +1169,11 @@ public class RecognizeAllTextRequest : Tea.TeaModel {
         if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
             self.pageNo = dict["PageNo"] as! Int32
         }
+        if dict.keys.contains("TableConfig") && dict["TableConfig"] != nil {
+            var model = RecognizeAllTextRequest.TableConfig()
+            model.fromMap(dict["TableConfig"] as! [String: Any])
+            self.tableConfig = model
+        }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
         }
@@ -1086,6 +1190,8 @@ public class RecognizeAllTextShrinkRequest : Tea.TeaModel {
     public var advancedConfigShrink: String?
 
     public var idCardConfigShrink: String?
+
+    public var internationalBusinessLicenseConfigShrink: String?
 
     public var internationalIdCardConfigShrink: String?
 
@@ -1106,6 +1212,8 @@ public class RecognizeAllTextShrinkRequest : Tea.TeaModel {
     public var outputStamp: Bool?
 
     public var pageNo: Int32?
+
+    public var tableConfigShrink: String?
 
     public var type: String?
 
@@ -1132,6 +1240,9 @@ public class RecognizeAllTextShrinkRequest : Tea.TeaModel {
         }
         if self.idCardConfigShrink != nil {
             map["IdCardConfig"] = self.idCardConfigShrink!
+        }
+        if self.internationalBusinessLicenseConfigShrink != nil {
+            map["InternationalBusinessLicenseConfig"] = self.internationalBusinessLicenseConfigShrink!
         }
         if self.internationalIdCardConfigShrink != nil {
             map["InternationalIdCardConfig"] = self.internationalIdCardConfigShrink!
@@ -1163,6 +1274,9 @@ public class RecognizeAllTextShrinkRequest : Tea.TeaModel {
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
+        if self.tableConfigShrink != nil {
+            map["TableConfig"] = self.tableConfigShrink!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -1181,6 +1295,9 @@ public class RecognizeAllTextShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IdCardConfig") && dict["IdCardConfig"] != nil {
             self.idCardConfigShrink = dict["IdCardConfig"] as! String
+        }
+        if dict.keys.contains("InternationalBusinessLicenseConfig") && dict["InternationalBusinessLicenseConfig"] != nil {
+            self.internationalBusinessLicenseConfigShrink = dict["InternationalBusinessLicenseConfig"] as! String
         }
         if dict.keys.contains("InternationalIdCardConfig") && dict["InternationalIdCardConfig"] != nil {
             self.internationalIdCardConfigShrink = dict["InternationalIdCardConfig"] as! String
@@ -1211,6 +1328,9 @@ public class RecognizeAllTextShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
             self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("TableConfig") && dict["TableConfig"] != nil {
+            self.tableConfigShrink = dict["TableConfig"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
