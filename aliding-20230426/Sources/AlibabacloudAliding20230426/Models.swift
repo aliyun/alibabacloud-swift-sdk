@@ -5877,7 +5877,7 @@ public class CommentListReportResponse : Tea.TeaModel {
 
 public class CreateDeliveryPlanHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
-        public var accountId: String?
+        public var userToken: String?
 
         public override init() {
             super.init()
@@ -5893,15 +5893,15 @@ public class CreateDeliveryPlanHeaders : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.accountId != nil {
-                map["accountId"] = self.accountId!
+            if self.userToken != nil {
+                map["userToken"] = self.userToken!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("accountId") && dict["accountId"] != nil {
-                self.accountId = dict["accountId"] as! String
+            if dict.keys.contains("userToken") && dict["userToken"] != nil {
+                self.userToken = dict["userToken"] as! String
             }
         }
     }
@@ -37695,6 +37695,10 @@ public class ListEventsResponseBody : Tea.TeaModel {
 
     public var syncToken: String?
 
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
     public override init() {
         super.init()
     }
@@ -37725,6 +37729,12 @@ public class ListEventsResponseBody : Tea.TeaModel {
         if self.syncToken != nil {
             map["syncToken"] = self.syncToken!
         }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
         return map
     }
 
@@ -37748,6 +37758,12 @@ public class ListEventsResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("syncToken") && dict["syncToken"] != nil {
             self.syncToken = dict["syncToken"] as! String
+        }
+        if dict.keys.contains("vendorRequestId") && dict["vendorRequestId"] != nil {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") && dict["vendorType"] != nil {
+            self.vendorType = dict["vendorType"] as! String
         }
     }
 }
