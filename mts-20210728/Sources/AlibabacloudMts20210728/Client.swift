@@ -68,13 +68,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCopyright(_ request: QueryCopyrightRequest) async throws -> QueryCopyrightResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await queryCopyrightWithOptions(request as! QueryCopyrightRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryCopyrightWithOptions(_ request: QueryCopyrightRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCopyrightResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -116,10 +109,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCopyrightExtract(_ request: QueryCopyrightExtractRequest) async throws -> QueryCopyrightExtractResponse {
+    public func queryCopyright(_ request: QueryCopyrightRequest) async throws -> QueryCopyrightResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await queryCopyrightExtractWithOptions(request as! QueryCopyrightExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await queryCopyrightWithOptions(request as! QueryCopyrightRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -149,10 +142,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryTraceAb(_ request: QueryTraceAbRequest) async throws -> QueryTraceAbResponse {
+    public func queryCopyrightExtract(_ request: QueryCopyrightExtractRequest) async throws -> QueryCopyrightExtractResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await queryTraceAbWithOptions(request as! QueryTraceAbRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await queryCopyrightExtractWithOptions(request as! QueryCopyrightExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -185,10 +178,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryTraceExtract(_ request: QueryTraceExtractRequest) async throws -> QueryTraceExtractResponse {
+    public func queryTraceAb(_ request: QueryTraceAbRequest) async throws -> QueryTraceAbResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await queryTraceExtractWithOptions(request as! QueryTraceExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await queryTraceAbWithOptions(request as! QueryTraceAbRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -218,10 +211,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryTraceMu(_ request: QueryTraceMuRequest) async throws -> QueryTraceMuResponse {
+    public func queryTraceExtract(_ request: QueryTraceExtractRequest) async throws -> QueryTraceExtractResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await queryTraceMuWithOptions(request as! QueryTraceMuRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await queryTraceExtractWithOptions(request as! QueryTraceExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -269,10 +262,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitCopyrightExtract(_ request: SubmitCopyrightExtractRequest) async throws -> SubmitCopyrightExtractResponse {
+    public func queryTraceMu(_ request: QueryTraceMuRequest) async throws -> QueryTraceMuResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await submitCopyrightExtractWithOptions(request as! SubmitCopyrightExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await queryTraceMuWithOptions(request as! QueryTraceMuRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -284,6 +277,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.input)) {
             body["Input"] = request.input ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["Params"] = request.params ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.url)) {
             body["Url"] = request.url ?? "";
@@ -311,10 +307,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitCopyrightJob(_ request: SubmitCopyrightJobRequest) async throws -> SubmitCopyrightJobResponse {
+    public func submitCopyrightExtract(_ request: SubmitCopyrightExtractRequest) async throws -> SubmitCopyrightExtractResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await submitCopyrightJobWithOptions(request as! SubmitCopyrightJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await submitCopyrightExtractWithOptions(request as! SubmitCopyrightExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -377,10 +373,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitImageCopyright(_ request: SubmitImageCopyrightRequest) async throws -> SubmitImageCopyrightResponse {
+    public func submitCopyrightJob(_ request: SubmitCopyrightJobRequest) async throws -> SubmitCopyrightJobResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await submitImageCopyrightWithOptions(request as! SubmitImageCopyrightRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await submitCopyrightJobWithOptions(request as! SubmitCopyrightJobRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -419,10 +415,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitTraceAb(_ request: SubmitTraceAbRequest) async throws -> SubmitTraceAbResponse {
+    public func submitImageCopyright(_ request: SubmitImageCopyrightRequest) async throws -> SubmitImageCopyrightResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await submitTraceAbWithOptions(request as! SubmitTraceAbRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await submitImageCopyrightWithOptions(request as! SubmitImageCopyrightRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -476,10 +472,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitTraceExtract(_ request: SubmitTraceExtractRequest) async throws -> SubmitTraceExtractResponse {
+    public func submitTraceAb(_ request: SubmitTraceAbRequest) async throws -> SubmitTraceAbResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await submitTraceExtractWithOptions(request as! SubmitTraceExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await submitTraceAbWithOptions(request as! SubmitTraceAbRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -491,6 +487,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.input)) {
             body["Input"] = request.input ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["Params"] = request.params ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.url)) {
             body["Url"] = request.url ?? "";
@@ -518,10 +517,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func submitTracemu(_ request: SubmitTracemuRequest) async throws -> SubmitTracemuResponse {
+    public func submitTraceExtract(_ request: SubmitTraceExtractRequest) async throws -> SubmitTraceExtractResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await submitTracemuWithOptions(request as! SubmitTracemuRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await submitTraceExtractWithOptions(request as! SubmitTraceExtractRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -536,6 +535,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.output)) {
             body["Output"] = request.output ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.params)) {
+            body["Params"] = request.params ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.trace)) {
             body["Trace"] = request.trace ?? "";
@@ -557,5 +559,12 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(SubmitTracemuResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitTracemu(_ request: SubmitTracemuRequest) async throws -> SubmitTracemuResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await submitTracemuWithOptions(request as! SubmitTracemuRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
