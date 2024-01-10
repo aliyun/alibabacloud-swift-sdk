@@ -847,7 +847,11 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var securityGroupId: String?
 
+        public var vSwitchId: String?
+
         public var vSwitchZoneId: String?
+
+        public var vpcId: String?
 
         public var vpdInfo: CreateClusterRequest.Networks.VpdInfo?
 
@@ -880,8 +884,14 @@ public class CreateClusterRequest : Tea.TeaModel {
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
+            if self.vSwitchId != nil {
+                map["VSwitchId"] = self.vSwitchId!
+            }
             if self.vSwitchZoneId != nil {
                 map["VSwitchZoneId"] = self.vSwitchZoneId!
+            }
+            if self.vpcId != nil {
+                map["VpcId"] = self.vpcId!
             }
             if self.vpdInfo != nil {
                 map["VpdInfo"] = self.vpdInfo?.toMap()
@@ -909,8 +919,14 @@ public class CreateClusterRequest : Tea.TeaModel {
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
             }
+            if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                self.vSwitchId = dict["VSwitchId"] as! String
+            }
             if dict.keys.contains("VSwitchZoneId") && dict["VSwitchZoneId"] != nil {
                 self.vSwitchZoneId = dict["VSwitchZoneId"] as! String
+            }
+            if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                self.vpcId = dict["VpcId"] as! String
             }
             if dict.keys.contains("VpdInfo") && dict["VpdInfo"] != nil {
                 var model = CreateClusterRequest.Networks.VpdInfo()
