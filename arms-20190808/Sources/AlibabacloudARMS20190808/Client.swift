@@ -9216,9 +9216,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.frequency)) {
             query["Frequency"] = request.frequency ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.monitorCategory)) {
-            query["MonitorCategory"] = request.monitorCategory!;
-        }
         if (!TeaUtils.Client.isUnset(request.monitorConfShrink)) {
             query["MonitorConf"] = request.monitorConfShrink ?? "";
         }
@@ -9239,9 +9236,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.taskId)) {
             query["TaskId"] = request.taskId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.taskType)) {
-            query["TaskType"] = request.taskType!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

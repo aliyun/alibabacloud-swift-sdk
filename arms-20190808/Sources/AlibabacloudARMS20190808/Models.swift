@@ -64755,8 +64755,6 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
 
     public var frequency: String?
 
-    public var monitorCategory: Int32?
-
     public var monitorConf: UpdateTimingSyntheticTaskRequest.MonitorConf?
 
     public var monitors: [UpdateTimingSyntheticTaskRequest.Monitors]?
@@ -64770,8 +64768,6 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
     public var tags: [UpdateTimingSyntheticTaskRequest.Tags]?
 
     public var taskId: String?
-
-    public var taskType: Int32?
 
     public override init() {
         super.init()
@@ -64806,9 +64802,6 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
         if self.frequency != nil {
             map["Frequency"] = self.frequency!
         }
-        if self.monitorCategory != nil {
-            map["MonitorCategory"] = self.monitorCategory!
-        }
         if self.monitorConf != nil {
             map["MonitorConf"] = self.monitorConf?.toMap()
         }
@@ -64838,9 +64831,6 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
-        if self.taskType != nil {
-            map["TaskType"] = self.taskType!
-        }
         return map
     }
 
@@ -64868,9 +64858,6 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Frequency") && dict["Frequency"] != nil {
             self.frequency = dict["Frequency"] as! String
-        }
-        if dict.keys.contains("MonitorCategory") && dict["MonitorCategory"] != nil {
-            self.monitorCategory = dict["MonitorCategory"] as! Int32
         }
         if dict.keys.contains("MonitorConf") && dict["MonitorConf"] != nil {
             var model = UpdateTimingSyntheticTaskRequest.MonitorConf()
@@ -64911,9 +64898,6 @@ public class UpdateTimingSyntheticTaskRequest : Tea.TeaModel {
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! String
         }
-        if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
-            self.taskType = dict["TaskType"] as! Int32
-        }
     }
 }
 
@@ -64925,8 +64909,6 @@ public class UpdateTimingSyntheticTaskShrinkRequest : Tea.TeaModel {
     public var customPeriodShrink: String?
 
     public var frequency: String?
-
-    public var monitorCategory: Int32?
 
     public var monitorConfShrink: String?
 
@@ -64941,8 +64923,6 @@ public class UpdateTimingSyntheticTaskShrinkRequest : Tea.TeaModel {
     public var tagsShrink: String?
 
     public var taskId: String?
-
-    public var taskType: Int32?
 
     public override init() {
         super.init()
@@ -64970,9 +64950,6 @@ public class UpdateTimingSyntheticTaskShrinkRequest : Tea.TeaModel {
         if self.frequency != nil {
             map["Frequency"] = self.frequency!
         }
-        if self.monitorCategory != nil {
-            map["MonitorCategory"] = self.monitorCategory!
-        }
         if self.monitorConfShrink != nil {
             map["MonitorConf"] = self.monitorConfShrink!
         }
@@ -64994,9 +64971,6 @@ public class UpdateTimingSyntheticTaskShrinkRequest : Tea.TeaModel {
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
         }
-        if self.taskType != nil {
-            map["TaskType"] = self.taskType!
-        }
         return map
     }
 
@@ -65012,9 +64986,6 @@ public class UpdateTimingSyntheticTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Frequency") && dict["Frequency"] != nil {
             self.frequency = dict["Frequency"] as! String
-        }
-        if dict.keys.contains("MonitorCategory") && dict["MonitorCategory"] != nil {
-            self.monitorCategory = dict["MonitorCategory"] as! Int32
         }
         if dict.keys.contains("MonitorConf") && dict["MonitorConf"] != nil {
             self.monitorConfShrink = dict["MonitorConf"] as! String
@@ -65036,9 +65007,6 @@ public class UpdateTimingSyntheticTaskShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! String
-        }
-        if dict.keys.contains("TaskType") && dict["TaskType"] != nil {
-            self.taskType = dict["TaskType"] as! Int32
         }
     }
 }
