@@ -15061,6 +15061,8 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var role: String?
+
     public override init() {
         super.init()
     }
@@ -15096,6 +15098,9 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.role != nil {
+            map["Role"] = self.role!
+        }
         return map
     }
 
@@ -15120,6 +15125,9 @@ public class DescribeParameterTemplatesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Role") && dict["Role"] != nil {
+            self.role = dict["Role"] as! String
         }
     }
 }
