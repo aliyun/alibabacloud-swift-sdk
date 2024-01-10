@@ -2778,6 +2778,51 @@ public class ListMotionShopTasksRequest : Tea.TeaModel {
 
 public class ListMotionShopTasksResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Material : Tea.TeaModel {
+            public var avatarId: String?
+
+            public var box: [Double]?
+
+            public var coverUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.avatarId != nil {
+                    map["AvatarId"] = self.avatarId!
+                }
+                if self.box != nil {
+                    map["Box"] = self.box!
+                }
+                if self.coverUrl != nil {
+                    map["CoverUrl"] = self.coverUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AvatarId") && dict["AvatarId"] != nil {
+                    self.avatarId = dict["AvatarId"] as! String
+                }
+                if dict.keys.contains("Box") && dict["Box"] != nil {
+                    self.box = dict["Box"] as! [Double]
+                }
+                if dict.keys.contains("CoverUrl") && dict["CoverUrl"] != nil {
+                    self.coverUrl = dict["CoverUrl"] as! String
+                }
+            }
+        }
         public class Result : Tea.TeaModel {
             public var coverUrl: String?
 
@@ -2823,6 +2868,8 @@ public class ListMotionShopTasksResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var material: ListMotionShopTasksResponseBody.Data.Material?
+
         public var result: ListMotionShopTasksResponseBody.Data.Result?
 
         public var status: String?
@@ -2839,11 +2886,15 @@ public class ListMotionShopTasksResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.material?.validate()
             try self.result?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.material != nil {
+                map["Material"] = self.material?.toMap()
+            }
             if self.result != nil {
                 map["Result"] = self.result?.toMap()
             }
@@ -2857,6 +2908,11 @@ public class ListMotionShopTasksResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Material") && dict["Material"] != nil {
+                var model = ListMotionShopTasksResponseBody.Data.Material()
+                model.fromMap(dict["Material"] as! [String: Any])
+                self.material = model
+            }
             if dict.keys.contains("Result") && dict["Result"] != nil {
                 var model = ListMotionShopTasksResponseBody.Data.Result()
                 model.fromMap(dict["Result"] as! [String: Any])
