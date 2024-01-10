@@ -4001,6 +4001,8 @@ public class DeleteStackGroupResponse : Tea.TeaModel {
 
 public class DeleteStackInstancesRequest : Tea.TeaModel {
     public class DeploymentTargets : Tea.TeaModel {
+        public var accountIds: [String]?
+
         public var rdFolderIds: [String]?
 
         public override init() {
@@ -4017,6 +4019,9 @@ public class DeleteStackInstancesRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.accountIds != nil {
+                map["AccountIds"] = self.accountIds!
+            }
             if self.rdFolderIds != nil {
                 map["RdFolderIds"] = self.rdFolderIds!
             }
@@ -4024,6 +4029,9 @@ public class DeleteStackInstancesRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccountIds") && dict["AccountIds"] != nil {
+                self.accountIds = dict["AccountIds"] as! [String]
+            }
             if dict.keys.contains("RdFolderIds") && dict["RdFolderIds"] != nil {
                 self.rdFolderIds = dict["RdFolderIds"] as! [String]
             }
