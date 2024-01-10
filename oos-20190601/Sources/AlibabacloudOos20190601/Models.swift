@@ -3824,6 +3824,8 @@ public class DeleteApplicationRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var retainResource: Bool?
+
     public override init() {
         super.init()
     }
@@ -3847,6 +3849,9 @@ public class DeleteApplicationRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.retainResource != nil {
+            map["RetainResource"] = self.retainResource!
+        }
         return map
     }
 
@@ -3859,6 +3864,9 @@ public class DeleteApplicationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RetainResource") && dict["RetainResource"] != nil {
+            self.retainResource = dict["RetainResource"] as! Bool
         }
     }
 }
@@ -3952,6 +3960,8 @@ public class DeleteApplicationGroupRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var retainResource: Bool?
+
     public override init() {
         super.init()
     }
@@ -3975,6 +3985,9 @@ public class DeleteApplicationGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.retainResource != nil {
+            map["RetainResource"] = self.retainResource!
+        }
         return map
     }
 
@@ -3987,6 +4000,9 @@ public class DeleteApplicationGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RetainResource") && dict["RetainResource"] != nil {
+            self.retainResource = dict["RetainResource"] as! Bool
         }
     }
 }
@@ -5073,6 +5089,303 @@ public class DeployApplicationGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeApplicationGroupBillRequest : Tea.TeaModel {
+    public var applicationName: String?
+
+    public var billingCycle: String?
+
+    public var maxResults: Int32?
+
+    public var name: String?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationName != nil {
+            map["ApplicationName"] = self.applicationName!
+        }
+        if self.billingCycle != nil {
+            map["BillingCycle"] = self.billingCycle!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationName") && dict["ApplicationName"] != nil {
+            self.applicationName = dict["ApplicationName"] as! String
+        }
+        if dict.keys.contains("BillingCycle") && dict["BillingCycle"] != nil {
+            self.billingCycle = dict["BillingCycle"] as! String
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
+public class DescribeApplicationGroupBillResponseBody : Tea.TeaModel {
+    public class ApplicationGroupConsume : Tea.TeaModel {
+        public var amount: Double?
+
+        public var creationTime: String?
+
+        public var currency: String?
+
+        public var instanceId: String?
+
+        public var instanceName: String?
+
+        public var instanceType: String?
+
+        public var optimization: String?
+
+        public var peakType: String?
+
+        public var performance: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.currency != nil {
+                map["Currency"] = self.currency!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceName != nil {
+                map["InstanceName"] = self.instanceName!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.optimization != nil {
+                map["Optimization"] = self.optimization!
+            }
+            if self.peakType != nil {
+                map["PeakType"] = self.peakType!
+            }
+            if self.performance != nil {
+                map["Performance"] = self.performance!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                self.amount = dict["Amount"] as! Double
+            }
+            if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("Currency") && dict["Currency"] != nil {
+                self.currency = dict["Currency"] as! String
+            }
+            if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
+                self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Optimization") && dict["Optimization"] != nil {
+                self.optimization = dict["Optimization"] as! String
+            }
+            if dict.keys.contains("PeakType") && dict["PeakType"] != nil {
+                self.peakType = dict["PeakType"] as! String
+            }
+            if dict.keys.contains("Performance") && dict["Performance"] != nil {
+                self.performance = dict["Performance"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var applicationGroupConsume: [DescribeApplicationGroupBillResponseBody.ApplicationGroupConsume]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationGroupConsume != nil {
+            var tmp : [Any] = []
+            for k in self.applicationGroupConsume! {
+                tmp.append(k.toMap())
+            }
+            map["ApplicationGroupConsume"] = tmp
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationGroupConsume") && dict["ApplicationGroupConsume"] != nil {
+            var tmp : [DescribeApplicationGroupBillResponseBody.ApplicationGroupConsume] = []
+            for v in dict["ApplicationGroupConsume"] as! [Any] {
+                var model = DescribeApplicationGroupBillResponseBody.ApplicationGroupConsume()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.applicationGroupConsume = tmp
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeApplicationGroupBillResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeApplicationGroupBillResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeApplicationGroupBillResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRegionsRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -5263,6 +5576,8 @@ public class GenerateExecutionPolicyRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var templateContent: String?
+
     public var templateName: String?
 
     public var templateVersion: String?
@@ -5287,6 +5602,9 @@ public class GenerateExecutionPolicyRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.templateContent != nil {
+            map["TemplateContent"] = self.templateContent!
+        }
         if self.templateName != nil {
             map["TemplateName"] = self.templateName!
         }
@@ -5302,6 +5620,9 @@ public class GenerateExecutionPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
+            self.templateContent = dict["TemplateContent"] as! String
         }
         if dict.keys.contains("TemplateName") && dict["TemplateName"] != nil {
             self.templateName = dict["TemplateName"] as! String
@@ -6532,8 +6853,6 @@ public class GetOpsItemResponseBody : Tea.TeaModel {
 
         public var createDate: String?
 
-        public var dedupString: String?
-
         public var description_: String?
 
         public var lastModifiedBy: String?
@@ -6585,9 +6904,6 @@ public class GetOpsItemResponseBody : Tea.TeaModel {
             }
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
-            }
-            if self.dedupString != nil {
-                map["DedupString"] = self.dedupString!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -6643,9 +6959,6 @@ public class GetOpsItemResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateDate") && dict["CreateDate"] != nil {
                 self.createDate = dict["CreateDate"] as! String
-            }
-            if dict.keys.contains("DedupString") && dict["DedupString"] != nil {
-                self.dedupString = dict["DedupString"] as! String
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
@@ -17054,6 +17367,8 @@ public class ListTemplatesRequest : Tea.TeaModel {
 
     public var hasTrigger: Bool?
 
+    public var isFavorite: Bool?
+
     public var maxResults: Int32?
 
     public var nextToken: String?
@@ -17104,6 +17419,9 @@ public class ListTemplatesRequest : Tea.TeaModel {
         }
         if self.hasTrigger != nil {
             map["HasTrigger"] = self.hasTrigger!
+        }
+        if self.isFavorite != nil {
+            map["IsFavorite"] = self.isFavorite!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -17157,6 +17475,9 @@ public class ListTemplatesRequest : Tea.TeaModel {
         if dict.keys.contains("HasTrigger") && dict["HasTrigger"] != nil {
             self.hasTrigger = dict["HasTrigger"] as! Bool
         }
+        if dict.keys.contains("IsFavorite") && dict["IsFavorite"] != nil {
+            self.isFavorite = dict["IsFavorite"] as! Bool
+        }
         if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
             self.maxResults = dict["MaxResults"] as! Int32
         }
@@ -17203,6 +17524,8 @@ public class ListTemplatesShrinkRequest : Tea.TeaModel {
     public var createdDateBefore: String?
 
     public var hasTrigger: Bool?
+
+    public var isFavorite: Bool?
 
     public var maxResults: Int32?
 
@@ -17254,6 +17577,9 @@ public class ListTemplatesShrinkRequest : Tea.TeaModel {
         }
         if self.hasTrigger != nil {
             map["HasTrigger"] = self.hasTrigger!
+        }
+        if self.isFavorite != nil {
+            map["IsFavorite"] = self.isFavorite!
         }
         if self.maxResults != nil {
             map["MaxResults"] = self.maxResults!
@@ -17307,6 +17633,9 @@ public class ListTemplatesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("HasTrigger") && dict["HasTrigger"] != nil {
             self.hasTrigger = dict["HasTrigger"] as! Bool
         }
+        if dict.keys.contains("IsFavorite") && dict["IsFavorite"] != nil {
+            self.isFavorite = dict["IsFavorite"] as! Bool
+        }
         if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
             self.maxResults = dict["MaxResults"] as! Int32
         }
@@ -17347,6 +17676,8 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
     public class Templates : Tea.TeaModel {
         public var category: String?
 
+        public var constraints: String?
+
         public var createdBy: String?
 
         public var createdDate: String?
@@ -17357,7 +17688,11 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
 
         public var hash: String?
 
+        public var isFavorite: Bool?
+
         public var popularity: Int32?
+
+        public var publisher: String?
 
         public var resourceGroupId: String?
 
@@ -17398,6 +17733,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             if self.category != nil {
                 map["Category"] = self.category!
             }
+            if self.constraints != nil {
+                map["Constraints"] = self.constraints!
+            }
             if self.createdBy != nil {
                 map["CreatedBy"] = self.createdBy!
             }
@@ -17413,8 +17751,14 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             if self.hash != nil {
                 map["Hash"] = self.hash!
             }
+            if self.isFavorite != nil {
+                map["IsFavorite"] = self.isFavorite!
+            }
             if self.popularity != nil {
                 map["Popularity"] = self.popularity!
+            }
+            if self.publisher != nil {
+                map["Publisher"] = self.publisher!
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
@@ -17456,6 +17800,9 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             if dict.keys.contains("Category") && dict["Category"] != nil {
                 self.category = dict["Category"] as! String
             }
+            if dict.keys.contains("Constraints") && dict["Constraints"] != nil {
+                self.constraints = dict["Constraints"] as! String
+            }
             if dict.keys.contains("CreatedBy") && dict["CreatedBy"] != nil {
                 self.createdBy = dict["CreatedBy"] as! String
             }
@@ -17471,8 +17818,14 @@ public class ListTemplatesResponseBody : Tea.TeaModel {
             if dict.keys.contains("Hash") && dict["Hash"] != nil {
                 self.hash = dict["Hash"] as! String
             }
+            if dict.keys.contains("IsFavorite") && dict["IsFavorite"] != nil {
+                self.isFavorite = dict["IsFavorite"] as! Bool
+            }
             if dict.keys.contains("Popularity") && dict["Popularity"] != nil {
                 self.popularity = dict["Popularity"] as! Int32
+            }
+            if dict.keys.contains("Publisher") && dict["Publisher"] != nil {
+                self.publisher = dict["Publisher"] as! String
             }
             if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
