@@ -19813,6 +19813,8 @@ public class GetMergeRequestResponseBody : Tea.TeaModel {
 
             public var reviewOpinionStatus: String?
 
+            public var reviewTime: String?
+
             public var state: String?
 
             public var username: String?
@@ -19849,6 +19851,9 @@ public class GetMergeRequestResponseBody : Tea.TeaModel {
                 if self.reviewOpinionStatus != nil {
                     map["reviewOpinionStatus"] = self.reviewOpinionStatus!
                 }
+                if self.reviewTime != nil {
+                    map["reviewTime"] = self.reviewTime!
+                }
                 if self.state != nil {
                     map["state"] = self.state!
                 }
@@ -19876,6 +19881,9 @@ public class GetMergeRequestResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("reviewOpinionStatus") && dict["reviewOpinionStatus"] != nil {
                     self.reviewOpinionStatus = dict["reviewOpinionStatus"] as! String
+                }
+                if dict.keys.contains("reviewTime") && dict["reviewTime"] != nil {
+                    self.reviewTime = dict["reviewTime"] as! String
                 }
                 if dict.keys.contains("state") && dict["state"] != nil {
                     self.state = dict["state"] as! String
@@ -23123,6 +23131,8 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
 
         public var avatarUrl: String?
 
+        public var email: String?
+
         public var id: Int64?
 
         public var name: String?
@@ -23147,6 +23157,9 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
             if self.avatarUrl != nil {
                 map["avatarUrl"] = self.avatarUrl!
             }
+            if self.email != nil {
+                map["email"] = self.email!
+            }
             if self.id != nil {
                 map["id"] = self.id!
             }
@@ -23162,6 +23175,9 @@ public class GetProjectMemberResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
                 self.avatarUrl = dict["avatarUrl"] as! String
+            }
+            if dict.keys.contains("email") && dict["email"] != nil {
+                self.email = dict["email"] as! String
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
@@ -34082,6 +34098,8 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
 
             public var name: String?
 
+            public var reviewTime: String?
+
             public var state: String?
 
             public var status: String?
@@ -34114,6 +34132,9 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
                 if self.name != nil {
                     map["name"] = self.name!
                 }
+                if self.reviewTime != nil {
+                    map["reviewTime"] = self.reviewTime!
+                }
                 if self.state != nil {
                     map["state"] = self.state!
                 }
@@ -34138,6 +34159,9 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("name") && dict["name"] != nil {
                     self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("reviewTime") && dict["reviewTime"] != nil {
+                    self.reviewTime = dict["reviewTime"] as! String
                 }
                 if dict.keys.contains("state") && dict["state"] != nil {
                     self.state = dict["state"] as! String
