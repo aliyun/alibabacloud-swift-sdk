@@ -3298,6 +3298,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.maintenanceWindow)) {
             body["maintenance_window"] = request.maintenanceWindow!;
         }
+        if (!TeaUtils.Client.isUnset(request.operationPolicy)) {
+            body["operation_policy"] = request.operationPolicy!;
+        }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             body["resource_group_id"] = request.resourceGroupId ?? "";
         }

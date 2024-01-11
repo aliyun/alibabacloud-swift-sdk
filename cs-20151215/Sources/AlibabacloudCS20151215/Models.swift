@@ -20993,6 +20993,75 @@ public class MigrateClusterResponse : Tea.TeaModel {
 }
 
 public class ModifyClusterRequest : Tea.TeaModel {
+    public class OperationPolicy : Tea.TeaModel {
+        public class ClusterAutoUpgrade : Tea.TeaModel {
+            public var channel: String?
+
+            public var enabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.channel != nil {
+                    map["channel"] = self.channel!
+                }
+                if self.enabled != nil {
+                    map["enabled"] = self.enabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("channel") && dict["channel"] != nil {
+                    self.channel = dict["channel"] as! String
+                }
+                if dict.keys.contains("enabled") && dict["enabled"] != nil {
+                    self.enabled = dict["enabled"] as! Bool
+                }
+            }
+        }
+        public var clusterAutoUpgrade: ModifyClusterRequest.OperationPolicy.ClusterAutoUpgrade?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.clusterAutoUpgrade?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clusterAutoUpgrade != nil {
+                map["cluster_auto_upgrade"] = self.clusterAutoUpgrade?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("cluster_auto_upgrade") && dict["cluster_auto_upgrade"] != nil {
+                var model = ModifyClusterRequest.OperationPolicy.ClusterAutoUpgrade()
+                model.fromMap(dict["cluster_auto_upgrade"] as! [String: Any])
+                self.clusterAutoUpgrade = model
+            }
+        }
+    }
     public class SystemEventsLogging : Tea.TeaModel {
         public var enabled: Bool?
 
@@ -21050,6 +21119,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public var maintenanceWindow: MaintenanceWindow?
 
+    public var operationPolicy: ModifyClusterRequest.OperationPolicy?
+
     public var resourceGroupId: String?
 
     public var systemEventsLogging: ModifyClusterRequest.SystemEventsLogging?
@@ -21065,6 +21136,7 @@ public class ModifyClusterRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.maintenanceWindow?.validate()
+        try self.operationPolicy?.validate()
         try self.systemEventsLogging?.validate()
     }
 
@@ -21099,6 +21171,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         }
         if self.maintenanceWindow != nil {
             map["maintenance_window"] = self.maintenanceWindow?.toMap()
+        }
+        if self.operationPolicy != nil {
+            map["operation_policy"] = self.operationPolicy?.toMap()
         }
         if self.resourceGroupId != nil {
             map["resource_group_id"] = self.resourceGroupId!
@@ -21141,6 +21216,11 @@ public class ModifyClusterRequest : Tea.TeaModel {
             var model = MaintenanceWindow()
             model.fromMap(dict["maintenance_window"] as! [String: Any])
             self.maintenanceWindow = model
+        }
+        if dict.keys.contains("operation_policy") && dict["operation_policy"] != nil {
+            var model = ModifyClusterRequest.OperationPolicy()
+            model.fromMap(dict["operation_policy"] as! [String: Any])
+            self.operationPolicy = model
         }
         if dict.keys.contains("resource_group_id") && dict["resource_group_id"] != nil {
             self.resourceGroupId = dict["resource_group_id"] as! String
