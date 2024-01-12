@@ -7259,6 +7259,30 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFixUsedCountWithOptions(_ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFixUsedCountResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([:])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeFixUsedCount",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeFixUsedCountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeFixUsedCount() async throws -> DescribeFixUsedCountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeFixUsedCountWithOptions(runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeFrontVulPatchListWithOptions(_ request: DescribeFrontVulPatchListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeFrontVulPatchListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -22714,6 +22738,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tagList)) {
             query["TagList"] = request.tagList ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.target)) {
+            query["Target"] = request.target ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.uuidList)) {
             query["UuidList"] = request.uuidList ?? "";
