@@ -1803,9 +1803,13 @@ public class JobItem : Tea.TeaModel {
 
     public var thirdpartyLibs: [String]?
 
+    public var useOversoldResource: Bool?
+
     public var userCommand: String?
 
     public var userId: String?
+
+    public var username: String?
 
     public var workspaceId: String?
 
@@ -1916,11 +1920,17 @@ public class JobItem : Tea.TeaModel {
         if self.thirdpartyLibs != nil {
             map["ThirdpartyLibs"] = self.thirdpartyLibs!
         }
+        if self.useOversoldResource != nil {
+            map["UseOversoldResource"] = self.useOversoldResource!
+        }
         if self.userCommand != nil {
             map["UserCommand"] = self.userCommand!
         }
         if self.userId != nil {
             map["UserId"] = self.userId!
+        }
+        if self.username != nil {
+            map["Username"] = self.username!
         }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
@@ -2033,11 +2043,17 @@ public class JobItem : Tea.TeaModel {
         if dict.keys.contains("ThirdpartyLibs") && dict["ThirdpartyLibs"] != nil {
             self.thirdpartyLibs = dict["ThirdpartyLibs"] as! [String]
         }
+        if dict.keys.contains("UseOversoldResource") && dict["UseOversoldResource"] != nil {
+            self.useOversoldResource = dict["UseOversoldResource"] as! Bool
+        }
         if dict.keys.contains("UserCommand") && dict["UserCommand"] != nil {
             self.userCommand = dict["UserCommand"] as! String
         }
         if dict.keys.contains("UserId") && dict["UserId"] != nil {
             self.userId = dict["UserId"] as! String
+        }
+        if dict.keys.contains("Username") && dict["Username"] != nil {
+            self.username = dict["Username"] as! String
         }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
@@ -6962,6 +6978,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var userIdForFilter: String?
 
+    public var username: String?
+
     public var workspaceId: String?
 
     public override init() {
@@ -7032,6 +7050,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.userIdForFilter != nil {
             map["UserIdForFilter"] = self.userIdForFilter!
         }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -7093,6 +7114,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if dict.keys.contains("UserIdForFilter") && dict["UserIdForFilter"] != nil {
             self.userIdForFilter = dict["UserIdForFilter"] as! String
         }
+        if dict.keys.contains("Username") && dict["Username"] != nil {
+            self.username = dict["Username"] as! String
+        }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
         }
@@ -7135,6 +7159,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var tagsShrink: String?
 
     public var userIdForFilter: String?
+
+    public var username: String?
 
     public var workspaceId: String?
 
@@ -7206,6 +7232,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if self.userIdForFilter != nil {
             map["UserIdForFilter"] = self.userIdForFilter!
         }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
         if self.workspaceId != nil {
             map["WorkspaceId"] = self.workspaceId!
         }
@@ -7266,6 +7295,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("UserIdForFilter") && dict["UserIdForFilter"] != nil {
             self.userIdForFilter = dict["UserIdForFilter"] as! String
+        }
+        if dict.keys.contains("Username") && dict["Username"] != nil {
+            self.username = dict["Username"] as! String
         }
         if dict.keys.contains("WorkspaceId") && dict["WorkspaceId"] != nil {
             self.workspaceId = dict["WorkspaceId"] as! String
