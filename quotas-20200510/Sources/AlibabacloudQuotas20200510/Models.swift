@@ -767,9 +767,48 @@ public class CreateQuotaApplicationsForTemplateRequest : Tea.TeaModel {
 }
 
 public class CreateQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
+    public class FailResults : Tea.TeaModel {
+        public var aliyunUid: String?
+
+        public var reason: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyunUid != nil {
+                map["AliyunUid"] = self.aliyunUid!
+            }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliyunUid") && dict["AliyunUid"] != nil {
+                self.aliyunUid = dict["AliyunUid"] as! String
+            }
+            if dict.keys.contains("Reason") && dict["Reason"] != nil {
+                self.reason = dict["Reason"] as! String
+            }
+        }
+    }
     public var aliyunUids: [String]?
 
     public var batchQuotaApplicationId: String?
+
+    public var failResults: [CreateQuotaApplicationsForTemplateResponseBody.FailResults]?
 
     public var requestId: String?
 
@@ -793,6 +832,13 @@ public class CreateQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
         if self.batchQuotaApplicationId != nil {
             map["BatchQuotaApplicationId"] = self.batchQuotaApplicationId!
         }
+        if self.failResults != nil {
+            var tmp : [Any] = []
+            for k in self.failResults! {
+                tmp.append(k.toMap())
+            }
+            map["FailResults"] = tmp
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -805,6 +851,17 @@ public class CreateQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("BatchQuotaApplicationId") && dict["BatchQuotaApplicationId"] != nil {
             self.batchQuotaApplicationId = dict["BatchQuotaApplicationId"] as! String
+        }
+        if dict.keys.contains("FailResults") && dict["FailResults"] != nil {
+            var tmp : [CreateQuotaApplicationsForTemplateResponseBody.FailResults] = []
+            for v in dict["FailResults"] as! [Any] {
+                var model = CreateQuotaApplicationsForTemplateResponseBody.FailResults()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.failResults = tmp
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
@@ -1532,6 +1589,8 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
 
         public var expireTime: String?
 
+        public var globalQuota: Bool?
+
         public var period: GetProductQuotaResponseBody.Quota.Period?
 
         public var productCode: String?
@@ -1598,6 +1657,9 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
+            }
+            if self.globalQuota != nil {
+                map["GlobalQuota"] = self.globalQuota!
             }
             if self.period != nil {
                 map["Period"] = self.period?.toMap()
@@ -1672,6 +1734,9 @@ public class GetProductQuotaResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
                 self.expireTime = dict["ExpireTime"] as! String
+            }
+            if dict.keys.contains("GlobalQuota") && dict["GlobalQuota"] != nil {
+                self.globalQuota = dict["GlobalQuota"] as! Bool
             }
             if dict.keys.contains("Period") && dict["Period"] != nil {
                 var model = GetProductQuotaResponseBody.Quota.Period()
@@ -4134,6 +4199,8 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
 
         public var expireTime: String?
 
+        public var globalQuota: Bool?
+
         public var period: ListProductQuotasResponseBody.Quotas.Period?
 
         public var productCode: String?
@@ -4200,6 +4267,9 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             }
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
+            }
+            if self.globalQuota != nil {
+                map["GlobalQuota"] = self.globalQuota!
             }
             if self.period != nil {
                 map["Period"] = self.period?.toMap()
@@ -4274,6 +4344,9 @@ public class ListProductQuotasResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
                 self.expireTime = dict["ExpireTime"] as! String
+            }
+            if dict.keys.contains("GlobalQuota") && dict["GlobalQuota"] != nil {
+                self.globalQuota = dict["GlobalQuota"] as! Bool
             }
             if dict.keys.contains("Period") && dict["Period"] != nil {
                 var model = ListProductQuotasResponseBody.Quotas.Period()
@@ -5577,6 +5650,8 @@ public class ListQuotaApplicationsRequest : Tea.TeaModel {
             }
         }
     }
+    public var acceptLanguage: String?
+
     public var dimensions: [ListQuotaApplicationsRequest.Dimensions]?
 
     public var keyWord: String?
@@ -5607,6 +5682,9 @@ public class ListQuotaApplicationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
         if self.dimensions != nil {
             var tmp : [Any] = []
             for k in self.dimensions! {
@@ -5639,6 +5717,9 @@ public class ListQuotaApplicationsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
         if dict.keys.contains("Dimensions") && dict["Dimensions"] != nil {
             var tmp : [ListQuotaApplicationsRequest.Dimensions] = []
             for v in dict["Dimensions"] as! [Any] {
@@ -6587,6 +6668,8 @@ public class ListQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var aliyunUids: [String]?
+
         public var applyTime: String?
 
         public var auditStatusVos: [ListQuotaApplicationsForTemplateResponseBody.QuotaBatchApplications.AuditStatusVos]?
@@ -6607,6 +6690,8 @@ public class ListQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
 
         public var quotaCategory: String?
 
+        public var reason: String?
+
         public override init() {
             super.init()
         }
@@ -6621,6 +6706,9 @@ public class ListQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aliyunUids != nil {
+                map["AliyunUids"] = self.aliyunUids!
+            }
             if self.applyTime != nil {
                 map["ApplyTime"] = self.applyTime!
             }
@@ -6655,10 +6743,16 @@ public class ListQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
             if self.quotaCategory != nil {
                 map["QuotaCategory"] = self.quotaCategory!
             }
+            if self.reason != nil {
+                map["Reason"] = self.reason!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AliyunUids") && dict["AliyunUids"] != nil {
+                self.aliyunUids = dict["AliyunUids"] as! [String]
+            }
             if dict.keys.contains("ApplyTime") && dict["ApplyTime"] != nil {
                 self.applyTime = dict["ApplyTime"] as! String
             }
@@ -6696,6 +6790,9 @@ public class ListQuotaApplicationsForTemplateResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("QuotaCategory") && dict["QuotaCategory"] != nil {
                 self.quotaCategory = dict["QuotaCategory"] as! String
+            }
+            if dict.keys.contains("Reason") && dict["Reason"] != nil {
+                self.reason = dict["Reason"] as! String
             }
         }
     }

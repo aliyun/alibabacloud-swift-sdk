@@ -831,6 +831,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listQuotaApplicationsWithOptions(_ request: ListQuotaApplicationsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQuotaApplicationsResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            body["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.dimensions)) {
             body["Dimensions"] = request.dimensions ?? [];
         }
