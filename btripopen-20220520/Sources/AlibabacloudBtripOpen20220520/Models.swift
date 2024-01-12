@@ -28397,6 +28397,8 @@ public class FlightItineraryScanQueryResponseBody : Tea.TeaModel {
             }
             public var agentCode: String?
 
+            public var applyId: String?
+
             public var billDate: String?
 
             public var build: String?
@@ -28459,6 +28461,9 @@ public class FlightItineraryScanQueryResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.agentCode != nil {
                     map["agent_code"] = self.agentCode!
+                }
+                if self.applyId != nil {
+                    map["apply_id"] = self.applyId!
                 }
                 if self.billDate != nil {
                     map["bill_date"] = self.billDate!
@@ -28539,6 +28544,9 @@ public class FlightItineraryScanQueryResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("agent_code") && dict["agent_code"] != nil {
                     self.agentCode = dict["agent_code"] as! String
+                }
+                if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
+                    self.applyId = dict["apply_id"] as! String
                 }
                 if dict.keys.contains("bill_date") && dict["bill_date"] != nil {
                     self.billDate = dict["bill_date"] as! String
@@ -42793,6 +42801,10 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
         public class FlightChangeTicketInfoList : Tea.TeaModel {
             public var applyId: String?
 
+            public var arrAirport: String?
+
+            public var arrCity: String?
+
             public var arrTime: String?
 
             public var changeCabin: String?
@@ -42809,7 +42821,13 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
 
             public var changeType: Int32?
 
+            public var depAirport: String?
+
+            public var depCity: String?
+
             public var depTime: String?
+
+            public var discount: String?
 
             public var gmtCreate: String?
 
@@ -42818,6 +42836,8 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             public var originTicketNo: String?
 
             public var outApplyId: String?
+
+            public var stopCity: String?
 
             public var ticketNo: String?
 
@@ -42844,6 +42864,12 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if self.applyId != nil {
                     map["apply_id"] = self.applyId!
                 }
+                if self.arrAirport != nil {
+                    map["arr_airport"] = self.arrAirport!
+                }
+                if self.arrCity != nil {
+                    map["arr_city"] = self.arrCity!
+                }
                 if self.arrTime != nil {
                     map["arr_time"] = self.arrTime!
                 }
@@ -42868,8 +42894,17 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if self.changeType != nil {
                     map["change_type"] = self.changeType!
                 }
+                if self.depAirport != nil {
+                    map["dep_airport"] = self.depAirport!
+                }
+                if self.depCity != nil {
+                    map["dep_city"] = self.depCity!
+                }
                 if self.depTime != nil {
                     map["dep_time"] = self.depTime!
+                }
+                if self.discount != nil {
+                    map["discount"] = self.discount!
                 }
                 if self.gmtCreate != nil {
                     map["gmt_create"] = self.gmtCreate!
@@ -42882,6 +42917,9 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if self.outApplyId != nil {
                     map["out_apply_id"] = self.outApplyId!
+                }
+                if self.stopCity != nil {
+                    map["stop_city"] = self.stopCity!
                 }
                 if self.ticketNo != nil {
                     map["ticket_no"] = self.ticketNo!
@@ -42901,6 +42939,12 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
                     self.applyId = dict["apply_id"] as! String
+                }
+                if dict.keys.contains("arr_airport") && dict["arr_airport"] != nil {
+                    self.arrAirport = dict["arr_airport"] as! String
+                }
+                if dict.keys.contains("arr_city") && dict["arr_city"] != nil {
+                    self.arrCity = dict["arr_city"] as! String
                 }
                 if dict.keys.contains("arr_time") && dict["arr_time"] != nil {
                     self.arrTime = dict["arr_time"] as! String
@@ -42926,8 +42970,17 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("change_type") && dict["change_type"] != nil {
                     self.changeType = dict["change_type"] as! Int32
                 }
+                if dict.keys.contains("dep_airport") && dict["dep_airport"] != nil {
+                    self.depAirport = dict["dep_airport"] as! String
+                }
+                if dict.keys.contains("dep_city") && dict["dep_city"] != nil {
+                    self.depCity = dict["dep_city"] as! String
+                }
                 if dict.keys.contains("dep_time") && dict["dep_time"] != nil {
                     self.depTime = dict["dep_time"] as! String
+                }
+                if dict.keys.contains("discount") && dict["discount"] != nil {
+                    self.discount = dict["discount"] as! String
                 }
                 if dict.keys.contains("gmt_create") && dict["gmt_create"] != nil {
                     self.gmtCreate = dict["gmt_create"] as! String
@@ -42940,6 +42993,9 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("out_apply_id") && dict["out_apply_id"] != nil {
                     self.outApplyId = dict["out_apply_id"] as! String
+                }
+                if dict.keys.contains("stop_city") && dict["stop_city"] != nil {
+                    self.stopCity = dict["stop_city"] as! String
                 }
                 if dict.keys.contains("ticket_no") && dict["ticket_no"] != nil {
                     self.ticketNo = dict["ticket_no"] as! String
@@ -43123,6 +43179,16 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
         public class FlightRefundTicketInfoList : Tea.TeaModel {
             public var applyId: String?
 
+            public var arrAirport: String?
+
+            public var arrCity: String?
+
+            public var depAirport: String?
+
+            public var depCity: String?
+
+            public var flightNo: String?
+
             public var gmtCreate: String?
 
             public var gmtModify: String?
@@ -43156,6 +43222,21 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
                 if self.applyId != nil {
                     map["apply_id"] = self.applyId!
                 }
+                if self.arrAirport != nil {
+                    map["arr_airport"] = self.arrAirport!
+                }
+                if self.arrCity != nil {
+                    map["arr_city"] = self.arrCity!
+                }
+                if self.depAirport != nil {
+                    map["dep_airport"] = self.depAirport!
+                }
+                if self.depCity != nil {
+                    map["dep_city"] = self.depCity!
+                }
+                if self.flightNo != nil {
+                    map["flight_no"] = self.flightNo!
+                }
                 if self.gmtCreate != nil {
                     map["gmt_create"] = self.gmtCreate!
                 }
@@ -43186,6 +43267,21 @@ public class FlightOrderQueryResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
                     self.applyId = dict["apply_id"] as! String
+                }
+                if dict.keys.contains("arr_airport") && dict["arr_airport"] != nil {
+                    self.arrAirport = dict["arr_airport"] as! String
+                }
+                if dict.keys.contains("arr_city") && dict["arr_city"] != nil {
+                    self.arrCity = dict["arr_city"] as! String
+                }
+                if dict.keys.contains("dep_airport") && dict["dep_airport"] != nil {
+                    self.depAirport = dict["dep_airport"] as! String
+                }
+                if dict.keys.contains("dep_city") && dict["dep_city"] != nil {
+                    self.depCity = dict["dep_city"] as! String
+                }
+                if dict.keys.contains("flight_no") && dict["flight_no"] != nil {
+                    self.flightNo = dict["flight_no"] as! String
                 }
                 if dict.keys.contains("gmt_create") && dict["gmt_create"] != nil {
                     self.gmtCreate = dict["gmt_create"] as! String
@@ -102164,6 +102260,8 @@ public class TrainTicketScanQueryRequest : Tea.TeaModel {
 public class TrainTicketScanQueryResponseBody : Tea.TeaModel {
     public class Module : Tea.TeaModel {
         public class Items : Tea.TeaModel {
+            public var applyId: String?
+
             public var arrStation: String?
 
             public var billDate: String?
@@ -102220,6 +102318,9 @@ public class TrainTicketScanQueryResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.applyId != nil {
+                    map["apply_id"] = self.applyId!
+                }
                 if self.arrStation != nil {
                     map["arr_station"] = self.arrStation!
                 }
@@ -102287,6 +102388,9 @@ public class TrainTicketScanQueryResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
+                    self.applyId = dict["apply_id"] as! String
+                }
                 if dict.keys.contains("arr_station") && dict["arr_station"] != nil {
                     self.arrStation = dict["arr_station"] as! String
                 }
