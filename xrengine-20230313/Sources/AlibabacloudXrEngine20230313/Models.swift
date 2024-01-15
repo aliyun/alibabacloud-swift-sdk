@@ -23255,6 +23255,8 @@ public class PopSubmitAITryOnJobRequest : Tea.TeaModel {
 
     public var clothingType: String?
 
+    public var generatePictureNum: Int32?
+
     public var jwtToken: String?
 
     public var modelId: String?
@@ -23285,6 +23287,9 @@ public class PopSubmitAITryOnJobRequest : Tea.TeaModel {
         if self.clothingType != nil {
             map["ClothingType"] = self.clothingType!
         }
+        if self.generatePictureNum != nil {
+            map["GeneratePictureNum"] = self.generatePictureNum!
+        }
         if self.jwtToken != nil {
             map["JwtToken"] = self.jwtToken!
         }
@@ -23309,6 +23314,9 @@ public class PopSubmitAITryOnJobRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClothingType") && dict["ClothingType"] != nil {
             self.clothingType = dict["ClothingType"] as! String
+        }
+        if dict.keys.contains("GeneratePictureNum") && dict["GeneratePictureNum"] != nil {
+            self.generatePictureNum = dict["GeneratePictureNum"] as! Int32
         }
         if dict.keys.contains("JwtToken") && dict["JwtToken"] != nil {
             self.jwtToken = dict["JwtToken"] as! String

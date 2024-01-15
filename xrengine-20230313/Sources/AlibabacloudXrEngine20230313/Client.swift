@@ -2150,6 +2150,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clothingType)) {
             query["ClothingType"] = request.clothingType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.generatePictureNum)) {
+            query["GeneratePictureNum"] = request.generatePictureNum!;
+        }
         if (!TeaUtils.Client.isUnset(request.jwtToken)) {
             query["JwtToken"] = request.jwtToken ?? "";
         }

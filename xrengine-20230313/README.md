@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudXrEngine20230313` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/xrengine-20230313" "1.4.0"
+github "alibabacloud-sdk-swift/xrengine-20230313" "1.5.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudXrEngine20230313` into your Xcode project using [Swift
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/xrengine-20230313.git", from: "1.4.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/xrengine-20230313.git", from: "1.5.0")
 ]
 ```
 
