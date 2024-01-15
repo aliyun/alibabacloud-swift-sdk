@@ -4058,6 +4058,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkitemFileWithOptions(_ organizationId: String, _ workitemIdentifier: String, _ fileIdentifier: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkitemFileResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetWorkitemFile",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/organization/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(organizationId) + "/workitem/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(workitemIdentifier) + "/files/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(fileIdentifier),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetWorkitemFileResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getWorkitemFile(_ organizationId: String, _ workitemIdentifier: String, _ fileIdentifier: String) async throws -> GetWorkitemFileResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await getWorkitemFileWithOptions(organizationId as! String, workitemIdentifier as! String, fileIdentifier as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getWorkitemRelationsWithOptions(_ organizationId: String, _ workitemId: String, _ request: GetWorkitemRelationsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWorkitemRelationsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
