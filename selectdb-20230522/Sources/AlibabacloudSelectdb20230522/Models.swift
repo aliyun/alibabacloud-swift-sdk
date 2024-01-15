@@ -68,15 +68,9 @@ public class AllocateInstancePublicConnectionRequest : Tea.TeaModel {
 }
 
 public class AllocateInstancePublicConnectionResponseBody : Tea.TeaModel {
-    public var code: String?
-
     public var instanceName: String?
 
-    public var message: String?
-
     public var requestId: String?
-
-    public var success: Bool?
 
     public var taskId: Int64?
 
@@ -94,20 +88,11 @@ public class AllocateInstancePublicConnectionResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
         }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -116,20 +101,11 @@ public class AllocateInstancePublicConnectionResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
         if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
             self.instanceName = dict["InstanceName"] as! String
         }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! Bool
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! Int64
@@ -348,13 +324,7 @@ public class CheckCreateDBInstanceRequest : Tea.TeaModel {
 }
 
 public class CheckCreateDBInstanceResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
     public var requestId: String?
-
-    public var success: String?
 
     public override init() {
         super.init()
@@ -370,33 +340,15 @@ public class CheckCreateDBInstanceResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! String
         }
     }
 }
@@ -3152,17 +3104,11 @@ public class DescribeSecurityIPListResponseBody : Tea.TeaModel {
             }
         }
     }
-    public var code: String?
-
     public var DBInstanceName: String?
 
     public var groupItems: [DescribeSecurityIPListResponseBody.GroupItems]?
 
-    public var message: String?
-
     public var requestId: String?
-
-    public var success: Bool?
 
     public override init() {
         super.init()
@@ -3178,9 +3124,6 @@ public class DescribeSecurityIPListResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
@@ -3191,22 +3134,13 @@ public class DescribeSecurityIPListResponseBody : Tea.TeaModel {
             }
             map["GroupItems"] = tmp
         }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
         if dict.keys.contains("DBInstanceName") && dict["DBInstanceName"] != nil {
             self.DBInstanceName = dict["DBInstanceName"] as! String
         }
@@ -3221,14 +3155,8 @@ public class DescribeSecurityIPListResponseBody : Tea.TeaModel {
             }
             self.groupItems = tmp
         }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -3356,13 +3284,7 @@ public class ModifyBEClusterAttributeRequest : Tea.TeaModel {
 }
 
 public class ModifyBEClusterAttributeResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
     public var requestId: String?
-
-    public var success: String?
 
     public override init() {
         super.init()
@@ -3378,33 +3300,15 @@ public class ModifyBEClusterAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! String
         }
     }
 }
@@ -3740,13 +3644,7 @@ public class ModifyDBInstanceAttributeRequest : Tea.TeaModel {
 }
 
 public class ModifyDBInstanceAttributeResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
     public var requestId: String?
-
-    public var success: Bool?
 
     public override init() {
         super.init()
@@ -3762,33 +3660,15 @@ public class ModifyDBInstanceAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -3916,23 +3796,17 @@ public class ModifySecurityIPListRequest : Tea.TeaModel {
 }
 
 public class ModifySecurityIPListResponseBody : Tea.TeaModel {
-    public var code: String?
-
     public var DBInstanceName: String?
 
     public var groupName: String?
 
     public var groupTag: String?
 
-    public var message: String?
-
     public var requestId: String?
 
     public var securityIPList: String?
 
     public var securityIPType: String?
-
-    public var success: Bool?
 
     public var taskId: Int64?
 
@@ -3952,9 +3826,6 @@ public class ModifySecurityIPListResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
         if self.DBInstanceName != nil {
             map["DBInstanceName"] = self.DBInstanceName!
         }
@@ -3964,9 +3835,6 @@ public class ModifySecurityIPListResponseBody : Tea.TeaModel {
         if self.groupTag != nil {
             map["GroupTag"] = self.groupTag!
         }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -3975,9 +3843,6 @@ public class ModifySecurityIPListResponseBody : Tea.TeaModel {
         }
         if self.securityIPType != nil {
             map["SecurityIPType"] = self.securityIPType!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         if self.taskId != nil {
             map["TaskId"] = self.taskId!
@@ -3989,9 +3854,6 @@ public class ModifySecurityIPListResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
         if dict.keys.contains("DBInstanceName") && dict["DBInstanceName"] != nil {
             self.DBInstanceName = dict["DBInstanceName"] as! String
         }
@@ -4001,9 +3863,6 @@ public class ModifySecurityIPListResponseBody : Tea.TeaModel {
         if dict.keys.contains("GroupTag") && dict["GroupTag"] != nil {
             self.groupTag = dict["GroupTag"] as! String
         }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -4012,9 +3871,6 @@ public class ModifySecurityIPListResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityIPType") && dict["SecurityIPType"] != nil {
             self.securityIPType = dict["SecurityIPType"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! Bool
         }
         if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
             self.taskId = dict["TaskId"] as! Int64
@@ -4132,13 +3988,7 @@ public class ReleaseInstancePublicConnectionRequest : Tea.TeaModel {
 }
 
 public class ReleaseInstancePublicConnectionResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
     public var requestId: String?
-
-    public var success: Bool?
 
     public override init() {
         super.init()
@@ -4154,33 +4004,15 @@ public class ReleaseInstancePublicConnectionResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
-        }
-        if self.success != nil {
-            map["Success"] = self.success!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Success") && dict["Success"] != nil {
-            self.success = dict["Success"] as! Bool
         }
     }
 }
@@ -4764,10 +4596,6 @@ public class StopBEClusterRequest : Tea.TeaModel {
 }
 
 public class StopBEClusterResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
     public var requestId: String?
 
     public override init() {
@@ -4784,12 +4612,6 @@ public class StopBEClusterResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4797,12 +4619,6 @@ public class StopBEClusterResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -4924,10 +4740,6 @@ public class UpgradeDBInstanceEngineVersionRequest : Tea.TeaModel {
 }
 
 public class UpgradeDBInstanceEngineVersionResponseBody : Tea.TeaModel {
-    public var code: String?
-
-    public var message: String?
-
     public var requestId: String?
 
     public override init() {
@@ -4944,12 +4756,6 @@ public class UpgradeDBInstanceEngineVersionResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -4957,12 +4763,6 @@ public class UpgradeDBInstanceEngineVersionResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
