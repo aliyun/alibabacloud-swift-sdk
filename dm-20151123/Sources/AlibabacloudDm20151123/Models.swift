@@ -2700,6 +2700,14 @@ public class DescDomainResponseBody : Tea.TeaModel {
 
     public var dkimRR: String?
 
+    public var dmarcAuthStatus: Int32?
+
+    public var dmarcHostRecord: String?
+
+    public var dmarcRecord: String?
+
+    public var dnsDmarc: String?
+
     public var dnsMx: String?
 
     public var dnsSpf: String?
@@ -2771,6 +2779,18 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if self.dkimRR != nil {
             map["DkimRR"] = self.dkimRR!
+        }
+        if self.dmarcAuthStatus != nil {
+            map["DmarcAuthStatus"] = self.dmarcAuthStatus!
+        }
+        if self.dmarcHostRecord != nil {
+            map["DmarcHostRecord"] = self.dmarcHostRecord!
+        }
+        if self.dmarcRecord != nil {
+            map["DmarcRecord"] = self.dmarcRecord!
+        }
+        if self.dnsDmarc != nil {
+            map["DnsDmarc"] = self.dnsDmarc!
         }
         if self.dnsMx != nil {
             map["DnsMx"] = self.dnsMx!
@@ -2850,6 +2870,18 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DkimRR") && dict["DkimRR"] != nil {
             self.dkimRR = dict["DkimRR"] as! String
+        }
+        if dict.keys.contains("DmarcAuthStatus") && dict["DmarcAuthStatus"] != nil {
+            self.dmarcAuthStatus = dict["DmarcAuthStatus"] as! Int32
+        }
+        if dict.keys.contains("DmarcHostRecord") && dict["DmarcHostRecord"] != nil {
+            self.dmarcHostRecord = dict["DmarcHostRecord"] as! String
+        }
+        if dict.keys.contains("DmarcRecord") && dict["DmarcRecord"] != nil {
+            self.dmarcRecord = dict["DmarcRecord"] as! String
+        }
+        if dict.keys.contains("DnsDmarc") && dict["DnsDmarc"] != nil {
+            self.dnsDmarc = dict["DnsDmarc"] as! String
         }
         if dict.keys.contains("DnsMx") && dict["DnsMx"] != nil {
             self.dnsMx = dict["DnsMx"] as! String
