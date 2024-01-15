@@ -493,6 +493,158 @@ public class CheckDomainResponse : Tea.TeaModel {
     }
 }
 
+public class CheckDomainDnsRequest : Tea.TeaModel {
+    public var domainId: Int32?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainId != nil {
+            map["DomainId"] = self.domainId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainId") && dict["DomainId"] != nil {
+            self.domainId = dict["DomainId"] as! Int32
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class CheckDomainDnsResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var status: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+    }
+}
+
+public class CheckDomainDnsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CheckDomainDnsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CheckDomainDnsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDomainRequest : Tea.TeaModel {
     public var domainName: String?
 
@@ -964,6 +1116,8 @@ public class CreateTagRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var tagDescription: String?
+
     public var tagName: String?
 
     public override init() {
@@ -989,6 +1143,9 @@ public class CreateTagRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tagDescription != nil {
+            map["TagDescription"] = self.tagDescription!
+        }
         if self.tagName != nil {
             map["TagName"] = self.tagName!
         }
@@ -1004,6 +1161,9 @@ public class CreateTagRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TagDescription") && dict["TagDescription"] != nil {
+            self.tagDescription = dict["TagDescription"] as! String
         }
         if dict.keys.contains("TagName") && dict["TagName"] != nil {
             self.tagName = dict["TagName"] as! String
@@ -2402,6 +2562,8 @@ public class DescDomainRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var requireRealTimeDnsRecords: Bool?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -2426,6 +2588,9 @@ public class DescDomainRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.requireRealTimeDnsRecords != nil {
+            map["RequireRealTimeDnsRecords"] = self.requireRealTimeDnsRecords!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -2441,6 +2606,9 @@ public class DescDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RequireRealTimeDnsRecords") && dict["RequireRealTimeDnsRecords"] != nil {
+            self.requireRealTimeDnsRecords = dict["RequireRealTimeDnsRecords"] as! Bool
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -2467,6 +2635,14 @@ public class DescDomainResponseBody : Tea.TeaModel {
     public var dkimPublicKey: String?
 
     public var dkimRR: String?
+
+    public var dmarcAuthStatus: Int32?
+
+    public var dmarcHostRecord: String?
+
+    public var dmarcRecord: String?
+
+    public var dnsDmarc: String?
 
     public var dnsMx: String?
 
@@ -2539,6 +2715,18 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if self.dkimRR != nil {
             map["DkimRR"] = self.dkimRR!
+        }
+        if self.dmarcAuthStatus != nil {
+            map["DmarcAuthStatus"] = self.dmarcAuthStatus!
+        }
+        if self.dmarcHostRecord != nil {
+            map["DmarcHostRecord"] = self.dmarcHostRecord!
+        }
+        if self.dmarcRecord != nil {
+            map["DmarcRecord"] = self.dmarcRecord!
+        }
+        if self.dnsDmarc != nil {
+            map["DnsDmarc"] = self.dnsDmarc!
         }
         if self.dnsMx != nil {
             map["DnsMx"] = self.dnsMx!
@@ -2618,6 +2806,18 @@ public class DescDomainResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DkimRR") && dict["DkimRR"] != nil {
             self.dkimRR = dict["DkimRR"] as! String
+        }
+        if dict.keys.contains("DmarcAuthStatus") && dict["DmarcAuthStatus"] != nil {
+            self.dmarcAuthStatus = dict["DmarcAuthStatus"] as! Int32
+        }
+        if dict.keys.contains("DmarcHostRecord") && dict["DmarcHostRecord"] != nil {
+            self.dmarcHostRecord = dict["DmarcHostRecord"] as! String
+        }
+        if dict.keys.contains("DmarcRecord") && dict["DmarcRecord"] != nil {
+            self.dmarcRecord = dict["DmarcRecord"] as! String
+        }
+        if dict.keys.contains("DnsDmarc") && dict["DnsDmarc"] != nil {
+            self.dnsDmarc = dict["DnsDmarc"] as! String
         }
         if dict.keys.contains("DnsMx") && dict["DnsMx"] != nil {
             self.dnsMx = dict["DnsMx"] as! String
@@ -4094,6 +4294,8 @@ public class ModifyTagRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var tagDescription: String?
+
     public var tagId: Int32?
 
     public var tagName: String?
@@ -4121,6 +4323,9 @@ public class ModifyTagRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tagDescription != nil {
+            map["TagDescription"] = self.tagDescription!
+        }
         if self.tagId != nil {
             map["TagId"] = self.tagId!
         }
@@ -4139,6 +4344,9 @@ public class ModifyTagRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TagDescription") && dict["TagDescription"] != nil {
+            self.tagDescription = dict["TagDescription"] as! String
         }
         if dict.keys.contains("TagId") && dict["TagId"] != nil {
             self.tagId = dict["TagId"] as! Int32
@@ -6093,6 +6301,8 @@ public class QueryTagByParamRequest : Tea.TeaModel {
 public class QueryTagByParamResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Tag : Tea.TeaModel {
+            public var tagDescription: String?
+
             public var tagId: String?
 
             public var tagName: String?
@@ -6111,6 +6321,9 @@ public class QueryTagByParamResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.tagDescription != nil {
+                    map["TagDescription"] = self.tagDescription!
+                }
                 if self.tagId != nil {
                     map["TagId"] = self.tagId!
                 }
@@ -6121,6 +6334,9 @@ public class QueryTagByParamResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagDescription") && dict["TagDescription"] != nil {
+                    self.tagDescription = dict["TagDescription"] as! String
+                }
                 if dict.keys.contains("TagId") && dict["TagId"] != nil {
                     self.tagId = dict["TagId"] as! String
                 }
