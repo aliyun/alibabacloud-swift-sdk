@@ -5326,9 +5326,13 @@ public class ListPublicTemplateRegistrationsResponseBody : Tea.TeaModel {
     public class Registrations : Tea.TeaModel {
         public var comment: String?
 
+        public var createdDate: String?
+
         public var detail: String?
 
         public var registrationId: String?
+
+        public var showPages: String?
 
         public var status: String?
 
@@ -5337,6 +5341,8 @@ public class ListPublicTemplateRegistrationsResponseBody : Tea.TeaModel {
         public var templateName: String?
 
         public var templateVersion: String?
+
+        public var updatedDate: String?
 
         public override init() {
             super.init()
@@ -5355,11 +5361,17 @@ public class ListPublicTemplateRegistrationsResponseBody : Tea.TeaModel {
             if self.comment != nil {
                 map["Comment"] = self.comment!
             }
+            if self.createdDate != nil {
+                map["CreatedDate"] = self.createdDate!
+            }
             if self.detail != nil {
                 map["Detail"] = self.detail!
             }
             if self.registrationId != nil {
                 map["RegistrationId"] = self.registrationId!
+            }
+            if self.showPages != nil {
+                map["ShowPages"] = self.showPages!
             }
             if self.status != nil {
                 map["Status"] = self.status!
@@ -5373,6 +5385,9 @@ public class ListPublicTemplateRegistrationsResponseBody : Tea.TeaModel {
             if self.templateVersion != nil {
                 map["TemplateVersion"] = self.templateVersion!
             }
+            if self.updatedDate != nil {
+                map["UpdatedDate"] = self.updatedDate!
+            }
             return map
         }
 
@@ -5380,11 +5395,17 @@ public class ListPublicTemplateRegistrationsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Comment") && dict["Comment"] != nil {
                 self.comment = dict["Comment"] as! String
             }
+            if dict.keys.contains("CreatedDate") && dict["CreatedDate"] != nil {
+                self.createdDate = dict["CreatedDate"] as! String
+            }
             if dict.keys.contains("Detail") && dict["Detail"] != nil {
                 self.detail = dict["Detail"] as! String
             }
             if dict.keys.contains("RegistrationId") && dict["RegistrationId"] != nil {
                 self.registrationId = dict["RegistrationId"] as! String
+            }
+            if dict.keys.contains("ShowPages") && dict["ShowPages"] != nil {
+                self.showPages = dict["ShowPages"] as! String
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
@@ -5397,6 +5418,9 @@ public class ListPublicTemplateRegistrationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TemplateVersion") && dict["TemplateVersion"] != nil {
                 self.templateVersion = dict["TemplateVersion"] as! String
+            }
+            if dict.keys.contains("UpdatedDate") && dict["UpdatedDate"] != nil {
+                self.updatedDate = dict["UpdatedDate"] as! String
             }
         }
     }
