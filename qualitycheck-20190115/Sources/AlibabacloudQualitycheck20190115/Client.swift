@@ -27,6 +27,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addBusinessCategoryWithOptions(_ request: AddBusinessCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddBusinessCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -58,6 +61,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addRuleCategoryWithOptions(_ request: AddRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddRuleCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -88,6 +94,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addRuleV4WithOptions(_ request: AddRuleV4Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddRuleV4Response {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.isCopy)) {
             body["IsCopy"] = request.isCopy!;
@@ -96,6 +106,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["JsonStrForRule"] = request.jsonStrForRule ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -123,6 +134,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func addThesaurusForApiWithOptions(_ request: AddThesaurusForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddThesaurusForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -154,6 +168,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func assignReviewerWithOptions(_ request: AssignReviewerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssignReviewerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -185,6 +202,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func assignReviewerBySessionGroupWithOptions(_ request: AssignReviewerBySessionGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AssignReviewerBySessionGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -216,6 +236,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func batchSubmitReviewInfoWithOptions(_ request: BatchSubmitReviewInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchSubmitReviewInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -247,6 +270,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createAsrVocabWithOptions(_ request: CreateAsrVocabRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAsrVocabResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -278,6 +304,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCheckTypeToSchemeWithOptions(_ request: CreateCheckTypeToSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCheckTypeToSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -309,6 +338,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createQualityCheckSchemeWithOptions(_ request: CreateQualityCheckSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateQualityCheckSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -340,6 +372,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSchemeTaskConfigWithOptions(_ request: CreateSchemeTaskConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSchemeTaskConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -371,6 +406,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createSkillGroupConfigWithOptions(_ request: CreateSkillGroupConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSkillGroupConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -402,6 +440,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createTaskAssignRuleWithOptions(_ request: CreateTaskAssignRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTaskAssignRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -433,6 +474,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createUserWithOptions(_ request: CreateUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -464,6 +508,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createWarningConfigWithOptions(_ request: CreateWarningConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWarningConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -495,6 +542,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createWarningStrategyConfigWithOptions(_ request: CreateWarningStrategyConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateWarningStrategyConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -526,6 +576,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func delRuleCategoryWithOptions(_ request: DelRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DelRuleCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -557,6 +610,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func delThesaurusForApiWithOptions(_ request: DelThesaurusForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DelThesaurusForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -588,6 +644,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAsrVocabWithOptions(_ request: DeleteAsrVocabRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAsrVocabResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -619,6 +678,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteBusinessCategoryWithOptions(_ request: DeleteBusinessCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteBusinessCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -650,6 +712,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteCustomizationConfigWithOptions(_ request: DeleteCustomizationConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteCustomizationConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -681,6 +746,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteDataSetWithOptions(_ request: DeleteDataSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteDataSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -712,6 +780,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deletePrecisionTaskWithOptions(_ request: DeletePrecisionTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePrecisionTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -743,6 +814,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteQualityCheckSchemeWithOptions(_ request: DeleteQualityCheckSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteQualityCheckSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -773,6 +847,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteRuleWithOptions(_ request: DeleteRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRuleResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.forceDelete)) {
             body["ForceDelete"] = request.forceDelete!;
@@ -784,6 +862,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["RuleId"] = request.ruleId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -810,6 +889,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteRuleV4WithOptions(_ request: DeleteRuleV4Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteRuleV4Response {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.forceDelete)) {
             body["ForceDelete"] = request.forceDelete!;
@@ -818,6 +901,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["RuleId"] = request.ruleId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -845,6 +929,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteSchemeTaskConfigWithOptions(_ request: DeleteSchemeTaskConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSchemeTaskConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -876,6 +963,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteScoreForApiWithOptions(_ request: DeleteScoreForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScoreForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -907,6 +997,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteSkillGroupConfigWithOptions(_ request: DeleteSkillGroupConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSkillGroupConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -938,6 +1031,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteSubScoreForApiWithOptions(_ request: DeleteSubScoreForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSubScoreForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -969,6 +1065,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteTaskAssignRuleWithOptions(_ request: DeleteTaskAssignRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteTaskAssignRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1000,6 +1099,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteUserWithOptions(_ request: DeleteUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1031,6 +1133,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteWarningConfigWithOptions(_ request: DeleteWarningConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWarningConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1062,6 +1167,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteWarningStrategyConfigWithOptions(_ request: DeleteWarningStrategyConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteWarningStrategyConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1093,6 +1201,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func editThesaurusForApiWithOptions(_ request: EditThesaurusForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EditThesaurusForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1124,6 +1235,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAsrVocabWithOptions(_ request: GetAsrVocabRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAsrVocabResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1155,6 +1269,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getBusinessCategoryListWithOptions(_ request: GetBusinessCategoryListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetBusinessCategoryListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1186,6 +1303,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCustomizationConfigListWithOptions(_ request: GetCustomizationConfigListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCustomizationConfigListResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1217,6 +1337,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getHitResultWithOptions(_ request: GetHitResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetHitResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1248,6 +1371,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getNextResultToVerifyWithOptions(_ request: GetNextResultToVerifyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetNextResultToVerifyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1279,6 +1405,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPrecisionTaskWithOptions(_ request: GetPrecisionTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPrecisionTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1310,6 +1439,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getQualityCheckSchemeWithOptions(_ request: GetQualityCheckSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQualityCheckSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -1341,6 +1473,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getResultWithOptions(_ request: GetResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1372,6 +1507,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getResultCallbackWithOptions(_ request: GetResultCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResultCallbackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1403,6 +1541,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getResultToReviewWithOptions(_ request: GetResultToReviewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResultToReviewResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1434,6 +1575,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRuleWithOptions(_ request: GetRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1464,11 +1608,16 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRuleByIdWithOptions(_ request: GetRuleByIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRuleByIdResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.ruleId)) {
             body["RuleId"] = request.ruleId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1496,6 +1645,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRuleCategoryWithOptions(_ request: GetRuleCategoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRuleCategoryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1527,6 +1679,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRuleDetailWithOptions(_ request: GetRuleDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRuleDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1586,8 +1741,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRuleV4StrWithOptions(_ request: GetRuleV4StrRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRuleV4StrResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isSchemeData)) {
+            body["IsSchemeData"] = request.isSchemeData!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            body["RuleId"] = request.ruleId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetRuleV4Str",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetRuleV4StrResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getRuleV4Str(_ request: GetRuleV4StrRequest) async throws -> GetRuleV4StrResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getRuleV4StrWithOptions(request as! GetRuleV4StrRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getRulesCountListWithOptions(_ request: GetRulesCountListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetRulesCountListResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.businessName)) {
             body["BusinessName"] = request.businessName ?? "";
@@ -1665,6 +1858,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["UpdateUserId"] = request.updateUserId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -1692,6 +1886,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getScoreInfoWithOptions(_ request: GetScoreInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetScoreInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1723,6 +1920,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getSkillGroupConfigWithOptions(_ request: GetSkillGroupConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSkillGroupConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1754,6 +1954,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getSyncResultWithOptions(_ request: GetSyncResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSyncResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1785,6 +1988,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getThesaurusBySynonymForApiWithOptions(_ request: GetThesaurusBySynonymForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetThesaurusBySynonymForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1816,6 +2022,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWarningStrategyConfigWithOptions(_ request: GetWarningStrategyConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWarningStrategyConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1847,6 +2056,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func handleComplaintWithOptions(_ request: HandleComplaintRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> HandleComplaintResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1878,6 +2090,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func insertScoreForApiWithOptions(_ request: InsertScoreForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertScoreForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1909,6 +2124,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func insertSubScoreForApiWithOptions(_ request: InsertSubScoreForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertSubScoreForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1940,6 +2158,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func invalidRuleWithOptions(_ request: InvalidRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InvalidRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -1971,6 +2192,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAsrVocabWithOptions(_ request: ListAsrVocabRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAsrVocabResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2033,6 +2257,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDataSetWithOptions(_ request: ListDataSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListDataSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2064,6 +2291,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listHotWordsTasksWithOptions(_ request: ListHotWordsTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHotWordsTasksResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2095,6 +2325,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listPrecisionTaskWithOptions(_ request: ListPrecisionTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPrecisionTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2126,6 +2359,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listQualityCheckSchemeWithOptions(_ request: ListQualityCheckSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListQualityCheckSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2157,6 +2393,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listRolesWithOptions(_ request: ListRolesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRolesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2188,6 +2427,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listRulesWithOptions(_ request: ListRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2218,6 +2460,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listRulesV4WithOptions(_ request: ListRulesV4Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListRulesV4Response {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.businessName)) {
             body["BusinessName"] = request.businessName ?? "";
@@ -2295,6 +2541,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["UpdateUserId"] = request.updateUserId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -2322,6 +2569,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSchemeTaskConfigWithOptions(_ request: ListSchemeTaskConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSchemeTaskConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -2353,6 +2603,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSessionGroupWithOptions(_ request: ListSessionGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSessionGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -2384,6 +2637,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSkillGroupConfigWithOptions(_ request: ListSkillGroupConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSkillGroupConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2415,6 +2671,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listTaskAssignRulesWithOptions(_ request: ListTaskAssignRulesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTaskAssignRulesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2446,6 +2705,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listUsersWithOptions(_ request: ListUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2477,6 +2739,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listWarningConfigWithOptions(_ request: ListWarningConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWarningConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2508,6 +2773,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listWarningStrategyConfigWithOptions(_ request: ListWarningStrategyConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListWarningStrategyConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2539,6 +2807,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func restartAsrTaskWithOptions(_ request: RestartAsrTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartAsrTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2570,6 +2841,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func revertAssignedSessionWithOptions(_ request: RevertAssignedSessionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevertAssignedSessionResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -2601,6 +2875,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func revertAssignedSessionGroupWithOptions(_ request: RevertAssignedSessionGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RevertAssignedSessionGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -2632,6 +2909,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func saveConfigDataSetWithOptions(_ request: SaveConfigDataSetRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SaveConfigDataSetResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2663,6 +2943,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitComplaintWithOptions(_ request: SubmitComplaintRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitComplaintResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2694,6 +2977,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitPrecisionTaskWithOptions(_ request: SubmitPrecisionTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitPrecisionTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2725,6 +3011,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitQualityCheckTaskWithOptions(_ request: SubmitQualityCheckTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitQualityCheckTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2756,6 +3045,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func submitReviewInfoWithOptions(_ request: SubmitReviewInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitReviewInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2787,6 +3079,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func syncQualityCheckWithOptions(_ request: SyncQualityCheckRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SyncQualityCheckResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2815,9 +3110,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func testRuleV4WithOptions(_ request: TestRuleV4Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> TestRuleV4Response {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isSchemeData)) {
+            body["IsSchemeData"] = request.isSchemeData!;
+        }
+        if (!TeaUtils.Client.isUnset(request.testJson)) {
+            body["TestJson"] = request.testJson ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TestRuleV4",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TestRuleV4Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func testRuleV4(_ request: TestRuleV4Request) async throws -> TestRuleV4Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await testRuleV4WithOptions(request as! TestRuleV4Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateAsrVocabWithOptions(_ request: UpdateAsrVocabRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAsrVocabResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2849,6 +3181,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateCheckTypeToSchemeWithOptions(_ request: UpdateCheckTypeToSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateCheckTypeToSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -2880,6 +3215,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateQualityCheckDataWithOptions(_ request: UpdateQualityCheckDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateQualityCheckDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2911,6 +3249,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateQualityCheckSchemeWithOptions(_ request: UpdateQualityCheckSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateQualityCheckSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -2942,6 +3283,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateRuleWithOptions(_ request: UpdateRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -2972,6 +3316,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateRuleByIdWithOptions(_ request: UpdateRuleByIdRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRuleByIdResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.isCopy)) {
             body["IsCopy"] = request.isCopy!;
@@ -2986,6 +3334,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["RuleId"] = request.ruleId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -3013,6 +3362,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateRuleToSchemeWithOptions(_ request: UpdateRuleToSchemeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRuleToSchemeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -3043,6 +3395,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateRuleV4WithOptions(_ request: UpdateRuleV4Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateRuleV4Response {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.jsonStrForRule)) {
             body["JsonStrForRule"] = request.jsonStrForRule ?? "";
@@ -3051,6 +3407,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["RuleId"] = request.ruleId!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -3078,6 +3435,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSchemeTaskConfigWithOptions(_ request: UpdateSchemeTaskConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSchemeTaskConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["jsonStr"] = request.jsonStr ?? "";
         }
@@ -3109,6 +3469,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateScoreForApiWithOptions(_ request: UpdateScoreForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateScoreForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3140,6 +3503,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSkillGroupConfigWithOptions(_ request: UpdateSkillGroupConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSkillGroupConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3171,6 +3537,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSubScoreForApiWithOptions(_ request: UpdateSubScoreForApiRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSubScoreForApiResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3202,6 +3571,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateSyncQualityCheckDataWithOptions(_ request: UpdateSyncQualityCheckDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateSyncQualityCheckDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3233,6 +3605,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateTaskAssignRuleWithOptions(_ request: UpdateTaskAssignRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateTaskAssignRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3264,6 +3639,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateUserWithOptions(_ request: UpdateUserRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateUserResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3295,6 +3673,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateUserConfigWithOptions(_ request: UpdateUserConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateUserConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3326,6 +3707,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateWarningConfigWithOptions(_ request: UpdateWarningConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWarningConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3357,6 +3741,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateWarningStrategyConfigWithOptions(_ request: UpdateWarningStrategyConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateWarningStrategyConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3388,6 +3775,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uploadAudioDataWithOptions(_ request: UploadAudioDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadAudioDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3419,6 +3809,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uploadDataWithOptions(_ request: UploadDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3450,6 +3843,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func uploadDataSyncWithOptions(_ request: UploadDataSyncRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadDataSyncResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3478,9 +3874,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uploadDataV4WithOptions(_ request: UploadDataV4Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadDataV4Response {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            body["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.jsonStr)) {
+            body["JsonStr"] = request.jsonStr ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UploadDataV4",
+            "version": "2019-01-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UploadDataV4Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uploadDataV4(_ request: UploadDataV4Request) async throws -> UploadDataV4Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await uploadDataV4WithOptions(request as! UploadDataV4Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func uploadRuleWithOptions(_ request: UploadRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3512,6 +3945,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func verifyFileWithOptions(_ request: VerifyFileRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifyFileResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
@@ -3543,6 +3979,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func verifySentenceWithOptions(_ request: VerifySentenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> VerifySentenceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
+            query["BaseMeAgentId"] = request.baseMeAgentId!;
+        }
         if (!TeaUtils.Client.isUnset(request.jsonStr)) {
             query["JsonStr"] = request.jsonStr ?? "";
         }
