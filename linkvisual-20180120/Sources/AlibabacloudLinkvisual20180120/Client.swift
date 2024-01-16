@@ -650,6 +650,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deviceType)) {
             query["DeviceType"] = request.deviceType!;
         }
@@ -1290,6 +1293,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGbDeviceWithOptions(_ request: DeleteGbDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGbDeviceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGbDevice",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGbDeviceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGbDevice(_ request: DeleteGbDeviceRequest) async throws -> DeleteGbDeviceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGbDeviceWithOptions(request as! DeleteGbDeviceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteLocalFileUploadJobWithOptions(_ request: DeleteLocalFileUploadJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteLocalFileUploadJobResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1626,6 +1669,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func detectUserFaceByUrl(_ request: DetectUserFaceByUrlRequest) async throws -> DetectUserFaceByUrlResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await detectUserFaceByUrlWithOptions(request as! DetectUserFaceByUrlRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableGbSubDeviceWithOptions(_ request: EnableGbSubDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableGbSubDeviceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subDeviceId)) {
+            query["SubDeviceId"] = request.subDeviceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableGbSubDevice",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableGbSubDeviceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableGbSubDevice(_ request: EnableGbSubDeviceRequest) async throws -> EnableGbSubDeviceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableGbSubDeviceWithOptions(request as! EnableGbSubDeviceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2815,6 +2901,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryGbSubDeviceListWithOptions(_ request: QueryGbSubDeviceListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryGbSubDeviceListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageStart)) {
+            query["PageStart"] = request.pageStart!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryGbSubDeviceList",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryGbSubDeviceListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryGbSubDeviceList(_ request: QueryGbSubDeviceListRequest) async throws -> QueryGbSubDeviceListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryGbSubDeviceListWithOptions(request as! QueryGbSubDeviceListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryLiveStreamingWithOptions(_ request: QueryLiveStreamingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryLiveStreamingResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3872,6 +4004,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshGbSubDeviceListWithOptions(_ request: RefreshGbSubDeviceListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshGbSubDeviceListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RefreshGbSubDeviceList",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RefreshGbSubDeviceListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshGbSubDeviceList(_ request: RefreshGbSubDeviceListRequest) async throws -> RefreshGbSubDeviceListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await refreshGbSubDeviceListWithOptions(request as! RefreshGbSubDeviceListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func removeFaceDeviceFromDeviceGroupWithOptions(_ request: RemoveFaceDeviceFromDeviceGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveFaceDeviceFromDeviceGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -4416,6 +4588,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateFaceUserGroupAndDeviceGroupRelation(_ request: UpdateFaceUserGroupAndDeviceGroupRelationRequest) async throws -> UpdateFaceUserGroupAndDeviceGroupRelationResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateFaceUserGroupAndDeviceGroupRelationWithOptions(request as! UpdateFaceUserGroupAndDeviceGroupRelationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGbDeviceWithOptions(_ request: UpdateGbDeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGbDeviceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gbId)) {
+            query["GbId"] = request.gbId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.password)) {
+            query["Password"] = request.password ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGbDevice",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGbDeviceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGbDevice(_ request: UpdateGbDeviceRequest) async throws -> UpdateGbDeviceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGbDeviceWithOptions(request as! UpdateGbDeviceRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
