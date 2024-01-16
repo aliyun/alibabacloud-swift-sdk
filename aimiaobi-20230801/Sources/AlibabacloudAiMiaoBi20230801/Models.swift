@@ -77,7 +77,7 @@ public class CreateTokenResponseBody : Tea.TeaModel {
 
     public var data: CreateTokenResponseBody.Data?
 
-    public var httpStatusCode: String?
+    public var httpStatusCode: Int32?
 
     public var message: String?
 
@@ -131,7 +131,7 @@ public class CreateTokenResponseBody : Tea.TeaModel {
             self.data = model
         }
         if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
-            self.httpStatusCode = dict["HttpStatusCode"] as! String
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
