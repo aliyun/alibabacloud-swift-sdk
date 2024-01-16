@@ -5650,8 +5650,6 @@ public class ListQuotaApplicationsRequest : Tea.TeaModel {
             }
         }
     }
-    public var acceptLanguage: String?
-
     public var dimensions: [ListQuotaApplicationsRequest.Dimensions]?
 
     public var keyWord: String?
@@ -5682,9 +5680,6 @@ public class ListQuotaApplicationsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.acceptLanguage != nil {
-            map["AcceptLanguage"] = self.acceptLanguage!
-        }
         if self.dimensions != nil {
             var tmp : [Any] = []
             for k in self.dimensions! {
@@ -5717,9 +5712,6 @@ public class ListQuotaApplicationsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
-            self.acceptLanguage = dict["AcceptLanguage"] as! String
-        }
         if dict.keys.contains("Dimensions") && dict["Dimensions"] != nil {
             var tmp : [ListQuotaApplicationsRequest.Dimensions] = []
             for v in dict["Dimensions"] as! [Any] {
