@@ -3421,6 +3421,8 @@ public class DescribePlaybookInputOutputRequest : Tea.TeaModel {
 
 public class DescribePlaybookInputOutputResponseBody : Tea.TeaModel {
     public class Config : Tea.TeaModel {
+        public var exeConfig: String?
+
         public var inputParams: String?
 
         public var outputParams: String?
@@ -3443,6 +3445,9 @@ public class DescribePlaybookInputOutputResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.exeConfig != nil {
+                map["ExeConfig"] = self.exeConfig!
+            }
             if self.inputParams != nil {
                 map["InputParams"] = self.inputParams!
             }
@@ -3459,6 +3464,9 @@ public class DescribePlaybookInputOutputResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ExeConfig") && dict["ExeConfig"] != nil {
+                self.exeConfig = dict["ExeConfig"] as! String
+            }
             if dict.keys.contains("InputParams") && dict["InputParams"] != nil {
                 self.inputParams = dict["InputParams"] as! String
             }
@@ -7535,6 +7543,8 @@ public class ModifyPlaybookResponse : Tea.TeaModel {
 }
 
 public class ModifyPlaybookInputOutputRequest : Tea.TeaModel {
+    public var exeConfig: String?
+
     public var inputParams: String?
 
     public var lang: String?
@@ -7559,6 +7569,9 @@ public class ModifyPlaybookInputOutputRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.exeConfig != nil {
+            map["ExeConfig"] = self.exeConfig!
+        }
         if self.inputParams != nil {
             map["InputParams"] = self.inputParams!
         }
@@ -7578,6 +7591,9 @@ public class ModifyPlaybookInputOutputRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ExeConfig") && dict["ExeConfig"] != nil {
+            self.exeConfig = dict["ExeConfig"] as! String
+        }
         if dict.keys.contains("InputParams") && dict["InputParams"] != nil {
             self.inputParams = dict["InputParams"] as! String
         }

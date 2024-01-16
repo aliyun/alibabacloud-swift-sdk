@@ -1171,6 +1171,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyPlaybookInputOutputWithOptions(_ request: ModifyPlaybookInputOutputRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyPlaybookInputOutputResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exeConfig)) {
+            body["ExeConfig"] = request.exeConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.inputParams)) {
             body["InputParams"] = request.inputParams ?? "";
         }
