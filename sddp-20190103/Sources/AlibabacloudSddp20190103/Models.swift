@@ -7960,6 +7960,8 @@ public class DescribeEventsRequest : Tea.TeaModel {
 
     public var userName: String?
 
+    public var warnLevel: Int32?
+
     public override init() {
         super.init()
     }
@@ -8019,6 +8021,9 @@ public class DescribeEventsRequest : Tea.TeaModel {
         if self.userName != nil {
             map["UserName"] = self.userName!
         }
+        if self.warnLevel != nil {
+            map["WarnLevel"] = self.warnLevel!
+        }
         return map
     }
 
@@ -8067,6 +8072,9 @@ public class DescribeEventsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("UserName") && dict["UserName"] != nil {
             self.userName = dict["UserName"] as! String
+        }
+        if dict.keys.contains("WarnLevel") && dict["WarnLevel"] != nil {
+            self.warnLevel = dict["WarnLevel"] as! Int32
         }
     }
 }
