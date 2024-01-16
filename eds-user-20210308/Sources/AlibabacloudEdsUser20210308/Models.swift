@@ -5,6 +5,52 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class GroupResources : Tea.TeaModel {
+    public var region: String?
+
+    public var resourceId: String?
+
+    public var resourceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Region") && dict["Region"] != nil {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+    }
+}
+
 public class WaIdPermissions : Tea.TeaModel {
     public var code: String?
 
@@ -671,6 +717,8 @@ public class CreateUsersRequest : Tea.TeaModel {
 
         public var phone: String?
 
+        public var realNickName: String?
+
         public var remark: String?
 
         public override init() {
@@ -705,6 +753,9 @@ public class CreateUsersRequest : Tea.TeaModel {
             if self.phone != nil {
                 map["Phone"] = self.phone!
             }
+            if self.realNickName != nil {
+                map["RealNickName"] = self.realNickName!
+            }
             if self.remark != nil {
                 map["Remark"] = self.remark!
             }
@@ -729,6 +780,9 @@ public class CreateUsersRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Phone") && dict["Phone"] != nil {
                 self.phone = dict["Phone"] as! String
+            }
+            if dict.keys.contains("RealNickName") && dict["RealNickName"] != nil {
+                self.realNickName = dict["RealNickName"] as! String
             }
             if dict.keys.contains("Remark") && dict["Remark"] != nil {
                 self.remark = dict["Remark"] as! String
@@ -801,6 +855,8 @@ public class CreateUsersResponseBody : Tea.TeaModel {
 
             public var phone: String?
 
+            public var realNickName: String?
+
             public var remark: String?
 
             public override init() {
@@ -826,6 +882,9 @@ public class CreateUsersResponseBody : Tea.TeaModel {
                 if self.phone != nil {
                     map["Phone"] = self.phone!
                 }
+                if self.realNickName != nil {
+                    map["RealNickName"] = self.realNickName!
+                }
                 if self.remark != nil {
                     map["Remark"] = self.remark!
                 }
@@ -841,6 +900,9 @@ public class CreateUsersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Phone") && dict["Phone"] != nil {
                     self.phone = dict["Phone"] as! String
+                }
+                if dict.keys.contains("RealNickName") && dict["RealNickName"] != nil {
+                    self.realNickName = dict["RealNickName"] as! String
                 }
                 if dict.keys.contains("Remark") && dict["Remark"] != nil {
                     self.remark = dict["Remark"] as! String
@@ -1454,6 +1516,8 @@ public class DescribeMfaDevicesResponse : Tea.TeaModel {
 }
 
 public class DescribeUsersRequest : Tea.TeaModel {
+    public var bizType: String?
+
     public var endUserIds: [String]?
 
     public var excludeEndUserIds: [String]?
@@ -1467,6 +1531,8 @@ public class DescribeUsersRequest : Tea.TeaModel {
     public var nextToken: String?
 
     public var orgId: String?
+
+    public var solutionId: String?
 
     public override init() {
         super.init()
@@ -1482,6 +1548,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.bizType != nil {
+            map["BizType"] = self.bizType!
+        }
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -1503,10 +1572,16 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.orgId != nil {
             map["OrgId"] = self.orgId!
         }
+        if self.solutionId != nil {
+            map["SolutionId"] = self.solutionId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BizType") && dict["BizType"] != nil {
+            self.bizType = dict["BizType"] as! String
+        }
         if dict.keys.contains("EndUserIds") && dict["EndUserIds"] != nil {
             self.endUserIds = dict["EndUserIds"] as! [String]
         }
@@ -1527,6 +1602,9 @@ public class DescribeUsersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OrgId") && dict["OrgId"] != nil {
             self.orgId = dict["OrgId"] as! String
+        }
+        if dict.keys.contains("SolutionId") && dict["SolutionId"] != nil {
+            self.solutionId = dict["SolutionId"] as! String
         }
     }
 }
@@ -2521,6 +2599,8 @@ public class FilterUsersResponseBody : Tea.TeaModel {
 
         public var phone: String?
 
+        public var realNickName: String?
+
         public var remark: String?
 
         public var status: Int64?
@@ -2572,6 +2652,9 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             if self.phone != nil {
                 map["Phone"] = self.phone!
             }
+            if self.realNickName != nil {
+                map["RealNickName"] = self.realNickName!
+            }
             if self.remark != nil {
                 map["Remark"] = self.remark!
             }
@@ -2620,6 +2703,9 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Phone") && dict["Phone"] != nil {
                 self.phone = dict["Phone"] as! String
+            }
+            if dict.keys.contains("RealNickName") && dict["RealNickName"] != nil {
+                self.realNickName = dict["RealNickName"] as! String
             }
             if dict.keys.contains("Remark") && dict["Remark"] != nil {
                 self.remark = dict["Remark"] as! String
