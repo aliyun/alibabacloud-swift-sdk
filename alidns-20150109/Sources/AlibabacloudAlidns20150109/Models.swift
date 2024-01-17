@@ -15757,6 +15757,8 @@ public class DescribeDomainInfoResponseBody : Tea.TeaModel {
 
     public var domainId: String?
 
+    public var domainLoggingSwitchStatus: String?
+
     public var domainName: String?
 
     public var groupId: String?
@@ -15826,6 +15828,9 @@ public class DescribeDomainInfoResponseBody : Tea.TeaModel {
         }
         if self.domainId != nil {
             map["DomainId"] = self.domainId!
+        }
+        if self.domainLoggingSwitchStatus != nil {
+            map["DomainLoggingSwitchStatus"] = self.domainLoggingSwitchStatus!
         }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
@@ -15906,6 +15911,9 @@ public class DescribeDomainInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DomainId") && dict["DomainId"] != nil {
             self.domainId = dict["DomainId"] as! String
+        }
+        if dict.keys.contains("DomainLoggingSwitchStatus") && dict["DomainLoggingSwitchStatus"] != nil {
+            self.domainLoggingSwitchStatus = dict["DomainLoggingSwitchStatus"] as! String
         }
         if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
             self.domainName = dict["DomainName"] as! String
@@ -18256,6 +18264,8 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
 
             public var domainId: String?
 
+            public var domainLoggingSwitchStatus: String?
+
             public var domainName: String?
 
             public var groupId: String?
@@ -18316,6 +18326,9 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
                 }
                 if self.domainId != nil {
                     map["DomainId"] = self.domainId!
+                }
+                if self.domainLoggingSwitchStatus != nil {
+                    map["DomainLoggingSwitchStatus"] = self.domainLoggingSwitchStatus!
                 }
                 if self.domainName != nil {
                     map["DomainName"] = self.domainName!
@@ -18382,6 +18395,9 @@ public class DescribeDomainsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DomainId") && dict["DomainId"] != nil {
                     self.domainId = dict["DomainId"] as! String
+                }
+                if dict.keys.contains("DomainLoggingSwitchStatus") && dict["DomainLoggingSwitchStatus"] != nil {
+                    self.domainLoggingSwitchStatus = dict["DomainLoggingSwitchStatus"] as! String
                 }
                 if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
                     self.domainName = dict["DomainName"] as! String
