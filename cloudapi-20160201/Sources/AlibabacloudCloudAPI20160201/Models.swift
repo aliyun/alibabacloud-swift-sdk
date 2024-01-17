@@ -19168,6 +19168,8 @@ public class DescribePurchasedApiGroupsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -19191,6 +19193,9 @@ public class DescribePurchasedApiGroupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -19203,6 +19208,9 @@ public class DescribePurchasedApiGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
