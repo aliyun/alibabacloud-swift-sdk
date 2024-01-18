@@ -19427,6 +19427,10 @@ public class GetSparkAppAttemptLogRequest : Tea.TeaModel {
 
     public var logLength: Int64?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: String?
+
     public override init() {
         super.init()
     }
@@ -19447,6 +19451,12 @@ public class GetSparkAppAttemptLogRequest : Tea.TeaModel {
         if self.logLength != nil {
             map["LogLength"] = self.logLength!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         return map
     }
 
@@ -19456,6 +19466,12 @@ public class GetSparkAppAttemptLogRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LogLength") && dict["LogLength"] != nil {
             self.logLength = dict["LogLength"] as! Int64
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! String
         }
     }
 }
@@ -19467,6 +19483,8 @@ public class GetSparkAppAttemptLogResponseBody : Tea.TeaModel {
         public var DBClusterId: String?
 
         public var logContent: String?
+
+        public var logSize: Int32?
 
         public var message: String?
 
@@ -19493,6 +19511,9 @@ public class GetSparkAppAttemptLogResponseBody : Tea.TeaModel {
             if self.logContent != nil {
                 map["LogContent"] = self.logContent!
             }
+            if self.logSize != nil {
+                map["LogSize"] = self.logSize!
+            }
             if self.message != nil {
                 map["Message"] = self.message!
             }
@@ -19508,6 +19529,9 @@ public class GetSparkAppAttemptLogResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LogContent") && dict["LogContent"] != nil {
                 self.logContent = dict["LogContent"] as! String
+            }
+            if dict.keys.contains("LogSize") && dict["LogSize"] != nil {
+                self.logSize = dict["LogSize"] as! Int32
             }
             if dict.keys.contains("Message") && dict["Message"] != nil {
                 self.message = dict["Message"] as! String
@@ -19744,6 +19768,10 @@ public class GetSparkAppLogRequest : Tea.TeaModel {
 
     public var logLength: Int64?
 
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
     public override init() {
         super.init()
     }
@@ -19767,6 +19795,12 @@ public class GetSparkAppLogRequest : Tea.TeaModel {
         if self.logLength != nil {
             map["LogLength"] = self.logLength!
         }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
         return map
     }
 
@@ -19780,6 +19814,12 @@ public class GetSparkAppLogRequest : Tea.TeaModel {
         if dict.keys.contains("LogLength") && dict["LogLength"] != nil {
             self.logLength = dict["LogLength"] as! Int64
         }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
     }
 }
 
@@ -19788,6 +19828,8 @@ public class GetSparkAppLogResponseBody : Tea.TeaModel {
         public var DBClusterId: String?
 
         public var logContent: String?
+
+        public var logSize: Int32?
 
         public var message: String?
 
@@ -19811,6 +19853,9 @@ public class GetSparkAppLogResponseBody : Tea.TeaModel {
             if self.logContent != nil {
                 map["LogContent"] = self.logContent!
             }
+            if self.logSize != nil {
+                map["LogSize"] = self.logSize!
+            }
             if self.message != nil {
                 map["Message"] = self.message!
             }
@@ -19823,6 +19868,9 @@ public class GetSparkAppLogResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LogContent") && dict["LogContent"] != nil {
                 self.logContent = dict["LogContent"] as! String
+            }
+            if dict.keys.contains("LogSize") && dict["LogSize"] != nil {
+                self.logSize = dict["LogSize"] as! Int32
             }
             if dict.keys.contains("Message") && dict["Message"] != nil {
                 self.message = dict["Message"] as! String
