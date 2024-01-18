@@ -3920,6 +3920,8 @@ public class AddGatewayRouteRequest : Tea.TeaModel {
     }
     public var acceptLanguage: String?
 
+    public var description_: String?
+
     public var destinationType: String?
 
     public var directResponseJSON: AddGatewayRouteRequest.DirectResponseJSON?
@@ -3971,6 +3973,9 @@ public class AddGatewayRouteRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
@@ -4034,6 +4039,9 @@ public class AddGatewayRouteRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String
@@ -4111,6 +4119,8 @@ public class AddGatewayRouteRequest : Tea.TeaModel {
 public class AddGatewayRouteShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var description_: String?
+
     public var destinationType: String?
 
     public var directResponseJSONShrink: String?
@@ -4159,6 +4169,9 @@ public class AddGatewayRouteShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
@@ -4214,6 +4227,9 @@ public class AddGatewayRouteShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String
@@ -21671,6 +21687,8 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
 
             public var groupName: String?
 
+            public var healthStatus: String?
+
             public var name: String?
 
             public var namespace: String?
@@ -21684,6 +21702,8 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
             public var servicePort: Int32?
 
             public var sourceType: String?
+
+            public var unhealthyEndpoints: [String]?
 
             public var version: String?
 
@@ -21707,6 +21727,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 if self.groupName != nil {
                     map["GroupName"] = self.groupName!
                 }
+                if self.healthStatus != nil {
+                    map["HealthStatus"] = self.healthStatus!
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -21728,6 +21751,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 if self.sourceType != nil {
                     map["SourceType"] = self.sourceType!
                 }
+                if self.unhealthyEndpoints != nil {
+                    map["UnhealthyEndpoints"] = self.unhealthyEndpoints!
+                }
                 if self.version != nil {
                     map["Version"] = self.version!
                 }
@@ -21740,6 +21766,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
                     self.groupName = dict["GroupName"] as! String
+                }
+                if dict.keys.contains("HealthStatus") && dict["HealthStatus"] != nil {
+                    self.healthStatus = dict["HealthStatus"] as! String
                 }
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
@@ -21761,6 +21790,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
                     self.sourceType = dict["SourceType"] as! String
+                }
+                if dict.keys.contains("UnhealthyEndpoints") && dict["UnhealthyEndpoints"] != nil {
+                    self.unhealthyEndpoints = dict["UnhealthyEndpoints"] as! [String]
                 }
                 if dict.keys.contains("Version") && dict["Version"] != nil {
                     self.version = dict["Version"] as! String
@@ -21819,6 +21851,8 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
         public var defaultServiceId: Int64?
 
         public var defaultServiceName: String?
+
+        public var description_: String?
 
         public var destinationType: String?
 
@@ -21910,6 +21944,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
             }
             if self.defaultServiceName != nil {
                 map["DefaultServiceName"] = self.defaultServiceName!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
             }
             if self.destinationType != nil {
                 map["DestinationType"] = self.destinationType!
@@ -22020,6 +22057,9 @@ public class GetGatewayRouteDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DefaultServiceName") && dict["DefaultServiceName"] != nil {
                 self.defaultServiceName = dict["DefaultServiceName"] as! String
+            }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
             }
             if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
                 self.destinationType = dict["DestinationType"] as! String
@@ -34003,6 +34043,8 @@ public class ListClustersRequest : Tea.TeaModel {
 
     public var clusterAliasName: String?
 
+    public var keyId: String?
+
     public var pageNum: Int32?
 
     public var pageSize: Int32?
@@ -34035,6 +34077,9 @@ public class ListClustersRequest : Tea.TeaModel {
         if self.clusterAliasName != nil {
             map["ClusterAliasName"] = self.clusterAliasName!
         }
+        if self.keyId != nil {
+            map["KeyId"] = self.keyId!
+        }
         if self.pageNum != nil {
             map["PageNum"] = self.pageNum!
         }
@@ -34066,6 +34111,9 @@ public class ListClustersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClusterAliasName") && dict["ClusterAliasName"] != nil {
             self.clusterAliasName = dict["ClusterAliasName"] as! String
+        }
+        if dict.keys.contains("KeyId") && dict["KeyId"] != nil {
+            self.keyId = dict["KeyId"] as! String
         }
         if dict.keys.contains("PageNum") && dict["PageNum"] != nil {
             self.pageNum = dict["PageNum"] as! Int32
@@ -38424,6 +38472,8 @@ public class ListGatewayAuthConsumerResourceResponse : Tea.TeaModel {
 public class ListGatewayDomainRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var domainName: String?
+
     public var gatewayUniqueId: String?
 
     public var type: String?
@@ -38445,6 +38495,9 @@ public class ListGatewayDomainRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
         if self.gatewayUniqueId != nil {
             map["GatewayUniqueId"] = self.gatewayUniqueId!
         }
@@ -38457,6 +38510,9 @@ public class ListGatewayDomainRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+            self.domainName = dict["DomainName"] as! String
         }
         if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
             self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
@@ -38788,6 +38844,8 @@ public class ListGatewayRouteRequest : Tea.TeaModel {
 
         public var name: String?
 
+        public var path: String?
+
         public var routeOrder: Int32?
 
         public var status: Int32?
@@ -38824,6 +38882,9 @@ public class ListGatewayRouteRequest : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.path != nil {
+                map["Path"] = self.path!
+            }
             if self.routeOrder != nil {
                 map["RouteOrder"] = self.routeOrder!
             }
@@ -38851,6 +38912,9 @@ public class ListGatewayRouteRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Path") && dict["Path"] != nil {
+                self.path = dict["Path"] as! String
             }
             if dict.keys.contains("RouteOrder") && dict["RouteOrder"] != nil {
                 self.routeOrder = dict["RouteOrder"] as! Int32
@@ -39628,6 +39692,8 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
 
                 public var groupName: String?
 
+                public var healthStatus: String?
+
                 public var httpDubboTranscoder: ListGatewayRouteResponseBody.Data.Result.RouteServices.HttpDubboTranscoder?
 
                 public var name: String?
@@ -39643,6 +39709,8 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                 public var servicePort: Int32?
 
                 public var sourceType: String?
+
+                public var unhealthyEndpoints: [String]?
 
                 public var version: String?
 
@@ -39666,6 +39734,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     }
                     if self.groupName != nil {
                         map["GroupName"] = self.groupName!
+                    }
+                    if self.healthStatus != nil {
+                        map["HealthStatus"] = self.healthStatus!
                     }
                     if self.httpDubboTranscoder != nil {
                         map["HttpDubboTranscoder"] = self.httpDubboTranscoder?.toMap()
@@ -39691,6 +39762,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     if self.sourceType != nil {
                         map["SourceType"] = self.sourceType!
                     }
+                    if self.unhealthyEndpoints != nil {
+                        map["UnhealthyEndpoints"] = self.unhealthyEndpoints!
+                    }
                     if self.version != nil {
                         map["Version"] = self.version!
                     }
@@ -39703,6 +39777,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
                         self.groupName = dict["GroupName"] as! String
+                    }
+                    if dict.keys.contains("HealthStatus") && dict["HealthStatus"] != nil {
+                        self.healthStatus = dict["HealthStatus"] as! String
                     }
                     if dict.keys.contains("HttpDubboTranscoder") && dict["HttpDubboTranscoder"] != nil {
                         var model = ListGatewayRouteResponseBody.Data.Result.RouteServices.HttpDubboTranscoder()
@@ -39729,6 +39806,9 @@ public class ListGatewayRouteResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
                         self.sourceType = dict["SourceType"] as! String
+                    }
+                    if dict.keys.contains("UnhealthyEndpoints") && dict["UnhealthyEndpoints"] != nil {
+                        self.unhealthyEndpoints = dict["UnhealthyEndpoints"] as! [String]
                     }
                     if dict.keys.contains("Version") && dict["Version"] != nil {
                         self.version = dict["Version"] as! String
@@ -43470,6 +43550,8 @@ public class ListNacosHistoryConfigsResponseBody : Tea.TeaModel {
 
         public var opType: String?
 
+        public var srcUser: String?
+
         public override init() {
             super.init()
         }
@@ -43502,6 +43584,9 @@ public class ListNacosHistoryConfigsResponseBody : Tea.TeaModel {
             if self.opType != nil {
                 map["OpType"] = self.opType!
             }
+            if self.srcUser != nil {
+                map["SrcUser"] = self.srcUser!
+            }
             return map
         }
 
@@ -43523,6 +43608,9 @@ public class ListNacosHistoryConfigsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OpType") && dict["OpType"] != nil {
                 self.opType = dict["OpType"] as! String
+            }
+            if dict.keys.contains("SrcUser") && dict["SrcUser"] != nil {
+                self.srcUser = dict["SrcUser"] as! String
             }
         }
     }
@@ -44055,6 +44143,8 @@ public class ListNamingTrackResponse : Tea.TeaModel {
 public class ListSSLCertRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var certName: String?
+
     public var gatewayUniqueId: String?
 
     public override init() {
@@ -44074,6 +44164,9 @@ public class ListSSLCertRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.certName != nil {
+            map["CertName"] = self.certName!
+        }
         if self.gatewayUniqueId != nil {
             map["GatewayUniqueId"] = self.gatewayUniqueId!
         }
@@ -44083,6 +44176,9 @@ public class ListSSLCertRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("CertName") && dict["CertName"] != nil {
+            self.certName = dict["CertName"] as! String
         }
         if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
             self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
@@ -59009,6 +59105,8 @@ public class UpdateGatewayRouteRequest : Tea.TeaModel {
     }
     public var acceptLanguage: String?
 
+    public var description_: String?
+
     public var destinationType: String?
 
     public var directResponseJSON: UpdateGatewayRouteRequest.DirectResponseJSON?
@@ -59056,6 +59154,9 @@ public class UpdateGatewayRouteRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
@@ -59113,6 +59214,9 @@ public class UpdateGatewayRouteRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String
@@ -59184,6 +59288,8 @@ public class UpdateGatewayRouteRequest : Tea.TeaModel {
 public class UpdateGatewayRouteShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var description_: String?
+
     public var destinationType: String?
 
     public var directResponseJSONShrink: String?
@@ -59228,6 +59334,9 @@ public class UpdateGatewayRouteShrinkRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.destinationType != nil {
             map["DestinationType"] = self.destinationType!
@@ -59277,6 +59386,9 @@ public class UpdateGatewayRouteShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("DestinationType") && dict["DestinationType"] != nil {
             self.destinationType = dict["DestinationType"] as! String

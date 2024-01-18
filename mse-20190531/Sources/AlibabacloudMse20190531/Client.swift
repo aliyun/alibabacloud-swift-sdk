@@ -445,6 +445,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.destinationType)) {
             query["DestinationType"] = request.destinationType ?? "";
         }
@@ -4807,6 +4810,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterAliasName)) {
             query["ClusterAliasName"] = request.clusterAliasName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.keyId)) {
+            query["KeyId"] = request.keyId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNum)) {
             query["PageNum"] = request.pageNum!;
         }
@@ -5250,6 +5256,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
             query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
@@ -5764,6 +5773,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.certName)) {
+            query["CertName"] = request.certName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
             query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
@@ -8100,6 +8112,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.destinationType)) {
             query["DestinationType"] = request.destinationType ?? "";
