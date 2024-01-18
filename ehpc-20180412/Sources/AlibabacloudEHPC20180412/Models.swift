@@ -7617,6 +7617,8 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
         public var schedulerType: String?
 
+        public var schedulerVersion: String?
+
         public var securityGroupId: String?
 
         public var status: String?
@@ -7782,6 +7784,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
             }
             if self.schedulerType != nil {
                 map["SchedulerType"] = self.schedulerType!
+            }
+            if self.schedulerVersion != nil {
+                map["SchedulerVersion"] = self.schedulerVersion!
             }
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
@@ -7956,6 +7961,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SchedulerType") && dict["SchedulerType"] != nil {
                 self.schedulerType = dict["SchedulerType"] as! String
+            }
+            if dict.keys.contains("SchedulerVersion") && dict["SchedulerVersion"] != nil {
+                self.schedulerVersion = dict["SchedulerVersion"] as! String
             }
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
@@ -17611,6 +17619,8 @@ public class GetVisualServiceStatusResponse : Tea.TeaModel {
 public class InitializeEHPCRequest : Tea.TeaModel {
     public var regionId: String?
 
+    public var serviceName: String?
+
     public override init() {
         super.init()
     }
@@ -17628,12 +17638,18 @@ public class InitializeEHPCRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.serviceName != nil {
+            map["ServiceName"] = self.serviceName!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ServiceName") && dict["ServiceName"] != nil {
+            self.serviceName = dict["ServiceName"] as! String
         }
     }
 }
@@ -20063,6 +20079,8 @@ public class ListClustersMetaResponseBody : Tea.TeaModel {
 
             public var description_: String?
 
+            public var ehpcVersion: String?
+
             public var hasPlugin: Bool?
 
             public var id: String?
@@ -20107,6 +20125,9 @@ public class ListClustersMetaResponseBody : Tea.TeaModel {
                 if self.description_ != nil {
                     map["Description"] = self.description_!
                 }
+                if self.ehpcVersion != nil {
+                    map["EhpcVersion"] = self.ehpcVersion!
+                }
                 if self.hasPlugin != nil {
                     map["HasPlugin"] = self.hasPlugin!
                 }
@@ -20149,6 +20170,9 @@ public class ListClustersMetaResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Description") && dict["Description"] != nil {
                     self.description_ = dict["Description"] as! String
+                }
+                if dict.keys.contains("EhpcVersion") && dict["EhpcVersion"] != nil {
+                    self.ehpcVersion = dict["EhpcVersion"] as! String
                 }
                 if dict.keys.contains("HasPlugin") && dict["HasPlugin"] != nil {
                     self.hasPlugin = dict["HasPlugin"] as! Bool
