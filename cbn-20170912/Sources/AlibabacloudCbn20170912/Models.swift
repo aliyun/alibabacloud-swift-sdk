@@ -16001,6 +16001,8 @@ public class DescribeCenVbrHealthCheckResponseBody : Tea.TeaModel {
         public class VbrHealthCheck : Tea.TeaModel {
             public var cenId: String?
 
+            public var description_: String?
+
             public var healthCheckInterval: Int32?
 
             public var healthCheckOnly: Bool?
@@ -16032,6 +16034,9 @@ public class DescribeCenVbrHealthCheckResponseBody : Tea.TeaModel {
                 if self.cenId != nil {
                     map["CenId"] = self.cenId!
                 }
+                if self.description_ != nil {
+                    map["Description"] = self.description_!
+                }
                 if self.healthCheckInterval != nil {
                     map["HealthCheckInterval"] = self.healthCheckInterval!
                 }
@@ -16059,6 +16064,9 @@ public class DescribeCenVbrHealthCheckResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("CenId") && dict["CenId"] != nil {
                     self.cenId = dict["CenId"] as! String
+                }
+                if dict.keys.contains("Description") && dict["Description"] != nil {
+                    self.description_ = dict["Description"] as! String
                 }
                 if dict.keys.contains("HealthCheckInterval") && dict["HealthCheckInterval"] != nil {
                     self.healthCheckInterval = dict["HealthCheckInterval"] as! Int32
@@ -18005,6 +18013,8 @@ public class DescribeGrantRulesToCenResponseBody : Tea.TeaModel {
 
             public var childInstanceType: String?
 
+            public var createTime: Int64?
+
             public var orderType: String?
 
             public override init() {
@@ -18039,6 +18049,9 @@ public class DescribeGrantRulesToCenResponseBody : Tea.TeaModel {
                 if self.childInstanceType != nil {
                     map["ChildInstanceType"] = self.childInstanceType!
                 }
+                if self.createTime != nil {
+                    map["CreateTime"] = self.createTime!
+                }
                 if self.orderType != nil {
                     map["OrderType"] = self.orderType!
                 }
@@ -18063,6 +18076,9 @@ public class DescribeGrantRulesToCenResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ChildInstanceType") && dict["ChildInstanceType"] != nil {
                     self.childInstanceType = dict["ChildInstanceType"] as! String
+                }
+                if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                    self.createTime = dict["CreateTime"] as! Int64
                 }
                 if dict.keys.contains("OrderType") && dict["OrderType"] != nil {
                     self.orderType = dict["OrderType"] as! String
@@ -18325,6 +18341,8 @@ public class DescribeGrantRulesToResourceResponseBody : Tea.TeaModel {
 
         public var cenOwnerId: Int64?
 
+        public var createTime: String?
+
         public var orderType: String?
 
         public override init() {
@@ -18347,6 +18365,9 @@ public class DescribeGrantRulesToResourceResponseBody : Tea.TeaModel {
             if self.cenOwnerId != nil {
                 map["CenOwnerId"] = self.cenOwnerId!
             }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
             if self.orderType != nil {
                 map["OrderType"] = self.orderType!
             }
@@ -18359,6 +18380,9 @@ public class DescribeGrantRulesToResourceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CenOwnerId") && dict["CenOwnerId"] != nil {
                 self.cenOwnerId = dict["CenOwnerId"] as! Int64
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
             }
             if dict.keys.contains("OrderType") && dict["OrderType"] != nil {
                 self.orderType = dict["OrderType"] as! String
@@ -21059,6 +21083,8 @@ public class DissociateTransitRouterAttachmentFromRouteTableResponse : Tea.TeaMo
 public class EnableCenVbrHealthCheckRequest : Tea.TeaModel {
     public var cenId: String?
 
+    public var description_: String?
+
     public var healthCheckInterval: Int32?
 
     public var healthCheckOnly: Bool?
@@ -21099,6 +21125,9 @@ public class EnableCenVbrHealthCheckRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.cenId != nil {
             map["CenId"] = self.cenId!
+        }
+        if self.description_ != nil {
+            map["Description"] = self.description_!
         }
         if self.healthCheckInterval != nil {
             map["HealthCheckInterval"] = self.healthCheckInterval!
@@ -21142,6 +21171,9 @@ public class EnableCenVbrHealthCheckRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CenId") && dict["CenId"] != nil {
             self.cenId = dict["CenId"] as! String
+        }
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
         }
         if dict.keys.contains("HealthCheckInterval") && dict["HealthCheckInterval"] != nil {
             self.healthCheckInterval = dict["HealthCheckInterval"] as! Int32
@@ -28961,6 +28993,8 @@ public class ListTransitRouterVbrAttachmentsResponseBody : Tea.TeaModel {
 
         public var creationTime: String?
 
+        public var orderType: String?
+
         public var resourceType: String?
 
         public var status: String?
@@ -29003,6 +29037,9 @@ public class ListTransitRouterVbrAttachmentsResponseBody : Tea.TeaModel {
             }
             if self.creationTime != nil {
                 map["CreationTime"] = self.creationTime!
+            }
+            if self.orderType != nil {
+                map["OrderType"] = self.orderType!
             }
             if self.resourceType != nil {
                 map["ResourceType"] = self.resourceType!
@@ -29050,6 +29087,9 @@ public class ListTransitRouterVbrAttachmentsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
                 self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("OrderType") && dict["OrderType"] != nil {
+                self.orderType = dict["OrderType"] as! String
             }
             if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
                 self.resourceType = dict["ResourceType"] as! String

@@ -4611,6 +4611,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.healthCheckInterval)) {
             query["HealthCheckInterval"] = request.healthCheckInterval!;
         }
