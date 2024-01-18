@@ -11398,6 +11398,8 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
 
                 public var opLevel: String?
 
+                public var paramConfig: [Any]?
+
                 public var taskConfig: String?
 
                 public var wafPlaybook: Bool?
@@ -11431,6 +11433,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                     if self.opLevel != nil {
                         map["OpLevel"] = self.opLevel!
                     }
+                    if self.paramConfig != nil {
+                        map["ParamConfig"] = self.paramConfig!
+                    }
                     if self.taskConfig != nil {
                         map["TaskConfig"] = self.taskConfig!
                     }
@@ -11455,6 +11460,9 @@ public class DescribeDisposeAndPlaybookResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("OpLevel") && dict["OpLevel"] != nil {
                         self.opLevel = dict["OpLevel"] as! String
+                    }
+                    if dict.keys.contains("ParamConfig") && dict["ParamConfig"] != nil {
+                        self.paramConfig = dict["ParamConfig"] as! [Any]
                     }
                     if dict.keys.contains("TaskConfig") && dict["TaskConfig"] != nil {
                         self.taskConfig = dict["TaskConfig"] as! String
