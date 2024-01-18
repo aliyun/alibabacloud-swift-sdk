@@ -14153,6 +14153,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.exportType)) {
             query["ExportType"] = request.exportType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.groupId)) {
+            query["GroupId"] = request.groupId!;
+        }
         if (!TeaUtils.Client.isUnset(request.isCleartextPwd)) {
             query["IsCleartextPwd"] = request.isCleartextPwd!;
         }
