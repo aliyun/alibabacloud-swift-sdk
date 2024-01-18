@@ -3798,6 +3798,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.thirdChannelCategoryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.thirdChannelCategory, "ThirdChannelCategory", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityContentState)) {
+            body["ActivityContentState"] = request.activityContentState!;
+        }
+        if (!TeaUtils.Client.isUnset(request.activityEvent)) {
+            body["ActivityEvent"] = request.activityEvent ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             body["AppId"] = request.appId ?? "";
         }
@@ -3809,6 +3815,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.deliveryType)) {
             body["DeliveryType"] = request.deliveryType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dismissalDate)) {
+            body["DismissalDate"] = request.dismissalDate!;
         }
         if (!TeaUtils.Client.isUnset(request.expiredSeconds)) {
             body["ExpiredSeconds"] = request.expiredSeconds!;
@@ -3949,6 +3958,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.thirdChannelCategoryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.thirdChannelCategory, "ThirdChannelCategory", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityContentState)) {
+            body["ActivityContentState"] = request.activityContentState!;
+        }
+        if (!TeaUtils.Client.isUnset(request.activityEvent)) {
+            body["ActivityEvent"] = request.activityEvent ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             body["AppId"] = request.appId ?? "";
         }
@@ -3963,6 +3978,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.deliveryType)) {
             body["DeliveryType"] = request.deliveryType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dismissalDate)) {
+            body["DismissalDate"] = request.dismissalDate!;
         }
         if (!TeaUtils.Client.isUnset(request.expiredSeconds)) {
             body["ExpiredSeconds"] = request.expiredSeconds!;
@@ -4060,6 +4078,12 @@ open class Client : AlibabacloudOpenApi.Client {
             request.thirdChannelCategoryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.thirdChannelCategory, "ThirdChannelCategory", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityContentState)) {
+            body["ActivityContentState"] = request.activityContentState!;
+        }
+        if (!TeaUtils.Client.isUnset(request.activityEvent)) {
+            body["ActivityEvent"] = request.activityEvent ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.appId)) {
             body["AppId"] = request.appId ?? "";
         }
@@ -4071,6 +4095,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.deliveryType)) {
             body["DeliveryType"] = request.deliveryType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.dismissalDate)) {
+            body["DismissalDate"] = request.dismissalDate!;
         }
         if (!TeaUtils.Client.isUnset(request.expiredSeconds)) {
             body["ExpiredSeconds"] = request.expiredSeconds!;

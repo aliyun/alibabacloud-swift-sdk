@@ -24572,6 +24572,10 @@ public class PushMultipleRequest : Tea.TeaModel {
             }
         }
     }
+    public var activityContentState: Any?
+
+    public var activityEvent: String?
+
     public var appId: String?
 
     public var channelId: String?
@@ -24579,6 +24583,8 @@ public class PushMultipleRequest : Tea.TeaModel {
     public var classification: String?
 
     public var deliveryType: Int64?
+
+    public var dismissalDate: Int64?
 
     public var expiredSeconds: Int64?
 
@@ -24620,6 +24626,12 @@ public class PushMultipleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityContentState != nil {
+            map["ActivityContentState"] = self.activityContentState!
+        }
+        if self.activityEvent != nil {
+            map["ActivityEvent"] = self.activityEvent!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -24631,6 +24643,9 @@ public class PushMultipleRequest : Tea.TeaModel {
         }
         if self.deliveryType != nil {
             map["DeliveryType"] = self.deliveryType!
+        }
+        if self.dismissalDate != nil {
+            map["DismissalDate"] = self.dismissalDate!
         }
         if self.expiredSeconds != nil {
             map["ExpiredSeconds"] = self.expiredSeconds!
@@ -24679,6 +24694,12 @@ public class PushMultipleRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityContentState") && dict["ActivityContentState"] != nil {
+            self.activityContentState = dict["ActivityContentState"] as! Any
+        }
+        if dict.keys.contains("ActivityEvent") && dict["ActivityEvent"] != nil {
+            self.activityEvent = dict["ActivityEvent"] as! String
+        }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
         }
@@ -24690,6 +24711,9 @@ public class PushMultipleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeliveryType") && dict["DeliveryType"] != nil {
             self.deliveryType = dict["DeliveryType"] as! Int64
+        }
+        if dict.keys.contains("DismissalDate") && dict["DismissalDate"] != nil {
+            self.dismissalDate = dict["DismissalDate"] as! Int64
         }
         if dict.keys.contains("ExpiredSeconds") && dict["ExpiredSeconds"] != nil {
             self.expiredSeconds = dict["ExpiredSeconds"] as! Int64
@@ -24795,6 +24819,10 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public var activityContentState: Any?
+
+    public var activityEvent: String?
+
     public var appId: String?
 
     public var channelId: String?
@@ -24802,6 +24830,8 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
     public var classification: String?
 
     public var deliveryType: Int64?
+
+    public var dismissalDate: Int64?
 
     public var expiredSeconds: Int64?
 
@@ -24843,6 +24873,12 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityContentState != nil {
+            map["ActivityContentState"] = self.activityContentState!
+        }
+        if self.activityEvent != nil {
+            map["ActivityEvent"] = self.activityEvent!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -24854,6 +24890,9 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
         }
         if self.deliveryType != nil {
             map["DeliveryType"] = self.deliveryType!
+        }
+        if self.dismissalDate != nil {
+            map["DismissalDate"] = self.dismissalDate!
         }
         if self.expiredSeconds != nil {
             map["ExpiredSeconds"] = self.expiredSeconds!
@@ -24902,6 +24941,12 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityContentState") && dict["ActivityContentState"] != nil {
+            self.activityContentState = dict["ActivityContentState"] as! Any
+        }
+        if dict.keys.contains("ActivityEvent") && dict["ActivityEvent"] != nil {
+            self.activityEvent = dict["ActivityEvent"] as! String
+        }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
         }
@@ -24913,6 +24958,9 @@ public class PushMultipleShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeliveryType") && dict["DeliveryType"] != nil {
             self.deliveryType = dict["DeliveryType"] as! Int64
+        }
+        if dict.keys.contains("DismissalDate") && dict["DismissalDate"] != nil {
+            self.dismissalDate = dict["DismissalDate"] as! Int64
         }
         if dict.keys.contains("ExpiredSeconds") && dict["ExpiredSeconds"] != nil {
             self.expiredSeconds = dict["ExpiredSeconds"] as! Int64
@@ -25399,6 +25447,10 @@ public class PushReportResponse : Tea.TeaModel {
 }
 
 public class PushSimpleRequest : Tea.TeaModel {
+    public var activityContentState: Any?
+
+    public var activityEvent: String?
+
     public var appId: String?
 
     public var channelId: String?
@@ -25408,6 +25460,8 @@ public class PushSimpleRequest : Tea.TeaModel {
     public var content: String?
 
     public var deliveryType: Int64?
+
+    public var dismissalDate: Int64?
 
     public var expiredSeconds: Int64?
 
@@ -25465,6 +25519,12 @@ public class PushSimpleRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityContentState != nil {
+            map["ActivityContentState"] = self.activityContentState!
+        }
+        if self.activityEvent != nil {
+            map["ActivityEvent"] = self.activityEvent!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -25479,6 +25539,9 @@ public class PushSimpleRequest : Tea.TeaModel {
         }
         if self.deliveryType != nil {
             map["DeliveryType"] = self.deliveryType!
+        }
+        if self.dismissalDate != nil {
+            map["DismissalDate"] = self.dismissalDate!
         }
         if self.expiredSeconds != nil {
             map["ExpiredSeconds"] = self.expiredSeconds!
@@ -25547,6 +25610,12 @@ public class PushSimpleRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityContentState") && dict["ActivityContentState"] != nil {
+            self.activityContentState = dict["ActivityContentState"] as! Any
+        }
+        if dict.keys.contains("ActivityEvent") && dict["ActivityEvent"] != nil {
+            self.activityEvent = dict["ActivityEvent"] as! String
+        }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
         }
@@ -25561,6 +25630,9 @@ public class PushSimpleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeliveryType") && dict["DeliveryType"] != nil {
             self.deliveryType = dict["DeliveryType"] as! Int64
+        }
+        if dict.keys.contains("DismissalDate") && dict["DismissalDate"] != nil {
+            self.dismissalDate = dict["DismissalDate"] as! Int64
         }
         if dict.keys.contains("ExpiredSeconds") && dict["ExpiredSeconds"] != nil {
             self.expiredSeconds = dict["ExpiredSeconds"] as! Int64
@@ -25629,6 +25701,10 @@ public class PushSimpleRequest : Tea.TeaModel {
 }
 
 public class PushSimpleShrinkRequest : Tea.TeaModel {
+    public var activityContentState: Any?
+
+    public var activityEvent: String?
+
     public var appId: String?
 
     public var channelId: String?
@@ -25638,6 +25714,8 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
     public var content: String?
 
     public var deliveryType: Int64?
+
+    public var dismissalDate: Int64?
 
     public var expiredSeconds: Int64?
 
@@ -25695,6 +25773,12 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityContentState != nil {
+            map["ActivityContentState"] = self.activityContentState!
+        }
+        if self.activityEvent != nil {
+            map["ActivityEvent"] = self.activityEvent!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -25709,6 +25793,9 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         }
         if self.deliveryType != nil {
             map["DeliveryType"] = self.deliveryType!
+        }
+        if self.dismissalDate != nil {
+            map["DismissalDate"] = self.dismissalDate!
         }
         if self.expiredSeconds != nil {
             map["ExpiredSeconds"] = self.expiredSeconds!
@@ -25777,6 +25864,12 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityContentState") && dict["ActivityContentState"] != nil {
+            self.activityContentState = dict["ActivityContentState"] as! Any
+        }
+        if dict.keys.contains("ActivityEvent") && dict["ActivityEvent"] != nil {
+            self.activityEvent = dict["ActivityEvent"] as! String
+        }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
         }
@@ -25791,6 +25884,9 @@ public class PushSimpleShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeliveryType") && dict["DeliveryType"] != nil {
             self.deliveryType = dict["DeliveryType"] as! Int64
+        }
+        if dict.keys.contains("DismissalDate") && dict["DismissalDate"] != nil {
+            self.dismissalDate = dict["DismissalDate"] as! Int64
         }
         if dict.keys.contains("ExpiredSeconds") && dict["ExpiredSeconds"] != nil {
             self.expiredSeconds = dict["ExpiredSeconds"] as! Int64
@@ -26013,6 +26109,10 @@ public class PushSimpleResponse : Tea.TeaModel {
 }
 
 public class PushTemplateRequest : Tea.TeaModel {
+    public var activityContentState: Any?
+
+    public var activityEvent: String?
+
     public var appId: String?
 
     public var channelId: String?
@@ -26020,6 +26120,8 @@ public class PushTemplateRequest : Tea.TeaModel {
     public var classification: String?
 
     public var deliveryType: Int64?
+
+    public var dismissalDate: Int64?
 
     public var expiredSeconds: Int64?
 
@@ -26071,6 +26173,12 @@ public class PushTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityContentState != nil {
+            map["ActivityContentState"] = self.activityContentState!
+        }
+        if self.activityEvent != nil {
+            map["ActivityEvent"] = self.activityEvent!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -26082,6 +26190,9 @@ public class PushTemplateRequest : Tea.TeaModel {
         }
         if self.deliveryType != nil {
             map["DeliveryType"] = self.deliveryType!
+        }
+        if self.dismissalDate != nil {
+            map["DismissalDate"] = self.dismissalDate!
         }
         if self.expiredSeconds != nil {
             map["ExpiredSeconds"] = self.expiredSeconds!
@@ -26141,6 +26252,12 @@ public class PushTemplateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityContentState") && dict["ActivityContentState"] != nil {
+            self.activityContentState = dict["ActivityContentState"] as! Any
+        }
+        if dict.keys.contains("ActivityEvent") && dict["ActivityEvent"] != nil {
+            self.activityEvent = dict["ActivityEvent"] as! String
+        }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
         }
@@ -26152,6 +26269,9 @@ public class PushTemplateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeliveryType") && dict["DeliveryType"] != nil {
             self.deliveryType = dict["DeliveryType"] as! Int64
+        }
+        if dict.keys.contains("DismissalDate") && dict["DismissalDate"] != nil {
+            self.dismissalDate = dict["DismissalDate"] as! Int64
         }
         if dict.keys.contains("ExpiredSeconds") && dict["ExpiredSeconds"] != nil {
             self.expiredSeconds = dict["ExpiredSeconds"] as! Int64
@@ -26211,6 +26331,10 @@ public class PushTemplateRequest : Tea.TeaModel {
 }
 
 public class PushTemplateShrinkRequest : Tea.TeaModel {
+    public var activityContentState: Any?
+
+    public var activityEvent: String?
+
     public var appId: String?
 
     public var channelId: String?
@@ -26218,6 +26342,8 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
     public var classification: String?
 
     public var deliveryType: Int64?
+
+    public var dismissalDate: Int64?
 
     public var expiredSeconds: Int64?
 
@@ -26269,6 +26395,12 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityContentState != nil {
+            map["ActivityContentState"] = self.activityContentState!
+        }
+        if self.activityEvent != nil {
+            map["ActivityEvent"] = self.activityEvent!
+        }
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
@@ -26280,6 +26412,9 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         }
         if self.deliveryType != nil {
             map["DeliveryType"] = self.deliveryType!
+        }
+        if self.dismissalDate != nil {
+            map["DismissalDate"] = self.dismissalDate!
         }
         if self.expiredSeconds != nil {
             map["ExpiredSeconds"] = self.expiredSeconds!
@@ -26339,6 +26474,12 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityContentState") && dict["ActivityContentState"] != nil {
+            self.activityContentState = dict["ActivityContentState"] as! Any
+        }
+        if dict.keys.contains("ActivityEvent") && dict["ActivityEvent"] != nil {
+            self.activityEvent = dict["ActivityEvent"] as! String
+        }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
         }
@@ -26350,6 +26491,9 @@ public class PushTemplateShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DeliveryType") && dict["DeliveryType"] != nil {
             self.deliveryType = dict["DeliveryType"] as! Int64
+        }
+        if dict.keys.contains("DismissalDate") && dict["DismissalDate"] != nil {
+            self.dismissalDate = dict["DismissalDate"] as! Int64
         }
         if dict.keys.contains("ExpiredSeconds") && dict["ExpiredSeconds"] != nil {
             self.expiredSeconds = dict["ExpiredSeconds"] as! Int64
