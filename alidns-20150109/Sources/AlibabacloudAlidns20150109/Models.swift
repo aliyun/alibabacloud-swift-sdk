@@ -17595,6 +17595,8 @@ public class DescribeDomainStatisticsResponseBody : Tea.TeaModel {
         public class Statistic : Tea.TeaModel {
             public var count: Int64?
 
+            public var domainName: String?
+
             public var timestamp: Int64?
 
             public override init() {
@@ -17614,6 +17616,9 @@ public class DescribeDomainStatisticsResponseBody : Tea.TeaModel {
                 if self.count != nil {
                     map["Count"] = self.count!
                 }
+                if self.domainName != nil {
+                    map["DomainName"] = self.domainName!
+                }
                 if self.timestamp != nil {
                     map["Timestamp"] = self.timestamp!
                 }
@@ -17623,6 +17628,9 @@ public class DescribeDomainStatisticsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Count") && dict["Count"] != nil {
                     self.count = dict["Count"] as! Int64
+                }
+                if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+                    self.domainName = dict["DomainName"] as! String
                 }
                 if dict.keys.contains("Timestamp") && dict["Timestamp"] != nil {
                     self.timestamp = dict["Timestamp"] as! Int64
@@ -17856,6 +17864,8 @@ public class DescribeDomainStatisticsSummaryResponseBody : Tea.TeaModel {
 
             public var domainType: String?
 
+            public var resolveAnalysisStatus: String?
+
             public override init() {
                 super.init()
             }
@@ -17879,6 +17889,9 @@ public class DescribeDomainStatisticsSummaryResponseBody : Tea.TeaModel {
                 if self.domainType != nil {
                     map["DomainType"] = self.domainType!
                 }
+                if self.resolveAnalysisStatus != nil {
+                    map["resolveAnalysisStatus"] = self.resolveAnalysisStatus!
+                }
                 return map
             }
 
@@ -17891,6 +17904,9 @@ public class DescribeDomainStatisticsSummaryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DomainType") && dict["DomainType"] != nil {
                     self.domainType = dict["DomainType"] as! String
+                }
+                if dict.keys.contains("resolveAnalysisStatus") && dict["resolveAnalysisStatus"] != nil {
+                    self.resolveAnalysisStatus = dict["resolveAnalysisStatus"] as! String
                 }
             }
         }
