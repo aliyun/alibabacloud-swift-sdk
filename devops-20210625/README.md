@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudDevops20210625` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/devops-20210625" "4.7.0"
+github "alibabacloud-sdk-swift/devops-20210625" "4.8.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudDevops20210625` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/devops-20210625.git", from: "4.7.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/devops-20210625.git", from: "4.8.0")
 ]
 ```
 
