@@ -923,6 +923,358 @@ public class AddDesensitizationRuleResponse : Tea.TeaModel {
     }
 }
 
+public class AddInstanceRequest : Tea.TeaModel {
+    public var dataLinkName: String?
+
+    public var databasePassword: String?
+
+    public var databaseUser: String?
+
+    public var dbaId: Int64?
+
+    public var ddlOnline: Int32?
+
+    public var ecsInstanceId: String?
+
+    public var ecsRegion: String?
+
+    public var enableSellCommon: String?
+
+    public var enableSellSitd: String?
+
+    public var enableSellStable: String?
+
+    public var enableSellTrust: String?
+
+    public var envType: String?
+
+    public var exportTimeout: Int32?
+
+    public var host: String?
+
+    public var instanceAlias: String?
+
+    public var instanceSource: String?
+
+    public var instanceType: String?
+
+    public var networkType: String?
+
+    public var port: Int32?
+
+    public var queryTimeout: Int32?
+
+    public var safeRule: String?
+
+    public var sid: String?
+
+    public var skipTest: Bool?
+
+    public var templateId: Int64?
+
+    public var templateType: String?
+
+    public var tid: Int64?
+
+    public var useDsql: Int32?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataLinkName != nil {
+            map["DataLinkName"] = self.dataLinkName!
+        }
+        if self.databasePassword != nil {
+            map["DatabasePassword"] = self.databasePassword!
+        }
+        if self.databaseUser != nil {
+            map["DatabaseUser"] = self.databaseUser!
+        }
+        if self.dbaId != nil {
+            map["DbaId"] = self.dbaId!
+        }
+        if self.ddlOnline != nil {
+            map["DdlOnline"] = self.ddlOnline!
+        }
+        if self.ecsInstanceId != nil {
+            map["EcsInstanceId"] = self.ecsInstanceId!
+        }
+        if self.ecsRegion != nil {
+            map["EcsRegion"] = self.ecsRegion!
+        }
+        if self.enableSellCommon != nil {
+            map["EnableSellCommon"] = self.enableSellCommon!
+        }
+        if self.enableSellSitd != nil {
+            map["EnableSellSitd"] = self.enableSellSitd!
+        }
+        if self.enableSellStable != nil {
+            map["EnableSellStable"] = self.enableSellStable!
+        }
+        if self.enableSellTrust != nil {
+            map["EnableSellTrust"] = self.enableSellTrust!
+        }
+        if self.envType != nil {
+            map["EnvType"] = self.envType!
+        }
+        if self.exportTimeout != nil {
+            map["ExportTimeout"] = self.exportTimeout!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
+        }
+        if self.instanceAlias != nil {
+            map["InstanceAlias"] = self.instanceAlias!
+        }
+        if self.instanceSource != nil {
+            map["InstanceSource"] = self.instanceSource!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.queryTimeout != nil {
+            map["QueryTimeout"] = self.queryTimeout!
+        }
+        if self.safeRule != nil {
+            map["SafeRule"] = self.safeRule!
+        }
+        if self.sid != nil {
+            map["Sid"] = self.sid!
+        }
+        if self.skipTest != nil {
+            map["SkipTest"] = self.skipTest!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        if self.useDsql != nil {
+            map["UseDsql"] = self.useDsql!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataLinkName") && dict["DataLinkName"] != nil {
+            self.dataLinkName = dict["DataLinkName"] as! String
+        }
+        if dict.keys.contains("DatabasePassword") && dict["DatabasePassword"] != nil {
+            self.databasePassword = dict["DatabasePassword"] as! String
+        }
+        if dict.keys.contains("DatabaseUser") && dict["DatabaseUser"] != nil {
+            self.databaseUser = dict["DatabaseUser"] as! String
+        }
+        if dict.keys.contains("DbaId") && dict["DbaId"] != nil {
+            self.dbaId = dict["DbaId"] as! Int64
+        }
+        if dict.keys.contains("DdlOnline") && dict["DdlOnline"] != nil {
+            self.ddlOnline = dict["DdlOnline"] as! Int32
+        }
+        if dict.keys.contains("EcsInstanceId") && dict["EcsInstanceId"] != nil {
+            self.ecsInstanceId = dict["EcsInstanceId"] as! String
+        }
+        if dict.keys.contains("EcsRegion") && dict["EcsRegion"] != nil {
+            self.ecsRegion = dict["EcsRegion"] as! String
+        }
+        if dict.keys.contains("EnableSellCommon") && dict["EnableSellCommon"] != nil {
+            self.enableSellCommon = dict["EnableSellCommon"] as! String
+        }
+        if dict.keys.contains("EnableSellSitd") && dict["EnableSellSitd"] != nil {
+            self.enableSellSitd = dict["EnableSellSitd"] as! String
+        }
+        if dict.keys.contains("EnableSellStable") && dict["EnableSellStable"] != nil {
+            self.enableSellStable = dict["EnableSellStable"] as! String
+        }
+        if dict.keys.contains("EnableSellTrust") && dict["EnableSellTrust"] != nil {
+            self.enableSellTrust = dict["EnableSellTrust"] as! String
+        }
+        if dict.keys.contains("EnvType") && dict["EnvType"] != nil {
+            self.envType = dict["EnvType"] as! String
+        }
+        if dict.keys.contains("ExportTimeout") && dict["ExportTimeout"] != nil {
+            self.exportTimeout = dict["ExportTimeout"] as! Int32
+        }
+        if dict.keys.contains("Host") && dict["Host"] != nil {
+            self.host = dict["Host"] as! String
+        }
+        if dict.keys.contains("InstanceAlias") && dict["InstanceAlias"] != nil {
+            self.instanceAlias = dict["InstanceAlias"] as! String
+        }
+        if dict.keys.contains("InstanceSource") && dict["InstanceSource"] != nil {
+            self.instanceSource = dict["InstanceSource"] as! String
+        }
+        if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+            self.networkType = dict["NetworkType"] as! String
+        }
+        if dict.keys.contains("Port") && dict["Port"] != nil {
+            self.port = dict["Port"] as! Int32
+        }
+        if dict.keys.contains("QueryTimeout") && dict["QueryTimeout"] != nil {
+            self.queryTimeout = dict["QueryTimeout"] as! Int32
+        }
+        if dict.keys.contains("SafeRule") && dict["SafeRule"] != nil {
+            self.safeRule = dict["SafeRule"] as! String
+        }
+        if dict.keys.contains("Sid") && dict["Sid"] != nil {
+            self.sid = dict["Sid"] as! String
+        }
+        if dict.keys.contains("SkipTest") && dict["SkipTest"] != nil {
+            self.skipTest = dict["SkipTest"] as! Bool
+        }
+        if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+            self.templateId = dict["TemplateId"] as! Int64
+        }
+        if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+            self.templateType = dict["TemplateType"] as! String
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("UseDsql") && dict["UseDsql"] != nil {
+            self.useDsql = dict["UseDsql"] as! Int32
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
+        }
+    }
+}
+
+public class AddInstanceResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class AddInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = AddInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AddLhMembersRequest : Tea.TeaModel {
     public class Members : Tea.TeaModel {
         public var roles: [String]?
@@ -50567,6 +50919,366 @@ public class ModifyDesensitizationStrategyResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyDesensitizationStrategyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyInstanceRequest : Tea.TeaModel {
+    public var dataLinkName: String?
+
+    public var databasePassword: String?
+
+    public var databaseUser: String?
+
+    public var dbaId: Int64?
+
+    public var ddlOnline: Int32?
+
+    public var ecsInstanceId: String?
+
+    public var ecsRegion: String?
+
+    public var enableSellCommon: String?
+
+    public var enableSellSitd: String?
+
+    public var enableSellStable: String?
+
+    public var enableSellTrust: String?
+
+    public var envType: String?
+
+    public var exportTimeout: Int32?
+
+    public var host: String?
+
+    public var instanceAlias: String?
+
+    public var instanceId: String?
+
+    public var instanceSource: String?
+
+    public var instanceType: String?
+
+    public var networkType: String?
+
+    public var port: Int32?
+
+    public var queryTimeout: Int32?
+
+    public var safeRule: String?
+
+    public var sid: String?
+
+    public var skipTest: Bool?
+
+    public var templateId: Int64?
+
+    public var templateType: String?
+
+    public var tid: Int64?
+
+    public var useDsql: Int32?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataLinkName != nil {
+            map["DataLinkName"] = self.dataLinkName!
+        }
+        if self.databasePassword != nil {
+            map["DatabasePassword"] = self.databasePassword!
+        }
+        if self.databaseUser != nil {
+            map["DatabaseUser"] = self.databaseUser!
+        }
+        if self.dbaId != nil {
+            map["DbaId"] = self.dbaId!
+        }
+        if self.ddlOnline != nil {
+            map["DdlOnline"] = self.ddlOnline!
+        }
+        if self.ecsInstanceId != nil {
+            map["EcsInstanceId"] = self.ecsInstanceId!
+        }
+        if self.ecsRegion != nil {
+            map["EcsRegion"] = self.ecsRegion!
+        }
+        if self.enableSellCommon != nil {
+            map["EnableSellCommon"] = self.enableSellCommon!
+        }
+        if self.enableSellSitd != nil {
+            map["EnableSellSitd"] = self.enableSellSitd!
+        }
+        if self.enableSellStable != nil {
+            map["EnableSellStable"] = self.enableSellStable!
+        }
+        if self.enableSellTrust != nil {
+            map["EnableSellTrust"] = self.enableSellTrust!
+        }
+        if self.envType != nil {
+            map["EnvType"] = self.envType!
+        }
+        if self.exportTimeout != nil {
+            map["ExportTimeout"] = self.exportTimeout!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
+        }
+        if self.instanceAlias != nil {
+            map["InstanceAlias"] = self.instanceAlias!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceSource != nil {
+            map["InstanceSource"] = self.instanceSource!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.networkType != nil {
+            map["NetworkType"] = self.networkType!
+        }
+        if self.port != nil {
+            map["Port"] = self.port!
+        }
+        if self.queryTimeout != nil {
+            map["QueryTimeout"] = self.queryTimeout!
+        }
+        if self.safeRule != nil {
+            map["SafeRule"] = self.safeRule!
+        }
+        if self.sid != nil {
+            map["Sid"] = self.sid!
+        }
+        if self.skipTest != nil {
+            map["SkipTest"] = self.skipTest!
+        }
+        if self.templateId != nil {
+            map["TemplateId"] = self.templateId!
+        }
+        if self.templateType != nil {
+            map["TemplateType"] = self.templateType!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        if self.useDsql != nil {
+            map["UseDsql"] = self.useDsql!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataLinkName") && dict["DataLinkName"] != nil {
+            self.dataLinkName = dict["DataLinkName"] as! String
+        }
+        if dict.keys.contains("DatabasePassword") && dict["DatabasePassword"] != nil {
+            self.databasePassword = dict["DatabasePassword"] as! String
+        }
+        if dict.keys.contains("DatabaseUser") && dict["DatabaseUser"] != nil {
+            self.databaseUser = dict["DatabaseUser"] as! String
+        }
+        if dict.keys.contains("DbaId") && dict["DbaId"] != nil {
+            self.dbaId = dict["DbaId"] as! Int64
+        }
+        if dict.keys.contains("DdlOnline") && dict["DdlOnline"] != nil {
+            self.ddlOnline = dict["DdlOnline"] as! Int32
+        }
+        if dict.keys.contains("EcsInstanceId") && dict["EcsInstanceId"] != nil {
+            self.ecsInstanceId = dict["EcsInstanceId"] as! String
+        }
+        if dict.keys.contains("EcsRegion") && dict["EcsRegion"] != nil {
+            self.ecsRegion = dict["EcsRegion"] as! String
+        }
+        if dict.keys.contains("EnableSellCommon") && dict["EnableSellCommon"] != nil {
+            self.enableSellCommon = dict["EnableSellCommon"] as! String
+        }
+        if dict.keys.contains("EnableSellSitd") && dict["EnableSellSitd"] != nil {
+            self.enableSellSitd = dict["EnableSellSitd"] as! String
+        }
+        if dict.keys.contains("EnableSellStable") && dict["EnableSellStable"] != nil {
+            self.enableSellStable = dict["EnableSellStable"] as! String
+        }
+        if dict.keys.contains("EnableSellTrust") && dict["EnableSellTrust"] != nil {
+            self.enableSellTrust = dict["EnableSellTrust"] as! String
+        }
+        if dict.keys.contains("EnvType") && dict["EnvType"] != nil {
+            self.envType = dict["EnvType"] as! String
+        }
+        if dict.keys.contains("ExportTimeout") && dict["ExportTimeout"] != nil {
+            self.exportTimeout = dict["ExportTimeout"] as! Int32
+        }
+        if dict.keys.contains("Host") && dict["Host"] != nil {
+            self.host = dict["Host"] as! String
+        }
+        if dict.keys.contains("InstanceAlias") && dict["InstanceAlias"] != nil {
+            self.instanceAlias = dict["InstanceAlias"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceSource") && dict["InstanceSource"] != nil {
+            self.instanceSource = dict["InstanceSource"] as! String
+        }
+        if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+            self.networkType = dict["NetworkType"] as! String
+        }
+        if dict.keys.contains("Port") && dict["Port"] != nil {
+            self.port = dict["Port"] as! Int32
+        }
+        if dict.keys.contains("QueryTimeout") && dict["QueryTimeout"] != nil {
+            self.queryTimeout = dict["QueryTimeout"] as! Int32
+        }
+        if dict.keys.contains("SafeRule") && dict["SafeRule"] != nil {
+            self.safeRule = dict["SafeRule"] as! String
+        }
+        if dict.keys.contains("Sid") && dict["Sid"] != nil {
+            self.sid = dict["Sid"] as! String
+        }
+        if dict.keys.contains("SkipTest") && dict["SkipTest"] != nil {
+            self.skipTest = dict["SkipTest"] as! Bool
+        }
+        if dict.keys.contains("TemplateId") && dict["TemplateId"] != nil {
+            self.templateId = dict["TemplateId"] as! Int64
+        }
+        if dict.keys.contains("TemplateType") && dict["TemplateType"] != nil {
+            self.templateType = dict["TemplateType"] as! String
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+        if dict.keys.contains("UseDsql") && dict["UseDsql"] != nil {
+            self.useDsql = dict["UseDsql"] as! Int32
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
+        }
+    }
+}
+
+public class ModifyInstanceResponseBody : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ModifyInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyInstanceResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
