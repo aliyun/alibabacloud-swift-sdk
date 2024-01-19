@@ -5088,6 +5088,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 public class CreateClusterNodePoolResponseBody : Tea.TeaModel {
     public var nodepoolId: String?
 
+    public var requestId: String?
+
     public var taskId: String?
 
     public override init() {
@@ -5107,6 +5109,9 @@ public class CreateClusterNodePoolResponseBody : Tea.TeaModel {
         if self.nodepoolId != nil {
             map["nodepool_id"] = self.nodepoolId!
         }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
         if self.taskId != nil {
             map["task_id"] = self.taskId!
         }
@@ -5116,6 +5121,9 @@ public class CreateClusterNodePoolResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("nodepool_id") && dict["nodepool_id"] != nil {
             self.nodepoolId = dict["nodepool_id"] as! String
+        }
+        if dict.keys.contains("request_id") && dict["request_id"] != nil {
+            self.requestId = dict["request_id"] as! String
         }
         if dict.keys.contains("task_id") && dict["task_id"] != nil {
             self.taskId = dict["task_id"] as! String
@@ -21660,6 +21668,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 
         public var taints: [Taint]?
 
+        public var unschedulable: Bool?
+
         public var userData: String?
 
         public override init() {
@@ -21702,6 +21712,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 }
                 map["taints"] = tmp
             }
+            if self.unschedulable != nil {
+                map["unschedulable"] = self.unschedulable!
+            }
             if self.userData != nil {
                 map["user_data"] = self.userData!
             }
@@ -21742,6 +21755,9 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.taints = tmp
+            }
+            if dict.keys.contains("unschedulable") && dict["unschedulable"] != nil {
+                self.unschedulable = dict["unschedulable"] as! Bool
             }
             if dict.keys.contains("user_data") && dict["user_data"] != nil {
                 self.userData = dict["user_data"] as! String
@@ -22595,6 +22611,8 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
 public class ModifyClusterNodePoolResponseBody : Tea.TeaModel {
     public var nodepoolId: String?
 
+    public var requestId: String?
+
     public var taskId: String?
 
     public override init() {
@@ -22614,6 +22632,9 @@ public class ModifyClusterNodePoolResponseBody : Tea.TeaModel {
         if self.nodepoolId != nil {
             map["nodepool_id"] = self.nodepoolId!
         }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
         if self.taskId != nil {
             map["task_id"] = self.taskId!
         }
@@ -22623,6 +22644,9 @@ public class ModifyClusterNodePoolResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("nodepool_id") && dict["nodepool_id"] != nil {
             self.nodepoolId = dict["nodepool_id"] as! String
+        }
+        if dict.keys.contains("request_id") && dict["request_id"] != nil {
+            self.requestId = dict["request_id"] as! String
         }
         if dict.keys.contains("task_id") && dict["task_id"] != nil {
             self.taskId = dict["task_id"] as! String
@@ -26453,10 +26477,58 @@ public class UpgradeClusterRequest : Tea.TeaModel {
     }
 }
 
+public class UpgradeClusterResponseBody : Tea.TeaModel {
+    public var clusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterId != nil {
+            map["cluster_id"] = self.clusterId!
+        }
+        if self.requestId != nil {
+            map["request_id"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["task_id"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("cluster_id") && dict["cluster_id"] != nil {
+            self.clusterId = dict["cluster_id"] as! String
+        }
+        if dict.keys.contains("request_id") && dict["request_id"] != nil {
+            self.requestId = dict["request_id"] as! String
+        }
+        if dict.keys.contains("task_id") && dict["task_id"] != nil {
+            self.taskId = dict["task_id"] as! String
+        }
+    }
+}
+
 public class UpgradeClusterResponse : Tea.TeaModel {
     public var headers: [String: String]?
 
     public var statusCode: Int32?
+
+    public var body: UpgradeClusterResponseBody?
 
     public override init() {
         super.init()
@@ -26470,6 +26542,8 @@ public class UpgradeClusterResponse : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.validateRequired(self.headers, "headers")
         try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -26480,6 +26554,9 @@ public class UpgradeClusterResponse : Tea.TeaModel {
         if self.statusCode != nil {
             map["statusCode"] = self.statusCode!
         }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
         return map
     }
 
@@ -26489,6 +26566,11 @@ public class UpgradeClusterResponse : Tea.TeaModel {
         }
         if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
             self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpgradeClusterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
         }
     }
 }
