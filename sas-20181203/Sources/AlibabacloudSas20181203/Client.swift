@@ -14915,6 +14915,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getCheckSummaryWithOptions(_ request: GetCheckSummaryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetCheckSummaryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.isItemStatistic)) {
+            query["IsItemStatistic"] = request.isItemStatistic!;
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }
