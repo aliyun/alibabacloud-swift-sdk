@@ -6242,6 +6242,8 @@ public class DescribeApiDocRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -6264,6 +6266,9 @@ public class DescribeApiDocRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -6276,6 +6281,9 @@ public class DescribeApiDocRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -7471,6 +7479,8 @@ public class DescribeApiDocsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -7502,6 +7512,9 @@ public class DescribeApiDocsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -7523,6 +7536,9 @@ public class DescribeApiDocsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -8746,6 +8762,8 @@ public class DescribeApiGroupsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -8772,6 +8790,9 @@ public class DescribeApiGroupsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -8787,6 +8808,9 @@ public class DescribeApiGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
