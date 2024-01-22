@@ -722,9 +722,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.flightSegmentParamList)) {
             request.flightSegmentParamListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.flightSegmentParamList, "flight_segment_param_list", "json")
         }
-        var body: [String: Any] = [:]
+        var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.flightSegmentParamListShrink)) {
-            body["flight_segment_param_list"] = request.flightSegmentParamListShrink ?? "";
+            query["flight_segment_param_list"] = request.flightSegmentParamListShrink ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -738,7 +738,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "LuggageDirect",
@@ -748,7 +748,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
-            "reqBodyType": "formData",
+            "reqBodyType": "json",
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
@@ -1221,9 +1221,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.flightSegmentParamList)) {
             request.flightSegmentParamListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.flightSegmentParamList, "flight_segment_param_list", "json")
         }
-        var body: [String: Any] = [:]
+        var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.flightSegmentParamListShrink)) {
-            body["flight_segment_param_list"] = request.flightSegmentParamListShrink ?? "";
+            query["flight_segment_param_list"] = request.flightSegmentParamListShrink ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -1237,7 +1237,7 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": realHeaders as! [String: String],
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "TransitVisa",
@@ -1247,7 +1247,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
-            "reqBodyType": "formData",
+            "reqBodyType": "json",
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
