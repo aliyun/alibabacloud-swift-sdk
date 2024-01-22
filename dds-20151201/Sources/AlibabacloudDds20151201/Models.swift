@@ -4775,6 +4775,8 @@ public class DescribeAuditRecordsRequest : Tea.TeaModel {
 
     public var form: String?
 
+    public var logicalOperator: String?
+
     public var nodeId: String?
 
     public var orderType: String?
@@ -4822,6 +4824,9 @@ public class DescribeAuditRecordsRequest : Tea.TeaModel {
         }
         if self.form != nil {
             map["Form"] = self.form!
+        }
+        if self.logicalOperator != nil {
+            map["LogicalOperator"] = self.logicalOperator!
         }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
@@ -4871,6 +4876,9 @@ public class DescribeAuditRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Form") && dict["Form"] != nil {
             self.form = dict["Form"] as! String
+        }
+        if dict.keys.contains("LogicalOperator") && dict["LogicalOperator"] != nil {
+            self.logicalOperator = dict["LogicalOperator"] as! String
         }
         if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
             self.nodeId = dict["NodeId"] as! String
@@ -12292,6 +12300,8 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var logicalOperator: String?
+
     public var nodeId: String?
 
     public var ownerAccount: String?
@@ -12301,6 +12311,8 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var queryKeywords: String?
 
     public var resourceGroupId: String?
 
@@ -12335,6 +12347,9 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.logicalOperator != nil {
+            map["LogicalOperator"] = self.logicalOperator!
+        }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
@@ -12349,6 +12364,9 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.queryKeywords != nil {
+            map["QueryKeywords"] = self.queryKeywords!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -12378,6 +12396,9 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("LogicalOperator") && dict["LogicalOperator"] != nil {
+            self.logicalOperator = dict["LogicalOperator"] as! String
+        }
         if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
             self.nodeId = dict["NodeId"] as! String
         }
@@ -12392,6 +12413,9 @@ public class DescribeErrorLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryKeywords") && dict["QueryKeywords"] != nil {
+            self.queryKeywords = dict["QueryKeywords"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -18034,6 +18058,8 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var logicalOperator: String?
+
     public var nodeId: String?
 
     public var orderType: String?
@@ -18045,6 +18071,8 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var queryKeywords: String?
 
     public var resourceGroupId: String?
 
@@ -18081,6 +18109,9 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.logicalOperator != nil {
+            map["LogicalOperator"] = self.logicalOperator!
+        }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
@@ -18098,6 +18129,9 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.queryKeywords != nil {
+            map["QueryKeywords"] = self.queryKeywords!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -18130,6 +18164,9 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("LogicalOperator") && dict["LogicalOperator"] != nil {
+            self.logicalOperator = dict["LogicalOperator"] as! String
+        }
         if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
             self.nodeId = dict["NodeId"] as! String
         }
@@ -18147,6 +18184,9 @@ public class DescribeRunningLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryKeywords") && dict["QueryKeywords"] != nil {
+            self.queryKeywords = dict["QueryKeywords"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -19327,6 +19367,8 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var logicalOperator: String?
+
     public var nodeId: String?
 
     public var orderType: String?
@@ -19338,6 +19380,8 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var queryKeywords: String?
 
     public var resourceGroupId: String?
 
@@ -19370,6 +19414,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.logicalOperator != nil {
+            map["LogicalOperator"] = self.logicalOperator!
+        }
         if self.nodeId != nil {
             map["NodeId"] = self.nodeId!
         }
@@ -19387,6 +19434,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.queryKeywords != nil {
+            map["QueryKeywords"] = self.queryKeywords!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -19413,6 +19463,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("LogicalOperator") && dict["LogicalOperator"] != nil {
+            self.logicalOperator = dict["LogicalOperator"] as! String
+        }
         if dict.keys.contains("NodeId") && dict["NodeId"] != nil {
             self.nodeId = dict["NodeId"] as! String
         }
@@ -19430,6 +19483,9 @@ public class DescribeSlowLogRecordsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryKeywords") && dict["QueryKeywords"] != nil {
+            self.queryKeywords = dict["QueryKeywords"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
