@@ -5,6 +5,44 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class EntityAdditionalInfoValue : Tea.TeaModel {
+    public var type: String?
+
+    public var promql: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.promql != nil {
+            map["Promql"] = self.promql!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("Promql") && dict["Promql"] != nil {
+            self.promql = dict["Promql"] as! String
+        }
+    }
+}
+
 public class AddServiceSharedAccountsRequest : Tea.TeaModel {
     public class SharedAccounts : Tea.TeaModel {
         public var permission: String?
@@ -3457,6 +3495,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var createTime: String?
 
+    public var crossRegionConnectionStatus: String?
+
     public var defaultLicenseDays: Int64?
 
     public var deployMetadata: String?
@@ -3464,6 +3504,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
     public var deployType: String?
 
     public var duration: Int64?
+
+    public var entityAdditionalInfo: [String: EntityAdditionalInfoValue]?
 
     public var entitySource: [String: String]?
 
@@ -3549,6 +3591,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var virtualInternetService: String?
 
+    public var virtualInternetServiceId: String?
+
     public override init() {
         super.init()
     }
@@ -3597,6 +3641,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
+        if self.crossRegionConnectionStatus != nil {
+            map["CrossRegionConnectionStatus"] = self.crossRegionConnectionStatus!
+        }
         if self.defaultLicenseDays != nil {
             map["DefaultLicenseDays"] = self.defaultLicenseDays!
         }
@@ -3608,6 +3655,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.entityAdditionalInfo != nil {
+            var tmp : [String: Any] = [:]
+            for (k, v) in self.entityAdditionalInfo! {
+                tmp[k] = v.toMap()
+            }
+            map["EntityAdditionalInfo"] = tmp
         }
         if self.entitySource != nil {
             map["EntitySource"] = self.entitySource!
@@ -3743,6 +3797,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if self.virtualInternetService != nil {
             map["VirtualInternetService"] = self.virtualInternetService!
         }
+        if self.virtualInternetServiceId != nil {
+            map["VirtualInternetServiceId"] = self.virtualInternetServiceId!
+        }
         return map
     }
 
@@ -3789,6 +3846,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
             self.createTime = dict["CreateTime"] as! String
         }
+        if dict.keys.contains("CrossRegionConnectionStatus") && dict["CrossRegionConnectionStatus"] != nil {
+            self.crossRegionConnectionStatus = dict["CrossRegionConnectionStatus"] as! String
+        }
         if dict.keys.contains("DefaultLicenseDays") && dict["DefaultLicenseDays"] != nil {
             self.defaultLicenseDays = dict["DefaultLicenseDays"] as! Int64
         }
@@ -3800,6 +3860,17 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Duration") && dict["Duration"] != nil {
             self.duration = dict["Duration"] as! Int64
+        }
+        if dict.keys.contains("EntityAdditionalInfo") && dict["EntityAdditionalInfo"] != nil {
+            var tmp : [String: EntityAdditionalInfoValue] = [:]
+            for (k, v) in dict["EntityAdditionalInfo"] as! [String: Any] {
+                if v != nil {
+                    var model = EntityAdditionalInfoValue()
+                    model.fromMap(v as! [String: Any])
+                    tmp[k] = model
+                }
+            }
+            self.entityAdditionalInfo = tmp
         }
         if dict.keys.contains("EntitySource") && dict["EntitySource"] != nil {
             self.entitySource = dict["EntitySource"] as! [String: String]
@@ -3944,6 +4015,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("VirtualInternetService") && dict["VirtualInternetService"] != nil {
             self.virtualInternetService = dict["VirtualInternetService"] as! String
+        }
+        if dict.keys.contains("VirtualInternetServiceId") && dict["VirtualInternetServiceId"] != nil {
+            self.virtualInternetServiceId = dict["VirtualInternetServiceId"] as! String
         }
     }
 }
