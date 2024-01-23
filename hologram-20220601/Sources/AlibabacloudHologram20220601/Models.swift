@@ -661,6 +661,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var regionId: String?
 
+        public var replicaRole: String?
+
         public var resourceGroupId: String?
 
         public var suspendReason: String?
@@ -754,6 +756,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.replicaRole != nil {
+                map["ReplicaRole"] = self.replicaRole!
             }
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
@@ -851,6 +856,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ReplicaRole") && dict["ReplicaRole"] != nil {
+                self.replicaRole = dict["ReplicaRole"] as! String
             }
             if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
