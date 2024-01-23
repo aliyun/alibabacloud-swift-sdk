@@ -324,11 +324,50 @@ public class AssociateResourceShareRequest : Tea.TeaModel {
             }
         }
     }
+    public class TargetProperties : Tea.TeaModel {
+        public var property: String?
+
+        public var targetId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.property != nil {
+                map["Property"] = self.property!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Property") && dict["Property"] != nil {
+                self.property = dict["Property"] as! String
+            }
+            if dict.keys.contains("TargetId") && dict["TargetId"] != nil {
+                self.targetId = dict["TargetId"] as! String
+            }
+        }
+    }
     public var permissionNames: [String]?
 
     public var resourceShareId: String?
 
     public var resources: [AssociateResourceShareRequest.Resources]?
+
+    public var targetProperties: [AssociateResourceShareRequest.TargetProperties]?
 
     public var targets: [String]?
 
@@ -359,6 +398,13 @@ public class AssociateResourceShareRequest : Tea.TeaModel {
             }
             map["Resources"] = tmp
         }
+        if self.targetProperties != nil {
+            var tmp : [Any] = []
+            for k in self.targetProperties! {
+                tmp.append(k.toMap())
+            }
+            map["TargetProperties"] = tmp
+        }
         if self.targets != nil {
             map["Targets"] = self.targets!
         }
@@ -382,6 +428,17 @@ public class AssociateResourceShareRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.resources = tmp
+        }
+        if dict.keys.contains("TargetProperties") && dict["TargetProperties"] != nil {
+            var tmp : [AssociateResourceShareRequest.TargetProperties] = []
+            for v in dict["TargetProperties"] as! [Any] {
+                var model = AssociateResourceShareRequest.TargetProperties()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.targetProperties = tmp
         }
         if dict.keys.contains("Targets") && dict["Targets"] != nil {
             self.targets = dict["Targets"] as! [String]
@@ -976,6 +1033,43 @@ public class CreateResourceShareRequest : Tea.TeaModel {
             }
         }
     }
+    public class TargetProperties : Tea.TeaModel {
+        public var property: String?
+
+        public var targetId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.property != nil {
+                map["Property"] = self.property!
+            }
+            if self.targetId != nil {
+                map["TargetId"] = self.targetId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Property") && dict["Property"] != nil {
+                self.property = dict["Property"] as! String
+            }
+            if dict.keys.contains("TargetId") && dict["TargetId"] != nil {
+                self.targetId = dict["TargetId"] as! String
+            }
+        }
+    }
     public var allowExternalTargets: Bool?
 
     public var permissionNames: [String]?
@@ -983,6 +1077,8 @@ public class CreateResourceShareRequest : Tea.TeaModel {
     public var resourceShareName: String?
 
     public var resources: [CreateResourceShareRequest.Resources]?
+
+    public var targetProperties: [CreateResourceShareRequest.TargetProperties]?
 
     public var targets: [String]?
 
@@ -1016,6 +1112,13 @@ public class CreateResourceShareRequest : Tea.TeaModel {
             }
             map["Resources"] = tmp
         }
+        if self.targetProperties != nil {
+            var tmp : [Any] = []
+            for k in self.targetProperties! {
+                tmp.append(k.toMap())
+            }
+            map["TargetProperties"] = tmp
+        }
         if self.targets != nil {
             map["Targets"] = self.targets!
         }
@@ -1042,6 +1145,17 @@ public class CreateResourceShareRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.resources = tmp
+        }
+        if dict.keys.contains("TargetProperties") && dict["TargetProperties"] != nil {
+            var tmp : [CreateResourceShareRequest.TargetProperties] = []
+            for v in dict["TargetProperties"] as! [Any] {
+                var model = CreateResourceShareRequest.TargetProperties()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.targetProperties = tmp
         }
         if dict.keys.contains("Targets") && dict["Targets"] != nil {
             self.targets = dict["Targets"] as! [String]
