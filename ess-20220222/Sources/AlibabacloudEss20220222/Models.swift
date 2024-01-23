@@ -5,6 +5,142 @@ import AlibabacloudOpenApi
 import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
+public class ApplyScalingGroupRequest : Tea.TeaModel {
+    public var content: String?
+
+    public var format: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.format != nil {
+            map["Format"] = self.format!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("Format") && dict["Format"] != nil {
+            self.format = dict["Format"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class ApplyScalingGroupResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") && dict["ScalingGroupId"] != nil {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class ApplyScalingGroupResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ApplyScalingGroupResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ApplyScalingGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AttachAlbServerGroupsRequest : Tea.TeaModel {
     public class AlbServerGroups : Tea.TeaModel {
         public var albServerGroupId: String?
@@ -2709,6 +2845,34 @@ public class CreateEciScalingConfigurationRequest : Tea.TeaModel {
 
         public var imagePullPolicy: String?
 
+        public var lifecyclePostStartHandlerExecs: [String]?
+
+        public var lifecyclePostStartHandlerHttpGetHost: String?
+
+        public var lifecyclePostStartHandlerHttpGetPath: String?
+
+        public var lifecyclePostStartHandlerHttpGetPort: Int32?
+
+        public var lifecyclePostStartHandlerHttpGetScheme: String?
+
+        public var lifecyclePostStartHandlerTcpSocketHost: String?
+
+        public var lifecyclePostStartHandlerTcpSocketPort: Int32?
+
+        public var lifecyclePreStopHandlerExecs: [String]?
+
+        public var lifecyclePreStopHandlerHttpGetHost: String?
+
+        public var lifecyclePreStopHandlerHttpGetPath: String?
+
+        public var lifecyclePreStopHandlerHttpGetPort: Int32?
+
+        public var lifecyclePreStopHandlerHttpGetScheme: String?
+
+        public var lifecyclePreStopHandlerTcpSocketHost: String?
+
+        public var lifecyclePreStopHandlerTcpSocketPort: Int32?
+
         public var memory: Double?
 
         public var name: String?
@@ -2775,6 +2939,48 @@ public class CreateEciScalingConfigurationRequest : Tea.TeaModel {
             }
             if self.imagePullPolicy != nil {
                 map["ImagePullPolicy"] = self.imagePullPolicy!
+            }
+            if self.lifecyclePostStartHandlerExecs != nil {
+                map["LifecyclePostStartHandlerExecs"] = self.lifecyclePostStartHandlerExecs!
+            }
+            if self.lifecyclePostStartHandlerHttpGetHost != nil {
+                map["LifecyclePostStartHandlerHttpGetHost"] = self.lifecyclePostStartHandlerHttpGetHost!
+            }
+            if self.lifecyclePostStartHandlerHttpGetPath != nil {
+                map["LifecyclePostStartHandlerHttpGetPath"] = self.lifecyclePostStartHandlerHttpGetPath!
+            }
+            if self.lifecyclePostStartHandlerHttpGetPort != nil {
+                map["LifecyclePostStartHandlerHttpGetPort"] = self.lifecyclePostStartHandlerHttpGetPort!
+            }
+            if self.lifecyclePostStartHandlerHttpGetScheme != nil {
+                map["LifecyclePostStartHandlerHttpGetScheme"] = self.lifecyclePostStartHandlerHttpGetScheme!
+            }
+            if self.lifecyclePostStartHandlerTcpSocketHost != nil {
+                map["LifecyclePostStartHandlerTcpSocketHost"] = self.lifecyclePostStartHandlerTcpSocketHost!
+            }
+            if self.lifecyclePostStartHandlerTcpSocketPort != nil {
+                map["LifecyclePostStartHandlerTcpSocketPort"] = self.lifecyclePostStartHandlerTcpSocketPort!
+            }
+            if self.lifecyclePreStopHandlerExecs != nil {
+                map["LifecyclePreStopHandlerExecs"] = self.lifecyclePreStopHandlerExecs!
+            }
+            if self.lifecyclePreStopHandlerHttpGetHost != nil {
+                map["LifecyclePreStopHandlerHttpGetHost"] = self.lifecyclePreStopHandlerHttpGetHost!
+            }
+            if self.lifecyclePreStopHandlerHttpGetPath != nil {
+                map["LifecyclePreStopHandlerHttpGetPath"] = self.lifecyclePreStopHandlerHttpGetPath!
+            }
+            if self.lifecyclePreStopHandlerHttpGetPort != nil {
+                map["LifecyclePreStopHandlerHttpGetPort"] = self.lifecyclePreStopHandlerHttpGetPort!
+            }
+            if self.lifecyclePreStopHandlerHttpGetScheme != nil {
+                map["LifecyclePreStopHandlerHttpGetScheme"] = self.lifecyclePreStopHandlerHttpGetScheme!
+            }
+            if self.lifecyclePreStopHandlerTcpSocketHost != nil {
+                map["LifecyclePreStopHandlerTcpSocketHost"] = self.lifecyclePreStopHandlerTcpSocketHost!
+            }
+            if self.lifecyclePreStopHandlerTcpSocketPort != nil {
+                map["LifecyclePreStopHandlerTcpSocketPort"] = self.lifecyclePreStopHandlerTcpSocketPort!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -2855,6 +3061,48 @@ public class CreateEciScalingConfigurationRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ImagePullPolicy") && dict["ImagePullPolicy"] != nil {
                 self.imagePullPolicy = dict["ImagePullPolicy"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerExecs") && dict["LifecyclePostStartHandlerExecs"] != nil {
+                self.lifecyclePostStartHandlerExecs = dict["LifecyclePostStartHandlerExecs"] as! [String]
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetHost") && dict["LifecyclePostStartHandlerHttpGetHost"] != nil {
+                self.lifecyclePostStartHandlerHttpGetHost = dict["LifecyclePostStartHandlerHttpGetHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetPath") && dict["LifecyclePostStartHandlerHttpGetPath"] != nil {
+                self.lifecyclePostStartHandlerHttpGetPath = dict["LifecyclePostStartHandlerHttpGetPath"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetPort") && dict["LifecyclePostStartHandlerHttpGetPort"] != nil {
+                self.lifecyclePostStartHandlerHttpGetPort = dict["LifecyclePostStartHandlerHttpGetPort"] as! Int32
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetScheme") && dict["LifecyclePostStartHandlerHttpGetScheme"] != nil {
+                self.lifecyclePostStartHandlerHttpGetScheme = dict["LifecyclePostStartHandlerHttpGetScheme"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerTcpSocketHost") && dict["LifecyclePostStartHandlerTcpSocketHost"] != nil {
+                self.lifecyclePostStartHandlerTcpSocketHost = dict["LifecyclePostStartHandlerTcpSocketHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerTcpSocketPort") && dict["LifecyclePostStartHandlerTcpSocketPort"] != nil {
+                self.lifecyclePostStartHandlerTcpSocketPort = dict["LifecyclePostStartHandlerTcpSocketPort"] as! Int32
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerExecs") && dict["LifecyclePreStopHandlerExecs"] != nil {
+                self.lifecyclePreStopHandlerExecs = dict["LifecyclePreStopHandlerExecs"] as! [String]
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetHost") && dict["LifecyclePreStopHandlerHttpGetHost"] != nil {
+                self.lifecyclePreStopHandlerHttpGetHost = dict["LifecyclePreStopHandlerHttpGetHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetPath") && dict["LifecyclePreStopHandlerHttpGetPath"] != nil {
+                self.lifecyclePreStopHandlerHttpGetPath = dict["LifecyclePreStopHandlerHttpGetPath"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetPort") && dict["LifecyclePreStopHandlerHttpGetPort"] != nil {
+                self.lifecyclePreStopHandlerHttpGetPort = dict["LifecyclePreStopHandlerHttpGetPort"] as! Int32
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetScheme") && dict["LifecyclePreStopHandlerHttpGetScheme"] != nil {
+                self.lifecyclePreStopHandlerHttpGetScheme = dict["LifecyclePreStopHandlerHttpGetScheme"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerTcpSocketHost") && dict["LifecyclePreStopHandlerTcpSocketHost"] != nil {
+                self.lifecyclePreStopHandlerTcpSocketHost = dict["LifecyclePreStopHandlerTcpSocketHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerTcpSocketPort") && dict["LifecyclePreStopHandlerTcpSocketPort"] != nil {
+                self.lifecyclePreStopHandlerTcpSocketPort = dict["LifecyclePreStopHandlerTcpSocketPort"] as! Int32
             }
             if dict.keys.contains("Memory") && dict["Memory"] != nil {
                 self.memory = dict["Memory"] as! Double
@@ -10570,6 +10818,34 @@ public class DescribeEciScalingConfigurationsResponseBody : Tea.TeaModel {
 
             public var imagePullPolicy: String?
 
+            public var lifecyclePostStartHandlerExecs: [String]?
+
+            public var lifecyclePostStartHandlerHttpGetHost: String?
+
+            public var lifecyclePostStartHandlerHttpGetPath: String?
+
+            public var lifecyclePostStartHandlerHttpGetPort: Int32?
+
+            public var lifecyclePostStartHandlerHttpGetScheme: String?
+
+            public var lifecyclePostStartHandlerTcpSocketHost: String?
+
+            public var lifecyclePostStartHandlerTcpSocketPort: Int32?
+
+            public var lifecyclePreStopHandlerExecs: [String]?
+
+            public var lifecyclePreStopHandlerHttpGetHost: String?
+
+            public var lifecyclePreStopHandlerHttpGetPath: String?
+
+            public var lifecyclePreStopHandlerHttpGetPort: Int32?
+
+            public var lifecyclePreStopHandlerHttpGetScheme: String?
+
+            public var lifecyclePreStopHandlerTcpSocketHost: String?
+
+            public var lifecyclePreStopHandlerTcpSocketPort: Int32?
+
             public var livenessProbeExecCommands: [String]?
 
             public var livenessProbeFailureThreshold: Int32?
@@ -10670,6 +10946,48 @@ public class DescribeEciScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
                 if self.imagePullPolicy != nil {
                     map["ImagePullPolicy"] = self.imagePullPolicy!
+                }
+                if self.lifecyclePostStartHandlerExecs != nil {
+                    map["LifecyclePostStartHandlerExecs"] = self.lifecyclePostStartHandlerExecs!
+                }
+                if self.lifecyclePostStartHandlerHttpGetHost != nil {
+                    map["LifecyclePostStartHandlerHttpGetHost"] = self.lifecyclePostStartHandlerHttpGetHost!
+                }
+                if self.lifecyclePostStartHandlerHttpGetPath != nil {
+                    map["LifecyclePostStartHandlerHttpGetPath"] = self.lifecyclePostStartHandlerHttpGetPath!
+                }
+                if self.lifecyclePostStartHandlerHttpGetPort != nil {
+                    map["LifecyclePostStartHandlerHttpGetPort"] = self.lifecyclePostStartHandlerHttpGetPort!
+                }
+                if self.lifecyclePostStartHandlerHttpGetScheme != nil {
+                    map["LifecyclePostStartHandlerHttpGetScheme"] = self.lifecyclePostStartHandlerHttpGetScheme!
+                }
+                if self.lifecyclePostStartHandlerTcpSocketHost != nil {
+                    map["LifecyclePostStartHandlerTcpSocketHost"] = self.lifecyclePostStartHandlerTcpSocketHost!
+                }
+                if self.lifecyclePostStartHandlerTcpSocketPort != nil {
+                    map["LifecyclePostStartHandlerTcpSocketPort"] = self.lifecyclePostStartHandlerTcpSocketPort!
+                }
+                if self.lifecyclePreStopHandlerExecs != nil {
+                    map["LifecyclePreStopHandlerExecs"] = self.lifecyclePreStopHandlerExecs!
+                }
+                if self.lifecyclePreStopHandlerHttpGetHost != nil {
+                    map["LifecyclePreStopHandlerHttpGetHost"] = self.lifecyclePreStopHandlerHttpGetHost!
+                }
+                if self.lifecyclePreStopHandlerHttpGetPath != nil {
+                    map["LifecyclePreStopHandlerHttpGetPath"] = self.lifecyclePreStopHandlerHttpGetPath!
+                }
+                if self.lifecyclePreStopHandlerHttpGetPort != nil {
+                    map["LifecyclePreStopHandlerHttpGetPort"] = self.lifecyclePreStopHandlerHttpGetPort!
+                }
+                if self.lifecyclePreStopHandlerHttpGetScheme != nil {
+                    map["LifecyclePreStopHandlerHttpGetScheme"] = self.lifecyclePreStopHandlerHttpGetScheme!
+                }
+                if self.lifecyclePreStopHandlerTcpSocketHost != nil {
+                    map["LifecyclePreStopHandlerTcpSocketHost"] = self.lifecyclePreStopHandlerTcpSocketHost!
+                }
+                if self.lifecyclePreStopHandlerTcpSocketPort != nil {
+                    map["LifecyclePreStopHandlerTcpSocketPort"] = self.lifecyclePreStopHandlerTcpSocketPort!
                 }
                 if self.livenessProbeExecCommands != nil {
                     map["LivenessProbeExecCommands"] = self.livenessProbeExecCommands!
@@ -10804,6 +11122,48 @@ public class DescribeEciScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ImagePullPolicy") && dict["ImagePullPolicy"] != nil {
                     self.imagePullPolicy = dict["ImagePullPolicy"] as! String
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerExecs") && dict["LifecyclePostStartHandlerExecs"] != nil {
+                    self.lifecyclePostStartHandlerExecs = dict["LifecyclePostStartHandlerExecs"] as! [String]
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerHttpGetHost") && dict["LifecyclePostStartHandlerHttpGetHost"] != nil {
+                    self.lifecyclePostStartHandlerHttpGetHost = dict["LifecyclePostStartHandlerHttpGetHost"] as! String
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerHttpGetPath") && dict["LifecyclePostStartHandlerHttpGetPath"] != nil {
+                    self.lifecyclePostStartHandlerHttpGetPath = dict["LifecyclePostStartHandlerHttpGetPath"] as! String
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerHttpGetPort") && dict["LifecyclePostStartHandlerHttpGetPort"] != nil {
+                    self.lifecyclePostStartHandlerHttpGetPort = dict["LifecyclePostStartHandlerHttpGetPort"] as! Int32
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerHttpGetScheme") && dict["LifecyclePostStartHandlerHttpGetScheme"] != nil {
+                    self.lifecyclePostStartHandlerHttpGetScheme = dict["LifecyclePostStartHandlerHttpGetScheme"] as! String
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerTcpSocketHost") && dict["LifecyclePostStartHandlerTcpSocketHost"] != nil {
+                    self.lifecyclePostStartHandlerTcpSocketHost = dict["LifecyclePostStartHandlerTcpSocketHost"] as! String
+                }
+                if dict.keys.contains("LifecyclePostStartHandlerTcpSocketPort") && dict["LifecyclePostStartHandlerTcpSocketPort"] != nil {
+                    self.lifecyclePostStartHandlerTcpSocketPort = dict["LifecyclePostStartHandlerTcpSocketPort"] as! Int32
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerExecs") && dict["LifecyclePreStopHandlerExecs"] != nil {
+                    self.lifecyclePreStopHandlerExecs = dict["LifecyclePreStopHandlerExecs"] as! [String]
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerHttpGetHost") && dict["LifecyclePreStopHandlerHttpGetHost"] != nil {
+                    self.lifecyclePreStopHandlerHttpGetHost = dict["LifecyclePreStopHandlerHttpGetHost"] as! String
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerHttpGetPath") && dict["LifecyclePreStopHandlerHttpGetPath"] != nil {
+                    self.lifecyclePreStopHandlerHttpGetPath = dict["LifecyclePreStopHandlerHttpGetPath"] as! String
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerHttpGetPort") && dict["LifecyclePreStopHandlerHttpGetPort"] != nil {
+                    self.lifecyclePreStopHandlerHttpGetPort = dict["LifecyclePreStopHandlerHttpGetPort"] as! Int32
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerHttpGetScheme") && dict["LifecyclePreStopHandlerHttpGetScheme"] != nil {
+                    self.lifecyclePreStopHandlerHttpGetScheme = dict["LifecyclePreStopHandlerHttpGetScheme"] as! String
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerTcpSocketHost") && dict["LifecyclePreStopHandlerTcpSocketHost"] != nil {
+                    self.lifecyclePreStopHandlerTcpSocketHost = dict["LifecyclePreStopHandlerTcpSocketHost"] as! String
+                }
+                if dict.keys.contains("LifecyclePreStopHandlerTcpSocketPort") && dict["LifecyclePreStopHandlerTcpSocketPort"] != nil {
+                    self.lifecyclePreStopHandlerTcpSocketPort = dict["LifecyclePreStopHandlerTcpSocketPort"] as! Int32
                 }
                 if dict.keys.contains("LivenessProbeExecCommands") && dict["LivenessProbeExecCommands"] != nil {
                     self.livenessProbeExecCommands = dict["LivenessProbeExecCommands"] as! [String]
@@ -22292,6 +22652,34 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
 
         public var imagePullPolicy: String?
 
+        public var lifecyclePostStartHandlerExecs: [String]?
+
+        public var lifecyclePostStartHandlerHttpGetHost: String?
+
+        public var lifecyclePostStartHandlerHttpGetPath: String?
+
+        public var lifecyclePostStartHandlerHttpGetPort: Int32?
+
+        public var lifecyclePostStartHandlerHttpGetScheme: String?
+
+        public var lifecyclePostStartHandlerTcpSocketHost: String?
+
+        public var lifecyclePostStartHandlerTcpSocketPort: Int32?
+
+        public var lifecyclePreStopHandlerExecs: [String]?
+
+        public var lifecyclePreStopHandlerHttpGetHost: String?
+
+        public var lifecyclePreStopHandlerHttpGetPath: String?
+
+        public var lifecyclePreStopHandlerHttpGetPort: Int32?
+
+        public var lifecyclePreStopHandlerHttpGetScheme: String?
+
+        public var lifecyclePreStopHandlerTcpSocketHost: String?
+
+        public var lifecyclePreStopHandlerTcpSocketPort: Int32?
+
         public var memory: Double?
 
         public var name: String?
@@ -22358,6 +22746,48 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
             }
             if self.imagePullPolicy != nil {
                 map["ImagePullPolicy"] = self.imagePullPolicy!
+            }
+            if self.lifecyclePostStartHandlerExecs != nil {
+                map["LifecyclePostStartHandlerExecs"] = self.lifecyclePostStartHandlerExecs!
+            }
+            if self.lifecyclePostStartHandlerHttpGetHost != nil {
+                map["LifecyclePostStartHandlerHttpGetHost"] = self.lifecyclePostStartHandlerHttpGetHost!
+            }
+            if self.lifecyclePostStartHandlerHttpGetPath != nil {
+                map["LifecyclePostStartHandlerHttpGetPath"] = self.lifecyclePostStartHandlerHttpGetPath!
+            }
+            if self.lifecyclePostStartHandlerHttpGetPort != nil {
+                map["LifecyclePostStartHandlerHttpGetPort"] = self.lifecyclePostStartHandlerHttpGetPort!
+            }
+            if self.lifecyclePostStartHandlerHttpGetScheme != nil {
+                map["LifecyclePostStartHandlerHttpGetScheme"] = self.lifecyclePostStartHandlerHttpGetScheme!
+            }
+            if self.lifecyclePostStartHandlerTcpSocketHost != nil {
+                map["LifecyclePostStartHandlerTcpSocketHost"] = self.lifecyclePostStartHandlerTcpSocketHost!
+            }
+            if self.lifecyclePostStartHandlerTcpSocketPort != nil {
+                map["LifecyclePostStartHandlerTcpSocketPort"] = self.lifecyclePostStartHandlerTcpSocketPort!
+            }
+            if self.lifecyclePreStopHandlerExecs != nil {
+                map["LifecyclePreStopHandlerExecs"] = self.lifecyclePreStopHandlerExecs!
+            }
+            if self.lifecyclePreStopHandlerHttpGetHost != nil {
+                map["LifecyclePreStopHandlerHttpGetHost"] = self.lifecyclePreStopHandlerHttpGetHost!
+            }
+            if self.lifecyclePreStopHandlerHttpGetPath != nil {
+                map["LifecyclePreStopHandlerHttpGetPath"] = self.lifecyclePreStopHandlerHttpGetPath!
+            }
+            if self.lifecyclePreStopHandlerHttpGetPort != nil {
+                map["LifecyclePreStopHandlerHttpGetPort"] = self.lifecyclePreStopHandlerHttpGetPort!
+            }
+            if self.lifecyclePreStopHandlerHttpGetScheme != nil {
+                map["LifecyclePreStopHandlerHttpGetScheme"] = self.lifecyclePreStopHandlerHttpGetScheme!
+            }
+            if self.lifecyclePreStopHandlerTcpSocketHost != nil {
+                map["LifecyclePreStopHandlerTcpSocketHost"] = self.lifecyclePreStopHandlerTcpSocketHost!
+            }
+            if self.lifecyclePreStopHandlerTcpSocketPort != nil {
+                map["LifecyclePreStopHandlerTcpSocketPort"] = self.lifecyclePreStopHandlerTcpSocketPort!
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
@@ -22438,6 +22868,48 @@ public class ModifyEciScalingConfigurationRequest : Tea.TeaModel {
             }
             if dict.keys.contains("ImagePullPolicy") && dict["ImagePullPolicy"] != nil {
                 self.imagePullPolicy = dict["ImagePullPolicy"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerExecs") && dict["LifecyclePostStartHandlerExecs"] != nil {
+                self.lifecyclePostStartHandlerExecs = dict["LifecyclePostStartHandlerExecs"] as! [String]
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetHost") && dict["LifecyclePostStartHandlerHttpGetHost"] != nil {
+                self.lifecyclePostStartHandlerHttpGetHost = dict["LifecyclePostStartHandlerHttpGetHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetPath") && dict["LifecyclePostStartHandlerHttpGetPath"] != nil {
+                self.lifecyclePostStartHandlerHttpGetPath = dict["LifecyclePostStartHandlerHttpGetPath"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetPort") && dict["LifecyclePostStartHandlerHttpGetPort"] != nil {
+                self.lifecyclePostStartHandlerHttpGetPort = dict["LifecyclePostStartHandlerHttpGetPort"] as! Int32
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerHttpGetScheme") && dict["LifecyclePostStartHandlerHttpGetScheme"] != nil {
+                self.lifecyclePostStartHandlerHttpGetScheme = dict["LifecyclePostStartHandlerHttpGetScheme"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerTcpSocketHost") && dict["LifecyclePostStartHandlerTcpSocketHost"] != nil {
+                self.lifecyclePostStartHandlerTcpSocketHost = dict["LifecyclePostStartHandlerTcpSocketHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePostStartHandlerTcpSocketPort") && dict["LifecyclePostStartHandlerTcpSocketPort"] != nil {
+                self.lifecyclePostStartHandlerTcpSocketPort = dict["LifecyclePostStartHandlerTcpSocketPort"] as! Int32
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerExecs") && dict["LifecyclePreStopHandlerExecs"] != nil {
+                self.lifecyclePreStopHandlerExecs = dict["LifecyclePreStopHandlerExecs"] as! [String]
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetHost") && dict["LifecyclePreStopHandlerHttpGetHost"] != nil {
+                self.lifecyclePreStopHandlerHttpGetHost = dict["LifecyclePreStopHandlerHttpGetHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetPath") && dict["LifecyclePreStopHandlerHttpGetPath"] != nil {
+                self.lifecyclePreStopHandlerHttpGetPath = dict["LifecyclePreStopHandlerHttpGetPath"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetPort") && dict["LifecyclePreStopHandlerHttpGetPort"] != nil {
+                self.lifecyclePreStopHandlerHttpGetPort = dict["LifecyclePreStopHandlerHttpGetPort"] as! Int32
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerHttpGetScheme") && dict["LifecyclePreStopHandlerHttpGetScheme"] != nil {
+                self.lifecyclePreStopHandlerHttpGetScheme = dict["LifecyclePreStopHandlerHttpGetScheme"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerTcpSocketHost") && dict["LifecyclePreStopHandlerTcpSocketHost"] != nil {
+                self.lifecyclePreStopHandlerTcpSocketHost = dict["LifecyclePreStopHandlerTcpSocketHost"] as! String
+            }
+            if dict.keys.contains("LifecyclePreStopHandlerTcpSocketPort") && dict["LifecyclePreStopHandlerTcpSocketPort"] != nil {
+                self.lifecyclePreStopHandlerTcpSocketPort = dict["LifecyclePreStopHandlerTcpSocketPort"] as! Int32
             }
             if dict.keys.contains("Memory") && dict["Memory"] != nil {
                 self.memory = dict["Memory"] as! Double

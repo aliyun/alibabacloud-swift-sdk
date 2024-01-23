@@ -70,6 +70,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyScalingGroupWithOptions(_ request: ApplyScalingGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyScalingGroupResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            query["Content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.format)) {
+            query["Format"] = request.format ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ApplyScalingGroup",
+            "version": "2022-02-22",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ApplyScalingGroupResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyScalingGroup(_ request: ApplyScalingGroupRequest) async throws -> ApplyScalingGroupResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await applyScalingGroupWithOptions(request as! ApplyScalingGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func attachAlbServerGroupsWithOptions(_ request: AttachAlbServerGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AttachAlbServerGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
