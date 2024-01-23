@@ -1468,6 +1468,83 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPersonalTodoTaskWithOptions(_ tmpReq: CreatePersonalTodoTaskRequest, _ tmpHeader: CreatePersonalTodoTaskHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePersonalTodoTaskResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePersonalTodoTaskShrinkRequest = CreatePersonalTodoTaskShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        var headers: CreatePersonalTodoTaskShrinkHeaders = CreatePersonalTodoTaskShrinkHeaders([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpHeader, headers)
+        if (!TeaUtils.Client.isUnset(tmpHeader.accountContext)) {
+            headers.accountContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpHeader.accountContext, "AccountContext", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.executorIds)) {
+            request.executorIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.executorIds, "ExecutorIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.notifyConfigs)) {
+            request.notifyConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.notifyConfigs, "NotifyConfigs", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.participantIds)) {
+            request.participantIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.participantIds, "ParticipantIds", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
+            request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dueTime)) {
+            body["DueTime"] = request.dueTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.executorIdsShrink)) {
+            body["ExecutorIds"] = request.executorIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.notifyConfigsShrink)) {
+            body["NotifyConfigs"] = request.notifyConfigsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.participantIdsShrink)) {
+            body["ParticipantIds"] = request.participantIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.subject)) {
+            body["Subject"] = request.subject ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
+            body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.accountContextShrink)) {
+            realHeaders["AccountContext"] = TeaUtils.Client.toJSONString(headers.accountContextShrink);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreatePersonalTodoTask",
+            "version": "2023-04-26",
+            "protocol": "HTTPS",
+            "pathname": "/dingtalk/v1/task/createPersonalTodoTask",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreatePersonalTodoTaskResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createPersonalTodoTask(_ request: CreatePersonalTodoTaskRequest) async throws -> CreatePersonalTodoTaskResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CreatePersonalTodoTaskHeaders = CreatePersonalTodoTaskHeaders([:])
+        return try await createPersonalTodoTaskWithOptions(request as! CreatePersonalTodoTaskRequest, headers as! CreatePersonalTodoTaskHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createReportWithOptions(_ tmpReq: CreateReportRequest, _ tmpHeader: CreateReportHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateReportResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateReportShrinkRequest = CreateReportShrinkRequest([:])
