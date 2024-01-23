@@ -1532,6 +1532,471 @@ public class GetJMeterLogsResponse : Tea.TeaModel {
     }
 }
 
+public class GetJMeterReportDetailsRequest : Tea.TeaModel {
+    public var reportId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.reportId != nil {
+            map["ReportId"] = self.reportId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+            self.reportId = dict["ReportId"] as! String
+        }
+    }
+}
+
+public class GetJMeterReportDetailsResponseBody : Tea.TeaModel {
+    public class ReportOverView : Tea.TeaModel {
+        public var agentCount: Int32?
+
+        public var endTime: String?
+
+        public var reportId: String?
+
+        public var reportName: String?
+
+        public var startTime: String?
+
+        public var vum: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.agentCount != nil {
+                map["AgentCount"] = self.agentCount!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.reportId != nil {
+                map["ReportId"] = self.reportId!
+            }
+            if self.reportName != nil {
+                map["ReportName"] = self.reportName!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.vum != nil {
+                map["Vum"] = self.vum!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AgentCount") && dict["AgentCount"] != nil {
+                self.agentCount = dict["AgentCount"] as! Int32
+            }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+                self.reportId = dict["ReportId"] as! String
+            }
+            if dict.keys.contains("ReportName") && dict["ReportName"] != nil {
+                self.reportName = dict["ReportName"] as! String
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! String
+            }
+            if dict.keys.contains("Vum") && dict["Vum"] != nil {
+                self.vum = dict["Vum"] as! Int64
+            }
+        }
+    }
+    public class SamplerMetricsList : Tea.TeaModel {
+        public var allCount: Int64?
+
+        public var apiName: String?
+
+        public var avgRt: Double?
+
+        public var avgTps: Double?
+
+        public var failCountReq: Int64?
+
+        public var maxRt: Double?
+
+        public var minRt: Double?
+
+        public var seg75Rt: Double?
+
+        public var seg90Rt: Double?
+
+        public var seg99Rt: Double?
+
+        public var successRateReq: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allCount != nil {
+                map["AllCount"] = self.allCount!
+            }
+            if self.apiName != nil {
+                map["ApiName"] = self.apiName!
+            }
+            if self.avgRt != nil {
+                map["AvgRt"] = self.avgRt!
+            }
+            if self.avgTps != nil {
+                map["AvgTps"] = self.avgTps!
+            }
+            if self.failCountReq != nil {
+                map["FailCountReq"] = self.failCountReq!
+            }
+            if self.maxRt != nil {
+                map["MaxRt"] = self.maxRt!
+            }
+            if self.minRt != nil {
+                map["MinRt"] = self.minRt!
+            }
+            if self.seg75Rt != nil {
+                map["Seg75Rt"] = self.seg75Rt!
+            }
+            if self.seg90Rt != nil {
+                map["Seg90Rt"] = self.seg90Rt!
+            }
+            if self.seg99Rt != nil {
+                map["Seg99Rt"] = self.seg99Rt!
+            }
+            if self.successRateReq != nil {
+                map["SuccessRateReq"] = self.successRateReq!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllCount") && dict["AllCount"] != nil {
+                self.allCount = dict["AllCount"] as! Int64
+            }
+            if dict.keys.contains("ApiName") && dict["ApiName"] != nil {
+                self.apiName = dict["ApiName"] as! String
+            }
+            if dict.keys.contains("AvgRt") && dict["AvgRt"] != nil {
+                self.avgRt = dict["AvgRt"] as! Double
+            }
+            if dict.keys.contains("AvgTps") && dict["AvgTps"] != nil {
+                self.avgTps = dict["AvgTps"] as! Double
+            }
+            if dict.keys.contains("FailCountReq") && dict["FailCountReq"] != nil {
+                self.failCountReq = dict["FailCountReq"] as! Int64
+            }
+            if dict.keys.contains("MaxRt") && dict["MaxRt"] != nil {
+                self.maxRt = dict["MaxRt"] as! Double
+            }
+            if dict.keys.contains("MinRt") && dict["MinRt"] != nil {
+                self.minRt = dict["MinRt"] as! Double
+            }
+            if dict.keys.contains("Seg75Rt") && dict["Seg75Rt"] != nil {
+                self.seg75Rt = dict["Seg75Rt"] as! Double
+            }
+            if dict.keys.contains("Seg90Rt") && dict["Seg90Rt"] != nil {
+                self.seg90Rt = dict["Seg90Rt"] as! Double
+            }
+            if dict.keys.contains("Seg99Rt") && dict["Seg99Rt"] != nil {
+                self.seg99Rt = dict["Seg99Rt"] as! Double
+            }
+            if dict.keys.contains("SuccessRateReq") && dict["SuccessRateReq"] != nil {
+                self.successRateReq = dict["SuccessRateReq"] as! Double
+            }
+        }
+    }
+    public class SceneMetrics : Tea.TeaModel {
+        public var allCount: Int64?
+
+        public var avgRt: Double?
+
+        public var avgTps: Double?
+
+        public var failCountReq: Int64?
+
+        public var seg90Rt: Double?
+
+        public var seg99Rt: Double?
+
+        public var successRateReq: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allCount != nil {
+                map["AllCount"] = self.allCount!
+            }
+            if self.avgRt != nil {
+                map["AvgRt"] = self.avgRt!
+            }
+            if self.avgTps != nil {
+                map["AvgTps"] = self.avgTps!
+            }
+            if self.failCountReq != nil {
+                map["FailCountReq"] = self.failCountReq!
+            }
+            if self.seg90Rt != nil {
+                map["Seg90Rt"] = self.seg90Rt!
+            }
+            if self.seg99Rt != nil {
+                map["Seg99Rt"] = self.seg99Rt!
+            }
+            if self.successRateReq != nil {
+                map["SuccessRateReq"] = self.successRateReq!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllCount") && dict["AllCount"] != nil {
+                self.allCount = dict["AllCount"] as! Int64
+            }
+            if dict.keys.contains("AvgRt") && dict["AvgRt"] != nil {
+                self.avgRt = dict["AvgRt"] as! Double
+            }
+            if dict.keys.contains("AvgTps") && dict["AvgTps"] != nil {
+                self.avgTps = dict["AvgTps"] as! Double
+            }
+            if dict.keys.contains("FailCountReq") && dict["FailCountReq"] != nil {
+                self.failCountReq = dict["FailCountReq"] as! Int64
+            }
+            if dict.keys.contains("Seg90Rt") && dict["Seg90Rt"] != nil {
+                self.seg90Rt = dict["Seg90Rt"] as! Double
+            }
+            if dict.keys.contains("Seg99Rt") && dict["Seg99Rt"] != nil {
+                self.seg99Rt = dict["Seg99Rt"] as! Double
+            }
+            if dict.keys.contains("SuccessRateReq") && dict["SuccessRateReq"] != nil {
+                self.successRateReq = dict["SuccessRateReq"] as! Double
+            }
+        }
+    }
+    public var code: String?
+
+    public var codeKey: String?
+
+    public var documentUrl: String?
+
+    public var dynamicCtx: String?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var reportOverView: GetJMeterReportDetailsResponseBody.ReportOverView?
+
+    public var requestId: String?
+
+    public var samplerMetricsList: [GetJMeterReportDetailsResponseBody.SamplerMetricsList]?
+
+    public var sceneMetrics: GetJMeterReportDetailsResponseBody.SceneMetrics?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.reportOverView?.validate()
+        try self.sceneMetrics?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.codeKey != nil {
+            map["CodeKey"] = self.codeKey!
+        }
+        if self.documentUrl != nil {
+            map["DocumentUrl"] = self.documentUrl!
+        }
+        if self.dynamicCtx != nil {
+            map["DynamicCtx"] = self.dynamicCtx!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.reportOverView != nil {
+            map["ReportOverView"] = self.reportOverView?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.samplerMetricsList != nil {
+            var tmp : [Any] = []
+            for k in self.samplerMetricsList! {
+                tmp.append(k.toMap())
+            }
+            map["SamplerMetricsList"] = tmp
+        }
+        if self.sceneMetrics != nil {
+            map["SceneMetrics"] = self.sceneMetrics?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("CodeKey") && dict["CodeKey"] != nil {
+            self.codeKey = dict["CodeKey"] as! String
+        }
+        if dict.keys.contains("DocumentUrl") && dict["DocumentUrl"] != nil {
+            self.documentUrl = dict["DocumentUrl"] as! String
+        }
+        if dict.keys.contains("DynamicCtx") && dict["DynamicCtx"] != nil {
+            self.dynamicCtx = dict["DynamicCtx"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("ReportOverView") && dict["ReportOverView"] != nil {
+            var model = GetJMeterReportDetailsResponseBody.ReportOverView()
+            model.fromMap(dict["ReportOverView"] as! [String: Any])
+            self.reportOverView = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SamplerMetricsList") && dict["SamplerMetricsList"] != nil {
+            var tmp : [GetJMeterReportDetailsResponseBody.SamplerMetricsList] = []
+            for v in dict["SamplerMetricsList"] as! [Any] {
+                var model = GetJMeterReportDetailsResponseBody.SamplerMetricsList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.samplerMetricsList = tmp
+        }
+        if dict.keys.contains("SceneMetrics") && dict["SceneMetrics"] != nil {
+            var model = GetJMeterReportDetailsResponseBody.SceneMetrics()
+            model.fromMap(dict["SceneMetrics"] as! [String: Any])
+            self.sceneMetrics = model
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetJMeterReportDetailsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetJMeterReportDetailsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetJMeterReportDetailsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetJMeterSampleMetricsRequest : Tea.TeaModel {
     public var beginTime: Int64?
 
@@ -2020,11 +2485,17 @@ public class GetJMeterSceneRunningDataResponseBody : Tea.TeaModel {
 
         public var concurrency: Int32?
 
+        public var errorMessage: String?
+
+        public var hasError: Bool?
+
         public var hasReport: Bool?
 
         public var holdFor: Int32?
 
         public var isDebugging: Bool?
+
+        public var reportId: String?
 
         public var sampleStatList: [[String: Any]]?
 
@@ -2066,6 +2537,12 @@ public class GetJMeterSceneRunningDataResponseBody : Tea.TeaModel {
             if self.concurrency != nil {
                 map["Concurrency"] = self.concurrency!
             }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.hasError != nil {
+                map["HasError"] = self.hasError!
+            }
             if self.hasReport != nil {
                 map["HasReport"] = self.hasReport!
             }
@@ -2074,6 +2551,9 @@ public class GetJMeterSceneRunningDataResponseBody : Tea.TeaModel {
             }
             if self.isDebugging != nil {
                 map["IsDebugging"] = self.isDebugging!
+            }
+            if self.reportId != nil {
+                map["ReportId"] = self.reportId!
             }
             if self.sampleStatList != nil {
                 map["SampleStatList"] = self.sampleStatList!
@@ -2112,6 +2592,12 @@ public class GetJMeterSceneRunningDataResponseBody : Tea.TeaModel {
             if dict.keys.contains("Concurrency") && dict["Concurrency"] != nil {
                 self.concurrency = dict["Concurrency"] as! Int32
             }
+            if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("HasError") && dict["HasError"] != nil {
+                self.hasError = dict["HasError"] as! Bool
+            }
             if dict.keys.contains("HasReport") && dict["HasReport"] != nil {
                 self.hasReport = dict["HasReport"] as! Bool
             }
@@ -2120,6 +2606,9 @@ public class GetJMeterSceneRunningDataResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("IsDebugging") && dict["IsDebugging"] != nil {
                 self.isDebugging = dict["IsDebugging"] as! Bool
+            }
+            if dict.keys.contains("ReportId") && dict["ReportId"] != nil {
+                self.reportId = dict["ReportId"] as! String
             }
             if dict.keys.contains("SampleStatList") && dict["SampleStatList"] != nil {
                 self.sampleStatList = dict["SampleStatList"] as! [[String: Any]]
@@ -2499,6 +2988,43 @@ public class GetOpenJMeterSceneResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class RegionalCondition : Tea.TeaModel {
+            public var amount: Int32?
+
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amount != nil {
+                    map["Amount"] = self.amount!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                    self.amount = dict["Amount"] as! Int32
+                }
+                if dict.keys.contains("Region") && dict["Region"] != nil {
+                    self.region = dict["Region"] as! String
+                }
+            }
+        }
         public var agentCount: Int32?
 
         public var baseInfo: GetOpenJMeterSceneResponseBody.Scene.BaseInfo?
@@ -2526,6 +3052,8 @@ public class GetOpenJMeterSceneResponseBody : Tea.TeaModel {
         public var rampUp: Int32?
 
         public var regionId: String?
+
+        public var regionalCondition: [GetOpenJMeterSceneResponseBody.Scene.RegionalCondition]?
 
         public var sceneId: String?
 
@@ -2608,6 +3136,13 @@ public class GetOpenJMeterSceneResponseBody : Tea.TeaModel {
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.regionalCondition != nil {
+                var tmp : [Any] = []
+                for k in self.regionalCondition! {
+                    tmp.append(k.toMap())
+                }
+                map["RegionalCondition"] = tmp
             }
             if self.sceneId != nil {
                 map["SceneId"] = self.sceneId!
@@ -2696,6 +3231,17 @@ public class GetOpenJMeterSceneResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RegionalCondition") && dict["RegionalCondition"] != nil {
+                var tmp : [GetOpenJMeterSceneResponseBody.Scene.RegionalCondition] = []
+                for v in dict["RegionalCondition"] as! [Any] {
+                    var model = GetOpenJMeterSceneResponseBody.Scene.RegionalCondition()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.regionalCondition = tmp
             }
             if dict.keys.contains("SceneId") && dict["SceneId"] != nil {
                 self.sceneId = dict["SceneId"] as! String
@@ -9087,6 +9633,8 @@ public class ListOpenJMeterScenesResponseBody : Tea.TeaModel {
 
         public var sceneName: String?
 
+        public var status: String?
+
         public override init() {
             super.init()
         }
@@ -9110,6 +9658,9 @@ public class ListOpenJMeterScenesResponseBody : Tea.TeaModel {
             if self.sceneName != nil {
                 map["SceneName"] = self.sceneName!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             return map
         }
 
@@ -9122,6 +9673,9 @@ public class ListOpenJMeterScenesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SceneName") && dict["SceneName"] != nil {
                 self.sceneName = dict["SceneName"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
             }
         }
     }
@@ -10749,6 +11303,43 @@ public class SaveOpenJMeterSceneRequest : Tea.TeaModel {
                 }
             }
         }
+        public class RegionalCondition : Tea.TeaModel {
+            public var amount: Int32?
+
+            public var region: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.amount != nil {
+                    map["Amount"] = self.amount!
+                }
+                if self.region != nil {
+                    map["Region"] = self.region!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                    self.amount = dict["Amount"] as! Int32
+                }
+                if dict.keys.contains("Region") && dict["Region"] != nil {
+                    self.region = dict["Region"] as! String
+                }
+            }
+        }
         public var agentCount: Int32?
 
         public var concurrency: Int32?
@@ -10776,6 +11367,8 @@ public class SaveOpenJMeterSceneRequest : Tea.TeaModel {
         public var rampUp: Int32?
 
         public var regionId: String?
+
+        public var regionalCondition: [SaveOpenJMeterSceneRequest.OpenJMeterScene.RegionalCondition]?
 
         public var sceneId: String?
 
@@ -10861,6 +11454,13 @@ public class SaveOpenJMeterSceneRequest : Tea.TeaModel {
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
+            }
+            if self.regionalCondition != nil {
+                var tmp : [Any] = []
+                for k in self.regionalCondition! {
+                    tmp.append(k.toMap())
+                }
+                map["RegionalCondition"] = tmp
             }
             if self.sceneId != nil {
                 map["SceneId"] = self.sceneId!
@@ -10955,6 +11555,17 @@ public class SaveOpenJMeterSceneRequest : Tea.TeaModel {
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RegionalCondition") && dict["RegionalCondition"] != nil {
+                var tmp : [SaveOpenJMeterSceneRequest.OpenJMeterScene.RegionalCondition] = []
+                for v in dict["RegionalCondition"] as! [Any] {
+                    var model = SaveOpenJMeterSceneRequest.OpenJMeterScene.RegionalCondition()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.regionalCondition = tmp
             }
             if dict.keys.contains("SceneId") && dict["SceneId"] != nil {
                 self.sceneId = dict["SceneId"] as! String

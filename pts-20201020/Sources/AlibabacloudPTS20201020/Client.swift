@@ -339,6 +339,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getJMeterReportDetailsWithOptions(_ request: GetJMeterReportDetailsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetJMeterReportDetailsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.reportId)) {
+            query["ReportId"] = request.reportId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetJMeterReportDetails",
+            "version": "2020-10-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetJMeterReportDetailsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getJMeterReportDetails(_ request: GetJMeterReportDetailsRequest) async throws -> GetJMeterReportDetailsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getJMeterReportDetailsWithOptions(request as! GetJMeterReportDetailsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getJMeterSampleMetricsWithOptions(_ request: GetJMeterSampleMetricsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetJMeterSampleMetricsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
