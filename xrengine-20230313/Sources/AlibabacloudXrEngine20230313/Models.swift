@@ -291,6 +291,8 @@ public class BatchQueryMotionShopTaskStatusResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var errorMessage: String?
+
             public var result: BatchQueryMotionShopTaskStatusResponseBody.Data.Tasks.Result?
 
             public var status: String?
@@ -312,6 +314,9 @@ public class BatchQueryMotionShopTaskStatusResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.errorMessage != nil {
+                    map["ErrorMessage"] = self.errorMessage!
+                }
                 if self.result != nil {
                     map["Result"] = self.result?.toMap()
                 }
@@ -325,6 +330,9 @@ public class BatchQueryMotionShopTaskStatusResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+                    self.errorMessage = dict["ErrorMessage"] as! String
+                }
                 if dict.keys.contains("Result") && dict["Result"] != nil {
                     var model = BatchQueryMotionShopTaskStatusResponseBody.Data.Tasks.Result()
                     model.fromMap(dict["Result"] as! [String: Any])
@@ -3076,6 +3084,8 @@ public class ListMotionShopTasksResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var errorMessage: String?
+
         public var material: ListMotionShopTasksResponseBody.Data.Material?
 
         public var result: ListMotionShopTasksResponseBody.Data.Result?
@@ -3100,6 +3110,9 @@ public class ListMotionShopTasksResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
             if self.material != nil {
                 map["Material"] = self.material?.toMap()
             }
@@ -3116,6 +3129,9 @@ public class ListMotionShopTasksResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
             if dict.keys.contains("Material") && dict["Material"] != nil {
                 var model = ListMotionShopTasksResponseBody.Data.Material()
                 model.fromMap(dict["Material"] as! [String: Any])
