@@ -8147,6 +8147,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeParameterGroupsWithOptions(_ request: DescribeParameterGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeParameterGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableDetail)) {
+            query["EnableDetail"] = request.enableDetail!;
+        }
         if (!TeaUtils.Client.isUnset(request.ownerId)) {
             query["OwnerId"] = request.ownerId!;
         }

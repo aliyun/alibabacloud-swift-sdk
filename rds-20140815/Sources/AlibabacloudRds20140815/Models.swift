@@ -44972,6 +44972,8 @@ public class DescribeParameterGroupResponse : Tea.TeaModel {
 }
 
 public class DescribeParameterGroupsRequest : Tea.TeaModel {
+    public var enableDetail: Bool?
+
     public var ownerId: Int64?
 
     public var regionId: String?
@@ -44996,6 +44998,9 @@ public class DescribeParameterGroupsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.enableDetail != nil {
+            map["EnableDetail"] = self.enableDetail!
+        }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
@@ -45015,6 +45020,9 @@ public class DescribeParameterGroupsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableDetail") && dict["EnableDetail"] != nil {
+            self.enableDetail = dict["EnableDetail"] as! Bool
+        }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
         }
