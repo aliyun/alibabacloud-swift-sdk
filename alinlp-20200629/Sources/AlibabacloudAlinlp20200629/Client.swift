@@ -2225,6 +2225,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func postMSDataProcessingCountWithOptions(_ tmpReq: PostMSDataProcessingCountRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostMSDataProcessingCountResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PostMSDataProcessingCountShrinkRequest = PostMSDataProcessingCountShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.dataIds)) {
+            request.dataIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.dataIds, "DataIds", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataIdsShrink)) {
+            body["DataIds"] = request.dataIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.dataImportId)) {
+            body["DataImportId"] = request.dataImportId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["ServiceId"] = request.serviceId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PostMSDataProcessingCount",
+            "version": "2020-06-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PostMSDataProcessingCountResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func postMSDataProcessingCount(_ request: PostMSDataProcessingCountRequest) async throws -> PostMSDataProcessingCountResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await postMSDataProcessingCountWithOptions(request as! PostMSDataProcessingCountRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func postMSSearchEnhanceWithOptions(_ tmpReq: PostMSSearchEnhanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostMSSearchEnhanceResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: PostMSSearchEnhanceShrinkRequest = PostMSSearchEnhanceShrinkRequest([:])

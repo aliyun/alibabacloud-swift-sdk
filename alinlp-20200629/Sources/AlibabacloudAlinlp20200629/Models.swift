@@ -8355,6 +8355,398 @@ public class PostMSConvSearchTokenGeneratedResponse : Tea.TeaModel {
     }
 }
 
+public class PostMSDataProcessingCountRequest : Tea.TeaModel {
+    public var dataIds: [String]?
+
+    public var dataImportId: Int64?
+
+    public var serviceId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataIds != nil {
+            map["DataIds"] = self.dataIds!
+        }
+        if self.dataImportId != nil {
+            map["DataImportId"] = self.dataImportId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataIds") && dict["DataIds"] != nil {
+            self.dataIds = dict["DataIds"] as! [String]
+        }
+        if dict.keys.contains("DataImportId") && dict["DataImportId"] != nil {
+            self.dataImportId = dict["DataImportId"] as! Int64
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! Int64
+        }
+    }
+}
+
+public class PostMSDataProcessingCountShrinkRequest : Tea.TeaModel {
+    public var dataIdsShrink: String?
+
+    public var dataImportId: Int64?
+
+    public var serviceId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataIdsShrink != nil {
+            map["DataIds"] = self.dataIdsShrink!
+        }
+        if self.dataImportId != nil {
+            map["DataImportId"] = self.dataImportId!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataIds") && dict["DataIds"] != nil {
+            self.dataIdsShrink = dict["DataIds"] as! String
+        }
+        if dict.keys.contains("DataImportId") && dict["DataImportId"] != nil {
+            self.dataImportId = dict["DataImportId"] as! Int64
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! Int64
+        }
+    }
+}
+
+public class PostMSDataProcessingCountResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class DataProcessedStatuses : Tea.TeaModel {
+            public class ErrorDataList : Tea.TeaModel {
+                public var count: Int32?
+
+                public var errorCode: String?
+
+                public var opType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.count != nil {
+                        map["Count"] = self.count!
+                    }
+                    if self.errorCode != nil {
+                        map["ErrorCode"] = self.errorCode!
+                    }
+                    if self.opType != nil {
+                        map["OpType"] = self.opType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Count") && dict["Count"] != nil {
+                        self.count = dict["Count"] as! Int32
+                    }
+                    if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+                        self.errorCode = dict["ErrorCode"] as! String
+                    }
+                    if dict.keys.contains("OpType") && dict["OpType"] != nil {
+                        self.opType = dict["OpType"] as! String
+                    }
+                }
+            }
+            public var chunkNum: String?
+
+            public var dataId: String?
+
+            public var errorDataList: [PostMSDataProcessingCountResponseBody.Data.DataProcessedStatuses.ErrorDataList]?
+
+            public var opStatus: [String: Int32]?
+
+            public var status: String?
+
+            public var versionValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.chunkNum != nil {
+                    map["ChunkNum"] = self.chunkNum!
+                }
+                if self.dataId != nil {
+                    map["DataId"] = self.dataId!
+                }
+                if self.errorDataList != nil {
+                    var tmp : [Any] = []
+                    for k in self.errorDataList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ErrorDataList"] = tmp
+                }
+                if self.opStatus != nil {
+                    map["OpStatus"] = self.opStatus!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.versionValue != nil {
+                    map["VersionValue"] = self.versionValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ChunkNum") && dict["ChunkNum"] != nil {
+                    self.chunkNum = dict["ChunkNum"] as! String
+                }
+                if dict.keys.contains("DataId") && dict["DataId"] != nil {
+                    self.dataId = dict["DataId"] as! String
+                }
+                if dict.keys.contains("ErrorDataList") && dict["ErrorDataList"] != nil {
+                    var tmp : [PostMSDataProcessingCountResponseBody.Data.DataProcessedStatuses.ErrorDataList] = []
+                    for v in dict["ErrorDataList"] as! [Any] {
+                        var model = PostMSDataProcessingCountResponseBody.Data.DataProcessedStatuses.ErrorDataList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.errorDataList = tmp
+                }
+                if dict.keys.contains("OpStatus") && dict["OpStatus"] != nil {
+                    self.opStatus = dict["OpStatus"] as! [String: Int32]
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("VersionValue") && dict["VersionValue"] != nil {
+                    self.versionValue = dict["VersionValue"] as! String
+                }
+            }
+        }
+        public var dataProcessedStatuses: [PostMSDataProcessingCountResponseBody.Data.DataProcessedStatuses]?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.dataProcessedStatuses != nil {
+                var tmp : [Any] = []
+                for k in self.dataProcessedStatuses! {
+                    tmp.append(k.toMap())
+                }
+                map["DataProcessedStatuses"] = tmp
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataProcessedStatuses") && dict["DataProcessedStatuses"] != nil {
+                var tmp : [PostMSDataProcessingCountResponseBody.Data.DataProcessedStatuses] = []
+                for v in dict["DataProcessedStatuses"] as! [Any] {
+                    var model = PostMSDataProcessingCountResponseBody.Data.DataProcessedStatuses()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.dataProcessedStatuses = tmp
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: PostMSDataProcessingCountResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = PostMSDataProcessingCountResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Msg") && dict["Msg"] != nil {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class PostMSDataProcessingCountResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PostMSDataProcessingCountResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = PostMSDataProcessingCountResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PostMSSearchEnhanceRequest : Tea.TeaModel {
     public var body: String?
 
