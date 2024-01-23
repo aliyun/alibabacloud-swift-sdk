@@ -4844,6 +4844,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.groupIds)) {
             query["groupIds"] = request.groupIds ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.labelIds)) {
+            query["labelIds"] = request.labelIds ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderBy)) {
             query["orderBy"] = request.orderBy ?? "";
         }

@@ -34952,6 +34952,8 @@ public class ListMergeRequestsRequest : Tea.TeaModel {
 
     public var groupIds: String?
 
+    public var labelIds: String?
+
     public var orderBy: String?
 
     public var organizationId: String?
@@ -34996,6 +34998,9 @@ public class ListMergeRequestsRequest : Tea.TeaModel {
         if self.groupIds != nil {
             map["groupIds"] = self.groupIds!
         }
+        if self.labelIds != nil {
+            map["labelIds"] = self.labelIds!
+        }
         if self.orderBy != nil {
             map["orderBy"] = self.orderBy!
         }
@@ -35038,6 +35043,9 @@ public class ListMergeRequestsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("groupIds") && dict["groupIds"] != nil {
             self.groupIds = dict["groupIds"] as! String
+        }
+        if dict.keys.contains("labelIds") && dict["labelIds"] != nil {
+            self.labelIds = dict["labelIds"] as! String
         }
         if dict.keys.contains("orderBy") && dict["orderBy"] != nil {
             self.orderBy = dict["orderBy"] as! String
@@ -35137,6 +35145,59 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("username") && dict["username"] != nil {
                     self.username = dict["username"] as! String
+                }
+            }
+        }
+        public class Labels : Tea.TeaModel {
+            public var color: String?
+
+            public var description_: String?
+
+            public var id: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.color != nil {
+                    map["color"] = self.color!
+                }
+                if self.description_ != nil {
+                    map["description"] = self.description_!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("color") && dict["color"] != nil {
+                    self.color = dict["color"] as! String
+                }
+                if dict.keys.contains("description") && dict["description"] != nil {
+                    self.description_ = dict["description"] as! String
+                }
+                if dict.keys.contains("id") && dict["id"] != nil {
+                    self.id = dict["id"] as! String
+                }
+                if dict.keys.contains("name") && dict["name"] != nil {
+                    self.name = dict["name"] as! String
                 }
             }
         }
@@ -35308,6 +35369,8 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
 
         public var iid: Int64?
 
+        public var labels: [ListMergeRequestsResponseBody.Result.Labels]?
+
         public var localId: Int64?
 
         public var mrBizId: String?
@@ -35385,6 +35448,13 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
             }
             if self.iid != nil {
                 map["iid"] = self.iid!
+            }
+            if self.labels != nil {
+                var tmp : [Any] = []
+                for k in self.labels! {
+                    tmp.append(k.toMap())
+                }
+                map["labels"] = tmp
             }
             if self.localId != nil {
                 map["localId"] = self.localId!
@@ -35483,6 +35553,17 @@ public class ListMergeRequestsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("iid") && dict["iid"] != nil {
                 self.iid = dict["iid"] as! Int64
+            }
+            if dict.keys.contains("labels") && dict["labels"] != nil {
+                var tmp : [ListMergeRequestsResponseBody.Result.Labels] = []
+                for v in dict["labels"] as! [Any] {
+                    var model = ListMergeRequestsResponseBody.Result.Labels()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.labels = tmp
             }
             if dict.keys.contains("localId") && dict["localId"] != nil {
                 self.localId = dict["localId"] as! Int64
@@ -51363,6 +51444,14 @@ public class MergeMergeRequestRequest : Tea.TeaModel {
 
 public class MergeMergeRequestResponseBody : Tea.TeaModel {
     public class Result : Tea.TeaModel {
+        public var bizId: String?
+
+        public var localId: Int64?
+
+        public var mergedRevision: String?
+
+        public var projectId: Int64?
+
         public var result: Bool?
 
         public override init() {
@@ -51379,6 +51468,18 @@ public class MergeMergeRequestResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.bizId != nil {
+                map["bizId"] = self.bizId!
+            }
+            if self.localId != nil {
+                map["localId"] = self.localId!
+            }
+            if self.mergedRevision != nil {
+                map["mergedRevision"] = self.mergedRevision!
+            }
+            if self.projectId != nil {
+                map["projectId"] = self.projectId!
+            }
             if self.result != nil {
                 map["result"] = self.result!
             }
@@ -51386,6 +51487,18 @@ public class MergeMergeRequestResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("bizId") && dict["bizId"] != nil {
+                self.bizId = dict["bizId"] as! String
+            }
+            if dict.keys.contains("localId") && dict["localId"] != nil {
+                self.localId = dict["localId"] as! Int64
+            }
+            if dict.keys.contains("mergedRevision") && dict["mergedRevision"] != nil {
+                self.mergedRevision = dict["mergedRevision"] as! String
+            }
+            if dict.keys.contains("projectId") && dict["projectId"] != nil {
+                self.projectId = dict["projectId"] as! Int64
+            }
             if dict.keys.contains("result") && dict["result"] != nil {
                 self.result = dict["result"] as! Bool
             }
