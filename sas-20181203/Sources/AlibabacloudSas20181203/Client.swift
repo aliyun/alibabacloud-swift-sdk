@@ -13937,6 +13937,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func exportRecordWithOptions(_ request: ExportRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ExportRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.exportFileType)) {
+            query["ExportFileType"] = request.exportFileType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.exportType)) {
             query["ExportType"] = request.exportType ?? "";
         }
