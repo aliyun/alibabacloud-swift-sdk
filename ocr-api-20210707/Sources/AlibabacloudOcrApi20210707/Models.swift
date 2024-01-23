@@ -8517,6 +8517,8 @@ public class RecognizeHandwritingRequest : Tea.TeaModel {
 
     public var outputTable: Bool?
 
+    public var paragraph: Bool?
+
     public var url: String?
 
     public var body: InputStream?
@@ -8547,6 +8549,9 @@ public class RecognizeHandwritingRequest : Tea.TeaModel {
         if self.outputTable != nil {
             map["OutputTable"] = self.outputTable!
         }
+        if self.paragraph != nil {
+            map["Paragraph"] = self.paragraph!
+        }
         if self.url != nil {
             map["Url"] = self.url!
         }
@@ -8568,6 +8573,9 @@ public class RecognizeHandwritingRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OutputTable") && dict["OutputTable"] != nil {
             self.outputTable = dict["OutputTable"] as! Bool
+        }
+        if dict.keys.contains("Paragraph") && dict["Paragraph"] != nil {
+            self.paragraph = dict["Paragraph"] as! Bool
         }
         if dict.keys.contains("Url") && dict["Url"] != nil {
             self.url = dict["Url"] as! String

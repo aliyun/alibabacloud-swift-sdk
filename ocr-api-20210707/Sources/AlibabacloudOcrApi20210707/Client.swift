@@ -1322,6 +1322,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.outputTable)) {
             query["OutputTable"] = request.outputTable!;
         }
+        if (!TeaUtils.Client.isUnset(request.paragraph)) {
+            query["Paragraph"] = request.paragraph!;
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
         }
