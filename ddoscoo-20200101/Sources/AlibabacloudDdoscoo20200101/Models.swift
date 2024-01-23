@@ -15677,6 +15677,8 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
 
         public var realServers: [String]?
 
+        public var remark: String?
+
         public override init() {
             super.init()
         }
@@ -15709,6 +15711,9 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
             if self.realServers != nil {
                 map["RealServers"] = self.realServers!
             }
+            if self.remark != nil {
+                map["Remark"] = self.remark!
+            }
             return map
         }
 
@@ -15730,6 +15735,9 @@ public class DescribeNetworkRulesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RealServers") && dict["RealServers"] != nil {
                 self.realServers = dict["RealServers"] as! [String]
+            }
+            if dict.keys.contains("Remark") && dict["Remark"] != nil {
+                self.remark = dict["Remark"] as! String
             }
         }
     }
