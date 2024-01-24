@@ -33,9 +33,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.idFaceQuality)) {
             query["IdFaceQuality"] = request.idFaceQuality ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
-            query["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
         }
@@ -54,8 +51,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.spoof)) {
             query["Spoof"] = request.spoof ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
+            body["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "CardOcr",
