@@ -194,6 +194,116 @@ public class CreateAppRequest : Tea.TeaModel {
             }
         }
     }
+    public class PrivateNetwork : Tea.TeaModel {
+        public class WhiteIpGroup : Tea.TeaModel {
+            public var groupName: String?
+
+            public var ips: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupName != nil {
+                    map["groupName"] = self.groupName!
+                }
+                if self.ips != nil {
+                    map["ips"] = self.ips!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("groupName") && dict["groupName"] != nil {
+                    self.groupName = dict["groupName"] as! String
+                }
+                if dict.keys.contains("ips") && dict["ips"] != nil {
+                    self.ips = dict["ips"] as! [String]
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var pvlEndpointId: String?
+
+        public var type: String?
+
+        public var vpcId: String?
+
+        public var whiteIpGroup: [CreateAppRequest.PrivateNetwork.WhiteIpGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.pvlEndpointId != nil {
+                map["pvlEndpointId"] = self.pvlEndpointId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            if self.whiteIpGroup != nil {
+                var tmp : [Any] = []
+                for k in self.whiteIpGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["whiteIpGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enabled") && dict["enabled"] != nil {
+                self.enabled = dict["enabled"] as! Bool
+            }
+            if dict.keys.contains("pvlEndpointId") && dict["pvlEndpointId"] != nil {
+                self.pvlEndpointId = dict["pvlEndpointId"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+            if dict.keys.contains("vpcId") && dict["vpcId"] != nil {
+                self.vpcId = dict["vpcId"] as! String
+            }
+            if dict.keys.contains("whiteIpGroup") && dict["whiteIpGroup"] != nil {
+                var tmp : [CreateAppRequest.PrivateNetwork.WhiteIpGroup] = []
+                for v in dict["whiteIpGroup"] as! [Any] {
+                    var model = CreateAppRequest.PrivateNetwork.WhiteIpGroup()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.whiteIpGroup = tmp
+            }
+        }
+    }
     public class QuotaInfo : Tea.TeaModel {
         public var appType: String?
 
@@ -249,6 +359,8 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var network: [CreateAppRequest.Network]?
 
+    public var privateNetwork: [CreateAppRequest.PrivateNetwork]?
+
     public var quotaInfo: CreateAppRequest.QuotaInfo?
 
     public var regionId: String?
@@ -292,6 +404,13 @@ public class CreateAppRequest : Tea.TeaModel {
             }
             map["network"] = tmp
         }
+        if self.privateNetwork != nil {
+            var tmp : [Any] = []
+            for k in self.privateNetwork! {
+                tmp.append(k.toMap())
+            }
+            map["privateNetwork"] = tmp
+        }
         if self.quotaInfo != nil {
             map["quotaInfo"] = self.quotaInfo?.toMap()
         }
@@ -332,6 +451,17 @@ public class CreateAppRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.network = tmp
+        }
+        if dict.keys.contains("privateNetwork") && dict["privateNetwork"] != nil {
+            var tmp : [CreateAppRequest.PrivateNetwork] = []
+            for v in dict["privateNetwork"] as! [Any] {
+                var model = CreateAppRequest.PrivateNetwork()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.privateNetwork = tmp
         }
         if dict.keys.contains("quotaInfo") && dict["quotaInfo"] != nil {
             var model = CreateAppRequest.QuotaInfo()
@@ -1638,6 +1768,100 @@ public class UpdateAppRequest : Tea.TeaModel {
             }
         }
     }
+    public class LimiterInfo : Tea.TeaModel {
+        public class Limiters : Tea.TeaModel {
+            public var maxValue: Int32?
+
+            public var minValue: Int32?
+
+            public var type: String?
+
+            public var values: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.maxValue != nil {
+                    map["maxValue"] = self.maxValue!
+                }
+                if self.minValue != nil {
+                    map["minValue"] = self.minValue!
+                }
+                if self.type != nil {
+                    map["type"] = self.type!
+                }
+                if self.values != nil {
+                    map["values"] = self.values!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("maxValue") && dict["maxValue"] != nil {
+                    self.maxValue = dict["maxValue"] as! Int32
+                }
+                if dict.keys.contains("minValue") && dict["minValue"] != nil {
+                    self.minValue = dict["minValue"] as! Int32
+                }
+                if dict.keys.contains("type") && dict["type"] != nil {
+                    self.type = dict["type"] as! String
+                }
+                if dict.keys.contains("values") && dict["values"] != nil {
+                    self.values = dict["values"] as! [String]
+                }
+            }
+        }
+        public var limiters: [UpdateAppRequest.LimiterInfo.Limiters]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.limiters != nil {
+                var tmp : [Any] = []
+                for k in self.limiters! {
+                    tmp.append(k.toMap())
+                }
+                map["limiters"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("limiters") && dict["limiters"] != nil {
+                var tmp : [UpdateAppRequest.LimiterInfo.Limiters] = []
+                for v in dict["limiters"] as! [Any] {
+                    var model = UpdateAppRequest.LimiterInfo.Limiters()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.limiters = tmp
+            }
+        }
+    }
     public class Network : Tea.TeaModel {
         public class WhiteIpGroup : Tea.TeaModel {
             public var groupName: String?
@@ -1748,11 +1972,129 @@ public class UpdateAppRequest : Tea.TeaModel {
             }
         }
     }
+    public class PrivateNetwork : Tea.TeaModel {
+        public class WhiteIpGroup : Tea.TeaModel {
+            public var groupName: String?
+
+            public var ips: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupName != nil {
+                    map["groupName"] = self.groupName!
+                }
+                if self.ips != nil {
+                    map["ips"] = self.ips!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("groupName") && dict["groupName"] != nil {
+                    self.groupName = dict["groupName"] as! String
+                }
+                if dict.keys.contains("ips") && dict["ips"] != nil {
+                    self.ips = dict["ips"] as! [String]
+                }
+            }
+        }
+        public var enabled: Bool?
+
+        public var pvlEndpointId: String?
+
+        public var type: String?
+
+        public var vpcId: String?
+
+        public var whiteIpGroup: [UpdateAppRequest.PrivateNetwork.WhiteIpGroup]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enabled != nil {
+                map["enabled"] = self.enabled!
+            }
+            if self.pvlEndpointId != nil {
+                map["pvlEndpointId"] = self.pvlEndpointId!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            if self.whiteIpGroup != nil {
+                var tmp : [Any] = []
+                for k in self.whiteIpGroup! {
+                    tmp.append(k.toMap())
+                }
+                map["whiteIpGroup"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("enabled") && dict["enabled"] != nil {
+                self.enabled = dict["enabled"] as! Bool
+            }
+            if dict.keys.contains("pvlEndpointId") && dict["pvlEndpointId"] != nil {
+                self.pvlEndpointId = dict["pvlEndpointId"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+            if dict.keys.contains("vpcId") && dict["vpcId"] != nil {
+                self.vpcId = dict["vpcId"] as! String
+            }
+            if dict.keys.contains("whiteIpGroup") && dict["whiteIpGroup"] != nil {
+                var tmp : [UpdateAppRequest.PrivateNetwork.WhiteIpGroup] = []
+                for v in dict["whiteIpGroup"] as! [Any] {
+                    var model = UpdateAppRequest.PrivateNetwork.WhiteIpGroup()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.whiteIpGroup = tmp
+            }
+        }
+    }
+    public var applyReason: String?
+
     public var authentication: UpdateAppRequest.Authentication?
+
+    public var contactInfo: String?
 
     public var description_: String?
 
+    public var limiterInfo: UpdateAppRequest.LimiterInfo?
+
     public var network: [UpdateAppRequest.Network]?
+
+    public var privateNetwork: [UpdateAppRequest.PrivateNetwork]?
 
     public override init() {
         super.init()
@@ -1765,15 +2107,25 @@ public class UpdateAppRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.authentication?.validate()
+        try self.limiterInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.applyReason != nil {
+            map["applyReason"] = self.applyReason!
+        }
         if self.authentication != nil {
             map["authentication"] = self.authentication?.toMap()
         }
+        if self.contactInfo != nil {
+            map["contactInfo"] = self.contactInfo!
+        }
         if self.description_ != nil {
             map["description"] = self.description_!
+        }
+        if self.limiterInfo != nil {
+            map["limiterInfo"] = self.limiterInfo?.toMap()
         }
         if self.network != nil {
             var tmp : [Any] = []
@@ -1782,17 +2134,35 @@ public class UpdateAppRequest : Tea.TeaModel {
             }
             map["network"] = tmp
         }
+        if self.privateNetwork != nil {
+            var tmp : [Any] = []
+            for k in self.privateNetwork! {
+                tmp.append(k.toMap())
+            }
+            map["privateNetwork"] = tmp
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("applyReason") && dict["applyReason"] != nil {
+            self.applyReason = dict["applyReason"] as! String
+        }
         if dict.keys.contains("authentication") && dict["authentication"] != nil {
             var model = UpdateAppRequest.Authentication()
             model.fromMap(dict["authentication"] as! [String: Any])
             self.authentication = model
         }
+        if dict.keys.contains("contactInfo") && dict["contactInfo"] != nil {
+            self.contactInfo = dict["contactInfo"] as! String
+        }
         if dict.keys.contains("description") && dict["description"] != nil {
             self.description_ = dict["description"] as! String
+        }
+        if dict.keys.contains("limiterInfo") && dict["limiterInfo"] != nil {
+            var model = UpdateAppRequest.LimiterInfo()
+            model.fromMap(dict["limiterInfo"] as! [String: Any])
+            self.limiterInfo = model
         }
         if dict.keys.contains("network") && dict["network"] != nil {
             var tmp : [UpdateAppRequest.Network] = []
@@ -1804,6 +2174,17 @@ public class UpdateAppRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.network = tmp
+        }
+        if dict.keys.contains("privateNetwork") && dict["privateNetwork"] != nil {
+            var tmp : [UpdateAppRequest.PrivateNetwork] = []
+            for v in dict["privateNetwork"] as! [Any] {
+                var model = UpdateAppRequest.PrivateNetwork()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.privateNetwork = tmp
         }
     }
 }

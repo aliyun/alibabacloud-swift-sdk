@@ -46,6 +46,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.network)) {
             body["network"] = request.network ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.privateNetwork)) {
+            body["privateNetwork"] = request.privateNetwork ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.quotaInfo)) {
             body["quotaInfo"] = request.quotaInfo!;
         }
@@ -253,14 +256,26 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateAppWithOptions(_ appName: String, _ request: UpdateAppRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateAppResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applyReason)) {
+            body["applyReason"] = request.applyReason ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.authentication)) {
             body["authentication"] = request.authentication!;
+        }
+        if (!TeaUtils.Client.isUnset(request.contactInfo)) {
+            body["contactInfo"] = request.contactInfo ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.description_)) {
             body["description"] = request.description_ ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.limiterInfo)) {
+            body["limiterInfo"] = request.limiterInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.network)) {
             body["network"] = request.network ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.privateNetwork)) {
+            body["privateNetwork"] = request.privateNetwork ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
