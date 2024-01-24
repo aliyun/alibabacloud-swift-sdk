@@ -107,11 +107,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func changeInstanceAzoneWithOptions(_ request: ChangeInstanceAzoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ChangeInstanceAzoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.changeVSwitch)) {
+            query["ChangeVSwitch"] = request.changeVSwitch!;
+        }
         if (!TeaUtils.Client.isUnset(request.drdsInstanceId)) {
             query["DrdsInstanceId"] = request.drdsInstanceId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.drdsRegionId)) {
             query["DrdsRegionId"] = request.drdsRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.newVSwitch)) {
+            query["NewVSwitch"] = request.newVSwitch ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.originAzoneId)) {
             query["OriginAzoneId"] = request.originAzoneId ?? "";
@@ -844,6 +850,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.search)) {
             query["Search"] = request.search ?? "";
