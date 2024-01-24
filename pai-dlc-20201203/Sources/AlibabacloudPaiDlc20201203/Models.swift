@@ -825,6 +825,8 @@ public class EcsSpec : Tea.TeaModel {
 
     public var memory: Int32?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -860,6 +862,9 @@ public class EcsSpec : Tea.TeaModel {
         if self.memory != nil {
             map["Memory"] = self.memory!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -884,6 +889,9 @@ public class EcsSpec : Tea.TeaModel {
         }
         if dict.keys.contains("Memory") && dict["Memory"] != nil {
             self.memory = dict["Memory"] as! Int32
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
     }
 }
@@ -1793,6 +1801,8 @@ public class JobItem : Tea.TeaModel {
 
     public var resourceName: String?
 
+    public var resourceType: String?
+
     public var settings: JobSettings?
 
     public var status: String?
@@ -1904,6 +1914,9 @@ public class JobItem : Tea.TeaModel {
         }
         if self.resourceName != nil {
             map["ResourceName"] = self.resourceName!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
         }
         if self.settings != nil {
             map["Settings"] = self.settings?.toMap()
@@ -2025,6 +2038,9 @@ public class JobItem : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
             self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("Settings") && dict["Settings"] != nil {
             var model = JobSettings()
@@ -4947,6 +4963,8 @@ public class GetJobResponseBody : Tea.TeaModel {
 
     public var resourceLevel: String?
 
+    public var resourceType: String?
+
     public var restartTimes: String?
 
     public var settings: JobSettings?
@@ -5074,6 +5092,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if self.resourceLevel != nil {
             map["ResourceLevel"] = self.resourceLevel!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
         }
         if self.restartTimes != nil {
             map["RestartTimes"] = self.restartTimes!
@@ -5221,6 +5242,9 @@ public class GetJobResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceLevel") && dict["ResourceLevel"] != nil {
             self.resourceLevel = dict["ResourceLevel"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("RestartTimes") && dict["RestartTimes"] != nil {
             self.restartTimes = dict["RestartTimes"] as! String
@@ -6624,11 +6648,15 @@ public class GetWebTerminalResponse : Tea.TeaModel {
 public class ListEcsSpecsRequest : Tea.TeaModel {
     public var acceleratorType: String?
 
+    public var instanceTypes: String?
+
     public var order: String?
 
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var resourceType: String?
 
     public var sortBy: String?
 
@@ -6649,6 +6677,9 @@ public class ListEcsSpecsRequest : Tea.TeaModel {
         if self.acceleratorType != nil {
             map["AcceleratorType"] = self.acceleratorType!
         }
+        if self.instanceTypes != nil {
+            map["InstanceTypes"] = self.instanceTypes!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -6657,6 +6688,9 @@ public class ListEcsSpecsRequest : Tea.TeaModel {
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
         }
         if self.sortBy != nil {
             map["SortBy"] = self.sortBy!
@@ -6668,6 +6702,9 @@ public class ListEcsSpecsRequest : Tea.TeaModel {
         if dict.keys.contains("AcceleratorType") && dict["AcceleratorType"] != nil {
             self.acceleratorType = dict["AcceleratorType"] as! String
         }
+        if dict.keys.contains("InstanceTypes") && dict["InstanceTypes"] != nil {
+            self.instanceTypes = dict["InstanceTypes"] as! String
+        }
         if dict.keys.contains("Order") && dict["Order"] != nil {
             self.order = dict["Order"] as! String
         }
@@ -6676,6 +6713,9 @@ public class ListEcsSpecsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
         if dict.keys.contains("SortBy") && dict["SortBy"] != nil {
             self.sortBy = dict["SortBy"] as! String
