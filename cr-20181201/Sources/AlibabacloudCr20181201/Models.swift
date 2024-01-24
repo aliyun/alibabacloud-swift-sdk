@@ -7116,6 +7116,43 @@ public class GetInstanceRequest : Tea.TeaModel {
 }
 
 public class GetInstanceResponseBody : Tea.TeaModel {
+    public class Tags : Tea.TeaModel {
+        public var tagKey: String?
+
+        public var tagValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tagKey != nil {
+                map["TagKey"] = self.tagKey!
+            }
+            if self.tagValue != nil {
+                map["TagValue"] = self.tagValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                self.tagKey = dict["TagKey"] as! String
+            }
+            if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                self.tagValue = dict["TagValue"] as! String
+            }
+        }
+    }
     public var code: String?
 
     public var createTime: Int64?
@@ -7137,6 +7174,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var resourceGroupId: String?
+
+    public var tags: [GetInstanceResponseBody.Tags]?
 
     public override init() {
         super.init()
@@ -7185,6 +7224,13 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
         return map
     }
 
@@ -7221,6 +7267,17 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            var tmp : [GetInstanceResponseBody.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = GetInstanceResponseBody.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
         }
     }
 }
@@ -13224,6 +13281,43 @@ public class ListInstanceRequest : Tea.TeaModel {
 
 public class ListInstanceResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
         public var createTime: String?
 
         public var instanceId: String?
@@ -13241,6 +13335,8 @@ public class ListInstanceResponseBody : Tea.TeaModel {
         public var regionId: String?
 
         public var resourceGroupId: String?
+
+        public var tags: [ListInstanceResponseBody.Instances.Tags]?
 
         public override init() {
             super.init()
@@ -13283,6 +13379,13 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             if self.resourceGroupId != nil {
                 map["ResourceGroupId"] = self.resourceGroupId!
             }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
             return map
         }
 
@@ -13313,6 +13416,17 @@ public class ListInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                 self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [ListInstanceResponseBody.Instances.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListInstanceResponseBody.Instances.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
             }
         }
     }
