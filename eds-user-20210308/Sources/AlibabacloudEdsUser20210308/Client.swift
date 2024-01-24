@@ -242,6 +242,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeOrgsWithOptions(_ request: DescribeOrgsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOrgsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.orgName)) {
+            query["OrgName"] = request.orgName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parentOrgId)) {
+            query["ParentOrgId"] = request.parentOrgId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeOrgs",
+            "version": "2021-03-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeOrgsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeOrgs(_ request: DescribeOrgsRequest) async throws -> DescribeOrgsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeOrgsWithOptions(request as! DescribeOrgsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeUsersWithOptions(_ request: DescribeUsersRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeUsersResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -255,9 +295,6 @@ open class Client : AlibabacloudOpenApi.Client {
             query["NextToken"] = request.nextToken ?? "";
         }
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.bizType)) {
-            body["BizType"] = request.bizType ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.endUserIds)) {
             body["EndUserIds"] = request.endUserIds ?? [];
         }
@@ -269,9 +306,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.orgId)) {
             body["OrgId"] = request.orgId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.solutionId)) {
-            body["SolutionId"] = request.solutionId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query),

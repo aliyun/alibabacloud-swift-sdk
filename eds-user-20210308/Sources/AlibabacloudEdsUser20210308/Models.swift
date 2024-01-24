@@ -1515,24 +1515,14 @@ public class DescribeMfaDevicesResponse : Tea.TeaModel {
     }
 }
 
-public class DescribeUsersRequest : Tea.TeaModel {
-    public var bizType: String?
-
-    public var endUserIds: [String]?
-
-    public var excludeEndUserIds: [String]?
-
-    public var filter: String?
-
-    public var groupId: String?
-
+public class DescribeOrgsRequest : Tea.TeaModel {
     public var maxResults: Int64?
 
     public var nextToken: String?
 
-    public var orgId: String?
+    public var orgName: String?
 
-    public var solutionId: String?
+    public var parentOrgId: String?
 
     public override init() {
         super.init()
@@ -1548,9 +1538,221 @@ public class DescribeUsersRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.bizType != nil {
-            map["BizType"] = self.bizType!
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
         }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orgName != nil {
+            map["OrgName"] = self.orgName!
+        }
+        if self.parentOrgId != nil {
+            map["ParentOrgId"] = self.parentOrgId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int64
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OrgName") && dict["OrgName"] != nil {
+            self.orgName = dict["OrgName"] as! String
+        }
+        if dict.keys.contains("ParentOrgId") && dict["ParentOrgId"] != nil {
+            self.parentOrgId = dict["ParentOrgId"] as! String
+        }
+    }
+}
+
+public class DescribeOrgsResponseBody : Tea.TeaModel {
+    public class Orgs : Tea.TeaModel {
+        public var orgId: String?
+
+        public var orgName: String?
+
+        public var parentOrgId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.orgId != nil {
+                map["OrgId"] = self.orgId!
+            }
+            if self.orgName != nil {
+                map["OrgName"] = self.orgName!
+            }
+            if self.parentOrgId != nil {
+                map["ParentOrgId"] = self.parentOrgId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("OrgId") && dict["OrgId"] != nil {
+                self.orgId = dict["OrgId"] as! String
+            }
+            if dict.keys.contains("OrgName") && dict["OrgName"] != nil {
+                self.orgName = dict["OrgName"] as! String
+            }
+            if dict.keys.contains("ParentOrgId") && dict["ParentOrgId"] != nil {
+                self.parentOrgId = dict["ParentOrgId"] as! String
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var orgs: [DescribeOrgsResponseBody.Orgs]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.orgs != nil {
+            var tmp : [Any] = []
+            for k in self.orgs! {
+                tmp.append(k.toMap())
+            }
+            map["Orgs"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("Orgs") && dict["Orgs"] != nil {
+            var tmp : [DescribeOrgsResponseBody.Orgs] = []
+            for v in dict["Orgs"] as! [Any] {
+                var model = DescribeOrgsResponseBody.Orgs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.orgs = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeOrgsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeOrgsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.validateRequired(self.headers, "headers")
+        try self.validateRequired(self.statusCode, "statusCode")
+        try self.validateRequired(self.body, "body")
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeOrgsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeUsersRequest : Tea.TeaModel {
+    public var endUserIds: [String]?
+
+    public var excludeEndUserIds: [String]?
+
+    public var filter: String?
+
+    public var groupId: String?
+
+    public var maxResults: Int64?
+
+    public var nextToken: String?
+
+    public var orgId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
         if self.endUserIds != nil {
             map["EndUserIds"] = self.endUserIds!
         }
@@ -1572,16 +1774,10 @@ public class DescribeUsersRequest : Tea.TeaModel {
         if self.orgId != nil {
             map["OrgId"] = self.orgId!
         }
-        if self.solutionId != nil {
-            map["SolutionId"] = self.solutionId!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("BizType") && dict["BizType"] != nil {
-            self.bizType = dict["BizType"] as! String
-        }
         if dict.keys.contains("EndUserIds") && dict["EndUserIds"] != nil {
             self.endUserIds = dict["EndUserIds"] as! [String]
         }
@@ -1602,9 +1798,6 @@ public class DescribeUsersRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OrgId") && dict["OrgId"] != nil {
             self.orgId = dict["OrgId"] as! String
-        }
-        if dict.keys.contains("SolutionId") && dict["SolutionId"] != nil {
-            self.solutionId = dict["SolutionId"] as! String
         }
     }
 }
