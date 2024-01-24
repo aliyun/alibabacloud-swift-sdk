@@ -935,6 +935,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.commandRequest)) {
             request.commandRequestShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commandRequest, "CommandRequest", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.textRequest)) {
+            request.textRequestShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.textRequest, "TextRequest", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.user)) {
             request.userShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.user, "User", "json")
         }
@@ -953,6 +956,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tenantId)) {
             query["TenantId"] = request.tenantId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.textRequestShrink)) {
+            query["TextRequest"] = request.textRequestShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userShrink)) {
             query["User"] = request.userShrink ?? "";

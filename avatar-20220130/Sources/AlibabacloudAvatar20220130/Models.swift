@@ -6243,6 +6243,10 @@ public class StartInstanceRequest : Tea.TeaModel {
     public class CommandRequest : Tea.TeaModel {
         public var alphaSwitch: Bool?
 
+        public var backGroundImageUrl: String?
+
+        public var locate: Int32?
+
         public override init() {
             super.init()
         }
@@ -6260,12 +6264,77 @@ public class StartInstanceRequest : Tea.TeaModel {
             if self.alphaSwitch != nil {
                 map["AlphaSwitch"] = self.alphaSwitch!
             }
+            if self.backGroundImageUrl != nil {
+                map["BackGroundImageUrl"] = self.backGroundImageUrl!
+            }
+            if self.locate != nil {
+                map["Locate"] = self.locate!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AlphaSwitch") && dict["AlphaSwitch"] != nil {
                 self.alphaSwitch = dict["AlphaSwitch"] as! Bool
+            }
+            if dict.keys.contains("BackGroundImageUrl") && dict["BackGroundImageUrl"] != nil {
+                self.backGroundImageUrl = dict["BackGroundImageUrl"] as! String
+            }
+            if dict.keys.contains("Locate") && dict["Locate"] != nil {
+                self.locate = dict["Locate"] as! Int32
+            }
+        }
+    }
+    public class TextRequest : Tea.TeaModel {
+        public var pitchRate: Int32?
+
+        public var speechRate: Int32?
+
+        public var voice: String?
+
+        public var volume: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pitchRate != nil {
+                map["PitchRate"] = self.pitchRate!
+            }
+            if self.speechRate != nil {
+                map["SpeechRate"] = self.speechRate!
+            }
+            if self.voice != nil {
+                map["Voice"] = self.voice!
+            }
+            if self.volume != nil {
+                map["Volume"] = self.volume!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PitchRate") && dict["PitchRate"] != nil {
+                self.pitchRate = dict["PitchRate"] as! Int32
+            }
+            if dict.keys.contains("SpeechRate") && dict["SpeechRate"] != nil {
+                self.speechRate = dict["SpeechRate"] as! Int32
+            }
+            if dict.keys.contains("Voice") && dict["Voice"] != nil {
+                self.voice = dict["Voice"] as! String
+            }
+            if dict.keys.contains("Volume") && dict["Volume"] != nil {
+                self.volume = dict["Volume"] as! Int32
             }
         }
     }
@@ -6316,6 +6385,8 @@ public class StartInstanceRequest : Tea.TeaModel {
 
     public var tenantId: Int64?
 
+    public var textRequest: StartInstanceRequest.TextRequest?
+
     public var user: StartInstanceRequest.User?
 
     public override init() {
@@ -6331,6 +6402,7 @@ public class StartInstanceRequest : Tea.TeaModel {
         try self.app?.validate()
         try self.channel?.validate()
         try self.commandRequest?.validate()
+        try self.textRequest?.validate()
         try self.user?.validate()
     }
 
@@ -6350,6 +6422,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         }
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
+        }
+        if self.textRequest != nil {
+            map["TextRequest"] = self.textRequest?.toMap()
         }
         if self.user != nil {
             map["User"] = self.user?.toMap()
@@ -6379,6 +6454,11 @@ public class StartInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
         }
+        if dict.keys.contains("TextRequest") && dict["TextRequest"] != nil {
+            var model = StartInstanceRequest.TextRequest()
+            model.fromMap(dict["TextRequest"] as! [String: Any])
+            self.textRequest = model
+        }
         if dict.keys.contains("User") && dict["User"] != nil {
             var model = StartInstanceRequest.User()
             model.fromMap(dict["User"] as! [String: Any])
@@ -6397,6 +6477,8 @@ public class StartInstanceShrinkRequest : Tea.TeaModel {
     public var commandRequestShrink: String?
 
     public var tenantId: Int64?
+
+    public var textRequestShrink: String?
 
     public var userShrink: String?
 
@@ -6429,6 +6511,9 @@ public class StartInstanceShrinkRequest : Tea.TeaModel {
         if self.tenantId != nil {
             map["TenantId"] = self.tenantId!
         }
+        if self.textRequestShrink != nil {
+            map["TextRequest"] = self.textRequestShrink!
+        }
         if self.userShrink != nil {
             map["User"] = self.userShrink!
         }
@@ -6450,6 +6535,9 @@ public class StartInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TenantId") && dict["TenantId"] != nil {
             self.tenantId = dict["TenantId"] as! Int64
+        }
+        if dict.keys.contains("TextRequest") && dict["TextRequest"] != nil {
+            self.textRequestShrink = dict["TextRequest"] as! String
         }
         if dict.keys.contains("User") && dict["User"] != nil {
             self.userShrink = dict["User"] as! String
