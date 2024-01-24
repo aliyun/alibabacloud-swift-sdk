@@ -17928,6 +17928,8 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
 
         public var role: String?
 
+        public var serverlessType: String?
+
         public var storageUsed: String?
 
         public override init() {
@@ -17987,6 +17989,9 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
             if self.role != nil {
                 map["Role"] = self.role!
             }
+            if self.serverlessType != nil {
+                map["ServerlessType"] = self.serverlessType!
+            }
             if self.storageUsed != nil {
                 map["StorageUsed"] = self.storageUsed!
             }
@@ -18040,6 +18045,9 @@ public class DescribeGlobalDatabaseNetworkResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Role") && dict["Role"] != nil {
                 self.role = dict["Role"] as! String
+            }
+            if dict.keys.contains("ServerlessType") && dict["ServerlessType"] != nil {
+                self.serverlessType = dict["ServerlessType"] as! String
             }
             if dict.keys.contains("StorageUsed") && dict["StorageUsed"] != nil {
                 self.storageUsed = dict["StorageUsed"] as! String
