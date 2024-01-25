@@ -24,13 +24,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func addImage(_ request: AddImageRequest) async throws -> AddImageResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await addImageWithOptions(request as! AddImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addImageWithOptions(_ request: AddImageRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> AddImageResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -84,10 +77,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteImage(_ request: DeleteImageRequest) async throws -> DeleteImageResponse {
+    public func addImage(_ request: AddImageRequest) async throws -> AddImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await deleteImageWithOptions(request as! DeleteImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await addImageWithOptions(request as! AddImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -123,10 +116,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func searchImage(_ request: SearchImageRequest) async throws -> SearchImageResponse {
+    public func deleteImage(_ request: DeleteImageRequest) async throws -> DeleteImageResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await searchImageWithOptions(request as! SearchImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await deleteImageWithOptions(request as! DeleteImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -183,5 +176,12 @@ open class Client : AlibabacloudOpenApi.Client {
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
         return Tea.TeaConverter.fromMap(SearchImageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func searchImage(_ request: SearchImageRequest) async throws -> SearchImageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await searchImageWithOptions(request as! SearchImageRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
