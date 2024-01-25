@@ -287,8 +287,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createBackupJobWithOptions(_ request: CreateBackupJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBackupJobResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createBackupJobWithOptions(_ tmpReq: CreateBackupJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBackupJobResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateBackupJobShrinkRequest = CreateBackupJobShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.detail)) {
+            request.detailShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.detail, "Detail", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.backupType)) {
             query["BackupType"] = request.backupType ?? "";
@@ -310,6 +315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.crossAccountUserId)) {
             query["CrossAccountUserId"] = request.crossAccountUserId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.detailShrink)) {
+            query["Detail"] = request.detailShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.exclude)) {
             query["Exclude"] = request.exclude ?? "";
