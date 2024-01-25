@@ -1872,6 +1872,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.parentServiceUid)) {
             query["ParentServiceUid"] = request.parentServiceUid ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.quotaId)) {
+            query["QuotaId"] = request.quotaId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceName)) {
             query["ResourceName"] = request.resourceName ?? "";
         }
@@ -2111,7 +2114,7 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Config"] = request.config ?? [:];
         }
         if (!TeaUtils.Client.isUnset(request.replicas)) {
-            body["Replicas"] = request.replicas ?? "";
+            body["Replicas"] = request.replicas!;
         }
         if (!TeaUtils.Client.isUnset(request.serviceSpec)) {
             body["ServiceSpec"] = request.serviceSpec ?? "";
@@ -2328,8 +2331,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateServiceWithOptions(_ ClusterId: String, _ ServiceName: String, _ request: UpdateServiceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceResponse {
         try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.updateType)) {
+            query["UpdateType"] = request.updateType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": request.body ?? ""
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
