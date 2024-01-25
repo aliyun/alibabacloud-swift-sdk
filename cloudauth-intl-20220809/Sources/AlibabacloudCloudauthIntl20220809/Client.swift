@@ -680,9 +680,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crop)) {
             query["Crop"] = request.crop ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
-            query["FacePictureBase64"] = request.facePictureBase64 ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
         }
@@ -701,8 +698,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
+            body["FacePictureBase64"] = request.facePictureBase64 ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "FaceLiveness",
