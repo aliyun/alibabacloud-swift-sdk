@@ -2111,6 +2111,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.recordingStartTime)) {
             query["RecordingStartTime"] = request.recordingStartTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.recordingUserNotify)) {
+            query["RecordingUserNotify"] = request.recordingUserNotify ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordingUserNotifyMessage)) {
+            query["RecordingUserNotifyMessage"] = request.recordingUserNotifyMessage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -2138,6 +2144,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.watermark)) {
             query["Watermark"] = request.watermark ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.watermarkAntiCam)) {
+            query["WatermarkAntiCam"] = request.watermarkAntiCam ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.watermarkColor)) {
             query["WatermarkColor"] = request.watermarkColor!;
         }
@@ -2149,6 +2158,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.watermarkFontStyle)) {
             query["WatermarkFontStyle"] = request.watermarkFontStyle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.watermarkPower)) {
+            query["WatermarkPower"] = request.watermarkPower ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.watermarkRowAmount)) {
             query["WatermarkRowAmount"] = request.watermarkRowAmount!;
@@ -8025,6 +8037,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.recordingStartTime)) {
             query["RecordingStartTime"] = request.recordingStartTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.recordingUserNotify)) {
+            query["RecordingUserNotify"] = request.recordingUserNotify ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recordingUserNotifyMessage)) {
+            query["RecordingUserNotifyMessage"] = request.recordingUserNotifyMessage ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -8058,6 +8076,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.watermark)) {
             query["Watermark"] = request.watermark ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.watermarkAntiCam)) {
+            query["WatermarkAntiCam"] = request.watermarkAntiCam ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.watermarkColor)) {
             query["WatermarkColor"] = request.watermarkColor!;
         }
@@ -8069,6 +8090,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.watermarkFontStyle)) {
             query["WatermarkFontStyle"] = request.watermarkFontStyle ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.watermarkPower)) {
+            query["WatermarkPower"] = request.watermarkPower ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.watermarkRowAmount)) {
             query["WatermarkRowAmount"] = request.watermarkRowAmount!;
