@@ -4221,6 +4221,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVulAutoRepairConfigWithOptions(_ request: DeleteVulAutoRepairConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVulAutoRepairConfigResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aliasName)) {
+            query["AliasName"] = request.aliasName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.configIdList)) {
+            query["ConfigIdList"] = request.configIdList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteVulAutoRepairConfig",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteVulAutoRepairConfigResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteVulAutoRepairConfig(_ request: DeleteVulAutoRepairConfigRequest) async throws -> DeleteVulAutoRepairConfigResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteVulAutoRepairConfigWithOptions(request as! DeleteVulAutoRepairConfigRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteVulWhitelistWithOptions(_ request: DeleteVulWhitelistRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVulWhitelistResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
