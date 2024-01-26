@@ -4329,6 +4329,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listPublicMediaBasicInfosWithOptions(_ request: ListPublicMediaBasicInfosRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListPublicMediaBasicInfosResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.businessType)) {
+            query["BusinessType"] = request.businessType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.includeFileBasicInfo)) {
             query["IncludeFileBasicInfo"] = request.includeFileBasicInfo!;
         }
