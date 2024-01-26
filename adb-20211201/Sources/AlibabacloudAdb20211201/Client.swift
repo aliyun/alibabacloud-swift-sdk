@@ -414,6 +414,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableSpot)) {
+            query["EnableSpot"] = request.enableSpot!;
+        }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
         }
@@ -4492,6 +4495,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enableSpot)) {
+            query["EnableSpot"] = request.enableSpot!;
         }
         if (!TeaUtils.Client.isUnset(request.groupName)) {
             query["GroupName"] = request.groupName ?? "";
