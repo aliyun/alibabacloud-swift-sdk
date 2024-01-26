@@ -641,6 +641,8 @@ public class CheckAccountForInnerResponse : Tea.TeaModel {
 public class CheckAoneAppAuditRequest : Tea.TeaModel {
     public var aoneAppName: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -658,12 +660,18 @@ public class CheckAoneAppAuditRequest : Tea.TeaModel {
         if self.aoneAppName != nil {
             map["AoneAppName"] = self.aoneAppName!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AoneAppName") && dict["AoneAppName"] != nil {
             self.aoneAppName = dict["AoneAppName"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
