@@ -4838,6 +4838,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.authorIds)) {
             query["authorIds"] = request.authorIds ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.createdAfter)) {
+            query["createdAfter"] = request.createdAfter ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.createdBefore)) {
+            query["createdBefore"] = request.createdBefore ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filter)) {
             query["filter"] = request.filter ?? "";
         }
