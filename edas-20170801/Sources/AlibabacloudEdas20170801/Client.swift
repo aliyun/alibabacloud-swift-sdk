@@ -1601,6 +1601,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.customAffinity)) {
             query["CustomAffinity"] = request.customAffinity ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customAgentVersion)) {
+            query["CustomAgentVersion"] = request.customAgentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customTolerations)) {
             query["CustomTolerations"] = request.customTolerations ?? "";
         }
@@ -3113,6 +3116,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.customAffinity)) {
             query["CustomAffinity"] = request.customAffinity ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.customAgentVersion)) {
+            query["CustomAgentVersion"] = request.customAgentVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.customTolerations)) {
             query["CustomTolerations"] = request.customTolerations ?? "";
         }
@@ -3145,6 +3151,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.envs)) {
             query["Envs"] = request.envs ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureConfig)) {
+            query["FeatureConfig"] = request.featureConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.imagePlatforms)) {
             query["ImagePlatforms"] = request.imagePlatforms ?? "";
