@@ -1738,6 +1738,8 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
 
     public var detail: [String: Any]?
 
+    public var disabled: Bool?
+
     public var exclude: String?
 
     public var fileSystemId: String?
@@ -1821,6 +1823,9 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
         }
         if self.detail != nil {
             map["Detail"] = self.detail!
+        }
+        if self.disabled != nil {
+            map["Disabled"] = self.disabled!
         }
         if self.exclude != nil {
             map["Exclude"] = self.exclude!
@@ -1916,6 +1921,9 @@ public class CreateBackupPlanRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Detail") && dict["Detail"] != nil {
             self.detail = dict["Detail"] as! [String: Any]
+        }
+        if dict.keys.contains("Disabled") && dict["Disabled"] != nil {
+            self.disabled = dict["Disabled"] as! Bool
         }
         if dict.keys.contains("Exclude") && dict["Exclude"] != nil {
             self.exclude = dict["Exclude"] as! String
@@ -2092,6 +2100,8 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
 
     public var detailShrink: String?
 
+    public var disabled: Bool?
+
     public var exclude: String?
 
     public var fileSystemId: String?
@@ -2174,6 +2184,9 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
         }
         if self.detailShrink != nil {
             map["Detail"] = self.detailShrink!
+        }
+        if self.disabled != nil {
+            map["Disabled"] = self.disabled!
         }
         if self.exclude != nil {
             map["Exclude"] = self.exclude!
@@ -2269,6 +2282,9 @@ public class CreateBackupPlanShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Detail") && dict["Detail"] != nil {
             self.detailShrink = dict["Detail"] as! String
+        }
+        if dict.keys.contains("Disabled") && dict["Disabled"] != nil {
+            self.disabled = dict["Disabled"] as! Bool
         }
         if dict.keys.contains("Exclude") && dict["Exclude"] != nil {
             self.exclude = dict["Exclude"] as! String
@@ -5844,6 +5860,8 @@ public class DeleteBackupClientResourceResponse : Tea.TeaModel {
 public class DeleteBackupPlanRequest : Tea.TeaModel {
     public var planId: String?
 
+    public var requireNoRunningJobs: Bool?
+
     public var sourceType: String?
 
     public var vaultId: String?
@@ -5865,6 +5883,9 @@ public class DeleteBackupPlanRequest : Tea.TeaModel {
         if self.planId != nil {
             map["PlanId"] = self.planId!
         }
+        if self.requireNoRunningJobs != nil {
+            map["RequireNoRunningJobs"] = self.requireNoRunningJobs!
+        }
         if self.sourceType != nil {
             map["SourceType"] = self.sourceType!
         }
@@ -5877,6 +5898,9 @@ public class DeleteBackupPlanRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("PlanId") && dict["PlanId"] != nil {
             self.planId = dict["PlanId"] as! String
+        }
+        if dict.keys.contains("RequireNoRunningJobs") && dict["RequireNoRunningJobs"] != nil {
+            self.requireNoRunningJobs = dict["RequireNoRunningJobs"] as! Bool
         }
         if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
             self.sourceType = dict["SourceType"] as! String
@@ -9322,6 +9346,8 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
 
             public var keepLatestSnapshots: Int64?
 
+            public var latestExecuteJobId: String?
+
             public var options: String?
 
             public var otsDetail: DescribeBackupPlansResponseBody.BackupPlans.BackupPlan.OtsDetail?
@@ -9443,6 +9469,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 if self.keepLatestSnapshots != nil {
                     map["KeepLatestSnapshots"] = self.keepLatestSnapshots!
                 }
+                if self.latestExecuteJobId != nil {
+                    map["LatestExecuteJobId"] = self.latestExecuteJobId!
+                }
                 if self.options != nil {
                     map["Options"] = self.options!
                 }
@@ -9563,6 +9592,9 @@ public class DescribeBackupPlansResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("KeepLatestSnapshots") && dict["KeepLatestSnapshots"] != nil {
                     self.keepLatestSnapshots = dict["KeepLatestSnapshots"] as! Int64
+                }
+                if dict.keys.contains("LatestExecuteJobId") && dict["LatestExecuteJobId"] != nil {
+                    self.latestExecuteJobId = dict["LatestExecuteJobId"] as! String
                 }
                 if dict.keys.contains("Options") && dict["Options"] != nil {
                     self.options = dict["Options"] as! String
