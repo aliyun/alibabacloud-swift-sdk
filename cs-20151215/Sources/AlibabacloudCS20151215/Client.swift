@@ -1237,7 +1237,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "action": "DeleteTrigger",
             "version": "2015-12-15",
             "protocol": "HTTPS",
-            "pathname": "/clusters/%5Bcluster_id%5D/triggers/%5BId%5D",
+            "pathname": "/clusters/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(clusterId) + "/triggers/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(Id),
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
