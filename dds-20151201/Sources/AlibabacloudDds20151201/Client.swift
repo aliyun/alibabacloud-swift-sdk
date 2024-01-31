@@ -5315,6 +5315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
         }
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew!;
+        }
         if (!TeaUtils.Client.isUnset(request.businessInfo)) {
             query["BusinessInfo"] = request.businessInfo ?? "";
         }

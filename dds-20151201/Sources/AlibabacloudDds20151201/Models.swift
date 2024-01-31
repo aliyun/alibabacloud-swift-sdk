@@ -15988,7 +15988,11 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
         public var discountAmount: String?
 
+        public var optionalPromotions: String?
+
         public var originalAmount: String?
+
+        public var promDetailList: String?
 
         public var ruleIds: DescribePriceResponseBody.Order.RuleIds?
 
@@ -16021,8 +16025,14 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if self.discountAmount != nil {
                 map["DiscountAmount"] = self.discountAmount!
             }
+            if self.optionalPromotions != nil {
+                map["OptionalPromotions"] = self.optionalPromotions!
+            }
             if self.originalAmount != nil {
                 map["OriginalAmount"] = self.originalAmount!
+            }
+            if self.promDetailList != nil {
+                map["PromDetailList"] = self.promDetailList!
             }
             if self.ruleIds != nil {
                 map["RuleIds"] = self.ruleIds?.toMap()
@@ -16048,8 +16058,14 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                 self.discountAmount = dict["DiscountAmount"] as! String
             }
+            if dict.keys.contains("OptionalPromotions") && dict["OptionalPromotions"] != nil {
+                self.optionalPromotions = dict["OptionalPromotions"] as! String
+            }
             if dict.keys.contains("OriginalAmount") && dict["OriginalAmount"] != nil {
                 self.originalAmount = dict["OriginalAmount"] as! String
+            }
+            if dict.keys.contains("PromDetailList") && dict["PromDetailList"] != nil {
+                self.promDetailList = dict["PromDetailList"] as! String
             }
             if dict.keys.contains("RuleIds") && dict["RuleIds"] != nil {
                 var model = DescribePriceResponseBody.Order.RuleIds()
@@ -25774,6 +25790,8 @@ public class ReleasePublicNetworkAddressResponse : Tea.TeaModel {
 public class RenewDBInstanceRequest : Tea.TeaModel {
     public var autoPay: Bool?
 
+    public var autoRenew: Bool?
+
     public var businessInfo: String?
 
     public var clientToken: String?
@@ -25809,6 +25827,9 @@ public class RenewDBInstanceRequest : Tea.TeaModel {
         if self.autoPay != nil {
             map["AutoPay"] = self.autoPay!
         }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
         if self.businessInfo != nil {
             map["BusinessInfo"] = self.businessInfo!
         }
@@ -25842,6 +25863,9 @@ public class RenewDBInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
             self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
+            self.autoRenew = dict["AutoRenew"] as! Bool
         }
         if dict.keys.contains("BusinessInfo") && dict["BusinessInfo"] != nil {
             self.businessInfo = dict["BusinessInfo"] as! String
