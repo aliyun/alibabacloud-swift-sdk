@@ -485,6 +485,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAlarmHistoriesWithOptions(_ request: ListAlarmHistoriesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListAlarmHistoriesResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.alarmId)) {
+            body["AlarmId"] = request.alarmId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             body["EndTime"] = request.endTime!;
         }
