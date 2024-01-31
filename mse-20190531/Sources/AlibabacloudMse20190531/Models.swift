@@ -55423,6 +55423,8 @@ public class UpdateClusterResponse : Tea.TeaModel {
 public class UpdateClusterSpecRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var autoPay: Bool?
+
     public var clusterId: String?
 
     public var clusterSpecification: String?
@@ -55432,6 +55434,8 @@ public class UpdateClusterSpecRequest : Tea.TeaModel {
     public var instanceId: String?
 
     public var mseVersion: String?
+
+    public var pubNetworkFlow: Int32?
 
     public override init() {
         super.init()
@@ -55450,6 +55454,9 @@ public class UpdateClusterSpecRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.clusterId != nil {
             map["ClusterId"] = self.clusterId!
         }
@@ -55465,12 +55472,18 @@ public class UpdateClusterSpecRequest : Tea.TeaModel {
         if self.mseVersion != nil {
             map["MseVersion"] = self.mseVersion!
         }
+        if self.pubNetworkFlow != nil {
+            map["PubNetworkFlow"] = self.pubNetworkFlow!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
         }
         if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
             self.clusterId = dict["ClusterId"] as! String
@@ -55486,6 +55499,9 @@ public class UpdateClusterSpecRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MseVersion") && dict["MseVersion"] != nil {
             self.mseVersion = dict["MseVersion"] as! String
+        }
+        if dict.keys.contains("PubNetworkFlow") && dict["PubNetworkFlow"] != nil {
+            self.pubNetworkFlow = dict["PubNetworkFlow"] as! Int32
         }
     }
 }
