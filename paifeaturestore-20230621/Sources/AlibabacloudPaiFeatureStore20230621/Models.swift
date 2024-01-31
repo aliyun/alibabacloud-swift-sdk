@@ -1440,6 +1440,93 @@ public class CreateModelFeatureResponse : Tea.TeaModel {
     }
 }
 
+public class CreateModelFeatureTrainingSetFGTableResponseBody : Tea.TeaModel {
+    public var trainingSetFGTableName: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.trainingSetFGTableName != nil {
+            map["TrainingSetFGTableName"] = self.trainingSetFGTableName!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TrainingSetFGTableName") && dict["TrainingSetFGTableName"] != nil {
+            self.trainingSetFGTableName = dict["TrainingSetFGTableName"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class CreateModelFeatureTrainingSetFGTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateModelFeatureTrainingSetFGTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateModelFeatureTrainingSetFGTableResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateProjectRequest : Tea.TeaModel {
     public var description_: String?
 
@@ -2190,6 +2277,171 @@ public class DeleteProjectResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteProjectResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExportModelFeatureTrainingSetFGTableRequest : Tea.TeaModel {
+    public class TrainingSetFgConfig : Tea.TeaModel {
+        public var fgJsonName: String?
+
+        public var jarName: String?
+
+        public var partitions: [String: [String: Any]]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.fgJsonName != nil {
+                map["FgJsonName"] = self.fgJsonName!
+            }
+            if self.jarName != nil {
+                map["JarName"] = self.jarName!
+            }
+            if self.partitions != nil {
+                map["Partitions"] = self.partitions!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("FgJsonName") && dict["FgJsonName"] != nil {
+                self.fgJsonName = dict["FgJsonName"] as! String
+            }
+            if dict.keys.contains("JarName") && dict["JarName"] != nil {
+                self.jarName = dict["JarName"] as! String
+            }
+            if dict.keys.contains("Partitions") && dict["Partitions"] != nil {
+                self.partitions = dict["Partitions"] as! [String: [String: Any]]
+            }
+        }
+    }
+    public var trainingSetFgConfig: ExportModelFeatureTrainingSetFGTableRequest.TrainingSetFgConfig?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.trainingSetFgConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.trainingSetFgConfig != nil {
+            map["TrainingSetFgConfig"] = self.trainingSetFgConfig?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TrainingSetFgConfig") && dict["TrainingSetFgConfig"] != nil {
+            var model = ExportModelFeatureTrainingSetFGTableRequest.TrainingSetFgConfig()
+            model.fromMap(dict["TrainingSetFgConfig"] as! [String: Any])
+            self.trainingSetFgConfig = model
+        }
+    }
+}
+
+public class ExportModelFeatureTrainingSetFGTableResponseBody : Tea.TeaModel {
+    public var taskId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class ExportModelFeatureTrainingSetFGTableResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExportModelFeatureTrainingSetFGTableResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ExportModelFeatureTrainingSetFGTableResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3902,6 +4154,528 @@ public class GetModelFeatureResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetModelFeatureResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetModelFeatureFGFeatureResponseBody : Tea.TeaModel {
+    public class LookupFeatures : Tea.TeaModel {
+        public var defaultValue: String?
+
+        public var featureName: String?
+
+        public var keyFeatureDomain: String?
+
+        public var keyFeatureName: String?
+
+        public var mapFeatureDomain: String?
+
+        public var mapFeatureName: String?
+
+        public var valueType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultValue != nil {
+                map["DefaultValue"] = self.defaultValue!
+            }
+            if self.featureName != nil {
+                map["FeatureName"] = self.featureName!
+            }
+            if self.keyFeatureDomain != nil {
+                map["KeyFeatureDomain"] = self.keyFeatureDomain!
+            }
+            if self.keyFeatureName != nil {
+                map["KeyFeatureName"] = self.keyFeatureName!
+            }
+            if self.mapFeatureDomain != nil {
+                map["MapFeatureDomain"] = self.mapFeatureDomain!
+            }
+            if self.mapFeatureName != nil {
+                map["MapFeatureName"] = self.mapFeatureName!
+            }
+            if self.valueType != nil {
+                map["ValueType"] = self.valueType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultValue") && dict["DefaultValue"] != nil {
+                self.defaultValue = dict["DefaultValue"] as! String
+            }
+            if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                self.featureName = dict["FeatureName"] as! String
+            }
+            if dict.keys.contains("KeyFeatureDomain") && dict["KeyFeatureDomain"] != nil {
+                self.keyFeatureDomain = dict["KeyFeatureDomain"] as! String
+            }
+            if dict.keys.contains("KeyFeatureName") && dict["KeyFeatureName"] != nil {
+                self.keyFeatureName = dict["KeyFeatureName"] as! String
+            }
+            if dict.keys.contains("MapFeatureDomain") && dict["MapFeatureDomain"] != nil {
+                self.mapFeatureDomain = dict["MapFeatureDomain"] as! String
+            }
+            if dict.keys.contains("MapFeatureName") && dict["MapFeatureName"] != nil {
+                self.mapFeatureName = dict["MapFeatureName"] as! String
+            }
+            if dict.keys.contains("ValueType") && dict["ValueType"] != nil {
+                self.valueType = dict["ValueType"] as! String
+            }
+        }
+    }
+    public class RawFeatures : Tea.TeaModel {
+        public var defaultValue: String?
+
+        public var featureDomain: String?
+
+        public var featureName: String?
+
+        public var featureType: String?
+
+        public var inputFeatureName: String?
+
+        public var valueType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultValue != nil {
+                map["DefaultValue"] = self.defaultValue!
+            }
+            if self.featureDomain != nil {
+                map["FeatureDomain"] = self.featureDomain!
+            }
+            if self.featureName != nil {
+                map["FeatureName"] = self.featureName!
+            }
+            if self.featureType != nil {
+                map["FeatureType"] = self.featureType!
+            }
+            if self.inputFeatureName != nil {
+                map["InputFeatureName"] = self.inputFeatureName!
+            }
+            if self.valueType != nil {
+                map["ValueType"] = self.valueType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultValue") && dict["DefaultValue"] != nil {
+                self.defaultValue = dict["DefaultValue"] as! String
+            }
+            if dict.keys.contains("FeatureDomain") && dict["FeatureDomain"] != nil {
+                self.featureDomain = dict["FeatureDomain"] as! String
+            }
+            if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                self.featureName = dict["FeatureName"] as! String
+            }
+            if dict.keys.contains("FeatureType") && dict["FeatureType"] != nil {
+                self.featureType = dict["FeatureType"] as! String
+            }
+            if dict.keys.contains("InputFeatureName") && dict["InputFeatureName"] != nil {
+                self.inputFeatureName = dict["InputFeatureName"] as! String
+            }
+            if dict.keys.contains("ValueType") && dict["ValueType"] != nil {
+                self.valueType = dict["ValueType"] as! String
+            }
+        }
+    }
+    public class SequenceFeatures : Tea.TeaModel {
+        public class SubFeatures : Tea.TeaModel {
+            public var defaultValue: String?
+
+            public var featureDomain: String?
+
+            public var featureName: String?
+
+            public var featureType: String?
+
+            public var inputFeatureName: String?
+
+            public var valueType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultValue != nil {
+                    map["DefaultValue"] = self.defaultValue!
+                }
+                if self.featureDomain != nil {
+                    map["FeatureDomain"] = self.featureDomain!
+                }
+                if self.featureName != nil {
+                    map["FeatureName"] = self.featureName!
+                }
+                if self.featureType != nil {
+                    map["FeatureType"] = self.featureType!
+                }
+                if self.inputFeatureName != nil {
+                    map["InputFeatureName"] = self.inputFeatureName!
+                }
+                if self.valueType != nil {
+                    map["ValueType"] = self.valueType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DefaultValue") && dict["DefaultValue"] != nil {
+                    self.defaultValue = dict["DefaultValue"] as! String
+                }
+                if dict.keys.contains("FeatureDomain") && dict["FeatureDomain"] != nil {
+                    self.featureDomain = dict["FeatureDomain"] as! String
+                }
+                if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                    self.featureName = dict["FeatureName"] as! String
+                }
+                if dict.keys.contains("FeatureType") && dict["FeatureType"] != nil {
+                    self.featureType = dict["FeatureType"] as! String
+                }
+                if dict.keys.contains("InputFeatureName") && dict["InputFeatureName"] != nil {
+                    self.inputFeatureName = dict["InputFeatureName"] as! String
+                }
+                if dict.keys.contains("ValueType") && dict["ValueType"] != nil {
+                    self.valueType = dict["ValueType"] as! String
+                }
+            }
+        }
+        public var attributeDelim: String?
+
+        public var featureName: String?
+
+        public var sequenceDelim: String?
+
+        public var sequenceLength: Int64?
+
+        public var subFeatures: [GetModelFeatureFGFeatureResponseBody.SequenceFeatures.SubFeatures]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attributeDelim != nil {
+                map["AttributeDelim"] = self.attributeDelim!
+            }
+            if self.featureName != nil {
+                map["FeatureName"] = self.featureName!
+            }
+            if self.sequenceDelim != nil {
+                map["SequenceDelim"] = self.sequenceDelim!
+            }
+            if self.sequenceLength != nil {
+                map["SequenceLength"] = self.sequenceLength!
+            }
+            if self.subFeatures != nil {
+                var tmp : [Any] = []
+                for k in self.subFeatures! {
+                    tmp.append(k.toMap())
+                }
+                map["SubFeatures"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AttributeDelim") && dict["AttributeDelim"] != nil {
+                self.attributeDelim = dict["AttributeDelim"] as! String
+            }
+            if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                self.featureName = dict["FeatureName"] as! String
+            }
+            if dict.keys.contains("SequenceDelim") && dict["SequenceDelim"] != nil {
+                self.sequenceDelim = dict["SequenceDelim"] as! String
+            }
+            if dict.keys.contains("SequenceLength") && dict["SequenceLength"] != nil {
+                self.sequenceLength = dict["SequenceLength"] as! Int64
+            }
+            if dict.keys.contains("SubFeatures") && dict["SubFeatures"] != nil {
+                var tmp : [GetModelFeatureFGFeatureResponseBody.SequenceFeatures.SubFeatures] = []
+                for v in dict["SubFeatures"] as! [Any] {
+                    var model = GetModelFeatureFGFeatureResponseBody.SequenceFeatures.SubFeatures()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.subFeatures = tmp
+            }
+        }
+    }
+    public var lookupFeatures: [GetModelFeatureFGFeatureResponseBody.LookupFeatures]?
+
+    public var rawFeatures: [GetModelFeatureFGFeatureResponseBody.RawFeatures]?
+
+    public var requestId: String?
+
+    public var reserves: [String]?
+
+    public var sequenceFeatures: [GetModelFeatureFGFeatureResponseBody.SequenceFeatures]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lookupFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.lookupFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["LookupFeatures"] = tmp
+        }
+        if self.rawFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.rawFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["RawFeatures"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.reserves != nil {
+            map["Reserves"] = self.reserves!
+        }
+        if self.sequenceFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.sequenceFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["SequenceFeatures"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("LookupFeatures") && dict["LookupFeatures"] != nil {
+            var tmp : [GetModelFeatureFGFeatureResponseBody.LookupFeatures] = []
+            for v in dict["LookupFeatures"] as! [Any] {
+                var model = GetModelFeatureFGFeatureResponseBody.LookupFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.lookupFeatures = tmp
+        }
+        if dict.keys.contains("RawFeatures") && dict["RawFeatures"] != nil {
+            var tmp : [GetModelFeatureFGFeatureResponseBody.RawFeatures] = []
+            for v in dict["RawFeatures"] as! [Any] {
+                var model = GetModelFeatureFGFeatureResponseBody.RawFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.rawFeatures = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Reserves") && dict["Reserves"] != nil {
+            self.reserves = dict["Reserves"] as! [String]
+        }
+        if dict.keys.contains("SequenceFeatures") && dict["SequenceFeatures"] != nil {
+            var tmp : [GetModelFeatureFGFeatureResponseBody.SequenceFeatures] = []
+            for v in dict["SequenceFeatures"] as! [Any] {
+                var model = GetModelFeatureFGFeatureResponseBody.SequenceFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sequenceFeatures = tmp
+        }
+    }
+}
+
+public class GetModelFeatureFGFeatureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetModelFeatureFGFeatureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetModelFeatureFGFeatureResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetModelFeatureFGInfoResponseBody : Tea.TeaModel {
+    public var content: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetModelFeatureFGInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetModelFeatureFGInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetModelFeatureFGInfoResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -7358,6 +8132,196 @@ public class ListLabelTablesResponse : Tea.TeaModel {
     }
 }
 
+public class ListModelFeatureAvailableFeaturesRequest : Tea.TeaModel {
+    public var featureName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.featureName != nil {
+            map["FeatureName"] = self.featureName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+            self.featureName = dict["FeatureName"] as! String
+        }
+    }
+}
+
+public class ListModelFeatureAvailableFeaturesResponseBody : Tea.TeaModel {
+    public class AvaliableFeatures : Tea.TeaModel {
+        public var name: String?
+
+        public var sourceName: String?
+
+        public var sourceType: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.sourceName != nil {
+                map["SourceName"] = self.sourceName!
+            }
+            if self.sourceType != nil {
+                map["SourceType"] = self.sourceType!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("SourceName") && dict["SourceName"] != nil {
+                self.sourceName = dict["SourceName"] as! String
+            }
+            if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
+                self.sourceType = dict["SourceType"] as! String
+            }
+            if dict.keys.contains("Type") && dict["Type"] != nil {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var avaliableFeatures: [ListModelFeatureAvailableFeaturesResponseBody.AvaliableFeatures]?
+
+    public var totalCount: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.avaliableFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.avaliableFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["AvaliableFeatures"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AvaliableFeatures") && dict["AvaliableFeatures"] != nil {
+            var tmp : [ListModelFeatureAvailableFeaturesResponseBody.AvaliableFeatures] = []
+            for v in dict["AvaliableFeatures"] as! [Any] {
+                var model = ListModelFeatureAvailableFeaturesResponseBody.AvaliableFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.avaliableFeatures = tmp
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class ListModelFeatureAvailableFeaturesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListModelFeatureAvailableFeaturesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListModelFeatureAvailableFeaturesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListModelFeaturesRequest : Tea.TeaModel {
     public var modelFeatureIds: [String]?
 
@@ -9686,6 +10650,572 @@ public class UpdateModelFeatureResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateModelFeatureResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateModelFeatureFGFeatureRequest : Tea.TeaModel {
+    public class LookupFeatures : Tea.TeaModel {
+        public var defaultValue: String?
+
+        public var featureName: String?
+
+        public var keyFeatureDomain: String?
+
+        public var keyFeatureName: String?
+
+        public var mapFeatureDomain: String?
+
+        public var mapFeatureName: String?
+
+        public var valueType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultValue != nil {
+                map["DefaultValue"] = self.defaultValue!
+            }
+            if self.featureName != nil {
+                map["FeatureName"] = self.featureName!
+            }
+            if self.keyFeatureDomain != nil {
+                map["KeyFeatureDomain"] = self.keyFeatureDomain!
+            }
+            if self.keyFeatureName != nil {
+                map["KeyFeatureName"] = self.keyFeatureName!
+            }
+            if self.mapFeatureDomain != nil {
+                map["MapFeatureDomain"] = self.mapFeatureDomain!
+            }
+            if self.mapFeatureName != nil {
+                map["MapFeatureName"] = self.mapFeatureName!
+            }
+            if self.valueType != nil {
+                map["ValueType"] = self.valueType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultValue") && dict["DefaultValue"] != nil {
+                self.defaultValue = dict["DefaultValue"] as! String
+            }
+            if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                self.featureName = dict["FeatureName"] as! String
+            }
+            if dict.keys.contains("KeyFeatureDomain") && dict["KeyFeatureDomain"] != nil {
+                self.keyFeatureDomain = dict["KeyFeatureDomain"] as! String
+            }
+            if dict.keys.contains("KeyFeatureName") && dict["KeyFeatureName"] != nil {
+                self.keyFeatureName = dict["KeyFeatureName"] as! String
+            }
+            if dict.keys.contains("MapFeatureDomain") && dict["MapFeatureDomain"] != nil {
+                self.mapFeatureDomain = dict["MapFeatureDomain"] as! String
+            }
+            if dict.keys.contains("MapFeatureName") && dict["MapFeatureName"] != nil {
+                self.mapFeatureName = dict["MapFeatureName"] as! String
+            }
+            if dict.keys.contains("ValueType") && dict["ValueType"] != nil {
+                self.valueType = dict["ValueType"] as! String
+            }
+        }
+    }
+    public class RawFeatures : Tea.TeaModel {
+        public var defaultValue: String?
+
+        public var featureDomain: String?
+
+        public var featureName: String?
+
+        public var featureType: String?
+
+        public var inputFeatureName: String?
+
+        public var valueType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultValue != nil {
+                map["DefaultValue"] = self.defaultValue!
+            }
+            if self.featureDomain != nil {
+                map["FeatureDomain"] = self.featureDomain!
+            }
+            if self.featureName != nil {
+                map["FeatureName"] = self.featureName!
+            }
+            if self.featureType != nil {
+                map["FeatureType"] = self.featureType!
+            }
+            if self.inputFeatureName != nil {
+                map["InputFeatureName"] = self.inputFeatureName!
+            }
+            if self.valueType != nil {
+                map["ValueType"] = self.valueType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultValue") && dict["DefaultValue"] != nil {
+                self.defaultValue = dict["DefaultValue"] as! String
+            }
+            if dict.keys.contains("FeatureDomain") && dict["FeatureDomain"] != nil {
+                self.featureDomain = dict["FeatureDomain"] as! String
+            }
+            if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                self.featureName = dict["FeatureName"] as! String
+            }
+            if dict.keys.contains("FeatureType") && dict["FeatureType"] != nil {
+                self.featureType = dict["FeatureType"] as! String
+            }
+            if dict.keys.contains("InputFeatureName") && dict["InputFeatureName"] != nil {
+                self.inputFeatureName = dict["InputFeatureName"] as! String
+            }
+            if dict.keys.contains("ValueType") && dict["ValueType"] != nil {
+                self.valueType = dict["ValueType"] as! String
+            }
+        }
+    }
+    public class SequenceFeatures : Tea.TeaModel {
+        public class SubFeatures : Tea.TeaModel {
+            public var defaultValue: String?
+
+            public var featureDomain: String?
+
+            public var featureName: String?
+
+            public var featureType: String?
+
+            public var inputFeatureName: String?
+
+            public var valueType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultValue != nil {
+                    map["DefaultValue"] = self.defaultValue!
+                }
+                if self.featureDomain != nil {
+                    map["FeatureDomain"] = self.featureDomain!
+                }
+                if self.featureName != nil {
+                    map["FeatureName"] = self.featureName!
+                }
+                if self.featureType != nil {
+                    map["FeatureType"] = self.featureType!
+                }
+                if self.inputFeatureName != nil {
+                    map["InputFeatureName"] = self.inputFeatureName!
+                }
+                if self.valueType != nil {
+                    map["ValueType"] = self.valueType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DefaultValue") && dict["DefaultValue"] != nil {
+                    self.defaultValue = dict["DefaultValue"] as! String
+                }
+                if dict.keys.contains("FeatureDomain") && dict["FeatureDomain"] != nil {
+                    self.featureDomain = dict["FeatureDomain"] as! String
+                }
+                if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                    self.featureName = dict["FeatureName"] as! String
+                }
+                if dict.keys.contains("FeatureType") && dict["FeatureType"] != nil {
+                    self.featureType = dict["FeatureType"] as! String
+                }
+                if dict.keys.contains("InputFeatureName") && dict["InputFeatureName"] != nil {
+                    self.inputFeatureName = dict["InputFeatureName"] as! String
+                }
+                if dict.keys.contains("ValueType") && dict["ValueType"] != nil {
+                    self.valueType = dict["ValueType"] as! String
+                }
+            }
+        }
+        public var attributeDelim: String?
+
+        public var featureName: String?
+
+        public var sequenceDelim: String?
+
+        public var sequenceLength: Int64?
+
+        public var subFeatures: [UpdateModelFeatureFGFeatureRequest.SequenceFeatures.SubFeatures]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attributeDelim != nil {
+                map["AttributeDelim"] = self.attributeDelim!
+            }
+            if self.featureName != nil {
+                map["FeatureName"] = self.featureName!
+            }
+            if self.sequenceDelim != nil {
+                map["SequenceDelim"] = self.sequenceDelim!
+            }
+            if self.sequenceLength != nil {
+                map["SequenceLength"] = self.sequenceLength!
+            }
+            if self.subFeatures != nil {
+                var tmp : [Any] = []
+                for k in self.subFeatures! {
+                    tmp.append(k.toMap())
+                }
+                map["SubFeatures"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AttributeDelim") && dict["AttributeDelim"] != nil {
+                self.attributeDelim = dict["AttributeDelim"] as! String
+            }
+            if dict.keys.contains("FeatureName") && dict["FeatureName"] != nil {
+                self.featureName = dict["FeatureName"] as! String
+            }
+            if dict.keys.contains("SequenceDelim") && dict["SequenceDelim"] != nil {
+                self.sequenceDelim = dict["SequenceDelim"] as! String
+            }
+            if dict.keys.contains("SequenceLength") && dict["SequenceLength"] != nil {
+                self.sequenceLength = dict["SequenceLength"] as! Int64
+            }
+            if dict.keys.contains("SubFeatures") && dict["SubFeatures"] != nil {
+                var tmp : [UpdateModelFeatureFGFeatureRequest.SequenceFeatures.SubFeatures] = []
+                for v in dict["SubFeatures"] as! [Any] {
+                    var model = UpdateModelFeatureFGFeatureRequest.SequenceFeatures.SubFeatures()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.subFeatures = tmp
+            }
+        }
+    }
+    public var lookupFeatures: [UpdateModelFeatureFGFeatureRequest.LookupFeatures]?
+
+    public var rawFeatures: [UpdateModelFeatureFGFeatureRequest.RawFeatures]?
+
+    public var reserves: [String]?
+
+    public var sequenceFeatures: [UpdateModelFeatureFGFeatureRequest.SequenceFeatures]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.lookupFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.lookupFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["LookupFeatures"] = tmp
+        }
+        if self.rawFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.rawFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["RawFeatures"] = tmp
+        }
+        if self.reserves != nil {
+            map["Reserves"] = self.reserves!
+        }
+        if self.sequenceFeatures != nil {
+            var tmp : [Any] = []
+            for k in self.sequenceFeatures! {
+                tmp.append(k.toMap())
+            }
+            map["SequenceFeatures"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("LookupFeatures") && dict["LookupFeatures"] != nil {
+            var tmp : [UpdateModelFeatureFGFeatureRequest.LookupFeatures] = []
+            for v in dict["LookupFeatures"] as! [Any] {
+                var model = UpdateModelFeatureFGFeatureRequest.LookupFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.lookupFeatures = tmp
+        }
+        if dict.keys.contains("RawFeatures") && dict["RawFeatures"] != nil {
+            var tmp : [UpdateModelFeatureFGFeatureRequest.RawFeatures] = []
+            for v in dict["RawFeatures"] as! [Any] {
+                var model = UpdateModelFeatureFGFeatureRequest.RawFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.rawFeatures = tmp
+        }
+        if dict.keys.contains("Reserves") && dict["Reserves"] != nil {
+            self.reserves = dict["Reserves"] as! [String]
+        }
+        if dict.keys.contains("SequenceFeatures") && dict["SequenceFeatures"] != nil {
+            var tmp : [UpdateModelFeatureFGFeatureRequest.SequenceFeatures] = []
+            for v in dict["SequenceFeatures"] as! [Any] {
+                var model = UpdateModelFeatureFGFeatureRequest.SequenceFeatures()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sequenceFeatures = tmp
+        }
+    }
+}
+
+public class UpdateModelFeatureFGFeatureResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class UpdateModelFeatureFGFeatureResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateModelFeatureFGFeatureResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateModelFeatureFGFeatureResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateModelFeatureFGInfoRequest : Tea.TeaModel {
+    public var content: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+    }
+}
+
+public class UpdateModelFeatureFGInfoResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+    }
+}
+
+public class UpdateModelFeatureFGInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateModelFeatureFGInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateModelFeatureFGInfoResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
