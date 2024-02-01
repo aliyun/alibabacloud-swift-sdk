@@ -49271,7 +49271,7 @@ public class ListUserKeysResponseBody : Tea.TeaModel {
 
         public var publicKey: String?
 
-        public var tittle: String?
+        public var title: String?
 
         public override init() {
             super.init()
@@ -49308,8 +49308,8 @@ public class ListUserKeysResponseBody : Tea.TeaModel {
             if self.publicKey != nil {
                 map["publicKey"] = self.publicKey!
             }
-            if self.tittle != nil {
-                map["tittle"] = self.tittle!
+            if self.title != nil {
+                map["title"] = self.title!
             }
             return map
         }
@@ -49336,8 +49336,8 @@ public class ListUserKeysResponseBody : Tea.TeaModel {
             if dict.keys.contains("publicKey") && dict["publicKey"] != nil {
                 self.publicKey = dict["publicKey"] as! String
             }
-            if dict.keys.contains("tittle") && dict["tittle"] != nil {
-                self.tittle = dict["tittle"] as! String
+            if dict.keys.contains("title") && dict["title"] != nil {
+                self.title = dict["title"] as! String
             }
         }
     }
