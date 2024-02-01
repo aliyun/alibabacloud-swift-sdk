@@ -17817,6 +17817,8 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
 
             public var replicationSourceVaultId: String?
 
+            public var replicationTargetRegionId: String?
+
             public var resourceGroupId: String?
 
             public var retention: Int64?
@@ -17938,6 +17940,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 }
                 if self.replicationSourceVaultId != nil {
                     map["ReplicationSourceVaultId"] = self.replicationSourceVaultId!
+                }
+                if self.replicationTargetRegionId != nil {
+                    map["ReplicationTargetRegionId"] = self.replicationTargetRegionId!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
@@ -18066,6 +18071,9 @@ public class DescribeVaultsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ReplicationSourceVaultId") && dict["ReplicationSourceVaultId"] != nil {
                     self.replicationSourceVaultId = dict["ReplicationSourceVaultId"] as! String
+                }
+                if dict.keys.contains("ReplicationTargetRegionId") && dict["ReplicationTargetRegionId"] != nil {
+                    self.replicationTargetRegionId = dict["ReplicationTargetRegionId"] as! String
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
