@@ -7569,6 +7569,8 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
 
     public var healthCheckType: String?
 
+    public var healthCheckTypes: [String]?
+
     public var instanceId: String?
 
     public var launchTemplateId: String?
@@ -7685,6 +7687,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if self.healthCheckType != nil {
             map["HealthCheckType"] = self.healthCheckType!
+        }
+        if self.healthCheckTypes != nil {
+            map["HealthCheckTypes"] = self.healthCheckTypes!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -7850,6 +7855,9 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HealthCheckType") && dict["HealthCheckType"] != nil {
             self.healthCheckType = dict["HealthCheckType"] as! String
+        }
+        if dict.keys.contains("HealthCheckTypes") && dict["HealthCheckTypes"] != nil {
+            self.healthCheckTypes = dict["HealthCheckTypes"] as! [String]
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
@@ -16334,6 +16342,8 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
         public var healthCheckType: String?
 
+        public var healthCheckTypes: [String]?
+
         public var initCapacity: Int32?
 
         public var isElasticStrengthInAlarm: Bool?
@@ -16483,6 +16493,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if self.healthCheckType != nil {
                 map["HealthCheckType"] = self.healthCheckType!
+            }
+            if self.healthCheckTypes != nil {
+                map["HealthCheckTypes"] = self.healthCheckTypes!
             }
             if self.initCapacity != nil {
                 map["InitCapacity"] = self.initCapacity!
@@ -16689,6 +16702,9 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("HealthCheckType") && dict["HealthCheckType"] != nil {
                 self.healthCheckType = dict["HealthCheckType"] as! String
+            }
+            if dict.keys.contains("HealthCheckTypes") && dict["HealthCheckTypes"] != nil {
+                self.healthCheckTypes = dict["HealthCheckTypes"] as! [String]
             }
             if dict.keys.contains("InitCapacity") && dict["InitCapacity"] != nil {
                 self.initCapacity = dict["InitCapacity"] as! Int32
@@ -27030,6 +27046,8 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
 
     public var healthCheckType: String?
 
+    public var healthCheckTypes: [String]?
+
     public var launchTemplateId: String?
 
     public var launchTemplateOverrides: [ModifyScalingGroupRequest.LaunchTemplateOverrides]?
@@ -27113,6 +27131,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         }
         if self.healthCheckType != nil {
             map["HealthCheckType"] = self.healthCheckType!
+        }
+        if self.healthCheckTypes != nil {
+            map["HealthCheckTypes"] = self.healthCheckTypes!
         }
         if self.launchTemplateId != nil {
             map["LaunchTemplateId"] = self.launchTemplateId!
@@ -27211,6 +27232,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HealthCheckType") && dict["HealthCheckType"] != nil {
             self.healthCheckType = dict["HealthCheckType"] as! String
+        }
+        if dict.keys.contains("HealthCheckTypes") && dict["HealthCheckTypes"] != nil {
+            self.healthCheckTypes = dict["HealthCheckTypes"] as! [String]
         }
         if dict.keys.contains("LaunchTemplateId") && dict["LaunchTemplateId"] != nil {
             self.launchTemplateId = dict["LaunchTemplateId"] as! String
