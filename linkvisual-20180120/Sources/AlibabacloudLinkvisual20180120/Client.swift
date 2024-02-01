@@ -1009,6 +1009,101 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createStreamPushJobWithOptions(_ request: CreateStreamPushJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateStreamPushJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["JobType"] = request.jobType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pushUrl)) {
+            query["PushUrl"] = request.pushUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamType)) {
+            query["StreamType"] = request.streamType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateStreamPushJob",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateStreamPushJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createStreamPushJob(_ request: CreateStreamPushJobRequest) async throws -> CreateStreamPushJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createStreamPushJobWithOptions(request as! CreateStreamPushJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createStreamSnapshotJobWithOptions(_ request: CreateStreamSnapshotJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateStreamSnapshotJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.snapshotInterval)) {
+            query["SnapshotInterval"] = request.snapshotInterval!;
+        }
+        if (!TeaUtils.Client.isUnset(request.streamType)) {
+            query["StreamType"] = request.streamType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateStreamSnapshotJob",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateStreamSnapshotJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createStreamSnapshotJob(_ request: CreateStreamSnapshotJobRequest) async throws -> CreateStreamSnapshotJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createStreamSnapshotJobWithOptions(request as! CreateStreamSnapshotJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createTimeTemplateWithOptions(_ request: CreateTimeTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTimeTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1607,6 +1702,92 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteRtmpKey(_ request: DeleteRtmpKeyRequest) async throws -> DeleteRtmpKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteRtmpKeyWithOptions(request as! DeleteRtmpKeyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteStreamPushJobWithOptions(_ request: DeleteStreamPushJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteStreamPushJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteStreamPushJob",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteStreamPushJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteStreamPushJob(_ request: DeleteStreamPushJobRequest) async throws -> DeleteStreamPushJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteStreamPushJobWithOptions(request as! DeleteStreamPushJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteStreamSnapshotJobWithOptions(_ request: DeleteStreamSnapshotJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteStreamSnapshotJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.streamType)) {
+            query["StreamType"] = request.streamType!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteStreamSnapshotJob",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteStreamSnapshotJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteStreamSnapshotJob(_ request: DeleteStreamSnapshotJobRequest) async throws -> DeleteStreamSnapshotJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteStreamSnapshotJobWithOptions(request as! DeleteStreamSnapshotJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3853,6 +4034,138 @@ open class Client : AlibabacloudOpenApi.Client {
     public func queryRtmpKey(_ request: QueryRtmpKeyRequest) async throws -> QueryRtmpKeyResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await queryRtmpKeyWithOptions(request as! QueryRtmpKeyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryStreamPushJobWithOptions(_ request: QueryStreamPushJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryStreamPushJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryStreamPushJob",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryStreamPushJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryStreamPushJob(_ request: QueryStreamPushJobRequest) async throws -> QueryStreamPushJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryStreamPushJobWithOptions(request as! QueryStreamPushJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryStreamPushJobListWithOptions(_ request: QueryStreamPushJobListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryStreamPushJobListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobType)) {
+            query["JobType"] = request.jobType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryStreamPushJobList",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryStreamPushJobListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryStreamPushJobList(_ request: QueryStreamPushJobListRequest) async throws -> QueryStreamPushJobListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryStreamPushJobListWithOptions(request as! QueryStreamPushJobListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryStreamSnapshotJobWithOptions(_ request: QueryStreamSnapshotJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryStreamSnapshotJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deviceName)) {
+            query["DeviceName"] = request.deviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotId)) {
+            query["IotId"] = request.iotId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.iotInstanceId)) {
+            query["IotInstanceId"] = request.iotInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.productKey)) {
+            query["ProductKey"] = request.productKey ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryStreamSnapshotJob",
+            "version": "2018-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryStreamSnapshotJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryStreamSnapshotJob(_ request: QueryStreamSnapshotJobRequest) async throws -> QueryStreamSnapshotJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryStreamSnapshotJobWithOptions(request as! QueryStreamSnapshotJobRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
