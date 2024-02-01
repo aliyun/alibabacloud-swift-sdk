@@ -451,6 +451,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getQuotaApplicationApprovalWithOptions(_ request: GetQuotaApplicationApprovalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQuotaApplicationApprovalResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            body["ApplicationId"] = request.applicationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetQuotaApplicationApproval",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetQuotaApplicationApprovalResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getQuotaApplicationApproval(_ request: GetQuotaApplicationApprovalRequest) async throws -> GetQuotaApplicationApprovalResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getQuotaApplicationApprovalWithOptions(request as! GetQuotaApplicationApprovalRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getQuotaTemplateServiceStatusWithOptions(_ request: GetQuotaTemplateServiceStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetQuotaTemplateServiceStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -1075,6 +1106,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyTemplateQuotaItem(_ request: ModifyTemplateQuotaItemRequest) async throws -> ModifyTemplateQuotaItemResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyTemplateQuotaItemWithOptions(request as! ModifyTemplateQuotaItemRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func remindQuotaApplicationApprovalWithOptions(_ request: RemindQuotaApplicationApprovalRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemindQuotaApplicationApprovalResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.applicationId)) {
+            body["ApplicationId"] = request.applicationId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemindQuotaApplicationApproval",
+            "version": "2020-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemindQuotaApplicationApprovalResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func remindQuotaApplicationApproval(_ request: RemindQuotaApplicationApprovalRequest) async throws -> RemindQuotaApplicationApprovalResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await remindQuotaApplicationApprovalWithOptions(request as! RemindQuotaApplicationApprovalRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

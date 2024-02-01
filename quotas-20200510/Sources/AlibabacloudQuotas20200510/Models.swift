@@ -2688,6 +2688,243 @@ public class GetQuotaApplicationResponse : Tea.TeaModel {
     }
 }
 
+public class GetQuotaApplicationApprovalRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
+            self.applicationId = dict["ApplicationId"] as! String
+        }
+    }
+}
+
+public class GetQuotaApplicationApprovalResponseBody : Tea.TeaModel {
+    public class Module : Tea.TeaModel {
+        public var approvalHours: Int32?
+
+        public var reminderIntervalHours: Int32?
+
+        public var supportReminder: Bool?
+
+        public var unsupportReminderReason: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.approvalHours != nil {
+                map["ApprovalHours"] = self.approvalHours!
+            }
+            if self.reminderIntervalHours != nil {
+                map["ReminderIntervalHours"] = self.reminderIntervalHours!
+            }
+            if self.supportReminder != nil {
+                map["SupportReminder"] = self.supportReminder!
+            }
+            if self.unsupportReminderReason != nil {
+                map["UnsupportReminderReason"] = self.unsupportReminderReason!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ApprovalHours") && dict["ApprovalHours"] != nil {
+                self.approvalHours = dict["ApprovalHours"] as! Int32
+            }
+            if dict.keys.contains("ReminderIntervalHours") && dict["ReminderIntervalHours"] != nil {
+                self.reminderIntervalHours = dict["ReminderIntervalHours"] as! Int32
+            }
+            if dict.keys.contains("SupportReminder") && dict["SupportReminder"] != nil {
+                self.supportReminder = dict["SupportReminder"] as! Bool
+            }
+            if dict.keys.contains("UnsupportReminderReason") && dict["UnsupportReminderReason"] != nil {
+                self.unsupportReminderReason = dict["UnsupportReminderReason"] as! String
+            }
+        }
+    }
+    public var allowRetry: Bool?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpStatusCode: Int32?
+
+    public var module: GetQuotaApplicationApprovalResponseBody.Module?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.module?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.module != nil {
+            map["Module"] = self.module?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowRetry") && dict["AllowRetry"] != nil {
+            self.allowRetry = dict["AllowRetry"] as! Bool
+        }
+        if dict.keys.contains("DynamicCode") && dict["DynamicCode"] != nil {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") && dict["DynamicMessage"] != nil {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorArgs") && dict["ErrorArgs"] != nil {
+            self.errorArgs = dict["ErrorArgs"] as! [Any]
+        }
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMsg") && dict["ErrorMsg"] != nil {
+            self.errorMsg = dict["ErrorMsg"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Module") && dict["Module"] != nil {
+            var model = GetQuotaApplicationApprovalResponseBody.Module()
+            model.fromMap(dict["Module"] as! [String: Any])
+            self.module = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetQuotaApplicationApprovalResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetQuotaApplicationApprovalResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetQuotaApplicationApprovalResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetQuotaTemplateServiceStatusRequest : Tea.TeaModel {
     public var resourceDirectoryId: String?
 
@@ -3665,6 +3902,45 @@ public class ListProductQuotaDimensionsRequest : Tea.TeaModel {
 public class ListProductQuotaDimensionsResponseBody : Tea.TeaModel {
     public class QuotaDimensions : Tea.TeaModel {
         public class DimensionValueDetail : Tea.TeaModel {
+            public class DependentDimensions : Tea.TeaModel {
+                public var key: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.key != nil {
+                        map["Key"] = self.key!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Key") && dict["Key"] != nil {
+                        self.key = dict["Key"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var dependentDimensions: [ListProductQuotaDimensionsResponseBody.QuotaDimensions.DimensionValueDetail.DependentDimensions]?
+
             public var name: String?
 
             public var value: String?
@@ -3683,6 +3959,13 @@ public class ListProductQuotaDimensionsResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.dependentDimensions != nil {
+                    var tmp : [Any] = []
+                    for k in self.dependentDimensions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["DependentDimensions"] = tmp
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -3693,6 +3976,17 @@ public class ListProductQuotaDimensionsResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DependentDimensions") && dict["DependentDimensions"] != nil {
+                    var tmp : [ListProductQuotaDimensionsResponseBody.QuotaDimensions.DimensionValueDetail.DependentDimensions] = []
+                    for v in dict["DependentDimensions"] as! [Any] {
+                        var model = ListProductQuotaDimensionsResponseBody.QuotaDimensions.DimensionValueDetail.DependentDimensions()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.dependentDimensions = tmp
+                }
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
                 }
@@ -7244,6 +7538,187 @@ public class ModifyTemplateQuotaItemResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyTemplateQuotaItemResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class RemindQuotaApplicationApprovalRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
+            self.applicationId = dict["ApplicationId"] as! String
+        }
+    }
+}
+
+public class RemindQuotaApplicationApprovalResponseBody : Tea.TeaModel {
+    public var allowRetry: Bool?
+
+    public var dynamicCode: String?
+
+    public var dynamicMessage: String?
+
+    public var errorArgs: [Any]?
+
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var httpStatusCode: Int32?
+
+    public var module: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.allowRetry != nil {
+            map["AllowRetry"] = self.allowRetry!
+        }
+        if self.dynamicCode != nil {
+            map["DynamicCode"] = self.dynamicCode!
+        }
+        if self.dynamicMessage != nil {
+            map["DynamicMessage"] = self.dynamicMessage!
+        }
+        if self.errorArgs != nil {
+            map["ErrorArgs"] = self.errorArgs!
+        }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["ErrorMsg"] = self.errorMsg!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AllowRetry") && dict["AllowRetry"] != nil {
+            self.allowRetry = dict["AllowRetry"] as! Bool
+        }
+        if dict.keys.contains("DynamicCode") && dict["DynamicCode"] != nil {
+            self.dynamicCode = dict["DynamicCode"] as! String
+        }
+        if dict.keys.contains("DynamicMessage") && dict["DynamicMessage"] != nil {
+            self.dynamicMessage = dict["DynamicMessage"] as! String
+        }
+        if dict.keys.contains("ErrorArgs") && dict["ErrorArgs"] != nil {
+            self.errorArgs = dict["ErrorArgs"] as! [Any]
+        }
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMsg") && dict["ErrorMsg"] != nil {
+            self.errorMsg = dict["ErrorMsg"] as! String
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Module") && dict["Module"] != nil {
+            self.module = dict["Module"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class RemindQuotaApplicationApprovalResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RemindQuotaApplicationApprovalResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = RemindQuotaApplicationApprovalResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
