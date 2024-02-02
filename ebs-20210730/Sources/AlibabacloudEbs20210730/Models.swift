@@ -106,9 +106,6 @@ public class AddDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -188,9 +185,6 @@ public class ApplyLensServiceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -324,9 +318,6 @@ public class BindEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -406,9 +397,6 @@ public class CancelLensServiceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -550,9 +538,6 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -678,9 +663,6 @@ public class ClearPairDrillResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -806,9 +788,6 @@ public class ClearReplicaGroupDrillResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1055,9 +1034,6 @@ public class CreateDedicatedBlockStorageClusterResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1304,9 +1280,6 @@ public class CreateDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1601,9 +1574,6 @@ public class CreateDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2339,9 +2309,6 @@ public class CreateEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2467,9 +2434,6 @@ public class DeleteDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2595,9 +2559,6 @@ public class DeleteDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2723,9 +2684,6 @@ public class DeleteEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3261,9 +3219,6 @@ public class DescribeDedicatedBlockStorageClusterDisksResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3904,9 +3859,6 @@ public class DescribeDedicatedBlockStorageClustersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4185,9 +4137,6 @@ public class DescribeDiskEventsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4458,9 +4407,6 @@ public class DescribeDiskMonitorDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4699,9 +4645,6 @@ public class DescribeDiskMonitorDataListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5206,9 +5149,6 @@ public class DescribeDiskReplicaGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5342,9 +5282,6 @@ public class DescribeDiskReplicaPairProgressResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5905,9 +5842,6 @@ public class DescribeDiskReplicaPairsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6686,9 +6620,6 @@ public class DescribeEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6776,9 +6707,6 @@ public class DescribeLensServiceStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6993,9 +6921,6 @@ public class DescribeMetricDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7282,9 +7207,6 @@ public class DescribePairDrillsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7540,9 +7462,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7886,9 +7805,6 @@ public class DescribeReplicaGroupDrillsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8014,9 +7930,6 @@ public class FailoverDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8142,9 +8055,6 @@ public class FailoverDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8424,9 +8334,6 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8568,9 +8475,6 @@ public class ModifyDedicatedBlockStorageClusterAttributeResponse : Tea.TeaModel 
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8728,9 +8632,6 @@ public class ModifyDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8888,9 +8789,6 @@ public class ModifyDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8917,6 +8815,292 @@ public class ModifyDiskReplicaPairResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyDiskReplicaPairResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class QueryDedicatedBlockStorageClusterInventoryDataRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dbscId: String?
+
+    public var endTime: Int64?
+
+    public var period: Int32?
+
+    public var regionId: String?
+
+    public var startTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dbscId != nil {
+            map["DbscId"] = self.dbscId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DbscId") && dict["DbscId"] != nil {
+            self.dbscId = dict["DbscId"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("Period") && dict["Period"] != nil {
+            self.period = dict["Period"] as! Int32
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+    }
+}
+
+public class QueryDedicatedBlockStorageClusterInventoryDataResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class MonitorItems : Tea.TeaModel {
+            public var availableSize: Int64?
+
+            public var totalSize: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.availableSize != nil {
+                    map["AvailableSize"] = self.availableSize!
+                }
+                if self.totalSize != nil {
+                    map["TotalSize"] = self.totalSize!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AvailableSize") && dict["AvailableSize"] != nil {
+                    self.availableSize = dict["AvailableSize"] as! Int64
+                }
+                if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+                    self.totalSize = dict["TotalSize"] as! Int64
+                }
+            }
+        }
+        public var monitorItems: QueryDedicatedBlockStorageClusterInventoryDataResponseBody.Data.MonitorItems?
+
+        public var resourceId: String?
+
+        public var timestamp: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.monitorItems?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.monitorItems != nil {
+                map["MonitorItems"] = self.monitorItems?.toMap()
+            }
+            if self.resourceId != nil {
+                map["ResourceId"] = self.resourceId!
+            }
+            if self.timestamp != nil {
+                map["Timestamp"] = self.timestamp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MonitorItems") && dict["MonitorItems"] != nil {
+                var model = QueryDedicatedBlockStorageClusterInventoryDataResponseBody.Data.MonitorItems()
+                model.fromMap(dict["MonitorItems"] as! [String: Any])
+                self.monitorItems = model
+            }
+            if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+                self.resourceId = dict["ResourceId"] as! String
+            }
+            if dict.keys.contains("Timestamp") && dict["Timestamp"] != nil {
+                self.timestamp = dict["Timestamp"] as! String
+            }
+        }
+    }
+    public var data: [QueryDedicatedBlockStorageClusterInventoryDataResponseBody.Data]?
+
+    public var dbscId: String?
+
+    public var dbscName: String?
+
+    public var diskCategory: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.dbscId != nil {
+            map["DbscId"] = self.dbscId!
+        }
+        if self.dbscName != nil {
+            map["DbscName"] = self.dbscName!
+        }
+        if self.diskCategory != nil {
+            map["DiskCategory"] = self.diskCategory!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [QueryDedicatedBlockStorageClusterInventoryDataResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = QueryDedicatedBlockStorageClusterInventoryDataResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("DbscId") && dict["DbscId"] != nil {
+            self.dbscId = dict["DbscId"] as! String
+        }
+        if dict.keys.contains("DbscName") && dict["DbscName"] != nil {
+            self.dbscName = dict["DbscName"] as! String
+        }
+        if dict.keys.contains("DiskCategory") && dict["DiskCategory"] != nil {
+            self.diskCategory = dict["DiskCategory"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class QueryDedicatedBlockStorageClusterInventoryDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryDedicatedBlockStorageClusterInventoryDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryDedicatedBlockStorageClusterInventoryDataResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -9024,9 +9208,6 @@ public class RemoveDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9160,9 +9341,6 @@ public class ReprotectDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9296,9 +9474,6 @@ public class ReprotectDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9325,164 +9500,6 @@ public class ReprotectDiskReplicaPairResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ReprotectDiskReplicaPairResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class StartDiskMonitorRequest : Tea.TeaModel {
-    public var diskIds: [String]?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.diskIds != nil {
-            map["DiskIds"] = self.diskIds!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DiskIds") && dict["DiskIds"] != nil {
-            self.diskIds = dict["DiskIds"] as! [String]
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class StartDiskMonitorShrinkRequest : Tea.TeaModel {
-    public var diskIdsShrink: String?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.diskIdsShrink != nil {
-            map["DiskIds"] = self.diskIdsShrink!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DiskIds") && dict["DiskIds"] != nil {
-            self.diskIdsShrink = dict["DiskIds"] as! String
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class StartDiskMonitorResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class StartDiskMonitorResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: StartDiskMonitorResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = StartDiskMonitorResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -9590,9 +9607,6 @@ public class StartDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9726,9 +9740,6 @@ public class StartDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9862,9 +9873,6 @@ public class StartPairDrillResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9998,9 +10006,6 @@ public class StartReplicaGroupDrillResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10027,164 +10032,6 @@ public class StartReplicaGroupDrillResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = StartReplicaGroupDrillResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class StopDiskMonitorRequest : Tea.TeaModel {
-    public var diskIds: [String]?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.diskIds != nil {
-            map["DiskIds"] = self.diskIds!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DiskIds") && dict["DiskIds"] != nil {
-            self.diskIds = dict["DiskIds"] as! [String]
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class StopDiskMonitorShrinkRequest : Tea.TeaModel {
-    public var diskIdsShrink: String?
-
-    public var regionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.diskIdsShrink != nil {
-            map["DiskIds"] = self.diskIdsShrink!
-        }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DiskIds") && dict["DiskIds"] != nil {
-            self.diskIdsShrink = dict["DiskIds"] as! String
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
-    }
-}
-
-public class StopDiskMonitorResponseBody : Tea.TeaModel {
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class StopDiskMonitorResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: StopDiskMonitorResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = StopDiskMonitorResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -10284,9 +10131,6 @@ public class StopDiskReplicaGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10412,9 +10256,6 @@ public class StopDiskReplicaPairResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10605,9 +10446,6 @@ public class TagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10741,9 +10579,6 @@ public class UnbindEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10893,9 +10728,6 @@ public class UntagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11493,9 +11325,6 @@ public class UpdateEnterpriseSnapshotPolicyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11637,9 +11466,6 @@ public class UpdateSolutionInstanceAttributeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
