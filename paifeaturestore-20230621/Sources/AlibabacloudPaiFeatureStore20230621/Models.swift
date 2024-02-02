@@ -8913,6 +8913,8 @@ public class ListProjectFeatureViewsResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var type: String?
+
         public override init() {
             super.init()
         }
@@ -8940,6 +8942,9 @@ public class ListProjectFeatureViewsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
             return map
         }
 
@@ -8960,6 +8965,9 @@ public class ListProjectFeatureViewsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Type") && dict["Type"] != nil {
+                self.type = dict["Type"] as! String
             }
         }
     }
