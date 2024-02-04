@@ -521,9 +521,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.idFaceQuality)) {
             query["IdFaceQuality"] = request.idFaceQuality ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
-            query["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
         }
@@ -542,8 +539,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.spoof)) {
             query["Spoof"] = request.spoof ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
+            body["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DocOcr",
@@ -585,14 +587,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.docType)) {
             query["DocType"] = request.docType ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
-            query["FacePictureBase64"] = request.facePictureBase64 ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
-            query["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.idOcrPictureUrl)) {
             query["IdOcrPictureUrl"] = request.idOcrPictureUrl ?? "";
@@ -606,8 +602,16 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
+            body["FacePictureBase64"] = request.facePictureBase64 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.idOcrPictureBase64)) {
+            body["IdOcrPictureBase64"] = request.idOcrPictureBase64 ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "EkycVerify",
@@ -637,20 +641,22 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.merchantBizId)) {
             query["MerchantBizId"] = request.merchantBizId ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.sourceFacePicture)) {
-            query["SourceFacePicture"] = request.sourceFacePicture ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.sourceFacePictureUrl)) {
             query["SourceFacePictureUrl"] = request.sourceFacePictureUrl ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.targetFacePicture)) {
-            query["TargetFacePicture"] = request.targetFacePicture ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.targetFacePictureUrl)) {
             query["TargetFacePictureUrl"] = request.targetFacePictureUrl ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.sourceFacePicture)) {
+            body["SourceFacePicture"] = request.sourceFacePicture ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetFacePicture)) {
+            body["TargetFacePicture"] = request.targetFacePicture ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "FaceCompare",
@@ -829,9 +835,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.docType)) {
             query["DocType"] = request.docType ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
-            query["FacePictureBase64"] = request.facePictureBase64 ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
         }
@@ -880,11 +883,19 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.sceneCode)) {
             query["SceneCode"] = request.sceneCode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.securityLevel)) {
+            query["SecurityLevel"] = request.securityLevel ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceLevel)) {
             query["ServiceLevel"] = request.serviceLevel ?? "";
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
+            body["FacePictureBase64"] = request.facePictureBase64 ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "Initialize",

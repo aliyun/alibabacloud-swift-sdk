@@ -4862,6 +4862,8 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var sceneCode: String?
 
+    public var securityLevel: String?
+
     public var serviceLevel: String?
 
     public override init() {
@@ -4947,6 +4949,9 @@ public class InitializeRequest : Tea.TeaModel {
         if self.sceneCode != nil {
             map["SceneCode"] = self.sceneCode!
         }
+        if self.securityLevel != nil {
+            map["SecurityLevel"] = self.securityLevel!
+        }
         if self.serviceLevel != nil {
             map["ServiceLevel"] = self.serviceLevel!
         }
@@ -5022,6 +5027,9 @@ public class InitializeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SceneCode") && dict["SceneCode"] != nil {
             self.sceneCode = dict["SceneCode"] as! String
+        }
+        if dict.keys.contains("SecurityLevel") && dict["SecurityLevel"] != nil {
+            self.securityLevel = dict["SecurityLevel"] as! String
         }
         if dict.keys.contains("ServiceLevel") && dict["ServiceLevel"] != nil {
             self.serviceLevel = dict["ServiceLevel"] as! String
