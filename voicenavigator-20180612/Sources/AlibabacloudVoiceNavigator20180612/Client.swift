@@ -36,6 +36,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nluServiceParamsJson)) {
+            query["NluServiceParamsJson"] = request.nluServiceParamsJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nluServiceType)) {
+            query["NluServiceType"] = request.nluServiceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unionSource)) {
+            query["UnionSource"] = request.unionSource ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -64,8 +73,23 @@ open class Client : AlibabacloudOpenApi.Client {
     public func auditTTSVoiceWithOptions(_ request: AuditTTSVoiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AuditTTSVoiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessKey)) {
+            query["AccessKey"] = request.accessKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appKey)) {
+            query["AppKey"] = request.appKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pitchRate)) {
+            query["PitchRate"] = request.pitchRate ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secretKey)) {
+            query["SecretKey"] = request.secretKey ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.speechRate)) {
             query["SpeechRate"] = request.speechRate ?? "";
@@ -153,6 +177,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func collectedNumberWithOptions(_ request: CollectedNumberRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CollectedNumberResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.additionalContext)) {
+            query["AdditionalContext"] = request.additionalContext ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.conversationId)) {
             query["ConversationId"] = request.conversationId ?? "";
         }
@@ -229,6 +256,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nluServiceParamsJson)) {
+            query["NluServiceParamsJson"] = request.nluServiceParamsJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unionInstanceId)) {
+            query["UnionInstanceId"] = request.unionInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.unionSource)) {
+            query["UnionSource"] = request.unionSource ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -802,6 +838,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.options)) {
             query["Options"] = request.options ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.result)) {
+            query["Result"] = request.result!;
+        }
         if (!TeaUtils.Client.isUnset(request.roundsLeftRange)) {
             query["RoundsLeftRange"] = request.roundsLeftRange!;
         }
@@ -1364,6 +1403,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.appKey)) {
             query["AppKey"] = request.appKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engine)) {
+            query["Engine"] = request.engine ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.engineXunfei)) {
+            query["EngineXunfei"] = request.engineXunfei ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
