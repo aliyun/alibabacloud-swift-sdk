@@ -10,6 +10,8 @@ public class AbolishApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -32,6 +34,9 @@ public class AbolishApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -44,6 +49,9 @@ public class AbolishApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -137,6 +145,8 @@ public class AbolishApiForInnerRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -162,6 +172,9 @@ public class AbolishApiForInnerRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -177,6 +190,9 @@ public class AbolishApiForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
