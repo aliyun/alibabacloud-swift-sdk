@@ -2552,6 +2552,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBNodeStorage)) {
             query["DBNodeStorage"] = request.DBNodeStorage ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.dbNodeStorageType)) {
+            query["DbNodeStorageType"] = request.dbNodeStorageType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
