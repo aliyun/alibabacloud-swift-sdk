@@ -3344,6 +3344,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
             query["DBClusterId"] = request.DBClusterId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBEndpointId)) {
+            query["DBEndpointId"] = request.DBEndpointId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
@@ -7611,58 +7614,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func untagResources(_ request: UntagResourcesRequest) async throws -> UntagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await untagResourcesWithOptions(request as! UntagResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func upgradeDBClusterMinorVersionWithOptions(_ request: UpgradeDBClusterMinorVersionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeDBClusterMinorVersionResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
-            query["DBClusterId"] = request.DBClusterId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.fromTimeService)) {
-            query["FromTimeService"] = request.fromTimeService!;
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
-            query["OwnerAccount"] = request.ownerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.ownerId)) {
-            query["OwnerId"] = request.ownerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.plannedEndTime)) {
-            query["PlannedEndTime"] = request.plannedEndTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.plannedStartTime)) {
-            query["PlannedStartTime"] = request.plannedStartTime ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
-            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
-            query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UpgradeDBClusterMinorVersion",
-            "version": "2017-08-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UpgradeDBClusterMinorVersionResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func upgradeDBClusterMinorVersion(_ request: UpgradeDBClusterMinorVersionRequest) async throws -> UpgradeDBClusterMinorVersionResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await upgradeDBClusterMinorVersionWithOptions(request as! UpgradeDBClusterMinorVersionRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
