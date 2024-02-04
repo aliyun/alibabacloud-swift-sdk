@@ -70580,17 +70580,23 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
             }
         }
         public class PassengerList : Tea.TeaModel {
+            public var applyId: String?
+
             public var costCenterId: Int64?
 
             public var costCenterName: String?
 
             public var costCenterNumber: String?
 
+            public var itineraryId: String?
+
             public var projectCode: String?
 
             public var projectId: Int64?
 
             public var projectTitle: String?
+
+            public var thirdpartApplyId: String?
 
             public var thirdpartCostCenterId: String?
 
@@ -70616,6 +70622,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.applyId != nil {
+                    map["apply_id"] = self.applyId!
+                }
                 if self.costCenterId != nil {
                     map["cost_center_id"] = self.costCenterId!
                 }
@@ -70625,6 +70634,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 if self.costCenterNumber != nil {
                     map["cost_center_number"] = self.costCenterNumber!
                 }
+                if self.itineraryId != nil {
+                    map["itinerary_id"] = self.itineraryId!
+                }
                 if self.projectCode != nil {
                     map["project_code"] = self.projectCode!
                 }
@@ -70633,6 +70645,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if self.projectTitle != nil {
                     map["project_title"] = self.projectTitle!
+                }
+                if self.thirdpartApplyId != nil {
+                    map["thirdpart_apply_id"] = self.thirdpartApplyId!
                 }
                 if self.thirdpartCostCenterId != nil {
                     map["thirdpart_cost_center_id"] = self.thirdpartCostCenterId!
@@ -70653,6 +70668,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("apply_id") && dict["apply_id"] != nil {
+                    self.applyId = dict["apply_id"] as! String
+                }
                 if dict.keys.contains("cost_center_id") && dict["cost_center_id"] != nil {
                     self.costCenterId = dict["cost_center_id"] as! Int64
                 }
@@ -70662,6 +70680,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 if dict.keys.contains("cost_center_number") && dict["cost_center_number"] != nil {
                     self.costCenterNumber = dict["cost_center_number"] as! String
                 }
+                if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
+                    self.itineraryId = dict["itinerary_id"] as! String
+                }
                 if dict.keys.contains("project_code") && dict["project_code"] != nil {
                     self.projectCode = dict["project_code"] as! String
                 }
@@ -70670,6 +70691,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("project_title") && dict["project_title"] != nil {
                     self.projectTitle = dict["project_title"] as! String
+                }
+                if dict.keys.contains("thirdpart_apply_id") && dict["thirdpart_apply_id"] != nil {
+                    self.thirdpartApplyId = dict["thirdpart_apply_id"] as! String
                 }
                 if dict.keys.contains("thirdpart_cost_center_id") && dict["thirdpart_cost_center_id"] != nil {
                     self.thirdpartCostCenterId = dict["thirdpart_cost_center_id"] as! String
