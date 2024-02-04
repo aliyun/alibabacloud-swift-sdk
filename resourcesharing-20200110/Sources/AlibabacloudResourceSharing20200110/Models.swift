@@ -40,6 +40,12 @@ public class AcceptResourceShareInvitationResponseBody : Tea.TeaModel {
         public class AcceptInvitationFailedDetails : Tea.TeaModel {
             public var associateType: String?
 
+            public var failureDescription: String?
+
+            public var failureReason: String?
+
+            public var operationType: String?
+
             public var resourceId: String?
 
             public var resourceType: String?
@@ -65,6 +71,15 @@ public class AcceptResourceShareInvitationResponseBody : Tea.TeaModel {
                 if self.associateType != nil {
                     map["AssociateType"] = self.associateType!
                 }
+                if self.failureDescription != nil {
+                    map["FailureDescription"] = self.failureDescription!
+                }
+                if self.failureReason != nil {
+                    map["FailureReason"] = self.failureReason!
+                }
+                if self.operationType != nil {
+                    map["OperationType"] = self.operationType!
+                }
                 if self.resourceId != nil {
                     map["ResourceId"] = self.resourceId!
                 }
@@ -83,6 +98,15 @@ public class AcceptResourceShareInvitationResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AssociateType") && dict["AssociateType"] != nil {
                     self.associateType = dict["AssociateType"] as! String
+                }
+                if dict.keys.contains("FailureDescription") && dict["FailureDescription"] != nil {
+                    self.failureDescription = dict["FailureDescription"] as! String
+                }
+                if dict.keys.contains("FailureReason") && dict["FailureReason"] != nil {
+                    self.failureReason = dict["FailureReason"] as! String
+                }
+                if dict.keys.contains("OperationType") && dict["OperationType"] != nil {
+                    self.operationType = dict["OperationType"] as! String
                 }
                 if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
                     self.resourceId = dict["ResourceId"] as! String
@@ -251,9 +275,6 @@ public class AcceptResourceShareInvitationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -614,9 +635,6 @@ public class AssociateResourceShareResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -742,9 +760,6 @@ public class AssociateResourceSharePermissionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -870,9 +885,6 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -960,9 +972,6 @@ public class CheckSharingWithResourceDirectoryStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1298,9 +1307,6 @@ public class CreateResourceShareResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1410,9 +1416,6 @@ public class DeleteResourceShareResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1587,9 +1590,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1893,9 +1893,6 @@ public class DisassociateResourceShareResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2013,9 +2010,6 @@ public class DisassociateResourceSharePermissionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2095,9 +2089,6 @@ public class EnableSharingWithResourceDirectoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2311,9 +2302,6 @@ public class GetPermissionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2544,9 +2532,6 @@ public class ListPermissionVersionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2777,9 +2762,6 @@ public class ListPermissionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2899,6 +2881,12 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
 
             public var entityType: String?
 
+            public var failureDescription: String?
+
+            public var failureReason: String?
+
+            public var operationType: String?
+
             public var status: String?
 
             public var statusMessage: String?
@@ -2926,6 +2914,15 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
                 if self.entityType != nil {
                     map["EntityType"] = self.entityType!
                 }
+                if self.failureDescription != nil {
+                    map["FailureDescription"] = self.failureDescription!
+                }
+                if self.failureReason != nil {
+                    map["FailureReason"] = self.failureReason!
+                }
+                if self.operationType != nil {
+                    map["OperationType"] = self.operationType!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -2944,6 +2941,15 @@ public class ListResourceShareAssociationsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EntityType") && dict["EntityType"] != nil {
                     self.entityType = dict["EntityType"] as! String
+                }
+                if dict.keys.contains("FailureDescription") && dict["FailureDescription"] != nil {
+                    self.failureDescription = dict["FailureDescription"] as! String
+                }
+                if dict.keys.contains("FailureReason") && dict["FailureReason"] != nil {
+                    self.failureReason = dict["FailureReason"] as! String
+                }
+                if dict.keys.contains("OperationType") && dict["OperationType"] != nil {
+                    self.operationType = dict["OperationType"] as! String
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
@@ -3155,9 +3161,6 @@ public class ListResourceShareAssociationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3249,6 +3252,12 @@ public class ListResourceShareInvitationsResponseBody : Tea.TeaModel {
         public class InvitationFailedDetails : Tea.TeaModel {
             public var associateType: String?
 
+            public var failureDescription: String?
+
+            public var failureReason: String?
+
+            public var operationType: String?
+
             public var resourceId: String?
 
             public var resourceType: String?
@@ -3274,6 +3283,15 @@ public class ListResourceShareInvitationsResponseBody : Tea.TeaModel {
                 if self.associateType != nil {
                     map["AssociateType"] = self.associateType!
                 }
+                if self.failureDescription != nil {
+                    map["FailureDescription"] = self.failureDescription!
+                }
+                if self.failureReason != nil {
+                    map["FailureReason"] = self.failureReason!
+                }
+                if self.operationType != nil {
+                    map["OperationType"] = self.operationType!
+                }
                 if self.resourceId != nil {
                     map["ResourceId"] = self.resourceId!
                 }
@@ -3292,6 +3310,15 @@ public class ListResourceShareInvitationsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AssociateType") && dict["AssociateType"] != nil {
                     self.associateType = dict["AssociateType"] as! String
+                }
+                if dict.keys.contains("FailureDescription") && dict["FailureDescription"] != nil {
+                    self.failureDescription = dict["FailureDescription"] as! String
+                }
+                if dict.keys.contains("FailureReason") && dict["FailureReason"] != nil {
+                    self.failureReason = dict["FailureReason"] as! String
+                }
+                if dict.keys.contains("OperationType") && dict["OperationType"] != nil {
+                    self.operationType = dict["OperationType"] as! String
                 }
                 if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
                     self.resourceId = dict["ResourceId"] as! String
@@ -3477,9 +3504,6 @@ public class ListResourceShareInvitationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3718,9 +3742,6 @@ public class ListResourceSharePermissionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3983,9 +4004,6 @@ public class ListResourceSharesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4248,9 +4266,6 @@ public class ListSharedResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4505,9 +4520,6 @@ public class ListSharedTargetsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4705,9 +4717,6 @@ public class RejectResourceShareInvitationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4921,9 +4930,6 @@ public class UpdateResourceShareResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
