@@ -26396,6 +26396,8 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
 
     public var runtimeVersion: String?
 
+    public var useReplace: Bool?
+
     public override init() {
         super.init()
     }
@@ -26422,6 +26424,9 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
         if self.runtimeVersion != nil {
             map["runtime_version"] = self.runtimeVersion!
         }
+        if self.useReplace != nil {
+            map["use_replace"] = self.useReplace!
+        }
         return map
     }
 
@@ -26437,6 +26442,9 @@ public class UpgradeClusterNodepoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("runtime_version") && dict["runtime_version"] != nil {
             self.runtimeVersion = dict["runtime_version"] as! String
+        }
+        if dict.keys.contains("use_replace") && dict["use_replace"] != nil {
+            self.useReplace = dict["use_replace"] as! Bool
         }
     }
 }

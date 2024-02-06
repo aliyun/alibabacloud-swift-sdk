@@ -4715,6 +4715,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.runtimeVersion)) {
             body["runtime_version"] = request.runtimeVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useReplace)) {
+            body["use_replace"] = request.useReplace!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
