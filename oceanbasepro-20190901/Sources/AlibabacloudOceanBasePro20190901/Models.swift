@@ -12103,6 +12103,219 @@ public class DescribeAvailableZoneResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeBackupSetDownloadLinkRequest : Tea.TeaModel {
+    public var downloadTaskId: String?
+
+    public var instanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.downloadTaskId != nil {
+            map["DownloadTaskId"] = self.downloadTaskId!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DownloadTaskId") && dict["DownloadTaskId"] != nil {
+            self.downloadTaskId = dict["DownloadTaskId"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+    }
+}
+
+public class DescribeBackupSetDownloadLinkResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var backupRestorableTime: String?
+
+        public var backupSetId: String?
+
+        public var downloadTaskCreateTime: String?
+
+        public var downloadTaskId: Int64?
+
+        public var downloadTaskStatus: String?
+
+        public var internalUrl: String?
+
+        public var urlAliveTime: Int64?
+
+        public var urlExpiredTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backupRestorableTime != nil {
+                map["BackupRestorableTime"] = self.backupRestorableTime!
+            }
+            if self.backupSetId != nil {
+                map["BackupSetId"] = self.backupSetId!
+            }
+            if self.downloadTaskCreateTime != nil {
+                map["DownloadTaskCreateTime"] = self.downloadTaskCreateTime!
+            }
+            if self.downloadTaskId != nil {
+                map["DownloadTaskId"] = self.downloadTaskId!
+            }
+            if self.downloadTaskStatus != nil {
+                map["DownloadTaskStatus"] = self.downloadTaskStatus!
+            }
+            if self.internalUrl != nil {
+                map["InternalUrl"] = self.internalUrl!
+            }
+            if self.urlAliveTime != nil {
+                map["UrlAliveTime"] = self.urlAliveTime!
+            }
+            if self.urlExpiredTime != nil {
+                map["UrlExpiredTime"] = self.urlExpiredTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackupRestorableTime") && dict["BackupRestorableTime"] != nil {
+                self.backupRestorableTime = dict["BackupRestorableTime"] as! String
+            }
+            if dict.keys.contains("BackupSetId") && dict["BackupSetId"] != nil {
+                self.backupSetId = dict["BackupSetId"] as! String
+            }
+            if dict.keys.contains("DownloadTaskCreateTime") && dict["DownloadTaskCreateTime"] != nil {
+                self.downloadTaskCreateTime = dict["DownloadTaskCreateTime"] as! String
+            }
+            if dict.keys.contains("DownloadTaskId") && dict["DownloadTaskId"] != nil {
+                self.downloadTaskId = dict["DownloadTaskId"] as! Int64
+            }
+            if dict.keys.contains("DownloadTaskStatus") && dict["DownloadTaskStatus"] != nil {
+                self.downloadTaskStatus = dict["DownloadTaskStatus"] as! String
+            }
+            if dict.keys.contains("InternalUrl") && dict["InternalUrl"] != nil {
+                self.internalUrl = dict["InternalUrl"] as! String
+            }
+            if dict.keys.contains("UrlAliveTime") && dict["UrlAliveTime"] != nil {
+                self.urlAliveTime = dict["UrlAliveTime"] as! Int64
+            }
+            if dict.keys.contains("UrlExpiredTime") && dict["UrlExpiredTime"] != nil {
+                self.urlExpiredTime = dict["UrlExpiredTime"] as! String
+            }
+        }
+    }
+    public var data: DescribeBackupSetDownloadLinkResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = DescribeBackupSetDownloadLinkResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeBackupSetDownloadLinkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeBackupSetDownloadLinkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeBackupSetDownloadLinkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeCharsetRequest : Tea.TeaModel {
     public var instanceId: String?
 
