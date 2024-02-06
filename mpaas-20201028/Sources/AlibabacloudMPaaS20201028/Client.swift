@@ -4218,6 +4218,55 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryInfoFromMdpWithOptions(_ request: QueryInfoFromMdpRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryInfoFromMdpResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            body["AppId"] = request.appId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobile)) {
+            body["Mobile"] = request.mobile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobileMd5)) {
+            body["MobileMd5"] = request.mobileMd5 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.mobileSha256)) {
+            body["MobileSha256"] = request.mobileSha256 ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.riskScene)) {
+            body["RiskScene"] = request.riskScene ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tenantId)) {
+            body["TenantId"] = request.tenantId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryInfoFromMdp",
+            "version": "2020-10-28",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryInfoFromMdpResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryInfoFromMdp(_ request: QueryInfoFromMdpRequest) async throws -> QueryInfoFromMdpResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryInfoFromMdpWithOptions(request as! QueryInfoFromMdpRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryMappCenterAppWithOptions(_ request: QueryMappCenterAppRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryMappCenterAppResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
