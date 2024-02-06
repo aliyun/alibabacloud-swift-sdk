@@ -9627,6 +9627,328 @@ public class ApplyApproveResponse : Tea.TeaModel {
     }
 }
 
+public class ApplyExternalNodeStatusUpdateHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var xAcsBtripCorpToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.xAcsBtripCorpToken != nil {
+            map["x-acs-btrip-corp-token"] = self.xAcsBtripCorpToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("x-acs-btrip-corp-token") && dict["x-acs-btrip-corp-token"] != nil {
+            self.xAcsBtripCorpToken = dict["x-acs-btrip-corp-token"] as! String
+        }
+    }
+}
+
+public class ApplyExternalNodeStatusUpdateRequest : Tea.TeaModel {
+    public class OperationRecords : Tea.TeaModel {
+        public var comment: String?
+
+        public var operateTime: String?
+
+        public var operatorName: String?
+
+        public var result: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.comment != nil {
+                map["comment"] = self.comment!
+            }
+            if self.operateTime != nil {
+                map["operate_time"] = self.operateTime!
+            }
+            if self.operatorName != nil {
+                map["operator_name"] = self.operatorName!
+            }
+            if self.result != nil {
+                map["result"] = self.result!
+            }
+            if self.type != nil {
+                map["type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("comment") && dict["comment"] != nil {
+                self.comment = dict["comment"] as! String
+            }
+            if dict.keys.contains("operate_time") && dict["operate_time"] != nil {
+                self.operateTime = dict["operate_time"] as! String
+            }
+            if dict.keys.contains("operator_name") && dict["operator_name"] != nil {
+                self.operatorName = dict["operator_name"] as! String
+            }
+            if dict.keys.contains("result") && dict["result"] != nil {
+                self.result = dict["result"] as! String
+            }
+            if dict.keys.contains("type") && dict["type"] != nil {
+                self.type = dict["type"] as! String
+            }
+        }
+    }
+    public var nodeId: String?
+
+    public var operationRecords: [ApplyExternalNodeStatusUpdateRequest.OperationRecords]?
+
+    public var processActionResult: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeId != nil {
+            map["node_id"] = self.nodeId!
+        }
+        if self.operationRecords != nil {
+            var tmp : [Any] = []
+            for k in self.operationRecords! {
+                tmp.append(k.toMap())
+            }
+            map["operation_records"] = tmp
+        }
+        if self.processActionResult != nil {
+            map["process_action_result"] = self.processActionResult!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("node_id") && dict["node_id"] != nil {
+            self.nodeId = dict["node_id"] as! String
+        }
+        if dict.keys.contains("operation_records") && dict["operation_records"] != nil {
+            var tmp : [ApplyExternalNodeStatusUpdateRequest.OperationRecords] = []
+            for v in dict["operation_records"] as! [Any] {
+                var model = ApplyExternalNodeStatusUpdateRequest.OperationRecords()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.operationRecords = tmp
+        }
+        if dict.keys.contains("process_action_result") && dict["process_action_result"] != nil {
+            self.processActionResult = dict["process_action_result"] as! String
+        }
+    }
+}
+
+public class ApplyExternalNodeStatusUpdateShrinkRequest : Tea.TeaModel {
+    public var nodeId: String?
+
+    public var operationRecordsShrink: String?
+
+    public var processActionResult: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodeId != nil {
+            map["node_id"] = self.nodeId!
+        }
+        if self.operationRecordsShrink != nil {
+            map["operation_records"] = self.operationRecordsShrink!
+        }
+        if self.processActionResult != nil {
+            map["process_action_result"] = self.processActionResult!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("node_id") && dict["node_id"] != nil {
+            self.nodeId = dict["node_id"] as! String
+        }
+        if dict.keys.contains("operation_records") && dict["operation_records"] != nil {
+            self.operationRecordsShrink = dict["operation_records"] as! String
+        }
+        if dict.keys.contains("process_action_result") && dict["process_action_result"] != nil {
+            self.processActionResult = dict["process_action_result"] as! String
+        }
+    }
+}
+
+public class ApplyExternalNodeStatusUpdateResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var message: String?
+
+    public var module: Bool?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public var traceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.module != nil {
+            map["module"] = self.module!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        if self.traceId != nil {
+            map["traceId"] = self.traceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("module") && dict["module"] != nil {
+            self.module = dict["module"] as! Bool
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+        if dict.keys.contains("traceId") && dict["traceId"] != nil {
+            self.traceId = dict["traceId"] as! String
+        }
+    }
+}
+
+public class ApplyExternalNodeStatusUpdateResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ApplyExternalNodeStatusUpdateResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ApplyExternalNodeStatusUpdateResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ApplyInvoiceTaskHeaders : Tea.TeaModel {
     public var commonHeaders: [String: String]?
 

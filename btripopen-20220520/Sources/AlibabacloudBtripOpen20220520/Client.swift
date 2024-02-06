@@ -484,6 +484,57 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyExternalNodeStatusUpdateWithOptions(_ tmpReq: ApplyExternalNodeStatusUpdateRequest, _ headers: ApplyExternalNodeStatusUpdateHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyExternalNodeStatusUpdateResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ApplyExternalNodeStatusUpdateShrinkRequest = ApplyExternalNodeStatusUpdateShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.operationRecords)) {
+            request.operationRecordsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.operationRecords, "operation_records", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.nodeId)) {
+            body["node_id"] = request.nodeId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.operationRecordsShrink)) {
+            body["operation_records"] = request.operationRecordsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.processActionResult)) {
+            body["process_action_result"] = request.processActionResult ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ApplyExternalNodeStatusUpdate",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/apply/v1/external-nodes/action/status-update",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ApplyExternalNodeStatusUpdateResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func applyExternalNodeStatusUpdate(_ request: ApplyExternalNodeStatusUpdateRequest) async throws -> ApplyExternalNodeStatusUpdateResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: ApplyExternalNodeStatusUpdateHeaders = ApplyExternalNodeStatusUpdateHeaders([:])
+        return try await applyExternalNodeStatusUpdateWithOptions(request as! ApplyExternalNodeStatusUpdateRequest, headers as! ApplyExternalNodeStatusUpdateHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func applyInvoiceTaskWithOptions(_ tmpReq: ApplyInvoiceTaskRequest, _ headers: ApplyInvoiceTaskHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyInvoiceTaskResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ApplyInvoiceTaskShrinkRequest = ApplyInvoiceTaskShrinkRequest([:])
