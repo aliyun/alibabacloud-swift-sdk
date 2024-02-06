@@ -1512,6 +1512,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getStackWithOptions(_ request: GetStackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetStackResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endTime)) {
+            query["EndTime"] = request.endTime!;
+        }
         if (!TeaUtils.Client.isUnset(request.pid)) {
             query["Pid"] = request.pid ?? "";
         }
@@ -1520,6 +1523,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.rpcID)) {
             query["RpcID"] = request.rpcID ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTime)) {
+            query["StartTime"] = request.startTime!;
         }
         if (!TeaUtils.Client.isUnset(request.traceID)) {
             query["TraceID"] = request.traceID ?? "";
