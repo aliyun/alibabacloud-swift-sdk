@@ -1071,6 +1071,37 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLoginPreferenceWithOptions(_ request: GetLoginPreferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetLoginPreferenceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            query["DirectoryId"] = request.directoryId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetLoginPreference",
+            "version": "2021-05-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetLoginPreferenceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getLoginPreference(_ request: GetLoginPreferenceRequest) async throws -> GetLoginPreferenceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getLoginPreferenceWithOptions(request as! GetLoginPreferenceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getMFAAuthenticationSettingInfoWithOptions(_ request: GetMFAAuthenticationSettingInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetMFAAuthenticationSettingInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1161,6 +1192,37 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getMFAAuthenticationStatus(_ request: GetMFAAuthenticationStatusRequest) async throws -> GetMFAAuthenticationStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getMFAAuthenticationStatusWithOptions(request as! GetMFAAuthenticationStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPasswordPolicyWithOptions(_ request: GetPasswordPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPasswordPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            query["DirectoryId"] = request.directoryId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetPasswordPolicy",
+            "version": "2021-05-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetPasswordPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getPasswordPolicy(_ request: GetPasswordPolicyRequest) async throws -> GetPasswordPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getPasswordPolicyWithOptions(request as! GetPasswordPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2422,6 +2484,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setLoginPreferenceWithOptions(_ request: SetLoginPreferenceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetLoginPreferenceResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loginNetworkMasks)) {
+            query["LoginNetworkMasks"] = request.loginNetworkMasks ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetLoginPreference",
+            "version": "2021-05-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetLoginPreferenceResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setLoginPreference(_ request: SetLoginPreferenceRequest) async throws -> SetLoginPreferenceResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setLoginPreferenceWithOptions(request as! SetLoginPreferenceRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func setMFAAuthenticationStatusWithOptions(_ request: SetMFAAuthenticationStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetMFAAuthenticationStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2453,6 +2549,55 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setMFAAuthenticationStatus(_ request: SetMFAAuthenticationStatusRequest) async throws -> SetMFAAuthenticationStatusResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setMFAAuthenticationStatusWithOptions(request as! SetMFAAuthenticationStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setPasswordPolicyWithOptions(_ request: SetPasswordPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetPasswordPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.directoryId)) {
+            query["DirectoryId"] = request.directoryId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxLoginAttempts)) {
+            query["MaxLoginAttempts"] = request.maxLoginAttempts!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxPasswordAge)) {
+            query["MaxPasswordAge"] = request.maxPasswordAge!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minPasswordDifferentChars)) {
+            query["MinPasswordDifferentChars"] = request.minPasswordDifferentChars!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minPasswordLength)) {
+            query["MinPasswordLength"] = request.minPasswordLength!;
+        }
+        if (!TeaUtils.Client.isUnset(request.passwordNotContainUsername)) {
+            query["PasswordNotContainUsername"] = request.passwordNotContainUsername!;
+        }
+        if (!TeaUtils.Client.isUnset(request.passwordReusePrevention)) {
+            query["PasswordReusePrevention"] = request.passwordReusePrevention!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetPasswordPolicy",
+            "version": "2021-05-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetPasswordPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setPasswordPolicy(_ request: SetPasswordPolicyRequest) async throws -> SetPasswordPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setPasswordPolicyWithOptions(request as! SetPasswordPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
