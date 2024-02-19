@@ -4251,13 +4251,21 @@ public class DescribeDiskMonitorDataResponseBody : Tea.TeaModel {
 
         public var readBPS: Int64?
 
+        public var readBlockSize: Int64?
+
         public var readIOPS: Int64?
+
+        public var readLatency: Int64?
 
         public var timestamp: String?
 
         public var writeBPS: Int64?
 
+        public var writeBlockSize: Int64?
+
         public var writeIOPS: Int64?
+
+        public var writeLatency: Int64?
 
         public override init() {
             super.init()
@@ -4288,8 +4296,14 @@ public class DescribeDiskMonitorDataResponseBody : Tea.TeaModel {
             if self.readBPS != nil {
                 map["ReadBPS"] = self.readBPS!
             }
+            if self.readBlockSize != nil {
+                map["ReadBlockSize"] = self.readBlockSize!
+            }
             if self.readIOPS != nil {
                 map["ReadIOPS"] = self.readIOPS!
+            }
+            if self.readLatency != nil {
+                map["ReadLatency"] = self.readLatency!
             }
             if self.timestamp != nil {
                 map["Timestamp"] = self.timestamp!
@@ -4297,8 +4311,14 @@ public class DescribeDiskMonitorDataResponseBody : Tea.TeaModel {
             if self.writeBPS != nil {
                 map["WriteBPS"] = self.writeBPS!
             }
+            if self.writeBlockSize != nil {
+                map["WriteBlockSize"] = self.writeBlockSize!
+            }
             if self.writeIOPS != nil {
                 map["WriteIOPS"] = self.writeIOPS!
+            }
+            if self.writeLatency != nil {
+                map["WriteLatency"] = self.writeLatency!
             }
             return map
         }
@@ -4319,8 +4339,14 @@ public class DescribeDiskMonitorDataResponseBody : Tea.TeaModel {
             if dict.keys.contains("ReadBPS") && dict["ReadBPS"] != nil {
                 self.readBPS = dict["ReadBPS"] as! Int64
             }
+            if dict.keys.contains("ReadBlockSize") && dict["ReadBlockSize"] != nil {
+                self.readBlockSize = dict["ReadBlockSize"] as! Int64
+            }
             if dict.keys.contains("ReadIOPS") && dict["ReadIOPS"] != nil {
                 self.readIOPS = dict["ReadIOPS"] as! Int64
+            }
+            if dict.keys.contains("ReadLatency") && dict["ReadLatency"] != nil {
+                self.readLatency = dict["ReadLatency"] as! Int64
             }
             if dict.keys.contains("Timestamp") && dict["Timestamp"] != nil {
                 self.timestamp = dict["Timestamp"] as! String
@@ -4328,8 +4354,14 @@ public class DescribeDiskMonitorDataResponseBody : Tea.TeaModel {
             if dict.keys.contains("WriteBPS") && dict["WriteBPS"] != nil {
                 self.writeBPS = dict["WriteBPS"] as! Int64
             }
+            if dict.keys.contains("WriteBlockSize") && dict["WriteBlockSize"] != nil {
+                self.writeBlockSize = dict["WriteBlockSize"] as! Int64
+            }
             if dict.keys.contains("WriteIOPS") && dict["WriteIOPS"] != nil {
                 self.writeIOPS = dict["WriteIOPS"] as! Int64
+            }
+            if dict.keys.contains("WriteLatency") && dict["WriteLatency"] != nil {
+                self.writeLatency = dict["WriteLatency"] as! Int64
             }
         }
     }
@@ -5868,6 +5900,768 @@ public class DescribeDiskReplicaPairsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeDiskReplicaPairsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeDisksRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var category: String?
+
+    public var diskIds: String?
+
+    public var diskName: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var status: String?
+
+    public var tag: [DescribeDisksRequest.Tag]?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.category != nil {
+            map["Category"] = self.category!
+        }
+        if self.diskIds != nil {
+            map["DiskIds"] = self.diskIds!
+        }
+        if self.diskName != nil {
+            map["DiskName"] = self.diskName!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Category") && dict["Category"] != nil {
+            self.category = dict["Category"] as! String
+        }
+        if dict.keys.contains("DiskIds") && dict["DiskIds"] != nil {
+            self.diskIds = dict["DiskIds"] as! String
+        }
+        if dict.keys.contains("DiskName") && dict["DiskName"] != nil {
+            self.diskName = dict["DiskName"] as! String
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [DescribeDisksRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeDisksRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class DescribeDisksResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AccessAuthorization : Tea.TeaModel {
+            public class Ecs : Tea.TeaModel {
+                public var instanceId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                        self.instanceId = dict["InstanceId"] as! String
+                    }
+                }
+            }
+            public class Pod : Tea.TeaModel {
+                public var clusterId: String?
+
+                public var podId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clusterId != nil {
+                        map["ClusterId"] = self.clusterId!
+                    }
+                    if self.podId != nil {
+                        map["PodId"] = self.podId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
+                        self.clusterId = dict["ClusterId"] as! String
+                    }
+                    if dict.keys.contains("PodId") && dict["PodId"] != nil {
+                        self.podId = dict["PodId"] as! String
+                    }
+                }
+            }
+            public var accessToken: String?
+
+            public var ecs: DescribeDisksResponseBody.Data.AccessAuthorization.Ecs?
+
+            public var pod: DescribeDisksResponseBody.Data.AccessAuthorization.Pod?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.ecs?.validate()
+                try self.pod?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessToken != nil {
+                    map["AccessToken"] = self.accessToken!
+                }
+                if self.ecs != nil {
+                    map["Ecs"] = self.ecs?.toMap()
+                }
+                if self.pod != nil {
+                    map["Pod"] = self.pod?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessToken") && dict["AccessToken"] != nil {
+                    self.accessToken = dict["AccessToken"] as! String
+                }
+                if dict.keys.contains("Ecs") && dict["Ecs"] != nil {
+                    var model = DescribeDisksResponseBody.Data.AccessAuthorization.Ecs()
+                    model.fromMap(dict["Ecs"] as! [String: Any])
+                    self.ecs = model
+                }
+                if dict.keys.contains("Pod") && dict["Pod"] != nil {
+                    var model = DescribeDisksResponseBody.Data.AccessAuthorization.Pod()
+                    model.fromMap(dict["Pod"] as! [String: Any])
+                    self.pod = model
+                }
+            }
+        }
+        public class Attachments : Tea.TeaModel {
+            public var attachedTime: String?
+
+            public var instanceId: String?
+
+            public var namespaceId: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attachedTime != nil {
+                    map["AttachedTime"] = self.attachedTime!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.namespaceId != nil {
+                    map["NamespaceId"] = self.namespaceId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AttachedTime") && dict["AttachedTime"] != nil {
+                    self.attachedTime = dict["AttachedTime"] as! String
+                }
+                if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                    self.instanceId = dict["InstanceId"] as! String
+                }
+                if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
+                    self.namespaceId = dict["NamespaceId"] as! Int32
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
+        public var accessAuthorization: [DescribeDisksResponseBody.Data.AccessAuthorization]?
+
+        public var attachedTime: String?
+
+        public var attachments: [DescribeDisksResponseBody.Data.Attachments]?
+
+        public var burstingEnabled: Bool?
+
+        public var category: String?
+
+        public var creationTime: String?
+
+        public var description_: String?
+
+        public var detachedTime: String?
+
+        public var deviceNguid: String?
+
+        public var diskId: String?
+
+        public var diskName: String?
+
+        public var encrypted: Bool?
+
+        public var iops: Int64?
+
+        public var iopsRead: Int64?
+
+        public var iopsWrite: Int64?
+
+        public var kmsKeyId: String?
+
+        public var modifyAt: String?
+
+        public var performanceLevel: String?
+
+        public var provisionedIops: Int64?
+
+        public var regionId: String?
+
+        public var resourceGroupId: String?
+
+        public var size: Int64?
+
+        public var status: String?
+
+        public var tags: [DescribeDisksResponseBody.Data.Tags]?
+
+        public var throughput: Int64?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessAuthorization != nil {
+                var tmp : [Any] = []
+                for k in self.accessAuthorization! {
+                    tmp.append(k.toMap())
+                }
+                map["AccessAuthorization"] = tmp
+            }
+            if self.attachedTime != nil {
+                map["AttachedTime"] = self.attachedTime!
+            }
+            if self.attachments != nil {
+                var tmp : [Any] = []
+                for k in self.attachments! {
+                    tmp.append(k.toMap())
+                }
+                map["Attachments"] = tmp
+            }
+            if self.burstingEnabled != nil {
+                map["BurstingEnabled"] = self.burstingEnabled!
+            }
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.detachedTime != nil {
+                map["DetachedTime"] = self.detachedTime!
+            }
+            if self.deviceNguid != nil {
+                map["DeviceNguid"] = self.deviceNguid!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.diskName != nil {
+                map["DiskName"] = self.diskName!
+            }
+            if self.encrypted != nil {
+                map["Encrypted"] = self.encrypted!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
+            }
+            if self.iopsRead != nil {
+                map["IopsRead"] = self.iopsRead!
+            }
+            if self.iopsWrite != nil {
+                map["IopsWrite"] = self.iopsWrite!
+            }
+            if self.kmsKeyId != nil {
+                map["KmsKeyId"] = self.kmsKeyId!
+            }
+            if self.modifyAt != nil {
+                map["ModifyAt"] = self.modifyAt!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.provisionedIops != nil {
+                map["ProvisionedIops"] = self.provisionedIops!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.throughput != nil {
+                map["Throughput"] = self.throughput!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessAuthorization") && dict["AccessAuthorization"] != nil {
+                var tmp : [DescribeDisksResponseBody.Data.AccessAuthorization] = []
+                for v in dict["AccessAuthorization"] as! [Any] {
+                    var model = DescribeDisksResponseBody.Data.AccessAuthorization()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.accessAuthorization = tmp
+            }
+            if dict.keys.contains("AttachedTime") && dict["AttachedTime"] != nil {
+                self.attachedTime = dict["AttachedTime"] as! String
+            }
+            if dict.keys.contains("Attachments") && dict["Attachments"] != nil {
+                var tmp : [DescribeDisksResponseBody.Data.Attachments] = []
+                for v in dict["Attachments"] as! [Any] {
+                    var model = DescribeDisksResponseBody.Data.Attachments()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.attachments = tmp
+            }
+            if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
+                self.burstingEnabled = dict["BurstingEnabled"] as! Bool
+            }
+            if dict.keys.contains("Category") && dict["Category"] != nil {
+                self.category = dict["Category"] as! String
+            }
+            if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DetachedTime") && dict["DetachedTime"] != nil {
+                self.detachedTime = dict["DetachedTime"] as! String
+            }
+            if dict.keys.contains("DeviceNguid") && dict["DeviceNguid"] != nil {
+                self.deviceNguid = dict["DeviceNguid"] as! String
+            }
+            if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
+                self.diskId = dict["DiskId"] as! String
+            }
+            if dict.keys.contains("DiskName") && dict["DiskName"] != nil {
+                self.diskName = dict["DiskName"] as! String
+            }
+            if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
+                self.encrypted = dict["Encrypted"] as! Bool
+            }
+            if dict.keys.contains("Iops") && dict["Iops"] != nil {
+                self.iops = dict["Iops"] as! Int64
+            }
+            if dict.keys.contains("IopsRead") && dict["IopsRead"] != nil {
+                self.iopsRead = dict["IopsRead"] as! Int64
+            }
+            if dict.keys.contains("IopsWrite") && dict["IopsWrite"] != nil {
+                self.iopsWrite = dict["IopsWrite"] as! Int64
+            }
+            if dict.keys.contains("KmsKeyId") && dict["KmsKeyId"] != nil {
+                self.kmsKeyId = dict["KmsKeyId"] as! String
+            }
+            if dict.keys.contains("ModifyAt") && dict["ModifyAt"] != nil {
+                self.modifyAt = dict["ModifyAt"] as! String
+            }
+            if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
+                self.performanceLevel = dict["PerformanceLevel"] as! String
+            }
+            if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+                self.provisionedIops = dict["ProvisionedIops"] as! Int64
+            }
+            if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("Size") && dict["Size"] != nil {
+                self.size = dict["Size"] as! Int64
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [DescribeDisksResponseBody.Data.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeDisksResponseBody.Data.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+            if dict.keys.contains("Throughput") && dict["Throughput"] != nil {
+                self.throughput = dict["Throughput"] as! Int64
+            }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var data: [DescribeDisksResponseBody.Data]?
+
+    public var nextToken: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [DescribeDisksResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = DescribeDisksResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class DescribeDisksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDisksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeDisksResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -8081,6 +8875,598 @@ public class FailoverDiskReplicaPairResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = FailoverDiskReplicaPairResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetDiskRequest : Tea.TeaModel {
+    public var diskId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskId != nil {
+            map["DiskId"] = self.diskId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
+            self.diskId = dict["DiskId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class GetDiskResponseBody : Tea.TeaModel {
+    public class Disk : Tea.TeaModel {
+        public class AccessAuthorization : Tea.TeaModel {
+            public class Ecs : Tea.TeaModel {
+                public var instanceId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.instanceId != nil {
+                        map["InstanceId"] = self.instanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                        self.instanceId = dict["InstanceId"] as! String
+                    }
+                }
+            }
+            public class Pod : Tea.TeaModel {
+                public var clusterId: String?
+
+                public var podId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.clusterId != nil {
+                        map["ClusterId"] = self.clusterId!
+                    }
+                    if self.podId != nil {
+                        map["PodId"] = self.podId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
+                        self.clusterId = dict["ClusterId"] as! String
+                    }
+                    if dict.keys.contains("PodId") && dict["PodId"] != nil {
+                        self.podId = dict["PodId"] as! String
+                    }
+                }
+            }
+            public var accessToken: String?
+
+            public var ecs: GetDiskResponseBody.Disk.AccessAuthorization.Ecs?
+
+            public var pod: GetDiskResponseBody.Disk.AccessAuthorization.Pod?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.ecs?.validate()
+                try self.pod?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accessToken != nil {
+                    map["AccessToken"] = self.accessToken!
+                }
+                if self.ecs != nil {
+                    map["Ecs"] = self.ecs?.toMap()
+                }
+                if self.pod != nil {
+                    map["Pod"] = self.pod?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AccessToken") && dict["AccessToken"] != nil {
+                    self.accessToken = dict["AccessToken"] as! String
+                }
+                if dict.keys.contains("Ecs") && dict["Ecs"] != nil {
+                    var model = GetDiskResponseBody.Disk.AccessAuthorization.Ecs()
+                    model.fromMap(dict["Ecs"] as! [String: Any])
+                    self.ecs = model
+                }
+                if dict.keys.contains("Pod") && dict["Pod"] != nil {
+                    var model = GetDiskResponseBody.Disk.AccessAuthorization.Pod()
+                    model.fromMap(dict["Pod"] as! [String: Any])
+                    self.pod = model
+                }
+            }
+        }
+        public class Attachments : Tea.TeaModel {
+            public var attachedTime: String?
+
+            public var instanceId: String?
+
+            public var namespaceId: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.attachedTime != nil {
+                    map["AttachedTime"] = self.attachedTime!
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.namespaceId != nil {
+                    map["NamespaceId"] = self.namespaceId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AttachedTime") && dict["AttachedTime"] != nil {
+                    self.attachedTime = dict["AttachedTime"] as! String
+                }
+                if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                    self.instanceId = dict["InstanceId"] as! String
+                }
+                if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
+                    self.namespaceId = dict["NamespaceId"] as! Int32
+                }
+            }
+        }
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
+        public var accessAuthorization: [GetDiskResponseBody.Disk.AccessAuthorization]?
+
+        public var attachedTime: String?
+
+        public var attachments: [GetDiskResponseBody.Disk.Attachments]?
+
+        public var burstingEnabled: Bool?
+
+        public var category: String?
+
+        public var creationTime: String?
+
+        public var description_: String?
+
+        public var detachedTime: String?
+
+        public var deviceNguid: String?
+
+        public var diskId: String?
+
+        public var diskName: String?
+
+        public var encrypted: Bool?
+
+        public var iops: Int64?
+
+        public var iopsRead: Int64?
+
+        public var iopsWrite: Int64?
+
+        public var kmsKeyId: String?
+
+        public var modifyAt: String?
+
+        public var performanceLevel: String?
+
+        public var provisionedIops: Int64?
+
+        public var regionId: String?
+
+        public var resourceGroupId: String?
+
+        public var size: Int64?
+
+        public var status: String?
+
+        public var tags: [GetDiskResponseBody.Disk.Tags]?
+
+        public var throughput: Int64?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accessAuthorization != nil {
+                var tmp : [Any] = []
+                for k in self.accessAuthorization! {
+                    tmp.append(k.toMap())
+                }
+                map["AccessAuthorization"] = tmp
+            }
+            if self.attachedTime != nil {
+                map["AttachedTime"] = self.attachedTime!
+            }
+            if self.attachments != nil {
+                var tmp : [Any] = []
+                for k in self.attachments! {
+                    tmp.append(k.toMap())
+                }
+                map["Attachments"] = tmp
+            }
+            if self.burstingEnabled != nil {
+                map["BurstingEnabled"] = self.burstingEnabled!
+            }
+            if self.category != nil {
+                map["Category"] = self.category!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.detachedTime != nil {
+                map["DetachedTime"] = self.detachedTime!
+            }
+            if self.deviceNguid != nil {
+                map["DeviceNguid"] = self.deviceNguid!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.diskName != nil {
+                map["DiskName"] = self.diskName!
+            }
+            if self.encrypted != nil {
+                map["Encrypted"] = self.encrypted!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
+            }
+            if self.iopsRead != nil {
+                map["IopsRead"] = self.iopsRead!
+            }
+            if self.iopsWrite != nil {
+                map["IopsWrite"] = self.iopsWrite!
+            }
+            if self.kmsKeyId != nil {
+                map["KmsKeyId"] = self.kmsKeyId!
+            }
+            if self.modifyAt != nil {
+                map["ModifyAt"] = self.modifyAt!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.provisionedIops != nil {
+                map["ProvisionedIops"] = self.provisionedIops!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.throughput != nil {
+                map["Throughput"] = self.throughput!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AccessAuthorization") && dict["AccessAuthorization"] != nil {
+                var tmp : [GetDiskResponseBody.Disk.AccessAuthorization] = []
+                for v in dict["AccessAuthorization"] as! [Any] {
+                    var model = GetDiskResponseBody.Disk.AccessAuthorization()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.accessAuthorization = tmp
+            }
+            if dict.keys.contains("AttachedTime") && dict["AttachedTime"] != nil {
+                self.attachedTime = dict["AttachedTime"] as! String
+            }
+            if dict.keys.contains("Attachments") && dict["Attachments"] != nil {
+                var tmp : [GetDiskResponseBody.Disk.Attachments] = []
+                for v in dict["Attachments"] as! [Any] {
+                    var model = GetDiskResponseBody.Disk.Attachments()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.attachments = tmp
+            }
+            if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
+                self.burstingEnabled = dict["BurstingEnabled"] as! Bool
+            }
+            if dict.keys.contains("Category") && dict["Category"] != nil {
+                self.category = dict["Category"] as! String
+            }
+            if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("DetachedTime") && dict["DetachedTime"] != nil {
+                self.detachedTime = dict["DetachedTime"] as! String
+            }
+            if dict.keys.contains("DeviceNguid") && dict["DeviceNguid"] != nil {
+                self.deviceNguid = dict["DeviceNguid"] as! String
+            }
+            if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
+                self.diskId = dict["DiskId"] as! String
+            }
+            if dict.keys.contains("DiskName") && dict["DiskName"] != nil {
+                self.diskName = dict["DiskName"] as! String
+            }
+            if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
+                self.encrypted = dict["Encrypted"] as! Bool
+            }
+            if dict.keys.contains("Iops") && dict["Iops"] != nil {
+                self.iops = dict["Iops"] as! Int64
+            }
+            if dict.keys.contains("IopsRead") && dict["IopsRead"] != nil {
+                self.iopsRead = dict["IopsRead"] as! Int64
+            }
+            if dict.keys.contains("IopsWrite") && dict["IopsWrite"] != nil {
+                self.iopsWrite = dict["IopsWrite"] as! Int64
+            }
+            if dict.keys.contains("KmsKeyId") && dict["KmsKeyId"] != nil {
+                self.kmsKeyId = dict["KmsKeyId"] as! String
+            }
+            if dict.keys.contains("ModifyAt") && dict["ModifyAt"] != nil {
+                self.modifyAt = dict["ModifyAt"] as! String
+            }
+            if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
+                self.performanceLevel = dict["PerformanceLevel"] as! String
+            }
+            if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+                self.provisionedIops = dict["ProvisionedIops"] as! Int64
+            }
+            if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
+            }
+            if dict.keys.contains("Size") && dict["Size"] != nil {
+                self.size = dict["Size"] as! Int64
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [GetDiskResponseBody.Disk.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = GetDiskResponseBody.Disk.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+            if dict.keys.contains("Throughput") && dict["Throughput"] != nil {
+                self.throughput = dict["Throughput"] as! Int64
+            }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var disk: GetDiskResponseBody.Disk?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.disk?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.disk != nil {
+            map["Disk"] = self.disk?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Disk") && dict["Disk"] != nil {
+            var model = GetDiskResponseBody.Disk()
+            model.fromMap(dict["Disk"] as! [String: Any])
+            self.disk = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class GetDiskResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDiskResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetDiskResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
