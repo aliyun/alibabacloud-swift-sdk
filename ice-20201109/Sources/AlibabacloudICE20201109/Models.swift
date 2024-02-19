@@ -10567,6 +10567,16 @@ public class GetAvatarTrainingJobResponse : Tea.TeaModel {
 public class GetBatchMediaProducingJobRequest : Tea.TeaModel {
     public var jobId: String?
 
+    public var signature: String?
+
+    public var signatureMehtod: String?
+
+    public var signatureNonce: String?
+
+    public var signatureType: String?
+
+    public var signatureVersion: String?
+
     public override init() {
         super.init()
     }
@@ -10584,12 +10594,42 @@ public class GetBatchMediaProducingJobRequest : Tea.TeaModel {
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
+        if self.signature != nil {
+            map["Signature"] = self.signature!
+        }
+        if self.signatureMehtod != nil {
+            map["SignatureMehtod"] = self.signatureMehtod!
+        }
+        if self.signatureNonce != nil {
+            map["SignatureNonce"] = self.signatureNonce!
+        }
+        if self.signatureType != nil {
+            map["SignatureType"] = self.signatureType!
+        }
+        if self.signatureVersion != nil {
+            map["SignatureVersion"] = self.signatureVersion!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("JobId") && dict["JobId"] != nil {
             self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("Signature") && dict["Signature"] != nil {
+            self.signature = dict["Signature"] as! String
+        }
+        if dict.keys.contains("SignatureMehtod") && dict["SignatureMehtod"] != nil {
+            self.signatureMehtod = dict["SignatureMehtod"] as! String
+        }
+        if dict.keys.contains("SignatureNonce") && dict["SignatureNonce"] != nil {
+            self.signatureNonce = dict["SignatureNonce"] as! String
+        }
+        if dict.keys.contains("SignatureType") && dict["SignatureType"] != nil {
+            self.signatureType = dict["SignatureType"] as! String
+        }
+        if dict.keys.contains("SignatureVersion") && dict["SignatureVersion"] != nil {
+            self.signatureVersion = dict["SignatureVersion"] as! String
         }
     }
 }
