@@ -405,6 +405,8 @@ public class AddBlackListResponse : Tea.TeaModel {
 }
 
 public class AddTrafficSpecialControlRequest : Tea.TeaModel {
+    public var securityToken: String?
+
     public var specialKey: String?
 
     public var specialType: String?
@@ -427,6 +429,9 @@ public class AddTrafficSpecialControlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.specialKey != nil {
             map["SpecialKey"] = self.specialKey!
         }
@@ -443,6 +448,9 @@ public class AddTrafficSpecialControlRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
         if dict.keys.contains("SpecialKey") && dict["SpecialKey"] != nil {
             self.specialKey = dict["SpecialKey"] as! String
         }
@@ -540,6 +548,8 @@ public class AddTrafficSpecialControlResponse : Tea.TeaModel {
 public class CheckAccountForInnerRequest : Tea.TeaModel {
     public var aliUid: Int64?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -557,12 +567,18 @@ public class CheckAccountForInnerRequest : Tea.TeaModel {
         if self.aliUid != nil {
             map["AliUid"] = self.aliUid!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AliUid") && dict["AliUid"] != nil {
             self.aliUid = dict["AliUid"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -782,6 +798,8 @@ public class CheckAoneAppAuditResponse : Tea.TeaModel {
 public class CopyConsumerOpenForInnerRequest : Tea.TeaModel {
     public var copyList: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -799,12 +817,18 @@ public class CopyConsumerOpenForInnerRequest : Tea.TeaModel {
         if self.copyList != nil {
             map["CopyList"] = self.copyList!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CopyList") && dict["CopyList"] != nil {
             self.copyList = dict["CopyList"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -923,6 +947,8 @@ public class CreateApiRequest : Tea.TeaModel {
 
     public var resultType: String?
 
+    public var securityToken: String?
+
     public var serviceAddress: String?
 
     public var serviceProtocol: String?
@@ -998,6 +1024,9 @@ public class CreateApiRequest : Tea.TeaModel {
         if self.resultType != nil {
             map["ResultType"] = self.resultType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.serviceAddress != nil {
             map["ServiceAddress"] = self.serviceAddress!
         }
@@ -1067,6 +1096,9 @@ public class CreateApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResultType") && dict["ResultType"] != nil {
             self.resultType = dict["ResultType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServiceAddress") && dict["ServiceAddress"] != nil {
             self.serviceAddress = dict["ServiceAddress"] as! String
@@ -1192,6 +1224,8 @@ public class CreateApiForInnerRequest : Tea.TeaModel {
 
     public var resultType: String?
 
+    public var securityToken: String?
+
     public var serviceConfig: String?
 
     public var serviceParameters: String?
@@ -1241,6 +1275,9 @@ public class CreateApiForInnerRequest : Tea.TeaModel {
         if self.resultType != nil {
             map["ResultType"] = self.resultType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.serviceConfig != nil {
             map["ServiceConfig"] = self.serviceConfig!
         }
@@ -1283,6 +1320,9 @@ public class CreateApiForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResultType") && dict["ResultType"] != nil {
             self.resultType = dict["ResultType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServiceConfig") && dict["ServiceConfig"] != nil {
             self.serviceConfig = dict["ServiceConfig"] as! String
@@ -1550,6 +1590,8 @@ public class CreateApiGroupForInnerRequest : Tea.TeaModel {
 
     public var groupName: String?
 
+    public var securityToken: String?
+
     public var source: String?
 
     public override init() {
@@ -1575,6 +1617,9 @@ public class CreateApiGroupForInnerRequest : Tea.TeaModel {
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -1590,6 +1635,9 @@ public class CreateApiGroupForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
             self.groupName = dict["GroupName"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -1713,6 +1761,8 @@ public class CreateAppRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -1733,6 +1783,9 @@ public class CreateAppRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -1742,6 +1795,9 @@ public class CreateAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -1989,6 +2045,8 @@ public class CreateAppForInnerRequest : Tea.TeaModel {
 
     public var extend: String?
 
+    public var securityToken: String?
+
     public var source: String?
 
     public override init() {
@@ -2026,6 +2084,9 @@ public class CreateAppForInnerRequest : Tea.TeaModel {
         if self.extend != nil {
             map["Extend"] = self.extend!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -2053,6 +2114,9 @@ public class CreateAppForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Extend") && dict["Extend"] != nil {
             self.extend = dict["Extend"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -2345,6 +2409,8 @@ public class CreateRaceWorkForInnerRequest : Tea.TeaModel {
 
     public var logoUrl: String?
 
+    public var securityToken: String?
+
     public var shortDescription: String?
 
     public var workName: String?
@@ -2375,6 +2441,9 @@ public class CreateRaceWorkForInnerRequest : Tea.TeaModel {
         if self.logoUrl != nil {
             map["LogoUrl"] = self.logoUrl!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.shortDescription != nil {
             map["ShortDescription"] = self.shortDescription!
         }
@@ -2396,6 +2465,9 @@ public class CreateRaceWorkForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LogoUrl") && dict["LogoUrl"] != nil {
             self.logoUrl = dict["LogoUrl"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ShortDescription") && dict["ShortDescription"] != nil {
             self.shortDescription = dict["ShortDescription"] as! String
@@ -2492,6 +2564,8 @@ public class CreateSecretKeyRequest : Tea.TeaModel {
 
     public var secretValue: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -2515,6 +2589,9 @@ public class CreateSecretKeyRequest : Tea.TeaModel {
         if self.secretValue != nil {
             map["SecretValue"] = self.secretValue!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -2527,6 +2604,9 @@ public class CreateSecretKeyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecretValue") && dict["SecretValue"] != nil {
             self.secretValue = dict["SecretValue"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -2633,6 +2713,8 @@ public class CreateTrafficControlRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var securityToken: String?
+
     public var trafficControlName: String?
 
     public var trafficControlUnit: String?
@@ -2662,6 +2744,9 @@ public class CreateTrafficControlRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.trafficControlName != nil {
             map["TrafficControlName"] = self.trafficControlName!
         }
@@ -2683,6 +2768,9 @@ public class CreateTrafficControlRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("TrafficControlName") && dict["TrafficControlName"] != nil {
             self.trafficControlName = dict["TrafficControlName"] as! String
@@ -2792,6 +2880,8 @@ public class CreateUserWhiteListRequest : Tea.TeaModel {
 
     public var limitCount: Int32?
 
+    public var securityToken: String?
+
     public var type: String?
 
     public var uid: Int64?
@@ -2824,6 +2914,9 @@ public class CreateUserWhiteListRequest : Tea.TeaModel {
         if self.limitCount != nil {
             map["LimitCount"] = self.limitCount!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -2848,6 +2941,9 @@ public class CreateUserWhiteListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LimitCount") && dict["LimitCount"] != nil {
             self.limitCount = dict["LimitCount"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
@@ -2941,6 +3037,8 @@ public class CreateUserWhiteListResponse : Tea.TeaModel {
 }
 
 public class DeleteAllTrafficSpecialControlRequest : Tea.TeaModel {
+    public var securityToken: String?
+
     public var trafficControlId: String?
 
     public override init() {
@@ -2957,6 +3055,9 @@ public class DeleteAllTrafficSpecialControlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.trafficControlId != nil {
             map["TrafficControlId"] = self.trafficControlId!
         }
@@ -2964,6 +3065,9 @@ public class DeleteAllTrafficSpecialControlRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
         if dict.keys.contains("TrafficControlId") && dict["TrafficControlId"] != nil {
             self.trafficControlId = dict["TrafficControlId"] as! String
         }
@@ -3054,6 +3158,8 @@ public class DeleteApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3074,6 +3180,9 @@ public class DeleteApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -3083,6 +3192,9 @@ public class DeleteApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3173,6 +3285,8 @@ public class DeleteApiForInnerRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3196,6 +3310,9 @@ public class DeleteApiForInnerRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -3208,6 +3325,9 @@ public class DeleteApiForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3294,6 +3414,8 @@ public class DeleteApiForInnerResponse : Tea.TeaModel {
 public class DeleteApiGroupRequest : Tea.TeaModel {
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3311,12 +3433,18 @@ public class DeleteApiGroupRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3403,6 +3531,8 @@ public class DeleteApiGroupResponse : Tea.TeaModel {
 public class DeleteAppRequest : Tea.TeaModel {
     public var appId: Int64?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3420,12 +3550,18 @@ public class DeleteAppRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3514,6 +3650,8 @@ public class DeleteAppForInnerRequest : Tea.TeaModel {
 
     public var appId: Int64?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3534,6 +3672,9 @@ public class DeleteAppForInnerRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -3543,6 +3684,9 @@ public class DeleteAppForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3631,6 +3775,8 @@ public class DeleteDomainRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3651,6 +3797,9 @@ public class DeleteDomainRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -3660,6 +3809,9 @@ public class DeleteDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3750,6 +3902,8 @@ public class DeleteDomainCertificateRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3773,6 +3927,9 @@ public class DeleteDomainCertificateRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -3785,6 +3942,9 @@ public class DeleteDomainCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3871,6 +4031,8 @@ public class DeleteDomainCertificateResponse : Tea.TeaModel {
 public class DeleteSecretKeyRequest : Tea.TeaModel {
     public var secretKeyId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -3888,12 +4050,18 @@ public class DeleteSecretKeyRequest : Tea.TeaModel {
         if self.secretKeyId != nil {
             map["SecretKeyId"] = self.secretKeyId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("SecretKeyId") && dict["SecretKeyId"] != nil {
             self.secretKeyId = dict["SecretKeyId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -3978,6 +4146,8 @@ public class DeleteSecretKeyResponse : Tea.TeaModel {
 }
 
 public class DeleteTrafficControlRequest : Tea.TeaModel {
+    public var securityToken: String?
+
     public var trafficControlId: String?
 
     public override init() {
@@ -3994,6 +4164,9 @@ public class DeleteTrafficControlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.trafficControlId != nil {
             map["TrafficControlId"] = self.trafficControlId!
         }
@@ -4001,6 +4174,9 @@ public class DeleteTrafficControlRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
         if dict.keys.contains("TrafficControlId") && dict["TrafficControlId"] != nil {
             self.trafficControlId = dict["TrafficControlId"] as! String
         }
@@ -4087,6 +4263,8 @@ public class DeleteTrafficControlResponse : Tea.TeaModel {
 }
 
 public class DeleteTrafficSpecialControlRequest : Tea.TeaModel {
+    public var securityToken: String?
+
     public var specialKey: String?
 
     public var specialType: String?
@@ -4107,6 +4285,9 @@ public class DeleteTrafficSpecialControlRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.specialKey != nil {
             map["SpecialKey"] = self.specialKey!
         }
@@ -4120,6 +4301,9 @@ public class DeleteTrafficSpecialControlRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
         if dict.keys.contains("SpecialKey") && dict["SpecialKey"] != nil {
             self.specialKey = dict["SpecialKey"] as! String
         }
@@ -4214,6 +4398,8 @@ public class DeleteTrafficSpecialControlResponse : Tea.TeaModel {
 public class DeleteUserWhiteListByTypeRequest : Tea.TeaModel {
     public var entityId: String?
 
+    public var securityToken: String?
+
     public var type: String?
 
     public var uid: Int64?
@@ -4235,6 +4421,9 @@ public class DeleteUserWhiteListByTypeRequest : Tea.TeaModel {
         if self.entityId != nil {
             map["EntityId"] = self.entityId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -4247,6 +4436,9 @@ public class DeleteUserWhiteListByTypeRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("EntityId") && dict["EntityId"] != nil {
             self.entityId = dict["EntityId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
@@ -4343,6 +4535,8 @@ public class DeployApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -4368,6 +4562,9 @@ public class DeployApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -4383,6 +4580,9 @@ public class DeployApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -4478,6 +4678,8 @@ public class DeployApiForInnerRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -4506,6 +4708,9 @@ public class DeployApiForInnerRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -4524,6 +4729,9 @@ public class DeployApiForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -4615,6 +4823,8 @@ public class DescribeApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -4635,6 +4845,9 @@ public class DescribeApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -4644,6 +4857,9 @@ public class DescribeApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -7726,6 +7942,8 @@ public class DescribeApiDocsForBackendRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -7760,6 +7978,9 @@ public class DescribeApiDocsForBackendRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -7784,6 +8005,9 @@ public class DescribeApiDocsForBackendRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -8046,6 +8270,8 @@ public class DescribeApiErrorRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var startTime: String?
 
     public override init() {
@@ -8071,6 +8297,9 @@ public class DescribeApiErrorRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -8086,6 +8315,9 @@ public class DescribeApiErrorRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -8353,6 +8585,8 @@ public class DescribeApiErrorResponse : Tea.TeaModel {
 public class DescribeApiGroupDetailRequest : Tea.TeaModel {
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -8370,12 +8604,18 @@ public class DescribeApiGroupDetailRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -8985,6 +9225,8 @@ public class DescribeApiLatencyRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var startTime: String?
 
     public override init() {
@@ -9010,6 +9252,9 @@ public class DescribeApiLatencyRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -9025,6 +9270,9 @@ public class DescribeApiLatencyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -9205,6 +9453,8 @@ public class DescribeApiMarketInstanceRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -9225,6 +9475,9 @@ public class DescribeApiMarketInstanceRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -9234,6 +9487,9 @@ public class DescribeApiMarketInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -9332,6 +9588,8 @@ public class DescribeApiQpsRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var startTime: String?
 
     public override init() {
@@ -9357,6 +9615,9 @@ public class DescribeApiQpsRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -9372,6 +9633,9 @@ public class DescribeApiQpsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -9647,6 +9911,8 @@ public class DescribeApiRulesRequest : Tea.TeaModel {
 
     public var ruleType: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -9678,6 +9944,9 @@ public class DescribeApiRulesRequest : Tea.TeaModel {
         if self.ruleType != nil {
             map["RuleType"] = self.ruleType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -9699,6 +9968,9 @@ public class DescribeApiRulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RuleType") && dict["RuleType"] != nil {
             self.ruleType = dict["RuleType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -9937,6 +10209,8 @@ public class DescribeApiTrafficRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var startTime: String?
 
     public override init() {
@@ -9962,6 +10236,9 @@ public class DescribeApiTrafficRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
@@ -9977,6 +10254,9 @@ public class DescribeApiTrafficRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
@@ -10252,6 +10532,8 @@ public class DescribeApisRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var visibility: String?
 
     public override init() {
@@ -10283,6 +10565,9 @@ public class DescribeApisRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.visibility != nil {
             map["Visibility"] = self.visibility!
         }
@@ -10304,6 +10589,9 @@ public class DescribeApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Visibility") && dict["Visibility"] != nil {
             self.visibility = dict["Visibility"] as! String
@@ -10566,6 +10854,8 @@ public class DescribeApisByAppRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -10589,6 +10879,9 @@ public class DescribeApisByAppRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -10601,6 +10894,9 @@ public class DescribeApisByAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -10870,6 +11166,8 @@ public class DescribeApisByRuleRequest : Tea.TeaModel {
 
     public var ruleType: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -10896,6 +11194,9 @@ public class DescribeApisByRuleRequest : Tea.TeaModel {
         if self.ruleType != nil {
             map["RuleType"] = self.ruleType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -10911,6 +11212,9 @@ public class DescribeApisByRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RuleType") && dict["RuleType"] != nil {
             self.ruleType = dict["RuleType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -11182,6 +11486,8 @@ public class DescribeApisForConsoleRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public var visibility: String?
@@ -11215,6 +11521,9 @@ public class DescribeApisForConsoleRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -11239,6 +11548,9 @@ public class DescribeApisForConsoleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -11597,6 +11909,8 @@ public class DescribeApisForConsoleResponse : Tea.TeaModel {
 public class DescribeAppRequest : Tea.TeaModel {
     public var appId: Int64?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -11614,12 +11928,18 @@ public class DescribeAppRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -12286,6 +12606,8 @@ public class DescribeAppsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -12309,6 +12631,9 @@ public class DescribeAppsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -12321,6 +12646,9 @@ public class DescribeAppsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -12550,6 +12878,8 @@ public class DescribeAppsByApiRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -12578,6 +12908,9 @@ public class DescribeAppsByApiRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -12596,6 +12929,9 @@ public class DescribeAppsByApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -12844,6 +13180,8 @@ public class DescribeAppsForProviderRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -12870,6 +13208,9 @@ public class DescribeAppsForProviderRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -12885,6 +13226,9 @@ public class DescribeAppsForProviderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -13106,6 +13450,8 @@ public class DescribeAppsForProviderResponse : Tea.TeaModel {
 }
 
 public class DescribeAvailableVipsRequest : Tea.TeaModel {
+    public var securityToken: String?
+
     public var vip: String?
 
     public override init() {
@@ -13122,6 +13468,9 @@ public class DescribeAvailableVipsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.vip != nil {
             map["Vip"] = self.vip!
         }
@@ -13129,6 +13478,9 @@ public class DescribeAvailableVipsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
         if dict.keys.contains("Vip") && dict["Vip"] != nil {
             self.vip = dict["Vip"] as! String
         }
@@ -13378,6 +13730,8 @@ public class DescribeBlackListsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -13401,6 +13755,9 @@ public class DescribeBlackListsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -13413,6 +13770,9 @@ public class DescribeBlackListsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -13638,6 +13998,8 @@ public class DescribeDeployedApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -13660,6 +14022,9 @@ public class DescribeDeployedApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -13672,6 +14037,9 @@ public class DescribeDeployedApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -15040,6 +15408,8 @@ public class DescribeDeployedApisRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -15071,6 +15441,9 @@ public class DescribeDeployedApisRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -15092,6 +15465,9 @@ public class DescribeDeployedApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -15352,6 +15728,8 @@ public class DescribeDomainRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -15372,6 +15750,9 @@ public class DescribeDomainRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -15381,6 +15762,9 @@ public class DescribeDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -15541,6 +15925,8 @@ public class DescribeDomainResolutionRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -15561,6 +15947,9 @@ public class DescribeDomainResolutionRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -15570,6 +15959,9 @@ public class DescribeDomainResolutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -15757,6 +16149,8 @@ public class DescribeHistoryApiRequest : Tea.TeaModel {
 
     public var historyVersion: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -15782,6 +16176,9 @@ public class DescribeHistoryApiRequest : Tea.TeaModel {
         if self.historyVersion != nil {
             map["HistoryVersion"] = self.historyVersion!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -15797,6 +16194,9 @@ public class DescribeHistoryApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HistoryVersion") && dict["HistoryVersion"] != nil {
             self.historyVersion = dict["HistoryVersion"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -17205,6 +17605,8 @@ public class DescribeHistoryApisRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -17236,6 +17638,9 @@ public class DescribeHistoryApisRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -17257,6 +17662,9 @@ public class DescribeHistoryApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -17533,6 +17941,8 @@ public class DescribeModelsForInnerRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -17565,6 +17975,9 @@ public class DescribeModelsForInnerRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -17586,6 +17999,9 @@ public class DescribeModelsForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -17827,6 +18243,8 @@ public class DescribePurchasedApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -17847,6 +18265,9 @@ public class DescribePurchasedApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -17856,6 +18277,9 @@ public class DescribePurchasedApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -18770,6 +19194,8 @@ public class DescribePurchasedApiResponse : Tea.TeaModel {
 public class DescribePurchasedApiGroupDetailRequest : Tea.TeaModel {
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -18787,12 +19213,18 @@ public class DescribePurchasedApiGroupDetailRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -19342,6 +19774,8 @@ public class DescribePurchasedApisRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public var visibility: String?
@@ -19375,6 +19809,9 @@ public class DescribePurchasedApisRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -19399,6 +19836,9 @@ public class DescribePurchasedApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -19668,6 +20108,8 @@ public class DescribePurchasedApisResponse : Tea.TeaModel {
 public class DescribeRaceWorkForInnerRequest : Tea.TeaModel {
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -19685,12 +20127,18 @@ public class DescribeRaceWorkForInnerRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -19843,6 +20291,8 @@ public class DescribeRaceWorksForInnerRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -19863,6 +20313,9 @@ public class DescribeRaceWorksForInnerRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -19872,6 +20325,9 @@ public class DescribeRaceWorksForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -20335,6 +20791,8 @@ public class DescribeRulesByApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -20357,6 +20815,9 @@ public class DescribeRulesByApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -20369,6 +20830,9 @@ public class DescribeRulesByApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -20569,6 +21033,8 @@ public class DescribeSecretKeysRequest : Tea.TeaModel {
 
     public var secretKeyName: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -20595,6 +21061,9 @@ public class DescribeSecretKeysRequest : Tea.TeaModel {
         if self.secretKeyName != nil {
             map["SecretKeyName"] = self.secretKeyName!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -20610,6 +21079,9 @@ public class DescribeSecretKeysRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecretKeyName") && dict["SecretKeyName"] != nil {
             self.secretKeyName = dict["SecretKeyName"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -21283,6 +21755,8 @@ public class DescribeTrafficControlsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public var trafficControlId: String?
@@ -21315,6 +21789,9 @@ public class DescribeTrafficControlsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -21339,6 +21816,9 @@ public class DescribeTrafficControlsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -21775,6 +22255,8 @@ public class DescribeUserWhiteListsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var securityToken: String?
+
     public var type: String?
 
     public var uid: Int64?
@@ -21799,6 +22281,9 @@ public class DescribeUserWhiteListsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -21814,6 +22299,9 @@ public class DescribeUserWhiteListsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
@@ -22065,6 +22553,8 @@ public class DescribeUserWhiteListsResponse : Tea.TeaModel {
 }
 
 public class IsIncludedByUserWhitelistRequest : Tea.TeaModel {
+    public var securityToken: String?
+
     public var type: String?
 
     public override init() {
@@ -22081,6 +22571,9 @@ public class IsIncludedByUserWhitelistRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -22088,6 +22581,9 @@ public class IsIncludedByUserWhitelistRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
         }
@@ -22218,6 +22714,8 @@ public class ModifyApiRequest : Tea.TeaModel {
 
     public var resultType: String?
 
+    public var securityToken: String?
+
     public var serviceAddress: String?
 
     public var serviceProtocol: String?
@@ -22296,6 +22794,9 @@ public class ModifyApiRequest : Tea.TeaModel {
         if self.resultType != nil {
             map["ResultType"] = self.resultType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.serviceAddress != nil {
             map["ServiceAddress"] = self.serviceAddress!
         }
@@ -22368,6 +22869,9 @@ public class ModifyApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResultType") && dict["ResultType"] != nil {
             self.resultType = dict["ResultType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServiceAddress") && dict["ServiceAddress"] != nil {
             self.serviceAddress = dict["ServiceAddress"] as! String
@@ -22487,6 +22991,8 @@ public class ModifyApiForInnerRequest : Tea.TeaModel {
 
     public var resultType: String?
 
+    public var securityToken: String?
+
     public var serviceConfig: String?
 
     public var serviceParameters: String?
@@ -22539,6 +23045,9 @@ public class ModifyApiForInnerRequest : Tea.TeaModel {
         if self.resultType != nil {
             map["ResultType"] = self.resultType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.serviceConfig != nil {
             map["ServiceConfig"] = self.serviceConfig!
         }
@@ -22584,6 +23093,9 @@ public class ModifyApiForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResultType") && dict["ResultType"] != nil {
             self.resultType = dict["ResultType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServiceConfig") && dict["ServiceConfig"] != nil {
             self.serviceConfig = dict["ServiceConfig"] as! String
@@ -22686,6 +23198,8 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
 
     public var groupName: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -22709,6 +23223,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         if self.groupName != nil {
             map["GroupName"] = self.groupName!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -22721,6 +23238,9 @@ public class ModifyApiGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
             self.groupName = dict["GroupName"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -22968,6 +23488,8 @@ public class ModifyAppRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -22991,6 +23513,9 @@ public class ModifyAppRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -23003,6 +23528,9 @@ public class ModifyAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23097,6 +23625,8 @@ public class ModifyAppForInnerRequest : Tea.TeaModel {
 
     public var extend: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -23126,6 +23656,9 @@ public class ModifyAppForInnerRequest : Tea.TeaModel {
         if self.extend != nil {
             map["Extend"] = self.extend!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -23144,6 +23677,9 @@ public class ModifyAppForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Extend") && dict["Extend"] != nil {
             self.extend = dict["Extend"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23234,6 +23770,8 @@ public class ModifyGroupAuthAppCodeForBackendRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -23257,6 +23795,9 @@ public class ModifyGroupAuthAppCodeForBackendRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -23269,6 +23810,9 @@ public class ModifyGroupAuthAppCodeForBackendRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23361,6 +23905,8 @@ public class ModifySecretKeyRequest : Tea.TeaModel {
 
     public var secretValue: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -23387,6 +23933,9 @@ public class ModifySecretKeyRequest : Tea.TeaModel {
         if self.secretValue != nil {
             map["SecretValue"] = self.secretValue!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -23402,6 +23951,9 @@ public class ModifySecretKeyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecretValue") && dict["SecretValue"] != nil {
             self.secretValue = dict["SecretValue"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23508,6 +24060,8 @@ public class ModifyTrafficControlRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var securityToken: String?
+
     public var trafficControlId: String?
 
     public var trafficControlName: String?
@@ -23539,6 +24093,9 @@ public class ModifyTrafficControlRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.trafficControlId != nil {
             map["TrafficControlId"] = self.trafficControlId!
         }
@@ -23563,6 +24120,9 @@ public class ModifyTrafficControlRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("TrafficControlId") && dict["TrafficControlId"] != nil {
             self.trafficControlId = dict["TrafficControlId"] as! String
@@ -23661,6 +24221,8 @@ public class ModifyTrafficControlResponse : Tea.TeaModel {
 public class ModifyUserWhiteListValueByTypeRequest : Tea.TeaModel {
     public var description_: String?
 
+    public var securityToken: String?
+
     public var type: String?
 
     public var uid: Int64?
@@ -23684,6 +24246,9 @@ public class ModifyUserWhiteListValueByTypeRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.type != nil {
             map["Type"] = self.type!
         }
@@ -23699,6 +24264,9 @@ public class ModifyUserWhiteListValueByTypeRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
@@ -23798,6 +24366,8 @@ public class ReactivateDomainForBackendRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -23821,6 +24391,9 @@ public class ReactivateDomainForBackendRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -23833,6 +24406,9 @@ public class ReactivateDomainForBackendRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -23923,6 +24499,8 @@ public class RecoverApiFromHistoricalRequest : Tea.TeaModel {
 
     public var historyVersion: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -23948,6 +24526,9 @@ public class RecoverApiFromHistoricalRequest : Tea.TeaModel {
         if self.historyVersion != nil {
             map["HistoryVersion"] = self.historyVersion!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -23963,6 +24544,9 @@ public class RecoverApiFromHistoricalRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HistoryVersion") && dict["HistoryVersion"] != nil {
             self.historyVersion = dict["HistoryVersion"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -24056,6 +24640,8 @@ public class RecoveryApiDefineFromHistoricalRequest : Tea.TeaModel {
 
     public var historyVersion: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -24081,6 +24667,9 @@ public class RecoveryApiDefineFromHistoricalRequest : Tea.TeaModel {
         if self.historyVersion != nil {
             map["HistoryVersion"] = self.historyVersion!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -24096,6 +24685,9 @@ public class RecoveryApiDefineFromHistoricalRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HistoryVersion") && dict["HistoryVersion"] != nil {
             self.historyVersion = dict["HistoryVersion"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -24189,6 +24781,8 @@ public class RecoveryApiFromHistoricalRequest : Tea.TeaModel {
 
     public var historyVersion: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -24214,6 +24808,9 @@ public class RecoveryApiFromHistoricalRequest : Tea.TeaModel {
         if self.historyVersion != nil {
             map["HistoryVersion"] = self.historyVersion!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -24229,6 +24826,9 @@ public class RecoveryApiFromHistoricalRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HistoryVersion") && dict["HistoryVersion"] != nil {
             self.historyVersion = dict["HistoryVersion"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -24320,6 +24920,8 @@ public class RefreshDomainRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -24340,6 +24942,9 @@ public class RefreshDomainRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -24349,6 +24954,9 @@ public class RefreshDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -24497,6 +25105,8 @@ public class RemoveAccessPermissionByApisRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -24525,6 +25135,9 @@ public class RemoveAccessPermissionByApisRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -24543,6 +25156,9 @@ public class RemoveAccessPermissionByApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -24636,6 +25252,8 @@ public class RemoveAccessPermissionByAppsRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -24661,6 +25279,9 @@ public class RemoveAccessPermissionByAppsRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -24676,6 +25297,9 @@ public class RemoveAccessPermissionByAppsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -24771,6 +25395,8 @@ public class RemoveAccessPermissionByAppsForInnerRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var source: String?
 
     public var stageName: String?
@@ -24801,6 +25427,9 @@ public class RemoveAccessPermissionByAppsForInnerRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -24822,6 +25451,9 @@ public class RemoveAccessPermissionByAppsForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -24914,6 +25546,8 @@ public class RemoveAccessPermissionByAppsForInnerResponse : Tea.TeaModel {
 public class RemoveAllBlackListRequest : Tea.TeaModel {
     public var blackType: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -24931,12 +25565,18 @@ public class RemoveAllBlackListRequest : Tea.TeaModel {
         if self.blackType != nil {
             map["BlackType"] = self.blackType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BlackType") && dict["BlackType"] != nil {
             self.blackType = dict["BlackType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25029,6 +25669,8 @@ public class RemoveApiRuleRequest : Tea.TeaModel {
 
     public var ruleType: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -25057,6 +25699,9 @@ public class RemoveApiRuleRequest : Tea.TeaModel {
         if self.ruleType != nil {
             map["RuleType"] = self.ruleType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -25075,6 +25720,9 @@ public class RemoveApiRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RuleType") && dict["RuleType"] != nil {
             self.ruleType = dict["RuleType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -25168,6 +25816,8 @@ public class RemoveAppsFromApiRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -25193,6 +25843,9 @@ public class RemoveAppsFromApiRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -25208,6 +25861,9 @@ public class RemoveAppsFromApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -25299,6 +25955,8 @@ public class RemoveBlackListRequest : Tea.TeaModel {
 
     public var blackType: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -25319,6 +25977,9 @@ public class RemoveBlackListRequest : Tea.TeaModel {
         if self.blackType != nil {
             map["BlackType"] = self.blackType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -25328,6 +25989,9 @@ public class RemoveBlackListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("BlackType") && dict["BlackType"] != nil {
             self.blackType = dict["BlackType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25414,6 +26078,8 @@ public class RemoveBlackListResponse : Tea.TeaModel {
 public class ResetAppCodeRequest : Tea.TeaModel {
     public var appCode: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -25431,12 +26097,18 @@ public class ResetAppCodeRequest : Tea.TeaModel {
         if self.appCode != nil {
             map["AppCode"] = self.appCode!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppCode") && dict["AppCode"] != nil {
             self.appCode = dict["AppCode"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25527,6 +26199,8 @@ public class ResetAppCodeForInnerRequest : Tea.TeaModel {
 
     public var newAppCode: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -25550,6 +26224,9 @@ public class ResetAppCodeForInnerRequest : Tea.TeaModel {
         if self.newAppCode != nil {
             map["NewAppCode"] = self.newAppCode!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -25562,6 +26239,9 @@ public class ResetAppCodeForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NewAppCode") && dict["NewAppCode"] != nil {
             self.newAppCode = dict["NewAppCode"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25648,6 +26328,8 @@ public class ResetAppCodeForInnerResponse : Tea.TeaModel {
 public class ResetAppKeySecretRequest : Tea.TeaModel {
     public var appKey: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -25665,12 +26347,18 @@ public class ResetAppKeySecretRequest : Tea.TeaModel {
         if self.appKey != nil {
             map["AppKey"] = self.appKey!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppKey") && dict["AppKey"] != nil {
             self.appKey = dict["AppKey"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25763,6 +26451,8 @@ public class ResetSecretByAppKeyForInnerRequest : Tea.TeaModel {
 
     public var newAppSecret: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -25789,6 +26479,9 @@ public class ResetSecretByAppKeyForInnerRequest : Tea.TeaModel {
         if self.newAppSecret != nil {
             map["NewAppSecret"] = self.newAppSecret!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -25804,6 +26497,9 @@ public class ResetSecretByAppKeyForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NewAppSecret") && dict["NewAppSecret"] != nil {
             self.newAppSecret = dict["NewAppSecret"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -25896,6 +26592,8 @@ public class SetAccessPermissionByApisRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -25924,6 +26622,9 @@ public class SetAccessPermissionByApisRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -25942,6 +26643,9 @@ public class SetAccessPermissionByApisRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -26162,6 +26866,8 @@ public class SetAccessPermissionsRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -26190,6 +26896,9 @@ public class SetAccessPermissionsRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -26208,6 +26917,9 @@ public class SetAccessPermissionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -26305,6 +27017,8 @@ public class SetAccessPermissionsForInnerRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public var source: String?
 
     public var stageName: String?
@@ -26338,6 +27052,9 @@ public class SetAccessPermissionsForInnerRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -26362,6 +27079,9 @@ public class SetAccessPermissionsForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -26460,6 +27180,8 @@ public class SetApiRuleRequest : Tea.TeaModel {
 
     public var ruleType: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -26488,6 +27210,9 @@ public class SetApiRuleRequest : Tea.TeaModel {
         if self.ruleType != nil {
             map["RuleType"] = self.ruleType!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -26506,6 +27231,9 @@ public class SetApiRuleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RuleType") && dict["RuleType"] != nil {
             self.ruleType = dict["RuleType"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -26603,6 +27331,8 @@ public class SetDomainRequest : Tea.TeaModel {
 
     public var privateKey: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -26632,6 +27362,9 @@ public class SetDomainRequest : Tea.TeaModel {
         if self.privateKey != nil {
             map["PrivateKey"] = self.privateKey!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -26650,6 +27383,9 @@ public class SetDomainRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PrivateKey") && dict["PrivateKey"] != nil {
             self.privateKey = dict["PrivateKey"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -26776,6 +27512,8 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
 
     public var privateKey: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -26805,6 +27543,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         if self.privateKey != nil {
             map["PrivateKey"] = self.privateKey!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -26823,6 +27564,9 @@ public class SetDomainCertificateRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PrivateKey") && dict["PrivateKey"] != nil {
             self.privateKey = dict["PrivateKey"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -26917,6 +27661,8 @@ public class SetDomainForBackendRequest : Tea.TeaModel {
 
     public var groupId: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -26946,6 +27692,9 @@ public class SetDomainForBackendRequest : Tea.TeaModel {
         if self.groupId != nil {
             map["GroupId"] = self.groupId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -26964,6 +27713,9 @@ public class SetDomainForBackendRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
             self.groupId = dict["GroupId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -27088,6 +27840,8 @@ public class SetMockIntegrationRequest : Tea.TeaModel {
 
     public var mockResult: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -27114,6 +27868,9 @@ public class SetMockIntegrationRequest : Tea.TeaModel {
         if self.mockResult != nil {
             map["MockResult"] = self.mockResult!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -27129,6 +27886,9 @@ public class SetMockIntegrationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("MockResult") && dict["MockResult"] != nil {
             self.mockResult = dict["MockResult"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -27354,6 +28114,8 @@ public class SwitchApiRequest : Tea.TeaModel {
 
     public var historyVersion: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -27382,6 +28144,9 @@ public class SwitchApiRequest : Tea.TeaModel {
         if self.historyVersion != nil {
             map["HistoryVersion"] = self.historyVersion!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -27400,6 +28165,9 @@ public class SwitchApiRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HistoryVersion") && dict["HistoryVersion"] != nil {
             self.historyVersion = dict["HistoryVersion"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -27495,6 +28263,8 @@ public class SwitchApiForInnerRequest : Tea.TeaModel {
 
     public var historyVersion: String?
 
+    public var securityToken: String?
+
     public var stageName: String?
 
     public override init() {
@@ -27523,6 +28293,9 @@ public class SwitchApiForInnerRequest : Tea.TeaModel {
         if self.historyVersion != nil {
             map["HistoryVersion"] = self.historyVersion!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.stageName != nil {
             map["StageName"] = self.stageName!
         }
@@ -27541,6 +28314,9 @@ public class SwitchApiForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("HistoryVersion") && dict["HistoryVersion"] != nil {
             self.historyVersion = dict["HistoryVersion"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("StageName") && dict["StageName"] != nil {
             self.stageName = dict["StageName"] as! String
@@ -27638,6 +28414,8 @@ public class SynCreateAppForInnerRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var securityToken: String?
+
     public var source: String?
 
     public override init() {
@@ -27669,6 +28447,9 @@ public class SynCreateAppForInnerRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -27690,6 +28471,9 @@ public class SynCreateAppForInnerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -28152,6 +28936,8 @@ public class VipMigrationRequest : Tea.TeaModel {
 
     public var originalVip: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -28172,6 +28958,9 @@ public class VipMigrationRequest : Tea.TeaModel {
         if self.originalVip != nil {
             map["OriginalVip"] = self.originalVip!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -28181,6 +28970,9 @@ public class VipMigrationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OriginalVip") && dict["OriginalVip"] != nil {
             self.originalVip = dict["OriginalVip"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -28228,6 +29020,8 @@ public class VipMigrationByUidRequest : Tea.TeaModel {
 
     public var originalVip: String?
 
+    public var securityToken: String?
+
     public override init() {
         super.init()
     }
@@ -28248,6 +29042,9 @@ public class VipMigrationByUidRequest : Tea.TeaModel {
         if self.originalVip != nil {
             map["OriginalVip"] = self.originalVip!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         return map
     }
 
@@ -28257,6 +29054,9 @@ public class VipMigrationByUidRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OriginalVip") && dict["OriginalVip"] != nil {
             self.originalVip = dict["OriginalVip"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
     }
 }
@@ -28345,6 +29145,8 @@ public class VpcAddAppServerRequest : Tea.TeaModel {
 
     public var appId: String?
 
+    public var securityToken: String?
+
     public var serverIp: String?
 
     public var token: String?
@@ -28369,6 +29171,9 @@ public class VpcAddAppServerRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.serverIp != nil {
             map["ServerIp"] = self.serverIp!
         }
@@ -28384,6 +29189,9 @@ public class VpcAddAppServerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServerIp") && dict["ServerIp"] != nil {
             self.serverIp = dict["ServerIp"] as! String
@@ -28480,6 +29288,8 @@ public class VpcCreateAddressPoolRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var securityToken: String?
+
     public var token: String?
 
     public override init() {
@@ -28505,6 +29315,9 @@ public class VpcCreateAddressPoolRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.token != nil {
             map["Token"] = self.token!
         }
@@ -28520,6 +29333,9 @@ public class VpcCreateAddressPoolRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Token") && dict["Token"] != nil {
             self.token = dict["Token"] as! String
@@ -28875,6 +29691,8 @@ public class VpcRegisterAppRequest : Tea.TeaModel {
 
     public var name: String?
 
+    public var securityToken: String?
+
     public var token: String?
 
     public override init() {
@@ -28900,6 +29718,9 @@ public class VpcRegisterAppRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.token != nil {
             map["Token"] = self.token!
         }
@@ -28915,6 +29736,9 @@ public class VpcRegisterAppRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("Token") && dict["Token"] != nil {
             self.token = dict["Token"] as! String
@@ -29012,6 +29836,8 @@ public class VpcRegisterAppResponse : Tea.TeaModel {
 public class VpcRemoveAppServerRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var securityToken: String?
+
     public var serverIp: String?
 
     public var token: String?
@@ -29033,6 +29859,9 @@ public class VpcRemoveAppServerRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
         if self.serverIp != nil {
             map["ServerIp"] = self.serverIp!
         }
@@ -29045,6 +29874,9 @@ public class VpcRemoveAppServerRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("ServerIp") && dict["ServerIp"] != nil {
             self.serverIp = dict["ServerIp"] as! String
