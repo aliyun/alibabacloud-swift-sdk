@@ -868,8 +868,6 @@ public class AddImageRequest : Tea.TeaModel {
 
     public var name: String?
 
-    public var regionId: String?
-
     public var VMImageSpec: AddImageRequest.VMImageSpec?
 
     public var version: String?
@@ -899,9 +897,6 @@ public class AddImageRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         if self.VMImageSpec != nil {
             map["VMImageSpec"] = self.VMImageSpec?.toMap()
         }
@@ -923,9 +918,6 @@ public class AddImageRequest : Tea.TeaModel {
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
         }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
         if dict.keys.contains("VMImageSpec") && dict["VMImageSpec"] != nil {
             var model = AddImageRequest.VMImageSpec()
             model.fromMap(dict["VMImageSpec"] as! [String: Any])
@@ -943,8 +935,6 @@ public class AddImageShrinkRequest : Tea.TeaModel {
     public var description_: String?
 
     public var name: String?
-
-    public var regionId: String?
 
     public var VMImageSpecShrink: String?
 
@@ -973,9 +963,6 @@ public class AddImageShrinkRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         if self.VMImageSpecShrink != nil {
             map["VMImageSpec"] = self.VMImageSpecShrink!
         }
@@ -994,9 +981,6 @@ public class AddImageShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("VMImageSpec") && dict["VMImageSpec"] != nil {
             self.VMImageSpecShrink = dict["VMImageSpec"] as! String
@@ -1980,8 +1964,6 @@ public class DeleteJobsResponse : Tea.TeaModel {
 public class GetImageRequest : Tea.TeaModel {
     public var imageId: String?
 
-    public var regionId: String?
-
     public override init() {
         super.init()
     }
@@ -1999,18 +1981,12 @@ public class GetImageRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
         }
     }
 }
@@ -3096,8 +3072,6 @@ public class ListImagesRequest : Tea.TeaModel {
 
     public var pageSize: Int64?
 
-    public var regionId: String?
-
     public override init() {
         super.init()
     }
@@ -3124,9 +3098,6 @@ public class ListImagesRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         return map
     }
 
@@ -3143,9 +3114,6 @@ public class ListImagesRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int64
         }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
-        }
     }
 }
 
@@ -3157,8 +3125,6 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
     public var pageNumber: Int64?
 
     public var pageSize: Int64?
-
-    public var regionId: String?
 
     public override init() {
         super.init()
@@ -3186,9 +3152,6 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         return map
     }
 
@@ -3204,9 +3167,6 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int64
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
         }
     }
 }
@@ -3826,8 +3786,6 @@ public class ListJobsResponse : Tea.TeaModel {
 public class RemoveImageRequest : Tea.TeaModel {
     public var imageId: String?
 
-    public var regionId: String?
-
     public override init() {
         super.init()
     }
@@ -3845,18 +3803,12 @@ public class RemoveImageRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
-        if self.regionId != nil {
-            map["RegionId"] = self.regionId!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
-        }
-        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
-            self.regionId = dict["RegionId"] as! String
         }
     }
 }
