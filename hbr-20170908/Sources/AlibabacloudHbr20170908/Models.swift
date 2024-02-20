@@ -13774,6 +13774,8 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var archiveDays: Int64?
+
             public var backupType: String?
 
             public var keepLatestSnapshots: Int64?
@@ -13790,6 +13792,8 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
 
             public var schedule: String?
 
+            public var vaultId: String?
+
             public override init() {
                 super.init()
             }
@@ -13804,6 +13808,9 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.archiveDays != nil {
+                    map["ArchiveDays"] = self.archiveDays!
+                }
                 if self.backupType != nil {
                     map["BackupType"] = self.backupType!
                 }
@@ -13832,10 +13839,16 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
                 if self.schedule != nil {
                     map["Schedule"] = self.schedule!
                 }
+                if self.vaultId != nil {
+                    map["VaultId"] = self.vaultId!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ArchiveDays") && dict["ArchiveDays"] != nil {
+                    self.archiveDays = dict["ArchiveDays"] as! Int64
+                }
                 if dict.keys.contains("BackupType") && dict["BackupType"] != nil {
                     self.backupType = dict["BackupType"] as! String
                 }
@@ -13867,6 +13880,9 @@ public class DescribePoliciesV2ResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Schedule") && dict["Schedule"] != nil {
                     self.schedule = dict["Schedule"] as! String
+                }
+                if dict.keys.contains("VaultId") && dict["VaultId"] != nil {
+                    self.vaultId = dict["VaultId"] as! String
                 }
             }
         }
