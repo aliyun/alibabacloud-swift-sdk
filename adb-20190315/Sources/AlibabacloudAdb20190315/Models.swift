@@ -19592,6 +19592,8 @@ public class DescribeTablePartitionDiagnoseResponse : Tea.TeaModel {
 public class DescribeTableStatisticsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var keyword: String?
+
     public var order: String?
 
     public var ownerAccount: String?
@@ -19625,6 +19627,9 @@ public class DescribeTableStatisticsRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.keyword != nil {
+            map["Keyword"] = self.keyword!
+        }
         if self.order != nil {
             map["Order"] = self.order!
         }
@@ -19655,6 +19660,9 @@ public class DescribeTableStatisticsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("Keyword") && dict["Keyword"] != nil {
+            self.keyword = dict["Keyword"] as! String
         }
         if dict.keys.contains("Order") && dict["Order"] != nil {
             self.order = dict["Order"] as! String
@@ -19690,7 +19698,11 @@ public class DescribeTableStatisticsResponseBody : Tea.TeaModel {
 
             public var dataSize: Int64?
 
+            public var hotDataSize: Int64?
+
             public var indexSize: Int64?
+
+            public var otherSize: Int64?
 
             public var partitionCount: Int64?
 
@@ -19700,7 +19712,11 @@ public class DescribeTableStatisticsResponseBody : Tea.TeaModel {
 
             public var schemaName: String?
 
+            public var spaceRatio: Double?
+
             public var tableName: String?
+
+            public var totalSize: Int64?
 
             public override init() {
                 super.init()
@@ -19722,8 +19738,14 @@ public class DescribeTableStatisticsResponseBody : Tea.TeaModel {
                 if self.dataSize != nil {
                     map["DataSize"] = self.dataSize!
                 }
+                if self.hotDataSize != nil {
+                    map["HotDataSize"] = self.hotDataSize!
+                }
                 if self.indexSize != nil {
                     map["IndexSize"] = self.indexSize!
+                }
+                if self.otherSize != nil {
+                    map["OtherSize"] = self.otherSize!
                 }
                 if self.partitionCount != nil {
                     map["PartitionCount"] = self.partitionCount!
@@ -19737,8 +19759,14 @@ public class DescribeTableStatisticsResponseBody : Tea.TeaModel {
                 if self.schemaName != nil {
                     map["SchemaName"] = self.schemaName!
                 }
+                if self.spaceRatio != nil {
+                    map["SpaceRatio"] = self.spaceRatio!
+                }
                 if self.tableName != nil {
                     map["TableName"] = self.tableName!
+                }
+                if self.totalSize != nil {
+                    map["TotalSize"] = self.totalSize!
                 }
                 return map
             }
@@ -19750,8 +19778,14 @@ public class DescribeTableStatisticsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("DataSize") && dict["DataSize"] != nil {
                     self.dataSize = dict["DataSize"] as! Int64
                 }
+                if dict.keys.contains("HotDataSize") && dict["HotDataSize"] != nil {
+                    self.hotDataSize = dict["HotDataSize"] as! Int64
+                }
                 if dict.keys.contains("IndexSize") && dict["IndexSize"] != nil {
                     self.indexSize = dict["IndexSize"] as! Int64
+                }
+                if dict.keys.contains("OtherSize") && dict["OtherSize"] != nil {
+                    self.otherSize = dict["OtherSize"] as! Int64
                 }
                 if dict.keys.contains("PartitionCount") && dict["PartitionCount"] != nil {
                     self.partitionCount = dict["PartitionCount"] as! Int64
@@ -19765,8 +19799,14 @@ public class DescribeTableStatisticsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("SchemaName") && dict["SchemaName"] != nil {
                     self.schemaName = dict["SchemaName"] as! String
                 }
+                if dict.keys.contains("SpaceRatio") && dict["SpaceRatio"] != nil {
+                    self.spaceRatio = dict["SpaceRatio"] as! Double
+                }
                 if dict.keys.contains("TableName") && dict["TableName"] != nil {
                     self.tableName = dict["TableName"] as! String
+                }
+                if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+                    self.totalSize = dict["TotalSize"] as! Int64
                 }
             }
         }
