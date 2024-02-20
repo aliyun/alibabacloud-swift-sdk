@@ -300,6 +300,108 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addGatewayAuthWithOptions(_ tmpReq: AddGatewayAuthRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGatewayAuthResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: AddGatewayAuthShrinkRequest = AddGatewayAuthShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.authResourceList)) {
+            request.authResourceListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.authResourceList, "AuthResourceList", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.externalAuthZJSON)) {
+            request.externalAuthZJSONShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.externalAuthZJSON, "ExternalAuthZJSON", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.scopesList)) {
+            request.scopesListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.scopesList, "ScopesList", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authResourceListShrink)) {
+            query["AuthResourceList"] = request.authResourceListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientId)) {
+            query["ClientId"] = request.clientId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.clientSecret)) {
+            query["ClientSecret"] = request.clientSecret ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cookieDomain)) {
+            query["CookieDomain"] = request.cookieDomain ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.externalAuthZJSONShrink)) {
+            query["ExternalAuthZJSON"] = request.externalAuthZJSONShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isWhite)) {
+            query["IsWhite"] = request.isWhite!;
+        }
+        if (!TeaUtils.Client.isUnset(request.issuer)) {
+            query["Issuer"] = request.issuer ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jwks)) {
+            query["Jwks"] = request.jwks ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.loginUrl)) {
+            query["LoginUrl"] = request.loginUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.redirectUrl)) {
+            query["RedirectUrl"] = request.redirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scopesListShrink)) {
+            query["ScopesList"] = request.scopesListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sub)) {
+            query["Sub"] = request.sub ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tokenName)) {
+            query["TokenName"] = request.tokenName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tokenNamePrefix)) {
+            query["TokenNamePrefix"] = request.tokenNamePrefix ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tokenPass)) {
+            query["TokenPass"] = request.tokenPass!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tokenPosition)) {
+            query["TokenPosition"] = request.tokenPosition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddGatewayAuth",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddGatewayAuthResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addGatewayAuth(_ request: AddGatewayAuthRequest) async throws -> AddGatewayAuthResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addGatewayAuthWithOptions(request as! AddGatewayAuthRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addGatewayAuthConsumerWithOptions(_ request: AddGatewayAuthConsumerRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddGatewayAuthConsumerResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3197,6 +3299,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getGatewayAuthConsumerDetail(_ request: GetGatewayAuthConsumerDetailRequest) async throws -> GetGatewayAuthConsumerDetailResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getGatewayAuthConsumerDetailWithOptions(request as! GetGatewayAuthConsumerDetailRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayAuthDetailWithOptions(_ request: GetGatewayAuthDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetGatewayAuthDetailResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetGatewayAuthDetail",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetGatewayAuthDetailResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getGatewayAuthDetail(_ request: GetGatewayAuthDetailRequest) async throws -> GetGatewayAuthDetailResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getGatewayAuthDetailWithOptions(request as! GetGatewayAuthDetailRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

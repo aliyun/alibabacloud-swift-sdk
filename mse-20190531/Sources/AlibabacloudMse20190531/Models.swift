@@ -2732,6 +2732,731 @@ public class AddGatewayResponse : Tea.TeaModel {
     }
 }
 
+public class AddGatewayAuthRequest : Tea.TeaModel {
+    public class AuthResourceList : Tea.TeaModel {
+        public class AuthResourceHeaderList : Tea.TeaModel {
+            public var headerKey: String?
+
+            public var headerMethod: String?
+
+            public var headerValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.headerKey != nil {
+                    map["HeaderKey"] = self.headerKey!
+                }
+                if self.headerMethod != nil {
+                    map["HeaderMethod"] = self.headerMethod!
+                }
+                if self.headerValue != nil {
+                    map["HeaderValue"] = self.headerValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("HeaderKey") && dict["HeaderKey"] != nil {
+                    self.headerKey = dict["HeaderKey"] as! String
+                }
+                if dict.keys.contains("HeaderMethod") && dict["HeaderMethod"] != nil {
+                    self.headerMethod = dict["HeaderMethod"] as! String
+                }
+                if dict.keys.contains("HeaderValue") && dict["HeaderValue"] != nil {
+                    self.headerValue = dict["HeaderValue"] as! String
+                }
+            }
+        }
+        public var authResourceHeaderList: [AddGatewayAuthRequest.AuthResourceList.AuthResourceHeaderList]?
+
+        public var domainId: Int64?
+
+        public var ignoreCase: Bool?
+
+        public var matchType: String?
+
+        public var path: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.authResourceHeaderList != nil {
+                var tmp : [Any] = []
+                for k in self.authResourceHeaderList! {
+                    tmp.append(k.toMap())
+                }
+                map["AuthResourceHeaderList"] = tmp
+            }
+            if self.domainId != nil {
+                map["DomainId"] = self.domainId!
+            }
+            if self.ignoreCase != nil {
+                map["IgnoreCase"] = self.ignoreCase!
+            }
+            if self.matchType != nil {
+                map["MatchType"] = self.matchType!
+            }
+            if self.path != nil {
+                map["Path"] = self.path!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthResourceHeaderList") && dict["AuthResourceHeaderList"] != nil {
+                var tmp : [AddGatewayAuthRequest.AuthResourceList.AuthResourceHeaderList] = []
+                for v in dict["AuthResourceHeaderList"] as! [Any] {
+                    var model = AddGatewayAuthRequest.AuthResourceList.AuthResourceHeaderList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.authResourceHeaderList = tmp
+            }
+            if dict.keys.contains("DomainId") && dict["DomainId"] != nil {
+                self.domainId = dict["DomainId"] as! Int64
+            }
+            if dict.keys.contains("IgnoreCase") && dict["IgnoreCase"] != nil {
+                self.ignoreCase = dict["IgnoreCase"] as! Bool
+            }
+            if dict.keys.contains("MatchType") && dict["MatchType"] != nil {
+                self.matchType = dict["MatchType"] as! String
+            }
+            if dict.keys.contains("Path") && dict["Path"] != nil {
+                self.path = dict["Path"] as! String
+            }
+        }
+    }
+    public class ExternalAuthZJSON : Tea.TeaModel {
+        public var allowRequestHeaders: [String]?
+
+        public var allowUpstreamHeaders: [String]?
+
+        public var bodyMaxBytes: Int32?
+
+        public var isRestrict: Bool?
+
+        public var prefixPath: String?
+
+        public var serviceId: Int64?
+
+        public var timeout: Int32?
+
+        public var tokenKey: String?
+
+        public var withRequestBody: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.allowRequestHeaders != nil {
+                map["AllowRequestHeaders"] = self.allowRequestHeaders!
+            }
+            if self.allowUpstreamHeaders != nil {
+                map["AllowUpstreamHeaders"] = self.allowUpstreamHeaders!
+            }
+            if self.bodyMaxBytes != nil {
+                map["BodyMaxBytes"] = self.bodyMaxBytes!
+            }
+            if self.isRestrict != nil {
+                map["IsRestrict"] = self.isRestrict!
+            }
+            if self.prefixPath != nil {
+                map["PrefixPath"] = self.prefixPath!
+            }
+            if self.serviceId != nil {
+                map["ServiceId"] = self.serviceId!
+            }
+            if self.timeout != nil {
+                map["Timeout"] = self.timeout!
+            }
+            if self.tokenKey != nil {
+                map["TokenKey"] = self.tokenKey!
+            }
+            if self.withRequestBody != nil {
+                map["WithRequestBody"] = self.withRequestBody!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AllowRequestHeaders") && dict["AllowRequestHeaders"] != nil {
+                self.allowRequestHeaders = dict["AllowRequestHeaders"] as! [String]
+            }
+            if dict.keys.contains("AllowUpstreamHeaders") && dict["AllowUpstreamHeaders"] != nil {
+                self.allowUpstreamHeaders = dict["AllowUpstreamHeaders"] as! [String]
+            }
+            if dict.keys.contains("BodyMaxBytes") && dict["BodyMaxBytes"] != nil {
+                self.bodyMaxBytes = dict["BodyMaxBytes"] as! Int32
+            }
+            if dict.keys.contains("IsRestrict") && dict["IsRestrict"] != nil {
+                self.isRestrict = dict["IsRestrict"] as! Bool
+            }
+            if dict.keys.contains("PrefixPath") && dict["PrefixPath"] != nil {
+                self.prefixPath = dict["PrefixPath"] as! String
+            }
+            if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                self.serviceId = dict["ServiceId"] as! Int64
+            }
+            if dict.keys.contains("Timeout") && dict["Timeout"] != nil {
+                self.timeout = dict["Timeout"] as! Int32
+            }
+            if dict.keys.contains("TokenKey") && dict["TokenKey"] != nil {
+                self.tokenKey = dict["TokenKey"] as! String
+            }
+            if dict.keys.contains("WithRequestBody") && dict["WithRequestBody"] != nil {
+                self.withRequestBody = dict["WithRequestBody"] as! Bool
+            }
+        }
+    }
+    public var acceptLanguage: String?
+
+    public var authResourceList: [AddGatewayAuthRequest.AuthResourceList]?
+
+    public var clientId: String?
+
+    public var clientSecret: String?
+
+    public var cookieDomain: String?
+
+    public var externalAuthZJSON: AddGatewayAuthRequest.ExternalAuthZJSON?
+
+    public var gatewayUniqueId: String?
+
+    public var isWhite: Bool?
+
+    public var issuer: String?
+
+    public var jwks: String?
+
+    public var loginUrl: String?
+
+    public var name: String?
+
+    public var redirectUrl: String?
+
+    public var scopesList: [String]?
+
+    public var status: Bool?
+
+    public var sub: String?
+
+    public var tokenName: String?
+
+    public var tokenNamePrefix: String?
+
+    public var tokenPass: Bool?
+
+    public var tokenPosition: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.externalAuthZJSON?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.authResourceList != nil {
+            var tmp : [Any] = []
+            for k in self.authResourceList! {
+                tmp.append(k.toMap())
+            }
+            map["AuthResourceList"] = tmp
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
+        if self.cookieDomain != nil {
+            map["CookieDomain"] = self.cookieDomain!
+        }
+        if self.externalAuthZJSON != nil {
+            map["ExternalAuthZJSON"] = self.externalAuthZJSON?.toMap()
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.isWhite != nil {
+            map["IsWhite"] = self.isWhite!
+        }
+        if self.issuer != nil {
+            map["Issuer"] = self.issuer!
+        }
+        if self.jwks != nil {
+            map["Jwks"] = self.jwks!
+        }
+        if self.loginUrl != nil {
+            map["LoginUrl"] = self.loginUrl!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.redirectUrl != nil {
+            map["RedirectUrl"] = self.redirectUrl!
+        }
+        if self.scopesList != nil {
+            map["ScopesList"] = self.scopesList!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.sub != nil {
+            map["Sub"] = self.sub!
+        }
+        if self.tokenName != nil {
+            map["TokenName"] = self.tokenName!
+        }
+        if self.tokenNamePrefix != nil {
+            map["TokenNamePrefix"] = self.tokenNamePrefix!
+        }
+        if self.tokenPass != nil {
+            map["TokenPass"] = self.tokenPass!
+        }
+        if self.tokenPosition != nil {
+            map["TokenPosition"] = self.tokenPosition!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AuthResourceList") && dict["AuthResourceList"] != nil {
+            var tmp : [AddGatewayAuthRequest.AuthResourceList] = []
+            for v in dict["AuthResourceList"] as! [Any] {
+                var model = AddGatewayAuthRequest.AuthResourceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.authResourceList = tmp
+        }
+        if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
+            self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientSecret") && dict["ClientSecret"] != nil {
+            self.clientSecret = dict["ClientSecret"] as! String
+        }
+        if dict.keys.contains("CookieDomain") && dict["CookieDomain"] != nil {
+            self.cookieDomain = dict["CookieDomain"] as! String
+        }
+        if dict.keys.contains("ExternalAuthZJSON") && dict["ExternalAuthZJSON"] != nil {
+            var model = AddGatewayAuthRequest.ExternalAuthZJSON()
+            model.fromMap(dict["ExternalAuthZJSON"] as! [String: Any])
+            self.externalAuthZJSON = model
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("IsWhite") && dict["IsWhite"] != nil {
+            self.isWhite = dict["IsWhite"] as! Bool
+        }
+        if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+            self.issuer = dict["Issuer"] as! String
+        }
+        if dict.keys.contains("Jwks") && dict["Jwks"] != nil {
+            self.jwks = dict["Jwks"] as! String
+        }
+        if dict.keys.contains("LoginUrl") && dict["LoginUrl"] != nil {
+            self.loginUrl = dict["LoginUrl"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("RedirectUrl") && dict["RedirectUrl"] != nil {
+            self.redirectUrl = dict["RedirectUrl"] as! String
+        }
+        if dict.keys.contains("ScopesList") && dict["ScopesList"] != nil {
+            self.scopesList = dict["ScopesList"] as! [String]
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Bool
+        }
+        if dict.keys.contains("Sub") && dict["Sub"] != nil {
+            self.sub = dict["Sub"] as! String
+        }
+        if dict.keys.contains("TokenName") && dict["TokenName"] != nil {
+            self.tokenName = dict["TokenName"] as! String
+        }
+        if dict.keys.contains("TokenNamePrefix") && dict["TokenNamePrefix"] != nil {
+            self.tokenNamePrefix = dict["TokenNamePrefix"] as! String
+        }
+        if dict.keys.contains("TokenPass") && dict["TokenPass"] != nil {
+            self.tokenPass = dict["TokenPass"] as! Bool
+        }
+        if dict.keys.contains("TokenPosition") && dict["TokenPosition"] != nil {
+            self.tokenPosition = dict["TokenPosition"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class AddGatewayAuthShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var authResourceListShrink: String?
+
+    public var clientId: String?
+
+    public var clientSecret: String?
+
+    public var cookieDomain: String?
+
+    public var externalAuthZJSONShrink: String?
+
+    public var gatewayUniqueId: String?
+
+    public var isWhite: Bool?
+
+    public var issuer: String?
+
+    public var jwks: String?
+
+    public var loginUrl: String?
+
+    public var name: String?
+
+    public var redirectUrl: String?
+
+    public var scopesListShrink: String?
+
+    public var status: Bool?
+
+    public var sub: String?
+
+    public var tokenName: String?
+
+    public var tokenNamePrefix: String?
+
+    public var tokenPass: Bool?
+
+    public var tokenPosition: String?
+
+    public var type: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.authResourceListShrink != nil {
+            map["AuthResourceList"] = self.authResourceListShrink!
+        }
+        if self.clientId != nil {
+            map["ClientId"] = self.clientId!
+        }
+        if self.clientSecret != nil {
+            map["ClientSecret"] = self.clientSecret!
+        }
+        if self.cookieDomain != nil {
+            map["CookieDomain"] = self.cookieDomain!
+        }
+        if self.externalAuthZJSONShrink != nil {
+            map["ExternalAuthZJSON"] = self.externalAuthZJSONShrink!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.isWhite != nil {
+            map["IsWhite"] = self.isWhite!
+        }
+        if self.issuer != nil {
+            map["Issuer"] = self.issuer!
+        }
+        if self.jwks != nil {
+            map["Jwks"] = self.jwks!
+        }
+        if self.loginUrl != nil {
+            map["LoginUrl"] = self.loginUrl!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.redirectUrl != nil {
+            map["RedirectUrl"] = self.redirectUrl!
+        }
+        if self.scopesListShrink != nil {
+            map["ScopesList"] = self.scopesListShrink!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.sub != nil {
+            map["Sub"] = self.sub!
+        }
+        if self.tokenName != nil {
+            map["TokenName"] = self.tokenName!
+        }
+        if self.tokenNamePrefix != nil {
+            map["TokenNamePrefix"] = self.tokenNamePrefix!
+        }
+        if self.tokenPass != nil {
+            map["TokenPass"] = self.tokenPass!
+        }
+        if self.tokenPosition != nil {
+            map["TokenPosition"] = self.tokenPosition!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AuthResourceList") && dict["AuthResourceList"] != nil {
+            self.authResourceListShrink = dict["AuthResourceList"] as! String
+        }
+        if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
+            self.clientId = dict["ClientId"] as! String
+        }
+        if dict.keys.contains("ClientSecret") && dict["ClientSecret"] != nil {
+            self.clientSecret = dict["ClientSecret"] as! String
+        }
+        if dict.keys.contains("CookieDomain") && dict["CookieDomain"] != nil {
+            self.cookieDomain = dict["CookieDomain"] as! String
+        }
+        if dict.keys.contains("ExternalAuthZJSON") && dict["ExternalAuthZJSON"] != nil {
+            self.externalAuthZJSONShrink = dict["ExternalAuthZJSON"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("IsWhite") && dict["IsWhite"] != nil {
+            self.isWhite = dict["IsWhite"] as! Bool
+        }
+        if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+            self.issuer = dict["Issuer"] as! String
+        }
+        if dict.keys.contains("Jwks") && dict["Jwks"] != nil {
+            self.jwks = dict["Jwks"] as! String
+        }
+        if dict.keys.contains("LoginUrl") && dict["LoginUrl"] != nil {
+            self.loginUrl = dict["LoginUrl"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("RedirectUrl") && dict["RedirectUrl"] != nil {
+            self.redirectUrl = dict["RedirectUrl"] as! String
+        }
+        if dict.keys.contains("ScopesList") && dict["ScopesList"] != nil {
+            self.scopesListShrink = dict["ScopesList"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Bool
+        }
+        if dict.keys.contains("Sub") && dict["Sub"] != nil {
+            self.sub = dict["Sub"] as! String
+        }
+        if dict.keys.contains("TokenName") && dict["TokenName"] != nil {
+            self.tokenName = dict["TokenName"] as! String
+        }
+        if dict.keys.contains("TokenNamePrefix") && dict["TokenNamePrefix"] != nil {
+            self.tokenNamePrefix = dict["TokenNamePrefix"] as! String
+        }
+        if dict.keys.contains("TokenPass") && dict["TokenPass"] != nil {
+            self.tokenPass = dict["TokenPass"] as! Bool
+        }
+        if dict.keys.contains("TokenPosition") && dict["TokenPosition"] != nil {
+            self.tokenPosition = dict["TokenPosition"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+    }
+}
+
+public class AddGatewayAuthResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Int64?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class AddGatewayAuthResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: AddGatewayAuthResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = AddGatewayAuthResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class AddGatewayAuthConsumerRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -20140,6 +20865,749 @@ public class GetGatewayAuthConsumerDetailResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetGatewayAuthConsumerDetailResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetGatewayAuthDetailRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! Int64
+        }
+    }
+}
+
+public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ExternalAuthZ : Tea.TeaModel {
+            public class Service : Tea.TeaModel {
+                public var groupName: String?
+
+                public var name: String?
+
+                public var namespace: String?
+
+                public var sourceType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.groupName != nil {
+                        map["GroupName"] = self.groupName!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.namespace != nil {
+                        map["Namespace"] = self.namespace!
+                    }
+                    if self.sourceType != nil {
+                        map["SourceType"] = self.sourceType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                        self.groupName = dict["GroupName"] as! String
+                    }
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                        self.namespace = dict["Namespace"] as! String
+                    }
+                    if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
+                        self.sourceType = dict["SourceType"] as! String
+                    }
+                }
+            }
+            public var allowRequestHeaders: [String]?
+
+            public var allowUpstreamHeaders: [String]?
+
+            public var bodyMaxBytes: Int32?
+
+            public var isRestrict: Bool?
+
+            public var prefixPath: String?
+
+            public var service: GetGatewayAuthDetailResponseBody.Data.ExternalAuthZ.Service?
+
+            public var serviceId: Int64?
+
+            public var timeout: Int32?
+
+            public var tokenKey: String?
+
+            public var withRequestBody: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.service?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.allowRequestHeaders != nil {
+                    map["AllowRequestHeaders"] = self.allowRequestHeaders!
+                }
+                if self.allowUpstreamHeaders != nil {
+                    map["AllowUpstreamHeaders"] = self.allowUpstreamHeaders!
+                }
+                if self.bodyMaxBytes != nil {
+                    map["BodyMaxBytes"] = self.bodyMaxBytes!
+                }
+                if self.isRestrict != nil {
+                    map["IsRestrict"] = self.isRestrict!
+                }
+                if self.prefixPath != nil {
+                    map["PrefixPath"] = self.prefixPath!
+                }
+                if self.service != nil {
+                    map["Service"] = self.service?.toMap()
+                }
+                if self.serviceId != nil {
+                    map["ServiceId"] = self.serviceId!
+                }
+                if self.timeout != nil {
+                    map["Timeout"] = self.timeout!
+                }
+                if self.tokenKey != nil {
+                    map["TokenKey"] = self.tokenKey!
+                }
+                if self.withRequestBody != nil {
+                    map["WithRequestBody"] = self.withRequestBody!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AllowRequestHeaders") && dict["AllowRequestHeaders"] != nil {
+                    self.allowRequestHeaders = dict["AllowRequestHeaders"] as! [String]
+                }
+                if dict.keys.contains("AllowUpstreamHeaders") && dict["AllowUpstreamHeaders"] != nil {
+                    self.allowUpstreamHeaders = dict["AllowUpstreamHeaders"] as! [String]
+                }
+                if dict.keys.contains("BodyMaxBytes") && dict["BodyMaxBytes"] != nil {
+                    self.bodyMaxBytes = dict["BodyMaxBytes"] as! Int32
+                }
+                if dict.keys.contains("IsRestrict") && dict["IsRestrict"] != nil {
+                    self.isRestrict = dict["IsRestrict"] as! Bool
+                }
+                if dict.keys.contains("PrefixPath") && dict["PrefixPath"] != nil {
+                    self.prefixPath = dict["PrefixPath"] as! String
+                }
+                if dict.keys.contains("Service") && dict["Service"] != nil {
+                    var model = GetGatewayAuthDetailResponseBody.Data.ExternalAuthZ.Service()
+                    model.fromMap(dict["Service"] as! [String: Any])
+                    self.service = model
+                }
+                if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+                    self.serviceId = dict["ServiceId"] as! Int64
+                }
+                if dict.keys.contains("Timeout") && dict["Timeout"] != nil {
+                    self.timeout = dict["Timeout"] as! Int32
+                }
+                if dict.keys.contains("TokenKey") && dict["TokenKey"] != nil {
+                    self.tokenKey = dict["TokenKey"] as! String
+                }
+                if dict.keys.contains("WithRequestBody") && dict["WithRequestBody"] != nil {
+                    self.withRequestBody = dict["WithRequestBody"] as! Bool
+                }
+            }
+        }
+        public class ResourceList : Tea.TeaModel {
+            public class AuthResourceHeaderList : Tea.TeaModel {
+                public var headerKey: String?
+
+                public var headerMethod: String?
+
+                public var headerValue: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.headerKey != nil {
+                        map["HeaderKey"] = self.headerKey!
+                    }
+                    if self.headerMethod != nil {
+                        map["HeaderMethod"] = self.headerMethod!
+                    }
+                    if self.headerValue != nil {
+                        map["HeaderValue"] = self.headerValue!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("HeaderKey") && dict["HeaderKey"] != nil {
+                        self.headerKey = dict["HeaderKey"] as! String
+                    }
+                    if dict.keys.contains("HeaderMethod") && dict["HeaderMethod"] != nil {
+                        self.headerMethod = dict["HeaderMethod"] as! String
+                    }
+                    if dict.keys.contains("HeaderValue") && dict["HeaderValue"] != nil {
+                        self.headerValue = dict["HeaderValue"] as! String
+                    }
+                }
+            }
+            public var authId: Int64?
+
+            public var authResourceHeaderList: [GetGatewayAuthDetailResponseBody.Data.ResourceList.AuthResourceHeaderList]?
+
+            public var domainId: Int64?
+
+            public var domainName: String?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var gmtCreate: String?
+
+            public var gmtModified: String?
+
+            public var id: Int64?
+
+            public var ignoreCase: Bool?
+
+            public var isWhite: Bool?
+
+            public var matchType: String?
+
+            public var path: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authId != nil {
+                    map["AuthId"] = self.authId!
+                }
+                if self.authResourceHeaderList != nil {
+                    var tmp : [Any] = []
+                    for k in self.authResourceHeaderList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["AuthResourceHeaderList"] = tmp
+                }
+                if self.domainId != nil {
+                    map["DomainId"] = self.domainId!
+                }
+                if self.domainName != nil {
+                    map["DomainName"] = self.domainName!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.gmtCreate != nil {
+                    map["GmtCreate"] = self.gmtCreate!
+                }
+                if self.gmtModified != nil {
+                    map["GmtModified"] = self.gmtModified!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.ignoreCase != nil {
+                    map["IgnoreCase"] = self.ignoreCase!
+                }
+                if self.isWhite != nil {
+                    map["IsWhite"] = self.isWhite!
+                }
+                if self.matchType != nil {
+                    map["MatchType"] = self.matchType!
+                }
+                if self.path != nil {
+                    map["Path"] = self.path!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuthId") && dict["AuthId"] != nil {
+                    self.authId = dict["AuthId"] as! Int64
+                }
+                if dict.keys.contains("AuthResourceHeaderList") && dict["AuthResourceHeaderList"] != nil {
+                    var tmp : [GetGatewayAuthDetailResponseBody.Data.ResourceList.AuthResourceHeaderList] = []
+                    for v in dict["AuthResourceHeaderList"] as! [Any] {
+                        var model = GetGatewayAuthDetailResponseBody.Data.ResourceList.AuthResourceHeaderList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.authResourceHeaderList = tmp
+                }
+                if dict.keys.contains("DomainId") && dict["DomainId"] != nil {
+                    self.domainId = dict["DomainId"] as! Int64
+                }
+                if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+                    self.domainName = dict["DomainName"] as! String
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("GmtCreate") && dict["GmtCreate"] != nil {
+                    self.gmtCreate = dict["GmtCreate"] as! String
+                }
+                if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
+                    self.gmtModified = dict["GmtModified"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IgnoreCase") && dict["IgnoreCase"] != nil {
+                    self.ignoreCase = dict["IgnoreCase"] as! Bool
+                }
+                if dict.keys.contains("IsWhite") && dict["IsWhite"] != nil {
+                    self.isWhite = dict["IsWhite"] as! Bool
+                }
+                if dict.keys.contains("MatchType") && dict["MatchType"] != nil {
+                    self.matchType = dict["MatchType"] as! String
+                }
+                if dict.keys.contains("Path") && dict["Path"] != nil {
+                    self.path = dict["Path"] as! String
+                }
+            }
+        }
+        public var clientId: String?
+
+        public var clientSecret: String?
+
+        public var cookieDomain: String?
+
+        public var externalAuthZ: GetGatewayAuthDetailResponseBody.Data.ExternalAuthZ?
+
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var id: Int64?
+
+        public var isWhite: Bool?
+
+        public var issuer: String?
+
+        public var jwks: String?
+
+        public var loginUrl: String?
+
+        public var name: String?
+
+        public var redirectUrl: String?
+
+        public var resourceList: [GetGatewayAuthDetailResponseBody.Data.ResourceList]?
+
+        public var scopesList: [String]?
+
+        public var status: Bool?
+
+        public var sub: String?
+
+        public var tokenName: String?
+
+        public var tokenNamePrefix: String?
+
+        public var tokenPass: Bool?
+
+        public var tokenPosition: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.externalAuthZ?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientId != nil {
+                map["ClientId"] = self.clientId!
+            }
+            if self.clientSecret != nil {
+                map["ClientSecret"] = self.clientSecret!
+            }
+            if self.cookieDomain != nil {
+                map["CookieDomain"] = self.cookieDomain!
+            }
+            if self.externalAuthZ != nil {
+                map["ExternalAuthZ"] = self.externalAuthZ?.toMap()
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.isWhite != nil {
+                map["IsWhite"] = self.isWhite!
+            }
+            if self.issuer != nil {
+                map["Issuer"] = self.issuer!
+            }
+            if self.jwks != nil {
+                map["Jwks"] = self.jwks!
+            }
+            if self.loginUrl != nil {
+                map["LoginUrl"] = self.loginUrl!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.redirectUrl != nil {
+                map["RedirectUrl"] = self.redirectUrl!
+            }
+            if self.resourceList != nil {
+                var tmp : [Any] = []
+                for k in self.resourceList! {
+                    tmp.append(k.toMap())
+                }
+                map["ResourceList"] = tmp
+            }
+            if self.scopesList != nil {
+                map["ScopesList"] = self.scopesList!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.sub != nil {
+                map["Sub"] = self.sub!
+            }
+            if self.tokenName != nil {
+                map["TokenName"] = self.tokenName!
+            }
+            if self.tokenNamePrefix != nil {
+                map["TokenNamePrefix"] = self.tokenNamePrefix!
+            }
+            if self.tokenPass != nil {
+                map["TokenPass"] = self.tokenPass!
+            }
+            if self.tokenPosition != nil {
+                map["TokenPosition"] = self.tokenPosition!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
+                self.clientId = dict["ClientId"] as! String
+            }
+            if dict.keys.contains("ClientSecret") && dict["ClientSecret"] != nil {
+                self.clientSecret = dict["ClientSecret"] as! String
+            }
+            if dict.keys.contains("CookieDomain") && dict["CookieDomain"] != nil {
+                self.cookieDomain = dict["CookieDomain"] as! String
+            }
+            if dict.keys.contains("ExternalAuthZ") && dict["ExternalAuthZ"] != nil {
+                var model = GetGatewayAuthDetailResponseBody.Data.ExternalAuthZ()
+                model.fromMap(dict["ExternalAuthZ"] as! [String: Any])
+                self.externalAuthZ = model
+            }
+            if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                self.gatewayId = dict["GatewayId"] as! Int64
+            }
+            if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("GmtCreate") && dict["GmtCreate"] != nil {
+                self.gmtCreate = dict["GmtCreate"] as! String
+            }
+            if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
+                self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IsWhite") && dict["IsWhite"] != nil {
+                self.isWhite = dict["IsWhite"] as! Bool
+            }
+            if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+                self.issuer = dict["Issuer"] as! String
+            }
+            if dict.keys.contains("Jwks") && dict["Jwks"] != nil {
+                self.jwks = dict["Jwks"] as! String
+            }
+            if dict.keys.contains("LoginUrl") && dict["LoginUrl"] != nil {
+                self.loginUrl = dict["LoginUrl"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("RedirectUrl") && dict["RedirectUrl"] != nil {
+                self.redirectUrl = dict["RedirectUrl"] as! String
+            }
+            if dict.keys.contains("ResourceList") && dict["ResourceList"] != nil {
+                var tmp : [GetGatewayAuthDetailResponseBody.Data.ResourceList] = []
+                for v in dict["ResourceList"] as! [Any] {
+                    var model = GetGatewayAuthDetailResponseBody.Data.ResourceList()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.resourceList = tmp
+            }
+            if dict.keys.contains("ScopesList") && dict["ScopesList"] != nil {
+                self.scopesList = dict["ScopesList"] as! [String]
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! Bool
+            }
+            if dict.keys.contains("Sub") && dict["Sub"] != nil {
+                self.sub = dict["Sub"] as! String
+            }
+            if dict.keys.contains("TokenName") && dict["TokenName"] != nil {
+                self.tokenName = dict["TokenName"] as! String
+            }
+            if dict.keys.contains("TokenNamePrefix") && dict["TokenNamePrefix"] != nil {
+                self.tokenNamePrefix = dict["TokenNamePrefix"] as! String
+            }
+            if dict.keys.contains("TokenPass") && dict["TokenPass"] != nil {
+                self.tokenPass = dict["TokenPass"] as! Bool
+            }
+            if dict.keys.contains("TokenPosition") && dict["TokenPosition"] != nil {
+                self.tokenPosition = dict["TokenPosition"] as! String
+            }
+            if dict.keys.contains("Type") && dict["Type"] != nil {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: GetGatewayAuthDetailResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = GetGatewayAuthDetailResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetGatewayAuthDetailResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetGatewayAuthDetailResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetGatewayAuthDetailResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
