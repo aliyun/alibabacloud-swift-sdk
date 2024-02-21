@@ -10370,6 +10370,8 @@ public class GetStackGroupOperationResponse : Tea.TeaModel {
 }
 
 public class GetStackInstanceRequest : Tea.TeaModel {
+    public var outputOption: String?
+
     public var regionId: String?
 
     public var stackGroupName: String?
@@ -10392,6 +10394,9 @@ public class GetStackInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.outputOption != nil {
+            map["OutputOption"] = self.outputOption!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -10408,6 +10413,9 @@ public class GetStackInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OutputOption") && dict["OutputOption"] != nil {
+            self.outputOption = dict["OutputOption"] as! String
+        }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
@@ -10466,6 +10474,8 @@ public class GetStackInstanceResponseBody : Tea.TeaModel {
 
         public var driftDetectionTime: String?
 
+        public var outputs: [[String: Any]]?
+
         public var parameterOverrides: [GetStackInstanceResponseBody.StackInstance.ParameterOverrides]?
 
         public var rdFolderId: String?
@@ -10503,6 +10513,9 @@ public class GetStackInstanceResponseBody : Tea.TeaModel {
             }
             if self.driftDetectionTime != nil {
                 map["DriftDetectionTime"] = self.driftDetectionTime!
+            }
+            if self.outputs != nil {
+                map["Outputs"] = self.outputs!
             }
             if self.parameterOverrides != nil {
                 var tmp : [Any] = []
@@ -10544,6 +10557,9 @@ public class GetStackInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DriftDetectionTime") && dict["DriftDetectionTime"] != nil {
                 self.driftDetectionTime = dict["DriftDetectionTime"] as! String
+            }
+            if dict.keys.contains("Outputs") && dict["Outputs"] != nil {
+                self.outputs = dict["Outputs"] as! [[String: Any]]
             }
             if dict.keys.contains("ParameterOverrides") && dict["ParameterOverrides"] != nil {
                 var tmp : [GetStackInstanceResponseBody.StackInstance.ParameterOverrides] = []

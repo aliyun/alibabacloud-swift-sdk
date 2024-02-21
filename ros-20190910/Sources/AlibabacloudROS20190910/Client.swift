@@ -1654,6 +1654,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getStackInstanceWithOptions(_ request: GetStackInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetStackInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.outputOption)) {
+            query["OutputOption"] = request.outputOption ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
