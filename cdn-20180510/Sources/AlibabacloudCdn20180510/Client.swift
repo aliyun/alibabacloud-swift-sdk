@@ -4193,6 +4193,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDomainVerifyDataWithOptions(_ request: DescribeDomainVerifyDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDomainVerifyDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.globalResourcePlan)) {
+            query["GlobalResourcePlan"] = request.globalResourcePlan ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDomainVerifyData",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDomainVerifyDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDomainVerifyData(_ request: DescribeDomainVerifyDataRequest) async throws -> DescribeDomainVerifyDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDomainVerifyDataWithOptions(request as! DescribeDomainVerifyDataRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeDomainsBySourceWithOptions(_ request: DescribeDomainsBySourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDomainsBySourceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
