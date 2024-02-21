@@ -1684,6 +1684,8 @@ public class CreateBackupPolicyResponse : Tea.TeaModel {
 }
 
 public class CreateDBInstanceRequest : Tea.TeaModel {
+    public var autoRenew: Bool?
+
     public var backupSetID: String?
 
     public var clientToken: String?
@@ -1756,6 +1758,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
         if self.backupSetID != nil {
             map["BackupSetID"] = self.backupSetID!
         }
@@ -1847,6 +1852,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
+            self.autoRenew = dict["AutoRenew"] as! Bool
+        }
         if dict.keys.contains("BackupSetID") && dict["BackupSetID"] != nil {
             self.backupSetID = dict["BackupSetID"] as! String
         }
