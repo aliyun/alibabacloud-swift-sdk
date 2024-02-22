@@ -5916,8 +5916,6 @@ public class DescribeHybridCloudResourcesResponseBody : Tea.TeaModel {
 
             public var IPv6Enabled: Bool?
 
-            public var ipv6Enabled: Bool?
-
             public var protectionResource: String?
 
             public var TLSVersion: String?
@@ -5970,9 +5968,6 @@ public class DescribeHybridCloudResourcesResponseBody : Tea.TeaModel {
                 if self.IPv6Enabled != nil {
                     map["IPv6Enabled"] = self.IPv6Enabled!
                 }
-                if self.ipv6Enabled != nil {
-                    map["Ipv6Enabled"] = self.ipv6Enabled!
-                }
                 if self.protectionResource != nil {
                     map["ProtectionResource"] = self.protectionResource!
                 }
@@ -6018,9 +6013,6 @@ public class DescribeHybridCloudResourcesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("IPv6Enabled") && dict["IPv6Enabled"] != nil {
                     self.IPv6Enabled = dict["IPv6Enabled"] as! Bool
-                }
-                if dict.keys.contains("Ipv6Enabled") && dict["Ipv6Enabled"] != nil {
-                    self.ipv6Enabled = dict["Ipv6Enabled"] as! Bool
                 }
                 if dict.keys.contains("ProtectionResource") && dict["ProtectionResource"] != nil {
                     self.protectionResource = dict["ProtectionResource"] as! String
