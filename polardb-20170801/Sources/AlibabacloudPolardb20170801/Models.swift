@@ -9358,6 +9358,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var memorySize: String?
 
+        public var remoteMemorySize: String?
+
         public var sccMode: String?
 
         public var serverWeight: String?
@@ -9424,6 +9426,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if self.memorySize != nil {
                 map["MemorySize"] = self.memorySize!
             }
+            if self.remoteMemorySize != nil {
+                map["RemoteMemorySize"] = self.remoteMemorySize!
+            }
             if self.sccMode != nil {
                 map["SccMode"] = self.sccMode!
             }
@@ -9485,6 +9490,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             if dict.keys.contains("MemorySize") && dict["MemorySize"] != nil {
                 self.memorySize = dict["MemorySize"] as! String
             }
+            if dict.keys.contains("RemoteMemorySize") && dict["RemoteMemorySize"] != nil {
+                self.remoteMemorySize = dict["RemoteMemorySize"] as! String
+            }
             if dict.keys.contains("SccMode") && dict["SccMode"] != nil {
                 self.sccMode = dict["SccMode"] as! String
             }
@@ -9539,6 +9547,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var aiCreatingTime: String?
+
     public var aiType: String?
 
     public var architecture: String?
@@ -9661,6 +9671,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aiCreatingTime != nil {
+            map["AiCreatingTime"] = self.aiCreatingTime!
+        }
         if self.aiType != nil {
             map["AiType"] = self.aiType!
         }
@@ -9835,6 +9848,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AiCreatingTime") && dict["AiCreatingTime"] != nil {
+            self.aiCreatingTime = dict["AiCreatingTime"] as! String
+        }
         if dict.keys.contains("AiType") && dict["AiType"] != nil {
             self.aiType = dict["AiType"] as! String
         }
