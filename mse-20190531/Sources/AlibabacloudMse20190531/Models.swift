@@ -21298,7 +21298,7 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
 
         public var resourceList: [GetGatewayAuthDetailResponseBody.Data.ResourceList]?
 
-        public var scopesList: [String]?
+        public var scopesList: String?
 
         public var status: Bool?
 
@@ -21468,7 +21468,7 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
                 self.resourceList = tmp
             }
             if dict.keys.contains("ScopesList") && dict["ScopesList"] != nil {
-                self.scopesList = dict["ScopesList"] as! [String]
+                self.scopesList = dict["ScopesList"] as! String
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! Bool
