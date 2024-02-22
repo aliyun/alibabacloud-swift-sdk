@@ -663,6 +663,24 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.featurePriority)) {
             body["FeaturePriority"] = request.featurePriority ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.featureStoreItemId)) {
+            body["FeatureStoreItemId"] = request.featureStoreItemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreModelId)) {
+            body["FeatureStoreModelId"] = request.featureStoreModelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreProjectId)) {
+            body["FeatureStoreProjectId"] = request.featureStoreProjectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreProjectName)) {
+            body["FeatureStoreProjectName"] = request.featureStoreProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreSeqFeatureView)) {
+            body["FeatureStoreSeqFeatureView"] = request.featureStoreSeqFeatureView ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreUserId)) {
+            body["FeatureStoreUserId"] = request.featureStoreUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fgJarVersion)) {
             body["FgJarVersion"] = request.fgJarVersion ?? "";
         }
@@ -701,6 +719,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceId)) {
             body["ServiceId"] = request.serviceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.useFeatureStore)) {
+            body["UseFeatureStore"] = request.useFeatureStore!;
         }
         if (!TeaUtils.Client.isUnset(request.userIdField)) {
             body["UserIdField"] = request.userIdField ?? "";
@@ -1944,6 +1965,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.order)) {
+            query["Order"] = request.order ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
@@ -1955,6 +1979,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.sceneId)) {
             query["SceneId"] = request.sceneId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.sortBy)) {
+            query["SortBy"] = request.sortBy ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -3422,6 +3449,24 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.featurePriority)) {
             body["FeaturePriority"] = request.featurePriority ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.featureStoreItemId)) {
+            body["FeatureStoreItemId"] = request.featureStoreItemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreModelId)) {
+            body["FeatureStoreModelId"] = request.featureStoreModelId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreProjectId)) {
+            body["FeatureStoreProjectId"] = request.featureStoreProjectId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreProjectName)) {
+            body["FeatureStoreProjectName"] = request.featureStoreProjectName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreSeqFeatureView)) {
+            body["FeatureStoreSeqFeatureView"] = request.featureStoreSeqFeatureView ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.featureStoreUserId)) {
+            body["FeatureStoreUserId"] = request.featureStoreUserId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.fgJarVersion)) {
             body["FgJarVersion"] = request.fgJarVersion ?? "";
         }
@@ -3433,6 +3478,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isUseFeatureStore)) {
+            body["IsUseFeatureStore"] = request.isUseFeatureStore!;
         }
         if (!TeaUtils.Client.isUnset(request.itemIdField)) {
             body["ItemIdField"] = request.itemIdField ?? "";

@@ -192,9 +192,6 @@ public class BackflowFeatureConsistencyCheckJobDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -377,9 +374,6 @@ public class CheckInstanceResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -497,9 +491,6 @@ public class CloneExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -633,9 +624,6 @@ public class CloneExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -753,9 +741,6 @@ public class CloneFeatureConsistencyCheckJobConfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -889,9 +874,6 @@ public class CloneLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1105,9 +1087,6 @@ public class CreateABMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1265,9 +1244,6 @@ public class CreateABMetricGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1409,9 +1385,6 @@ public class CreateCalculationJobsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1569,9 +1542,6 @@ public class CreateCrowdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1753,9 +1723,6 @@ public class CreateExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1969,9 +1936,6 @@ public class CreateExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2113,9 +2077,6 @@ public class CreateFeatureConsistencyCheckJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2163,6 +2124,18 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var featurePriority: String?
 
+    public var featureStoreItemId: String?
+
+    public var featureStoreModelId: String?
+
+    public var featureStoreProjectId: String?
+
+    public var featureStoreProjectName: String?
+
+    public var featureStoreSeqFeatureView: String?
+
+    public var featureStoreUserId: String?
+
     public var fgJarVersion: String?
 
     public var fgJsonFileName: String?
@@ -2188,6 +2161,8 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
     public var sceneId: String?
 
     public var serviceId: String?
+
+    public var useFeatureStore: Bool?
 
     public var userIdField: String?
 
@@ -2234,6 +2209,24 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if self.featurePriority != nil {
             map["FeaturePriority"] = self.featurePriority!
         }
+        if self.featureStoreItemId != nil {
+            map["FeatureStoreItemId"] = self.featureStoreItemId!
+        }
+        if self.featureStoreModelId != nil {
+            map["FeatureStoreModelId"] = self.featureStoreModelId!
+        }
+        if self.featureStoreProjectId != nil {
+            map["FeatureStoreProjectId"] = self.featureStoreProjectId!
+        }
+        if self.featureStoreProjectName != nil {
+            map["FeatureStoreProjectName"] = self.featureStoreProjectName!
+        }
+        if self.featureStoreSeqFeatureView != nil {
+            map["FeatureStoreSeqFeatureView"] = self.featureStoreSeqFeatureView!
+        }
+        if self.featureStoreUserId != nil {
+            map["FeatureStoreUserId"] = self.featureStoreUserId!
+        }
         if self.fgJarVersion != nil {
             map["FgJarVersion"] = self.fgJarVersion!
         }
@@ -2272,6 +2265,9 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
+        }
+        if self.useFeatureStore != nil {
+            map["UseFeatureStore"] = self.useFeatureStore!
         }
         if self.userIdField != nil {
             map["UserIdField"] = self.userIdField!
@@ -2313,6 +2309,24 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if dict.keys.contains("FeaturePriority") && dict["FeaturePriority"] != nil {
             self.featurePriority = dict["FeaturePriority"] as! String
         }
+        if dict.keys.contains("FeatureStoreItemId") && dict["FeatureStoreItemId"] != nil {
+            self.featureStoreItemId = dict["FeatureStoreItemId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreModelId") && dict["FeatureStoreModelId"] != nil {
+            self.featureStoreModelId = dict["FeatureStoreModelId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreProjectId") && dict["FeatureStoreProjectId"] != nil {
+            self.featureStoreProjectId = dict["FeatureStoreProjectId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreProjectName") && dict["FeatureStoreProjectName"] != nil {
+            self.featureStoreProjectName = dict["FeatureStoreProjectName"] as! String
+        }
+        if dict.keys.contains("FeatureStoreSeqFeatureView") && dict["FeatureStoreSeqFeatureView"] != nil {
+            self.featureStoreSeqFeatureView = dict["FeatureStoreSeqFeatureView"] as! String
+        }
+        if dict.keys.contains("FeatureStoreUserId") && dict["FeatureStoreUserId"] != nil {
+            self.featureStoreUserId = dict["FeatureStoreUserId"] as! String
+        }
         if dict.keys.contains("FgJarVersion") && dict["FgJarVersion"] != nil {
             self.fgJarVersion = dict["FgJarVersion"] as! String
         }
@@ -2351,6 +2365,9 @@ public class CreateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
             self.serviceId = dict["ServiceId"] as! String
+        }
+        if dict.keys.contains("UseFeatureStore") && dict["UseFeatureStore"] != nil {
+            self.useFeatureStore = dict["UseFeatureStore"] as! Bool
         }
         if dict.keys.contains("UserIdField") && dict["UserIdField"] != nil {
             self.userIdField = dict["UserIdField"] as! String
@@ -2425,9 +2442,6 @@ public class CreateFeatureConsistencyCheckJobConfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2569,9 +2583,6 @@ public class CreateInstanceResourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2777,9 +2788,6 @@ public class CreateLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2921,9 +2929,6 @@ public class CreateLayerResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3073,9 +3078,6 @@ public class CreateParamResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3266,9 +3268,6 @@ public class CreateSceneResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3402,9 +3401,6 @@ public class CreateSubCrowdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3439,7 +3435,11 @@ public class CreateSubCrowdResponse : Tea.TeaModel {
 
 public class CreateTableMetaRequest : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public var dataType: String?
+
         public var isDimensionField: Bool?
+
+        public var isPartitionField: String?
 
         public var meaning: String?
 
@@ -3461,8 +3461,14 @@ public class CreateTableMetaRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataType != nil {
+                map["DataType"] = self.dataType!
+            }
             if self.isDimensionField != nil {
                 map["IsDimensionField"] = self.isDimensionField!
+            }
+            if self.isPartitionField != nil {
+                map["IsPartitionField"] = self.isPartitionField!
             }
             if self.meaning != nil {
                 map["Meaning"] = self.meaning!
@@ -3477,8 +3483,14 @@ public class CreateTableMetaRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataType") && dict["DataType"] != nil {
+                self.dataType = dict["DataType"] as! String
+            }
             if dict.keys.contains("IsDimensionField") && dict["IsDimensionField"] != nil {
                 self.isDimensionField = dict["IsDimensionField"] as! Bool
+            }
+            if dict.keys.contains("IsPartitionField") && dict["IsPartitionField"] != nil {
+                self.isPartitionField = dict["IsPartitionField"] as! String
             }
             if dict.keys.contains("Meaning") && dict["Meaning"] != nil {
                 self.meaning = dict["Meaning"] as! String
@@ -3635,9 +3647,6 @@ public class CreateTableMetaResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3747,9 +3756,6 @@ public class DeleteABMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3859,9 +3865,6 @@ public class DeleteABMetricGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3971,9 +3974,6 @@ public class DeleteCrowdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4083,9 +4083,6 @@ public class DeleteExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4195,9 +4192,6 @@ public class DeleteExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4277,9 +4271,6 @@ public class DeleteInstanceResourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4389,9 +4380,6 @@ public class DeleteLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4501,9 +4489,6 @@ public class DeleteLayerResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4613,9 +4598,6 @@ public class DeleteParamResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4725,9 +4707,6 @@ public class DeleteSceneResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4837,9 +4816,6 @@ public class DeleteSubCrowdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4949,9 +4925,6 @@ public class DeleteTableMetaResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5173,9 +5146,6 @@ public class GetABMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5341,9 +5311,6 @@ public class GetABMetricGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5517,9 +5484,6 @@ public class GetCalculationJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5757,9 +5721,6 @@ public class GetExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5997,9 +5958,6 @@ public class GetExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6165,9 +6123,6 @@ public class GetFeatureConsistencyCheckJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6247,6 +6202,18 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
 
     public var featurePriority: String?
 
+    public var featureStoreItemId: String?
+
+    public var featureStoreModelId: String?
+
+    public var featureStoreProjectId: String?
+
+    public var featureStoreProjectName: String?
+
+    public var featureStoreSeqFeatureView: String?
+
+    public var featureStoreUserId: String?
+
     public var fgJarVersion: String?
 
     public var fgJsonFileName: String?
@@ -6290,6 +6257,8 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
     public var serviceName: String?
 
     public var status: String?
+
+    public var useFeatureStore: Bool?
 
     public var userIdField: String?
 
@@ -6338,6 +6307,24 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         }
         if self.featurePriority != nil {
             map["FeaturePriority"] = self.featurePriority!
+        }
+        if self.featureStoreItemId != nil {
+            map["FeatureStoreItemId"] = self.featureStoreItemId!
+        }
+        if self.featureStoreModelId != nil {
+            map["FeatureStoreModelId"] = self.featureStoreModelId!
+        }
+        if self.featureStoreProjectId != nil {
+            map["FeatureStoreProjectId"] = self.featureStoreProjectId!
+        }
+        if self.featureStoreProjectName != nil {
+            map["FeatureStoreProjectName"] = self.featureStoreProjectName!
+        }
+        if self.featureStoreSeqFeatureView != nil {
+            map["FeatureStoreSeqFeatureView"] = self.featureStoreSeqFeatureView!
+        }
+        if self.featureStoreUserId != nil {
+            map["FeatureStoreUserId"] = self.featureStoreUserId!
         }
         if self.fgJarVersion != nil {
             map["FgJarVersion"] = self.fgJarVersion!
@@ -6405,6 +6392,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.useFeatureStore != nil {
+            map["UseFeatureStore"] = self.useFeatureStore!
+        }
         if self.userIdField != nil {
             map["UserIdField"] = self.userIdField!
         }
@@ -6447,6 +6437,24 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("FeaturePriority") && dict["FeaturePriority"] != nil {
             self.featurePriority = dict["FeaturePriority"] as! String
+        }
+        if dict.keys.contains("FeatureStoreItemId") && dict["FeatureStoreItemId"] != nil {
+            self.featureStoreItemId = dict["FeatureStoreItemId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreModelId") && dict["FeatureStoreModelId"] != nil {
+            self.featureStoreModelId = dict["FeatureStoreModelId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreProjectId") && dict["FeatureStoreProjectId"] != nil {
+            self.featureStoreProjectId = dict["FeatureStoreProjectId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreProjectName") && dict["FeatureStoreProjectName"] != nil {
+            self.featureStoreProjectName = dict["FeatureStoreProjectName"] as! String
+        }
+        if dict.keys.contains("FeatureStoreSeqFeatureView") && dict["FeatureStoreSeqFeatureView"] != nil {
+            self.featureStoreSeqFeatureView = dict["FeatureStoreSeqFeatureView"] as! String
+        }
+        if dict.keys.contains("FeatureStoreUserId") && dict["FeatureStoreUserId"] != nil {
+            self.featureStoreUserId = dict["FeatureStoreUserId"] as! String
         }
         if dict.keys.contains("FgJarVersion") && dict["FgJarVersion"] != nil {
             self.fgJarVersion = dict["FgJarVersion"] as! String
@@ -6514,6 +6522,9 @@ public class GetFeatureConsistencyCheckJobConfigResponseBody : Tea.TeaModel {
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
         }
+        if dict.keys.contains("UseFeatureStore") && dict["UseFeatureStore"] != nil {
+            self.useFeatureStore = dict["UseFeatureStore"] as! Bool
+        }
         if dict.keys.contains("UserIdField") && dict["UserIdField"] != nil {
             self.userIdField = dict["UserIdField"] as! String
         }
@@ -6549,9 +6560,6 @@ public class GetFeatureConsistencyCheckJobConfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6930,9 +6938,6 @@ public class GetInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7076,9 +7081,6 @@ public class GetInstanceResourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7115,6 +7117,8 @@ public class GetInstanceResourceTableResponseBody : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
         public var isDimensionField: Bool?
 
+        public var isPartitionField: Bool?
+
         public var meaning: String?
 
         public var name: String?
@@ -7138,6 +7142,9 @@ public class GetInstanceResourceTableResponseBody : Tea.TeaModel {
             if self.isDimensionField != nil {
                 map["IsDimensionField"] = self.isDimensionField!
             }
+            if self.isPartitionField != nil {
+                map["IsPartitionField"] = self.isPartitionField!
+            }
             if self.meaning != nil {
                 map["Meaning"] = self.meaning!
             }
@@ -7153,6 +7160,9 @@ public class GetInstanceResourceTableResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("IsDimensionField") && dict["IsDimensionField"] != nil {
                 self.isDimensionField = dict["IsDimensionField"] as! Bool
+            }
+            if dict.keys.contains("IsPartitionField") && dict["IsPartitionField"] != nil {
+                self.isPartitionField = dict["IsPartitionField"] as! Bool
             }
             if dict.keys.contains("Meaning") && dict["Meaning"] != nil {
                 self.meaning = dict["Meaning"] as! String
@@ -7239,9 +7249,6 @@ public class GetInstanceResourceTableResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7455,9 +7462,6 @@ public class GetLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7599,9 +7603,6 @@ public class GetLayerResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7784,9 +7785,6 @@ public class GetSceneResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7928,9 +7926,6 @@ public class GetSubCrowdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8049,11 +8044,15 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
     }
     public var canDelete: Bool?
 
+    public var config: String?
+
     public var description_: String?
 
     public var fields: [GetTableMetaResponseBody.Fields]?
 
     public var gmtCreateTime: String?
+
+    public var gmtImportedTime: String?
 
     public var gmtModifiedTime: String?
 
@@ -8064,6 +8063,8 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var resourceId: String?
+
+    public var tableMetaId: String?
 
     public var tableName: String?
 
@@ -8088,6 +8089,9 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         if self.canDelete != nil {
             map["CanDelete"] = self.canDelete!
         }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
@@ -8100,6 +8104,9 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         }
         if self.gmtCreateTime != nil {
             map["GmtCreateTime"] = self.gmtCreateTime!
+        }
+        if self.gmtImportedTime != nil {
+            map["GmtImportedTime"] = self.gmtImportedTime!
         }
         if self.gmtModifiedTime != nil {
             map["GmtModifiedTime"] = self.gmtModifiedTime!
@@ -8116,6 +8123,9 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
+        if self.tableMetaId != nil {
+            map["TableMetaId"] = self.tableMetaId!
+        }
         if self.tableName != nil {
             map["TableName"] = self.tableName!
         }
@@ -8131,6 +8141,9 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CanDelete") && dict["CanDelete"] != nil {
             self.canDelete = dict["CanDelete"] as! Bool
+        }
+        if dict.keys.contains("Config") && dict["Config"] != nil {
+            self.config = dict["Config"] as! String
         }
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
@@ -8149,6 +8162,9 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
             self.gmtCreateTime = dict["GmtCreateTime"] as! String
         }
+        if dict.keys.contains("GmtImportedTime") && dict["GmtImportedTime"] != nil {
+            self.gmtImportedTime = dict["GmtImportedTime"] as! String
+        }
         if dict.keys.contains("GmtModifiedTime") && dict["GmtModifiedTime"] != nil {
             self.gmtModifiedTime = dict["GmtModifiedTime"] as! String
         }
@@ -8163,6 +8179,9 @@ public class GetTableMetaResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
             self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("TableMetaId") && dict["TableMetaId"] != nil {
+            self.tableMetaId = dict["TableMetaId"] as! String
         }
         if dict.keys.contains("TableName") && dict["TableName"] != nil {
             self.tableName = dict["TableName"] as! String
@@ -8193,9 +8212,6 @@ public class GetTableMetaResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8231,6 +8247,8 @@ public class GetTableMetaResponse : Tea.TeaModel {
 public class ListABMetricGroupsRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var order: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -8238,6 +8256,8 @@ public class ListABMetricGroupsRequest : Tea.TeaModel {
     public var realtime: Bool?
 
     public var sceneId: String?
+
+    public var sortBy: String?
 
     public override init() {
         super.init()
@@ -8256,6 +8276,9 @@ public class ListABMetricGroupsRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.order != nil {
+            map["Order"] = self.order!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -8268,12 +8291,18 @@ public class ListABMetricGroupsRequest : Tea.TeaModel {
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
         }
+        if self.sortBy != nil {
+            map["SortBy"] = self.sortBy!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Order") && dict["Order"] != nil {
+            self.order = dict["Order"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -8286,6 +8315,9 @@ public class ListABMetricGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SceneId") && dict["SceneId"] != nil {
             self.sceneId = dict["SceneId"] as! String
+        }
+        if dict.keys.contains("SortBy") && dict["SortBy"] != nil {
+            self.sortBy = dict["SortBy"] as! String
         }
     }
 }
@@ -8450,9 +8482,6 @@ public class ListABMetricGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8787,9 +8816,6 @@ public class ListABMetricsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9044,9 +9070,6 @@ public class ListCalculationJobsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9172,9 +9195,6 @@ public class ListCrowdUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9397,9 +9417,6 @@ public class ListCrowdsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9710,9 +9727,6 @@ public class ListExperimentGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10031,9 +10045,6 @@ public class ListExperimentsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10148,6 +10159,18 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
 
         public var featurePriority: String?
 
+        public var featureStoreItemId: String?
+
+        public var featureStoreModelId: String?
+
+        public var featureStoreProjectId: String?
+
+        public var featureStoreProjectName: String?
+
+        public var featureStoreSeqFeatureView: String?
+
+        public var featureStoreUserId: String?
+
         public var fgJarVersion: String?
 
         public var fgJsonFileName: String?
@@ -10189,6 +10212,8 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
         public var serviceName: String?
 
         public var status: String?
+
+        public var useFeatureStore: String?
 
         public var userIdField: String?
 
@@ -10240,6 +10265,24 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if self.featurePriority != nil {
                 map["FeaturePriority"] = self.featurePriority!
+            }
+            if self.featureStoreItemId != nil {
+                map["FeatureStoreItemId"] = self.featureStoreItemId!
+            }
+            if self.featureStoreModelId != nil {
+                map["FeatureStoreModelId"] = self.featureStoreModelId!
+            }
+            if self.featureStoreProjectId != nil {
+                map["FeatureStoreProjectId"] = self.featureStoreProjectId!
+            }
+            if self.featureStoreProjectName != nil {
+                map["FeatureStoreProjectName"] = self.featureStoreProjectName!
+            }
+            if self.featureStoreSeqFeatureView != nil {
+                map["FeatureStoreSeqFeatureView"] = self.featureStoreSeqFeatureView!
+            }
+            if self.featureStoreUserId != nil {
+                map["FeatureStoreUserId"] = self.featureStoreUserId!
             }
             if self.fgJarVersion != nil {
                 map["FgJarVersion"] = self.fgJarVersion!
@@ -10304,6 +10347,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             if self.status != nil {
                 map["Status"] = self.status!
             }
+            if self.useFeatureStore != nil {
+                map["UseFeatureStore"] = self.useFeatureStore!
+            }
             if self.userIdField != nil {
                 map["UserIdField"] = self.userIdField!
             }
@@ -10349,6 +10395,24 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("FeaturePriority") && dict["FeaturePriority"] != nil {
                 self.featurePriority = dict["FeaturePriority"] as! String
+            }
+            if dict.keys.contains("FeatureStoreItemId") && dict["FeatureStoreItemId"] != nil {
+                self.featureStoreItemId = dict["FeatureStoreItemId"] as! String
+            }
+            if dict.keys.contains("FeatureStoreModelId") && dict["FeatureStoreModelId"] != nil {
+                self.featureStoreModelId = dict["FeatureStoreModelId"] as! String
+            }
+            if dict.keys.contains("FeatureStoreProjectId") && dict["FeatureStoreProjectId"] != nil {
+                self.featureStoreProjectId = dict["FeatureStoreProjectId"] as! String
+            }
+            if dict.keys.contains("FeatureStoreProjectName") && dict["FeatureStoreProjectName"] != nil {
+                self.featureStoreProjectName = dict["FeatureStoreProjectName"] as! String
+            }
+            if dict.keys.contains("FeatureStoreSeqFeatureView") && dict["FeatureStoreSeqFeatureView"] != nil {
+                self.featureStoreSeqFeatureView = dict["FeatureStoreSeqFeatureView"] as! String
+            }
+            if dict.keys.contains("FeatureStoreUserId") && dict["FeatureStoreUserId"] != nil {
+                self.featureStoreUserId = dict["FeatureStoreUserId"] as! String
             }
             if dict.keys.contains("FgJarVersion") && dict["FgJarVersion"] != nil {
                 self.fgJarVersion = dict["FgJarVersion"] as! String
@@ -10412,6 +10476,9 @@ public class ListFeatureConsistencyCheckJobConfigsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("UseFeatureStore") && dict["UseFeatureStore"] != nil {
+                self.useFeatureStore = dict["UseFeatureStore"] as! String
             }
             if dict.keys.contains("UserIdField") && dict["UserIdField"] != nil {
                 self.userIdField = dict["UserIdField"] as! String
@@ -10504,9 +10571,6 @@ public class ListFeatureConsistencyCheckJobConfigsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10745,9 +10809,6 @@ public class ListFeatureConsistencyCheckJobFeatureReportsResponse : Tea.TeaModel
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11000,9 +11061,6 @@ public class ListFeatureConsistencyCheckJobScoreReportsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11265,9 +11323,6 @@ public class ListFeatureConsistencyCheckJobsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11506,9 +11561,6 @@ public class ListInstanceResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12006,9 +12058,6 @@ public class ListInstancesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12303,9 +12352,6 @@ public class ListLaboratoriesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12512,9 +12558,6 @@ public class ListLayersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12753,9 +12796,6 @@ public class ListParamsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13003,9 +13043,6 @@ public class ListScenesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13204,9 +13241,6 @@ public class ListSubCrowdsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13366,6 +13400,8 @@ public class ListTableMetasResponseBody : Tea.TeaModel {
         }
         public var canDelete: Bool?
 
+        public var config: String?
+
         public var description_: String?
 
         public var fields: [ListTableMetasResponseBody.TableMetas.Fields]?
@@ -13406,6 +13442,9 @@ public class ListTableMetasResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.canDelete != nil {
                 map["CanDelete"] = self.canDelete!
+            }
+            if self.config != nil {
+                map["Config"] = self.config!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -13453,6 +13492,9 @@ public class ListTableMetasResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CanDelete") && dict["CanDelete"] != nil {
                 self.canDelete = dict["CanDelete"] as! Bool
+            }
+            if dict.keys.contains("Config") && dict["Config"] != nil {
+                self.config = dict["Config"] as! String
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
@@ -13574,9 +13616,6 @@ public class ListTableMetasResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13686,9 +13725,6 @@ public class OfflineExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13798,9 +13834,6 @@ public class OfflineExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13910,9 +13943,6 @@ public class OfflineLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14022,9 +14052,6 @@ public class OnlineExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14134,9 +14161,6 @@ public class OnlineExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14246,9 +14270,6 @@ public class OnlineLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14358,9 +14379,6 @@ public class PushAllExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14570,9 +14588,6 @@ public class ReportABMetricGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14754,9 +14769,6 @@ public class SyncFeatureConsistencyCheckJobReplayLogResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14866,9 +14878,6 @@ public class TerminateFeatureConsistencyCheckJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15074,9 +15083,6 @@ public class UpdateABMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15226,9 +15232,6 @@ public class UpdateABMetricGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15354,9 +15357,6 @@ public class UpdateCrowdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15522,9 +15522,6 @@ public class UpdateExperimentResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15730,9 +15727,6 @@ public class UpdateExperimentGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15780,6 +15774,18 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
 
     public var featurePriority: String?
 
+    public var featureStoreItemId: String?
+
+    public var featureStoreModelId: String?
+
+    public var featureStoreProjectId: String?
+
+    public var featureStoreProjectName: String?
+
+    public var featureStoreSeqFeatureView: String?
+
+    public var featureStoreUserId: String?
+
     public var fgJarVersion: String?
 
     public var fgJsonFileName: String?
@@ -15787,6 +15793,8 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
     public var generateZip: Bool?
 
     public var instanceId: String?
+
+    public var isUseFeatureStore: Bool?
 
     public var itemIdField: String?
 
@@ -15851,6 +15859,24 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if self.featurePriority != nil {
             map["FeaturePriority"] = self.featurePriority!
         }
+        if self.featureStoreItemId != nil {
+            map["FeatureStoreItemId"] = self.featureStoreItemId!
+        }
+        if self.featureStoreModelId != nil {
+            map["FeatureStoreModelId"] = self.featureStoreModelId!
+        }
+        if self.featureStoreProjectId != nil {
+            map["FeatureStoreProjectId"] = self.featureStoreProjectId!
+        }
+        if self.featureStoreProjectName != nil {
+            map["FeatureStoreProjectName"] = self.featureStoreProjectName!
+        }
+        if self.featureStoreSeqFeatureView != nil {
+            map["FeatureStoreSeqFeatureView"] = self.featureStoreSeqFeatureView!
+        }
+        if self.featureStoreUserId != nil {
+            map["FeatureStoreUserId"] = self.featureStoreUserId!
+        }
         if self.fgJarVersion != nil {
             map["FgJarVersion"] = self.fgJarVersion!
         }
@@ -15862,6 +15888,9 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.isUseFeatureStore != nil {
+            map["IsUseFeatureStore"] = self.isUseFeatureStore!
         }
         if self.itemIdField != nil {
             map["ItemIdField"] = self.itemIdField!
@@ -15930,6 +15959,24 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         if dict.keys.contains("FeaturePriority") && dict["FeaturePriority"] != nil {
             self.featurePriority = dict["FeaturePriority"] as! String
         }
+        if dict.keys.contains("FeatureStoreItemId") && dict["FeatureStoreItemId"] != nil {
+            self.featureStoreItemId = dict["FeatureStoreItemId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreModelId") && dict["FeatureStoreModelId"] != nil {
+            self.featureStoreModelId = dict["FeatureStoreModelId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreProjectId") && dict["FeatureStoreProjectId"] != nil {
+            self.featureStoreProjectId = dict["FeatureStoreProjectId"] as! String
+        }
+        if dict.keys.contains("FeatureStoreProjectName") && dict["FeatureStoreProjectName"] != nil {
+            self.featureStoreProjectName = dict["FeatureStoreProjectName"] as! String
+        }
+        if dict.keys.contains("FeatureStoreSeqFeatureView") && dict["FeatureStoreSeqFeatureView"] != nil {
+            self.featureStoreSeqFeatureView = dict["FeatureStoreSeqFeatureView"] as! String
+        }
+        if dict.keys.contains("FeatureStoreUserId") && dict["FeatureStoreUserId"] != nil {
+            self.featureStoreUserId = dict["FeatureStoreUserId"] as! String
+        }
         if dict.keys.contains("FgJarVersion") && dict["FgJarVersion"] != nil {
             self.fgJarVersion = dict["FgJarVersion"] as! String
         }
@@ -15941,6 +15988,9 @@ public class UpdateFeatureConsistencyCheckJobConfigRequest : Tea.TeaModel {
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IsUseFeatureStore") && dict["IsUseFeatureStore"] != nil {
+            self.isUseFeatureStore = dict["IsUseFeatureStore"] as! Bool
         }
         if dict.keys.contains("ItemIdField") && dict["ItemIdField"] != nil {
             self.itemIdField = dict["ItemIdField"] as! String
@@ -16034,9 +16084,6 @@ public class UpdateFeatureConsistencyCheckJobConfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16154,9 +16201,6 @@ public class UpdateInstanceResourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16346,9 +16390,6 @@ public class UpdateLaboratoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16474,9 +16515,6 @@ public class UpdateLayerResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16594,9 +16632,6 @@ public class UpdateParamResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16779,9 +16814,6 @@ public class UpdateSceneResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16816,7 +16848,11 @@ public class UpdateSceneResponse : Tea.TeaModel {
 
 public class UpdateTableMetaRequest : Tea.TeaModel {
     public class Fields : Tea.TeaModel {
+        public var dataType: String?
+
         public var isDimensionField: Bool?
+
+        public var isPartitionField: String?
 
         public var meaning: String?
 
@@ -16838,8 +16874,14 @@ public class UpdateTableMetaRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataType != nil {
+                map["DataType"] = self.dataType!
+            }
             if self.isDimensionField != nil {
                 map["IsDimensionField"] = self.isDimensionField!
+            }
+            if self.isPartitionField != nil {
+                map["IsPartitionField"] = self.isPartitionField!
             }
             if self.meaning != nil {
                 map["Meaning"] = self.meaning!
@@ -16854,8 +16896,14 @@ public class UpdateTableMetaRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataType") && dict["DataType"] != nil {
+                self.dataType = dict["DataType"] as! String
+            }
             if dict.keys.contains("IsDimensionField") && dict["IsDimensionField"] != nil {
                 self.isDimensionField = dict["IsDimensionField"] as! Bool
+            }
+            if dict.keys.contains("IsPartitionField") && dict["IsPartitionField"] != nil {
+                self.isPartitionField = dict["IsPartitionField"] as! String
             }
             if dict.keys.contains("Meaning") && dict["Meaning"] != nil {
                 self.meaning = dict["Meaning"] as! String
@@ -17004,9 +17052,6 @@ public class UpdateTableMetaResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
