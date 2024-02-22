@@ -29204,6 +29204,237 @@ public class DisableDesktopsInGroupResponse : Tea.TeaModel {
     }
 }
 
+public class DisconnectDesktopSessionsRequest : Tea.TeaModel {
+    public class Sessions : Tea.TeaModel {
+        public var desktopId: String?
+
+        public var endUserId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
+                self.endUserId = dict["EndUserId"] as! String
+            }
+        }
+    }
+    public var preCheck: Bool?
+
+    public var regionId: String?
+
+    public var sessions: [DisconnectDesktopSessionsRequest.Sessions]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.preCheck != nil {
+            map["PreCheck"] = self.preCheck!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.sessions != nil {
+            var tmp : [Any] = []
+            for k in self.sessions! {
+                tmp.append(k.toMap())
+            }
+            map["Sessions"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PreCheck") && dict["PreCheck"] != nil {
+            self.preCheck = dict["PreCheck"] as! Bool
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Sessions") && dict["Sessions"] != nil {
+            var tmp : [DisconnectDesktopSessionsRequest.Sessions] = []
+            for v in dict["Sessions"] as! [Any] {
+                var model = DisconnectDesktopSessionsRequest.Sessions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sessions = tmp
+        }
+    }
+}
+
+public class DisconnectDesktopSessionsResponseBody : Tea.TeaModel {
+    public class InvalidSessions : Tea.TeaModel {
+        public var desktopId: String?
+
+        public var endUserId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
+                self.endUserId = dict["EndUserId"] as! String
+            }
+        }
+    }
+    public var invalidSessions: [DisconnectDesktopSessionsResponseBody.InvalidSessions]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.invalidSessions != nil {
+            var tmp : [Any] = []
+            for k in self.invalidSessions! {
+                tmp.append(k.toMap())
+            }
+            map["InvalidSessions"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InvalidSessions") && dict["InvalidSessions"] != nil {
+            var tmp : [DisconnectDesktopSessionsResponseBody.InvalidSessions] = []
+            for v in dict["InvalidSessions"] as! [Any] {
+                var model = DisconnectDesktopSessionsResponseBody.InvalidSessions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.invalidSessions = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DisconnectDesktopSessionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisconnectDesktopSessionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DisconnectDesktopSessionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DissociateNetworkPackageRequest : Tea.TeaModel {
     public var networkPackageId: String?
 
