@@ -82,6 +82,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addBlacklistCallTaggingWithOptions(_ request: AddBlacklistCallTaggingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddBlacklistCallTaggingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.number)) {
+            query["Number"] = request.number ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AddBlacklistCallTagging",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AddBlacklistCallTaggingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func addBlacklistCallTagging(_ request: AddBlacklistCallTaggingRequest) async throws -> AddBlacklistCallTaggingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await addBlacklistCallTaggingWithOptions(request as! AddBlacklistCallTaggingRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func addCasesWithOptions(_ tmpReq: AddCasesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AddCasesResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: AddCasesShrinkRequest = AddCasesShrinkRequest([:])
@@ -5968,6 +6005,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func releaseCall(_ request: ReleaseCallRequest) async throws -> ReleaseCallResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await releaseCallWithOptions(request as! ReleaseCallRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeBlacklistCallTaggingWithOptions(_ request: RemoveBlacklistCallTaggingRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RemoveBlacklistCallTaggingResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.jobId)) {
+            query["JobId"] = request.jobId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.number)) {
+            query["Number"] = request.number ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RemoveBlacklistCallTagging",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RemoveBlacklistCallTaggingResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func removeBlacklistCallTagging(_ request: RemoveBlacklistCallTaggingRequest) async throws -> RemoveBlacklistCallTaggingResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await removeBlacklistCallTaggingWithOptions(request as! RemoveBlacklistCallTaggingRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
