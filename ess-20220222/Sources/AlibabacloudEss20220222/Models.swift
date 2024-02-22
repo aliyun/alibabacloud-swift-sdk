@@ -24557,6 +24557,155 @@ public class ModifyEciScalingConfigurationResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyInstanceAttributeRequest : Tea.TeaModel {
+    public var entrusted: Bool?
+
+    public var instanceId: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var scalingGroupId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.entrusted != nil {
+            map["Entrusted"] = self.entrusted!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.scalingGroupId != nil {
+            map["ScalingGroupId"] = self.scalingGroupId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Entrusted") && dict["Entrusted"] != nil {
+            self.entrusted = dict["Entrusted"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ScalingGroupId") && dict["ScalingGroupId"] != nil {
+            self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+    }
+}
+
+public class ModifyInstanceAttributeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyInstanceAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyInstanceAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyInstanceAttributeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ModifyLifecycleHookRequest : Tea.TeaModel {
     public var defaultResult: String?
 
@@ -27080,6 +27229,8 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
 
     public var scalingGroupName: String?
 
+    public var scalingPolicy: String?
+
     public var spotAllocationStrategy: String?
 
     public var spotInstancePools: Int32?
@@ -27187,6 +27338,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         if self.scalingGroupName != nil {
             map["ScalingGroupName"] = self.scalingGroupName!
         }
+        if self.scalingPolicy != nil {
+            map["ScalingPolicy"] = self.scalingPolicy!
+        }
         if self.spotAllocationStrategy != nil {
             map["SpotAllocationStrategy"] = self.spotAllocationStrategy!
         }
@@ -27291,6 +27445,9 @@ public class ModifyScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupName") && dict["ScalingGroupName"] != nil {
             self.scalingGroupName = dict["ScalingGroupName"] as! String
+        }
+        if dict.keys.contains("ScalingPolicy") && dict["ScalingPolicy"] != nil {
+            self.scalingPolicy = dict["ScalingPolicy"] as! String
         }
         if dict.keys.contains("SpotAllocationStrategy") && dict["SpotAllocationStrategy"] != nil {
             self.spotAllocationStrategy = dict["SpotAllocationStrategy"] as! String
