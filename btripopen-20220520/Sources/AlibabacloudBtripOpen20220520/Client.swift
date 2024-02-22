@@ -1502,6 +1502,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cooperatorFlightBillSettlementQueryWithOptions(_ request: CooperatorFlightBillSettlementQueryRequest, _ headers: CooperatorFlightBillSettlementQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CooperatorFlightBillSettlementQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cooperatorId)) {
+            query["cooperator_id"] = request.cooperatorId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["page_no"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["page_size"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodEnd)) {
+            query["period_end"] = request.periodEnd ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.periodStart)) {
+            query["period_start"] = request.periodStart ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CooperatorFlightBillSettlementQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/cooperator-flight/v1/bill-settlement",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CooperatorFlightBillSettlementQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cooperatorFlightBillSettlementQuery(_ request: CooperatorFlightBillSettlementQueryRequest) async throws -> CooperatorFlightBillSettlementQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: CooperatorFlightBillSettlementQueryHeaders = CooperatorFlightBillSettlementQueryHeaders([:])
+        return try await cooperatorFlightBillSettlementQueryWithOptions(request as! CooperatorFlightBillSettlementQueryRequest, headers as! CooperatorFlightBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cooperatorHotelBillSettlementQueryWithOptions(_ request: CooperatorHotelBillSettlementQueryRequest, _ headers: CooperatorHotelBillSettlementQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> CooperatorHotelBillSettlementQueryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
