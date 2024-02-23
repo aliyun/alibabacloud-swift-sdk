@@ -337,6 +337,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var summarizationEnabled: Bool?
 
+        public var textPolishEnabled: Bool?
+
         public var transcoding: CreateTaskRequest.Parameters.Transcoding?
 
         public var transcription: CreateTaskRequest.Parameters.Transcription?
@@ -382,6 +384,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.summarizationEnabled != nil {
                 map["SummarizationEnabled"] = self.summarizationEnabled!
             }
+            if self.textPolishEnabled != nil {
+                map["TextPolishEnabled"] = self.textPolishEnabled!
+            }
             if self.transcoding != nil {
                 map["Transcoding"] = self.transcoding?.toMap()
             }
@@ -419,6 +424,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("SummarizationEnabled") && dict["SummarizationEnabled"] != nil {
                 self.summarizationEnabled = dict["SummarizationEnabled"] as! Bool
+            }
+            if dict.keys.contains("TextPolishEnabled") && dict["TextPolishEnabled"] != nil {
+                self.textPolishEnabled = dict["TextPolishEnabled"] as! Bool
             }
             if dict.keys.contains("Transcoding") && dict["Transcoding"] != nil {
                 var model = CreateTaskRequest.Parameters.Transcoding()
@@ -618,9 +626,6 @@ public class CreateTaskResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -826,9 +831,6 @@ public class CreateTranscriptionPhrasesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -924,9 +926,6 @@ public class DeleteTranscriptionPhrasesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1030,6 +1029,10 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var errorCode: String?
+
+        public var errorMessage: String?
+
         public var result: GetTaskInfoResponseBody.Data.Result?
 
         public var taskId: String?
@@ -1053,6 +1056,12 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.errorCode != nil {
+                map["ErrorCode"] = self.errorCode!
+            }
+            if self.errorMessage != nil {
+                map["ErrorMessage"] = self.errorMessage!
+            }
             if self.result != nil {
                 map["Result"] = self.result?.toMap()
             }
@@ -1069,6 +1078,12 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+                self.errorCode = dict["ErrorCode"] as! String
+            }
+            if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+                self.errorMessage = dict["ErrorMessage"] as! String
+            }
             if dict.keys.contains("Result") && dict["Result"] != nil {
                 var model = GetTaskInfoResponseBody.Data.Result()
                 model.fromMap(dict["Result"] as! [String: Any])
@@ -1158,9 +1173,6 @@ public class GetTaskInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1385,9 +1397,6 @@ public class GetTranscriptionPhrasesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1604,9 +1613,6 @@ public class ListTranscriptionPhrasesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1804,9 +1810,6 @@ public class UpdateTranscriptionPhrasesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
