@@ -768,6 +768,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.connectionDrainConfig)) {
+            query["ConnectionDrainConfig"] = request.connectionDrainConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -791,6 +794,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slowStartConfig)) {
+            query["SlowStartConfig"] = request.slowStartConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.stickySessionConfig)) {
             query["StickySessionConfig"] = request.stickySessionConfig!;
@@ -2309,6 +2315,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.serverGroupNames)) {
             query["ServerGroupNames"] = request.serverGroupNames ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.serverGroupType)) {
+            query["ServerGroupType"] = request.serverGroupType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.tag)) {
             query["Tag"] = request.tag ?? [];
         }
@@ -3417,6 +3426,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.connectionDrainConfig)) {
+            query["ConnectionDrainConfig"] = request.connectionDrainConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
@@ -3434,6 +3446,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.serviceName)) {
             query["ServiceName"] = request.serviceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slowStartConfig)) {
+            query["SlowStartConfig"] = request.slowStartConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.stickySessionConfig)) {
             query["StickySessionConfig"] = request.stickySessionConfig!;
