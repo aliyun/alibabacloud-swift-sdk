@@ -34959,6 +34959,8 @@ public class ListClusterTypesRequest : Tea.TeaModel {
 
 public class ListClusterTypesResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var code: String?
+
         public var showName: String?
 
         public override init() {
@@ -34975,6 +34977,9 @@ public class ListClusterTypesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
             if self.showName != nil {
                 map["ShowName"] = self.showName!
             }
@@ -34982,6 +34987,9 @@ public class ListClusterTypesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Code") && dict["Code"] != nil {
+                self.code = dict["Code"] as! String
+            }
             if dict.keys.contains("ShowName") && dict["ShowName"] != nil {
                 self.showName = dict["ShowName"] as! String
             }
