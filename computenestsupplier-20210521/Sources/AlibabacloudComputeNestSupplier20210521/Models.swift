@@ -3308,6 +3308,43 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ComponentsConfigs : Tea.TeaModel {
+        public var componentsMappings: [String: String]?
+
+        public var templateName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.componentsMappings != nil {
+                map["ComponentsMappings"] = self.componentsMappings!
+            }
+            if self.templateName != nil {
+                map["TemplateName"] = self.templateName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ComponentsMappings") && dict["ComponentsMappings"] != nil {
+                self.componentsMappings = dict["ComponentsMappings"] as! [String: String]
+            }
+            if dict.keys.contains("TemplateName") && dict["TemplateName"] != nil {
+                self.templateName = dict["TemplateName"] as! String
+            }
+        }
+    }
     public class ServiceInfos : Tea.TeaModel {
         public var image: String?
 
@@ -3515,6 +3552,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
     public var commoditySpecifications: [GetServiceResponseBody.CommoditySpecifications]?
 
+    public var componentsConfigs: [GetServiceResponseBody.ComponentsConfigs]?
+
     public var createTime: String?
 
     public var crossRegionConnectionStatus: String?
@@ -3663,6 +3702,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["CommoditySpecifications"] = tmp
+        }
+        if self.componentsConfigs != nil {
+            var tmp : [Any] = []
+            for k in self.componentsConfigs! {
+                tmp.append(k.toMap())
+            }
+            map["ComponentsConfigs"] = tmp
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
@@ -3873,6 +3919,17 @@ public class GetServiceResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.commoditySpecifications = tmp
+        }
+        if dict.keys.contains("ComponentsConfigs") && dict["ComponentsConfigs"] != nil {
+            var tmp : [GetServiceResponseBody.ComponentsConfigs] = []
+            for v in dict["ComponentsConfigs"] as! [Any] {
+                var model = GetServiceResponseBody.ComponentsConfigs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.componentsConfigs = tmp
         }
         if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
             self.createTime = dict["CreateTime"] as! String
