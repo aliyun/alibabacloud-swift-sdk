@@ -9308,6 +9308,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unbindUserDesktopWithOptions(_ request: UnbindUserDesktopRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnbindUserDesktopResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.desktopAgentIds)) {
+            query["DesktopAgentIds"] = request.desktopAgentIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.desktopGroupId)) {
+            query["DesktopGroupId"] = request.desktopGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.desktopIds)) {
+            query["DesktopIds"] = request.desktopIds ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["Force"] = request.force!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reason)) {
+            query["Reason"] = request.reason ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userDesktopIds)) {
+            query["UserDesktopIds"] = request.userDesktopIds ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UnbindUserDesktop",
+            "version": "2020-09-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UnbindUserDesktopResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func unbindUserDesktop(_ request: UnbindUserDesktopRequest) async throws -> UnbindUserDesktopResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await unbindUserDesktopWithOptions(request as! UnbindUserDesktopRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func unlockVirtualMFADeviceWithOptions(_ request: UnlockVirtualMFADeviceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UnlockVirtualMFADeviceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

@@ -44859,6 +44859,155 @@ public class TagResourcesResponse : Tea.TeaModel {
     }
 }
 
+public class UnbindUserDesktopRequest : Tea.TeaModel {
+    public var desktopAgentIds: [String]?
+
+    public var desktopGroupId: String?
+
+    public var desktopIds: [String]?
+
+    public var force: Bool?
+
+    public var reason: String?
+
+    public var userDesktopIds: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopAgentIds != nil {
+            map["DesktopAgentIds"] = self.desktopAgentIds!
+        }
+        if self.desktopGroupId != nil {
+            map["DesktopGroupId"] = self.desktopGroupId!
+        }
+        if self.desktopIds != nil {
+            map["DesktopIds"] = self.desktopIds!
+        }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
+        if self.reason != nil {
+            map["Reason"] = self.reason!
+        }
+        if self.userDesktopIds != nil {
+            map["UserDesktopIds"] = self.userDesktopIds!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DesktopAgentIds") && dict["DesktopAgentIds"] != nil {
+            self.desktopAgentIds = dict["DesktopAgentIds"] as! [String]
+        }
+        if dict.keys.contains("DesktopGroupId") && dict["DesktopGroupId"] != nil {
+            self.desktopGroupId = dict["DesktopGroupId"] as! String
+        }
+        if dict.keys.contains("DesktopIds") && dict["DesktopIds"] != nil {
+            self.desktopIds = dict["DesktopIds"] as! [String]
+        }
+        if dict.keys.contains("Force") && dict["Force"] != nil {
+            self.force = dict["Force"] as! Bool
+        }
+        if dict.keys.contains("Reason") && dict["Reason"] != nil {
+            self.reason = dict["Reason"] as! String
+        }
+        if dict.keys.contains("UserDesktopIds") && dict["UserDesktopIds"] != nil {
+            self.userDesktopIds = dict["UserDesktopIds"] as! [String]
+        }
+    }
+}
+
+public class UnbindUserDesktopResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UnbindUserDesktopResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UnbindUserDesktopResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UnbindUserDesktopResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UnlockVirtualMFADeviceRequest : Tea.TeaModel {
     public var regionId: String?
 
