@@ -1614,8 +1614,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func upgradePostPayOrderWithOptions(_ request: UpgradePostPayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradePostPayOrderResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func upgradePostPayOrderWithOptions(_ tmpReq: UpgradePostPayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradePostPayOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpgradePostPayOrderShrinkRequest = UpgradePostPayOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serverlessConfig)) {
+            request.serverlessConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfig, "ServerlessConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.diskSize)) {
             query["DiskSize"] = request.diskSize!;
@@ -1640,6 +1645,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessConfigShrink)) {
+            query["ServerlessConfig"] = request.serverlessConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.specType)) {
             query["SpecType"] = request.specType ?? "";
