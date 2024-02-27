@@ -159,8 +159,13 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.userType)) {
             query["UserType"] = request.userType!;
         }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.roleIds)) {
+            body["RoleIds"] = request.roleIds ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "AddUser",
@@ -2183,6 +2188,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.account)) {
             query["Account"] = request.account ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.parentAccountName)) {
+            query["ParentAccountName"] = request.parentAccountName ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -2830,6 +2838,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.nickName)) {
             query["NickName"] = request.nickName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.roleIds)) {
+            query["RoleIds"] = request.roleIds ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             query["UserId"] = request.userId ?? "";
