@@ -254,9 +254,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createPrePayOrderWithOptions(_ request: CreatePrePayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePrePayOrderResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createPrePayOrderWithOptions(_ tmpReq: CreatePrePayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePrePayOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePrePayOrderShrinkRequest = CreatePrePayOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.confluentConfig)) {
+            request.confluentConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.confluentConfig, "ConfluentConfig", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.confluentConfigShrink)) {
+            query["ConfluentConfig"] = request.confluentConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.deployType)) {
             query["DeployType"] = request.deployType!;
         }
@@ -1314,6 +1322,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.vSwitchId)) {
             query["VSwitchId"] = request.vSwitchId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.vSwitchIds)) {
+            query["VSwitchIds"] = request.vSwitchIds ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
         }
@@ -1717,9 +1728,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func upgradePrePayOrderWithOptions(_ request: UpgradePrePayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradePrePayOrderResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func upgradePrePayOrderWithOptions(_ tmpReq: UpgradePrePayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradePrePayOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpgradePrePayOrderShrinkRequest = UpgradePrePayOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.confluentConfig)) {
+            request.confluentConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.confluentConfig, "ConfluentConfig", "json")
+        }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.confluentConfigShrink)) {
+            query["ConfluentConfig"] = request.confluentConfigShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.diskSize)) {
             query["DiskSize"] = request.diskSize!;
         }
@@ -1737,6 +1756,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ioMaxSpec)) {
             query["IoMaxSpec"] = request.ioMaxSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.paidType)) {
+            query["PaidType"] = request.paidType!;
         }
         if (!TeaUtils.Client.isUnset(request.partitionNum)) {
             query["PartitionNum"] = request.partitionNum!;

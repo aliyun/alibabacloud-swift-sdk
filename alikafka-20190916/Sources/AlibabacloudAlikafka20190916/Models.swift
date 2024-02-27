@@ -993,6 +993,171 @@ public class CreatePostPayOrderResponse : Tea.TeaModel {
 }
 
 public class CreatePrePayOrderRequest : Tea.TeaModel {
+    public class ConfluentConfig : Tea.TeaModel {
+        public var connectCU: Int32?
+
+        public var connectReplica: Int32?
+
+        public var controlCenterCU: Int32?
+
+        public var controlCenterReplica: Int32?
+
+        public var controlCenterStorage: Int32?
+
+        public var kafkaCU: Int32?
+
+        public var kafkaReplica: Int32?
+
+        public var kafkaRestProxyCU: Int32?
+
+        public var kafkaRestProxyReplica: Int32?
+
+        public var kafkaStorage: Int32?
+
+        public var ksqlCU: Int32?
+
+        public var ksqlReplica: Int32?
+
+        public var ksqlStorage: Int32?
+
+        public var schemaRegistryCU: Int32?
+
+        public var schemaRegistryReplica: Int32?
+
+        public var zooKeeperCU: Int32?
+
+        public var zooKeeperReplica: Int32?
+
+        public var zooKeeperStorage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectCU != nil {
+                map["ConnectCU"] = self.connectCU!
+            }
+            if self.connectReplica != nil {
+                map["ConnectReplica"] = self.connectReplica!
+            }
+            if self.controlCenterCU != nil {
+                map["ControlCenterCU"] = self.controlCenterCU!
+            }
+            if self.controlCenterReplica != nil {
+                map["ControlCenterReplica"] = self.controlCenterReplica!
+            }
+            if self.controlCenterStorage != nil {
+                map["ControlCenterStorage"] = self.controlCenterStorage!
+            }
+            if self.kafkaCU != nil {
+                map["KafkaCU"] = self.kafkaCU!
+            }
+            if self.kafkaReplica != nil {
+                map["KafkaReplica"] = self.kafkaReplica!
+            }
+            if self.kafkaRestProxyCU != nil {
+                map["KafkaRestProxyCU"] = self.kafkaRestProxyCU!
+            }
+            if self.kafkaRestProxyReplica != nil {
+                map["KafkaRestProxyReplica"] = self.kafkaRestProxyReplica!
+            }
+            if self.kafkaStorage != nil {
+                map["KafkaStorage"] = self.kafkaStorage!
+            }
+            if self.ksqlCU != nil {
+                map["KsqlCU"] = self.ksqlCU!
+            }
+            if self.ksqlReplica != nil {
+                map["KsqlReplica"] = self.ksqlReplica!
+            }
+            if self.ksqlStorage != nil {
+                map["KsqlStorage"] = self.ksqlStorage!
+            }
+            if self.schemaRegistryCU != nil {
+                map["SchemaRegistryCU"] = self.schemaRegistryCU!
+            }
+            if self.schemaRegistryReplica != nil {
+                map["SchemaRegistryReplica"] = self.schemaRegistryReplica!
+            }
+            if self.zooKeeperCU != nil {
+                map["ZooKeeperCU"] = self.zooKeeperCU!
+            }
+            if self.zooKeeperReplica != nil {
+                map["ZooKeeperReplica"] = self.zooKeeperReplica!
+            }
+            if self.zooKeeperStorage != nil {
+                map["ZooKeeperStorage"] = self.zooKeeperStorage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConnectCU") && dict["ConnectCU"] != nil {
+                self.connectCU = dict["ConnectCU"] as! Int32
+            }
+            if dict.keys.contains("ConnectReplica") && dict["ConnectReplica"] != nil {
+                self.connectReplica = dict["ConnectReplica"] as! Int32
+            }
+            if dict.keys.contains("ControlCenterCU") && dict["ControlCenterCU"] != nil {
+                self.controlCenterCU = dict["ControlCenterCU"] as! Int32
+            }
+            if dict.keys.contains("ControlCenterReplica") && dict["ControlCenterReplica"] != nil {
+                self.controlCenterReplica = dict["ControlCenterReplica"] as! Int32
+            }
+            if dict.keys.contains("ControlCenterStorage") && dict["ControlCenterStorage"] != nil {
+                self.controlCenterStorage = dict["ControlCenterStorage"] as! Int32
+            }
+            if dict.keys.contains("KafkaCU") && dict["KafkaCU"] != nil {
+                self.kafkaCU = dict["KafkaCU"] as! Int32
+            }
+            if dict.keys.contains("KafkaReplica") && dict["KafkaReplica"] != nil {
+                self.kafkaReplica = dict["KafkaReplica"] as! Int32
+            }
+            if dict.keys.contains("KafkaRestProxyCU") && dict["KafkaRestProxyCU"] != nil {
+                self.kafkaRestProxyCU = dict["KafkaRestProxyCU"] as! Int32
+            }
+            if dict.keys.contains("KafkaRestProxyReplica") && dict["KafkaRestProxyReplica"] != nil {
+                self.kafkaRestProxyReplica = dict["KafkaRestProxyReplica"] as! Int32
+            }
+            if dict.keys.contains("KafkaStorage") && dict["KafkaStorage"] != nil {
+                self.kafkaStorage = dict["KafkaStorage"] as! Int32
+            }
+            if dict.keys.contains("KsqlCU") && dict["KsqlCU"] != nil {
+                self.ksqlCU = dict["KsqlCU"] as! Int32
+            }
+            if dict.keys.contains("KsqlReplica") && dict["KsqlReplica"] != nil {
+                self.ksqlReplica = dict["KsqlReplica"] as! Int32
+            }
+            if dict.keys.contains("KsqlStorage") && dict["KsqlStorage"] != nil {
+                self.ksqlStorage = dict["KsqlStorage"] as! Int32
+            }
+            if dict.keys.contains("SchemaRegistryCU") && dict["SchemaRegistryCU"] != nil {
+                self.schemaRegistryCU = dict["SchemaRegistryCU"] as! Int32
+            }
+            if dict.keys.contains("SchemaRegistryReplica") && dict["SchemaRegistryReplica"] != nil {
+                self.schemaRegistryReplica = dict["SchemaRegistryReplica"] as! Int32
+            }
+            if dict.keys.contains("ZooKeeperCU") && dict["ZooKeeperCU"] != nil {
+                self.zooKeeperCU = dict["ZooKeeperCU"] as! Int32
+            }
+            if dict.keys.contains("ZooKeeperReplica") && dict["ZooKeeperReplica"] != nil {
+                self.zooKeeperReplica = dict["ZooKeeperReplica"] as! Int32
+            }
+            if dict.keys.contains("ZooKeeperStorage") && dict["ZooKeeperStorage"] != nil {
+                self.zooKeeperStorage = dict["ZooKeeperStorage"] as! Int32
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -1030,6 +1195,8 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
             }
         }
     }
+    public var confluentConfig: CreatePrePayOrderRequest.ConfluentConfig?
+
     public var deployType: Int32?
 
     public var diskSize: Int32?
@@ -1064,10 +1231,14 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.confluentConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.confluentConfig != nil {
+            map["ConfluentConfig"] = self.confluentConfig?.toMap()
+        }
         if self.deployType != nil {
             map["DeployType"] = self.deployType!
         }
@@ -1112,6 +1283,11 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfluentConfig") && dict["ConfluentConfig"] != nil {
+            var model = CreatePrePayOrderRequest.ConfluentConfig()
+            model.fromMap(dict["ConfluentConfig"] as! [String: Any])
+            self.confluentConfig = model
+        }
         if dict.keys.contains("DeployType") && dict["DeployType"] != nil {
             self.deployType = dict["DeployType"] as! Int32
         }
@@ -1146,6 +1322,181 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
             var tmp : [CreatePrePayOrderRequest.Tag] = []
             for v in dict["Tag"] as! [Any] {
                 var model = CreatePrePayOrderRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("TopicQuota") && dict["TopicQuota"] != nil {
+            self.topicQuota = dict["TopicQuota"] as! Int32
+        }
+    }
+}
+
+public class CreatePrePayOrderShrinkRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var confluentConfigShrink: String?
+
+    public var deployType: Int32?
+
+    public var diskSize: Int32?
+
+    public var diskType: String?
+
+    public var eipMax: Int32?
+
+    public var ioMax: Int32?
+
+    public var ioMaxSpec: String?
+
+    public var partitionNum: Int32?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var specType: String?
+
+    public var tag: [CreatePrePayOrderShrinkRequest.Tag]?
+
+    public var topicQuota: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.confluentConfigShrink != nil {
+            map["ConfluentConfig"] = self.confluentConfigShrink!
+        }
+        if self.deployType != nil {
+            map["DeployType"] = self.deployType!
+        }
+        if self.diskSize != nil {
+            map["DiskSize"] = self.diskSize!
+        }
+        if self.diskType != nil {
+            map["DiskType"] = self.diskType!
+        }
+        if self.eipMax != nil {
+            map["EipMax"] = self.eipMax!
+        }
+        if self.ioMax != nil {
+            map["IoMax"] = self.ioMax!
+        }
+        if self.ioMaxSpec != nil {
+            map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.topicQuota != nil {
+            map["TopicQuota"] = self.topicQuota!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfluentConfig") && dict["ConfluentConfig"] != nil {
+            self.confluentConfigShrink = dict["ConfluentConfig"] as! String
+        }
+        if dict.keys.contains("DeployType") && dict["DeployType"] != nil {
+            self.deployType = dict["DeployType"] as! Int32
+        }
+        if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
+            self.diskSize = dict["DiskSize"] as! Int32
+        }
+        if dict.keys.contains("DiskType") && dict["DiskType"] != nil {
+            self.diskType = dict["DiskType"] as! String
+        }
+        if dict.keys.contains("EipMax") && dict["EipMax"] != nil {
+            self.eipMax = dict["EipMax"] as! Int32
+        }
+        if dict.keys.contains("IoMax") && dict["IoMax"] != nil {
+            self.ioMax = dict["IoMax"] as! Int32
+        }
+        if dict.keys.contains("IoMaxSpec") && dict["IoMaxSpec"] != nil {
+            self.ioMaxSpec = dict["IoMaxSpec"] as! String
+        }
+        if dict.keys.contains("PartitionNum") && dict["PartitionNum"] != nil {
+            self.partitionNum = dict["PartitionNum"] as! Int32
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("SpecType") && dict["SpecType"] != nil {
+            self.specType = dict["SpecType"] as! String
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [CreatePrePayOrderShrinkRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreatePrePayOrderShrinkRequest.Tag()
                 if v != nil {
                     model.fromMap(v as! [String: Any])
                 }
@@ -4322,6 +4673,171 @@ public class GetInstanceListRequest : Tea.TeaModel {
 public class GetInstanceListResponseBody : Tea.TeaModel {
     public class InstanceList : Tea.TeaModel {
         public class InstanceVO : Tea.TeaModel {
+            public class ConfluentConfig : Tea.TeaModel {
+                public var connectCU: Int32?
+
+                public var connectReplica: Int32?
+
+                public var controlCenterCU: Int32?
+
+                public var controlCenterReplica: Int32?
+
+                public var controlCenterStorage: Int32?
+
+                public var kafkaCU: Int32?
+
+                public var kafkaReplica: Int32?
+
+                public var kafkaRestProxyCU: Int32?
+
+                public var kafkaRestProxyReplica: Int32?
+
+                public var kafkaStorage: Int32?
+
+                public var ksqlCU: Int32?
+
+                public var ksqlReplica: Int32?
+
+                public var ksqlStorage: Int32?
+
+                public var schemaRegistryCU: Int32?
+
+                public var schemaRegistryReplica: Int32?
+
+                public var zooKeeperCU: Int32?
+
+                public var zooKeeperReplica: Int32?
+
+                public var zooKeeperStorage: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.connectCU != nil {
+                        map["ConnectCU"] = self.connectCU!
+                    }
+                    if self.connectReplica != nil {
+                        map["ConnectReplica"] = self.connectReplica!
+                    }
+                    if self.controlCenterCU != nil {
+                        map["ControlCenterCU"] = self.controlCenterCU!
+                    }
+                    if self.controlCenterReplica != nil {
+                        map["ControlCenterReplica"] = self.controlCenterReplica!
+                    }
+                    if self.controlCenterStorage != nil {
+                        map["ControlCenterStorage"] = self.controlCenterStorage!
+                    }
+                    if self.kafkaCU != nil {
+                        map["KafkaCU"] = self.kafkaCU!
+                    }
+                    if self.kafkaReplica != nil {
+                        map["KafkaReplica"] = self.kafkaReplica!
+                    }
+                    if self.kafkaRestProxyCU != nil {
+                        map["KafkaRestProxyCU"] = self.kafkaRestProxyCU!
+                    }
+                    if self.kafkaRestProxyReplica != nil {
+                        map["KafkaRestProxyReplica"] = self.kafkaRestProxyReplica!
+                    }
+                    if self.kafkaStorage != nil {
+                        map["KafkaStorage"] = self.kafkaStorage!
+                    }
+                    if self.ksqlCU != nil {
+                        map["KsqlCU"] = self.ksqlCU!
+                    }
+                    if self.ksqlReplica != nil {
+                        map["KsqlReplica"] = self.ksqlReplica!
+                    }
+                    if self.ksqlStorage != nil {
+                        map["KsqlStorage"] = self.ksqlStorage!
+                    }
+                    if self.schemaRegistryCU != nil {
+                        map["SchemaRegistryCU"] = self.schemaRegistryCU!
+                    }
+                    if self.schemaRegistryReplica != nil {
+                        map["SchemaRegistryReplica"] = self.schemaRegistryReplica!
+                    }
+                    if self.zooKeeperCU != nil {
+                        map["ZooKeeperCU"] = self.zooKeeperCU!
+                    }
+                    if self.zooKeeperReplica != nil {
+                        map["ZooKeeperReplica"] = self.zooKeeperReplica!
+                    }
+                    if self.zooKeeperStorage != nil {
+                        map["ZooKeeperStorage"] = self.zooKeeperStorage!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ConnectCU") && dict["ConnectCU"] != nil {
+                        self.connectCU = dict["ConnectCU"] as! Int32
+                    }
+                    if dict.keys.contains("ConnectReplica") && dict["ConnectReplica"] != nil {
+                        self.connectReplica = dict["ConnectReplica"] as! Int32
+                    }
+                    if dict.keys.contains("ControlCenterCU") && dict["ControlCenterCU"] != nil {
+                        self.controlCenterCU = dict["ControlCenterCU"] as! Int32
+                    }
+                    if dict.keys.contains("ControlCenterReplica") && dict["ControlCenterReplica"] != nil {
+                        self.controlCenterReplica = dict["ControlCenterReplica"] as! Int32
+                    }
+                    if dict.keys.contains("ControlCenterStorage") && dict["ControlCenterStorage"] != nil {
+                        self.controlCenterStorage = dict["ControlCenterStorage"] as! Int32
+                    }
+                    if dict.keys.contains("KafkaCU") && dict["KafkaCU"] != nil {
+                        self.kafkaCU = dict["KafkaCU"] as! Int32
+                    }
+                    if dict.keys.contains("KafkaReplica") && dict["KafkaReplica"] != nil {
+                        self.kafkaReplica = dict["KafkaReplica"] as! Int32
+                    }
+                    if dict.keys.contains("KafkaRestProxyCU") && dict["KafkaRestProxyCU"] != nil {
+                        self.kafkaRestProxyCU = dict["KafkaRestProxyCU"] as! Int32
+                    }
+                    if dict.keys.contains("KafkaRestProxyReplica") && dict["KafkaRestProxyReplica"] != nil {
+                        self.kafkaRestProxyReplica = dict["KafkaRestProxyReplica"] as! Int32
+                    }
+                    if dict.keys.contains("KafkaStorage") && dict["KafkaStorage"] != nil {
+                        self.kafkaStorage = dict["KafkaStorage"] as! Int32
+                    }
+                    if dict.keys.contains("KsqlCU") && dict["KsqlCU"] != nil {
+                        self.ksqlCU = dict["KsqlCU"] as! Int32
+                    }
+                    if dict.keys.contains("KsqlReplica") && dict["KsqlReplica"] != nil {
+                        self.ksqlReplica = dict["KsqlReplica"] as! Int32
+                    }
+                    if dict.keys.contains("KsqlStorage") && dict["KsqlStorage"] != nil {
+                        self.ksqlStorage = dict["KsqlStorage"] as! Int32
+                    }
+                    if dict.keys.contains("SchemaRegistryCU") && dict["SchemaRegistryCU"] != nil {
+                        self.schemaRegistryCU = dict["SchemaRegistryCU"] as! Int32
+                    }
+                    if dict.keys.contains("SchemaRegistryReplica") && dict["SchemaRegistryReplica"] != nil {
+                        self.schemaRegistryReplica = dict["SchemaRegistryReplica"] as! Int32
+                    }
+                    if dict.keys.contains("ZooKeeperCU") && dict["ZooKeeperCU"] != nil {
+                        self.zooKeeperCU = dict["ZooKeeperCU"] as! Int32
+                    }
+                    if dict.keys.contains("ZooKeeperReplica") && dict["ZooKeeperReplica"] != nil {
+                        self.zooKeeperReplica = dict["ZooKeeperReplica"] as! Int32
+                    }
+                    if dict.keys.contains("ZooKeeperStorage") && dict["ZooKeeperStorage"] != nil {
+                        self.zooKeeperStorage = dict["ZooKeeperStorage"] as! Int32
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class TagVO : Tea.TeaModel {
                     public var key: String?
@@ -4431,6 +4947,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
             }
             public var allConfig: String?
 
+            public var confluentConfig: GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig?
+
             public var createTime: Int64?
 
             public var deployType: Int32?
@@ -4507,6 +5025,7 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.confluentConfig?.validate()
                 try self.tags?.validate()
                 try self.upgradeServiceDetailInfo?.validate()
             }
@@ -4515,6 +5034,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 var map = super.toMap()
                 if self.allConfig != nil {
                     map["AllConfig"] = self.allConfig!
+                }
+                if self.confluentConfig != nil {
+                    map["ConfluentConfig"] = self.confluentConfig?.toMap()
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -4621,6 +5143,11 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AllConfig") && dict["AllConfig"] != nil {
                     self.allConfig = dict["AllConfig"] as! String
+                }
+                if dict.keys.contains("ConfluentConfig") && dict["ConfluentConfig"] != nil {
+                    var model = GetInstanceListResponseBody.InstanceList.InstanceVO.ConfluentConfig()
+                    model.fromMap(dict["ConfluentConfig"] as! [String: Any])
+                    self.confluentConfig = model
                 }
                 if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                     self.createTime = dict["CreateTime"] as! Int64
@@ -7373,6 +7900,8 @@ public class StartInstanceRequest : Tea.TeaModel {
 
     public var vSwitchId: String?
 
+    public var vSwitchIds: [String]?
+
     public var vpcId: String?
 
     public var zoneId: String?
@@ -7445,6 +7974,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -7508,6 +8040,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
+        }
+        if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
+            self.vSwitchIds = dict["VSwitchIds"] as! [String]
         }
         if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
             self.vpcId = dict["VpcId"] as! String
@@ -9276,6 +9811,173 @@ public class UpgradePostPayOrderResponse : Tea.TeaModel {
 }
 
 public class UpgradePrePayOrderRequest : Tea.TeaModel {
+    public class ConfluentConfig : Tea.TeaModel {
+        public var connectCU: Int32?
+
+        public var connectReplica: Int32?
+
+        public var controlCenterCU: Int32?
+
+        public var controlCenterReplica: Int32?
+
+        public var controlCenterStorage: Int32?
+
+        public var kafkaCU: Int32?
+
+        public var kafkaReplica: Int32?
+
+        public var kafkaRestProxyCU: Int32?
+
+        public var kafkaRestProxyReplica: Int32?
+
+        public var kafkaStorage: Int32?
+
+        public var ksqlCU: Int32?
+
+        public var ksqlReplica: Int32?
+
+        public var ksqlStorage: Int32?
+
+        public var schemaRegistryCU: Int32?
+
+        public var schemaRegistryReplica: Int32?
+
+        public var zooKeeperCU: Int32?
+
+        public var zooKeeperReplica: Int32?
+
+        public var zooKeeperStorage: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.connectCU != nil {
+                map["ConnectCU"] = self.connectCU!
+            }
+            if self.connectReplica != nil {
+                map["ConnectReplica"] = self.connectReplica!
+            }
+            if self.controlCenterCU != nil {
+                map["ControlCenterCU"] = self.controlCenterCU!
+            }
+            if self.controlCenterReplica != nil {
+                map["ControlCenterReplica"] = self.controlCenterReplica!
+            }
+            if self.controlCenterStorage != nil {
+                map["ControlCenterStorage"] = self.controlCenterStorage!
+            }
+            if self.kafkaCU != nil {
+                map["KafkaCU"] = self.kafkaCU!
+            }
+            if self.kafkaReplica != nil {
+                map["KafkaReplica"] = self.kafkaReplica!
+            }
+            if self.kafkaRestProxyCU != nil {
+                map["KafkaRestProxyCU"] = self.kafkaRestProxyCU!
+            }
+            if self.kafkaRestProxyReplica != nil {
+                map["KafkaRestProxyReplica"] = self.kafkaRestProxyReplica!
+            }
+            if self.kafkaStorage != nil {
+                map["KafkaStorage"] = self.kafkaStorage!
+            }
+            if self.ksqlCU != nil {
+                map["KsqlCU"] = self.ksqlCU!
+            }
+            if self.ksqlReplica != nil {
+                map["KsqlReplica"] = self.ksqlReplica!
+            }
+            if self.ksqlStorage != nil {
+                map["KsqlStorage"] = self.ksqlStorage!
+            }
+            if self.schemaRegistryCU != nil {
+                map["SchemaRegistryCU"] = self.schemaRegistryCU!
+            }
+            if self.schemaRegistryReplica != nil {
+                map["SchemaRegistryReplica"] = self.schemaRegistryReplica!
+            }
+            if self.zooKeeperCU != nil {
+                map["ZooKeeperCU"] = self.zooKeeperCU!
+            }
+            if self.zooKeeperReplica != nil {
+                map["ZooKeeperReplica"] = self.zooKeeperReplica!
+            }
+            if self.zooKeeperStorage != nil {
+                map["ZooKeeperStorage"] = self.zooKeeperStorage!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConnectCU") && dict["ConnectCU"] != nil {
+                self.connectCU = dict["ConnectCU"] as! Int32
+            }
+            if dict.keys.contains("ConnectReplica") && dict["ConnectReplica"] != nil {
+                self.connectReplica = dict["ConnectReplica"] as! Int32
+            }
+            if dict.keys.contains("ControlCenterCU") && dict["ControlCenterCU"] != nil {
+                self.controlCenterCU = dict["ControlCenterCU"] as! Int32
+            }
+            if dict.keys.contains("ControlCenterReplica") && dict["ControlCenterReplica"] != nil {
+                self.controlCenterReplica = dict["ControlCenterReplica"] as! Int32
+            }
+            if dict.keys.contains("ControlCenterStorage") && dict["ControlCenterStorage"] != nil {
+                self.controlCenterStorage = dict["ControlCenterStorage"] as! Int32
+            }
+            if dict.keys.contains("KafkaCU") && dict["KafkaCU"] != nil {
+                self.kafkaCU = dict["KafkaCU"] as! Int32
+            }
+            if dict.keys.contains("KafkaReplica") && dict["KafkaReplica"] != nil {
+                self.kafkaReplica = dict["KafkaReplica"] as! Int32
+            }
+            if dict.keys.contains("KafkaRestProxyCU") && dict["KafkaRestProxyCU"] != nil {
+                self.kafkaRestProxyCU = dict["KafkaRestProxyCU"] as! Int32
+            }
+            if dict.keys.contains("KafkaRestProxyReplica") && dict["KafkaRestProxyReplica"] != nil {
+                self.kafkaRestProxyReplica = dict["KafkaRestProxyReplica"] as! Int32
+            }
+            if dict.keys.contains("KafkaStorage") && dict["KafkaStorage"] != nil {
+                self.kafkaStorage = dict["KafkaStorage"] as! Int32
+            }
+            if dict.keys.contains("KsqlCU") && dict["KsqlCU"] != nil {
+                self.ksqlCU = dict["KsqlCU"] as! Int32
+            }
+            if dict.keys.contains("KsqlReplica") && dict["KsqlReplica"] != nil {
+                self.ksqlReplica = dict["KsqlReplica"] as! Int32
+            }
+            if dict.keys.contains("KsqlStorage") && dict["KsqlStorage"] != nil {
+                self.ksqlStorage = dict["KsqlStorage"] as! Int32
+            }
+            if dict.keys.contains("SchemaRegistryCU") && dict["SchemaRegistryCU"] != nil {
+                self.schemaRegistryCU = dict["SchemaRegistryCU"] as! Int32
+            }
+            if dict.keys.contains("SchemaRegistryReplica") && dict["SchemaRegistryReplica"] != nil {
+                self.schemaRegistryReplica = dict["SchemaRegistryReplica"] as! Int32
+            }
+            if dict.keys.contains("ZooKeeperCU") && dict["ZooKeeperCU"] != nil {
+                self.zooKeeperCU = dict["ZooKeeperCU"] as! Int32
+            }
+            if dict.keys.contains("ZooKeeperReplica") && dict["ZooKeeperReplica"] != nil {
+                self.zooKeeperReplica = dict["ZooKeeperReplica"] as! Int32
+            }
+            if dict.keys.contains("ZooKeeperStorage") && dict["ZooKeeperStorage"] != nil {
+                self.zooKeeperStorage = dict["ZooKeeperStorage"] as! Int32
+            }
+        }
+    }
+    public var confluentConfig: UpgradePrePayOrderRequest.ConfluentConfig?
+
     public var diskSize: Int32?
 
     public var eipMax: Int32?
@@ -9287,6 +9989,129 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
     public var ioMax: Int32?
 
     public var ioMaxSpec: String?
+
+    public var paidType: Int32?
+
+    public var partitionNum: Int32?
+
+    public var regionId: String?
+
+    public var specType: String?
+
+    public var topicQuota: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.confluentConfig?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.confluentConfig != nil {
+            map["ConfluentConfig"] = self.confluentConfig?.toMap()
+        }
+        if self.diskSize != nil {
+            map["DiskSize"] = self.diskSize!
+        }
+        if self.eipMax != nil {
+            map["EipMax"] = self.eipMax!
+        }
+        if self.eipModel != nil {
+            map["EipModel"] = self.eipModel!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ioMax != nil {
+            map["IoMax"] = self.ioMax!
+        }
+        if self.ioMaxSpec != nil {
+            map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.specType != nil {
+            map["SpecType"] = self.specType!
+        }
+        if self.topicQuota != nil {
+            map["TopicQuota"] = self.topicQuota!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfluentConfig") && dict["ConfluentConfig"] != nil {
+            var model = UpgradePrePayOrderRequest.ConfluentConfig()
+            model.fromMap(dict["ConfluentConfig"] as! [String: Any])
+            self.confluentConfig = model
+        }
+        if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
+            self.diskSize = dict["DiskSize"] as! Int32
+        }
+        if dict.keys.contains("EipMax") && dict["EipMax"] != nil {
+            self.eipMax = dict["EipMax"] as! Int32
+        }
+        if dict.keys.contains("EipModel") && dict["EipModel"] != nil {
+            self.eipModel = dict["EipModel"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IoMax") && dict["IoMax"] != nil {
+            self.ioMax = dict["IoMax"] as! Int32
+        }
+        if dict.keys.contains("IoMaxSpec") && dict["IoMaxSpec"] != nil {
+            self.ioMaxSpec = dict["IoMaxSpec"] as! String
+        }
+        if dict.keys.contains("PaidType") && dict["PaidType"] != nil {
+            self.paidType = dict["PaidType"] as! Int32
+        }
+        if dict.keys.contains("PartitionNum") && dict["PartitionNum"] != nil {
+            self.partitionNum = dict["PartitionNum"] as! Int32
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SpecType") && dict["SpecType"] != nil {
+            self.specType = dict["SpecType"] as! String
+        }
+        if dict.keys.contains("TopicQuota") && dict["TopicQuota"] != nil {
+            self.topicQuota = dict["TopicQuota"] as! Int32
+        }
+    }
+}
+
+public class UpgradePrePayOrderShrinkRequest : Tea.TeaModel {
+    public var confluentConfigShrink: String?
+
+    public var diskSize: Int32?
+
+    public var eipMax: Int32?
+
+    public var eipModel: Bool?
+
+    public var instanceId: String?
+
+    public var ioMax: Int32?
+
+    public var ioMaxSpec: String?
+
+    public var paidType: Int32?
 
     public var partitionNum: Int32?
 
@@ -9310,6 +10135,9 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.confluentConfigShrink != nil {
+            map["ConfluentConfig"] = self.confluentConfigShrink!
+        }
         if self.diskSize != nil {
             map["DiskSize"] = self.diskSize!
         }
@@ -9328,6 +10156,9 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
         if self.ioMaxSpec != nil {
             map["IoMaxSpec"] = self.ioMaxSpec!
         }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
+        }
         if self.partitionNum != nil {
             map["PartitionNum"] = self.partitionNum!
         }
@@ -9344,6 +10175,9 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConfluentConfig") && dict["ConfluentConfig"] != nil {
+            self.confluentConfigShrink = dict["ConfluentConfig"] as! String
+        }
         if dict.keys.contains("DiskSize") && dict["DiskSize"] != nil {
             self.diskSize = dict["DiskSize"] as! Int32
         }
@@ -9361,6 +10195,9 @@ public class UpgradePrePayOrderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IoMaxSpec") && dict["IoMaxSpec"] != nil {
             self.ioMaxSpec = dict["IoMaxSpec"] as! String
+        }
+        if dict.keys.contains("PaidType") && dict["PaidType"] != nil {
+            self.paidType = dict["PaidType"] as! Int32
         }
         if dict.keys.contains("PartitionNum") && dict["PartitionNum"] != nil {
             self.partitionNum = dict["PartitionNum"] as! Int32
