@@ -407,6 +407,33 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumerConnectionsWithOptions(_ instanceId: String, _ consumerGroupId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerConnectionsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListConsumerConnections",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId) + "/consumerGroups/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(consumerGroupId) + "/connections",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListConsumerConnectionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listConsumerConnections(_ instanceId: String, _ consumerGroupId: String) async throws -> ListConsumerConnectionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listConsumerConnectionsWithOptions(instanceId as! String, consumerGroupId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listConsumerGroupSubscriptionsWithOptions(_ instanceId: String, _ consumerGroupId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListConsumerGroupSubscriptionsResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -542,6 +569,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listRegionsWithOptions(headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTopicSubscriptionsWithOptions(_ instanceId: String, _ topicName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTopicSubscriptionsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListTopicSubscriptions",
+            "version": "2022-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(instanceId) + "/topics/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(topicName) + "/subscriptions",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListTopicSubscriptionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listTopicSubscriptions(_ instanceId: String, _ topicName: String) async throws -> ListTopicSubscriptionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listTopicSubscriptionsWithOptions(instanceId as! String, topicName as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
