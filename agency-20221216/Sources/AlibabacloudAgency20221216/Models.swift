@@ -3630,6 +3630,340 @@ public class ListCountriesResponse : Tea.TeaModel {
     }
 }
 
+public class ListCouponUsageRequest : Tea.TeaModel {
+    public var account: String?
+
+    public var couponTemplateId: Int64?
+
+    public var page: Int32?
+
+    public var pageSize: Int32?
+
+    public var status: String?
+
+    public var uid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.account != nil {
+            map["Account"] = self.account!
+        }
+        if self.couponTemplateId != nil {
+            map["CouponTemplateId"] = self.couponTemplateId!
+        }
+        if self.page != nil {
+            map["Page"] = self.page!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.uid != nil {
+            map["Uid"] = self.uid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Account") && dict["Account"] != nil {
+            self.account = dict["Account"] as! String
+        }
+        if dict.keys.contains("CouponTemplateId") && dict["CouponTemplateId"] != nil {
+            self.couponTemplateId = dict["CouponTemplateId"] as! Int64
+        }
+        if dict.keys.contains("Page") && dict["Page"] != nil {
+            self.page = dict["Page"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Uid") && dict["Uid"] != nil {
+            self.uid = dict["Uid"] as! Int64
+        }
+    }
+}
+
+public class ListCouponUsageResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var account: String?
+
+        public var amount: Double?
+
+        public var balance: Double?
+
+        public var couponId: String?
+
+        public var couponTemplateId: Int64?
+
+        public var effDate: String?
+
+        public var publishDate: String?
+
+        public var status: String?
+
+        public var uid: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.account != nil {
+                map["Account"] = self.account!
+            }
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.balance != nil {
+                map["Balance"] = self.balance!
+            }
+            if self.couponId != nil {
+                map["CouponId"] = self.couponId!
+            }
+            if self.couponTemplateId != nil {
+                map["CouponTemplateId"] = self.couponTemplateId!
+            }
+            if self.effDate != nil {
+                map["EffDate"] = self.effDate!
+            }
+            if self.publishDate != nil {
+                map["PublishDate"] = self.publishDate!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.uid != nil {
+                map["Uid"] = self.uid!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Account") && dict["Account"] != nil {
+                self.account = dict["Account"] as! String
+            }
+            if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                self.amount = dict["Amount"] as! Double
+            }
+            if dict.keys.contains("Balance") && dict["Balance"] != nil {
+                self.balance = dict["Balance"] as! Double
+            }
+            if dict.keys.contains("CouponId") && dict["CouponId"] != nil {
+                self.couponId = dict["CouponId"] as! String
+            }
+            if dict.keys.contains("CouponTemplateId") && dict["CouponTemplateId"] != nil {
+                self.couponTemplateId = dict["CouponTemplateId"] as! Int64
+            }
+            if dict.keys.contains("EffDate") && dict["EffDate"] != nil {
+                self.effDate = dict["EffDate"] as! String
+            }
+            if dict.keys.contains("PublishDate") && dict["PublishDate"] != nil {
+                self.publishDate = dict["PublishDate"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Uid") && dict["Uid"] != nil {
+                self.uid = dict["Uid"] as! Int64
+            }
+        }
+    }
+    public class PageInfo : Tea.TeaModel {
+        public var page: Int32?
+
+        public var pageSize: Int32?
+
+        public var total: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.page != nil {
+                map["Page"] = self.page!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Page") && dict["Page"] != nil {
+                self.page = dict["Page"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Total") && dict["Total"] != nil {
+                self.total = dict["Total"] as! Int32
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [ListCouponUsageResponseBody.Data]?
+
+    public var message: String?
+
+    public var pageInfo: ListCouponUsageResponseBody.PageInfo?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.pageInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.pageInfo != nil {
+            map["PageInfo"] = self.pageInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [ListCouponUsageResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListCouponUsageResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PageInfo") && dict["PageInfo"] != nil {
+            var model = ListCouponUsageResponseBody.PageInfo()
+            model.fromMap(dict["PageInfo"] as! [String: Any])
+            self.pageInfo = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListCouponUsageResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListCouponUsageResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListCouponUsageResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QuotaListExportPagedRequest : Tea.TeaModel {
     public var currentPage: Int32?
 

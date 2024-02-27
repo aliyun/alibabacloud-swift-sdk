@@ -601,6 +601,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCouponUsageWithOptions(_ request: ListCouponUsageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCouponUsageResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.account)) {
+            query["Account"] = request.account ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.couponTemplateId)) {
+            query["CouponTemplateId"] = request.couponTemplateId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.page)) {
+            query["Page"] = request.page!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.status)) {
+            query["Status"] = request.status ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uid)) {
+            query["Uid"] = request.uid!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCouponUsage",
+            "version": "2022-12-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCouponUsageResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCouponUsage(_ request: ListCouponUsageRequest) async throws -> ListCouponUsageResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCouponUsageWithOptions(request as! ListCouponUsageRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func quotaListExportPagedWithOptions(_ request: QuotaListExportPagedRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QuotaListExportPagedResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
