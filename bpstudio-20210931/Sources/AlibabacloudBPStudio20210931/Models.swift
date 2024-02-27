@@ -896,6 +896,8 @@ public class DeleteApplicationResponse : Tea.TeaModel {
 public class DeployApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var clientToken: String?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -915,6 +917,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -924,6 +929,9 @@ public class DeployApplicationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
             self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -1039,6 +1047,8 @@ public class ExecuteOperationASyncRequest : Tea.TeaModel {
 
     public var attributes: [String: Any]?
 
+    public var clientToken: String?
+
     public var operation: String?
 
     public var resourceGroupId: String?
@@ -1065,6 +1075,9 @@ public class ExecuteOperationASyncRequest : Tea.TeaModel {
         if self.attributes != nil {
             map["Attributes"] = self.attributes!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.operation != nil {
             map["Operation"] = self.operation!
         }
@@ -1084,6 +1097,9 @@ public class ExecuteOperationASyncRequest : Tea.TeaModel {
         if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
             self.attributes = dict["Attributes"] as! [String: Any]
         }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("Operation") && dict["Operation"] != nil {
             self.operation = dict["Operation"] as! String
         }
@@ -1100,6 +1116,8 @@ public class ExecuteOperationASyncShrinkRequest : Tea.TeaModel {
     public var applicationId: String?
 
     public var attributesShrink: String?
+
+    public var clientToken: String?
 
     public var operation: String?
 
@@ -1127,6 +1145,9 @@ public class ExecuteOperationASyncShrinkRequest : Tea.TeaModel {
         if self.attributesShrink != nil {
             map["Attributes"] = self.attributesShrink!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.operation != nil {
             map["Operation"] = self.operation!
         }
@@ -1145,6 +1166,9 @@ public class ExecuteOperationASyncShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
             self.attributesShrink = dict["Attributes"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("Operation") && dict["Operation"] != nil {
             self.operation = dict["Operation"] as! String
@@ -1255,6 +1279,249 @@ public class ExecuteOperationASyncResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ExecuteOperationASyncResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ExecuteOperationSyncRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var attributes: [String: Any]?
+
+    public var clientToken: String?
+
+    public var operation: String?
+
+    public var resourceGroupId: String?
+
+    public var serviceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.attributes != nil {
+            map["Attributes"] = self.attributes!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.serviceType != nil {
+            map["ServiceType"] = self.serviceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
+            self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
+            self.attributes = dict["Attributes"] as! [String: Any]
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Operation") && dict["Operation"] != nil {
+            self.operation = dict["Operation"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ServiceType") && dict["ServiceType"] != nil {
+            self.serviceType = dict["ServiceType"] as! String
+        }
+    }
+}
+
+public class ExecuteOperationSyncShrinkRequest : Tea.TeaModel {
+    public var applicationId: String?
+
+    public var attributesShrink: String?
+
+    public var clientToken: String?
+
+    public var operation: String?
+
+    public var resourceGroupId: String?
+
+    public var serviceType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationId != nil {
+            map["ApplicationId"] = self.applicationId!
+        }
+        if self.attributesShrink != nil {
+            map["Attributes"] = self.attributesShrink!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.operation != nil {
+            map["Operation"] = self.operation!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.serviceType != nil {
+            map["ServiceType"] = self.serviceType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
+            self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("Attributes") && dict["Attributes"] != nil {
+            self.attributesShrink = dict["Attributes"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("Operation") && dict["Operation"] != nil {
+            self.operation = dict["Operation"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ServiceType") && dict["ServiceType"] != nil {
+            self.serviceType = dict["ServiceType"] as! String
+        }
+    }
+}
+
+public class ExecuteOperationSyncResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ExecuteOperationSyncResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ExecuteOperationSyncResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ExecuteOperationSyncResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -3994,6 +4261,8 @@ public class ListTemplateResponse : Tea.TeaModel {
 public class ReleaseApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var clientToken: String?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -4013,6 +4282,9 @@ public class ReleaseApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -4022,6 +4294,9 @@ public class ReleaseApplicationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
             self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -4135,6 +4410,8 @@ public class ReleaseApplicationResponse : Tea.TeaModel {
 public class ValidateApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var clientToken: String?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -4154,6 +4431,9 @@ public class ValidateApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -4163,6 +4443,9 @@ public class ValidateApplicationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
             self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -4276,6 +4559,8 @@ public class ValidateApplicationResponse : Tea.TeaModel {
 public class ValuateApplicationRequest : Tea.TeaModel {
     public var applicationId: String?
 
+    public var clientToken: String?
+
     public var resourceGroupId: String?
 
     public override init() {
@@ -4295,6 +4580,9 @@ public class ValuateApplicationRequest : Tea.TeaModel {
         if self.applicationId != nil {
             map["ApplicationId"] = self.applicationId!
         }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
@@ -4304,6 +4592,9 @@ public class ValuateApplicationRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ApplicationId") && dict["ApplicationId"] != nil {
             self.applicationId = dict["ApplicationId"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
