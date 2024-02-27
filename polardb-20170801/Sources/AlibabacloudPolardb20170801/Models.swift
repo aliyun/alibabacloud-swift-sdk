@@ -27949,6 +27949,8 @@ public class ModifyDBClusterPrimaryZoneRequest : Tea.TeaModel {
 
     public var zoneId: String?
 
+    public var zoneType: String?
+
     public override init() {
         super.init()
     }
@@ -27999,6 +28001,9 @@ public class ModifyDBClusterPrimaryZoneRequest : Tea.TeaModel {
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
+        if self.zoneType != nil {
+            map["ZoneType"] = self.zoneType!
+        }
         return map
     }
 
@@ -28038,6 +28043,9 @@ public class ModifyDBClusterPrimaryZoneRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
+        }
+        if dict.keys.contains("ZoneType") && dict["ZoneType"] != nil {
+            self.zoneType = dict["ZoneType"] as! String
         }
     }
 }
