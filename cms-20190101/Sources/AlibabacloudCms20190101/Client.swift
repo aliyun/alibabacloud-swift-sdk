@@ -61,6 +61,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func applyMetricRuleTemplateWithOptions(_ request: ApplyMetricRuleTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ApplyMetricRuleTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appendMode)) {
+            query["AppendMode"] = request.appendMode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.applyMode)) {
             query["ApplyMode"] = request.applyMode ?? "";
         }

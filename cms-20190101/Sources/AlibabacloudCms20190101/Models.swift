@@ -3284,6 +3284,8 @@ public class AddTagsResponse : Tea.TeaModel {
 }
 
 public class ApplyMetricRuleTemplateRequest : Tea.TeaModel {
+    public var appendMode: String?
+
     public var applyMode: String?
 
     public var enableEndTime: Int64?
@@ -3314,6 +3316,9 @@ public class ApplyMetricRuleTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appendMode != nil {
+            map["AppendMode"] = self.appendMode!
+        }
         if self.applyMode != nil {
             map["ApplyMode"] = self.applyMode!
         }
@@ -3342,6 +3347,9 @@ public class ApplyMetricRuleTemplateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppendMode") && dict["AppendMode"] != nil {
+            self.appendMode = dict["AppendMode"] as! String
+        }
         if dict.keys.contains("ApplyMode") && dict["ApplyMode"] != nil {
             self.applyMode = dict["ApplyMode"] as! String
         }
