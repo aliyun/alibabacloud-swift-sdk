@@ -6729,6 +6729,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
     public var enableBackupLog: Int32?
 
+    public var highFrequencyBackupRetention: String?
+
     public var logBackupRetentionPeriod: Int32?
 
     public var preferredBackupPeriod: String?
@@ -6762,6 +6764,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         if self.enableBackupLog != nil {
             map["EnableBackupLog"] = self.enableBackupLog!
         }
+        if self.highFrequencyBackupRetention != nil {
+            map["HighFrequencyBackupRetention"] = self.highFrequencyBackupRetention!
+        }
         if self.logBackupRetentionPeriod != nil {
             map["LogBackupRetentionPeriod"] = self.logBackupRetentionPeriod!
         }
@@ -6789,6 +6794,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("EnableBackupLog") && dict["EnableBackupLog"] != nil {
             self.enableBackupLog = dict["EnableBackupLog"] as! Int32
+        }
+        if dict.keys.contains("HighFrequencyBackupRetention") && dict["HighFrequencyBackupRetention"] != nil {
+            self.highFrequencyBackupRetention = dict["HighFrequencyBackupRetention"] as! String
         }
         if dict.keys.contains("LogBackupRetentionPeriod") && dict["LogBackupRetentionPeriod"] != nil {
             self.logBackupRetentionPeriod = dict["LogBackupRetentionPeriod"] as! Int32
@@ -6980,6 +6988,8 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
             public var backupIntranetDownloadURL: String?
 
+            public var backupJobId: Int64?
+
             public var backupMethod: String?
 
             public var backupMode: String?
@@ -7021,6 +7031,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                 if self.backupIntranetDownloadURL != nil {
                     map["BackupIntranetDownloadURL"] = self.backupIntranetDownloadURL!
                 }
+                if self.backupJobId != nil {
+                    map["BackupJobId"] = self.backupJobId!
+                }
                 if self.backupMethod != nil {
                     map["BackupMethod"] = self.backupMethod!
                 }
@@ -7057,6 +7070,9 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("BackupIntranetDownloadURL") && dict["BackupIntranetDownloadURL"] != nil {
                     self.backupIntranetDownloadURL = dict["BackupIntranetDownloadURL"] as! String
+                }
+                if dict.keys.contains("BackupJobId") && dict["BackupJobId"] != nil {
+                    self.backupJobId = dict["BackupJobId"] as! Int64
                 }
                 if dict.keys.contains("BackupMethod") && dict["BackupMethod"] != nil {
                     self.backupMethod = dict["BackupMethod"] as! String
@@ -21587,6 +21603,8 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
 
     public var enableBackupLog: Int64?
 
+    public var highFrequencyBackupRetention: Int64?
+
     public var logBackupRetentionPeriod: Int64?
 
     public var ownerAccount: String?
@@ -21600,8 +21618,6 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
-
-    public var securityToken: String?
 
     public var snapshotBackupType: String?
 
@@ -21631,6 +21647,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         if self.enableBackupLog != nil {
             map["EnableBackupLog"] = self.enableBackupLog!
         }
+        if self.highFrequencyBackupRetention != nil {
+            map["HighFrequencyBackupRetention"] = self.highFrequencyBackupRetention!
+        }
         if self.logBackupRetentionPeriod != nil {
             map["LogBackupRetentionPeriod"] = self.logBackupRetentionPeriod!
         }
@@ -21652,9 +21671,6 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
-        if self.securityToken != nil {
-            map["SecurityToken"] = self.securityToken!
-        }
         if self.snapshotBackupType != nil {
             map["SnapshotBackupType"] = self.snapshotBackupType!
         }
@@ -21673,6 +21689,9 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableBackupLog") && dict["EnableBackupLog"] != nil {
             self.enableBackupLog = dict["EnableBackupLog"] as! Int64
+        }
+        if dict.keys.contains("HighFrequencyBackupRetention") && dict["HighFrequencyBackupRetention"] != nil {
+            self.highFrequencyBackupRetention = dict["HighFrequencyBackupRetention"] as! Int64
         }
         if dict.keys.contains("LogBackupRetentionPeriod") && dict["LogBackupRetentionPeriod"] != nil {
             self.logBackupRetentionPeriod = dict["LogBackupRetentionPeriod"] as! Int64
@@ -21694,9 +21713,6 @@ public class ModifyBackupPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
-            self.securityToken = dict["SecurityToken"] as! String
         }
         if dict.keys.contains("SnapshotBackupType") && dict["SnapshotBackupType"] != nil {
             self.snapshotBackupType = dict["SnapshotBackupType"] as! String

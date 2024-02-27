@@ -4028,6 +4028,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.enableBackupLog)) {
             query["EnableBackupLog"] = request.enableBackupLog!;
         }
+        if (!TeaUtils.Client.isUnset(request.highFrequencyBackupRetention)) {
+            query["HighFrequencyBackupRetention"] = request.highFrequencyBackupRetention!;
+        }
         if (!TeaUtils.Client.isUnset(request.logBackupRetentionPeriod)) {
             query["LogBackupRetentionPeriod"] = request.logBackupRetentionPeriod!;
         }
@@ -4048,9 +4051,6 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.securityToken)) {
-            query["SecurityToken"] = request.securityToken ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.snapshotBackupType)) {
             query["SnapshotBackupType"] = request.snapshotBackupType ?? "";
