@@ -17,7 +17,7 @@
 要使用 [Carthage](https://github.com/Carthage/Carthage) 将 `AlibabacloudDevops20210625` 集成到你的 Xcode 项目中，需要在 `Cartfile` 中定义以下内容:
 
 ```ogdl
-github "alibabacloud-sdk-swift/devops-20210625" "4.7.7"
+github "alibabacloud-sdk-swift/devops-20210625" "4.8.0"
 ```
 
 ### Swift 包管理工具
@@ -26,7 +26,7 @@ github "alibabacloud-sdk-swift/devops-20210625" "4.7.7"
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/devops-20210625.git", from: "4.7.7")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/devops-20210625.git", from: "4.8.0")
 ]
 ```
 

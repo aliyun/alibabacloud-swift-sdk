@@ -49185,6 +49185,252 @@ public class ListTestCaseFieldsResponse : Tea.TeaModel {
     }
 }
 
+public class ListUserDrawRecordByPkRequest : Tea.TeaModel {
+    public var aliyunPk: String?
+
+    public var drawGroup: String?
+
+    public var drawPoolName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aliyunPk != nil {
+            map["aliyunPk"] = self.aliyunPk!
+        }
+        if self.drawGroup != nil {
+            map["drawGroup"] = self.drawGroup!
+        }
+        if self.drawPoolName != nil {
+            map["drawPoolName"] = self.drawPoolName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("aliyunPk") && dict["aliyunPk"] != nil {
+            self.aliyunPk = dict["aliyunPk"] as! String
+        }
+        if dict.keys.contains("drawGroup") && dict["drawGroup"] != nil {
+            self.drawGroup = dict["drawGroup"] as! String
+        }
+        if dict.keys.contains("drawPoolName") && dict["drawPoolName"] != nil {
+            self.drawPoolName = dict["drawPoolName"] as! String
+        }
+    }
+}
+
+public class ListUserDrawRecordByPkResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var aliyunPk: String?
+
+        public var drawGroup: String?
+
+        public var drawPoolName: String?
+
+        public var drawResult: String?
+
+        public var gmtCreate: String?
+
+        public var taskGroupId: String?
+
+        public var uccId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aliyunPk != nil {
+                map["aliyunPk"] = self.aliyunPk!
+            }
+            if self.drawGroup != nil {
+                map["drawGroup"] = self.drawGroup!
+            }
+            if self.drawPoolName != nil {
+                map["drawPoolName"] = self.drawPoolName!
+            }
+            if self.drawResult != nil {
+                map["drawResult"] = self.drawResult!
+            }
+            if self.gmtCreate != nil {
+                map["gmtCreate"] = self.gmtCreate!
+            }
+            if self.taskGroupId != nil {
+                map["taskGroupId"] = self.taskGroupId!
+            }
+            if self.uccId != nil {
+                map["uccId"] = self.uccId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("aliyunPk") && dict["aliyunPk"] != nil {
+                self.aliyunPk = dict["aliyunPk"] as! String
+            }
+            if dict.keys.contains("drawGroup") && dict["drawGroup"] != nil {
+                self.drawGroup = dict["drawGroup"] as! String
+            }
+            if dict.keys.contains("drawPoolName") && dict["drawPoolName"] != nil {
+                self.drawPoolName = dict["drawPoolName"] as! String
+            }
+            if dict.keys.contains("drawResult") && dict["drawResult"] != nil {
+                self.drawResult = dict["drawResult"] as! String
+            }
+            if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
+                self.gmtCreate = dict["gmtCreate"] as! String
+            }
+            if dict.keys.contains("taskGroupId") && dict["taskGroupId"] != nil {
+                self.taskGroupId = dict["taskGroupId"] as! String
+            }
+            if dict.keys.contains("uccId") && dict["uccId"] != nil {
+                self.uccId = dict["uccId"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [ListUserDrawRecordByPkResponseBody.Data]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["data"] = tmp
+        }
+        if self.message != nil {
+            map["message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("code") && dict["code"] != nil {
+            self.code = dict["code"] as! String
+        }
+        if dict.keys.contains("data") && dict["data"] != nil {
+            var tmp : [ListUserDrawRecordByPkResponseBody.Data] = []
+            for v in dict["data"] as! [Any] {
+                var model = ListUserDrawRecordByPkResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("message") && dict["message"] != nil {
+            self.message = dict["message"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ListUserDrawRecordByPkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListUserDrawRecordByPkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListUserDrawRecordByPkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListUserKeysRequest : Tea.TeaModel {
     public var accessToken: String?
 
