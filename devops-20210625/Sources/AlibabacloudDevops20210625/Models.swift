@@ -37854,6 +37854,8 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
 
         public var identities: ListOrganizationMembersResponseBody.Members.Identities?
 
+        public var jobNumber: String?
+
         public var joinTime: Int64?
 
         public var lastVisitTime: Int64?
@@ -37901,6 +37903,9 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
             if self.identities != nil {
                 map["identities"] = self.identities?.toMap()
             }
+            if self.jobNumber != nil {
+                map["jobNumber"] = self.jobNumber!
+            }
             if self.joinTime != nil {
                 map["joinTime"] = self.joinTime!
             }
@@ -37945,6 +37950,9 @@ public class ListOrganizationMembersResponseBody : Tea.TeaModel {
                 var model = ListOrganizationMembersResponseBody.Members.Identities()
                 model.fromMap(dict["identities"] as! [String: Any])
                 self.identities = model
+            }
+            if dict.keys.contains("jobNumber") && dict["jobNumber"] != nil {
+                self.jobNumber = dict["jobNumber"] as! String
             }
             if dict.keys.contains("joinTime") && dict["joinTime"] != nil {
                 self.joinTime = dict["joinTime"] as! Int64
