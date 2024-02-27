@@ -63573,6 +63573,8 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
 
     public var CAType: String?
 
+    public var certificate: String?
+
     public var clientCACert: String?
 
     public var clientCAEnabled: Int32?
@@ -63590,6 +63592,8 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
     public var ownerAccount: String?
 
     public var ownerId: Int64?
+
+    public var passWord: String?
 
     public var replicationACL: String?
 
@@ -63625,6 +63629,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         if self.CAType != nil {
             map["CAType"] = self.CAType!
         }
+        if self.certificate != nil {
+            map["Certificate"] = self.certificate!
+        }
         if self.clientCACert != nil {
             map["ClientCACert"] = self.clientCACert!
         }
@@ -63651,6 +63658,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
+        }
+        if self.passWord != nil {
+            map["PassWord"] = self.passWord!
         }
         if self.replicationACL != nil {
             map["ReplicationACL"] = self.replicationACL!
@@ -63683,6 +63693,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         if dict.keys.contains("CAType") && dict["CAType"] != nil {
             self.CAType = dict["CAType"] as! String
         }
+        if dict.keys.contains("Certificate") && dict["Certificate"] != nil {
+            self.certificate = dict["Certificate"] as! String
+        }
         if dict.keys.contains("ClientCACert") && dict["ClientCACert"] != nil {
             self.clientCACert = dict["ClientCACert"] as! String
         }
@@ -63709,6 +63722,9 @@ public class ModifyDBInstanceSSLRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PassWord") && dict["PassWord"] != nil {
+            self.passWord = dict["PassWord"] as! String
         }
         if dict.keys.contains("ReplicationACL") && dict["ReplicationACL"] != nil {
             self.replicationACL = dict["ReplicationACL"] as! String
