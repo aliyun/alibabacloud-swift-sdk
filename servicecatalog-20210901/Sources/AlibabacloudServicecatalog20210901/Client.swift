@@ -334,6 +334,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.providerName)) {
             body["ProviderName"] = request.providerName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.templateType)) {
+            body["TemplateType"] = request.templateType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
