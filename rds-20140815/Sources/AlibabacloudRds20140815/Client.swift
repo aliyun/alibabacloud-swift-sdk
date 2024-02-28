@@ -7572,6 +7572,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKmsAssociateResourcesWithOptions(_ request: DescribeKmsAssociateResourcesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeKmsAssociateResourcesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsResourceId)) {
+            query["KmsResourceId"] = request.kmsResourceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsResourceRegionId)) {
+            query["KmsResourceRegionId"] = request.kmsResourceRegionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsResourceType)) {
+            query["KmsResourceType"] = request.kmsResourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.kmsResourceUser)) {
+            query["KmsResourceUser"] = request.kmsResourceUser ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeKmsAssociateResources",
+            "version": "2014-08-15",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeKmsAssociateResourcesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeKmsAssociateResources(_ request: DescribeKmsAssociateResourcesRequest) async throws -> DescribeKmsAssociateResourcesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeKmsAssociateResourcesWithOptions(request as! DescribeKmsAssociateResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeLocalAvailableRecoveryTimeWithOptions(_ request: DescribeLocalAvailableRecoveryTimeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeLocalAvailableRecoveryTimeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

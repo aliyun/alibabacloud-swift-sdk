@@ -40557,6 +40557,203 @@ public class DescribeInstanceLinkedWhitelistTemplateResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeKmsAssociateResourcesRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var kmsResourceId: String?
+
+    public var kmsResourceRegionId: String?
+
+    public var kmsResourceType: String?
+
+    public var kmsResourceUser: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: String?
+
+    public var regionId: String?
+
+    public var resourceGroupId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.kmsResourceId != nil {
+            map["KmsResourceId"] = self.kmsResourceId!
+        }
+        if self.kmsResourceRegionId != nil {
+            map["KmsResourceRegionId"] = self.kmsResourceRegionId!
+        }
+        if self.kmsResourceType != nil {
+            map["KmsResourceType"] = self.kmsResourceType!
+        }
+        if self.kmsResourceUser != nil {
+            map["KmsResourceUser"] = self.kmsResourceUser!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("KmsResourceId") && dict["KmsResourceId"] != nil {
+            self.kmsResourceId = dict["KmsResourceId"] as! String
+        }
+        if dict.keys.contains("KmsResourceRegionId") && dict["KmsResourceRegionId"] != nil {
+            self.kmsResourceRegionId = dict["KmsResourceRegionId"] as! String
+        }
+        if dict.keys.contains("KmsResourceType") && dict["KmsResourceType"] != nil {
+            self.kmsResourceType = dict["KmsResourceType"] as! String
+        }
+        if dict.keys.contains("KmsResourceUser") && dict["KmsResourceUser"] != nil {
+            self.kmsResourceUser = dict["KmsResourceUser"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! String
+        }
+    }
+}
+
+public class DescribeKmsAssociateResourcesResponseBody : Tea.TeaModel {
+    public var associateStatus: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.associateStatus != nil {
+            map["AssociateStatus"] = self.associateStatus!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssociateStatus") && dict["AssociateStatus"] != nil {
+            self.associateStatus = dict["AssociateStatus"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeKmsAssociateResourcesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeKmsAssociateResourcesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeKmsAssociateResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeLocalAvailableRecoveryTimeRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
