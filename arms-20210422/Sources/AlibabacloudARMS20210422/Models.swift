@@ -17562,6 +17562,8 @@ public class SendMseIncidentResponse : Tea.TeaModel {
 public class SetRetcodeShareStatusRequest : Tea.TeaModel {
     public var pid: String?
 
+    public var regionId: String?
+
     public var status: Bool?
 
     public override init() {
@@ -17581,6 +17583,9 @@ public class SetRetcodeShareStatusRequest : Tea.TeaModel {
         if self.pid != nil {
             map["Pid"] = self.pid!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -17590,6 +17595,9 @@ public class SetRetcodeShareStatusRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Pid") && dict["Pid"] != nil {
             self.pid = dict["Pid"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! Bool
