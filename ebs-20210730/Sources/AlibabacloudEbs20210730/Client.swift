@@ -1420,6 +1420,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSolutionInstanceConfigurationWithOptions(_ request: DescribeSolutionInstanceConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeSolutionInstanceConfigurationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parameters)) {
+            query["Parameters"] = request.parameters ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.solutionId)) {
+            query["SolutionId"] = request.solutionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeSolutionInstanceConfiguration",
+            "version": "2021-07-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeSolutionInstanceConfigurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeSolutionInstanceConfiguration(_ request: DescribeSolutionInstanceConfigurationRequest) async throws -> DescribeSolutionInstanceConfigurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeSolutionInstanceConfigurationWithOptions(request as! DescribeSolutionInstanceConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func failoverDiskReplicaGroupWithOptions(_ request: FailoverDiskReplicaGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> FailoverDiskReplicaGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
