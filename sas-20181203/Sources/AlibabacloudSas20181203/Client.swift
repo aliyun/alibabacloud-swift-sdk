@@ -7075,6 +7075,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeExposedInstanceCriteriaWithOptions(_ request: DescribeExposedInstanceCriteriaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExposedInstanceCriteriaResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.value)) {
             query["Value"] = request.value ?? "";
         }
@@ -7106,6 +7109,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeExposedInstanceDetailWithOptions(_ request: DescribeExposedInstanceDetailRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExposedInstanceDetailResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
+        }
         if (!TeaUtils.Client.isUnset(request.uuid)) {
             query["Uuid"] = request.uuid ?? "";
         }
@@ -7163,6 +7169,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
         }
         if (!TeaUtils.Client.isUnset(request.vulStatus)) {
             query["VulStatus"] = request.vulStatus!;
@@ -7224,6 +7233,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceDirectoryAccountId)) {
+            query["ResourceDirectoryAccountId"] = request.resourceDirectoryAccountId!;
         }
         if (!TeaUtils.Client.isUnset(request.statisticsType)) {
             query["StatisticsType"] = request.statisticsType ?? "";
