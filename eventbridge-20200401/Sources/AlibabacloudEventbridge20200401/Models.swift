@@ -256,9 +256,6 @@ public class CreateApiDestinationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1009,9 +1006,6 @@ public class CreateConnectionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1193,9 +1187,6 @@ public class CreateEventBusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2071,9 +2062,6 @@ public class CreateEventSourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3738,6 +3726,531 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SinkPrometheusParameters : Tea.TeaModel {
+            public class AuthorizationType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class Data : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class NetworkType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class Password : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class SecurityGroupId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class URL : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class Username : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class VSwitchId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class VpcId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var authorizationType: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.AuthorizationType?
+
+            public var data: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Data?
+
+            public var networkType: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType?
+
+            public var password: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Password?
+
+            public var securityGroupId: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.SecurityGroupId?
+
+            public var URL: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.URL?
+
+            public var username: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Username?
+
+            public var vSwitchId: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.VSwitchId?
+
+            public var vpcId: CreateEventStreamingRequest.Sink.SinkPrometheusParameters.VpcId?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.authorizationType?.validate()
+                try self.data?.validate()
+                try self.networkType?.validate()
+                try self.password?.validate()
+                try self.securityGroupId?.validate()
+                try self.URL?.validate()
+                try self.username?.validate()
+                try self.vSwitchId?.validate()
+                try self.vpcId?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authorizationType != nil {
+                    map["AuthorizationType"] = self.authorizationType?.toMap()
+                }
+                if self.data != nil {
+                    map["Data"] = self.data?.toMap()
+                }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType?.toMap()
+                }
+                if self.password != nil {
+                    map["Password"] = self.password?.toMap()
+                }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId?.toMap()
+                }
+                if self.URL != nil {
+                    map["URL"] = self.URL?.toMap()
+                }
+                if self.username != nil {
+                    map["Username"] = self.username?.toMap()
+                }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId?.toMap()
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuthorizationType") && dict["AuthorizationType"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.AuthorizationType()
+                    model.fromMap(dict["AuthorizationType"] as! [String: Any])
+                    self.authorizationType = model
+                }
+                if dict.keys.contains("Data") && dict["Data"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Data()
+                    model.fromMap(dict["Data"] as! [String: Any])
+                    self.data = model
+                }
+                if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType()
+                    model.fromMap(dict["NetworkType"] as! [String: Any])
+                    self.networkType = model
+                }
+                if dict.keys.contains("Password") && dict["Password"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Password()
+                    model.fromMap(dict["Password"] as! [String: Any])
+                    self.password = model
+                }
+                if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.SecurityGroupId()
+                    model.fromMap(dict["SecurityGroupId"] as! [String: Any])
+                    self.securityGroupId = model
+                }
+                if dict.keys.contains("URL") && dict["URL"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.URL()
+                    model.fromMap(dict["URL"] as! [String: Any])
+                    self.URL = model
+                }
+                if dict.keys.contains("Username") && dict["Username"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.Username()
+                    model.fromMap(dict["Username"] as! [String: Any])
+                    self.username = model
+                }
+                if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.VSwitchId()
+                    model.fromMap(dict["VSwitchId"] as! [String: Any])
+                    self.vSwitchId = model
+                }
+                if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                    var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters.VpcId()
+                    model.fromMap(dict["VpcId"] as! [String: Any])
+                    self.vpcId = model
+                }
+            }
+        }
         public class SinkRabbitMQParameters : Tea.TeaModel {
             public class Body : Tea.TeaModel {
                 public var form: String?
@@ -5379,6 +5892,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkMNSParameters: CreateEventStreamingRequest.Sink.SinkMNSParameters?
 
+        public var sinkPrometheusParameters: CreateEventStreamingRequest.Sink.SinkPrometheusParameters?
+
         public var sinkRabbitMQParameters: CreateEventStreamingRequest.Sink.SinkRabbitMQParameters?
 
         public var sinkRocketMQParameters: CreateEventStreamingRequest.Sink.SinkRocketMQParameters?
@@ -5400,6 +5915,7 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             try self.sinkFnfParameters?.validate()
             try self.sinkKafkaParameters?.validate()
             try self.sinkMNSParameters?.validate()
+            try self.sinkPrometheusParameters?.validate()
             try self.sinkRabbitMQParameters?.validate()
             try self.sinkRocketMQParameters?.validate()
             try self.sinkSLSParameters?.validate()
@@ -5421,6 +5937,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkMNSParameters != nil {
                 map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+            }
+            if self.sinkPrometheusParameters != nil {
+                map["SinkPrometheusParameters"] = self.sinkPrometheusParameters?.toMap()
             }
             if self.sinkRabbitMQParameters != nil {
                 map["SinkRabbitMQParameters"] = self.sinkRabbitMQParameters?.toMap()
@@ -5459,6 +5978,11 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 var model = CreateEventStreamingRequest.Sink.SinkMNSParameters()
                 model.fromMap(dict["SinkMNSParameters"] as! [String: Any])
                 self.sinkMNSParameters = model
+            }
+            if dict.keys.contains("SinkPrometheusParameters") && dict["SinkPrometheusParameters"] != nil {
+                var model = CreateEventStreamingRequest.Sink.SinkPrometheusParameters()
+                model.fromMap(dict["SinkPrometheusParameters"] as! [String: Any])
+                self.sinkPrometheusParameters = model
             }
             if dict.keys.contains("SinkRabbitMQParameters") && dict["SinkRabbitMQParameters"] != nil {
                 var model = CreateEventStreamingRequest.Sink.SinkRabbitMQParameters()
@@ -5572,6 +6096,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var vSwitchIds: String?
 
+            public var valueDataType: String?
+
             public var vpcId: String?
 
             public override init() {
@@ -5612,6 +6138,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.vSwitchIds != nil {
                     map["VSwitchIds"] = self.vSwitchIds!
                 }
+                if self.valueDataType != nil {
+                    map["ValueDataType"] = self.valueDataType!
+                }
                 if self.vpcId != nil {
                     map["VpcId"] = self.vpcId!
                 }
@@ -5642,6 +6171,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
                     self.vSwitchIds = dict["VSwitchIds"] as! String
+                }
+                if dict.keys.contains("ValueDataType") && dict["ValueDataType"] != nil {
+                    self.valueDataType = dict["ValueDataType"] as! String
                 }
                 if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
                     self.vpcId = dict["VpcId"] as! String
@@ -5694,6 +6226,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
         }
         public class SourceMQTTParameters : Tea.TeaModel {
+            public var bodyDataType: String?
+
             public var instanceId: String?
 
             public var regionId: String?
@@ -5714,6 +6248,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bodyDataType != nil {
+                    map["BodyDataType"] = self.bodyDataType!
+                }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
@@ -5727,6 +6264,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BodyDataType") && dict["BodyDataType"] != nil {
+                    self.bodyDataType = dict["BodyDataType"] as! String
+                }
                 if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
                     self.instanceId = dict["InstanceId"] as! String
                 }
@@ -6510,9 +7050,6 @@ public class CreateEventStreamingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6982,9 +7519,6 @@ public class CreateRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7118,9 +7652,6 @@ public class CreateServiceLinkedRoleForProductResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7246,9 +7777,6 @@ public class DeleteApiDestinationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7374,9 +7902,6 @@ public class DeleteConnectionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7510,9 +8035,6 @@ public class DeleteEventBusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7646,9 +8168,6 @@ public class DeleteEventSourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7782,9 +8301,6 @@ public class DeleteEventStreamingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7926,9 +8442,6 @@ public class DeleteRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8229,9 +8742,6 @@ public class DeleteTargetsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8373,9 +8883,6 @@ public class DisableRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8517,9 +9024,6 @@ public class EnableRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8757,9 +9261,6 @@ public class GetApiDestinationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9521,9 +10022,6 @@ public class GetConnectionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9721,9 +10219,6 @@ public class GetEventBusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12437,6 +12932,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var vSwitchIds: String?
 
+                public var valueDataType: String?
+
                 public var vpcId: String?
 
                 public override init() {
@@ -12477,6 +12974,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.vSwitchIds != nil {
                         map["VSwitchIds"] = self.vSwitchIds!
                     }
+                    if self.valueDataType != nil {
+                        map["ValueDataType"] = self.valueDataType!
+                    }
                     if self.vpcId != nil {
                         map["VpcId"] = self.vpcId!
                     }
@@ -12507,6 +13007,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
                         self.vSwitchIds = dict["VSwitchIds"] as! String
+                    }
+                    if dict.keys.contains("ValueDataType") && dict["ValueDataType"] != nil {
+                        self.valueDataType = dict["ValueDataType"] as! String
                     }
                     if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
                         self.vpcId = dict["VpcId"] as! String
@@ -13234,9 +13737,6 @@ public class GetEventStreamingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13676,9 +14176,6 @@ public class GetRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13992,9 +14489,6 @@ public class ListAliyunOfficialEventSourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14321,9 +14815,6 @@ public class ListApiDestinationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15117,9 +15608,6 @@ public class ListConnectionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15390,9 +15878,6 @@ public class ListEventBusesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18936,9 +19421,6 @@ public class ListEventStreamingsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19330,9 +19812,6 @@ public class ListRulesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19708,9 +20187,6 @@ public class ListTargetsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20478,6 +20954,10 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
         }
         public var eventSourceList: [ListUserDefinedEventSourcesResponseBody.Data.EventSourceList]?
 
+        public var nextToken: String?
+
+        public var total: Int32?
+
         public override init() {
             super.init()
         }
@@ -20499,6 +20979,12 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
                 }
                 map["EventSourceList"] = tmp
             }
+            if self.nextToken != nil {
+                map["NextToken"] = self.nextToken!
+            }
+            if self.total != nil {
+                map["Total"] = self.total!
+            }
             return map
         }
 
@@ -20513,6 +20999,12 @@ public class ListUserDefinedEventSourcesResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.eventSourceList = tmp
+            }
+            if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+                self.nextToken = dict["NextToken"] as! String
+            }
+            if dict.keys.contains("Total") && dict["Total"] != nil {
+                self.total = dict["Total"] as! Int32
             }
         }
     }
@@ -20597,9 +21089,6 @@ public class ListUserDefinedEventSourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20733,9 +21222,6 @@ public class PauseEventStreamingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21222,9 +21708,6 @@ public class PutTargetsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21382,9 +21865,6 @@ public class QueryEventResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21663,9 +22143,6 @@ public class QueryEventTracesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21953,9 +22430,6 @@ public class QueryTracedEventByEventIdResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22274,9 +22748,6 @@ public class QueryTracedEventsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22340,7 +22811,7 @@ public class StartEventStreamingRequest : Tea.TeaModel {
 }
 
 public class StartEventStreamingResponseBody : Tea.TeaModel {
-    public var code: Bool?
+    public var code: String?
 
     public var message: String?
 
@@ -22379,7 +22850,7 @@ public class StartEventStreamingResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! Bool
+            self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
@@ -22410,9 +22881,6 @@ public class StartEventStreamingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22594,9 +23062,6 @@ public class TestEventPatternResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22848,9 +23313,6 @@ public class UpdateApiDestinationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23561,9 +24023,6 @@ public class UpdateConnectionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23705,9 +24164,6 @@ public class UpdateEventBusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24551,9 +25007,6 @@ public class UpdateEventSourceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25861,6 +26314,531 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
             }
         }
+        public class SinkPrometheusParameters : Tea.TeaModel {
+            public class AuthorizationType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class Data : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class NetworkType : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class Password : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class SecurityGroupId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class URL : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class Username : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class VSwitchId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public class VpcId : Tea.TeaModel {
+                public var form: String?
+
+                public var template: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.form != nil {
+                        map["Form"] = self.form!
+                    }
+                    if self.template != nil {
+                        map["Template"] = self.template!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Form") && dict["Form"] != nil {
+                        self.form = dict["Form"] as! String
+                    }
+                    if dict.keys.contains("Template") && dict["Template"] != nil {
+                        self.template = dict["Template"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var authorizationType: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.AuthorizationType?
+
+            public var data: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Data?
+
+            public var networkType: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType?
+
+            public var password: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Password?
+
+            public var securityGroupId: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.SecurityGroupId?
+
+            public var URL: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.URL?
+
+            public var username: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Username?
+
+            public var vSwitchId: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.VSwitchId?
+
+            public var vpcId: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.VpcId?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.authorizationType?.validate()
+                try self.data?.validate()
+                try self.networkType?.validate()
+                try self.password?.validate()
+                try self.securityGroupId?.validate()
+                try self.URL?.validate()
+                try self.username?.validate()
+                try self.vSwitchId?.validate()
+                try self.vpcId?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.authorizationType != nil {
+                    map["AuthorizationType"] = self.authorizationType?.toMap()
+                }
+                if self.data != nil {
+                    map["Data"] = self.data?.toMap()
+                }
+                if self.networkType != nil {
+                    map["NetworkType"] = self.networkType?.toMap()
+                }
+                if self.password != nil {
+                    map["Password"] = self.password?.toMap()
+                }
+                if self.securityGroupId != nil {
+                    map["SecurityGroupId"] = self.securityGroupId?.toMap()
+                }
+                if self.URL != nil {
+                    map["URL"] = self.URL?.toMap()
+                }
+                if self.username != nil {
+                    map["Username"] = self.username?.toMap()
+                }
+                if self.vSwitchId != nil {
+                    map["VSwitchId"] = self.vSwitchId?.toMap()
+                }
+                if self.vpcId != nil {
+                    map["VpcId"] = self.vpcId?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AuthorizationType") && dict["AuthorizationType"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.AuthorizationType()
+                    model.fromMap(dict["AuthorizationType"] as! [String: Any])
+                    self.authorizationType = model
+                }
+                if dict.keys.contains("Data") && dict["Data"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Data()
+                    model.fromMap(dict["Data"] as! [String: Any])
+                    self.data = model
+                }
+                if dict.keys.contains("NetworkType") && dict["NetworkType"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.NetworkType()
+                    model.fromMap(dict["NetworkType"] as! [String: Any])
+                    self.networkType = model
+                }
+                if dict.keys.contains("Password") && dict["Password"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Password()
+                    model.fromMap(dict["Password"] as! [String: Any])
+                    self.password = model
+                }
+                if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.SecurityGroupId()
+                    model.fromMap(dict["SecurityGroupId"] as! [String: Any])
+                    self.securityGroupId = model
+                }
+                if dict.keys.contains("URL") && dict["URL"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.URL()
+                    model.fromMap(dict["URL"] as! [String: Any])
+                    self.URL = model
+                }
+                if dict.keys.contains("Username") && dict["Username"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.Username()
+                    model.fromMap(dict["Username"] as! [String: Any])
+                    self.username = model
+                }
+                if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.VSwitchId()
+                    model.fromMap(dict["VSwitchId"] as! [String: Any])
+                    self.vSwitchId = model
+                }
+                if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+                    var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters.VpcId()
+                    model.fromMap(dict["VpcId"] as! [String: Any])
+                    self.vpcId = model
+                }
+            }
+        }
         public class SinkRabbitMQParameters : Tea.TeaModel {
             public class Body : Tea.TeaModel {
                 public var form: String?
@@ -27052,6 +28030,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
         public var sinkMNSParameters: UpdateEventStreamingRequest.Sink.SinkMNSParameters?
 
+        public var sinkPrometheusParameters: UpdateEventStreamingRequest.Sink.SinkPrometheusParameters?
+
         public var sinkRabbitMQParameters: UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters?
 
         public var sinkRocketMQParameters: UpdateEventStreamingRequest.Sink.SinkRocketMQParameters?
@@ -27072,6 +28052,7 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             try self.sinkFnfParameters?.validate()
             try self.sinkKafkaParameters?.validate()
             try self.sinkMNSParameters?.validate()
+            try self.sinkPrometheusParameters?.validate()
             try self.sinkRabbitMQParameters?.validate()
             try self.sinkRocketMQParameters?.validate()
             try self.sinkSLSParameters?.validate()
@@ -27090,6 +28071,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
             }
             if self.sinkMNSParameters != nil {
                 map["SinkMNSParameters"] = self.sinkMNSParameters?.toMap()
+            }
+            if self.sinkPrometheusParameters != nil {
+                map["SinkPrometheusParameters"] = self.sinkPrometheusParameters?.toMap()
             }
             if self.sinkRabbitMQParameters != nil {
                 map["SinkRabbitMQParameters"] = self.sinkRabbitMQParameters?.toMap()
@@ -27123,6 +28107,11 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 var model = UpdateEventStreamingRequest.Sink.SinkMNSParameters()
                 model.fromMap(dict["SinkMNSParameters"] as! [String: Any])
                 self.sinkMNSParameters = model
+            }
+            if dict.keys.contains("SinkPrometheusParameters") && dict["SinkPrometheusParameters"] != nil {
+                var model = UpdateEventStreamingRequest.Sink.SinkPrometheusParameters()
+                model.fromMap(dict["SinkPrometheusParameters"] as! [String: Any])
+                self.sinkPrometheusParameters = model
             }
             if dict.keys.contains("SinkRabbitMQParameters") && dict["SinkRabbitMQParameters"] != nil {
                 var model = UpdateEventStreamingRequest.Sink.SinkRabbitMQParameters()
@@ -27236,6 +28225,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var vSwitchIds: String?
 
+            public var valueDataType: String?
+
             public var vpcId: String?
 
             public override init() {
@@ -27276,6 +28267,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.vSwitchIds != nil {
                     map["VSwitchIds"] = self.vSwitchIds!
                 }
+                if self.valueDataType != nil {
+                    map["ValueDataType"] = self.valueDataType!
+                }
                 if self.vpcId != nil {
                     map["VpcId"] = self.vpcId!
                 }
@@ -27306,6 +28300,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
                     self.vSwitchIds = dict["VSwitchIds"] as! String
+                }
+                if dict.keys.contains("ValueDataType") && dict["ValueDataType"] != nil {
+                    self.valueDataType = dict["ValueDataType"] as! String
                 }
                 if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
                     self.vpcId = dict["VpcId"] as! String
@@ -28062,9 +29059,6 @@ public class UpdateEventStreamingResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28238,9 +29232,6 @@ public class UpdateRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
