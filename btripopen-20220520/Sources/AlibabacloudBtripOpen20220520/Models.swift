@@ -7822,6 +7822,51 @@ public class ApplyAddRequest : Tea.TeaModel {
                 }
             }
         }
+        public class HotelIntlCitys : Tea.TeaModel {
+            public var cityCode: String?
+
+            public var cityName: String?
+
+            public var fee: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cityCode != nil {
+                    map["city_code"] = self.cityCode!
+                }
+                if self.cityName != nil {
+                    map["city_name"] = self.cityName!
+                }
+                if self.fee != nil {
+                    map["fee"] = self.fee!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                    self.cityCode = dict["city_code"] as! String
+                }
+                if dict.keys.contains("city_name") && dict["city_name"] != nil {
+                    self.cityName = dict["city_name"] as! String
+                }
+                if dict.keys.contains("fee") && dict["fee"] != nil {
+                    self.fee = dict["fee"] as! Int64
+                }
+            }
+        }
         public var businessDiscount: Int32?
 
         public var economyDiscount: Int32?
@@ -7831,6 +7876,8 @@ public class ApplyAddRequest : Tea.TeaModel {
         public var flightCabins: String?
 
         public var hotelCitys: [ApplyAddRequest.ExternalTravelerStandard.HotelCitys]?
+
+        public var hotelIntlCitys: [ApplyAddRequest.ExternalTravelerStandard.HotelIntlCitys]?
 
         public var internationalFlightCabins: String?
 
@@ -7873,6 +7920,13 @@ public class ApplyAddRequest : Tea.TeaModel {
                 }
                 map["hotel_citys"] = tmp
             }
+            if self.hotelIntlCitys != nil {
+                var tmp : [Any] = []
+                for k in self.hotelIntlCitys! {
+                    tmp.append(k.toMap())
+                }
+                map["hotel_intl_citys"] = tmp
+            }
             if self.internationalFlightCabins != nil {
                 map["international_flight_cabins"] = self.internationalFlightCabins!
             }
@@ -7911,6 +7965,17 @@ public class ApplyAddRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.hotelCitys = tmp
+            }
+            if dict.keys.contains("hotel_intl_citys") && dict["hotel_intl_citys"] != nil {
+                var tmp : [ApplyAddRequest.ExternalTravelerStandard.HotelIntlCitys] = []
+                for v in dict["hotel_intl_citys"] as! [Any] {
+                    var model = ApplyAddRequest.ExternalTravelerStandard.HotelIntlCitys()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hotelIntlCitys = tmp
             }
             if dict.keys.contains("international_flight_cabins") && dict["international_flight_cabins"] != nil {
                 self.internationalFlightCabins = dict["international_flight_cabins"] as! String
@@ -8437,6 +8502,51 @@ public class ApplyAddRequest : Tea.TeaModel {
                 }
             }
         }
+        public class HotelIntlCitys : Tea.TeaModel {
+            public var cityCode: String?
+
+            public var cityName: String?
+
+            public var fee: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cityCode != nil {
+                    map["city_code"] = self.cityCode!
+                }
+                if self.cityName != nil {
+                    map["city_name"] = self.cityName!
+                }
+                if self.fee != nil {
+                    map["fee"] = self.fee!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                    self.cityCode = dict["city_code"] as! String
+                }
+                if dict.keys.contains("city_name") && dict["city_name"] != nil {
+                    self.cityName = dict["city_name"] as! String
+                }
+                if dict.keys.contains("fee") && dict["fee"] != nil {
+                    self.fee = dict["fee"] as! Int64
+                }
+            }
+        }
         public var businessDiscount: Int32?
 
         public var carCitySet: [ApplyAddRequest.TravelerStandard.CarCitySet]?
@@ -8448,6 +8558,8 @@ public class ApplyAddRequest : Tea.TeaModel {
         public var flightCabins: String?
 
         public var hotelCitys: [ApplyAddRequest.TravelerStandard.HotelCitys]?
+
+        public var hotelIntlCitys: [ApplyAddRequest.TravelerStandard.HotelIntlCitys]?
 
         public var internationalFlightCabins: String?
 
@@ -8498,6 +8610,13 @@ public class ApplyAddRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["hotel_citys"] = tmp
+            }
+            if self.hotelIntlCitys != nil {
+                var tmp : [Any] = []
+                for k in self.hotelIntlCitys! {
+                    tmp.append(k.toMap())
+                }
+                map["hotel_intl_citys"] = tmp
             }
             if self.internationalFlightCabins != nil {
                 map["international_flight_cabins"] = self.internationalFlightCabins!
@@ -8551,6 +8670,17 @@ public class ApplyAddRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.hotelCitys = tmp
+            }
+            if dict.keys.contains("hotel_intl_citys") && dict["hotel_intl_citys"] != nil {
+                var tmp : [ApplyAddRequest.TravelerStandard.HotelIntlCitys] = []
+                for v in dict["hotel_intl_citys"] as! [Any] {
+                    var model = ApplyAddRequest.TravelerStandard.HotelIntlCitys()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hotelIntlCitys = tmp
             }
             if dict.keys.contains("international_flight_cabins") && dict["international_flight_cabins"] != nil {
                 self.internationalFlightCabins = dict["international_flight_cabins"] as! String
@@ -11592,6 +11722,51 @@ public class ApplyModifyRequest : Tea.TeaModel {
                 }
             }
         }
+        public class HotelIntlCitys : Tea.TeaModel {
+            public var cityCode: String?
+
+            public var cityName: String?
+
+            public var fee: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cityCode != nil {
+                    map["city_code"] = self.cityCode!
+                }
+                if self.cityName != nil {
+                    map["city_name"] = self.cityName!
+                }
+                if self.fee != nil {
+                    map["fee"] = self.fee!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                    self.cityCode = dict["city_code"] as! String
+                }
+                if dict.keys.contains("city_name") && dict["city_name"] != nil {
+                    self.cityName = dict["city_name"] as! String
+                }
+                if dict.keys.contains("fee") && dict["fee"] != nil {
+                    self.fee = dict["fee"] as! Int64
+                }
+            }
+        }
         public var businessDiscount: Int32?
 
         public var economyDiscount: Int32?
@@ -11601,6 +11776,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
         public var flightCabins: String?
 
         public var hotelCitys: [ApplyModifyRequest.ExternalTravelerStandard.HotelCitys]?
+
+        public var hotelIntlCitys: [ApplyModifyRequest.ExternalTravelerStandard.HotelIntlCitys]?
 
         public var premiumEconomyDiscount: Int32?
 
@@ -11641,6 +11818,13 @@ public class ApplyModifyRequest : Tea.TeaModel {
                 }
                 map["hotel_citys"] = tmp
             }
+            if self.hotelIntlCitys != nil {
+                var tmp : [Any] = []
+                for k in self.hotelIntlCitys! {
+                    tmp.append(k.toMap())
+                }
+                map["hotel_intl_citys"] = tmp
+            }
             if self.premiumEconomyDiscount != nil {
                 map["premium_economy_discount"] = self.premiumEconomyDiscount!
             }
@@ -11676,6 +11860,17 @@ public class ApplyModifyRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.hotelCitys = tmp
+            }
+            if dict.keys.contains("hotel_intl_citys") && dict["hotel_intl_citys"] != nil {
+                var tmp : [ApplyModifyRequest.ExternalTravelerStandard.HotelIntlCitys] = []
+                for v in dict["hotel_intl_citys"] as! [Any] {
+                    var model = ApplyModifyRequest.ExternalTravelerStandard.HotelIntlCitys()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hotelIntlCitys = tmp
             }
             if dict.keys.contains("premium_economy_discount") && dict["premium_economy_discount"] != nil {
                 self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
@@ -12199,6 +12394,51 @@ public class ApplyModifyRequest : Tea.TeaModel {
                 }
             }
         }
+        public class HotelIntlCitys : Tea.TeaModel {
+            public var cityCode: String?
+
+            public var cityName: String?
+
+            public var fee: Int64?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cityCode != nil {
+                    map["city_code"] = self.cityCode!
+                }
+                if self.cityName != nil {
+                    map["city_name"] = self.cityName!
+                }
+                if self.fee != nil {
+                    map["fee"] = self.fee!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                    self.cityCode = dict["city_code"] as! String
+                }
+                if dict.keys.contains("city_name") && dict["city_name"] != nil {
+                    self.cityName = dict["city_name"] as! String
+                }
+                if dict.keys.contains("fee") && dict["fee"] != nil {
+                    self.fee = dict["fee"] as! Int64
+                }
+            }
+        }
         public var businessDiscount: Int32?
 
         public var carCitySet: [ApplyModifyRequest.TravelerStandard.CarCitySet]?
@@ -12210,6 +12450,8 @@ public class ApplyModifyRequest : Tea.TeaModel {
         public var flightCabins: String?
 
         public var hotelCitys: [ApplyModifyRequest.TravelerStandard.HotelCitys]?
+
+        public var hotelIntlCitys: [ApplyModifyRequest.TravelerStandard.HotelIntlCitys]?
 
         public var premiumEconomyDiscount: Int32?
 
@@ -12258,6 +12500,13 @@ public class ApplyModifyRequest : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["hotel_citys"] = tmp
+            }
+            if self.hotelIntlCitys != nil {
+                var tmp : [Any] = []
+                for k in self.hotelIntlCitys! {
+                    tmp.append(k.toMap())
+                }
+                map["hotel_intl_citys"] = tmp
             }
             if self.premiumEconomyDiscount != nil {
                 map["premium_economy_discount"] = self.premiumEconomyDiscount!
@@ -12308,6 +12557,17 @@ public class ApplyModifyRequest : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.hotelCitys = tmp
+            }
+            if dict.keys.contains("hotel_intl_citys") && dict["hotel_intl_citys"] != nil {
+                var tmp : [ApplyModifyRequest.TravelerStandard.HotelIntlCitys] = []
+                for v in dict["hotel_intl_citys"] as! [Any] {
+                    var model = ApplyModifyRequest.TravelerStandard.HotelIntlCitys()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hotelIntlCitys = tmp
             }
             if dict.keys.contains("premium_economy_discount") && dict["premium_economy_discount"] != nil {
                 self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
@@ -13376,6 +13636,51 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class HotelIntlCitys : Tea.TeaModel {
+                public var cityCode: String?
+
+                public var cityName: String?
+
+                public var fee: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cityCode != nil {
+                        map["city_code"] = self.cityCode!
+                    }
+                    if self.cityName != nil {
+                        map["city_name"] = self.cityName!
+                    }
+                    if self.fee != nil {
+                        map["fee"] = self.fee!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                        self.cityCode = dict["city_code"] as! String
+                    }
+                    if dict.keys.contains("city_name") && dict["city_name"] != nil {
+                        self.cityName = dict["city_name"] as! String
+                    }
+                    if dict.keys.contains("fee") && dict["fee"] != nil {
+                        self.fee = dict["fee"] as! Int64
+                    }
+                }
+            }
             public var businessDiscount: Int32?
 
             public var economyDiscount: Int32?
@@ -13385,6 +13690,8 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             public var flightCabins: String?
 
             public var hotelCitys: [ApplyQueryResponseBody.Module.ExternalTravelerList.HotelCitys]?
+
+            public var hotelIntlCitys: [ApplyQueryResponseBody.Module.ExternalTravelerList.HotelIntlCitys]?
 
             public var premiumEconomyDiscount: Int32?
 
@@ -13427,6 +13734,13 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                     }
                     map["hotel_citys"] = tmp
                 }
+                if self.hotelIntlCitys != nil {
+                    var tmp : [Any] = []
+                    for k in self.hotelIntlCitys! {
+                        tmp.append(k.toMap())
+                    }
+                    map["hotel_intl_citys"] = tmp
+                }
                 if self.premiumEconomyDiscount != nil {
                     map["premium_economy_discount"] = self.premiumEconomyDiscount!
                 }
@@ -13465,6 +13779,17 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.hotelCitys = tmp
+                }
+                if dict.keys.contains("hotel_intl_citys") && dict["hotel_intl_citys"] != nil {
+                    var tmp : [ApplyQueryResponseBody.Module.ExternalTravelerList.HotelIntlCitys] = []
+                    for v in dict["hotel_intl_citys"] as! [Any] {
+                        var model = ApplyQueryResponseBody.Module.ExternalTravelerList.HotelIntlCitys()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.hotelIntlCitys = tmp
                 }
                 if dict.keys.contains("premium_economy_discount") && dict["premium_economy_discount"] != nil {
                     self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
@@ -13922,6 +14247,51 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class HotelIntlCitys : Tea.TeaModel {
+                public var cityCode: String?
+
+                public var cityName: String?
+
+                public var fee: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cityCode != nil {
+                        map["city_code"] = self.cityCode!
+                    }
+                    if self.cityName != nil {
+                        map["city_name"] = self.cityName!
+                    }
+                    if self.fee != nil {
+                        map["fee"] = self.fee!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("city_code") && dict["city_code"] != nil {
+                        self.cityCode = dict["city_code"] as! String
+                    }
+                    if dict.keys.contains("city_name") && dict["city_name"] != nil {
+                        self.cityName = dict["city_name"] as! String
+                    }
+                    if dict.keys.contains("fee") && dict["fee"] != nil {
+                        self.fee = dict["fee"] as! Int64
+                    }
+                }
+            }
             public var businessDiscount: Int32?
 
             public var carCitySet: [ApplyQueryResponseBody.Module.TravelerList.CarCitySet]?
@@ -13933,6 +14303,8 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
             public var flightCabins: String?
 
             public var hotelCitys: [ApplyQueryResponseBody.Module.TravelerList.HotelCitys]?
+
+            public var hotelIntlCitys: [ApplyQueryResponseBody.Module.TravelerList.HotelIntlCitys]?
 
             public var premiumEconomyDiscount: Int32?
 
@@ -13983,6 +14355,13 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                         tmp.append(k.toMap())
                     }
                     map["hotel_citys"] = tmp
+                }
+                if self.hotelIntlCitys != nil {
+                    var tmp : [Any] = []
+                    for k in self.hotelIntlCitys! {
+                        tmp.append(k.toMap())
+                    }
+                    map["hotel_intl_citys"] = tmp
                 }
                 if self.premiumEconomyDiscount != nil {
                     map["premium_economy_discount"] = self.premiumEconomyDiscount!
@@ -14036,6 +14415,17 @@ public class ApplyQueryResponseBody : Tea.TeaModel {
                         tmp.append(model)
                     }
                     self.hotelCitys = tmp
+                }
+                if dict.keys.contains("hotel_intl_citys") && dict["hotel_intl_citys"] != nil {
+                    var tmp : [ApplyQueryResponseBody.Module.TravelerList.HotelIntlCitys] = []
+                    for v in dict["hotel_intl_citys"] as! [Any] {
+                        var model = ApplyQueryResponseBody.Module.TravelerList.HotelIntlCitys()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.hotelIntlCitys = tmp
                 }
                 if dict.keys.contains("premium_economy_discount") && dict["premium_economy_discount"] != nil {
                     self.premiumEconomyDiscount = dict["premium_economy_discount"] as! Int32
