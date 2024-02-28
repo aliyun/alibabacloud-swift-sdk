@@ -2465,6 +2465,37 @@ public class DescribeInstanceListRequest : Tea.TeaModel {
 
 public class DescribeInstanceListResponseBody : Tea.TeaModel {
     public class InstanceList : Tea.TeaModel {
+        public class AutoProtectCondition : Tea.TeaModel {
+            public var events: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.events != nil {
+                    map["Events"] = self.events!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Events") && dict["Events"] != nil {
+                    self.events = dict["Events"] as! [String]
+                }
+            }
+        }
+        public var autoProtectCondition: DescribeInstanceListResponseBody.InstanceList.AutoProtectCondition?
+
         public var autoRenewal: Bool?
 
         public var blackholdingCount: String?
@@ -2499,10 +2530,14 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.autoProtectCondition?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoProtectCondition != nil {
+                map["AutoProtectCondition"] = self.autoProtectCondition?.toMap()
+            }
             if self.autoRenewal != nil {
                 map["AutoRenewal"] = self.autoRenewal!
             }
@@ -2543,6 +2578,11 @@ public class DescribeInstanceListResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoProtectCondition") && dict["AutoProtectCondition"] != nil {
+                var model = DescribeInstanceListResponseBody.InstanceList.AutoProtectCondition()
+                model.fromMap(dict["AutoProtectCondition"] as! [String: Any])
+                self.autoProtectCondition = model
+            }
             if dict.keys.contains("AutoRenewal") && dict["AutoRenewal"] != nil {
                 self.autoRenewal = dict["AutoRenewal"] as! Bool
             }
@@ -3843,6 +3883,8 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
 
         public var memberUid: String?
 
+        public var nsmStatus: Int32?
+
         public var product: String?
 
         public var region: String?
@@ -3871,6 +3913,9 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
             }
+            if self.nsmStatus != nil {
+                map["NsmStatus"] = self.nsmStatus!
+            }
             if self.product != nil {
                 map["Product"] = self.product!
             }
@@ -3892,6 +3937,9 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MemberUid") && dict["MemberUid"] != nil {
                 self.memberUid = dict["MemberUid"] as! String
+            }
+            if dict.keys.contains("NsmStatus") && dict["NsmStatus"] != nil {
+                self.nsmStatus = dict["NsmStatus"] as! Int32
             }
             if dict.keys.contains("Product") && dict["Product"] != nil {
                 self.product = dict["Product"] as! String
