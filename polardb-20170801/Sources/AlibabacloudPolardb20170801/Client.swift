@@ -2796,6 +2796,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.interval)) {
+            query["Interval"] = request.interval ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.key)) {
             query["Key"] = request.key ?? "";
         }

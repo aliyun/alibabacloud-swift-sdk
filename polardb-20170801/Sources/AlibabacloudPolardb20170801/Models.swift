@@ -11923,6 +11923,14 @@ public class DescribeDBClusterParametersResponseBody : Tea.TeaModel {
         public class Parameters : Tea.TeaModel {
             public var isEqual: String?
 
+            public var isInstancePolarDBKey: String?
+
+            public var isInstanceRdsKey: String?
+
+            public var isPolarDBKey: String?
+
+            public var isRdsKey: String?
+
             public var distParameterDescription: String?
 
             public var distParameterName: String?
@@ -11956,6 +11964,18 @@ public class DescribeDBClusterParametersResponseBody : Tea.TeaModel {
                 if self.isEqual != nil {
                     map["IsEqual"] = self.isEqual!
                 }
+                if self.isInstancePolarDBKey != nil {
+                    map["IsInstancePolarDBKey"] = self.isInstancePolarDBKey!
+                }
+                if self.isInstanceRdsKey != nil {
+                    map["IsInstanceRdsKey"] = self.isInstanceRdsKey!
+                }
+                if self.isPolarDBKey != nil {
+                    map["IsPolarDBKey"] = self.isPolarDBKey!
+                }
+                if self.isRdsKey != nil {
+                    map["IsRdsKey"] = self.isRdsKey!
+                }
                 if self.distParameterDescription != nil {
                     map["distParameterDescription"] = self.distParameterDescription!
                 }
@@ -11986,6 +12006,18 @@ public class DescribeDBClusterParametersResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("IsEqual") && dict["IsEqual"] != nil {
                     self.isEqual = dict["IsEqual"] as! String
+                }
+                if dict.keys.contains("IsInstancePolarDBKey") && dict["IsInstancePolarDBKey"] != nil {
+                    self.isInstancePolarDBKey = dict["IsInstancePolarDBKey"] as! String
+                }
+                if dict.keys.contains("IsInstanceRdsKey") && dict["IsInstanceRdsKey"] != nil {
+                    self.isInstanceRdsKey = dict["IsInstanceRdsKey"] as! String
+                }
+                if dict.keys.contains("IsPolarDBKey") && dict["IsPolarDBKey"] != nil {
+                    self.isPolarDBKey = dict["IsPolarDBKey"] as! String
+                }
+                if dict.keys.contains("IsRdsKey") && dict["IsRdsKey"] != nil {
+                    self.isRdsKey = dict["IsRdsKey"] as! String
                 }
                 if dict.keys.contains("distParameterDescription") && dict["distParameterDescription"] != nil {
                     self.distParameterDescription = dict["distParameterDescription"] as! String
@@ -12356,6 +12388,8 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var interval: String?
+
     public var key: String?
 
     public var startTime: String?
@@ -12380,6 +12414,9 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
         if self.key != nil {
             map["Key"] = self.key!
         }
@@ -12395,6 +12432,9 @@ public class DescribeDBClusterPerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! String
         }
         if dict.keys.contains("Key") && dict["Key"] != nil {
             self.key = dict["Key"] as! String
