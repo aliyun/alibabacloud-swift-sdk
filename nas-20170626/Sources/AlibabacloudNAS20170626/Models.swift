@@ -2001,11 +2001,15 @@ public class CreateDataFlowRequest : Tea.TeaModel {
 
     public var fileSystemId: String?
 
+    public var fileSystemPath: String?
+
     public var fsetId: String?
 
     public var sourceSecurityType: String?
 
     public var sourceStorage: String?
+
+    public var sourceStoragePath: String?
 
     public var throughput: Int64?
 
@@ -2048,6 +2052,9 @@ public class CreateDataFlowRequest : Tea.TeaModel {
         if self.fileSystemId != nil {
             map["FileSystemId"] = self.fileSystemId!
         }
+        if self.fileSystemPath != nil {
+            map["FileSystemPath"] = self.fileSystemPath!
+        }
         if self.fsetId != nil {
             map["FsetId"] = self.fsetId!
         }
@@ -2056,6 +2063,9 @@ public class CreateDataFlowRequest : Tea.TeaModel {
         }
         if self.sourceStorage != nil {
             map["SourceStorage"] = self.sourceStorage!
+        }
+        if self.sourceStoragePath != nil {
+            map["SourceStoragePath"] = self.sourceStoragePath!
         }
         if self.throughput != nil {
             map["Throughput"] = self.throughput!
@@ -2093,6 +2103,9 @@ public class CreateDataFlowRequest : Tea.TeaModel {
         if dict.keys.contains("FileSystemId") && dict["FileSystemId"] != nil {
             self.fileSystemId = dict["FileSystemId"] as! String
         }
+        if dict.keys.contains("FileSystemPath") && dict["FileSystemPath"] != nil {
+            self.fileSystemPath = dict["FileSystemPath"] as! String
+        }
         if dict.keys.contains("FsetId") && dict["FsetId"] != nil {
             self.fsetId = dict["FsetId"] as! String
         }
@@ -2101,6 +2114,9 @@ public class CreateDataFlowRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SourceStorage") && dict["SourceStorage"] != nil {
             self.sourceStorage = dict["SourceStorage"] as! String
+        }
+        if dict.keys.contains("SourceStoragePath") && dict["SourceStoragePath"] != nil {
+            self.sourceStoragePath = dict["SourceStoragePath"] as! String
         }
         if dict.keys.contains("Throughput") && dict["Throughput"] != nil {
             self.throughput = dict["Throughput"] as! Int64
@@ -2198,6 +2214,8 @@ public class CreateDataFlowResponse : Tea.TeaModel {
 public class CreateDataFlowTaskRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var conflictPolicy: String?
+
     public var dataFlowId: String?
 
     public var dataType: String?
@@ -2231,6 +2249,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.conflictPolicy != nil {
+            map["ConflictPolicy"] = self.conflictPolicy!
+        }
         if self.dataFlowId != nil {
             map["DataFlowId"] = self.dataFlowId!
         }
@@ -2261,6 +2282,9 @@ public class CreateDataFlowTaskRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ConflictPolicy") && dict["ConflictPolicy"] != nil {
+            self.conflictPolicy = dict["ConflictPolicy"] as! String
         }
         if dict.keys.contains("DataFlowId") && dict["DataFlowId"] != nil {
             self.dataFlowId = dict["DataFlowId"] as! String
@@ -7425,11 +7449,15 @@ public class DescribeDataFlowTasksRequest : Tea.TeaModel {
 public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
     public class TaskInfo : Tea.TeaModel {
         public class Task : Tea.TeaModel {
+            public var conflictPolicy: String?
+
             public var createTime: String?
 
             public var dataFlowId: String?
 
             public var dataType: String?
+
+            public var directory: String?
 
             public var endTime: String?
 
@@ -7469,6 +7497,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.conflictPolicy != nil {
+                    map["ConflictPolicy"] = self.conflictPolicy!
+                }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
@@ -7477,6 +7508,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 }
                 if self.dataType != nil {
                     map["DataType"] = self.dataType!
+                }
+                if self.directory != nil {
+                    map["Directory"] = self.directory!
                 }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
@@ -7518,6 +7552,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConflictPolicy") && dict["ConflictPolicy"] != nil {
+                    self.conflictPolicy = dict["ConflictPolicy"] as! String
+                }
                 if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                     self.createTime = dict["CreateTime"] as! String
                 }
@@ -7526,6 +7563,9 @@ public class DescribeDataFlowTasksResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DataType") && dict["DataType"] != nil {
                     self.dataType = dict["DataType"] as! String
+                }
+                if dict.keys.contains("Directory") && dict["Directory"] != nil {
+                    self.directory = dict["Directory"] as! String
                 }
                 if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
                     self.endTime = dict["EndTime"] as! String
@@ -7904,6 +7944,8 @@ public class DescribeDataFlowsResponseBody : Tea.TeaModel {
 
             public var sourceStorage: String?
 
+            public var sourceStoragePath: String?
+
             public var status: String?
 
             public var throughput: Int64?
@@ -7964,6 +8006,9 @@ public class DescribeDataFlowsResponseBody : Tea.TeaModel {
                 if self.sourceStorage != nil {
                     map["SourceStorage"] = self.sourceStorage!
                 }
+                if self.sourceStoragePath != nil {
+                    map["SourceStoragePath"] = self.sourceStoragePath!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -8017,6 +8062,9 @@ public class DescribeDataFlowsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SourceStorage") && dict["SourceStorage"] != nil {
                     self.sourceStorage = dict["SourceStorage"] as! String
+                }
+                if dict.keys.contains("SourceStoragePath") && dict["SourceStoragePath"] != nil {
+                    self.sourceStoragePath = dict["SourceStoragePath"] as! String
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
