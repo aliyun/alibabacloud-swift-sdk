@@ -2338,6 +2338,8 @@ public class ListDigitalHumanMaterialsResponseBody : Tea.TeaModel {
 
         public var name: String?
 
+        public var sortOrder: Int32?
+
         public var type: String?
 
         public override init() {
@@ -2376,6 +2378,9 @@ public class ListDigitalHumanMaterialsResponseBody : Tea.TeaModel {
             if self.name != nil {
                 map["Name"] = self.name!
             }
+            if self.sortOrder != nil {
+                map["SortOrder"] = self.sortOrder!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -2408,6 +2413,9 @@ public class ListDigitalHumanMaterialsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("SortOrder") && dict["SortOrder"] != nil {
+                self.sortOrder = dict["SortOrder"] as! Int32
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
