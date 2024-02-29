@@ -9787,6 +9787,291 @@ public class CreateFlowRuleResponse : Tea.TeaModel {
     }
 }
 
+public class CreateIsolationRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var enable: Bool?
+
+    public var namespace: String?
+
+    public var regionId: String?
+
+    public var resource: String?
+
+    public var threshold: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.threshold != nil {
+            map["Threshold"] = self.threshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Resource") && dict["Resource"] != nil {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+            self.threshold = dict["Threshold"] as! Double
+        }
+    }
+}
+
+public class CreateIsolationRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appId: String?
+
+        public var appName: String?
+
+        public var enable: Bool?
+
+        public var id: Int64?
+
+        public var namespace: String?
+
+        public var regionId: String?
+
+        public var resource: String?
+
+        public var threshold: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.resource != nil {
+                map["Resource"] = self.resource!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                self.appId = dict["AppId"] as! String
+            }
+            if dict.keys.contains("AppName") && dict["AppName"] != nil {
+                self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                self.enable = dict["Enable"] as! Bool
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("Resource") && dict["Resource"] != nil {
+                self.resource = dict["Resource"] as! String
+            }
+            if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+                self.threshold = dict["Threshold"] as! Double
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: CreateIsolationRuleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = CreateIsolationRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateIsolationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateIsolationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateIsolationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateMseServiceApplicationRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -15386,6 +15671,233 @@ public class DeleteGatewaySlbResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteGatewaySlbResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteIsolationRulesRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var ids: [Int64]?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.ids != nil {
+            map["Ids"] = self.ids!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Ids") && dict["Ids"] != nil {
+            self.ids = dict["Ids"] as! [Int64]
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class DeleteIsolationRulesShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var idsShrink: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.idsShrink != nil {
+            map["Ids"] = self.idsShrink!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Ids") && dict["Ids"] != nil {
+            self.idsShrink = dict["Ids"] as! String
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class DeleteIsolationRulesResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: [Int64]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! [Int64]
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteIsolationRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteIsolationRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteIsolationRulesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -43568,6 +44080,372 @@ public class ListInstanceCountResponse : Tea.TeaModel {
     }
 }
 
+public class ListIsolationRulesRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var namespace: String?
+
+    public var pageIndex: Int32?
+
+    public var pageSize: Int32?
+
+    public var resource: String?
+
+    public var resourceSearchKey: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.pageIndex != nil {
+            map["PageIndex"] = self.pageIndex!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.resourceSearchKey != nil {
+            map["ResourceSearchKey"] = self.resourceSearchKey!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("PageIndex") && dict["PageIndex"] != nil {
+            self.pageIndex = dict["PageIndex"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("Resource") && dict["Resource"] != nil {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("ResourceSearchKey") && dict["ResourceSearchKey"] != nil {
+            self.resourceSearchKey = dict["ResourceSearchKey"] as! String
+        }
+    }
+}
+
+public class ListIsolationRulesResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var appId: String?
+
+            public var appName: String?
+
+            public var enable: Bool?
+
+            public var fallbackObject: String?
+
+            public var namespace: String?
+
+            public var regionId: String?
+
+            public var resource: String?
+
+            public var ruleId: Int64?
+
+            public var threshold: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.appId != nil {
+                    map["AppId"] = self.appId!
+                }
+                if self.appName != nil {
+                    map["AppName"] = self.appName!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.fallbackObject != nil {
+                    map["FallbackObject"] = self.fallbackObject!
+                }
+                if self.namespace != nil {
+                    map["Namespace"] = self.namespace!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                if self.resource != nil {
+                    map["Resource"] = self.resource!
+                }
+                if self.ruleId != nil {
+                    map["RuleId"] = self.ruleId!
+                }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                    self.appId = dict["AppId"] as! String
+                }
+                if dict.keys.contains("AppName") && dict["AppName"] != nil {
+                    self.appName = dict["AppName"] as! String
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Bool
+                }
+                if dict.keys.contains("FallbackObject") && dict["FallbackObject"] != nil {
+                    self.fallbackObject = dict["FallbackObject"] as! String
+                }
+                if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                    self.namespace = dict["Namespace"] as! String
+                }
+                if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                    self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("Resource") && dict["Resource"] != nil {
+                    self.resource = dict["Resource"] as! String
+                }
+                if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+                    self.ruleId = dict["RuleId"] as! Int64
+                }
+                if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+                    self.threshold = dict["Threshold"] as! Int32
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [ListIsolationRulesResponseBody.Data.Result]?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Result") && dict["Result"] != nil {
+                var tmp : [ListIsolationRulesResponseBody.Data.Result] = []
+                for v in dict["Result"] as! [Any] {
+                    var model = ListIsolationRulesResponseBody.Data.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
+            }
+            if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+                self.totalSize = dict["TotalSize"] as! Int32
+            }
+        }
+    }
+    public var code: Int32?
+
+    public var data: ListIsolationRulesResponseBody.Data?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ListIsolationRulesResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListIsolationRulesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListIsolationRulesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListIsolationRulesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListListenersByConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -64591,6 +65469,275 @@ public class UpdateImageResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateImageResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateIsolationRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appId: String?
+
+    public var appName: String?
+
+    public var enable: Bool?
+
+    public var namespace: String?
+
+    public var ruleId: Int64?
+
+    public var threshold: Double?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appId != nil {
+            map["AppId"] = self.appId!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        if self.threshold != nil {
+            map["Threshold"] = self.threshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+            self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+        if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+            self.threshold = dict["Threshold"] as! Double
+        }
+    }
+}
+
+public class UpdateIsolationRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appId: String?
+
+        public var appName: String?
+
+        public var enable: Bool?
+
+        public var id: Int64?
+
+        public var namespace: String?
+
+        public var resource: String?
+
+        public var threshold: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.resource != nil {
+                map["Resource"] = self.resource!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                self.appId = dict["AppId"] as! String
+            }
+            if dict.keys.contains("AppName") && dict["AppName"] != nil {
+                self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                self.enable = dict["Enable"] as! Bool
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("Resource") && dict["Resource"] != nil {
+                self.resource = dict["Resource"] as! String
+            }
+            if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+                self.threshold = dict["Threshold"] as! Double
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: UpdateIsolationRuleResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = UpdateIsolationRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class UpdateIsolationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateIsolationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateIsolationRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
