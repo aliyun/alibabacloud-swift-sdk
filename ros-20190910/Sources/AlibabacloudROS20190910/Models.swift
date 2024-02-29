@@ -8922,6 +8922,8 @@ public class GetStackResponseBody : Tea.TeaModel {
 
     public var resourceProgress: GetStackResponseBody.ResourceProgress?
 
+    public var rollbackFailedRootReason: String?
+
     public var rootStackId: String?
 
     public var serviceManaged: Bool?
@@ -9036,6 +9038,9 @@ public class GetStackResponseBody : Tea.TeaModel {
         }
         if self.resourceProgress != nil {
             map["ResourceProgress"] = self.resourceProgress?.toMap()
+        }
+        if self.rollbackFailedRootReason != nil {
+            map["RollbackFailedRootReason"] = self.rollbackFailedRootReason!
         }
         if self.rootStackId != nil {
             map["RootStackId"] = self.rootStackId!
@@ -9169,6 +9174,9 @@ public class GetStackResponseBody : Tea.TeaModel {
             var model = GetStackResponseBody.ResourceProgress()
             model.fromMap(dict["ResourceProgress"] as! [String: Any])
             self.resourceProgress = model
+        }
+        if dict.keys.contains("RollbackFailedRootReason") && dict["RollbackFailedRootReason"] != nil {
+            self.rollbackFailedRootReason = dict["RollbackFailedRootReason"] as! String
         }
         if dict.keys.contains("RootStackId") && dict["RootStackId"] != nil {
             self.rootStackId = dict["RootStackId"] as! String
