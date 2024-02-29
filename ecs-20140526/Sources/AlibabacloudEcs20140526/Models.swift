@@ -7302,6 +7302,43 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var launchConfiguration: CreateAutoProvisioningGroupRequest.LaunchConfiguration?
 
     public var autoProvisioningGroupName: String?
@@ -7355,6 +7392,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
     public var spotTargetCapacity: String?
 
     public var systemDiskConfig: [CreateAutoProvisioningGroupRequest.SystemDiskConfig]?
+
+    public var tag: [CreateAutoProvisioningGroupRequest.Tag]?
 
     public var terminateInstances: Bool?
 
@@ -7473,6 +7512,13 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["SystemDiskConfig"] = tmp
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
         }
         if self.terminateInstances != nil {
             map["TerminateInstances"] = self.terminateInstances!
@@ -7599,6 +7645,17 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.systemDiskConfig = tmp
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [CreateAutoProvisioningGroupRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateAutoProvisioningGroupRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
         if dict.keys.contains("TerminateInstances") && dict["TerminateInstances"] != nil {
             self.terminateInstances = dict["TerminateInstances"] as! Bool
@@ -7867,6 +7924,108 @@ public class CreateAutoProvisioningGroupResponse : Tea.TeaModel {
 }
 
 public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
+    public class CopyEncryptionConfiguration : Tea.TeaModel {
+        public class Arn : Tea.TeaModel {
+            public var assumeRoleFor: Int64?
+
+            public var roleType: String?
+
+            public var rolearn: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.assumeRoleFor != nil {
+                    map["AssumeRoleFor"] = self.assumeRoleFor!
+                }
+                if self.roleType != nil {
+                    map["RoleType"] = self.roleType!
+                }
+                if self.rolearn != nil {
+                    map["Rolearn"] = self.rolearn!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssumeRoleFor") && dict["AssumeRoleFor"] != nil {
+                    self.assumeRoleFor = dict["AssumeRoleFor"] as! Int64
+                }
+                if dict.keys.contains("RoleType") && dict["RoleType"] != nil {
+                    self.roleType = dict["RoleType"] as! String
+                }
+                if dict.keys.contains("Rolearn") && dict["Rolearn"] != nil {
+                    self.rolearn = dict["Rolearn"] as! String
+                }
+            }
+        }
+        public var arn: [CreateAutoSnapshotPolicyRequest.CopyEncryptionConfiguration.Arn]?
+
+        public var encrypted: Bool?
+
+        public var KMSKeyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arn != nil {
+                var tmp : [Any] = []
+                for k in self.arn! {
+                    tmp.append(k.toMap())
+                }
+                map["Arn"] = tmp
+            }
+            if self.encrypted != nil {
+                map["Encrypted"] = self.encrypted!
+            }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Arn") && dict["Arn"] != nil {
+                var tmp : [CreateAutoSnapshotPolicyRequest.CopyEncryptionConfiguration.Arn] = []
+                for v in dict["Arn"] as! [Any] {
+                    var model = CreateAutoSnapshotPolicyRequest.CopyEncryptionConfiguration.Arn()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.arn = tmp
+            }
+            if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
+                self.encrypted = dict["Encrypted"] as! Bool
+            }
+            if dict.keys.contains("KMSKeyId") && dict["KMSKeyId"] != nil {
+                self.KMSKeyId = dict["KMSKeyId"] as! String
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -7906,6 +8065,8 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
     }
     public var copiedSnapshotsRetentionDays: Int32?
 
+    public var copyEncryptionConfiguration: CreateAutoSnapshotPolicyRequest.CopyEncryptionConfiguration?
+
     public var enableCrossRegionCopy: Bool?
 
     public var ownerId: Int64?
@@ -7942,12 +8103,16 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.copyEncryptionConfiguration?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.copiedSnapshotsRetentionDays != nil {
             map["CopiedSnapshotsRetentionDays"] = self.copiedSnapshotsRetentionDays!
+        }
+        if self.copyEncryptionConfiguration != nil {
+            map["CopyEncryptionConfiguration"] = self.copyEncryptionConfiguration?.toMap()
         }
         if self.enableCrossRegionCopy != nil {
             map["EnableCrossRegionCopy"] = self.enableCrossRegionCopy!
@@ -7998,6 +8163,11 @@ public class CreateAutoSnapshotPolicyRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CopiedSnapshotsRetentionDays") && dict["CopiedSnapshotsRetentionDays"] != nil {
             self.copiedSnapshotsRetentionDays = dict["CopiedSnapshotsRetentionDays"] as! Int32
+        }
+        if dict.keys.contains("CopyEncryptionConfiguration") && dict["CopyEncryptionConfiguration"] != nil {
+            var model = CreateAutoSnapshotPolicyRequest.CopyEncryptionConfiguration()
+            model.fromMap(dict["CopyEncryptionConfiguration"] as! [String: Any])
+            self.copyEncryptionConfiguration = model
         }
         if dict.keys.contains("EnableCrossRegionCopy") && dict["EnableCrossRegionCopy"] != nil {
             self.enableCrossRegionCopy = dict["EnableCrossRegionCopy"] as! Bool
@@ -28070,6 +28240,43 @@ public class DescribeAutoProvisioningGroupInstancesResponse : Tea.TeaModel {
 }
 
 public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var autoProvisioningGroupId: [String]?
 
     public var autoProvisioningGroupName: String?
@@ -28091,6 +28298,8 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
+
+    public var tag: [DescribeAutoProvisioningGroupsRequest.Tag]?
 
     public override init() {
         super.init()
@@ -28139,6 +28348,13 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         return map
     }
 
@@ -28175,6 +28391,17 @@ public class DescribeAutoProvisioningGroupsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [DescribeAutoProvisioningGroupsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = DescribeAutoProvisioningGroupsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
         }
     }
 }
@@ -28358,6 +28585,84 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Tags : Tea.TeaModel {
+                public class Tag : Tea.TeaModel {
+                    public var tagKey: String?
+
+                    public var tagValue: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.tagKey != nil {
+                            map["TagKey"] = self.tagKey!
+                        }
+                        if self.tagValue != nil {
+                            map["TagValue"] = self.tagValue!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                            self.tagKey = dict["TagKey"] as! String
+                        }
+                        if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                            self.tagValue = dict["TagValue"] as! String
+                        }
+                    }
+                }
+                public var tag: [DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags.Tag]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tag != nil {
+                        var tmp : [Any] = []
+                        for k in self.tag! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Tag"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Tag") && dict["Tag"] != nil {
+                        var tmp : [DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags.Tag] = []
+                        for v in dict["Tag"] as! [Any] {
+                            var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags.Tag()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.tag = tmp
+                    }
+                }
+            }
             public class TargetCapacitySpecification : Tea.TeaModel {
                 public var defaultTargetCapacityType: String?
 
@@ -28441,6 +28746,8 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
 
             public var status: String?
 
+            public var tags: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags?
+
             public var targetCapacitySpecification: DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.TargetCapacitySpecification?
 
             public var terminateInstances: Bool?
@@ -28464,6 +28771,7 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 try self.launchTemplateConfigs?.validate()
                 try self.payAsYouGoOptions?.validate()
                 try self.spotOptions?.validate()
+                try self.tags?.validate()
                 try self.targetCapacitySpecification?.validate()
             }
 
@@ -28513,6 +28821,9 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.tags != nil {
+                    map["Tags"] = self.tags?.toMap()
                 }
                 if self.targetCapacitySpecification != nil {
                     map["TargetCapacitySpecification"] = self.targetCapacitySpecification?.toMap()
@@ -28583,6 +28894,11 @@ public class DescribeAutoProvisioningGroupsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                    var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.Tags()
+                    model.fromMap(dict["Tags"] as! [String: Any])
+                    self.tags = model
                 }
                 if dict.keys.contains("TargetCapacitySpecification") && dict["TargetCapacitySpecification"] != nil {
                     var model = DescribeAutoProvisioningGroupsResponseBody.AutoProvisioningGroups.AutoProvisioningGroup.TargetCapacitySpecification()
@@ -28918,6 +29234,43 @@ public class DescribeAutoSnapshotPolicyExRequest : Tea.TeaModel {
 public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
     public class AutoSnapshotPolicies : Tea.TeaModel {
         public class AutoSnapshotPolicy : Tea.TeaModel {
+            public class CopyEncryptionConfiguration : Tea.TeaModel {
+                public var encrypted: Bool?
+
+                public var KMSKeyId: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.encrypted != nil {
+                        map["Encrypted"] = self.encrypted!
+                    }
+                    if self.KMSKeyId != nil {
+                        map["KMSKeyId"] = self.KMSKeyId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
+                        self.encrypted = dict["Encrypted"] as! Bool
+                    }
+                    if dict.keys.contains("KMSKeyId") && dict["KMSKeyId"] != nil {
+                        self.KMSKeyId = dict["KMSKeyId"] as! String
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -29002,6 +29355,8 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
 
             public var copiedSnapshotsRetentionDays: Int32?
 
+            public var copyEncryptionConfiguration: DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.CopyEncryptionConfiguration?
+
             public var creationTime: String?
 
             public var diskNums: Int32?
@@ -29038,6 +29393,7 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.copyEncryptionConfiguration?.validate()
                 try self.tags?.validate()
             }
 
@@ -29051,6 +29407,9 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
                 }
                 if self.copiedSnapshotsRetentionDays != nil {
                     map["CopiedSnapshotsRetentionDays"] = self.copiedSnapshotsRetentionDays!
+                }
+                if self.copyEncryptionConfiguration != nil {
+                    map["CopyEncryptionConfiguration"] = self.copyEncryptionConfiguration?.toMap()
                 }
                 if self.creationTime != nil {
                     map["CreationTime"] = self.creationTime!
@@ -29103,6 +29462,11 @@ public class DescribeAutoSnapshotPolicyExResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CopiedSnapshotsRetentionDays") && dict["CopiedSnapshotsRetentionDays"] != nil {
                     self.copiedSnapshotsRetentionDays = dict["CopiedSnapshotsRetentionDays"] as! Int32
+                }
+                if dict.keys.contains("CopyEncryptionConfiguration") && dict["CopyEncryptionConfiguration"] != nil {
+                    var model = DescribeAutoSnapshotPolicyExResponseBody.AutoSnapshotPolicies.AutoSnapshotPolicy.CopyEncryptionConfiguration()
+                    model.fromMap(dict["CopyEncryptionConfiguration"] as! [String: Any])
+                    self.copyEncryptionConfiguration = model
                 }
                 if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
                     self.creationTime = dict["CreationTime"] as! String
@@ -89496,7 +89860,111 @@ public class ModifyAutoSnapshotPolicyResponse : Tea.TeaModel {
 }
 
 public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
+    public class CopyEncryptionConfiguration : Tea.TeaModel {
+        public class Arn : Tea.TeaModel {
+            public var assumeRoleFor: Int64?
+
+            public var roleType: String?
+
+            public var rolearn: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.assumeRoleFor != nil {
+                    map["AssumeRoleFor"] = self.assumeRoleFor!
+                }
+                if self.roleType != nil {
+                    map["RoleType"] = self.roleType!
+                }
+                if self.rolearn != nil {
+                    map["Rolearn"] = self.rolearn!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AssumeRoleFor") && dict["AssumeRoleFor"] != nil {
+                    self.assumeRoleFor = dict["AssumeRoleFor"] as! Int64
+                }
+                if dict.keys.contains("RoleType") && dict["RoleType"] != nil {
+                    self.roleType = dict["RoleType"] as! String
+                }
+                if dict.keys.contains("Rolearn") && dict["Rolearn"] != nil {
+                    self.rolearn = dict["Rolearn"] as! String
+                }
+            }
+        }
+        public var arn: [ModifyAutoSnapshotPolicyExRequest.CopyEncryptionConfiguration.Arn]?
+
+        public var encrypted: Bool?
+
+        public var KMSKeyId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.arn != nil {
+                var tmp : [Any] = []
+                for k in self.arn! {
+                    tmp.append(k.toMap())
+                }
+                map["Arn"] = tmp
+            }
+            if self.encrypted != nil {
+                map["Encrypted"] = self.encrypted!
+            }
+            if self.KMSKeyId != nil {
+                map["KMSKeyId"] = self.KMSKeyId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Arn") && dict["Arn"] != nil {
+                var tmp : [ModifyAutoSnapshotPolicyExRequest.CopyEncryptionConfiguration.Arn] = []
+                for v in dict["Arn"] as! [Any] {
+                    var model = ModifyAutoSnapshotPolicyExRequest.CopyEncryptionConfiguration.Arn()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.arn = tmp
+            }
+            if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
+                self.encrypted = dict["Encrypted"] as! Bool
+            }
+            if dict.keys.contains("KMSKeyId") && dict["KMSKeyId"] != nil {
+                self.KMSKeyId = dict["KMSKeyId"] as! String
+            }
+        }
+    }
     public var copiedSnapshotsRetentionDays: Int32?
+
+    public var copyEncryptionConfiguration: ModifyAutoSnapshotPolicyExRequest.CopyEncryptionConfiguration?
 
     public var enableCrossRegionCopy: Bool?
 
@@ -89530,12 +89998,16 @@ public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.copyEncryptionConfiguration?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
         if self.copiedSnapshotsRetentionDays != nil {
             map["CopiedSnapshotsRetentionDays"] = self.copiedSnapshotsRetentionDays!
+        }
+        if self.copyEncryptionConfiguration != nil {
+            map["CopyEncryptionConfiguration"] = self.copyEncryptionConfiguration?.toMap()
         }
         if self.enableCrossRegionCopy != nil {
             map["EnableCrossRegionCopy"] = self.enableCrossRegionCopy!
@@ -89576,6 +90048,11 @@ public class ModifyAutoSnapshotPolicyExRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("CopiedSnapshotsRetentionDays") && dict["CopiedSnapshotsRetentionDays"] != nil {
             self.copiedSnapshotsRetentionDays = dict["CopiedSnapshotsRetentionDays"] as! Int32
+        }
+        if dict.keys.contains("CopyEncryptionConfiguration") && dict["CopyEncryptionConfiguration"] != nil {
+            var model = ModifyAutoSnapshotPolicyExRequest.CopyEncryptionConfiguration()
+            model.fromMap(dict["CopyEncryptionConfiguration"] as! [String: Any])
+            self.copyEncryptionConfiguration = model
         }
         if dict.keys.contains("EnableCrossRegionCopy") && dict["EnableCrossRegionCopy"] != nil {
             self.enableCrossRegionCopy = dict["EnableCrossRegionCopy"] as! Bool

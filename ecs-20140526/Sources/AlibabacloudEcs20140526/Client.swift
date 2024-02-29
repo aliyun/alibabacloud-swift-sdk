@@ -1888,6 +1888,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.systemDiskConfig)) {
             query["SystemDiskConfig"] = request.systemDiskConfig ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.terminateInstances)) {
             query["TerminateInstances"] = request.terminateInstances!;
         }
@@ -1936,6 +1939,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.copiedSnapshotsRetentionDays)) {
             query["CopiedSnapshotsRetentionDays"] = request.copiedSnapshotsRetentionDays!;
+        }
+        if (!TeaUtils.Client.isUnset(request.copyEncryptionConfiguration)) {
+            query["CopyEncryptionConfiguration"] = request.copyEncryptionConfiguration!;
         }
         if (!TeaUtils.Client.isUnset(request.enableCrossRegionCopy)) {
             query["EnableCrossRegionCopy"] = request.enableCrossRegionCopy!;
@@ -6926,6 +6932,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.tag)) {
+            query["Tag"] = request.tag ?? [];
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -15186,6 +15195,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.copiedSnapshotsRetentionDays)) {
             query["CopiedSnapshotsRetentionDays"] = request.copiedSnapshotsRetentionDays!;
+        }
+        if (!TeaUtils.Client.isUnset(request.copyEncryptionConfiguration)) {
+            query["CopyEncryptionConfiguration"] = request.copyEncryptionConfiguration!;
         }
         if (!TeaUtils.Client.isUnset(request.enableCrossRegionCopy)) {
             query["EnableCrossRegionCopy"] = request.enableCrossRegionCopy!;
