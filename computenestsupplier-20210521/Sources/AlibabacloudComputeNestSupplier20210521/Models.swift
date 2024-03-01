@@ -4966,6 +4966,8 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var grafanaDashBoardUrl: String?
+
     public var isOperated: Bool?
 
     public var licenseMetadata: String?
@@ -5050,6 +5052,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.grafanaDashBoardUrl != nil {
+            map["GrafanaDashBoardUrl"] = self.grafanaDashBoardUrl!
         }
         if self.isOperated != nil {
             map["IsOperated"] = self.isOperated!
@@ -5154,6 +5159,9 @@ public class GetServiceInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("GrafanaDashBoardUrl") && dict["GrafanaDashBoardUrl"] != nil {
+            self.grafanaDashBoardUrl = dict["GrafanaDashBoardUrl"] as! String
         }
         if dict.keys.contains("IsOperated") && dict["IsOperated"] != nil {
             self.isOperated = dict["IsOperated"] as! Bool
