@@ -6943,6 +6943,35 @@ public class CreateEventRequest : Tea.TeaModel {
             }
         }
     }
+    public class RichTextDescription : Tea.TeaModel {
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.text != nil {
+                map["text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("text") && dict["text"] != nil {
+                self.text = dict["text"] as! String
+            }
+        }
+    }
     public class UiConfigs : Tea.TeaModel {
         public var uiName: String?
 
@@ -7043,6 +7072,8 @@ public class CreateEventRequest : Tea.TeaModel {
 
     public var reminders: [CreateEventRequest.Reminders]?
 
+    public var richTextDescription: CreateEventRequest.RichTextDescription?
+
     public var summary: String?
 
     public var uiConfigs: [CreateEventRequest.UiConfigs]?
@@ -7065,6 +7096,7 @@ public class CreateEventRequest : Tea.TeaModel {
         try self.location?.validate()
         try self.onlineMeetingInfo?.validate()
         try self.recurrence?.validate()
+        try self.richTextDescription?.validate()
         try self.start?.validate()
     }
 
@@ -7104,6 +7136,9 @@ public class CreateEventRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Reminders"] = tmp
+        }
+        if self.richTextDescription != nil {
+            map["RichTextDescription"] = self.richTextDescription?.toMap()
         }
         if self.summary != nil {
             map["Summary"] = self.summary!
@@ -7176,6 +7211,11 @@ public class CreateEventRequest : Tea.TeaModel {
             }
             self.reminders = tmp
         }
+        if dict.keys.contains("RichTextDescription") && dict["RichTextDescription"] != nil {
+            var model = CreateEventRequest.RichTextDescription()
+            model.fromMap(dict["RichTextDescription"] as! [String: Any])
+            self.richTextDescription = model
+        }
         if dict.keys.contains("Summary") && dict["Summary"] != nil {
             self.summary = dict["Summary"] as! String
         }
@@ -7219,6 +7259,8 @@ public class CreateEventShrinkRequest : Tea.TeaModel {
     public var recurrenceShrink: String?
 
     public var remindersShrink: String?
+
+    public var richTextDescriptionShrink: String?
 
     public var summary: String?
 
@@ -7269,6 +7311,9 @@ public class CreateEventShrinkRequest : Tea.TeaModel {
         if self.remindersShrink != nil {
             map["Reminders"] = self.remindersShrink!
         }
+        if self.richTextDescriptionShrink != nil {
+            map["RichTextDescription"] = self.richTextDescriptionShrink!
+        }
         if self.summary != nil {
             map["Summary"] = self.summary!
         }
@@ -7311,6 +7356,9 @@ public class CreateEventShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Reminders") && dict["Reminders"] != nil {
             self.remindersShrink = dict["Reminders"] as! String
+        }
+        if dict.keys.contains("RichTextDescription") && dict["RichTextDescription"] != nil {
+            self.richTextDescriptionShrink = dict["RichTextDescription"] as! String
         }
         if dict.keys.contains("Summary") && dict["Summary"] != nil {
             self.summary = dict["Summary"] as! String
@@ -7747,6 +7795,35 @@ public class CreateEventResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class RichTextDescription : Tea.TeaModel {
+        public var text: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.text != nil {
+                map["text"] = self.text!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("text") && dict["text"] != nil {
+                self.text = dict["text"] as! String
+            }
+        }
+    }
     public class Start : Tea.TeaModel {
         public var date: String?
 
@@ -7853,6 +7930,8 @@ public class CreateEventResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var richTextDescription: CreateEventResponseBody.RichTextDescription?
+
     public var start: CreateEventResponseBody.Start?
 
     public var summary: String?
@@ -7876,6 +7955,7 @@ public class CreateEventResponseBody : Tea.TeaModel {
         try self.onlineMeetingInfo?.validate()
         try self.organizer?.validate()
         try self.recurrence?.validate()
+        try self.richTextDescription?.validate()
         try self.start?.validate()
     }
 
@@ -7924,6 +8004,9 @@ public class CreateEventResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.richTextDescription != nil {
+            map["richTextDescription"] = self.richTextDescription?.toMap()
         }
         if self.start != nil {
             map["start"] = self.start?.toMap()
@@ -8006,6 +8089,11 @@ public class CreateEventResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("richTextDescription") && dict["richTextDescription"] != nil {
+            var model = CreateEventResponseBody.RichTextDescription()
+            model.fromMap(dict["richTextDescription"] as! [String: Any])
+            self.richTextDescription = model
         }
         if dict.keys.contains("start") && dict["start"] != nil {
             var model = CreateEventResponseBody.Start()
@@ -22663,7 +22751,7 @@ public class GetCorpTasksResponse : Tea.TeaModel {
 
 public class GetDocContentHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
-        public var userToken: String?
+        public var accountId: String?
 
         public override init() {
             super.init()
@@ -22679,15 +22767,15 @@ public class GetDocContentHeaders : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.userToken != nil {
-                map["userToken"] = self.userToken!
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("userToken") && dict["userToken"] != nil {
-                self.userToken = dict["userToken"] as! String
+            if dict.keys.contains("accountId") && dict["accountId"] != nil {
+                self.accountId = dict["accountId"] as! String
             }
         }
     }
@@ -22805,6 +22893,8 @@ public class GetDocContentRequest : Tea.TeaModel {
 
     public var tenantContext: GetDocContentRequest.TenantContext?
 
+    public var userToken: String?
+
     public override init() {
         super.init()
     }
@@ -22829,6 +22919,9 @@ public class GetDocContentRequest : Tea.TeaModel {
         if self.tenantContext != nil {
             map["TenantContext"] = self.tenantContext?.toMap()
         }
+        if self.userToken != nil {
+            map["userToken"] = self.userToken!
+        }
         return map
     }
 
@@ -22844,6 +22937,9 @@ public class GetDocContentRequest : Tea.TeaModel {
             model.fromMap(dict["TenantContext"] as! [String: Any])
             self.tenantContext = model
         }
+        if dict.keys.contains("userToken") && dict["userToken"] != nil {
+            self.userToken = dict["userToken"] as! String
+        }
     }
 }
 
@@ -22853,6 +22949,8 @@ public class GetDocContentShrinkRequest : Tea.TeaModel {
     public var targetFormat: String?
 
     public var tenantContextShrink: String?
+
+    public var userToken: String?
 
     public override init() {
         super.init()
@@ -22877,6 +22975,9 @@ public class GetDocContentShrinkRequest : Tea.TeaModel {
         if self.tenantContextShrink != nil {
             map["TenantContext"] = self.tenantContextShrink!
         }
+        if self.userToken != nil {
+            map["userToken"] = self.userToken!
+        }
         return map
     }
 
@@ -22889,6 +22990,9 @@ public class GetDocContentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
             self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+        if dict.keys.contains("userToken") && dict["userToken"] != nil {
+            self.userToken = dict["userToken"] as! String
         }
     }
 }

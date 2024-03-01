@@ -1086,6 +1086,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.reminders)) {
             request.remindersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reminders, "Reminders", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.richTextDescription)) {
+            request.richTextDescriptionShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.richTextDescription, "RichTextDescription", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.uiConfigs)) {
             request.uiConfigsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.uiConfigs, "UiConfigs", "json")
         }
@@ -1119,6 +1122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.remindersShrink)) {
             body["Reminders"] = request.remindersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.richTextDescriptionShrink)) {
+            body["RichTextDescription"] = request.richTextDescriptionShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.summary)) {
             body["Summary"] = request.summary ?? "";
@@ -3709,6 +3715,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.tenantContextShrink)) {
             body["TenantContext"] = request.tenantContextShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userToken)) {
+            body["userToken"] = request.userToken ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
