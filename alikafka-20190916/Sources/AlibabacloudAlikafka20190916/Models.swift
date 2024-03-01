@@ -3357,6 +3357,312 @@ public class DescribeSaslUsersResponse : Tea.TeaModel {
     }
 }
 
+public class EnableAutoGroupCreationRequest : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class EnableAutoGroupCreationResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class EnableAutoGroupCreationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableAutoGroupCreationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = EnableAutoGroupCreationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EnableAutoTopicCreationRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var operate: String?
+
+    public var partitionNum: Int64?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.operate != nil {
+            map["Operate"] = self.operate!
+        }
+        if self.partitionNum != nil {
+            map["PartitionNum"] = self.partitionNum!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Operate") && dict["Operate"] != nil {
+            self.operate = dict["Operate"] as! String
+        }
+        if dict.keys.contains("PartitionNum") && dict["PartitionNum"] != nil {
+            self.partitionNum = dict["PartitionNum"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class EnableAutoTopicCreationResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class EnableAutoTopicCreationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableAutoTopicCreationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = EnableAutoTopicCreationResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetAllInstanceIdListRequest : Tea.TeaModel {
     public var regionId: String?
 
