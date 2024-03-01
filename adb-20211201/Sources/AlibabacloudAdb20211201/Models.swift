@@ -12429,6 +12429,8 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
 
     public var groupType: String?
 
+    public var regionId: String?
+
     public var resourceOwnerAccount: String?
 
     public override init() {
@@ -12454,6 +12456,9 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
         if self.groupType != nil {
             map["GroupType"] = self.groupType!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -12469,6 +12474,9 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("GroupType") && dict["GroupType"] != nil {
             self.groupType = dict["GroupType"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
