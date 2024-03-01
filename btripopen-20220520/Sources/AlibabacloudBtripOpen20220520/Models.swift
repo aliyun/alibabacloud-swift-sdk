@@ -84017,6 +84017,8 @@ public class IntlFlightListingSearchResponseBody : Tea.TeaModel {
             public class BestPriceItem : Tea.TeaModel {
                 public var agreementPriceCodes: [String]?
 
+                public var itemType: String?
+
                 public var shoppingItemMap: [String: ModuleFlightItemListBestPriceItemShoppingItemMapValue]?
 
                 public override init() {
@@ -84036,6 +84038,9 @@ public class IntlFlightListingSearchResponseBody : Tea.TeaModel {
                     if self.agreementPriceCodes != nil {
                         map["agreement_price_codes"] = self.agreementPriceCodes!
                     }
+                    if self.itemType != nil {
+                        map["item_type"] = self.itemType!
+                    }
                     if self.shoppingItemMap != nil {
                         var tmp : [String: Any] = [:]
                         for (k, v) in self.shoppingItemMap! {
@@ -84049,6 +84054,9 @@ public class IntlFlightListingSearchResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("agreement_price_codes") && dict["agreement_price_codes"] != nil {
                         self.agreementPriceCodes = dict["agreement_price_codes"] as! [String]
+                    }
+                    if dict.keys.contains("item_type") && dict["item_type"] != nil {
+                        self.itemType = dict["item_type"] as! String
                     }
                     if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
                         var tmp : [String: ModuleFlightItemListBestPriceItemShoppingItemMapValue] = [:]
@@ -86370,6 +86378,8 @@ public class IntlFlightOtaItemDetailResponseBody : Tea.TeaModel {
 
             public var itemId: String?
 
+            public var itemType: String?
+
             public var shoppingItemMap: [String: ModuleGroupItemShoppingItemMapValue]?
 
             public var subItemPositionMap: [String: [ModuleGroupItemSubItemPositionMapValue]]?
@@ -86402,6 +86412,9 @@ public class IntlFlightOtaItemDetailResponseBody : Tea.TeaModel {
                 }
                 if self.itemId != nil {
                     map["item_id"] = self.itemId!
+                }
+                if self.itemType != nil {
+                    map["item_type"] = self.itemType!
                 }
                 if self.shoppingItemMap != nil {
                     var tmp : [String: Any] = [:]
@@ -86448,6 +86461,9 @@ public class IntlFlightOtaItemDetailResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("item_id") && dict["item_id"] != nil {
                     self.itemId = dict["item_id"] as! String
+                }
+                if dict.keys.contains("item_type") && dict["item_type"] != nil {
+                    self.itemType = dict["item_type"] as! String
                 }
                 if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
                     var tmp : [String: ModuleGroupItemShoppingItemMapValue] = [:]
@@ -88415,6 +88431,8 @@ public class IntlFlightOtaSearchResponseBody : Tea.TeaModel {
 
             public var itemId: String?
 
+            public var itemType: String?
+
             public var shoppingItemMap: [String: ModuleItemListShoppingItemMapValue]?
 
             public var subItemPositionMap: [String: [ModuleItemListSubItemPositionMapValue]]?
@@ -88447,6 +88465,9 @@ public class IntlFlightOtaSearchResponseBody : Tea.TeaModel {
                 }
                 if self.itemId != nil {
                     map["item_id"] = self.itemId!
+                }
+                if self.itemType != nil {
+                    map["item_type"] = self.itemType!
                 }
                 if self.shoppingItemMap != nil {
                     var tmp : [String: Any] = [:]
@@ -88493,6 +88514,9 @@ public class IntlFlightOtaSearchResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("item_id") && dict["item_id"] != nil {
                     self.itemId = dict["item_id"] as! String
+                }
+                if dict.keys.contains("item_type") && dict["item_type"] != nil {
+                    self.itemType = dict["item_type"] as! String
                 }
                 if dict.keys.contains("shopping_item_map") && dict["shopping_item_map"] != nil {
                     var tmp : [String: ModuleItemListShoppingItemMapValue] = [:]
