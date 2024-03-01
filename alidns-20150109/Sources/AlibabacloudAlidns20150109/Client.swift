@@ -3561,6 +3561,58 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeInternetDnsLogsWithOptions(_ request: DescribeInternetDnsLogsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeInternetDnsLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.endTimestamp)) {
+            query["EndTimestamp"] = request.endTimestamp!;
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.module)) {
+            query["Module"] = request.module ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queryCondition)) {
+            query["QueryCondition"] = request.queryCondition ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.startTimestamp)) {
+            query["StartTimestamp"] = request.startTimestamp!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeInternetDnsLogs",
+            "version": "2015-01-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeInternetDnsLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeInternetDnsLogs(_ request: DescribeInternetDnsLogsRequest) async throws -> DescribeInternetDnsLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeInternetDnsLogsWithOptions(request as! DescribeInternetDnsLogsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeIspFlushCacheInstancesWithOptions(_ request: DescribeIspFlushCacheInstancesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeIspFlushCacheInstancesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

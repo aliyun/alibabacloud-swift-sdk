@@ -23456,6 +23456,396 @@ public class DescribeInstanceDomainsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInternetDnsLogsRequest : Tea.TeaModel {
+    public var domainName: String?
+
+    public var endTimestamp: Int64?
+
+    public var lang: String?
+
+    public var module: String?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var queryCondition: String?
+
+    public var startTimestamp: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.endTimestamp != nil {
+            map["EndTimestamp"] = self.endTimestamp!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.module != nil {
+            map["Module"] = self.module!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.queryCondition != nil {
+            map["QueryCondition"] = self.queryCondition!
+        }
+        if self.startTimestamp != nil {
+            map["StartTimestamp"] = self.startTimestamp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("EndTimestamp") && dict["EndTimestamp"] != nil {
+            self.endTimestamp = dict["EndTimestamp"] as! Int64
+        }
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("Module") && dict["Module"] != nil {
+            self.module = dict["Module"] as! String
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("QueryCondition") && dict["QueryCondition"] != nil {
+            self.queryCondition = dict["QueryCondition"] as! String
+        }
+        if dict.keys.contains("StartTimestamp") && dict["StartTimestamp"] != nil {
+            self.startTimestamp = dict["StartTimestamp"] as! Int64
+        }
+    }
+}
+
+public class DescribeInternetDnsLogsResponseBody : Tea.TeaModel {
+    public class Logs : Tea.TeaModel {
+        public class Log : Tea.TeaModel {
+            public class Value : Tea.TeaModel {
+                public var value: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! [String]
+                    }
+                }
+            }
+            public var dnsMsgId: String?
+
+            public var logTime: Int64?
+
+            public var queryName: String?
+
+            public var queryType: String?
+
+            public var rt: Int32?
+
+            public var serverIp: String?
+
+            public var sourceIp: String?
+
+            public var status: String?
+
+            public var subnetIp: String?
+
+            public var value: DescribeInternetDnsLogsResponseBody.Logs.Log.Value?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.value?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.dnsMsgId != nil {
+                    map["DnsMsgId"] = self.dnsMsgId!
+                }
+                if self.logTime != nil {
+                    map["LogTime"] = self.logTime!
+                }
+                if self.queryName != nil {
+                    map["QueryName"] = self.queryName!
+                }
+                if self.queryType != nil {
+                    map["QueryType"] = self.queryType!
+                }
+                if self.rt != nil {
+                    map["Rt"] = self.rt!
+                }
+                if self.serverIp != nil {
+                    map["ServerIp"] = self.serverIp!
+                }
+                if self.sourceIp != nil {
+                    map["SourceIp"] = self.sourceIp!
+                }
+                if self.status != nil {
+                    map["Status"] = self.status!
+                }
+                if self.subnetIp != nil {
+                    map["SubnetIp"] = self.subnetIp!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DnsMsgId") && dict["DnsMsgId"] != nil {
+                    self.dnsMsgId = dict["DnsMsgId"] as! String
+                }
+                if dict.keys.contains("LogTime") && dict["LogTime"] != nil {
+                    self.logTime = dict["LogTime"] as! Int64
+                }
+                if dict.keys.contains("QueryName") && dict["QueryName"] != nil {
+                    self.queryName = dict["QueryName"] as! String
+                }
+                if dict.keys.contains("QueryType") && dict["QueryType"] != nil {
+                    self.queryType = dict["QueryType"] as! String
+                }
+                if dict.keys.contains("Rt") && dict["Rt"] != nil {
+                    self.rt = dict["Rt"] as! Int32
+                }
+                if dict.keys.contains("ServerIp") && dict["ServerIp"] != nil {
+                    self.serverIp = dict["ServerIp"] as! String
+                }
+                if dict.keys.contains("SourceIp") && dict["SourceIp"] != nil {
+                    self.sourceIp = dict["SourceIp"] as! String
+                }
+                if dict.keys.contains("Status") && dict["Status"] != nil {
+                    self.status = dict["Status"] as! String
+                }
+                if dict.keys.contains("SubnetIp") && dict["SubnetIp"] != nil {
+                    self.subnetIp = dict["SubnetIp"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    var model = DescribeInternetDnsLogsResponseBody.Logs.Log.Value()
+                    model.fromMap(dict["Value"] as! [String: Any])
+                    self.value = model
+                }
+            }
+        }
+        public var log: [DescribeInternetDnsLogsResponseBody.Logs.Log]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.log != nil {
+                var tmp : [Any] = []
+                for k in self.log! {
+                    tmp.append(k.toMap())
+                }
+                map["Log"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Log") && dict["Log"] != nil {
+                var tmp : [DescribeInternetDnsLogsResponseBody.Logs.Log] = []
+                for v in dict["Log"] as! [Any] {
+                    var model = DescribeInternetDnsLogsResponseBody.Logs.Log()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.log = tmp
+            }
+        }
+    }
+    public var complete: Bool?
+
+    public var curPage: Int32?
+
+    public var logs: DescribeInternetDnsLogsResponseBody.Logs?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var totalPage: Int32?
+
+    public var totalSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.logs?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.complete != nil {
+            map["Complete"] = self.complete!
+        }
+        if self.curPage != nil {
+            map["CurPage"] = self.curPage!
+        }
+        if self.logs != nil {
+            map["Logs"] = self.logs?.toMap()
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalPage != nil {
+            map["TotalPage"] = self.totalPage!
+        }
+        if self.totalSize != nil {
+            map["TotalSize"] = self.totalSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Complete") && dict["Complete"] != nil {
+            self.complete = dict["Complete"] as! Bool
+        }
+        if dict.keys.contains("CurPage") && dict["CurPage"] != nil {
+            self.curPage = dict["CurPage"] as! Int32
+        }
+        if dict.keys.contains("Logs") && dict["Logs"] != nil {
+            var model = DescribeInternetDnsLogsResponseBody.Logs()
+            model.fromMap(dict["Logs"] as! [String: Any])
+            self.logs = model
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalPage") && dict["TotalPage"] != nil {
+            self.totalPage = dict["TotalPage"] as! Int32
+        }
+        if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+            self.totalSize = dict["TotalSize"] as! Int32
+        }
+    }
+}
+
+public class DescribeInternetDnsLogsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInternetDnsLogsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeInternetDnsLogsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeIspFlushCacheInstancesRequest : Tea.TeaModel {
     public var direction: String?
 
