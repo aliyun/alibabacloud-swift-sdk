@@ -15598,6 +15598,8 @@ public class CreatePublicIpAddressPoolRequest : Tea.TeaModel {
 }
 
 public class CreatePublicIpAddressPoolResponseBody : Tea.TeaModel {
+    public var publicIpAddressPoolId: String?
+
     public var pulbicIpAddressPoolId: String?
 
     public var requestId: String?
@@ -15618,6 +15620,9 @@ public class CreatePublicIpAddressPoolResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.publicIpAddressPoolId != nil {
+            map["PublicIpAddressPoolId"] = self.publicIpAddressPoolId!
+        }
         if self.pulbicIpAddressPoolId != nil {
             map["PulbicIpAddressPoolId"] = self.pulbicIpAddressPoolId!
         }
@@ -15631,6 +15636,9 @@ public class CreatePublicIpAddressPoolResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PublicIpAddressPoolId") && dict["PublicIpAddressPoolId"] != nil {
+            self.publicIpAddressPoolId = dict["PublicIpAddressPoolId"] as! String
+        }
         if dict.keys.contains("PulbicIpAddressPoolId") && dict["PulbicIpAddressPoolId"] != nil {
             self.pulbicIpAddressPoolId = dict["PulbicIpAddressPoolId"] as! String
         }
