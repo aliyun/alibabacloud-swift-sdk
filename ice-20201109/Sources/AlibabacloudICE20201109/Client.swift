@@ -6935,6 +6935,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitTextGenerateJobWithOptions(_ request: SubmitTextGenerateJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitTextGenerateJobResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            query["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.generateConfig)) {
+            query["GenerateConfig"] = request.generateConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.title)) {
+            query["Title"] = request.title ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.type)) {
+            query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userData)) {
+            query["UserData"] = request.userData ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitTextGenerateJob",
+            "version": "2020-11-09",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitTextGenerateJobResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitTextGenerateJob(_ request: SubmitTextGenerateJobRequest) async throws -> SubmitTextGenerateJobResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitTextGenerateJobWithOptions(request as! SubmitTextGenerateJobRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func submitTranscodeJobWithOptions(_ tmpReq: SubmitTranscodeJobRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitTranscodeJobResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: SubmitTranscodeJobShrinkRequest = SubmitTranscodeJobShrinkRequest([:])

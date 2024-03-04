@@ -55998,6 +55998,155 @@ public class SubmitSyncMediaInfoJobResponse : Tea.TeaModel {
     }
 }
 
+public class SubmitTextGenerateJobRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var generateConfig: String?
+
+    public var title: String?
+
+    public var type: String?
+
+    public var userData: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.generateConfig != nil {
+            map["GenerateConfig"] = self.generateConfig!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("GenerateConfig") && dict["GenerateConfig"] != nil {
+            self.generateConfig = dict["GenerateConfig"] as! String
+        }
+        if dict.keys.contains("Title") && dict["Title"] != nil {
+            self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("UserData") && dict["UserData"] != nil {
+            self.userData = dict["UserData"] as! String
+        }
+    }
+}
+
+public class SubmitTextGenerateJobResponseBody : Tea.TeaModel {
+    public var jobId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.jobId != nil {
+            map["JobId"] = self.jobId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("JobId") && dict["JobId"] != nil {
+            self.jobId = dict["JobId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SubmitTextGenerateJobResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SubmitTextGenerateJobResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SubmitTextGenerateJobResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class SubmitTranscodeJobRequest : Tea.TeaModel {
     public class InputGroup : Tea.TeaModel {
         public var inputUrl: String?
