@@ -679,6 +679,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var renewalDurationUnit: String?
 
+    public var serverlessChargeType: String?
+
     public var storageSize: Int32?
 
     public var supportEip: Bool?
@@ -743,6 +745,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.renewalDurationUnit != nil {
             map["RenewalDurationUnit"] = self.renewalDurationUnit!
         }
+        if self.serverlessChargeType != nil {
+            map["ServerlessChargeType"] = self.serverlessChargeType!
+        }
         if self.storageSize != nil {
             map["StorageSize"] = self.storageSize!
         }
@@ -800,6 +805,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RenewalDurationUnit") && dict["RenewalDurationUnit"] != nil {
             self.renewalDurationUnit = dict["RenewalDurationUnit"] as! String
+        }
+        if dict.keys.contains("ServerlessChargeType") && dict["ServerlessChargeType"] != nil {
+            self.serverlessChargeType = dict["ServerlessChargeType"] as! String
         }
         if dict.keys.contains("StorageSize") && dict["StorageSize"] != nil {
             self.storageSize = dict["StorageSize"] as! Int32

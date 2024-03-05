@@ -213,6 +213,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.renewalDurationUnit)) {
             query["RenewalDurationUnit"] = request.renewalDurationUnit ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serverlessChargeType)) {
+            query["ServerlessChargeType"] = request.serverlessChargeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.storageSize)) {
             query["StorageSize"] = request.storageSize!;
         }
