@@ -60,9 +60,6 @@ public class AllowResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -276,9 +273,6 @@ public class GetSummaryDataResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -493,9 +487,6 @@ public class QueryCarbonTrackResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -694,9 +685,6 @@ public class QueryMultiAccountCarbonTrackResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -731,7 +719,54 @@ public class QueryMultiAccountCarbonTrackResponse : Tea.TeaModel {
 
 public class VerifyResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class AllMultiAccountUids : Tea.TeaModel {
+            public var accountId: String?
+
+            public var displayName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.accountId != nil {
+                    map["accountId"] = self.accountId!
+                }
+                if self.displayName != nil {
+                    map["displayName"] = self.displayName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("accountId") && dict["accountId"] != nil {
+                    self.accountId = dict["accountId"] as! String
+                }
+                if dict.keys.contains("displayName") && dict["displayName"] != nil {
+                    self.displayName = dict["displayName"] as! String
+                }
+            }
+        }
         public var allowedUids: [String]?
+
+        public var accountType: Int32?
+
+        public var allMultiAccountUids: [VerifyResponseBody.Data.AllMultiAccountUids]?
+
+        public var code: String?
+
+        public var message: String?
+
+        public var multiAccountsAllow: Int32?
 
         public override init() {
             super.init()
@@ -750,12 +785,54 @@ public class VerifyResponseBody : Tea.TeaModel {
             if self.allowedUids != nil {
                 map["AllowedUids"] = self.allowedUids!
             }
+            if self.accountType != nil {
+                map["accountType"] = self.accountType!
+            }
+            if self.allMultiAccountUids != nil {
+                var tmp : [Any] = []
+                for k in self.allMultiAccountUids! {
+                    tmp.append(k.toMap())
+                }
+                map["allMultiAccountUids"] = tmp
+            }
+            if self.code != nil {
+                map["code"] = self.code!
+            }
+            if self.message != nil {
+                map["message"] = self.message!
+            }
+            if self.multiAccountsAllow != nil {
+                map["multiAccountsAllow"] = self.multiAccountsAllow!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AllowedUids") && dict["AllowedUids"] != nil {
                 self.allowedUids = dict["AllowedUids"] as! [String]
+            }
+            if dict.keys.contains("accountType") && dict["accountType"] != nil {
+                self.accountType = dict["accountType"] as! Int32
+            }
+            if dict.keys.contains("allMultiAccountUids") && dict["allMultiAccountUids"] != nil {
+                var tmp : [VerifyResponseBody.Data.AllMultiAccountUids] = []
+                for v in dict["allMultiAccountUids"] as! [Any] {
+                    var model = VerifyResponseBody.Data.AllMultiAccountUids()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.allMultiAccountUids = tmp
+            }
+            if dict.keys.contains("code") && dict["code"] != nil {
+                self.code = dict["code"] as! String
+            }
+            if dict.keys.contains("message") && dict["message"] != nil {
+                self.message = dict["message"] as! String
+            }
+            if dict.keys.contains("multiAccountsAllow") && dict["multiAccountsAllow"] != nil {
+                self.multiAccountsAllow = dict["multiAccountsAllow"] as! Int32
             }
         }
     }
@@ -816,9 +893,6 @@ public class VerifyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
