@@ -6865,6 +6865,244 @@ public class DescribeBackupPolicyResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeBackupTasksRequest : Tea.TeaModel {
+    public var backupJobId: Int64?
+
+    public var DBInstanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backupJobId != nil {
+            map["BackupJobId"] = self.backupJobId!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackupJobId") && dict["BackupJobId"] != nil {
+            self.backupJobId = dict["BackupJobId"] as! Int64
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class DescribeBackupTasksResponseBody : Tea.TeaModel {
+    public class BackupJobs : Tea.TeaModel {
+        public var backupSetStatus: String?
+
+        public var backupStartTime: String?
+
+        public var backupjobId: Int64?
+
+        public var jobMode: String?
+
+        public var progress: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.backupSetStatus != nil {
+                map["BackupSetStatus"] = self.backupSetStatus!
+            }
+            if self.backupStartTime != nil {
+                map["BackupStartTime"] = self.backupStartTime!
+            }
+            if self.backupjobId != nil {
+                map["BackupjobId"] = self.backupjobId!
+            }
+            if self.jobMode != nil {
+                map["JobMode"] = self.jobMode!
+            }
+            if self.progress != nil {
+                map["Progress"] = self.progress!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BackupSetStatus") && dict["BackupSetStatus"] != nil {
+                self.backupSetStatus = dict["BackupSetStatus"] as! String
+            }
+            if dict.keys.contains("BackupStartTime") && dict["BackupStartTime"] != nil {
+                self.backupStartTime = dict["BackupStartTime"] as! String
+            }
+            if dict.keys.contains("BackupjobId") && dict["BackupjobId"] != nil {
+                self.backupjobId = dict["BackupjobId"] as! Int64
+            }
+            if dict.keys.contains("JobMode") && dict["JobMode"] != nil {
+                self.jobMode = dict["JobMode"] as! String
+            }
+            if dict.keys.contains("Progress") && dict["Progress"] != nil {
+                self.progress = dict["Progress"] as! String
+            }
+        }
+    }
+    public var backupJobs: [DescribeBackupTasksResponseBody.BackupJobs]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.backupJobs != nil {
+            var tmp : [Any] = []
+            for k in self.backupJobs! {
+                tmp.append(k.toMap())
+            }
+            map["BackupJobs"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("BackupJobs") && dict["BackupJobs"] != nil {
+            var tmp : [DescribeBackupTasksResponseBody.BackupJobs] = []
+            for v in dict["BackupJobs"] as! [Any] {
+                var model = DescribeBackupTasksResponseBody.BackupJobs()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.backupJobs = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeBackupTasksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeBackupTasksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeBackupTasksResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeBackupsRequest : Tea.TeaModel {
     public var backupId: String?
 
@@ -14015,6 +14253,220 @@ public class DescribeInstanceAutoRenewalAttributeResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeInstanceRecoverTimeRequest : Tea.TeaModel {
+    public var DBInstanceId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class DescribeInstanceRecoverTimeResponseBody : Tea.TeaModel {
+    public class RestoreRanges : Tea.TeaModel {
+        public var restoreBeginTime: String?
+
+        public var restoreEndTime: String?
+
+        public var restoreType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.restoreBeginTime != nil {
+                map["RestoreBeginTime"] = self.restoreBeginTime!
+            }
+            if self.restoreEndTime != nil {
+                map["RestoreEndTime"] = self.restoreEndTime!
+            }
+            if self.restoreType != nil {
+                map["RestoreType"] = self.restoreType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RestoreBeginTime") && dict["RestoreBeginTime"] != nil {
+                self.restoreBeginTime = dict["RestoreBeginTime"] as! String
+            }
+            if dict.keys.contains("RestoreEndTime") && dict["RestoreEndTime"] != nil {
+                self.restoreEndTime = dict["RestoreEndTime"] as! String
+            }
+            if dict.keys.contains("RestoreType") && dict["RestoreType"] != nil {
+                self.restoreType = dict["RestoreType"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var restoreRanges: [DescribeInstanceRecoverTimeResponseBody.RestoreRanges]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.restoreRanges != nil {
+            var tmp : [Any] = []
+            for k in self.restoreRanges! {
+                tmp.append(k.toMap())
+            }
+            map["RestoreRanges"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RestoreRanges") && dict["RestoreRanges"] != nil {
+            var tmp : [DescribeInstanceRecoverTimeResponseBody.RestoreRanges] = []
+            for v in dict["RestoreRanges"] as! [Any] {
+                var model = DescribeInstanceRecoverTimeResponseBody.RestoreRanges()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.restoreRanges = tmp
+        }
+    }
+}
+
+public class DescribeInstanceRecoverTimeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeInstanceRecoverTimeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeInstanceRecoverTimeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeKernelReleaseNotesRequest : Tea.TeaModel {
     public var kernelVersion: String?
 
@@ -15969,6 +16421,219 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class DepreciateInfo : Tea.TeaModel {
+            public class ContractActivity : Tea.TeaModel {
+                public class OptionIds : Tea.TeaModel {
+                    public var optionId: [Int64]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.optionId != nil {
+                            map["OptionId"] = self.optionId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("OptionId") && dict["OptionId"] != nil {
+                            self.optionId = dict["OptionId"] as! [Int64]
+                        }
+                    }
+                }
+                public var activityId: Int64?
+
+                public var activityName: String?
+
+                public var finalFee: Double?
+
+                public var finalPromFee: Double?
+
+                public var optionCode: String?
+
+                public var optionIds: DescribePriceResponseBody.Order.DepreciateInfo.ContractActivity.OptionIds?
+
+                public var prodFee: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.optionIds?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.activityId != nil {
+                        map["ActivityId"] = self.activityId!
+                    }
+                    if self.activityName != nil {
+                        map["ActivityName"] = self.activityName!
+                    }
+                    if self.finalFee != nil {
+                        map["FinalFee"] = self.finalFee!
+                    }
+                    if self.finalPromFee != nil {
+                        map["FinalPromFee"] = self.finalPromFee!
+                    }
+                    if self.optionCode != nil {
+                        map["OptionCode"] = self.optionCode!
+                    }
+                    if self.optionIds != nil {
+                        map["OptionIds"] = self.optionIds?.toMap()
+                    }
+                    if self.prodFee != nil {
+                        map["ProdFee"] = self.prodFee!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ActivityId") && dict["ActivityId"] != nil {
+                        self.activityId = dict["ActivityId"] as! Int64
+                    }
+                    if dict.keys.contains("ActivityName") && dict["ActivityName"] != nil {
+                        self.activityName = dict["ActivityName"] as! String
+                    }
+                    if dict.keys.contains("FinalFee") && dict["FinalFee"] != nil {
+                        self.finalFee = dict["FinalFee"] as! Double
+                    }
+                    if dict.keys.contains("FinalPromFee") && dict["FinalPromFee"] != nil {
+                        self.finalPromFee = dict["FinalPromFee"] as! Double
+                    }
+                    if dict.keys.contains("OptionCode") && dict["OptionCode"] != nil {
+                        self.optionCode = dict["OptionCode"] as! String
+                    }
+                    if dict.keys.contains("OptionIds") && dict["OptionIds"] != nil {
+                        var model = DescribePriceResponseBody.Order.DepreciateInfo.ContractActivity.OptionIds()
+                        model.fromMap(dict["OptionIds"] as! [String: Any])
+                        self.optionIds = model
+                    }
+                    if dict.keys.contains("ProdFee") && dict["ProdFee"] != nil {
+                        self.prodFee = dict["ProdFee"] as! Double
+                    }
+                }
+            }
+            public var cheapRate: Double?
+
+            public var cheapStandAmount: Double?
+
+            public var contractActivity: DescribePriceResponseBody.Order.DepreciateInfo.ContractActivity?
+
+            public var differential: Double?
+
+            public var differentialName: String?
+
+            public var isContractActivity: Bool?
+
+            public var isShow: String?
+
+            public var listPrice: Double?
+
+            public var monthPrice: Double?
+
+            public var originalStandAmount: Double?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.contractActivity?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cheapRate != nil {
+                    map["CheapRate"] = self.cheapRate!
+                }
+                if self.cheapStandAmount != nil {
+                    map["CheapStandAmount"] = self.cheapStandAmount!
+                }
+                if self.contractActivity != nil {
+                    map["ContractActivity"] = self.contractActivity?.toMap()
+                }
+                if self.differential != nil {
+                    map["Differential"] = self.differential!
+                }
+                if self.differentialName != nil {
+                    map["DifferentialName"] = self.differentialName!
+                }
+                if self.isContractActivity != nil {
+                    map["IsContractActivity"] = self.isContractActivity!
+                }
+                if self.isShow != nil {
+                    map["IsShow"] = self.isShow!
+                }
+                if self.listPrice != nil {
+                    map["ListPrice"] = self.listPrice!
+                }
+                if self.monthPrice != nil {
+                    map["MonthPrice"] = self.monthPrice!
+                }
+                if self.originalStandAmount != nil {
+                    map["OriginalStandAmount"] = self.originalStandAmount!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                    self.cheapRate = dict["CheapRate"] as! Double
+                }
+                if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                    self.cheapStandAmount = dict["CheapStandAmount"] as! Double
+                }
+                if dict.keys.contains("ContractActivity") && dict["ContractActivity"] != nil {
+                    var model = DescribePriceResponseBody.Order.DepreciateInfo.ContractActivity()
+                    model.fromMap(dict["ContractActivity"] as! [String: Any])
+                    self.contractActivity = model
+                }
+                if dict.keys.contains("Differential") && dict["Differential"] != nil {
+                    self.differential = dict["Differential"] as! Double
+                }
+                if dict.keys.contains("DifferentialName") && dict["DifferentialName"] != nil {
+                    self.differentialName = dict["DifferentialName"] as! String
+                }
+                if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                    self.isContractActivity = dict["IsContractActivity"] as! Bool
+                }
+                if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                    self.isShow = dict["IsShow"] as! String
+                }
+                if dict.keys.contains("ListPrice") && dict["ListPrice"] != nil {
+                    self.listPrice = dict["ListPrice"] as! Double
+                }
+                if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                    self.monthPrice = dict["MonthPrice"] as! Double
+                }
+                if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                    self.originalStandAmount = dict["OriginalStandAmount"] as! Double
+                }
+            }
+        }
         public class RuleIds : Tea.TeaModel {
             public var ruleId: [String]?
 
@@ -15998,11 +16663,21 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var code: String?
+
+        public var contractActivity: Bool?
+
         public var coupons: DescribePriceResponseBody.Order.Coupons?
 
         public var currency: String?
 
+        public var depreciateInfo: DescribePriceResponseBody.Order.DepreciateInfo?
+
         public var discountAmount: String?
+
+        public var isContractActivity: Bool?
+
+        public var message: String?
 
         public var optionalPromotions: String?
 
@@ -16013,6 +16688,10 @@ public class DescribePriceResponseBody : Tea.TeaModel {
         public var ruleIds: DescribePriceResponseBody.Order.RuleIds?
 
         public var showDiscountInfo: Bool?
+
+        public var standDiscountPrice: Double?
+
+        public var standPrice: Double?
 
         public var tradeAmount: String?
 
@@ -16027,19 +16706,35 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
         public override func validate() throws -> Void {
             try self.coupons?.validate()
+            try self.depreciateInfo?.validate()
             try self.ruleIds?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.contractActivity != nil {
+                map["ContractActivity"] = self.contractActivity!
+            }
             if self.coupons != nil {
                 map["Coupons"] = self.coupons?.toMap()
             }
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
+            if self.depreciateInfo != nil {
+                map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+            }
             if self.discountAmount != nil {
                 map["DiscountAmount"] = self.discountAmount!
+            }
+            if self.isContractActivity != nil {
+                map["IsContractActivity"] = self.isContractActivity!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
             }
             if self.optionalPromotions != nil {
                 map["OptionalPromotions"] = self.optionalPromotions!
@@ -16056,6 +16751,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if self.showDiscountInfo != nil {
                 map["ShowDiscountInfo"] = self.showDiscountInfo!
             }
+            if self.standDiscountPrice != nil {
+                map["StandDiscountPrice"] = self.standDiscountPrice!
+            }
+            if self.standPrice != nil {
+                map["StandPrice"] = self.standPrice!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -16063,6 +16764,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Code") && dict["Code"] != nil {
+                self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("ContractActivity") && dict["ContractActivity"] != nil {
+                self.contractActivity = dict["ContractActivity"] as! Bool
+            }
             if dict.keys.contains("Coupons") && dict["Coupons"] != nil {
                 var model = DescribePriceResponseBody.Order.Coupons()
                 model.fromMap(dict["Coupons"] as! [String: Any])
@@ -16071,8 +16778,19 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("Currency") && dict["Currency"] != nil {
                 self.currency = dict["Currency"] as! String
             }
+            if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                var model = DescribePriceResponseBody.Order.DepreciateInfo()
+                model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                self.depreciateInfo = model
+            }
             if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                 self.discountAmount = dict["DiscountAmount"] as! String
+            }
+            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                self.isContractActivity = dict["IsContractActivity"] as! Bool
+            }
+            if dict.keys.contains("Message") && dict["Message"] != nil {
+                self.message = dict["Message"] as! String
             }
             if dict.keys.contains("OptionalPromotions") && dict["OptionalPromotions"] != nil {
                 self.optionalPromotions = dict["OptionalPromotions"] as! String
@@ -16090,6 +16808,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ShowDiscountInfo") && dict["ShowDiscountInfo"] != nil {
                 self.showDiscountInfo = dict["ShowDiscountInfo"] as! Bool
+            }
+            if dict.keys.contains("StandDiscountPrice") && dict["StandDiscountPrice"] != nil {
+                self.standDiscountPrice = dict["StandDiscountPrice"] as! Double
+            }
+            if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                self.standPrice = dict["StandPrice"] as! Double
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! String
@@ -16184,6 +16908,1007 @@ public class DescribePriceResponseBody : Tea.TeaModel {
     }
     public class SubOrders : Tea.TeaModel {
         public class SubOrder : Tea.TeaModel {
+            public class DepreciateInfo : Tea.TeaModel {
+                public class ContractActivity : Tea.TeaModel {
+                    public class OptionIds : Tea.TeaModel {
+                        public var optionId: [Int64]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.optionId != nil {
+                                map["OptionId"] = self.optionId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("OptionId") && dict["OptionId"] != nil {
+                                self.optionId = dict["OptionId"] as! [Int64]
+                            }
+                        }
+                    }
+                    public var activityId: Int64?
+
+                    public var activityName: String?
+
+                    public var finalFee: Double?
+
+                    public var finalPromFee: Double?
+
+                    public var optionCode: String?
+
+                    public var optionIds: DescribePriceResponseBody.SubOrders.SubOrder.DepreciateInfo.ContractActivity.OptionIds?
+
+                    public var prodFee: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.optionIds?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.activityId != nil {
+                            map["ActivityId"] = self.activityId!
+                        }
+                        if self.activityName != nil {
+                            map["ActivityName"] = self.activityName!
+                        }
+                        if self.finalFee != nil {
+                            map["FinalFee"] = self.finalFee!
+                        }
+                        if self.finalPromFee != nil {
+                            map["FinalPromFee"] = self.finalPromFee!
+                        }
+                        if self.optionCode != nil {
+                            map["OptionCode"] = self.optionCode!
+                        }
+                        if self.optionIds != nil {
+                            map["OptionIds"] = self.optionIds?.toMap()
+                        }
+                        if self.prodFee != nil {
+                            map["ProdFee"] = self.prodFee!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ActivityId") && dict["ActivityId"] != nil {
+                            self.activityId = dict["ActivityId"] as! Int64
+                        }
+                        if dict.keys.contains("ActivityName") && dict["ActivityName"] != nil {
+                            self.activityName = dict["ActivityName"] as! String
+                        }
+                        if dict.keys.contains("FinalFee") && dict["FinalFee"] != nil {
+                            self.finalFee = dict["FinalFee"] as! Double
+                        }
+                        if dict.keys.contains("FinalPromFee") && dict["FinalPromFee"] != nil {
+                            self.finalPromFee = dict["FinalPromFee"] as! Double
+                        }
+                        if dict.keys.contains("OptionCode") && dict["OptionCode"] != nil {
+                            self.optionCode = dict["OptionCode"] as! String
+                        }
+                        if dict.keys.contains("OptionIds") && dict["OptionIds"] != nil {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.DepreciateInfo.ContractActivity.OptionIds()
+                            model.fromMap(dict["OptionIds"] as! [String: Any])
+                            self.optionIds = model
+                        }
+                        if dict.keys.contains("ProdFee") && dict["ProdFee"] != nil {
+                            self.prodFee = dict["ProdFee"] as! Double
+                        }
+                    }
+                }
+                public var cheapRate: Double?
+
+                public var cheapStandAmount: Double?
+
+                public var contractActivity: DescribePriceResponseBody.SubOrders.SubOrder.DepreciateInfo.ContractActivity?
+
+                public var differential: Double?
+
+                public var differentialName: String?
+
+                public var isContractActivity: Bool?
+
+                public var isShow: String?
+
+                public var listPrice: Double?
+
+                public var monthPrice: Double?
+
+                public var originalStandAmount: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.contractActivity?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cheapRate != nil {
+                        map["CheapRate"] = self.cheapRate!
+                    }
+                    if self.cheapStandAmount != nil {
+                        map["CheapStandAmount"] = self.cheapStandAmount!
+                    }
+                    if self.contractActivity != nil {
+                        map["ContractActivity"] = self.contractActivity?.toMap()
+                    }
+                    if self.differential != nil {
+                        map["Differential"] = self.differential!
+                    }
+                    if self.differentialName != nil {
+                        map["DifferentialName"] = self.differentialName!
+                    }
+                    if self.isContractActivity != nil {
+                        map["IsContractActivity"] = self.isContractActivity!
+                    }
+                    if self.isShow != nil {
+                        map["IsShow"] = self.isShow!
+                    }
+                    if self.listPrice != nil {
+                        map["ListPrice"] = self.listPrice!
+                    }
+                    if self.monthPrice != nil {
+                        map["MonthPrice"] = self.monthPrice!
+                    }
+                    if self.originalStandAmount != nil {
+                        map["OriginalStandAmount"] = self.originalStandAmount!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                        self.cheapRate = dict["CheapRate"] as! Double
+                    }
+                    if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                        self.cheapStandAmount = dict["CheapStandAmount"] as! Double
+                    }
+                    if dict.keys.contains("ContractActivity") && dict["ContractActivity"] != nil {
+                        var model = DescribePriceResponseBody.SubOrders.SubOrder.DepreciateInfo.ContractActivity()
+                        model.fromMap(dict["ContractActivity"] as! [String: Any])
+                        self.contractActivity = model
+                    }
+                    if dict.keys.contains("Differential") && dict["Differential"] != nil {
+                        self.differential = dict["Differential"] as! Double
+                    }
+                    if dict.keys.contains("DifferentialName") && dict["DifferentialName"] != nil {
+                        self.differentialName = dict["DifferentialName"] as! String
+                    }
+                    if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                        self.isContractActivity = dict["IsContractActivity"] as! Bool
+                    }
+                    if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                        self.isShow = dict["IsShow"] as! String
+                    }
+                    if dict.keys.contains("ListPrice") && dict["ListPrice"] != nil {
+                        self.listPrice = dict["ListPrice"] as! Double
+                    }
+                    if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                        self.monthPrice = dict["MonthPrice"] as! Double
+                    }
+                    if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                        self.originalStandAmount = dict["OriginalStandAmount"] as! Double
+                    }
+                }
+            }
+            public class ModuleInstance : Tea.TeaModel {
+                public class ModuleInstance : Tea.TeaModel {
+                    public class DepreciateInfo : Tea.TeaModel {
+                        public var cheapRate: Double?
+
+                        public var cheapStandAmount: Double?
+
+                        public var differential: Double?
+
+                        public var differentialName: String?
+
+                        public var isContractActivity: Bool?
+
+                        public var isShow: String?
+
+                        public var listPrice: Double?
+
+                        public var monthPrice: Double?
+
+                        public var originalStandAmount: Double?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.cheapRate != nil {
+                                map["CheapRate"] = self.cheapRate!
+                            }
+                            if self.cheapStandAmount != nil {
+                                map["CheapStandAmount"] = self.cheapStandAmount!
+                            }
+                            if self.differential != nil {
+                                map["Differential"] = self.differential!
+                            }
+                            if self.differentialName != nil {
+                                map["DifferentialName"] = self.differentialName!
+                            }
+                            if self.isContractActivity != nil {
+                                map["IsContractActivity"] = self.isContractActivity!
+                            }
+                            if self.isShow != nil {
+                                map["IsShow"] = self.isShow!
+                            }
+                            if self.listPrice != nil {
+                                map["ListPrice"] = self.listPrice!
+                            }
+                            if self.monthPrice != nil {
+                                map["MonthPrice"] = self.monthPrice!
+                            }
+                            if self.originalStandAmount != nil {
+                                map["OriginalStandAmount"] = self.originalStandAmount!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                                self.cheapRate = dict["CheapRate"] as! Double
+                            }
+                            if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                                self.cheapStandAmount = dict["CheapStandAmount"] as! Double
+                            }
+                            if dict.keys.contains("Differential") && dict["Differential"] != nil {
+                                self.differential = dict["Differential"] as! Double
+                            }
+                            if dict.keys.contains("DifferentialName") && dict["DifferentialName"] != nil {
+                                self.differentialName = dict["DifferentialName"] as! String
+                            }
+                            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                                self.isContractActivity = dict["IsContractActivity"] as! Bool
+                            }
+                            if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                                self.isShow = dict["IsShow"] as! String
+                            }
+                            if dict.keys.contains("ListPrice") && dict["ListPrice"] != nil {
+                                self.listPrice = dict["ListPrice"] as! Double
+                            }
+                            if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                                self.monthPrice = dict["MonthPrice"] as! Double
+                            }
+                            if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                                self.originalStandAmount = dict["OriginalStandAmount"] as! Double
+                            }
+                        }
+                    }
+                    public class ModuleAttrs : Tea.TeaModel {
+                        public class ModuleAttr : Tea.TeaModel {
+                            public var code: String?
+
+                            public var name: String?
+
+                            public var type: String?
+
+                            public var value: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.code != nil {
+                                    map["Code"] = self.code!
+                                }
+                                if self.name != nil {
+                                    map["Name"] = self.name!
+                                }
+                                if self.type != nil {
+                                    map["Type"] = self.type!
+                                }
+                                if self.value != nil {
+                                    map["Value"] = self.value!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("Code") && dict["Code"] != nil {
+                                    self.code = dict["Code"] as! String
+                                }
+                                if dict.keys.contains("Name") && dict["Name"] != nil {
+                                    self.name = dict["Name"] as! String
+                                }
+                                if dict.keys.contains("Type") && dict["Type"] != nil {
+                                    self.type = dict["Type"] as! String
+                                }
+                                if dict.keys.contains("Value") && dict["Value"] != nil {
+                                    self.value = dict["Value"] as! String
+                                }
+                            }
+                        }
+                        public var moduleAttr: [DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.ModuleAttrs.ModuleAttr]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.moduleAttr != nil {
+                                var tmp : [Any] = []
+                                for k in self.moduleAttr! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["moduleAttr"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("moduleAttr") && dict["moduleAttr"] != nil {
+                                var tmp : [DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.ModuleAttrs.ModuleAttr] = []
+                                for v in dict["moduleAttr"] as! [Any] {
+                                    var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.ModuleAttrs.ModuleAttr()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.moduleAttr = tmp
+                            }
+                        }
+                    }
+                    public class PromDetailList : Tea.TeaModel {
+                        public class PromDetal : Tea.TeaModel {
+                            public var activityExtInfo: [String: Any]?
+
+                            public var derivedPromType: String?
+
+                            public var finalPromFee: Double?
+
+                            public var optionCode: String?
+
+                            public var promType: String?
+
+                            public var promotionCode: String?
+
+                            public var promotionId: Int64?
+
+                            public var promotionName: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.activityExtInfo != nil {
+                                    map["ActivityExtInfo"] = self.activityExtInfo!
+                                }
+                                if self.derivedPromType != nil {
+                                    map["DerivedPromType"] = self.derivedPromType!
+                                }
+                                if self.finalPromFee != nil {
+                                    map["FinalPromFee"] = self.finalPromFee!
+                                }
+                                if self.optionCode != nil {
+                                    map["OptionCode"] = self.optionCode!
+                                }
+                                if self.promType != nil {
+                                    map["PromType"] = self.promType!
+                                }
+                                if self.promotionCode != nil {
+                                    map["PromotionCode"] = self.promotionCode!
+                                }
+                                if self.promotionId != nil {
+                                    map["PromotionId"] = self.promotionId!
+                                }
+                                if self.promotionName != nil {
+                                    map["PromotionName"] = self.promotionName!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("ActivityExtInfo") && dict["ActivityExtInfo"] != nil {
+                                    self.activityExtInfo = dict["ActivityExtInfo"] as! [String: Any]
+                                }
+                                if dict.keys.contains("DerivedPromType") && dict["DerivedPromType"] != nil {
+                                    self.derivedPromType = dict["DerivedPromType"] as! String
+                                }
+                                if dict.keys.contains("FinalPromFee") && dict["FinalPromFee"] != nil {
+                                    self.finalPromFee = dict["FinalPromFee"] as! Double
+                                }
+                                if dict.keys.contains("OptionCode") && dict["OptionCode"] != nil {
+                                    self.optionCode = dict["OptionCode"] as! String
+                                }
+                                if dict.keys.contains("PromType") && dict["PromType"] != nil {
+                                    self.promType = dict["PromType"] as! String
+                                }
+                                if dict.keys.contains("PromotionCode") && dict["PromotionCode"] != nil {
+                                    self.promotionCode = dict["PromotionCode"] as! String
+                                }
+                                if dict.keys.contains("PromotionId") && dict["PromotionId"] != nil {
+                                    self.promotionId = dict["PromotionId"] as! Int64
+                                }
+                                if dict.keys.contains("PromotionName") && dict["PromotionName"] != nil {
+                                    self.promotionName = dict["PromotionName"] as! String
+                                }
+                            }
+                        }
+                        public var promDetal: [DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.PromDetailList.PromDetal]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.promDetal != nil {
+                                var tmp : [Any] = []
+                                for k in self.promDetal! {
+                                    tmp.append(k.toMap())
+                                }
+                                map["PromDetal"] = tmp
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("PromDetal") && dict["PromDetal"] != nil {
+                                var tmp : [DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.PromDetailList.PromDetal] = []
+                                for v in dict["PromDetal"] as! [Any] {
+                                    var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.PromDetailList.PromDetal()
+                                    if v != nil {
+                                        model.fromMap(v as! [String: Any])
+                                    }
+                                    tmp.append(model)
+                                }
+                                self.promDetal = tmp
+                            }
+                        }
+                    }
+                    public var contractActivity: Bool?
+
+                    public var cycleFee: String?
+
+                    public var depreciateInfo: DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.DepreciateInfo?
+
+                    public var discountFee: String?
+
+                    public var moduleAttrs: DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.ModuleAttrs?
+
+                    public var moduleCode: String?
+
+                    public var moduleId: Int64?
+
+                    public var moduleName: String?
+
+                    public var needOrderPay: Bool?
+
+                    public var payFee: Double?
+
+                    public var pricingModule: Bool?
+
+                    public var promDetailList: DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.PromDetailList?
+
+                    public var standPrice: Double?
+
+                    public var totalProductFee: Double?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.depreciateInfo?.validate()
+                        try self.moduleAttrs?.validate()
+                        try self.promDetailList?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.contractActivity != nil {
+                            map["ContractActivity"] = self.contractActivity!
+                        }
+                        if self.cycleFee != nil {
+                            map["CycleFee"] = self.cycleFee!
+                        }
+                        if self.depreciateInfo != nil {
+                            map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+                        }
+                        if self.discountFee != nil {
+                            map["DiscountFee"] = self.discountFee!
+                        }
+                        if self.moduleAttrs != nil {
+                            map["ModuleAttrs"] = self.moduleAttrs?.toMap()
+                        }
+                        if self.moduleCode != nil {
+                            map["ModuleCode"] = self.moduleCode!
+                        }
+                        if self.moduleId != nil {
+                            map["ModuleId"] = self.moduleId!
+                        }
+                        if self.moduleName != nil {
+                            map["ModuleName"] = self.moduleName!
+                        }
+                        if self.needOrderPay != nil {
+                            map["NeedOrderPay"] = self.needOrderPay!
+                        }
+                        if self.payFee != nil {
+                            map["PayFee"] = self.payFee!
+                        }
+                        if self.pricingModule != nil {
+                            map["PricingModule"] = self.pricingModule!
+                        }
+                        if self.promDetailList != nil {
+                            map["PromDetailList"] = self.promDetailList?.toMap()
+                        }
+                        if self.standPrice != nil {
+                            map["StandPrice"] = self.standPrice!
+                        }
+                        if self.totalProductFee != nil {
+                            map["TotalProductFee"] = self.totalProductFee!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ContractActivity") && dict["ContractActivity"] != nil {
+                            self.contractActivity = dict["ContractActivity"] as! Bool
+                        }
+                        if dict.keys.contains("CycleFee") && dict["CycleFee"] != nil {
+                            self.cycleFee = dict["CycleFee"] as! String
+                        }
+                        if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.DepreciateInfo()
+                            model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                            self.depreciateInfo = model
+                        }
+                        if dict.keys.contains("DiscountFee") && dict["DiscountFee"] != nil {
+                            self.discountFee = dict["DiscountFee"] as! String
+                        }
+                        if dict.keys.contains("ModuleAttrs") && dict["ModuleAttrs"] != nil {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.ModuleAttrs()
+                            model.fromMap(dict["ModuleAttrs"] as! [String: Any])
+                            self.moduleAttrs = model
+                        }
+                        if dict.keys.contains("ModuleCode") && dict["ModuleCode"] != nil {
+                            self.moduleCode = dict["ModuleCode"] as! String
+                        }
+                        if dict.keys.contains("ModuleId") && dict["ModuleId"] != nil {
+                            self.moduleId = dict["ModuleId"] as! Int64
+                        }
+                        if dict.keys.contains("ModuleName") && dict["ModuleName"] != nil {
+                            self.moduleName = dict["ModuleName"] as! String
+                        }
+                        if dict.keys.contains("NeedOrderPay") && dict["NeedOrderPay"] != nil {
+                            self.needOrderPay = dict["NeedOrderPay"] as! Bool
+                        }
+                        if dict.keys.contains("PayFee") && dict["PayFee"] != nil {
+                            self.payFee = dict["PayFee"] as! Double
+                        }
+                        if dict.keys.contains("PricingModule") && dict["PricingModule"] != nil {
+                            self.pricingModule = dict["PricingModule"] as! Bool
+                        }
+                        if dict.keys.contains("PromDetailList") && dict["PromDetailList"] != nil {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.PromDetailList()
+                            model.fromMap(dict["PromDetailList"] as! [String: Any])
+                            self.promDetailList = model
+                        }
+                        if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                            self.standPrice = dict["StandPrice"] as! Double
+                        }
+                        if dict.keys.contains("TotalProductFee") && dict["TotalProductFee"] != nil {
+                            self.totalProductFee = dict["TotalProductFee"] as! Double
+                        }
+                    }
+                }
+                public var moduleInstance: [DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.moduleInstance != nil {
+                        var tmp : [Any] = []
+                        for k in self.moduleInstance! {
+                            tmp.append(k.toMap())
+                        }
+                        map["ModuleInstance"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ModuleInstance") && dict["ModuleInstance"] != nil {
+                        var tmp : [DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance] = []
+                        for v in dict["ModuleInstance"] as! [Any] {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.moduleInstance = tmp
+                    }
+                }
+            }
+            public class OptionalPromotions : Tea.TeaModel {
+                public class OptionalPromotion : Tea.TeaModel {
+                    public class TargetArticleItemCodes : Tea.TeaModel {
+                        public var targetArticleItemCode: [String]?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.targetArticleItemCode != nil {
+                                map["targetArticleItemCode"] = self.targetArticleItemCode!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("targetArticleItemCode") && dict["targetArticleItemCode"] != nil {
+                                self.targetArticleItemCode = dict["targetArticleItemCode"] as! [String]
+                            }
+                        }
+                    }
+                    public var activityCategory: String?
+
+                    public var activityExtInfo: [String: Any]?
+
+                    public var canPromFee: Double?
+
+                    public var optionCode: String?
+
+                    public var promotionName: String?
+
+                    public var promotionOptionNo: String?
+
+                    public var selected: Bool?
+
+                    public var show: Bool?
+
+                    public var targetArticleItemCodes: DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions.OptionalPromotion.TargetArticleItemCodes?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.targetArticleItemCodes?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.activityCategory != nil {
+                            map["ActivityCategory"] = self.activityCategory!
+                        }
+                        if self.activityExtInfo != nil {
+                            map["ActivityExtInfo"] = self.activityExtInfo!
+                        }
+                        if self.canPromFee != nil {
+                            map["CanPromFee"] = self.canPromFee!
+                        }
+                        if self.optionCode != nil {
+                            map["OptionCode"] = self.optionCode!
+                        }
+                        if self.promotionName != nil {
+                            map["PromotionName"] = self.promotionName!
+                        }
+                        if self.promotionOptionNo != nil {
+                            map["PromotionOptionNo"] = self.promotionOptionNo!
+                        }
+                        if self.selected != nil {
+                            map["Selected"] = self.selected!
+                        }
+                        if self.show != nil {
+                            map["Show"] = self.show!
+                        }
+                        if self.targetArticleItemCodes != nil {
+                            map["TargetArticleItemCodes"] = self.targetArticleItemCodes?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ActivityCategory") && dict["ActivityCategory"] != nil {
+                            self.activityCategory = dict["ActivityCategory"] as! String
+                        }
+                        if dict.keys.contains("ActivityExtInfo") && dict["ActivityExtInfo"] != nil {
+                            self.activityExtInfo = dict["ActivityExtInfo"] as! [String: Any]
+                        }
+                        if dict.keys.contains("CanPromFee") && dict["CanPromFee"] != nil {
+                            self.canPromFee = dict["CanPromFee"] as! Double
+                        }
+                        if dict.keys.contains("OptionCode") && dict["OptionCode"] != nil {
+                            self.optionCode = dict["OptionCode"] as! String
+                        }
+                        if dict.keys.contains("PromotionName") && dict["PromotionName"] != nil {
+                            self.promotionName = dict["PromotionName"] as! String
+                        }
+                        if dict.keys.contains("PromotionOptionNo") && dict["PromotionOptionNo"] != nil {
+                            self.promotionOptionNo = dict["PromotionOptionNo"] as! String
+                        }
+                        if dict.keys.contains("Selected") && dict["Selected"] != nil {
+                            self.selected = dict["Selected"] as! Bool
+                        }
+                        if dict.keys.contains("Show") && dict["Show"] != nil {
+                            self.show = dict["Show"] as! Bool
+                        }
+                        if dict.keys.contains("TargetArticleItemCodes") && dict["TargetArticleItemCodes"] != nil {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions.OptionalPromotion.TargetArticleItemCodes()
+                            model.fromMap(dict["TargetArticleItemCodes"] as! [String: Any])
+                            self.targetArticleItemCodes = model
+                        }
+                    }
+                }
+                public var optionalPromotion: [DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions.OptionalPromotion]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.optionalPromotion != nil {
+                        var tmp : [Any] = []
+                        for k in self.optionalPromotion! {
+                            tmp.append(k.toMap())
+                        }
+                        map["OptionalPromotion"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("OptionalPromotion") && dict["OptionalPromotion"] != nil {
+                        var tmp : [DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions.OptionalPromotion] = []
+                        for v in dict["OptionalPromotion"] as! [Any] {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions.OptionalPromotion()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.optionalPromotion = tmp
+                    }
+                }
+            }
+            public class PromDetailList : Tea.TeaModel {
+                public class PromDetal : Tea.TeaModel {
+                    public var activityExtInfo: [String: Any]?
+
+                    public var derivedPromType: String?
+
+                    public var finalPromFee: Double?
+
+                    public var optionCode: String?
+
+                    public var promType: String?
+
+                    public var promotionCode: String?
+
+                    public var promotionId: Int64?
+
+                    public var promotionName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.activityExtInfo != nil {
+                            map["ActivityExtInfo"] = self.activityExtInfo!
+                        }
+                        if self.derivedPromType != nil {
+                            map["DerivedPromType"] = self.derivedPromType!
+                        }
+                        if self.finalPromFee != nil {
+                            map["FinalPromFee"] = self.finalPromFee!
+                        }
+                        if self.optionCode != nil {
+                            map["OptionCode"] = self.optionCode!
+                        }
+                        if self.promType != nil {
+                            map["PromType"] = self.promType!
+                        }
+                        if self.promotionCode != nil {
+                            map["PromotionCode"] = self.promotionCode!
+                        }
+                        if self.promotionId != nil {
+                            map["PromotionId"] = self.promotionId!
+                        }
+                        if self.promotionName != nil {
+                            map["PromotionName"] = self.promotionName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ActivityExtInfo") && dict["ActivityExtInfo"] != nil {
+                            self.activityExtInfo = dict["ActivityExtInfo"] as! [String: Any]
+                        }
+                        if dict.keys.contains("DerivedPromType") && dict["DerivedPromType"] != nil {
+                            self.derivedPromType = dict["DerivedPromType"] as! String
+                        }
+                        if dict.keys.contains("FinalPromFee") && dict["FinalPromFee"] != nil {
+                            self.finalPromFee = dict["FinalPromFee"] as! Double
+                        }
+                        if dict.keys.contains("OptionCode") && dict["OptionCode"] != nil {
+                            self.optionCode = dict["OptionCode"] as! String
+                        }
+                        if dict.keys.contains("PromType") && dict["PromType"] != nil {
+                            self.promType = dict["PromType"] as! String
+                        }
+                        if dict.keys.contains("PromotionCode") && dict["PromotionCode"] != nil {
+                            self.promotionCode = dict["PromotionCode"] as! String
+                        }
+                        if dict.keys.contains("PromotionId") && dict["PromotionId"] != nil {
+                            self.promotionId = dict["PromotionId"] as! Int64
+                        }
+                        if dict.keys.contains("PromotionName") && dict["PromotionName"] != nil {
+                            self.promotionName = dict["PromotionName"] as! String
+                        }
+                    }
+                }
+                public var promDetal: [DescribePriceResponseBody.SubOrders.SubOrder.PromDetailList.PromDetal]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.promDetal != nil {
+                        var tmp : [Any] = []
+                        for k in self.promDetal! {
+                            tmp.append(k.toMap())
+                        }
+                        map["PromDetal"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("PromDetal") && dict["PromDetal"] != nil {
+                        var tmp : [DescribePriceResponseBody.SubOrders.SubOrder.PromDetailList.PromDetal] = []
+                        for v in dict["PromDetal"] as! [Any] {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.PromDetailList.PromDetal()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.promDetal = tmp
+                    }
+                }
+            }
             public class RuleIds : Tea.TeaModel {
                 public var ruleId: [String]?
 
@@ -16213,13 +17938,31 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var contractActivity: Bool?
+
+            public var depreciateInfo: DescribePriceResponseBody.SubOrders.SubOrder.DepreciateInfo?
+
             public var discountAmount: String?
 
             public var instanceId: String?
 
+            public var isContractActivity: Bool?
+
+            public var isNewOfficialActivity: String?
+
+            public var moduleInstance: DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance?
+
+            public var optionalPromotions: DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions?
+
             public var originalAmount: String?
 
+            public var promDetailList: DescribePriceResponseBody.SubOrders.SubOrder.PromDetailList?
+
             public var ruleIds: DescribePriceResponseBody.SubOrders.SubOrder.RuleIds?
+
+            public var standDiscountPrice: Double?
+
+            public var standPrice: Double?
 
             public var tradeAmount: String?
 
@@ -16233,22 +17976,53 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.depreciateInfo?.validate()
+                try self.moduleInstance?.validate()
+                try self.optionalPromotions?.validate()
+                try self.promDetailList?.validate()
                 try self.ruleIds?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.contractActivity != nil {
+                    map["ContractActivity"] = self.contractActivity!
+                }
+                if self.depreciateInfo != nil {
+                    map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+                }
                 if self.discountAmount != nil {
                     map["DiscountAmount"] = self.discountAmount!
                 }
                 if self.instanceId != nil {
                     map["InstanceId"] = self.instanceId!
                 }
+                if self.isContractActivity != nil {
+                    map["IsContractActivity"] = self.isContractActivity!
+                }
+                if self.isNewOfficialActivity != nil {
+                    map["IsNewOfficialActivity"] = self.isNewOfficialActivity!
+                }
+                if self.moduleInstance != nil {
+                    map["ModuleInstance"] = self.moduleInstance?.toMap()
+                }
+                if self.optionalPromotions != nil {
+                    map["OptionalPromotions"] = self.optionalPromotions?.toMap()
+                }
                 if self.originalAmount != nil {
                     map["OriginalAmount"] = self.originalAmount!
                 }
+                if self.promDetailList != nil {
+                    map["PromDetailList"] = self.promDetailList?.toMap()
+                }
                 if self.ruleIds != nil {
                     map["RuleIds"] = self.ruleIds?.toMap()
+                }
+                if self.standDiscountPrice != nil {
+                    map["StandDiscountPrice"] = self.standDiscountPrice!
+                }
+                if self.standPrice != nil {
+                    map["StandPrice"] = self.standPrice!
                 }
                 if self.tradeAmount != nil {
                     map["TradeAmount"] = self.tradeAmount!
@@ -16257,19 +18031,54 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ContractActivity") && dict["ContractActivity"] != nil {
+                    self.contractActivity = dict["ContractActivity"] as! Bool
+                }
+                if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                    var model = DescribePriceResponseBody.SubOrders.SubOrder.DepreciateInfo()
+                    model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                    self.depreciateInfo = model
+                }
                 if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                     self.discountAmount = dict["DiscountAmount"] as! String
                 }
                 if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
                     self.instanceId = dict["InstanceId"] as! String
                 }
+                if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                    self.isContractActivity = dict["IsContractActivity"] as! Bool
+                }
+                if dict.keys.contains("IsNewOfficialActivity") && dict["IsNewOfficialActivity"] != nil {
+                    self.isNewOfficialActivity = dict["IsNewOfficialActivity"] as! String
+                }
+                if dict.keys.contains("ModuleInstance") && dict["ModuleInstance"] != nil {
+                    var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance()
+                    model.fromMap(dict["ModuleInstance"] as! [String: Any])
+                    self.moduleInstance = model
+                }
+                if dict.keys.contains("OptionalPromotions") && dict["OptionalPromotions"] != nil {
+                    var model = DescribePriceResponseBody.SubOrders.SubOrder.OptionalPromotions()
+                    model.fromMap(dict["OptionalPromotions"] as! [String: Any])
+                    self.optionalPromotions = model
+                }
                 if dict.keys.contains("OriginalAmount") && dict["OriginalAmount"] != nil {
                     self.originalAmount = dict["OriginalAmount"] as! String
+                }
+                if dict.keys.contains("PromDetailList") && dict["PromDetailList"] != nil {
+                    var model = DescribePriceResponseBody.SubOrders.SubOrder.PromDetailList()
+                    model.fromMap(dict["PromDetailList"] as! [String: Any])
+                    self.promDetailList = model
                 }
                 if dict.keys.contains("RuleIds") && dict["RuleIds"] != nil {
                     var model = DescribePriceResponseBody.SubOrders.SubOrder.RuleIds()
                     model.fromMap(dict["RuleIds"] as! [String: Any])
                     self.ruleIds = model
+                }
+                if dict.keys.contains("StandDiscountPrice") && dict["StandDiscountPrice"] != nil {
+                    self.standDiscountPrice = dict["StandDiscountPrice"] as! Double
+                }
+                if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                    self.standPrice = dict["StandPrice"] as! Double
                 }
                 if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                     self.tradeAmount = dict["TradeAmount"] as! String
