@@ -927,6 +927,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitPurchaseInfoWithOptions(_ request: SubmitPurchaseInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitPurchaseInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bizId)) {
+            body["BizId"] = request.bizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.purchaseCurrency)) {
+            body["PurchaseCurrency"] = request.purchaseCurrency ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.purchasePrice)) {
+            body["PurchasePrice"] = request.purchasePrice!;
+        }
+        if (!TeaUtils.Client.isUnset(request.purchaseProofs)) {
+            body["PurchaseProofs"] = request.purchaseProofs ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitPurchaseInfo",
+            "version": "2018-02-08",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitPurchaseInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitPurchaseInfo(_ request: SubmitPurchaseInfoRequest) async throws -> SubmitPurchaseInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await submitPurchaseInfoWithOptions(request as! SubmitPurchaseInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updatePartnerReservePriceWithOptions(_ request: UpdatePartnerReservePriceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdatePartnerReservePriceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
