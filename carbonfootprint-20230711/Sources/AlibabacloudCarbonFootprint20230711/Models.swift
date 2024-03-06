@@ -99,6 +99,8 @@ public class GetSummaryDataRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var uids: [String]?
+
     public override init() {
         super.init()
     }
@@ -122,6 +124,9 @@ public class GetSummaryDataRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.uids != nil {
+            map["Uids"] = self.uids!
+        }
         return map
     }
 
@@ -135,11 +140,72 @@ public class GetSummaryDataRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
         }
+        if dict.keys.contains("Uids") && dict["Uids"] != nil {
+            self.uids = dict["Uids"] as! [String]
+        }
+    }
+}
+
+public class GetSummaryDataShrinkRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var group: String?
+
+    public var startTime: String?
+
+    public var uidsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.group != nil {
+            map["Group"] = self.group!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.uidsShrink != nil {
+            map["Uids"] = self.uidsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Group") && dict["Group"] != nil {
+            self.group = dict["Group"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Uids") && dict["Uids"] != nil {
+            self.uidsShrink = dict["Uids"] as! String
+        }
     }
 }
 
 public class GetSummaryDataResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var aircraftConsumptionConversion: String?
+
+        public var carConsumptionConversion: String?
+
         public var lastMonthConsumptionConversion: String?
 
         public var lastYearConsumptionConversion: String?
@@ -153,6 +219,8 @@ public class GetSummaryDataResponseBody : Tea.TeaModel {
         public var thisYearConsumptionConversion: String?
 
         public var totalCarbonConsumptionConversion: String?
+
+        public var treeConsumptionConversion: String?
 
         public override init() {
             super.init()
@@ -168,6 +236,12 @@ public class GetSummaryDataResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.aircraftConsumptionConversion != nil {
+                map["AircraftConsumptionConversion"] = self.aircraftConsumptionConversion!
+            }
+            if self.carConsumptionConversion != nil {
+                map["CarConsumptionConversion"] = self.carConsumptionConversion!
+            }
             if self.lastMonthConsumptionConversion != nil {
                 map["LastMonthConsumptionConversion"] = self.lastMonthConsumptionConversion!
             }
@@ -189,10 +263,19 @@ public class GetSummaryDataResponseBody : Tea.TeaModel {
             if self.totalCarbonConsumptionConversion != nil {
                 map["TotalCarbonConsumptionConversion"] = self.totalCarbonConsumptionConversion!
             }
+            if self.treeConsumptionConversion != nil {
+                map["TreeConsumptionConversion"] = self.treeConsumptionConversion!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AircraftConsumptionConversion") && dict["AircraftConsumptionConversion"] != nil {
+                self.aircraftConsumptionConversion = dict["AircraftConsumptionConversion"] as! String
+            }
+            if dict.keys.contains("CarConsumptionConversion") && dict["CarConsumptionConversion"] != nil {
+                self.carConsumptionConversion = dict["CarConsumptionConversion"] as! String
+            }
             if dict.keys.contains("LastMonthConsumptionConversion") && dict["LastMonthConsumptionConversion"] != nil {
                 self.lastMonthConsumptionConversion = dict["LastMonthConsumptionConversion"] as! String
             }
@@ -213,6 +296,9 @@ public class GetSummaryDataResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TotalCarbonConsumptionConversion") && dict["TotalCarbonConsumptionConversion"] != nil {
                 self.totalCarbonConsumptionConversion = dict["TotalCarbonConsumptionConversion"] as! String
+            }
+            if dict.keys.contains("TreeConsumptionConversion") && dict["TreeConsumptionConversion"] != nil {
+                self.treeConsumptionConversion = dict["TreeConsumptionConversion"] as! String
             }
         }
     }

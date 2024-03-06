@@ -48,8 +48,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getSummaryDataWithOptions(_ request: GetSummaryDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSummaryDataResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func getSummaryDataWithOptions(_ tmpReq: GetSummaryDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSummaryDataResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: GetSummaryDataShrinkRequest = GetSummaryDataShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.uids)) {
+            request.uidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.uids, "Uids", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
@@ -59,6 +64,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uidsShrink)) {
+            query["Uids"] = request.uidsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
