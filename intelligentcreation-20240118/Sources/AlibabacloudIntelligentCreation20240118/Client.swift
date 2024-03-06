@@ -86,12 +86,18 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CopywritingQAShrinkRequest = CopywritingQAShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.histories)) {
+            request.historiesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.histories, "histories", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.history)) {
             request.historyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.history, "history", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.accountId)) {
             query["accountId"] = request.accountId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.historiesShrink)) {
+            query["histories"] = request.historiesShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.historyShrink)) {
             query["history"] = request.historyShrink ?? "";

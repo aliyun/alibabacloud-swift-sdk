@@ -558,6 +558,43 @@ public class ActualDeductResourcesResponse : Tea.TeaModel {
 }
 
 public class CopywritingQARequest : Tea.TeaModel {
+    public class Histories : Tea.TeaModel {
+        public var bot: String?
+
+        public var user: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bot != nil {
+                map["bot"] = self.bot!
+            }
+            if self.user != nil {
+                map["user"] = self.user!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("bot") && dict["bot"] != nil {
+                self.bot = dict["bot"] as! String
+            }
+            if dict.keys.contains("user") && dict["user"] != nil {
+                self.user = dict["user"] as! String
+            }
+        }
+    }
     public class History : Tea.TeaModel {
         public var bot: String?
 
@@ -597,6 +634,8 @@ public class CopywritingQARequest : Tea.TeaModel {
     }
     public var accountId: String?
 
+    public var histories: [CopywritingQARequest.Histories]?
+
     public var history: CopywritingQARequest.History?
 
     public var question: String?
@@ -625,6 +664,13 @@ public class CopywritingQARequest : Tea.TeaModel {
         if self.accountId != nil {
             map["accountId"] = self.accountId!
         }
+        if self.histories != nil {
+            var tmp : [Any] = []
+            for k in self.histories! {
+                tmp.append(k.toMap())
+            }
+            map["histories"] = tmp
+        }
         if self.history != nil {
             map["history"] = self.history?.toMap()
         }
@@ -646,6 +692,17 @@ public class CopywritingQARequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("accountId") && dict["accountId"] != nil {
             self.accountId = dict["accountId"] as! String
+        }
+        if dict.keys.contains("histories") && dict["histories"] != nil {
+            var tmp : [CopywritingQARequest.Histories] = []
+            for v in dict["histories"] as! [Any] {
+                var model = CopywritingQARequest.Histories()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.histories = tmp
         }
         if dict.keys.contains("history") && dict["history"] != nil {
             var model = CopywritingQARequest.History()
@@ -669,6 +726,8 @@ public class CopywritingQARequest : Tea.TeaModel {
 
 public class CopywritingQAShrinkRequest : Tea.TeaModel {
     public var accountId: String?
+
+    public var historiesShrink: String?
 
     public var historyShrink: String?
 
@@ -697,6 +756,9 @@ public class CopywritingQAShrinkRequest : Tea.TeaModel {
         if self.accountId != nil {
             map["accountId"] = self.accountId!
         }
+        if self.historiesShrink != nil {
+            map["histories"] = self.historiesShrink!
+        }
         if self.historyShrink != nil {
             map["history"] = self.historyShrink!
         }
@@ -718,6 +780,9 @@ public class CopywritingQAShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("accountId") && dict["accountId"] != nil {
             self.accountId = dict["accountId"] as! String
+        }
+        if dict.keys.contains("histories") && dict["histories"] != nil {
+            self.historiesShrink = dict["histories"] as! String
         }
         if dict.keys.contains("history") && dict["history"] != nil {
             self.historyShrink = dict["history"] as! String
@@ -1339,6 +1404,8 @@ public class SubmitBulletQuestionsRequest : Tea.TeaModel {
 
         public var id: String?
 
+        public var time: Int64?
+
         public var username: String?
 
         public override init() {
@@ -1361,6 +1428,9 @@ public class SubmitBulletQuestionsRequest : Tea.TeaModel {
             if self.id != nil {
                 map["id"] = self.id!
             }
+            if self.time != nil {
+                map["time"] = self.time!
+            }
             if self.username != nil {
                 map["username"] = self.username!
             }
@@ -1373,6 +1443,9 @@ public class SubmitBulletQuestionsRequest : Tea.TeaModel {
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("time") && dict["time"] != nil {
+                self.time = dict["time"] as! Int64
             }
             if dict.keys.contains("username") && dict["username"] != nil {
                 self.username = dict["username"] as! String
