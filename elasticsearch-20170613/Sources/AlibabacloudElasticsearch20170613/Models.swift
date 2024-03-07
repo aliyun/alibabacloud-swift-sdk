@@ -13578,6 +13578,283 @@ public class DiagnoseInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class DisableKibanaPvlNetworkResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            self.result = dict["Result"] as! Bool
+        }
+    }
+}
+
+public class DisableKibanaPvlNetworkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DisableKibanaPvlNetworkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DisableKibanaPvlNetworkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class EnableKibanaPvlNetworkRequest : Tea.TeaModel {
+    public class VSwitchIdsZone : Tea.TeaModel {
+        public var vswitchId: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.vswitchId != nil {
+                map["vswitchId"] = self.vswitchId!
+            }
+            if self.zoneId != nil {
+                map["zoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("vswitchId") && dict["vswitchId"] != nil {
+                self.vswitchId = dict["vswitchId"] as! String
+            }
+            if dict.keys.contains("zoneId") && dict["zoneId"] != nil {
+                self.zoneId = dict["zoneId"] as! String
+            }
+        }
+    }
+    public var endpointName: String?
+
+    public var securityGroups: [String]?
+
+    public var vSwitchIdsZone: [EnableKibanaPvlNetworkRequest.VSwitchIdsZone]?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpointName != nil {
+            map["endpointName"] = self.endpointName!
+        }
+        if self.securityGroups != nil {
+            map["securityGroups"] = self.securityGroups!
+        }
+        if self.vSwitchIdsZone != nil {
+            var tmp : [Any] = []
+            for k in self.vSwitchIdsZone! {
+                tmp.append(k.toMap())
+            }
+            map["vSwitchIdsZone"] = tmp
+        }
+        if self.vpcId != nil {
+            map["vpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("endpointName") && dict["endpointName"] != nil {
+            self.endpointName = dict["endpointName"] as! String
+        }
+        if dict.keys.contains("securityGroups") && dict["securityGroups"] != nil {
+            self.securityGroups = dict["securityGroups"] as! [String]
+        }
+        if dict.keys.contains("vSwitchIdsZone") && dict["vSwitchIdsZone"] != nil {
+            var tmp : [EnableKibanaPvlNetworkRequest.VSwitchIdsZone] = []
+            for v in dict["vSwitchIdsZone"] as! [Any] {
+                var model = EnableKibanaPvlNetworkRequest.VSwitchIdsZone()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.vSwitchIdsZone = tmp
+        }
+        if dict.keys.contains("vpcId") && dict["vpcId"] != nil {
+            self.vpcId = dict["vpcId"] as! String
+        }
+    }
+}
+
+public class EnableKibanaPvlNetworkResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            self.result = dict["Result"] as! Bool
+        }
+    }
+}
+
+public class EnableKibanaPvlNetworkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: EnableKibanaPvlNetworkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = EnableKibanaPvlNetworkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class EstimatedLogstashRestartTimeRequest : Tea.TeaModel {
     public var body: String?
 
@@ -27188,6 +27465,239 @@ public class ListKibanaPluginsResponse : Tea.TeaModel {
     }
 }
 
+public class ListKibanaPvlNetworkResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class VSwitchIdsZone : Tea.TeaModel {
+            public var vswitchId: String?
+
+            public var zoneId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.vswitchId != nil {
+                    map["vswitchId"] = self.vswitchId!
+                }
+                if self.zoneId != nil {
+                    map["zoneId"] = self.zoneId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("vswitchId") && dict["vswitchId"] != nil {
+                    self.vswitchId = dict["vswitchId"] as! String
+                }
+                if dict.keys.contains("zoneId") && dict["zoneId"] != nil {
+                    self.zoneId = dict["zoneId"] as! String
+                }
+            }
+        }
+        public var createTime: String?
+
+        public var endpointId: String?
+
+        public var endpointName: String?
+
+        public var endpointStatus: String?
+
+        public var pvlId: String?
+
+        public var securityGroups: [String]?
+
+        public var vSwitchIdsZone: [ListKibanaPvlNetworkResponseBody.Result.VSwitchIdsZone]?
+
+        public var vpcId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.createTime != nil {
+                map["createTime"] = self.createTime!
+            }
+            if self.endpointId != nil {
+                map["endpointId"] = self.endpointId!
+            }
+            if self.endpointName != nil {
+                map["endpointName"] = self.endpointName!
+            }
+            if self.endpointStatus != nil {
+                map["endpointStatus"] = self.endpointStatus!
+            }
+            if self.pvlId != nil {
+                map["pvlId"] = self.pvlId!
+            }
+            if self.securityGroups != nil {
+                map["securityGroups"] = self.securityGroups!
+            }
+            if self.vSwitchIdsZone != nil {
+                var tmp : [Any] = []
+                for k in self.vSwitchIdsZone! {
+                    tmp.append(k.toMap())
+                }
+                map["vSwitchIdsZone"] = tmp
+            }
+            if self.vpcId != nil {
+                map["vpcId"] = self.vpcId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("createTime") && dict["createTime"] != nil {
+                self.createTime = dict["createTime"] as! String
+            }
+            if dict.keys.contains("endpointId") && dict["endpointId"] != nil {
+                self.endpointId = dict["endpointId"] as! String
+            }
+            if dict.keys.contains("endpointName") && dict["endpointName"] != nil {
+                self.endpointName = dict["endpointName"] as! String
+            }
+            if dict.keys.contains("endpointStatus") && dict["endpointStatus"] != nil {
+                self.endpointStatus = dict["endpointStatus"] as! String
+            }
+            if dict.keys.contains("pvlId") && dict["pvlId"] != nil {
+                self.pvlId = dict["pvlId"] as! String
+            }
+            if dict.keys.contains("securityGroups") && dict["securityGroups"] != nil {
+                self.securityGroups = dict["securityGroups"] as! [String]
+            }
+            if dict.keys.contains("vSwitchIdsZone") && dict["vSwitchIdsZone"] != nil {
+                var tmp : [ListKibanaPvlNetworkResponseBody.Result.VSwitchIdsZone] = []
+                for v in dict["vSwitchIdsZone"] as! [Any] {
+                    var model = ListKibanaPvlNetworkResponseBody.Result.VSwitchIdsZone()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.vSwitchIdsZone = tmp
+            }
+            if dict.keys.contains("vpcId") && dict["vpcId"] != nil {
+                self.vpcId = dict["vpcId"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var result: [ListKibanaPvlNetworkResponseBody.Result]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            var tmp : [Any] = []
+            for k in self.result! {
+                tmp.append(k.toMap())
+            }
+            map["Result"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            var tmp : [ListKibanaPvlNetworkResponseBody.Result] = []
+            for v in dict["Result"] as! [Any] {
+                var model = ListKibanaPvlNetworkResponseBody.Result()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.result = tmp
+        }
+    }
+}
+
+public class ListKibanaPvlNetworkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListKibanaPvlNetworkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListKibanaPvlNetworkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListLogstashRequest : Tea.TeaModel {
     public var description_: String?
 
@@ -40324,6 +40834,139 @@ public class UpdateInstanceSettingsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateInstanceSettingsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateKibanaPvlNetworkRequest : Tea.TeaModel {
+    public var endpointName: String?
+
+    public var securityGroups: [String]?
+
+    public var pvlId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endpointName != nil {
+            map["endpointName"] = self.endpointName!
+        }
+        if self.securityGroups != nil {
+            map["securityGroups"] = self.securityGroups!
+        }
+        if self.pvlId != nil {
+            map["pvlId"] = self.pvlId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("endpointName") && dict["endpointName"] != nil {
+            self.endpointName = dict["endpointName"] as! String
+        }
+        if dict.keys.contains("securityGroups") && dict["securityGroups"] != nil {
+            self.securityGroups = dict["securityGroups"] as! [String]
+        }
+        if dict.keys.contains("pvlId") && dict["pvlId"] != nil {
+            self.pvlId = dict["pvlId"] as! String
+        }
+    }
+}
+
+public class UpdateKibanaPvlNetworkResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var result: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["Result"] = self.result!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Result") && dict["Result"] != nil {
+            self.result = dict["Result"] as! Bool
+        }
+    }
+}
+
+public class UpdateKibanaPvlNetworkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateKibanaPvlNetworkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateKibanaPvlNetworkResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

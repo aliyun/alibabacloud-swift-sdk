@@ -1887,6 +1887,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableKibanaPvlNetworkWithOptions(_ InstanceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableKibanaPvlNetworkResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableKibanaPvlNetwork",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/actions/disable-kibana-private",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisableKibanaPvlNetworkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableKibanaPvlNetwork(_ InstanceId: String) async throws -> DisableKibanaPvlNetworkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await disableKibanaPvlNetworkWithOptions(InstanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableKibanaPvlNetworkWithOptions(_ InstanceId: String, _ request: EnableKibanaPvlNetworkRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableKibanaPvlNetworkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endpointName)) {
+            body["endpointName"] = request.endpointName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroups)) {
+            body["securityGroups"] = request.securityGroups ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vSwitchIdsZone)) {
+            body["vSwitchIdsZone"] = request.vSwitchIdsZone ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            body["vpcId"] = request.vpcId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableKibanaPvlNetwork",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/actions/enable-kibana-private",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableKibanaPvlNetworkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableKibanaPvlNetwork(_ InstanceId: String, _ request: EnableKibanaPvlNetworkRequest) async throws -> EnableKibanaPvlNetworkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await enableKibanaPvlNetworkWithOptions(InstanceId as! String, request as! EnableKibanaPvlNetworkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func estimatedLogstashRestartTimeWithOptions(_ InstanceId: String, _ request: EstimatedLogstashRestartTimeRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> EstimatedLogstashRestartTimeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -3659,6 +3728,33 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listKibanaPluginsWithOptions(InstanceId as! String, request as! ListKibanaPluginsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKibanaPvlNetworkWithOptions(_ InstanceId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListKibanaPvlNetworkResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListKibanaPvlNetwork",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/actions/get-kibana-private",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListKibanaPvlNetworkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listKibanaPvlNetwork(_ InstanceId: String) async throws -> ListKibanaPvlNetworkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listKibanaPvlNetworkWithOptions(InstanceId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -6119,6 +6215,47 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await updateInstanceSettingsWithOptions(InstanceId as! String, request as! UpdateInstanceSettingsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKibanaPvlNetworkWithOptions(_ InstanceId: String, _ request: UpdateKibanaPvlNetworkRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateKibanaPvlNetworkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.pvlId)) {
+            query["pvlId"] = request.pvlId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.endpointName)) {
+            body["endpointName"] = request.endpointName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.securityGroups)) {
+            body["securityGroups"] = request.securityGroups ?? [];
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateKibanaPvlNetwork",
+            "version": "2017-06-13",
+            "protocol": "HTTPS",
+            "pathname": "/openapi/instances/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(InstanceId) + "/actions/update-kibana-private",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateKibanaPvlNetworkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateKibanaPvlNetwork(_ InstanceId: String, _ request: UpdateKibanaPvlNetworkRequest) async throws -> UpdateKibanaPvlNetworkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateKibanaPvlNetworkWithOptions(InstanceId as! String, request as! UpdateKibanaPvlNetworkRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
