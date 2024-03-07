@@ -79,6 +79,12 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateInstanceShrinkRequest = CreateInstanceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.haResourceSpec)) {
+            request.haResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haResourceSpec, "HaResourceSpec", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.haVSwitchIds)) {
+            request.haVSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haVSwitchIds, "HaVSwitchIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.resourceSpec)) {
             request.resourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceSpec, "ResourceSpec", "json")
         }
@@ -89,6 +95,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.vSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitchIds, "VSwitchIds", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.architectureType)) {
+            body["ArchitectureType"] = request.architectureType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["AutoRenew"] = request.autoRenew!;
         }
@@ -98,8 +107,26 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.duration)) {
             body["Duration"] = request.duration!;
         }
+        if (!TeaUtils.Client.isUnset(request.extra)) {
+            body["Extra"] = request.extra ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ha)) {
+            body["Ha"] = request.ha!;
+        }
+        if (!TeaUtils.Client.isUnset(request.haResourceSpecShrink)) {
+            body["HaResourceSpec"] = request.haResourceSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haVSwitchIdsShrink)) {
+            body["HaVSwitchIds"] = request.haVSwitchIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haZoneId)) {
+            body["HaZoneId"] = request.haZoneId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["InstanceName"] = request.instanceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.monitorType)) {
+            body["MonitorType"] = request.monitorType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pricingCycle)) {
             body["PricingCycle"] = request.pricingCycle ?? "";
@@ -110,11 +137,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.region)) {
             body["Region"] = request.region ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            body["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.resourceSpecShrink)) {
             body["ResourceSpec"] = request.resourceSpecShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.storageShrink)) {
             body["Storage"] = request.storageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchIdsShrink)) {
             body["VSwitchIds"] = request.vSwitchIdsShrink ?? "";
@@ -158,6 +191,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.resourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceSpec, "ResourceSpec", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ha)) {
+            body["Ha"] = request.ha!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
@@ -431,10 +467,28 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ModifyPrepayInstanceSpecShrinkRequest = ModifyPrepayInstanceSpecShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.haResourceSpec)) {
+            request.haResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haResourceSpec, "HaResourceSpec", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.haVSwitchIds)) {
+            request.haVSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haVSwitchIds, "HaVSwitchIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.resourceSpec)) {
             request.resourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceSpec, "ResourceSpec", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ha)) {
+            body["Ha"] = request.ha!;
+        }
+        if (!TeaUtils.Client.isUnset(request.haResourceSpecShrink)) {
+            body["HaResourceSpec"] = request.haResourceSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haVSwitchIdsShrink)) {
+            body["HaVSwitchIds"] = request.haVSwitchIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haZoneId)) {
+            body["HaZoneId"] = request.haZoneId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }
@@ -569,6 +623,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: QueryCreateInstancePriceShrinkRequest = QueryCreateInstancePriceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.haResourceSpec)) {
+            request.haResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haResourceSpec, "HaResourceSpec", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.resourceSpec)) {
             request.resourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceSpec, "ResourceSpec", "json")
         }
@@ -579,6 +636,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.vSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitchIds, "VSwitchIds", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.architectureType)) {
+            body["ArchitectureType"] = request.architectureType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.autoRenew)) {
             body["AutoRenew"] = request.autoRenew!;
         }
@@ -587,6 +647,15 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.duration)) {
             body["Duration"] = request.duration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.extra)) {
+            body["Extra"] = request.extra ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ha)) {
+            body["Ha"] = request.ha!;
+        }
+        if (!TeaUtils.Client.isUnset(request.haResourceSpecShrink)) {
+            body["HaResourceSpec"] = request.haResourceSpecShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["InstanceName"] = request.instanceName ?? "";
@@ -605,6 +674,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.storageShrink)) {
             body["Storage"] = request.storageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
+            body["UsePromotionCode"] = request.usePromotionCode!;
         }
         if (!TeaUtils.Client.isUnset(request.vSwitchIdsShrink)) {
             body["VSwitchIds"] = request.vSwitchIdsShrink ?? "";
@@ -644,10 +716,28 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: QueryModifyInstancePriceShrinkRequest = QueryModifyInstancePriceShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.haResourceSpec)) {
+            request.haResourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haResourceSpec, "HaResourceSpec", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.haVSwitchIds)) {
+            request.haVSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.haVSwitchIds, "HaVSwitchIds", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.resourceSpec)) {
             request.resourceSpecShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceSpec, "ResourceSpec", "json")
         }
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.ha)) {
+            body["Ha"] = request.ha!;
+        }
+        if (!TeaUtils.Client.isUnset(request.haResourceSpecShrink)) {
+            body["HaResourceSpec"] = request.haResourceSpecShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haVSwitchIdsShrink)) {
+            body["HaVSwitchIds"] = request.haVSwitchIdsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.haZoneId)) {
+            body["HaZoneId"] = request.haZoneId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             body["InstanceId"] = request.instanceId ?? "";
         }

@@ -330,6 +330,43 @@ public class ConvertInstanceResponse : Tea.TeaModel {
 }
 
 public class CreateInstanceRequest : Tea.TeaModel {
+    public class HaResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                self.cpu = dict["Cpu"] as! Int32
+            }
+            if dict.keys.contains("MemoryGB") && dict["MemoryGB"] != nil {
+                self.memoryGB = dict["MemoryGB"] as! Int32
+            }
+        }
+    }
     public class ResourceSpec : Tea.TeaModel {
         public var cpu: Int32?
 
@@ -428,13 +465,27 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var architectureType: String?
+
     public var autoRenew: Bool?
 
     public var chargeType: String?
 
     public var duration: Int32?
 
+    public var extra: String?
+
+    public var ha: Bool?
+
+    public var haResourceSpec: CreateInstanceRequest.HaResourceSpec?
+
+    public var haVSwitchIds: [String]?
+
+    public var haZoneId: String?
+
     public var instanceName: String?
+
+    public var monitorType: String?
 
     public var pricingCycle: String?
 
@@ -442,9 +493,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var region: String?
 
+    public var resourceGroupId: String?
+
     public var resourceSpec: CreateInstanceRequest.ResourceSpec?
 
     public var storage: CreateInstanceRequest.Storage?
+
+    public var usePromotionCode: Bool?
 
     public var vSwitchIds: [String]?
 
@@ -462,12 +517,16 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.haResourceSpec?.validate()
         try self.resourceSpec?.validate()
         try self.storage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -477,8 +536,26 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.duration != nil {
             map["Duration"] = self.duration!
         }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpec != nil {
+            map["HaResourceSpec"] = self.haResourceSpec?.toMap()
+        }
+        if self.haVSwitchIds != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIds!
+        }
+        if self.haZoneId != nil {
+            map["HaZoneId"] = self.haZoneId!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.monitorType != nil {
+            map["MonitorType"] = self.monitorType!
         }
         if self.pricingCycle != nil {
             map["PricingCycle"] = self.pricingCycle!
@@ -489,11 +566,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceSpec != nil {
             map["ResourceSpec"] = self.resourceSpec?.toMap()
         }
         if self.storage != nil {
             map["Storage"] = self.storage?.toMap()
+        }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
         }
         if self.vSwitchIds != nil {
             map["VSwitchIds"] = self.vSwitchIds!
@@ -508,6 +591,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
@@ -517,8 +603,28 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("Duration") && dict["Duration"] != nil {
             self.duration = dict["Duration"] as! Int32
         }
+        if dict.keys.contains("Extra") && dict["Extra"] != nil {
+            self.extra = dict["Extra"] as! String
+        }
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            var model = CreateInstanceRequest.HaResourceSpec()
+            model.fromMap(dict["HaResourceSpec"] as! [String: Any])
+            self.haResourceSpec = model
+        }
+        if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+            self.haVSwitchIds = dict["HaVSwitchIds"] as! [String]
+        }
+        if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+            self.haZoneId = dict["HaZoneId"] as! String
+        }
         if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
             self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("MonitorType") && dict["MonitorType"] != nil {
+            self.monitorType = dict["MonitorType"] as! String
         }
         if dict.keys.contains("PricingCycle") && dict["PricingCycle"] != nil {
             self.pricingCycle = dict["PricingCycle"] as! String
@@ -529,6 +635,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceSpec") && dict["ResourceSpec"] != nil {
             var model = CreateInstanceRequest.ResourceSpec()
             model.fromMap(dict["ResourceSpec"] as! [String: Any])
@@ -538,6 +647,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
             var model = CreateInstanceRequest.Storage()
             model.fromMap(dict["Storage"] as! [String: Any])
             self.storage = model
+        }
+        if dict.keys.contains("UsePromotionCode") && dict["UsePromotionCode"] != nil {
+            self.usePromotionCode = dict["UsePromotionCode"] as! Bool
         }
         if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
             self.vSwitchIds = dict["VSwitchIds"] as! [String]
@@ -552,13 +664,27 @@ public class CreateInstanceRequest : Tea.TeaModel {
 }
 
 public class CreateInstanceShrinkRequest : Tea.TeaModel {
+    public var architectureType: String?
+
     public var autoRenew: Bool?
 
     public var chargeType: String?
 
     public var duration: Int32?
 
+    public var extra: String?
+
+    public var ha: Bool?
+
+    public var haResourceSpecShrink: String?
+
+    public var haVSwitchIdsShrink: String?
+
+    public var haZoneId: String?
+
     public var instanceName: String?
+
+    public var monitorType: String?
 
     public var pricingCycle: String?
 
@@ -566,9 +692,13 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public var region: String?
 
+    public var resourceGroupId: String?
+
     public var resourceSpecShrink: String?
 
     public var storageShrink: String?
+
+    public var usePromotionCode: Bool?
 
     public var vSwitchIdsShrink: String?
 
@@ -590,6 +720,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -599,8 +732,26 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.duration != nil {
             map["Duration"] = self.duration!
         }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpecShrink != nil {
+            map["HaResourceSpec"] = self.haResourceSpecShrink!
+        }
+        if self.haVSwitchIdsShrink != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIdsShrink!
+        }
+        if self.haZoneId != nil {
+            map["HaZoneId"] = self.haZoneId!
+        }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
+        }
+        if self.monitorType != nil {
+            map["MonitorType"] = self.monitorType!
         }
         if self.pricingCycle != nil {
             map["PricingCycle"] = self.pricingCycle!
@@ -611,11 +762,17 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceSpecShrink != nil {
             map["ResourceSpec"] = self.resourceSpecShrink!
         }
         if self.storageShrink != nil {
             map["Storage"] = self.storageShrink!
+        }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
         }
         if self.vSwitchIdsShrink != nil {
             map["VSwitchIds"] = self.vSwitchIdsShrink!
@@ -630,6 +787,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
@@ -639,8 +799,26 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Duration") && dict["Duration"] != nil {
             self.duration = dict["Duration"] as! Int32
         }
+        if dict.keys.contains("Extra") && dict["Extra"] != nil {
+            self.extra = dict["Extra"] as! String
+        }
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            self.haResourceSpecShrink = dict["HaResourceSpec"] as! String
+        }
+        if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+            self.haVSwitchIdsShrink = dict["HaVSwitchIds"] as! String
+        }
+        if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+            self.haZoneId = dict["HaZoneId"] as! String
+        }
         if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
             self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("MonitorType") && dict["MonitorType"] != nil {
+            self.monitorType = dict["MonitorType"] as! String
         }
         if dict.keys.contains("PricingCycle") && dict["PricingCycle"] != nil {
             self.pricingCycle = dict["PricingCycle"] as! String
@@ -651,11 +829,17 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceSpec") && dict["ResourceSpec"] != nil {
             self.resourceSpecShrink = dict["ResourceSpec"] as! String
         }
         if dict.keys.contains("Storage") && dict["Storage"] != nil {
             self.storageShrink = dict["Storage"] as! String
+        }
+        if dict.keys.contains("UsePromotionCode") && dict["UsePromotionCode"] != nil {
+            self.usePromotionCode = dict["UsePromotionCode"] as! Bool
         }
         if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
             self.vSwitchIdsShrink = dict["VSwitchIds"] as! String
@@ -842,6 +1026,8 @@ public class CreateNamespaceRequest : Tea.TeaModel {
             }
         }
     }
+    public var ha: Bool?
+
     public var instanceId: String?
 
     public var namespace: String?
@@ -865,6 +1051,9 @@ public class CreateNamespaceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -881,6 +1070,9 @@ public class CreateNamespaceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -899,6 +1091,8 @@ public class CreateNamespaceRequest : Tea.TeaModel {
 }
 
 public class CreateNamespaceShrinkRequest : Tea.TeaModel {
+    public var ha: Bool?
+
     public var instanceId: String?
 
     public var namespace: String?
@@ -921,6 +1115,9 @@ public class CreateNamespaceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -937,6 +1134,9 @@ public class CreateNamespaceShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -1335,6 +1535,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
             }
         }
     }
+    public var architectureType: String?
+
     public var chargeType: String?
 
     public var instanceId: String?
@@ -1344,6 +1546,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var region: String?
+
+    public var resourceGroupId: String?
 
     public var tags: [DescribeInstancesRequest.Tags]?
 
@@ -1361,6 +1565,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
@@ -1376,6 +1583,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tags != nil {
             var tmp : [Any] = []
             for k in self.tags! {
@@ -1387,6 +1597,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
             self.chargeType = dict["ChargeType"] as! String
         }
@@ -1401,6 +1614,9 @@ public class DescribeInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             var tmp : [DescribeInstancesRequest.Tags] = []
@@ -1417,6 +1633,8 @@ public class DescribeInstancesRequest : Tea.TeaModel {
 }
 
 public class DescribeInstancesShrinkRequest : Tea.TeaModel {
+    public var architectureType: String?
+
     public var chargeType: String?
 
     public var instanceId: String?
@@ -1426,6 +1644,8 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
     public var pageSize: Int32?
 
     public var region: String?
+
+    public var resourceGroupId: String?
 
     public var tagsShrink: String?
 
@@ -1443,6 +1663,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.chargeType != nil {
             map["ChargeType"] = self.chargeType!
         }
@@ -1458,6 +1681,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         if self.region != nil {
             map["Region"] = self.region!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.tagsShrink != nil {
             map["Tags"] = self.tagsShrink!
         }
@@ -1465,6 +1691,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
             self.chargeType = dict["ChargeType"] as! String
         }
@@ -1480,6 +1709,9 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             self.tagsShrink = dict["Tags"] as! String
         }
@@ -1488,6 +1720,80 @@ public class DescribeInstancesShrinkRequest : Tea.TeaModel {
 
 public class DescribeInstancesResponseBody : Tea.TeaModel {
     public class Instances : Tea.TeaModel {
+        public class HaResourceSpec : Tea.TeaModel {
+            public var cpu: Int32?
+
+            public var memoryGB: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cpu != nil {
+                    map["Cpu"] = self.cpu!
+                }
+                if self.memoryGB != nil {
+                    map["MemoryGB"] = self.memoryGB!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                    self.cpu = dict["Cpu"] as! Int32
+                }
+                if dict.keys.contains("MemoryGB") && dict["MemoryGB"] != nil {
+                    self.memoryGB = dict["MemoryGB"] as! Int32
+                }
+            }
+        }
+        public class HostAliases : Tea.TeaModel {
+            public var hostNames: [String]?
+
+            public var ip: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.hostNames != nil {
+                    map["HostNames"] = self.hostNames!
+                }
+                if self.ip != nil {
+                    map["Ip"] = self.ip!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("HostNames") && dict["HostNames"] != nil {
+                    self.hostNames = dict["HostNames"] as! [String]
+                }
+                if dict.keys.contains("Ip") && dict["Ip"] != nil {
+                    self.ip = dict["Ip"] as! String
+                }
+            }
+        }
         public class ResourceSpec : Tea.TeaModel {
             public var cpu: Int32?
 
@@ -1623,13 +1929,29 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var architectureType: String?
+
+        public var askClusterId: String?
+
         public var chargeType: String?
 
         public var clusterStatus: String?
 
+        public var ha: Bool?
+
+        public var haResourceSpec: DescribeInstancesResponseBody.Instances.HaResourceSpec?
+
+        public var haVSwitchIds: [String]?
+
+        public var haZoneId: String?
+
+        public var hostAliases: [DescribeInstancesResponseBody.Instances.HostAliases]?
+
         public var instanceId: String?
 
         public var instanceName: String?
+
+        public var monitorType: String?
 
         public var orderState: String?
 
@@ -1638,6 +1960,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         public var resourceCreateTime: Int64?
 
         public var resourceExpiredTime: Int64?
+
+        public var resourceGroupId: String?
 
         public var resourceId: String?
 
@@ -1665,23 +1989,52 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.haResourceSpec?.validate()
             try self.resourceSpec?.validate()
             try self.storage?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.architectureType != nil {
+                map["ArchitectureType"] = self.architectureType!
+            }
+            if self.askClusterId != nil {
+                map["AskClusterId"] = self.askClusterId!
+            }
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
             if self.clusterStatus != nil {
                 map["ClusterStatus"] = self.clusterStatus!
             }
+            if self.ha != nil {
+                map["Ha"] = self.ha!
+            }
+            if self.haResourceSpec != nil {
+                map["HaResourceSpec"] = self.haResourceSpec?.toMap()
+            }
+            if self.haVSwitchIds != nil {
+                map["HaVSwitchIds"] = self.haVSwitchIds!
+            }
+            if self.haZoneId != nil {
+                map["HaZoneId"] = self.haZoneId!
+            }
+            if self.hostAliases != nil {
+                var tmp : [Any] = []
+                for k in self.hostAliases! {
+                    tmp.append(k.toMap())
+                }
+                map["HostAliases"] = tmp
+            }
             if self.instanceId != nil {
                 map["InstanceId"] = self.instanceId!
             }
             if self.instanceName != nil {
                 map["InstanceName"] = self.instanceName!
+            }
+            if self.monitorType != nil {
+                map["MonitorType"] = self.monitorType!
             }
             if self.orderState != nil {
                 map["OrderState"] = self.orderState!
@@ -1694,6 +2047,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if self.resourceExpiredTime != nil {
                 map["ResourceExpiredTime"] = self.resourceExpiredTime!
+            }
+            if self.resourceGroupId != nil {
+                map["ResourceGroupId"] = self.resourceGroupId!
             }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
@@ -1727,17 +2083,51 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+                self.architectureType = dict["ArchitectureType"] as! String
+            }
+            if dict.keys.contains("AskClusterId") && dict["AskClusterId"] != nil {
+                self.askClusterId = dict["AskClusterId"] as! String
+            }
             if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
                 self.chargeType = dict["ChargeType"] as! String
             }
             if dict.keys.contains("ClusterStatus") && dict["ClusterStatus"] != nil {
                 self.clusterStatus = dict["ClusterStatus"] as! String
             }
+            if dict.keys.contains("Ha") && dict["Ha"] != nil {
+                self.ha = dict["Ha"] as! Bool
+            }
+            if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+                var model = DescribeInstancesResponseBody.Instances.HaResourceSpec()
+                model.fromMap(dict["HaResourceSpec"] as! [String: Any])
+                self.haResourceSpec = model
+            }
+            if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+                self.haVSwitchIds = dict["HaVSwitchIds"] as! [String]
+            }
+            if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+                self.haZoneId = dict["HaZoneId"] as! String
+            }
+            if dict.keys.contains("HostAliases") && dict["HostAliases"] != nil {
+                var tmp : [DescribeInstancesResponseBody.Instances.HostAliases] = []
+                for v in dict["HostAliases"] as! [Any] {
+                    var model = DescribeInstancesResponseBody.Instances.HostAliases()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.hostAliases = tmp
+            }
             if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
                 self.instanceId = dict["InstanceId"] as! String
             }
             if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
                 self.instanceName = dict["InstanceName"] as! String
+            }
+            if dict.keys.contains("MonitorType") && dict["MonitorType"] != nil {
+                self.monitorType = dict["MonitorType"] as! String
             }
             if dict.keys.contains("OrderState") && dict["OrderState"] != nil {
                 self.orderState = dict["OrderState"] as! String
@@ -1750,6 +2140,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ResourceExpiredTime") && dict["ResourceExpiredTime"] != nil {
                 self.resourceExpiredTime = dict["ResourceExpiredTime"] as! Int64
+            }
+            if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+                self.resourceGroupId = dict["ResourceGroupId"] as! String
             }
             if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
                 self.resourceId = dict["ResourceId"] as! String
@@ -1965,6 +2358,8 @@ public class DescribeNamespacesRequest : Tea.TeaModel {
             }
         }
     }
+    public var ha: Bool?
+
     public var instanceId: String?
 
     public var namespace: String?
@@ -1991,6 +2386,9 @@ public class DescribeNamespacesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2017,6 +2415,9 @@ public class DescribeNamespacesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -2047,6 +2448,8 @@ public class DescribeNamespacesRequest : Tea.TeaModel {
 }
 
 public class DescribeNamespacesShrinkRequest : Tea.TeaModel {
+    public var ha: Bool?
+
     public var instanceId: String?
 
     public var namespace: String?
@@ -2073,6 +2476,9 @@ public class DescribeNamespacesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2095,6 +2501,9 @@ public class DescribeNamespacesShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -2158,6 +2567,8 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
         public class ResourceUsed : Tea.TeaModel {
             public var cpu: Double?
 
+            public var cu: Double?
+
             public var memoryGB: Double?
 
             public override init() {
@@ -2177,6 +2588,9 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
                 if self.cpu != nil {
                     map["Cpu"] = self.cpu!
                 }
+                if self.cu != nil {
+                    map["Cu"] = self.cu!
+                }
                 if self.memoryGB != nil {
                     map["MemoryGB"] = self.memoryGB!
                 }
@@ -2186,6 +2600,9 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
                     self.cpu = dict["Cpu"] as! Double
+                }
+                if dict.keys.contains("Cu") && dict["Cu"] != nil {
+                    self.cu = dict["Cu"] as! Double
                 }
                 if dict.keys.contains("MemoryGB") && dict["MemoryGB"] != nil {
                     self.memoryGB = dict["MemoryGB"] as! Double
@@ -2233,6 +2650,8 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
 
         public var gmtModified: Int64?
 
+        public var ha: Bool?
+
         public var namespace: String?
 
         public var resourceSpec: DescribeNamespacesResponseBody.Namespaces.ResourceSpec?
@@ -2265,6 +2684,9 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
             if self.gmtModified != nil {
                 map["GmtModified"] = self.gmtModified!
             }
+            if self.ha != nil {
+                map["Ha"] = self.ha!
+            }
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
@@ -2293,6 +2715,9 @@ public class DescribeNamespacesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
                 self.gmtModified = dict["GmtModified"] as! Int64
+            }
+            if dict.keys.contains("Ha") && dict["Ha"] != nil {
+                self.ha = dict["Ha"] as! Bool
             }
             if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
                 self.namespace = dict["Namespace"] as! String
@@ -2638,6 +3063,8 @@ public class DescribeSupportedRegionsResponse : Tea.TeaModel {
 }
 
 public class DescribeSupportedZonesRequest : Tea.TeaModel {
+    public var architectureType: String?
+
     public var region: String?
 
     public override init() {
@@ -2654,6 +3081,9 @@ public class DescribeSupportedZonesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -2661,6 +3091,9 @@ public class DescribeSupportedZonesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
         }
@@ -3082,6 +3515,43 @@ public class ListTagResourcesResponse : Tea.TeaModel {
 }
 
 public class ModifyPrepayInstanceSpecRequest : Tea.TeaModel {
+    public class HaResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                self.cpu = dict["Cpu"] as! Int32
+            }
+            if dict.keys.contains("MemoryGB") && dict["MemoryGB"] != nil {
+                self.memoryGB = dict["MemoryGB"] as! Int32
+            }
+        }
+    }
     public class ResourceSpec : Tea.TeaModel {
         public var cpu: Int32?
 
@@ -3119,6 +3589,14 @@ public class ModifyPrepayInstanceSpecRequest : Tea.TeaModel {
             }
         }
     }
+    public var ha: Bool?
+
+    public var haResourceSpec: ModifyPrepayInstanceSpecRequest.HaResourceSpec?
+
+    public var haVSwitchIds: [String]?
+
+    public var haZoneId: String?
+
     public var instanceId: String?
 
     public var region: String?
@@ -3135,11 +3613,24 @@ public class ModifyPrepayInstanceSpecRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.haResourceSpec?.validate()
         try self.resourceSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpec != nil {
+            map["HaResourceSpec"] = self.haResourceSpec?.toMap()
+        }
+        if self.haVSwitchIds != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIds!
+        }
+        if self.haZoneId != nil {
+            map["HaZoneId"] = self.haZoneId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3153,6 +3644,20 @@ public class ModifyPrepayInstanceSpecRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            var model = ModifyPrepayInstanceSpecRequest.HaResourceSpec()
+            model.fromMap(dict["HaResourceSpec"] as! [String: Any])
+            self.haResourceSpec = model
+        }
+        if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+            self.haVSwitchIds = dict["HaVSwitchIds"] as! [String]
+        }
+        if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+            self.haZoneId = dict["HaZoneId"] as! String
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -3168,6 +3673,14 @@ public class ModifyPrepayInstanceSpecRequest : Tea.TeaModel {
 }
 
 public class ModifyPrepayInstanceSpecShrinkRequest : Tea.TeaModel {
+    public var ha: Bool?
+
+    public var haResourceSpecShrink: String?
+
+    public var haVSwitchIdsShrink: String?
+
+    public var haZoneId: String?
+
     public var instanceId: String?
 
     public var region: String?
@@ -3188,6 +3701,18 @@ public class ModifyPrepayInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpecShrink != nil {
+            map["HaResourceSpec"] = self.haResourceSpecShrink!
+        }
+        if self.haVSwitchIdsShrink != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIdsShrink!
+        }
+        if self.haZoneId != nil {
+            map["HaZoneId"] = self.haZoneId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -3201,6 +3726,18 @@ public class ModifyPrepayInstanceSpecShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            self.haResourceSpecShrink = dict["HaResourceSpec"] as! String
+        }
+        if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+            self.haVSwitchIdsShrink = dict["HaVSwitchIds"] as! String
+        }
+        if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+            self.haZoneId = dict["HaZoneId"] as! String
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -4070,6 +4607,43 @@ public class QueryConvertInstancePriceResponse : Tea.TeaModel {
 }
 
 public class QueryCreateInstancePriceRequest : Tea.TeaModel {
+    public class HaResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                self.cpu = dict["Cpu"] as! Int32
+            }
+            if dict.keys.contains("MemoryGB") && dict["MemoryGB"] != nil {
+                self.memoryGB = dict["MemoryGB"] as! Int32
+            }
+        }
+    }
     public class ResourceSpec : Tea.TeaModel {
         public var cpu: Int32?
 
@@ -4168,11 +4742,19 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
             }
         }
     }
+    public var architectureType: String?
+
     public var autoRenew: Bool?
 
     public var chargeType: String?
 
     public var duration: Int32?
+
+    public var extra: String?
+
+    public var ha: Bool?
+
+    public var haResourceSpec: QueryCreateInstancePriceRequest.HaResourceSpec?
 
     public var instanceName: String?
 
@@ -4185,6 +4767,8 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
     public var resourceSpec: QueryCreateInstancePriceRequest.ResourceSpec?
 
     public var storage: QueryCreateInstancePriceRequest.Storage?
+
+    public var usePromotionCode: Bool?
 
     public var vSwitchIds: [String]?
 
@@ -4202,12 +4786,16 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.haResourceSpec?.validate()
         try self.resourceSpec?.validate()
         try self.storage?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -4216,6 +4804,15 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpec != nil {
+            map["HaResourceSpec"] = self.haResourceSpec?.toMap()
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
@@ -4235,6 +4832,9 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
         if self.storage != nil {
             map["Storage"] = self.storage?.toMap()
         }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
+        }
         if self.vSwitchIds != nil {
             map["VSwitchIds"] = self.vSwitchIds!
         }
@@ -4248,6 +4848,9 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
@@ -4256,6 +4859,17 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Duration") && dict["Duration"] != nil {
             self.duration = dict["Duration"] as! Int32
+        }
+        if dict.keys.contains("Extra") && dict["Extra"] != nil {
+            self.extra = dict["Extra"] as! String
+        }
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            var model = QueryCreateInstancePriceRequest.HaResourceSpec()
+            model.fromMap(dict["HaResourceSpec"] as! [String: Any])
+            self.haResourceSpec = model
         }
         if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
             self.instanceName = dict["InstanceName"] as! String
@@ -4279,6 +4893,9 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
             model.fromMap(dict["Storage"] as! [String: Any])
             self.storage = model
         }
+        if dict.keys.contains("UsePromotionCode") && dict["UsePromotionCode"] != nil {
+            self.usePromotionCode = dict["UsePromotionCode"] as! Bool
+        }
         if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
             self.vSwitchIds = dict["VSwitchIds"] as! [String]
         }
@@ -4292,11 +4909,19 @@ public class QueryCreateInstancePriceRequest : Tea.TeaModel {
 }
 
 public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
+    public var architectureType: String?
+
     public var autoRenew: Bool?
 
     public var chargeType: String?
 
     public var duration: Int32?
+
+    public var extra: String?
+
+    public var ha: Bool?
+
+    public var haResourceSpecShrink: String?
 
     public var instanceName: String?
 
@@ -4309,6 +4934,8 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
     public var resourceSpecShrink: String?
 
     public var storageShrink: String?
+
+    public var usePromotionCode: Bool?
 
     public var vSwitchIdsShrink: String?
 
@@ -4330,6 +4957,9 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.architectureType != nil {
+            map["ArchitectureType"] = self.architectureType!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -4338,6 +4968,15 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
         }
         if self.duration != nil {
             map["Duration"] = self.duration!
+        }
+        if self.extra != nil {
+            map["Extra"] = self.extra!
+        }
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpecShrink != nil {
+            map["HaResourceSpec"] = self.haResourceSpecShrink!
         }
         if self.instanceName != nil {
             map["InstanceName"] = self.instanceName!
@@ -4357,6 +4996,9 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
         if self.storageShrink != nil {
             map["Storage"] = self.storageShrink!
         }
+        if self.usePromotionCode != nil {
+            map["UsePromotionCode"] = self.usePromotionCode!
+        }
         if self.vSwitchIdsShrink != nil {
             map["VSwitchIds"] = self.vSwitchIdsShrink!
         }
@@ -4370,6 +5012,9 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ArchitectureType") && dict["ArchitectureType"] != nil {
+            self.architectureType = dict["ArchitectureType"] as! String
+        }
         if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
             self.autoRenew = dict["AutoRenew"] as! Bool
         }
@@ -4378,6 +5023,15 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Duration") && dict["Duration"] != nil {
             self.duration = dict["Duration"] as! Int32
+        }
+        if dict.keys.contains("Extra") && dict["Extra"] != nil {
+            self.extra = dict["Extra"] as! String
+        }
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            self.haResourceSpecShrink = dict["HaResourceSpec"] as! String
         }
         if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
             self.instanceName = dict["InstanceName"] as! String
@@ -4396,6 +5050,9 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Storage") && dict["Storage"] != nil {
             self.storageShrink = dict["Storage"] as! String
+        }
+        if dict.keys.contains("UsePromotionCode") && dict["UsePromotionCode"] != nil {
+            self.usePromotionCode = dict["UsePromotionCode"] as! Bool
         }
         if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
             self.vSwitchIdsShrink = dict["VSwitchIds"] as! String
@@ -4707,6 +5364,43 @@ public class QueryCreateInstancePriceResponse : Tea.TeaModel {
 }
 
 public class QueryModifyInstancePriceRequest : Tea.TeaModel {
+    public class HaResourceSpec : Tea.TeaModel {
+        public var cpu: Int32?
+
+        public var memoryGB: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cpu != nil {
+                map["Cpu"] = self.cpu!
+            }
+            if self.memoryGB != nil {
+                map["MemoryGB"] = self.memoryGB!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
+                self.cpu = dict["Cpu"] as! Int32
+            }
+            if dict.keys.contains("MemoryGB") && dict["MemoryGB"] != nil {
+                self.memoryGB = dict["MemoryGB"] as! Int32
+            }
+        }
+    }
     public class ResourceSpec : Tea.TeaModel {
         public var cpu: Int32?
 
@@ -4744,6 +5438,14 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
             }
         }
     }
+    public var ha: Bool?
+
+    public var haResourceSpec: QueryModifyInstancePriceRequest.HaResourceSpec?
+
+    public var haVSwitchIds: [String]?
+
+    public var haZoneId: String?
+
     public var instanceId: String?
 
     public var region: String?
@@ -4760,11 +5462,24 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.haResourceSpec?.validate()
         try self.resourceSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpec != nil {
+            map["HaResourceSpec"] = self.haResourceSpec?.toMap()
+        }
+        if self.haVSwitchIds != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIds!
+        }
+        if self.haZoneId != nil {
+            map["HaZoneId"] = self.haZoneId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -4778,6 +5493,20 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            var model = QueryModifyInstancePriceRequest.HaResourceSpec()
+            model.fromMap(dict["HaResourceSpec"] as! [String: Any])
+            self.haResourceSpec = model
+        }
+        if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+            self.haVSwitchIds = dict["HaVSwitchIds"] as! [String]
+        }
+        if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+            self.haZoneId = dict["HaZoneId"] as! String
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
@@ -4793,6 +5522,14 @@ public class QueryModifyInstancePriceRequest : Tea.TeaModel {
 }
 
 public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
+    public var ha: Bool?
+
+    public var haResourceSpecShrink: String?
+
+    public var haVSwitchIdsShrink: String?
+
+    public var haZoneId: String?
+
     public var instanceId: String?
 
     public var region: String?
@@ -4813,6 +5550,18 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ha != nil {
+            map["Ha"] = self.ha!
+        }
+        if self.haResourceSpecShrink != nil {
+            map["HaResourceSpec"] = self.haResourceSpecShrink!
+        }
+        if self.haVSwitchIdsShrink != nil {
+            map["HaVSwitchIds"] = self.haVSwitchIdsShrink!
+        }
+        if self.haZoneId != nil {
+            map["HaZoneId"] = self.haZoneId!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -4826,6 +5575,18 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ha") && dict["Ha"] != nil {
+            self.ha = dict["Ha"] as! Bool
+        }
+        if dict.keys.contains("HaResourceSpec") && dict["HaResourceSpec"] != nil {
+            self.haResourceSpecShrink = dict["HaResourceSpec"] as! String
+        }
+        if dict.keys.contains("HaVSwitchIds") && dict["HaVSwitchIds"] != nil {
+            self.haVSwitchIdsShrink = dict["HaVSwitchIds"] as! String
+        }
+        if dict.keys.contains("HaZoneId") && dict["HaZoneId"] != nil {
+            self.haZoneId = dict["HaZoneId"] as! String
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
