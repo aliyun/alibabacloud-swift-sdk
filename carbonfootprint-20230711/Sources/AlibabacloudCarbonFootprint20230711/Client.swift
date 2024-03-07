@@ -93,17 +93,28 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func queryCarbonTrackWithOptions(_ request: QueryCarbonTrackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCarbonTrackResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func queryCarbonTrackWithOptions(_ tmpReq: QueryCarbonTrackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryCarbonTrackResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: QueryCarbonTrackShrinkRequest = QueryCarbonTrackShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.uids)) {
+            request.uidsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.uids, "Uids", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterRDAccount)) {
+            query["FilterRDAccount"] = request.filterRDAccount!;
         }
         if (!TeaUtils.Client.isUnset(request.group)) {
             query["Group"] = request.group ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.uidsShrink)) {
+            query["Uids"] = request.uidsShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)

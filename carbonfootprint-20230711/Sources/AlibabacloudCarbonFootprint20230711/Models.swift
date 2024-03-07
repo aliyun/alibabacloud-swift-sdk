@@ -394,9 +394,13 @@ public class GetSummaryDataResponse : Tea.TeaModel {
 public class QueryCarbonTrackRequest : Tea.TeaModel {
     public var endTime: String?
 
+    public var filterRDAccount: Int32?
+
     public var group: String?
 
     public var startTime: String?
+
+    public var uids: [String]?
 
     public override init() {
         super.init()
@@ -415,11 +419,17 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.filterRDAccount != nil {
+            map["FilterRDAccount"] = self.filterRDAccount!
+        }
         if self.group != nil {
             map["Group"] = self.group!
         }
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
+        }
+        if self.uids != nil {
+            map["Uids"] = self.uids!
         }
         return map
     }
@@ -428,11 +438,79 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
         }
+        if dict.keys.contains("FilterRDAccount") && dict["FilterRDAccount"] != nil {
+            self.filterRDAccount = dict["FilterRDAccount"] as! Int32
+        }
         if dict.keys.contains("Group") && dict["Group"] != nil {
             self.group = dict["Group"] as! String
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Uids") && dict["Uids"] != nil {
+            self.uids = dict["Uids"] as! [String]
+        }
+    }
+}
+
+public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var filterRDAccount: Int32?
+
+    public var group: String?
+
+    public var startTime: String?
+
+    public var uidsShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.filterRDAccount != nil {
+            map["FilterRDAccount"] = self.filterRDAccount!
+        }
+        if self.group != nil {
+            map["Group"] = self.group!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.uidsShrink != nil {
+            map["Uids"] = self.uidsShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("FilterRDAccount") && dict["FilterRDAccount"] != nil {
+            self.filterRDAccount = dict["FilterRDAccount"] as! Int32
+        }
+        if dict.keys.contains("Group") && dict["Group"] != nil {
+            self.group = dict["Group"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Uids") && dict["Uids"] != nil {
+            self.uidsShrink = dict["Uids"] as! String
         }
     }
 }
