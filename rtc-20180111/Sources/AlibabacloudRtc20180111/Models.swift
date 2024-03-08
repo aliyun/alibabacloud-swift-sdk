@@ -535,8 +535,6 @@ public class AddRecordTemplateResponse : Tea.TeaModel {
 
 public class CreateAppStreamingOutTemplateRequest : Tea.TeaModel {
     public class StreamingOutTemplate : Tea.TeaModel {
-        public var enableVad: Bool?
-
         public var layoutIds: [String]?
 
         public var mediaEncode: Int32?
@@ -557,9 +555,6 @@ public class CreateAppStreamingOutTemplateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.enableVad != nil {
-                map["EnableVad"] = self.enableVad!
-            }
             if self.layoutIds != nil {
                 map["LayoutIds"] = self.layoutIds!
             }
@@ -573,9 +568,6 @@ public class CreateAppStreamingOutTemplateRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EnableVad") && dict["EnableVad"] != nil {
-                self.enableVad = dict["EnableVad"] as! Bool
-            }
             if dict.keys.contains("LayoutIds") && dict["LayoutIds"] != nil {
                 self.layoutIds = dict["LayoutIds"] as! [String]
             }
@@ -2433,8 +2425,6 @@ public class DescribeAppStreamingOutTemplatesResponseBody : Tea.TeaModel {
     public class Templates : Tea.TeaModel {
         public var createTime: String?
 
-        public var enableVad: Bool?
-
         public var layoutIds: [String]?
 
         public var mediaEncode: Int32?
@@ -2460,9 +2450,6 @@ public class DescribeAppStreamingOutTemplatesResponseBody : Tea.TeaModel {
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
-            if self.enableVad != nil {
-                map["EnableVad"] = self.enableVad!
-            }
             if self.layoutIds != nil {
                 map["LayoutIds"] = self.layoutIds!
             }
@@ -2481,9 +2468,6 @@ public class DescribeAppStreamingOutTemplatesResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
-            }
-            if dict.keys.contains("EnableVad") && dict["EnableVad"] != nil {
-                self.enableVad = dict["EnableVad"] as! Bool
             }
             if dict.keys.contains("LayoutIds") && dict["LayoutIds"] != nil {
                 self.layoutIds = dict["LayoutIds"] as! [String]
@@ -6420,123 +6404,6 @@ public class DescribeChannelUsersResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeChannelUsersResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class DescribeChannelsRequest : Tea.TeaModel {
-    public var appId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.appId != nil {
-            map["AppId"] = self.appId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AppId") && dict["AppId"] != nil {
-            self.appId = dict["AppId"] as! String
-        }
-    }
-}
-
-public class DescribeChannelsResponseBody : Tea.TeaModel {
-    public var channelIds: [String]?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.channelIds != nil {
-            map["ChannelIds"] = self.channelIds!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ChannelIds") && dict["ChannelIds"] != nil {
-            self.channelIds = dict["ChannelIds"] as! [String]
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class DescribeChannelsResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DescribeChannelsResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = DescribeChannelsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -15306,8 +15173,6 @@ public class ModifyAppResponse : Tea.TeaModel {
 
 public class ModifyAppStreamingOutTemplateRequest : Tea.TeaModel {
     public class StreamingOutTemplate : Tea.TeaModel {
-        public var enableVad: Bool?
-
         public var layoutIds: [String]?
 
         public var mediaEncode: Int32?
@@ -15330,9 +15195,6 @@ public class ModifyAppStreamingOutTemplateRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.enableVad != nil {
-                map["EnableVad"] = self.enableVad!
-            }
             if self.layoutIds != nil {
                 map["LayoutIds"] = self.layoutIds!
             }
@@ -15349,9 +15211,6 @@ public class ModifyAppStreamingOutTemplateRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("EnableVad") && dict["EnableVad"] != nil {
-                self.enableVad = dict["EnableVad"] as! Bool
-            }
             if dict.keys.contains("LayoutIds") && dict["LayoutIds"] != nil {
                 self.layoutIds = dict["LayoutIds"] as! [String]
             }
@@ -16232,9 +16091,7 @@ public class RemoveUsersResponse : Tea.TeaModel {
 
 public class StartCloudRecordRequest : Tea.TeaModel {
     public class Panes : Tea.TeaModel {
-        public var paneId: String?
-
-        public var source: String?
+        public var paneId: Int32?
 
         public var sourceType: String?
 
@@ -16255,9 +16112,6 @@ public class StartCloudRecordRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
-            if self.source != nil {
-                map["Source"] = self.source!
-            }
             if self.sourceType != nil {
                 map["SourceType"] = self.sourceType!
             }
@@ -16266,10 +16120,7 @@ public class StartCloudRecordRequest : Tea.TeaModel {
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("PaneId") && dict["PaneId"] != nil {
-                self.paneId = dict["PaneId"] as! String
-            }
-            if dict.keys.contains("Source") && dict["Source"] != nil {
-                self.source = dict["Source"] as! String
+                self.paneId = dict["PaneId"] as! Int32
             }
             if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
                 self.sourceType = dict["SourceType"] as! String
