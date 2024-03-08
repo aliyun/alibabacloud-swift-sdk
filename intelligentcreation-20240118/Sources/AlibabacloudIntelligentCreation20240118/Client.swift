@@ -141,6 +141,35 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func copywritingQAV1WithOptions(_ request: CopywritingQAV1Request, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CopywritingQAV1Response {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CopywritingQAV1",
+            "version": "2024-01-18",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/digitalHuman/commands/copywritingQAV1",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CopywritingQAV1Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func copywritingQAV1(_ request: CopywritingQAV1Request) async throws -> CopywritingQAV1Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await copywritingQAV1WithOptions(request as! CopywritingQAV1Request, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func directDeductResourceWithOptions(_ request: DirectDeductResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DirectDeductResourceResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
@@ -340,5 +369,34 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await submitBulletQuestionsWithOptions(request as! SubmitBulletQuestionsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitBulletQuestionsV1WithOptions(_ request: SubmitBulletQuestionsV1Request, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> SubmitBulletQuestionsV1Response {
+        try TeaUtils.Client.validateModel(request)
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SubmitBulletQuestionsV1",
+            "version": "2024-01-18",
+            "protocol": "HTTPS",
+            "pathname": "/yic/yic-console/openService/v1/digitalHuman/commands/submitBulletQuestionsV1",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SubmitBulletQuestionsV1Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func submitBulletQuestionsV1(_ request: SubmitBulletQuestionsV1Request) async throws -> SubmitBulletQuestionsV1Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await submitBulletQuestionsV1WithOptions(request as! SubmitBulletQuestionsV1Request, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
