@@ -400,6 +400,8 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var topNum: Int32?
+
     public var uids: [String]?
 
     public override init() {
@@ -428,6 +430,9 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.topNum != nil {
+            map["TopNum"] = self.topNum!
+        }
         if self.uids != nil {
             map["Uids"] = self.uids!
         }
@@ -447,6 +452,9 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
         }
+        if dict.keys.contains("TopNum") && dict["TopNum"] != nil {
+            self.topNum = dict["TopNum"] as! Int32
+        }
         if dict.keys.contains("Uids") && dict["Uids"] != nil {
             self.uids = dict["Uids"] as! [String]
         }
@@ -461,6 +469,8 @@ public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
     public var group: String?
 
     public var startTime: String?
+
+    public var topNum: Int32?
 
     public var uidsShrink: String?
 
@@ -490,6 +500,9 @@ public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.topNum != nil {
+            map["TopNum"] = self.topNum!
+        }
         if self.uidsShrink != nil {
             map["Uids"] = self.uidsShrink!
         }
@@ -508,6 +521,9 @@ public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("TopNum") && dict["TopNum"] != nil {
+            self.topNum = dict["TopNum"] as! Int32
         }
         if dict.keys.contains("Uids") && dict["Uids"] != nil {
             self.uidsShrink = dict["Uids"] as! String

@@ -113,6 +113,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.startTime)) {
             query["StartTime"] = request.startTime ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.topNum)) {
+            query["TopNum"] = request.topNum!;
+        }
         if (!TeaUtils.Client.isUnset(request.uidsShrink)) {
             query["Uids"] = request.uidsShrink ?? "";
         }

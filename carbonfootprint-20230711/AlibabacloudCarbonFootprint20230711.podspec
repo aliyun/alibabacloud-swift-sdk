@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudCarbonFootprint20230711"
-  spec.version      = "1.0.3"
+  spec.version      = "1.0.4"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud CarbonFootprint (20230711) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/carbonfootprint-20230711" 
