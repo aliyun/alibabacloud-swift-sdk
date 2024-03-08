@@ -4791,6 +4791,251 @@ public class ListVirtualHostsResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateInstanceRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var instanceId: String?
+
+    public var instanceType: String?
+
+    public var maxConnections: Int32?
+
+    public var maxEipTps: Int64?
+
+    public var maxPrivateTps: Int64?
+
+    public var modifyType: String?
+
+    public var queueCapacity: Int32?
+
+    public var serverlessChargeType: String?
+
+    public var storageSize: Int32?
+
+    public var supportEip: Bool?
+
+    public var supportTracing: Bool?
+
+    public var tracingStorageTime: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.maxConnections != nil {
+            map["MaxConnections"] = self.maxConnections!
+        }
+        if self.maxEipTps != nil {
+            map["MaxEipTps"] = self.maxEipTps!
+        }
+        if self.maxPrivateTps != nil {
+            map["MaxPrivateTps"] = self.maxPrivateTps!
+        }
+        if self.modifyType != nil {
+            map["ModifyType"] = self.modifyType!
+        }
+        if self.queueCapacity != nil {
+            map["QueueCapacity"] = self.queueCapacity!
+        }
+        if self.serverlessChargeType != nil {
+            map["ServerlessChargeType"] = self.serverlessChargeType!
+        }
+        if self.storageSize != nil {
+            map["StorageSize"] = self.storageSize!
+        }
+        if self.supportEip != nil {
+            map["SupportEip"] = self.supportEip!
+        }
+        if self.supportTracing != nil {
+            map["SupportTracing"] = self.supportTracing!
+        }
+        if self.tracingStorageTime != nil {
+            map["TracingStorageTime"] = self.tracingStorageTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("MaxConnections") && dict["MaxConnections"] != nil {
+            self.maxConnections = dict["MaxConnections"] as! Int32
+        }
+        if dict.keys.contains("MaxEipTps") && dict["MaxEipTps"] != nil {
+            self.maxEipTps = dict["MaxEipTps"] as! Int64
+        }
+        if dict.keys.contains("MaxPrivateTps") && dict["MaxPrivateTps"] != nil {
+            self.maxPrivateTps = dict["MaxPrivateTps"] as! Int64
+        }
+        if dict.keys.contains("ModifyType") && dict["ModifyType"] != nil {
+            self.modifyType = dict["ModifyType"] as! String
+        }
+        if dict.keys.contains("QueueCapacity") && dict["QueueCapacity"] != nil {
+            self.queueCapacity = dict["QueueCapacity"] as! Int32
+        }
+        if dict.keys.contains("ServerlessChargeType") && dict["ServerlessChargeType"] != nil {
+            self.serverlessChargeType = dict["ServerlessChargeType"] as! String
+        }
+        if dict.keys.contains("StorageSize") && dict["StorageSize"] != nil {
+            self.storageSize = dict["StorageSize"] as! Int32
+        }
+        if dict.keys.contains("SupportEip") && dict["SupportEip"] != nil {
+            self.supportEip = dict["SupportEip"] as! Bool
+        }
+        if dict.keys.contains("SupportTracing") && dict["SupportTracing"] != nil {
+            self.supportTracing = dict["SupportTracing"] as! Bool
+        }
+        if dict.keys.contains("TracingStorageTime") && dict["TracingStorageTime"] != nil {
+            self.tracingStorageTime = dict["TracingStorageTime"] as! Int32
+        }
+    }
+}
+
+public class UpdateInstanceResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Any?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var statusCode: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.statusCode != nil {
+            map["StatusCode"] = self.statusCode!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Any
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("StatusCode") && dict["StatusCode"] != nil {
+            self.statusCode = dict["StatusCode"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class UpdateInstanceResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateInstanceResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateInstanceResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateInstanceNameRequest : Tea.TeaModel {
     public var instanceId: String?
 
