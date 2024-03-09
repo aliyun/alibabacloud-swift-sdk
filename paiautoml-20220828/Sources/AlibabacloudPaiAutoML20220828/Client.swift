@@ -150,6 +150,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listHpoExperimentLogsWithOptions(_ ExperimentId: String, _ request: ListHpoExperimentLogsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHpoExperimentLogsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.logName)) {
+            query["LogName"] = request.logName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
+            query["PageNumber"] = request.pageNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListHpoExperimentLogs",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/logs",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListHpoExperimentLogsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listHpoExperimentLogs(_ ExperimentId: String, _ request: ListHpoExperimentLogsRequest) async throws -> ListHpoExperimentLogsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listHpoExperimentLogsWithOptions(ExperimentId as! String, request as! ListHpoExperimentLogsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listHpoExperimentsWithOptions(_ request: ListHpoExperimentsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHpoExperimentsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -213,6 +252,60 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await listHpoExperimentsWithOptions(request as! ListHpoExperimentsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listHpoTrialCommandsWithOptions(_ ExperimentId: String, _ TrialId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHpoTrialCommandsResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListHpoTrialCommands",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trial/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId) + "/commands",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListHpoTrialCommandsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listHpoTrialCommands(_ ExperimentId: String, _ TrialId: String) async throws -> ListHpoTrialCommandsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listHpoTrialCommandsWithOptions(ExperimentId as! String, TrialId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listHpoTrialLogNamesWithOptions(_ ExperimentId: String, _ TrialId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHpoTrialLogNamesResponse {
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String]
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListHpoTrialLogNames",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/trial/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(TrialId) + "/lognames",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListHpoTrialLogNamesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listHpoTrialLogNames(_ ExperimentId: String, _ TrialId: String) async throws -> ListHpoTrialLogNamesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await listHpoTrialLogNamesWithOptions(ExperimentId as! String, TrialId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -390,5 +483,50 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await stopHpoTrialsWithOptions(ExperimentId as! String, request as! StopHpoTrialsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateHpoExperimentWithOptions(_ ExperimentId: String, _ request: UpdateHpoExperimentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateHpoExperimentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessibility)) {
+            body["Accessibility"] = request.accessibility ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.description_)) {
+            body["Description"] = request.description_ ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.hpoExperimentConfiguration)) {
+            body["HpoExperimentConfiguration"] = request.hpoExperimentConfiguration!;
+        }
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            body["Name"] = request.name ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.workspaceId)) {
+            body["WorkspaceId"] = request.workspaceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateHpoExperiment",
+            "version": "2022-08-28",
+            "protocol": "HTTPS",
+            "pathname": "/api/automl/v1/hpo/experiment/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(ExperimentId) + "/update",
+            "method": "PUT",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateHpoExperimentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateHpoExperiment(_ ExperimentId: String, _ request: UpdateHpoExperimentRequest) async throws -> UpdateHpoExperimentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await updateHpoExperimentWithOptions(ExperimentId as! String, request as! UpdateHpoExperimentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 }
