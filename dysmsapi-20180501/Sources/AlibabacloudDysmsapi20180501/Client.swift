@@ -11,9 +11,11 @@ open class Client : AlibabacloudOpenApi.Client {
         self._endpointRule = "central"
         self._endpointMap = [
             "ap-southeast-1": "dysmsapi.ap-southeast-1.aliyuncs.com",
-            "ap-southeast-5": "dysmsapi-xman.ap-southeast-5.aliyuncs.com",
+            "ap-southeast-5": "dysmsapi.ap-southeast-5.aliyuncs.com",
             "cn-beijing": "dysmsapi-proxy.cn-beijing.aliyuncs.com",
-            "cn-hongkong": "dysmsapi-xman.cn-hongkong.aliyuncs.com"
+            "cn-hongkong": "dysmsapi-xman.cn-hongkong.aliyuncs.com",
+            "eu-central-1": "dysmsapi.eu-central-1.aliyuncs.com",
+            "us-east-1": "dysmsapi.us-east-1.aliyuncs.com"
         ]
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("dysmsapi", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -47,6 +49,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["Type"] = request.type ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validityPeriod)) {
+            query["ValidityPeriod"] = request.validityPeriod!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -153,6 +158,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.to)) {
             query["To"] = request.to ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.validityPeriod)) {
+            query["ValidityPeriod"] = request.validityPeriod!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -195,6 +203,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.to)) {
             query["To"] = request.to ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.validityPeriod)) {
+            query["ValidityPeriod"] = request.validityPeriod!;
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
