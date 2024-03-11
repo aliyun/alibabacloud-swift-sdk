@@ -119,6 +119,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.uidsShrink)) {
             query["Uids"] = request.uidsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.useCode)) {
+            query["UseCode"] = request.useCode!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

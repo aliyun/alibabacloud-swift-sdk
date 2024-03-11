@@ -404,6 +404,8 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
 
     public var uids: [String]?
 
+    public var useCode: Int32?
+
     public override init() {
         super.init()
     }
@@ -436,6 +438,9 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
         if self.uids != nil {
             map["Uids"] = self.uids!
         }
+        if self.useCode != nil {
+            map["UseCode"] = self.useCode!
+        }
         return map
     }
 
@@ -458,6 +463,9 @@ public class QueryCarbonTrackRequest : Tea.TeaModel {
         if dict.keys.contains("Uids") && dict["Uids"] != nil {
             self.uids = dict["Uids"] as! [String]
         }
+        if dict.keys.contains("UseCode") && dict["UseCode"] != nil {
+            self.useCode = dict["UseCode"] as! Int32
+        }
     }
 }
 
@@ -473,6 +481,8 @@ public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
     public var topNum: Int32?
 
     public var uidsShrink: String?
+
+    public var useCode: Int32?
 
     public override init() {
         super.init()
@@ -506,6 +516,9 @@ public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
         if self.uidsShrink != nil {
             map["Uids"] = self.uidsShrink!
         }
+        if self.useCode != nil {
+            map["UseCode"] = self.useCode!
+        }
         return map
     }
 
@@ -527,6 +540,9 @@ public class QueryCarbonTrackShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Uids") && dict["Uids"] != nil {
             self.uidsShrink = dict["Uids"] as! String
+        }
+        if dict.keys.contains("UseCode") && dict["UseCode"] != nil {
+            self.useCode = dict["UseCode"] as! Int32
         }
     }
 }
