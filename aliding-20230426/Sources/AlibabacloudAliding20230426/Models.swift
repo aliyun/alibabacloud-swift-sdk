@@ -10153,7 +10153,7 @@ public class CreateOrgHonorTemplateResponse : Tea.TeaModel {
 
 public class CreatePersonalTodoTaskHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
-        public var userToken: String?
+        public var accountId: String?
 
         public override init() {
             super.init()
@@ -10169,15 +10169,15 @@ public class CreatePersonalTodoTaskHeaders : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
-            if self.userToken != nil {
-                map["userToken"] = self.userToken!
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
             }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("userToken") && dict["userToken"] != nil {
-                self.userToken = dict["userToken"] as! String
+            if dict.keys.contains("accountId") && dict["accountId"] != nil {
+                self.accountId = dict["accountId"] as! String
             }
         }
     }
