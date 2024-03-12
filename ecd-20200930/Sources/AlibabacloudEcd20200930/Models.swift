@@ -5477,7 +5477,13 @@ public class CreateCdsFileShareLinkResponse : Tea.TeaModel {
 }
 
 public class CreateCloudDriveServiceRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var autoRenew: Bool?
+
     public var bizType: Int32?
+
+    public var cdsChargeType: String?
 
     public var cenId: String?
 
@@ -5493,9 +5499,15 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
 
     public var officeSiteType: String?
 
+    public var period: Int64?
+
+    public var periodUnit: String?
+
     public var regionId: String?
 
     public var solutionId: String?
+
+    public var userCount: Int64?
 
     public var userMaxSize: Int64?
 
@@ -5513,8 +5525,17 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
         if self.bizType != nil {
             map["BizType"] = self.bizType!
+        }
+        if self.cdsChargeType != nil {
+            map["CdsChargeType"] = self.cdsChargeType!
         }
         if self.cenId != nil {
             map["CenId"] = self.cenId!
@@ -5537,11 +5558,20 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
         if self.officeSiteType != nil {
             map["OfficeSiteType"] = self.officeSiteType!
         }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.periodUnit != nil {
+            map["PeriodUnit"] = self.periodUnit!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
         if self.solutionId != nil {
             map["SolutionId"] = self.solutionId!
+        }
+        if self.userCount != nil {
+            map["UserCount"] = self.userCount!
         }
         if self.userMaxSize != nil {
             map["UserMaxSize"] = self.userMaxSize!
@@ -5550,8 +5580,17 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
+            self.autoRenew = dict["AutoRenew"] as! Bool
+        }
         if dict.keys.contains("BizType") && dict["BizType"] != nil {
             self.bizType = dict["BizType"] as! Int32
+        }
+        if dict.keys.contains("CdsChargeType") && dict["CdsChargeType"] != nil {
+            self.cdsChargeType = dict["CdsChargeType"] as! String
         }
         if dict.keys.contains("CenId") && dict["CenId"] != nil {
             self.cenId = dict["CenId"] as! String
@@ -5574,11 +5613,20 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
         if dict.keys.contains("OfficeSiteType") && dict["OfficeSiteType"] != nil {
             self.officeSiteType = dict["OfficeSiteType"] as! String
         }
+        if dict.keys.contains("Period") && dict["Period"] != nil {
+            self.period = dict["Period"] as! Int64
+        }
+        if dict.keys.contains("PeriodUnit") && dict["PeriodUnit"] != nil {
+            self.periodUnit = dict["PeriodUnit"] as! String
+        }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
         if dict.keys.contains("SolutionId") && dict["SolutionId"] != nil {
             self.solutionId = dict["SolutionId"] as! String
+        }
+        if dict.keys.contains("UserCount") && dict["UserCount"] != nil {
+            self.userCount = dict["UserCount"] as! Int64
         }
         if dict.keys.contains("UserMaxSize") && dict["UserMaxSize"] != nil {
             self.userMaxSize = dict["UserMaxSize"] as! Int64
@@ -5595,9 +5643,13 @@ public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
 
     public var domainName: String?
 
+    public var errorCode: String?
+
     public var maxSize: String?
 
     public var officeSiteType: String?
+
+    public var orderId: String?
 
     public var requestId: String?
 
@@ -5627,11 +5679,17 @@ public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
         }
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
         if self.maxSize != nil {
             map["MaxSize"] = self.maxSize!
         }
         if self.officeSiteType != nil {
             map["OfficeSiteType"] = self.officeSiteType!
+        }
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -5652,11 +5710,17 @@ public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
         if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
             self.domainName = dict["DomainName"] as! String
         }
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
         if dict.keys.contains("MaxSize") && dict["MaxSize"] != nil {
             self.maxSize = dict["MaxSize"] as! String
         }
         if dict.keys.contains("OfficeSiteType") && dict["OfficeSiteType"] != nil {
             self.officeSiteType = dict["OfficeSiteType"] as! String
+        }
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! String
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String

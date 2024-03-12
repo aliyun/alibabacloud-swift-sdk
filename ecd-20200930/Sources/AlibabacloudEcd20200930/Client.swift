@@ -1407,8 +1407,17 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createCloudDriveServiceWithOptions(_ request: CreateCloudDriveServiceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCloudDriveServiceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.autoPay)) {
+            query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew!;
+        }
         if (!TeaUtils.Client.isUnset(request.bizType)) {
             query["BizType"] = request.bizType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.cdsChargeType)) {
+            query["CdsChargeType"] = request.cdsChargeType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
@@ -1431,11 +1440,20 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.officeSiteType)) {
             query["OfficeSiteType"] = request.officeSiteType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.period)) {
+            query["Period"] = request.period!;
+        }
+        if (!TeaUtils.Client.isUnset(request.periodUnit)) {
+            query["PeriodUnit"] = request.periodUnit ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.solutionId)) {
             query["SolutionId"] = request.solutionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.userCount)) {
+            query["UserCount"] = request.userCount!;
         }
         if (!TeaUtils.Client.isUnset(request.userMaxSize)) {
             query["UserMaxSize"] = request.userMaxSize!;
