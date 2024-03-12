@@ -111769,6 +111769,8 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
 
     public var targetServer: String?
 
+    public var username: String?
+
     public override init() {
         super.init()
     }
@@ -111810,6 +111812,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         if self.targetServer != nil {
             map["TargetServer"] = self.targetServer!
         }
+        if self.username != nil {
+            map["Username"] = self.username!
+        }
         return map
     }
 
@@ -111840,6 +111845,9 @@ public class StartTerminalSessionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("TargetServer") && dict["TargetServer"] != nil {
             self.targetServer = dict["TargetServer"] as! String
+        }
+        if dict.keys.contains("Username") && dict["Username"] != nil {
+            self.username = dict["Username"] as! String
         }
     }
 }
