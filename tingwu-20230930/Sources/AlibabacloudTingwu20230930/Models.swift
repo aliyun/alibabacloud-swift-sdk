@@ -517,6 +517,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
 public class CreateTaskResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var meetingJoinUrl: String?
+
         public var taskId: String?
 
         public var taskKey: String?
@@ -535,6 +537,9 @@ public class CreateTaskResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.meetingJoinUrl != nil {
+                map["MeetingJoinUrl"] = self.meetingJoinUrl!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -545,6 +550,9 @@ public class CreateTaskResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("MeetingJoinUrl") && dict["MeetingJoinUrl"] != nil {
+                self.meetingJoinUrl = dict["MeetingJoinUrl"] as! String
+            }
             if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
                 self.taskId = dict["TaskId"] as! String
             }
