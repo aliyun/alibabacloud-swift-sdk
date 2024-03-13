@@ -3825,6 +3825,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appKeyId)) {
             query["AppKeyId"] = request.appKeyId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.authCode)) {
+            query["AuthCode"] = request.authCode ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.lang)) {
             query["Lang"] = request.lang ?? "";
         }

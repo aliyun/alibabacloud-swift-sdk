@@ -25191,6 +25191,8 @@ public class DescribePdnsAccountSummaryResponse : Tea.TeaModel {
 public class DescribePdnsAppKeyRequest : Tea.TeaModel {
     public var appKeyId: String?
 
+    public var authCode: String?
+
     public var lang: String?
 
     public override init() {
@@ -25210,6 +25212,9 @@ public class DescribePdnsAppKeyRequest : Tea.TeaModel {
         if self.appKeyId != nil {
             map["AppKeyId"] = self.appKeyId!
         }
+        if self.authCode != nil {
+            map["AuthCode"] = self.authCode!
+        }
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
@@ -25219,6 +25224,9 @@ public class DescribePdnsAppKeyRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppKeyId") && dict["AppKeyId"] != nil {
             self.appKeyId = dict["AppKeyId"] as! String
+        }
+        if dict.keys.contains("AuthCode") && dict["AuthCode"] != nil {
+            self.authCode = dict["AuthCode"] as! String
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
@@ -25233,6 +25241,8 @@ public class DescribePdnsAppKeyResponseBody : Tea.TeaModel {
         public var appKeySecret: String?
 
         public var createDate: String?
+
+        public var createTimestamp: Int64?
 
         public var state: String?
 
@@ -25259,6 +25269,9 @@ public class DescribePdnsAppKeyResponseBody : Tea.TeaModel {
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
+            if self.createTimestamp != nil {
+                map["CreateTimestamp"] = self.createTimestamp!
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -25274,6 +25287,9 @@ public class DescribePdnsAppKeyResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateDate") && dict["CreateDate"] != nil {
                 self.createDate = dict["CreateDate"] as! String
+            }
+            if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
+                self.createTimestamp = dict["CreateTimestamp"] as! Int64
             }
             if dict.keys.contains("State") && dict["State"] != nil {
                 self.state = dict["State"] as! String
@@ -25405,6 +25421,8 @@ public class DescribePdnsAppKeysResponseBody : Tea.TeaModel {
 
         public var createDate: String?
 
+        public var createTimestamp: Int64?
+
         public var state: String?
 
         public override init() {
@@ -25427,6 +25445,9 @@ public class DescribePdnsAppKeysResponseBody : Tea.TeaModel {
             if self.createDate != nil {
                 map["CreateDate"] = self.createDate!
             }
+            if self.createTimestamp != nil {
+                map["CreateTimestamp"] = self.createTimestamp!
+            }
             if self.state != nil {
                 map["State"] = self.state!
             }
@@ -25439,6 +25460,9 @@ public class DescribePdnsAppKeysResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CreateDate") && dict["CreateDate"] != nil {
                 self.createDate = dict["CreateDate"] as! String
+            }
+            if dict.keys.contains("CreateTimestamp") && dict["CreateTimestamp"] != nil {
+                self.createTimestamp = dict["CreateTimestamp"] as! Int64
             }
             if dict.keys.contains("State") && dict["State"] != nil {
                 self.state = dict["State"] as! String
