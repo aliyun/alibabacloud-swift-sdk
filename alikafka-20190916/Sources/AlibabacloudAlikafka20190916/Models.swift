@@ -5287,6 +5287,10 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var reservedPublishCapacity: Int32?
+
+            public var reservedSubscribeCapacity: Int32?
+
             public var resourceGroupId: String?
 
             public var saslDomainEndpoint: String?
@@ -5391,6 +5395,12 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
+                }
+                if self.reservedPublishCapacity != nil {
+                    map["ReservedPublishCapacity"] = self.reservedPublishCapacity!
+                }
+                if self.reservedSubscribeCapacity != nil {
+                    map["ReservedSubscribeCapacity"] = self.reservedSubscribeCapacity!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
@@ -5502,6 +5512,12 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ReservedPublishCapacity") && dict["ReservedPublishCapacity"] != nil {
+                    self.reservedPublishCapacity = dict["ReservedPublishCapacity"] as! Int32
+                }
+                if dict.keys.contains("ReservedSubscribeCapacity") && dict["ReservedSubscribeCapacity"] != nil {
+                    self.reservedSubscribeCapacity = dict["ReservedSubscribeCapacity"] as! Int32
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
