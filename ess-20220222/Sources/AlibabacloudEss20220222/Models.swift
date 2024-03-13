@@ -16410,6 +16410,45 @@ public class DescribeScalingActivitiesRequest : Tea.TeaModel {
 
 public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
     public class ScalingActivities : Tea.TeaModel {
+        public class LifecycleHookContext : Tea.TeaModel {
+            public var disableLifecycleHook: Bool?
+
+            public var ignoredLifecycleHookIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.disableLifecycleHook != nil {
+                    map["DisableLifecycleHook"] = self.disableLifecycleHook!
+                }
+                if self.ignoredLifecycleHookIds != nil {
+                    map["IgnoredLifecycleHookIds"] = self.ignoredLifecycleHookIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DisableLifecycleHook") && dict["DisableLifecycleHook"] != nil {
+                    self.disableLifecycleHook = dict["DisableLifecycleHook"] as! Bool
+                }
+                if dict.keys.contains("IgnoredLifecycleHookIds") && dict["IgnoredLifecycleHookIds"] != nil {
+                    self.ignoredLifecycleHookIds = dict["IgnoredLifecycleHookIds"] as! [String]
+                }
+            }
+        }
+        public var activityMetadata: String?
+
         public var attachedCapacity: String?
 
         public var autoCreatedCapacity: String?
@@ -16433,6 +16472,8 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
         public var errorCode: String?
 
         public var errorMessage: String?
+
+        public var lifecycleHookContext: DescribeScalingActivitiesResponseBody.ScalingActivities.LifecycleHookContext?
 
         public var progress: Int32?
 
@@ -16458,6 +16499,10 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
 
         public var totalCapacity: String?
 
+        public var triggerSourceId: String?
+
+        public var triggerSourceType: String?
+
         public override init() {
             super.init()
         }
@@ -16468,10 +16513,14 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.lifecycleHookContext?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.activityMetadata != nil {
+                map["ActivityMetadata"] = self.activityMetadata!
+            }
             if self.attachedCapacity != nil {
                 map["AttachedCapacity"] = self.attachedCapacity!
             }
@@ -16507,6 +16556,9 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
+            }
+            if self.lifecycleHookContext != nil {
+                map["LifecycleHookContext"] = self.lifecycleHookContext?.toMap()
             }
             if self.progress != nil {
                 map["Progress"] = self.progress!
@@ -16544,10 +16596,19 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             if self.totalCapacity != nil {
                 map["TotalCapacity"] = self.totalCapacity!
             }
+            if self.triggerSourceId != nil {
+                map["TriggerSourceId"] = self.triggerSourceId!
+            }
+            if self.triggerSourceType != nil {
+                map["TriggerSourceType"] = self.triggerSourceType!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActivityMetadata") && dict["ActivityMetadata"] != nil {
+                self.activityMetadata = dict["ActivityMetadata"] as! String
+            }
             if dict.keys.contains("AttachedCapacity") && dict["AttachedCapacity"] != nil {
                 self.attachedCapacity = dict["AttachedCapacity"] as! String
             }
@@ -16584,6 +16645,11 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
                 self.errorMessage = dict["ErrorMessage"] as! String
             }
+            if dict.keys.contains("LifecycleHookContext") && dict["LifecycleHookContext"] != nil {
+                var model = DescribeScalingActivitiesResponseBody.ScalingActivities.LifecycleHookContext()
+                model.fromMap(dict["LifecycleHookContext"] as! [String: Any])
+                self.lifecycleHookContext = model
+            }
             if dict.keys.contains("Progress") && dict["Progress"] != nil {
                 self.progress = dict["Progress"] as! Int32
             }
@@ -16619,6 +16685,12 @@ public class DescribeScalingActivitiesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TotalCapacity") && dict["TotalCapacity"] != nil {
                 self.totalCapacity = dict["TotalCapacity"] as! String
+            }
+            if dict.keys.contains("TriggerSourceId") && dict["TriggerSourceId"] != nil {
+                self.triggerSourceId = dict["TriggerSourceId"] as! String
+            }
+            if dict.keys.contains("TriggerSourceType") && dict["TriggerSourceType"] != nil {
+                self.triggerSourceType = dict["TriggerSourceType"] as! String
             }
         }
     }
@@ -32134,6 +32206,43 @@ public class ResumeProcessesResponse : Tea.TeaModel {
 }
 
 public class ScaleWithAdjustmentRequest : Tea.TeaModel {
+    public class LifecycleHookContext : Tea.TeaModel {
+        public var disableLifecycleHook: Bool?
+
+        public var ignoredLifecycleHookIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.disableLifecycleHook != nil {
+                map["DisableLifecycleHook"] = self.disableLifecycleHook!
+            }
+            if self.ignoredLifecycleHookIds != nil {
+                map["IgnoredLifecycleHookIds"] = self.ignoredLifecycleHookIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DisableLifecycleHook") && dict["DisableLifecycleHook"] != nil {
+                self.disableLifecycleHook = dict["DisableLifecycleHook"] as! Bool
+            }
+            if dict.keys.contains("IgnoredLifecycleHookIds") && dict["IgnoredLifecycleHookIds"] != nil {
+                self.ignoredLifecycleHookIds = dict["IgnoredLifecycleHookIds"] as! [String]
+            }
+        }
+    }
     public class Overrides : Tea.TeaModel {
         public class ContainerOverrides : Tea.TeaModel {
             public class EnvironmentVars : Tea.TeaModel {
@@ -32309,11 +32418,15 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
             }
         }
     }
+    public var activityMetadata: String?
+
     public var adjustmentType: String?
 
     public var adjustmentValue: Int32?
 
     public var clientToken: String?
+
+    public var lifecycleHookContext: ScaleWithAdjustmentRequest.LifecycleHookContext?
 
     public var minAdjustmentMagnitude: Int32?
 
@@ -32337,11 +32450,15 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.lifecycleHookContext?.validate()
         try self.overrides?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityMetadata != nil {
+            map["ActivityMetadata"] = self.activityMetadata!
+        }
         if self.adjustmentType != nil {
             map["AdjustmentType"] = self.adjustmentType!
         }
@@ -32350,6 +32467,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.lifecycleHookContext != nil {
+            map["LifecycleHookContext"] = self.lifecycleHookContext?.toMap()
         }
         if self.minAdjustmentMagnitude != nil {
             map["MinAdjustmentMagnitude"] = self.minAdjustmentMagnitude!
@@ -32373,6 +32493,9 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityMetadata") && dict["ActivityMetadata"] != nil {
+            self.activityMetadata = dict["ActivityMetadata"] as! String
+        }
         if dict.keys.contains("AdjustmentType") && dict["AdjustmentType"] != nil {
             self.adjustmentType = dict["AdjustmentType"] as! String
         }
@@ -32381,6 +32504,11 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("LifecycleHookContext") && dict["LifecycleHookContext"] != nil {
+            var model = ScaleWithAdjustmentRequest.LifecycleHookContext()
+            model.fromMap(dict["LifecycleHookContext"] as! [String: Any])
+            self.lifecycleHookContext = model
         }
         if dict.keys.contains("MinAdjustmentMagnitude") && dict["MinAdjustmentMagnitude"] != nil {
             self.minAdjustmentMagnitude = dict["MinAdjustmentMagnitude"] as! Int32
@@ -32406,11 +32534,15 @@ public class ScaleWithAdjustmentRequest : Tea.TeaModel {
 }
 
 public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
+    public var activityMetadata: String?
+
     public var adjustmentType: String?
 
     public var adjustmentValue: Int32?
 
     public var clientToken: String?
+
+    public var lifecycleHookContextShrink: String?
 
     public var minAdjustmentMagnitude: Int32?
 
@@ -32438,6 +32570,9 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.activityMetadata != nil {
+            map["ActivityMetadata"] = self.activityMetadata!
+        }
         if self.adjustmentType != nil {
             map["AdjustmentType"] = self.adjustmentType!
         }
@@ -32446,6 +32581,9 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.lifecycleHookContextShrink != nil {
+            map["LifecycleHookContext"] = self.lifecycleHookContextShrink!
         }
         if self.minAdjustmentMagnitude != nil {
             map["MinAdjustmentMagnitude"] = self.minAdjustmentMagnitude!
@@ -32469,6 +32607,9 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ActivityMetadata") && dict["ActivityMetadata"] != nil {
+            self.activityMetadata = dict["ActivityMetadata"] as! String
+        }
         if dict.keys.contains("AdjustmentType") && dict["AdjustmentType"] != nil {
             self.adjustmentType = dict["AdjustmentType"] as! String
         }
@@ -32477,6 +32618,9 @@ public class ScaleWithAdjustmentShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("LifecycleHookContext") && dict["LifecycleHookContext"] != nil {
+            self.lifecycleHookContextShrink = dict["LifecycleHookContext"] as! String
         }
         if dict.keys.contains("MinAdjustmentMagnitude") && dict["MinAdjustmentMagnitude"] != nil {
             self.minAdjustmentMagnitude = dict["MinAdjustmentMagnitude"] as! Int32

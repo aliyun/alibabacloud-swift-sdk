@@ -4624,10 +4624,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: ScaleWithAdjustmentShrinkRequest = ScaleWithAdjustmentShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.lifecycleHookContext)) {
+            request.lifecycleHookContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.lifecycleHookContext, "LifecycleHookContext", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.overrides)) {
             request.overridesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.overrides, "Overrides", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.activityMetadata)) {
+            query["ActivityMetadata"] = request.activityMetadata ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.adjustmentType)) {
             query["AdjustmentType"] = request.adjustmentType ?? "";
         }
@@ -4636,6 +4642,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lifecycleHookContextShrink)) {
+            query["LifecycleHookContext"] = request.lifecycleHookContextShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.minAdjustmentMagnitude)) {
             query["MinAdjustmentMagnitude"] = request.minAdjustmentMagnitude!;
