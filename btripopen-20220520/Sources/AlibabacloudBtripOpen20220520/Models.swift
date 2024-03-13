@@ -73462,6 +73462,8 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
 
             public var itineraryId: String?
 
+            public var occupantType: Int32?
+
             public var projectCode: String?
 
             public var projectId: Int64?
@@ -73509,6 +73511,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 if self.itineraryId != nil {
                     map["itinerary_id"] = self.itineraryId!
                 }
+                if self.occupantType != nil {
+                    map["occupant_type"] = self.occupantType!
+                }
                 if self.projectCode != nil {
                     map["project_code"] = self.projectCode!
                 }
@@ -73554,6 +73559,9 @@ public class HotelOrderQueryResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("itinerary_id") && dict["itinerary_id"] != nil {
                     self.itineraryId = dict["itinerary_id"] as! String
+                }
+                if dict.keys.contains("occupant_type") && dict["occupant_type"] != nil {
+                    self.occupantType = dict["occupant_type"] as! Int32
                 }
                 if dict.keys.contains("project_code") && dict["project_code"] != nil {
                     self.projectCode = dict["project_code"] as! String
