@@ -20883,6 +20883,35 @@ public class DescribeDynamicTagRuleListResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class TagValueBlacklist : Tea.TeaModel {
+                public var tagValueBlacklist: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.tagValueBlacklist != nil {
+                        map["TagValueBlacklist"] = self.tagValueBlacklist!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("TagValueBlacklist") && dict["TagValueBlacklist"] != nil {
+                        self.tagValueBlacklist = dict["TagValueBlacklist"] as! [String]
+                    }
+                }
+            }
             public class TemplateIdList : Tea.TeaModel {
                 public var templateIdList: [String]?
 
@@ -20926,6 +20955,8 @@ public class DescribeDynamicTagRuleListResponseBody : Tea.TeaModel {
 
             public var tagKey: String?
 
+            public var tagValueBlacklist: DescribeDynamicTagRuleListResponseBody.TagGroupList.TagGroup.TagValueBlacklist?
+
             public var templateIdList: DescribeDynamicTagRuleListResponseBody.TagGroupList.TagGroup.TemplateIdList?
 
             public override init() {
@@ -20940,6 +20971,7 @@ public class DescribeDynamicTagRuleListResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.contactGroupList?.validate()
                 try self.matchExpress?.validate()
+                try self.tagValueBlacklist?.validate()
                 try self.templateIdList?.validate()
             }
 
@@ -20965,6 +20997,9 @@ public class DescribeDynamicTagRuleListResponseBody : Tea.TeaModel {
                 }
                 if self.tagKey != nil {
                     map["TagKey"] = self.tagKey!
+                }
+                if self.tagValueBlacklist != nil {
+                    map["TagValueBlacklist"] = self.tagValueBlacklist?.toMap()
                 }
                 if self.templateIdList != nil {
                     map["TemplateIdList"] = self.templateIdList?.toMap()
@@ -20997,6 +21032,11 @@ public class DescribeDynamicTagRuleListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
                     self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValueBlacklist") && dict["TagValueBlacklist"] != nil {
+                    var model = DescribeDynamicTagRuleListResponseBody.TagGroupList.TagGroup.TagValueBlacklist()
+                    model.fromMap(dict["TagValueBlacklist"] as! [String: Any])
+                    self.tagValueBlacklist = model
                 }
                 if dict.keys.contains("TemplateIdList") && dict["TemplateIdList"] != nil {
                     var model = DescribeDynamicTagRuleListResponseBody.TagGroupList.TagGroup.TemplateIdList()
