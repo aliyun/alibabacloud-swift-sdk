@@ -42343,6 +42343,8 @@ public class RenewNetworkPackagesResponse : Tea.TeaModel {
 public class ResetDesktopsRequest : Tea.TeaModel {
     public var desktopGroupId: String?
 
+    public var desktopGroupIds: [String]?
+
     public var desktopId: [String]?
 
     public var imageId: String?
@@ -42350,6 +42352,8 @@ public class ResetDesktopsRequest : Tea.TeaModel {
     public var payType: String?
 
     public var regionId: String?
+
+    public var resetScope: String?
 
     public var resetType: String?
 
@@ -42370,6 +42374,9 @@ public class ResetDesktopsRequest : Tea.TeaModel {
         if self.desktopGroupId != nil {
             map["DesktopGroupId"] = self.desktopGroupId!
         }
+        if self.desktopGroupIds != nil {
+            map["DesktopGroupIds"] = self.desktopGroupIds!
+        }
         if self.desktopId != nil {
             map["DesktopId"] = self.desktopId!
         }
@@ -42382,6 +42389,9 @@ public class ResetDesktopsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resetScope != nil {
+            map["ResetScope"] = self.resetScope!
+        }
         if self.resetType != nil {
             map["ResetType"] = self.resetType!
         }
@@ -42391,6 +42401,9 @@ public class ResetDesktopsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DesktopGroupId") && dict["DesktopGroupId"] != nil {
             self.desktopGroupId = dict["DesktopGroupId"] as! String
+        }
+        if dict.keys.contains("DesktopGroupIds") && dict["DesktopGroupIds"] != nil {
+            self.desktopGroupIds = dict["DesktopGroupIds"] as! [String]
         }
         if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
             self.desktopId = dict["DesktopId"] as! [String]
@@ -42403,6 +42416,9 @@ public class ResetDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResetScope") && dict["ResetScope"] != nil {
+            self.resetScope = dict["ResetScope"] as! String
         }
         if dict.keys.contains("ResetType") && dict["ResetType"] != nil {
             self.resetType = dict["ResetType"] as! String
