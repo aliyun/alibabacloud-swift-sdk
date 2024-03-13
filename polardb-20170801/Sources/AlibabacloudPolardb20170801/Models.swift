@@ -15502,6 +15502,8 @@ public class DescribeDBNodePerformanceRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var interval: String?
+
     public var key: String?
 
     public var startTime: String?
@@ -15529,6 +15531,9 @@ public class DescribeDBNodePerformanceRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
         if self.key != nil {
             map["Key"] = self.key!
         }
@@ -15547,6 +15552,9 @@ public class DescribeDBNodePerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! String
         }
         if dict.keys.contains("Key") && dict["Key"] != nil {
             self.key = dict["Key"] as! String
@@ -16220,6 +16228,8 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
 
     public var endTime: String?
 
+    public var interval: String?
+
     public var key: String?
 
     public var startTime: String?
@@ -16247,6 +16257,9 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
+        if self.interval != nil {
+            map["Interval"] = self.interval!
+        }
         if self.key != nil {
             map["Key"] = self.key!
         }
@@ -16265,6 +16278,9 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Interval") && dict["Interval"] != nil {
+            self.interval = dict["Interval"] as! String
         }
         if dict.keys.contains("Key") && dict["Key"] != nil {
             self.key = dict["Key"] as! String
@@ -25521,6 +25537,8 @@ public class ModifyAccountPasswordRequest : Tea.TeaModel {
 
     public var ownerId: Int64?
 
+    public var passwordType: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -25554,6 +25572,9 @@ public class ModifyAccountPasswordRequest : Tea.TeaModel {
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
         }
+        if self.passwordType != nil {
+            map["PasswordType"] = self.passwordType!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -25578,6 +25599,9 @@ public class ModifyAccountPasswordRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PasswordType") && dict["PasswordType"] != nil {
+            self.passwordType = dict["PasswordType"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
