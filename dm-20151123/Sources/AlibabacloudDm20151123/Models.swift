@@ -7585,6 +7585,8 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
 
             public var status: Int32?
 
+            public var subject: String?
+
             public var toAddress: String?
 
             public var utcLastUpdateTime: String?
@@ -7615,6 +7617,9 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
+                if self.subject != nil {
+                    map["Subject"] = self.subject!
+                }
                 if self.toAddress != nil {
                     map["ToAddress"] = self.toAddress!
                 }
@@ -7636,6 +7641,9 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! Int32
+                }
+                if dict.keys.contains("Subject") && dict["Subject"] != nil {
+                    self.subject = dict["Subject"] as! String
                 }
                 if dict.keys.contains("ToAddress") && dict["ToAddress"] != nil {
                     self.toAddress = dict["ToAddress"] as! String
