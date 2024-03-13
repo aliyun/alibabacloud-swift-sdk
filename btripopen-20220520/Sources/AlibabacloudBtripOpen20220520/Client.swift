@@ -6012,6 +6012,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isvName)) {
             query["isv_name"] = request.isvName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["language"] = request.language ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.needShareFlight)) {
             query["need_share_flight"] = request.needShareFlight!;
         }
@@ -6085,6 +6088,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.isvName)) {
             query["isv_name"] = request.isvName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["language"] = request.language ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.supplierCode)) {
             query["supplier_code"] = request.supplierCode ?? "";
         }
@@ -6147,6 +6153,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.isvName)) {
             query["isv_name"] = request.isvName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.language)) {
+            query["language"] = request.language ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.needShareFlight)) {
             query["need_share_flight"] = request.needShareFlight!;

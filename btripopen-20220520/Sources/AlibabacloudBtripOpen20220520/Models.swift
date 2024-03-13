@@ -83738,6 +83738,8 @@ public class IntlFlightListingSearchRequest : Tea.TeaModel {
 
     public var isvName: String?
 
+    public var language: String?
+
     public var needShareFlight: Bool?
 
     public var outWheelSearch: Bool?
@@ -83784,6 +83786,9 @@ public class IntlFlightListingSearchRequest : Tea.TeaModel {
         }
         if self.isvName != nil {
             map["isv_name"] = self.isvName!
+        }
+        if self.language != nil {
+            map["language"] = self.language!
         }
         if self.needShareFlight != nil {
             map["need_share_flight"] = self.needShareFlight!
@@ -83838,6 +83843,9 @@ public class IntlFlightListingSearchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
             self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("language") && dict["language"] != nil {
+            self.language = dict["language"] as! String
         }
         if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
             self.needShareFlight = dict["need_share_flight"] as! Bool
@@ -83896,6 +83904,8 @@ public class IntlFlightListingSearchShrinkRequest : Tea.TeaModel {
 
     public var isvName: String?
 
+    public var language: String?
+
     public var needShareFlight: Bool?
 
     public var outWheelSearch: Bool?
@@ -83943,6 +83953,9 @@ public class IntlFlightListingSearchShrinkRequest : Tea.TeaModel {
         if self.isvName != nil {
             map["isv_name"] = self.isvName!
         }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
         if self.needShareFlight != nil {
             map["need_share_flight"] = self.needShareFlight!
         }
@@ -83988,6 +84001,9 @@ public class IntlFlightListingSearchShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
             self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("language") && dict["language"] != nil {
+            self.language = dict["language"] as! String
         }
         if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
             self.needShareFlight = dict["need_share_flight"] as! Bool
@@ -85118,6 +85134,8 @@ public class IntlFlightOtaItemDetailRequest : Tea.TeaModel {
 
     public var isvName: String?
 
+    public var language: String?
+
     public var supplierCode: String?
 
     public override init() {
@@ -85143,6 +85161,9 @@ public class IntlFlightOtaItemDetailRequest : Tea.TeaModel {
         if self.isvName != nil {
             map["isv_name"] = self.isvName!
         }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
         if self.supplierCode != nil {
             map["supplier_code"] = self.supplierCode!
         }
@@ -85158,6 +85179,9 @@ public class IntlFlightOtaItemDetailRequest : Tea.TeaModel {
         }
         if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
             self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("language") && dict["language"] != nil {
+            self.language = dict["language"] as! String
         }
         if dict.keys.contains("supplier_code") && dict["supplier_code"] != nil {
             self.supplierCode = dict["supplier_code"] as! String
@@ -87001,6 +87025,8 @@ public class IntlFlightOtaSearchRequest : Tea.TeaModel {
 
     public var isvName: String?
 
+    public var language: String?
+
     public var needShareFlight: Bool?
 
     public var searchJourneys: [IntlFlightOtaSearchRequest.SearchJourneys]?
@@ -87039,6 +87065,9 @@ public class IntlFlightOtaSearchRequest : Tea.TeaModel {
         }
         if self.isvName != nil {
             map["isv_name"] = self.isvName!
+        }
+        if self.language != nil {
+            map["language"] = self.language!
         }
         if self.needShareFlight != nil {
             map["need_share_flight"] = self.needShareFlight!
@@ -87081,6 +87110,9 @@ public class IntlFlightOtaSearchRequest : Tea.TeaModel {
         }
         if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
             self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("language") && dict["language"] != nil {
+            self.language = dict["language"] as! String
         }
         if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
             self.needShareFlight = dict["need_share_flight"] as! Bool
@@ -87127,6 +87159,8 @@ public class IntlFlightOtaSearchShrinkRequest : Tea.TeaModel {
 
     public var isvName: String?
 
+    public var language: String?
+
     public var needShareFlight: Bool?
 
     public var searchJourneysShrink: String?
@@ -87166,6 +87200,9 @@ public class IntlFlightOtaSearchShrinkRequest : Tea.TeaModel {
         if self.isvName != nil {
             map["isv_name"] = self.isvName!
         }
+        if self.language != nil {
+            map["language"] = self.language!
+        }
         if self.needShareFlight != nil {
             map["need_share_flight"] = self.needShareFlight!
         }
@@ -87199,6 +87236,9 @@ public class IntlFlightOtaSearchShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("isv_name") && dict["isv_name"] != nil {
             self.isvName = dict["isv_name"] as! String
+        }
+        if dict.keys.contains("language") && dict["language"] != nil {
+            self.language = dict["language"] as! String
         }
         if dict.keys.contains("need_share_flight") && dict["need_share_flight"] != nil {
             self.needShareFlight = dict["need_share_flight"] as! Bool
