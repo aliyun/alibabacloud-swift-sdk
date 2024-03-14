@@ -14600,6 +14600,8 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
 
                 public var currency: String?
 
+                public var extendInfos: [String: String]?
+
                 public var instanceIDs: String?
 
                 public var operator_: String?
@@ -14672,6 +14674,9 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                     }
                     if self.currency != nil {
                         map["Currency"] = self.currency!
+                    }
+                    if self.extendInfos != nil {
+                        map["ExtendInfos"] = self.extendInfos!
                     }
                     if self.instanceIDs != nil {
                         map["InstanceIDs"] = self.instanceIDs!
@@ -14757,6 +14762,9 @@ public class GetOrderDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Currency") && dict["Currency"] != nil {
                         self.currency = dict["Currency"] as! String
+                    }
+                    if dict.keys.contains("ExtendInfos") && dict["ExtendInfos"] != nil {
+                        self.extendInfos = dict["ExtendInfos"] as! [String: String]
                     }
                     if dict.keys.contains("InstanceIDs") && dict["InstanceIDs"] != nil {
                         self.instanceIDs = dict["InstanceIDs"] as! String
