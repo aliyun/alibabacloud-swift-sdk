@@ -2306,6 +2306,8 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
 
         public var beforeDate: Int64?
 
+        public var caCertChain: String?
+
         public var certIssuedCount: Int64?
 
         public var certRemainingCount: Int64?
@@ -2374,6 +2376,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if self.beforeDate != nil {
                 map["BeforeDate"] = self.beforeDate!
+            }
+            if self.caCertChain != nil {
+                map["CaCertChain"] = self.caCertChain!
             }
             if self.certIssuedCount != nil {
                 map["CertIssuedCount"] = self.certIssuedCount!
@@ -2456,6 +2461,9 @@ public class DescribeCACertificateResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("BeforeDate") && dict["BeforeDate"] != nil {
                 self.beforeDate = dict["BeforeDate"] as! Int64
+            }
+            if dict.keys.contains("CaCertChain") && dict["CaCertChain"] != nil {
+                self.caCertChain = dict["CaCertChain"] as! String
             }
             if dict.keys.contains("CertIssuedCount") && dict["CertIssuedCount"] != nil {
                 self.certIssuedCount = dict["CertIssuedCount"] as! Int64
