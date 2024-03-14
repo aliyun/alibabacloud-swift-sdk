@@ -11281,11 +11281,15 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
                 }
             }
         }
+        public var canaryModel: Int32?
+
         public var conditions: [CreateOrUpdateSwimmingLaneRequest.GatewaySwimmingLaneRouteJson.Conditions]?
 
         public var gatewayId: Int64?
 
         public var gatewayUniqueId: String?
+
+        public var percentage: Int32?
 
         public var routeIdList: [Int64]?
 
@@ -11303,6 +11307,9 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.canaryModel != nil {
+                map["CanaryModel"] = self.canaryModel!
+            }
             if self.conditions != nil {
                 var tmp : [Any] = []
                 for k in self.conditions! {
@@ -11316,6 +11323,9 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
             if self.gatewayUniqueId != nil {
                 map["GatewayUniqueId"] = self.gatewayUniqueId!
             }
+            if self.percentage != nil {
+                map["Percentage"] = self.percentage!
+            }
             if self.routeIdList != nil {
                 map["RouteIdList"] = self.routeIdList!
             }
@@ -11323,6 +11333,9 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CanaryModel") && dict["CanaryModel"] != nil {
+                self.canaryModel = dict["CanaryModel"] as! Int32
+            }
             if dict.keys.contains("Conditions") && dict["Conditions"] != nil {
                 var tmp : [CreateOrUpdateSwimmingLaneRequest.GatewaySwimmingLaneRouteJson.Conditions] = []
                 for v in dict["Conditions"] as! [Any] {
@@ -11339,6 +11352,9 @@ public class CreateOrUpdateSwimmingLaneRequest : Tea.TeaModel {
             }
             if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
                 self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("Percentage") && dict["Percentage"] != nil {
+                self.percentage = dict["Percentage"] as! Int32
             }
             if dict.keys.contains("RouteIdList") && dict["RouteIdList"] != nil {
                 self.routeIdList = dict["RouteIdList"] as! [Int64]
@@ -12211,6 +12227,8 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
 
     public var appIds: String?
 
+    public var canaryModel: Int32?
+
     public var dbGrayEnable: Bool?
 
     public var entryApp: String?
@@ -12225,9 +12243,13 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
 
     public var namespace: String?
 
+    public var paths: [String]?
+
     public var recordCanaryDetail: Bool?
 
     public var region: String?
+
+    public var routeIds: [Int64]?
 
     public var status: Int32?
 
@@ -12251,6 +12273,9 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
         if self.appIds != nil {
             map["AppIds"] = self.appIds!
         }
+        if self.canaryModel != nil {
+            map["CanaryModel"] = self.canaryModel!
+        }
         if self.dbGrayEnable != nil {
             map["DbGrayEnable"] = self.dbGrayEnable!
         }
@@ -12272,11 +12297,17 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
         if self.namespace != nil {
             map["Namespace"] = self.namespace!
         }
+        if self.paths != nil {
+            map["Paths"] = self.paths!
+        }
         if self.recordCanaryDetail != nil {
             map["RecordCanaryDetail"] = self.recordCanaryDetail!
         }
         if self.region != nil {
             map["Region"] = self.region!
+        }
+        if self.routeIds != nil {
+            map["RouteIds"] = self.routeIds!
         }
         if self.status != nil {
             map["Status"] = self.status!
@@ -12290,6 +12321,9 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AppIds") && dict["AppIds"] != nil {
             self.appIds = dict["AppIds"] as! String
+        }
+        if dict.keys.contains("CanaryModel") && dict["CanaryModel"] != nil {
+            self.canaryModel = dict["CanaryModel"] as! Int32
         }
         if dict.keys.contains("DbGrayEnable") && dict["DbGrayEnable"] != nil {
             self.dbGrayEnable = dict["DbGrayEnable"] as! Bool
@@ -12312,11 +12346,159 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
         if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
             self.namespace = dict["Namespace"] as! String
         }
+        if dict.keys.contains("Paths") && dict["Paths"] != nil {
+            self.paths = dict["Paths"] as! [String]
+        }
         if dict.keys.contains("RecordCanaryDetail") && dict["RecordCanaryDetail"] != nil {
             self.recordCanaryDetail = dict["RecordCanaryDetail"] as! Bool
         }
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("RouteIds") && dict["RouteIds"] != nil {
+            self.routeIds = dict["RouteIds"] as! [Int64]
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+    }
+}
+
+public class CreateOrUpdateSwimmingLaneGroupShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appIds: String?
+
+    public var canaryModel: Int32?
+
+    public var dbGrayEnable: Bool?
+
+    public var entryApp: String?
+
+    public var id: Int64?
+
+    public var messageQueueFilterSide: String?
+
+    public var messageQueueGrayEnable: Bool?
+
+    public var name: String?
+
+    public var namespace: String?
+
+    public var pathsShrink: String?
+
+    public var recordCanaryDetail: Bool?
+
+    public var region: String?
+
+    public var routeIdsShrink: String?
+
+    public var status: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appIds != nil {
+            map["AppIds"] = self.appIds!
+        }
+        if self.canaryModel != nil {
+            map["CanaryModel"] = self.canaryModel!
+        }
+        if self.dbGrayEnable != nil {
+            map["DbGrayEnable"] = self.dbGrayEnable!
+        }
+        if self.entryApp != nil {
+            map["EntryApp"] = self.entryApp!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.messageQueueFilterSide != nil {
+            map["MessageQueueFilterSide"] = self.messageQueueFilterSide!
+        }
+        if self.messageQueueGrayEnable != nil {
+            map["MessageQueueGrayEnable"] = self.messageQueueGrayEnable!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.pathsShrink != nil {
+            map["Paths"] = self.pathsShrink!
+        }
+        if self.recordCanaryDetail != nil {
+            map["RecordCanaryDetail"] = self.recordCanaryDetail!
+        }
+        if self.region != nil {
+            map["Region"] = self.region!
+        }
+        if self.routeIdsShrink != nil {
+            map["RouteIds"] = self.routeIdsShrink!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppIds") && dict["AppIds"] != nil {
+            self.appIds = dict["AppIds"] as! String
+        }
+        if dict.keys.contains("CanaryModel") && dict["CanaryModel"] != nil {
+            self.canaryModel = dict["CanaryModel"] as! Int32
+        }
+        if dict.keys.contains("DbGrayEnable") && dict["DbGrayEnable"] != nil {
+            self.dbGrayEnable = dict["DbGrayEnable"] as! Bool
+        }
+        if dict.keys.contains("EntryApp") && dict["EntryApp"] != nil {
+            self.entryApp = dict["EntryApp"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("MessageQueueFilterSide") && dict["MessageQueueFilterSide"] != nil {
+            self.messageQueueFilterSide = dict["MessageQueueFilterSide"] as! String
+        }
+        if dict.keys.contains("MessageQueueGrayEnable") && dict["MessageQueueGrayEnable"] != nil {
+            self.messageQueueGrayEnable = dict["MessageQueueGrayEnable"] as! Bool
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("Paths") && dict["Paths"] != nil {
+            self.pathsShrink = dict["Paths"] as! String
+        }
+        if dict.keys.contains("RecordCanaryDetail") && dict["RecordCanaryDetail"] != nil {
+            self.recordCanaryDetail = dict["RecordCanaryDetail"] as! Bool
+        }
+        if dict.keys.contains("Region") && dict["Region"] != nil {
+            self.region = dict["Region"] as! String
+        }
+        if dict.keys.contains("RouteIds") && dict["RouteIds"] != nil {
+            self.routeIdsShrink = dict["RouteIds"] as! String
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! Int32
@@ -12327,6 +12509,8 @@ public class CreateOrUpdateSwimmingLaneGroupRequest : Tea.TeaModel {
 public class CreateOrUpdateSwimmingLaneGroupResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var appIds: String?
+
+        public var canaryModel: Int32?
 
         public var dbGrayEnable: String?
 
@@ -12341,6 +12525,8 @@ public class CreateOrUpdateSwimmingLaneGroupResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var namespace: String?
+
+        public var paths: String?
 
         public var recordCanaryDetail: Bool?
 
@@ -12365,6 +12551,9 @@ public class CreateOrUpdateSwimmingLaneGroupResponseBody : Tea.TeaModel {
             if self.appIds != nil {
                 map["AppIds"] = self.appIds!
             }
+            if self.canaryModel != nil {
+                map["CanaryModel"] = self.canaryModel!
+            }
             if self.dbGrayEnable != nil {
                 map["DbGrayEnable"] = self.dbGrayEnable!
             }
@@ -12386,6 +12575,9 @@ public class CreateOrUpdateSwimmingLaneGroupResponseBody : Tea.TeaModel {
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
+            if self.paths != nil {
+                map["Paths"] = self.paths!
+            }
             if self.recordCanaryDetail != nil {
                 map["RecordCanaryDetail"] = self.recordCanaryDetail!
             }
@@ -12401,6 +12593,9 @@ public class CreateOrUpdateSwimmingLaneGroupResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AppIds") && dict["AppIds"] != nil {
                 self.appIds = dict["AppIds"] as! String
+            }
+            if dict.keys.contains("CanaryModel") && dict["CanaryModel"] != nil {
+                self.canaryModel = dict["CanaryModel"] as! Int32
             }
             if dict.keys.contains("DbGrayEnable") && dict["DbGrayEnable"] != nil {
                 self.dbGrayEnable = dict["DbGrayEnable"] as! String
@@ -12422,6 +12617,9 @@ public class CreateOrUpdateSwimmingLaneGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
                 self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("Paths") && dict["Paths"] != nil {
+                self.paths = dict["Paths"] as! String
             }
             if dict.keys.contains("RecordCanaryDetail") && dict["RecordCanaryDetail"] != nil {
                 self.recordCanaryDetail = dict["RecordCanaryDetail"] as! Bool
@@ -50034,7 +50232,143 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class GatewaySwimmingLaneRoute : Tea.TeaModel {
+            public class Conditions : Tea.TeaModel {
+                public var cond: String?
+
+                public var name: String?
+
+                public var type: String?
+
+                public var value: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.cond != nil {
+                        map["Cond"] = self.cond!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    if self.value != nil {
+                        map["Value"] = self.value!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Cond") && dict["Cond"] != nil {
+                        self.cond = dict["Cond"] as! String
+                    }
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Type") && dict["Type"] != nil {
+                        self.type = dict["Type"] as! String
+                    }
+                    if dict.keys.contains("Value") && dict["Value"] != nil {
+                        self.value = dict["Value"] as! String
+                    }
+                }
+            }
+            public var canaryModel: Int32?
+
+            public var conditions: [QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute.Conditions]?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var percentage: Int32?
+
+            public var routeIdList: [Int64]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.canaryModel != nil {
+                    map["CanaryModel"] = self.canaryModel!
+                }
+                if self.conditions != nil {
+                    var tmp : [Any] = []
+                    for k in self.conditions! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Conditions"] = tmp
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.percentage != nil {
+                    map["Percentage"] = self.percentage!
+                }
+                if self.routeIdList != nil {
+                    map["RouteIdList"] = self.routeIdList!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CanaryModel") && dict["CanaryModel"] != nil {
+                    self.canaryModel = dict["CanaryModel"] as! Int32
+                }
+                if dict.keys.contains("Conditions") && dict["Conditions"] != nil {
+                    var tmp : [QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute.Conditions] = []
+                    for v in dict["Conditions"] as! [Any] {
+                        var model = QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute.Conditions()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.conditions = tmp
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Percentage") && dict["Percentage"] != nil {
+                    self.percentage = dict["Percentage"] as! Int32
+                }
+                if dict.keys.contains("RouteIdList") && dict["RouteIdList"] != nil {
+                    self.routeIdList = dict["RouteIdList"] as! [Int64]
+                }
+            }
+        }
         public var entryRules: [QueryAllSwimmingLaneResponseBody.Data.EntryRules]?
+
+        public var gatewaySwimmingLaneRoute: QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute?
 
         public var groupId: String?
 
@@ -50072,6 +50406,7 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.gatewaySwimmingLaneRoute?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -50082,6 +50417,9 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["EntryRules"] = tmp
+            }
+            if self.gatewaySwimmingLaneRoute != nil {
+                map["GatewaySwimmingLaneRoute"] = self.gatewaySwimmingLaneRoute?.toMap()
             }
             if self.groupId != nil {
                 map["GroupId"] = self.groupId!
@@ -50136,6 +50474,11 @@ public class QueryAllSwimmingLaneResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.entryRules = tmp
+            }
+            if dict.keys.contains("GatewaySwimmingLaneRoute") && dict["GatewaySwimmingLaneRoute"] != nil {
+                var model = QueryAllSwimmingLaneResponseBody.Data.GatewaySwimmingLaneRoute()
+                model.fromMap(dict["GatewaySwimmingLaneRoute"] as! [String: Any])
+                self.gatewaySwimmingLaneRoute = model
             }
             if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
                 self.groupId = dict["GroupId"] as! String
@@ -50342,6 +50685,8 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public var appIds: String?
 
+        public var canaryModel: Int32?
+
         public var entryApp: String?
 
         public var id: Int64?
@@ -50353,6 +50698,8 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var namespace: String?
+
+        public var paths: String?
 
         public var recordCanaryDetail: Bool?
 
@@ -50377,6 +50724,9 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
             if self.appIds != nil {
                 map["AppIds"] = self.appIds!
             }
+            if self.canaryModel != nil {
+                map["CanaryModel"] = self.canaryModel!
+            }
             if self.entryApp != nil {
                 map["EntryApp"] = self.entryApp!
             }
@@ -50395,6 +50745,9 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
             if self.namespace != nil {
                 map["Namespace"] = self.namespace!
             }
+            if self.paths != nil {
+                map["Paths"] = self.paths!
+            }
             if self.recordCanaryDetail != nil {
                 map["RecordCanaryDetail"] = self.recordCanaryDetail!
             }
@@ -50410,6 +50763,9 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AppIds") && dict["AppIds"] != nil {
                 self.appIds = dict["AppIds"] as! String
+            }
+            if dict.keys.contains("CanaryModel") && dict["CanaryModel"] != nil {
+                self.canaryModel = dict["CanaryModel"] as! Int32
             }
             if dict.keys.contains("EntryApp") && dict["EntryApp"] != nil {
                 self.entryApp = dict["EntryApp"] as! String
@@ -50428,6 +50784,9 @@ public class QueryAllSwimmingLaneGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
                 self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("Paths") && dict["Paths"] != nil {
+                self.paths = dict["Paths"] as! String
             }
             if dict.keys.contains("RecordCanaryDetail") && dict["RecordCanaryDetail"] != nil {
                 self.recordCanaryDetail = dict["RecordCanaryDetail"] as! Bool

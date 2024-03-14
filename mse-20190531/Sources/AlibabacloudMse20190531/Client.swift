@@ -1832,14 +1832,25 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createOrUpdateSwimmingLaneGroupWithOptions(_ request: CreateOrUpdateSwimmingLaneGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrUpdateSwimmingLaneGroupResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createOrUpdateSwimmingLaneGroupWithOptions(_ tmpReq: CreateOrUpdateSwimmingLaneGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOrUpdateSwimmingLaneGroupResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateOrUpdateSwimmingLaneGroupShrinkRequest = CreateOrUpdateSwimmingLaneGroupShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.paths)) {
+            request.pathsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.paths, "Paths", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.routeIds)) {
+            request.routeIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.routeIds, "RouteIds", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.appIds)) {
             query["AppIds"] = request.appIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.canaryModel)) {
+            query["CanaryModel"] = request.canaryModel!;
         }
         if (!TeaUtils.Client.isUnset(request.dbGrayEnable)) {
             query["DbGrayEnable"] = request.dbGrayEnable!;
@@ -1862,11 +1873,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespace)) {
             query["Namespace"] = request.namespace ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.pathsShrink)) {
+            query["Paths"] = request.pathsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.recordCanaryDetail)) {
             query["RecordCanaryDetail"] = request.recordCanaryDetail!;
         }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routeIdsShrink)) {
+            query["RouteIds"] = request.routeIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status!;
