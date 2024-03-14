@@ -1050,6 +1050,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public var enableHiveAccess: String?
 
+        public var enableServerless: Bool?
+
         public var endpoints: [GetInstanceResponseBody.Instance.Endpoints]?
 
         public var expirationTime: String?
@@ -1127,6 +1129,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if self.enableHiveAccess != nil {
                 map["EnableHiveAccess"] = self.enableHiveAccess!
+            }
+            if self.enableServerless != nil {
+                map["EnableServerless"] = self.enableServerless!
             }
             if self.endpoints != nil {
                 var tmp : [Any] = []
@@ -1223,6 +1228,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EnableHiveAccess") && dict["EnableHiveAccess"] != nil {
                 self.enableHiveAccess = dict["EnableHiveAccess"] as! String
+            }
+            if dict.keys.contains("EnableServerless") && dict["EnableServerless"] != nil {
+                self.enableServerless = dict["EnableServerless"] as! Bool
             }
             if dict.keys.contains("Endpoints") && dict["Endpoints"] != nil {
                 var tmp : [GetInstanceResponseBody.Instance.Endpoints] = []
