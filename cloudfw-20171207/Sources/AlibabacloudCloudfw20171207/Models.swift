@@ -827,6 +827,123 @@ public class BatchCopyVpcFirewallControlPolicyResponse : Tea.TeaModel {
     }
 }
 
+public class BatchDeleteVpcFirewallControlPolicyRequest : Tea.TeaModel {
+    public var aclUuidList: [String]?
+
+    public var vpcFirewallId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.aclUuidList != nil {
+            map["AclUuidList"] = self.aclUuidList!
+        }
+        if self.vpcFirewallId != nil {
+            map["VpcFirewallId"] = self.vpcFirewallId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AclUuidList") && dict["AclUuidList"] != nil {
+            self.aclUuidList = dict["AclUuidList"] as! [String]
+        }
+        if dict.keys.contains("VpcFirewallId") && dict["VpcFirewallId"] != nil {
+            self.vpcFirewallId = dict["VpcFirewallId"] as! String
+        }
+    }
+}
+
+public class BatchDeleteVpcFirewallControlPolicyResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class BatchDeleteVpcFirewallControlPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BatchDeleteVpcFirewallControlPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = BatchDeleteVpcFirewallControlPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDownloadTaskRequest : Tea.TeaModel {
     public var lang: String?
 

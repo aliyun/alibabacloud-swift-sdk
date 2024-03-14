@@ -254,6 +254,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteVpcFirewallControlPolicyWithOptions(_ request: BatchDeleteVpcFirewallControlPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BatchDeleteVpcFirewallControlPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aclUuidList)) {
+            query["AclUuidList"] = request.aclUuidList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcFirewallId)) {
+            query["VpcFirewallId"] = request.vpcFirewallId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BatchDeleteVpcFirewallControlPolicy",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BatchDeleteVpcFirewallControlPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func batchDeleteVpcFirewallControlPolicy(_ request: BatchDeleteVpcFirewallControlPolicyRequest) async throws -> BatchDeleteVpcFirewallControlPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await batchDeleteVpcFirewallControlPolicyWithOptions(request as! BatchDeleteVpcFirewallControlPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createDownloadTaskWithOptions(_ request: CreateDownloadTaskRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDownloadTaskResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
