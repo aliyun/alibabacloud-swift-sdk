@@ -487,6 +487,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func disablePolicyTypeWithOptions(_ request: DisablePolicyTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisablePolicyTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.openType)) {
+            query["OpenType"] = request.openType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -533,6 +536,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func enablePolicyTypeWithOptions(_ request: EnablePolicyTypeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnablePolicyTypeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.openType)) {
+            query["OpenType"] = request.openType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -766,6 +772,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getPolicyEnableStatusWithOptions(_ request: GetPolicyEnableStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetPolicyEnableStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.openType)) {
+            query["OpenType"] = request.openType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
