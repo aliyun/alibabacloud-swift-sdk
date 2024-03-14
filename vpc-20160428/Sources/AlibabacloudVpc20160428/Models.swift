@@ -1255,6 +1255,8 @@ public class AddPublicIpAddressPoolCidrBlockRequest : Tea.TeaModel {
 }
 
 public class AddPublicIpAddressPoolCidrBlockResponseBody : Tea.TeaModel {
+    public var cidrBlock: String?
+
     public var requestId: String?
 
     public override init() {
@@ -1271,6 +1273,9 @@ public class AddPublicIpAddressPoolCidrBlockResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.cidrBlock != nil {
+            map["CidrBlock"] = self.cidrBlock!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1278,6 +1283,9 @@ public class AddPublicIpAddressPoolCidrBlockResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CidrBlock") && dict["CidrBlock"] != nil {
+            self.cidrBlock = dict["CidrBlock"] as! String
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -36471,6 +36479,8 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
 
     public var segmentInstanceId: String?
 
+    public var serviceManaged: Bool?
+
     public var status: String?
 
     public var tag: [DescribeEipAddressesRequest.Tag]?
@@ -36559,6 +36569,9 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
         if self.segmentInstanceId != nil {
             map["SegmentInstanceId"] = self.segmentInstanceId!
         }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -36646,6 +36659,9 @@ public class DescribeEipAddressesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SegmentInstanceId") && dict["SegmentInstanceId"] != nil {
             self.segmentInstanceId = dict["SegmentInstanceId"] as! String
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
         }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
@@ -44565,6 +44581,8 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var serviceManaged: Bool?
+
     public var tag: [DescribeIpv6AddressesRequest.Tag]?
 
     public var vSwitchId: String?
@@ -44633,6 +44651,9 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.serviceManaged != nil {
+            map["ServiceManaged"] = self.serviceManaged!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -44697,6 +44718,9 @@ public class DescribeIpv6AddressesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+            self.serviceManaged = dict["ServiceManaged"] as! Bool
         }
         if dict.keys.contains("Tag") && dict["Tag"] != nil {
             var tmp : [DescribeIpv6AddressesRequest.Tag] = []
@@ -44926,6 +44950,8 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
 
             public var resourceGroupId: String?
 
+            public var serviceManaged: Int32?
+
             public var status: String?
 
             public var tags: DescribeIpv6AddressesResponseBody.Ipv6Addresses.Ipv6Address.Tags?
@@ -44989,6 +45015,9 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
                 }
+                if self.serviceManaged != nil {
+                    map["ServiceManaged"] = self.serviceManaged!
+                }
                 if self.status != nil {
                     map["Status"] = self.status!
                 }
@@ -45045,6 +45074,9 @@ public class DescribeIpv6AddressesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
+                }
+                if dict.keys.contains("ServiceManaged") && dict["ServiceManaged"] != nil {
+                    self.serviceManaged = dict["ServiceManaged"] as! Int32
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
