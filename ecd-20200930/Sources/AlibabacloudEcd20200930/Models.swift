@@ -14470,6 +14470,380 @@ public class DescribeCustomizedListHeadersResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeDesktopGroupSessionsRequest : Tea.TeaModel {
+    public var endTime: String?
+
+    public var endUserId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownType: Int32?
+
+    public var regionId: String?
+
+    public var sessionStatus: String?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.endUserId != nil {
+            map["EndUserId"] = self.endUserId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownType != nil {
+            map["OwnType"] = self.ownType!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.sessionStatus != nil {
+            map["SessionStatus"] = self.sessionStatus!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
+            self.endUserId = dict["EndUserId"] as! String
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OwnType") && dict["OwnType"] != nil {
+            self.ownType = dict["OwnType"] as! Int32
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SessionStatus") && dict["SessionStatus"] != nil {
+            self.sessionStatus = dict["SessionStatus"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeDesktopGroupSessionsResponseBody : Tea.TeaModel {
+    public class Sessions : Tea.TeaModel {
+        public var clientIp: String?
+
+        public var clientOS: String?
+
+        public var clientVersion: String?
+
+        public var desktopGroupId: String?
+
+        public var desktopGroupName: String?
+
+        public var desktopId: String?
+
+        public var endUserApplyCoordinateTime: Int64?
+
+        public var endUserId: String?
+
+        public var lastSessionEndTime: String?
+
+        public var lastSessionStartTime: String?
+
+        public var latestConnectionTime: Int64?
+
+        public var officeSiteId: String?
+
+        public var officeSiteName: String?
+
+        public var osType: String?
+
+        public var ownType: Int32?
+
+        public var protocolType: String?
+
+        public var sessionIdleTime: Int64?
+
+        public var sessionStatus: String?
+
+        public var totalConnectionDuration: Int64?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.clientIp != nil {
+                map["ClientIp"] = self.clientIp!
+            }
+            if self.clientOS != nil {
+                map["ClientOS"] = self.clientOS!
+            }
+            if self.clientVersion != nil {
+                map["ClientVersion"] = self.clientVersion!
+            }
+            if self.desktopGroupId != nil {
+                map["DesktopGroupId"] = self.desktopGroupId!
+            }
+            if self.desktopGroupName != nil {
+                map["DesktopGroupName"] = self.desktopGroupName!
+            }
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.endUserApplyCoordinateTime != nil {
+                map["EndUserApplyCoordinateTime"] = self.endUserApplyCoordinateTime!
+            }
+            if self.endUserId != nil {
+                map["EndUserId"] = self.endUserId!
+            }
+            if self.lastSessionEndTime != nil {
+                map["LastSessionEndTime"] = self.lastSessionEndTime!
+            }
+            if self.lastSessionStartTime != nil {
+                map["LastSessionStartTime"] = self.lastSessionStartTime!
+            }
+            if self.latestConnectionTime != nil {
+                map["LatestConnectionTime"] = self.latestConnectionTime!
+            }
+            if self.officeSiteId != nil {
+                map["OfficeSiteId"] = self.officeSiteId!
+            }
+            if self.officeSiteName != nil {
+                map["OfficeSiteName"] = self.officeSiteName!
+            }
+            if self.osType != nil {
+                map["OsType"] = self.osType!
+            }
+            if self.ownType != nil {
+                map["OwnType"] = self.ownType!
+            }
+            if self.protocolType != nil {
+                map["ProtocolType"] = self.protocolType!
+            }
+            if self.sessionIdleTime != nil {
+                map["SessionIdleTime"] = self.sessionIdleTime!
+            }
+            if self.sessionStatus != nil {
+                map["SessionStatus"] = self.sessionStatus!
+            }
+            if self.totalConnectionDuration != nil {
+                map["TotalConnectionDuration"] = self.totalConnectionDuration!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ClientIp") && dict["ClientIp"] != nil {
+                self.clientIp = dict["ClientIp"] as! String
+            }
+            if dict.keys.contains("ClientOS") && dict["ClientOS"] != nil {
+                self.clientOS = dict["ClientOS"] as! String
+            }
+            if dict.keys.contains("ClientVersion") && dict["ClientVersion"] != nil {
+                self.clientVersion = dict["ClientVersion"] as! String
+            }
+            if dict.keys.contains("DesktopGroupId") && dict["DesktopGroupId"] != nil {
+                self.desktopGroupId = dict["DesktopGroupId"] as! String
+            }
+            if dict.keys.contains("DesktopGroupName") && dict["DesktopGroupName"] != nil {
+                self.desktopGroupName = dict["DesktopGroupName"] as! String
+            }
+            if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("EndUserApplyCoordinateTime") && dict["EndUserApplyCoordinateTime"] != nil {
+                self.endUserApplyCoordinateTime = dict["EndUserApplyCoordinateTime"] as! Int64
+            }
+            if dict.keys.contains("EndUserId") && dict["EndUserId"] != nil {
+                self.endUserId = dict["EndUserId"] as! String
+            }
+            if dict.keys.contains("LastSessionEndTime") && dict["LastSessionEndTime"] != nil {
+                self.lastSessionEndTime = dict["LastSessionEndTime"] as! String
+            }
+            if dict.keys.contains("LastSessionStartTime") && dict["LastSessionStartTime"] != nil {
+                self.lastSessionStartTime = dict["LastSessionStartTime"] as! String
+            }
+            if dict.keys.contains("LatestConnectionTime") && dict["LatestConnectionTime"] != nil {
+                self.latestConnectionTime = dict["LatestConnectionTime"] as! Int64
+            }
+            if dict.keys.contains("OfficeSiteId") && dict["OfficeSiteId"] != nil {
+                self.officeSiteId = dict["OfficeSiteId"] as! String
+            }
+            if dict.keys.contains("OfficeSiteName") && dict["OfficeSiteName"] != nil {
+                self.officeSiteName = dict["OfficeSiteName"] as! String
+            }
+            if dict.keys.contains("OsType") && dict["OsType"] != nil {
+                self.osType = dict["OsType"] as! String
+            }
+            if dict.keys.contains("OwnType") && dict["OwnType"] != nil {
+                self.ownType = dict["OwnType"] as! Int32
+            }
+            if dict.keys.contains("ProtocolType") && dict["ProtocolType"] != nil {
+                self.protocolType = dict["ProtocolType"] as! String
+            }
+            if dict.keys.contains("SessionIdleTime") && dict["SessionIdleTime"] != nil {
+                self.sessionIdleTime = dict["SessionIdleTime"] as! Int64
+            }
+            if dict.keys.contains("SessionStatus") && dict["SessionStatus"] != nil {
+                self.sessionStatus = dict["SessionStatus"] as! String
+            }
+            if dict.keys.contains("TotalConnectionDuration") && dict["TotalConnectionDuration"] != nil {
+                self.totalConnectionDuration = dict["TotalConnectionDuration"] as! Int64
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var sessions: [DescribeDesktopGroupSessionsResponseBody.Sessions]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sessions != nil {
+            var tmp : [Any] = []
+            for k in self.sessions! {
+                tmp.append(k.toMap())
+            }
+            map["Sessions"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Sessions") && dict["Sessions"] != nil {
+            var tmp : [DescribeDesktopGroupSessionsResponseBody.Sessions] = []
+            for v in dict["Sessions"] as! [Any] {
+                var model = DescribeDesktopGroupSessionsResponseBody.Sessions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.sessions = tmp
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class DescribeDesktopGroupSessionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeDesktopGroupSessionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeDesktopGroupSessionsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeDesktopGroupsRequest : Tea.TeaModel {
     public var bundleId: [String]?
 
