@@ -10225,6 +10225,84 @@ public class DescribeApiResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class TagList : Tea.TeaModel {
+        public class Tag : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
+        public var tag: [DescribeApiResponseBody.TagList.Tag]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tag != nil {
+                var tmp : [Any] = []
+                for k in self.tag! {
+                    tmp.append(k.toMap())
+                }
+                map["Tag"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Tag") && dict["Tag"] != nil {
+                var tmp : [DescribeApiResponseBody.TagList.Tag] = []
+                for v in dict["Tag"] as! [Any] {
+                    var model = DescribeApiResponseBody.TagList.Tag()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tag = tmp
+            }
+        }
+    }
     public var allowSignatureMethod: String?
 
     public var apiId: String?
@@ -10291,6 +10369,8 @@ public class DescribeApiResponseBody : Tea.TeaModel {
 
     public var systemParameters: DescribeApiResponseBody.SystemParameters?
 
+    public var tagList: DescribeApiResponseBody.TagList?
+
     public var visibility: String?
 
     public var webSocketApiType: String?
@@ -10317,6 +10397,7 @@ public class DescribeApiResponseBody : Tea.TeaModel {
         try self.serviceParameters?.validate()
         try self.serviceParametersMap?.validate()
         try self.systemParameters?.validate()
+        try self.tagList?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -10419,6 +10500,9 @@ public class DescribeApiResponseBody : Tea.TeaModel {
         }
         if self.systemParameters != nil {
             map["SystemParameters"] = self.systemParameters?.toMap()
+        }
+        if self.tagList != nil {
+            map["TagList"] = self.tagList?.toMap()
         }
         if self.visibility != nil {
             map["Visibility"] = self.visibility!
@@ -10552,6 +10636,11 @@ public class DescribeApiResponseBody : Tea.TeaModel {
             var model = DescribeApiResponseBody.SystemParameters()
             model.fromMap(dict["SystemParameters"] as! [String: Any])
             self.systemParameters = model
+        }
+        if dict.keys.contains("TagList") && dict["TagList"] != nil {
+            var model = DescribeApiResponseBody.TagList()
+            model.fromMap(dict["TagList"] as! [String: Any])
+            self.tagList = model
         }
         if dict.keys.contains("Visibility") && dict["Visibility"] != nil {
             self.visibility = dict["Visibility"] as! String
