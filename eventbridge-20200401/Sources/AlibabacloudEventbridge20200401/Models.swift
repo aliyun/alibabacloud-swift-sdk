@@ -8231,7 +8231,7 @@ public class DeleteEventStreamingRequest : Tea.TeaModel {
 }
 
 public class DeleteEventStreamingResponseBody : Tea.TeaModel {
-    public var code: Bool?
+    public var code: String?
 
     public var message: String?
 
@@ -8270,7 +8270,7 @@ public class DeleteEventStreamingResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! Bool
+            self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
@@ -21152,7 +21152,7 @@ public class PauseEventStreamingRequest : Tea.TeaModel {
 }
 
 public class PauseEventStreamingResponseBody : Tea.TeaModel {
-    public var code: Bool?
+    public var code: String?
 
     public var message: String?
 
@@ -21191,7 +21191,7 @@ public class PauseEventStreamingResponseBody : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! Bool
+            self.code = dict["Code"] as! String
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
