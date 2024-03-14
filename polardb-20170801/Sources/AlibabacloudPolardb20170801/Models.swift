@@ -15508,6 +15508,8 @@ public class DescribeDBNodePerformanceRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -15540,6 +15542,9 @@ public class DescribeDBNodePerformanceRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -15561,6 +15566,9 @@ public class DescribeDBNodePerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -16234,6 +16242,8 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
 
     public var startTime: String?
 
+    public var type: String?
+
     public override init() {
         super.init()
     }
@@ -16266,6 +16276,9 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
         if self.startTime != nil {
             map["StartTime"] = self.startTime!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
@@ -16287,6 +16300,9 @@ public class DescribeDBProxyPerformanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
             self.startTime = dict["StartTime"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
         }
     }
 }
