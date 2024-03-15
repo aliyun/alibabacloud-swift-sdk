@@ -11,6 +11,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var format: String?
 
+        public var multipleStreamsEnabled: Bool?
+
         public var progressiveCallbacksEnabled: Bool?
 
         public var sampleRate: Int32?
@@ -41,6 +43,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.format != nil {
                 map["Format"] = self.format!
             }
+            if self.multipleStreamsEnabled != nil {
+                map["MultipleStreamsEnabled"] = self.multipleStreamsEnabled!
+            }
             if self.progressiveCallbacksEnabled != nil {
                 map["ProgressiveCallbacksEnabled"] = self.progressiveCallbacksEnabled!
             }
@@ -65,6 +70,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Format") && dict["Format"] != nil {
                 self.format = dict["Format"] as! String
+            }
+            if dict.keys.contains("MultipleStreamsEnabled") && dict["MultipleStreamsEnabled"] != nil {
+                self.multipleStreamsEnabled = dict["MultipleStreamsEnabled"] as! Bool
             }
             if dict.keys.contains("ProgressiveCallbacksEnabled") && dict["ProgressiveCallbacksEnabled"] != nil {
                 self.progressiveCallbacksEnabled = dict["ProgressiveCallbacksEnabled"] as! Bool
@@ -225,6 +233,8 @@ public class CreateTaskRequest : Tea.TeaModel {
                     }
                 }
             }
+            public var additionalStreamOutputLevel: Int32?
+
             public var audioEventDetectionEnabled: Bool?
 
             public var diarization: CreateTaskRequest.Parameters.Transcription.Diarization?
@@ -250,6 +260,9 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.additionalStreamOutputLevel != nil {
+                    map["AdditionalStreamOutputLevel"] = self.additionalStreamOutputLevel!
+                }
                 if self.audioEventDetectionEnabled != nil {
                     map["AudioEventDetectionEnabled"] = self.audioEventDetectionEnabled!
                 }
@@ -269,6 +282,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AdditionalStreamOutputLevel") && dict["AdditionalStreamOutputLevel"] != nil {
+                    self.additionalStreamOutputLevel = dict["AdditionalStreamOutputLevel"] as! Int32
+                }
                 if dict.keys.contains("AudioEventDetectionEnabled") && dict["AudioEventDetectionEnabled"] != nil {
                     self.audioEventDetectionEnabled = dict["AudioEventDetectionEnabled"] as! Bool
                 }
@@ -289,6 +305,8 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
         public class Translation : Tea.TeaModel {
+            public var additionalStreamOutputLevel: Int32?
+
             public var outputLevel: Int32?
 
             public var targetLanguages: [String]?
@@ -307,6 +325,9 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.additionalStreamOutputLevel != nil {
+                    map["AdditionalStreamOutputLevel"] = self.additionalStreamOutputLevel!
+                }
                 if self.outputLevel != nil {
                     map["OutputLevel"] = self.outputLevel!
                 }
@@ -317,6 +338,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AdditionalStreamOutputLevel") && dict["AdditionalStreamOutputLevel"] != nil {
+                    self.additionalStreamOutputLevel = dict["AdditionalStreamOutputLevel"] as! Int32
+                }
                 if dict.keys.contains("OutputLevel") && dict["OutputLevel"] != nil {
                     self.outputLevel = dict["OutputLevel"] as! Int32
                 }
