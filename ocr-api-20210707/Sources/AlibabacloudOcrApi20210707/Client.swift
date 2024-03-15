@@ -2723,6 +2723,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.invoiceDate)) {
             query["InvoiceDate"] = request.invoiceDate ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.invoiceKind)) {
+            query["InvoiceKind"] = request.invoiceKind!;
+        }
         if (!TeaUtils.Client.isUnset(request.invoiceNo)) {
             query["InvoiceNo"] = request.invoiceNo ?? "";
         }
