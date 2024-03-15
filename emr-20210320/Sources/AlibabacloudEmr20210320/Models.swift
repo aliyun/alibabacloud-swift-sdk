@@ -9290,6 +9290,8 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
 
             public var metricsTrigger: MetricsTrigger?
 
+            public var minAdjustmentValue: Int32?
+
             public var ruleName: String?
 
             public var timeTrigger: TimeTrigger?
@@ -9324,6 +9326,9 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
                 if self.metricsTrigger != nil {
                     map["MetricsTrigger"] = self.metricsTrigger?.toMap()
                 }
+                if self.minAdjustmentValue != nil {
+                    map["MinAdjustmentValue"] = self.minAdjustmentValue!
+                }
                 if self.ruleName != nil {
                     map["RuleName"] = self.ruleName!
                 }
@@ -9350,6 +9355,9 @@ public class GetAutoScalingPolicyResponseBody : Tea.TeaModel {
                     var model = MetricsTrigger()
                     model.fromMap(dict["MetricsTrigger"] as! [String: Any])
                     self.metricsTrigger = model
+                }
+                if dict.keys.contains("MinAdjustmentValue") && dict["MinAdjustmentValue"] != nil {
+                    self.minAdjustmentValue = dict["MinAdjustmentValue"] as! Int32
                 }
                 if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
                     self.ruleName = dict["RuleName"] as! String
