@@ -92,6 +92,35 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
     }
     public class Parameters : Tea.TeaModel {
+        public class ExtraParams : Tea.TeaModel {
+            public var nfixEnabled: Bool?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.nfixEnabled != nil {
+                    map["NfixEnabled"] = self.nfixEnabled!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("NfixEnabled") && dict["NfixEnabled"] != nil {
+                    self.nfixEnabled = dict["NfixEnabled"] as! Bool
+                }
+            }
+        }
         public class MeetingAssistance : Tea.TeaModel {
             public var types: [String]?
 
@@ -351,6 +380,8 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
         public var autoChaptersEnabled: Bool?
 
+        public var extraParams: CreateTaskRequest.Parameters.ExtraParams?
+
         public var meetingAssistance: CreateTaskRequest.Parameters.MeetingAssistance?
 
         public var meetingAssistanceEnabled: Bool?
@@ -381,6 +412,7 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.extraParams?.validate()
             try self.meetingAssistance?.validate()
             try self.summarization?.validate()
             try self.transcoding?.validate()
@@ -392,6 +424,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.autoChaptersEnabled != nil {
                 map["AutoChaptersEnabled"] = self.autoChaptersEnabled!
+            }
+            if self.extraParams != nil {
+                map["ExtraParams"] = self.extraParams?.toMap()
             }
             if self.meetingAssistance != nil {
                 map["MeetingAssistance"] = self.meetingAssistance?.toMap()
@@ -429,6 +464,11 @@ public class CreateTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AutoChaptersEnabled") && dict["AutoChaptersEnabled"] != nil {
                 self.autoChaptersEnabled = dict["AutoChaptersEnabled"] as! Bool
+            }
+            if dict.keys.contains("ExtraParams") && dict["ExtraParams"] != nil {
+                var model = CreateTaskRequest.Parameters.ExtraParams()
+                model.fromMap(dict["ExtraParams"] as! [String: Any])
+                self.extraParams = model
             }
             if dict.keys.contains("MeetingAssistance") && dict["MeetingAssistance"] != nil {
                 var model = CreateTaskRequest.Parameters.MeetingAssistance()
@@ -547,6 +587,8 @@ public class CreateTaskResponseBody : Tea.TeaModel {
 
         public var taskKey: String?
 
+        public var taskStatus: String?
+
         public override init() {
             super.init()
         }
@@ -570,6 +612,9 @@ public class CreateTaskResponseBody : Tea.TeaModel {
             if self.taskKey != nil {
                 map["TaskKey"] = self.taskKey!
             }
+            if self.taskStatus != nil {
+                map["TaskStatus"] = self.taskStatus!
+            }
             return map
         }
 
@@ -582,6 +627,9 @@ public class CreateTaskResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TaskKey") && dict["TaskKey"] != nil {
                 self.taskKey = dict["TaskKey"] as! String
+            }
+            if dict.keys.contains("TaskStatus") && dict["TaskStatus"] != nil {
+                self.taskStatus = dict["TaskStatus"] as! String
             }
         }
     }
