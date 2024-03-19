@@ -916,43 +916,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getExpressConnectRouterWithOptions(_ request: GetExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetExpressConnectRouterResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.clientToken)) {
-            body["ClientToken"] = request.clientToken ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.dryRun)) {
-            body["DryRun"] = request.dryRun!;
-        }
-        if (!TeaUtils.Client.isUnset(request.ecrId)) {
-            body["EcrId"] = request.ecrId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetExpressConnectRouter",
-            "version": "2023-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetExpressConnectRouterResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getExpressConnectRouter(_ request: GetExpressConnectRouterRequest) async throws -> GetExpressConnectRouterResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getExpressConnectRouterWithOptions(request as! GetExpressConnectRouterRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func grantInstanceToExpressConnectRouterWithOptions(_ request: GrantInstanceToExpressConnectRouterRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GrantInstanceToExpressConnectRouterResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
