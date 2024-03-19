@@ -314,6 +314,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeBasicWithOptions(_ request: RecognizeBasicRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeBasicResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.needRotate)) {
+            query["NeedRotate"] = request.needRotate!;
+        }
         if (!TeaUtils.Client.isUnset(request.url)) {
             query["Url"] = request.url ?? "";
         }

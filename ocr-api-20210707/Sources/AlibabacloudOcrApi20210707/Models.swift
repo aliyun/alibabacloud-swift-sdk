@@ -4267,6 +4267,8 @@ public class RecognizeBankCardResponse : Tea.TeaModel {
 }
 
 public class RecognizeBasicRequest : Tea.TeaModel {
+    public var needRotate: Bool?
+
     public var url: String?
 
     public var body: InputStream?
@@ -4285,6 +4287,9 @@ public class RecognizeBasicRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.needRotate != nil {
+            map["NeedRotate"] = self.needRotate!
+        }
         if self.url != nil {
             map["Url"] = self.url!
         }
@@ -4295,6 +4300,9 @@ public class RecognizeBasicRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NeedRotate") && dict["NeedRotate"] != nil {
+            self.needRotate = dict["NeedRotate"] as! Bool
+        }
         if dict.keys.contains("Url") && dict["Url"] != nil {
             self.url = dict["Url"] as! String
         }
