@@ -3816,4 +3816,45 @@ open class Client : AlibabacloudOpenApi.Client {
         var headers: [String: String] = [:]
         return try await updateTableMetaWithOptions(TableMetaId as! String, request as! UpdateTableMetaRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uploadRecommendationDataWithOptions(_ request: UploadRecommendationDataRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UploadRecommendationDataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["Content"] = request.content ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.dataType)) {
+            body["DataType"] = request.dataType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UploadRecommendationData",
+            "version": "2022-12-13",
+            "protocol": "HTTPS",
+            "pathname": "/api/v1/recommendationdata/action/upload",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UploadRecommendationDataResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func uploadRecommendationData(_ request: UploadRecommendationDataRequest) async throws -> UploadRecommendationDataResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await uploadRecommendationDataWithOptions(request as! UploadRecommendationDataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
 }
