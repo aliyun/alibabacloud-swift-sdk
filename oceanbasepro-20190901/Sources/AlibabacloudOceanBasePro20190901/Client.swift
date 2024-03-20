@@ -449,81 +449,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createOmsOpenAPIProjectWithOptions(_ tmpReq: CreateOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: CreateOmsOpenAPIProjectShrinkRequest = CreateOmsOpenAPIProjectShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.destConfig)) {
-            request.destConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.destConfig, "DestConfig", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.labelIds)) {
-            request.labelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelIds, "LabelIds", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.sourceConfig)) {
-            request.sourceConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceConfig, "SourceConfig", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.transferMapping)) {
-            request.transferMappingShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transferMapping, "TransferMapping", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.transferStepConfig)) {
-            request.transferStepConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.transferStepConfig, "TransferStepConfig", "json")
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.businessName)) {
-            body["BusinessName"] = request.businessName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.destConfigShrink)) {
-            body["DestConfig"] = request.destConfigShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.labelIdsShrink)) {
-            body["LabelIds"] = request.labelIdsShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectName)) {
-            body["ProjectName"] = request.projectName ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceConfigShrink)) {
-            body["SourceConfig"] = request.sourceConfigShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.transferMappingShrink)) {
-            body["TransferMapping"] = request.transferMappingShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.transferStepConfigShrink)) {
-            body["TransferStepConfig"] = request.transferStepConfigShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "CreateOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(CreateOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createOmsOpenAPIProject(_ request: CreateOmsOpenAPIProjectRequest) async throws -> CreateOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await createOmsOpenAPIProjectWithOptions(request as! CreateOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createProjectWithOptions(_ tmpReq: CreateProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateProjectResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: CreateProjectShrinkRequest = CreateProjectShrinkRequest([:])
@@ -567,6 +492,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.fullTransferConfigShrink)) {
             body["FullTransferConfig"] = request.fullTransferConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            body["Id"] = request.id ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.incrTransferConfigShrink)) {
             body["IncrTransferConfig"] = request.incrTransferConfigShrink ?? "";
@@ -1055,46 +983,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteInstances(_ request: DeleteInstancesRequest) async throws -> DeleteInstancesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteInstancesWithOptions(request as! DeleteInstancesRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteOmsOpenAPIProjectWithOptions(_ request: DeleteOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeleteOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeleteOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deleteOmsOpenAPIProject(_ request: DeleteOmsOpenAPIProjectRequest) async throws -> DeleteOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await deleteOmsOpenAPIProjectWithOptions(request as! DeleteOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2455,86 +2343,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeOasTopSQLList(_ request: DescribeOasTopSQLListRequest) async throws -> DescribeOasTopSQLListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeOasTopSQLListWithOptions(request as! DescribeOasTopSQLListRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeOmsOpenAPIProjectWithOptions(_ request: DescribeOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeOmsOpenAPIProject(_ request: DescribeOmsOpenAPIProjectRequest) async throws -> DescribeOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeOmsOpenAPIProjectWithOptions(request as! DescribeOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeOmsOpenAPIProjectStepsWithOptions(_ request: DescribeOmsOpenAPIProjectStepsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeOmsOpenAPIProjectStepsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DescribeOmsOpenAPIProjectSteps",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DescribeOmsOpenAPIProjectStepsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeOmsOpenAPIProjectSteps(_ request: DescribeOmsOpenAPIProjectStepsRequest) async throws -> DescribeOmsOpenAPIProjectStepsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await describeOmsOpenAPIProjectStepsWithOptions(request as! DescribeOmsOpenAPIProjectStepsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4028,6 +3836,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.labelIdsShrink)) {
             body["LabelIds"] = request.labelIdsShrink ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.needRelatedInfo)) {
+            body["NeedRelatedInfo"] = request.needRelatedInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.order)) {
             body["Order"] = request.order ?? "";
         }
@@ -4866,46 +4677,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func releaseOmsOpenAPIProjectWithOptions(_ request: ReleaseOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReleaseOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ReleaseOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ReleaseOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func releaseOmsOpenAPIProject(_ request: ReleaseOmsOpenAPIProjectRequest) async throws -> ReleaseOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await releaseOmsOpenAPIProjectWithOptions(request as! ReleaseOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func releaseProjectWithOptions(_ request: ReleaseProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReleaseProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -4965,86 +4736,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func releaseWorkerInstance(_ request: ReleaseWorkerInstanceRequest) async throws -> ReleaseWorkerInstanceResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await releaseWorkerInstanceWithOptions(request as! ReleaseWorkerInstanceRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func resetOmsOpenAPIProjectWithOptions(_ request: ResetOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResetOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ResetOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ResetOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func resetOmsOpenAPIProject(_ request: ResetOmsOpenAPIProjectRequest) async throws -> ResetOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await resetOmsOpenAPIProjectWithOptions(request as! ResetOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func resumeOmsOpenAPIProjectWithOptions(_ request: ResumeOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ResumeOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ResumeOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ResumeOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func resumeOmsOpenAPIProject(_ request: ResumeOmsOpenAPIProjectRequest) async throws -> ResumeOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await resumeOmsOpenAPIProjectWithOptions(request as! ResumeOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5110,164 +4801,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func searchOmsOpenAPIMonitorMetricWithOptions(_ request: SearchOmsOpenAPIMonitorMetricRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchOmsOpenAPIMonitorMetricResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.beginTime)) {
-            body["BeginTime"] = request.beginTime!;
-        }
-        if (!TeaUtils.Client.isUnset(request.endTime)) {
-            body["EndTime"] = request.endTime!;
-        }
-        if (!TeaUtils.Client.isUnset(request.maxPointNum)) {
-            body["MaxPointNum"] = request.maxPointNum!;
-        }
-        if (!TeaUtils.Client.isUnset(request.metric)) {
-            body["Metric"] = request.metric ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "SearchOmsOpenAPIMonitorMetric",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(SearchOmsOpenAPIMonitorMetricResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func searchOmsOpenAPIMonitorMetric(_ request: SearchOmsOpenAPIMonitorMetricRequest) async throws -> SearchOmsOpenAPIMonitorMetricResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await searchOmsOpenAPIMonitorMetricWithOptions(request as! SearchOmsOpenAPIMonitorMetricRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func searchOmsOpenAPIProjectsWithOptions(_ tmpReq: SearchOmsOpenAPIProjectsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SearchOmsOpenAPIProjectsResponse {
-        try TeaUtils.Client.validateModel(tmpReq)
-        var request: SearchOmsOpenAPIProjectsShrinkRequest = SearchOmsOpenAPIProjectsShrinkRequest([:])
-        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
-        if (!TeaUtils.Client.isUnset(tmpReq.destDbTypes)) {
-            request.destDbTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.destDbTypes, "DestDbTypes", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.labelIds)) {
-            request.labelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelIds, "LabelIds", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.sourceDbTypes)) {
-            request.sourceDbTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.sourceDbTypes, "SourceDbTypes", "json")
-        }
-        if (!TeaUtils.Client.isUnset(tmpReq.statusList)) {
-            request.statusListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.statusList, "StatusList", "json")
-        }
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.destDbTypesShrink)) {
-            body["DestDbTypes"] = request.destDbTypesShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.labelIdsShrink)) {
-            body["LabelIds"] = request.labelIdsShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.searchKey)) {
-            body["SearchKey"] = request.searchKey ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.sourceDbTypesShrink)) {
-            body["SourceDbTypes"] = request.sourceDbTypesShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.statusListShrink)) {
-            body["StatusList"] = request.statusListShrink ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "SearchOmsOpenAPIProjects",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(SearchOmsOpenAPIProjectsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func searchOmsOpenAPIProjects(_ request: SearchOmsOpenAPIProjectsRequest) async throws -> SearchOmsOpenAPIProjectsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await searchOmsOpenAPIProjectsWithOptions(request as! SearchOmsOpenAPIProjectsRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startOmsOpenAPIProjectWithOptions(_ request: StartOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "StartOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(StartOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func startOmsOpenAPIProject(_ request: StartOmsOpenAPIProjectRequest) async throws -> StartOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await startOmsOpenAPIProjectWithOptions(request as! StartOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startProjectWithOptions(_ request: StartProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartProjectResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
@@ -5327,46 +4860,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func startProjectsByLabel(_ request: StartProjectsByLabelRequest) async throws -> StartProjectsByLabelResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await startProjectsByLabelWithOptions(request as! StartProjectsByLabelRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopOmsOpenAPIProjectWithOptions(_ request: StopOmsOpenAPIProjectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopOmsOpenAPIProjectResponse {
-        try TeaUtils.Client.validateModel(request)
-        var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.pageNumber)) {
-            body["PageNumber"] = request.pageNumber!;
-        }
-        if (!TeaUtils.Client.isUnset(request.pageSize)) {
-            body["PageSize"] = request.pageSize!;
-        }
-        if (!TeaUtils.Client.isUnset(request.projectId)) {
-            body["ProjectId"] = request.projectId ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.workerGradeId)) {
-            body["WorkerGradeId"] = request.workerGradeId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "StopOmsOpenAPIProject",
-            "version": "2019-09-01",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(StopOmsOpenAPIProjectResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func stopOmsOpenAPIProject(_ request: StopOmsOpenAPIProjectRequest) async throws -> StopOmsOpenAPIProjectResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await stopOmsOpenAPIProjectWithOptions(request as! StopOmsOpenAPIProjectRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
