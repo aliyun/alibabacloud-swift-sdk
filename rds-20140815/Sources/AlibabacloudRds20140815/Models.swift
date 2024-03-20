@@ -40668,6 +40668,61 @@ public class DescribeKmsAssociateResourcesRequest : Tea.TeaModel {
 }
 
 public class DescribeKmsAssociateResourcesResponseBody : Tea.TeaModel {
+    public class AssociateDBInstances : Tea.TeaModel {
+        public var DBInstanceName: String?
+
+        public var engine: String?
+
+        public var keyUsedBy: String?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.DBInstanceName != nil {
+                map["DBInstanceName"] = self.DBInstanceName!
+            }
+            if self.engine != nil {
+                map["Engine"] = self.engine!
+            }
+            if self.keyUsedBy != nil {
+                map["KeyUsedBy"] = self.keyUsedBy!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DBInstanceName") && dict["DBInstanceName"] != nil {
+                self.DBInstanceName = dict["DBInstanceName"] as! String
+            }
+            if dict.keys.contains("Engine") && dict["Engine"] != nil {
+                self.engine = dict["Engine"] as! String
+            }
+            if dict.keys.contains("KeyUsedBy") && dict["KeyUsedBy"] != nil {
+                self.keyUsedBy = dict["KeyUsedBy"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var associateDBInstances: [DescribeKmsAssociateResourcesResponseBody.AssociateDBInstances]?
+
     public var associateStatus: Bool?
 
     public var requestId: String?
@@ -40686,6 +40741,13 @@ public class DescribeKmsAssociateResourcesResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.associateDBInstances != nil {
+            var tmp : [Any] = []
+            for k in self.associateDBInstances! {
+                tmp.append(k.toMap())
+            }
+            map["AssociateDBInstances"] = tmp
+        }
         if self.associateStatus != nil {
             map["AssociateStatus"] = self.associateStatus!
         }
@@ -40696,6 +40758,17 @@ public class DescribeKmsAssociateResourcesResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AssociateDBInstances") && dict["AssociateDBInstances"] != nil {
+            var tmp : [DescribeKmsAssociateResourcesResponseBody.AssociateDBInstances] = []
+            for v in dict["AssociateDBInstances"] as! [Any] {
+                var model = DescribeKmsAssociateResourcesResponseBody.AssociateDBInstances()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.associateDBInstances = tmp
+        }
         if dict.keys.contains("AssociateStatus") && dict["AssociateStatus"] != nil {
             self.associateStatus = dict["AssociateStatus"] as! Bool
         }
