@@ -10514,6 +10514,139 @@ public class ModifyDiskReplicaPairResponse : Tea.TeaModel {
     }
 }
 
+public class QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var qosRequestId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.qosRequestId != nil {
+            map["QosRequestId"] = self.qosRequestId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("QosRequestId") && dict["QosRequestId"] != nil {
+            self.qosRequestId = dict["QosRequestId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = QueryDedicatedBlockStorageClusterDiskThroughputStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class QueryDedicatedBlockStorageClusterInventoryDataRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -11193,6 +11326,139 @@ public class ReprotectDiskReplicaPairResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ReprotectDiskReplicaPairResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SetDedicatedBlockStorageClusterDiskThroughputRequest : Tea.TeaModel {
+    public var bps: Int32?
+
+    public var clientToken: String?
+
+    public var diskId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.bps != nil {
+            map["Bps"] = self.bps!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.diskId != nil {
+            map["DiskId"] = self.diskId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Bps") && dict["Bps"] != nil {
+            self.bps = dict["Bps"] as! Int32
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
+            self.diskId = dict["DiskId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class SetDedicatedBlockStorageClusterDiskThroughputResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class SetDedicatedBlockStorageClusterDiskThroughputResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: SetDedicatedBlockStorageClusterDiskThroughputResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SetDedicatedBlockStorageClusterDiskThroughputResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

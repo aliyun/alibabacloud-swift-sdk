@@ -1755,6 +1755,45 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDedicatedBlockStorageClusterDiskThroughputStatusWithOptions(_ request: QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.qosRequestId)) {
+            body["QosRequestId"] = request.qosRequestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "QueryDedicatedBlockStorageClusterDiskThroughputStatus",
+            "version": "2021-07-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func queryDedicatedBlockStorageClusterDiskThroughputStatus(_ request: QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest) async throws -> QueryDedicatedBlockStorageClusterDiskThroughputStatusResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await queryDedicatedBlockStorageClusterDiskThroughputStatusWithOptions(request as! QueryDedicatedBlockStorageClusterDiskThroughputStatusRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func queryDedicatedBlockStorageClusterInventoryDataWithOptions(_ request: QueryDedicatedBlockStorageClusterInventoryDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> QueryDedicatedBlockStorageClusterInventoryDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1920,6 +1959,48 @@ open class Client : AlibabacloudOpenApi.Client {
     public func reprotectDiskReplicaPair(_ request: ReprotectDiskReplicaPairRequest) async throws -> ReprotectDiskReplicaPairResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await reprotectDiskReplicaPairWithOptions(request as! ReprotectDiskReplicaPairRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDedicatedBlockStorageClusterDiskThroughputWithOptions(_ request: SetDedicatedBlockStorageClusterDiskThroughputRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetDedicatedBlockStorageClusterDiskThroughputResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.bps)) {
+            body["Bps"] = request.bps!;
+        }
+        if (!TeaUtils.Client.isUnset(request.diskId)) {
+            body["DiskId"] = request.diskId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            body["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetDedicatedBlockStorageClusterDiskThroughput",
+            "version": "2021-07-30",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetDedicatedBlockStorageClusterDiskThroughputResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setDedicatedBlockStorageClusterDiskThroughput(_ request: SetDedicatedBlockStorageClusterDiskThroughputRequest) async throws -> SetDedicatedBlockStorageClusterDiskThroughputResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setDedicatedBlockStorageClusterDiskThroughputWithOptions(request as! SetDedicatedBlockStorageClusterDiskThroughputRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
