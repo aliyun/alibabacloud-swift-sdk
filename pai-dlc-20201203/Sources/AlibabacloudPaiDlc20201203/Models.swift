@@ -815,6 +815,8 @@ public class EcsSpec : Tea.TeaModel {
 
     public var cpu: Int32?
 
+    public var defaultGPUDriver: String?
+
     public var gpu: Int32?
 
     public var gpuType: String?
@@ -825,7 +827,15 @@ public class EcsSpec : Tea.TeaModel {
 
     public var memory: Int32?
 
+    public var nonProtectSpotDiscount: Double?
+
+    public var paymentTypes: [String]?
+
     public var resourceType: String?
+
+    public var spotStockStatus: String?
+
+    public var supportedGPUDrivers: [String]?
 
     public override init() {
         super.init()
@@ -847,6 +857,9 @@ public class EcsSpec : Tea.TeaModel {
         if self.cpu != nil {
             map["Cpu"] = self.cpu!
         }
+        if self.defaultGPUDriver != nil {
+            map["DefaultGPUDriver"] = self.defaultGPUDriver!
+        }
         if self.gpu != nil {
             map["Gpu"] = self.gpu!
         }
@@ -862,8 +875,20 @@ public class EcsSpec : Tea.TeaModel {
         if self.memory != nil {
             map["Memory"] = self.memory!
         }
+        if self.nonProtectSpotDiscount != nil {
+            map["NonProtectSpotDiscount"] = self.nonProtectSpotDiscount!
+        }
+        if self.paymentTypes != nil {
+            map["PaymentTypes"] = self.paymentTypes!
+        }
         if self.resourceType != nil {
             map["ResourceType"] = self.resourceType!
+        }
+        if self.spotStockStatus != nil {
+            map["SpotStockStatus"] = self.spotStockStatus!
+        }
+        if self.supportedGPUDrivers != nil {
+            map["SupportedGPUDrivers"] = self.supportedGPUDrivers!
         }
         return map
     }
@@ -874,6 +899,9 @@ public class EcsSpec : Tea.TeaModel {
         }
         if dict.keys.contains("Cpu") && dict["Cpu"] != nil {
             self.cpu = dict["Cpu"] as! Int32
+        }
+        if dict.keys.contains("DefaultGPUDriver") && dict["DefaultGPUDriver"] != nil {
+            self.defaultGPUDriver = dict["DefaultGPUDriver"] as! String
         }
         if dict.keys.contains("Gpu") && dict["Gpu"] != nil {
             self.gpu = dict["Gpu"] as! Int32
@@ -890,8 +918,20 @@ public class EcsSpec : Tea.TeaModel {
         if dict.keys.contains("Memory") && dict["Memory"] != nil {
             self.memory = dict["Memory"] as! Int32
         }
+        if dict.keys.contains("NonProtectSpotDiscount") && dict["NonProtectSpotDiscount"] != nil {
+            self.nonProtectSpotDiscount = dict["NonProtectSpotDiscount"] as! Double
+        }
+        if dict.keys.contains("PaymentTypes") && dict["PaymentTypes"] != nil {
+            self.paymentTypes = dict["PaymentTypes"] as! [String]
+        }
         if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
             self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("SpotStockStatus") && dict["SpotStockStatus"] != nil {
+            self.spotStockStatus = dict["SpotStockStatus"] as! String
+        }
+        if dict.keys.contains("SupportedGPUDrivers") && dict["SupportedGPUDrivers"] != nil {
+            self.supportedGPUDrivers = dict["SupportedGPUDrivers"] as! [String]
         }
     }
 }
@@ -2243,6 +2283,8 @@ public class JobSpec : Tea.TeaModel {
 
     public var resourceConfig: ResourceConfig?
 
+    public var spotSpec: SpotSpec?
+
     public var type: String?
 
     public var useSpotInstance: Bool?
@@ -2260,6 +2302,7 @@ public class JobSpec : Tea.TeaModel {
         try self.extraPodSpec?.validate()
         try self.imageConfig?.validate()
         try self.resourceConfig?.validate()
+        try self.spotSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -2281,6 +2324,9 @@ public class JobSpec : Tea.TeaModel {
         }
         if self.resourceConfig != nil {
             map["ResourceConfig"] = self.resourceConfig?.toMap()
+        }
+        if self.spotSpec != nil {
+            map["SpotSpec"] = self.spotSpec?.toMap()
         }
         if self.type != nil {
             map["Type"] = self.type!
@@ -2315,6 +2361,11 @@ public class JobSpec : Tea.TeaModel {
             var model = ResourceConfig()
             model.fromMap(dict["ResourceConfig"] as! [String: Any])
             self.resourceConfig = model
+        }
+        if dict.keys.contains("SpotSpec") && dict["SpotSpec"] != nil {
+            var model = SpotSpec()
+            model.fromMap(dict["SpotSpec"] as! [String: Any])
+            self.spotSpec = model
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
@@ -3300,6 +3351,44 @@ public class SmartCache : Tea.TeaModel {
         }
         if dict.keys.contains("UserId") && dict["UserId"] != nil {
             self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class SpotSpec : Tea.TeaModel {
+    public var spotDiscountLimit: Double?
+
+    public var spotStrategy: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.spotDiscountLimit != nil {
+            map["SpotDiscountLimit"] = self.spotDiscountLimit!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("SpotDiscountLimit") && dict["SpotDiscountLimit"] != nil {
+            self.spotDiscountLimit = dict["SpotDiscountLimit"] as! Double
+        }
+        if dict.keys.contains("SpotStrategy") && dict["SpotStrategy"] != nil {
+            self.spotStrategy = dict["SpotStrategy"] as! String
         }
     }
 }
