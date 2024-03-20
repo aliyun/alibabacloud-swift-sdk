@@ -537,6 +537,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crowdId)) {
             body["CrowdId"] = request.crowdId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.crowdTargetType)) {
+            body["CrowdTargetType"] = request.crowdTargetType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.debugCrowdId)) {
             body["DebugCrowdId"] = request.debugCrowdId ?? "";
         }
@@ -566,6 +569,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.needAA)) {
             body["NeedAA"] = request.needAA!;
+        }
+        if (!TeaUtils.Client.isUnset(request.randomFlow)) {
+            body["RandomFlow"] = request.randomFlow!;
         }
         if (!TeaUtils.Client.isUnset(request.reservedBuckets)) {
             body["ReservedBuckets"] = request.reservedBuckets ?? "";
@@ -2184,6 +2190,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.layerId)) {
             query["LayerId"] = request.layerId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
         }
@@ -3365,6 +3374,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.crowdId)) {
             body["CrowdId"] = request.crowdId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.crowdTargetType)) {
+            body["CrowdTargetType"] = request.crowdTargetType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.debugCrowdId)) {
             body["DebugCrowdId"] = request.debugCrowdId ?? "";
         }
@@ -3394,6 +3406,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.needAA)) {
             body["NeedAA"] = request.needAA!;
+        }
+        if (!TeaUtils.Client.isUnset(request.randomFlow)) {
+            body["RandomFlow"] = request.randomFlow!;
         }
         if (!TeaUtils.Client.isUnset(request.reservcedBuckets)) {
             body["ReservcedBuckets"] = request.reservcedBuckets ?? "";

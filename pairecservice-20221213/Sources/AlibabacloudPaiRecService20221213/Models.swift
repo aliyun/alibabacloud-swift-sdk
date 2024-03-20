@@ -1760,6 +1760,8 @@ public class CreateExperimentGroupRequest : Tea.TeaModel {
 
     public var crowdId: String?
 
+    public var crowdTargetType: String?
+
     public var debugCrowdId: String?
 
     public var debugUsers: String?
@@ -1779,6 +1781,8 @@ public class CreateExperimentGroupRequest : Tea.TeaModel {
     public var name: String?
 
     public var needAA: Bool?
+
+    public var randomFlow: Int64?
 
     public var reservedBuckets: String?
 
@@ -1801,6 +1805,9 @@ public class CreateExperimentGroupRequest : Tea.TeaModel {
         }
         if self.crowdId != nil {
             map["CrowdId"] = self.crowdId!
+        }
+        if self.crowdTargetType != nil {
+            map["CrowdTargetType"] = self.crowdTargetType!
         }
         if self.debugCrowdId != nil {
             map["DebugCrowdId"] = self.debugCrowdId!
@@ -1832,6 +1839,9 @@ public class CreateExperimentGroupRequest : Tea.TeaModel {
         if self.needAA != nil {
             map["NeedAA"] = self.needAA!
         }
+        if self.randomFlow != nil {
+            map["RandomFlow"] = self.randomFlow!
+        }
         if self.reservedBuckets != nil {
             map["ReservedBuckets"] = self.reservedBuckets!
         }
@@ -1844,6 +1854,9 @@ public class CreateExperimentGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CrowdId") && dict["CrowdId"] != nil {
             self.crowdId = dict["CrowdId"] as! String
+        }
+        if dict.keys.contains("CrowdTargetType") && dict["CrowdTargetType"] != nil {
+            self.crowdTargetType = dict["CrowdTargetType"] as! String
         }
         if dict.keys.contains("DebugCrowdId") && dict["DebugCrowdId"] != nil {
             self.debugCrowdId = dict["DebugCrowdId"] as! String
@@ -1874,6 +1887,9 @@ public class CreateExperimentGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NeedAA") && dict["NeedAA"] != nil {
             self.needAA = dict["NeedAA"] as! Bool
+        }
+        if dict.keys.contains("RandomFlow") && dict["RandomFlow"] != nil {
+            self.randomFlow = dict["RandomFlow"] as! Int64
         }
         if dict.keys.contains("ReservedBuckets") && dict["ReservedBuckets"] != nil {
             self.reservedBuckets = dict["ReservedBuckets"] as! String
@@ -5788,6 +5804,8 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
 
     public var crowdId: String?
 
+    public var crowdTargetType: String?
+
     public var debugCrowdId: String?
 
     public var debugUsers: String?
@@ -5800,6 +5818,8 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
 
     public var filter: String?
 
+    public var holdingBuckets: String?
+
     public var laboratoryId: String?
 
     public var layerId: String?
@@ -5809,6 +5829,8 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
     public var needAA: Bool?
 
     public var owner: String?
+
+    public var randomFlow: Int64?
 
     public var requestId: String?
 
@@ -5838,6 +5860,9 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
         if self.crowdId != nil {
             map["CrowdId"] = self.crowdId!
         }
+        if self.crowdTargetType != nil {
+            map["CrowdTargetType"] = self.crowdTargetType!
+        }
         if self.debugCrowdId != nil {
             map["DebugCrowdId"] = self.debugCrowdId!
         }
@@ -5856,6 +5881,9 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
         if self.filter != nil {
             map["Filter"] = self.filter!
         }
+        if self.holdingBuckets != nil {
+            map["HoldingBuckets"] = self.holdingBuckets!
+        }
         if self.laboratoryId != nil {
             map["LaboratoryId"] = self.laboratoryId!
         }
@@ -5870,6 +5898,9 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
         }
         if self.owner != nil {
             map["Owner"] = self.owner!
+        }
+        if self.randomFlow != nil {
+            map["RandomFlow"] = self.randomFlow!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
@@ -5893,6 +5924,9 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
         if dict.keys.contains("CrowdId") && dict["CrowdId"] != nil {
             self.crowdId = dict["CrowdId"] as! String
         }
+        if dict.keys.contains("CrowdTargetType") && dict["CrowdTargetType"] != nil {
+            self.crowdTargetType = dict["CrowdTargetType"] as! String
+        }
         if dict.keys.contains("DebugCrowdId") && dict["DebugCrowdId"] != nil {
             self.debugCrowdId = dict["DebugCrowdId"] as! String
         }
@@ -5911,6 +5945,9 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
         if dict.keys.contains("Filter") && dict["Filter"] != nil {
             self.filter = dict["Filter"] as! String
         }
+        if dict.keys.contains("HoldingBuckets") && dict["HoldingBuckets"] != nil {
+            self.holdingBuckets = dict["HoldingBuckets"] as! String
+        }
         if dict.keys.contains("LaboratoryId") && dict["LaboratoryId"] != nil {
             self.laboratoryId = dict["LaboratoryId"] as! String
         }
@@ -5925,6 +5962,9 @@ public class GetExperimentGroupResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Owner") && dict["Owner"] != nil {
             self.owner = dict["Owner"] as! String
+        }
+        if dict.keys.contains("RandomFlow") && dict["RandomFlow"] != nil {
+            self.randomFlow = dict["RandomFlow"] as! Int64
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
@@ -7527,11 +7567,15 @@ public class GetLayerRequest : Tea.TeaModel {
 public class GetLayerResponseBody : Tea.TeaModel {
     public var description_: String?
 
+    public var gmtCreateTime: String?
+
     public var laboratoryId: String?
 
     public var name: String?
 
     public var requestId: String?
+
+    public var residualFlow: Int64?
 
     public var sceneId: String?
 
@@ -7552,6 +7596,9 @@ public class GetLayerResponseBody : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.gmtCreateTime != nil {
+            map["GmtCreateTime"] = self.gmtCreateTime!
+        }
         if self.laboratoryId != nil {
             map["LaboratoryId"] = self.laboratoryId!
         }
@@ -7560,6 +7607,9 @@ public class GetLayerResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.residualFlow != nil {
+            map["ResidualFlow"] = self.residualFlow!
         }
         if self.sceneId != nil {
             map["SceneId"] = self.sceneId!
@@ -7571,6 +7621,9 @@ public class GetLayerResponseBody : Tea.TeaModel {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
+            self.gmtCreateTime = dict["GmtCreateTime"] as! String
+        }
         if dict.keys.contains("LaboratoryId") && dict["LaboratoryId"] != nil {
             self.laboratoryId = dict["LaboratoryId"] as! String
         }
@@ -7579,6 +7632,9 @@ public class GetLayerResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("ResidualFlow") && dict["ResidualFlow"] != nil {
+            self.residualFlow = dict["ResidualFlow"] as! Int64
         }
         if dict.keys.contains("SceneId") && dict["SceneId"] != nil {
             self.sceneId = dict["SceneId"] as! String
@@ -9454,6 +9510,8 @@ public class ListExperimentGroupsRequest : Tea.TeaModel {
 
     public var layerId: String?
 
+    public var regionId: String?
+
     public var status: String?
 
     public override init() {
@@ -9476,6 +9534,9 @@ public class ListExperimentGroupsRequest : Tea.TeaModel {
         if self.layerId != nil {
             map["LayerId"] = self.layerId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
         if self.status != nil {
             map["Status"] = self.status!
         }
@@ -9489,6 +9550,9 @@ public class ListExperimentGroupsRequest : Tea.TeaModel {
         if dict.keys.contains("LayerId") && dict["LayerId"] != nil {
             self.layerId = dict["LayerId"] as! String
         }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! String
         }
@@ -9500,6 +9564,8 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
         public var config: String?
 
         public var crowdId: String?
+
+        public var crowdTargetType: String?
 
         public var debugCrowdId: String?
 
@@ -9515,6 +9581,8 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
 
         public var filter: String?
 
+        public var holdingBuckets: String?
+
         public var laboratoryId: String?
 
         public var layerId: String?
@@ -9524,6 +9592,8 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
         public var needAA: Bool?
 
         public var owner: String?
+
+        public var randomFlow: Int64?
 
         public var reservedBuckets: String?
 
@@ -9551,6 +9621,9 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
             if self.crowdId != nil {
                 map["CrowdId"] = self.crowdId!
             }
+            if self.crowdTargetType != nil {
+                map["CrowdTargetType"] = self.crowdTargetType!
+            }
             if self.debugCrowdId != nil {
                 map["DebugCrowdId"] = self.debugCrowdId!
             }
@@ -9572,6 +9645,9 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
             if self.filter != nil {
                 map["Filter"] = self.filter!
             }
+            if self.holdingBuckets != nil {
+                map["HoldingBuckets"] = self.holdingBuckets!
+            }
             if self.laboratoryId != nil {
                 map["LaboratoryId"] = self.laboratoryId!
             }
@@ -9586,6 +9662,9 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
             }
             if self.owner != nil {
                 map["Owner"] = self.owner!
+            }
+            if self.randomFlow != nil {
+                map["RandomFlow"] = self.randomFlow!
             }
             if self.reservedBuckets != nil {
                 map["ReservedBuckets"] = self.reservedBuckets!
@@ -9605,6 +9684,9 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CrowdId") && dict["CrowdId"] != nil {
                 self.crowdId = dict["CrowdId"] as! String
+            }
+            if dict.keys.contains("CrowdTargetType") && dict["CrowdTargetType"] != nil {
+                self.crowdTargetType = dict["CrowdTargetType"] as! String
             }
             if dict.keys.contains("DebugCrowdId") && dict["DebugCrowdId"] != nil {
                 self.debugCrowdId = dict["DebugCrowdId"] as! String
@@ -9627,6 +9709,9 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
             if dict.keys.contains("Filter") && dict["Filter"] != nil {
                 self.filter = dict["Filter"] as! String
             }
+            if dict.keys.contains("HoldingBuckets") && dict["HoldingBuckets"] != nil {
+                self.holdingBuckets = dict["HoldingBuckets"] as! String
+            }
             if dict.keys.contains("LaboratoryId") && dict["LaboratoryId"] != nil {
                 self.laboratoryId = dict["LaboratoryId"] as! String
             }
@@ -9641,6 +9726,9 @@ public class ListExperimentGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Owner") && dict["Owner"] != nil {
                 self.owner = dict["Owner"] as! String
+            }
+            if dict.keys.contains("RandomFlow") && dict["RandomFlow"] != nil {
+                self.randomFlow = dict["RandomFlow"] as! Int64
             }
             if dict.keys.contains("ReservedBuckets") && dict["ReservedBuckets"] != nil {
                 self.reservedBuckets = dict["ReservedBuckets"] as! String
@@ -12426,11 +12514,15 @@ public class ListLayersResponseBody : Tea.TeaModel {
     public class Layers : Tea.TeaModel {
         public var description_: String?
 
+        public var gmtCreateTime: String?
+
         public var laboratoryId: String?
 
         public var layerId: String?
 
         public var name: String?
+
+        public var residualFlow: Int64?
 
         public var sceneId: String?
 
@@ -12451,6 +12543,9 @@ public class ListLayersResponseBody : Tea.TeaModel {
             if self.description_ != nil {
                 map["Description"] = self.description_!
             }
+            if self.gmtCreateTime != nil {
+                map["GmtCreateTime"] = self.gmtCreateTime!
+            }
             if self.laboratoryId != nil {
                 map["LaboratoryId"] = self.laboratoryId!
             }
@@ -12459,6 +12554,9 @@ public class ListLayersResponseBody : Tea.TeaModel {
             }
             if self.name != nil {
                 map["Name"] = self.name!
+            }
+            if self.residualFlow != nil {
+                map["ResidualFlow"] = self.residualFlow!
             }
             if self.sceneId != nil {
                 map["SceneId"] = self.sceneId!
@@ -12470,6 +12568,9 @@ public class ListLayersResponseBody : Tea.TeaModel {
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
             }
+            if dict.keys.contains("GmtCreateTime") && dict["GmtCreateTime"] != nil {
+                self.gmtCreateTime = dict["GmtCreateTime"] as! String
+            }
             if dict.keys.contains("LaboratoryId") && dict["LaboratoryId"] != nil {
                 self.laboratoryId = dict["LaboratoryId"] as! String
             }
@@ -12478,6 +12579,9 @@ public class ListLayersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("ResidualFlow") && dict["ResidualFlow"] != nil {
+                self.residualFlow = dict["ResidualFlow"] as! Int64
             }
             if dict.keys.contains("SceneId") && dict["SceneId"] != nil {
                 self.sceneId = dict["SceneId"] as! String
@@ -15559,6 +15663,8 @@ public class UpdateExperimentGroupRequest : Tea.TeaModel {
 
     public var crowdId: String?
 
+    public var crowdTargetType: String?
+
     public var debugCrowdId: String?
 
     public var debugUsers: String?
@@ -15578,6 +15684,8 @@ public class UpdateExperimentGroupRequest : Tea.TeaModel {
     public var name: String?
 
     public var needAA: Bool?
+
+    public var randomFlow: Int64?
 
     public var reservcedBuckets: String?
 
@@ -15600,6 +15708,9 @@ public class UpdateExperimentGroupRequest : Tea.TeaModel {
         }
         if self.crowdId != nil {
             map["CrowdId"] = self.crowdId!
+        }
+        if self.crowdTargetType != nil {
+            map["CrowdTargetType"] = self.crowdTargetType!
         }
         if self.debugCrowdId != nil {
             map["DebugCrowdId"] = self.debugCrowdId!
@@ -15631,6 +15742,9 @@ public class UpdateExperimentGroupRequest : Tea.TeaModel {
         if self.needAA != nil {
             map["NeedAA"] = self.needAA!
         }
+        if self.randomFlow != nil {
+            map["RandomFlow"] = self.randomFlow!
+        }
         if self.reservcedBuckets != nil {
             map["ReservcedBuckets"] = self.reservcedBuckets!
         }
@@ -15643,6 +15757,9 @@ public class UpdateExperimentGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CrowdId") && dict["CrowdId"] != nil {
             self.crowdId = dict["CrowdId"] as! String
+        }
+        if dict.keys.contains("CrowdTargetType") && dict["CrowdTargetType"] != nil {
+            self.crowdTargetType = dict["CrowdTargetType"] as! String
         }
         if dict.keys.contains("DebugCrowdId") && dict["DebugCrowdId"] != nil {
             self.debugCrowdId = dict["DebugCrowdId"] as! String
@@ -15673,6 +15790,9 @@ public class UpdateExperimentGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NeedAA") && dict["NeedAA"] != nil {
             self.needAA = dict["NeedAA"] as! Bool
+        }
+        if dict.keys.contains("RandomFlow") && dict["RandomFlow"] != nil {
+            self.randomFlow = dict["RandomFlow"] as! Int64
         }
         if dict.keys.contains("ReservcedBuckets") && dict["ReservcedBuckets"] != nil {
             self.reservcedBuckets = dict["ReservcedBuckets"] as! String
