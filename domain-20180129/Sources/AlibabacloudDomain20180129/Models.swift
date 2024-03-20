@@ -9054,6 +9054,8 @@ public class QueryDomainListRequest : Tea.TeaModel {
             }
         }
     }
+    public var ccompany: String?
+
     public var domainGroupId: String?
 
     public var domainName: String?
@@ -9100,6 +9102,9 @@ public class QueryDomainListRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.ccompany != nil {
+            map["Ccompany"] = self.ccompany!
+        }
         if self.domainGroupId != nil {
             map["DomainGroupId"] = self.domainGroupId!
         }
@@ -9156,6 +9161,9 @@ public class QueryDomainListRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Ccompany") && dict["Ccompany"] != nil {
+            self.ccompany = dict["Ccompany"] as! String
+        }
         if dict.keys.contains("DomainGroupId") && dict["DomainGroupId"] != nil {
             self.domainGroupId = dict["DomainGroupId"] as! String
         }
@@ -9296,6 +9304,8 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var ccompany: String?
+
             public var domainAuditStatus: String?
 
             public var domainGroupId: String?
@@ -9349,6 +9359,9 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.ccompany != nil {
+                    map["Ccompany"] = self.ccompany!
+                }
                 if self.domainAuditStatus != nil {
                     map["DomainAuditStatus"] = self.domainAuditStatus!
                 }
@@ -9410,6 +9423,9 @@ public class QueryDomainListResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Ccompany") && dict["Ccompany"] != nil {
+                    self.ccompany = dict["Ccompany"] as! String
+                }
                 if dict.keys.contains("DomainAuditStatus") && dict["DomainAuditStatus"] != nil {
                     self.domainAuditStatus = dict["DomainAuditStatus"] as! String
                 }
