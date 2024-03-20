@@ -1203,11 +1203,15 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
 
     public var diskType: String?
 
+    public var duration: Int32?
+
     public var eipMax: Int32?
 
     public var ioMax: Int32?
 
     public var ioMaxSpec: String?
+
+    public var paidType: Int32?
 
     public var partitionNum: Int32?
 
@@ -1248,6 +1252,9 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
         if self.diskType != nil {
             map["DiskType"] = self.diskType!
         }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
         if self.eipMax != nil {
             map["EipMax"] = self.eipMax!
         }
@@ -1256,6 +1263,9 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
         }
         if self.ioMaxSpec != nil {
             map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
         }
         if self.partitionNum != nil {
             map["PartitionNum"] = self.partitionNum!
@@ -1297,6 +1307,9 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
         if dict.keys.contains("DiskType") && dict["DiskType"] != nil {
             self.diskType = dict["DiskType"] as! String
         }
+        if dict.keys.contains("Duration") && dict["Duration"] != nil {
+            self.duration = dict["Duration"] as! Int32
+        }
         if dict.keys.contains("EipMax") && dict["EipMax"] != nil {
             self.eipMax = dict["EipMax"] as! Int32
         }
@@ -1305,6 +1318,9 @@ public class CreatePrePayOrderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IoMaxSpec") && dict["IoMaxSpec"] != nil {
             self.ioMaxSpec = dict["IoMaxSpec"] as! String
+        }
+        if dict.keys.contains("PaidType") && dict["PaidType"] != nil {
+            self.paidType = dict["PaidType"] as! Int32
         }
         if dict.keys.contains("PartitionNum") && dict["PartitionNum"] != nil {
             self.partitionNum = dict["PartitionNum"] as! Int32
@@ -1381,11 +1397,15 @@ public class CreatePrePayOrderShrinkRequest : Tea.TeaModel {
 
     public var diskType: String?
 
+    public var duration: Int32?
+
     public var eipMax: Int32?
 
     public var ioMax: Int32?
 
     public var ioMaxSpec: String?
+
+    public var paidType: Int32?
 
     public var partitionNum: Int32?
 
@@ -1425,6 +1445,9 @@ public class CreatePrePayOrderShrinkRequest : Tea.TeaModel {
         if self.diskType != nil {
             map["DiskType"] = self.diskType!
         }
+        if self.duration != nil {
+            map["Duration"] = self.duration!
+        }
         if self.eipMax != nil {
             map["EipMax"] = self.eipMax!
         }
@@ -1433,6 +1456,9 @@ public class CreatePrePayOrderShrinkRequest : Tea.TeaModel {
         }
         if self.ioMaxSpec != nil {
             map["IoMaxSpec"] = self.ioMaxSpec!
+        }
+        if self.paidType != nil {
+            map["PaidType"] = self.paidType!
         }
         if self.partitionNum != nil {
             map["PartitionNum"] = self.partitionNum!
@@ -1472,6 +1498,9 @@ public class CreatePrePayOrderShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("DiskType") && dict["DiskType"] != nil {
             self.diskType = dict["DiskType"] as! String
         }
+        if dict.keys.contains("Duration") && dict["Duration"] != nil {
+            self.duration = dict["Duration"] as! Int32
+        }
         if dict.keys.contains("EipMax") && dict["EipMax"] != nil {
             self.eipMax = dict["EipMax"] as! Int32
         }
@@ -1480,6 +1509,9 @@ public class CreatePrePayOrderShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IoMaxSpec") && dict["IoMaxSpec"] != nil {
             self.ioMaxSpec = dict["IoMaxSpec"] as! String
+        }
+        if dict.keys.contains("PaidType") && dict["PaidType"] != nil {
+            self.paidType = dict["PaidType"] as! Int32
         }
         if dict.keys.contains("PartitionNum") && dict["PartitionNum"] != nil {
             self.partitionNum = dict["PartitionNum"] as! Int32
@@ -4118,7 +4150,11 @@ public class GetAllowedIpListResponse : Tea.TeaModel {
 public class GetConsumerListRequest : Tea.TeaModel {
     public var consumerId: String?
 
+    public var currentPage: Int32?
+
     public var instanceId: String?
+
+    public var pageSize: Int32?
 
     public var regionId: String?
 
@@ -4139,8 +4175,14 @@ public class GetConsumerListRequest : Tea.TeaModel {
         if self.consumerId != nil {
             map["ConsumerId"] = self.consumerId!
         }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -4152,8 +4194,14 @@ public class GetConsumerListRequest : Tea.TeaModel {
         if dict.keys.contains("ConsumerId") && dict["ConsumerId"] != nil {
             self.consumerId = dict["ConsumerId"] as! String
         }
+        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
+            self.currentPage = dict["CurrentPage"] as! Int32
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -4357,11 +4405,17 @@ public class GetConsumerListResponseBody : Tea.TeaModel {
 
     public var consumerList: GetConsumerListResponseBody.ConsumerList?
 
+    public var currentPage: Int32?
+
     public var message: String?
+
+    public var pageSize: Int32?
 
     public var requestId: String?
 
     public var success: Bool?
+
+    public var total: Int64?
 
     public override init() {
         super.init()
@@ -4384,14 +4438,23 @@ public class GetConsumerListResponseBody : Tea.TeaModel {
         if self.consumerList != nil {
             map["ConsumerList"] = self.consumerList?.toMap()
         }
+        if self.currentPage != nil {
+            map["CurrentPage"] = self.currentPage!
+        }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
         if self.success != nil {
             map["Success"] = self.success!
+        }
+        if self.total != nil {
+            map["Total"] = self.total!
         }
         return map
     }
@@ -4405,14 +4468,23 @@ public class GetConsumerListResponseBody : Tea.TeaModel {
             model.fromMap(dict["ConsumerList"] as! [String: Any])
             self.consumerList = model
         }
+        if dict.keys.contains("CurrentPage") && dict["CurrentPage"] != nil {
+            self.currentPage = dict["CurrentPage"] as! Int32
+        }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("Success") && dict["Success"] != nil {
             self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("Total") && dict["Total"] != nil {
+            self.total = dict["Total"] as! Int64
         }
     }
 }
