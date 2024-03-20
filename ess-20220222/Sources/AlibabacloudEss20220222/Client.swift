@@ -1013,6 +1013,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.memory)) {
             query["Memory"] = request.memory!;
         }
+        if (!TeaUtils.Client.isUnset(request.networkInterfaces)) {
+            query["NetworkInterfaces"] = request.networkInterfaces ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -4014,6 +4017,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.memory)) {
             query["Memory"] = request.memory!;
+        }
+        if (!TeaUtils.Client.isUnset(request.networkInterfaces)) {
+            query["NetworkInterfaces"] = request.networkInterfaces ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.override_)) {
             query["Override"] = request.override_!;

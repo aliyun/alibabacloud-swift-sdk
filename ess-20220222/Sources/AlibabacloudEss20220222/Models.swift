@@ -5622,6 +5622,59 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaces : Tea.TeaModel {
+        public var instanceType: String?
+
+        public var ipv6AddressCount: Int32?
+
+        public var networkInterfaceTrafficMode: String?
+
+        public var securityGroupIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.ipv6AddressCount != nil {
+                map["Ipv6AddressCount"] = self.ipv6AddressCount!
+            }
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Ipv6AddressCount") && dict["Ipv6AddressCount"] != nil {
+                self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int32
+            }
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -5720,6 +5773,8 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
     public var loadBalancerWeight: Int32?
 
     public var memory: Int32?
+
+    public var networkInterfaces: [CreateScalingConfigurationRequest.NetworkInterfaces]?
 
     public var ownerAccount: String?
 
@@ -5894,6 +5949,13 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
+        }
+        if self.networkInterfaces != nil {
+            var tmp : [Any] = []
+            for k in self.networkInterfaces! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkInterfaces"] = tmp
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -6105,6 +6167,17 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Memory") && dict["Memory"] != nil {
             self.memory = dict["Memory"] as! Int32
+        }
+        if dict.keys.contains("NetworkInterfaces") && dict["NetworkInterfaces"] != nil {
+            var tmp : [CreateScalingConfigurationRequest.NetworkInterfaces] = []
+            for v in dict["NetworkInterfaces"] as! [Any] {
+                var model = CreateScalingConfigurationRequest.NetworkInterfaces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.networkInterfaces = tmp
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -6649,6 +6722,59 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaces : Tea.TeaModel {
+        public var instanceType: String?
+
+        public var ipv6AddressCount: Int32?
+
+        public var networkInterfaceTrafficMode: String?
+
+        public var securityGroupIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.ipv6AddressCount != nil {
+                map["Ipv6AddressCount"] = self.ipv6AddressCount!
+            }
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Ipv6AddressCount") && dict["Ipv6AddressCount"] != nil {
+                self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int32
+            }
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -6747,6 +6873,8 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
     public var loadBalancerWeight: Int32?
 
     public var memory: Int32?
+
+    public var networkInterfaces: [CreateScalingConfigurationShrinkRequest.NetworkInterfaces]?
 
     public var ownerAccount: String?
 
@@ -6921,6 +7049,13 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
+        }
+        if self.networkInterfaces != nil {
+            var tmp : [Any] = []
+            for k in self.networkInterfaces! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkInterfaces"] = tmp
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -7132,6 +7267,17 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Memory") && dict["Memory"] != nil {
             self.memory = dict["Memory"] as! Int32
+        }
+        if dict.keys.contains("NetworkInterfaces") && dict["NetworkInterfaces"] != nil {
+            var tmp : [CreateScalingConfigurationShrinkRequest.NetworkInterfaces] = []
+            for v in dict["NetworkInterfaces"] as! [Any] {
+                var model = CreateScalingConfigurationShrinkRequest.NetworkInterfaces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.networkInterfaces = tmp
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -17316,6 +17462,59 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class NetworkInterfaces : Tea.TeaModel {
+            public var instanceType: String?
+
+            public var ipv6AddressCount: Int32?
+
+            public var networkInterfaceTrafficMode: String?
+
+            public var securityGroupIds: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.instanceType != nil {
+                    map["InstanceType"] = self.instanceType!
+                }
+                if self.ipv6AddressCount != nil {
+                    map["Ipv6AddressCount"] = self.ipv6AddressCount!
+                }
+                if self.networkInterfaceTrafficMode != nil {
+                    map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+                }
+                if self.securityGroupIds != nil {
+                    map["SecurityGroupIds"] = self.securityGroupIds!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                    self.instanceType = dict["InstanceType"] as! String
+                }
+                if dict.keys.contains("Ipv6AddressCount") && dict["Ipv6AddressCount"] != nil {
+                    self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int32
+                }
+                if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                    self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+                }
+                if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                    self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+                }
+            }
+        }
         public class SchedulerOptions : Tea.TeaModel {
             public var managedPrivateSpaceId: String?
 
@@ -17480,6 +17679,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
         public var loadBalancerWeight: Int32?
 
         public var memory: Int32?
+
+        public var networkInterfaces: [DescribeScalingConfigurationsResponseBody.ScalingConfigurations.NetworkInterfaces]?
 
         public var passwordInherit: Bool?
 
@@ -17670,6 +17871,13 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if self.memory != nil {
                 map["Memory"] = self.memory!
+            }
+            if self.networkInterfaces != nil {
+                var tmp : [Any] = []
+                for k in self.networkInterfaces! {
+                    tmp.append(k.toMap())
+                }
+                map["NetworkInterfaces"] = tmp
             }
             if self.passwordInherit != nil {
                 map["PasswordInherit"] = self.passwordInherit!
@@ -17904,6 +18112,17 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Memory") && dict["Memory"] != nil {
                 self.memory = dict["Memory"] as! Int32
+            }
+            if dict.keys.contains("NetworkInterfaces") && dict["NetworkInterfaces"] != nil {
+                var tmp : [DescribeScalingConfigurationsResponseBody.ScalingConfigurations.NetworkInterfaces] = []
+                for v in dict["NetworkInterfaces"] as! [Any] {
+                    var model = DescribeScalingConfigurationsResponseBody.ScalingConfigurations.NetworkInterfaces()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.networkInterfaces = tmp
             }
             if dict.keys.contains("PasswordInherit") && dict["PasswordInherit"] != nil {
                 self.passwordInherit = dict["PasswordInherit"] as! Bool
@@ -28894,6 +29113,59 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaces : Tea.TeaModel {
+        public var instanceType: String?
+
+        public var ipv6AddressCount: Int32?
+
+        public var networkInterfaceTrafficMode: String?
+
+        public var securityGroupIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.ipv6AddressCount != nil {
+                map["Ipv6AddressCount"] = self.ipv6AddressCount!
+            }
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Ipv6AddressCount") && dict["Ipv6AddressCount"] != nil {
+                self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int32
+            }
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -28986,6 +29258,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
     public var loadBalancerWeight: Int32?
 
     public var memory: Int32?
+
+    public var networkInterfaces: [ModifyScalingConfigurationRequest.NetworkInterfaces]?
 
     public var override_: Bool?
 
@@ -29149,6 +29423,13 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
+        }
+        if self.networkInterfaces != nil {
+            var tmp : [Any] = []
+            for k in self.networkInterfaces! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkInterfaces"] = tmp
         }
         if self.override_ != nil {
             map["Override"] = self.override_!
@@ -29348,6 +29629,17 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Memory") && dict["Memory"] != nil {
             self.memory = dict["Memory"] as! Int32
+        }
+        if dict.keys.contains("NetworkInterfaces") && dict["NetworkInterfaces"] != nil {
+            var tmp : [ModifyScalingConfigurationRequest.NetworkInterfaces] = []
+            for v in dict["NetworkInterfaces"] as! [Any] {
+                var model = ModifyScalingConfigurationRequest.NetworkInterfaces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.networkInterfaces = tmp
         }
         if dict.keys.contains("Override") && dict["Override"] != nil {
             self.override_ = dict["Override"] as! Bool
@@ -29889,6 +30181,59 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaces : Tea.TeaModel {
+        public var instanceType: String?
+
+        public var ipv6AddressCount: Int32?
+
+        public var networkInterfaceTrafficMode: String?
+
+        public var securityGroupIds: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.ipv6AddressCount != nil {
+                map["Ipv6AddressCount"] = self.ipv6AddressCount!
+            }
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("Ipv6AddressCount") && dict["Ipv6AddressCount"] != nil {
+                self.ipv6AddressCount = dict["Ipv6AddressCount"] as! Int32
+            }
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+        }
+    }
     public class SpotPriceLimits : Tea.TeaModel {
         public var instanceType: String?
 
@@ -29981,6 +30326,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
     public var loadBalancerWeight: Int32?
 
     public var memory: Int32?
+
+    public var networkInterfaces: [ModifyScalingConfigurationShrinkRequest.NetworkInterfaces]?
 
     public var override_: Bool?
 
@@ -30144,6 +30491,13 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if self.memory != nil {
             map["Memory"] = self.memory!
+        }
+        if self.networkInterfaces != nil {
+            var tmp : [Any] = []
+            for k in self.networkInterfaces! {
+                tmp.append(k.toMap())
+            }
+            map["NetworkInterfaces"] = tmp
         }
         if self.override_ != nil {
             map["Override"] = self.override_!
@@ -30343,6 +30697,17 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Memory") && dict["Memory"] != nil {
             self.memory = dict["Memory"] as! Int32
+        }
+        if dict.keys.contains("NetworkInterfaces") && dict["NetworkInterfaces"] != nil {
+            var tmp : [ModifyScalingConfigurationShrinkRequest.NetworkInterfaces] = []
+            for v in dict["NetworkInterfaces"] as! [Any] {
+                var model = ModifyScalingConfigurationShrinkRequest.NetworkInterfaces()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.networkInterfaces = tmp
         }
         if dict.keys.contains("Override") && dict["Override"] != nil {
             self.override_ = dict["Override"] as! Bool
