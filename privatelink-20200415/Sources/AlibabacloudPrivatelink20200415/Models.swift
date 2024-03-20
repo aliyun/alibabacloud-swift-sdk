@@ -4505,6 +4505,8 @@ public class ListVpcEndpointSecurityGroupsResponseBody : Tea.TeaModel {
     public class SecurityGroups : Tea.TeaModel {
         public var securityGroupId: String?
 
+        public var securityGroupStatus: String?
+
         public override init() {
             super.init()
         }
@@ -4522,12 +4524,18 @@ public class ListVpcEndpointSecurityGroupsResponseBody : Tea.TeaModel {
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
+            if self.securityGroupStatus != nil {
+                map["SecurityGroupStatus"] = self.securityGroupStatus!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+            if dict.keys.contains("SecurityGroupStatus") && dict["SecurityGroupStatus"] != nil {
+                self.securityGroupStatus = dict["SecurityGroupStatus"] as! String
             }
         }
     }
@@ -4538,6 +4546,8 @@ public class ListVpcEndpointSecurityGroupsResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var securityGroups: [ListVpcEndpointSecurityGroupsResponseBody.SecurityGroups]?
+
+    public var totalCount: Int32?
 
     public override init() {
         super.init()
@@ -4569,6 +4579,9 @@ public class ListVpcEndpointSecurityGroupsResponseBody : Tea.TeaModel {
             }
             map["SecurityGroups"] = tmp
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         return map
     }
 
@@ -4592,6 +4605,9 @@ public class ListVpcEndpointSecurityGroupsResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.securityGroups = tmp
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
         }
     }
 }
@@ -6268,6 +6284,8 @@ public class ListVpcEndpointZonesResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var totalCount: Int32?
+
     public var zones: [ListVpcEndpointZonesResponseBody.Zones]?
 
     public override init() {
@@ -6293,6 +6311,9 @@ public class ListVpcEndpointZonesResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
         if self.zones != nil {
             var tmp : [Any] = []
             for k in self.zones! {
@@ -6312,6 +6333,9 @@ public class ListVpcEndpointZonesResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
         }
         if dict.keys.contains("Zones") && dict["Zones"] != nil {
             var tmp : [ListVpcEndpointZonesResponseBody.Zones] = []
