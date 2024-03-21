@@ -17870,8 +17870,6 @@ public class StartStreamingOutRequest : Tea.TeaModel {
     public class Panes : Tea.TeaModel {
         public var paneId: String?
 
-        public var source: String?
-
         public var sourceType: String?
 
         public override init() {
@@ -17891,9 +17889,6 @@ public class StartStreamingOutRequest : Tea.TeaModel {
             if self.paneId != nil {
                 map["PaneId"] = self.paneId!
             }
-            if self.source != nil {
-                map["Source"] = self.source!
-            }
             if self.sourceType != nil {
                 map["SourceType"] = self.sourceType!
             }
@@ -17903,9 +17898,6 @@ public class StartStreamingOutRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("PaneId") && dict["PaneId"] != nil {
                 self.paneId = dict["PaneId"] as! String
-            }
-            if dict.keys.contains("Source") && dict["Source"] != nil {
-                self.source = dict["Source"] as! String
             }
             if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
                 self.sourceType = dict["SourceType"] as! String
