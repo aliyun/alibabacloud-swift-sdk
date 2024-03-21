@@ -11437,6 +11437,8 @@ public class DescribeApiGroupRequest : Tea.TeaModel {
 public class DescribeApiGroupResponseBody : Tea.TeaModel {
     public class CustomDomains : Tea.TeaModel {
         public class DomainItem : Tea.TeaModel {
+            public var bindStageAlias: String?
+
             public var bindStageName: String?
 
             public var certificateId: String?
@@ -11479,6 +11481,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.bindStageAlias != nil {
+                    map["BindStageAlias"] = self.bindStageAlias!
+                }
                 if self.bindStageName != nil {
                     map["BindStageName"] = self.bindStageName!
                 }
@@ -11525,6 +11530,9 @@ public class DescribeApiGroupResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BindStageAlias") && dict["BindStageAlias"] != nil {
+                    self.bindStageAlias = dict["BindStageAlias"] as! String
+                }
                 if dict.keys.contains("BindStageName") && dict["BindStageName"] != nil {
                     self.bindStageName = dict["BindStageName"] as! String
                 }
@@ -18237,6 +18245,8 @@ public class DescribeApisByAppResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var stageAlias: String?
+
             public var stageName: String?
 
             public override init() {
@@ -18289,6 +18299,9 @@ public class DescribeApisByAppResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.stageAlias != nil {
+                    map["StageAlias"] = self.stageAlias!
+                }
                 if self.stageName != nil {
                     map["StageName"] = self.stageName!
                 }
@@ -18331,6 +18344,9 @@ public class DescribeApisByAppResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("StageAlias") && dict["StageAlias"] != nil {
+                    self.stageAlias = dict["StageAlias"] as! String
                 }
                 if dict.keys.contains("StageName") && dict["StageName"] != nil {
                     self.stageName = dict["StageName"] as! String
@@ -21884,6 +21900,8 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
 
             public var operator_: String?
 
+            public var stageAlias: String?
+
             public var stageName: String?
 
             public override init() {
@@ -21921,6 +21939,9 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
                 if self.operator_ != nil {
                     map["Operator"] = self.operator_!
                 }
+                if self.stageAlias != nil {
+                    map["StageAlias"] = self.stageAlias!
+                }
                 if self.stageName != nil {
                     map["StageName"] = self.stageName!
                 }
@@ -21948,6 +21969,9 @@ public class DescribeAuthorizedAppsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Operator") && dict["Operator"] != nil {
                     self.operator_ = dict["Operator"] as! String
+                }
+                if dict.keys.contains("StageAlias") && dict["StageAlias"] != nil {
+                    self.stageAlias = dict["StageAlias"] as! String
                 }
                 if dict.keys.contains("StageName") && dict["StageName"] != nil {
                     self.stageName = dict["StageName"] as! String
@@ -28013,6 +28037,8 @@ public class DescribeHistoryApisResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var stageAlias: String?
+
             public var stageName: String?
 
             public var status: String?
@@ -28055,6 +28081,9 @@ public class DescribeHistoryApisResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.stageAlias != nil {
+                    map["StageAlias"] = self.stageAlias!
+                }
                 if self.stageName != nil {
                     map["StageName"] = self.stageName!
                 }
@@ -28088,6 +28117,9 @@ public class DescribeHistoryApisResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("StageAlias") && dict["StageAlias"] != nil {
+                    self.stageAlias = dict["StageAlias"] as! String
                 }
                 if dict.keys.contains("StageName") && dict["StageName"] != nil {
                     self.stageName = dict["StageName"] as! String
@@ -31021,6 +31053,35 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class PrivateDnsList : Tea.TeaModel {
+                public var privateDns: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.privateDns != nil {
+                        map["PrivateDns"] = self.privateDns!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("PrivateDns") && dict["PrivateDns"] != nil {
+                        self.privateDns = dict["PrivateDns"] as! [String]
+                    }
+                }
+            }
             public var aclId: String?
 
             public var aclName: String?
@@ -31081,6 +31142,8 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
 
             public var networkInterfaceAttributes: DescribeInstancesResponseBody.Instances.InstanceAttribute.NetworkInterfaceAttributes?
 
+            public var privateDnsList: DescribeInstancesResponseBody.Instances.InstanceAttribute.PrivateDnsList?
+
             public var regionId: String?
 
             public var status: String?
@@ -31115,6 +31178,7 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
             public override func validate() throws -> Void {
                 try self.instanceSpecAttributes?.validate()
                 try self.networkInterfaceAttributes?.validate()
+                try self.privateDnsList?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -31208,6 +31272,9 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                 }
                 if self.networkInterfaceAttributes != nil {
                     map["NetworkInterfaceAttributes"] = self.networkInterfaceAttributes?.toMap()
+                }
+                if self.privateDnsList != nil {
+                    map["PrivateDnsList"] = self.privateDnsList?.toMap()
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
@@ -31339,6 +31406,11 @@ public class DescribeInstancesResponseBody : Tea.TeaModel {
                     var model = DescribeInstancesResponseBody.Instances.InstanceAttribute.NetworkInterfaceAttributes()
                     model.fromMap(dict["NetworkInterfaceAttributes"] as! [String: Any])
                     self.networkInterfaceAttributes = model
+                }
+                if dict.keys.contains("PrivateDnsList") && dict["PrivateDnsList"] != nil {
+                    var model = DescribeInstancesResponseBody.Instances.InstanceAttribute.PrivateDnsList()
+                    model.fromMap(dict["PrivateDnsList"] as! [String: Any])
+                    self.privateDnsList = model
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
@@ -33024,6 +33096,8 @@ public class DescribePluginApisResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var stageAlias: String?
+
             public var stageName: String?
 
             public override init() {
@@ -33064,6 +33138,9 @@ public class DescribePluginApisResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.stageAlias != nil {
+                    map["StageAlias"] = self.stageAlias!
+                }
                 if self.stageName != nil {
                     map["StageName"] = self.stageName!
                 }
@@ -33094,6 +33171,9 @@ public class DescribePluginApisResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("StageAlias") && dict["StageAlias"] != nil {
+                    self.stageAlias = dict["StageAlias"] as! String
                 }
                 if dict.keys.contains("StageName") && dict["StageName"] != nil {
                     self.stageName = dict["StageName"] as! String
