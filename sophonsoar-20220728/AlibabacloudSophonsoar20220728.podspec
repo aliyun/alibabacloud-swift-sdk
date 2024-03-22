@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudSophonsoar20220728"
-  spec.version      = "1.0.1"
+  spec.version      = "1.0.2"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud sophonsoar (20220728) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/sophonsoar-20220728" 
