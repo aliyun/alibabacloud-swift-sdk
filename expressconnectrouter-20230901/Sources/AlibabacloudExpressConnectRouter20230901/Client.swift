@@ -398,8 +398,8 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeExpressConnectRouterAllowedPrefixHistoryWithOptions(_ request: DescribeExpressConnectRouterAllowedPrefixHistoryRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeExpressConnectRouterAllowedPrefixHistoryResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.associatonId)) {
-            body["AssociatonId"] = request.associatonId ?? "";
+        if (!TeaUtils.Client.isUnset(request.associationId)) {
+            body["AssociationId"] = request.associationId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             body["ClientToken"] = request.clientToken ?? "";

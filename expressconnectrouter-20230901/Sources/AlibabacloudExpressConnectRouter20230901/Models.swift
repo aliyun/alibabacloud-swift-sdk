@@ -2122,7 +2122,7 @@ public class DescribeExpressConnectRouterResponse : Tea.TeaModel {
 }
 
 public class DescribeExpressConnectRouterAllowedPrefixHistoryRequest : Tea.TeaModel {
-    public var associatonId: String?
+    public var associationId: String?
 
     public var clientToken: String?
 
@@ -2148,8 +2148,8 @@ public class DescribeExpressConnectRouterAllowedPrefixHistoryRequest : Tea.TeaMo
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.associatonId != nil {
-            map["AssociatonId"] = self.associatonId!
+        if self.associationId != nil {
+            map["AssociationId"] = self.associationId!
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
@@ -2170,8 +2170,8 @@ public class DescribeExpressConnectRouterAllowedPrefixHistoryRequest : Tea.TeaMo
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("AssociatonId") && dict["AssociatonId"] != nil {
-            self.associatonId = dict["AssociatonId"] as! String
+        if dict.keys.contains("AssociationId") && dict["AssociationId"] != nil {
+            self.associationId = dict["AssociationId"] as! String
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
