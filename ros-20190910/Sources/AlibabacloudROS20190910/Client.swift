@@ -282,6 +282,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.diagnosticType)) {
             query["DiagnosticType"] = request.diagnosticType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.product)) {
             query["Product"] = request.product ?? "";
         }

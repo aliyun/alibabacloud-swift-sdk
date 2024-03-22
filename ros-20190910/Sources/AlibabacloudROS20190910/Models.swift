@@ -1009,6 +1009,8 @@ public class CreateDiagnosticRequest : Tea.TeaModel {
 
     public var diagnosticType: String?
 
+    public var lang: String?
+
     public var product: String?
 
     public override init() {
@@ -1031,6 +1033,9 @@ public class CreateDiagnosticRequest : Tea.TeaModel {
         if self.diagnosticType != nil {
             map["DiagnosticType"] = self.diagnosticType!
         }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
         if self.product != nil {
             map["Product"] = self.product!
         }
@@ -1043,6 +1048,9 @@ public class CreateDiagnosticRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DiagnosticType") && dict["DiagnosticType"] != nil {
             self.diagnosticType = dict["DiagnosticType"] as! String
+        }
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
         }
         if dict.keys.contains("Product") && dict["Product"] != nil {
             self.product = dict["Product"] as! String
