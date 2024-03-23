@@ -997,6 +997,45 @@ public class CreateArtifactResponse : Tea.TeaModel {
 
 public class CreateServiceRequest : Tea.TeaModel {
     public class ServiceInfo : Tea.TeaModel {
+        public class Agreements : Tea.TeaModel {
+            public var name: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Url") && dict["Url"] != nil {
+                    self.url = dict["Url"] as! String
+                }
+            }
+        }
+        public var agreements: [CreateServiceRequest.ServiceInfo.Agreements]?
+
         public var image: String?
 
         public var locale: String?
@@ -1021,6 +1060,13 @@ public class CreateServiceRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agreements != nil {
+                var tmp : [Any] = []
+                for k in self.agreements! {
+                    tmp.append(k.toMap())
+                }
+                map["Agreements"] = tmp
+            }
             if self.image != nil {
                 map["Image"] = self.image!
             }
@@ -1040,6 +1086,17 @@ public class CreateServiceRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Agreements") && dict["Agreements"] != nil {
+                var tmp : [CreateServiceRequest.ServiceInfo.Agreements] = []
+                for v in dict["Agreements"] as! [Any] {
+                    var model = CreateServiceRequest.ServiceInfo.Agreements()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.agreements = tmp
+            }
             if dict.keys.contains("Image") && dict["Image"] != nil {
                 self.image = dict["Image"] as! String
             }
@@ -3346,6 +3403,45 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
     }
     public class ServiceInfos : Tea.TeaModel {
+        public class Agreements : Tea.TeaModel {
+            public var name: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Url") && dict["Url"] != nil {
+                    self.url = dict["Url"] as! String
+                }
+            }
+        }
+        public var agreements: [GetServiceResponseBody.ServiceInfos.Agreements]?
+
         public var image: String?
 
         public var locale: String?
@@ -3370,6 +3466,13 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agreements != nil {
+                var tmp : [Any] = []
+                for k in self.agreements! {
+                    tmp.append(k.toMap())
+                }
+                map["Agreements"] = tmp
+            }
             if self.image != nil {
                 map["Image"] = self.image!
             }
@@ -3389,6 +3492,17 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Agreements") && dict["Agreements"] != nil {
+                var tmp : [GetServiceResponseBody.ServiceInfos.Agreements] = []
+                for v in dict["Agreements"] as! [Any] {
+                    var model = GetServiceResponseBody.ServiceInfos.Agreements()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.agreements = tmp
+            }
             if dict.keys.contains("Image") && dict["Image"] != nil {
                 self.image = dict["Image"] as! String
             }
@@ -9792,6 +9906,45 @@ public class UpdateArtifactResponse : Tea.TeaModel {
 
 public class UpdateServiceRequest : Tea.TeaModel {
     public class ServiceInfo : Tea.TeaModel {
+        public class Agreements : Tea.TeaModel {
+            public var name: String?
+
+            public var url: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.url != nil {
+                    map["Url"] = self.url!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Url") && dict["Url"] != nil {
+                    self.url = dict["Url"] as! String
+                }
+            }
+        }
+        public var agreements: [UpdateServiceRequest.ServiceInfo.Agreements]?
+
         public var image: String?
 
         public var locale: String?
@@ -9816,6 +9969,13 @@ public class UpdateServiceRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.agreements != nil {
+                var tmp : [Any] = []
+                for k in self.agreements! {
+                    tmp.append(k.toMap())
+                }
+                map["Agreements"] = tmp
+            }
             if self.image != nil {
                 map["Image"] = self.image!
             }
@@ -9835,6 +9995,17 @@ public class UpdateServiceRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Agreements") && dict["Agreements"] != nil {
+                var tmp : [UpdateServiceRequest.ServiceInfo.Agreements] = []
+                for v in dict["Agreements"] as! [Any] {
+                    var model = UpdateServiceRequest.ServiceInfo.Agreements()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.agreements = tmp
+            }
             if dict.keys.contains("Image") && dict["Image"] != nil {
                 self.image = dict["Image"] as! String
             }
