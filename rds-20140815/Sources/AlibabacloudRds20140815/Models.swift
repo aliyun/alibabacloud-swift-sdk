@@ -6624,6 +6624,8 @@ public class CreateDBNodesRequest : Tea.TeaModel {
     public class DBNode : Tea.TeaModel {
         public var classCode: String?
 
+        public var vswId: String?
+
         public var zoneId: String?
 
         public override init() {
@@ -6643,6 +6645,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
             if self.classCode != nil {
                 map["classCode"] = self.classCode!
             }
+            if self.vswId != nil {
+                map["vswId"] = self.vswId!
+            }
             if self.zoneId != nil {
                 map["zoneId"] = self.zoneId!
             }
@@ -6652,6 +6657,9 @@ public class CreateDBNodesRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("classCode") && dict["classCode"] != nil {
                 self.classCode = dict["classCode"] as! String
+            }
+            if dict.keys.contains("vswId") && dict["vswId"] != nil {
+                self.vswId = dict["vswId"] as! String
             }
             if dict.keys.contains("zoneId") && dict["zoneId"] != nil {
                 self.zoneId = dict["zoneId"] as! String
@@ -9007,6 +9015,8 @@ public class CreateOrderForCreateDBNodesRequest : Tea.TeaModel {
     public class DBNode : Tea.TeaModel {
         public var classCode: String?
 
+        public var vswId: String?
+
         public var zoneId: String?
 
         public override init() {
@@ -9026,6 +9036,9 @@ public class CreateOrderForCreateDBNodesRequest : Tea.TeaModel {
             if self.classCode != nil {
                 map["classCode"] = self.classCode!
             }
+            if self.vswId != nil {
+                map["vswId"] = self.vswId!
+            }
             if self.zoneId != nil {
                 map["zoneId"] = self.zoneId!
             }
@@ -9035,6 +9048,9 @@ public class CreateOrderForCreateDBNodesRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("classCode") && dict["classCode"] != nil {
                 self.classCode = dict["classCode"] as! String
+            }
+            if dict.keys.contains("vswId") && dict["vswId"] != nil {
+                self.vswId = dict["vswId"] as! String
             }
             if dict.keys.contains("zoneId") && dict["zoneId"] != nil {
                 self.zoneId = dict["zoneId"] as! String
@@ -70002,6 +70018,8 @@ public class PreCheckCreateOrderForCreateDBNodesRequest : Tea.TeaModel {
     public class DBNode : Tea.TeaModel {
         public var classCode: String?
 
+        public var vswId: String?
+
         public var zoneId: String?
 
         public override init() {
@@ -70021,6 +70039,9 @@ public class PreCheckCreateOrderForCreateDBNodesRequest : Tea.TeaModel {
             if self.classCode != nil {
                 map["classCode"] = self.classCode!
             }
+            if self.vswId != nil {
+                map["vswId"] = self.vswId!
+            }
             if self.zoneId != nil {
                 map["zoneId"] = self.zoneId!
             }
@@ -70030,6 +70051,9 @@ public class PreCheckCreateOrderForCreateDBNodesRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("classCode") && dict["classCode"] != nil {
                 self.classCode = dict["classCode"] as! String
+            }
+            if dict.keys.contains("vswId") && dict["vswId"] != nil {
+                self.vswId = dict["vswId"] as! String
             }
             if dict.keys.contains("zoneId") && dict["zoneId"] != nil {
                 self.zoneId = dict["zoneId"] as! String
