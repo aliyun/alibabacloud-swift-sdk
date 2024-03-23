@@ -8059,6 +8059,476 @@ public class OpenAlinlpServiceResponse : Tea.TeaModel {
     }
 }
 
+public class PostISConvRewriterRequest : Tea.TeaModel {
+    public var algorithm: String?
+
+    public var debug: Bool?
+
+    public var input: [String: Any]?
+
+    public var parameters: [String: Any]?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.algorithm != nil {
+            map["Algorithm"] = self.algorithm!
+        }
+        if self.debug != nil {
+            map["Debug"] = self.debug!
+        }
+        if self.input != nil {
+            map["Input"] = self.input!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Algorithm") && dict["Algorithm"] != nil {
+            self.algorithm = dict["Algorithm"] as! String
+        }
+        if dict.keys.contains("Debug") && dict["Debug"] != nil {
+            self.debug = dict["Debug"] as! Bool
+        }
+        if dict.keys.contains("Input") && dict["Input"] != nil {
+            self.input = dict["Input"] as! [String: Any]
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parameters = dict["Parameters"] as! [String: Any]
+        }
+        if dict.keys.contains("Version") && dict["Version"] != nil {
+            self.version = dict["Version"] as! String
+        }
+    }
+}
+
+public class PostISConvRewriterShrinkRequest : Tea.TeaModel {
+    public var algorithm: String?
+
+    public var debug: Bool?
+
+    public var inputShrink: String?
+
+    public var parametersShrink: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.algorithm != nil {
+            map["Algorithm"] = self.algorithm!
+        }
+        if self.debug != nil {
+            map["Debug"] = self.debug!
+        }
+        if self.inputShrink != nil {
+            map["Input"] = self.inputShrink!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Algorithm") && dict["Algorithm"] != nil {
+            self.algorithm = dict["Algorithm"] as! String
+        }
+        if dict.keys.contains("Debug") && dict["Debug"] != nil {
+            self.debug = dict["Debug"] as! Bool
+        }
+        if dict.keys.contains("Input") && dict["Input"] != nil {
+            self.inputShrink = dict["Input"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parametersShrink = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("Version") && dict["Version"] != nil {
+            self.version = dict["Version"] as! String
+        }
+    }
+}
+
+public class PostISConvRewriterResponseBody : Tea.TeaModel {
+    public var data: [String: Any]?
+
+    public var debugInfo: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.debugInfo != nil {
+            map["DebugInfo"] = self.debugInfo!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! [String: Any]
+        }
+        if dict.keys.contains("DebugInfo") && dict["DebugInfo"] != nil {
+            self.debugInfo = dict["DebugInfo"] as! [String: Any]
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+    }
+}
+
+public class PostISConvRewriterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PostISConvRewriterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = PostISConvRewriterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class PostISRetrieveRouterRequest : Tea.TeaModel {
+    public var algorithm: String?
+
+    public var debug: Bool?
+
+    public var input: [String: Any]?
+
+    public var parameters: [String: Any]?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.algorithm != nil {
+            map["Algorithm"] = self.algorithm!
+        }
+        if self.debug != nil {
+            map["Debug"] = self.debug!
+        }
+        if self.input != nil {
+            map["Input"] = self.input!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Algorithm") && dict["Algorithm"] != nil {
+            self.algorithm = dict["Algorithm"] as! String
+        }
+        if dict.keys.contains("Debug") && dict["Debug"] != nil {
+            self.debug = dict["Debug"] as! Bool
+        }
+        if dict.keys.contains("Input") && dict["Input"] != nil {
+            self.input = dict["Input"] as! [String: Any]
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parameters = dict["Parameters"] as! [String: Any]
+        }
+        if dict.keys.contains("Version") && dict["Version"] != nil {
+            self.version = dict["Version"] as! String
+        }
+    }
+}
+
+public class PostISRetrieveRouterShrinkRequest : Tea.TeaModel {
+    public var algorithm: String?
+
+    public var debug: Bool?
+
+    public var inputShrink: String?
+
+    public var parametersShrink: String?
+
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.algorithm != nil {
+            map["Algorithm"] = self.algorithm!
+        }
+        if self.debug != nil {
+            map["Debug"] = self.debug!
+        }
+        if self.inputShrink != nil {
+            map["Input"] = self.inputShrink!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Algorithm") && dict["Algorithm"] != nil {
+            self.algorithm = dict["Algorithm"] as! String
+        }
+        if dict.keys.contains("Debug") && dict["Debug"] != nil {
+            self.debug = dict["Debug"] as! Bool
+        }
+        if dict.keys.contains("Input") && dict["Input"] != nil {
+            self.inputShrink = dict["Input"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parametersShrink = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("Version") && dict["Version"] != nil {
+            self.version = dict["Version"] as! String
+        }
+    }
+}
+
+public class PostISRetrieveRouterResponseBody : Tea.TeaModel {
+    public var data: [String: Any]?
+
+    public var debugInfo: [String: Any]?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var status: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.debugInfo != nil {
+            map["DebugInfo"] = self.debugInfo!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! [String: Any]
+        }
+        if dict.keys.contains("DebugInfo") && dict["DebugInfo"] != nil {
+            self.debugInfo = dict["DebugInfo"] as! [String: Any]
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! Int32
+        }
+    }
+}
+
+public class PostISRetrieveRouterResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: PostISRetrieveRouterResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = PostISRetrieveRouterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class PostMSConvSearchTokenGeneratedResponseBody : Tea.TeaModel {
     public var code: Int32?
 
