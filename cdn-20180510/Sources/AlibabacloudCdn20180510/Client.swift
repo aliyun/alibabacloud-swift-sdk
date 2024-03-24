@@ -5624,6 +5624,43 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshObjectCacheByCacheTagWithOptions(_ request: RefreshObjectCacheByCacheTagRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshObjectCacheByCacheTagResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.cacheTag)) {
+            query["CacheTag"] = request.cacheTag ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domainName)) {
+            query["DomainName"] = request.domainName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.force)) {
+            query["Force"] = request.force!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RefreshObjectCacheByCacheTag",
+            "version": "2018-05-10",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RefreshObjectCacheByCacheTagResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func refreshObjectCacheByCacheTag(_ request: RefreshObjectCacheByCacheTagRequest) async throws -> RefreshObjectCacheByCacheTagResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await refreshObjectCacheByCacheTagWithOptions(request as! RefreshObjectCacheByCacheTagRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func refreshObjectCachesWithOptions(_ request: RefreshObjectCachesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RefreshObjectCachesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

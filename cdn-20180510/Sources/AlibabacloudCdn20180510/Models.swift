@@ -34141,6 +34141,139 @@ public class PushObjectCacheResponse : Tea.TeaModel {
     }
 }
 
+public class RefreshObjectCacheByCacheTagRequest : Tea.TeaModel {
+    public var cacheTag: String?
+
+    public var domainName: String?
+
+    public var force: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cacheTag != nil {
+            map["CacheTag"] = self.cacheTag!
+        }
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CacheTag") && dict["CacheTag"] != nil {
+            self.cacheTag = dict["CacheTag"] as! String
+        }
+        if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("Force") && dict["Force"] != nil {
+            self.force = dict["Force"] as! Bool
+        }
+    }
+}
+
+public class RefreshObjectCacheByCacheTagResponseBody : Tea.TeaModel {
+    public var refreshTaskId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.refreshTaskId != nil {
+            map["RefreshTaskId"] = self.refreshTaskId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RefreshTaskId") && dict["RefreshTaskId"] != nil {
+            self.refreshTaskId = dict["RefreshTaskId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class RefreshObjectCacheByCacheTagResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RefreshObjectCacheByCacheTagResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = RefreshObjectCacheByCacheTagResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RefreshObjectCachesRequest : Tea.TeaModel {
     public var force: Bool?
 
