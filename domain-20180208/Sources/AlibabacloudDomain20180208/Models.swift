@@ -3235,6 +3235,8 @@ public class QueryBrokerDemandResponseBody : Tea.TeaModel {
 
         public var description_: String?
 
+        public var email: String?
+
         public var mobile: String?
 
         public var orderType: Int32?
@@ -3291,6 +3293,9 @@ public class QueryBrokerDemandResponseBody : Tea.TeaModel {
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
+            }
+            if self.email != nil {
+                map["Email"] = self.email!
             }
             if self.mobile != nil {
                 map["Mobile"] = self.mobile!
@@ -3349,6 +3354,9 @@ public class QueryBrokerDemandResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("Email") && dict["Email"] != nil {
+                self.email = dict["Email"] as! String
             }
             if dict.keys.contains("Mobile") && dict["Mobile"] != nil {
                 self.mobile = dict["Mobile"] as! String
