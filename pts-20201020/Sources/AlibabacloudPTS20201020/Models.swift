@@ -10103,6 +10103,8 @@ public class ListPtsSceneResponseBody : Tea.TeaModel {
 
         public var sceneName: String?
 
+        public var status: String?
+
         public override init() {
             super.init()
         }
@@ -10126,6 +10128,9 @@ public class ListPtsSceneResponseBody : Tea.TeaModel {
             if self.sceneName != nil {
                 map["SceneName"] = self.sceneName!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             return map
         }
 
@@ -10138,6 +10143,9 @@ public class ListPtsSceneResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("SceneName") && dict["SceneName"] != nil {
                 self.sceneName = dict["SceneName"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
             }
         }
     }
