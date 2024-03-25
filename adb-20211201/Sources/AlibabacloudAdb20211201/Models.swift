@@ -3663,6 +3663,51 @@ public class CreateDBClusterResponse : Tea.TeaModel {
 }
 
 public class CreateDBResourceGroupRequest : Tea.TeaModel {
+    public class Rules : Tea.TeaModel {
+        public var groupName: String?
+
+        public var queryTime: String?
+
+        public var targetGroupName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            if self.queryTime != nil {
+                map["QueryTime"] = self.queryTime!
+            }
+            if self.targetGroupName != nil {
+                map["TargetGroupName"] = self.targetGroupName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                self.groupName = dict["GroupName"] as! String
+            }
+            if dict.keys.contains("QueryTime") && dict["QueryTime"] != nil {
+                self.queryTime = dict["QueryTime"] as! String
+            }
+            if dict.keys.contains("TargetGroupName") && dict["TargetGroupName"] != nil {
+                self.targetGroupName = dict["TargetGroupName"] as! String
+            }
+        }
+    }
     public var clusterMode: String?
 
     public var clusterSizeResource: String?
@@ -3684,6 +3729,8 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
     public var minComputeResource: String?
 
     public var regionId: String?
+
+    public var rules: [CreateDBResourceGroupRequest.Rules]?
 
     public override init() {
         super.init()
@@ -3732,6 +3779,13 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.rules != nil {
+            var tmp : [Any] = []
+            for k in self.rules! {
+                tmp.append(k.toMap())
+            }
+            map["Rules"] = tmp
+        }
         return map
     }
 
@@ -3768,6 +3822,135 @@ public class CreateDBResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            var tmp : [CreateDBResourceGroupRequest.Rules] = []
+            for v in dict["Rules"] as! [Any] {
+                var model = CreateDBResourceGroupRequest.Rules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.rules = tmp
+        }
+    }
+}
+
+public class CreateDBResourceGroupShrinkRequest : Tea.TeaModel {
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
+    public var DBClusterId: String?
+
+    public var enableSpot: Bool?
+
+    public var groupName: String?
+
+    public var groupType: String?
+
+    public var maxClusterCount: Int32?
+
+    public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
+
+    public var minComputeResource: String?
+
+    public var regionId: String?
+
+    public var rulesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.enableSpot != nil {
+            map["EnableSpot"] = self.enableSpot!
+        }
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
+        if self.groupType != nil {
+            map["GroupType"] = self.groupType!
+        }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
+        if self.maxComputeResource != nil {
+            map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
+        }
+        if self.minComputeResource != nil {
+            map["MinComputeResource"] = self.minComputeResource!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.rulesShrink != nil {
+            map["Rules"] = self.rulesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterMode") && dict["ClusterMode"] != nil {
+            self.clusterMode = dict["ClusterMode"] as! String
+        }
+        if dict.keys.contains("ClusterSizeResource") && dict["ClusterSizeResource"] != nil {
+            self.clusterSizeResource = dict["ClusterSizeResource"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("EnableSpot") && dict["EnableSpot"] != nil {
+            self.enableSpot = dict["EnableSpot"] as! Bool
+        }
+        if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+            self.groupName = dict["GroupName"] as! String
+        }
+        if dict.keys.contains("GroupType") && dict["GroupType"] != nil {
+            self.groupType = dict["GroupType"] as! String
+        }
+        if dict.keys.contains("MaxClusterCount") && dict["MaxClusterCount"] != nil {
+            self.maxClusterCount = dict["MaxClusterCount"] as! Int32
+        }
+        if dict.keys.contains("MaxComputeResource") && dict["MaxComputeResource"] != nil {
+            self.maxComputeResource = dict["MaxComputeResource"] as! String
+        }
+        if dict.keys.contains("MinClusterCount") && dict["MinClusterCount"] != nil {
+            self.minClusterCount = dict["MinClusterCount"] as! Int32
+        }
+        if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
+            self.minComputeResource = dict["MinComputeResource"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            self.rulesShrink = dict["Rules"] as! String
         }
     }
 }
@@ -12867,6 +13050,51 @@ public class DescribeDBResourceGroupRequest : Tea.TeaModel {
 
 public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
     public class GroupsInfo : Tea.TeaModel {
+        public class Rules : Tea.TeaModel {
+            public var groupName: String?
+
+            public var queryTime: String?
+
+            public var targetGroupName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.queryTime != nil {
+                    map["QueryTime"] = self.queryTime!
+                }
+                if self.targetGroupName != nil {
+                    map["TargetGroupName"] = self.targetGroupName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                    self.groupName = dict["GroupName"] as! String
+                }
+                if dict.keys.contains("QueryTime") && dict["QueryTime"] != nil {
+                    self.queryTime = dict["QueryTime"] as! String
+                }
+                if dict.keys.contains("TargetGroupName") && dict["TargetGroupName"] != nil {
+                    self.targetGroupName = dict["TargetGroupName"] as! String
+                }
+            }
+        }
         public var clusterMode: String?
 
         public var clusterSizeResource: String?
@@ -12890,6 +13118,8 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
         public var minClusterCount: Int32?
 
         public var minComputeResource: String?
+
+        public var rules: [DescribeDBResourceGroupResponseBody.GroupsInfo.Rules]?
 
         public var runningClusterCount: Int32?
 
@@ -12947,6 +13177,13 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             if self.minComputeResource != nil {
                 map["MinComputeResource"] = self.minComputeResource!
             }
+            if self.rules != nil {
+                var tmp : [Any] = []
+                for k in self.rules! {
+                    tmp.append(k.toMap())
+                }
+                map["Rules"] = tmp
+            }
             if self.runningClusterCount != nil {
                 map["RunningClusterCount"] = self.runningClusterCount!
             }
@@ -12995,6 +13232,17 @@ public class DescribeDBResourceGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
                 self.minComputeResource = dict["MinComputeResource"] as! String
+            }
+            if dict.keys.contains("Rules") && dict["Rules"] != nil {
+                var tmp : [DescribeDBResourceGroupResponseBody.GroupsInfo.Rules] = []
+                for v in dict["Rules"] as! [Any] {
+                    var model = DescribeDBResourceGroupResponseBody.GroupsInfo.Rules()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.rules = tmp
             }
             if dict.keys.contains("RunningClusterCount") && dict["RunningClusterCount"] != nil {
                 self.runningClusterCount = dict["RunningClusterCount"] as! Int32
@@ -25842,6 +26090,51 @@ public class ModifyDBClusterMaintainTimeResponse : Tea.TeaModel {
 }
 
 public class ModifyDBResourceGroupRequest : Tea.TeaModel {
+    public class Rules : Tea.TeaModel {
+        public var groupName: String?
+
+        public var queryTime: String?
+
+        public var targetGroupName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            if self.queryTime != nil {
+                map["QueryTime"] = self.queryTime!
+            }
+            if self.targetGroupName != nil {
+                map["TargetGroupName"] = self.targetGroupName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                self.groupName = dict["GroupName"] as! String
+            }
+            if dict.keys.contains("QueryTime") && dict["QueryTime"] != nil {
+                self.queryTime = dict["QueryTime"] as! String
+            }
+            if dict.keys.contains("TargetGroupName") && dict["TargetGroupName"] != nil {
+                self.targetGroupName = dict["TargetGroupName"] as! String
+            }
+        }
+    }
     public var clusterMode: String?
 
     public var clusterSizeResource: String?
@@ -25863,6 +26156,8 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
     public var minComputeResource: String?
 
     public var regionId: String?
+
+    public var rules: [ModifyDBResourceGroupRequest.Rules]?
 
     public override init() {
         super.init()
@@ -25911,6 +26206,13 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.rules != nil {
+            var tmp : [Any] = []
+            for k in self.rules! {
+                tmp.append(k.toMap())
+            }
+            map["Rules"] = tmp
+        }
         return map
     }
 
@@ -25947,6 +26249,135 @@ public class ModifyDBResourceGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            var tmp : [ModifyDBResourceGroupRequest.Rules] = []
+            for v in dict["Rules"] as! [Any] {
+                var model = ModifyDBResourceGroupRequest.Rules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.rules = tmp
+        }
+    }
+}
+
+public class ModifyDBResourceGroupShrinkRequest : Tea.TeaModel {
+    public var clusterMode: String?
+
+    public var clusterSizeResource: String?
+
+    public var DBClusterId: String?
+
+    public var enableSpot: Bool?
+
+    public var groupName: String?
+
+    public var groupType: String?
+
+    public var maxClusterCount: Int32?
+
+    public var maxComputeResource: String?
+
+    public var minClusterCount: Int32?
+
+    public var minComputeResource: String?
+
+    public var regionId: String?
+
+    public var rulesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clusterMode != nil {
+            map["ClusterMode"] = self.clusterMode!
+        }
+        if self.clusterSizeResource != nil {
+            map["ClusterSizeResource"] = self.clusterSizeResource!
+        }
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.enableSpot != nil {
+            map["EnableSpot"] = self.enableSpot!
+        }
+        if self.groupName != nil {
+            map["GroupName"] = self.groupName!
+        }
+        if self.groupType != nil {
+            map["GroupType"] = self.groupType!
+        }
+        if self.maxClusterCount != nil {
+            map["MaxClusterCount"] = self.maxClusterCount!
+        }
+        if self.maxComputeResource != nil {
+            map["MaxComputeResource"] = self.maxComputeResource!
+        }
+        if self.minClusterCount != nil {
+            map["MinClusterCount"] = self.minClusterCount!
+        }
+        if self.minComputeResource != nil {
+            map["MinComputeResource"] = self.minComputeResource!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.rulesShrink != nil {
+            map["Rules"] = self.rulesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterMode") && dict["ClusterMode"] != nil {
+            self.clusterMode = dict["ClusterMode"] as! String
+        }
+        if dict.keys.contains("ClusterSizeResource") && dict["ClusterSizeResource"] != nil {
+            self.clusterSizeResource = dict["ClusterSizeResource"] as! String
+        }
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("EnableSpot") && dict["EnableSpot"] != nil {
+            self.enableSpot = dict["EnableSpot"] as! Bool
+        }
+        if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+            self.groupName = dict["GroupName"] as! String
+        }
+        if dict.keys.contains("GroupType") && dict["GroupType"] != nil {
+            self.groupType = dict["GroupType"] as! String
+        }
+        if dict.keys.contains("MaxClusterCount") && dict["MaxClusterCount"] != nil {
+            self.maxClusterCount = dict["MaxClusterCount"] as! Int32
+        }
+        if dict.keys.contains("MaxComputeResource") && dict["MaxComputeResource"] != nil {
+            self.maxComputeResource = dict["MaxComputeResource"] as! String
+        }
+        if dict.keys.contains("MinClusterCount") && dict["MinClusterCount"] != nil {
+            self.minClusterCount = dict["MinClusterCount"] as! Int32
+        }
+        if dict.keys.contains("MinComputeResource") && dict["MinComputeResource"] != nil {
+            self.minComputeResource = dict["MinComputeResource"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            self.rulesShrink = dict["Rules"] as! String
         }
     }
 }
