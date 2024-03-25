@@ -5393,6 +5393,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var vSwitchId: String?
 
+            public var viewInstanceStatusCode: Int32?
+
             public var vpcId: String?
 
             public var zoneId: String?
@@ -5519,6 +5521,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 if self.vSwitchId != nil {
                     map["VSwitchId"] = self.vSwitchId!
                 }
+                if self.viewInstanceStatusCode != nil {
+                    map["ViewInstanceStatusCode"] = self.viewInstanceStatusCode!
+                }
                 if self.vpcId != nil {
                     map["VpcId"] = self.vpcId!
                 }
@@ -5639,6 +5644,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
                     self.vSwitchId = dict["VSwitchId"] as! String
+                }
+                if dict.keys.contains("ViewInstanceStatusCode") && dict["ViewInstanceStatusCode"] != nil {
+                    self.viewInstanceStatusCode = dict["ViewInstanceStatusCode"] as! Int32
                 }
                 if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
                     self.vpcId = dict["VpcId"] as! String
