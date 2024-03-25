@@ -482,6 +482,73 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAccessPointWithOptions(_ request: CreateAccessPointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAccessPointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessGroup)) {
+            query["AccessGroup"] = request.accessGroup ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessPointName)) {
+            query["AccessPointName"] = request.accessPointName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabledRam)) {
+            query["EnabledRam"] = request.enabledRam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerGroupId)) {
+            query["OwnerGroupId"] = request.ownerGroupId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerUserId)) {
+            query["OwnerUserId"] = request.ownerUserId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.permission)) {
+            query["Permission"] = request.permission ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.posixGroupId)) {
+            query["PosixGroupId"] = request.posixGroupId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.posixSecondaryGroupIds)) {
+            query["PosixSecondaryGroupIds"] = request.posixSecondaryGroupIds ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.posixUserId)) {
+            query["PosixUserId"] = request.posixUserId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rootDirectory)) {
+            query["RootDirectory"] = request.rootDirectory ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vswId)) {
+            query["VswId"] = request.vswId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateAccessPoint",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateAccessPointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createAccessPoint(_ request: CreateAccessPointRequest) async throws -> CreateAccessPointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createAccessPointWithOptions(request as! CreateAccessPointRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createAccessRuleWithOptions(_ request: CreateAccessRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateAccessRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -696,6 +763,52 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createDataFlowTask(_ request: CreateDataFlowTaskRequest) async throws -> CreateDataFlowTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await createDataFlowTaskWithOptions(request as! CreateDataFlowTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDirWithOptions(_ request: CreateDirRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateDirResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerGroupId)) {
+            query["OwnerGroupId"] = request.ownerGroupId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerUserId)) {
+            query["OwnerUserId"] = request.ownerUserId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.permission)) {
+            query["Permission"] = request.permission ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.recursion)) {
+            query["Recursion"] = request.recursion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.rootDirectory)) {
+            query["RootDirectory"] = request.rootDirectory ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateDir",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateDirResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createDir(_ request: CreateDirRequest) async throws -> CreateDirResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createDirWithOptions(request as! CreateDirRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -958,6 +1071,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.paths)) {
             query["Paths"] = request.paths ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -1310,6 +1426,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteAccessGroup(_ request: DeleteAccessGroupRequest) async throws -> DeleteAccessGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteAccessGroupWithOptions(request as! DeleteAccessGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAccessPointWithOptions(_ request: DeleteAccessPointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteAccessPointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessPointId)) {
+            query["AccessPointId"] = request.accessPointId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteAccessPoint",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteAccessPointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteAccessPoint(_ request: DeleteAccessPointRequest) async throws -> DeleteAccessPointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteAccessPointWithOptions(request as! DeleteAccessPointRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1779,6 +1929,80 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAccessGroups(_ request: DescribeAccessGroupsRequest) async throws -> DescribeAccessGroupsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeAccessGroupsWithOptions(request as! DescribeAccessGroupsRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAccessPointWithOptions(_ request: DescribeAccessPointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAccessPointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessPointId)) {
+            query["AccessPointId"] = request.accessPointId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAccessPoint",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAccessPointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAccessPoint(_ request: DescribeAccessPointRequest) async throws -> DescribeAccessPointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAccessPointWithOptions(request as! DescribeAccessPointRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAccessPointsWithOptions(_ request: DescribeAccessPointsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAccessPointsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessGroup)) {
+            query["AccessGroup"] = request.accessGroup ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeAccessPoints",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeAccessPointsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeAccessPoints(_ request: DescribeAccessPointsRequest) async throws -> DescribeAccessPointsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeAccessPointsWithOptions(request as! DescribeAccessPointsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2974,6 +3198,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.status)) {
             query["Status"] = request.status ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.storageType)) {
+            query["StorageType"] = request.storageType ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -3157,6 +3384,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyAccessGroup(_ request: ModifyAccessGroupRequest) async throws -> ModifyAccessGroupResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyAccessGroupWithOptions(request as! ModifyAccessGroupRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAccessPointWithOptions(_ request: ModifyAccessPointRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyAccessPointResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessGroup)) {
+            query["AccessGroup"] = request.accessGroup ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessPointId)) {
+            query["AccessPointId"] = request.accessPointId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.accessPointName)) {
+            query["AccessPointName"] = request.accessPointName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.enabledRam)) {
+            query["EnabledRam"] = request.enabledRam!;
+        }
+        if (!TeaUtils.Client.isUnset(request.fileSystemId)) {
+            query["FileSystemId"] = request.fileSystemId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyAccessPoint",
+            "version": "2017-06-26",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyAccessPointResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyAccessPoint(_ request: ModifyAccessPointRequest) async throws -> ModifyAccessPointResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyAccessPointWithOptions(request as! ModifyAccessPointRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
