@@ -7403,7 +7403,7 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
             public var backupEndTime: String?
 
-            public var backupId: Int32?
+            public var backupId: Int64?
 
             public var backupIntranetDownloadURL: String?
 
@@ -7485,7 +7485,7 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                     self.backupEndTime = dict["BackupEndTime"] as! String
                 }
                 if dict.keys.contains("BackupId") && dict["BackupId"] != nil {
-                    self.backupId = dict["BackupId"] as! Int32
+                    self.backupId = dict["BackupId"] as! Int64
                 }
                 if dict.keys.contains("BackupIntranetDownloadURL") && dict["BackupIntranetDownloadURL"] != nil {
                     self.backupIntranetDownloadURL = dict["BackupIntranetDownloadURL"] as! String
