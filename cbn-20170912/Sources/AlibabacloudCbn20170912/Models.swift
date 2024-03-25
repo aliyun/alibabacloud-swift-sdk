@@ -4721,6 +4721,276 @@ public class CreateTransitRouterCidrResponse : Tea.TeaModel {
     }
 }
 
+public class CreateTransitRouterEcrAttachmentRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var cenId: String?
+
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ecrId: String?
+
+    public var ecrOwnerId: Int64?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tag: [CreateTransitRouterEcrAttachmentRequest.Tag]?
+
+    public var transitRouterAttachmentDescription: String?
+
+    public var transitRouterAttachmentName: String?
+
+    public var transitRouterId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cenId != nil {
+            map["CenId"] = self.cenId!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ecrId != nil {
+            map["EcrId"] = self.ecrId!
+        }
+        if self.ecrOwnerId != nil {
+            map["EcrOwnerId"] = self.ecrOwnerId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.transitRouterAttachmentDescription != nil {
+            map["TransitRouterAttachmentDescription"] = self.transitRouterAttachmentDescription!
+        }
+        if self.transitRouterAttachmentName != nil {
+            map["TransitRouterAttachmentName"] = self.transitRouterAttachmentName!
+        }
+        if self.transitRouterId != nil {
+            map["TransitRouterId"] = self.transitRouterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CenId") && dict["CenId"] != nil {
+            self.cenId = dict["CenId"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("EcrId") && dict["EcrId"] != nil {
+            self.ecrId = dict["EcrId"] as! String
+        }
+        if dict.keys.contains("EcrOwnerId") && dict["EcrOwnerId"] != nil {
+            self.ecrOwnerId = dict["EcrOwnerId"] as! Int64
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [CreateTransitRouterEcrAttachmentRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateTransitRouterEcrAttachmentRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("TransitRouterAttachmentDescription") && dict["TransitRouterAttachmentDescription"] != nil {
+            self.transitRouterAttachmentDescription = dict["TransitRouterAttachmentDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentName") && dict["TransitRouterAttachmentName"] != nil {
+            self.transitRouterAttachmentName = dict["TransitRouterAttachmentName"] as! String
+        }
+        if dict.keys.contains("TransitRouterId") && dict["TransitRouterId"] != nil {
+            self.transitRouterId = dict["TransitRouterId"] as! String
+        }
+    }
+}
+
+public class CreateTransitRouterEcrAttachmentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var transitRouterAttachmentId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.transitRouterAttachmentId != nil {
+            map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentId") && dict["TransitRouterAttachmentId"] != nil {
+            self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+    }
+}
+
+public class CreateTransitRouterEcrAttachmentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateTransitRouterEcrAttachmentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateTransitRouterEcrAttachmentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateTransitRouterMulticastDomainRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -9217,6 +9487,171 @@ public class DeleteTransitRouterCidrResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteTransitRouterCidrResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteTransitRouterEcrAttachmentRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var force: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var transitRouterAttachmentId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.transitRouterAttachmentId != nil {
+            map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("Force") && dict["Force"] != nil {
+            self.force = dict["Force"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TransitRouterAttachmentId") && dict["TransitRouterAttachmentId"] != nil {
+            self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+    }
+}
+
+public class DeleteTransitRouterEcrAttachmentResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteTransitRouterEcrAttachmentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteTransitRouterEcrAttachmentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteTransitRouterEcrAttachmentResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -24585,6 +25020,470 @@ public class ListTransitRouterCidrAllocationResponse : Tea.TeaModel {
     }
 }
 
+public class ListTransitRouterEcrAttachmentsRequest : Tea.TeaModel {
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var cenId: String?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var tag: [ListTransitRouterEcrAttachmentsRequest.Tag]?
+
+    public var transitRouterAttachmentId: String?
+
+    public var transitRouterId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.cenId != nil {
+            map["CenId"] = self.cenId!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
+        if self.transitRouterAttachmentId != nil {
+            map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+        }
+        if self.transitRouterId != nil {
+            map["TransitRouterId"] = self.transitRouterId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CenId") && dict["CenId"] != nil {
+            self.cenId = dict["CenId"] as! String
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [ListTransitRouterEcrAttachmentsRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = ListTransitRouterEcrAttachmentsRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
+        if dict.keys.contains("TransitRouterAttachmentId") && dict["TransitRouterAttachmentId"] != nil {
+            self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+        if dict.keys.contains("TransitRouterId") && dict["TransitRouterId"] != nil {
+            self.transitRouterId = dict["TransitRouterId"] as! String
+        }
+    }
+}
+
+public class ListTransitRouterEcrAttachmentsResponseBody : Tea.TeaModel {
+    public class TransitRouterAttachments : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var key: String?
+
+            public var value: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.key != nil {
+                    map["Key"] = self.key!
+                }
+                if self.value != nil {
+                    map["Value"] = self.value!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Key") && dict["Key"] != nil {
+                    self.key = dict["Key"] as! String
+                }
+                if dict.keys.contains("Value") && dict["Value"] != nil {
+                    self.value = dict["Value"] as! String
+                }
+            }
+        }
+        public var autoPublishRouteEnabled: Bool?
+
+        public var cenId: String?
+
+        public var creationTime: String?
+
+        public var ecrId: String?
+
+        public var ecrOwnerId: Int64?
+
+        public var orderType: String?
+
+        public var resourceType: String?
+
+        public var status: String?
+
+        public var tags: [ListTransitRouterEcrAttachmentsResponseBody.TransitRouterAttachments.Tags]?
+
+        public var transitRouterAttachmentDescription: String?
+
+        public var transitRouterAttachmentId: String?
+
+        public var transitRouterAttachmentName: String?
+
+        public var transitRouterId: String?
+
+        public var transitRouterRegionId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoPublishRouteEnabled != nil {
+                map["AutoPublishRouteEnabled"] = self.autoPublishRouteEnabled!
+            }
+            if self.cenId != nil {
+                map["CenId"] = self.cenId!
+            }
+            if self.creationTime != nil {
+                map["CreationTime"] = self.creationTime!
+            }
+            if self.ecrId != nil {
+                map["EcrId"] = self.ecrId!
+            }
+            if self.ecrOwnerId != nil {
+                map["EcrOwnerId"] = self.ecrOwnerId!
+            }
+            if self.orderType != nil {
+                map["OrderType"] = self.orderType!
+            }
+            if self.resourceType != nil {
+                map["ResourceType"] = self.resourceType!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.transitRouterAttachmentDescription != nil {
+                map["TransitRouterAttachmentDescription"] = self.transitRouterAttachmentDescription!
+            }
+            if self.transitRouterAttachmentId != nil {
+                map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+            }
+            if self.transitRouterAttachmentName != nil {
+                map["TransitRouterAttachmentName"] = self.transitRouterAttachmentName!
+            }
+            if self.transitRouterId != nil {
+                map["TransitRouterId"] = self.transitRouterId!
+            }
+            if self.transitRouterRegionId != nil {
+                map["TransitRouterRegionId"] = self.transitRouterRegionId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoPublishRouteEnabled") && dict["AutoPublishRouteEnabled"] != nil {
+                self.autoPublishRouteEnabled = dict["AutoPublishRouteEnabled"] as! Bool
+            }
+            if dict.keys.contains("CenId") && dict["CenId"] != nil {
+                self.cenId = dict["CenId"] as! String
+            }
+            if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
+                self.creationTime = dict["CreationTime"] as! String
+            }
+            if dict.keys.contains("EcrId") && dict["EcrId"] != nil {
+                self.ecrId = dict["EcrId"] as! String
+            }
+            if dict.keys.contains("EcrOwnerId") && dict["EcrOwnerId"] != nil {
+                self.ecrOwnerId = dict["EcrOwnerId"] as! Int64
+            }
+            if dict.keys.contains("OrderType") && dict["OrderType"] != nil {
+                self.orderType = dict["OrderType"] as! String
+            }
+            if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+                self.resourceType = dict["ResourceType"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [ListTransitRouterEcrAttachmentsResponseBody.TransitRouterAttachments.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = ListTransitRouterEcrAttachmentsResponseBody.TransitRouterAttachments.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+            if dict.keys.contains("TransitRouterAttachmentDescription") && dict["TransitRouterAttachmentDescription"] != nil {
+                self.transitRouterAttachmentDescription = dict["TransitRouterAttachmentDescription"] as! String
+            }
+            if dict.keys.contains("TransitRouterAttachmentId") && dict["TransitRouterAttachmentId"] != nil {
+                self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+            }
+            if dict.keys.contains("TransitRouterAttachmentName") && dict["TransitRouterAttachmentName"] != nil {
+                self.transitRouterAttachmentName = dict["TransitRouterAttachmentName"] as! String
+            }
+            if dict.keys.contains("TransitRouterId") && dict["TransitRouterId"] != nil {
+                self.transitRouterId = dict["TransitRouterId"] as! String
+            }
+            if dict.keys.contains("TransitRouterRegionId") && dict["TransitRouterRegionId"] != nil {
+                self.transitRouterRegionId = dict["TransitRouterRegionId"] as! String
+            }
+        }
+    }
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int32?
+
+    public var transitRouterAttachments: [ListTransitRouterEcrAttachmentsResponseBody.TransitRouterAttachments]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        if self.transitRouterAttachments != nil {
+            var tmp : [Any] = []
+            for k in self.transitRouterAttachments! {
+                tmp.append(k.toMap())
+            }
+            map["TransitRouterAttachments"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+        if dict.keys.contains("TransitRouterAttachments") && dict["TransitRouterAttachments"] != nil {
+            var tmp : [ListTransitRouterEcrAttachmentsResponseBody.TransitRouterAttachments] = []
+            for v in dict["TransitRouterAttachments"] as! [Any] {
+                var model = ListTransitRouterEcrAttachmentsResponseBody.TransitRouterAttachments()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.transitRouterAttachments = tmp
+        }
+    }
+}
+
+public class ListTransitRouterEcrAttachmentsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListTransitRouterEcrAttachmentsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListTransitRouterEcrAttachmentsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListTransitRouterMulticastDomainAssociationsRequest : Tea.TeaModel {
     public var clientToken: String?
 
@@ -35973,6 +36872,179 @@ public class UpdateTransitRouterResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateTransitRouterResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateTransitRouterEcrAttachmentAttributeRequest : Tea.TeaModel {
+    public var clientToken: String?
+
+    public var dryRun: Bool?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var transitRouterAttachmentDescription: String?
+
+    public var transitRouterAttachmentId: String?
+
+    public var transitRouterAttachmentName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.dryRun != nil {
+            map["DryRun"] = self.dryRun!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.transitRouterAttachmentDescription != nil {
+            map["TransitRouterAttachmentDescription"] = self.transitRouterAttachmentDescription!
+        }
+        if self.transitRouterAttachmentId != nil {
+            map["TransitRouterAttachmentId"] = self.transitRouterAttachmentId!
+        }
+        if self.transitRouterAttachmentName != nil {
+            map["TransitRouterAttachmentName"] = self.transitRouterAttachmentName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
+            self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("TransitRouterAttachmentDescription") && dict["TransitRouterAttachmentDescription"] != nil {
+            self.transitRouterAttachmentDescription = dict["TransitRouterAttachmentDescription"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentId") && dict["TransitRouterAttachmentId"] != nil {
+            self.transitRouterAttachmentId = dict["TransitRouterAttachmentId"] as! String
+        }
+        if dict.keys.contains("TransitRouterAttachmentName") && dict["TransitRouterAttachmentName"] != nil {
+            self.transitRouterAttachmentName = dict["TransitRouterAttachmentName"] as! String
+        }
+    }
+}
+
+public class UpdateTransitRouterEcrAttachmentAttributeResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateTransitRouterEcrAttachmentAttributeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateTransitRouterEcrAttachmentAttributeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateTransitRouterEcrAttachmentAttributeResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
