@@ -219,6 +219,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.writeMethod)) {
             body["WriteMethod"] = request.writeMethod ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.writeToFeatureDB)) {
+            body["WriteToFeatureDB"] = request.writeToFeatureDB!;
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)

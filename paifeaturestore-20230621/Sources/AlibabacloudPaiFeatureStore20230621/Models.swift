@@ -711,6 +711,8 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
 
     public var writeMethod: String?
 
+    public var writeToFeatureDB: Bool?
+
     public override init() {
         super.init()
     }
@@ -765,6 +767,9 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
         if self.writeMethod != nil {
             map["WriteMethod"] = self.writeMethod!
         }
+        if self.writeToFeatureDB != nil {
+            map["WriteToFeatureDB"] = self.writeToFeatureDB!
+        }
         return map
     }
 
@@ -812,6 +817,9 @@ public class CreateFeatureViewRequest : Tea.TeaModel {
         }
         if dict.keys.contains("WriteMethod") && dict["WriteMethod"] != nil {
             self.writeMethod = dict["WriteMethod"] as! String
+        }
+        if dict.keys.contains("WriteToFeatureDB") && dict["WriteToFeatureDB"] != nil {
+            self.writeToFeatureDB = dict["WriteToFeatureDB"] as! Bool
         }
     }
 }
@@ -3179,6 +3187,8 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
 
     public var writeMethod: String?
 
+    public var writeToFeatureDB: Bool?
+
     public override init() {
         super.init()
     }
@@ -3266,6 +3276,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         if self.writeMethod != nil {
             map["WriteMethod"] = self.writeMethod!
         }
+        if self.writeToFeatureDB != nil {
+            map["WriteToFeatureDB"] = self.writeToFeatureDB!
+        }
         return map
     }
 
@@ -3346,6 +3359,9 @@ public class GetFeatureViewResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("WriteMethod") && dict["WriteMethod"] != nil {
             self.writeMethod = dict["WriteMethod"] as! String
+        }
+        if dict.keys.contains("WriteToFeatureDB") && dict["WriteToFeatureDB"] != nil {
+            self.writeToFeatureDB = dict["WriteToFeatureDB"] as! Bool
         }
     }
 }
@@ -7318,6 +7334,8 @@ public class ListFeatureViewsResponseBody : Tea.TeaModel {
 
         public var type: String?
 
+        public var writeToFeatureDB: Bool?
+
         public override init() {
             super.init()
         }
@@ -7371,6 +7389,9 @@ public class ListFeatureViewsResponseBody : Tea.TeaModel {
             if self.type != nil {
                 map["Type"] = self.type!
             }
+            if self.writeToFeatureDB != nil {
+                map["WriteToFeatureDB"] = self.writeToFeatureDB!
+            }
             return map
         }
 
@@ -7413,6 +7434,9 @@ public class ListFeatureViewsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
+            }
+            if dict.keys.contains("WriteToFeatureDB") && dict["WriteToFeatureDB"] != nil {
+                self.writeToFeatureDB = dict["WriteToFeatureDB"] as! Bool
             }
         }
     }
