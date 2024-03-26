@@ -1009,6 +1009,8 @@ public class CreateLivePortraitProjectRequest : Tea.TeaModel {
 
     public var content: String?
 
+    public var customParams: String?
+
     public var imageId: String?
 
     public var imageUrl: String?
@@ -1053,6 +1055,9 @@ public class CreateLivePortraitProjectRequest : Tea.TeaModel {
         }
         if self.content != nil {
             map["Content"] = self.content!
+        }
+        if self.customParams != nil {
+            map["CustomParams"] = self.customParams!
         }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
@@ -1099,6 +1104,9 @@ public class CreateLivePortraitProjectRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Content") && dict["Content"] != nil {
             self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("CustomParams") && dict["CustomParams"] != nil {
+            self.customParams = dict["CustomParams"] as! String
         }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
