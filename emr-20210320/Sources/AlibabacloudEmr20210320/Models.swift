@@ -986,6 +986,96 @@ public class AutoScalingConstraints : Tea.TeaModel {
     }
 }
 
+public class AutoScalingPolicy : Tea.TeaModel {
+    public class Constraints : Tea.TeaModel {
+        public var maxCapacity: Int32?
+
+        public var minCapacity: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.maxCapacity != nil {
+                map["maxCapacity"] = self.maxCapacity!
+            }
+            if self.minCapacity != nil {
+                map["minCapacity"] = self.minCapacity!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("maxCapacity") && dict["maxCapacity"] != nil {
+                self.maxCapacity = dict["maxCapacity"] as! Int32
+            }
+            if dict.keys.contains("minCapacity") && dict["minCapacity"] != nil {
+                self.minCapacity = dict["minCapacity"] as! Int32
+            }
+        }
+    }
+    public var constraints: AutoScalingPolicy.Constraints?
+
+    public var scalingRules: [ScalingRule]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.constraints?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.constraints != nil {
+            map["constraints"] = self.constraints?.toMap()
+        }
+        if self.scalingRules != nil {
+            var tmp : [Any] = []
+            for k in self.scalingRules! {
+                tmp.append(k.toMap())
+            }
+            map["scalingRules"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("constraints") && dict["constraints"] != nil {
+            var model = AutoScalingPolicy.Constraints()
+            model.fromMap(dict["constraints"] as! [String: Any])
+            self.constraints = model
+        }
+        if dict.keys.contains("scalingRules") && dict["scalingRules"] != nil {
+            var tmp : [ScalingRule] = []
+            for v in dict["scalingRules"] as! [Any] {
+                var model = ScalingRule()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.scalingRules = tmp
+        }
+    }
+}
+
 public class ByLoadScalingRule : Tea.TeaModel {
     public var comparisonOperator: String?
 
@@ -4076,6 +4166,8 @@ public class NodeGroup : Tea.TeaModel {
 public class NodeGroupConfig : Tea.TeaModel {
     public var additionalSecurityGroupIds: [String]?
 
+    public var componentTags: [String]?
+
     public var costOptimizedConfig: CostOptimizedConfig?
 
     public var dataDisks: [DataDisk]?
@@ -4129,6 +4221,9 @@ public class NodeGroupConfig : Tea.TeaModel {
         var map = super.toMap()
         if self.additionalSecurityGroupIds != nil {
             map["AdditionalSecurityGroupIds"] = self.additionalSecurityGroupIds!
+        }
+        if self.componentTags != nil {
+            map["ComponentTags"] = self.componentTags!
         }
         if self.costOptimizedConfig != nil {
             map["CostOptimizedConfig"] = self.costOptimizedConfig?.toMap()
@@ -4195,6 +4290,9 @@ public class NodeGroupConfig : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AdditionalSecurityGroupIds") && dict["AdditionalSecurityGroupIds"] != nil {
             self.additionalSecurityGroupIds = dict["AdditionalSecurityGroupIds"] as! [String]
+        }
+        if dict.keys.contains("ComponentTags") && dict["ComponentTags"] != nil {
+            self.componentTags = dict["ComponentTags"] as! [String]
         }
         if dict.keys.contains("CostOptimizedConfig") && dict["CostOptimizedConfig"] != nil {
             var model = CostOptimizedConfig()
