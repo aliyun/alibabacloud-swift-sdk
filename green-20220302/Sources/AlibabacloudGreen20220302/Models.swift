@@ -2922,6 +2922,8 @@ public class VideoModerationRequest : Tea.TeaModel {
 
 public class VideoModerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var dataId: String?
+
         public var taskId: String?
 
         public override init() {
@@ -2938,6 +2940,9 @@ public class VideoModerationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -2945,6 +2950,9 @@ public class VideoModerationResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataId") && dict["DataId"] != nil {
+                self.dataId = dict["DataId"] as! String
+            }
             if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
                 self.taskId = dict["TaskId"] as! String
             }
@@ -3475,6 +3483,72 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             public class Frames : Tea.TeaModel {
                 public class Results : Tea.TeaModel {
+                    public class CustomImage : Tea.TeaModel {
+                        public var imageId: String?
+
+                        public var libId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.imageId != nil {
+                                map["ImageId"] = self.imageId!
+                            }
+                            if self.libId != nil {
+                                map["LibId"] = self.libId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
+                                self.imageId = dict["ImageId"] as! String
+                            }
+                            if dict.keys.contains("LibId") && dict["LibId"] != nil {
+                                self.libId = dict["LibId"] as! String
+                            }
+                        }
+                    }
+                    public class PublicFigure : Tea.TeaModel {
+                        public var figureId: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.figureId != nil {
+                                map["FigureId"] = self.figureId!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("FigureId") && dict["FigureId"] != nil {
+                                self.figureId = dict["FigureId"] as! String
+                            }
+                        }
+                    }
                     public class Result : Tea.TeaModel {
                         public var confidence: Double?
 
@@ -3512,9 +3586,15 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                             }
                         }
                     }
+                    public var customImage: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage]?
+
+                    public var publicFigure: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure]?
+
                     public var result: [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.Result]?
 
                     public var service: String?
+
+                    public var textInImage: [String: Any]?
 
                     public override init() {
                         super.init()
@@ -3530,6 +3610,20 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.customImage != nil {
+                            var tmp : [Any] = []
+                            for k in self.customImage! {
+                                tmp.append(k.toMap())
+                            }
+                            map["CustomImage"] = tmp
+                        }
+                        if self.publicFigure != nil {
+                            var tmp : [Any] = []
+                            for k in self.publicFigure! {
+                                tmp.append(k.toMap())
+                            }
+                            map["PublicFigure"] = tmp
+                        }
                         if self.result != nil {
                             var tmp : [Any] = []
                             for k in self.result! {
@@ -3540,10 +3634,35 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         if self.service != nil {
                             map["Service"] = self.service!
                         }
+                        if self.textInImage != nil {
+                            map["TextInImage"] = self.textInImage!
+                        }
                         return map
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("CustomImage") && dict["CustomImage"] != nil {
+                            var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage] = []
+                            for v in dict["CustomImage"] as! [Any] {
+                                var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.CustomImage()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.customImage = tmp
+                        }
+                        if dict.keys.contains("PublicFigure") && dict["PublicFigure"] != nil {
+                            var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure] = []
+                            for v in dict["PublicFigure"] as! [Any] {
+                                var model = VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.PublicFigure()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.publicFigure = tmp
+                        }
                         if dict.keys.contains("Result") && dict["Result"] != nil {
                             var tmp : [VideoModerationResultResponseBody.Data.FrameResult.Frames.Results.Result] = []
                             for v in dict["Result"] as! [Any] {
@@ -3557,6 +3676,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
                         }
                         if dict.keys.contains("Service") && dict["Service"] != nil {
                             self.service = dict["Service"] as! String
+                        }
+                        if dict.keys.contains("TextInImage") && dict["TextInImage"] != nil {
+                            self.textInImage = dict["TextInImage"] as! [String: Any]
                         }
                     }
                 }
@@ -3700,6 +3822,8 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
 
         public var liveId: String?
 
+        public var taskId: String?
+
         public override init() {
             super.init()
         }
@@ -3728,6 +3852,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             if self.liveId != nil {
                 map["LiveId"] = self.liveId!
             }
+            if self.taskId != nil {
+                map["TaskId"] = self.taskId!
+            }
             return map
         }
 
@@ -3747,6 +3874,9 @@ public class VideoModerationResultResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LiveId") && dict["LiveId"] != nil {
                 self.liveId = dict["LiveId"] as! String
+            }
+            if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+                self.taskId = dict["TaskId"] as! String
             }
         }
     }
@@ -3895,6 +4025,8 @@ public class VoiceModerationRequest : Tea.TeaModel {
 
 public class VoiceModerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public var dataId: String?
+
         public var taskId: String?
 
         public override init() {
@@ -3911,6 +4043,9 @@ public class VoiceModerationResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
             if self.taskId != nil {
                 map["TaskId"] = self.taskId!
             }
@@ -3918,6 +4053,9 @@ public class VoiceModerationResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataId") && dict["DataId"] != nil {
+                self.dataId = dict["DataId"] as! String
+            }
             if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
                 self.taskId = dict["TaskId"] as! String
             }
@@ -4318,6 +4456,8 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var dataId: String?
+
         public var liveId: String?
 
         public var sliceDetails: [VoiceModerationResultResponseBody.Data.SliceDetails]?
@@ -4340,6 +4480,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataId != nil {
+                map["DataId"] = self.dataId!
+            }
             if self.liveId != nil {
                 map["LiveId"] = self.liveId!
             }
@@ -4360,6 +4503,9 @@ public class VoiceModerationResultResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DataId") && dict["DataId"] != nil {
+                self.dataId = dict["DataId"] as! String
+            }
             if dict.keys.contains("LiveId") && dict["LiveId"] != nil {
                 self.liveId = dict["LiveId"] as! String
             }
