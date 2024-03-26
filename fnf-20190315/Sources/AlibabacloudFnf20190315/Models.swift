@@ -16,8 +16,6 @@ public class CreateFlowRequest : Tea.TeaModel {
 
     public var name: String?
 
-    public var requestId: String?
-
     public var roleArn: String?
 
     public var type: String?
@@ -51,9 +49,6 @@ public class CreateFlowRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -78,9 +73,6 @@ public class CreateFlowRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("RoleArn") && dict["RoleArn"] != nil {
             self.roleArn = dict["RoleArn"] as! String
@@ -210,9 +202,6 @@ public class CreateFlowResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -256,9 +245,9 @@ public class CreateScheduleRequest : Tea.TeaModel {
 
     public var payload: String?
 
-    public var requestId: String?
-
     public var scheduleName: String?
+
+    public var signatureVersion: String?
 
     public override init() {
         super.init()
@@ -289,11 +278,11 @@ public class CreateScheduleRequest : Tea.TeaModel {
         if self.payload != nil {
             map["Payload"] = self.payload!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.scheduleName != nil {
             map["ScheduleName"] = self.scheduleName!
+        }
+        if self.signatureVersion != nil {
+            map["SignatureVersion"] = self.signatureVersion!
         }
         return map
     }
@@ -314,11 +303,11 @@ public class CreateScheduleRequest : Tea.TeaModel {
         if dict.keys.contains("Payload") && dict["Payload"] != nil {
             self.payload = dict["Payload"] as! String
         }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
         if dict.keys.contains("ScheduleName") && dict["ScheduleName"] != nil {
             self.scheduleName = dict["ScheduleName"] as! String
+        }
+        if dict.keys.contains("SignatureVersion") && dict["SignatureVersion"] != nil {
+            self.signatureVersion = dict["SignatureVersion"] as! String
         }
     }
 }
@@ -434,9 +423,6 @@ public class CreateScheduleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -472,8 +458,6 @@ public class CreateScheduleResponse : Tea.TeaModel {
 public class DeleteFlowRequest : Tea.TeaModel {
     public var name: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -491,18 +475,12 @@ public class DeleteFlowRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -554,9 +532,6 @@ public class DeleteFlowResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -592,8 +567,6 @@ public class DeleteFlowResponse : Tea.TeaModel {
 public class DeleteScheduleRequest : Tea.TeaModel {
     public var flowName: String?
 
-    public var requestId: String?
-
     public var scheduleName: String?
 
     public override init() {
@@ -613,9 +586,6 @@ public class DeleteScheduleRequest : Tea.TeaModel {
         if self.flowName != nil {
             map["FlowName"] = self.flowName!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.scheduleName != nil {
             map["ScheduleName"] = self.scheduleName!
         }
@@ -625,9 +595,6 @@ public class DeleteScheduleRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("FlowName") && dict["FlowName"] != nil {
             self.flowName = dict["FlowName"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("ScheduleName") && dict["ScheduleName"] != nil {
             self.scheduleName = dict["ScheduleName"] as! String
@@ -682,9 +649,6 @@ public class DeleteScheduleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -722,8 +686,6 @@ public class DescribeExecutionRequest : Tea.TeaModel {
 
     public var flowName: String?
 
-    public var requestId: String?
-
     public var waitTimeSeconds: Int32?
 
     public override init() {
@@ -746,9 +708,6 @@ public class DescribeExecutionRequest : Tea.TeaModel {
         if self.flowName != nil {
             map["FlowName"] = self.flowName!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.waitTimeSeconds != nil {
             map["WaitTimeSeconds"] = self.waitTimeSeconds!
         }
@@ -761,9 +720,6 @@ public class DescribeExecutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FlowName") && dict["FlowName"] != nil {
             self.flowName = dict["FlowName"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("WaitTimeSeconds") && dict["WaitTimeSeconds"] != nil {
             self.waitTimeSeconds = dict["WaitTimeSeconds"] as! Int32
@@ -882,9 +838,6 @@ public class DescribeExecutionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -920,8 +873,6 @@ public class DescribeExecutionResponse : Tea.TeaModel {
 public class DescribeFlowRequest : Tea.TeaModel {
     public var name: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -939,18 +890,12 @@ public class DescribeFlowRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -1074,9 +1019,6 @@ public class DescribeFlowResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1112,8 +1054,6 @@ public class DescribeFlowResponse : Tea.TeaModel {
 public class DescribeScheduleRequest : Tea.TeaModel {
     public var flowName: String?
 
-    public var requestId: String?
-
     public var scheduleName: String?
 
     public override init() {
@@ -1133,9 +1073,6 @@ public class DescribeScheduleRequest : Tea.TeaModel {
         if self.flowName != nil {
             map["FlowName"] = self.flowName!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.scheduleName != nil {
             map["ScheduleName"] = self.scheduleName!
         }
@@ -1145,9 +1082,6 @@ public class DescribeScheduleRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("FlowName") && dict["FlowName"] != nil {
             self.flowName = dict["FlowName"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("ScheduleName") && dict["ScheduleName"] != nil {
             self.scheduleName = dict["ScheduleName"] as! String
@@ -1266,9 +1200,6 @@ public class DescribeScheduleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1310,8 +1241,6 @@ public class GetExecutionHistoryRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -1338,9 +1267,6 @@ public class GetExecutionHistoryRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
@@ -1356,9 +1282,6 @@ public class GetExecutionHistoryRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
             self.nextToken = dict["NextToken"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -1507,9 +1430,6 @@ public class GetExecutionHistoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1551,8 +1471,6 @@ public class ListExecutionsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
-    public var requestId: String?
-
     public var startedTimeBegin: String?
 
     public var startedTimeEnd: String?
@@ -1585,9 +1503,6 @@ public class ListExecutionsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.startedTimeBegin != nil {
             map["StartedTimeBegin"] = self.startedTimeBegin!
         }
@@ -1612,9 +1527,6 @@ public class ListExecutionsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
             self.nextToken = dict["NextToken"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("StartedTimeBegin") && dict["StartedTimeBegin"] != nil {
             self.startedTimeBegin = dict["StartedTimeBegin"] as! String
@@ -1788,9 +1700,6 @@ public class ListExecutionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1828,8 +1737,6 @@ public class ListFlowsRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -1850,9 +1757,6 @@ public class ListFlowsRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
@@ -1862,9 +1766,6 @@ public class ListFlowsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
             self.nextToken = dict["NextToken"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -2037,9 +1938,6 @@ public class ListFlowsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2079,8 +1977,6 @@ public class ListSchedulesRequest : Tea.TeaModel {
 
     public var nextToken: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -2104,9 +2000,6 @@ public class ListSchedulesRequest : Tea.TeaModel {
         if self.nextToken != nil {
             map["NextToken"] = self.nextToken!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
@@ -2119,9 +2012,6 @@ public class ListSchedulesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
             self.nextToken = dict["NextToken"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -2286,9 +2176,6 @@ public class ListSchedulesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2326,8 +2213,6 @@ public class ReportTaskFailedRequest : Tea.TeaModel {
 
     public var error: String?
 
-    public var requestId: String?
-
     public var taskToken: String?
 
     public override init() {
@@ -2350,9 +2235,6 @@ public class ReportTaskFailedRequest : Tea.TeaModel {
         if self.error != nil {
             map["Error"] = self.error!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.taskToken != nil {
             map["TaskToken"] = self.taskToken!
         }
@@ -2365,9 +2247,6 @@ public class ReportTaskFailedRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Error") && dict["Error"] != nil {
             self.error = dict["Error"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("TaskToken") && dict["TaskToken"] != nil {
             self.taskToken = dict["TaskToken"] as! String
@@ -2430,9 +2309,6 @@ public class ReportTaskFailedResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2468,8 +2344,6 @@ public class ReportTaskFailedResponse : Tea.TeaModel {
 public class ReportTaskSucceededRequest : Tea.TeaModel {
     public var output: String?
 
-    public var requestId: String?
-
     public var taskToken: String?
 
     public override init() {
@@ -2489,9 +2363,6 @@ public class ReportTaskSucceededRequest : Tea.TeaModel {
         if self.output != nil {
             map["Output"] = self.output!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.taskToken != nil {
             map["TaskToken"] = self.taskToken!
         }
@@ -2501,9 +2372,6 @@ public class ReportTaskSucceededRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Output") && dict["Output"] != nil {
             self.output = dict["Output"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("TaskToken") && dict["TaskToken"] != nil {
             self.taskToken = dict["TaskToken"] as! String
@@ -2566,9 +2434,6 @@ public class ReportTaskSucceededResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2610,8 +2475,6 @@ public class StartExecutionRequest : Tea.TeaModel {
 
     public var input: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -2638,9 +2501,6 @@ public class StartExecutionRequest : Tea.TeaModel {
         if self.input != nil {
             map["Input"] = self.input!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
@@ -2656,9 +2516,6 @@ public class StartExecutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Input") && dict["Input"] != nil {
             self.input = dict["Input"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -2774,9 +2631,6 @@ public class StartExecutionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2816,8 +2670,6 @@ public class StartSyncExecutionRequest : Tea.TeaModel {
 
     public var input: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -2841,9 +2693,6 @@ public class StartSyncExecutionRequest : Tea.TeaModel {
         if self.input != nil {
             map["Input"] = self.input!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
@@ -2856,9 +2705,6 @@ public class StartSyncExecutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Input") && dict["Input"] != nil {
             self.input = dict["Input"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -2974,9 +2820,6 @@ public class StartSyncExecutionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3018,8 +2861,6 @@ public class StopExecutionRequest : Tea.TeaModel {
 
     public var flowName: String?
 
-    public var requestId: String?
-
     public override init() {
         super.init()
     }
@@ -3046,9 +2887,6 @@ public class StopExecutionRequest : Tea.TeaModel {
         if self.flowName != nil {
             map["FlowName"] = self.flowName!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         return map
     }
 
@@ -3064,9 +2902,6 @@ public class StopExecutionRequest : Tea.TeaModel {
         }
         if dict.keys.contains("FlowName") && dict["FlowName"] != nil {
             self.flowName = dict["FlowName"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
     }
 }
@@ -3182,9 +3017,6 @@ public class StopExecutionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3224,8 +3056,6 @@ public class UpdateFlowRequest : Tea.TeaModel {
 
     public var name: String?
 
-    public var requestId: String?
-
     public var roleArn: String?
 
     public var type: String?
@@ -3253,9 +3083,6 @@ public class UpdateFlowRequest : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.roleArn != nil {
             map["RoleArn"] = self.roleArn!
         }
@@ -3274,9 +3101,6 @@ public class UpdateFlowRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("RoleArn") && dict["RoleArn"] != nil {
             self.roleArn = dict["RoleArn"] as! String
@@ -3406,9 +3230,6 @@ public class UpdateFlowResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3452,8 +3273,6 @@ public class UpdateScheduleRequest : Tea.TeaModel {
 
     public var payload: String?
 
-    public var requestId: String?
-
     public var scheduleName: String?
 
     public override init() {
@@ -3485,9 +3304,6 @@ public class UpdateScheduleRequest : Tea.TeaModel {
         if self.payload != nil {
             map["Payload"] = self.payload!
         }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
         if self.scheduleName != nil {
             map["ScheduleName"] = self.scheduleName!
         }
@@ -3509,9 +3325,6 @@ public class UpdateScheduleRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Payload") && dict["Payload"] != nil {
             self.payload = dict["Payload"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
         }
         if dict.keys.contains("ScheduleName") && dict["ScheduleName"] != nil {
             self.scheduleName = dict["ScheduleName"] as! String
@@ -3630,9 +3443,6 @@ public class UpdateScheduleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 

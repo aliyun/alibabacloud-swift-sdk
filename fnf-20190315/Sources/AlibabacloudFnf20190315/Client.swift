@@ -33,10 +33,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createFlowWithOptions(_ request: CreateFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFlowResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.definition)) {
             body["Definition"] = request.definition ?? "";
@@ -60,7 +56,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -88,8 +83,8 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createScheduleWithOptions(_ request: CreateScheduleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateScheduleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
+        if (!TeaUtils.Client.isUnset(request.signatureVersion)) {
+            query["SignatureVersion"] = request.signatureVersion ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cronExpression)) {
@@ -138,7 +133,10 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteFlowWithOptions(_ request: DeleteFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFlowResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.name)) {
+            query["Name"] = request.name ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -147,7 +145,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2019-03-15",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -166,7 +164,13 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteScheduleWithOptions(_ request: DeleteScheduleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScheduleResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.flowName)) {
+            query["FlowName"] = request.flowName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleName)) {
+            query["ScheduleName"] = request.scheduleName ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
@@ -175,7 +179,7 @@ open class Client : AlibabacloudOpenApi.Client {
             "version": "2019-03-15",
             "protocol": "HTTPS",
             "pathname": "/",
-            "method": "GET",
+            "method": "POST",
             "authType": "AK",
             "style": "RPC",
             "reqBodyType": "formData",
@@ -391,9 +395,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func reportTaskFailedWithOptions(_ request: ReportTaskFailedRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReportTaskFailedResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.taskToken)) {
             query["TaskToken"] = request.taskToken ?? "";
         }
@@ -433,9 +434,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func reportTaskSucceededWithOptions(_ request: ReportTaskSucceededRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ReportTaskSucceededResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.taskToken)) {
             query["TaskToken"] = request.taskToken ?? "";
         }
@@ -471,10 +469,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startExecutionWithOptions(_ request: StartExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartExecutionResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.callbackFnFTaskToken)) {
             body["CallbackFnFTaskToken"] = request.callbackFnFTaskToken ?? "";
@@ -489,7 +483,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Input"] = request.input ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -516,10 +509,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func startSyncExecutionWithOptions(_ request: StartSyncExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StartSyncExecutionResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.executionName)) {
             body["ExecutionName"] = request.executionName ?? "";
@@ -531,7 +520,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Input"] = request.input ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -558,10 +546,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func stopExecutionWithOptions(_ request: StopExecutionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> StopExecutionResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cause)) {
             body["Cause"] = request.cause ?? "";
@@ -576,7 +560,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["FlowName"] = request.flowName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -603,10 +586,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateFlowWithOptions(_ request: UpdateFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateFlowResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.definition)) {
             body["Definition"] = request.definition ?? "";
@@ -624,7 +603,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["Type"] = request.type ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
@@ -651,10 +629,6 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateScheduleWithOptions(_ request: UpdateScheduleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateScheduleResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.requestId)) {
-            query["RequestId"] = request.requestId ?? "";
-        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.cronExpression)) {
             body["CronExpression"] = request.cronExpression ?? "";
@@ -675,7 +649,6 @@ open class Client : AlibabacloudOpenApi.Client {
             body["ScheduleName"] = request.scheduleName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query),
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
