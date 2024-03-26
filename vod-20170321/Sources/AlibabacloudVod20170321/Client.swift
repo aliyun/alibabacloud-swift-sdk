@@ -2390,6 +2390,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeVodTranscodeDataWithOptions(_ request: DescribeVodTranscodeDataRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVodTranscodeDataResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appId)) {
+            query["AppId"] = request.appId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
