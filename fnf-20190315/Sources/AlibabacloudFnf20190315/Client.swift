@@ -133,12 +133,12 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteFlowWithOptions(_ request: DeleteFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteFlowResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.name)) {
-            query["Name"] = request.name ?? "";
+            body["Name"] = request.name ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DeleteFlow",
@@ -164,15 +164,15 @@ open class Client : AlibabacloudOpenApi.Client {
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteScheduleWithOptions(_ request: DeleteScheduleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScheduleResponse {
         try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
+        var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.flowName)) {
-            query["FlowName"] = request.flowName ?? "";
+            body["FlowName"] = request.flowName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.scheduleName)) {
-            query["ScheduleName"] = request.scheduleName ?? "";
+            body["ScheduleName"] = request.scheduleName ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DeleteSchedule",
