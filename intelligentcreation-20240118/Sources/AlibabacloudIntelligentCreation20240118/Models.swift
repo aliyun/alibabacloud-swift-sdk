@@ -294,6 +294,60 @@ public class DigitalHumanLiveBroadcastQAResult : Tea.TeaModel {
     }
 }
 
+public class DigitalVideoCommonResult : Tea.TeaModel {
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
+            self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
 public class DirectDeductResourceCmd : Tea.TeaModel {
     public var accountId: String?
 
@@ -743,6 +797,100 @@ public class SubmitBulletQuestionsQAResult : Tea.TeaModel {
         }
         if dict.keys.contains("success") && dict["success"] != nil {
             self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class SyncDigitalHumanVideoCmd : Tea.TeaModel {
+    public var accountId: String?
+
+    public var actionType: String?
+
+    public var idempotentId: String?
+
+    public var imageScale: String?
+
+    public var imageUrl: String?
+
+    public var videoDuration: Int32?
+
+    public var videoId: String?
+
+    public var videoTitle: String?
+
+    public var videoUrl: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accountId != nil {
+            map["accountId"] = self.accountId!
+        }
+        if self.actionType != nil {
+            map["actionType"] = self.actionType!
+        }
+        if self.idempotentId != nil {
+            map["idempotentId"] = self.idempotentId!
+        }
+        if self.imageScale != nil {
+            map["imageScale"] = self.imageScale!
+        }
+        if self.imageUrl != nil {
+            map["imageUrl"] = self.imageUrl!
+        }
+        if self.videoDuration != nil {
+            map["videoDuration"] = self.videoDuration!
+        }
+        if self.videoId != nil {
+            map["videoId"] = self.videoId!
+        }
+        if self.videoTitle != nil {
+            map["videoTitle"] = self.videoTitle!
+        }
+        if self.videoUrl != nil {
+            map["videoUrl"] = self.videoUrl!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("accountId") && dict["accountId"] != nil {
+            self.accountId = dict["accountId"] as! String
+        }
+        if dict.keys.contains("actionType") && dict["actionType"] != nil {
+            self.actionType = dict["actionType"] as! String
+        }
+        if dict.keys.contains("idempotentId") && dict["idempotentId"] != nil {
+            self.idempotentId = dict["idempotentId"] as! String
+        }
+        if dict.keys.contains("imageScale") && dict["imageScale"] != nil {
+            self.imageScale = dict["imageScale"] as! String
+        }
+        if dict.keys.contains("imageUrl") && dict["imageUrl"] != nil {
+            self.imageUrl = dict["imageUrl"] as! String
+        }
+        if dict.keys.contains("videoDuration") && dict["videoDuration"] != nil {
+            self.videoDuration = dict["videoDuration"] as! Int32
+        }
+        if dict.keys.contains("videoId") && dict["videoId"] != nil {
+            self.videoId = dict["videoId"] as! String
+        }
+        if dict.keys.contains("videoTitle") && dict["videoTitle"] != nil {
+            self.videoTitle = dict["videoTitle"] as! String
+        }
+        if dict.keys.contains("videoUrl") && dict["videoUrl"] != nil {
+            self.videoUrl = dict["videoUrl"] as! String
         }
     }
 }
@@ -2319,6 +2467,88 @@ public class SubmitBulletQuestionsV1Response : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = SubmitBulletQuestionsQAResult()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SyncDigitalVideoRequest : Tea.TeaModel {
+    public var body: SyncDigitalHumanVideoCmd?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = SyncDigitalHumanVideoCmd()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class SyncDigitalVideoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DigitalVideoCommonResult?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DigitalVideoCommonResult()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
