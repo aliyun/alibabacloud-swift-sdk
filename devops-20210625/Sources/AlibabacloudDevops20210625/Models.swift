@@ -29665,6 +29665,51 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class TagDetails : Tea.TeaModel {
+            public var color: String?
+
+            public var identifier: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.color != nil {
+                    map["color"] = self.color!
+                }
+                if self.identifier != nil {
+                    map["identifier"] = self.identifier!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("color") && dict["color"] != nil {
+                    self.color = dict["color"] as! String
+                }
+                if dict.keys.contains("identifier") && dict["identifier"] != nil {
+                    self.identifier = dict["identifier"] as! String
+                }
+                if dict.keys.contains("name") && dict["name"] != nil {
+                    self.name = dict["name"] as! String
+                }
+            }
+        }
         public var assignedTo: String?
 
         public var categoryIdentifier: String?
@@ -29710,6 +29755,8 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
         public var subject: String?
 
         public var tag: [String]?
+
+        public var tagDetails: [GetWorkItemInfoResponseBody.Workitem.TagDetails]?
 
         public var tracker: [String]?
 
@@ -29806,6 +29853,13 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
             if self.tag != nil {
                 map["tag"] = self.tag!
             }
+            if self.tagDetails != nil {
+                var tmp : [Any] = []
+                for k in self.tagDetails! {
+                    tmp.append(k.toMap())
+                }
+                map["tagDetails"] = tmp
+            }
             if self.tracker != nil {
                 map["tracker"] = self.tracker!
             }
@@ -29898,6 +29952,17 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("tag") && dict["tag"] != nil {
                 self.tag = dict["tag"] as! [String]
+            }
+            if dict.keys.contains("tagDetails") && dict["tagDetails"] != nil {
+                var tmp : [GetWorkItemInfoResponseBody.Workitem.TagDetails] = []
+                for v in dict["tagDetails"] as! [Any] {
+                    var model = GetWorkItemInfoResponseBody.Workitem.TagDetails()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tagDetails = tmp
             }
             if dict.keys.contains("tracker") && dict["tracker"] != nil {
                 self.tracker = dict["tracker"] as! [String]
@@ -34859,6 +34924,166 @@ public class ListHostGroupsResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListHostGroupsResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListJoinedOrganizationsResponseBody : Tea.TeaModel {
+    public class Organizations : Tea.TeaModel {
+        public var id: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.name != nil {
+                map["name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("id") && dict["id"] != nil {
+                self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("name") && dict["name"] != nil {
+                self.name = dict["name"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var organizations: [ListJoinedOrganizationsResponseBody.Organizations]?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.organizations != nil {
+            var tmp : [Any] = []
+            for k in self.organizations! {
+                tmp.append(k.toMap())
+            }
+            map["organizations"] = tmp
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
+            self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("organizations") && dict["organizations"] != nil {
+            var tmp : [ListJoinedOrganizationsResponseBody.Organizations] = []
+            for v in dict["organizations"] as! [Any] {
+                var model = ListJoinedOrganizationsResponseBody.Organizations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organizations = tmp
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class ListJoinedOrganizationsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListJoinedOrganizationsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListJoinedOrganizationsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
