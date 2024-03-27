@@ -176,6 +176,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cmdline)) {
             query["Cmdline"] = request.cmdline ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.filePath)) {
             query["FilePath"] = request.filePath ?? "";
         }
@@ -21318,6 +21321,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.cmdline)) {
             query["Cmdline"] = request.cmdline ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.domain)) {
+            query["Domain"] = request.domain ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.filePath)) {
             query["FilePath"] = request.filePath ?? "";
