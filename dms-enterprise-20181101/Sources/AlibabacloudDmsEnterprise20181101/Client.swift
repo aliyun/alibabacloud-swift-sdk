@@ -158,6 +158,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.useDsql)) {
             query["UseDsql"] = request.useDsql!;
         }
+        if (!TeaUtils.Client.isUnset(request.useSsl)) {
+            query["UseSsl"] = request.useSsl!;
+        }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
         }
@@ -7142,6 +7145,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.useDsql)) {
             query["UseDsql"] = request.useDsql!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useSsl)) {
+            query["UseSsl"] = request.useSsl!;
         }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
