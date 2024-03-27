@@ -7815,6 +7815,290 @@ public class ImportServiceDataResponse : Tea.TeaModel {
     }
 }
 
+public class ImportServiceDataV2Request : Tea.TeaModel {
+    public class Documents : Tea.TeaModel {
+        public var bizParams: [String: String]?
+
+        public var docId: String?
+
+        public var fileExtension: String?
+
+        public var fileName: String?
+
+        public var filePath: String?
+
+        public var version: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bizParams != nil {
+                map["BizParams"] = self.bizParams!
+            }
+            if self.docId != nil {
+                map["DocId"] = self.docId!
+            }
+            if self.fileExtension != nil {
+                map["FileExtension"] = self.fileExtension!
+            }
+            if self.fileName != nil {
+                map["FileName"] = self.fileName!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BizParams") && dict["BizParams"] != nil {
+                self.bizParams = dict["BizParams"] as! [String: String]
+            }
+            if dict.keys.contains("DocId") && dict["DocId"] != nil {
+                self.docId = dict["DocId"] as! String
+            }
+            if dict.keys.contains("FileExtension") && dict["FileExtension"] != nil {
+                self.fileExtension = dict["FileExtension"] as! String
+            }
+            if dict.keys.contains("FileName") && dict["FileName"] != nil {
+                self.fileName = dict["FileName"] as! String
+            }
+            if dict.keys.contains("FilePath") && dict["FilePath"] != nil {
+                self.filePath = dict["FilePath"] as! String
+            }
+            if dict.keys.contains("Version") && dict["Version"] != nil {
+                self.version = dict["Version"] as! String
+            }
+        }
+    }
+    public var dataType: String?
+
+    public var documents: [ImportServiceDataV2Request.Documents]?
+
+    public var serviceId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataType != nil {
+            map["DataType"] = self.dataType!
+        }
+        if self.documents != nil {
+            var tmp : [Any] = []
+            for k in self.documents! {
+                tmp.append(k.toMap())
+            }
+            map["Documents"] = tmp
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataType") && dict["DataType"] != nil {
+            self.dataType = dict["DataType"] as! String
+        }
+        if dict.keys.contains("Documents") && dict["Documents"] != nil {
+            var tmp : [ImportServiceDataV2Request.Documents] = []
+            for v in dict["Documents"] as! [Any] {
+                var model = ImportServiceDataV2Request.Documents()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.documents = tmp
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! Int64
+        }
+    }
+}
+
+public class ImportServiceDataV2ShrinkRequest : Tea.TeaModel {
+    public var dataType: String?
+
+    public var documentsShrink: String?
+
+    public var serviceId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataType != nil {
+            map["DataType"] = self.dataType!
+        }
+        if self.documentsShrink != nil {
+            map["Documents"] = self.documentsShrink!
+        }
+        if self.serviceId != nil {
+            map["ServiceId"] = self.serviceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataType") && dict["DataType"] != nil {
+            self.dataType = dict["DataType"] as! String
+        }
+        if dict.keys.contains("Documents") && dict["Documents"] != nil {
+            self.documentsShrink = dict["Documents"] as! String
+        }
+        if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
+            self.serviceId = dict["ServiceId"] as! Int64
+        }
+    }
+}
+
+public class ImportServiceDataV2ResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Int64?
+
+    public var msg: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.msg != nil {
+            map["Msg"] = self.msg!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("Msg") && dict["Msg"] != nil {
+            self.msg = dict["Msg"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ImportServiceDataV2Response : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ImportServiceDataV2ResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ImportServiceDataV2ResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class InsertCustomRequest : Tea.TeaModel {
     public var apiId: Int32?
 

@@ -2131,6 +2131,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importServiceDataV2WithOptions(_ tmpReq: ImportServiceDataV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> ImportServiceDataV2Response {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ImportServiceDataV2ShrinkRequest = ImportServiceDataV2ShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.documents)) {
+            request.documentsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documents, "Documents", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataType)) {
+            body["DataType"] = request.dataType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.documentsShrink)) {
+            body["Documents"] = request.documentsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["ServiceId"] = request.serviceId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ImportServiceDataV2",
+            "version": "2020-06-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ImportServiceDataV2Response(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func importServiceDataV2(_ request: ImportServiceDataV2Request) async throws -> ImportServiceDataV2Response {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await importServiceDataV2WithOptions(request as! ImportServiceDataV2Request, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func insertCustomWithOptions(_ request: InsertCustomRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> InsertCustomResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
