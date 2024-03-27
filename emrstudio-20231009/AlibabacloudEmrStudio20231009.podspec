@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudEmrStudio20231009"
-  spec.version      = "1.0.0"
+  spec.version      = "1.1.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud EmrStudio (20231009) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/emrstudio-20231009" 
