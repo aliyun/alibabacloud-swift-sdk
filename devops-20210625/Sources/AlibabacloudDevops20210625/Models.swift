@@ -2555,6 +2555,531 @@ public class CreateCheckRunResponse : Tea.TeaModel {
     }
 }
 
+public class CreateCommentRequest : Tea.TeaModel {
+    public var accessToken: String?
+
+    public var commentType: String?
+
+    public var content: String?
+
+    public var draft: Bool?
+
+    public var filePath: String?
+
+    public var lineNumber: Int32?
+
+    public var parentCommentBizId: String?
+
+    public var patchSetBizId: String?
+
+    public var resolved: Bool?
+
+    public var localId: Int64?
+
+    public var organizationId: String?
+
+    public var repositoryIdentity: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["accessToken"] = self.accessToken!
+        }
+        if self.commentType != nil {
+            map["commentType"] = self.commentType!
+        }
+        if self.content != nil {
+            map["content"] = self.content!
+        }
+        if self.draft != nil {
+            map["draft"] = self.draft!
+        }
+        if self.filePath != nil {
+            map["filePath"] = self.filePath!
+        }
+        if self.lineNumber != nil {
+            map["lineNumber"] = self.lineNumber!
+        }
+        if self.parentCommentBizId != nil {
+            map["parentCommentBizId"] = self.parentCommentBizId!
+        }
+        if self.patchSetBizId != nil {
+            map["patchSetBizId"] = self.patchSetBizId!
+        }
+        if self.resolved != nil {
+            map["resolved"] = self.resolved!
+        }
+        if self.localId != nil {
+            map["localId"] = self.localId!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.repositoryIdentity != nil {
+            map["repositoryIdentity"] = self.repositoryIdentity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("accessToken") && dict["accessToken"] != nil {
+            self.accessToken = dict["accessToken"] as! String
+        }
+        if dict.keys.contains("commentType") && dict["commentType"] != nil {
+            self.commentType = dict["commentType"] as! String
+        }
+        if dict.keys.contains("content") && dict["content"] != nil {
+            self.content = dict["content"] as! String
+        }
+        if dict.keys.contains("draft") && dict["draft"] != nil {
+            self.draft = dict["draft"] as! Bool
+        }
+        if dict.keys.contains("filePath") && dict["filePath"] != nil {
+            self.filePath = dict["filePath"] as! String
+        }
+        if dict.keys.contains("lineNumber") && dict["lineNumber"] != nil {
+            self.lineNumber = dict["lineNumber"] as! Int32
+        }
+        if dict.keys.contains("parentCommentBizId") && dict["parentCommentBizId"] != nil {
+            self.parentCommentBizId = dict["parentCommentBizId"] as! String
+        }
+        if dict.keys.contains("patchSetBizId") && dict["patchSetBizId"] != nil {
+            self.patchSetBizId = dict["patchSetBizId"] as! String
+        }
+        if dict.keys.contains("resolved") && dict["resolved"] != nil {
+            self.resolved = dict["resolved"] as! Bool
+        }
+        if dict.keys.contains("localId") && dict["localId"] != nil {
+            self.localId = dict["localId"] as! Int64
+        }
+        if dict.keys.contains("organizationId") && dict["organizationId"] != nil {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("repositoryIdentity") && dict["repositoryIdentity"] != nil {
+            self.repositoryIdentity = dict["repositoryIdentity"] as! String
+        }
+    }
+}
+
+public class CreateCommentResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class Author : Tea.TeaModel {
+            public var aliyunPk: String?
+
+            public var avatarUrl: String?
+
+            public var email: String?
+
+            public var id: Int64?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var username: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aliyunPk != nil {
+                    map["aliyunPk"] = self.aliyunPk!
+                }
+                if self.avatarUrl != nil {
+                    map["avatarUrl"] = self.avatarUrl!
+                }
+                if self.email != nil {
+                    map["email"] = self.email!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.username != nil {
+                    map["username"] = self.username!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("aliyunPk") && dict["aliyunPk"] != nil {
+                    self.aliyunPk = dict["aliyunPk"] as! String
+                }
+                if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
+                    self.avatarUrl = dict["avatarUrl"] as! String
+                }
+                if dict.keys.contains("email") && dict["email"] != nil {
+                    self.email = dict["email"] as! String
+                }
+                if dict.keys.contains("id") && dict["id"] != nil {
+                    self.id = dict["id"] as! Int64
+                }
+                if dict.keys.contains("name") && dict["name"] != nil {
+                    self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("state") && dict["state"] != nil {
+                    self.state = dict["state"] as! String
+                }
+                if dict.keys.contains("username") && dict["username"] != nil {
+                    self.username = dict["username"] as! String
+                }
+            }
+        }
+        public class RelatedPatchSet : Tea.TeaModel {
+            public var commitId: String?
+
+            public var createdAt: String?
+
+            public var patchSetBizId: String?
+
+            public var patchSetName: String?
+
+            public var patchSetNo: String?
+
+            public var relatedMergeItemType: String?
+
+            public var shortId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.commitId != nil {
+                    map["commitId"] = self.commitId!
+                }
+                if self.createdAt != nil {
+                    map["createdAt"] = self.createdAt!
+                }
+                if self.patchSetBizId != nil {
+                    map["patchSetBizId"] = self.patchSetBizId!
+                }
+                if self.patchSetName != nil {
+                    map["patchSetName"] = self.patchSetName!
+                }
+                if self.patchSetNo != nil {
+                    map["patchSetNo"] = self.patchSetNo!
+                }
+                if self.relatedMergeItemType != nil {
+                    map["relatedMergeItemType"] = self.relatedMergeItemType!
+                }
+                if self.shortId != nil {
+                    map["shortId"] = self.shortId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("commitId") && dict["commitId"] != nil {
+                    self.commitId = dict["commitId"] as! String
+                }
+                if dict.keys.contains("createdAt") && dict["createdAt"] != nil {
+                    self.createdAt = dict["createdAt"] as! String
+                }
+                if dict.keys.contains("patchSetBizId") && dict["patchSetBizId"] != nil {
+                    self.patchSetBizId = dict["patchSetBizId"] as! String
+                }
+                if dict.keys.contains("patchSetName") && dict["patchSetName"] != nil {
+                    self.patchSetName = dict["patchSetName"] as! String
+                }
+                if dict.keys.contains("patchSetNo") && dict["patchSetNo"] != nil {
+                    self.patchSetNo = dict["patchSetNo"] as! String
+                }
+                if dict.keys.contains("relatedMergeItemType") && dict["relatedMergeItemType"] != nil {
+                    self.relatedMergeItemType = dict["relatedMergeItemType"] as! String
+                }
+                if dict.keys.contains("shortId") && dict["shortId"] != nil {
+                    self.shortId = dict["shortId"] as! String
+                }
+            }
+        }
+        public var author: CreateCommentResponseBody.Result.Author?
+
+        public var commentBizId: String?
+
+        public var commentTime: String?
+
+        public var commentType: String?
+
+        public var content: String?
+
+        public var deleted: Bool?
+
+        public var filePath: String?
+
+        public var lastEditTime: String?
+
+        public var lineNumber: String?
+
+        public var parentCommentBizId: String?
+
+        public var relatedPatchSet: CreateCommentResponseBody.Result.RelatedPatchSet?
+
+        public var resolved: Bool?
+
+        public var rootCommentBizId: String?
+
+        public var state: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.author?.validate()
+            try self.relatedPatchSet?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.author != nil {
+                map["author"] = self.author?.toMap()
+            }
+            if self.commentBizId != nil {
+                map["commentBizId"] = self.commentBizId!
+            }
+            if self.commentTime != nil {
+                map["commentTime"] = self.commentTime!
+            }
+            if self.commentType != nil {
+                map["commentType"] = self.commentType!
+            }
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.deleted != nil {
+                map["deleted"] = self.deleted!
+            }
+            if self.filePath != nil {
+                map["filePath"] = self.filePath!
+            }
+            if self.lastEditTime != nil {
+                map["lastEditTime"] = self.lastEditTime!
+            }
+            if self.lineNumber != nil {
+                map["lineNumber"] = self.lineNumber!
+            }
+            if self.parentCommentBizId != nil {
+                map["parentCommentBizId"] = self.parentCommentBizId!
+            }
+            if self.relatedPatchSet != nil {
+                map["relatedPatchSet"] = self.relatedPatchSet?.toMap()
+            }
+            if self.resolved != nil {
+                map["resolved"] = self.resolved!
+            }
+            if self.rootCommentBizId != nil {
+                map["rootCommentBizId"] = self.rootCommentBizId!
+            }
+            if self.state != nil {
+                map["state"] = self.state!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("author") && dict["author"] != nil {
+                var model = CreateCommentResponseBody.Result.Author()
+                model.fromMap(dict["author"] as! [String: Any])
+                self.author = model
+            }
+            if dict.keys.contains("commentBizId") && dict["commentBizId"] != nil {
+                self.commentBizId = dict["commentBizId"] as! String
+            }
+            if dict.keys.contains("commentTime") && dict["commentTime"] != nil {
+                self.commentTime = dict["commentTime"] as! String
+            }
+            if dict.keys.contains("commentType") && dict["commentType"] != nil {
+                self.commentType = dict["commentType"] as! String
+            }
+            if dict.keys.contains("content") && dict["content"] != nil {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("deleted") && dict["deleted"] != nil {
+                self.deleted = dict["deleted"] as! Bool
+            }
+            if dict.keys.contains("filePath") && dict["filePath"] != nil {
+                self.filePath = dict["filePath"] as! String
+            }
+            if dict.keys.contains("lastEditTime") && dict["lastEditTime"] != nil {
+                self.lastEditTime = dict["lastEditTime"] as! String
+            }
+            if dict.keys.contains("lineNumber") && dict["lineNumber"] != nil {
+                self.lineNumber = dict["lineNumber"] as! String
+            }
+            if dict.keys.contains("parentCommentBizId") && dict["parentCommentBizId"] != nil {
+                self.parentCommentBizId = dict["parentCommentBizId"] as! String
+            }
+            if dict.keys.contains("relatedPatchSet") && dict["relatedPatchSet"] != nil {
+                var model = CreateCommentResponseBody.Result.RelatedPatchSet()
+                model.fromMap(dict["relatedPatchSet"] as! [String: Any])
+                self.relatedPatchSet = model
+            }
+            if dict.keys.contains("resolved") && dict["resolved"] != nil {
+                self.resolved = dict["resolved"] as! Bool
+            }
+            if dict.keys.contains("rootCommentBizId") && dict["rootCommentBizId"] != nil {
+                self.rootCommentBizId = dict["rootCommentBizId"] as! String
+            }
+            if dict.keys.contains("state") && dict["state"] != nil {
+                self.state = dict["state"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var result: CreateCommentResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["errorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMessage") && dict["errorMessage"] != nil {
+            self.errorMessage = dict["errorMessage"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("result") && dict["result"] != nil {
+            var model = CreateCommentResponseBody.Result()
+            model.fromMap(dict["result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class CreateCommentResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateCommentResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateCommentResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateCommitStatusRequest : Tea.TeaModel {
     public var accessToken: String?
 
@@ -2882,6 +3407,564 @@ public class CreateCommitStatusResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = CreateCommitStatusResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateCommitWithMultipleFilesRequest : Tea.TeaModel {
+    public class Actions : Tea.TeaModel {
+        public var action: String?
+
+        public var content: String?
+
+        public var filePath: String?
+
+        public var previousPath: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["action"] = self.action!
+            }
+            if self.content != nil {
+                map["content"] = self.content!
+            }
+            if self.filePath != nil {
+                map["filePath"] = self.filePath!
+            }
+            if self.previousPath != nil {
+                map["previousPath"] = self.previousPath!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("action") && dict["action"] != nil {
+                self.action = dict["action"] as! String
+            }
+            if dict.keys.contains("content") && dict["content"] != nil {
+                self.content = dict["content"] as! String
+            }
+            if dict.keys.contains("filePath") && dict["filePath"] != nil {
+                self.filePath = dict["filePath"] as! String
+            }
+            if dict.keys.contains("previousPath") && dict["previousPath"] != nil {
+                self.previousPath = dict["previousPath"] as! String
+            }
+        }
+    }
+    public var accessToken: String?
+
+    public var actions: [CreateCommitWithMultipleFilesRequest.Actions]?
+
+    public var branch: String?
+
+    public var commitMessage: String?
+
+    public var organizationId: String?
+
+    public var repositoryIdentity: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.accessToken != nil {
+            map["accessToken"] = self.accessToken!
+        }
+        if self.actions != nil {
+            var tmp : [Any] = []
+            for k in self.actions! {
+                tmp.append(k.toMap())
+            }
+            map["actions"] = tmp
+        }
+        if self.branch != nil {
+            map["branch"] = self.branch!
+        }
+        if self.commitMessage != nil {
+            map["commitMessage"] = self.commitMessage!
+        }
+        if self.organizationId != nil {
+            map["organizationId"] = self.organizationId!
+        }
+        if self.repositoryIdentity != nil {
+            map["repositoryIdentity"] = self.repositoryIdentity!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("accessToken") && dict["accessToken"] != nil {
+            self.accessToken = dict["accessToken"] as! String
+        }
+        if dict.keys.contains("actions") && dict["actions"] != nil {
+            var tmp : [CreateCommitWithMultipleFilesRequest.Actions] = []
+            for v in dict["actions"] as! [Any] {
+                var model = CreateCommitWithMultipleFilesRequest.Actions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.actions = tmp
+        }
+        if dict.keys.contains("branch") && dict["branch"] != nil {
+            self.branch = dict["branch"] as! String
+        }
+        if dict.keys.contains("commitMessage") && dict["commitMessage"] != nil {
+            self.commitMessage = dict["commitMessage"] as! String
+        }
+        if dict.keys.contains("organizationId") && dict["organizationId"] != nil {
+            self.organizationId = dict["organizationId"] as! String
+        }
+        if dict.keys.contains("repositoryIdentity") && dict["repositoryIdentity"] != nil {
+            self.repositoryIdentity = dict["repositoryIdentity"] as! String
+        }
+    }
+}
+
+public class CreateCommitWithMultipleFilesResponseBody : Tea.TeaModel {
+    public class Result : Tea.TeaModel {
+        public class Author : Tea.TeaModel {
+            public var aliyunPk: String?
+
+            public var avatarUrl: String?
+
+            public var email: String?
+
+            public var id: Int64?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var username: String?
+
+            public var websiteUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aliyunPk != nil {
+                    map["aliyunPk"] = self.aliyunPk!
+                }
+                if self.avatarUrl != nil {
+                    map["avatarUrl"] = self.avatarUrl!
+                }
+                if self.email != nil {
+                    map["email"] = self.email!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.username != nil {
+                    map["username"] = self.username!
+                }
+                if self.websiteUrl != nil {
+                    map["websiteUrl"] = self.websiteUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("aliyunPk") && dict["aliyunPk"] != nil {
+                    self.aliyunPk = dict["aliyunPk"] as! String
+                }
+                if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
+                    self.avatarUrl = dict["avatarUrl"] as! String
+                }
+                if dict.keys.contains("email") && dict["email"] != nil {
+                    self.email = dict["email"] as! String
+                }
+                if dict.keys.contains("id") && dict["id"] != nil {
+                    self.id = dict["id"] as! Int64
+                }
+                if dict.keys.contains("name") && dict["name"] != nil {
+                    self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("state") && dict["state"] != nil {
+                    self.state = dict["state"] as! String
+                }
+                if dict.keys.contains("username") && dict["username"] != nil {
+                    self.username = dict["username"] as! String
+                }
+                if dict.keys.contains("websiteUrl") && dict["websiteUrl"] != nil {
+                    self.websiteUrl = dict["websiteUrl"] as! String
+                }
+            }
+        }
+        public class Committer : Tea.TeaModel {
+            public var aliyunPk: String?
+
+            public var avatarUrl: String?
+
+            public var email: String?
+
+            public var id: Int64?
+
+            public var name: String?
+
+            public var state: String?
+
+            public var username: String?
+
+            public var websiteUrl: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.aliyunPk != nil {
+                    map["aliyunPk"] = self.aliyunPk!
+                }
+                if self.avatarUrl != nil {
+                    map["avatarUrl"] = self.avatarUrl!
+                }
+                if self.email != nil {
+                    map["email"] = self.email!
+                }
+                if self.id != nil {
+                    map["id"] = self.id!
+                }
+                if self.name != nil {
+                    map["name"] = self.name!
+                }
+                if self.state != nil {
+                    map["state"] = self.state!
+                }
+                if self.username != nil {
+                    map["username"] = self.username!
+                }
+                if self.websiteUrl != nil {
+                    map["websiteUrl"] = self.websiteUrl!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("aliyunPk") && dict["aliyunPk"] != nil {
+                    self.aliyunPk = dict["aliyunPk"] as! String
+                }
+                if dict.keys.contains("avatarUrl") && dict["avatarUrl"] != nil {
+                    self.avatarUrl = dict["avatarUrl"] as! String
+                }
+                if dict.keys.contains("email") && dict["email"] != nil {
+                    self.email = dict["email"] as! String
+                }
+                if dict.keys.contains("id") && dict["id"] != nil {
+                    self.id = dict["id"] as! Int64
+                }
+                if dict.keys.contains("name") && dict["name"] != nil {
+                    self.name = dict["name"] as! String
+                }
+                if dict.keys.contains("state") && dict["state"] != nil {
+                    self.state = dict["state"] as! String
+                }
+                if dict.keys.contains("username") && dict["username"] != nil {
+                    self.username = dict["username"] as! String
+                }
+                if dict.keys.contains("websiteUrl") && dict["websiteUrl"] != nil {
+                    self.websiteUrl = dict["websiteUrl"] as! String
+                }
+            }
+        }
+        public var author: CreateCommitWithMultipleFilesResponseBody.Result.Author?
+
+        public var authorEmail: String?
+
+        public var authorName: String?
+
+        public var authoredDate: String?
+
+        public var committedDate: String?
+
+        public var committer: CreateCommitWithMultipleFilesResponseBody.Result.Committer?
+
+        public var committerEmail: String?
+
+        public var committerName: String?
+
+        public var createdAt: String?
+
+        public var id: String?
+
+        public var message: String?
+
+        public var parentIds: [String]?
+
+        public var shortId: String?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.author?.validate()
+            try self.committer?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.author != nil {
+                map["author"] = self.author?.toMap()
+            }
+            if self.authorEmail != nil {
+                map["authorEmail"] = self.authorEmail!
+            }
+            if self.authorName != nil {
+                map["authorName"] = self.authorName!
+            }
+            if self.authoredDate != nil {
+                map["authoredDate"] = self.authoredDate!
+            }
+            if self.committedDate != nil {
+                map["committedDate"] = self.committedDate!
+            }
+            if self.committer != nil {
+                map["committer"] = self.committer?.toMap()
+            }
+            if self.committerEmail != nil {
+                map["committerEmail"] = self.committerEmail!
+            }
+            if self.committerName != nil {
+                map["committerName"] = self.committerName!
+            }
+            if self.createdAt != nil {
+                map["createdAt"] = self.createdAt!
+            }
+            if self.id != nil {
+                map["id"] = self.id!
+            }
+            if self.message != nil {
+                map["message"] = self.message!
+            }
+            if self.parentIds != nil {
+                map["parentIds"] = self.parentIds!
+            }
+            if self.shortId != nil {
+                map["shortId"] = self.shortId!
+            }
+            if self.title != nil {
+                map["title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("author") && dict["author"] != nil {
+                var model = CreateCommitWithMultipleFilesResponseBody.Result.Author()
+                model.fromMap(dict["author"] as! [String: Any])
+                self.author = model
+            }
+            if dict.keys.contains("authorEmail") && dict["authorEmail"] != nil {
+                self.authorEmail = dict["authorEmail"] as! String
+            }
+            if dict.keys.contains("authorName") && dict["authorName"] != nil {
+                self.authorName = dict["authorName"] as! String
+            }
+            if dict.keys.contains("authoredDate") && dict["authoredDate"] != nil {
+                self.authoredDate = dict["authoredDate"] as! String
+            }
+            if dict.keys.contains("committedDate") && dict["committedDate"] != nil {
+                self.committedDate = dict["committedDate"] as! String
+            }
+            if dict.keys.contains("committer") && dict["committer"] != nil {
+                var model = CreateCommitWithMultipleFilesResponseBody.Result.Committer()
+                model.fromMap(dict["committer"] as! [String: Any])
+                self.committer = model
+            }
+            if dict.keys.contains("committerEmail") && dict["committerEmail"] != nil {
+                self.committerEmail = dict["committerEmail"] as! String
+            }
+            if dict.keys.contains("committerName") && dict["committerName"] != nil {
+                self.committerName = dict["committerName"] as! String
+            }
+            if dict.keys.contains("createdAt") && dict["createdAt"] != nil {
+                self.createdAt = dict["createdAt"] as! String
+            }
+            if dict.keys.contains("id") && dict["id"] != nil {
+                self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("message") && dict["message"] != nil {
+                self.message = dict["message"] as! String
+            }
+            if dict.keys.contains("parentIds") && dict["parentIds"] != nil {
+                self.parentIds = dict["parentIds"] as! [String]
+            }
+            if dict.keys.contains("shortId") && dict["shortId"] != nil {
+                self.shortId = dict["shortId"] as! String
+            }
+            if dict.keys.contains("title") && dict["title"] != nil {
+                self.title = dict["title"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMsg: String?
+
+    public var requestId: String?
+
+    public var result: CreateCommitWithMultipleFilesResponseBody.Result?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.result?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["errorCode"] = self.errorCode!
+        }
+        if self.errorMsg != nil {
+            map["errorMsg"] = self.errorMsg!
+        }
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.result != nil {
+            map["result"] = self.result?.toMap()
+        }
+        if self.success != nil {
+            map["success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("errorCode") && dict["errorCode"] != nil {
+            self.errorCode = dict["errorCode"] as! String
+        }
+        if dict.keys.contains("errorMsg") && dict["errorMsg"] != nil {
+            self.errorMsg = dict["errorMsg"] as! String
+        }
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("result") && dict["result"] != nil {
+            var model = CreateCommitWithMultipleFilesResponseBody.Result()
+            model.fromMap(dict["result"] as! [String: Any])
+            self.result = model
+        }
+        if dict.keys.contains("success") && dict["success"] != nil {
+            self.success = dict["success"] as! Bool
+        }
+    }
+}
+
+public class CreateCommitWithMultipleFilesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateCommitWithMultipleFilesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateCommitWithMultipleFilesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -38384,6 +39467,10 @@ public class ListOrganizationsResponseBody : Tea.TeaModel {
 
         public var id: Int64?
 
+        public var namespaceId: String?
+
+        public var organizationAlias: String?
+
         public var organizationId: String?
 
         public var organizationName: String?
@@ -38410,6 +39497,12 @@ public class ListOrganizationsResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["id"] = self.id!
             }
+            if self.namespaceId != nil {
+                map["namespaceId"] = self.namespaceId!
+            }
+            if self.organizationAlias != nil {
+                map["organizationAlias"] = self.organizationAlias!
+            }
             if self.organizationId != nil {
                 map["organizationId"] = self.organizationId!
             }
@@ -38428,6 +39521,12 @@ public class ListOrganizationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! Int64
+            }
+            if dict.keys.contains("namespaceId") && dict["namespaceId"] != nil {
+                self.namespaceId = dict["namespaceId"] as! String
+            }
+            if dict.keys.contains("organizationAlias") && dict["organizationAlias"] != nil {
+                self.organizationAlias = dict["organizationAlias"] as! String
             }
             if dict.keys.contains("organizationId") && dict["organizationId"] != nil {
                 self.organizationId = dict["organizationId"] as! String
@@ -43096,6 +44195,8 @@ public class ListRepositoriesRequest : Tea.TeaModel {
 
     public var archived: Bool?
 
+    public var minAccessLevel: Int32?
+
     public var orderBy: String?
 
     public var organizationId: String?
@@ -43128,6 +44229,9 @@ public class ListRepositoriesRequest : Tea.TeaModel {
         if self.archived != nil {
             map["archived"] = self.archived!
         }
+        if self.minAccessLevel != nil {
+            map["minAccessLevel"] = self.minAccessLevel!
+        }
         if self.orderBy != nil {
             map["orderBy"] = self.orderBy!
         }
@@ -43155,6 +44259,9 @@ public class ListRepositoriesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("archived") && dict["archived"] != nil {
             self.archived = dict["archived"] as! Bool
+        }
+        if dict.keys.contains("minAccessLevel") && dict["minAccessLevel"] != nil {
+            self.minAccessLevel = dict["minAccessLevel"] as! Int32
         }
         if dict.keys.contains("orderBy") && dict["orderBy"] != nil {
             self.orderBy = dict["orderBy"] as! String

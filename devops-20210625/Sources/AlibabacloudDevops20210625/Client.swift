@@ -402,6 +402,74 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCommentWithOptions(_ request: CreateCommentRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCommentResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.localId)) {
+            query["localId"] = request.localId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repositoryIdentity)) {
+            query["repositoryIdentity"] = request.repositoryIdentity ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.commentType)) {
+            body["commentType"] = request.commentType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.content)) {
+            body["content"] = request.content ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.draft)) {
+            body["draft"] = request.draft!;
+        }
+        if (!TeaUtils.Client.isUnset(request.filePath)) {
+            body["filePath"] = request.filePath ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lineNumber)) {
+            body["lineNumber"] = request.lineNumber!;
+        }
+        if (!TeaUtils.Client.isUnset(request.parentCommentBizId)) {
+            body["parentCommentBizId"] = request.parentCommentBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.patchSetBizId)) {
+            body["patchSetBizId"] = request.patchSetBizId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resolved)) {
+            body["resolved"] = request.resolved!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateComment",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/code_reviews/comments/create_comment",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCommentResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createComment(_ request: CreateCommentRequest) async throws -> CreateCommentResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createCommentWithOptions(request as! CreateCommentRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createCommitStatusWithOptions(_ request: CreateCommitStatusRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCommitStatusResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -455,6 +523,56 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
         return try await createCommitStatusWithOptions(request as! CreateCommitStatusRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCommitWithMultipleFilesWithOptions(_ request: CreateCommitWithMultipleFilesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateCommitWithMultipleFilesResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.organizationId)) {
+            query["organizationId"] = request.organizationId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repositoryIdentity)) {
+            query["repositoryIdentity"] = request.repositoryIdentity ?? "";
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.actions)) {
+            body["actions"] = request.actions ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.branch)) {
+            body["branch"] = request.branch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commitMessage)) {
+            body["commitMessage"] = request.commitMessage ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query),
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateCommitWithMultipleFiles",
+            "version": "2021-06-25",
+            "protocol": "HTTPS",
+            "pathname": "/api/v4/projects/repository/commits/files",
+            "method": "POST",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateCommitWithMultipleFilesResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createCommitWithMultipleFiles(_ request: CreateCommitWithMultipleFilesRequest) async throws -> CreateCommitWithMultipleFilesResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: [String: String] = [:]
+        return try await createCommitWithMultipleFilesWithOptions(request as! CreateCommitWithMultipleFilesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5781,6 +5899,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.archived)) {
             query["archived"] = request.archived!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minAccessLevel)) {
+            query["minAccessLevel"] = request.minAccessLevel!;
         }
         if (!TeaUtils.Client.isUnset(request.orderBy)) {
             query["orderBy"] = request.orderBy ?? "";
