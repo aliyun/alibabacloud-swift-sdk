@@ -205,6 +205,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.summaryRelativePath)) {
             body["SummaryRelativePath"] = request.summaryRelativePath ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tensorboardDataSources)) {
+            body["TensorboardDataSources"] = request.tensorboardDataSources ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.tensorboardSpec)) {
+            body["TensorboardSpec"] = request.tensorboardSpec!;
+        }
         if (!TeaUtils.Client.isUnset(request.uri)) {
             body["Uri"] = request.uri ?? "";
         }
@@ -887,6 +893,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.paymentType)) {
+            query["PaymentType"] = request.paymentType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.showOwn)) {
             query["ShowOwn"] = request.showOwn!;

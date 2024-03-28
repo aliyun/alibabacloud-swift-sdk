@@ -3478,7 +3478,11 @@ public class Tensorboard : Tea.TeaModel {
 
     public var summaryPath: String?
 
+    public var tensorboardDataSources: [TensorboardDataSourceSpec]?
+
     public var tensorboardId: String?
+
+    public var tensorboardSpec: TensorboardSpec?
 
     public var tensorboardUrl: String?
 
@@ -3494,6 +3498,7 @@ public class Tensorboard : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tensorboardSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3531,8 +3536,18 @@ public class Tensorboard : Tea.TeaModel {
         if self.summaryPath != nil {
             map["SummaryPath"] = self.summaryPath!
         }
+        if self.tensorboardDataSources != nil {
+            var tmp : [Any] = []
+            for k in self.tensorboardDataSources! {
+                tmp.append(k.toMap())
+            }
+            map["TensorboardDataSources"] = tmp
+        }
         if self.tensorboardId != nil {
             map["TensorboardId"] = self.tensorboardId!
+        }
+        if self.tensorboardSpec != nil {
+            map["TensorboardSpec"] = self.tensorboardSpec?.toMap()
         }
         if self.tensorboardUrl != nil {
             map["TensorboardUrl"] = self.tensorboardUrl!
@@ -3577,14 +3592,170 @@ public class Tensorboard : Tea.TeaModel {
         if dict.keys.contains("SummaryPath") && dict["SummaryPath"] != nil {
             self.summaryPath = dict["SummaryPath"] as! String
         }
+        if dict.keys.contains("TensorboardDataSources") && dict["TensorboardDataSources"] != nil {
+            var tmp : [TensorboardDataSourceSpec] = []
+            for v in dict["TensorboardDataSources"] as! [Any] {
+                var model = TensorboardDataSourceSpec()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tensorboardDataSources = tmp
+        }
         if dict.keys.contains("TensorboardId") && dict["TensorboardId"] != nil {
             self.tensorboardId = dict["TensorboardId"] as! String
+        }
+        if dict.keys.contains("TensorboardSpec") && dict["TensorboardSpec"] != nil {
+            var model = TensorboardSpec()
+            model.fromMap(dict["TensorboardSpec"] as! [String: Any])
+            self.tensorboardSpec = model
         }
         if dict.keys.contains("TensorboardUrl") && dict["TensorboardUrl"] != nil {
             self.tensorboardUrl = dict["TensorboardUrl"] as! String
         }
         if dict.keys.contains("UserId") && dict["UserId"] != nil {
             self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class TensorboardDataSourceSpec : Tea.TeaModel {
+    public var dataSourceType: String?
+
+    public var directoryName: String?
+
+    public var fullSummaryPath: String?
+
+    public var id: String?
+
+    public var name: String?
+
+    public var sourceType: String?
+
+    public var summaryPath: String?
+
+    public var uri: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dataSourceType != nil {
+            map["DataSourceType"] = self.dataSourceType!
+        }
+        if self.directoryName != nil {
+            map["DirectoryName"] = self.directoryName!
+        }
+        if self.fullSummaryPath != nil {
+            map["FullSummaryPath"] = self.fullSummaryPath!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.sourceType != nil {
+            map["SourceType"] = self.sourceType!
+        }
+        if self.summaryPath != nil {
+            map["SummaryPath"] = self.summaryPath!
+        }
+        if self.uri != nil {
+            map["Uri"] = self.uri!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DataSourceType") && dict["DataSourceType"] != nil {
+            self.dataSourceType = dict["DataSourceType"] as! String
+        }
+        if dict.keys.contains("DirectoryName") && dict["DirectoryName"] != nil {
+            self.directoryName = dict["DirectoryName"] as! String
+        }
+        if dict.keys.contains("FullSummaryPath") && dict["FullSummaryPath"] != nil {
+            self.fullSummaryPath = dict["FullSummaryPath"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! String
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("SourceType") && dict["SourceType"] != nil {
+            self.sourceType = dict["SourceType"] as! String
+        }
+        if dict.keys.contains("SummaryPath") && dict["SummaryPath"] != nil {
+            self.summaryPath = dict["SummaryPath"] as! String
+        }
+        if dict.keys.contains("Uri") && dict["Uri"] != nil {
+            self.uri = dict["Uri"] as! String
+        }
+    }
+}
+
+public class TensorboardSpec : Tea.TeaModel {
+    public var ecsType: String?
+
+    public var securityGroupId: String?
+
+    public var switchId: String?
+
+    public var vpcId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.ecsType != nil {
+            map["EcsType"] = self.ecsType!
+        }
+        if self.securityGroupId != nil {
+            map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.switchId != nil {
+            map["SwitchId"] = self.switchId!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EcsType") && dict["EcsType"] != nil {
+            self.ecsType = dict["EcsType"] as! String
+        }
+        if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
+            self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("SwitchId") && dict["SwitchId"] != nil {
+            self.switchId = dict["SwitchId"] as! String
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
         }
     }
 }
@@ -4205,6 +4376,10 @@ public class CreateTensorboardRequest : Tea.TeaModel {
 
     public var summaryRelativePath: String?
 
+    public var tensorboardDataSources: [TensorboardDataSourceSpec]?
+
+    public var tensorboardSpec: TensorboardSpec?
+
     public var uri: String?
 
     public var workspaceId: String?
@@ -4219,6 +4394,7 @@ public class CreateTensorboardRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.tensorboardSpec?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -4265,6 +4441,16 @@ public class CreateTensorboardRequest : Tea.TeaModel {
         }
         if self.summaryRelativePath != nil {
             map["SummaryRelativePath"] = self.summaryRelativePath!
+        }
+        if self.tensorboardDataSources != nil {
+            var tmp : [Any] = []
+            for k in self.tensorboardDataSources! {
+                tmp.append(k.toMap())
+            }
+            map["TensorboardDataSources"] = tmp
+        }
+        if self.tensorboardSpec != nil {
+            map["TensorboardSpec"] = self.tensorboardSpec?.toMap()
         }
         if self.uri != nil {
             map["Uri"] = self.uri!
@@ -4322,6 +4508,22 @@ public class CreateTensorboardRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SummaryRelativePath") && dict["SummaryRelativePath"] != nil {
             self.summaryRelativePath = dict["SummaryRelativePath"] as! String
+        }
+        if dict.keys.contains("TensorboardDataSources") && dict["TensorboardDataSources"] != nil {
+            var tmp : [TensorboardDataSourceSpec] = []
+            for v in dict["TensorboardDataSources"] as! [Any] {
+                var model = TensorboardDataSourceSpec()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tensorboardDataSources = tmp
+        }
+        if dict.keys.contains("TensorboardSpec") && dict["TensorboardSpec"] != nil {
+            var model = TensorboardSpec()
+            model.fromMap(dict["TensorboardSpec"] as! [String: Any])
+            self.tensorboardSpec = model
         }
         if dict.keys.contains("Uri") && dict["Uri"] != nil {
             self.uri = dict["Uri"] as! String
@@ -7506,6 +7708,8 @@ public class ListTensorboardsRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var paymentType: String?
+
     public var showOwn: Bool?
 
     public var sortBy: String?
@@ -7556,6 +7760,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.paymentType != nil {
+            map["PaymentType"] = self.paymentType!
+        }
         if self.showOwn != nil {
             map["ShowOwn"] = self.showOwn!
         }
@@ -7604,6 +7811,9 @@ public class ListTensorboardsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("PaymentType") && dict["PaymentType"] != nil {
+            self.paymentType = dict["PaymentType"] as! String
         }
         if dict.keys.contains("ShowOwn") && dict["ShowOwn"] != nil {
             self.showOwn = dict["ShowOwn"] as! Bool
