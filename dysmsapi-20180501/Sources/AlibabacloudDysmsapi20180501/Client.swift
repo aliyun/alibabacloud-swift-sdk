@@ -146,6 +146,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendMessageToGlobeWithOptions(_ request: SendMessageToGlobeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendMessageToGlobeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.from)) {
             query["From"] = request.from ?? "";
         }
@@ -189,6 +192,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func sendMessageWithTemplateWithOptions(_ request: SendMessageWithTemplateRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SendMessageWithTemplateResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.channelId)) {
+            query["ChannelId"] = request.channelId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.from)) {
             query["From"] = request.from ?? "";
         }

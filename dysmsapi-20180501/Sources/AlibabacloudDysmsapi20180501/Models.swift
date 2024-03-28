@@ -581,6 +581,8 @@ public class QueryMessageResponse : Tea.TeaModel {
 }
 
 public class SendMessageToGlobeRequest : Tea.TeaModel {
+    public var channelId: String?
+
     public var from: String?
 
     public var message: String?
@@ -605,6 +607,9 @@ public class SendMessageToGlobeRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
         if self.from != nil {
             map["From"] = self.from!
         }
@@ -624,6 +629,9 @@ public class SendMessageToGlobeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChannelId") && dict["ChannelId"] != nil {
+            self.channelId = dict["ChannelId"] as! String
+        }
         if dict.keys.contains("From") && dict["From"] != nil {
             self.from = dict["From"] as! String
         }
@@ -826,6 +834,8 @@ public class SendMessageToGlobeResponse : Tea.TeaModel {
 }
 
 public class SendMessageWithTemplateRequest : Tea.TeaModel {
+    public var channelId: String?
+
     public var from: String?
 
     public var smsUpExtendCode: String?
@@ -852,6 +862,9 @@ public class SendMessageWithTemplateRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
         if self.from != nil {
             map["From"] = self.from!
         }
@@ -874,6 +887,9 @@ public class SendMessageWithTemplateRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ChannelId") && dict["ChannelId"] != nil {
+            self.channelId = dict["ChannelId"] as! String
+        }
         if dict.keys.contains("From") && dict["From"] != nil {
             self.from = dict["From"] as! String
         }
