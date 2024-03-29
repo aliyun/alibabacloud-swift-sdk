@@ -36017,6 +36017,8 @@ public class ListJoinedOrganizationsResponseBody : Tea.TeaModel {
     public class Organizations : Tea.TeaModel {
         public var id: String?
 
+        public var isOrgAdmin: Bool?
+
         public var name: String?
 
         public override init() {
@@ -36036,6 +36038,9 @@ public class ListJoinedOrganizationsResponseBody : Tea.TeaModel {
             if self.id != nil {
                 map["id"] = self.id!
             }
+            if self.isOrgAdmin != nil {
+                map["isOrgAdmin"] = self.isOrgAdmin!
+            }
             if self.name != nil {
                 map["name"] = self.name!
             }
@@ -36045,6 +36050,9 @@ public class ListJoinedOrganizationsResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("id") && dict["id"] != nil {
                 self.id = dict["id"] as! String
+            }
+            if dict.keys.contains("isOrgAdmin") && dict["isOrgAdmin"] != nil {
+                self.isOrgAdmin = dict["isOrgAdmin"] as! Bool
             }
             if dict.keys.contains("name") && dict["name"] != nil {
                 self.name = dict["name"] as! String
