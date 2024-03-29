@@ -841,6 +841,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
         public var securityGroupId: String?
 
+        public var tailIpVersion: String?
+
         public var vSwitchId: String?
 
         public var vSwitchZoneId: String?
@@ -878,6 +880,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             if self.securityGroupId != nil {
                 map["SecurityGroupId"] = self.securityGroupId!
             }
+            if self.tailIpVersion != nil {
+                map["TailIpVersion"] = self.tailIpVersion!
+            }
             if self.vSwitchId != nil {
                 map["VSwitchId"] = self.vSwitchId!
             }
@@ -912,6 +917,9 @@ public class CreateClusterRequest : Tea.TeaModel {
             }
             if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
                 self.securityGroupId = dict["SecurityGroupId"] as! String
+            }
+            if dict.keys.contains("TailIpVersion") && dict["TailIpVersion"] != nil {
+                self.tailIpVersion = dict["TailIpVersion"] as! String
             }
             if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
                 self.vSwitchId = dict["VSwitchId"] as! String
