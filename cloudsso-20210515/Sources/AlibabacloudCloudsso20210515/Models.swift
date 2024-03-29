@@ -6698,6 +6698,43 @@ public class GetUserRequest : Tea.TeaModel {
 
 public class GetUserResponseBody : Tea.TeaModel {
     public class User : Tea.TeaModel {
+        public class ExternalId : Tea.TeaModel {
+            public var id: String?
+
+            public var issuer: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+                    self.issuer = dict["Issuer"] as! String
+                }
+            }
+        }
         public var createTime: String?
 
         public var description_: String?
@@ -6705,6 +6742,8 @@ public class GetUserResponseBody : Tea.TeaModel {
         public var displayName: String?
 
         public var email: String?
+
+        public var externalId: GetUserResponseBody.User.ExternalId?
 
         public var firstName: String?
 
@@ -6730,6 +6769,7 @@ public class GetUserResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.externalId?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6745,6 +6785,9 @@ public class GetUserResponseBody : Tea.TeaModel {
             }
             if self.email != nil {
                 map["Email"] = self.email!
+            }
+            if self.externalId != nil {
+                map["ExternalId"] = self.externalId?.toMap()
             }
             if self.firstName != nil {
                 map["FirstName"] = self.firstName!
@@ -6782,6 +6825,11 @@ public class GetUserResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Email") && dict["Email"] != nil {
                 self.email = dict["Email"] as! String
+            }
+            if dict.keys.contains("ExternalId") && dict["ExternalId"] != nil {
+                var model = GetUserResponseBody.User.ExternalId()
+                model.fromMap(dict["ExternalId"] as! [String: Any])
+                self.externalId = model
             }
             if dict.keys.contains("FirstName") && dict["FirstName"] != nil {
                 self.firstName = dict["FirstName"] as! String
@@ -6889,6 +6937,209 @@ public class GetUserResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetUserResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetUserIdRequest : Tea.TeaModel {
+    public class ExternalId : Tea.TeaModel {
+        public var id: String?
+
+        public var issuer: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.issuer != nil {
+                map["Issuer"] = self.issuer!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+                self.issuer = dict["Issuer"] as! String
+            }
+        }
+    }
+    public var directoryId: String?
+
+    public var externalId: GetUserIdRequest.ExternalId?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.externalId?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.directoryId != nil {
+            map["DirectoryId"] = self.directoryId!
+        }
+        if self.externalId != nil {
+            map["ExternalId"] = self.externalId?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DirectoryId") && dict["DirectoryId"] != nil {
+            self.directoryId = dict["DirectoryId"] as! String
+        }
+        if dict.keys.contains("ExternalId") && dict["ExternalId"] != nil {
+            var model = GetUserIdRequest.ExternalId()
+            model.fromMap(dict["ExternalId"] as! [String: Any])
+            self.externalId = model
+        }
+    }
+}
+
+public class GetUserIdShrinkRequest : Tea.TeaModel {
+    public var directoryId: String?
+
+    public var externalIdShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.directoryId != nil {
+            map["DirectoryId"] = self.directoryId!
+        }
+        if self.externalIdShrink != nil {
+            map["ExternalId"] = self.externalIdShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DirectoryId") && dict["DirectoryId"] != nil {
+            self.directoryId = dict["DirectoryId"] as! String
+        }
+        if dict.keys.contains("ExternalId") && dict["ExternalId"] != nil {
+            self.externalIdShrink = dict["ExternalId"] as! String
+        }
+    }
+}
+
+public class GetUserIdResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var userId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.userId != nil {
+            map["UserId"] = self.userId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("UserId") && dict["UserId"] != nil {
+            self.userId = dict["UserId"] as! String
+        }
+    }
+}
+
+public class GetUserIdResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetUserIdResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetUserIdResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -12091,6 +12342,43 @@ public class ListUsersRequest : Tea.TeaModel {
 
 public class ListUsersResponseBody : Tea.TeaModel {
     public class Users : Tea.TeaModel {
+        public class ExternalId : Tea.TeaModel {
+            public var id: String?
+
+            public var issuer: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.issuer != nil {
+                    map["Issuer"] = self.issuer!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! String
+                }
+                if dict.keys.contains("Issuer") && dict["Issuer"] != nil {
+                    self.issuer = dict["Issuer"] as! String
+                }
+            }
+        }
         public var createTime: String?
 
         public var description_: String?
@@ -12098,6 +12386,8 @@ public class ListUsersResponseBody : Tea.TeaModel {
         public var displayName: String?
 
         public var email: String?
+
+        public var externalId: ListUsersResponseBody.Users.ExternalId?
 
         public var firstName: String?
 
@@ -12123,6 +12413,7 @@ public class ListUsersResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.externalId?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -12138,6 +12429,9 @@ public class ListUsersResponseBody : Tea.TeaModel {
             }
             if self.email != nil {
                 map["Email"] = self.email!
+            }
+            if self.externalId != nil {
+                map["ExternalId"] = self.externalId?.toMap()
             }
             if self.firstName != nil {
                 map["FirstName"] = self.firstName!
@@ -12175,6 +12469,11 @@ public class ListUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Email") && dict["Email"] != nil {
                 self.email = dict["Email"] as! String
+            }
+            if dict.keys.contains("ExternalId") && dict["ExternalId"] != nil {
+                var model = ListUsersResponseBody.Users.ExternalId()
+                model.fromMap(dict["ExternalId"] as! [String: Any])
+                self.externalId = model
             }
             if dict.keys.contains("FirstName") && dict["FirstName"] != nil {
                 self.firstName = dict["FirstName"] as! String
