@@ -724,6 +724,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateInstanceWithOptions(_ instanceId: String, _ request: UpdateInstanceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aclInfo)) {
+            body["aclInfo"] = request.aclInfo!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceName)) {
             body["instanceName"] = request.instanceName ?? "";
         }

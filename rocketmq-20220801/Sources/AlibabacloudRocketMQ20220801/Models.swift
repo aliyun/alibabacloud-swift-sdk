@@ -1807,6 +1807,10 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         public class AclInfo : Tea.TeaModel {
             public var aclType: String?
 
+            public var aclTypes: [String]?
+
+            public var defaultVpcAuthFree: Bool?
+
             public override init() {
                 super.init()
             }
@@ -1824,12 +1828,24 @@ public class GetInstanceResponseBody : Tea.TeaModel {
                 if self.aclType != nil {
                     map["aclType"] = self.aclType!
                 }
+                if self.aclTypes != nil {
+                    map["aclTypes"] = self.aclTypes!
+                }
+                if self.defaultVpcAuthFree != nil {
+                    map["defaultVpcAuthFree"] = self.defaultVpcAuthFree!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("aclType") && dict["aclType"] != nil {
                     self.aclType = dict["aclType"] as! String
+                }
+                if dict.keys.contains("aclTypes") && dict["aclTypes"] != nil {
+                    self.aclTypes = dict["aclTypes"] as! [String]
+                }
+                if dict.keys.contains("defaultVpcAuthFree") && dict["defaultVpcAuthFree"] != nil {
+                    self.defaultVpcAuthFree = dict["defaultVpcAuthFree"] as! Bool
                 }
             }
         }
@@ -5819,6 +5835,43 @@ public class UpdateConsumerGroupResponse : Tea.TeaModel {
 }
 
 public class UpdateInstanceRequest : Tea.TeaModel {
+    public class AclInfo : Tea.TeaModel {
+        public var aclTypes: [String]?
+
+        public var defaultVpcAuthFree: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.aclTypes != nil {
+                map["aclTypes"] = self.aclTypes!
+            }
+            if self.defaultVpcAuthFree != nil {
+                map["defaultVpcAuthFree"] = self.defaultVpcAuthFree!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("aclTypes") && dict["aclTypes"] != nil {
+                self.aclTypes = dict["aclTypes"] as! [String]
+            }
+            if dict.keys.contains("defaultVpcAuthFree") && dict["defaultVpcAuthFree"] != nil {
+                self.defaultVpcAuthFree = dict["defaultVpcAuthFree"] as! Bool
+            }
+        }
+    }
     public class NetworkInfo : Tea.TeaModel {
         public class InternetInfo : Tea.TeaModel {
             public var ipWhitelist: [String]?
@@ -5933,6 +5986,8 @@ public class UpdateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public var aclInfo: UpdateInstanceRequest.AclInfo?
+
     public var instanceName: String?
 
     public var networkInfo: UpdateInstanceRequest.NetworkInfo?
@@ -5951,12 +6006,16 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.aclInfo?.validate()
         try self.networkInfo?.validate()
         try self.productInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aclInfo != nil {
+            map["aclInfo"] = self.aclInfo?.toMap()
+        }
         if self.instanceName != nil {
             map["instanceName"] = self.instanceName!
         }
@@ -5973,6 +6032,11 @@ public class UpdateInstanceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("aclInfo") && dict["aclInfo"] != nil {
+            var model = UpdateInstanceRequest.AclInfo()
+            model.fromMap(dict["aclInfo"] as! [String: Any])
+            self.aclInfo = model
+        }
         if dict.keys.contains("instanceName") && dict["instanceName"] != nil {
             self.instanceName = dict["instanceName"] as! String
         }
