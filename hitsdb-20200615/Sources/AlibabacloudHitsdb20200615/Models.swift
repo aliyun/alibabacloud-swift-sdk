@@ -3784,7 +3784,13 @@ public class GetLindormInstanceListResponseBody : Tea.TeaModel {
 
         public var enableCompute: Bool?
 
+        public var enableLts: Bool?
+
+        public var enableMessage: Bool?
+
         public var enableStream: Bool?
+
+        public var enableVector: Bool?
 
         public var engineType: String?
 
@@ -3842,8 +3848,17 @@ public class GetLindormInstanceListResponseBody : Tea.TeaModel {
             if self.enableCompute != nil {
                 map["EnableCompute"] = self.enableCompute!
             }
+            if self.enableLts != nil {
+                map["EnableLts"] = self.enableLts!
+            }
+            if self.enableMessage != nil {
+                map["EnableMessage"] = self.enableMessage!
+            }
             if self.enableStream != nil {
                 map["EnableStream"] = self.enableStream!
+            }
+            if self.enableVector != nil {
+                map["EnableVector"] = self.enableVector!
             }
             if self.engineType != nil {
                 map["EngineType"] = self.engineType!
@@ -3910,8 +3925,17 @@ public class GetLindormInstanceListResponseBody : Tea.TeaModel {
             if dict.keys.contains("EnableCompute") && dict["EnableCompute"] != nil {
                 self.enableCompute = dict["EnableCompute"] as! Bool
             }
+            if dict.keys.contains("EnableLts") && dict["EnableLts"] != nil {
+                self.enableLts = dict["EnableLts"] as! Bool
+            }
+            if dict.keys.contains("EnableMessage") && dict["EnableMessage"] != nil {
+                self.enableMessage = dict["EnableMessage"] as! Bool
+            }
             if dict.keys.contains("EnableStream") && dict["EnableStream"] != nil {
                 self.enableStream = dict["EnableStream"] as! Bool
+            }
+            if dict.keys.contains("EnableVector") && dict["EnableVector"] != nil {
+                self.enableVector = dict["EnableVector"] as! Bool
             }
             if dict.keys.contains("EngineType") && dict["EngineType"] != nil {
                 self.engineType = dict["EngineType"] as! String
