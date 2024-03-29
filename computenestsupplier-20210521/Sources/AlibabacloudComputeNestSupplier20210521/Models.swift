@@ -3223,11 +3223,413 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
     }
     public class Commodity : Tea.TeaModel {
+        public class CssMetadata : Tea.TeaModel {
+            public class ComponentsMappings : Tea.TeaModel {
+                public var mappings: [String: String]?
+
+                public var templateName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.mappings != nil {
+                        map["Mappings"] = self.mappings!
+                    }
+                    if self.templateName != nil {
+                        map["TemplateName"] = self.templateName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Mappings") && dict["Mappings"] != nil {
+                        self.mappings = dict["Mappings"] as! [String: String]
+                    }
+                    if dict.keys.contains("TemplateName") && dict["TemplateName"] != nil {
+                        self.templateName = dict["TemplateName"] as! String
+                    }
+                }
+            }
+            public var componentsMappings: [GetServiceResponseBody.Commodity.CssMetadata.ComponentsMappings]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.componentsMappings != nil {
+                    var tmp : [Any] = []
+                    for k in self.componentsMappings! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ComponentsMappings"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ComponentsMappings") && dict["ComponentsMappings"] != nil {
+                    var tmp : [GetServiceResponseBody.Commodity.CssMetadata.ComponentsMappings] = []
+                    for v in dict["ComponentsMappings"] as! [Any] {
+                        var model = GetServiceResponseBody.Commodity.CssMetadata.ComponentsMappings()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.componentsMappings = tmp
+                }
+            }
+        }
+        public class MarketplaceMetadata : Tea.TeaModel {
+            public class MeteringEntityExtraInfos : Tea.TeaModel {
+                public var entityId: String?
+
+                public var metricName: String?
+
+                public var promql: String?
+
+                public var type: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.entityId != nil {
+                        map["EntityId"] = self.entityId!
+                    }
+                    if self.metricName != nil {
+                        map["MetricName"] = self.metricName!
+                    }
+                    if self.promql != nil {
+                        map["Promql"] = self.promql!
+                    }
+                    if self.type != nil {
+                        map["Type"] = self.type!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EntityId") && dict["EntityId"] != nil {
+                        self.entityId = dict["EntityId"] as! String
+                    }
+                    if dict.keys.contains("MetricName") && dict["MetricName"] != nil {
+                        self.metricName = dict["MetricName"] as! String
+                    }
+                    if dict.keys.contains("Promql") && dict["Promql"] != nil {
+                        self.promql = dict["Promql"] as! String
+                    }
+                    if dict.keys.contains("Type") && dict["Type"] != nil {
+                        self.type = dict["Type"] as! String
+                    }
+                }
+            }
+            public class MeteringEntityMappings : Tea.TeaModel {
+                public var entityIds: String?
+
+                public var specificationName: String?
+
+                public var templateName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.entityIds != nil {
+                        map["EntityIds"] = self.entityIds!
+                    }
+                    if self.specificationName != nil {
+                        map["SpecificationName"] = self.specificationName!
+                    }
+                    if self.templateName != nil {
+                        map["TemplateName"] = self.templateName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EntityIds") && dict["EntityIds"] != nil {
+                        self.entityIds = dict["EntityIds"] as! String
+                    }
+                    if dict.keys.contains("SpecificationName") && dict["SpecificationName"] != nil {
+                        self.specificationName = dict["SpecificationName"] as! String
+                    }
+                    if dict.keys.contains("TemplateName") && dict["TemplateName"] != nil {
+                        self.templateName = dict["TemplateName"] as! String
+                    }
+                }
+            }
+            public class SpecificationMappings : Tea.TeaModel {
+                public var specificationCode: String?
+
+                public var specificationName: String?
+
+                public var templateName: String?
+
+                public var trialType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.specificationCode != nil {
+                        map["SpecificationCode"] = self.specificationCode!
+                    }
+                    if self.specificationName != nil {
+                        map["SpecificationName"] = self.specificationName!
+                    }
+                    if self.templateName != nil {
+                        map["TemplateName"] = self.templateName!
+                    }
+                    if self.trialType != nil {
+                        map["TrialType"] = self.trialType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("SpecificationCode") && dict["SpecificationCode"] != nil {
+                        self.specificationCode = dict["SpecificationCode"] as! String
+                    }
+                    if dict.keys.contains("SpecificationName") && dict["SpecificationName"] != nil {
+                        self.specificationName = dict["SpecificationName"] as! String
+                    }
+                    if dict.keys.contains("TemplateName") && dict["TemplateName"] != nil {
+                        self.templateName = dict["TemplateName"] as! String
+                    }
+                    if dict.keys.contains("TrialType") && dict["TrialType"] != nil {
+                        self.trialType = dict["TrialType"] as! String
+                    }
+                }
+            }
+            public var meteringEntityExtraInfos: [GetServiceResponseBody.Commodity.MarketplaceMetadata.MeteringEntityExtraInfos]?
+
+            public var meteringEntityMappings: [GetServiceResponseBody.Commodity.MarketplaceMetadata.MeteringEntityMappings]?
+
+            public var specificationMappings: [GetServiceResponseBody.Commodity.MarketplaceMetadata.SpecificationMappings]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.meteringEntityExtraInfos != nil {
+                    var tmp : [Any] = []
+                    for k in self.meteringEntityExtraInfos! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MeteringEntityExtraInfos"] = tmp
+                }
+                if self.meteringEntityMappings != nil {
+                    var tmp : [Any] = []
+                    for k in self.meteringEntityMappings! {
+                        tmp.append(k.toMap())
+                    }
+                    map["MeteringEntityMappings"] = tmp
+                }
+                if self.specificationMappings != nil {
+                    var tmp : [Any] = []
+                    for k in self.specificationMappings! {
+                        tmp.append(k.toMap())
+                    }
+                    map["SpecificationMappings"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MeteringEntityExtraInfos") && dict["MeteringEntityExtraInfos"] != nil {
+                    var tmp : [GetServiceResponseBody.Commodity.MarketplaceMetadata.MeteringEntityExtraInfos] = []
+                    for v in dict["MeteringEntityExtraInfos"] as! [Any] {
+                        var model = GetServiceResponseBody.Commodity.MarketplaceMetadata.MeteringEntityExtraInfos()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.meteringEntityExtraInfos = tmp
+                }
+                if dict.keys.contains("MeteringEntityMappings") && dict["MeteringEntityMappings"] != nil {
+                    var tmp : [GetServiceResponseBody.Commodity.MarketplaceMetadata.MeteringEntityMappings] = []
+                    for v in dict["MeteringEntityMappings"] as! [Any] {
+                        var model = GetServiceResponseBody.Commodity.MarketplaceMetadata.MeteringEntityMappings()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.meteringEntityMappings = tmp
+                }
+                if dict.keys.contains("SpecificationMappings") && dict["SpecificationMappings"] != nil {
+                    var tmp : [GetServiceResponseBody.Commodity.MarketplaceMetadata.SpecificationMappings] = []
+                    for v in dict["SpecificationMappings"] as! [Any] {
+                        var model = GetServiceResponseBody.Commodity.MarketplaceMetadata.SpecificationMappings()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.specificationMappings = tmp
+                }
+            }
+        }
+        public class MeteringEntities : Tea.TeaModel {
+            public var entityId: String?
+
+            public var name: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.entityId != nil {
+                    map["EntityId"] = self.entityId!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EntityId") && dict["EntityId"] != nil {
+                    self.entityId = dict["EntityId"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class Specifications : Tea.TeaModel {
+            public var code: String?
+
+            public var name: String?
+
+            public var times: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.code != nil {
+                    map["Code"] = self.code!
+                }
+                if self.name != nil {
+                    map["Name"] = self.name!
+                }
+                if self.times != nil {
+                    map["Times"] = self.times!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Code") && dict["Code"] != nil {
+                    self.code = dict["Code"] as! String
+                }
+                if dict.keys.contains("Name") && dict["Name"] != nil {
+                    self.name = dict["Name"] as! String
+                }
+                if dict.keys.contains("Times") && dict["Times"] != nil {
+                    self.times = dict["Times"] as! [String]
+                }
+            }
+        }
         public var chargeType: String?
+
+        public var commodityCode: String?
 
         public var components: [String]?
 
+        public var cssMetadata: GetServiceResponseBody.Commodity.CssMetadata?
+
+        public var marketplaceMetadata: GetServiceResponseBody.Commodity.MarketplaceMetadata?
+
+        public var meteringEntities: [GetServiceResponseBody.Commodity.MeteringEntities]?
+
         public var orderTime: [String: [String]]?
+
+        public var specifications: [GetServiceResponseBody.Commodity.Specifications]?
 
         public var type: String?
 
@@ -3241,6 +3643,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.cssMetadata?.validate()
+            try self.marketplaceMetadata?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -3248,11 +3652,34 @@ public class GetServiceResponseBody : Tea.TeaModel {
             if self.chargeType != nil {
                 map["ChargeType"] = self.chargeType!
             }
+            if self.commodityCode != nil {
+                map["CommodityCode"] = self.commodityCode!
+            }
             if self.components != nil {
                 map["Components"] = self.components!
             }
+            if self.cssMetadata != nil {
+                map["CssMetadata"] = self.cssMetadata?.toMap()
+            }
+            if self.marketplaceMetadata != nil {
+                map["MarketplaceMetadata"] = self.marketplaceMetadata?.toMap()
+            }
+            if self.meteringEntities != nil {
+                var tmp : [Any] = []
+                for k in self.meteringEntities! {
+                    tmp.append(k.toMap())
+                }
+                map["MeteringEntities"] = tmp
+            }
             if self.orderTime != nil {
                 map["OrderTime"] = self.orderTime!
+            }
+            if self.specifications != nil {
+                var tmp : [Any] = []
+                for k in self.specifications! {
+                    tmp.append(k.toMap())
+                }
+                map["Specifications"] = tmp
             }
             if self.type != nil {
                 map["Type"] = self.type!
@@ -3264,11 +3691,46 @@ public class GetServiceResponseBody : Tea.TeaModel {
             if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
                 self.chargeType = dict["ChargeType"] as! String
             }
+            if dict.keys.contains("CommodityCode") && dict["CommodityCode"] != nil {
+                self.commodityCode = dict["CommodityCode"] as! String
+            }
             if dict.keys.contains("Components") && dict["Components"] != nil {
                 self.components = dict["Components"] as! [String]
             }
+            if dict.keys.contains("CssMetadata") && dict["CssMetadata"] != nil {
+                var model = GetServiceResponseBody.Commodity.CssMetadata()
+                model.fromMap(dict["CssMetadata"] as! [String: Any])
+                self.cssMetadata = model
+            }
+            if dict.keys.contains("MarketplaceMetadata") && dict["MarketplaceMetadata"] != nil {
+                var model = GetServiceResponseBody.Commodity.MarketplaceMetadata()
+                model.fromMap(dict["MarketplaceMetadata"] as! [String: Any])
+                self.marketplaceMetadata = model
+            }
+            if dict.keys.contains("MeteringEntities") && dict["MeteringEntities"] != nil {
+                var tmp : [GetServiceResponseBody.Commodity.MeteringEntities] = []
+                for v in dict["MeteringEntities"] as! [Any] {
+                    var model = GetServiceResponseBody.Commodity.MeteringEntities()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.meteringEntities = tmp
+            }
             if dict.keys.contains("OrderTime") && dict["OrderTime"] != nil {
                 self.orderTime = dict["OrderTime"] as! [String: [String]]
+            }
+            if dict.keys.contains("Specifications") && dict["Specifications"] != nil {
+                var tmp : [GetServiceResponseBody.Commodity.Specifications] = []
+                for v in dict["Specifications"] as! [Any] {
+                    var model = GetServiceResponseBody.Commodity.Specifications()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.specifications = tmp
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
