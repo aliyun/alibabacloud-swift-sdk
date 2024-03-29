@@ -2494,6 +2494,48 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func postMSServiceDataImportWithOptions(_ tmpReq: PostMSServiceDataImportRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> PostMSServiceDataImportResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: PostMSServiceDataImportShrinkRequest = PostMSServiceDataImportShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.documents)) {
+            request.documentsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.documents, "Documents", "json")
+        }
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.dataType)) {
+            body["DataType"] = request.dataType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.documentsShrink)) {
+            body["Documents"] = request.documentsShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceId)) {
+            body["ServiceId"] = request.serviceId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "PostMSServiceDataImport",
+            "version": "2020-06-29",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(PostMSServiceDataImportResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func postMSServiceDataImport(_ request: PostMSServiceDataImportRequest) async throws -> PostMSServiceDataImportResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await postMSServiceDataImportWithOptions(request as! PostMSServiceDataImportRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func requestTableQAWithOptions(_ request: RequestTableQARequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RequestTableQAResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
