@@ -575,6 +575,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.chargeType)) {
             query["ChargeType"] = request.chargeType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterBackupId)) {
+            query["ClusterBackupId"] = request.clusterBackupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.connectionStringPrefix)) {
             query["ConnectionStringPrefix"] = request.connectionStringPrefix ?? "";
         }
@@ -802,6 +805,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.clusterBackupId)) {
+            query["ClusterBackupId"] = request.clusterBackupId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.couponNo)) {
             query["CouponNo"] = request.couponNo ?? "";
         }
@@ -873,6 +879,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.shardType)) {
             query["ShardType"] = request.shardType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveReadOnlyCount)) {
+            query["SlaveReadOnlyCount"] = request.slaveReadOnlyCount!;
         }
         if (!TeaUtils.Client.isUnset(request.srcDBInstanceId)) {
             query["SrcDBInstanceId"] = request.srcDBInstanceId ?? "";
@@ -1537,6 +1546,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.backupId)) {
             query["BackupId"] = request.backupId!;
         }
+        if (!TeaUtils.Client.isUnset(request.backupJobId)) {
+            query["BackupJobId"] = request.backupJobId!;
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime ?? "";
         }
@@ -1714,6 +1726,34 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeClusterBackupListWithOptions(_ request: DescribeClusterBackupListRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterBackupListResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeClusterBackupList",
+            "version": "2015-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeClusterBackupListResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeClusterBackupList(_ request: DescribeClusterBackupListRequest) async throws -> DescribeClusterBackupListResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeClusterBackupListWithOptions(request as! DescribeClusterBackupListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func describeClusterMemberInfoWithOptions(_ request: DescribeClusterMemberInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterMemberInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1809,6 +1849,49 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeDBInstanceNetInfo(_ request: DescribeDBInstanceNetInfoRequest) async throws -> DescribeDBInstanceNetInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await describeDBInstanceNetInfoWithOptions(request as! DescribeDBInstanceNetInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDBNodeDirectVipInfoWithOptions(_ request: DescribeDBNodeDirectVipInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeDBNodeDirectVipInfoResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DescribeDBNodeDirectVipInfo",
+            "version": "2015-01-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DescribeDBNodeDirectVipInfoResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func describeDBNodeDirectVipInfo(_ request: DescribeDBNodeDirectVipInfoRequest) async throws -> DescribeDBNodeDirectVipInfoResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await describeDBNodeDirectVipInfoWithOptions(request as! DescribeDBNodeDirectVipInfoRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -4247,6 +4330,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyBackupPolicyWithOptions(_ request: ModifyBackupPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyBackupPolicyResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.backupRetentionPeriod)) {
+            query["BackupRetentionPeriod"] = request.backupRetentionPeriod!;
+        }
         if (!TeaUtils.Client.isUnset(request.enableBackupLog)) {
             query["EnableBackupLog"] = request.enableBackupLog!;
         }
@@ -5023,6 +5109,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.majorVersion)) {
             query["MajorVersion"] = request.majorVersion ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nodeType)) {
+            query["NodeType"] = request.nodeType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.orderType)) {
             query["OrderType"] = request.orderType ?? "";
         }
@@ -5049,6 +5138,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.shardCount)) {
             query["ShardCount"] = request.shardCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.slaveReadOnlyCount)) {
+            query["SlaveReadOnlyCount"] = request.slaveReadOnlyCount!;
         }
         if (!TeaUtils.Client.isUnset(request.sourceBiz)) {
             query["SourceBiz"] = request.sourceBiz ?? "";
@@ -5600,6 +5692,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoPay)) {
             query["AutoPay"] = request.autoPay!;
+        }
+        if (!TeaUtils.Client.isUnset(request.autoRenew)) {
+            query["AutoRenew"] = request.autoRenew!;
         }
         if (!TeaUtils.Client.isUnset(request.businessInfo)) {
             query["BusinessInfo"] = request.businessInfo ?? "";
