@@ -3073,9 +3073,17 @@ public class BlindTransferRequest : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var queuingOverflowThreshold: Int64?
+
+    public var queuingTimeoutSeconds: Int64?
+
+    public var routingType: String?
+
     public var strategyName: String?
 
     public var strategyParams: String?
+
+    public var tags: String?
 
     public var timeoutSeconds: Int32?
 
@@ -3116,11 +3124,23 @@ public class BlindTransferRequest : Tea.TeaModel {
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
+        if self.queuingOverflowThreshold != nil {
+            map["QueuingOverflowThreshold"] = self.queuingOverflowThreshold!
+        }
+        if self.queuingTimeoutSeconds != nil {
+            map["QueuingTimeoutSeconds"] = self.queuingTimeoutSeconds!
+        }
+        if self.routingType != nil {
+            map["RoutingType"] = self.routingType!
+        }
         if self.strategyName != nil {
             map["StrategyName"] = self.strategyName!
         }
         if self.strategyParams != nil {
             map["StrategyParams"] = self.strategyParams!
+        }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
         }
         if self.timeoutSeconds != nil {
             map["TimeoutSeconds"] = self.timeoutSeconds!
@@ -3156,11 +3176,23 @@ public class BlindTransferRequest : Tea.TeaModel {
         if dict.keys.contains("JobId") && dict["JobId"] != nil {
             self.jobId = dict["JobId"] as! String
         }
+        if dict.keys.contains("QueuingOverflowThreshold") && dict["QueuingOverflowThreshold"] != nil {
+            self.queuingOverflowThreshold = dict["QueuingOverflowThreshold"] as! Int64
+        }
+        if dict.keys.contains("QueuingTimeoutSeconds") && dict["QueuingTimeoutSeconds"] != nil {
+            self.queuingTimeoutSeconds = dict["QueuingTimeoutSeconds"] as! Int64
+        }
+        if dict.keys.contains("RoutingType") && dict["RoutingType"] != nil {
+            self.routingType = dict["RoutingType"] as! String
+        }
         if dict.keys.contains("StrategyName") && dict["StrategyName"] != nil {
             self.strategyName = dict["StrategyName"] as! String
         }
         if dict.keys.contains("StrategyParams") && dict["StrategyParams"] != nil {
             self.strategyParams = dict["StrategyParams"] as! String
+        }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            self.tags = dict["Tags"] as! String
         }
         if dict.keys.contains("TimeoutSeconds") && dict["TimeoutSeconds"] != nil {
             self.timeoutSeconds = dict["TimeoutSeconds"] as! Int32
@@ -19976,13 +20008,23 @@ public class InitiateAttendedTransferRequest : Tea.TeaModel {
 
     public var jobId: String?
 
+    public var queuingOverflowThreshold: Int64?
+
+    public var queuingTimeoutSeconds: Int64?
+
+    public var routingType: String?
+
     public var strategyName: String?
 
     public var strategyParams: String?
 
+    public var tags: String?
+
     public var timeoutSeconds: Int32?
 
     public var transferee: String?
+
+    public var transfereeType: String?
 
     public var transferor: String?
 
@@ -20014,17 +20056,32 @@ public class InitiateAttendedTransferRequest : Tea.TeaModel {
         if self.jobId != nil {
             map["JobId"] = self.jobId!
         }
+        if self.queuingOverflowThreshold != nil {
+            map["QueuingOverflowThreshold"] = self.queuingOverflowThreshold!
+        }
+        if self.queuingTimeoutSeconds != nil {
+            map["QueuingTimeoutSeconds"] = self.queuingTimeoutSeconds!
+        }
+        if self.routingType != nil {
+            map["RoutingType"] = self.routingType!
+        }
         if self.strategyName != nil {
             map["StrategyName"] = self.strategyName!
         }
         if self.strategyParams != nil {
             map["StrategyParams"] = self.strategyParams!
         }
+        if self.tags != nil {
+            map["Tags"] = self.tags!
+        }
         if self.timeoutSeconds != nil {
             map["TimeoutSeconds"] = self.timeoutSeconds!
         }
         if self.transferee != nil {
             map["Transferee"] = self.transferee!
+        }
+        if self.transfereeType != nil {
+            map["TransfereeType"] = self.transfereeType!
         }
         if self.transferor != nil {
             map["Transferor"] = self.transferor!
@@ -20048,17 +20105,32 @@ public class InitiateAttendedTransferRequest : Tea.TeaModel {
         if dict.keys.contains("JobId") && dict["JobId"] != nil {
             self.jobId = dict["JobId"] as! String
         }
+        if dict.keys.contains("QueuingOverflowThreshold") && dict["QueuingOverflowThreshold"] != nil {
+            self.queuingOverflowThreshold = dict["QueuingOverflowThreshold"] as! Int64
+        }
+        if dict.keys.contains("QueuingTimeoutSeconds") && dict["QueuingTimeoutSeconds"] != nil {
+            self.queuingTimeoutSeconds = dict["QueuingTimeoutSeconds"] as! Int64
+        }
+        if dict.keys.contains("RoutingType") && dict["RoutingType"] != nil {
+            self.routingType = dict["RoutingType"] as! String
+        }
         if dict.keys.contains("StrategyName") && dict["StrategyName"] != nil {
             self.strategyName = dict["StrategyName"] as! String
         }
         if dict.keys.contains("StrategyParams") && dict["StrategyParams"] != nil {
             self.strategyParams = dict["StrategyParams"] as! String
         }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            self.tags = dict["Tags"] as! String
+        }
         if dict.keys.contains("TimeoutSeconds") && dict["TimeoutSeconds"] != nil {
             self.timeoutSeconds = dict["TimeoutSeconds"] as! Int32
         }
         if dict.keys.contains("Transferee") && dict["Transferee"] != nil {
             self.transferee = dict["Transferee"] as! String
+        }
+        if dict.keys.contains("TransfereeType") && dict["TransfereeType"] != nil {
+            self.transfereeType = dict["TransfereeType"] as! String
         }
         if dict.keys.contains("Transferor") && dict["Transferor"] != nil {
             self.transferor = dict["Transferor"] as! String
@@ -24511,6 +24583,212 @@ public class ListAudioFilesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListAudioFilesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListBlacklistCallTaggingsRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var numberList: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.numberList != nil {
+            map["NumberList"] = self.numberList!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NumberList") && dict["NumberList"] != nil {
+            self.numberList = dict["NumberList"] as! String
+        }
+    }
+}
+
+public class ListBlacklistCallTaggingsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var blacklisted: Bool?
+
+        public var jobId: String?
+
+        public var number: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.blacklisted != nil {
+                map["Blacklisted"] = self.blacklisted!
+            }
+            if self.jobId != nil {
+                map["JobId"] = self.jobId!
+            }
+            if self.number != nil {
+                map["Number"] = self.number!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Blacklisted") && dict["Blacklisted"] != nil {
+                self.blacklisted = dict["Blacklisted"] as! Bool
+            }
+            if dict.keys.contains("JobId") && dict["JobId"] != nil {
+                self.jobId = dict["JobId"] as! String
+            }
+            if dict.keys.contains("Number") && dict["Number"] != nil {
+                self.number = dict["Number"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: [ListBlacklistCallTaggingsResponseBody.Data]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [ListBlacklistCallTaggingsResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListBlacklistCallTaggingsResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListBlacklistCallTaggingsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListBlacklistCallTaggingsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListBlacklistCallTaggingsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

@@ -583,11 +583,23 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.queuingOverflowThreshold)) {
+            query["QueuingOverflowThreshold"] = request.queuingOverflowThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queuingTimeoutSeconds)) {
+            query["QueuingTimeoutSeconds"] = request.queuingTimeoutSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routingType)) {
+            query["RoutingType"] = request.routingType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.strategyName)) {
             query["StrategyName"] = request.strategyName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.strategyParams)) {
             query["StrategyParams"] = request.strategyParams ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.timeoutSeconds)) {
             query["TimeoutSeconds"] = request.timeoutSeconds!;
@@ -2819,17 +2831,32 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jobId)) {
             query["JobId"] = request.jobId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.queuingOverflowThreshold)) {
+            query["QueuingOverflowThreshold"] = request.queuingOverflowThreshold!;
+        }
+        if (!TeaUtils.Client.isUnset(request.queuingTimeoutSeconds)) {
+            query["QueuingTimeoutSeconds"] = request.queuingTimeoutSeconds!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routingType)) {
+            query["RoutingType"] = request.routingType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.strategyName)) {
             query["StrategyName"] = request.strategyName ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.strategyParams)) {
             query["StrategyParams"] = request.strategyParams ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.tags)) {
+            query["Tags"] = request.tags ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.timeoutSeconds)) {
             query["TimeoutSeconds"] = request.timeoutSeconds!;
         }
         if (!TeaUtils.Client.isUnset(request.transferee)) {
             query["Transferee"] = request.transferee ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.transfereeType)) {
+            query["TransfereeType"] = request.transfereeType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.transferor)) {
             query["Transferor"] = request.transferor ?? "";
@@ -3191,6 +3218,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listAudioFiles(_ request: ListAudioFilesRequest) async throws -> ListAudioFilesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listAudioFilesWithOptions(request as! ListAudioFilesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listBlacklistCallTaggingsWithOptions(_ request: ListBlacklistCallTaggingsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListBlacklistCallTaggingsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.numberList)) {
+            query["NumberList"] = request.numberList ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListBlacklistCallTaggings",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListBlacklistCallTaggingsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listBlacklistCallTaggings(_ request: ListBlacklistCallTaggingsRequest) async throws -> ListBlacklistCallTaggingsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listBlacklistCallTaggingsWithOptions(request as! ListBlacklistCallTaggingsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
