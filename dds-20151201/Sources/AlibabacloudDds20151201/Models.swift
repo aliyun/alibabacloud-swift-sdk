@@ -24292,6 +24292,195 @@ public class ModifyDBInstanceDescriptionResponse : Tea.TeaModel {
     }
 }
 
+public class ModifyDBInstanceDiskTypeRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
+    public var autoRenew: String?
+
+    public var businessInfo: String?
+
+    public var couponNo: String?
+
+    public var DBInstanceId: String?
+
+    public var dbInstanceStorageType: String?
+
+    public var extraParam: String?
+
+    public var orderType: String?
+
+    public var provisionedIops: Int64?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.businessInfo != nil {
+            map["BusinessInfo"] = self.businessInfo!
+        }
+        if self.couponNo != nil {
+            map["CouponNo"] = self.couponNo!
+        }
+        if self.DBInstanceId != nil {
+            map["DBInstanceId"] = self.DBInstanceId!
+        }
+        if self.dbInstanceStorageType != nil {
+            map["DbInstanceStorageType"] = self.dbInstanceStorageType!
+        }
+        if self.extraParam != nil {
+            map["ExtraParam"] = self.extraParam!
+        }
+        if self.orderType != nil {
+            map["OrderType"] = self.orderType!
+        }
+        if self.provisionedIops != nil {
+            map["ProvisionedIops"] = self.provisionedIops!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
+        if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
+            self.autoRenew = dict["AutoRenew"] as! String
+        }
+        if dict.keys.contains("BusinessInfo") && dict["BusinessInfo"] != nil {
+            self.businessInfo = dict["BusinessInfo"] as! String
+        }
+        if dict.keys.contains("CouponNo") && dict["CouponNo"] != nil {
+            self.couponNo = dict["CouponNo"] as! String
+        }
+        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+            self.DBInstanceId = dict["DBInstanceId"] as! String
+        }
+        if dict.keys.contains("DbInstanceStorageType") && dict["DbInstanceStorageType"] != nil {
+            self.dbInstanceStorageType = dict["DbInstanceStorageType"] as! String
+        }
+        if dict.keys.contains("ExtraParam") && dict["ExtraParam"] != nil {
+            self.extraParam = dict["ExtraParam"] as! String
+        }
+        if dict.keys.contains("OrderType") && dict["OrderType"] != nil {
+            self.orderType = dict["OrderType"] as! String
+        }
+        if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+            self.provisionedIops = dict["ProvisionedIops"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ModifyDBInstanceDiskTypeResponseBody : Tea.TeaModel {
+    public var orderId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ModifyDBInstanceDiskTypeResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyDBInstanceDiskTypeResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyDBInstanceDiskTypeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ModifyDBInstanceMaintainTimeRequest : Tea.TeaModel {
     public var DBInstanceId: String?
 
