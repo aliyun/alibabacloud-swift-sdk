@@ -29639,9 +29639,13 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var DBInstanceClass: String?
 
+            public var DBInstanceCpuCores: String?
+
             public var DBInstanceDescription: String?
 
             public var DBInstanceId: String?
+
+            public var DBInstanceMemory: String?
 
             public var DBInstanceNetType: String?
 
@@ -29764,11 +29768,17 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.DBInstanceClass != nil {
                     map["DBInstanceClass"] = self.DBInstanceClass!
                 }
+                if self.DBInstanceCpuCores != nil {
+                    map["DBInstanceCpuCores"] = self.DBInstanceCpuCores!
+                }
                 if self.DBInstanceDescription != nil {
                     map["DBInstanceDescription"] = self.DBInstanceDescription!
                 }
                 if self.DBInstanceId != nil {
                     map["DBInstanceId"] = self.DBInstanceId!
+                }
+                if self.DBInstanceMemory != nil {
+                    map["DBInstanceMemory"] = self.DBInstanceMemory!
                 }
                 if self.DBInstanceNetType != nil {
                     map["DBInstanceNetType"] = self.DBInstanceNetType!
@@ -29921,11 +29931,17 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("DBInstanceClass") && dict["DBInstanceClass"] != nil {
                     self.DBInstanceClass = dict["DBInstanceClass"] as! String
                 }
+                if dict.keys.contains("DBInstanceCpuCores") && dict["DBInstanceCpuCores"] != nil {
+                    self.DBInstanceCpuCores = dict["DBInstanceCpuCores"] as! String
+                }
                 if dict.keys.contains("DBInstanceDescription") && dict["DBInstanceDescription"] != nil {
                     self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
                 }
                 if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
                     self.DBInstanceId = dict["DBInstanceId"] as! String
+                }
+                if dict.keys.contains("DBInstanceMemory") && dict["DBInstanceMemory"] != nil {
+                    self.DBInstanceMemory = dict["DBInstanceMemory"] as! String
                 }
                 if dict.keys.contains("DBInstanceNetType") && dict["DBInstanceNetType"] != nil {
                     self.DBInstanceNetType = dict["DBInstanceNetType"] as! String
@@ -57046,171 +57062,6 @@ public class GrantOperatorPermissionResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GrantOperatorPermissionResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
-public class ImportDatabaseBetweenInstancesRequest : Tea.TeaModel {
-    public var DBInfo: String?
-
-    public var DBInstanceId: String?
-
-    public var ownerAccount: String?
-
-    public var ownerId: Int64?
-
-    public var resourceOwnerAccount: String?
-
-    public var resourceOwnerId: Int64?
-
-    public var sourceDBInstanceId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.DBInfo != nil {
-            map["DBInfo"] = self.DBInfo!
-        }
-        if self.DBInstanceId != nil {
-            map["DBInstanceId"] = self.DBInstanceId!
-        }
-        if self.ownerAccount != nil {
-            map["OwnerAccount"] = self.ownerAccount!
-        }
-        if self.ownerId != nil {
-            map["OwnerId"] = self.ownerId!
-        }
-        if self.resourceOwnerAccount != nil {
-            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
-        }
-        if self.resourceOwnerId != nil {
-            map["ResourceOwnerId"] = self.resourceOwnerId!
-        }
-        if self.sourceDBInstanceId != nil {
-            map["SourceDBInstanceId"] = self.sourceDBInstanceId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DBInfo") && dict["DBInfo"] != nil {
-            self.DBInfo = dict["DBInfo"] as! String
-        }
-        if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
-            self.DBInstanceId = dict["DBInstanceId"] as! String
-        }
-        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
-            self.ownerAccount = dict["OwnerAccount"] as! String
-        }
-        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
-            self.ownerId = dict["OwnerId"] as! Int64
-        }
-        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
-            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
-        }
-        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
-            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
-        }
-        if dict.keys.contains("SourceDBInstanceId") && dict["SourceDBInstanceId"] != nil {
-            self.sourceDBInstanceId = dict["SourceDBInstanceId"] as! String
-        }
-    }
-}
-
-public class ImportDatabaseBetweenInstancesResponseBody : Tea.TeaModel {
-    public var importId: String?
-
-    public var requestId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.importId != nil {
-            map["ImportId"] = self.importId!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("ImportId") && dict["ImportId"] != nil {
-            self.importId = dict["ImportId"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-    }
-}
-
-public class ImportDatabaseBetweenInstancesResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: ImportDatabaseBetweenInstancesResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = ImportDatabaseBetweenInstancesResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
