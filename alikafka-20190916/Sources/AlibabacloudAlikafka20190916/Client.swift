@@ -104,6 +104,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aclOperationType)) {
             query["AclOperationType"] = request.aclOperationType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.aclOperationTypes)) {
+            query["AclOperationTypes"] = request.aclOperationTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aclPermissionType)) {
+            query["AclPermissionType"] = request.aclPermissionType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.aclResourceName)) {
             query["AclResourceName"] = request.aclResourceName ?? "";
         }
@@ -112,6 +118,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.aclResourceType)) {
             query["AclResourceType"] = request.aclResourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.host)) {
+            query["Host"] = request.host ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -338,6 +347,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mechanism)) {
+            query["Mechanism"] = request.mechanism ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.password)) {
             query["Password"] = request.password ?? "";
         }
@@ -442,6 +454,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.aclOperationType)) {
             query["AclOperationType"] = request.aclOperationType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.aclOperationTypes)) {
+            query["AclOperationTypes"] = request.aclOperationTypes ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aclPermissionType)) {
+            query["AclPermissionType"] = request.aclPermissionType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.aclResourceName)) {
             query["AclResourceName"] = request.aclResourceName ?? "";
         }
@@ -450,6 +468,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.aclResourceType)) {
             query["AclResourceType"] = request.aclResourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.host)) {
+            query["Host"] = request.host ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
@@ -562,6 +583,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.mechanism)) {
+            query["Mechanism"] = request.mechanism ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
         }
@@ -636,6 +660,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeAclsWithOptions(_ request: DescribeAclsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeAclsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.aclOperationType)) {
+            query["AclOperationType"] = request.aclOperationType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.aclPermissionType)) {
+            query["AclPermissionType"] = request.aclPermissionType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.aclResourceName)) {
             query["AclResourceName"] = request.aclResourceName ?? "";
         }
@@ -644,6 +674,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.aclResourceType)) {
             query["AclResourceType"] = request.aclResourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.host)) {
+            query["Host"] = request.host ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";

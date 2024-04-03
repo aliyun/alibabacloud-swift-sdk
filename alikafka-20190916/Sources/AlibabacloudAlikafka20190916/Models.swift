@@ -322,11 +322,17 @@ public class ConvertPostPayOrderResponse : Tea.TeaModel {
 public class CreateAclRequest : Tea.TeaModel {
     public var aclOperationType: String?
 
+    public var aclOperationTypes: String?
+
+    public var aclPermissionType: String?
+
     public var aclResourceName: String?
 
     public var aclResourcePatternType: String?
 
     public var aclResourceType: String?
+
+    public var host: String?
 
     public var instanceId: String?
 
@@ -351,6 +357,12 @@ public class CreateAclRequest : Tea.TeaModel {
         if self.aclOperationType != nil {
             map["AclOperationType"] = self.aclOperationType!
         }
+        if self.aclOperationTypes != nil {
+            map["AclOperationTypes"] = self.aclOperationTypes!
+        }
+        if self.aclPermissionType != nil {
+            map["AclPermissionType"] = self.aclPermissionType!
+        }
         if self.aclResourceName != nil {
             map["AclResourceName"] = self.aclResourceName!
         }
@@ -359,6 +371,9 @@ public class CreateAclRequest : Tea.TeaModel {
         }
         if self.aclResourceType != nil {
             map["AclResourceType"] = self.aclResourceType!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -376,6 +391,12 @@ public class CreateAclRequest : Tea.TeaModel {
         if dict.keys.contains("AclOperationType") && dict["AclOperationType"] != nil {
             self.aclOperationType = dict["AclOperationType"] as! String
         }
+        if dict.keys.contains("AclOperationTypes") && dict["AclOperationTypes"] != nil {
+            self.aclOperationTypes = dict["AclOperationTypes"] as! String
+        }
+        if dict.keys.contains("AclPermissionType") && dict["AclPermissionType"] != nil {
+            self.aclPermissionType = dict["AclPermissionType"] as! String
+        }
         if dict.keys.contains("AclResourceName") && dict["AclResourceName"] != nil {
             self.aclResourceName = dict["AclResourceName"] as! String
         }
@@ -384,6 +405,9 @@ public class CreateAclRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AclResourceType") && dict["AclResourceType"] != nil {
             self.aclResourceType = dict["AclResourceType"] as! String
+        }
+        if dict.keys.contains("Host") && dict["Host"] != nil {
+            self.host = dict["Host"] as! String
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
@@ -1656,6 +1680,8 @@ public class CreatePrePayOrderResponse : Tea.TeaModel {
 public class CreateSaslUserRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var mechanism: String?
+
     public var password: String?
 
     public var regionId: String?
@@ -1681,6 +1707,9 @@ public class CreateSaslUserRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mechanism != nil {
+            map["Mechanism"] = self.mechanism!
+        }
         if self.password != nil {
             map["Password"] = self.password!
         }
@@ -1699,6 +1728,9 @@ public class CreateSaslUserRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Mechanism") && dict["Mechanism"] != nil {
+            self.mechanism = dict["Mechanism"] as! String
         }
         if dict.keys.contains("Password") && dict["Password"] != nil {
             self.password = dict["Password"] as! String
@@ -2083,11 +2115,17 @@ public class CreateTopicResponse : Tea.TeaModel {
 public class DeleteAclRequest : Tea.TeaModel {
     public var aclOperationType: String?
 
+    public var aclOperationTypes: String?
+
+    public var aclPermissionType: String?
+
     public var aclResourceName: String?
 
     public var aclResourcePatternType: String?
 
     public var aclResourceType: String?
+
+    public var host: String?
 
     public var instanceId: String?
 
@@ -2112,6 +2150,12 @@ public class DeleteAclRequest : Tea.TeaModel {
         if self.aclOperationType != nil {
             map["AclOperationType"] = self.aclOperationType!
         }
+        if self.aclOperationTypes != nil {
+            map["AclOperationTypes"] = self.aclOperationTypes!
+        }
+        if self.aclPermissionType != nil {
+            map["AclPermissionType"] = self.aclPermissionType!
+        }
         if self.aclResourceName != nil {
             map["AclResourceName"] = self.aclResourceName!
         }
@@ -2120,6 +2164,9 @@ public class DeleteAclRequest : Tea.TeaModel {
         }
         if self.aclResourceType != nil {
             map["AclResourceType"] = self.aclResourceType!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -2137,6 +2184,12 @@ public class DeleteAclRequest : Tea.TeaModel {
         if dict.keys.contains("AclOperationType") && dict["AclOperationType"] != nil {
             self.aclOperationType = dict["AclOperationType"] as! String
         }
+        if dict.keys.contains("AclOperationTypes") && dict["AclOperationTypes"] != nil {
+            self.aclOperationTypes = dict["AclOperationTypes"] as! String
+        }
+        if dict.keys.contains("AclPermissionType") && dict["AclPermissionType"] != nil {
+            self.aclPermissionType = dict["AclPermissionType"] as! String
+        }
         if dict.keys.contains("AclResourceName") && dict["AclResourceName"] != nil {
             self.aclResourceName = dict["AclResourceName"] as! String
         }
@@ -2145,6 +2198,9 @@ public class DeleteAclRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AclResourceType") && dict["AclResourceType"] != nil {
             self.aclResourceType = dict["AclResourceType"] as! String
+        }
+        if dict.keys.contains("Host") && dict["Host"] != nil {
+            self.host = dict["Host"] as! String
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
@@ -2554,6 +2610,8 @@ public class DeleteInstanceResponse : Tea.TeaModel {
 public class DeleteSaslUserRequest : Tea.TeaModel {
     public var instanceId: String?
 
+    public var mechanism: String?
+
     public var regionId: String?
 
     public var type: String?
@@ -2577,6 +2635,9 @@ public class DeleteSaslUserRequest : Tea.TeaModel {
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
+        if self.mechanism != nil {
+            map["Mechanism"] = self.mechanism!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -2592,6 +2653,9 @@ public class DeleteSaslUserRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("Mechanism") && dict["Mechanism"] != nil {
+            self.mechanism = dict["Mechanism"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -2858,11 +2922,17 @@ public class DeleteTopicResponse : Tea.TeaModel {
 }
 
 public class DescribeAclsRequest : Tea.TeaModel {
+    public var aclOperationType: String?
+
+    public var aclPermissionType: String?
+
     public var aclResourceName: String?
 
     public var aclResourcePatternType: String?
 
     public var aclResourceType: String?
+
+    public var host: String?
 
     public var instanceId: String?
 
@@ -2884,6 +2954,12 @@ public class DescribeAclsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aclOperationType != nil {
+            map["AclOperationType"] = self.aclOperationType!
+        }
+        if self.aclPermissionType != nil {
+            map["AclPermissionType"] = self.aclPermissionType!
+        }
         if self.aclResourceName != nil {
             map["AclResourceName"] = self.aclResourceName!
         }
@@ -2892,6 +2968,9 @@ public class DescribeAclsRequest : Tea.TeaModel {
         }
         if self.aclResourceType != nil {
             map["AclResourceType"] = self.aclResourceType!
+        }
+        if self.host != nil {
+            map["Host"] = self.host!
         }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
@@ -2906,6 +2985,12 @@ public class DescribeAclsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AclOperationType") && dict["AclOperationType"] != nil {
+            self.aclOperationType = dict["AclOperationType"] as! String
+        }
+        if dict.keys.contains("AclPermissionType") && dict["AclPermissionType"] != nil {
+            self.aclPermissionType = dict["AclPermissionType"] as! String
+        }
         if dict.keys.contains("AclResourceName") && dict["AclResourceName"] != nil {
             self.aclResourceName = dict["AclResourceName"] as! String
         }
@@ -2914,6 +2999,9 @@ public class DescribeAclsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("AclResourceType") && dict["AclResourceType"] != nil {
             self.aclResourceType = dict["AclResourceType"] as! String
+        }
+        if dict.keys.contains("Host") && dict["Host"] != nil {
+            self.host = dict["Host"] as! String
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
@@ -2931,6 +3019,8 @@ public class DescribeAclsResponseBody : Tea.TeaModel {
     public class KafkaAclList : Tea.TeaModel {
         public class KafkaAclVO : Tea.TeaModel {
             public var aclOperationType: String?
+
+            public var aclPermissionType: String?
 
             public var aclResourceName: String?
 
@@ -2959,6 +3049,9 @@ public class DescribeAclsResponseBody : Tea.TeaModel {
                 if self.aclOperationType != nil {
                     map["AclOperationType"] = self.aclOperationType!
                 }
+                if self.aclPermissionType != nil {
+                    map["AclPermissionType"] = self.aclPermissionType!
+                }
                 if self.aclResourceName != nil {
                     map["AclResourceName"] = self.aclResourceName!
                 }
@@ -2980,6 +3073,9 @@ public class DescribeAclsResponseBody : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("AclOperationType") && dict["AclOperationType"] != nil {
                     self.aclOperationType = dict["AclOperationType"] as! String
+                }
+                if dict.keys.contains("AclPermissionType") && dict["AclPermissionType"] != nil {
+                    self.aclPermissionType = dict["AclPermissionType"] as! String
                 }
                 if dict.keys.contains("AclResourceName") && dict["AclResourceName"] != nil {
                     self.aclResourceName = dict["AclResourceName"] as! String
@@ -3192,6 +3288,8 @@ public class DescribeSaslUsersRequest : Tea.TeaModel {
 public class DescribeSaslUsersResponseBody : Tea.TeaModel {
     public class SaslUserList : Tea.TeaModel {
         public class SaslUserVO : Tea.TeaModel {
+            public var mechanism: String?
+
             public var password: String?
 
             public var type: String?
@@ -3212,6 +3310,9 @@ public class DescribeSaslUsersResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.mechanism != nil {
+                    map["Mechanism"] = self.mechanism!
+                }
                 if self.password != nil {
                     map["Password"] = self.password!
                 }
@@ -3225,6 +3326,9 @@ public class DescribeSaslUsersResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Mechanism") && dict["Mechanism"] != nil {
+                    self.mechanism = dict["Mechanism"] as! String
+                }
                 if dict.keys.contains("Password") && dict["Password"] != nil {
                     self.password = dict["Password"] as! String
                 }
@@ -4586,6 +4690,116 @@ public class GetConsumerProgressRequest : Tea.TeaModel {
 
 public class GetConsumerProgressResponseBody : Tea.TeaModel {
     public class ConsumerProgress : Tea.TeaModel {
+        public class RebalanceInfoList : Tea.TeaModel {
+            public class RebalanceInfoList : Tea.TeaModel {
+                public var generation: Int64?
+
+                public var groupId: String?
+
+                public var lastRebalanceTimestamp: Int64?
+
+                public var reason: String?
+
+                public var rebalanceSuccess: Bool?
+
+                public var rebalanceTimeConsuming: Int64?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.generation != nil {
+                        map["Generation"] = self.generation!
+                    }
+                    if self.groupId != nil {
+                        map["GroupId"] = self.groupId!
+                    }
+                    if self.lastRebalanceTimestamp != nil {
+                        map["LastRebalanceTimestamp"] = self.lastRebalanceTimestamp!
+                    }
+                    if self.reason != nil {
+                        map["Reason"] = self.reason!
+                    }
+                    if self.rebalanceSuccess != nil {
+                        map["RebalanceSuccess"] = self.rebalanceSuccess!
+                    }
+                    if self.rebalanceTimeConsuming != nil {
+                        map["RebalanceTimeConsuming"] = self.rebalanceTimeConsuming!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Generation") && dict["Generation"] != nil {
+                        self.generation = dict["Generation"] as! Int64
+                    }
+                    if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
+                        self.groupId = dict["GroupId"] as! String
+                    }
+                    if dict.keys.contains("LastRebalanceTimestamp") && dict["LastRebalanceTimestamp"] != nil {
+                        self.lastRebalanceTimestamp = dict["LastRebalanceTimestamp"] as! Int64
+                    }
+                    if dict.keys.contains("Reason") && dict["Reason"] != nil {
+                        self.reason = dict["Reason"] as! String
+                    }
+                    if dict.keys.contains("RebalanceSuccess") && dict["RebalanceSuccess"] != nil {
+                        self.rebalanceSuccess = dict["RebalanceSuccess"] as! Bool
+                    }
+                    if dict.keys.contains("RebalanceTimeConsuming") && dict["RebalanceTimeConsuming"] != nil {
+                        self.rebalanceTimeConsuming = dict["RebalanceTimeConsuming"] as! Int64
+                    }
+                }
+            }
+            public var rebalanceInfoList: [GetConsumerProgressResponseBody.ConsumerProgress.RebalanceInfoList.RebalanceInfoList]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.rebalanceInfoList != nil {
+                    var tmp : [Any] = []
+                    for k in self.rebalanceInfoList! {
+                        tmp.append(k.toMap())
+                    }
+                    map["RebalanceInfoList"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("RebalanceInfoList") && dict["RebalanceInfoList"] != nil {
+                    var tmp : [GetConsumerProgressResponseBody.ConsumerProgress.RebalanceInfoList.RebalanceInfoList] = []
+                    for v in dict["RebalanceInfoList"] as! [Any] {
+                        var model = GetConsumerProgressResponseBody.ConsumerProgress.RebalanceInfoList.RebalanceInfoList()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.rebalanceInfoList = tmp
+                }
+            }
+        }
         public class TopicList : Tea.TeaModel {
             public class TopicList : Tea.TeaModel {
                 public class OffsetList : Tea.TeaModel {
@@ -4779,6 +4993,8 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
         }
         public var lastTimestamp: Int64?
 
+        public var rebalanceInfoList: GetConsumerProgressResponseBody.ConsumerProgress.RebalanceInfoList?
+
         public var topicList: GetConsumerProgressResponseBody.ConsumerProgress.TopicList?
 
         public var totalDiff: Int64?
@@ -4793,6 +5009,7 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.rebalanceInfoList?.validate()
             try self.topicList?.validate()
         }
 
@@ -4800,6 +5017,9 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.lastTimestamp != nil {
                 map["LastTimestamp"] = self.lastTimestamp!
+            }
+            if self.rebalanceInfoList != nil {
+                map["RebalanceInfoList"] = self.rebalanceInfoList?.toMap()
             }
             if self.topicList != nil {
                 map["TopicList"] = self.topicList?.toMap()
@@ -4813,6 +5033,11 @@ public class GetConsumerProgressResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("LastTimestamp") && dict["LastTimestamp"] != nil {
                 self.lastTimestamp = dict["LastTimestamp"] as! Int64
+            }
+            if dict.keys.contains("RebalanceInfoList") && dict["RebalanceInfoList"] != nil {
+                var model = GetConsumerProgressResponseBody.ConsumerProgress.RebalanceInfoList()
+                model.fromMap(dict["RebalanceInfoList"] as! [String: Any])
+                self.rebalanceInfoList = model
             }
             if dict.keys.contains("TopicList") && dict["TopicList"] != nil {
                 var model = GetConsumerProgressResponseBody.ConsumerProgress.TopicList()
