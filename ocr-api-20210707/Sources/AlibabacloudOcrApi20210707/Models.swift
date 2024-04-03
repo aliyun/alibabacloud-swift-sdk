@@ -10408,6 +10408,8 @@ public class RecognizeMedicalDeviceProduceLicenseResponse : Tea.TeaModel {
 }
 
 public class RecognizeMixedInvoicesRequest : Tea.TeaModel {
+    public var mergePdfPages: Bool?
+
     public var pageNo: Int32?
 
     public var url: String?
@@ -10428,6 +10430,9 @@ public class RecognizeMixedInvoicesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.mergePdfPages != nil {
+            map["MergePdfPages"] = self.mergePdfPages!
+        }
         if self.pageNo != nil {
             map["PageNo"] = self.pageNo!
         }
@@ -10441,6 +10446,9 @@ public class RecognizeMixedInvoicesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("MergePdfPages") && dict["MergePdfPages"] != nil {
+            self.mergePdfPages = dict["MergePdfPages"] as! Bool
+        }
         if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
             self.pageNo = dict["PageNo"] as! Int32
         }

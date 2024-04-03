@@ -1802,6 +1802,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func recognizeMixedInvoicesWithOptions(_ request: RecognizeMixedInvoicesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RecognizeMixedInvoicesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.mergePdfPages)) {
+            query["MergePdfPages"] = request.mergePdfPages!;
+        }
         if (!TeaUtils.Client.isUnset(request.pageNo)) {
             query["PageNo"] = request.pageNo!;
         }
