@@ -6,9 +6,180 @@ import AlibabaCloudOpenApiUtil
 import AlibabacloudEndpointUtil
 
 public class CreateDedicatedHostRequest : Tea.TeaModel {
+    public class MyBaseEcsClass : Tea.TeaModel {
+        public var amount: Int64?
+
+        public var autoRenew: Bool?
+
+        public var chargeType: String?
+
+        public var dataDiskCategory: String?
+
+        public var dataDiskCount: Int64?
+
+        public var dataDiskSize: Int64?
+
+        public var depolymentSetId: String?
+
+        public var ecsClassCode: String?
+
+        public var internetChargeType: String?
+
+        public var internetMaxBandwidthOut: Int64?
+
+        public var keyPairName: String?
+
+        public var password: String?
+
+        public var period: Int64?
+
+        public var periodType: String?
+
+        public var securityGroupIds: [String]?
+
+        public var systemDiskCategory: String?
+
+        public var systemDiskSize: Int64?
+
+        public var tags: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.amount != nil {
+                map["Amount"] = self.amount!
+            }
+            if self.autoRenew != nil {
+                map["AutoRenew"] = self.autoRenew!
+            }
+            if self.chargeType != nil {
+                map["ChargeType"] = self.chargeType!
+            }
+            if self.dataDiskCategory != nil {
+                map["DataDiskCategory"] = self.dataDiskCategory!
+            }
+            if self.dataDiskCount != nil {
+                map["DataDiskCount"] = self.dataDiskCount!
+            }
+            if self.dataDiskSize != nil {
+                map["DataDiskSize"] = self.dataDiskSize!
+            }
+            if self.depolymentSetId != nil {
+                map["DepolymentSetId"] = self.depolymentSetId!
+            }
+            if self.ecsClassCode != nil {
+                map["EcsClassCode"] = self.ecsClassCode!
+            }
+            if self.internetChargeType != nil {
+                map["InternetChargeType"] = self.internetChargeType!
+            }
+            if self.internetMaxBandwidthOut != nil {
+                map["InternetMaxBandwidthOut"] = self.internetMaxBandwidthOut!
+            }
+            if self.keyPairName != nil {
+                map["KeyPairName"] = self.keyPairName!
+            }
+            if self.password != nil {
+                map["Password"] = self.password!
+            }
+            if self.period != nil {
+                map["Period"] = self.period!
+            }
+            if self.periodType != nil {
+                map["PeriodType"] = self.periodType!
+            }
+            if self.securityGroupIds != nil {
+                map["SecurityGroupIds"] = self.securityGroupIds!
+            }
+            if self.systemDiskCategory != nil {
+                map["SystemDiskCategory"] = self.systemDiskCategory!
+            }
+            if self.systemDiskSize != nil {
+                map["SystemDiskSize"] = self.systemDiskSize!
+            }
+            if self.tags != nil {
+                map["Tags"] = self.tags!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Amount") && dict["Amount"] != nil {
+                self.amount = dict["Amount"] as! Int64
+            }
+            if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
+                self.autoRenew = dict["AutoRenew"] as! Bool
+            }
+            if dict.keys.contains("ChargeType") && dict["ChargeType"] != nil {
+                self.chargeType = dict["ChargeType"] as! String
+            }
+            if dict.keys.contains("DataDiskCategory") && dict["DataDiskCategory"] != nil {
+                self.dataDiskCategory = dict["DataDiskCategory"] as! String
+            }
+            if dict.keys.contains("DataDiskCount") && dict["DataDiskCount"] != nil {
+                self.dataDiskCount = dict["DataDiskCount"] as! Int64
+            }
+            if dict.keys.contains("DataDiskSize") && dict["DataDiskSize"] != nil {
+                self.dataDiskSize = dict["DataDiskSize"] as! Int64
+            }
+            if dict.keys.contains("DepolymentSetId") && dict["DepolymentSetId"] != nil {
+                self.depolymentSetId = dict["DepolymentSetId"] as! String
+            }
+            if dict.keys.contains("EcsClassCode") && dict["EcsClassCode"] != nil {
+                self.ecsClassCode = dict["EcsClassCode"] as! String
+            }
+            if dict.keys.contains("InternetChargeType") && dict["InternetChargeType"] != nil {
+                self.internetChargeType = dict["InternetChargeType"] as! String
+            }
+            if dict.keys.contains("InternetMaxBandwidthOut") && dict["InternetMaxBandwidthOut"] != nil {
+                self.internetMaxBandwidthOut = dict["InternetMaxBandwidthOut"] as! Int64
+            }
+            if dict.keys.contains("KeyPairName") && dict["KeyPairName"] != nil {
+                self.keyPairName = dict["KeyPairName"] as! String
+            }
+            if dict.keys.contains("Password") && dict["Password"] != nil {
+                self.password = dict["Password"] as! String
+            }
+            if dict.keys.contains("Period") && dict["Period"] != nil {
+                self.period = dict["Period"] as! Int64
+            }
+            if dict.keys.contains("PeriodType") && dict["PeriodType"] != nil {
+                self.periodType = dict["PeriodType"] as! String
+            }
+            if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+            }
+            if dict.keys.contains("SystemDiskCategory") && dict["SystemDiskCategory"] != nil {
+                self.systemDiskCategory = dict["SystemDiskCategory"] as! String
+            }
+            if dict.keys.contains("SystemDiskSize") && dict["SystemDiskSize"] != nil {
+                self.systemDiskSize = dict["SystemDiskSize"] as! Int64
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                self.tags = dict["Tags"] as! [String]
+            }
+        }
+    }
     public var autoRenew: String?
 
     public var clientToken: String?
+
+    public var clusterAlias: String?
+
+    public var clusterServices: [String]?
+
+    public var clusterType: String?
 
     public var dedicatedHostGroupId: String?
 
@@ -19,6 +190,8 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
     public var hostStorageType: String?
 
     public var imageCategory: String?
+
+    public var myBaseEcsClass: CreateDedicatedHostRequest.MyBaseEcsClass?
 
     public var osPassword: String?
 
@@ -38,6 +211,8 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
 
     public var vSwitchId: String?
 
+    public var vpcID: String?
+
     public var zoneId: String?
 
     public override init() {
@@ -50,6 +225,7 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.myBaseEcsClass?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -59,6 +235,15 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.clusterAlias != nil {
+            map["ClusterAlias"] = self.clusterAlias!
+        }
+        if self.clusterServices != nil {
+            map["ClusterServices"] = self.clusterServices!
+        }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
         }
         if self.dedicatedHostGroupId != nil {
             map["DedicatedHostGroupId"] = self.dedicatedHostGroupId!
@@ -74,6 +259,9 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
         }
         if self.imageCategory != nil {
             map["ImageCategory"] = self.imageCategory!
+        }
+        if self.myBaseEcsClass != nil {
+            map["MyBaseEcsClass"] = self.myBaseEcsClass?.toMap()
         }
         if self.osPassword != nil {
             map["OsPassword"] = self.osPassword!
@@ -102,6 +290,9 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.vpcID != nil {
+            map["VpcID"] = self.vpcID!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -114,6 +305,15 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ClusterAlias") && dict["ClusterAlias"] != nil {
+            self.clusterAlias = dict["ClusterAlias"] as! String
+        }
+        if dict.keys.contains("ClusterServices") && dict["ClusterServices"] != nil {
+            self.clusterServices = dict["ClusterServices"] as! [String]
+        }
+        if dict.keys.contains("ClusterType") && dict["ClusterType"] != nil {
+            self.clusterType = dict["ClusterType"] as! String
         }
         if dict.keys.contains("DedicatedHostGroupId") && dict["DedicatedHostGroupId"] != nil {
             self.dedicatedHostGroupId = dict["DedicatedHostGroupId"] as! String
@@ -129,6 +329,11 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ImageCategory") && dict["ImageCategory"] != nil {
             self.imageCategory = dict["ImageCategory"] as! String
+        }
+        if dict.keys.contains("MyBaseEcsClass") && dict["MyBaseEcsClass"] != nil {
+            var model = CreateDedicatedHostRequest.MyBaseEcsClass()
+            model.fromMap(dict["MyBaseEcsClass"] as! [String: Any])
+            self.myBaseEcsClass = model
         }
         if dict.keys.contains("OsPassword") && dict["OsPassword"] != nil {
             self.osPassword = dict["OsPassword"] as! String
@@ -156,6 +361,207 @@ public class CreateDedicatedHostRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
+        }
+        if dict.keys.contains("VpcID") && dict["VpcID"] != nil {
+            self.vpcID = dict["VpcID"] as! String
+        }
+        if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+            self.zoneId = dict["ZoneId"] as! String
+        }
+    }
+}
+
+public class CreateDedicatedHostShrinkRequest : Tea.TeaModel {
+    public var autoRenew: String?
+
+    public var clientToken: String?
+
+    public var clusterAlias: String?
+
+    public var clusterServicesShrink: String?
+
+    public var clusterType: String?
+
+    public var dedicatedHostGroupId: String?
+
+    public var hostClass: String?
+
+    public var hostStorage: String?
+
+    public var hostStorageType: String?
+
+    public var imageCategory: String?
+
+    public var myBaseEcsClassShrink: String?
+
+    public var osPassword: String?
+
+    public var ownerId: Int64?
+
+    public var payType: String?
+
+    public var period: String?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var usedTime: String?
+
+    public var vSwitchId: String?
+
+    public var vpcID: String?
+
+    public var zoneId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.autoRenew != nil {
+            map["AutoRenew"] = self.autoRenew!
+        }
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
+        if self.clusterAlias != nil {
+            map["ClusterAlias"] = self.clusterAlias!
+        }
+        if self.clusterServicesShrink != nil {
+            map["ClusterServices"] = self.clusterServicesShrink!
+        }
+        if self.clusterType != nil {
+            map["ClusterType"] = self.clusterType!
+        }
+        if self.dedicatedHostGroupId != nil {
+            map["DedicatedHostGroupId"] = self.dedicatedHostGroupId!
+        }
+        if self.hostClass != nil {
+            map["HostClass"] = self.hostClass!
+        }
+        if self.hostStorage != nil {
+            map["HostStorage"] = self.hostStorage!
+        }
+        if self.hostStorageType != nil {
+            map["HostStorageType"] = self.hostStorageType!
+        }
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
+        if self.myBaseEcsClassShrink != nil {
+            map["MyBaseEcsClass"] = self.myBaseEcsClassShrink!
+        }
+        if self.osPassword != nil {
+            map["OsPassword"] = self.osPassword!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.payType != nil {
+            map["PayType"] = self.payType!
+        }
+        if self.period != nil {
+            map["Period"] = self.period!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.usedTime != nil {
+            map["UsedTime"] = self.usedTime!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        if self.vpcID != nil {
+            map["VpcID"] = self.vpcID!
+        }
+        if self.zoneId != nil {
+            map["ZoneId"] = self.zoneId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
+            self.autoRenew = dict["AutoRenew"] as! String
+        }
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ClusterAlias") && dict["ClusterAlias"] != nil {
+            self.clusterAlias = dict["ClusterAlias"] as! String
+        }
+        if dict.keys.contains("ClusterServices") && dict["ClusterServices"] != nil {
+            self.clusterServicesShrink = dict["ClusterServices"] as! String
+        }
+        if dict.keys.contains("ClusterType") && dict["ClusterType"] != nil {
+            self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("DedicatedHostGroupId") && dict["DedicatedHostGroupId"] != nil {
+            self.dedicatedHostGroupId = dict["DedicatedHostGroupId"] as! String
+        }
+        if dict.keys.contains("HostClass") && dict["HostClass"] != nil {
+            self.hostClass = dict["HostClass"] as! String
+        }
+        if dict.keys.contains("HostStorage") && dict["HostStorage"] != nil {
+            self.hostStorage = dict["HostStorage"] as! String
+        }
+        if dict.keys.contains("HostStorageType") && dict["HostStorageType"] != nil {
+            self.hostStorageType = dict["HostStorageType"] as! String
+        }
+        if dict.keys.contains("ImageCategory") && dict["ImageCategory"] != nil {
+            self.imageCategory = dict["ImageCategory"] as! String
+        }
+        if dict.keys.contains("MyBaseEcsClass") && dict["MyBaseEcsClass"] != nil {
+            self.myBaseEcsClassShrink = dict["MyBaseEcsClass"] as! String
+        }
+        if dict.keys.contains("OsPassword") && dict["OsPassword"] != nil {
+            self.osPassword = dict["OsPassword"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("PayType") && dict["PayType"] != nil {
+            self.payType = dict["PayType"] as! String
+        }
+        if dict.keys.contains("Period") && dict["Period"] != nil {
+            self.period = dict["Period"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("UsedTime") && dict["UsedTime"] != nil {
+            self.usedTime = dict["UsedTime"] as! String
+        }
+        if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+            self.vSwitchId = dict["VSwitchId"] as! String
+        }
+        if dict.keys.contains("VpcID") && dict["VpcID"] != nil {
+            self.vpcID = dict["VpcID"] as! String
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
@@ -234,6 +640,8 @@ public class CreateDedicatedHostResponseBody : Tea.TeaModel {
             }
         }
     }
+    public var clusterName: String?
+
     public var dedicateHostList: CreateDedicatedHostResponseBody.DedicateHostList?
 
     public var orderId: Int64?
@@ -255,6 +663,9 @@ public class CreateDedicatedHostResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clusterName != nil {
+            map["ClusterName"] = self.clusterName!
+        }
         if self.dedicateHostList != nil {
             map["DedicateHostList"] = self.dedicateHostList?.toMap()
         }
@@ -268,6 +679,9 @@ public class CreateDedicatedHostResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClusterName") && dict["ClusterName"] != nil {
+            self.clusterName = dict["ClusterName"] as! String
+        }
         if dict.keys.contains("DedicateHostList") && dict["DedicateHostList"] != nil {
             var model = CreateDedicatedHostResponseBody.DedicateHostList()
             model.fromMap(dict["DedicateHostList"] as! [String: Any])
@@ -299,9 +713,6 @@ public class CreateDedicatedHostResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -483,9 +894,6 @@ public class CreateDedicatedHostAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -707,9 +1115,6 @@ public class CreateDedicatedHostGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -744,6 +1149,12 @@ public class CreateDedicatedHostGroupResponse : Tea.TeaModel {
 
 public class CreateMyBaseRequest : Tea.TeaModel {
     public class ECSClassList : Tea.TeaModel {
+        public var dataDiskAutoSnapshotPolicyId: String?
+
+        public var dataDiskEncrypted: Bool?
+
+        public var dataDiskKMSKeyId: String?
+
         public var dataDiskPerformanceLevel: String?
 
         public var diskCapacity: Int32?
@@ -756,7 +1167,13 @@ public class CreateMyBaseRequest : Tea.TeaModel {
 
         public var nodeCount: Int32?
 
+        public var sysDiskAutoSnapshotPolicyId: String?
+
         public var sysDiskCapacity: Int32?
+
+        public var sysDiskEncrypted: Bool?
+
+        public var sysDiskKMSKeyId: String?
 
         public var sysDiskType: String?
 
@@ -776,6 +1193,15 @@ public class CreateMyBaseRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dataDiskAutoSnapshotPolicyId != nil {
+                map["dataDiskAutoSnapshotPolicyId"] = self.dataDiskAutoSnapshotPolicyId!
+            }
+            if self.dataDiskEncrypted != nil {
+                map["dataDiskEncrypted"] = self.dataDiskEncrypted!
+            }
+            if self.dataDiskKMSKeyId != nil {
+                map["dataDiskKMSKeyId"] = self.dataDiskKMSKeyId!
+            }
             if self.dataDiskPerformanceLevel != nil {
                 map["dataDiskPerformanceLevel"] = self.dataDiskPerformanceLevel!
             }
@@ -794,8 +1220,17 @@ public class CreateMyBaseRequest : Tea.TeaModel {
             if self.nodeCount != nil {
                 map["nodeCount"] = self.nodeCount!
             }
+            if self.sysDiskAutoSnapshotPolicyId != nil {
+                map["sysDiskAutoSnapshotPolicyId"] = self.sysDiskAutoSnapshotPolicyId!
+            }
             if self.sysDiskCapacity != nil {
                 map["sysDiskCapacity"] = self.sysDiskCapacity!
+            }
+            if self.sysDiskEncrypted != nil {
+                map["sysDiskEncrypted"] = self.sysDiskEncrypted!
+            }
+            if self.sysDiskKMSKeyId != nil {
+                map["sysDiskKMSKeyId"] = self.sysDiskKMSKeyId!
             }
             if self.sysDiskType != nil {
                 map["sysDiskType"] = self.sysDiskType!
@@ -807,6 +1242,15 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("dataDiskAutoSnapshotPolicyId") && dict["dataDiskAutoSnapshotPolicyId"] != nil {
+                self.dataDiskAutoSnapshotPolicyId = dict["dataDiskAutoSnapshotPolicyId"] as! String
+            }
+            if dict.keys.contains("dataDiskEncrypted") && dict["dataDiskEncrypted"] != nil {
+                self.dataDiskEncrypted = dict["dataDiskEncrypted"] as! Bool
+            }
+            if dict.keys.contains("dataDiskKMSKeyId") && dict["dataDiskKMSKeyId"] != nil {
+                self.dataDiskKMSKeyId = dict["dataDiskKMSKeyId"] as! String
+            }
             if dict.keys.contains("dataDiskPerformanceLevel") && dict["dataDiskPerformanceLevel"] != nil {
                 self.dataDiskPerformanceLevel = dict["dataDiskPerformanceLevel"] as! String
             }
@@ -825,8 +1269,17 @@ public class CreateMyBaseRequest : Tea.TeaModel {
             if dict.keys.contains("nodeCount") && dict["nodeCount"] != nil {
                 self.nodeCount = dict["nodeCount"] as! Int32
             }
+            if dict.keys.contains("sysDiskAutoSnapshotPolicyId") && dict["sysDiskAutoSnapshotPolicyId"] != nil {
+                self.sysDiskAutoSnapshotPolicyId = dict["sysDiskAutoSnapshotPolicyId"] as! String
+            }
             if dict.keys.contains("sysDiskCapacity") && dict["sysDiskCapacity"] != nil {
                 self.sysDiskCapacity = dict["sysDiskCapacity"] as! Int32
+            }
+            if dict.keys.contains("sysDiskEncrypted") && dict["sysDiskEncrypted"] != nil {
+                self.sysDiskEncrypted = dict["sysDiskEncrypted"] as! Bool
+            }
+            if dict.keys.contains("sysDiskKMSKeyId") && dict["sysDiskKMSKeyId"] != nil {
+                self.sysDiskKMSKeyId = dict["sysDiskKMSKeyId"] as! String
             }
             if dict.keys.contains("sysDiskType") && dict["sysDiskType"] != nil {
                 self.sysDiskType = dict["sysDiskType"] as! String
@@ -836,6 +1289,45 @@ public class CreateMyBaseRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tags : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var autoPay: Bool?
+
     public var autoRenew: String?
 
     public var clientToken: String?
@@ -858,6 +1350,10 @@ public class CreateMyBaseRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var internetChargeType: String?
+
+    public var internetMaxBandwidthOut: Int32?
+
     public var keyPairName: String?
 
     public var osPassword: String?
@@ -874,11 +1370,19 @@ public class CreateMyBaseRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
 
     public var securityGroupId: String?
+
+    public var tags: [CreateMyBaseRequest.Tags]?
+
+    public var userData: String?
+
+    public var userDataInBase64: Bool?
 
     public var vSwitchId: String?
 
@@ -900,6 +1404,9 @@ public class CreateMyBaseRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -937,6 +1444,12 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.internetChargeType != nil {
+            map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.internetMaxBandwidthOut != nil {
+            map["InternetMaxBandwidthOut"] = self.internetMaxBandwidthOut!
+        }
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
         }
@@ -961,6 +1474,9 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -969,6 +1485,19 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.tags != nil {
+            var tmp : [Any] = []
+            for k in self.tags! {
+                tmp.append(k.toMap())
+            }
+            map["Tags"] = tmp
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        if self.userDataInBase64 != nil {
+            map["UserDataInBase64"] = self.userDataInBase64!
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -983,6 +1512,9 @@ public class CreateMyBaseRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
         if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
             self.autoRenew = dict["AutoRenew"] as! String
         }
@@ -1024,6 +1556,12 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
         }
+        if dict.keys.contains("InternetChargeType") && dict["InternetChargeType"] != nil {
+            self.internetChargeType = dict["InternetChargeType"] as! String
+        }
+        if dict.keys.contains("InternetMaxBandwidthOut") && dict["InternetMaxBandwidthOut"] != nil {
+            self.internetMaxBandwidthOut = dict["InternetMaxBandwidthOut"] as! Int32
+        }
         if dict.keys.contains("KeyPairName") && dict["KeyPairName"] != nil {
             self.keyPairName = dict["KeyPairName"] as! String
         }
@@ -1048,6 +1586,9 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -1056,6 +1597,23 @@ public class CreateMyBaseRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            var tmp : [CreateMyBaseRequest.Tags] = []
+            for v in dict["Tags"] as! [Any] {
+                var model = CreateMyBaseRequest.Tags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tags = tmp
+        }
+        if dict.keys.contains("UserData") && dict["UserData"] != nil {
+            self.userData = dict["UserData"] as! String
+        }
+        if dict.keys.contains("UserDataInBase64") && dict["UserDataInBase64"] != nil {
+            self.userDataInBase64 = dict["UserDataInBase64"] as! Bool
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -1070,6 +1628,8 @@ public class CreateMyBaseRequest : Tea.TeaModel {
 }
 
 public class CreateMyBaseShrinkRequest : Tea.TeaModel {
+    public var autoPay: Bool?
+
     public var autoRenew: String?
 
     public var clientToken: String?
@@ -1092,6 +1652,10 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
 
     public var imageId: String?
 
+    public var internetChargeType: String?
+
+    public var internetMaxBandwidthOut: Int32?
+
     public var keyPairName: String?
 
     public var osPassword: String?
@@ -1108,11 +1672,19 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupId: String?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
 
     public var securityGroupId: String?
+
+    public var tagsShrink: String?
+
+    public var userData: String?
+
+    public var userDataInBase64: Bool?
 
     public var vSwitchId: String?
 
@@ -1134,6 +1706,9 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.autoPay != nil {
+            map["AutoPay"] = self.autoPay!
+        }
         if self.autoRenew != nil {
             map["AutoRenew"] = self.autoRenew!
         }
@@ -1167,6 +1742,12 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
         }
+        if self.internetChargeType != nil {
+            map["InternetChargeType"] = self.internetChargeType!
+        }
+        if self.internetMaxBandwidthOut != nil {
+            map["InternetMaxBandwidthOut"] = self.internetMaxBandwidthOut!
+        }
         if self.keyPairName != nil {
             map["KeyPairName"] = self.keyPairName!
         }
@@ -1191,6 +1772,9 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -1199,6 +1783,15 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["SecurityGroupId"] = self.securityGroupId!
+        }
+        if self.tagsShrink != nil {
+            map["Tags"] = self.tagsShrink!
+        }
+        if self.userData != nil {
+            map["UserData"] = self.userData!
+        }
+        if self.userDataInBase64 != nil {
+            map["UserDataInBase64"] = self.userDataInBase64!
         }
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
@@ -1213,6 +1806,9 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AutoPay") && dict["AutoPay"] != nil {
+            self.autoPay = dict["AutoPay"] as! Bool
+        }
         if dict.keys.contains("AutoRenew") && dict["AutoRenew"] != nil {
             self.autoRenew = dict["AutoRenew"] as! String
         }
@@ -1246,6 +1842,12 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
         }
+        if dict.keys.contains("InternetChargeType") && dict["InternetChargeType"] != nil {
+            self.internetChargeType = dict["InternetChargeType"] as! String
+        }
+        if dict.keys.contains("InternetMaxBandwidthOut") && dict["InternetMaxBandwidthOut"] != nil {
+            self.internetMaxBandwidthOut = dict["InternetMaxBandwidthOut"] as! Int32
+        }
         if dict.keys.contains("KeyPairName") && dict["KeyPairName"] != nil {
             self.keyPairName = dict["KeyPairName"] as! String
         }
@@ -1270,6 +1872,9 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
         }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
@@ -1278,6 +1883,15 @@ public class CreateMyBaseShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecurityGroupId") && dict["SecurityGroupId"] != nil {
             self.securityGroupId = dict["SecurityGroupId"] as! String
+        }
+        if dict.keys.contains("Tags") && dict["Tags"] != nil {
+            self.tagsShrink = dict["Tags"] as! String
+        }
+        if dict.keys.contains("UserData") && dict["UserData"] != nil {
+            self.userData = dict["UserData"] as! String
+        }
+        if dict.keys.contains("UserDataInBase64") && dict["UserDataInBase64"] != nil {
+            self.userDataInBase64 = dict["UserDataInBase64"] as! Bool
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
@@ -1443,9 +2057,6 @@ public class CreateMyBaseResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1595,9 +2206,6 @@ public class DeleteDedicatedHostAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1739,9 +2347,6 @@ public class DeleteDedicatedHostGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2171,9 +2776,6 @@ public class DescribeDedicatedHostAttributeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2460,9 +3062,6 @@ public class DescribeDedicatedHostDisksResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2957,9 +3556,6 @@ public class DescribeDedicatedHostGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3582,9 +4178,6 @@ public class DescribeDedicatedHostsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3952,9 +4545,6 @@ public class DescribeHostEcsLevelInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4112,9 +4702,6 @@ public class DescribeHostWebShellResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4313,9 +4900,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4595,9 +5179,6 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4755,9 +5336,6 @@ public class ModifyDedicatedHostAccountResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4915,9 +5493,6 @@ public class ModifyDedicatedHostAttributeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5099,9 +5674,6 @@ public class ModifyDedicatedHostClassResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5299,9 +5871,6 @@ public class ModifyDedicatedHostGroupAttributeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5459,9 +6028,6 @@ public class ModifyDedicatedHostPasswordResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5724,9 +6290,6 @@ public class QueryHostBaseInfoByInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6093,9 +6656,6 @@ public class QueryHostInstanceConsoleInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6261,9 +6821,6 @@ public class ReplaceDedicatedHostResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6437,9 +6994,6 @@ public class RestartDedicatedHostResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6646,9 +7200,6 @@ public class TagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6814,9 +7365,6 @@ public class UntagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
