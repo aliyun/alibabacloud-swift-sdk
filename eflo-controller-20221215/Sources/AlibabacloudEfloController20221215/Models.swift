@@ -1742,6 +1742,8 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
 
     public var components: [DescribeClusterResponseBody.Components]?
 
+    public var computingIpVersion: String?
+
     public var createTime: String?
 
     public var hpnZone: String?
@@ -1796,6 +1798,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Components"] = tmp
+        }
+        if self.computingIpVersion != nil {
+            map["ComputingIpVersion"] = self.computingIpVersion!
         }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
@@ -1860,6 +1865,9 @@ public class DescribeClusterResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.components = tmp
+        }
+        if dict.keys.contains("ComputingIpVersion") && dict["ComputingIpVersion"] != nil {
+            self.computingIpVersion = dict["ComputingIpVersion"] as! String
         }
         if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
             self.createTime = dict["CreateTime"] as! String
@@ -5005,6 +5013,8 @@ public class ListClustersResponseBody : Tea.TeaModel {
 
         public var components: Any?
 
+        public var computingIpVersion: String?
+
         public var createTime: String?
 
         public var hpnZone: String?
@@ -5052,6 +5062,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             if self.components != nil {
                 map["Components"] = self.components!
             }
+            if self.computingIpVersion != nil {
+                map["ComputingIpVersion"] = self.computingIpVersion!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -5097,6 +5110,9 @@ public class ListClustersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Components") && dict["Components"] != nil {
                 self.components = dict["Components"] as! Any
+            }
+            if dict.keys.contains("ComputingIpVersion") && dict["ComputingIpVersion"] != nil {
+                self.computingIpVersion = dict["ComputingIpVersion"] as! String
             }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
