@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudRKvstore20150101` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/r-kvstore-20150101" "2.0.0"
+github "alibabacloud-sdk-swift/r-kvstore-20150101" "2.1.0"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudRKvstore20150101` into your Xcode project using [Swift
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/r-kvstore-20150101.git", from: "2.0.0")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/r-kvstore-20150101.git", from: "2.1.0")
 ]
 ```
 

@@ -18046,6 +18046,8 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
                 public var originalStandAmount: Int64?
 
+                public var startTime: String?
+
                 public override init() {
                     super.init()
                 }
@@ -18088,6 +18090,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     if self.originalStandAmount != nil {
                         map["OriginalStandAmount"] = self.originalStandAmount!
                     }
+                    if self.startTime != nil {
+                        map["StartTime"] = self.startTime!
+                    }
                     return map
                 }
 
@@ -18120,6 +18125,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
                         self.originalStandAmount = dict["OriginalStandAmount"] as! Int64
+                    }
+                    if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                        self.startTime = dict["StartTime"] as! String
                     }
                 }
             }
