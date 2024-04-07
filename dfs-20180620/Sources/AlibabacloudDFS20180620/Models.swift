@@ -12,7 +12,7 @@ public class AttachVscMountPointRequest : Tea.TeaModel {
 
     public var inputRegionId: String?
 
-    public var instanceIds: [String: Any]?
+    public var instanceIds: [String]?
 
     public var mountPointId: String?
 
@@ -69,7 +69,7 @@ public class AttachVscMountPointRequest : Tea.TeaModel {
             self.inputRegionId = dict["InputRegionId"] as! String
         }
         if dict.keys.contains("InstanceIds") && dict["InstanceIds"] != nil {
-            self.instanceIds = dict["InstanceIds"] as! [String: Any]
+            self.instanceIds = dict["InstanceIds"] as! [String]
         }
         if dict.keys.contains("MountPointId") && dict["MountPointId"] != nil {
             self.mountPointId = dict["MountPointId"] as! String
@@ -1243,7 +1243,7 @@ public class CreateVscMountPointRequest : Tea.TeaModel {
 
     public var inputRegionId: String?
 
-    public var instanceIds: [String: Any]?
+    public var instanceIds: [String]?
 
     public override init() {
         super.init()
@@ -1285,7 +1285,7 @@ public class CreateVscMountPointRequest : Tea.TeaModel {
             self.inputRegionId = dict["InputRegionId"] as! String
         }
         if dict.keys.contains("InstanceIds") && dict["InstanceIds"] != nil {
-            self.instanceIds = dict["InstanceIds"] as! [String: Any]
+            self.instanceIds = dict["InstanceIds"] as! [String]
         }
     }
 }
@@ -2800,7 +2800,7 @@ public class DetachVscMountPointRequest : Tea.TeaModel {
 
     public var inputRegionId: String?
 
-    public var instanceIds: [String: Any]?
+    public var instanceIds: [String]?
 
     public var mountPointId: String?
 
@@ -2852,7 +2852,7 @@ public class DetachVscMountPointRequest : Tea.TeaModel {
             self.inputRegionId = dict["InputRegionId"] as! String
         }
         if dict.keys.contains("InstanceIds") && dict["InstanceIds"] != nil {
-            self.instanceIds = dict["InstanceIds"] as! [String: Any]
+            self.instanceIds = dict["InstanceIds"] as! [String]
         }
         if dict.keys.contains("MountPointId") && dict["MountPointId"] != nil {
             self.mountPointId = dict["MountPointId"] as! String
