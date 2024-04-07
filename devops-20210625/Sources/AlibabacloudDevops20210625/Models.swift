@@ -39434,6 +39434,8 @@ public class ListOrganizationMembersResponse : Tea.TeaModel {
 public class ListOrganizationsRequest : Tea.TeaModel {
     public var accessLevel: Int32?
 
+    public var accessToken: String?
+
     public var minAccessLevel: Int32?
 
     public override init() {
@@ -39453,6 +39455,9 @@ public class ListOrganizationsRequest : Tea.TeaModel {
         if self.accessLevel != nil {
             map["accessLevel"] = self.accessLevel!
         }
+        if self.accessToken != nil {
+            map["accessToken"] = self.accessToken!
+        }
         if self.minAccessLevel != nil {
             map["minAccessLevel"] = self.minAccessLevel!
         }
@@ -39462,6 +39467,9 @@ public class ListOrganizationsRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("accessLevel") && dict["accessLevel"] != nil {
             self.accessLevel = dict["accessLevel"] as! Int32
+        }
+        if dict.keys.contains("accessToken") && dict["accessToken"] != nil {
+            self.accessToken = dict["accessToken"] as! String
         }
         if dict.keys.contains("minAccessLevel") && dict["minAccessLevel"] != nil {
             self.minAccessLevel = dict["minAccessLevel"] as! Int32

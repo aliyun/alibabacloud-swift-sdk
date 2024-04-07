@@ -5276,6 +5276,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessLevel)) {
             query["accessLevel"] = request.accessLevel!;
         }
+        if (!TeaUtils.Client.isUnset(request.accessToken)) {
+            query["accessToken"] = request.accessToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.minAccessLevel)) {
             query["minAccessLevel"] = request.minAccessLevel!;
         }
