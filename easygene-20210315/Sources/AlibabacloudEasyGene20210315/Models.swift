@@ -5573,6 +5573,8 @@ public class GetRunResponseBody : Tea.TeaModel {
 
     public var appRevision: String?
 
+    public var billingInstanceIds: [String]?
+
     public var calls: String?
 
     public var createTime: String?
@@ -5643,6 +5645,9 @@ public class GetRunResponseBody : Tea.TeaModel {
         }
         if self.appRevision != nil {
             map["AppRevision"] = self.appRevision!
+        }
+        if self.billingInstanceIds != nil {
+            map["BillingInstanceIds"] = self.billingInstanceIds!
         }
         if self.calls != nil {
             map["Calls"] = self.calls!
@@ -5728,6 +5733,9 @@ public class GetRunResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("AppRevision") && dict["AppRevision"] != nil {
             self.appRevision = dict["AppRevision"] as! String
+        }
+        if dict.keys.contains("BillingInstanceIds") && dict["BillingInstanceIds"] != nil {
+            self.billingInstanceIds = dict["BillingInstanceIds"] as! [String]
         }
         if dict.keys.contains("Calls") && dict["Calls"] != nil {
             self.calls = dict["Calls"] as! String

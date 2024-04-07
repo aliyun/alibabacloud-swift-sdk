@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudEasyGene20210315"
-  spec.version      = "1.1.0"
+  spec.version      = "1.2.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud EasyGene (20210315) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/easygene-20210315" 
