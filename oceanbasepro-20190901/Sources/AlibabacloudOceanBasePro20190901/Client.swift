@@ -465,6 +465,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.labelIds)) {
             request.labelIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.labelIds, "LabelIds", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.reverseIncrTransferConfig)) {
+            request.reverseIncrTransferConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.reverseIncrTransferConfig, "ReverseIncrTransferConfig", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.structTransferConfig)) {
             request.structTransferConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.structTransferConfig, "StructTransferConfig", "json")
         }
@@ -507,6 +510,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.ossKey)) {
             body["OssKey"] = request.ossKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reverseIncrTransferConfigShrink)) {
+            body["ReverseIncrTransferConfig"] = request.reverseIncrTransferConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.sinkEndpointId)) {
             body["SinkEndpointId"] = request.sinkEndpointId ?? "";

@@ -2907,6 +2907,14 @@ public class CreateProjectRequest : Tea.TeaModel {
 
         public var nonePkUkTruncateDstTable: Bool?
 
+        public var readWorkerNum: Int32?
+
+        public var throttleIOPS: Int32?
+
+        public var throttleRps: Int32?
+
+        public var writeWorkerNum: Int32?
+
         public override init() {
             super.init()
         }
@@ -2933,6 +2941,18 @@ public class CreateProjectRequest : Tea.TeaModel {
             if self.nonePkUkTruncateDstTable != nil {
                 map["NonePkUkTruncateDstTable"] = self.nonePkUkTruncateDstTable!
             }
+            if self.readWorkerNum != nil {
+                map["ReadWorkerNum"] = self.readWorkerNum!
+            }
+            if self.throttleIOPS != nil {
+                map["ThrottleIOPS"] = self.throttleIOPS!
+            }
+            if self.throttleRps != nil {
+                map["ThrottleRps"] = self.throttleRps!
+            }
+            if self.writeWorkerNum != nil {
+                map["WriteWorkerNum"] = self.writeWorkerNum!
+            }
             return map
         }
 
@@ -2949,6 +2969,18 @@ public class CreateProjectRequest : Tea.TeaModel {
             if dict.keys.contains("NonePkUkTruncateDstTable") && dict["NonePkUkTruncateDstTable"] != nil {
                 self.nonePkUkTruncateDstTable = dict["NonePkUkTruncateDstTable"] as! Bool
             }
+            if dict.keys.contains("ReadWorkerNum") && dict["ReadWorkerNum"] != nil {
+                self.readWorkerNum = dict["ReadWorkerNum"] as! Int32
+            }
+            if dict.keys.contains("ThrottleIOPS") && dict["ThrottleIOPS"] != nil {
+                self.throttleIOPS = dict["ThrottleIOPS"] as! Int32
+            }
+            if dict.keys.contains("ThrottleRps") && dict["ThrottleRps"] != nil {
+                self.throttleRps = dict["ThrottleRps"] as! Int32
+            }
+            if dict.keys.contains("WriteWorkerNum") && dict["WriteWorkerNum"] != nil {
+                self.writeWorkerNum = dict["WriteWorkerNum"] as! Int32
+            }
         }
     }
     public class IncrTransferConfig : Tea.TeaModel {
@@ -2963,6 +2995,12 @@ public class CreateProjectRequest : Tea.TeaModel {
         public var startTimestamp: String?
 
         public var storeLogKeptHour: Int32?
+
+        public var supportDDLTypes: [String]?
+
+        public var throttleIOPS: Int32?
+
+        public var throttleRps: Int32?
 
         public override init() {
             super.init()
@@ -2996,6 +3034,15 @@ public class CreateProjectRequest : Tea.TeaModel {
             if self.storeLogKeptHour != nil {
                 map["StoreLogKeptHour"] = self.storeLogKeptHour!
             }
+            if self.supportDDLTypes != nil {
+                map["SupportDDLTypes"] = self.supportDDLTypes!
+            }
+            if self.throttleIOPS != nil {
+                map["ThrottleIOPS"] = self.throttleIOPS!
+            }
+            if self.throttleRps != nil {
+                map["ThrottleRps"] = self.throttleRps!
+            }
             return map
         }
 
@@ -3017,6 +3064,108 @@ public class CreateProjectRequest : Tea.TeaModel {
             }
             if dict.keys.contains("StoreLogKeptHour") && dict["StoreLogKeptHour"] != nil {
                 self.storeLogKeptHour = dict["StoreLogKeptHour"] as! Int32
+            }
+            if dict.keys.contains("SupportDDLTypes") && dict["SupportDDLTypes"] != nil {
+                self.supportDDLTypes = dict["SupportDDLTypes"] as! [String]
+            }
+            if dict.keys.contains("ThrottleIOPS") && dict["ThrottleIOPS"] != nil {
+                self.throttleIOPS = dict["ThrottleIOPS"] as! Int32
+            }
+            if dict.keys.contains("ThrottleRps") && dict["ThrottleRps"] != nil {
+                self.throttleRps = dict["ThrottleRps"] as! Int32
+            }
+        }
+    }
+    public class ReverseIncrTransferConfig : Tea.TeaModel {
+        public var enableIncrSyncStatistics: Bool?
+
+        public var enableSequencingWithinTxn: Bool?
+
+        public var incrSyncConcurrency: Int32?
+
+        public var recordTypeWhiteList: [String]?
+
+        public var startTimestamp: String?
+
+        public var storeLogKeptHour: Int32?
+
+        public var supportDDLTypes: [String]?
+
+        public var throttleIOPS: Int32?
+
+        public var throttleRps: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.enableIncrSyncStatistics != nil {
+                map["EnableIncrSyncStatistics"] = self.enableIncrSyncStatistics!
+            }
+            if self.enableSequencingWithinTxn != nil {
+                map["EnableSequencingWithinTxn"] = self.enableSequencingWithinTxn!
+            }
+            if self.incrSyncConcurrency != nil {
+                map["IncrSyncConcurrency"] = self.incrSyncConcurrency!
+            }
+            if self.recordTypeWhiteList != nil {
+                map["RecordTypeWhiteList"] = self.recordTypeWhiteList!
+            }
+            if self.startTimestamp != nil {
+                map["StartTimestamp"] = self.startTimestamp!
+            }
+            if self.storeLogKeptHour != nil {
+                map["StoreLogKeptHour"] = self.storeLogKeptHour!
+            }
+            if self.supportDDLTypes != nil {
+                map["SupportDDLTypes"] = self.supportDDLTypes!
+            }
+            if self.throttleIOPS != nil {
+                map["ThrottleIOPS"] = self.throttleIOPS!
+            }
+            if self.throttleRps != nil {
+                map["ThrottleRps"] = self.throttleRps!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EnableIncrSyncStatistics") && dict["EnableIncrSyncStatistics"] != nil {
+                self.enableIncrSyncStatistics = dict["EnableIncrSyncStatistics"] as! Bool
+            }
+            if dict.keys.contains("EnableSequencingWithinTxn") && dict["EnableSequencingWithinTxn"] != nil {
+                self.enableSequencingWithinTxn = dict["EnableSequencingWithinTxn"] as! Bool
+            }
+            if dict.keys.contains("IncrSyncConcurrency") && dict["IncrSyncConcurrency"] != nil {
+                self.incrSyncConcurrency = dict["IncrSyncConcurrency"] as! Int32
+            }
+            if dict.keys.contains("RecordTypeWhiteList") && dict["RecordTypeWhiteList"] != nil {
+                self.recordTypeWhiteList = dict["RecordTypeWhiteList"] as! [String]
+            }
+            if dict.keys.contains("StartTimestamp") && dict["StartTimestamp"] != nil {
+                self.startTimestamp = dict["StartTimestamp"] as! String
+            }
+            if dict.keys.contains("StoreLogKeptHour") && dict["StoreLogKeptHour"] != nil {
+                self.storeLogKeptHour = dict["StoreLogKeptHour"] as! Int32
+            }
+            if dict.keys.contains("SupportDDLTypes") && dict["SupportDDLTypes"] != nil {
+                self.supportDDLTypes = dict["SupportDDLTypes"] as! [String]
+            }
+            if dict.keys.contains("ThrottleIOPS") && dict["ThrottleIOPS"] != nil {
+                self.throttleIOPS = dict["ThrottleIOPS"] as! Int32
+            }
+            if dict.keys.contains("ThrottleRps") && dict["ThrottleRps"] != nil {
+                self.throttleRps = dict["ThrottleRps"] as! Int32
             }
         }
     }
@@ -4512,6 +4661,8 @@ public class CreateProjectRequest : Tea.TeaModel {
 
     public var ossKey: String?
 
+    public var reverseIncrTransferConfig: CreateProjectRequest.ReverseIncrTransferConfig?
+
     public var sinkEndpointId: String?
 
     public var sourceEndpointId: String?
@@ -4539,6 +4690,7 @@ public class CreateProjectRequest : Tea.TeaModel {
         try self.commonTransferConfig?.validate()
         try self.fullTransferConfig?.validate()
         try self.incrTransferConfig?.validate()
+        try self.reverseIncrTransferConfig?.validate()
         try self.structTransferConfig?.validate()
         try self.transferMapping?.validate()
     }
@@ -4580,6 +4732,9 @@ public class CreateProjectRequest : Tea.TeaModel {
         }
         if self.ossKey != nil {
             map["OssKey"] = self.ossKey!
+        }
+        if self.reverseIncrTransferConfig != nil {
+            map["ReverseIncrTransferConfig"] = self.reverseIncrTransferConfig?.toMap()
         }
         if self.sinkEndpointId != nil {
             map["SinkEndpointId"] = self.sinkEndpointId!
@@ -4648,6 +4803,11 @@ public class CreateProjectRequest : Tea.TeaModel {
         if dict.keys.contains("OssKey") && dict["OssKey"] != nil {
             self.ossKey = dict["OssKey"] as! String
         }
+        if dict.keys.contains("ReverseIncrTransferConfig") && dict["ReverseIncrTransferConfig"] != nil {
+            var model = CreateProjectRequest.ReverseIncrTransferConfig()
+            model.fromMap(dict["ReverseIncrTransferConfig"] as! [String: Any])
+            self.reverseIncrTransferConfig = model
+        }
         if dict.keys.contains("SinkEndpointId") && dict["SinkEndpointId"] != nil {
             self.sinkEndpointId = dict["SinkEndpointId"] as! String
         }
@@ -4700,6 +4860,8 @@ public class CreateProjectShrinkRequest : Tea.TeaModel {
     public var name: String?
 
     public var ossKey: String?
+
+    public var reverseIncrTransferConfigShrink: String?
 
     public var sinkEndpointId: String?
 
@@ -4765,6 +4927,9 @@ public class CreateProjectShrinkRequest : Tea.TeaModel {
         if self.ossKey != nil {
             map["OssKey"] = self.ossKey!
         }
+        if self.reverseIncrTransferConfigShrink != nil {
+            map["ReverseIncrTransferConfig"] = self.reverseIncrTransferConfigShrink!
+        }
         if self.sinkEndpointId != nil {
             map["SinkEndpointId"] = self.sinkEndpointId!
         }
@@ -4825,6 +4990,9 @@ public class CreateProjectShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OssKey") && dict["OssKey"] != nil {
             self.ossKey = dict["OssKey"] as! String
+        }
+        if dict.keys.contains("ReverseIncrTransferConfig") && dict["ReverseIncrTransferConfig"] != nil {
+            self.reverseIncrTransferConfigShrink = dict["ReverseIncrTransferConfig"] as! String
         }
         if dict.keys.contains("SinkEndpointId") && dict["SinkEndpointId"] != nil {
             self.sinkEndpointId = dict["SinkEndpointId"] as! String
@@ -23207,6 +23375,14 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
 
             public var nonePkUkTruncateDstTable: Bool?
 
+            public var readWorkerNum: Int32?
+
+            public var throttleIOPS: Int32?
+
+            public var throttleRps: Int32?
+
+            public var writeWorkerNum: Int32?
+
             public override init() {
                 super.init()
             }
@@ -23233,6 +23409,18 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 if self.nonePkUkTruncateDstTable != nil {
                     map["NonePkUkTruncateDstTable"] = self.nonePkUkTruncateDstTable!
                 }
+                if self.readWorkerNum != nil {
+                    map["ReadWorkerNum"] = self.readWorkerNum!
+                }
+                if self.throttleIOPS != nil {
+                    map["ThrottleIOPS"] = self.throttleIOPS!
+                }
+                if self.throttleRps != nil {
+                    map["ThrottleRps"] = self.throttleRps!
+                }
+                if self.writeWorkerNum != nil {
+                    map["WriteWorkerNum"] = self.writeWorkerNum!
+                }
                 return map
             }
 
@@ -23249,6 +23437,18 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 if dict.keys.contains("NonePkUkTruncateDstTable") && dict["NonePkUkTruncateDstTable"] != nil {
                     self.nonePkUkTruncateDstTable = dict["NonePkUkTruncateDstTable"] as! Bool
                 }
+                if dict.keys.contains("ReadWorkerNum") && dict["ReadWorkerNum"] != nil {
+                    self.readWorkerNum = dict["ReadWorkerNum"] as! Int32
+                }
+                if dict.keys.contains("ThrottleIOPS") && dict["ThrottleIOPS"] != nil {
+                    self.throttleIOPS = dict["ThrottleIOPS"] as! Int32
+                }
+                if dict.keys.contains("ThrottleRps") && dict["ThrottleRps"] != nil {
+                    self.throttleRps = dict["ThrottleRps"] as! Int32
+                }
+                if dict.keys.contains("WriteWorkerNum") && dict["WriteWorkerNum"] != nil {
+                    self.writeWorkerNum = dict["WriteWorkerNum"] as! Int32
+                }
             }
         }
         public class IncrTransferConfig : Tea.TeaModel {
@@ -23263,6 +23463,12 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
             public var startTimestamp: Int64?
 
             public var storeLogKeptHour: Int32?
+
+            public var supportDDLTypes: [String]?
+
+            public var throttleIOPS: Int32?
+
+            public var throttleRps: Int32?
 
             public override init() {
                 super.init()
@@ -23296,6 +23502,15 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 if self.storeLogKeptHour != nil {
                     map["StoreLogKeptHour"] = self.storeLogKeptHour!
                 }
+                if self.supportDDLTypes != nil {
+                    map["SupportDDLTypes"] = self.supportDDLTypes!
+                }
+                if self.throttleIOPS != nil {
+                    map["ThrottleIOPS"] = self.throttleIOPS!
+                }
+                if self.throttleRps != nil {
+                    map["ThrottleRps"] = self.throttleRps!
+                }
                 return map
             }
 
@@ -23317,6 +23532,15 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("StoreLogKeptHour") && dict["StoreLogKeptHour"] != nil {
                     self.storeLogKeptHour = dict["StoreLogKeptHour"] as! Int32
+                }
+                if dict.keys.contains("SupportDDLTypes") && dict["SupportDDLTypes"] != nil {
+                    self.supportDDLTypes = dict["SupportDDLTypes"] as! [String]
+                }
+                if dict.keys.contains("ThrottleIOPS") && dict["ThrottleIOPS"] != nil {
+                    self.throttleIOPS = dict["ThrottleIOPS"] as! Int32
+                }
+                if dict.keys.contains("ThrottleRps") && dict["ThrottleRps"] != nil {
+                    self.throttleRps = dict["ThrottleRps"] as! Int32
                 }
             }
         }
@@ -23354,6 +23578,99 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
+                }
+            }
+        }
+        public class ReverseIncrTransferConfig : Tea.TeaModel {
+            public var enableIncrSyncStatistics: Bool?
+
+            public var enableSequencingWithinTxn: Bool?
+
+            public var incrSyncConcurrency: Int32?
+
+            public var recordTypeWhiteList: [String]?
+
+            public var startTimestamp: Int64?
+
+            public var storeLogKeptHour: Int32?
+
+            public var supportDDLTypes: [String]?
+
+            public var throttleIOPS: Int32?
+
+            public var throttleRps: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.enableIncrSyncStatistics != nil {
+                    map["EnableIncrSyncStatistics"] = self.enableIncrSyncStatistics!
+                }
+                if self.enableSequencingWithinTxn != nil {
+                    map["EnableSequencingWithinTxn"] = self.enableSequencingWithinTxn!
+                }
+                if self.incrSyncConcurrency != nil {
+                    map["IncrSyncConcurrency"] = self.incrSyncConcurrency!
+                }
+                if self.recordTypeWhiteList != nil {
+                    map["RecordTypeWhiteList"] = self.recordTypeWhiteList!
+                }
+                if self.startTimestamp != nil {
+                    map["StartTimestamp"] = self.startTimestamp!
+                }
+                if self.storeLogKeptHour != nil {
+                    map["StoreLogKeptHour"] = self.storeLogKeptHour!
+                }
+                if self.supportDDLTypes != nil {
+                    map["SupportDDLTypes"] = self.supportDDLTypes!
+                }
+                if self.throttleIOPS != nil {
+                    map["ThrottleIOPS"] = self.throttleIOPS!
+                }
+                if self.throttleRps != nil {
+                    map["ThrottleRps"] = self.throttleRps!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EnableIncrSyncStatistics") && dict["EnableIncrSyncStatistics"] != nil {
+                    self.enableIncrSyncStatistics = dict["EnableIncrSyncStatistics"] as! Bool
+                }
+                if dict.keys.contains("EnableSequencingWithinTxn") && dict["EnableSequencingWithinTxn"] != nil {
+                    self.enableSequencingWithinTxn = dict["EnableSequencingWithinTxn"] as! Bool
+                }
+                if dict.keys.contains("IncrSyncConcurrency") && dict["IncrSyncConcurrency"] != nil {
+                    self.incrSyncConcurrency = dict["IncrSyncConcurrency"] as! Int32
+                }
+                if dict.keys.contains("RecordTypeWhiteList") && dict["RecordTypeWhiteList"] != nil {
+                    self.recordTypeWhiteList = dict["RecordTypeWhiteList"] as! [String]
+                }
+                if dict.keys.contains("StartTimestamp") && dict["StartTimestamp"] != nil {
+                    self.startTimestamp = dict["StartTimestamp"] as! Int64
+                }
+                if dict.keys.contains("StoreLogKeptHour") && dict["StoreLogKeptHour"] != nil {
+                    self.storeLogKeptHour = dict["StoreLogKeptHour"] as! Int32
+                }
+                if dict.keys.contains("SupportDDLTypes") && dict["SupportDDLTypes"] != nil {
+                    self.supportDDLTypes = dict["SupportDDLTypes"] as! [String]
+                }
+                if dict.keys.contains("ThrottleIOPS") && dict["ThrottleIOPS"] != nil {
+                    self.throttleIOPS = dict["ThrottleIOPS"] as! Int32
+                }
+                if dict.keys.contains("ThrottleRps") && dict["ThrottleRps"] != nil {
+                    self.throttleRps = dict["ThrottleRps"] as! Int32
                 }
             }
         }
@@ -25646,6 +25963,8 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
 
         public var owner: String?
 
+        public var reverseIncrTransferConfig: DescribeProjectResponseBody.Data.ReverseIncrTransferConfig?
+
         public var sinkConnectInfo: DescribeProjectResponseBody.Data.SinkConnectInfo?
 
         public var sinkEndpointType: String?
@@ -25683,6 +26002,7 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
             try self.extraInfo?.validate()
             try self.fullTransferConfig?.validate()
             try self.incrTransferConfig?.validate()
+            try self.reverseIncrTransferConfig?.validate()
             try self.sinkConnectInfo?.validate()
             try self.sourceConnectInfo?.validate()
             try self.structTransferConfig?.validate()
@@ -25767,6 +26087,9 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
             }
             if self.owner != nil {
                 map["Owner"] = self.owner!
+            }
+            if self.reverseIncrTransferConfig != nil {
+                map["ReverseIncrTransferConfig"] = self.reverseIncrTransferConfig?.toMap()
             }
             if self.sinkConnectInfo != nil {
                 map["SinkConnectInfo"] = self.sinkConnectInfo?.toMap()
@@ -25898,6 +26221,11 @@ public class DescribeProjectResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Owner") && dict["Owner"] != nil {
                 self.owner = dict["Owner"] as! String
+            }
+            if dict.keys.contains("ReverseIncrTransferConfig") && dict["ReverseIncrTransferConfig"] != nil {
+                var model = DescribeProjectResponseBody.Data.ReverseIncrTransferConfig()
+                model.fromMap(dict["ReverseIncrTransferConfig"] as! [String: Any])
+                self.reverseIncrTransferConfig = model
             }
             if dict.keys.contains("SinkConnectInfo") && dict["SinkConnectInfo"] != nil {
                 var model = DescribeProjectResponseBody.Data.SinkConnectInfo()
