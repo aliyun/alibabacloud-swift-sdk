@@ -144,8 +144,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.taobaoCallbackUrl)) {
             query["taobao_callback_url"] = request.taobaoCallbackUrl ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.travelerId)) {
+            query["traveler_id"] = request.travelerId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.type)) {
             query["type"] = request.type!;
+        }
+        if (!TeaUtils.Client.isUnset(request.useBookingProxy)) {
+            query["use_booking_proxy"] = request.useBookingProxy!;
         }
         if (!TeaUtils.Client.isUnset(request.userId)) {
             query["user_id"] = request.userId ?? "";
@@ -7124,6 +7130,86 @@ open class Client : AlibabacloudOpenApi.Client {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: MealBillSettlementQueryHeaders = MealBillSettlementQueryHeaders([:])
         return try await mealBillSettlementQueryWithOptions(request as! MealBillSettlementQueryRequest, headers as! MealBillSettlementQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mealOrderDetailQueryWithOptions(_ orderId: String, _ request: MealOrderDetailQueryRequest, _ headers: MealOrderDetailQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> MealOrderDetailQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["user_id"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MealOrderDetailQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/meal/v1/orders/" + AlibabaCloudOpenApiUtil.Client.getEncodeParam(orderId),
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MealOrderDetailQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mealOrderDetailQuery(_ orderId: String, _ request: MealOrderDetailQueryRequest) async throws -> MealOrderDetailQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: MealOrderDetailQueryHeaders = MealOrderDetailQueryHeaders([:])
+        return try await mealOrderDetailQueryWithOptions(orderId as! String, request as! MealOrderDetailQueryRequest, headers as! MealOrderDetailQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mealOrderListQueryWithOptions(_ request: MealOrderListQueryRequest, _ headers: MealOrderListQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> MealOrderListQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.userId)) {
+            query["user_id"] = request.userId ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "MealOrderListQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/meal/v1/orders",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(MealOrderListQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func mealOrderListQuery(_ request: MealOrderListQueryRequest) async throws -> MealOrderListQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: MealOrderListQueryHeaders = MealOrderListQueryHeaders([:])
+        return try await mealOrderListQueryWithOptions(request as! MealOrderListQueryRequest, headers as! MealOrderListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
