@@ -4008,6 +4008,8 @@ public class Sku : Tea.TeaModel {
 
     public var quantity: Int64?
 
+    public var rankValue: Int64?
+
     public var shopId: String?
 
     public var skuId: String?
@@ -4064,6 +4066,9 @@ public class Sku : Tea.TeaModel {
         if self.quantity != nil {
             map["quantity"] = self.quantity!
         }
+        if self.rankValue != nil {
+            map["rankValue"] = self.rankValue!
+        }
         if self.shopId != nil {
             map["shopId"] = self.shopId!
         }
@@ -4119,6 +4124,9 @@ public class Sku : Tea.TeaModel {
         }
         if dict.keys.contains("quantity") && dict["quantity"] != nil {
             self.quantity = dict["quantity"] as! Int64
+        }
+        if dict.keys.contains("rankValue") && dict["rankValue"] != nil {
+            self.rankValue = dict["rankValue"] as! Int64
         }
         if dict.keys.contains("shopId") && dict["shopId"] != nil {
             self.shopId = dict["shopId"] as! String
