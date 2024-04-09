@@ -8,6 +8,7 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
+        self._signatureAlgorithm = "v2"
         self._endpointRule = "regional"
         try checkConfig(config as! AlibabacloudOpenApi.Config)
         self._endpoint = try getEndpoint("eds-user", self._regionId ?? "", self._endpointRule ?? "", self._network ?? "", self._suffix ?? "", self._endpointMap ?? [:], self._endpoint ?? "")
@@ -128,6 +129,12 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.autoLockTime)) {
             query["AutoLockTime"] = request.autoLockTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isLocalAdmin)) {
+            query["IsLocalAdmin"] = request.isLocalAdmin!;
+        }
+        if (!TeaUtils.Client.isUnset(request.passwordExpireDays)) {
+            query["PasswordExpireDays"] = request.passwordExpireDays ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.password)) {

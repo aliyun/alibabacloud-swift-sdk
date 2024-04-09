@@ -210,9 +210,6 @@ public class CheckUsedPropertyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -338,9 +335,6 @@ public class CheckUsedPropertyValueResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -668,9 +662,6 @@ public class CreatePropertyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -791,7 +782,11 @@ public class CreateUsersRequest : Tea.TeaModel {
     }
     public var autoLockTime: String?
 
+    public var isLocalAdmin: Bool?
+
     public var password: String?
+
+    public var passwordExpireDays: String?
 
     public var users: [CreateUsersRequest.Users]?
 
@@ -812,8 +807,14 @@ public class CreateUsersRequest : Tea.TeaModel {
         if self.autoLockTime != nil {
             map["AutoLockTime"] = self.autoLockTime!
         }
+        if self.isLocalAdmin != nil {
+            map["IsLocalAdmin"] = self.isLocalAdmin!
+        }
         if self.password != nil {
             map["Password"] = self.password!
+        }
+        if self.passwordExpireDays != nil {
+            map["PasswordExpireDays"] = self.passwordExpireDays!
         }
         if self.users != nil {
             var tmp : [Any] = []
@@ -829,8 +830,14 @@ public class CreateUsersRequest : Tea.TeaModel {
         if dict.keys.contains("AutoLockTime") && dict["AutoLockTime"] != nil {
             self.autoLockTime = dict["AutoLockTime"] as! String
         }
+        if dict.keys.contains("IsLocalAdmin") && dict["IsLocalAdmin"] != nil {
+            self.isLocalAdmin = dict["IsLocalAdmin"] as! Bool
+        }
         if dict.keys.contains("Password") && dict["Password"] != nil {
             self.password = dict["Password"] as! String
+        }
+        if dict.keys.contains("PasswordExpireDays") && dict["PasswordExpireDays"] != nil {
+            self.passwordExpireDays = dict["PasswordExpireDays"] as! String
         }
         if dict.keys.contains("Users") && dict["Users"] != nil {
             var tmp : [CreateUsersRequest.Users] = []
@@ -1087,9 +1094,6 @@ public class CreateUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1215,9 +1219,6 @@ public class DeleteUserPropertyValueResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1480,9 +1481,6 @@ public class DescribeMfaDevicesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1689,9 +1687,6 @@ public class DescribeOrgsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2124,9 +2119,6 @@ public class DescribeUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2772,6 +2764,8 @@ public class FilterUsersResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var autoLockTime: String?
+
         public var desktopCount: Int64?
 
         public var desktopGroupCount: Int64?
@@ -2789,6 +2783,10 @@ public class FilterUsersResponseBody : Tea.TeaModel {
         public var isTenantManager: Bool?
 
         public var ownerType: String?
+
+        public var passwordExpireDays: Int32?
+
+        public var passwordExpireRestDays: Int32?
 
         public var phone: String?
 
@@ -2815,6 +2813,9 @@ public class FilterUsersResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.autoLockTime != nil {
+                map["AutoLockTime"] = self.autoLockTime!
+            }
             if self.desktopCount != nil {
                 map["DesktopCount"] = self.desktopCount!
             }
@@ -2842,6 +2843,12 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             if self.ownerType != nil {
                 map["OwnerType"] = self.ownerType!
             }
+            if self.passwordExpireDays != nil {
+                map["PasswordExpireDays"] = self.passwordExpireDays!
+            }
+            if self.passwordExpireRestDays != nil {
+                map["PasswordExpireRestDays"] = self.passwordExpireRestDays!
+            }
             if self.phone != nil {
                 map["Phone"] = self.phone!
             }
@@ -2865,6 +2872,9 @@ public class FilterUsersResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AutoLockTime") && dict["AutoLockTime"] != nil {
+                self.autoLockTime = dict["AutoLockTime"] as! String
+            }
             if dict.keys.contains("DesktopCount") && dict["DesktopCount"] != nil {
                 self.desktopCount = dict["DesktopCount"] as! Int64
             }
@@ -2893,6 +2903,12 @@ public class FilterUsersResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OwnerType") && dict["OwnerType"] != nil {
                 self.ownerType = dict["OwnerType"] as! String
+            }
+            if dict.keys.contains("PasswordExpireDays") && dict["PasswordExpireDays"] != nil {
+                self.passwordExpireDays = dict["PasswordExpireDays"] as! Int32
+            }
+            if dict.keys.contains("PasswordExpireRestDays") && dict["PasswordExpireRestDays"] != nil {
+                self.passwordExpireRestDays = dict["PasswordExpireRestDays"] as! Int32
             }
             if dict.keys.contains("Phone") && dict["Phone"] != nil {
                 self.phone = dict["Phone"] as! String
@@ -2993,9 +3009,6 @@ public class FilterUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3145,9 +3158,6 @@ public class GetManagerInfoByAuthCodeResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3349,9 +3359,6 @@ public class ListPropertyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3518,9 +3525,6 @@ public class ListPropertyValueResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3638,9 +3642,6 @@ public class LockMfaDeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3855,9 +3856,6 @@ public class LockUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3983,9 +3981,6 @@ public class ModifyUserResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4201,9 +4196,6 @@ public class QuerySyncStatusByAliUidResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4321,9 +4313,6 @@ public class RemoveMfaDeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4433,9 +4422,6 @@ public class RemovePropertyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4650,9 +4636,6 @@ public class RemoveUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4875,9 +4858,6 @@ public class ResetUserPasswordResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5011,9 +4991,6 @@ public class SetUserPropertyValueResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5125,9 +5102,6 @@ public class SyncAllEduInfoResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5245,9 +5219,6 @@ public class UnlockMfaDeviceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5470,9 +5441,6 @@ public class UnlockUsersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5857,9 +5825,6 @@ public class UpdatePropertyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
