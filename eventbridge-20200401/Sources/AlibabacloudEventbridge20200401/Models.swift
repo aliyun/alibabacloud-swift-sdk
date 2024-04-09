@@ -6285,6 +6285,8 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
 
             public var labels: String?
 
+            public var regionId: String?
+
             public override init() {
                 super.init()
             }
@@ -6308,6 +6310,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 if self.labels != nil {
                     map["Labels"] = self.labels!
                 }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
                 return map
             }
 
@@ -6320,6 +6325,9 @@ public class CreateEventStreamingRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("Labels") && dict["Labels"] != nil {
                     self.labels = dict["Labels"] as! String
+                }
+                if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                    self.regionId = dict["RegionId"] as! String
                 }
             }
         }
@@ -7584,6 +7592,8 @@ public class CreateServiceLinkedRoleForProductRequest : Tea.TeaModel {
 public class CreateServiceLinkedRoleForProductResponseBody : Tea.TeaModel {
     public var code: String?
 
+    public var httpCode: Int32?
+
     public var message: String?
 
     public var requestId: String?
@@ -7607,6 +7617,9 @@ public class CreateServiceLinkedRoleForProductResponseBody : Tea.TeaModel {
         if self.code != nil {
             map["Code"] = self.code!
         }
+        if self.httpCode != nil {
+            map["HttpCode"] = self.httpCode!
+        }
         if self.message != nil {
             map["Message"] = self.message!
         }
@@ -7622,6 +7635,9 @@ public class CreateServiceLinkedRoleForProductResponseBody : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Code") && dict["Code"] != nil {
             self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("HttpCode") && dict["HttpCode"] != nil {
+            self.httpCode = dict["HttpCode"] as! Int32
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
@@ -8068,6 +8084,8 @@ public class DeleteEventBusResponse : Tea.TeaModel {
 }
 
 public class DeleteEventSourceRequest : Tea.TeaModel {
+    public var eventBusName: String?
+
     public var eventSourceName: String?
 
     public override init() {
@@ -8084,6 +8102,9 @@ public class DeleteEventSourceRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.eventBusName != nil {
+            map["EventBusName"] = self.eventBusName!
+        }
         if self.eventSourceName != nil {
             map["EventSourceName"] = self.eventSourceName!
         }
@@ -8091,6 +8112,9 @@ public class DeleteEventSourceRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EventBusName") && dict["EventBusName"] != nil {
+            self.eventBusName = dict["EventBusName"] as! String
+        }
         if dict.keys.contains("EventSourceName") && dict["EventSourceName"] != nil {
             self.eventSourceName = dict["EventSourceName"] as! String
         }
@@ -13113,6 +13137,8 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
 
                 public var labels: String?
 
+                public var regionId: String?
+
                 public override init() {
                     super.init()
                 }
@@ -13136,6 +13162,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     if self.labels != nil {
                         map["Labels"] = self.labels!
                     }
+                    if self.regionId != nil {
+                        map["RegionId"] = self.regionId!
+                    }
                     return map
                 }
 
@@ -13148,6 +13177,9 @@ public class GetEventStreamingResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Labels") && dict["Labels"] != nil {
                         self.labels = dict["Labels"] as! String
+                    }
+                    if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                        self.regionId = dict["RegionId"] as! String
                     }
                 }
             }
@@ -18790,6 +18822,59 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         }
                     }
                 }
+                public class SourcePrometheusParameters : Tea.TeaModel {
+                    public var clusterId: String?
+
+                    public var dataType: String?
+
+                    public var labels: String?
+
+                    public var regionId: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.clusterId != nil {
+                            map["ClusterId"] = self.clusterId!
+                        }
+                        if self.dataType != nil {
+                            map["DataType"] = self.dataType!
+                        }
+                        if self.labels != nil {
+                            map["Labels"] = self.labels!
+                        }
+                        if self.regionId != nil {
+                            map["RegionId"] = self.regionId!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("ClusterId") && dict["ClusterId"] != nil {
+                            self.clusterId = dict["ClusterId"] as! String
+                        }
+                        if dict.keys.contains("DataType") && dict["DataType"] != nil {
+                            self.dataType = dict["DataType"] as! String
+                        }
+                        if dict.keys.contains("Labels") && dict["Labels"] != nil {
+                            self.labels = dict["Labels"] as! String
+                        }
+                        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                            self.regionId = dict["RegionId"] as! String
+                        }
+                    }
+                }
                 public class SourceRabbitMQParameters : Tea.TeaModel {
                     public var instanceId: String?
 
@@ -19061,6 +19146,8 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
 
                 public var sourceMQTTParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceMQTTParameters?
 
+                public var sourcePrometheusParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourcePrometheusParameters?
+
                 public var sourceRabbitMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRabbitMQParameters?
 
                 public var sourceRocketMQParameters: ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRocketMQParameters?
@@ -19081,6 +19168,7 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     try self.sourceKafkaParameters?.validate()
                     try self.sourceMNSParameters?.validate()
                     try self.sourceMQTTParameters?.validate()
+                    try self.sourcePrometheusParameters?.validate()
                     try self.sourceRabbitMQParameters?.validate()
                     try self.sourceRocketMQParameters?.validate()
                     try self.sourceSLSParameters?.validate()
@@ -19099,6 +19187,9 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                     }
                     if self.sourceMQTTParameters != nil {
                         map["SourceMQTTParameters"] = self.sourceMQTTParameters?.toMap()
+                    }
+                    if self.sourcePrometheusParameters != nil {
+                        map["SourcePrometheusParameters"] = self.sourcePrometheusParameters?.toMap()
                     }
                     if self.sourceRabbitMQParameters != nil {
                         map["SourceRabbitMQParameters"] = self.sourceRabbitMQParameters?.toMap()
@@ -19132,6 +19223,11 @@ public class ListEventStreamingsResponseBody : Tea.TeaModel {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceMQTTParameters()
                         model.fromMap(dict["SourceMQTTParameters"] as! [String: Any])
                         self.sourceMQTTParameters = model
+                    }
+                    if dict.keys.contains("SourcePrometheusParameters") && dict["SourcePrometheusParameters"] != nil {
+                        var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourcePrometheusParameters()
+                        model.fromMap(dict["SourcePrometheusParameters"] as! [String: Any])
+                        self.sourcePrometheusParameters = model
                     }
                     if dict.keys.contains("SourceRabbitMQParameters") && dict["SourceRabbitMQParameters"] != nil {
                         var model = ListEventStreamingsResponseBody.Data.EventStreamings.Source.SourceRabbitMQParameters()
@@ -28406,6 +28502,8 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
 
             public var labels: String?
 
+            public var regionId: String?
+
             public override init() {
                 super.init()
             }
@@ -28429,6 +28527,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 if self.labels != nil {
                     map["Labels"] = self.labels!
                 }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
                 return map
             }
 
@@ -28441,6 +28542,9 @@ public class UpdateEventStreamingRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("Labels") && dict["Labels"] != nil {
                     self.labels = dict["Labels"] as! String
+                }
+                if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                    self.regionId = dict["RegionId"] as! String
                 }
             }
         }

@@ -473,6 +473,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteEventSourceWithOptions(_ request: DeleteEventSourceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteEventSourceResponse {
         try TeaUtils.Client.validateModel(request)
         var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.eventBusName)) {
+            body["EventBusName"] = request.eventBusName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.eventSourceName)) {
             body["EventSourceName"] = request.eventSourceName ?? "";
         }
