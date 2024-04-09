@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudVoiceNavigator20180612"
-  spec.version      = "1.0.2"
+  spec.version      = "1.0.3"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud VoiceNavigator (20180612) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/voicenavigator-20180612" 
