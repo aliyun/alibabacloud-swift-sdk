@@ -822,6 +822,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.resourceId)) {
             query["ResourceId"] = request.resourceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.resourceQuotaName)) {
+            query["ResourceQuotaName"] = request.resourceQuotaName ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.showOwn)) {
             query["ShowOwn"] = request.showOwn!;
         }

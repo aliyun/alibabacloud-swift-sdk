@@ -7249,6 +7249,8 @@ public class ListJobsRequest : Tea.TeaModel {
 
     public var resourceId: String?
 
+    public var resourceQuotaName: String?
+
     public var showOwn: Bool?
 
     public var sortBy: String?
@@ -7315,6 +7317,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
+        if self.resourceQuotaName != nil {
+            map["ResourceQuotaName"] = self.resourceQuotaName!
+        }
         if self.showOwn != nil {
             map["ShowOwn"] = self.showOwn!
         }
@@ -7379,6 +7384,9 @@ public class ListJobsRequest : Tea.TeaModel {
         if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
             self.resourceId = dict["ResourceId"] as! String
         }
+        if dict.keys.contains("ResourceQuotaName") && dict["ResourceQuotaName"] != nil {
+            self.resourceQuotaName = dict["ResourceQuotaName"] as! String
+        }
         if dict.keys.contains("ShowOwn") && dict["ShowOwn"] != nil {
             self.showOwn = dict["ShowOwn"] as! Bool
         }
@@ -7430,6 +7438,8 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
     public var pipelineId: String?
 
     public var resourceId: String?
+
+    public var resourceQuotaName: String?
 
     public var showOwn: Bool?
 
@@ -7497,6 +7507,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         if self.resourceId != nil {
             map["ResourceId"] = self.resourceId!
         }
+        if self.resourceQuotaName != nil {
+            map["ResourceQuotaName"] = self.resourceQuotaName!
+        }
         if self.showOwn != nil {
             map["ShowOwn"] = self.showOwn!
         }
@@ -7560,6 +7573,9 @@ public class ListJobsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
             self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceQuotaName") && dict["ResourceQuotaName"] != nil {
+            self.resourceQuotaName = dict["ResourceQuotaName"] as! String
         }
         if dict.keys.contains("ShowOwn") && dict["ShowOwn"] != nil {
             self.showOwn = dict["ShowOwn"] as! Bool
