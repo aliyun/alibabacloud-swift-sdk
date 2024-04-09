@@ -14134,6 +14134,8 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var category: String?
 
+            public var cpuCores: String?
+
             public var createTime: String?
 
             public var DBClusterDescription: String?
@@ -14164,9 +14166,13 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var lockMode: String?
 
+            public var memorySize: String?
+
             public var payType: String?
 
             public var regionId: String?
+
+            public var remoteMemorySize: String?
 
             public var resourceGroupId: String?
 
@@ -14179,6 +14185,8 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
             public var storageUsed: Int64?
 
             public var strictConsistency: String?
+
+            public var subCategory: String?
 
             public var tags: DescribeDBClustersResponseBody.Items.DBCluster.Tags?
 
@@ -14209,6 +14217,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if self.category != nil {
                     map["Category"] = self.category!
+                }
+                if self.cpuCores != nil {
+                    map["CpuCores"] = self.cpuCores!
                 }
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
@@ -14255,11 +14266,17 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
                 }
+                if self.memorySize != nil {
+                    map["MemorySize"] = self.memorySize!
+                }
                 if self.payType != nil {
                     map["PayType"] = self.payType!
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
+                }
+                if self.remoteMemorySize != nil {
+                    map["RemoteMemorySize"] = self.remoteMemorySize!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
@@ -14278,6 +14295,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if self.strictConsistency != nil {
                     map["StrictConsistency"] = self.strictConsistency!
+                }
+                if self.subCategory != nil {
+                    map["SubCategory"] = self.subCategory!
                 }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
@@ -14300,6 +14320,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Category") && dict["Category"] != nil {
                     self.category = dict["Category"] as! String
+                }
+                if dict.keys.contains("CpuCores") && dict["CpuCores"] != nil {
+                    self.cpuCores = dict["CpuCores"] as! String
                 }
                 if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                     self.createTime = dict["CreateTime"] as! String
@@ -14348,11 +14371,17 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if dict.keys.contains("LockMode") && dict["LockMode"] != nil {
                     self.lockMode = dict["LockMode"] as! String
                 }
+                if dict.keys.contains("MemorySize") && dict["MemorySize"] != nil {
+                    self.memorySize = dict["MemorySize"] as! String
+                }
                 if dict.keys.contains("PayType") && dict["PayType"] != nil {
                     self.payType = dict["PayType"] as! String
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("RemoteMemorySize") && dict["RemoteMemorySize"] != nil {
+                    self.remoteMemorySize = dict["RemoteMemorySize"] as! String
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -14371,6 +14400,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("StrictConsistency") && dict["StrictConsistency"] != nil {
                     self.strictConsistency = dict["StrictConsistency"] as! String
+                }
+                if dict.keys.contains("SubCategory") && dict["SubCategory"] != nil {
+                    self.subCategory = dict["SubCategory"] as! String
                 }
                 if dict.keys.contains("Tags") && dict["Tags"] != nil {
                     var model = DescribeDBClustersResponseBody.Items.DBCluster.Tags()
