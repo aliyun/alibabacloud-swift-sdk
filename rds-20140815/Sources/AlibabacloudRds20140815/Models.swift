@@ -29637,15 +29637,15 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
 
             public var createTime: String?
 
-            public var DBInstanceClass: String?
+            public var DBInstanceCPU: String?
 
-            public var DBInstanceCpuCores: String?
+            public var DBInstanceClass: String?
 
             public var DBInstanceDescription: String?
 
             public var DBInstanceId: String?
 
-            public var DBInstanceMemory: String?
+            public var DBInstanceMemory: Int32?
 
             public var DBInstanceNetType: String?
 
@@ -29765,11 +29765,11 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if self.createTime != nil {
                     map["CreateTime"] = self.createTime!
                 }
+                if self.DBInstanceCPU != nil {
+                    map["DBInstanceCPU"] = self.DBInstanceCPU!
+                }
                 if self.DBInstanceClass != nil {
                     map["DBInstanceClass"] = self.DBInstanceClass!
-                }
-                if self.DBInstanceCpuCores != nil {
-                    map["DBInstanceCpuCores"] = self.DBInstanceCpuCores!
                 }
                 if self.DBInstanceDescription != nil {
                     map["DBInstanceDescription"] = self.DBInstanceDescription!
@@ -29928,11 +29928,11 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                 if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                     self.createTime = dict["CreateTime"] as! String
                 }
+                if dict.keys.contains("DBInstanceCPU") && dict["DBInstanceCPU"] != nil {
+                    self.DBInstanceCPU = dict["DBInstanceCPU"] as! String
+                }
                 if dict.keys.contains("DBInstanceClass") && dict["DBInstanceClass"] != nil {
                     self.DBInstanceClass = dict["DBInstanceClass"] as! String
-                }
-                if dict.keys.contains("DBInstanceCpuCores") && dict["DBInstanceCpuCores"] != nil {
-                    self.DBInstanceCpuCores = dict["DBInstanceCpuCores"] as! String
                 }
                 if dict.keys.contains("DBInstanceDescription") && dict["DBInstanceDescription"] != nil {
                     self.DBInstanceDescription = dict["DBInstanceDescription"] as! String
@@ -29941,7 +29941,7 @@ public class DescribeDBInstancesResponseBody : Tea.TeaModel {
                     self.DBInstanceId = dict["DBInstanceId"] as! String
                 }
                 if dict.keys.contains("DBInstanceMemory") && dict["DBInstanceMemory"] != nil {
-                    self.DBInstanceMemory = dict["DBInstanceMemory"] as! String
+                    self.DBInstanceMemory = dict["DBInstanceMemory"] as! Int32
                 }
                 if dict.keys.contains("DBInstanceNetType") && dict["DBInstanceNetType"] != nil {
                     self.DBInstanceNetType = dict["DBInstanceNetType"] as! String
@@ -40610,7 +40610,7 @@ public class DescribeKmsAssociateResourcesRequest : Tea.TeaModel {
 
     public var resourceOwnerAccount: String?
 
-    public var resourceOwnerId: String?
+    public var resourceOwnerId: Int64?
 
     public override init() {
         super.init()
@@ -40694,7 +40694,7 @@ public class DescribeKmsAssociateResourcesRequest : Tea.TeaModel {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
-            self.resourceOwnerId = dict["ResourceOwnerId"] as! String
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
         }
     }
 }
