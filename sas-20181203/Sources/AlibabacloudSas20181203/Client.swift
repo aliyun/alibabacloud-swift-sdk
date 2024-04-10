@@ -887,8 +887,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.criteria)) {
             query["Criteria"] = request.criteria ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isPreBind)) {
+            query["IsPreBind"] = request.isPreBind!;
+        }
         if (!TeaUtils.Client.isUnset(request.logicalExp)) {
             query["LogicalExp"] = request.logicalExp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ntmVersion)) {
+            query["NtmVersion"] = request.ntmVersion ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.preBindOrderId)) {
+            query["PreBindOrderId"] = request.preBindOrderId!;
         }
         if (!TeaUtils.Client.isUnset(request.unBind)) {
             query["UnBind"] = request.unBind ?? [];
@@ -2552,6 +2561,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bucketNameList)) {
             query["BucketNameList"] = request.bucketNameList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxFileCount)) {
+            query["DecompressMaxFileCount"] = request.decompressMaxFileCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxLayer)) {
+            query["DecompressMaxLayer"] = request.decompressMaxLayer!;
+        }
         if (!TeaUtils.Client.isUnset(request.excludeKeySuffixList)) {
             query["ExcludeKeySuffixList"] = request.excludeKeySuffixList ?? [];
         }
@@ -2597,6 +2612,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.bucketNameList)) {
             query["BucketNameList"] = request.bucketNameList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxFileCount)) {
+            query["DecompressMaxFileCount"] = request.decompressMaxFileCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxLayer)) {
+            query["DecompressMaxLayer"] = request.decompressMaxLayer!;
         }
         if (!TeaUtils.Client.isUnset(request.enable)) {
             query["Enable"] = request.enable!;
@@ -19866,6 +19887,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
         }
+        if (!TeaUtils.Client.isUnset(request.parentEventId)) {
+            query["ParentEventId"] = request.parentEventId!;
+        }
         if (!TeaUtils.Client.isUnset(request.riskLevel)) {
             query["RiskLevel"] = request.riskLevel ?? "";
         }
@@ -26557,6 +26581,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.bucketNameList)) {
             query["BucketNameList"] = request.bucketNameList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxFileCount)) {
+            query["DecompressMaxFileCount"] = request.decompressMaxFileCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxLayer)) {
+            query["DecompressMaxLayer"] = request.decompressMaxLayer!;
         }
         if (!TeaUtils.Client.isUnset(request.enable)) {
             query["Enable"] = request.enable!;
