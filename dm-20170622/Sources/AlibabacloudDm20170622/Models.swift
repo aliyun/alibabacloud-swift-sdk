@@ -7739,11 +7739,15 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
         public class MailDetail : Tea.TeaModel {
             public var accountName: String?
 
+            public var errorClassification: String?
+
             public var lastUpdateTime: String?
 
             public var message: String?
 
             public var status: Int32?
+
+            public var subject: String?
 
             public var toAddress: String?
 
@@ -7766,6 +7770,9 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 if self.accountName != nil {
                     map["AccountName"] = self.accountName!
                 }
+                if self.errorClassification != nil {
+                    map["ErrorClassification"] = self.errorClassification!
+                }
                 if self.lastUpdateTime != nil {
                     map["LastUpdateTime"] = self.lastUpdateTime!
                 }
@@ -7774,6 +7781,9 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
+                }
+                if self.subject != nil {
+                    map["Subject"] = self.subject!
                 }
                 if self.toAddress != nil {
                     map["ToAddress"] = self.toAddress!
@@ -7788,6 +7798,9 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 if dict.keys.contains("AccountName") && dict["AccountName"] != nil {
                     self.accountName = dict["AccountName"] as! String
                 }
+                if dict.keys.contains("ErrorClassification") && dict["ErrorClassification"] != nil {
+                    self.errorClassification = dict["ErrorClassification"] as! String
+                }
                 if dict.keys.contains("LastUpdateTime") && dict["LastUpdateTime"] != nil {
                     self.lastUpdateTime = dict["LastUpdateTime"] as! String
                 }
@@ -7796,6 +7809,9 @@ public class SenderStatisticsDetailByParamResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! Int32
+                }
+                if dict.keys.contains("Subject") && dict["Subject"] != nil {
+                    self.subject = dict["Subject"] as! String
                 }
                 if dict.keys.contains("ToAddress") && dict["ToAddress"] != nil {
                     self.toAddress = dict["ToAddress"] as! String
