@@ -81,6 +81,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.duration)) {
             body["duration"] = request.duration!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableServerlessComputing)) {
+            body["enableServerlessComputing"] = request.enableServerlessComputing!;
+        }
         if (!TeaUtils.Client.isUnset(request.gatewayCount)) {
             body["gatewayCount"] = request.gatewayCount!;
         }
@@ -461,6 +464,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             body["cpu"] = request.cpu!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableServerlessComputing)) {
+            body["enableServerlessComputing"] = request.enableServerlessComputing!;
         }
         if (!TeaUtils.Client.isUnset(request.gatewayCount)) {
             body["gatewayCount"] = request.gatewayCount!;

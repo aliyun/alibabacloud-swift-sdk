@@ -143,6 +143,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
 
     public var duration: Int64?
 
+    public var enableServerlessComputing: Bool?
+
     public var gatewayCount: Int64?
 
     public var initialDatabases: String?
@@ -198,6 +200,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if self.duration != nil {
             map["duration"] = self.duration!
+        }
+        if self.enableServerlessComputing != nil {
+            map["enableServerlessComputing"] = self.enableServerlessComputing!
         }
         if self.gatewayCount != nil {
             map["gatewayCount"] = self.gatewayCount!
@@ -256,6 +261,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("duration") && dict["duration"] != nil {
             self.duration = dict["duration"] as! Int64
+        }
+        if dict.keys.contains("enableServerlessComputing") && dict["enableServerlessComputing"] != nil {
+            self.enableServerlessComputing = dict["enableServerlessComputing"] as! Bool
         }
         if dict.keys.contains("gatewayCount") && dict["gatewayCount"] != nil {
             self.gatewayCount = dict["gatewayCount"] as! Int64
@@ -2784,6 +2792,8 @@ public class ScaleInstanceRequest : Tea.TeaModel {
 
     public var cpu: Int64?
 
+    public var enableServerlessComputing: Bool?
+
     public var gatewayCount: Int64?
 
     public var scaleType: String?
@@ -2810,6 +2820,9 @@ public class ScaleInstanceRequest : Tea.TeaModel {
         if self.cpu != nil {
             map["cpu"] = self.cpu!
         }
+        if self.enableServerlessComputing != nil {
+            map["enableServerlessComputing"] = self.enableServerlessComputing!
+        }
         if self.gatewayCount != nil {
             map["gatewayCount"] = self.gatewayCount!
         }
@@ -2828,6 +2841,9 @@ public class ScaleInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("cpu") && dict["cpu"] != nil {
             self.cpu = dict["cpu"] as! Int64
+        }
+        if dict.keys.contains("enableServerlessComputing") && dict["enableServerlessComputing"] != nil {
+            self.enableServerlessComputing = dict["enableServerlessComputing"] as! Bool
         }
         if dict.keys.contains("gatewayCount") && dict["gatewayCount"] != nil {
             self.gatewayCount = dict["gatewayCount"] as! Int64
