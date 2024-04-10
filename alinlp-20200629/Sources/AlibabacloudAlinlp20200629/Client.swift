@@ -2445,6 +2445,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.filters)) {
             body["Filters"] = request.filters ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.minScore)) {
+            body["MinScore"] = request.minScore!;
+        }
         if (!TeaUtils.Client.isUnset(request.page)) {
             body["Page"] = request.page!;
         }

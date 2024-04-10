@@ -9332,6 +9332,8 @@ public class PostMSSearchEnhanceRequest : Tea.TeaModel {
 
     public var filters: String?
 
+    public var minScore: Double?
+
     public var page: Int32?
 
     public var queries: String?
@@ -9377,6 +9379,9 @@ public class PostMSSearchEnhanceRequest : Tea.TeaModel {
         if self.filters != nil {
             map["Filters"] = self.filters!
         }
+        if self.minScore != nil {
+            map["MinScore"] = self.minScore!
+        }
         if self.page != nil {
             map["Page"] = self.page!
         }
@@ -9420,6 +9425,9 @@ public class PostMSSearchEnhanceRequest : Tea.TeaModel {
         if dict.keys.contains("Filters") && dict["Filters"] != nil {
             self.filters = dict["Filters"] as! String
         }
+        if dict.keys.contains("MinScore") && dict["MinScore"] != nil {
+            self.minScore = dict["MinScore"] as! Double
+        }
         if dict.keys.contains("Page") && dict["Page"] != nil {
             self.page = dict["Page"] as! Int32
         }
@@ -9457,6 +9465,8 @@ public class PostMSSearchEnhanceShrinkRequest : Tea.TeaModel {
     public var fieldsShrink: String?
 
     public var filters: String?
+
+    public var minScore: Double?
 
     public var page: Int32?
 
@@ -9503,6 +9513,9 @@ public class PostMSSearchEnhanceShrinkRequest : Tea.TeaModel {
         if self.filters != nil {
             map["Filters"] = self.filters!
         }
+        if self.minScore != nil {
+            map["MinScore"] = self.minScore!
+        }
         if self.page != nil {
             map["Page"] = self.page!
         }
@@ -9545,6 +9558,9 @@ public class PostMSSearchEnhanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Filters") && dict["Filters"] != nil {
             self.filters = dict["Filters"] as! String
+        }
+        if dict.keys.contains("MinScore") && dict["MinScore"] != nil {
+            self.minScore = dict["MinScore"] as! Double
         }
         if dict.keys.contains("Page") && dict["Page"] != nil {
             self.page = dict["Page"] as! Int32
