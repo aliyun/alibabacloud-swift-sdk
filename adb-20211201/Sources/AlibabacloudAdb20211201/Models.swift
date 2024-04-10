@@ -7981,6 +7981,10 @@ public class DescribeApsActionLogsResponse : Tea.TeaModel {
 public class DescribeApsResourceGroupsRequest : Tea.TeaModel {
     public var DBClusterId: String?
 
+    public var regionId: String?
+
+    public var workloadId: String?
+
     public override init() {
         super.init()
     }
@@ -7998,12 +8002,24 @@ public class DescribeApsResourceGroupsRequest : Tea.TeaModel {
         if self.DBClusterId != nil {
             map["DBClusterId"] = self.DBClusterId!
         }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.workloadId != nil {
+            map["WorkloadId"] = self.workloadId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
             self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("WorkloadId") && dict["WorkloadId"] != nil {
+            self.workloadId = dict["WorkloadId"] as! String
         }
     }
 }
