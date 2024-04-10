@@ -1049,6 +1049,8 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
 
             public var summarization: String?
 
+            public var textPolish: String?
+
             public var transcription: String?
 
             public var translation: String?
@@ -1079,6 +1081,9 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 if self.summarization != nil {
                     map["Summarization"] = self.summarization!
                 }
+                if self.textPolish != nil {
+                    map["TextPolish"] = self.textPolish!
+                }
                 if self.transcription != nil {
                     map["Transcription"] = self.transcription!
                 }
@@ -1100,6 +1105,9 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Summarization") && dict["Summarization"] != nil {
                     self.summarization = dict["Summarization"] as! String
+                }
+                if dict.keys.contains("TextPolish") && dict["TextPolish"] != nil {
+                    self.textPolish = dict["TextPolish"] as! String
                 }
                 if dict.keys.contains("Transcription") && dict["Transcription"] != nil {
                     self.transcription = dict["Transcription"] as! String
