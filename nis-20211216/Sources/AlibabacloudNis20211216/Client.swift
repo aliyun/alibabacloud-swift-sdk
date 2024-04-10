@@ -241,6 +241,9 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetInternetTupleShrinkRequest = GetInternetTupleShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.cloudIpList)) {
+            request.cloudIpListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.cloudIpList, "CloudIpList", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.instanceList)) {
             request.instanceListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.instanceList, "InstanceList", "json")
         }
@@ -253,6 +256,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.cloudIp)) {
             query["CloudIp"] = request.cloudIp ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cloudIpListShrink)) {
+            query["CloudIpList"] = request.cloudIpListShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.cloudIsp)) {
             query["CloudIsp"] = request.cloudIsp ?? "";

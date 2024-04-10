@@ -1051,6 +1051,8 @@ public class GetInternetTupleRequest : Tea.TeaModel {
 
     public var cloudIp: String?
 
+    public var cloudIpList: [String]?
+
     public var cloudIsp: String?
 
     public var cloudPort: String?
@@ -1109,6 +1111,9 @@ public class GetInternetTupleRequest : Tea.TeaModel {
         }
         if self.cloudIp != nil {
             map["CloudIp"] = self.cloudIp!
+        }
+        if self.cloudIpList != nil {
+            map["CloudIpList"] = self.cloudIpList!
         }
         if self.cloudIsp != nil {
             map["CloudIsp"] = self.cloudIsp!
@@ -1177,6 +1182,9 @@ public class GetInternetTupleRequest : Tea.TeaModel {
         if dict.keys.contains("CloudIp") && dict["CloudIp"] != nil {
             self.cloudIp = dict["CloudIp"] as! String
         }
+        if dict.keys.contains("CloudIpList") && dict["CloudIpList"] != nil {
+            self.cloudIpList = dict["CloudIpList"] as! [String]
+        }
         if dict.keys.contains("CloudIsp") && dict["CloudIsp"] != nil {
             self.cloudIsp = dict["CloudIsp"] as! String
         }
@@ -1241,6 +1249,8 @@ public class GetInternetTupleShrinkRequest : Tea.TeaModel {
 
     public var cloudIp: String?
 
+    public var cloudIpListShrink: String?
+
     public var cloudIsp: String?
 
     public var cloudPort: String?
@@ -1299,6 +1309,9 @@ public class GetInternetTupleShrinkRequest : Tea.TeaModel {
         }
         if self.cloudIp != nil {
             map["CloudIp"] = self.cloudIp!
+        }
+        if self.cloudIpListShrink != nil {
+            map["CloudIpList"] = self.cloudIpListShrink!
         }
         if self.cloudIsp != nil {
             map["CloudIsp"] = self.cloudIsp!
@@ -1366,6 +1379,9 @@ public class GetInternetTupleShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("CloudIp") && dict["CloudIp"] != nil {
             self.cloudIp = dict["CloudIp"] as! String
+        }
+        if dict.keys.contains("CloudIpList") && dict["CloudIpList"] != nil {
+            self.cloudIpListShrink = dict["CloudIpList"] as! String
         }
         if dict.keys.contains("CloudIsp") && dict["CloudIsp"] != nil {
             self.cloudIsp = dict["CloudIsp"] as! String
