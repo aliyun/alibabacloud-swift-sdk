@@ -86794,6 +86794,8 @@ public class ImportImageRequest : Tea.TeaModel {
 
     public var roleName: String?
 
+    public var storageLocationArn: String?
+
     public var tag: [ImportImageRequest.Tag]?
 
     public override init() {
@@ -86859,6 +86861,9 @@ public class ImportImageRequest : Tea.TeaModel {
         if self.roleName != nil {
             map["RoleName"] = self.roleName!
         }
+        if self.storageLocationArn != nil {
+            map["StorageLocationArn"] = self.storageLocationArn!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -86922,6 +86927,9 @@ public class ImportImageRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RoleName") && dict["RoleName"] != nil {
             self.roleName = dict["RoleName"] as! String
+        }
+        if dict.keys.contains("StorageLocationArn") && dict["StorageLocationArn"] != nil {
+            self.storageLocationArn = dict["StorageLocationArn"] as! String
         }
         if dict.keys.contains("Tag") && dict["Tag"] != nil {
             var tmp : [ImportImageRequest.Tag] = []
