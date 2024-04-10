@@ -44718,9 +44718,13 @@ public class ListListenersByConfigResponseBody : Tea.TeaModel {
     public class Listeners : Tea.TeaModel {
         public var ip: String?
 
+        public var labels: [String: String]?
+
         public var md5: String?
 
         public var status: String?
+
+        public var version: String?
 
         public override init() {
             super.init()
@@ -44739,11 +44743,17 @@ public class ListListenersByConfigResponseBody : Tea.TeaModel {
             if self.ip != nil {
                 map["Ip"] = self.ip!
             }
+            if self.labels != nil {
+                map["Labels"] = self.labels!
+            }
             if self.md5 != nil {
                 map["Md5"] = self.md5!
             }
             if self.status != nil {
                 map["Status"] = self.status!
+            }
+            if self.version != nil {
+                map["Version"] = self.version!
             }
             return map
         }
@@ -44752,11 +44762,17 @@ public class ListListenersByConfigResponseBody : Tea.TeaModel {
             if dict.keys.contains("Ip") && dict["Ip"] != nil {
                 self.ip = dict["Ip"] as! String
             }
+            if dict.keys.contains("Labels") && dict["Labels"] != nil {
+                self.labels = dict["Labels"] as! [String: String]
+            }
             if dict.keys.contains("Md5") && dict["Md5"] != nil {
                 self.md5 = dict["Md5"] as! String
             }
             if dict.keys.contains("Status") && dict["Status"] != nil {
                 self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Version") && dict["Version"] != nil {
+                self.version = dict["Version"] as! String
             }
         }
     }
@@ -44984,6 +45000,8 @@ public class ListListenersByIpResponseBody : Tea.TeaModel {
 
         public var md5: String?
 
+        public var namespaceId: String?
+
         public override init() {
             super.init()
         }
@@ -45007,6 +45025,9 @@ public class ListListenersByIpResponseBody : Tea.TeaModel {
             if self.md5 != nil {
                 map["Md5"] = self.md5!
             }
+            if self.namespaceId != nil {
+                map["NamespaceId"] = self.namespaceId!
+            }
             return map
         }
 
@@ -45019,6 +45040,9 @@ public class ListListenersByIpResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Md5") && dict["Md5"] != nil {
                 self.md5 = dict["Md5"] as! String
+            }
+            if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
+                self.namespaceId = dict["NamespaceId"] as! String
             }
         }
     }
