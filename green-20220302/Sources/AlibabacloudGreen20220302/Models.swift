@@ -895,6 +895,53 @@ public class DescribeImageResultExtResponseBody : Tea.TeaModel {
             }
         }
         public class TextInImage : Tea.TeaModel {
+            public class CustomTexts : Tea.TeaModel {
+                public var keyWords: String?
+
+                public var libId: String?
+
+                public var libName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.keyWords != nil {
+                        map["KeyWords"] = self.keyWords!
+                    }
+                    if self.libId != nil {
+                        map["LibId"] = self.libId!
+                    }
+                    if self.libName != nil {
+                        map["LibName"] = self.libName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("KeyWords") && dict["KeyWords"] != nil {
+                        self.keyWords = dict["KeyWords"] as! String
+                    }
+                    if dict.keys.contains("LibId") && dict["LibId"] != nil {
+                        self.libId = dict["LibId"] as! String
+                    }
+                    if dict.keys.contains("LibName") && dict["LibName"] != nil {
+                        self.libName = dict["LibName"] as! String
+                    }
+                }
+            }
+            public var customTexts: [DescribeImageResultExtResponseBody.Data.TextInImage.CustomTexts]?
+
             public var ocrDatas: [String]?
 
             public var riskWords: [String]?
@@ -913,6 +960,13 @@ public class DescribeImageResultExtResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.customTexts != nil {
+                    var tmp : [Any] = []
+                    for k in self.customTexts! {
+                        tmp.append(k.toMap())
+                    }
+                    map["CustomTexts"] = tmp
+                }
                 if self.ocrDatas != nil {
                     map["OcrDatas"] = self.ocrDatas!
                 }
@@ -923,6 +977,17 @@ public class DescribeImageResultExtResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CustomTexts") && dict["CustomTexts"] != nil {
+                    var tmp : [DescribeImageResultExtResponseBody.Data.TextInImage.CustomTexts] = []
+                    for v in dict["CustomTexts"] as! [Any] {
+                        var model = DescribeImageResultExtResponseBody.Data.TextInImage.CustomTexts()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.customTexts = tmp
+                }
                 if dict.keys.contains("OcrDatas") && dict["OcrDatas"] != nil {
                     self.ocrDatas = dict["OcrDatas"] as! [String]
                 }
