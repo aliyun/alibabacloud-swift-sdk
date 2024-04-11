@@ -46501,9 +46501,15 @@ public class DescribePriceResponseBody : Tea.TeaModel {
 
         public var discountPrice: Double?
 
+        public var orderLines: String?
+
         public var originalPrice: Double?
 
         public var ruleIds: DescribePriceResponseBody.PriceInfo.RuleIds?
+
+        public var tradeMaxRCUAmount: Double?
+
+        public var tradeMinRCUAmount: Double?
 
         public var tradePrice: Double?
 
@@ -46536,11 +46542,20 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if self.discountPrice != nil {
                 map["DiscountPrice"] = self.discountPrice!
             }
+            if self.orderLines != nil {
+                map["OrderLines"] = self.orderLines!
+            }
             if self.originalPrice != nil {
                 map["OriginalPrice"] = self.originalPrice!
             }
             if self.ruleIds != nil {
                 map["RuleIds"] = self.ruleIds?.toMap()
+            }
+            if self.tradeMaxRCUAmount != nil {
+                map["TradeMaxRCUAmount"] = self.tradeMaxRCUAmount!
+            }
+            if self.tradeMinRCUAmount != nil {
+                map["TradeMinRCUAmount"] = self.tradeMinRCUAmount!
             }
             if self.tradePrice != nil {
                 map["TradePrice"] = self.tradePrice!
@@ -46565,6 +46580,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("DiscountPrice") && dict["DiscountPrice"] != nil {
                 self.discountPrice = dict["DiscountPrice"] as! Double
             }
+            if dict.keys.contains("OrderLines") && dict["OrderLines"] != nil {
+                self.orderLines = dict["OrderLines"] as! String
+            }
             if dict.keys.contains("OriginalPrice") && dict["OriginalPrice"] != nil {
                 self.originalPrice = dict["OriginalPrice"] as! Double
             }
@@ -46572,6 +46590,12 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                 var model = DescribePriceResponseBody.PriceInfo.RuleIds()
                 model.fromMap(dict["RuleIds"] as! [String: Any])
                 self.ruleIds = model
+            }
+            if dict.keys.contains("TradeMaxRCUAmount") && dict["TradeMaxRCUAmount"] != nil {
+                self.tradeMaxRCUAmount = dict["TradeMaxRCUAmount"] as! Double
+            }
+            if dict.keys.contains("TradeMinRCUAmount") && dict["TradeMinRCUAmount"] != nil {
+                self.tradeMinRCUAmount = dict["TradeMinRCUAmount"] as! Double
             }
             if dict.keys.contains("TradePrice") && dict["TradePrice"] != nil {
                 self.tradePrice = dict["TradePrice"] as! Double
@@ -46664,11 +46688,116 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ServerlessPrice : Tea.TeaModel {
+        public var RCUDiscountMaxAmount: Double?
+
+        public var RCUDiscountMinAmount: Double?
+
+        public var RCUOriginalMaxAmount: Double?
+
+        public var RCUOriginalMinAmount: Double?
+
+        public var storageOriginalAmount: Double?
+
+        public var totalOriginalMaxAmount: Double?
+
+        public var totalOriginalMinAmount: Double?
+
+        public var tradeMaxRCUAmount: Double?
+
+        public var tradeMinRCUAmount: Double?
+
+        public var storageDiscountAmount: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.RCUDiscountMaxAmount != nil {
+                map["RCUDiscountMaxAmount"] = self.RCUDiscountMaxAmount!
+            }
+            if self.RCUDiscountMinAmount != nil {
+                map["RCUDiscountMinAmount"] = self.RCUDiscountMinAmount!
+            }
+            if self.RCUOriginalMaxAmount != nil {
+                map["RCUOriginalMaxAmount"] = self.RCUOriginalMaxAmount!
+            }
+            if self.RCUOriginalMinAmount != nil {
+                map["RCUOriginalMinAmount"] = self.RCUOriginalMinAmount!
+            }
+            if self.storageOriginalAmount != nil {
+                map["StorageOriginalAmount"] = self.storageOriginalAmount!
+            }
+            if self.totalOriginalMaxAmount != nil {
+                map["TotalOriginalMaxAmount"] = self.totalOriginalMaxAmount!
+            }
+            if self.totalOriginalMinAmount != nil {
+                map["TotalOriginalMinAmount"] = self.totalOriginalMinAmount!
+            }
+            if self.tradeMaxRCUAmount != nil {
+                map["TradeMaxRCUAmount"] = self.tradeMaxRCUAmount!
+            }
+            if self.tradeMinRCUAmount != nil {
+                map["TradeMinRCUAmount"] = self.tradeMinRCUAmount!
+            }
+            if self.storageDiscountAmount != nil {
+                map["storageDiscountAmount"] = self.storageDiscountAmount!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("RCUDiscountMaxAmount") && dict["RCUDiscountMaxAmount"] != nil {
+                self.RCUDiscountMaxAmount = dict["RCUDiscountMaxAmount"] as! Double
+            }
+            if dict.keys.contains("RCUDiscountMinAmount") && dict["RCUDiscountMinAmount"] != nil {
+                self.RCUDiscountMinAmount = dict["RCUDiscountMinAmount"] as! Double
+            }
+            if dict.keys.contains("RCUOriginalMaxAmount") && dict["RCUOriginalMaxAmount"] != nil {
+                self.RCUOriginalMaxAmount = dict["RCUOriginalMaxAmount"] as! Double
+            }
+            if dict.keys.contains("RCUOriginalMinAmount") && dict["RCUOriginalMinAmount"] != nil {
+                self.RCUOriginalMinAmount = dict["RCUOriginalMinAmount"] as! Double
+            }
+            if dict.keys.contains("StorageOriginalAmount") && dict["StorageOriginalAmount"] != nil {
+                self.storageOriginalAmount = dict["StorageOriginalAmount"] as! Double
+            }
+            if dict.keys.contains("TotalOriginalMaxAmount") && dict["TotalOriginalMaxAmount"] != nil {
+                self.totalOriginalMaxAmount = dict["TotalOriginalMaxAmount"] as! Double
+            }
+            if dict.keys.contains("TotalOriginalMinAmount") && dict["TotalOriginalMinAmount"] != nil {
+                self.totalOriginalMinAmount = dict["TotalOriginalMinAmount"] as! Double
+            }
+            if dict.keys.contains("TradeMaxRCUAmount") && dict["TradeMaxRCUAmount"] != nil {
+                self.tradeMaxRCUAmount = dict["TradeMaxRCUAmount"] as! Double
+            }
+            if dict.keys.contains("TradeMinRCUAmount") && dict["TradeMinRCUAmount"] != nil {
+                self.tradeMinRCUAmount = dict["TradeMinRCUAmount"] as! Double
+            }
+            if dict.keys.contains("storageDiscountAmount") && dict["storageDiscountAmount"] != nil {
+                self.storageDiscountAmount = dict["storageDiscountAmount"] as! Double
+            }
+        }
+    }
+    public var orderParams: String?
+
     public var priceInfo: DescribePriceResponseBody.PriceInfo?
 
     public var requestId: String?
 
     public var rules: DescribePriceResponseBody.Rules?
+
+    public var serverlessPrice: DescribePriceResponseBody.ServerlessPrice?
 
     public var showDiscount: Bool?
 
@@ -46688,10 +46817,14 @@ public class DescribePriceResponseBody : Tea.TeaModel {
     public override func validate() throws -> Void {
         try self.priceInfo?.validate()
         try self.rules?.validate()
+        try self.serverlessPrice?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.orderParams != nil {
+            map["OrderParams"] = self.orderParams!
+        }
         if self.priceInfo != nil {
             map["PriceInfo"] = self.priceInfo?.toMap()
         }
@@ -46700,6 +46833,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
         }
         if self.rules != nil {
             map["Rules"] = self.rules?.toMap()
+        }
+        if self.serverlessPrice != nil {
+            map["ServerlessPrice"] = self.serverlessPrice?.toMap()
         }
         if self.showDiscount != nil {
             map["ShowDiscount"] = self.showDiscount!
@@ -46714,6 +46850,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderParams") && dict["OrderParams"] != nil {
+            self.orderParams = dict["OrderParams"] as! String
+        }
         if dict.keys.contains("PriceInfo") && dict["PriceInfo"] != nil {
             var model = DescribePriceResponseBody.PriceInfo()
             model.fromMap(dict["PriceInfo"] as! [String: Any])
@@ -46726,6 +46865,11 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             var model = DescribePriceResponseBody.Rules()
             model.fromMap(dict["Rules"] as! [String: Any])
             self.rules = model
+        }
+        if dict.keys.contains("ServerlessPrice") && dict["ServerlessPrice"] != nil {
+            var model = DescribePriceResponseBody.ServerlessPrice()
+            model.fromMap(dict["ServerlessPrice"] as! [String: Any])
+            self.serverlessPrice = model
         }
         if dict.keys.contains("ShowDiscount") && dict["ShowDiscount"] != nil {
             self.showDiscount = dict["ShowDiscount"] as! Bool
