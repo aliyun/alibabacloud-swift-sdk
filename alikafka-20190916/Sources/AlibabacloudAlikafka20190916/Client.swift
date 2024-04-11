@@ -199,8 +199,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func createPostPayOrderWithOptions(_ request: CreatePostPayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePostPayOrderResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func createPostPayOrderWithOptions(_ tmpReq: CreatePostPayOrderRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreatePostPayOrderResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreatePostPayOrderShrinkRequest = CreatePostPayOrderShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serverlessConfig)) {
+            request.serverlessConfigShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serverlessConfig, "ServerlessConfig", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.deployType)) {
             query["DeployType"] = request.deployType!;
@@ -220,6 +225,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ioMaxSpec)) {
             query["IoMaxSpec"] = request.ioMaxSpec ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.paidType)) {
+            query["PaidType"] = request.paidType!;
+        }
         if (!TeaUtils.Client.isUnset(request.partitionNum)) {
             query["PartitionNum"] = request.partitionNum!;
         }
@@ -228,6 +236,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessConfigShrink)) {
+            query["ServerlessConfig"] = request.serverlessConfigShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.specType)) {
             query["SpecType"] = request.specType ?? "";
