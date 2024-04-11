@@ -2946,7 +2946,11 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
     }
     public var acceptLanguage: String?
 
+    public var authResourceConfig: String?
+
     public var authResourceList: [AddGatewayAuthRequest.AuthResourceList]?
+
+    public var authResourceMode: Int32?
 
     public var clientId: String?
 
@@ -3004,12 +3008,18 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.authResourceConfig != nil {
+            map["AuthResourceConfig"] = self.authResourceConfig!
+        }
         if self.authResourceList != nil {
             var tmp : [Any] = []
             for k in self.authResourceList! {
                 tmp.append(k.toMap())
             }
             map["AuthResourceList"] = tmp
+        }
+        if self.authResourceMode != nil {
+            map["AuthResourceMode"] = self.authResourceMode!
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
@@ -3075,6 +3085,9 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
         }
+        if dict.keys.contains("AuthResourceConfig") && dict["AuthResourceConfig"] != nil {
+            self.authResourceConfig = dict["AuthResourceConfig"] as! String
+        }
         if dict.keys.contains("AuthResourceList") && dict["AuthResourceList"] != nil {
             var tmp : [AddGatewayAuthRequest.AuthResourceList] = []
             for v in dict["AuthResourceList"] as! [Any] {
@@ -3085,6 +3098,9 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.authResourceList = tmp
+        }
+        if dict.keys.contains("AuthResourceMode") && dict["AuthResourceMode"] != nil {
+            self.authResourceMode = dict["AuthResourceMode"] as! Int32
         }
         if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
             self.clientId = dict["ClientId"] as! String
@@ -3151,7 +3167,11 @@ public class AddGatewayAuthRequest : Tea.TeaModel {
 public class AddGatewayAuthShrinkRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
+    public var authResourceConfig: String?
+
     public var authResourceListShrink: String?
+
+    public var authResourceMode: Int32?
 
     public var clientId: String?
 
@@ -3208,8 +3228,14 @@ public class AddGatewayAuthShrinkRequest : Tea.TeaModel {
         if self.acceptLanguage != nil {
             map["AcceptLanguage"] = self.acceptLanguage!
         }
+        if self.authResourceConfig != nil {
+            map["AuthResourceConfig"] = self.authResourceConfig!
+        }
         if self.authResourceListShrink != nil {
             map["AuthResourceList"] = self.authResourceListShrink!
+        }
+        if self.authResourceMode != nil {
+            map["AuthResourceMode"] = self.authResourceMode!
         }
         if self.clientId != nil {
             map["ClientId"] = self.clientId!
@@ -3275,8 +3301,14 @@ public class AddGatewayAuthShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
             self.acceptLanguage = dict["AcceptLanguage"] as! String
         }
+        if dict.keys.contains("AuthResourceConfig") && dict["AuthResourceConfig"] != nil {
+            self.authResourceConfig = dict["AuthResourceConfig"] as! String
+        }
         if dict.keys.contains("AuthResourceList") && dict["AuthResourceList"] != nil {
             self.authResourceListShrink = dict["AuthResourceList"] as! String
+        }
+        if dict.keys.contains("AuthResourceMode") && dict["AuthResourceMode"] != nil {
+            self.authResourceMode = dict["AuthResourceMode"] as! Int32
         }
         if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
             self.clientId = dict["ClientId"] as! String
@@ -21976,6 +22008,10 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var authResourceConfig: String?
+
+        public var authResourceMode: Int32?
+
         public var clientId: String?
 
         public var clientSecret: String?
@@ -22039,6 +22075,12 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.authResourceConfig != nil {
+                map["AuthResourceConfig"] = self.authResourceConfig!
+            }
+            if self.authResourceMode != nil {
+                map["AuthResourceMode"] = self.authResourceMode!
+            }
             if self.clientId != nil {
                 map["ClientId"] = self.clientId!
             }
@@ -22119,6 +22161,12 @@ public class GetGatewayAuthDetailResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AuthResourceConfig") && dict["AuthResourceConfig"] != nil {
+                self.authResourceConfig = dict["AuthResourceConfig"] as! String
+            }
+            if dict.keys.contains("AuthResourceMode") && dict["AuthResourceMode"] != nil {
+                self.authResourceMode = dict["AuthResourceMode"] as! Int32
+            }
             if dict.keys.contains("ClientId") && dict["ClientId"] != nil {
                 self.clientId = dict["ClientId"] as! String
             }

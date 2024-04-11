@@ -317,8 +317,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
             query["AcceptLanguage"] = request.acceptLanguage ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.authResourceConfig)) {
+            query["AuthResourceConfig"] = request.authResourceConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.authResourceListShrink)) {
             query["AuthResourceList"] = request.authResourceListShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.authResourceMode)) {
+            query["AuthResourceMode"] = request.authResourceMode!;
         }
         if (!TeaUtils.Client.isUnset(request.clientId)) {
             query["ClientId"] = request.clientId ?? "";
