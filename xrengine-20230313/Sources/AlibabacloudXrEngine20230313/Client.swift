@@ -2456,6 +2456,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.jwtToken)) {
             body["JwtToken"] = request.jwtToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.selectedBoxIndex)) {
+            body["SelectedBoxIndex"] = request.selectedBoxIndex!;
+        }
         if (!TeaUtils.Client.isUnset(request.title)) {
             body["Title"] = request.title ?? "";
         }

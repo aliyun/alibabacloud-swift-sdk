@@ -24508,6 +24508,8 @@ public class QueryMotionShopVideoDetectResultResponseBody : Tea.TeaModel {
 
             public var coverUrl: String?
 
+            public var humanBoxes: [[Double]]?
+
             public var message: String?
 
             public var selectedFrameIndex: Int32?
@@ -24535,6 +24537,9 @@ public class QueryMotionShopVideoDetectResultResponseBody : Tea.TeaModel {
                 if self.coverUrl != nil {
                     map["CoverUrl"] = self.coverUrl!
                 }
+                if self.humanBoxes != nil {
+                    map["HumanBoxes"] = self.humanBoxes!
+                }
                 if self.message != nil {
                     map["Message"] = self.message!
                 }
@@ -24553,6 +24558,9 @@ public class QueryMotionShopVideoDetectResultResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("CoverUrl") && dict["CoverUrl"] != nil {
                     self.coverUrl = dict["CoverUrl"] as! String
+                }
+                if dict.keys.contains("HumanBoxes") && dict["HumanBoxes"] != nil {
+                    self.humanBoxes = dict["HumanBoxes"] as! [[Double]]
                 }
                 if dict.keys.contains("Message") && dict["Message"] != nil {
                     self.message = dict["Message"] as! String
@@ -24884,6 +24892,8 @@ public class SubmitMotionShopTaskRequest : Tea.TeaModel {
 
     public var jwtToken: String?
 
+    public var selectedBoxIndex: Int32?
+
     public var title: String?
 
     public var videoId: String?
@@ -24908,6 +24918,9 @@ public class SubmitMotionShopTaskRequest : Tea.TeaModel {
         if self.jwtToken != nil {
             map["JwtToken"] = self.jwtToken!
         }
+        if self.selectedBoxIndex != nil {
+            map["SelectedBoxIndex"] = self.selectedBoxIndex!
+        }
         if self.title != nil {
             map["Title"] = self.title!
         }
@@ -24923,6 +24936,9 @@ public class SubmitMotionShopTaskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("JwtToken") && dict["JwtToken"] != nil {
             self.jwtToken = dict["JwtToken"] as! String
+        }
+        if dict.keys.contains("SelectedBoxIndex") && dict["SelectedBoxIndex"] != nil {
+            self.selectedBoxIndex = dict["SelectedBoxIndex"] as! Int32
         }
         if dict.keys.contains("Title") && dict["Title"] != nil {
             self.title = dict["Title"] as! String
