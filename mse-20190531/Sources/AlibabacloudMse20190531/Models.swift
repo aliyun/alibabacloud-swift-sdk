@@ -9819,6 +9819,661 @@ public class CreateFlowRuleResponse : Tea.TeaModel {
     }
 }
 
+public class CreateGatewayCircuitBreakerRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var behaviorType: Int32?
+
+    public var bodyEncoding: Int32?
+
+    public var enable: Int32?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var maxAllowedMs: Int32?
+
+    public var minRequestAmount: Int32?
+
+    public var recoveryTimeoutSec: Int32?
+
+    public var responseContentBody: String?
+
+    public var responseRedirectUrl: String?
+
+    public var responseStatusCode: Int32?
+
+    public var routeId: Int64?
+
+    public var routeName: String?
+
+    public var statDurationSec: Int32?
+
+    public var strategy: Int32?
+
+    public var triggerRatio: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.behaviorType != nil {
+            map["BehaviorType"] = self.behaviorType!
+        }
+        if self.bodyEncoding != nil {
+            map["BodyEncoding"] = self.bodyEncoding!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.maxAllowedMs != nil {
+            map["MaxAllowedMs"] = self.maxAllowedMs!
+        }
+        if self.minRequestAmount != nil {
+            map["MinRequestAmount"] = self.minRequestAmount!
+        }
+        if self.recoveryTimeoutSec != nil {
+            map["RecoveryTimeoutSec"] = self.recoveryTimeoutSec!
+        }
+        if self.responseContentBody != nil {
+            map["ResponseContentBody"] = self.responseContentBody!
+        }
+        if self.responseRedirectUrl != nil {
+            map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+        }
+        if self.responseStatusCode != nil {
+            map["ResponseStatusCode"] = self.responseStatusCode!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.routeName != nil {
+            map["RouteName"] = self.routeName!
+        }
+        if self.statDurationSec != nil {
+            map["StatDurationSec"] = self.statDurationSec!
+        }
+        if self.strategy != nil {
+            map["Strategy"] = self.strategy!
+        }
+        if self.triggerRatio != nil {
+            map["TriggerRatio"] = self.triggerRatio!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+            self.behaviorType = dict["BehaviorType"] as! Int32
+        }
+        if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+            self.bodyEncoding = dict["BodyEncoding"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Int32
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("MaxAllowedMs") && dict["MaxAllowedMs"] != nil {
+            self.maxAllowedMs = dict["MaxAllowedMs"] as! Int32
+        }
+        if dict.keys.contains("MinRequestAmount") && dict["MinRequestAmount"] != nil {
+            self.minRequestAmount = dict["MinRequestAmount"] as! Int32
+        }
+        if dict.keys.contains("RecoveryTimeoutSec") && dict["RecoveryTimeoutSec"] != nil {
+            self.recoveryTimeoutSec = dict["RecoveryTimeoutSec"] as! Int32
+        }
+        if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+            self.responseContentBody = dict["ResponseContentBody"] as! String
+        }
+        if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+            self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+        }
+        if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+            self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+            self.routeName = dict["RouteName"] as! String
+        }
+        if dict.keys.contains("StatDurationSec") && dict["StatDurationSec"] != nil {
+            self.statDurationSec = dict["StatDurationSec"] as! Int32
+        }
+        if dict.keys.contains("Strategy") && dict["Strategy"] != nil {
+            self.strategy = dict["Strategy"] as! Int32
+        }
+        if dict.keys.contains("TriggerRatio") && dict["TriggerRatio"] != nil {
+            self.triggerRatio = dict["TriggerRatio"] as! Int32
+        }
+    }
+}
+
+public class CreateGatewayCircuitBreakerRuleResponseBody : Tea.TeaModel {
+    public var data: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateGatewayCircuitBreakerRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGatewayCircuitBreakerRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateGatewayCircuitBreakerRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateGatewayFlowRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var behaviorType: Int32?
+
+    public var bodyEncoding: Int32?
+
+    public var enable: Int32?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var responseContentBody: String?
+
+    public var responseRedirectUrl: String?
+
+    public var responseStatusCode: Int32?
+
+    public var routeId: Int64?
+
+    public var routeName: String?
+
+    public var threshold: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.behaviorType != nil {
+            map["BehaviorType"] = self.behaviorType!
+        }
+        if self.bodyEncoding != nil {
+            map["BodyEncoding"] = self.bodyEncoding!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.responseContentBody != nil {
+            map["ResponseContentBody"] = self.responseContentBody!
+        }
+        if self.responseRedirectUrl != nil {
+            map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+        }
+        if self.responseStatusCode != nil {
+            map["ResponseStatusCode"] = self.responseStatusCode!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.routeName != nil {
+            map["RouteName"] = self.routeName!
+        }
+        if self.threshold != nil {
+            map["Threshold"] = self.threshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+            self.behaviorType = dict["BehaviorType"] as! Int32
+        }
+        if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+            self.bodyEncoding = dict["BodyEncoding"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Int32
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+            self.responseContentBody = dict["ResponseContentBody"] as! String
+        }
+        if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+            self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+        }
+        if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+            self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+            self.routeName = dict["RouteName"] as! String
+        }
+        if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+            self.threshold = dict["Threshold"] as! Int32
+        }
+    }
+}
+
+public class CreateGatewayFlowRuleResponseBody : Tea.TeaModel {
+    public var data: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateGatewayFlowRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGatewayFlowRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateGatewayFlowRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class CreateGatewayIsolationRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var behaviorType: Int32?
+
+    public var bodyEncoding: Int32?
+
+    public var enable: Int32?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var maxConcurrency: Int32?
+
+    public var responseContentBody: String?
+
+    public var responseRedirectUrl: String?
+
+    public var responseStatusCode: Int32?
+
+    public var routeId: Int64?
+
+    public var routeName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.behaviorType != nil {
+            map["BehaviorType"] = self.behaviorType!
+        }
+        if self.bodyEncoding != nil {
+            map["BodyEncoding"] = self.bodyEncoding!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.maxConcurrency != nil {
+            map["MaxConcurrency"] = self.maxConcurrency!
+        }
+        if self.responseContentBody != nil {
+            map["ResponseContentBody"] = self.responseContentBody!
+        }
+        if self.responseRedirectUrl != nil {
+            map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+        }
+        if self.responseStatusCode != nil {
+            map["ResponseStatusCode"] = self.responseStatusCode!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.routeName != nil {
+            map["RouteName"] = self.routeName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+            self.behaviorType = dict["BehaviorType"] as! Int32
+        }
+        if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+            self.bodyEncoding = dict["BodyEncoding"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Int32
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
+            self.maxConcurrency = dict["MaxConcurrency"] as! Int32
+        }
+        if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+            self.responseContentBody = dict["ResponseContentBody"] as! String
+        }
+        if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+            self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+        }
+        if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+            self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+            self.routeName = dict["RouteName"] as! String
+        }
+    }
+}
+
+public class CreateGatewayIsolationRuleResponseBody : Tea.TeaModel {
+    public var data: Int64?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Int64
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateGatewayIsolationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateGatewayIsolationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateGatewayIsolationRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateIsolationRuleRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -14722,6 +15377,147 @@ public class DeleteGatewayAuthConsumerResourceResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteGatewayCircuitBreakerRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public var routeId: Int64?
+
+    public var ruleId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+    }
+}
+
+public class DeleteGatewayCircuitBreakerRuleResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteGatewayCircuitBreakerRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteGatewayCircuitBreakerRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteGatewayCircuitBreakerRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteGatewayDomainRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -14977,6 +15773,288 @@ public class DeleteGatewayDomainResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteGatewayDomainResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteGatewayFlowRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public var routeId: Int64?
+
+    public var ruleId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+    }
+}
+
+public class DeleteGatewayFlowRuleResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteGatewayFlowRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteGatewayFlowRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteGatewayFlowRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteGatewayIsolationRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var gatewayUniqueId: String?
+
+    public var routeId: Int64?
+
+    public var ruleId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! Int64
+        }
+    }
+}
+
+public class DeleteGatewayIsolationRuleResponseBody : Tea.TeaModel {
+    public var data: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteGatewayIsolationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteGatewayIsolationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteGatewayIsolationRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -40575,6 +41653,581 @@ public class ListGatewayAuthConsumerResourceResponse : Tea.TeaModel {
     }
 }
 
+public class ListGatewayCircuitBreakerRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var filterParams: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.filterParams != nil {
+            map["FilterParams"] = self.filterParams!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("FilterParams") && dict["FilterParams"] != nil {
+            self.filterParams = dict["FilterParams"] as! String
+        }
+    }
+}
+
+public class ListGatewayCircuitBreakerRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var behaviorType: Int32?
+
+            public var bodyEncoding: Int32?
+
+            public var enable: Int32?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var id: Int64?
+
+            public var idList: [Int64]?
+
+            public var limitMode: Int32?
+
+            public var maxAllowedMs: Int32?
+
+            public var minRequestAmount: Int32?
+
+            public var recoveryTimeoutSec: Int32?
+
+            public var responseAdditionalHeaders: String?
+
+            public var responseContentBody: String?
+
+            public var responseRedirectUrl: String?
+
+            public var responseStatusCode: Int32?
+
+            public var routeId: Int64?
+
+            public var routeName: String?
+
+            public var statDurationSec: Int32?
+
+            public var strategy: Int32?
+
+            public var triggerRatio: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.behaviorType != nil {
+                    map["BehaviorType"] = self.behaviorType!
+                }
+                if self.bodyEncoding != nil {
+                    map["BodyEncoding"] = self.bodyEncoding!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.idList != nil {
+                    map["IdList"] = self.idList!
+                }
+                if self.limitMode != nil {
+                    map["LimitMode"] = self.limitMode!
+                }
+                if self.maxAllowedMs != nil {
+                    map["MaxAllowedMs"] = self.maxAllowedMs!
+                }
+                if self.minRequestAmount != nil {
+                    map["MinRequestAmount"] = self.minRequestAmount!
+                }
+                if self.recoveryTimeoutSec != nil {
+                    map["RecoveryTimeoutSec"] = self.recoveryTimeoutSec!
+                }
+                if self.responseAdditionalHeaders != nil {
+                    map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+                }
+                if self.responseContentBody != nil {
+                    map["ResponseContentBody"] = self.responseContentBody!
+                }
+                if self.responseRedirectUrl != nil {
+                    map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+                }
+                if self.responseStatusCode != nil {
+                    map["ResponseStatusCode"] = self.responseStatusCode!
+                }
+                if self.routeId != nil {
+                    map["RouteId"] = self.routeId!
+                }
+                if self.routeName != nil {
+                    map["RouteName"] = self.routeName!
+                }
+                if self.statDurationSec != nil {
+                    map["StatDurationSec"] = self.statDurationSec!
+                }
+                if self.strategy != nil {
+                    map["Strategy"] = self.strategy!
+                }
+                if self.triggerRatio != nil {
+                    map["TriggerRatio"] = self.triggerRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                    self.behaviorType = dict["BehaviorType"] as! Int32
+                }
+                if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                    self.bodyEncoding = dict["BodyEncoding"] as! Int32
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Int32
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                    self.idList = dict["IdList"] as! [Int64]
+                }
+                if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                    self.limitMode = dict["LimitMode"] as! Int32
+                }
+                if dict.keys.contains("MaxAllowedMs") && dict["MaxAllowedMs"] != nil {
+                    self.maxAllowedMs = dict["MaxAllowedMs"] as! Int32
+                }
+                if dict.keys.contains("MinRequestAmount") && dict["MinRequestAmount"] != nil {
+                    self.minRequestAmount = dict["MinRequestAmount"] as! Int32
+                }
+                if dict.keys.contains("RecoveryTimeoutSec") && dict["RecoveryTimeoutSec"] != nil {
+                    self.recoveryTimeoutSec = dict["RecoveryTimeoutSec"] as! Int32
+                }
+                if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                    self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+                }
+                if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                    self.responseContentBody = dict["ResponseContentBody"] as! String
+                }
+                if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                    self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+                }
+                if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                    self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+                }
+                if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                    self.routeId = dict["RouteId"] as! Int64
+                }
+                if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                    self.routeName = dict["RouteName"] as! String
+                }
+                if dict.keys.contains("StatDurationSec") && dict["StatDurationSec"] != nil {
+                    self.statDurationSec = dict["StatDurationSec"] as! Int32
+                }
+                if dict.keys.contains("Strategy") && dict["Strategy"] != nil {
+                    self.strategy = dict["Strategy"] as! Int32
+                }
+                if dict.keys.contains("TriggerRatio") && dict["TriggerRatio"] != nil {
+                    self.triggerRatio = dict["TriggerRatio"] as! Int32
+                }
+            }
+        }
+        public class Results : Tea.TeaModel {
+            public var behaviorType: Int32?
+
+            public var bodyEncoding: Int32?
+
+            public var enable: Int32?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var id: Int64?
+
+            public var idList: [Int64]?
+
+            public var limitMode: Int32?
+
+            public var maxAllowedMs: Int32?
+
+            public var minRequestAmount: Int32?
+
+            public var recoveryTimeoutSec: Int32?
+
+            public var responseAdditionalHeaders: String?
+
+            public var responseContentBody: String?
+
+            public var responseRedirectUrl: String?
+
+            public var responseStatusCode: Int32?
+
+            public var routeId: Int64?
+
+            public var routeName: String?
+
+            public var statDurationSec: Int32?
+
+            public var strategy: Int32?
+
+            public var triggerRatio: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.behaviorType != nil {
+                    map["BehaviorType"] = self.behaviorType!
+                }
+                if self.bodyEncoding != nil {
+                    map["BodyEncoding"] = self.bodyEncoding!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.idList != nil {
+                    map["IdList"] = self.idList!
+                }
+                if self.limitMode != nil {
+                    map["LimitMode"] = self.limitMode!
+                }
+                if self.maxAllowedMs != nil {
+                    map["MaxAllowedMs"] = self.maxAllowedMs!
+                }
+                if self.minRequestAmount != nil {
+                    map["MinRequestAmount"] = self.minRequestAmount!
+                }
+                if self.recoveryTimeoutSec != nil {
+                    map["RecoveryTimeoutSec"] = self.recoveryTimeoutSec!
+                }
+                if self.responseAdditionalHeaders != nil {
+                    map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+                }
+                if self.responseContentBody != nil {
+                    map["ResponseContentBody"] = self.responseContentBody!
+                }
+                if self.responseRedirectUrl != nil {
+                    map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+                }
+                if self.responseStatusCode != nil {
+                    map["ResponseStatusCode"] = self.responseStatusCode!
+                }
+                if self.routeId != nil {
+                    map["RouteId"] = self.routeId!
+                }
+                if self.routeName != nil {
+                    map["RouteName"] = self.routeName!
+                }
+                if self.statDurationSec != nil {
+                    map["StatDurationSec"] = self.statDurationSec!
+                }
+                if self.strategy != nil {
+                    map["Strategy"] = self.strategy!
+                }
+                if self.triggerRatio != nil {
+                    map["TriggerRatio"] = self.triggerRatio!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                    self.behaviorType = dict["BehaviorType"] as! Int32
+                }
+                if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                    self.bodyEncoding = dict["BodyEncoding"] as! Int32
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Int32
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                    self.idList = dict["IdList"] as! [Int64]
+                }
+                if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                    self.limitMode = dict["LimitMode"] as! Int32
+                }
+                if dict.keys.contains("MaxAllowedMs") && dict["MaxAllowedMs"] != nil {
+                    self.maxAllowedMs = dict["MaxAllowedMs"] as! Int32
+                }
+                if dict.keys.contains("MinRequestAmount") && dict["MinRequestAmount"] != nil {
+                    self.minRequestAmount = dict["MinRequestAmount"] as! Int32
+                }
+                if dict.keys.contains("RecoveryTimeoutSec") && dict["RecoveryTimeoutSec"] != nil {
+                    self.recoveryTimeoutSec = dict["RecoveryTimeoutSec"] as! Int32
+                }
+                if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                    self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+                }
+                if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                    self.responseContentBody = dict["ResponseContentBody"] as! String
+                }
+                if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                    self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+                }
+                if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                    self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+                }
+                if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                    self.routeId = dict["RouteId"] as! Int64
+                }
+                if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                    self.routeName = dict["RouteName"] as! String
+                }
+                if dict.keys.contains("StatDurationSec") && dict["StatDurationSec"] != nil {
+                    self.statDurationSec = dict["StatDurationSec"] as! Int32
+                }
+                if dict.keys.contains("Strategy") && dict["Strategy"] != nil {
+                    self.strategy = dict["Strategy"] as! Int32
+                }
+                if dict.keys.contains("TriggerRatio") && dict["TriggerRatio"] != nil {
+                    self.triggerRatio = dict["TriggerRatio"] as! Int32
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [ListGatewayCircuitBreakerRuleResponseBody.Data.Result]?
+
+        public var results: [ListGatewayCircuitBreakerRuleResponseBody.Data.Results]?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Result") && dict["Result"] != nil {
+                var tmp : [ListGatewayCircuitBreakerRuleResponseBody.Data.Result] = []
+                for v in dict["Result"] as! [Any] {
+                    var model = ListGatewayCircuitBreakerRuleResponseBody.Data.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
+            }
+            if dict.keys.contains("Results") && dict["Results"] != nil {
+                var tmp : [ListGatewayCircuitBreakerRuleResponseBody.Data.Results] = []
+                for v in dict["Results"] as! [Any] {
+                    var model = ListGatewayCircuitBreakerRuleResponseBody.Data.Results()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.results = tmp
+            }
+            if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+                self.totalSize = dict["TotalSize"] as! Int32
+            }
+        }
+    }
+    public var data: ListGatewayCircuitBreakerRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ListGatewayCircuitBreakerRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListGatewayCircuitBreakerRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayCircuitBreakerRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListGatewayCircuitBreakerRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListGatewayDomainRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -40927,6 +42580,980 @@ public class ListGatewayDomainResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListGatewayDomainResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListGatewayFlowRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var filterParams: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.filterParams != nil {
+            map["FilterParams"] = self.filterParams!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("FilterParams") && dict["FilterParams"] != nil {
+            self.filterParams = dict["FilterParams"] as! String
+        }
+    }
+}
+
+public class ListGatewayFlowRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var behaviorType: Int32?
+
+            public var bodyEncoding: Int32?
+
+            public var enable: Int32?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var id: Int64?
+
+            public var responseContentBody: String?
+
+            public var responseRedirectUrl: String?
+
+            public var responseStatusCode: Int32?
+
+            public var routeId: Int64?
+
+            public var routeName: String?
+
+            public var threshold: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.behaviorType != nil {
+                    map["BehaviorType"] = self.behaviorType!
+                }
+                if self.bodyEncoding != nil {
+                    map["BodyEncoding"] = self.bodyEncoding!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.responseContentBody != nil {
+                    map["ResponseContentBody"] = self.responseContentBody!
+                }
+                if self.responseRedirectUrl != nil {
+                    map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+                }
+                if self.responseStatusCode != nil {
+                    map["ResponseStatusCode"] = self.responseStatusCode!
+                }
+                if self.routeId != nil {
+                    map["RouteId"] = self.routeId!
+                }
+                if self.routeName != nil {
+                    map["RouteName"] = self.routeName!
+                }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                    self.behaviorType = dict["BehaviorType"] as! Int32
+                }
+                if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                    self.bodyEncoding = dict["BodyEncoding"] as! Int32
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Int32
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                    self.responseContentBody = dict["ResponseContentBody"] as! String
+                }
+                if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                    self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+                }
+                if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                    self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+                }
+                if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                    self.routeId = dict["RouteId"] as! Int64
+                }
+                if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                    self.routeName = dict["RouteName"] as! String
+                }
+                if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+                    self.threshold = dict["Threshold"] as! Int32
+                }
+            }
+        }
+        public class Results : Tea.TeaModel {
+            public var behaviorType: Int32?
+
+            public var bodyEncoding: Int32?
+
+            public var enable: Int32?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var id: Int64?
+
+            public var idList: [Int64]?
+
+            public var limitMode: Int32?
+
+            public var responseAdditionalHeaders: String?
+
+            public var responseContentBody: String?
+
+            public var responseRedirectUrl: String?
+
+            public var responseStatusCode: Int32?
+
+            public var routeId: Int64?
+
+            public var routeName: String?
+
+            public var statDurationMs: Int32?
+
+            public var threshold: Int32?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.behaviorType != nil {
+                    map["BehaviorType"] = self.behaviorType!
+                }
+                if self.bodyEncoding != nil {
+                    map["BodyEncoding"] = self.bodyEncoding!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.idList != nil {
+                    map["IdList"] = self.idList!
+                }
+                if self.limitMode != nil {
+                    map["LimitMode"] = self.limitMode!
+                }
+                if self.responseAdditionalHeaders != nil {
+                    map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+                }
+                if self.responseContentBody != nil {
+                    map["ResponseContentBody"] = self.responseContentBody!
+                }
+                if self.responseRedirectUrl != nil {
+                    map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+                }
+                if self.responseStatusCode != nil {
+                    map["ResponseStatusCode"] = self.responseStatusCode!
+                }
+                if self.routeId != nil {
+                    map["RouteId"] = self.routeId!
+                }
+                if self.routeName != nil {
+                    map["RouteName"] = self.routeName!
+                }
+                if self.statDurationMs != nil {
+                    map["StatDurationMs"] = self.statDurationMs!
+                }
+                if self.threshold != nil {
+                    map["Threshold"] = self.threshold!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                    self.behaviorType = dict["BehaviorType"] as! Int32
+                }
+                if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                    self.bodyEncoding = dict["BodyEncoding"] as! Int32
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Int32
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                    self.idList = dict["IdList"] as! [Int64]
+                }
+                if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                    self.limitMode = dict["LimitMode"] as! Int32
+                }
+                if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                    self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+                }
+                if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                    self.responseContentBody = dict["ResponseContentBody"] as! String
+                }
+                if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                    self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+                }
+                if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                    self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+                }
+                if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                    self.routeId = dict["RouteId"] as! Int64
+                }
+                if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                    self.routeName = dict["RouteName"] as! String
+                }
+                if dict.keys.contains("StatDurationMs") && dict["StatDurationMs"] != nil {
+                    self.statDurationMs = dict["StatDurationMs"] as! Int32
+                }
+                if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+                    self.threshold = dict["Threshold"] as! Int32
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [ListGatewayFlowRuleResponseBody.Data.Result]?
+
+        public var results: [ListGatewayFlowRuleResponseBody.Data.Results]?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Result") && dict["Result"] != nil {
+                var tmp : [ListGatewayFlowRuleResponseBody.Data.Result] = []
+                for v in dict["Result"] as! [Any] {
+                    var model = ListGatewayFlowRuleResponseBody.Data.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
+            }
+            if dict.keys.contains("Results") && dict["Results"] != nil {
+                var tmp : [ListGatewayFlowRuleResponseBody.Data.Results] = []
+                for v in dict["Results"] as! [Any] {
+                    var model = ListGatewayFlowRuleResponseBody.Data.Results()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.results = tmp
+            }
+            if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+                self.totalSize = dict["TotalSize"] as! Int32
+            }
+        }
+    }
+    public var data: ListGatewayFlowRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ListGatewayFlowRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListGatewayFlowRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayFlowRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListGatewayFlowRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListGatewayIsolationRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var filterParams: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.filterParams != nil {
+            map["FilterParams"] = self.filterParams!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("FilterParams") && dict["FilterParams"] != nil {
+            self.filterParams = dict["FilterParams"] as! String
+        }
+    }
+}
+
+public class ListGatewayIsolationRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class Result : Tea.TeaModel {
+            public var behaviorType: Int32?
+
+            public var bodyEncoding: Int32?
+
+            public var enable: Int32?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var id: Int64?
+
+            public var idList: [Int64]?
+
+            public var limitMode: Int32?
+
+            public var maxConcurrency: Int32?
+
+            public var responseAdditionalHeaders: String?
+
+            public var responseContentBody: String?
+
+            public var responseRedirectUrl: String?
+
+            public var responseStatusCode: Int32?
+
+            public var routeId: Int64?
+
+            public var routeName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.behaviorType != nil {
+                    map["BehaviorType"] = self.behaviorType!
+                }
+                if self.bodyEncoding != nil {
+                    map["BodyEncoding"] = self.bodyEncoding!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.idList != nil {
+                    map["IdList"] = self.idList!
+                }
+                if self.limitMode != nil {
+                    map["LimitMode"] = self.limitMode!
+                }
+                if self.maxConcurrency != nil {
+                    map["MaxConcurrency"] = self.maxConcurrency!
+                }
+                if self.responseAdditionalHeaders != nil {
+                    map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+                }
+                if self.responseContentBody != nil {
+                    map["ResponseContentBody"] = self.responseContentBody!
+                }
+                if self.responseRedirectUrl != nil {
+                    map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+                }
+                if self.responseStatusCode != nil {
+                    map["ResponseStatusCode"] = self.responseStatusCode!
+                }
+                if self.routeId != nil {
+                    map["RouteId"] = self.routeId!
+                }
+                if self.routeName != nil {
+                    map["RouteName"] = self.routeName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                    self.behaviorType = dict["BehaviorType"] as! Int32
+                }
+                if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                    self.bodyEncoding = dict["BodyEncoding"] as! Int32
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Int32
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                    self.idList = dict["IdList"] as! [Int64]
+                }
+                if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                    self.limitMode = dict["LimitMode"] as! Int32
+                }
+                if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
+                    self.maxConcurrency = dict["MaxConcurrency"] as! Int32
+                }
+                if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                    self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+                }
+                if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                    self.responseContentBody = dict["ResponseContentBody"] as! String
+                }
+                if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                    self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+                }
+                if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                    self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+                }
+                if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                    self.routeId = dict["RouteId"] as! Int64
+                }
+                if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                    self.routeName = dict["RouteName"] as! String
+                }
+            }
+        }
+        public class Results : Tea.TeaModel {
+            public var behaviorType: Int32?
+
+            public var bodyEncoding: Int32?
+
+            public var enable: Int32?
+
+            public var gatewayId: Int64?
+
+            public var gatewayUniqueId: String?
+
+            public var id: Int64?
+
+            public var idList: [Int64]?
+
+            public var limitMode: Int32?
+
+            public var maxConcurrency: Int32?
+
+            public var responseAdditionalHeaders: String?
+
+            public var responseContentBody: String?
+
+            public var responseRedirectUrl: String?
+
+            public var responseStatusCode: Int32?
+
+            public var routeId: Int64?
+
+            public var routeName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.behaviorType != nil {
+                    map["BehaviorType"] = self.behaviorType!
+                }
+                if self.bodyEncoding != nil {
+                    map["BodyEncoding"] = self.bodyEncoding!
+                }
+                if self.enable != nil {
+                    map["Enable"] = self.enable!
+                }
+                if self.gatewayId != nil {
+                    map["GatewayId"] = self.gatewayId!
+                }
+                if self.gatewayUniqueId != nil {
+                    map["GatewayUniqueId"] = self.gatewayUniqueId!
+                }
+                if self.id != nil {
+                    map["Id"] = self.id!
+                }
+                if self.idList != nil {
+                    map["IdList"] = self.idList!
+                }
+                if self.limitMode != nil {
+                    map["LimitMode"] = self.limitMode!
+                }
+                if self.maxConcurrency != nil {
+                    map["MaxConcurrency"] = self.maxConcurrency!
+                }
+                if self.responseAdditionalHeaders != nil {
+                    map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+                }
+                if self.responseContentBody != nil {
+                    map["ResponseContentBody"] = self.responseContentBody!
+                }
+                if self.responseRedirectUrl != nil {
+                    map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+                }
+                if self.responseStatusCode != nil {
+                    map["ResponseStatusCode"] = self.responseStatusCode!
+                }
+                if self.routeId != nil {
+                    map["RouteId"] = self.routeId!
+                }
+                if self.routeName != nil {
+                    map["RouteName"] = self.routeName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                    self.behaviorType = dict["BehaviorType"] as! Int32
+                }
+                if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                    self.bodyEncoding = dict["BodyEncoding"] as! Int32
+                }
+                if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                    self.enable = dict["Enable"] as! Int32
+                }
+                if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                    self.gatewayId = dict["GatewayId"] as! Int64
+                }
+                if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                    self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+                }
+                if dict.keys.contains("Id") && dict["Id"] != nil {
+                    self.id = dict["Id"] as! Int64
+                }
+                if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                    self.idList = dict["IdList"] as! [Int64]
+                }
+                if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                    self.limitMode = dict["LimitMode"] as! Int32
+                }
+                if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
+                    self.maxConcurrency = dict["MaxConcurrency"] as! Int32
+                }
+                if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                    self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+                }
+                if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                    self.responseContentBody = dict["ResponseContentBody"] as! String
+                }
+                if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                    self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+                }
+                if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                    self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+                }
+                if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                    self.routeId = dict["RouteId"] as! Int64
+                }
+                if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                    self.routeName = dict["RouteName"] as! String
+                }
+            }
+        }
+        public var pageNumber: Int32?
+
+        public var pageSize: Int32?
+
+        public var result: [ListGatewayIsolationRuleResponseBody.Data.Result]?
+
+        public var results: [ListGatewayIsolationRuleResponseBody.Data.Results]?
+
+        public var totalSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.pageNumber != nil {
+                map["PageNumber"] = self.pageNumber!
+            }
+            if self.pageSize != nil {
+                map["PageSize"] = self.pageSize!
+            }
+            if self.result != nil {
+                var tmp : [Any] = []
+                for k in self.result! {
+                    tmp.append(k.toMap())
+                }
+                map["Result"] = tmp
+            }
+            if self.results != nil {
+                var tmp : [Any] = []
+                for k in self.results! {
+                    tmp.append(k.toMap())
+                }
+                map["Results"] = tmp
+            }
+            if self.totalSize != nil {
+                map["TotalSize"] = self.totalSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+                self.pageNumber = dict["PageNumber"] as! Int32
+            }
+            if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+                self.pageSize = dict["PageSize"] as! Int32
+            }
+            if dict.keys.contains("Result") && dict["Result"] != nil {
+                var tmp : [ListGatewayIsolationRuleResponseBody.Data.Result] = []
+                for v in dict["Result"] as! [Any] {
+                    var model = ListGatewayIsolationRuleResponseBody.Data.Result()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.result = tmp
+            }
+            if dict.keys.contains("Results") && dict["Results"] != nil {
+                var tmp : [ListGatewayIsolationRuleResponseBody.Data.Results] = []
+                for v in dict["Results"] as! [Any] {
+                    var model = ListGatewayIsolationRuleResponseBody.Data.Results()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.results = tmp
+            }
+            if dict.keys.contains("TotalSize") && dict["TotalSize"] != nil {
+                self.totalSize = dict["TotalSize"] as! Int32
+            }
+        }
+    }
+    public var data: ListGatewayIsolationRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ListGatewayIsolationRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class ListGatewayIsolationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListGatewayIsolationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListGatewayIsolationRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -60284,6 +62911,443 @@ public class UpdateGatewayAuthConsumerStatusResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateGatewayCircuitBreakerRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var behaviorType: Int32?
+
+    public var bodyEncoding: Int32?
+
+    public var enable: Int32?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public var maxAllowedMs: Int32?
+
+    public var minRequestAmount: Int32?
+
+    public var recoveryTimeoutSec: Int32?
+
+    public var responseContentBody: String?
+
+    public var responseRedirectUrl: String?
+
+    public var responseStatusCode: Int32?
+
+    public var routeId: Int64?
+
+    public var routeName: String?
+
+    public var statDurationSec: Int32?
+
+    public var strategy: Int32?
+
+    public var triggerRatio: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.behaviorType != nil {
+            map["BehaviorType"] = self.behaviorType!
+        }
+        if self.bodyEncoding != nil {
+            map["BodyEncoding"] = self.bodyEncoding!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.maxAllowedMs != nil {
+            map["MaxAllowedMs"] = self.maxAllowedMs!
+        }
+        if self.minRequestAmount != nil {
+            map["MinRequestAmount"] = self.minRequestAmount!
+        }
+        if self.recoveryTimeoutSec != nil {
+            map["RecoveryTimeoutSec"] = self.recoveryTimeoutSec!
+        }
+        if self.responseContentBody != nil {
+            map["ResponseContentBody"] = self.responseContentBody!
+        }
+        if self.responseRedirectUrl != nil {
+            map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+        }
+        if self.responseStatusCode != nil {
+            map["ResponseStatusCode"] = self.responseStatusCode!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.routeName != nil {
+            map["RouteName"] = self.routeName!
+        }
+        if self.statDurationSec != nil {
+            map["StatDurationSec"] = self.statDurationSec!
+        }
+        if self.strategy != nil {
+            map["Strategy"] = self.strategy!
+        }
+        if self.triggerRatio != nil {
+            map["TriggerRatio"] = self.triggerRatio!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+            self.behaviorType = dict["BehaviorType"] as! Int32
+        }
+        if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+            self.bodyEncoding = dict["BodyEncoding"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Int32
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("MaxAllowedMs") && dict["MaxAllowedMs"] != nil {
+            self.maxAllowedMs = dict["MaxAllowedMs"] as! Int32
+        }
+        if dict.keys.contains("MinRequestAmount") && dict["MinRequestAmount"] != nil {
+            self.minRequestAmount = dict["MinRequestAmount"] as! Int32
+        }
+        if dict.keys.contains("RecoveryTimeoutSec") && dict["RecoveryTimeoutSec"] != nil {
+            self.recoveryTimeoutSec = dict["RecoveryTimeoutSec"] as! Int32
+        }
+        if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+            self.responseContentBody = dict["ResponseContentBody"] as! String
+        }
+        if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+            self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+        }
+        if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+            self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+            self.routeName = dict["RouteName"] as! String
+        }
+        if dict.keys.contains("StatDurationSec") && dict["StatDurationSec"] != nil {
+            self.statDurationSec = dict["StatDurationSec"] as! Int32
+        }
+        if dict.keys.contains("Strategy") && dict["Strategy"] != nil {
+            self.strategy = dict["Strategy"] as! Int32
+        }
+        if dict.keys.contains("TriggerRatio") && dict["TriggerRatio"] != nil {
+            self.triggerRatio = dict["TriggerRatio"] as! Int32
+        }
+    }
+}
+
+public class UpdateGatewayCircuitBreakerRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var behaviorType: Int32?
+
+        public var bodyEncoding: Int32?
+
+        public var enable: Int32?
+
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var id: Int64?
+
+        public var idList: [Int64]?
+
+        public var limitMode: Int32?
+
+        public var maxAllowedMs: Int32?
+
+        public var minRequestAmount: Int32?
+
+        public var recoveryTimeoutSec: Int32?
+
+        public var responseAdditionalHeaders: String?
+
+        public var responseContentBody: String?
+
+        public var responseRedirectUrl: String?
+
+        public var responseStatusCode: Int32?
+
+        public var routeId: Int64?
+
+        public var routeName: String?
+
+        public var statDurationSec: Int32?
+
+        public var strategy: Int32?
+
+        public var triggerRatio: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.behaviorType != nil {
+                map["BehaviorType"] = self.behaviorType!
+            }
+            if self.bodyEncoding != nil {
+                map["BodyEncoding"] = self.bodyEncoding!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.idList != nil {
+                map["IdList"] = self.idList!
+            }
+            if self.limitMode != nil {
+                map["LimitMode"] = self.limitMode!
+            }
+            if self.maxAllowedMs != nil {
+                map["MaxAllowedMs"] = self.maxAllowedMs!
+            }
+            if self.minRequestAmount != nil {
+                map["MinRequestAmount"] = self.minRequestAmount!
+            }
+            if self.recoveryTimeoutSec != nil {
+                map["RecoveryTimeoutSec"] = self.recoveryTimeoutSec!
+            }
+            if self.responseAdditionalHeaders != nil {
+                map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+            }
+            if self.responseContentBody != nil {
+                map["ResponseContentBody"] = self.responseContentBody!
+            }
+            if self.responseRedirectUrl != nil {
+                map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+            }
+            if self.responseStatusCode != nil {
+                map["ResponseStatusCode"] = self.responseStatusCode!
+            }
+            if self.routeId != nil {
+                map["RouteId"] = self.routeId!
+            }
+            if self.routeName != nil {
+                map["RouteName"] = self.routeName!
+            }
+            if self.statDurationSec != nil {
+                map["StatDurationSec"] = self.statDurationSec!
+            }
+            if self.strategy != nil {
+                map["Strategy"] = self.strategy!
+            }
+            if self.triggerRatio != nil {
+                map["TriggerRatio"] = self.triggerRatio!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                self.behaviorType = dict["BehaviorType"] as! Int32
+            }
+            if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                self.bodyEncoding = dict["BodyEncoding"] as! Int32
+            }
+            if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                self.enable = dict["Enable"] as! Int32
+            }
+            if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                self.gatewayId = dict["GatewayId"] as! Int64
+            }
+            if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                self.idList = dict["IdList"] as! [Int64]
+            }
+            if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                self.limitMode = dict["LimitMode"] as! Int32
+            }
+            if dict.keys.contains("MaxAllowedMs") && dict["MaxAllowedMs"] != nil {
+                self.maxAllowedMs = dict["MaxAllowedMs"] as! Int32
+            }
+            if dict.keys.contains("MinRequestAmount") && dict["MinRequestAmount"] != nil {
+                self.minRequestAmount = dict["MinRequestAmount"] as! Int32
+            }
+            if dict.keys.contains("RecoveryTimeoutSec") && dict["RecoveryTimeoutSec"] != nil {
+                self.recoveryTimeoutSec = dict["RecoveryTimeoutSec"] as! Int32
+            }
+            if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+            }
+            if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                self.responseContentBody = dict["ResponseContentBody"] as! String
+            }
+            if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+            }
+            if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+            }
+            if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                self.routeId = dict["RouteId"] as! Int64
+            }
+            if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                self.routeName = dict["RouteName"] as! String
+            }
+            if dict.keys.contains("StatDurationSec") && dict["StatDurationSec"] != nil {
+                self.statDurationSec = dict["StatDurationSec"] as! Int32
+            }
+            if dict.keys.contains("Strategy") && dict["Strategy"] != nil {
+                self.strategy = dict["Strategy"] as! Int32
+            }
+            if dict.keys.contains("TriggerRatio") && dict["TriggerRatio"] != nil {
+                self.triggerRatio = dict["TriggerRatio"] as! Int32
+            }
+        }
+    }
+    public var data: UpdateGatewayCircuitBreakerRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = UpdateGatewayCircuitBreakerRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayCircuitBreakerRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayCircuitBreakerRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateGatewayCircuitBreakerRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpdateGatewayDomainRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -60491,6 +63555,728 @@ public class UpdateGatewayDomainResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UpdateGatewayDomainResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateGatewayFlowRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var behaviorType: Int32?
+
+    public var bodyEncoding: Int32?
+
+    public var enable: Int32?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public var responseContentBody: String?
+
+    public var responseRedirectUrl: String?
+
+    public var responseStatusCode: Int32?
+
+    public var routeId: Int64?
+
+    public var routeName: String?
+
+    public var threshold: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.behaviorType != nil {
+            map["BehaviorType"] = self.behaviorType!
+        }
+        if self.bodyEncoding != nil {
+            map["BodyEncoding"] = self.bodyEncoding!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.responseContentBody != nil {
+            map["ResponseContentBody"] = self.responseContentBody!
+        }
+        if self.responseRedirectUrl != nil {
+            map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+        }
+        if self.responseStatusCode != nil {
+            map["ResponseStatusCode"] = self.responseStatusCode!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.routeName != nil {
+            map["RouteName"] = self.routeName!
+        }
+        if self.threshold != nil {
+            map["Threshold"] = self.threshold!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+            self.behaviorType = dict["BehaviorType"] as! Int32
+        }
+        if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+            self.bodyEncoding = dict["BodyEncoding"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Int32
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+            self.responseContentBody = dict["ResponseContentBody"] as! String
+        }
+        if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+            self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+        }
+        if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+            self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+            self.routeName = dict["RouteName"] as! String
+        }
+        if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+            self.threshold = dict["Threshold"] as! Int32
+        }
+    }
+}
+
+public class UpdateGatewayFlowRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var behaviorType: Int32?
+
+        public var bodyEncoding: Int32?
+
+        public var enable: Int32?
+
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var id: Int64?
+
+        public var idList: [Int64]?
+
+        public var limitMode: Int32?
+
+        public var responseAdditionalHeaders: String?
+
+        public var responseContentBody: String?
+
+        public var responseRedirectUrl: String?
+
+        public var responseStatusCode: Int32?
+
+        public var routeId: Int64?
+
+        public var routeName: String?
+
+        public var statDurationMs: Int32?
+
+        public var threshold: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.behaviorType != nil {
+                map["BehaviorType"] = self.behaviorType!
+            }
+            if self.bodyEncoding != nil {
+                map["BodyEncoding"] = self.bodyEncoding!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.idList != nil {
+                map["IdList"] = self.idList!
+            }
+            if self.limitMode != nil {
+                map["LimitMode"] = self.limitMode!
+            }
+            if self.responseAdditionalHeaders != nil {
+                map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+            }
+            if self.responseContentBody != nil {
+                map["ResponseContentBody"] = self.responseContentBody!
+            }
+            if self.responseRedirectUrl != nil {
+                map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+            }
+            if self.responseStatusCode != nil {
+                map["ResponseStatusCode"] = self.responseStatusCode!
+            }
+            if self.routeId != nil {
+                map["RouteId"] = self.routeId!
+            }
+            if self.routeName != nil {
+                map["RouteName"] = self.routeName!
+            }
+            if self.statDurationMs != nil {
+                map["StatDurationMs"] = self.statDurationMs!
+            }
+            if self.threshold != nil {
+                map["Threshold"] = self.threshold!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                self.behaviorType = dict["BehaviorType"] as! Int32
+            }
+            if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                self.bodyEncoding = dict["BodyEncoding"] as! Int32
+            }
+            if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                self.enable = dict["Enable"] as! Int32
+            }
+            if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                self.gatewayId = dict["GatewayId"] as! Int64
+            }
+            if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                self.idList = dict["IdList"] as! [Int64]
+            }
+            if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                self.limitMode = dict["LimitMode"] as! Int32
+            }
+            if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+            }
+            if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                self.responseContentBody = dict["ResponseContentBody"] as! String
+            }
+            if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+            }
+            if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+            }
+            if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                self.routeId = dict["RouteId"] as! Int64
+            }
+            if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                self.routeName = dict["RouteName"] as! String
+            }
+            if dict.keys.contains("StatDurationMs") && dict["StatDurationMs"] != nil {
+                self.statDurationMs = dict["StatDurationMs"] as! Int32
+            }
+            if dict.keys.contains("Threshold") && dict["Threshold"] != nil {
+                self.threshold = dict["Threshold"] as! Int32
+            }
+        }
+    }
+    public var data: UpdateGatewayFlowRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = UpdateGatewayFlowRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayFlowRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayFlowRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateGatewayFlowRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateGatewayIsolationRuleRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var behaviorType: Int32?
+
+    public var bodyEncoding: Int32?
+
+    public var enable: Int32?
+
+    public var gatewayId: Int64?
+
+    public var gatewayUniqueId: String?
+
+    public var id: Int64?
+
+    public var maxConcurrency: Int32?
+
+    public var responseContentBody: String?
+
+    public var responseRedirectUrl: String?
+
+    public var responseStatusCode: Int32?
+
+    public var routeId: Int64?
+
+    public var routeName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.behaviorType != nil {
+            map["BehaviorType"] = self.behaviorType!
+        }
+        if self.bodyEncoding != nil {
+            map["BodyEncoding"] = self.bodyEncoding!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.gatewayId != nil {
+            map["GatewayId"] = self.gatewayId!
+        }
+        if self.gatewayUniqueId != nil {
+            map["GatewayUniqueId"] = self.gatewayUniqueId!
+        }
+        if self.id != nil {
+            map["Id"] = self.id!
+        }
+        if self.maxConcurrency != nil {
+            map["MaxConcurrency"] = self.maxConcurrency!
+        }
+        if self.responseContentBody != nil {
+            map["ResponseContentBody"] = self.responseContentBody!
+        }
+        if self.responseRedirectUrl != nil {
+            map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+        }
+        if self.responseStatusCode != nil {
+            map["ResponseStatusCode"] = self.responseStatusCode!
+        }
+        if self.routeId != nil {
+            map["RouteId"] = self.routeId!
+        }
+        if self.routeName != nil {
+            map["RouteName"] = self.routeName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+            self.behaviorType = dict["BehaviorType"] as! Int32
+        }
+        if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+            self.bodyEncoding = dict["BodyEncoding"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Int32
+        }
+        if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+            self.gatewayId = dict["GatewayId"] as! Int64
+        }
+        if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+            self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+        }
+        if dict.keys.contains("Id") && dict["Id"] != nil {
+            self.id = dict["Id"] as! Int64
+        }
+        if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
+            self.maxConcurrency = dict["MaxConcurrency"] as! Int32
+        }
+        if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+            self.responseContentBody = dict["ResponseContentBody"] as! String
+        }
+        if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+            self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+        }
+        if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+            self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+        }
+        if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+            self.routeId = dict["RouteId"] as! Int64
+        }
+        if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+            self.routeName = dict["RouteName"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayIsolationRuleResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var behaviorType: Int32?
+
+        public var bodyEncoding: Int32?
+
+        public var enable: Int32?
+
+        public var gatewayId: Int64?
+
+        public var gatewayUniqueId: String?
+
+        public var id: Int64?
+
+        public var idList: [Int64]?
+
+        public var limitMode: Int32?
+
+        public var maxConcurrency: Int32?
+
+        public var responseAdditionalHeaders: String?
+
+        public var responseContentBody: String?
+
+        public var responseRedirectUrl: String?
+
+        public var responseStatusCode: Int32?
+
+        public var routeId: Int64?
+
+        public var routeName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.behaviorType != nil {
+                map["BehaviorType"] = self.behaviorType!
+            }
+            if self.bodyEncoding != nil {
+                map["BodyEncoding"] = self.bodyEncoding!
+            }
+            if self.enable != nil {
+                map["Enable"] = self.enable!
+            }
+            if self.gatewayId != nil {
+                map["GatewayId"] = self.gatewayId!
+            }
+            if self.gatewayUniqueId != nil {
+                map["GatewayUniqueId"] = self.gatewayUniqueId!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.idList != nil {
+                map["IdList"] = self.idList!
+            }
+            if self.limitMode != nil {
+                map["LimitMode"] = self.limitMode!
+            }
+            if self.maxConcurrency != nil {
+                map["MaxConcurrency"] = self.maxConcurrency!
+            }
+            if self.responseAdditionalHeaders != nil {
+                map["ResponseAdditionalHeaders"] = self.responseAdditionalHeaders!
+            }
+            if self.responseContentBody != nil {
+                map["ResponseContentBody"] = self.responseContentBody!
+            }
+            if self.responseRedirectUrl != nil {
+                map["ResponseRedirectUrl"] = self.responseRedirectUrl!
+            }
+            if self.responseStatusCode != nil {
+                map["ResponseStatusCode"] = self.responseStatusCode!
+            }
+            if self.routeId != nil {
+                map["RouteId"] = self.routeId!
+            }
+            if self.routeName != nil {
+                map["RouteName"] = self.routeName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BehaviorType") && dict["BehaviorType"] != nil {
+                self.behaviorType = dict["BehaviorType"] as! Int32
+            }
+            if dict.keys.contains("BodyEncoding") && dict["BodyEncoding"] != nil {
+                self.bodyEncoding = dict["BodyEncoding"] as! Int32
+            }
+            if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                self.enable = dict["Enable"] as! Int32
+            }
+            if dict.keys.contains("GatewayId") && dict["GatewayId"] != nil {
+                self.gatewayId = dict["GatewayId"] as! Int64
+            }
+            if dict.keys.contains("GatewayUniqueId") && dict["GatewayUniqueId"] != nil {
+                self.gatewayUniqueId = dict["GatewayUniqueId"] as! String
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! Int64
+            }
+            if dict.keys.contains("IdList") && dict["IdList"] != nil {
+                self.idList = dict["IdList"] as! [Int64]
+            }
+            if dict.keys.contains("LimitMode") && dict["LimitMode"] != nil {
+                self.limitMode = dict["LimitMode"] as! Int32
+            }
+            if dict.keys.contains("MaxConcurrency") && dict["MaxConcurrency"] != nil {
+                self.maxConcurrency = dict["MaxConcurrency"] as! Int32
+            }
+            if dict.keys.contains("ResponseAdditionalHeaders") && dict["ResponseAdditionalHeaders"] != nil {
+                self.responseAdditionalHeaders = dict["ResponseAdditionalHeaders"] as! String
+            }
+            if dict.keys.contains("ResponseContentBody") && dict["ResponseContentBody"] != nil {
+                self.responseContentBody = dict["ResponseContentBody"] as! String
+            }
+            if dict.keys.contains("ResponseRedirectUrl") && dict["ResponseRedirectUrl"] != nil {
+                self.responseRedirectUrl = dict["ResponseRedirectUrl"] as! String
+            }
+            if dict.keys.contains("ResponseStatusCode") && dict["ResponseStatusCode"] != nil {
+                self.responseStatusCode = dict["ResponseStatusCode"] as! Int32
+            }
+            if dict.keys.contains("RouteId") && dict["RouteId"] != nil {
+                self.routeId = dict["RouteId"] as! Int64
+            }
+            if dict.keys.contains("RouteName") && dict["RouteName"] != nil {
+                self.routeName = dict["RouteName"] as! String
+            }
+        }
+    }
+    public var data: UpdateGatewayIsolationRuleResponseBody.Data?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = UpdateGatewayIsolationRuleResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateGatewayIsolationRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateGatewayIsolationRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateGatewayIsolationRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }

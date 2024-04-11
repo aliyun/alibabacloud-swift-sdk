@@ -1481,6 +1481,213 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayCircuitBreakerRuleWithOptions(_ request: CreateGatewayCircuitBreakerRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayCircuitBreakerRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.behaviorType)) {
+            query["BehaviorType"] = request.behaviorType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyEncoding)) {
+            query["BodyEncoding"] = request.bodyEncoding!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxAllowedMs)) {
+            query["MaxAllowedMs"] = request.maxAllowedMs!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minRequestAmount)) {
+            query["MinRequestAmount"] = request.minRequestAmount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recoveryTimeoutSec)) {
+            query["RecoveryTimeoutSec"] = request.recoveryTimeoutSec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.responseContentBody)) {
+            query["ResponseContentBody"] = request.responseContentBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRedirectUrl)) {
+            query["ResponseRedirectUrl"] = request.responseRedirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseStatusCode)) {
+            query["ResponseStatusCode"] = request.responseStatusCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeName)) {
+            query["RouteName"] = request.routeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statDurationSec)) {
+            query["StatDurationSec"] = request.statDurationSec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            query["Strategy"] = request.strategy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerRatio)) {
+            query["TriggerRatio"] = request.triggerRatio!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGatewayCircuitBreakerRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGatewayCircuitBreakerRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayCircuitBreakerRule(_ request: CreateGatewayCircuitBreakerRuleRequest) async throws -> CreateGatewayCircuitBreakerRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGatewayCircuitBreakerRuleWithOptions(request as! CreateGatewayCircuitBreakerRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayFlowRuleWithOptions(_ request: CreateGatewayFlowRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayFlowRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.behaviorType)) {
+            query["BehaviorType"] = request.behaviorType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyEncoding)) {
+            query["BodyEncoding"] = request.bodyEncoding!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseContentBody)) {
+            query["ResponseContentBody"] = request.responseContentBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRedirectUrl)) {
+            query["ResponseRedirectUrl"] = request.responseRedirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseStatusCode)) {
+            query["ResponseStatusCode"] = request.responseStatusCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeName)) {
+            query["RouteName"] = request.routeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threshold)) {
+            query["Threshold"] = request.threshold!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGatewayFlowRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGatewayFlowRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayFlowRule(_ request: CreateGatewayFlowRuleRequest) async throws -> CreateGatewayFlowRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGatewayFlowRuleWithOptions(request as! CreateGatewayFlowRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayIsolationRuleWithOptions(_ request: CreateGatewayIsolationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGatewayIsolationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.behaviorType)) {
+            query["BehaviorType"] = request.behaviorType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyEncoding)) {
+            query["BodyEncoding"] = request.bodyEncoding!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.maxConcurrency)) {
+            query["MaxConcurrency"] = request.maxConcurrency!;
+        }
+        if (!TeaUtils.Client.isUnset(request.responseContentBody)) {
+            query["ResponseContentBody"] = request.responseContentBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRedirectUrl)) {
+            query["ResponseRedirectUrl"] = request.responseRedirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseStatusCode)) {
+            query["ResponseStatusCode"] = request.responseStatusCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeName)) {
+            query["RouteName"] = request.routeName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateGatewayIsolationRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateGatewayIsolationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createGatewayIsolationRule(_ request: CreateGatewayIsolationRuleRequest) async throws -> CreateGatewayIsolationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createGatewayIsolationRuleWithOptions(request as! CreateGatewayIsolationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createIsolationRuleWithOptions(_ request: CreateIsolationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateIsolationRuleResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2274,6 +2481,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayCircuitBreakerRuleWithOptions(_ request: DeleteGatewayCircuitBreakerRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayCircuitBreakerRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGatewayCircuitBreakerRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGatewayCircuitBreakerRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayCircuitBreakerRule(_ request: DeleteGatewayCircuitBreakerRuleRequest) async throws -> DeleteGatewayCircuitBreakerRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGatewayCircuitBreakerRuleWithOptions(request as! DeleteGatewayCircuitBreakerRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteGatewayDomainWithOptions(_ request: DeleteGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2308,6 +2555,86 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteGatewayDomain(_ request: DeleteGatewayDomainRequest) async throws -> DeleteGatewayDomainResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteGatewayDomainWithOptions(request as! DeleteGatewayDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayFlowRuleWithOptions(_ request: DeleteGatewayFlowRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayFlowRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGatewayFlowRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGatewayFlowRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayFlowRule(_ request: DeleteGatewayFlowRuleRequest) async throws -> DeleteGatewayFlowRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGatewayFlowRuleWithOptions(request as! DeleteGatewayFlowRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayIsolationRuleWithOptions(_ request: DeleteGatewayIsolationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteGatewayIsolationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteGatewayIsolationRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteGatewayIsolationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteGatewayIsolationRule(_ request: DeleteGatewayIsolationRuleRequest) async throws -> DeleteGatewayIsolationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteGatewayIsolationRuleWithOptions(request as! DeleteGatewayIsolationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -5513,6 +5840,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayCircuitBreakerRuleWithOptions(_ request: ListGatewayCircuitBreakerRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayCircuitBreakerRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParams)) {
+            query["FilterParams"] = request.filterParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGatewayCircuitBreakerRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGatewayCircuitBreakerRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayCircuitBreakerRule(_ request: ListGatewayCircuitBreakerRuleRequest) async throws -> ListGatewayCircuitBreakerRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGatewayCircuitBreakerRuleWithOptions(request as! ListGatewayCircuitBreakerRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func listGatewayDomainWithOptions(_ request: ListGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -5550,6 +5911,74 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listGatewayDomain(_ request: ListGatewayDomainRequest) async throws -> ListGatewayDomainResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listGatewayDomainWithOptions(request as! ListGatewayDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayFlowRuleWithOptions(_ request: ListGatewayFlowRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayFlowRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParams)) {
+            query["FilterParams"] = request.filterParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGatewayFlowRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGatewayFlowRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayFlowRule(_ request: ListGatewayFlowRuleRequest) async throws -> ListGatewayFlowRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGatewayFlowRuleWithOptions(request as! ListGatewayFlowRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayIsolationRuleWithOptions(_ request: ListGatewayIsolationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListGatewayIsolationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.filterParams)) {
+            query["FilterParams"] = request.filterParams ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListGatewayIsolationRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListGatewayIsolationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listGatewayIsolationRule(_ request: ListGatewayIsolationRuleRequest) async throws -> ListGatewayIsolationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listGatewayIsolationRuleWithOptions(request as! ListGatewayIsolationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -8288,6 +8717,88 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayCircuitBreakerRuleWithOptions(_ request: UpdateGatewayCircuitBreakerRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayCircuitBreakerRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.behaviorType)) {
+            query["BehaviorType"] = request.behaviorType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyEncoding)) {
+            query["BodyEncoding"] = request.bodyEncoding!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxAllowedMs)) {
+            query["MaxAllowedMs"] = request.maxAllowedMs!;
+        }
+        if (!TeaUtils.Client.isUnset(request.minRequestAmount)) {
+            query["MinRequestAmount"] = request.minRequestAmount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.recoveryTimeoutSec)) {
+            query["RecoveryTimeoutSec"] = request.recoveryTimeoutSec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.responseContentBody)) {
+            query["ResponseContentBody"] = request.responseContentBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRedirectUrl)) {
+            query["ResponseRedirectUrl"] = request.responseRedirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseStatusCode)) {
+            query["ResponseStatusCode"] = request.responseStatusCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeName)) {
+            query["RouteName"] = request.routeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.statDurationSec)) {
+            query["StatDurationSec"] = request.statDurationSec!;
+        }
+        if (!TeaUtils.Client.isUnset(request.strategy)) {
+            query["Strategy"] = request.strategy!;
+        }
+        if (!TeaUtils.Client.isUnset(request.triggerRatio)) {
+            query["TriggerRatio"] = request.triggerRatio!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayCircuitBreakerRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayCircuitBreakerRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayCircuitBreakerRule(_ request: UpdateGatewayCircuitBreakerRuleRequest) async throws -> UpdateGatewayCircuitBreakerRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGatewayCircuitBreakerRuleWithOptions(request as! UpdateGatewayCircuitBreakerRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func updateGatewayDomainWithOptions(_ request: UpdateGatewayDomainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayDomainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -8340,6 +8851,140 @@ open class Client : AlibabacloudOpenApi.Client {
     public func updateGatewayDomain(_ request: UpdateGatewayDomainRequest) async throws -> UpdateGatewayDomainResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await updateGatewayDomainWithOptions(request as! UpdateGatewayDomainRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayFlowRuleWithOptions(_ request: UpdateGatewayFlowRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayFlowRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.behaviorType)) {
+            query["BehaviorType"] = request.behaviorType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyEncoding)) {
+            query["BodyEncoding"] = request.bodyEncoding!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id!;
+        }
+        if (!TeaUtils.Client.isUnset(request.responseContentBody)) {
+            query["ResponseContentBody"] = request.responseContentBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRedirectUrl)) {
+            query["ResponseRedirectUrl"] = request.responseRedirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseStatusCode)) {
+            query["ResponseStatusCode"] = request.responseStatusCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeName)) {
+            query["RouteName"] = request.routeName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.threshold)) {
+            query["Threshold"] = request.threshold!;
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayFlowRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayFlowRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayFlowRule(_ request: UpdateGatewayFlowRuleRequest) async throws -> UpdateGatewayFlowRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGatewayFlowRuleWithOptions(request as! UpdateGatewayFlowRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayIsolationRuleWithOptions(_ request: UpdateGatewayIsolationRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateGatewayIsolationRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.behaviorType)) {
+            query["BehaviorType"] = request.behaviorType!;
+        }
+        if (!TeaUtils.Client.isUnset(request.bodyEncoding)) {
+            query["BodyEncoding"] = request.bodyEncoding!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayId)) {
+            query["GatewayId"] = request.gatewayId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayUniqueId)) {
+            query["GatewayUniqueId"] = request.gatewayUniqueId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.id)) {
+            query["Id"] = request.id!;
+        }
+        if (!TeaUtils.Client.isUnset(request.maxConcurrency)) {
+            query["MaxConcurrency"] = request.maxConcurrency!;
+        }
+        if (!TeaUtils.Client.isUnset(request.responseContentBody)) {
+            query["ResponseContentBody"] = request.responseContentBody ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseRedirectUrl)) {
+            query["ResponseRedirectUrl"] = request.responseRedirectUrl ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.responseStatusCode)) {
+            query["ResponseStatusCode"] = request.responseStatusCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeId)) {
+            query["RouteId"] = request.routeId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.routeName)) {
+            query["RouteName"] = request.routeName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateGatewayIsolationRule",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateGatewayIsolationRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateGatewayIsolationRule(_ request: UpdateGatewayIsolationRuleRequest) async throws -> UpdateGatewayIsolationRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateGatewayIsolationRuleWithOptions(request as! UpdateGatewayIsolationRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
