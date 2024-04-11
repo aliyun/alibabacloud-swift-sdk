@@ -3629,6 +3629,8 @@ public class GetServiceResponseBody : Tea.TeaModel {
 
         public var orderTime: [String: [String]]?
 
+        public var saasBoostMetadata: String?
+
         public var specifications: [GetServiceResponseBody.Commodity.Specifications]?
 
         public var type: String?
@@ -3673,6 +3675,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
             if self.orderTime != nil {
                 map["OrderTime"] = self.orderTime!
+            }
+            if self.saasBoostMetadata != nil {
+                map["SaasBoostMetadata"] = self.saasBoostMetadata!
             }
             if self.specifications != nil {
                 var tmp : [Any] = []
@@ -3720,6 +3725,9 @@ public class GetServiceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("OrderTime") && dict["OrderTime"] != nil {
                 self.orderTime = dict["OrderTime"] as! [String: [String]]
+            }
+            if dict.keys.contains("SaasBoostMetadata") && dict["SaasBoostMetadata"] != nil {
+                self.saasBoostMetadata = dict["SaasBoostMetadata"] as! String
             }
             if dict.keys.contains("Specifications") && dict["Specifications"] != nil {
                 var tmp : [GetServiceResponseBody.Commodity.Specifications] = []
