@@ -19522,6 +19522,10 @@ public class SaveBatchTaskForModifyingDomainDnsResponse : Tea.TeaModel {
 
 public class SaveBatchTaskForReserveDropListDomainRequest : Tea.TeaModel {
     public class Domains : Tea.TeaModel {
+        public var dns1: String?
+
+        public var dns2: String?
+
         public var domainName: String?
 
         public override init() {
@@ -19538,6 +19542,12 @@ public class SaveBatchTaskForReserveDropListDomainRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dns1 != nil {
+                map["Dns1"] = self.dns1!
+            }
+            if self.dns2 != nil {
+                map["Dns2"] = self.dns2!
+            }
             if self.domainName != nil {
                 map["DomainName"] = self.domainName!
             }
@@ -19545,6 +19555,12 @@ public class SaveBatchTaskForReserveDropListDomainRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Dns1") && dict["Dns1"] != nil {
+                self.dns1 = dict["Dns1"] as! String
+            }
+            if dict.keys.contains("Dns2") && dict["Dns2"] != nil {
+                self.dns2 = dict["Dns2"] as! String
+            }
             if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
                 self.domainName = dict["DomainName"] as! String
             }
