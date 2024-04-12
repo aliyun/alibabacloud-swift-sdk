@@ -1121,6 +1121,14 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
 
         public var errorMessage: String?
 
+        public var outputMp3Path: String?
+
+        public var outputMp4Path: String?
+
+        public var outputSpectrumPath: String?
+
+        public var outputThumbnailPath: String?
+
         public var result: GetTaskInfoResponseBody.Data.Result?
 
         public var taskId: String?
@@ -1150,6 +1158,18 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
             if self.errorMessage != nil {
                 map["ErrorMessage"] = self.errorMessage!
             }
+            if self.outputMp3Path != nil {
+                map["OutputMp3Path"] = self.outputMp3Path!
+            }
+            if self.outputMp4Path != nil {
+                map["OutputMp4Path"] = self.outputMp4Path!
+            }
+            if self.outputSpectrumPath != nil {
+                map["OutputSpectrumPath"] = self.outputSpectrumPath!
+            }
+            if self.outputThumbnailPath != nil {
+                map["OutputThumbnailPath"] = self.outputThumbnailPath!
+            }
             if self.result != nil {
                 map["Result"] = self.result?.toMap()
             }
@@ -1171,6 +1191,18 @@ public class GetTaskInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
                 self.errorMessage = dict["ErrorMessage"] as! String
+            }
+            if dict.keys.contains("OutputMp3Path") && dict["OutputMp3Path"] != nil {
+                self.outputMp3Path = dict["OutputMp3Path"] as! String
+            }
+            if dict.keys.contains("OutputMp4Path") && dict["OutputMp4Path"] != nil {
+                self.outputMp4Path = dict["OutputMp4Path"] as! String
+            }
+            if dict.keys.contains("OutputSpectrumPath") && dict["OutputSpectrumPath"] != nil {
+                self.outputSpectrumPath = dict["OutputSpectrumPath"] as! String
+            }
+            if dict.keys.contains("OutputThumbnailPath") && dict["OutputThumbnailPath"] != nil {
+                self.outputThumbnailPath = dict["OutputThumbnailPath"] as! String
             }
             if dict.keys.contains("Result") && dict["Result"] != nil {
                 var model = GetTaskInfoResponseBody.Data.Result()
