@@ -99,6 +99,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.namespaceId)) {
             query["NamespaceId"] = request.namespaceId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -134,6 +137,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.namespaceId)) {
             query["NamespaceId"] = request.namespaceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["Version"] = request.version ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -2577,6 +2583,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getArmsTopNMetricWithOptions(_ request: GetArmsTopNMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetArmsTopNMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appSource)) {
+            query["AppSource"] = request.appSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuStrategy)) {
+            query["CpuStrategy"] = request.cpuStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
         }
@@ -2622,6 +2634,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAvailabilityMetricWithOptions(_ request: GetAvailabilityMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAvailabilityMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appSource)) {
+            query["AppSource"] = request.appSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuStrategy)) {
+            query["CpuStrategy"] = request.cpuStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
         }
@@ -2658,6 +2676,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getChangeOrderMetricWithOptions(_ request: GetChangeOrderMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetChangeOrderMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appSource)) {
+            query["AppSource"] = request.appSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuStrategy)) {
+            query["CpuStrategy"] = request.cpuStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.createTime)) {
             query["CreateTime"] = request.createTime ?? "";
         }
@@ -2700,6 +2724,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getScaleAppMetricWithOptions(_ request: GetScaleAppMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetScaleAppMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appSource)) {
+            query["AppSource"] = request.appSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuStrategy)) {
+            query["CpuStrategy"] = request.cpuStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.limit)) {
             query["Limit"] = request.limit!;
         }
@@ -2736,6 +2766,12 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getWarningEventMetricWithOptions(_ request: GetWarningEventMetricRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetWarningEventMetricResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.appSource)) {
+            query["AppSource"] = request.appSource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.cpuStrategy)) {
+            query["CpuStrategy"] = request.cpuStrategy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.endTime)) {
             query["EndTime"] = request.endTime!;
         }

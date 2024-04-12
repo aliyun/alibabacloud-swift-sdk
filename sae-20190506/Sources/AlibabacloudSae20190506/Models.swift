@@ -77,6 +77,467 @@ public class AclEntryConfig : Tea.TeaModel {
     }
 }
 
+public class AppStackInstance : Tea.TeaModel {
+    public class Endpoints : Tea.TeaModel {
+        public var address: String?
+
+        public var name: String?
+
+        public var protocol_: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.address != nil {
+                map["Address"] = self.address!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.protocol_ != nil {
+                map["Protocol"] = self.protocol_!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Address") && dict["Address"] != nil {
+                self.address = dict["Address"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Protocol") && dict["Protocol"] != nil {
+                self.protocol_ = dict["Protocol"] as! String
+            }
+        }
+    }
+    public class Parameters : Tea.TeaModel {
+        public var name: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
+    public var createTime: Int64?
+
+    public var endpoints: [AppStackInstance.Endpoints]?
+
+    public var instanceId: String?
+
+    public var instanceName: String?
+
+    public var parameters: [AppStackInstance.Parameters]?
+
+    public var stackId: String?
+
+    public var status: String?
+
+    public var updateTime: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.endpoints != nil {
+            var tmp : [Any] = []
+            for k in self.endpoints! {
+                tmp.append(k.toMap())
+            }
+            map["Endpoints"] = tmp
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.parameters != nil {
+            var tmp : [Any] = []
+            for k in self.parameters! {
+                tmp.append(k.toMap())
+            }
+            map["Parameters"] = tmp
+        }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.updateTime != nil {
+            map["UpdateTime"] = self.updateTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+            self.createTime = dict["CreateTime"] as! Int64
+        }
+        if dict.keys.contains("Endpoints") && dict["Endpoints"] != nil {
+            var tmp : [AppStackInstance.Endpoints] = []
+            for v in dict["Endpoints"] as! [Any] {
+                var model = AppStackInstance.Endpoints()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.endpoints = tmp
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
+            self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            var tmp : [AppStackInstance.Parameters] = []
+            for v in dict["Parameters"] as! [Any] {
+                var model = AppStackInstance.Parameters()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.parameters = tmp
+        }
+        if dict.keys.contains("StackId") && dict["StackId"] != nil {
+            self.stackId = dict["StackId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
+            self.updateTime = dict["UpdateTime"] as! Int64
+        }
+    }
+}
+
+public class AppStackResource : Tea.TeaModel {
+    public var createTime: Int64?
+
+    public var instanceId: String?
+
+    public var productCode: String?
+
+    public var resourceId: String?
+
+    public var resourceName: String?
+
+    public var resourceType: String?
+
+    public var stackId: String?
+
+    public var status: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
+        if self.resourceId != nil {
+            map["ResourceId"] = self.resourceId!
+        }
+        if self.resourceName != nil {
+            map["ResourceName"] = self.resourceName!
+        }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+            self.createTime = dict["CreateTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
+            self.productCode = dict["ProductCode"] as! String
+        }
+        if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
+            self.resourceId = dict["ResourceId"] as! String
+        }
+        if dict.keys.contains("ResourceName") && dict["ResourceName"] != nil {
+            self.resourceName = dict["ResourceName"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
+        }
+        if dict.keys.contains("StackId") && dict["StackId"] != nil {
+            self.stackId = dict["StackId"] as! String
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+    }
+}
+
+public class AppStackTask : Tea.TeaModel {
+    public class Steps : Tea.TeaModel {
+        public var code: String?
+
+        public var duration: Int64?
+
+        public var endTime: Int64?
+
+        public var id: String?
+
+        public var message: String?
+
+        public var name: String?
+
+        public var startTime: Int64?
+
+        public var status: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.code != nil {
+                map["Code"] = self.code!
+            }
+            if self.duration != nil {
+                map["Duration"] = self.duration!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.message != nil {
+                map["Message"] = self.message!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Code") && dict["Code"] != nil {
+                self.code = dict["Code"] as! String
+            }
+            if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                self.duration = dict["Duration"] as! Int64
+            }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! Int64
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("Message") && dict["Message"] != nil {
+                self.message = dict["Message"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! Int64
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+        }
+    }
+    public var createTime: Int64?
+
+    public var endTime: Int64?
+
+    public var instanceId: String?
+
+    public var stackId: String?
+
+    public var startTime: Int64?
+
+    public var status: String?
+
+    public var steps: [AppStackTask.Steps]?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.stackId != nil {
+            map["StackId"] = self.stackId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        if self.status != nil {
+            map["Status"] = self.status!
+        }
+        if self.steps != nil {
+            var tmp : [Any] = []
+            for k in self.steps! {
+                tmp.append(k.toMap())
+            }
+            map["Steps"] = tmp
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+            self.createTime = dict["CreateTime"] as! Int64
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("StackId") && dict["StackId"] != nil {
+            self.stackId = dict["StackId"] as! String
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! Int64
+        }
+        if dict.keys.contains("Status") && dict["Status"] != nil {
+            self.status = dict["Status"] as! String
+        }
+        if dict.keys.contains("Steps") && dict["Steps"] != nil {
+            var tmp : [AppStackTask.Steps] = []
+            for v in dict["Steps"] as! [Any] {
+                var model = AppStackTask.Steps()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.steps = tmp
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
 public class Application : Tea.TeaModel {
     public var requestId: String?
 
@@ -792,6 +1253,8 @@ public class BuildPipeline : Tea.TeaModel {
 
         public var commitUrl: String?
 
+        public var organizationId: String?
+
         public var provider: String?
 
         public var repoFullName: String?
@@ -824,6 +1287,9 @@ public class BuildPipeline : Tea.TeaModel {
             if self.commitUrl != nil {
                 map["CommitUrl"] = self.commitUrl!
             }
+            if self.organizationId != nil {
+                map["OrganizationId"] = self.organizationId!
+            }
             if self.provider != nil {
                 map["Provider"] = self.provider!
             }
@@ -848,6 +1314,9 @@ public class BuildPipeline : Tea.TeaModel {
             }
             if dict.keys.contains("CommitUrl") && dict["CommitUrl"] != nil {
                 self.commitUrl = dict["CommitUrl"] as! String
+            }
+            if dict.keys.contains("OrganizationId") && dict["OrganizationId"] != nil {
+                self.organizationId = dict["OrganizationId"] as! String
             }
             if dict.keys.contains("Provider") && dict["Provider"] != nil {
                 self.provider = dict["Provider"] as! String
@@ -1014,6 +1483,8 @@ public class BuildPipeline : Tea.TeaModel {
     public class TriggerConfig : Tea.TeaModel {
         public var branchName: String?
 
+        public var tagName: String?
+
         public var type: String?
 
         public override init() {
@@ -1033,6 +1504,9 @@ public class BuildPipeline : Tea.TeaModel {
             if self.branchName != nil {
                 map["BranchName"] = self.branchName!
             }
+            if self.tagName != nil {
+                map["TagName"] = self.tagName!
+            }
             if self.type != nil {
                 map["Type"] = self.type!
             }
@@ -1042,6 +1516,9 @@ public class BuildPipeline : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("BranchName") && dict["BranchName"] != nil {
                 self.branchName = dict["BranchName"] as! String
+            }
+            if dict.keys.contains("TagName") && dict["TagName"] != nil {
+                self.tagName = dict["TagName"] as! String
             }
             if dict.keys.contains("Type") && dict["Type"] != nil {
                 self.type = dict["Type"] as! String
@@ -1164,6 +1641,8 @@ public class BuildPipelineRun : Tea.TeaModel {
         public class Trigger : Tea.TeaModel {
             public var branchName: String?
 
+            public var tagName: String?
+
             public var type: String?
 
             public override init() {
@@ -1183,6 +1662,9 @@ public class BuildPipelineRun : Tea.TeaModel {
                 if self.branchName != nil {
                     map["BranchName"] = self.branchName!
                 }
+                if self.tagName != nil {
+                    map["TagName"] = self.tagName!
+                }
                 if self.type != nil {
                     map["Type"] = self.type!
                 }
@@ -1192,6 +1674,9 @@ public class BuildPipelineRun : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("BranchName") && dict["BranchName"] != nil {
                     self.branchName = dict["BranchName"] as! String
+                }
+                if dict.keys.contains("TagName") && dict["TagName"] != nil {
+                    self.tagName = dict["TagName"] as! String
                 }
                 if dict.keys.contains("Type") && dict["Type"] != nil {
                     self.type = dict["Type"] as! String
@@ -1305,7 +1790,7 @@ public class BuildPipelineRun : Tea.TeaModel {
 
         public var commitUrl: String?
 
-        public var orgId: String?
+        public var organizationId: String?
 
         public var provider: String?
 
@@ -1339,8 +1824,8 @@ public class BuildPipelineRun : Tea.TeaModel {
             if self.commitUrl != nil {
                 map["CommitUrl"] = self.commitUrl!
             }
-            if self.orgId != nil {
-                map["OrgId"] = self.orgId!
+            if self.organizationId != nil {
+                map["OrganizationId"] = self.organizationId!
             }
             if self.provider != nil {
                 map["Provider"] = self.provider!
@@ -1367,8 +1852,8 @@ public class BuildPipelineRun : Tea.TeaModel {
             if dict.keys.contains("CommitUrl") && dict["CommitUrl"] != nil {
                 self.commitUrl = dict["CommitUrl"] as! String
             }
-            if dict.keys.contains("OrgId") && dict["OrgId"] != nil {
-                self.orgId = dict["OrgId"] as! String
+            if dict.keys.contains("OrganizationId") && dict["OrganizationId"] != nil {
+                self.organizationId = dict["OrganizationId"] as! String
             }
             if dict.keys.contains("Provider") && dict["Provider"] != nil {
                 self.provider = dict["Provider"] as! String
@@ -1617,6 +2102,51 @@ public class BuildPipelineRun : Tea.TeaModel {
             }
         }
     }
+    public class TriggerConfig : Tea.TeaModel {
+        public var branchName: String?
+
+        public var tagName: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.branchName != nil {
+                map["BranchName"] = self.branchName!
+            }
+            if self.tagName != nil {
+                map["TagName"] = self.tagName!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BranchName") && dict["BranchName"] != nil {
+                self.branchName = dict["BranchName"] as! String
+            }
+            if dict.keys.contains("TagName") && dict["TagName"] != nil {
+                self.tagName = dict["TagName"] as! String
+            }
+            if dict.keys.contains("Type") && dict["Type"] != nil {
+                self.type = dict["Type"] as! String
+            }
+        }
+    }
     public var buildConfig: BuildPipelineRun.BuildConfig?
 
     public var buildDuration: Int64?
@@ -1645,6 +2175,8 @@ public class BuildPipelineRun : Tea.TeaModel {
 
     public var steps: [BuildPipelineRun.Steps]?
 
+    public var triggerConfig: BuildPipelineRun.TriggerConfig?
+
     public var versionId: String?
 
     public var waitDuration: Int64?
@@ -1664,6 +2196,7 @@ public class BuildPipelineRun : Tea.TeaModel {
         try self.deployConfig?.validate()
         try self.imageConfig?.validate()
         try self.packageConfig?.validate()
+        try self.triggerConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -1713,6 +2246,9 @@ public class BuildPipelineRun : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Steps"] = tmp
+        }
+        if self.triggerConfig != nil {
+            map["TriggerConfig"] = self.triggerConfig?.toMap()
         }
         if self.versionId != nil {
             map["VersionId"] = self.versionId!
@@ -1783,6 +2319,11 @@ public class BuildPipelineRun : Tea.TeaModel {
                 tmp.append(model)
             }
             self.steps = tmp
+        }
+        if dict.keys.contains("TriggerConfig") && dict["TriggerConfig"] != nil {
+            var model = BuildPipelineRun.TriggerConfig()
+            model.fromMap(dict["TriggerConfig"] as! [String: Any])
+            self.triggerConfig = model
         }
         if dict.keys.contains("VersionId") && dict["VersionId"] != nil {
             self.versionId = dict["VersionId"] as! String
@@ -2547,6 +3088,8 @@ public class CustomDomain : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var routeConfig: RouteConfig?
+
     public var subdomainCount: String?
 
     public var tlsConfig: TLSConfig?
@@ -2564,6 +3107,7 @@ public class CustomDomain : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.certConfig?.validate()
+        try self.routeConfig?.validate()
         try self.tlsConfig?.validate()
         try self.wafConfig?.validate()
     }
@@ -2599,6 +3143,9 @@ public class CustomDomain : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["requestId"] = self.requestId!
+        }
+        if self.routeConfig != nil {
+            map["routeConfig"] = self.routeConfig?.toMap()
         }
         if self.subdomainCount != nil {
             map["subdomainCount"] = self.subdomainCount!
@@ -2644,6 +3191,11 @@ public class CustomDomain : Tea.TeaModel {
         }
         if dict.keys.contains("requestId") && dict["requestId"] != nil {
             self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("routeConfig") && dict["routeConfig"] != nil {
+            var model = RouteConfig()
+            model.fromMap(dict["routeConfig"] as! [String: Any])
+            self.routeConfig = model
         }
         if dict.keys.contains("subdomainCount") && dict["subdomainCount"] != nil {
             self.subdomainCount = dict["subdomainCount"] as! String
@@ -4817,6 +5369,44 @@ public class OSSMountPoint : Tea.TeaModel {
     }
 }
 
+public class PathConfig : Tea.TeaModel {
+    public var applicationName: String?
+
+    public var path: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.applicationName != nil {
+            map["applicationName"] = self.applicationName!
+        }
+        if self.path != nil {
+            map["path"] = self.path!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("applicationName") && dict["applicationName"] != nil {
+            self.applicationName = dict["applicationName"] as! String
+        }
+        if dict.keys.contains("path") && dict["path"] != nil {
+            self.path = dict["path"] as! String
+        }
+    }
+}
+
 public class PolicyItem : Tea.TeaModel {
     public var key: String?
 
@@ -5623,6 +6213,48 @@ public class PublishApplicationVersionInput : Tea.TeaModel {
     }
 }
 
+public class RouteConfig : Tea.TeaModel {
+    public var routes: [PathConfig]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.routes != nil {
+            var tmp : [Any] = []
+            for k in self.routes! {
+                tmp.append(k.toMap())
+            }
+            map["routes"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("routes") && dict["routes"] != nil {
+            var tmp : [PathConfig] = []
+            for v in dict["routes"] as! [Any] {
+                var model = PathConfig()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.routes = tmp
+        }
+    }
+}
+
 public class RoutePolicy : Tea.TeaModel {
     public var condition: String?
 
@@ -5831,11 +6463,58 @@ public class ScaleConfig : Tea.TeaModel {
 }
 
 public class SourceCodeAccount : Tea.TeaModel {
+    public class Organizations : Tea.TeaModel {
+        public var avatarUrl: String?
+
+        public var id: String?
+
+        public var name: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.avatarUrl != nil {
+                map["AvatarUrl"] = self.avatarUrl!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AvatarUrl") && dict["AvatarUrl"] != nil {
+                self.avatarUrl = dict["AvatarUrl"] as! String
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+        }
+    }
     public var avatarUrl: String?
 
     public var id: String?
 
     public var name: String?
+
+    public var organizations: [SourceCodeAccount.Organizations]?
 
     public override init() {
         super.init()
@@ -5860,6 +6539,13 @@ public class SourceCodeAccount : Tea.TeaModel {
         if self.name != nil {
             map["Name"] = self.name!
         }
+        if self.organizations != nil {
+            var tmp : [Any] = []
+            for k in self.organizations! {
+                tmp.append(k.toMap())
+            }
+            map["Organizations"] = tmp
+        }
         return map
     }
 
@@ -5872,6 +6558,17 @@ public class SourceCodeAccount : Tea.TeaModel {
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("Organizations") && dict["Organizations"] != nil {
+            var tmp : [SourceCodeAccount.Organizations] = []
+            for v in dict["Organizations"] as! [Any] {
+                var model = SourceCodeAccount.Organizations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.organizations = tmp
         }
     }
 }
@@ -7310,9 +8007,6 @@ public class AbortAndRollbackChangeOrderResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7502,9 +8196,6 @@ public class AbortChangeOrderResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7542,6 +8233,8 @@ public class BatchStartApplicationsRequest : Tea.TeaModel {
 
     public var namespaceId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7562,6 +8255,9 @@ public class BatchStartApplicationsRequest : Tea.TeaModel {
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7571,6 +8267,9 @@ public class BatchStartApplicationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
             self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("Version") && dict["Version"] != nil {
+            self.version = dict["Version"] as! String
         }
     }
 }
@@ -7702,9 +8401,6 @@ public class BatchStartApplicationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -7742,6 +8438,8 @@ public class BatchStopApplicationsRequest : Tea.TeaModel {
 
     public var namespaceId: String?
 
+    public var version: String?
+
     public override init() {
         super.init()
     }
@@ -7762,6 +8460,9 @@ public class BatchStopApplicationsRequest : Tea.TeaModel {
         if self.namespaceId != nil {
             map["NamespaceId"] = self.namespaceId!
         }
+        if self.version != nil {
+            map["Version"] = self.version!
+        }
         return map
     }
 
@@ -7771,6 +8472,9 @@ public class BatchStopApplicationsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NamespaceId") && dict["NamespaceId"] != nil {
             self.namespaceId = dict["NamespaceId"] as! String
+        }
+        if dict.keys.contains("Version") && dict["Version"] != nil {
+            self.version = dict["Version"] as! String
         }
     }
 }
@@ -7902,9 +8606,6 @@ public class BatchStopApplicationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8126,9 +8827,6 @@ public class BindSlbResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8326,9 +9024,6 @@ public class ConfirmPipelineBatchResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -8982,9 +9677,6 @@ public class CreateApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9544,9 +10236,6 @@ public class CreateApplicationScalingRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9760,9 +10449,6 @@ public class CreateConfigMapResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -9992,9 +10678,6 @@ public class CreateGreyTagRouteResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10256,9 +10939,6 @@ public class CreateIngressResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -10880,9 +11560,6 @@ public class CreateJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11144,9 +11821,6 @@ public class CreateNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11446,9 +12120,6 @@ public class CreateSecretResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11638,9 +12309,6 @@ public class DeleteApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11798,9 +12466,6 @@ public class DeleteApplicationScalingRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -11990,9 +12655,6 @@ public class DeleteConfigMapResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12182,9 +12844,6 @@ public class DeleteGreyTagRouteResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12350,9 +13009,6 @@ public class DeleteHistoryJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12542,9 +13198,6 @@ public class DeleteIngressResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12702,9 +13355,6 @@ public class DeleteJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -12862,9 +13512,6 @@ public class DeleteNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13062,9 +13709,6 @@ public class DeleteSecretResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -13726,9 +14370,6 @@ public class DeployApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -14184,9 +14825,6 @@ public class DescribeAppServiceDetailResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15124,9 +15762,6 @@ public class DescribeApplicationConfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15429,9 +16064,6 @@ public class DescribeApplicationGroupsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -15685,9 +16317,6 @@ public class DescribeApplicationImageResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16070,9 +16699,6 @@ public class DescribeApplicationInstancesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -16906,9 +17532,6 @@ public class DescribeApplicationScalingRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -17815,9 +18438,6 @@ public class DescribeApplicationScalingRulesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18193,9 +18813,6 @@ public class DescribeApplicationSlbsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18473,9 +19090,6 @@ public class DescribeApplicationStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -18890,9 +19504,6 @@ public class DescribeChangeOrderResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19123,9 +19734,6 @@ public class DescribeComponentsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -19420,9 +20028,6 @@ public class DescribeConfigMapResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20248,9 +20853,6 @@ public class DescribeConfigurationPriceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -20427,9 +21029,6 @@ public class DescribeEdasContainersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21153,9 +21752,6 @@ public class DescribeGreyTagRouteResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21586,9 +22182,6 @@ public class DescribeIngressResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21746,9 +22339,6 @@ public class DescribeInstanceLogResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -21957,9 +22547,6 @@ public class DescribeInstanceSpecificationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -22849,9 +23436,6 @@ public class DescribeJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23186,9 +23770,6 @@ public class DescribeJobHistoryResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23442,9 +24023,6 @@ public class DescribeJobStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23682,9 +24260,6 @@ public class DescribeNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -23971,9 +24546,6 @@ public class DescribeNamespaceListResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24315,9 +24887,6 @@ public class DescribeNamespaceResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -24644,9 +25213,6 @@ public class DescribeNamespacesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25070,9 +25636,6 @@ public class DescribePipelineResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25305,9 +25868,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25610,9 +26170,6 @@ public class DescribeSecretResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25770,9 +26327,6 @@ public class DisableApplicationScalingRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -25930,9 +26484,6 @@ public class EnableApplicationScalingRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26218,9 +26769,6 @@ public class ExecJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26254,6 +26802,10 @@ public class ExecJobResponse : Tea.TeaModel {
 }
 
 public class GetArmsTopNMetricRequest : Tea.TeaModel {
+    public var appSource: String?
+
+    public var cpuStrategy: String?
+
     public var endTime: Int64?
 
     public var limit: Int64?
@@ -26278,6 +26830,12 @@ public class GetArmsTopNMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appSource != nil {
+            map["AppSource"] = self.appSource!
+        }
+        if self.cpuStrategy != nil {
+            map["CpuStrategy"] = self.cpuStrategy!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -26297,6 +26855,12 @@ public class GetArmsTopNMetricRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppSource") && dict["AppSource"] != nil {
+            self.appSource = dict["AppSource"] as! String
+        }
+        if dict.keys.contains("CpuStrategy") && dict["CpuStrategy"] != nil {
+            self.cpuStrategy = dict["CpuStrategy"] as! String
+        }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! Int64
         }
@@ -26475,9 +27039,6 @@ public class GetArmsTopNMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26511,6 +27072,10 @@ public class GetArmsTopNMetricResponse : Tea.TeaModel {
 }
 
 public class GetAvailabilityMetricRequest : Tea.TeaModel {
+    public var appSource: String?
+
+    public var cpuStrategy: String?
+
     public var limit: Int64?
 
     public var regionId: String?
@@ -26529,6 +27094,12 @@ public class GetAvailabilityMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appSource != nil {
+            map["AppSource"] = self.appSource!
+        }
+        if self.cpuStrategy != nil {
+            map["CpuStrategy"] = self.cpuStrategy!
+        }
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
@@ -26539,6 +27110,12 @@ public class GetAvailabilityMetricRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppSource") && dict["AppSource"] != nil {
+            self.appSource = dict["AppSource"] as! String
+        }
+        if dict.keys.contains("CpuStrategy") && dict["CpuStrategy"] != nil {
+            self.cpuStrategy = dict["CpuStrategy"] as! String
+        }
         if dict.keys.contains("Limit") && dict["Limit"] != nil {
             self.limit = dict["Limit"] as! Int64
         }
@@ -26716,9 +27293,6 @@ public class GetAvailabilityMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -26752,6 +27326,10 @@ public class GetAvailabilityMetricResponse : Tea.TeaModel {
 }
 
 public class GetChangeOrderMetricRequest : Tea.TeaModel {
+    public var appSource: String?
+
+    public var cpuStrategy: String?
+
     public var createTime: String?
 
     public var limit: Int64?
@@ -26774,6 +27352,12 @@ public class GetChangeOrderMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appSource != nil {
+            map["AppSource"] = self.appSource!
+        }
+        if self.cpuStrategy != nil {
+            map["CpuStrategy"] = self.cpuStrategy!
+        }
         if self.createTime != nil {
             map["CreateTime"] = self.createTime!
         }
@@ -26790,6 +27374,12 @@ public class GetChangeOrderMetricRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppSource") && dict["AppSource"] != nil {
+            self.appSource = dict["AppSource"] as! String
+        }
+        if dict.keys.contains("CpuStrategy") && dict["CpuStrategy"] != nil {
+            self.cpuStrategy = dict["CpuStrategy"] as! String
+        }
         if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
             self.createTime = dict["CreateTime"] as! String
         }
@@ -26965,9 +27555,6 @@ public class GetChangeOrderMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27001,6 +27588,10 @@ public class GetChangeOrderMetricResponse : Tea.TeaModel {
 }
 
 public class GetScaleAppMetricRequest : Tea.TeaModel {
+    public var appSource: String?
+
+    public var cpuStrategy: String?
+
     public var limit: Int64?
 
     public var regionId: String?
@@ -27019,6 +27610,12 @@ public class GetScaleAppMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appSource != nil {
+            map["AppSource"] = self.appSource!
+        }
+        if self.cpuStrategy != nil {
+            map["CpuStrategy"] = self.cpuStrategy!
+        }
         if self.limit != nil {
             map["Limit"] = self.limit!
         }
@@ -27029,6 +27626,12 @@ public class GetScaleAppMetricRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppSource") && dict["AppSource"] != nil {
+            self.appSource = dict["AppSource"] as! String
+        }
+        if dict.keys.contains("CpuStrategy") && dict["CpuStrategy"] != nil {
+            self.cpuStrategy = dict["CpuStrategy"] as! String
+        }
         if dict.keys.contains("Limit") && dict["Limit"] != nil {
             self.limit = dict["Limit"] as! Int64
         }
@@ -27190,9 +27793,6 @@ public class GetScaleAppMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27226,6 +27826,10 @@ public class GetScaleAppMetricResponse : Tea.TeaModel {
 }
 
 public class GetWarningEventMetricRequest : Tea.TeaModel {
+    public var appSource: String?
+
+    public var cpuStrategy: String?
+
     public var endTime: Int64?
 
     public var limit: Int64?
@@ -27248,6 +27852,12 @@ public class GetWarningEventMetricRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appSource != nil {
+            map["AppSource"] = self.appSource!
+        }
+        if self.cpuStrategy != nil {
+            map["CpuStrategy"] = self.cpuStrategy!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -27264,6 +27874,12 @@ public class GetWarningEventMetricRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AppSource") && dict["AppSource"] != nil {
+            self.appSource = dict["AppSource"] as! String
+        }
+        if dict.keys.contains("CpuStrategy") && dict["CpuStrategy"] != nil {
+            self.cpuStrategy = dict["CpuStrategy"] as! String
+        }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! Int64
         }
@@ -27423,9 +28039,6 @@ public class GetWarningEventMetricResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -27776,9 +28389,6 @@ public class ListAppEventsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28114,9 +28724,6 @@ public class ListAppServicesPageResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28339,9 +28946,6 @@ public class ListAppVersionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -28813,9 +29417,6 @@ public class ListApplicationsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -29214,9 +29815,6 @@ public class ListChangeOrdersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -29463,9 +30061,6 @@ public class ListConsumedServicesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -30246,9 +30841,6 @@ public class ListGreyTagRouteResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -30591,9 +31183,6 @@ public class ListIngressesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -31121,9 +31710,6 @@ public class ListJobsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -31450,9 +32036,6 @@ public class ListLogConfigsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -31859,9 +32442,6 @@ public class ListNamespaceChangeOrdersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32197,9 +32777,6 @@ public class ListNamespacedConfigMapsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32446,9 +33023,6 @@ public class ListPublishedServicesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -32776,9 +33350,6 @@ public class ListSecretsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33073,9 +33644,6 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33163,9 +33731,6 @@ public class OpenSaeServiceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33443,9 +34008,6 @@ public class QueryResourceStaticsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33643,9 +34205,6 @@ public class ReduceApplicationCapacityByInstanceIdsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -33859,9 +34418,6 @@ public class RescaleApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34067,9 +34623,6 @@ public class RescaleApplicationVerticallyResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34283,9 +34836,6 @@ public class RestartApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34483,9 +35033,6 @@ public class RestartInstancesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34731,9 +35278,6 @@ public class RollbackApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -34923,9 +35467,6 @@ public class StartApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35115,9 +35656,6 @@ public class StopApplicationResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35283,9 +35821,6 @@ public class SuspendJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35467,9 +36002,6 @@ public class TagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35675,9 +36207,6 @@ public class UnbindSlbResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -35867,9 +36396,6 @@ public class UntagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36027,9 +36553,6 @@ public class UpdateAppSecurityGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36187,9 +36710,6 @@ public class UpdateApplicationDescriptionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36733,9 +37253,6 @@ public class UpdateApplicationScalingRuleResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -36893,9 +37410,6 @@ public class UpdateApplicationVswitchesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -37101,9 +37615,6 @@ public class UpdateConfigMapResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -37325,9 +37836,6 @@ public class UpdateGreyTagRouteResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -37581,9 +38089,6 @@ public class UpdateIngressResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -38133,9 +38638,6 @@ public class UpdateJobResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -38397,9 +38899,6 @@ public class UpdateNamespaceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -38565,9 +39064,6 @@ public class UpdateNamespaceVpcResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -38851,9 +39347,6 @@ public class UpdateSecretResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
