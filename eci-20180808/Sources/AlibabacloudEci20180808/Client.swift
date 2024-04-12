@@ -176,6 +176,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.computeCategory)) {
+            query["ComputeCategory"] = request.computeCategory ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.container)) {
             query["Container"] = request.container ?? [];
         }
@@ -244,6 +247,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.fixedIpRetainHour)) {
             query["FixedIpRetainHour"] = request.fixedIpRetainHour!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuDriverVersion)) {
+            query["GpuDriverVersion"] = request.gpuDriverVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.hostAliase)) {
             query["HostAliase"] = request.hostAliase ?? [];
@@ -1182,6 +1188,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeContainerGroupPriceWithOptions(_ request: DescribeContainerGroupPriceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeContainerGroupPriceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computeCategory)) {
+            query["ComputeCategory"] = request.computeCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cpu)) {
             query["Cpu"] = request.cpu!;
         }
@@ -1307,6 +1316,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeContainerGroupsWithOptions(_ request: DescribeContainerGroupsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeContainerGroupsResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.computeCategory)) {
+            query["ComputeCategory"] = request.computeCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.containerGroupIds)) {
             query["ContainerGroupIds"] = request.containerGroupIds ?? "";
         }
