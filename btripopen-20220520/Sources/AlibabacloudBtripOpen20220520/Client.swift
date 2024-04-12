@@ -8348,6 +8348,106 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func travelStandardListQueryWithOptions(_ request: TravelStandardListQueryRequest, _ headers: TravelStandardListQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> TravelStandardListQueryResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fromGroup)) {
+            query["from_group"] = request.fromGroup!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageNo)) {
+            query["page_no"] = request.pageNo!;
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["page_size"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["rule_name"] = request.ruleName ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TravelStandardListQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/travel-manage/v1/standards/list",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TravelStandardListQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func travelStandardListQuery(_ request: TravelStandardListQueryRequest) async throws -> TravelStandardListQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: TravelStandardListQueryHeaders = TravelStandardListQueryHeaders([:])
+        return try await travelStandardListQueryWithOptions(request as! TravelStandardListQueryRequest, headers as! TravelStandardListQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func travelStandardQueryWithOptions(_ tmpReq: TravelStandardQueryRequest, _ headers: TravelStandardQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> TravelStandardQueryResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: TravelStandardQueryShrinkRequest = TravelStandardQueryShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.serviceTypeList)) {
+            request.serviceTypeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.serviceTypeList, "service_type_list", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.fromGroup)) {
+            query["from_group"] = request.fromGroup!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleCode)) {
+            query["rule_code"] = request.ruleCode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceTypeListShrink)) {
+            query["service_type_list"] = request.serviceTypeListShrink ?? "";
+        }
+        var realHeaders: [String: String] = [:]
+        if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
+            realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xAcsBtripCorpToken)) {
+            realHeaders["x-acs-btrip-corp-token"] = TeaUtils.Client.toJSONString(headers.xAcsBtripCorpToken);
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "headers": realHeaders as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "TravelStandardQuery",
+            "version": "2022-05-20",
+            "protocol": "HTTPS",
+            "pathname": "/travel-manage/v1/standards/detail",
+            "method": "GET",
+            "authType": "AK",
+            "style": "ROA",
+            "reqBodyType": "json",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(TravelStandardQueryResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func travelStandardQuery(_ request: TravelStandardQueryRequest) async throws -> TravelStandardQueryResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        var headers: TravelStandardQueryHeaders = TravelStandardQueryHeaders([:])
+        return try await travelStandardQueryWithOptions(request as! TravelStandardQueryRequest, headers as! TravelStandardQueryHeaders, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func userQueryWithOptions(_ request: UserQueryRequest, _ headers: UserQueryHeaders, _ runtime: TeaUtils.RuntimeOptions) async throws -> UserQueryResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
