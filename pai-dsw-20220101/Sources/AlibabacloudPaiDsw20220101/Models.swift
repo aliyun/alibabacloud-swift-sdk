@@ -2614,6 +2614,51 @@ public class GetInstanceResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class NodeErrorRecovery : Tea.TeaModel {
+        public var autoSwitchCountdownSeconds: Int64?
+
+        public var enableAutoSwitchOnNodeError: Bool?
+
+        public var hasNodeError: Bool?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.autoSwitchCountdownSeconds != nil {
+                map["autoSwitchCountdownSeconds"] = self.autoSwitchCountdownSeconds!
+            }
+            if self.enableAutoSwitchOnNodeError != nil {
+                map["enableAutoSwitchOnNodeError"] = self.enableAutoSwitchOnNodeError!
+            }
+            if self.hasNodeError != nil {
+                map["hasNodeError"] = self.hasNodeError!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("autoSwitchCountdownSeconds") && dict["autoSwitchCountdownSeconds"] != nil {
+                self.autoSwitchCountdownSeconds = dict["autoSwitchCountdownSeconds"] as! Int64
+            }
+            if dict.keys.contains("enableAutoSwitchOnNodeError") && dict["enableAutoSwitchOnNodeError"] != nil {
+                self.enableAutoSwitchOnNodeError = dict["enableAutoSwitchOnNodeError"] as! Bool
+            }
+            if dict.keys.contains("hasNodeError") && dict["hasNodeError"] != nil {
+                self.hasNodeError = dict["hasNodeError"] as! Bool
+            }
+        }
+    }
     public class RequestedResource : Tea.TeaModel {
         public var CPU: String?
 
@@ -2806,6 +2851,8 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
     public var message: String?
 
+    public var nodeErrorRecovery: GetInstanceResponseBody.NodeErrorRecovery?
+
     public var paymentType: String?
 
     public var priority: Int64?
@@ -2855,6 +2902,7 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         try self.idleInstanceCuller?.validate()
         try self.instanceShutdownTimer?.validate()
         try self.latestSnapshot?.validate()
+        try self.nodeErrorRecovery?.validate()
         try self.requestedResource?.validate()
         try self.userVpc?.validate()
     }
@@ -2951,6 +2999,9 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if self.message != nil {
             map["Message"] = self.message!
+        }
+        if self.nodeErrorRecovery != nil {
+            map["NodeErrorRecovery"] = self.nodeErrorRecovery?.toMap()
         }
         if self.paymentType != nil {
             map["PaymentType"] = self.paymentType!
@@ -3122,6 +3173,11 @@ public class GetInstanceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Message") && dict["Message"] != nil {
             self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("NodeErrorRecovery") && dict["NodeErrorRecovery"] != nil {
+            var model = GetInstanceResponseBody.NodeErrorRecovery()
+            model.fromMap(dict["NodeErrorRecovery"] as! [String: Any])
+            self.nodeErrorRecovery = model
         }
         if dict.keys.contains("PaymentType") && dict["PaymentType"] != nil {
             self.paymentType = dict["PaymentType"] as! String
