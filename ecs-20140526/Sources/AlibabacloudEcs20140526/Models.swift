@@ -35773,6 +35773,10 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
 
     public var lockReason: String?
 
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -35825,6 +35829,12 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
         }
         if self.lockReason != nil {
             map["LockReason"] = self.lockReason!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -35884,6 +35894,12 @@ public class DescribeDedicatedHostsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("LockReason") && dict["LockReason"] != nil {
             self.lockReason = dict["LockReason"] as! String
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
@@ -36921,6 +36937,8 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
     }
     public var dedicatedHosts: DescribeDedicatedHostsResponseBody.DedicatedHosts?
 
+    public var nextToken: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
@@ -36947,6 +36965,9 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
         if self.dedicatedHosts != nil {
             map["DedicatedHosts"] = self.dedicatedHosts?.toMap()
         }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
@@ -36967,6 +36988,9 @@ public class DescribeDedicatedHostsResponseBody : Tea.TeaModel {
             var model = DescribeDedicatedHostsResponseBody.DedicatedHosts()
             model.fromMap(dict["DedicatedHosts"] as! [String: Any])
             self.dedicatedHosts = model
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
@@ -53879,15 +53903,25 @@ public class DescribeInstanceTypeFamiliesResponse : Tea.TeaModel {
 public class DescribeInstanceTypesRequest : Tea.TeaModel {
     public var cpuArchitecture: String?
 
+    public var cpuArchitectures: [String]?
+
     public var GPUSpec: String?
+
+    public var gpuSpecs: [String]?
+
+    public var instanceCategories: [String]?
 
     public var instanceCategory: String?
 
     public var instanceFamilyLevel: String?
 
+    public var instanceTypeFamilies: [String]?
+
     public var instanceTypeFamily: String?
 
     public var instanceTypes: [String]?
+
+    public var localStorageCategories: [String]?
 
     public var localStorageCategory: String?
 
@@ -53955,6 +53989,8 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
 
     public var physicalProcessorModel: String?
 
+    public var physicalProcessorModels: [String]?
+
     public var resourceOwnerAccount: String?
 
     public var resourceOwnerId: Int64?
@@ -53976,8 +54012,17 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
         if self.cpuArchitecture != nil {
             map["CpuArchitecture"] = self.cpuArchitecture!
         }
+        if self.cpuArchitectures != nil {
+            map["CpuArchitectures"] = self.cpuArchitectures!
+        }
         if self.GPUSpec != nil {
             map["GPUSpec"] = self.GPUSpec!
+        }
+        if self.gpuSpecs != nil {
+            map["GpuSpecs"] = self.gpuSpecs!
+        }
+        if self.instanceCategories != nil {
+            map["InstanceCategories"] = self.instanceCategories!
         }
         if self.instanceCategory != nil {
             map["InstanceCategory"] = self.instanceCategory!
@@ -53985,11 +54030,17 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
         if self.instanceFamilyLevel != nil {
             map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
         }
+        if self.instanceTypeFamilies != nil {
+            map["InstanceTypeFamilies"] = self.instanceTypeFamilies!
+        }
         if self.instanceTypeFamily != nil {
             map["InstanceTypeFamily"] = self.instanceTypeFamily!
         }
         if self.instanceTypes != nil {
             map["InstanceTypes"] = self.instanceTypes!
+        }
+        if self.localStorageCategories != nil {
+            map["LocalStorageCategories"] = self.localStorageCategories!
         }
         if self.localStorageCategory != nil {
             map["LocalStorageCategory"] = self.localStorageCategory!
@@ -54090,6 +54141,9 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
         if self.physicalProcessorModel != nil {
             map["PhysicalProcessorModel"] = self.physicalProcessorModel!
         }
+        if self.physicalProcessorModels != nil {
+            map["PhysicalProcessorModels"] = self.physicalProcessorModels!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -54103,8 +54157,17 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
         if dict.keys.contains("CpuArchitecture") && dict["CpuArchitecture"] != nil {
             self.cpuArchitecture = dict["CpuArchitecture"] as! String
         }
+        if dict.keys.contains("CpuArchitectures") && dict["CpuArchitectures"] != nil {
+            self.cpuArchitectures = dict["CpuArchitectures"] as! [String]
+        }
         if dict.keys.contains("GPUSpec") && dict["GPUSpec"] != nil {
             self.GPUSpec = dict["GPUSpec"] as! String
+        }
+        if dict.keys.contains("GpuSpecs") && dict["GpuSpecs"] != nil {
+            self.gpuSpecs = dict["GpuSpecs"] as! [String]
+        }
+        if dict.keys.contains("InstanceCategories") && dict["InstanceCategories"] != nil {
+            self.instanceCategories = dict["InstanceCategories"] as! [String]
         }
         if dict.keys.contains("InstanceCategory") && dict["InstanceCategory"] != nil {
             self.instanceCategory = dict["InstanceCategory"] as! String
@@ -54112,11 +54175,17 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
         if dict.keys.contains("InstanceFamilyLevel") && dict["InstanceFamilyLevel"] != nil {
             self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
         }
+        if dict.keys.contains("InstanceTypeFamilies") && dict["InstanceTypeFamilies"] != nil {
+            self.instanceTypeFamilies = dict["InstanceTypeFamilies"] as! [String]
+        }
         if dict.keys.contains("InstanceTypeFamily") && dict["InstanceTypeFamily"] != nil {
             self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
         }
         if dict.keys.contains("InstanceTypes") && dict["InstanceTypes"] != nil {
             self.instanceTypes = dict["InstanceTypes"] as! [String]
+        }
+        if dict.keys.contains("LocalStorageCategories") && dict["LocalStorageCategories"] != nil {
+            self.localStorageCategories = dict["LocalStorageCategories"] as! [String]
         }
         if dict.keys.contains("LocalStorageCategory") && dict["LocalStorageCategory"] != nil {
             self.localStorageCategory = dict["LocalStorageCategory"] as! String
@@ -54216,6 +54285,9 @@ public class DescribeInstanceTypesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("PhysicalProcessorModel") && dict["PhysicalProcessorModel"] != nil {
             self.physicalProcessorModel = dict["PhysicalProcessorModel"] as! String
+        }
+        if dict.keys.contains("PhysicalProcessorModels") && dict["PhysicalProcessorModels"] != nil {
+            self.physicalProcessorModels = dict["PhysicalProcessorModels"] as! [String]
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String

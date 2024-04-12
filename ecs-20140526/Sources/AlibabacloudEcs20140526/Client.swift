@@ -7821,6 +7821,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.lockReason)) {
             query["LockReason"] = request.lockReason ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.maxResults)) {
+            query["MaxResults"] = request.maxResults!;
+        }
+        if (!TeaUtils.Client.isUnset(request.nextToken)) {
+            query["NextToken"] = request.nextToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -10045,8 +10051,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.cpuArchitecture)) {
             query["CpuArchitecture"] = request.cpuArchitecture ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.cpuArchitectures)) {
+            query["CpuArchitectures"] = request.cpuArchitectures ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.GPUSpec)) {
             query["GPUSpec"] = request.GPUSpec ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.gpuSpecs)) {
+            query["GpuSpecs"] = request.gpuSpecs ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceCategories)) {
+            query["InstanceCategories"] = request.instanceCategories ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.instanceCategory)) {
             query["InstanceCategory"] = request.instanceCategory ?? "";
@@ -10054,11 +10069,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.instanceFamilyLevel)) {
             query["InstanceFamilyLevel"] = request.instanceFamilyLevel ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.instanceTypeFamilies)) {
+            query["InstanceTypeFamilies"] = request.instanceTypeFamilies ?? [];
+        }
         if (!TeaUtils.Client.isUnset(request.instanceTypeFamily)) {
             query["InstanceTypeFamily"] = request.instanceTypeFamily ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.instanceTypes)) {
             query["InstanceTypes"] = request.instanceTypes ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.localStorageCategories)) {
+            query["LocalStorageCategories"] = request.localStorageCategories ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.localStorageCategory)) {
             query["LocalStorageCategory"] = request.localStorageCategory ?? "";
@@ -10158,6 +10179,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.physicalProcessorModel)) {
             query["PhysicalProcessorModel"] = request.physicalProcessorModel ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.physicalProcessorModels)) {
+            query["PhysicalProcessorModels"] = request.physicalProcessorModels ?? [];
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
