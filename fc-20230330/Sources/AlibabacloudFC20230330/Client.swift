@@ -747,39 +747,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getResourceTagsWithOptions(_ request: GetResourceTagsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResourceTagsResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.arn)) {
-            query["arn"] = request.arn ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String],
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetResourceTags",
-            "version": "2023-03-30",
-            "protocol": "HTTPS",
-            "pathname": "/2023-03-30/tag",
-            "method": "GET",
-            "authType": "AK",
-            "style": "ROA",
-            "reqBodyType": "json",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetResourceTagsResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getResourceTags(_ request: GetResourceTagsRequest) async throws -> GetResourceTagsResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        var headers: [String: String] = [:]
-        return try await getResourceTagsWithOptions(request as! GetResourceTagsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getTriggerWithOptions(_ functionName: String, _ triggerName: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> GetTriggerResponse {
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String]
@@ -816,6 +783,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
             realHeaders = headers.commonHeaders ?? [:]
+        }
+        if (!TeaUtils.Client.isUnset(headers.xFcAsyncTaskId)) {
+            realHeaders["x-fc-async-task-id"] = TeaUtils.Client.toJSONString(headers.xFcAsyncTaskId);
         }
         if (!TeaUtils.Client.isUnset(headers.xFcInvocationType)) {
             realHeaders["x-fc-invocation-type"] = TeaUtils.Client.toJSONString(headers.xFcInvocationType);
@@ -1255,24 +1225,41 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTaggedResourcesWithOptions(_ request: ListTaggedResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTaggedResourcesResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func listTagResourcesWithOptions(_ tmpReq: ListTagResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> ListTagResourcesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListTagResourcesShrinkRequest = ListTagResourcesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceId)) {
+            request.resourceIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceId, "ResourceId", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.limit)) {
-            query["limit"] = request.limit!;
+            query["Limit"] = request.limit!;
         }
         if (!TeaUtils.Client.isUnset(request.nextToken)) {
-            query["nextToken"] = request.nextToken ?? "";
+            query["NextToken"] = request.nextToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceIdShrink)) {
+            query["ResourceId"] = request.resourceIdShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            query["Tag"] = request.tagShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListTaggedResources",
+            "action": "ListTagResources",
             "version": "2023-03-30",
             "protocol": "HTTPS",
-            "pathname": "/2023-03-30/tags",
+            "pathname": "/2023-03-30/tags-v2",
             "method": "GET",
             "authType": "AK",
             "style": "ROA",
@@ -1280,14 +1267,14 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "json"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListTaggedResourcesResponse(), tmp)
+        return Tea.TeaConverter.fromMap(ListTagResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listTaggedResources(_ request: ListTaggedResourcesRequest) async throws -> ListTaggedResourcesResponse {
+    public func listTagResources(_ request: ListTagResourcesRequest) async throws -> ListTagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await listTaggedResourcesWithOptions(request as! ListTaggedResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await listTagResourcesWithOptions(request as! ListTagResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1516,17 +1503,17 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func tagResourceWithOptions(_ request: TagResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TagResourceResponse {
+    public func tagResourcesWithOptions(_ request: TagResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> TagResourcesResponse {
         try TeaUtils.Client.validateModel(request)
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "body": AlibabaCloudOpenApiUtil.Client.parseToMap(request.body)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "TagResource",
+            "action": "TagResources",
             "version": "2023-03-30",
             "protocol": "HTTPS",
-            "pathname": "/2023-03-30/tag",
+            "pathname": "/2023-03-30/tags-v2",
             "method": "POST",
             "authType": "AK",
             "style": "ROA",
@@ -1534,38 +1521,49 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "none"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(TagResourceResponse(), tmp)
+        return Tea.TeaConverter.fromMap(TagResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func tagResource(_ request: TagResourceRequest) async throws -> TagResourceResponse {
+    public func tagResources(_ request: TagResourcesRequest) async throws -> TagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await tagResourceWithOptions(request as! TagResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await tagResourcesWithOptions(request as! TagResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func untagResourceWithOptions(_ request: UntagResourceRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UntagResourceResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func untagResourcesWithOptions(_ tmpReq: UntagResourcesRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> UntagResourcesResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UntagResourcesShrinkRequest = UntagResourcesShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.resourceId)) {
+            request.resourceIdShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.resourceId, "ResourceId", "json")
+        }
+        if (!TeaUtils.Client.isUnset(tmpReq.tagKey)) {
+            request.tagKeyShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tagKey, "TagKey", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.all)) {
-            query["all"] = request.all!;
+            query["All"] = request.all!;
         }
-        if (!TeaUtils.Client.isUnset(request.arn)) {
-            query["arn"] = request.arn ?? "";
+        if (!TeaUtils.Client.isUnset(request.resourceIdShrink)) {
+            query["ResourceId"] = request.resourceIdShrink ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.tagKeys)) {
-            query["tagKeys"] = request.tagKeys ?? "";
+        if (!TeaUtils.Client.isUnset(request.resourceType)) {
+            query["ResourceType"] = request.resourceType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagKeyShrink)) {
+            query["TagKey"] = request.tagKeyShrink ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "UntagResource",
+            "action": "UntagResources",
             "version": "2023-03-30",
             "protocol": "HTTPS",
-            "pathname": "/2023-03-30/tag",
+            "pathname": "/2023-03-30/tags-v2",
             "method": "DELETE",
             "authType": "AK",
             "style": "ROA",
@@ -1573,14 +1571,14 @@ open class Client : AlibabacloudOpenApi.Client {
             "bodyType": "none"
         ])
         var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(UntagResourceResponse(), tmp)
+        return Tea.TeaConverter.fromMap(UntagResourcesResponse(), tmp)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func untagResource(_ request: UntagResourceRequest) async throws -> UntagResourceResponse {
+    public func untagResources(_ request: UntagResourcesRequest) async throws -> UntagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await untagResourceWithOptions(request as! UntagResourceRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await untagResourcesWithOptions(request as! UntagResourcesRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
