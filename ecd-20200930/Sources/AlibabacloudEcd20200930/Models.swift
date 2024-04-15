@@ -6358,7 +6358,11 @@ public class CreateDesktopOversoldGroupRequest : Tea.TeaModel {
 
     public var directoryId: String?
 
+    public var idleDisconnectDuration: Int64?
+
     public var imageId: String?
+
+    public var keepDuration: Int32?
 
     public var name: String?
 
@@ -6405,8 +6409,14 @@ public class CreateDesktopOversoldGroupRequest : Tea.TeaModel {
         if self.directoryId != nil {
             map["DirectoryId"] = self.directoryId!
         }
+        if self.idleDisconnectDuration != nil {
+            map["IdleDisconnectDuration"] = self.idleDisconnectDuration!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.keepDuration != nil {
+            map["KeepDuration"] = self.keepDuration!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -6451,8 +6461,14 @@ public class CreateDesktopOversoldGroupRequest : Tea.TeaModel {
         if dict.keys.contains("DirectoryId") && dict["DirectoryId"] != nil {
             self.directoryId = dict["DirectoryId"] as! String
         }
+        if dict.keys.contains("IdleDisconnectDuration") && dict["IdleDisconnectDuration"] != nil {
+            self.idleDisconnectDuration = dict["IdleDisconnectDuration"] as! Int64
+        }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("KeepDuration") && dict["KeepDuration"] != nil {
+            self.keepDuration = dict["KeepDuration"] as! Int32
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
@@ -16588,6 +16604,10 @@ public class DescribeDesktopOversoldUserGroupResponse : Tea.TeaModel {
 }
 
 public class DescribeDesktopSessionsRequest : Tea.TeaModel {
+    public var desktopId: [String]?
+
+    public var desktopName: String?
+
     public var endTime: String?
 
     public var endUserId: String?
@@ -16618,6 +16638,12 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
+        if self.desktopName != nil {
+            map["DesktopName"] = self.desktopName!
+        }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
         }
@@ -16646,6 +16672,12 @@ public class DescribeDesktopSessionsRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+            self.desktopId = dict["DesktopId"] as! [String]
+        }
+        if dict.keys.contains("DesktopName") && dict["DesktopName"] != nil {
+            self.desktopName = dict["DesktopName"] as! String
+        }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! String
         }
@@ -26462,6 +26494,308 @@ public class DescribePriceForRenewDesktopOversoldGroupResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribePriceForRenewDesktopOversoldGroupResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DescribeRecordingsRequest : Tea.TeaModel {
+    public var desktopId: String?
+
+    public var endTime: String?
+
+    public var maxResults: Int32?
+
+    public var needSignedUrl: Bool?
+
+    public var nextToken: String?
+
+    public var policyGroupId: String?
+
+    public var regionId: String?
+
+    public var signedUrlExpireMinutes: Int32?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.desktopId != nil {
+            map["DesktopId"] = self.desktopId!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.needSignedUrl != nil {
+            map["NeedSignedUrl"] = self.needSignedUrl!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.policyGroupId != nil {
+            map["PolicyGroupId"] = self.policyGroupId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.signedUrlExpireMinutes != nil {
+            map["SignedUrlExpireMinutes"] = self.signedUrlExpireMinutes!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+            self.desktopId = dict["DesktopId"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NeedSignedUrl") && dict["NeedSignedUrl"] != nil {
+            self.needSignedUrl = dict["NeedSignedUrl"] as! Bool
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("PolicyGroupId") && dict["PolicyGroupId"] != nil {
+            self.policyGroupId = dict["PolicyGroupId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SignedUrlExpireMinutes") && dict["SignedUrlExpireMinutes"] != nil {
+            self.signedUrlExpireMinutes = dict["SignedUrlExpireMinutes"] as! Int32
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeRecordingsResponseBody : Tea.TeaModel {
+    public class Recordings : Tea.TeaModel {
+        public var desktopId: String?
+
+        public var desktopName: String?
+
+        public var endTime: String?
+
+        public var endUserIds: [String]?
+
+        public var filePath: String?
+
+        public var policyGroupId: String?
+
+        public var recordingSize: Int32?
+
+        public var recordingType: String?
+
+        public var signedUrl: String?
+
+        public var startTime: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.desktopName != nil {
+                map["DesktopName"] = self.desktopName!
+            }
+            if self.endTime != nil {
+                map["EndTime"] = self.endTime!
+            }
+            if self.endUserIds != nil {
+                map["EndUserIds"] = self.endUserIds!
+            }
+            if self.filePath != nil {
+                map["FilePath"] = self.filePath!
+            }
+            if self.policyGroupId != nil {
+                map["PolicyGroupId"] = self.policyGroupId!
+            }
+            if self.recordingSize != nil {
+                map["RecordingSize"] = self.recordingSize!
+            }
+            if self.recordingType != nil {
+                map["RecordingType"] = self.recordingType!
+            }
+            if self.signedUrl != nil {
+                map["SignedUrl"] = self.signedUrl!
+            }
+            if self.startTime != nil {
+                map["StartTime"] = self.startTime!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("DesktopName") && dict["DesktopName"] != nil {
+                self.desktopName = dict["DesktopName"] as! String
+            }
+            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                self.endTime = dict["EndTime"] as! String
+            }
+            if dict.keys.contains("EndUserIds") && dict["EndUserIds"] != nil {
+                self.endUserIds = dict["EndUserIds"] as! [String]
+            }
+            if dict.keys.contains("FilePath") && dict["FilePath"] != nil {
+                self.filePath = dict["FilePath"] as! String
+            }
+            if dict.keys.contains("PolicyGroupId") && dict["PolicyGroupId"] != nil {
+                self.policyGroupId = dict["PolicyGroupId"] as! String
+            }
+            if dict.keys.contains("RecordingSize") && dict["RecordingSize"] != nil {
+                self.recordingSize = dict["RecordingSize"] as! Int32
+            }
+            if dict.keys.contains("RecordingType") && dict["RecordingType"] != nil {
+                self.recordingType = dict["RecordingType"] as! String
+            }
+            if dict.keys.contains("SignedUrl") && dict["SignedUrl"] != nil {
+                self.signedUrl = dict["SignedUrl"] as! String
+            }
+            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                self.startTime = dict["StartTime"] as! String
+            }
+        }
+    }
+    public var nextToken: String?
+
+    public var recordings: [DescribeRecordingsResponseBody.Recordings]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.recordings != nil {
+            var tmp : [Any] = []
+            for k in self.recordings! {
+                tmp.append(k.toMap())
+            }
+            map["Recordings"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("Recordings") && dict["Recordings"] != nil {
+            var tmp : [DescribeRecordingsResponseBody.Recordings] = []
+            for v in dict["Recordings"] as! [Any] {
+                var model = DescribeRecordingsResponseBody.Recordings()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.recordings = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeRecordingsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeRecordingsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeRecordingsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -37314,7 +37648,11 @@ public class ModifyDesktopOversoldGroupRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var idleDisconnectDuration: Int64?
+
     public var imageId: String?
+
+    public var keepDuration: Int32?
 
     public var name: String?
 
@@ -37348,8 +37686,14 @@ public class ModifyDesktopOversoldGroupRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.idleDisconnectDuration != nil {
+            map["IdleDisconnectDuration"] = self.idleDisconnectDuration!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.keepDuration != nil {
+            map["KeepDuration"] = self.keepDuration!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -37379,8 +37723,14 @@ public class ModifyDesktopOversoldGroupRequest : Tea.TeaModel {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("IdleDisconnectDuration") && dict["IdleDisconnectDuration"] != nil {
+            self.idleDisconnectDuration = dict["IdleDisconnectDuration"] as! Int64
+        }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("KeepDuration") && dict["KeepDuration"] != nil {
+            self.keepDuration = dict["KeepDuration"] as! Int32
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
