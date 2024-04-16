@@ -60933,6 +60933,8 @@ public class DescribeVpcAttributeResponseBody : Tea.TeaModel {
 
     public var dhcpOptionsSetStatus: String?
 
+    public var enabledIpv6: Bool?
+
     public var ipv4GatewayId: String?
 
     public var ipv6CidrBlock: String?
@@ -61015,6 +61017,9 @@ public class DescribeVpcAttributeResponseBody : Tea.TeaModel {
         }
         if self.dhcpOptionsSetStatus != nil {
             map["DhcpOptionsSetStatus"] = self.dhcpOptionsSetStatus!
+        }
+        if self.enabledIpv6 != nil {
+            map["EnabledIpv6"] = self.enabledIpv6!
         }
         if self.ipv4GatewayId != nil {
             map["Ipv4GatewayId"] = self.ipv4GatewayId!
@@ -61103,6 +61108,9 @@ public class DescribeVpcAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DhcpOptionsSetStatus") && dict["DhcpOptionsSetStatus"] != nil {
             self.dhcpOptionsSetStatus = dict["DhcpOptionsSetStatus"] as! String
+        }
+        if dict.keys.contains("EnabledIpv6") && dict["EnabledIpv6"] != nil {
+            self.enabledIpv6 = dict["EnabledIpv6"] as! Bool
         }
         if dict.keys.contains("Ipv4GatewayId") && dict["Ipv4GatewayId"] != nil {
             self.ipv4GatewayId = dict["Ipv4GatewayId"] as! String
@@ -61724,6 +61732,8 @@ public class DescribeVpcsResponseBody : Tea.TeaModel {
 
             public var dhcpOptionsSetStatus: String?
 
+            public var enabledIpv6: Bool?
+
             public var ipv6CidrBlock: String?
 
             public var ipv6CidrBlocks: DescribeVpcsResponseBody.Vpcs.Vpc.Ipv6CidrBlocks?
@@ -61795,6 +61805,9 @@ public class DescribeVpcsResponseBody : Tea.TeaModel {
                 if self.dhcpOptionsSetStatus != nil {
                     map["DhcpOptionsSetStatus"] = self.dhcpOptionsSetStatus!
                 }
+                if self.enabledIpv6 != nil {
+                    map["EnabledIpv6"] = self.enabledIpv6!
+                }
                 if self.ipv6CidrBlock != nil {
                     map["Ipv6CidrBlock"] = self.ipv6CidrBlock!
                 }
@@ -61864,6 +61877,9 @@ public class DescribeVpcsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("DhcpOptionsSetStatus") && dict["DhcpOptionsSetStatus"] != nil {
                     self.dhcpOptionsSetStatus = dict["DhcpOptionsSetStatus"] as! String
+                }
+                if dict.keys.contains("EnabledIpv6") && dict["EnabledIpv6"] != nil {
+                    self.enabledIpv6 = dict["EnabledIpv6"] as! Bool
                 }
                 if dict.keys.contains("Ipv6CidrBlock") && dict["Ipv6CidrBlock"] != nil {
                     self.ipv6CidrBlock = dict["Ipv6CidrBlock"] as! String
@@ -85120,13 +85136,87 @@ public class ModifyExpressCloudConnectionBandwidthResponse : Tea.TeaModel {
 }
 
 public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
+    public class AddInstanceList : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var instanceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+        }
+    }
+    public class RemoveInstanceList : Tea.TeaModel {
+        public var instanceId: String?
+
+        public var instanceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+        }
+    }
+    public var addInstanceList: [ModifyExpressConnectTrafficQosRequest.AddInstanceList]?
+
     public var clientToken: String?
 
     public var ownerAccount: String?
 
     public var ownerId: Int64?
-
-    public var pconnIdList: String?
 
     public var qosDescription: String?
 
@@ -85135,6 +85225,8 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
     public var qosName: String?
 
     public var regionId: String?
+
+    public var removeInstanceList: [ModifyExpressConnectTrafficQosRequest.RemoveInstanceList]?
 
     public var resourceOwnerAccount: String?
 
@@ -85152,6 +85244,13 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.addInstanceList != nil {
+            var tmp : [Any] = []
+            for k in self.addInstanceList! {
+                tmp.append(k.toMap())
+            }
+            map["AddInstanceList"] = tmp
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -85160,9 +85259,6 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
         }
         if self.ownerId != nil {
             map["OwnerId"] = self.ownerId!
-        }
-        if self.pconnIdList != nil {
-            map["PconnIdList"] = self.pconnIdList!
         }
         if self.qosDescription != nil {
             map["QosDescription"] = self.qosDescription!
@@ -85176,6 +85272,13 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.removeInstanceList != nil {
+            var tmp : [Any] = []
+            for k in self.removeInstanceList! {
+                tmp.append(k.toMap())
+            }
+            map["RemoveInstanceList"] = tmp
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -85183,6 +85286,17 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AddInstanceList") && dict["AddInstanceList"] != nil {
+            var tmp : [ModifyExpressConnectTrafficQosRequest.AddInstanceList] = []
+            for v in dict["AddInstanceList"] as! [Any] {
+                var model = ModifyExpressConnectTrafficQosRequest.AddInstanceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.addInstanceList = tmp
+        }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -85191,9 +85305,6 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
         }
         if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
             self.ownerId = dict["OwnerId"] as! Int64
-        }
-        if dict.keys.contains("PconnIdList") && dict["PconnIdList"] != nil {
-            self.pconnIdList = dict["PconnIdList"] as! String
         }
         if dict.keys.contains("QosDescription") && dict["QosDescription"] != nil {
             self.qosDescription = dict["QosDescription"] as! String
@@ -85206,6 +85317,17 @@ public class ModifyExpressConnectTrafficQosRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RemoveInstanceList") && dict["RemoveInstanceList"] != nil {
+            var tmp : [ModifyExpressConnectTrafficQosRequest.RemoveInstanceList] = []
+            for v in dict["RemoveInstanceList"] as! [Any] {
+                var model = ModifyExpressConnectTrafficQosRequest.RemoveInstanceList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.removeInstanceList = tmp
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
