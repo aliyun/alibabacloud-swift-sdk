@@ -43680,6 +43680,477 @@ public class ListScenariosResponse : Tea.TeaModel {
     }
 }
 
+public class ListSensitiveColumnInfoRequest : Tea.TeaModel {
+    public var columnName: String?
+
+    public var instanceId: Int32?
+
+    public var pageNumber: Int32?
+
+    public var pageSize: Int32?
+
+    public var schemaName: String?
+
+    public var tableName: String?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.columnName != nil {
+            map["ColumnName"] = self.columnName!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNumber != nil {
+            map["PageNumber"] = self.pageNumber!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.schemaName != nil {
+            map["SchemaName"] = self.schemaName!
+        }
+        if self.tableName != nil {
+            map["TableName"] = self.tableName!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ColumnName") && dict["ColumnName"] != nil {
+            self.columnName = dict["ColumnName"] as! String
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! Int32
+        }
+        if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
+            self.pageNumber = dict["PageNumber"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("SchemaName") && dict["SchemaName"] != nil {
+            self.schemaName = dict["SchemaName"] as! String
+        }
+        if dict.keys.contains("TableName") && dict["TableName"] != nil {
+            self.tableName = dict["TableName"] as! String
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class ListSensitiveColumnInfoResponseBody : Tea.TeaModel {
+    public class SensitiveColumnList : Tea.TeaModel {
+        public class SensitiveColumn : Tea.TeaModel {
+            public class DefaultDesensitizationRule : Tea.TeaModel {
+                public var ruleId: Int64?
+
+                public var ruleName: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ruleId != nil {
+                        map["RuleId"] = self.ruleId!
+                    }
+                    if self.ruleName != nil {
+                        map["RuleName"] = self.ruleName!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+                        self.ruleId = dict["RuleId"] as! Int64
+                    }
+                    if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+                        self.ruleName = dict["RuleName"] as! String
+                    }
+                }
+            }
+            public class SemiDesensitizationRuleList : Tea.TeaModel {
+                public class SemiDesensitizationRule : Tea.TeaModel {
+                    public var ruleId: Int64?
+
+                    public var ruleName: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.ruleId != nil {
+                            map["RuleId"] = self.ruleId!
+                        }
+                        if self.ruleName != nil {
+                            map["RuleName"] = self.ruleName!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+                            self.ruleId = dict["RuleId"] as! Int64
+                        }
+                        if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+                            self.ruleName = dict["RuleName"] as! String
+                        }
+                    }
+                }
+                public var semiDesensitizationRule: [ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.SemiDesensitizationRuleList.SemiDesensitizationRule]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.semiDesensitizationRule != nil {
+                        var tmp : [Any] = []
+                        for k in self.semiDesensitizationRule! {
+                            tmp.append(k.toMap())
+                        }
+                        map["SemiDesensitizationRule"] = tmp
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("SemiDesensitizationRule") && dict["SemiDesensitizationRule"] != nil {
+                        var tmp : [ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.SemiDesensitizationRuleList.SemiDesensitizationRule] = []
+                        for v in dict["SemiDesensitizationRule"] as! [Any] {
+                            var model = ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.SemiDesensitizationRuleList.SemiDesensitizationRule()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.semiDesensitizationRule = tmp
+                    }
+                }
+            }
+            public var categoryName: String?
+
+            public var columnName: String?
+
+            public var defaultDesensitizationRule: ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.DefaultDesensitizationRule?
+
+            public var instanceId: Int32?
+
+            public var isPlain: Bool?
+
+            public var sampleData: String?
+
+            public var schemaName: String?
+
+            public var securityLevel: String?
+
+            public var semiDesensitizationRuleList: ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.SemiDesensitizationRuleList?
+
+            public var tableName: String?
+
+            public var userSensitivityLevel: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.defaultDesensitizationRule?.validate()
+                try self.semiDesensitizationRuleList?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.categoryName != nil {
+                    map["CategoryName"] = self.categoryName!
+                }
+                if self.columnName != nil {
+                    map["ColumnName"] = self.columnName!
+                }
+                if self.defaultDesensitizationRule != nil {
+                    map["DefaultDesensitizationRule"] = self.defaultDesensitizationRule?.toMap()
+                }
+                if self.instanceId != nil {
+                    map["InstanceId"] = self.instanceId!
+                }
+                if self.isPlain != nil {
+                    map["IsPlain"] = self.isPlain!
+                }
+                if self.sampleData != nil {
+                    map["SampleData"] = self.sampleData!
+                }
+                if self.schemaName != nil {
+                    map["SchemaName"] = self.schemaName!
+                }
+                if self.securityLevel != nil {
+                    map["SecurityLevel"] = self.securityLevel!
+                }
+                if self.semiDesensitizationRuleList != nil {
+                    map["SemiDesensitizationRuleList"] = self.semiDesensitizationRuleList?.toMap()
+                }
+                if self.tableName != nil {
+                    map["TableName"] = self.tableName!
+                }
+                if self.userSensitivityLevel != nil {
+                    map["UserSensitivityLevel"] = self.userSensitivityLevel!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CategoryName") && dict["CategoryName"] != nil {
+                    self.categoryName = dict["CategoryName"] as! String
+                }
+                if dict.keys.contains("ColumnName") && dict["ColumnName"] != nil {
+                    self.columnName = dict["ColumnName"] as! String
+                }
+                if dict.keys.contains("DefaultDesensitizationRule") && dict["DefaultDesensitizationRule"] != nil {
+                    var model = ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.DefaultDesensitizationRule()
+                    model.fromMap(dict["DefaultDesensitizationRule"] as! [String: Any])
+                    self.defaultDesensitizationRule = model
+                }
+                if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                    self.instanceId = dict["InstanceId"] as! Int32
+                }
+                if dict.keys.contains("IsPlain") && dict["IsPlain"] != nil {
+                    self.isPlain = dict["IsPlain"] as! Bool
+                }
+                if dict.keys.contains("SampleData") && dict["SampleData"] != nil {
+                    self.sampleData = dict["SampleData"] as! String
+                }
+                if dict.keys.contains("SchemaName") && dict["SchemaName"] != nil {
+                    self.schemaName = dict["SchemaName"] as! String
+                }
+                if dict.keys.contains("SecurityLevel") && dict["SecurityLevel"] != nil {
+                    self.securityLevel = dict["SecurityLevel"] as! String
+                }
+                if dict.keys.contains("SemiDesensitizationRuleList") && dict["SemiDesensitizationRuleList"] != nil {
+                    var model = ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn.SemiDesensitizationRuleList()
+                    model.fromMap(dict["SemiDesensitizationRuleList"] as! [String: Any])
+                    self.semiDesensitizationRuleList = model
+                }
+                if dict.keys.contains("TableName") && dict["TableName"] != nil {
+                    self.tableName = dict["TableName"] as! String
+                }
+                if dict.keys.contains("UserSensitivityLevel") && dict["UserSensitivityLevel"] != nil {
+                    self.userSensitivityLevel = dict["UserSensitivityLevel"] as! String
+                }
+            }
+        }
+        public var sensitiveColumn: [ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sensitiveColumn != nil {
+                var tmp : [Any] = []
+                for k in self.sensitiveColumn! {
+                    tmp.append(k.toMap())
+                }
+                map["SensitiveColumn"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("SensitiveColumn") && dict["SensitiveColumn"] != nil {
+                var tmp : [ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn] = []
+                for v in dict["SensitiveColumn"] as! [Any] {
+                    var model = ListSensitiveColumnInfoResponseBody.SensitiveColumnList.SensitiveColumn()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.sensitiveColumn = tmp
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var requestId: String?
+
+    public var sensitiveColumnList: ListSensitiveColumnInfoResponseBody.SensitiveColumnList?
+
+    public var success: Bool?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.sensitiveColumnList?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.sensitiveColumnList != nil {
+            map["SensitiveColumnList"] = self.sensitiveColumnList?.toMap()
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SensitiveColumnList") && dict["SensitiveColumnList"] != nil {
+            var model = ListSensitiveColumnInfoResponseBody.SensitiveColumnList()
+            model.fromMap(dict["SensitiveColumnList"] as! [String: Any])
+            self.sensitiveColumnList = model
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class ListSensitiveColumnInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSensitiveColumnInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListSensitiveColumnInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class ListSensitiveColumnsRequest : Tea.TeaModel {
     public var columnName: String?
 
