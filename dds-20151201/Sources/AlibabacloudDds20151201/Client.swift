@@ -3843,9 +3843,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func migrateAvailableZoneWithOptions(_ request: MigrateAvailableZoneRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> MigrateAvailableZoneResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.category)) {
-            query["Category"] = request.category ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.DBInstanceId)) {
             query["DBInstanceId"] = request.DBInstanceId ?? "";
         }

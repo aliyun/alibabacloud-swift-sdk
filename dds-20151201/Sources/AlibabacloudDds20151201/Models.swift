@@ -7047,7 +7047,7 @@ public class DescribeBackupStorageResponse : Tea.TeaModel {
 }
 
 public class DescribeBackupTasksRequest : Tea.TeaModel {
-    public var backupJobId: Int64?
+    public var backupJobId: String?
 
     public var DBInstanceId: String?
 
@@ -7101,7 +7101,7 @@ public class DescribeBackupTasksRequest : Tea.TeaModel {
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BackupJobId") && dict["BackupJobId"] != nil {
-            self.backupJobId = dict["BackupJobId"] as! Int64
+            self.backupJobId = dict["BackupJobId"] as! String
         }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
@@ -7130,7 +7130,7 @@ public class DescribeBackupTasksResponseBody : Tea.TeaModel {
 
         public var backupStartTime: String?
 
-        public var backupjobId: Int64?
+        public var backupjobId: String?
 
         public var jobMode: String?
 
@@ -7176,7 +7176,7 @@ public class DescribeBackupTasksResponseBody : Tea.TeaModel {
                 self.backupStartTime = dict["BackupStartTime"] as! String
             }
             if dict.keys.contains("BackupjobId") && dict["BackupjobId"] != nil {
-                self.backupjobId = dict["BackupjobId"] as! Int64
+                self.backupjobId = dict["BackupjobId"] as! String
             }
             if dict.keys.contains("JobMode") && dict["JobMode"] != nil {
                 self.jobMode = dict["JobMode"] as! String
@@ -7403,11 +7403,11 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
             public var backupEndTime: String?
 
-            public var backupId: Int64?
+            public var backupId: String?
 
             public var backupIntranetDownloadURL: String?
 
-            public var backupJobId: Int64?
+            public var backupJobId: String?
 
             public var backupMethod: String?
 
@@ -7485,13 +7485,13 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                     self.backupEndTime = dict["BackupEndTime"] as! String
                 }
                 if dict.keys.contains("BackupId") && dict["BackupId"] != nil {
-                    self.backupId = dict["BackupId"] as! Int64
+                    self.backupId = dict["BackupId"] as! String
                 }
                 if dict.keys.contains("BackupIntranetDownloadURL") && dict["BackupIntranetDownloadURL"] != nil {
                     self.backupIntranetDownloadURL = dict["BackupIntranetDownloadURL"] as! String
                 }
                 if dict.keys.contains("BackupJobId") && dict["BackupJobId"] != nil {
-                    self.backupJobId = dict["BackupJobId"] as! Int64
+                    self.backupJobId = dict["BackupJobId"] as! String
                 }
                 if dict.keys.contains("BackupMethod") && dict["BackupMethod"] != nil {
                     self.backupMethod = dict["BackupMethod"] as! String
@@ -22776,8 +22776,6 @@ public class ListTagResourcesResponse : Tea.TeaModel {
 }
 
 public class MigrateAvailableZoneRequest : Tea.TeaModel {
-    public var category: String?
-
     public var DBInstanceId: String?
 
     public var effectiveTime: String?
@@ -22808,9 +22806,6 @@ public class MigrateAvailableZoneRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
-        if self.category != nil {
-            map["Category"] = self.category!
-        }
         if self.DBInstanceId != nil {
             map["DBInstanceId"] = self.DBInstanceId!
         }
@@ -22839,9 +22834,6 @@ public class MigrateAvailableZoneRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Category") && dict["Category"] != nil {
-            self.category = dict["Category"] as! String
-        }
         if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
             self.DBInstanceId = dict["DBInstanceId"] as! String
         }
