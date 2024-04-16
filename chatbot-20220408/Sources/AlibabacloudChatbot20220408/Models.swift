@@ -9807,6 +9807,8 @@ public class ListAgentRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
+    public var productCode: String?
+
     public override init() {
         super.init()
     }
@@ -9833,6 +9835,9 @@ public class ListAgentRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
+        if self.productCode != nil {
+            map["ProductCode"] = self.productCode!
+        }
         return map
     }
 
@@ -9849,6 +9854,9 @@ public class ListAgentRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
         }
+        if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
+            self.productCode = dict["ProductCode"] as! String
+        }
     }
 }
 
@@ -9859,6 +9867,8 @@ public class ListAgentResponseBody : Tea.TeaModel {
         public var agentKey: String?
 
         public var agentName: String?
+
+        public var defaultAgent: Bool?
 
         public var instanceInfos: [String: Any]?
 
@@ -9885,6 +9895,9 @@ public class ListAgentResponseBody : Tea.TeaModel {
             if self.agentName != nil {
                 map["AgentName"] = self.agentName!
             }
+            if self.defaultAgent != nil {
+                map["DefaultAgent"] = self.defaultAgent!
+            }
             if self.instanceInfos != nil {
                 map["InstanceInfos"] = self.instanceInfos!
             }
@@ -9900,6 +9913,9 @@ public class ListAgentResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AgentName") && dict["AgentName"] != nil {
                 self.agentName = dict["AgentName"] as! String
+            }
+            if dict.keys.contains("DefaultAgent") && dict["DefaultAgent"] != nil {
+                self.defaultAgent = dict["DefaultAgent"] as! Bool
             }
             if dict.keys.contains("InstanceInfos") && dict["InstanceInfos"] != nil {
                 self.instanceInfos = dict["InstanceInfos"] as! [String: Any]
