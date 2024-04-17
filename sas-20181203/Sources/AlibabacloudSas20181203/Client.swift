@@ -1694,6 +1694,15 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createFileDetectWithOptions(_ request: CreateFileDetectRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateFileDetectResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.decompress)) {
+            query["Decompress"] = request.decompress!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxFileCount)) {
+            query["DecompressMaxFileCount"] = request.decompressMaxFileCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.decompressMaxLayer)) {
+            query["DecompressMaxLayer"] = request.decompressMaxLayer!;
+        }
         if (!TeaUtils.Client.isUnset(request.downloadUrl)) {
             query["DownloadUrl"] = request.downloadUrl ?? "";
         }
@@ -18751,6 +18760,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listClusterPluginInfo(_ request: ListClusterPluginInfoRequest) async throws -> ListClusterPluginInfoResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listClusterPluginInfoWithOptions(request as! ListClusterPluginInfoRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCompressFileDetectResultWithOptions(_ request: ListCompressFileDetectResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListCompressFileDetectResultResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.currentPage)) {
+            query["CurrentPage"] = request.currentPage!;
+        }
+        if (!TeaUtils.Client.isUnset(request.hashKey)) {
+            query["HashKey"] = request.hashKey ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.pageSize)) {
+            query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.sourceIp)) {
+            query["SourceIp"] = request.sourceIp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListCompressFileDetectResult",
+            "version": "2018-12-03",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListCompressFileDetectResultResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listCompressFileDetectResult(_ request: ListCompressFileDetectResultRequest) async throws -> ListCompressFileDetectResultResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listCompressFileDetectResultWithOptions(request as! ListCompressFileDetectResultRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
