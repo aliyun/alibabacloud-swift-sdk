@@ -1819,9 +1819,13 @@ public class GetProjectResponseBody : Tea.TeaModel {
 
             public var enableDecimal2: Bool?
 
+            public var enableFdcCacheForce: Bool?
+
             public var enableTunnelQuotaRoute: Bool?
 
             public var encryption: GetProjectResponseBody.Data.Properties.Encryption?
+
+            public var fdcQuota: String?
 
             public var retentionDays: Int64?
 
@@ -1863,11 +1867,17 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 if self.enableDecimal2 != nil {
                     map["enableDecimal2"] = self.enableDecimal2!
                 }
+                if self.enableFdcCacheForce != nil {
+                    map["enableFdcCacheForce"] = self.enableFdcCacheForce!
+                }
                 if self.enableTunnelQuotaRoute != nil {
                     map["enableTunnelQuotaRoute"] = self.enableTunnelQuotaRoute!
                 }
                 if self.encryption != nil {
                     map["encryption"] = self.encryption?.toMap()
+                }
+                if self.fdcQuota != nil {
+                    map["fdcQuota"] = self.fdcQuota!
                 }
                 if self.retentionDays != nil {
                     map["retentionDays"] = self.retentionDays!
@@ -1903,6 +1913,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                 if dict.keys.contains("enableDecimal2") && dict["enableDecimal2"] != nil {
                     self.enableDecimal2 = dict["enableDecimal2"] as! Bool
                 }
+                if dict.keys.contains("enableFdcCacheForce") && dict["enableFdcCacheForce"] != nil {
+                    self.enableFdcCacheForce = dict["enableFdcCacheForce"] as! Bool
+                }
                 if dict.keys.contains("enableTunnelQuotaRoute") && dict["enableTunnelQuotaRoute"] != nil {
                     self.enableTunnelQuotaRoute = dict["enableTunnelQuotaRoute"] as! Bool
                 }
@@ -1910,6 +1923,9 @@ public class GetProjectResponseBody : Tea.TeaModel {
                     var model = GetProjectResponseBody.Data.Properties.Encryption()
                     model.fromMap(dict["encryption"] as! [String: Any])
                     self.encryption = model
+                }
+                if dict.keys.contains("fdcQuota") && dict["fdcQuota"] != nil {
+                    self.fdcQuota = dict["fdcQuota"] as! String
                 }
                 if dict.keys.contains("retentionDays") && dict["retentionDays"] != nil {
                     self.retentionDays = dict["retentionDays"] as! Int64
