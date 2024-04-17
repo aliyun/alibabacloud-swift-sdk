@@ -22978,6 +22978,35 @@ public class ModifyClusterTagsResponse : Tea.TeaModel {
 }
 
 public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
+    public class OsConfig : Tea.TeaModel {
+        public var sysctl: [String: Any]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.sysctl != nil {
+                map["sysctl"] = self.sysctl!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("sysctl") && dict["sysctl"] != nil {
+                self.sysctl = dict["sysctl"] as! [String: Any]
+            }
+        }
+    }
     public class RollingPolicy : Tea.TeaModel {
         public var maxParallelism: Int64?
 
@@ -23009,6 +23038,8 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
     }
     public var kubeletConfig: KubeletConfig?
 
+    public var osConfig: ModifyNodePoolNodeConfigRequest.OsConfig?
+
     public var rollingPolicy: ModifyNodePoolNodeConfigRequest.RollingPolicy?
 
     public override init() {
@@ -23022,6 +23053,7 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.kubeletConfig?.validate()
+        try self.osConfig?.validate()
         try self.rollingPolicy?.validate()
     }
 
@@ -23029,6 +23061,9 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.kubeletConfig != nil {
             map["kubelet_config"] = self.kubeletConfig?.toMap()
+        }
+        if self.osConfig != nil {
+            map["os_config"] = self.osConfig?.toMap()
         }
         if self.rollingPolicy != nil {
             map["rolling_policy"] = self.rollingPolicy?.toMap()
@@ -23041,6 +23076,11 @@ public class ModifyNodePoolNodeConfigRequest : Tea.TeaModel {
             var model = KubeletConfig()
             model.fromMap(dict["kubelet_config"] as! [String: Any])
             self.kubeletConfig = model
+        }
+        if dict.keys.contains("os_config") && dict["os_config"] != nil {
+            var model = ModifyNodePoolNodeConfigRequest.OsConfig()
+            model.fromMap(dict["os_config"] as! [String: Any])
+            self.osConfig = model
         }
         if dict.keys.contains("rolling_policy") && dict["rolling_policy"] != nil {
             var model = ModifyNodePoolNodeConfigRequest.RollingPolicy()

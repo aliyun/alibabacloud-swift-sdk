@@ -3520,6 +3520,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.kubeletConfig)) {
             body["kubelet_config"] = request.kubeletConfig!;
         }
+        if (!TeaUtils.Client.isUnset(request.osConfig)) {
+            body["os_config"] = request.osConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.rollingPolicy)) {
             body["rolling_policy"] = request.rollingPolicy!;
         }
