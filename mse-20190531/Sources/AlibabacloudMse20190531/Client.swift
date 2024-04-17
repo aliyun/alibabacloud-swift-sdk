@@ -1103,6 +1103,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bindSentinelBlockFallbackDefinitionWithOptions(_ request: BindSentinelBlockFallbackDefinitionRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> BindSentinelBlockFallbackDefinitionResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            query["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fallbackId)) {
+            query["FallbackId"] = request.fallbackId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resource)) {
+            query["Resource"] = request.resource ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.targetType)) {
+            query["TargetType"] = request.targetType ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "BindSentinelBlockFallbackDefinition",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(BindSentinelBlockFallbackDefinitionResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func bindSentinelBlockFallbackDefinition(_ request: BindSentinelBlockFallbackDefinitionRequest) async throws -> BindSentinelBlockFallbackDefinitionResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await bindSentinelBlockFallbackDefinitionWithOptions(request as! BindSentinelBlockFallbackDefinitionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func cloneNacosConfigWithOptions(_ request: CloneNacosConfigRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloneNacosConfigResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -6628,6 +6674,51 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listSecurityGroupRule(_ request: ListSecurityGroupRuleRequest) async throws -> ListSecurityGroupRuleResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listSecurityGroupRuleWithOptions(request as! ListSecurityGroupRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSentinelBlockFallbackDefinitionsWithOptions(_ tmpReq: ListSentinelBlockFallbackDefinitionsRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListSentinelBlockFallbackDefinitionsResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ListSentinelBlockFallbackDefinitionsShrinkRequest = ListSentinelBlockFallbackDefinitionsShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.classificationSet)) {
+            request.classificationSetShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.classificationSet, "ClassificationSet", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            query["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.classificationSetShrink)) {
+            query["ClassificationSet"] = request.classificationSetShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListSentinelBlockFallbackDefinitions",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListSentinelBlockFallbackDefinitionsResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listSentinelBlockFallbackDefinitions(_ request: ListSentinelBlockFallbackDefinitionsRequest) async throws -> ListSentinelBlockFallbackDefinitionsResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listSentinelBlockFallbackDefinitionsWithOptions(request as! ListSentinelBlockFallbackDefinitionsRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

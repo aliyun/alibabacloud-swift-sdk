@@ -7754,6 +7754,195 @@ public class ApplyTagPoliciesResponse : Tea.TeaModel {
     }
 }
 
+public class BindSentinelBlockFallbackDefinitionRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var fallbackId: Int64?
+
+    public var namespace: String?
+
+    public var resource: String?
+
+    public var targetType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.fallbackId != nil {
+            map["FallbackId"] = self.fallbackId!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        if self.resource != nil {
+            map["Resource"] = self.resource!
+        }
+        if self.targetType != nil {
+            map["TargetType"] = self.targetType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("FallbackId") && dict["FallbackId"] != nil {
+            self.fallbackId = dict["FallbackId"] as! Int64
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+        if dict.keys.contains("Resource") && dict["Resource"] != nil {
+            self.resource = dict["Resource"] as! String
+        }
+        if dict.keys.contains("TargetType") && dict["TargetType"] != nil {
+            self.targetType = dict["TargetType"] as! String
+        }
+    }
+}
+
+public class BindSentinelBlockFallbackDefinitionResponseBody : Tea.TeaModel {
+    public var code: Int32?
+
+    public var data: Bool?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int32
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class BindSentinelBlockFallbackDefinitionResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: BindSentinelBlockFallbackDefinitionResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = BindSentinelBlockFallbackDefinitionResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CloneNacosConfigRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
@@ -49991,6 +50180,314 @@ public class ListSecurityGroupRuleResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListSecurityGroupRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListSentinelBlockFallbackDefinitionsRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var classificationSet: [Int32]?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.classificationSet != nil {
+            map["ClassificationSet"] = self.classificationSet!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("ClassificationSet") && dict["ClassificationSet"] != nil {
+            self.classificationSet = dict["ClassificationSet"] as! [Int32]
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class ListSentinelBlockFallbackDefinitionsShrinkRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var appName: String?
+
+    public var classificationSetShrink: String?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.classificationSetShrink != nil {
+            map["ClassificationSet"] = self.classificationSetShrink!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("ClassificationSet") && dict["ClassificationSet"] != nil {
+            self.classificationSetShrink = dict["ClassificationSet"] as! String
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class ListSentinelBlockFallbackDefinitionsResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public var appName: String?
+
+        public var fallbackBehavior: [String: Any]?
+
+        public var id: String?
+
+        public var name: String?
+
+        public var namespace: String?
+
+        public var resourceClassification: String?
+
+        public var targetMap: [String: Any]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.appName != nil {
+                map["AppName"] = self.appName!
+            }
+            if self.fallbackBehavior != nil {
+                map["FallbackBehavior"] = self.fallbackBehavior!
+            }
+            if self.id != nil {
+                map["Id"] = self.id!
+            }
+            if self.name != nil {
+                map["Name"] = self.name!
+            }
+            if self.namespace != nil {
+                map["Namespace"] = self.namespace!
+            }
+            if self.resourceClassification != nil {
+                map["ResourceClassification"] = self.resourceClassification!
+            }
+            if self.targetMap != nil {
+                map["TargetMap"] = self.targetMap!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppName") && dict["AppName"] != nil {
+                self.appName = dict["AppName"] as! String
+            }
+            if dict.keys.contains("FallbackBehavior") && dict["FallbackBehavior"] != nil {
+                self.fallbackBehavior = dict["FallbackBehavior"] as! [String: Any]
+            }
+            if dict.keys.contains("Id") && dict["Id"] != nil {
+                self.id = dict["Id"] as! String
+            }
+            if dict.keys.contains("Name") && dict["Name"] != nil {
+                self.name = dict["Name"] as! String
+            }
+            if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+                self.namespace = dict["Namespace"] as! String
+            }
+            if dict.keys.contains("ResourceClassification") && dict["ResourceClassification"] != nil {
+                self.resourceClassification = dict["ResourceClassification"] as! String
+            }
+            if dict.keys.contains("TargetMap") && dict["TargetMap"] != nil {
+                self.targetMap = dict["TargetMap"] as! [String: Any]
+            }
+        }
+    }
+    public var data: [ListSentinelBlockFallbackDefinitionsResponseBody.Data]?
+
+    public var httpStatusCode: Int32?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            var tmp : [Any] = []
+            for k in self.data! {
+                tmp.append(k.toMap())
+            }
+            map["Data"] = tmp
+        }
+        if self.httpStatusCode != nil {
+            map["HttpStatusCode"] = self.httpStatusCode!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var tmp : [ListSentinelBlockFallbackDefinitionsResponseBody.Data] = []
+            for v in dict["Data"] as! [Any] {
+                var model = ListSentinelBlockFallbackDefinitionsResponseBody.Data()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.data = tmp
+        }
+        if dict.keys.contains("HttpStatusCode") && dict["HttpStatusCode"] != nil {
+            self.httpStatusCode = dict["HttpStatusCode"] as! Int32
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ListSentinelBlockFallbackDefinitionsResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListSentinelBlockFallbackDefinitionsResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListSentinelBlockFallbackDefinitionsResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
