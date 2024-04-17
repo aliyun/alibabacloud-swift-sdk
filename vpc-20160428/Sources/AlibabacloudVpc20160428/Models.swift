@@ -59348,6 +59348,8 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
 
             public var ecrId: String?
 
+            public var ecrOwnerId: String?
+
             public var enableIpv6: Bool?
 
             public var localGatewayIp: String?
@@ -59457,6 +59459,9 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 }
                 if self.ecrId != nil {
                     map["EcrId"] = self.ecrId!
+                }
+                if self.ecrOwnerId != nil {
+                    map["EcrOwnerId"] = self.ecrOwnerId!
                 }
                 if self.enableIpv6 != nil {
                     map["EnableIpv6"] = self.enableIpv6!
@@ -59585,6 +59590,9 @@ public class DescribeVirtualBorderRoutersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EcrId") && dict["EcrId"] != nil {
                     self.ecrId = dict["EcrId"] as! String
+                }
+                if dict.keys.contains("EcrOwnerId") && dict["EcrOwnerId"] != nil {
+                    self.ecrOwnerId = dict["EcrOwnerId"] as! String
                 }
                 if dict.keys.contains("EnableIpv6") && dict["EnableIpv6"] != nil {
                     self.enableIpv6 = dict["EnableIpv6"] as! Bool
