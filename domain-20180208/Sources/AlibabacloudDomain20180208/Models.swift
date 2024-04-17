@@ -3051,6 +3051,8 @@ public class QueryBookingDomainInfoResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var snatchNo: String?
+
     public var transferInPrice: Double?
 
     public override init() {
@@ -3085,6 +3087,9 @@ public class QueryBookingDomainInfoResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.snatchNo != nil {
+            map["SnatchNo"] = self.snatchNo!
+        }
         if self.transferInPrice != nil {
             map["TransferInPrice"] = self.transferInPrice!
         }
@@ -3109,6 +3114,9 @@ public class QueryBookingDomainInfoResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SnatchNo") && dict["SnatchNo"] != nil {
+            self.snatchNo = dict["SnatchNo"] as! String
         }
         if dict.keys.contains("TransferInPrice") && dict["TransferInPrice"] != nil {
             self.transferInPrice = dict["TransferInPrice"] as! Double
