@@ -1479,9 +1479,17 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
 
             public var cid: Int64?
 
+            public var customerBd: String?
+
+            public var delayAmount: String?
+
+            public var delayStatus: String?
+
             public var email: String?
 
             public var mobile: String?
+
+            public var newBuyStatus: String?
 
             public var remark: String?
 
@@ -1515,11 +1523,23 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
                 if self.cid != nil {
                     map["Cid"] = self.cid!
                 }
+                if self.customerBd != nil {
+                    map["CustomerBd"] = self.customerBd!
+                }
+                if self.delayAmount != nil {
+                    map["DelayAmount"] = self.delayAmount!
+                }
+                if self.delayStatus != nil {
+                    map["DelayStatus"] = self.delayStatus!
+                }
                 if self.email != nil {
                     map["Email"] = self.email!
                 }
                 if self.mobile != nil {
                     map["Mobile"] = self.mobile!
+                }
+                if self.newBuyStatus != nil {
+                    map["NewBuyStatus"] = self.newBuyStatus!
                 }
                 if self.remark != nil {
                     map["Remark"] = self.remark!
@@ -1546,11 +1566,23 @@ public class GetAccountInfoResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Cid") && dict["Cid"] != nil {
                     self.cid = dict["Cid"] as! Int64
                 }
+                if dict.keys.contains("CustomerBd") && dict["CustomerBd"] != nil {
+                    self.customerBd = dict["CustomerBd"] as! String
+                }
+                if dict.keys.contains("DelayAmount") && dict["DelayAmount"] != nil {
+                    self.delayAmount = dict["DelayAmount"] as! String
+                }
+                if dict.keys.contains("DelayStatus") && dict["DelayStatus"] != nil {
+                    self.delayStatus = dict["DelayStatus"] as! String
+                }
                 if dict.keys.contains("Email") && dict["Email"] != nil {
                     self.email = dict["Email"] as! String
                 }
                 if dict.keys.contains("Mobile") && dict["Mobile"] != nil {
                     self.mobile = dict["Mobile"] as! String
+                }
+                if dict.keys.contains("NewBuyStatus") && dict["NewBuyStatus"] != nil {
+                    self.newBuyStatus = dict["NewBuyStatus"] as! String
                 }
                 if dict.keys.contains("Remark") && dict["Remark"] != nil {
                     self.remark = dict["Remark"] as! String
@@ -3142,6 +3174,8 @@ public class InviteSubAccountRequest : Tea.TeaModel {
 
         public var creditLine: String?
 
+        public var customerBd: String?
+
         public var customerId: String?
 
         public var emailAddress: String?
@@ -3174,6 +3208,9 @@ public class InviteSubAccountRequest : Tea.TeaModel {
             if self.creditLine != nil {
                 map["CreditLine"] = self.creditLine!
             }
+            if self.customerBd != nil {
+                map["CustomerBd"] = self.customerBd!
+            }
             if self.customerId != nil {
                 map["CustomerId"] = self.customerId!
             }
@@ -3201,6 +3238,9 @@ public class InviteSubAccountRequest : Tea.TeaModel {
             }
             if dict.keys.contains("CreditLine") && dict["CreditLine"] != nil {
                 self.creditLine = dict["CreditLine"] as! String
+            }
+            if dict.keys.contains("CustomerBd") && dict["CustomerBd"] != nil {
+                self.customerBd = dict["CustomerBd"] as! String
             }
             if dict.keys.contains("CustomerId") && dict["CustomerId"] != nil {
                 self.customerId = dict["CustomerId"] as! String
@@ -4354,6 +4394,8 @@ public class ResendEmailResponse : Tea.TeaModel {
 public class SetAccountInfoRequest : Tea.TeaModel {
     public var accountNickname: String?
 
+    public var customerBd: String?
+
     public var remark: String?
 
     public var uid: Int64?
@@ -4375,6 +4417,9 @@ public class SetAccountInfoRequest : Tea.TeaModel {
         if self.accountNickname != nil {
             map["AccountNickname"] = self.accountNickname!
         }
+        if self.customerBd != nil {
+            map["CustomerBd"] = self.customerBd!
+        }
         if self.remark != nil {
             map["Remark"] = self.remark!
         }
@@ -4387,6 +4432,9 @@ public class SetAccountInfoRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AccountNickname") && dict["AccountNickname"] != nil {
             self.accountNickname = dict["AccountNickname"] as! String
+        }
+        if dict.keys.contains("CustomerBd") && dict["CustomerBd"] != nil {
+            self.customerBd = dict["CustomerBd"] as! String
         }
         if dict.keys.contains("Remark") && dict["Remark"] != nil {
             self.remark = dict["Remark"] as! String
