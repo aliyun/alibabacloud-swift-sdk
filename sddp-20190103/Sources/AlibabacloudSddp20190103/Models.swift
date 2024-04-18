@@ -4062,6 +4062,8 @@ public class DescribeDataLimitsRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var memberAccount: Int64?
+
     public var pageSize: Int32?
 
     public var parentId: String?
@@ -4113,6 +4115,9 @@ public class DescribeDataLimitsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.memberAccount != nil {
+            map["MemberAccount"] = self.memberAccount!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -4158,6 +4163,9 @@ public class DescribeDataLimitsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("MemberAccount") && dict["MemberAccount"] != nil {
+            self.memberAccount = dict["MemberAccount"] as! Int64
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
@@ -4214,6 +4222,8 @@ public class DescribeDataLimitsResponseBody : Tea.TeaModel {
         public var localName: String?
 
         public var logStoreDay: Int32?
+
+        public var memberAccount: Int64?
 
         public var nextStartTime: Int64?
 
@@ -4324,6 +4334,9 @@ public class DescribeDataLimitsResponseBody : Tea.TeaModel {
             }
             if self.logStoreDay != nil {
                 map["LogStoreDay"] = self.logStoreDay!
+            }
+            if self.memberAccount != nil {
+                map["MemberAccount"] = self.memberAccount!
             }
             if self.nextStartTime != nil {
                 map["NextStartTime"] = self.nextStartTime!
@@ -4445,6 +4458,9 @@ public class DescribeDataLimitsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LogStoreDay") && dict["LogStoreDay"] != nil {
                 self.logStoreDay = dict["LogStoreDay"] as! Int32
+            }
+            if dict.keys.contains("MemberAccount") && dict["MemberAccount"] != nil {
+                self.memberAccount = dict["MemberAccount"] as! Int64
             }
             if dict.keys.contains("NextStartTime") && dict["NextStartTime"] != nil {
                 self.nextStartTime = dict["NextStartTime"] as! Int64
@@ -5119,6 +5135,8 @@ public class DescribeDataMaskingTasksRequest : Tea.TeaModel {
 
 public class DescribeDataMaskingTasksResponseBody : Tea.TeaModel {
     public class Items : Tea.TeaModel {
+        public var dstMemberAccount: Int64?
+
         public var dstPath: String?
 
         public var dstType: Int32?
@@ -5136,6 +5154,8 @@ public class DescribeDataMaskingTasksResponseBody : Tea.TeaModel {
         public var owner: String?
 
         public var runCount: Int32?
+
+        public var srcMemberAccount: Int64?
 
         public var srcPath: String?
 
@@ -5165,6 +5185,9 @@ public class DescribeDataMaskingTasksResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.dstMemberAccount != nil {
+                map["DstMemberAccount"] = self.dstMemberAccount!
+            }
             if self.dstPath != nil {
                 map["DstPath"] = self.dstPath!
             }
@@ -5192,6 +5215,9 @@ public class DescribeDataMaskingTasksResponseBody : Tea.TeaModel {
             if self.runCount != nil {
                 map["RunCount"] = self.runCount!
             }
+            if self.srcMemberAccount != nil {
+                map["SrcMemberAccount"] = self.srcMemberAccount!
+            }
             if self.srcPath != nil {
                 map["SrcPath"] = self.srcPath!
             }
@@ -5217,6 +5243,9 @@ public class DescribeDataMaskingTasksResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DstMemberAccount") && dict["DstMemberAccount"] != nil {
+                self.dstMemberAccount = dict["DstMemberAccount"] as! Int64
+            }
             if dict.keys.contains("DstPath") && dict["DstPath"] != nil {
                 self.dstPath = dict["DstPath"] as! String
             }
@@ -5243,6 +5272,9 @@ public class DescribeDataMaskingTasksResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("RunCount") && dict["RunCount"] != nil {
                 self.runCount = dict["RunCount"] as! Int32
+            }
+            if dict.keys.contains("SrcMemberAccount") && dict["SrcMemberAccount"] != nil {
+                self.srcMemberAccount = dict["SrcMemberAccount"] as! Int64
             }
             if dict.keys.contains("SrcPath") && dict["SrcPath"] != nil {
                 self.srcPath = dict["SrcPath"] as! String
@@ -6122,6 +6154,8 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var memberAccount: Int64?
+
     public var modelIds: String?
 
     public var modelTagIds: String?
@@ -6175,6 +6209,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.memberAccount != nil {
+            map["MemberAccount"] = self.memberAccount!
+        }
         if self.modelIds != nil {
             map["ModelIds"] = self.modelIds!
         }
@@ -6226,6 +6263,9 @@ public class DescribeDataObjectsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("MemberAccount") && dict["MemberAccount"] != nil {
+            self.memberAccount = dict["MemberAccount"] as! Int64
         }
         if dict.keys.contains("ModelIds") && dict["ModelIds"] != nil {
             self.modelIds = dict["ModelIds"] as! String
@@ -6367,6 +6407,8 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
 
         public var lastScanTime: Int64?
 
+        public var memberAccount: Int64?
+
         public var modelTags: [DescribeDataObjectsResponseBody.Items.ModelTags]?
 
         public var name: String?
@@ -6417,6 +6459,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             if self.lastScanTime != nil {
                 map["LastScanTime"] = self.lastScanTime!
+            }
+            if self.memberAccount != nil {
+                map["MemberAccount"] = self.memberAccount!
             }
             if self.modelTags != nil {
                 var tmp : [Any] = []
@@ -6477,6 +6522,9 @@ public class DescribeDataObjectsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LastScanTime") && dict["LastScanTime"] != nil {
                 self.lastScanTime = dict["LastScanTime"] as! Int64
+            }
+            if dict.keys.contains("MemberAccount") && dict["MemberAccount"] != nil {
+                self.memberAccount = dict["MemberAccount"] as! Int64
             }
             if dict.keys.contains("ModelTags") && dict["ModelTags"] != nil {
                 var tmp : [DescribeDataObjectsResponseBody.Items.ModelTags] = []
@@ -10664,6 +10712,8 @@ public class DescribeParentInstanceRequest : Tea.TeaModel {
 
     public var lang: String?
 
+    public var memberAccount: Int64?
+
     public var pageSize: Int32?
 
     public var resourceType: Int64?
@@ -10708,6 +10758,9 @@ public class DescribeParentInstanceRequest : Tea.TeaModel {
         if self.lang != nil {
             map["Lang"] = self.lang!
         }
+        if self.memberAccount != nil {
+            map["MemberAccount"] = self.memberAccount!
+        }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
@@ -10745,6 +10798,9 @@ public class DescribeParentInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("Lang") && dict["Lang"] != nil {
             self.lang = dict["Lang"] as! String
         }
+        if dict.keys.contains("MemberAccount") && dict["MemberAccount"] != nil {
+            self.memberAccount = dict["MemberAccount"] as! Int64
+        }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
         }
@@ -10778,6 +10834,8 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
         public var instanceSize: Int64?
 
         public var localName: String?
+
+        public var memberAccount: Int64?
 
         public var parentId: String?
 
@@ -10837,6 +10895,9 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
             if self.localName != nil {
                 map["LocalName"] = self.localName!
             }
+            if self.memberAccount != nil {
+                map["MemberAccount"] = self.memberAccount!
+            }
             if self.parentId != nil {
                 map["ParentId"] = self.parentId!
             }
@@ -10891,6 +10952,9 @@ public class DescribeParentInstanceResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LocalName") && dict["LocalName"] != nil {
                 self.localName = dict["LocalName"] as! String
+            }
+            if dict.keys.contains("MemberAccount") && dict["MemberAccount"] != nil {
+                self.memberAccount = dict["MemberAccount"] as! Int64
             }
             if dict.keys.contains("ParentId") && dict["ParentId"] != nil {
                 self.parentId = dict["ParentId"] as! String
