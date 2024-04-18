@@ -7419,6 +7419,196 @@ public class DescribeServiceMirrorResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeSpotDiscountHistoryRequest : Tea.TeaModel {
+    public var instanceType: String?
+
+    public var isProtect: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceType != nil {
+            map["InstanceType"] = self.instanceType!
+        }
+        if self.isProtect != nil {
+            map["IsProtect"] = self.isProtect!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+            self.instanceType = dict["InstanceType"] as! String
+        }
+        if dict.keys.contains("IsProtect") && dict["IsProtect"] != nil {
+            self.isProtect = dict["IsProtect"] as! Bool
+        }
+    }
+}
+
+public class DescribeSpotDiscountHistoryResponseBody : Tea.TeaModel {
+    public class SpotDiscounts : Tea.TeaModel {
+        public var instanceType: String?
+
+        public var spotDiscount: String?
+
+        public var timestamp: String?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.spotDiscount != nil {
+                map["SpotDiscount"] = self.spotDiscount!
+            }
+            if self.timestamp != nil {
+                map["Timestamp"] = self.timestamp!
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("SpotDiscount") && dict["SpotDiscount"] != nil {
+                self.spotDiscount = dict["SpotDiscount"] as! String
+            }
+            if dict.keys.contains("Timestamp") && dict["Timestamp"] != nil {
+                self.timestamp = dict["Timestamp"] as! String
+            }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var requestId: String?
+
+    public var spotDiscounts: [DescribeSpotDiscountHistoryResponseBody.SpotDiscounts]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.spotDiscounts != nil {
+            var tmp : [Any] = []
+            for k in self.spotDiscounts! {
+                tmp.append(k.toMap())
+            }
+            map["SpotDiscounts"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("SpotDiscounts") && dict["SpotDiscounts"] != nil {
+            var tmp : [DescribeSpotDiscountHistoryResponseBody.SpotDiscounts] = []
+            for v in dict["SpotDiscounts"] as! [Any] {
+                var model = DescribeSpotDiscountHistoryResponseBody.SpotDiscounts()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.spotDiscounts = tmp
+        }
+    }
+}
+
+public class DescribeSpotDiscountHistoryResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeSpotDiscountHistoryResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeSpotDiscountHistoryResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DevelopServiceRequest : Tea.TeaModel {
     public var exit: String?
 
