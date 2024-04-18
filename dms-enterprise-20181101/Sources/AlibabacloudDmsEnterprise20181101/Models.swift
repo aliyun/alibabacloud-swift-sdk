@@ -2405,6 +2405,8 @@ public class ApproveOrderRequest : Tea.TeaModel {
 
     public var newApprover: Int64?
 
+    public var newApproverList: String?
+
     public var oldApprover: Int64?
 
     public var tid: Int64?
@@ -2440,6 +2442,9 @@ public class ApproveOrderRequest : Tea.TeaModel {
         if self.newApprover != nil {
             map["NewApprover"] = self.newApprover!
         }
+        if self.newApproverList != nil {
+            map["NewApproverList"] = self.newApproverList!
+        }
         if self.oldApprover != nil {
             map["OldApprover"] = self.oldApprover!
         }
@@ -2467,6 +2472,9 @@ public class ApproveOrderRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NewApprover") && dict["NewApprover"] != nil {
             self.newApprover = dict["NewApprover"] as! Int64
+        }
+        if dict.keys.contains("NewApproverList") && dict["NewApproverList"] != nil {
+            self.newApproverList = dict["NewApproverList"] as! String
         }
         if dict.keys.contains("OldApprover") && dict["OldApprover"] != nil {
             self.oldApprover = dict["OldApprover"] as! Int64
@@ -18007,6 +18015,235 @@ public class GetDataCorrectOrderDetailRequest : Tea.TeaModel {
 
 public class GetDataCorrectOrderDetailResponseBody : Tea.TeaModel {
     public class DataCorrectOrderDetail : Tea.TeaModel {
+        public class ConfigDetail : Tea.TeaModel {
+            public class CronExtConfig : Tea.TeaModel {
+                public var currentClearTaskCount: Int32?
+
+                public var optimizeTableAfterEveryClearTimes: Int32?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.currentClearTaskCount != nil {
+                        map["CurrentClearTaskCount"] = self.currentClearTaskCount!
+                    }
+                    if self.optimizeTableAfterEveryClearTimes != nil {
+                        map["OptimizeTableAfterEveryClearTimes"] = self.optimizeTableAfterEveryClearTimes!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CurrentClearTaskCount") && dict["CurrentClearTaskCount"] != nil {
+                        self.currentClearTaskCount = dict["CurrentClearTaskCount"] as! Int32
+                    }
+                    if dict.keys.contains("OptimizeTableAfterEveryClearTimes") && dict["OptimizeTableAfterEveryClearTimes"] != nil {
+                        self.optimizeTableAfterEveryClearTimes = dict["OptimizeTableAfterEveryClearTimes"] as! Int32
+                    }
+                }
+            }
+            public class ImportExtConfig : Tea.TeaModel {
+                public var csvFirstRowIsColumnDef: Bool?
+
+                public var ignoreError: Bool?
+
+                public var importMode: String?
+
+                public var insertType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.csvFirstRowIsColumnDef != nil {
+                        map["CsvFirstRowIsColumnDef"] = self.csvFirstRowIsColumnDef!
+                    }
+                    if self.ignoreError != nil {
+                        map["IgnoreError"] = self.ignoreError!
+                    }
+                    if self.importMode != nil {
+                        map["ImportMode"] = self.importMode!
+                    }
+                    if self.insertType != nil {
+                        map["InsertType"] = self.insertType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("CsvFirstRowIsColumnDef") && dict["CsvFirstRowIsColumnDef"] != nil {
+                        self.csvFirstRowIsColumnDef = dict["CsvFirstRowIsColumnDef"] as! Bool
+                    }
+                    if dict.keys.contains("IgnoreError") && dict["IgnoreError"] != nil {
+                        self.ignoreError = dict["IgnoreError"] as! Bool
+                    }
+                    if dict.keys.contains("ImportMode") && dict["ImportMode"] != nil {
+                        self.importMode = dict["ImportMode"] as! String
+                    }
+                    if dict.keys.contains("InsertType") && dict["InsertType"] != nil {
+                        self.insertType = dict["InsertType"] as! String
+                    }
+                }
+            }
+            public var cron: Bool?
+
+            public var cronCallTimes: Int32?
+
+            public var cronExtConfig: GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.ConfigDetail.CronExtConfig?
+
+            public var cronFormat: String?
+
+            public var cronLastCallStartTime: String?
+
+            public var cronNextCallTime: String?
+
+            public var cronStatus: String?
+
+            public var csvTableName: String?
+
+            public var currentTaskId: Int64?
+
+            public var detailType: String?
+
+            public var duration: Int32?
+
+            public var fileEncoding: String?
+
+            public var fileType: String?
+
+            public var importExtConfig: GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.ConfigDetail.ImportExtConfig?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+                try self.cronExtConfig?.validate()
+                try self.importExtConfig?.validate()
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cron != nil {
+                    map["Cron"] = self.cron!
+                }
+                if self.cronCallTimes != nil {
+                    map["CronCallTimes"] = self.cronCallTimes!
+                }
+                if self.cronExtConfig != nil {
+                    map["CronExtConfig"] = self.cronExtConfig?.toMap()
+                }
+                if self.cronFormat != nil {
+                    map["CronFormat"] = self.cronFormat!
+                }
+                if self.cronLastCallStartTime != nil {
+                    map["CronLastCallStartTime"] = self.cronLastCallStartTime!
+                }
+                if self.cronNextCallTime != nil {
+                    map["CronNextCallTime"] = self.cronNextCallTime!
+                }
+                if self.cronStatus != nil {
+                    map["CronStatus"] = self.cronStatus!
+                }
+                if self.csvTableName != nil {
+                    map["CsvTableName"] = self.csvTableName!
+                }
+                if self.currentTaskId != nil {
+                    map["CurrentTaskId"] = self.currentTaskId!
+                }
+                if self.detailType != nil {
+                    map["DetailType"] = self.detailType!
+                }
+                if self.duration != nil {
+                    map["Duration"] = self.duration!
+                }
+                if self.fileEncoding != nil {
+                    map["FileEncoding"] = self.fileEncoding!
+                }
+                if self.fileType != nil {
+                    map["FileType"] = self.fileType!
+                }
+                if self.importExtConfig != nil {
+                    map["ImportExtConfig"] = self.importExtConfig?.toMap()
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Cron") && dict["Cron"] != nil {
+                    self.cron = dict["Cron"] as! Bool
+                }
+                if dict.keys.contains("CronCallTimes") && dict["CronCallTimes"] != nil {
+                    self.cronCallTimes = dict["CronCallTimes"] as! Int32
+                }
+                if dict.keys.contains("CronExtConfig") && dict["CronExtConfig"] != nil {
+                    var model = GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.ConfigDetail.CronExtConfig()
+                    model.fromMap(dict["CronExtConfig"] as! [String: Any])
+                    self.cronExtConfig = model
+                }
+                if dict.keys.contains("CronFormat") && dict["CronFormat"] != nil {
+                    self.cronFormat = dict["CronFormat"] as! String
+                }
+                if dict.keys.contains("CronLastCallStartTime") && dict["CronLastCallStartTime"] != nil {
+                    self.cronLastCallStartTime = dict["CronLastCallStartTime"] as! String
+                }
+                if dict.keys.contains("CronNextCallTime") && dict["CronNextCallTime"] != nil {
+                    self.cronNextCallTime = dict["CronNextCallTime"] as! String
+                }
+                if dict.keys.contains("CronStatus") && dict["CronStatus"] != nil {
+                    self.cronStatus = dict["CronStatus"] as! String
+                }
+                if dict.keys.contains("CsvTableName") && dict["CsvTableName"] != nil {
+                    self.csvTableName = dict["CsvTableName"] as! String
+                }
+                if dict.keys.contains("CurrentTaskId") && dict["CurrentTaskId"] != nil {
+                    self.currentTaskId = dict["CurrentTaskId"] as! Int64
+                }
+                if dict.keys.contains("DetailType") && dict["DetailType"] != nil {
+                    self.detailType = dict["DetailType"] as! String
+                }
+                if dict.keys.contains("Duration") && dict["Duration"] != nil {
+                    self.duration = dict["Duration"] as! Int32
+                }
+                if dict.keys.contains("FileEncoding") && dict["FileEncoding"] != nil {
+                    self.fileEncoding = dict["FileEncoding"] as! String
+                }
+                if dict.keys.contains("FileType") && dict["FileType"] != nil {
+                    self.fileType = dict["FileType"] as! String
+                }
+                if dict.keys.contains("ImportExtConfig") && dict["ImportExtConfig"] != nil {
+                    var model = GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.ConfigDetail.ImportExtConfig()
+                    model.fromMap(dict["ImportExtConfig"] as! [String: Any])
+                    self.importExtConfig = model
+                }
+            }
+        }
         public class DatabaseList : Tea.TeaModel {
             public class Database : Tea.TeaModel {
                 public var dbId: Int32?
@@ -18304,6 +18541,8 @@ public class GetDataCorrectOrderDetailResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var configDetail: GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.ConfigDetail?
+
         public var databaseList: GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.DatabaseList?
 
         public var execMode: String?
@@ -18324,6 +18563,7 @@ public class GetDataCorrectOrderDetailResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.configDetail?.validate()
             try self.databaseList?.validate()
             try self.orderDetail?.validate()
             try self.preCheckDetail?.validate()
@@ -18331,6 +18571,9 @@ public class GetDataCorrectOrderDetailResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.configDetail != nil {
+                map["ConfigDetail"] = self.configDetail?.toMap()
+            }
             if self.databaseList != nil {
                 map["DatabaseList"] = self.databaseList?.toMap()
             }
@@ -18350,6 +18593,11 @@ public class GetDataCorrectOrderDetailResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConfigDetail") && dict["ConfigDetail"] != nil {
+                var model = GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.ConfigDetail()
+                model.fromMap(dict["ConfigDetail"] as! [String: Any])
+                self.configDetail = model
+            }
             if dict.keys.contains("DatabaseList") && dict["DatabaseList"] != nil {
                 var model = GetDataCorrectOrderDetailResponseBody.DataCorrectOrderDetail.DatabaseList()
                 model.fromMap(dict["DatabaseList"] as! [String: Any])

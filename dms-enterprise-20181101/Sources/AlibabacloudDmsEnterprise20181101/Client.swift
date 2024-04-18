@@ -371,6 +371,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.newApprover)) {
             query["NewApprover"] = request.newApprover!;
         }
+        if (!TeaUtils.Client.isUnset(request.newApproverList)) {
+            query["NewApproverList"] = request.newApproverList ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.oldApprover)) {
             query["OldApprover"] = request.oldApprover!;
         }
