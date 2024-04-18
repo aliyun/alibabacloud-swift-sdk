@@ -465,6 +465,43 @@ public class CreateInstanceRequest : Tea.TeaModel {
             }
         }
     }
+    public class Tag : Tea.TeaModel {
+        public var key: String?
+
+        public var value: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
+            }
+        }
+    }
     public var architectureType: String?
 
     public var autoRenew: Bool?
@@ -498,6 +535,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public var resourceSpec: CreateInstanceRequest.ResourceSpec?
 
     public var storage: CreateInstanceRequest.Storage?
+
+    public var tag: [CreateInstanceRequest.Tag]?
 
     public var usePromotionCode: Bool?
 
@@ -575,6 +614,13 @@ public class CreateInstanceRequest : Tea.TeaModel {
         if self.storage != nil {
             map["Storage"] = self.storage?.toMap()
         }
+        if self.tag != nil {
+            var tmp : [Any] = []
+            for k in self.tag! {
+                tmp.append(k.toMap())
+            }
+            map["Tag"] = tmp
+        }
         if self.usePromotionCode != nil {
             map["UsePromotionCode"] = self.usePromotionCode!
         }
@@ -648,6 +694,17 @@ public class CreateInstanceRequest : Tea.TeaModel {
             model.fromMap(dict["Storage"] as! [String: Any])
             self.storage = model
         }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            var tmp : [CreateInstanceRequest.Tag] = []
+            for v in dict["Tag"] as! [Any] {
+                var model = CreateInstanceRequest.Tag()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tag = tmp
+        }
         if dict.keys.contains("UsePromotionCode") && dict["UsePromotionCode"] != nil {
             self.usePromotionCode = dict["UsePromotionCode"] as! Bool
         }
@@ -697,6 +754,8 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
     public var resourceSpecShrink: String?
 
     public var storageShrink: String?
+
+    public var tagShrink: String?
 
     public var usePromotionCode: Bool?
 
@@ -771,6 +830,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         if self.storageShrink != nil {
             map["Storage"] = self.storageShrink!
         }
+        if self.tagShrink != nil {
+            map["Tag"] = self.tagShrink!
+        }
         if self.usePromotionCode != nil {
             map["UsePromotionCode"] = self.usePromotionCode!
         }
@@ -837,6 +899,9 @@ public class CreateInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Storage") && dict["Storage"] != nil {
             self.storageShrink = dict["Storage"] as! String
+        }
+        if dict.keys.contains("Tag") && dict["Tag"] != nil {
+            self.tagShrink = dict["Tag"] as! String
         }
         if dict.keys.contains("UsePromotionCode") && dict["UsePromotionCode"] != nil {
             self.usePromotionCode = dict["UsePromotionCode"] as! Bool
@@ -4311,6 +4376,75 @@ public class QueryConvertInstancePriceShrinkRequest : Tea.TeaModel {
 
 public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
     public class PriceInfo : Tea.TeaModel {
+        public class DepreciateInfo : Tea.TeaModel {
+            public var cheapRate: String?
+
+            public var cheapStandAmount: String?
+
+            public var isShow: Bool?
+
+            public var monthPrice: String?
+
+            public var originalStandAmount: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cheapRate != nil {
+                    map["CheapRate"] = self.cheapRate!
+                }
+                if self.cheapStandAmount != nil {
+                    map["CheapStandAmount"] = self.cheapStandAmount!
+                }
+                if self.isShow != nil {
+                    map["IsShow"] = self.isShow!
+                }
+                if self.monthPrice != nil {
+                    map["MonthPrice"] = self.monthPrice!
+                }
+                if self.originalStandAmount != nil {
+                    map["OriginalStandAmount"] = self.originalStandAmount!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                    self.cheapRate = dict["CheapRate"] as! String
+                }
+                if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                    self.cheapStandAmount = dict["CheapStandAmount"] as! String
+                }
+                if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                    self.isShow = dict["IsShow"] as! Bool
+                }
+                if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                    self.monthPrice = dict["MonthPrice"] as! String
+                }
+                if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                    self.originalStandAmount = dict["OriginalStandAmount"] as! String
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
         public class OptionalPromotions : Tea.TeaModel {
             public var promotionDesc: String?
 
@@ -4405,7 +4539,11 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
 
         public var currency: String?
 
+        public var depreciateInfo: QueryConvertInstancePriceResponseBody.PriceInfo.DepreciateInfo?
+
         public var discountAmount: Double?
+
+        public var isContractActivity: Bool?
 
         public var message: String?
 
@@ -4414,6 +4552,10 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
         public var originalAmount: Double?
 
         public var rules: [QueryConvertInstancePriceResponseBody.PriceInfo.Rules]?
+
+        public var standDiscountPrice: String?
+
+        public var standPrice: String?
 
         public var tradeAmount: Double?
 
@@ -4427,6 +4569,7 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.depreciateInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -4437,8 +4580,14 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
+            if self.depreciateInfo != nil {
+                map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+            }
             if self.discountAmount != nil {
                 map["DiscountAmount"] = self.discountAmount!
+            }
+            if self.isContractActivity != nil {
+                map["IsContractActivity"] = self.isContractActivity!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -4460,6 +4609,12 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
                 }
                 map["Rules"] = tmp
             }
+            if self.standDiscountPrice != nil {
+                map["StandDiscountPrice"] = self.standDiscountPrice!
+            }
+            if self.standPrice != nil {
+                map["StandPrice"] = self.standPrice!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -4473,8 +4628,16 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("Currency") && dict["Currency"] != nil {
                 self.currency = dict["Currency"] as! String
             }
+            if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                var model = QueryConvertInstancePriceResponseBody.PriceInfo.DepreciateInfo()
+                model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                self.depreciateInfo = model
+            }
             if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                 self.discountAmount = dict["DiscountAmount"] as! Double
+            }
+            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                self.isContractActivity = dict["IsContractActivity"] as! Bool
             }
             if dict.keys.contains("Message") && dict["Message"] != nil {
                 self.message = dict["Message"] as! String
@@ -4503,6 +4666,12 @@ public class QueryConvertInstancePriceResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.rules = tmp
+            }
+            if dict.keys.contains("StandDiscountPrice") && dict["StandDiscountPrice"] != nil {
+                self.standDiscountPrice = dict["StandDiscountPrice"] as! String
+            }
+            if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                self.standPrice = dict["StandPrice"] as! String
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! Double
@@ -5068,6 +5237,75 @@ public class QueryCreateInstancePriceShrinkRequest : Tea.TeaModel {
 
 public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
     public class PriceInfo : Tea.TeaModel {
+        public class DepreciateInfo : Tea.TeaModel {
+            public var cheapRate: String?
+
+            public var cheapStandAmount: String?
+
+            public var isShow: Bool?
+
+            public var monthPrice: String?
+
+            public var originalStandAmount: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cheapRate != nil {
+                    map["CheapRate"] = self.cheapRate!
+                }
+                if self.cheapStandAmount != nil {
+                    map["CheapStandAmount"] = self.cheapStandAmount!
+                }
+                if self.isShow != nil {
+                    map["IsShow"] = self.isShow!
+                }
+                if self.monthPrice != nil {
+                    map["MonthPrice"] = self.monthPrice!
+                }
+                if self.originalStandAmount != nil {
+                    map["OriginalStandAmount"] = self.originalStandAmount!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                    self.cheapRate = dict["CheapRate"] as! String
+                }
+                if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                    self.cheapStandAmount = dict["CheapStandAmount"] as! String
+                }
+                if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                    self.isShow = dict["IsShow"] as! Bool
+                }
+                if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                    self.monthPrice = dict["MonthPrice"] as! String
+                }
+                if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                    self.originalStandAmount = dict["OriginalStandAmount"] as! String
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
         public class OptionalPromotions : Tea.TeaModel {
             public var promotionDesc: String?
 
@@ -5162,7 +5400,11 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
 
         public var currency: String?
 
+        public var depreciateInfo: QueryCreateInstancePriceResponseBody.PriceInfo.DepreciateInfo?
+
         public var discountAmount: Double?
+
+        public var isContractActivity: Bool?
 
         public var message: String?
 
@@ -5171,6 +5413,10 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
         public var originalAmount: Double?
 
         public var rules: [QueryCreateInstancePriceResponseBody.PriceInfo.Rules]?
+
+        public var standDiscountPrice: String?
+
+        public var standPrice: String?
 
         public var tradeAmount: Double?
 
@@ -5184,6 +5430,7 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.depreciateInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -5194,8 +5441,14 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
+            if self.depreciateInfo != nil {
+                map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+            }
             if self.discountAmount != nil {
                 map["DiscountAmount"] = self.discountAmount!
+            }
+            if self.isContractActivity != nil {
+                map["IsContractActivity"] = self.isContractActivity!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -5217,6 +5470,12 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
                 }
                 map["Rules"] = tmp
             }
+            if self.standDiscountPrice != nil {
+                map["StandDiscountPrice"] = self.standDiscountPrice!
+            }
+            if self.standPrice != nil {
+                map["StandPrice"] = self.standPrice!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -5230,8 +5489,16 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("Currency") && dict["Currency"] != nil {
                 self.currency = dict["Currency"] as! String
             }
+            if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                var model = QueryCreateInstancePriceResponseBody.PriceInfo.DepreciateInfo()
+                model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                self.depreciateInfo = model
+            }
             if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                 self.discountAmount = dict["DiscountAmount"] as! Double
+            }
+            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                self.isContractActivity = dict["IsContractActivity"] as! Bool
             }
             if dict.keys.contains("Message") && dict["Message"] != nil {
                 self.message = dict["Message"] as! String
@@ -5260,6 +5527,12 @@ public class QueryCreateInstancePriceResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.rules = tmp
+            }
+            if dict.keys.contains("StandDiscountPrice") && dict["StandDiscountPrice"] != nil {
+                self.standDiscountPrice = dict["StandDiscountPrice"] as! String
+            }
+            if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                self.standPrice = dict["StandPrice"] as! String
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! Double
@@ -5601,6 +5874,75 @@ public class QueryModifyInstancePriceShrinkRequest : Tea.TeaModel {
 
 public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
     public class PriceInfo : Tea.TeaModel {
+        public class DepreciateInfo : Tea.TeaModel {
+            public var cheapRate: String?
+
+            public var cheapStandAmount: String?
+
+            public var isShow: Bool?
+
+            public var monthPrice: String?
+
+            public var originalStandAmount: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cheapRate != nil {
+                    map["CheapRate"] = self.cheapRate!
+                }
+                if self.cheapStandAmount != nil {
+                    map["CheapStandAmount"] = self.cheapStandAmount!
+                }
+                if self.isShow != nil {
+                    map["IsShow"] = self.isShow!
+                }
+                if self.monthPrice != nil {
+                    map["MonthPrice"] = self.monthPrice!
+                }
+                if self.originalStandAmount != nil {
+                    map["OriginalStandAmount"] = self.originalStandAmount!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                    self.cheapRate = dict["CheapRate"] as! String
+                }
+                if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                    self.cheapStandAmount = dict["CheapStandAmount"] as! String
+                }
+                if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                    self.isShow = dict["IsShow"] as! Bool
+                }
+                if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                    self.monthPrice = dict["MonthPrice"] as! String
+                }
+                if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                    self.originalStandAmount = dict["OriginalStandAmount"] as! String
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
         public class OptionalPromotions : Tea.TeaModel {
             public var promotionDesc: String?
 
@@ -5695,7 +6037,11 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
 
         public var currency: String?
 
+        public var depreciateInfo: QueryModifyInstancePriceResponseBody.PriceInfo.DepreciateInfo?
+
         public var discountAmount: Double?
+
+        public var isContractActivity: Bool?
 
         public var message: String?
 
@@ -5704,6 +6050,10 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
         public var originalAmount: Double?
 
         public var rules: [QueryModifyInstancePriceResponseBody.PriceInfo.Rules]?
+
+        public var standDiscountPrice: String?
+
+        public var standPrice: String?
 
         public var tradeAmount: Double?
 
@@ -5717,6 +6067,7 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.depreciateInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -5727,8 +6078,14 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
+            if self.depreciateInfo != nil {
+                map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+            }
             if self.discountAmount != nil {
                 map["DiscountAmount"] = self.discountAmount!
+            }
+            if self.isContractActivity != nil {
+                map["IsContractActivity"] = self.isContractActivity!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -5750,6 +6107,12 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
                 }
                 map["Rules"] = tmp
             }
+            if self.standDiscountPrice != nil {
+                map["StandDiscountPrice"] = self.standDiscountPrice!
+            }
+            if self.standPrice != nil {
+                map["StandPrice"] = self.standPrice!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -5763,8 +6126,16 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("Currency") && dict["Currency"] != nil {
                 self.currency = dict["Currency"] as! String
             }
+            if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                var model = QueryModifyInstancePriceResponseBody.PriceInfo.DepreciateInfo()
+                model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                self.depreciateInfo = model
+            }
             if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                 self.discountAmount = dict["DiscountAmount"] as! Double
+            }
+            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                self.isContractActivity = dict["IsContractActivity"] as! Bool
             }
             if dict.keys.contains("Message") && dict["Message"] != nil {
                 self.message = dict["Message"] as! String
@@ -5793,6 +6164,12 @@ public class QueryModifyInstancePriceResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.rules = tmp
+            }
+            if dict.keys.contains("StandDiscountPrice") && dict["StandDiscountPrice"] != nil {
+                self.standDiscountPrice = dict["StandDiscountPrice"] as! String
+            }
+            if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                self.standPrice = dict["StandPrice"] as! String
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! Double
@@ -5952,6 +6329,75 @@ public class QueryRenewInstancePriceRequest : Tea.TeaModel {
 
 public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
     public class PriceInfo : Tea.TeaModel {
+        public class DepreciateInfo : Tea.TeaModel {
+            public var cheapRate: String?
+
+            public var cheapStandAmount: String?
+
+            public var isShow: Bool?
+
+            public var monthPrice: String?
+
+            public var originalStandAmount: String?
+
+            public var startTime: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cheapRate != nil {
+                    map["CheapRate"] = self.cheapRate!
+                }
+                if self.cheapStandAmount != nil {
+                    map["CheapStandAmount"] = self.cheapStandAmount!
+                }
+                if self.isShow != nil {
+                    map["IsShow"] = self.isShow!
+                }
+                if self.monthPrice != nil {
+                    map["MonthPrice"] = self.monthPrice!
+                }
+                if self.originalStandAmount != nil {
+                    map["OriginalStandAmount"] = self.originalStandAmount!
+                }
+                if self.startTime != nil {
+                    map["StartTime"] = self.startTime!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                    self.cheapRate = dict["CheapRate"] as! String
+                }
+                if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                    self.cheapStandAmount = dict["CheapStandAmount"] as! String
+                }
+                if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                    self.isShow = dict["IsShow"] as! Bool
+                }
+                if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                    self.monthPrice = dict["MonthPrice"] as! String
+                }
+                if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                    self.originalStandAmount = dict["OriginalStandAmount"] as! String
+                }
+                if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                    self.startTime = dict["StartTime"] as! String
+                }
+            }
+        }
         public class OptionalPromotions : Tea.TeaModel {
             public var promotionDesc: String?
 
@@ -6046,7 +6492,11 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
 
         public var currency: String?
 
+        public var depreciateInfo: QueryRenewInstancePriceResponseBody.PriceInfo.DepreciateInfo?
+
         public var discountAmount: Double?
+
+        public var isContractActivity: Bool?
 
         public var message: String?
 
@@ -6055,6 +6505,10 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
         public var originalAmount: Double?
 
         public var rules: [QueryRenewInstancePriceResponseBody.PriceInfo.Rules]?
+
+        public var standDiscountPrice: String?
+
+        public var standPrice: String?
 
         public var tradeAmount: Double?
 
@@ -6068,6 +6522,7 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.depreciateInfo?.validate()
         }
 
         public override func toMap() -> [String : Any] {
@@ -6078,8 +6533,14 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
             if self.currency != nil {
                 map["Currency"] = self.currency!
             }
+            if self.depreciateInfo != nil {
+                map["DepreciateInfo"] = self.depreciateInfo?.toMap()
+            }
             if self.discountAmount != nil {
                 map["DiscountAmount"] = self.discountAmount!
+            }
+            if self.isContractActivity != nil {
+                map["IsContractActivity"] = self.isContractActivity!
             }
             if self.message != nil {
                 map["Message"] = self.message!
@@ -6101,6 +6562,12 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
                 }
                 map["Rules"] = tmp
             }
+            if self.standDiscountPrice != nil {
+                map["StandDiscountPrice"] = self.standDiscountPrice!
+            }
+            if self.standPrice != nil {
+                map["StandPrice"] = self.standPrice!
+            }
             if self.tradeAmount != nil {
                 map["TradeAmount"] = self.tradeAmount!
             }
@@ -6114,8 +6581,16 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
             if dict.keys.contains("Currency") && dict["Currency"] != nil {
                 self.currency = dict["Currency"] as! String
             }
+            if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                var model = QueryRenewInstancePriceResponseBody.PriceInfo.DepreciateInfo()
+                model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                self.depreciateInfo = model
+            }
             if dict.keys.contains("DiscountAmount") && dict["DiscountAmount"] != nil {
                 self.discountAmount = dict["DiscountAmount"] as! Double
+            }
+            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                self.isContractActivity = dict["IsContractActivity"] as! Bool
             }
             if dict.keys.contains("Message") && dict["Message"] != nil {
                 self.message = dict["Message"] as! String
@@ -6144,6 +6619,12 @@ public class QueryRenewInstancePriceResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.rules = tmp
+            }
+            if dict.keys.contains("StandDiscountPrice") && dict["StandDiscountPrice"] != nil {
+                self.standDiscountPrice = dict["StandDiscountPrice"] as! String
+            }
+            if dict.keys.contains("StandPrice") && dict["StandPrice"] != nil {
+                self.standPrice = dict["StandPrice"] as! String
             }
             if dict.keys.contains("TradeAmount") && dict["TradeAmount"] != nil {
                 self.tradeAmount = dict["TradeAmount"] as! Double

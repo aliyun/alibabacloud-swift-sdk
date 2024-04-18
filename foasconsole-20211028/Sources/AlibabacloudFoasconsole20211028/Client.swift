@@ -91,6 +91,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.storage)) {
             request.storageShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.storage, "Storage", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.tag)) {
+            request.tagShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tag, "Tag", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.vSwitchIds)) {
             request.vSwitchIdsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.vSwitchIds, "VSwitchIds", "json")
         }
@@ -145,6 +148,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.storageShrink)) {
             body["Storage"] = request.storageShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagShrink)) {
+            body["Tag"] = request.tagShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.usePromotionCode)) {
             body["UsePromotionCode"] = request.usePromotionCode!;
