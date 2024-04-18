@@ -9649,6 +9649,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
     public var subCategory: String?
 
+    public var supportInstantSwitchWithImci: String?
+
     public var tags: [DescribeDBClusterAttributeResponseBody.Tags]?
 
     public var VPCId: String?
@@ -9827,6 +9829,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if self.subCategory != nil {
             map["SubCategory"] = self.subCategory!
+        }
+        if self.supportInstantSwitchWithImci != nil {
+            map["SupportInstantSwitchWithImci"] = self.supportInstantSwitchWithImci!
         }
         if self.tags != nil {
             var tmp : [Any] = []
@@ -10008,6 +10013,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SubCategory") && dict["SubCategory"] != nil {
             self.subCategory = dict["SubCategory"] as! String
+        }
+        if dict.keys.contains("SupportInstantSwitchWithImci") && dict["SupportInstantSwitchWithImci"] != nil {
+            self.supportInstantSwitchWithImci = dict["SupportInstantSwitchWithImci"] as! String
         }
         if dict.keys.contains("Tags") && dict["Tags"] != nil {
             var tmp : [DescribeDBClusterAttributeResponseBody.Tags] = []
