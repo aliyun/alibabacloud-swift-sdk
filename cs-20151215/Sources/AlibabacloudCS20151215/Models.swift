@@ -4094,6 +4094,10 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
         public class AutoUpgradePolicy : Tea.TeaModel {
             public var autoUpgradeKubelet: Bool?
 
+            public var autoUpgradeOs: Bool?
+
+            public var autoUpgradeRuntime: Bool?
+
             public override init() {
                 super.init()
             }
@@ -4111,12 +4115,24 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
                 if self.autoUpgradeKubelet != nil {
                     map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
                 }
+                if self.autoUpgradeOs != nil {
+                    map["auto_upgrade_os"] = self.autoUpgradeOs!
+                }
+                if self.autoUpgradeRuntime != nil {
+                    map["auto_upgrade_runtime"] = self.autoUpgradeRuntime!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
                     self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                }
+                if dict.keys.contains("auto_upgrade_os") && dict["auto_upgrade_os"] != nil {
+                    self.autoUpgradeOs = dict["auto_upgrade_os"] as! Bool
+                }
+                if dict.keys.contains("auto_upgrade_runtime") && dict["auto_upgrade_runtime"] != nil {
+                    self.autoUpgradeRuntime = dict["auto_upgrade_runtime"] as! Bool
                 }
             }
         }
@@ -21991,6 +22007,10 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
         public class AutoUpgradePolicy : Tea.TeaModel {
             public var autoUpgradeKubelet: Bool?
 
+            public var autoUpgradeOs: Bool?
+
+            public var autoUpgradeRuntime: Bool?
+
             public override init() {
                 super.init()
             }
@@ -22008,12 +22028,24 @@ public class ModifyClusterNodePoolRequest : Tea.TeaModel {
                 if self.autoUpgradeKubelet != nil {
                     map["auto_upgrade_kubelet"] = self.autoUpgradeKubelet!
                 }
+                if self.autoUpgradeOs != nil {
+                    map["auto_upgrade_os"] = self.autoUpgradeOs!
+                }
+                if self.autoUpgradeRuntime != nil {
+                    map["auto_upgrade_runtime"] = self.autoUpgradeRuntime!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("auto_upgrade_kubelet") && dict["auto_upgrade_kubelet"] != nil {
                     self.autoUpgradeKubelet = dict["auto_upgrade_kubelet"] as! Bool
+                }
+                if dict.keys.contains("auto_upgrade_os") && dict["auto_upgrade_os"] != nil {
+                    self.autoUpgradeOs = dict["auto_upgrade_os"] as! Bool
+                }
+                if dict.keys.contains("auto_upgrade_runtime") && dict["auto_upgrade_runtime"] != nil {
+                    self.autoUpgradeRuntime = dict["auto_upgrade_runtime"] as! Bool
                 }
             }
         }
