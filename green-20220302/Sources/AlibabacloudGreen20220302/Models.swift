@@ -2035,6 +2035,84 @@ public class ImageModerationRequest : Tea.TeaModel {
 
 public class ImageModerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
+        public class Ext : Tea.TeaModel {
+            public class Recognition : Tea.TeaModel {
+                public var classification: String?
+
+                public var confidence: Double?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.classification != nil {
+                        map["Classification"] = self.classification!
+                    }
+                    if self.confidence != nil {
+                        map["Confidence"] = self.confidence!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Classification") && dict["Classification"] != nil {
+                        self.classification = dict["Classification"] as! String
+                    }
+                    if dict.keys.contains("Confidence") && dict["Confidence"] != nil {
+                        self.confidence = dict["Confidence"] as! Double
+                    }
+                }
+            }
+            public var recognition: [ImageModerationResponseBody.Data.Ext.Recognition]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.recognition != nil {
+                    var tmp : [Any] = []
+                    for k in self.recognition! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Recognition"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Recognition") && dict["Recognition"] != nil {
+                    var tmp : [ImageModerationResponseBody.Data.Ext.Recognition] = []
+                    for v in dict["Recognition"] as! [Any] {
+                        var model = ImageModerationResponseBody.Data.Ext.Recognition()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.recognition = tmp
+                }
+            }
+        }
         public class Result : Tea.TeaModel {
             public var confidence: Double?
 
@@ -2074,6 +2152,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
         }
         public var dataId: String?
 
+        public var ext: ImageModerationResponseBody.Data.Ext?
+
         public var result: [ImageModerationResponseBody.Data.Result]?
 
         public override init() {
@@ -2086,12 +2166,16 @@ public class ImageModerationResponseBody : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.ext?.validate()
         }
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
             if self.dataId != nil {
                 map["DataId"] = self.dataId!
+            }
+            if self.ext != nil {
+                map["Ext"] = self.ext?.toMap()
             }
             if self.result != nil {
                 var tmp : [Any] = []
@@ -2106,6 +2190,11 @@ public class ImageModerationResponseBody : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("DataId") && dict["DataId"] != nil {
                 self.dataId = dict["DataId"] as! String
+            }
+            if dict.keys.contains("Ext") && dict["Ext"] != nil {
+                var model = ImageModerationResponseBody.Data.Ext()
+                model.fromMap(dict["Ext"] as! [String: Any])
+                self.ext = model
             }
             if dict.keys.contains("Result") && dict["Result"] != nil {
                 var tmp : [ImageModerationResponseBody.Data.Result] = []
