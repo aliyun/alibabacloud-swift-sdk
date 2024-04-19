@@ -11923,6 +11923,8 @@ public class CreateWorkitemResponseBody : Tea.TeaModel {
 
         public var document: String?
 
+        public var documentFormat: String?
+
         public var gmtCreate: Int64?
 
         public var gmtModified: Int64?
@@ -11982,6 +11984,9 @@ public class CreateWorkitemResponseBody : Tea.TeaModel {
             }
             if self.document != nil {
                 map["document"] = self.document!
+            }
+            if self.documentFormat != nil {
+                map["documentFormat"] = self.documentFormat!
             }
             if self.gmtCreate != nil {
                 map["gmtCreate"] = self.gmtCreate!
@@ -12049,6 +12054,9 @@ public class CreateWorkitemResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("document") && dict["document"] != nil {
                 self.document = dict["document"] as! String
+            }
+            if dict.keys.contains("documentFormat") && dict["documentFormat"] != nil {
+                self.documentFormat = dict["documentFormat"] as! String
             }
             if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
                 self.gmtCreate = dict["gmtCreate"] as! Int64
@@ -30803,6 +30811,8 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
 
         public var document: String?
 
+        public var documentFormat: String?
+
         public var finishTime: Int64?
 
         public var gmtCreate: Int64?
@@ -30881,6 +30891,9 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
             }
             if self.document != nil {
                 map["document"] = self.document!
+            }
+            if self.documentFormat != nil {
+                map["documentFormat"] = self.documentFormat!
             }
             if self.finishTime != nil {
                 map["finishTime"] = self.finishTime!
@@ -30981,6 +30994,9 @@ public class GetWorkItemInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("document") && dict["document"] != nil {
                 self.document = dict["document"] as! String
+            }
+            if dict.keys.contains("documentFormat") && dict["documentFormat"] != nil {
+                self.documentFormat = dict["documentFormat"] as! String
             }
             if dict.keys.contains("finishTime") && dict["finishTime"] != nil {
                 self.finishTime = dict["finishTime"] as! Int64
@@ -65536,6 +65552,8 @@ public class UpdateWorkItemResponseBody : Tea.TeaModel {
 
         public var document: String?
 
+        public var documentFormat: String?
+
         public var gmtCreate: Int64?
 
         public var gmtModified: Int64?
@@ -65595,6 +65613,9 @@ public class UpdateWorkItemResponseBody : Tea.TeaModel {
             }
             if self.document != nil {
                 map["document"] = self.document!
+            }
+            if self.documentFormat != nil {
+                map["documentFormat"] = self.documentFormat!
             }
             if self.gmtCreate != nil {
                 map["gmtCreate"] = self.gmtCreate!
@@ -65662,6 +65683,9 @@ public class UpdateWorkItemResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("document") && dict["document"] != nil {
                 self.document = dict["document"] as! String
+            }
+            if dict.keys.contains("documentFormat") && dict["documentFormat"] != nil {
+                self.documentFormat = dict["documentFormat"] as! String
             }
             if dict.keys.contains("gmtCreate") && dict["gmtCreate"] != nil {
                 self.gmtCreate = dict["gmtCreate"] as! Int64
