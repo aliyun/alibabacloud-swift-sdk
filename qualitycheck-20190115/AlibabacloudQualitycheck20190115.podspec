@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "AlibabacloudQualitycheck20190115"
-  spec.version      = "4.12.3"
+  spec.version      = "5.0.0"
   spec.license      = "Apache 2.0"
   spec.summary      = "Alibaba Cloud Qualitycheck (20190115) SDK Library for Swift"
   spec.homepage     = "https://github.com/alibabacloud-sdk-swift/qualitycheck-20190115" 

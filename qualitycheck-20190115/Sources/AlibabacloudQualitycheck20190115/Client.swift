@@ -1504,40 +1504,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getResultCallbackWithOptions(_ request: GetResultCallbackRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResultCallbackResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
-            query["BaseMeAgentId"] = request.baseMeAgentId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.jsonStr)) {
-            query["JsonStr"] = request.jsonStr ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "GetResultCallback",
-            "version": "2019-01-15",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(GetResultCallbackResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func getResultCallback(_ request: GetResultCallbackRequest) async throws -> GetResultCallbackResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await getResultCallbackWithOptions(request as! GetResultCallbackRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getResultToReviewWithOptions(_ request: GetResultToReviewRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetResultToReviewResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -2285,40 +2251,6 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listDataSet(_ request: ListDataSetRequest) async throws -> ListDataSetResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listDataSetWithOptions(request as! ListDataSetRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listHotWordsTasksWithOptions(_ request: ListHotWordsTasksRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListHotWordsTasksResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.baseMeAgentId)) {
-            query["BaseMeAgentId"] = request.baseMeAgentId!;
-        }
-        if (!TeaUtils.Client.isUnset(request.jsonStr)) {
-            query["JsonStr"] = request.jsonStr ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "ListHotWordsTasks",
-            "version": "2019-01-15",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(ListHotWordsTasksResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func listHotWordsTasks(_ request: ListHotWordsTasksRequest) async throws -> ListHotWordsTasksResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await listHotWordsTasksWithOptions(request as! ListHotWordsTasksRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
