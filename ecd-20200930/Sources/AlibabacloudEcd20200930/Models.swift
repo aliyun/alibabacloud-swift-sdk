@@ -5651,11 +5651,156 @@ public class CreateCloudDriveServiceRequest : Tea.TeaModel {
 }
 
 public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
+    public class ConflictCdsAndOrder : Tea.TeaModel {
+        public class ConflictCds : Tea.TeaModel {
+            public var cdsId: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cdsId != nil {
+                    map["CdsId"] = self.cdsId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CdsId") && dict["CdsId"] != nil {
+                    self.cdsId = dict["CdsId"] as! String
+                }
+                if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                    self.regionId = dict["RegionId"] as! String
+                }
+            }
+        }
+        public class ConflictOrder : Tea.TeaModel {
+            public var cdsId: String?
+
+            public var orderId: String?
+
+            public var regionId: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.cdsId != nil {
+                    map["CdsId"] = self.cdsId!
+                }
+                if self.orderId != nil {
+                    map["OrderId"] = self.orderId!
+                }
+                if self.regionId != nil {
+                    map["RegionId"] = self.regionId!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("CdsId") && dict["CdsId"] != nil {
+                    self.cdsId = dict["CdsId"] as! String
+                }
+                if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+                    self.orderId = dict["OrderId"] as! String
+                }
+                if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                    self.regionId = dict["RegionId"] as! String
+                }
+            }
+        }
+        public var conflictCds: [CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder.ConflictCds]?
+
+        public var conflictOrder: [CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder.ConflictOrder]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.conflictCds != nil {
+                var tmp : [Any] = []
+                for k in self.conflictCds! {
+                    tmp.append(k.toMap())
+                }
+                map["ConflictCds"] = tmp
+            }
+            if self.conflictOrder != nil {
+                var tmp : [Any] = []
+                for k in self.conflictOrder! {
+                    tmp.append(k.toMap())
+                }
+                map["ConflictOrder"] = tmp
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ConflictCds") && dict["ConflictCds"] != nil {
+                var tmp : [CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder.ConflictCds] = []
+                for v in dict["ConflictCds"] as! [Any] {
+                    var model = CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder.ConflictCds()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conflictCds = tmp
+            }
+            if dict.keys.contains("ConflictOrder") && dict["ConflictOrder"] != nil {
+                var tmp : [CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder.ConflictOrder] = []
+                for v in dict["ConflictOrder"] as! [Any] {
+                    var model = CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder.ConflictOrder()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.conflictOrder = tmp
+            }
+        }
+    }
     public var cdsId: String?
 
     public var cdsName: String?
 
     public var cenId: String?
+
+    public var conflictCdsAndOrder: CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder?
 
     public var domainName: String?
 
@@ -5679,6 +5824,7 @@ public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.conflictCdsAndOrder?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -5691,6 +5837,9 @@ public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
         }
         if self.cenId != nil {
             map["CenId"] = self.cenId!
+        }
+        if self.conflictCdsAndOrder != nil {
+            map["ConflictCdsAndOrder"] = self.conflictCdsAndOrder?.toMap()
         }
         if self.domainName != nil {
             map["DomainName"] = self.domainName!
@@ -5722,6 +5871,11 @@ public class CreateCloudDriveServiceResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("CenId") && dict["CenId"] != nil {
             self.cenId = dict["CenId"] as! String
+        }
+        if dict.keys.contains("ConflictCdsAndOrder") && dict["ConflictCdsAndOrder"] != nil {
+            var model = CreateCloudDriveServiceResponseBody.ConflictCdsAndOrder()
+            model.fromMap(dict["ConflictCdsAndOrder"] as! [String: Any])
+            self.conflictCdsAndOrder = model
         }
         if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
             self.domainName = dict["DomainName"] as! String
@@ -15871,7 +16025,11 @@ public class DescribeDesktopOversoldGroupResponseBody : Tea.TeaModel {
 
         public var expireTime: String?
 
+        public var idleDisconnectDuration: String?
+
         public var imageId: String?
+
+        public var keepDuration: String?
 
         public var name: String?
 
@@ -15926,8 +16084,14 @@ public class DescribeDesktopOversoldGroupResponseBody : Tea.TeaModel {
             if self.expireTime != nil {
                 map["ExpireTime"] = self.expireTime!
             }
+            if self.idleDisconnectDuration != nil {
+                map["IdleDisconnectDuration"] = self.idleDisconnectDuration!
+            }
             if self.imageId != nil {
                 map["ImageId"] = self.imageId!
+            }
+            if self.keepDuration != nil {
+                map["KeepDuration"] = self.keepDuration!
             }
             if self.name != nil {
                 map["Name"] = self.name!
@@ -15981,8 +16145,14 @@ public class DescribeDesktopOversoldGroupResponseBody : Tea.TeaModel {
             if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
                 self.expireTime = dict["ExpireTime"] as! String
             }
+            if dict.keys.contains("IdleDisconnectDuration") && dict["IdleDisconnectDuration"] != nil {
+                self.idleDisconnectDuration = dict["IdleDisconnectDuration"] as! String
+            }
             if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
                 self.imageId = dict["ImageId"] as! String
+            }
+            if dict.keys.contains("KeepDuration") && dict["KeepDuration"] != nil {
+                self.keepDuration = dict["KeepDuration"] as! String
             }
             if dict.keys.contains("Name") && dict["Name"] != nil {
                 self.name = dict["Name"] as! String
