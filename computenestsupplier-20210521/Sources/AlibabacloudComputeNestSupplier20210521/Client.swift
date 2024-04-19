@@ -617,12 +617,18 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: GetServiceEstimateCostShrinkRequest = GetServiceEstimateCostShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.commodity)) {
+            request.commodityShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.commodity, "Commodity", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.commodityShrink)) {
+            query["Commodity"] = request.commodityShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
             query["Parameters"] = request.parametersShrink ?? "";
