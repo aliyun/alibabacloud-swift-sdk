@@ -6920,6 +6920,8 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
 
                     public var y: [String]?
 
+                    public var z: [String]?
+
                     public override init() {
                         super.init()
                     }
@@ -6940,6 +6942,9 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                         if self.y != nil {
                             map["Y"] = self.y!
                         }
+                        if self.z != nil {
+                            map["Z"] = self.z!
+                        }
                         return map
                     }
 
@@ -6950,17 +6955,26 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                         if dict.keys.contains("Y") && dict["Y"] != nil {
                             self.y = dict["Y"] as! [String]
                         }
+                        if dict.keys.contains("Z") && dict["Z"] != nil {
+                            self.z = dict["Z"] as! [String]
+                        }
                     }
                 }
+                public var chatType: Int32?
+
                 public var data: DescribeEventDetailResponseBody.Event.Detail.Chart.Data?
 
                 public var label: String?
+
+                public var name: String?
 
                 public var type: String?
 
                 public var XLabel: String?
 
                 public var YLabel: String?
+
+                public var ZLabel: String?
 
                 public override init() {
                     super.init()
@@ -6977,11 +6991,17 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
 
                 public override func toMap() -> [String : Any] {
                     var map = super.toMap()
+                    if self.chatType != nil {
+                        map["ChatType"] = self.chatType!
+                    }
                     if self.data != nil {
                         map["Data"] = self.data?.toMap()
                     }
                     if self.label != nil {
                         map["Label"] = self.label!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
                     }
                     if self.type != nil {
                         map["Type"] = self.type!
@@ -6992,10 +7012,16 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                     if self.YLabel != nil {
                         map["YLabel"] = self.YLabel!
                     }
+                    if self.ZLabel != nil {
+                        map["ZLabel"] = self.ZLabel!
+                    }
                     return map
                 }
 
                 public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ChatType") && dict["ChatType"] != nil {
+                        self.chatType = dict["ChatType"] as! Int32
+                    }
                     if dict.keys.contains("Data") && dict["Data"] != nil {
                         var model = DescribeEventDetailResponseBody.Event.Detail.Chart.Data()
                         model.fromMap(dict["Data"] as! [String: Any])
@@ -7003,6 +7029,9 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                     }
                     if dict.keys.contains("Label") && dict["Label"] != nil {
                         self.label = dict["Label"] as! String
+                    }
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
                     }
                     if dict.keys.contains("Type") && dict["Type"] != nil {
                         self.type = dict["Type"] as! String
@@ -7013,10 +7042,15 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                     if dict.keys.contains("YLabel") && dict["YLabel"] != nil {
                         self.YLabel = dict["YLabel"] as! String
                     }
+                    if dict.keys.contains("ZLabel") && dict["ZLabel"] != nil {
+                        self.ZLabel = dict["ZLabel"] as! String
+                    }
                 }
             }
             public class Content : Tea.TeaModel {
                 public var label: String?
+
+                public var name: String?
 
                 public var value: String?
 
@@ -7037,6 +7071,9 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                     if self.label != nil {
                         map["Label"] = self.label!
                     }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
                     if self.value != nil {
                         map["Value"] = self.value!
                     }
@@ -7046,6 +7083,9 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
                 public override func fromMap(_ dict: [String: Any]) -> Void {
                     if dict.keys.contains("Label") && dict["Label"] != nil {
                         self.label = dict["Label"] as! String
+                    }
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
                     }
                     if dict.keys.contains("Value") && dict["Value"] != nil {
                         self.value = dict["Value"] as! String
@@ -7284,6 +7324,8 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
 
         public var loginName: String?
 
+        public var newAlarm: Bool?
+
         public var productCode: String?
 
         public var status: Int32?
@@ -7363,6 +7405,9 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
             }
             if self.loginName != nil {
                 map["LoginName"] = self.loginName!
+            }
+            if self.newAlarm != nil {
+                map["NewAlarm"] = self.newAlarm!
             }
             if self.productCode != nil {
                 map["ProductCode"] = self.productCode!
@@ -7446,6 +7491,9 @@ public class DescribeEventDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("LoginName") && dict["LoginName"] != nil {
                 self.loginName = dict["LoginName"] as! String
+            }
+            if dict.keys.contains("NewAlarm") && dict["NewAlarm"] != nil {
+                self.newAlarm = dict["NewAlarm"] as! Bool
             }
             if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
                 self.productCode = dict["ProductCode"] as! String
