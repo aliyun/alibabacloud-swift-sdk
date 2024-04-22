@@ -600,6 +600,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityGroupId)) {
             body["security_group_id"] = request.securityGroupId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.securityHardeningOs)) {
+            body["security_hardening_os"] = request.securityHardeningOs!;
+        }
         if (!TeaUtils.Client.isUnset(request.serviceAccountIssuer)) {
             body["service_account_issuer"] = request.serviceAccountIssuer ?? "";
         }

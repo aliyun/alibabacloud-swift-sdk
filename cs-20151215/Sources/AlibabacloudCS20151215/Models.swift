@@ -3032,6 +3032,8 @@ public class CreateClusterRequest : Tea.TeaModel {
 
     public var securityGroupId: String?
 
+    public var securityHardeningOs: Bool?
+
     public var serviceAccountIssuer: String?
 
     public var serviceCidr: String?
@@ -3297,6 +3299,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if self.securityGroupId != nil {
             map["security_group_id"] = self.securityGroupId!
+        }
+        if self.securityHardeningOs != nil {
+            map["security_hardening_os"] = self.securityHardeningOs!
         }
         if self.serviceAccountIssuer != nil {
             map["service_account_issuer"] = self.serviceAccountIssuer!
@@ -3601,6 +3606,9 @@ public class CreateClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("security_group_id") && dict["security_group_id"] != nil {
             self.securityGroupId = dict["security_group_id"] as! String
+        }
+        if dict.keys.contains("security_hardening_os") && dict["security_hardening_os"] != nil {
+            self.securityHardeningOs = dict["security_hardening_os"] as! Bool
         }
         if dict.keys.contains("service_account_issuer") && dict["service_account_issuer"] != nil {
             self.serviceAccountIssuer = dict["service_account_issuer"] as! String
@@ -4565,6 +4573,8 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
 
         public var securityGroupIds: [String]?
 
+        public var securityHardeningOs: Bool?
+
         public var socEnabled: Bool?
 
         public var spotInstancePools: Int64?
@@ -4696,6 +4706,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if self.securityGroupIds != nil {
                 map["security_group_ids"] = self.securityGroupIds!
+            }
+            if self.securityHardeningOs != nil {
+                map["security_hardening_os"] = self.securityHardeningOs!
             }
             if self.socEnabled != nil {
                 map["soc_enabled"] = self.socEnabled!
@@ -4847,6 +4860,9 @@ public class CreateClusterNodePoolRequest : Tea.TeaModel {
             }
             if dict.keys.contains("security_group_ids") && dict["security_group_ids"] != nil {
                 self.securityGroupIds = dict["security_group_ids"] as! [String]
+            }
+            if dict.keys.contains("security_hardening_os") && dict["security_hardening_os"] != nil {
+                self.securityHardeningOs = dict["security_hardening_os"] as! Bool
             }
             if dict.keys.contains("soc_enabled") && dict["soc_enabled"] != nil {
                 self.socEnabled = dict["soc_enabled"] as! Bool
@@ -9708,6 +9724,8 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
 
         public var securityGroupIds: [String]?
 
+        public var securityHardeningOs: Bool?
+
         public var socEnabled: Bool?
 
         public var spotInstancePools: Int64?
@@ -9845,6 +9863,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if self.securityGroupIds != nil {
                 map["security_group_ids"] = self.securityGroupIds!
+            }
+            if self.securityHardeningOs != nil {
+                map["security_hardening_os"] = self.securityHardeningOs!
             }
             if self.socEnabled != nil {
                 map["soc_enabled"] = self.socEnabled!
@@ -10002,6 +10023,9 @@ public class DescribeClusterNodePoolDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("security_group_ids") && dict["security_group_ids"] != nil {
                 self.securityGroupIds = dict["security_group_ids"] as! [String]
+            }
+            if dict.keys.contains("security_hardening_os") && dict["security_hardening_os"] != nil {
+                self.securityHardeningOs = dict["security_hardening_os"] as! Bool
             }
             if dict.keys.contains("soc_enabled") && dict["soc_enabled"] != nil {
                 self.socEnabled = dict["soc_enabled"] as! Bool
@@ -11120,6 +11144,8 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
 
             public var securityGroupIds: [String]?
 
+            public var securityHardeningOs: Bool?
+
             public var socEnabled: Bool?
 
             public var spotInstancePools: Int64?
@@ -11257,6 +11283,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if self.securityGroupIds != nil {
                     map["security_group_ids"] = self.securityGroupIds!
+                }
+                if self.securityHardeningOs != nil {
+                    map["security_hardening_os"] = self.securityHardeningOs!
                 }
                 if self.socEnabled != nil {
                     map["soc_enabled"] = self.socEnabled!
@@ -11414,6 +11443,9 @@ public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("security_group_ids") && dict["security_group_ids"] != nil {
                     self.securityGroupIds = dict["security_group_ids"] as! [String]
+                }
+                if dict.keys.contains("security_hardening_os") && dict["security_hardening_os"] != nil {
+                    self.securityHardeningOs = dict["security_hardening_os"] as! Bool
                 }
                 if dict.keys.contains("soc_enabled") && dict["soc_enabled"] != nil {
                     self.socEnabled = dict["soc_enabled"] as! Bool
