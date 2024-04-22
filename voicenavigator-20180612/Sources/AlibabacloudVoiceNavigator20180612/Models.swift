@@ -5455,6 +5455,10 @@ public class ListConversationsResponseBody : Tea.TeaModel {
 
         public var conversationId: String?
 
+        public var dsReport: String?
+
+        public var dsReportTitles: [String]?
+
         public var endReason: Int32?
 
         public var endTime: Int64?
@@ -5494,6 +5498,12 @@ public class ListConversationsResponseBody : Tea.TeaModel {
             if self.conversationId != nil {
                 map["ConversationId"] = self.conversationId!
             }
+            if self.dsReport != nil {
+                map["DsReport"] = self.dsReport!
+            }
+            if self.dsReportTitles != nil {
+                map["DsReportTitles"] = self.dsReportTitles!
+            }
             if self.endReason != nil {
                 map["EndReason"] = self.endReason!
             }
@@ -5530,6 +5540,12 @@ public class ListConversationsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ConversationId") && dict["ConversationId"] != nil {
                 self.conversationId = dict["ConversationId"] as! String
+            }
+            if dict.keys.contains("DsReport") && dict["DsReport"] != nil {
+                self.dsReport = dict["DsReport"] as! String
+            }
+            if dict.keys.contains("DsReportTitles") && dict["DsReportTitles"] != nil {
+                self.dsReportTitles = dict["DsReportTitles"] as! [String]
             }
             if dict.keys.contains("EndReason") && dict["EndReason"] != nil {
                 self.endReason = dict["EndReason"] as! Int32
