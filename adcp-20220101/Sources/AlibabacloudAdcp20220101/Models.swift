@@ -122,9 +122,6 @@ public class AttachClusterToHubResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -174,6 +171,8 @@ public class CreateHubClusterRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceGroupID: String?
+
     public var vSwitches: String?
 
     public var vpcId: String?
@@ -218,6 +217,9 @@ public class CreateHubClusterRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceGroupID != nil {
+            map["ResourceGroupID"] = self.resourceGroupID!
+        }
         if self.vSwitches != nil {
             map["VSwitches"] = self.vSwitches!
         }
@@ -254,6 +256,9 @@ public class CreateHubClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceGroupID") && dict["ResourceGroupID"] != nil {
+            self.resourceGroupID = dict["ResourceGroupID"] as! String
         }
         if dict.keys.contains("VSwitches") && dict["VSwitches"] != nil {
             self.vSwitches = dict["VSwitches"] as! String
@@ -330,9 +335,6 @@ public class CreateHubClusterResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -520,9 +522,6 @@ public class DeleteHubClusterResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -694,9 +693,6 @@ public class DeletePolicyInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -814,9 +810,6 @@ public class DeleteUserPermissionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1020,9 +1013,6 @@ public class DeployPolicyInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1133,6 +1123,219 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
             }
         }
         public class ClusterInfo : Tea.TeaModel {
+            public class MetaData : Tea.TeaModel {
+                public class ACKOne : Tea.TeaModel {
+                    public class GitOps : Tea.TeaModel {
+                        public var accessControlList: [String]?
+
+                        public var enabled: Bool?
+
+                        public var HAEnabled: Bool?
+
+                        public var publicAccessEnabled: Bool?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.accessControlList != nil {
+                                map["AccessControlList"] = self.accessControlList!
+                            }
+                            if self.enabled != nil {
+                                map["Enabled"] = self.enabled!
+                            }
+                            if self.HAEnabled != nil {
+                                map["HAEnabled"] = self.HAEnabled!
+                            }
+                            if self.publicAccessEnabled != nil {
+                                map["PublicAccessEnabled"] = self.publicAccessEnabled!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("AccessControlList") && dict["AccessControlList"] != nil {
+                                self.accessControlList = dict["AccessControlList"] as! [String]
+                            }
+                            if dict.keys.contains("Enabled") && dict["Enabled"] != nil {
+                                self.enabled = dict["Enabled"] as! Bool
+                            }
+                            if dict.keys.contains("HAEnabled") && dict["HAEnabled"] != nil {
+                                self.HAEnabled = dict["HAEnabled"] as! Bool
+                            }
+                            if dict.keys.contains("PublicAccessEnabled") && dict["PublicAccessEnabled"] != nil {
+                                self.publicAccessEnabled = dict["PublicAccessEnabled"] as! Bool
+                            }
+                        }
+                    }
+                    public class WorkFlow : Tea.TeaModel {
+                        public class ArgoWorkflow : Tea.TeaModel {
+                            public var accessControlList: [String]?
+
+                            public var enabled: Bool?
+
+                            public var publicAccessEnabled: Bool?
+
+                            public var serverEnabled: String?
+
+                            public override init() {
+                                super.init()
+                            }
+
+                            public init(_ dict: [String: Any]) {
+                                super.init()
+                                self.fromMap(dict)
+                            }
+
+                            public override func validate() throws -> Void {
+                            }
+
+                            public override func toMap() -> [String : Any] {
+                                var map = super.toMap()
+                                if self.accessControlList != nil {
+                                    map["AccessControlList"] = self.accessControlList!
+                                }
+                                if self.enabled != nil {
+                                    map["Enabled"] = self.enabled!
+                                }
+                                if self.publicAccessEnabled != nil {
+                                    map["PublicAccessEnabled"] = self.publicAccessEnabled!
+                                }
+                                if self.serverEnabled != nil {
+                                    map["ServerEnabled"] = self.serverEnabled!
+                                }
+                                return map
+                            }
+
+                            public override func fromMap(_ dict: [String: Any]) -> Void {
+                                if dict.keys.contains("AccessControlList") && dict["AccessControlList"] != nil {
+                                    self.accessControlList = dict["AccessControlList"] as! [String]
+                                }
+                                if dict.keys.contains("Enabled") && dict["Enabled"] != nil {
+                                    self.enabled = dict["Enabled"] as! Bool
+                                }
+                                if dict.keys.contains("PublicAccessEnabled") && dict["PublicAccessEnabled"] != nil {
+                                    self.publicAccessEnabled = dict["PublicAccessEnabled"] as! Bool
+                                }
+                                if dict.keys.contains("ServerEnabled") && dict["ServerEnabled"] != nil {
+                                    self.serverEnabled = dict["ServerEnabled"] as! String
+                                }
+                            }
+                        }
+                        public var argoWorkflow: DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne.WorkFlow.ArgoWorkflow?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                            try self.argoWorkflow?.validate()
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.argoWorkflow != nil {
+                                map["ArgoWorkflow"] = self.argoWorkflow?.toMap()
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("ArgoWorkflow") && dict["ArgoWorkflow"] != nil {
+                                var model = DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne.WorkFlow.ArgoWorkflow()
+                                model.fromMap(dict["ArgoWorkflow"] as! [String: Any])
+                                self.argoWorkflow = model
+                            }
+                        }
+                    }
+                    public var gitOps: DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne.GitOps?
+
+                    public var workFlow: DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne.WorkFlow?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                        try self.gitOps?.validate()
+                        try self.workFlow?.validate()
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.gitOps != nil {
+                            map["GitOps"] = self.gitOps?.toMap()
+                        }
+                        if self.workFlow != nil {
+                            map["WorkFlow"] = self.workFlow?.toMap()
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("GitOps") && dict["GitOps"] != nil {
+                            var model = DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne.GitOps()
+                            model.fromMap(dict["GitOps"] as! [String: Any])
+                            self.gitOps = model
+                        }
+                        if dict.keys.contains("WorkFlow") && dict["WorkFlow"] != nil {
+                            var model = DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne.WorkFlow()
+                            model.fromMap(dict["WorkFlow"] as! [String: Any])
+                            self.workFlow = model
+                        }
+                    }
+                }
+                public var ACKOne: DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.ACKOne?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.ACKOne != nil {
+                        map["ACKOne"] = self.ACKOne?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ACKOne") && dict["ACKOne"] != nil {
+                        var model = DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData.ACKOne()
+                        model.fromMap(dict["ACKOne"] as! [String: Any])
+                        self.ACKOne = model
+                    }
+                }
+            }
             public var clusterId: String?
 
             public var clusterSpec: String?
@@ -1141,11 +1344,15 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
 
             public var errorMessage: String?
 
+            public var metaData: DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData?
+
             public var name: String?
 
             public var profile: String?
 
             public var regionId: String?
+
+            public var resourceGroupID: String?
 
             public var state: String?
 
@@ -1163,6 +1370,7 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.metaData?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -1179,6 +1387,9 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
                 if self.errorMessage != nil {
                     map["ErrorMessage"] = self.errorMessage!
                 }
+                if self.metaData != nil {
+                    map["MetaData"] = self.metaData?.toMap()
+                }
                 if self.name != nil {
                     map["Name"] = self.name!
                 }
@@ -1187,6 +1398,9 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
                 }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
+                }
+                if self.resourceGroupID != nil {
+                    map["ResourceGroupID"] = self.resourceGroupID!
                 }
                 if self.state != nil {
                     map["State"] = self.state!
@@ -1213,6 +1427,11 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
                 if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
                     self.errorMessage = dict["ErrorMessage"] as! String
                 }
+                if dict.keys.contains("MetaData") && dict["MetaData"] != nil {
+                    var model = DescribeHubClusterDetailsResponseBody.Cluster.ClusterInfo.MetaData()
+                    model.fromMap(dict["MetaData"] as! [String: Any])
+                    self.metaData = model
+                }
                 if dict.keys.contains("Name") && dict["Name"] != nil {
                     self.name = dict["Name"] as! String
                 }
@@ -1221,6 +1440,9 @@ public class DescribeHubClusterDetailsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ResourceGroupID") && dict["ResourceGroupID"] != nil {
+                    self.resourceGroupID = dict["ResourceGroupID"] as! String
                 }
                 if dict.keys.contains("State") && dict["State"] != nil {
                     self.state = dict["State"] as! String
@@ -1799,9 +2021,6 @@ public class DescribeHubClusterDetailsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1927,9 +2146,6 @@ public class DescribeHubClusterKubeconfigResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2112,9 +2328,6 @@ public class DescribeHubClusterLogsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2150,6 +2363,8 @@ public class DescribeHubClusterLogsResponse : Tea.TeaModel {
 public class DescribeHubClustersRequest : Tea.TeaModel {
     public var profile: String?
 
+    public var resourceGroupId: String?
+
     public override init() {
         super.init()
     }
@@ -2167,12 +2382,18 @@ public class DescribeHubClustersRequest : Tea.TeaModel {
         if self.profile != nil {
             map["Profile"] = self.profile!
         }
+        if self.resourceGroupId != nil {
+            map["ResourceGroupId"] = self.resourceGroupId!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("Profile") && dict["Profile"] != nil {
             self.profile = dict["Profile"] as! String
+        }
+        if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
+            self.resourceGroupId = dict["ResourceGroupId"] as! String
         }
     }
 }
@@ -2239,6 +2460,8 @@ public class DescribeHubClustersResponseBody : Tea.TeaModel {
 
             public var regionId: String?
 
+            public var resourceGroupID: String?
+
             public var state: String?
 
             public var updateTime: String?
@@ -2280,6 +2503,9 @@ public class DescribeHubClustersResponseBody : Tea.TeaModel {
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
+                if self.resourceGroupID != nil {
+                    map["ResourceGroupID"] = self.resourceGroupID!
+                }
                 if self.state != nil {
                     map["State"] = self.state!
                 }
@@ -2313,6 +2539,9 @@ public class DescribeHubClustersResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
+                }
+                if dict.keys.contains("ResourceGroupID") && dict["ResourceGroupID"] != nil {
+                    self.resourceGroupID = dict["ResourceGroupID"] as! String
                 }
                 if dict.keys.contains("State") && dict["State"] != nil {
                     self.state = dict["State"] as! String
@@ -2722,9 +2951,6 @@ public class DescribeHubClustersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3107,9 +3333,6 @@ public class DescribeManagedClustersResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3246,9 +3469,6 @@ public class DescribePoliciesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -3462,9 +3682,6 @@ public class DescribePolicyDetailsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4228,9 +4445,6 @@ public class DescribePolicyGovernanceInClusterResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4469,9 +4683,6 @@ public class DescribePolicyInstancesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4808,9 +5019,6 @@ public class DescribePolicyInstancesStatusResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -4977,9 +5185,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5162,9 +5367,6 @@ public class DescribeUserPermissionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5314,9 +5516,6 @@ public class DetachClusterFromHubResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5466,9 +5665,6 @@ public class GrantUserPermissionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5697,9 +5893,6 @@ public class GrantUserPermissionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -5752,6 +5945,8 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
     public var deletionProtection: Bool?
 
     public var enableMesh: Bool?
+
+    public var gatewayEnabled: Bool?
 
     public var monitorEnabled: Bool?
 
@@ -5811,6 +6006,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if self.enableMesh != nil {
             map["EnableMesh"] = self.enableMesh!
         }
+        if self.gatewayEnabled != nil {
+            map["GatewayEnabled"] = self.gatewayEnabled!
+        }
         if self.monitorEnabled != nil {
             map["MonitorEnabled"] = self.monitorEnabled!
         }
@@ -5866,6 +6064,9 @@ public class UpdateHubClusterFeatureRequest : Tea.TeaModel {
         if dict.keys.contains("EnableMesh") && dict["EnableMesh"] != nil {
             self.enableMesh = dict["EnableMesh"] as! Bool
         }
+        if dict.keys.contains("GatewayEnabled") && dict["GatewayEnabled"] != nil {
+            self.gatewayEnabled = dict["GatewayEnabled"] as! Bool
+        }
         if dict.keys.contains("MonitorEnabled") && dict["MonitorEnabled"] != nil {
             self.monitorEnabled = dict["MonitorEnabled"] as! Bool
         }
@@ -5910,6 +6111,8 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
     public var deletionProtection: Bool?
 
     public var enableMesh: Bool?
+
+    public var gatewayEnabled: Bool?
 
     public var monitorEnabled: Bool?
 
@@ -5969,6 +6172,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         if self.enableMesh != nil {
             map["EnableMesh"] = self.enableMesh!
         }
+        if self.gatewayEnabled != nil {
+            map["GatewayEnabled"] = self.gatewayEnabled!
+        }
         if self.monitorEnabled != nil {
             map["MonitorEnabled"] = self.monitorEnabled!
         }
@@ -6023,6 +6229,9 @@ public class UpdateHubClusterFeatureShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableMesh") && dict["EnableMesh"] != nil {
             self.enableMesh = dict["EnableMesh"] as! Bool
+        }
+        if dict.keys.contains("GatewayEnabled") && dict["GatewayEnabled"] != nil {
+            self.gatewayEnabled = dict["GatewayEnabled"] as! Bool
         }
         if dict.keys.contains("MonitorEnabled") && dict["MonitorEnabled"] != nil {
             self.monitorEnabled = dict["MonitorEnabled"] as! Bool
@@ -6095,9 +6304,6 @@ public class UpdateHubClusterFeatureResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -6239,9 +6445,6 @@ public class UpdateUserPermissionResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 

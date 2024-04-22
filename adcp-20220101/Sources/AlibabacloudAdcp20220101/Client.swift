@@ -8,7 +8,6 @@ import AlibabacloudEndpointUtil
 open class Client : AlibabacloudOpenApi.Client {
     public override init(_ config: AlibabacloudOpenApi.Config) throws {
         try super.init(config)
-        self._signatureAlgorithm = "v2"
         self._endpointRule = "central"
         self._endpointMap = [
             "cn-beijing": "adcp.cn-beijing.aliyuncs.com",
@@ -115,6 +114,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             body["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupID)) {
+            body["ResourceGroupID"] = request.resourceGroupID ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.vSwitches)) {
             body["VSwitches"] = request.vSwitches ?? "";
@@ -420,6 +422,9 @@ open class Client : AlibabacloudOpenApi.Client {
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.profile)) {
             query["Profile"] = request.profile ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
+            query["ResourceGroupId"] = request.resourceGroupId ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -851,6 +856,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableMesh)) {
             query["EnableMesh"] = request.enableMesh!;
+        }
+        if (!TeaUtils.Client.isUnset(request.gatewayEnabled)) {
+            query["GatewayEnabled"] = request.gatewayEnabled!;
         }
         if (!TeaUtils.Client.isUnset(request.monitorEnabled)) {
             query["MonitorEnabled"] = request.monitorEnabled!;
