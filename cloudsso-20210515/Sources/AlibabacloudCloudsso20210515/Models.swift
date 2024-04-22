@@ -4524,6 +4524,8 @@ public class GetDirectoryStatisticsResponseBody : Tea.TeaModel {
 
         public var inProgressTaskCount: Int32?
 
+        public var inlinePolicyPerAccessConfigurationQuota: Int32?
+
         public var region: String?
 
         public var SCIMServerCredentialCount: Int32?
@@ -4576,6 +4578,9 @@ public class GetDirectoryStatisticsResponseBody : Tea.TeaModel {
             if self.inProgressTaskCount != nil {
                 map["InProgressTaskCount"] = self.inProgressTaskCount!
             }
+            if self.inlinePolicyPerAccessConfigurationQuota != nil {
+                map["InlinePolicyPerAccessConfigurationQuota"] = self.inlinePolicyPerAccessConfigurationQuota!
+            }
             if self.region != nil {
                 map["Region"] = self.region!
             }
@@ -4624,6 +4629,9 @@ public class GetDirectoryStatisticsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("InProgressTaskCount") && dict["InProgressTaskCount"] != nil {
                 self.inProgressTaskCount = dict["InProgressTaskCount"] as! Int32
+            }
+            if dict.keys.contains("InlinePolicyPerAccessConfigurationQuota") && dict["InlinePolicyPerAccessConfigurationQuota"] != nil {
+                self.inlinePolicyPerAccessConfigurationQuota = dict["InlinePolicyPerAccessConfigurationQuota"] as! Int32
             }
             if dict.keys.contains("Region") && dict["Region"] != nil {
                 self.region = dict["Region"] as! String
