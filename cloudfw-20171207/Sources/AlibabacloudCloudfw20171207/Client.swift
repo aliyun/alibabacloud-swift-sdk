@@ -422,6 +422,67 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSecurityProxyWithOptions(_ request: CreateSecurityProxyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateSecurityProxyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.firewallSwitch)) {
+            query["FirewallSwitch"] = request.firewallSwitch ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.lang)) {
+            query["Lang"] = request.lang ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natGatewayId)) {
+            query["NatGatewayId"] = request.natGatewayId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.natRouteEntryList)) {
+            query["NatRouteEntryList"] = request.natRouteEntryList ?? [];
+        }
+        if (!TeaUtils.Client.isUnset(request.proxyName)) {
+            query["ProxyName"] = request.proxyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionNo)) {
+            query["RegionNo"] = request.regionNo ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.strictMode)) {
+            query["StrictMode"] = request.strictMode!;
+        }
+        if (!TeaUtils.Client.isUnset(request.vpcId)) {
+            query["VpcId"] = request.vpcId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vswitchAuto)) {
+            query["VswitchAuto"] = request.vswitchAuto ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vswitchCidr)) {
+            query["VswitchCidr"] = request.vswitchCidr ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.vswitchId)) {
+            query["VswitchId"] = request.vswitchId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateSecurityProxy",
+            "version": "2017-12-07",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateSecurityProxyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createSecurityProxy(_ request: CreateSecurityProxyRequest) async throws -> CreateSecurityProxyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createSecurityProxyWithOptions(request as! CreateSecurityProxyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createTrFirewallV2WithOptions(_ request: CreateTrFirewallV2Request, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTrFirewallV2Response {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]

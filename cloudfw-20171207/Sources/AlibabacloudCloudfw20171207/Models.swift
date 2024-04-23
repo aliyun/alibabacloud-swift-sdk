@@ -1386,6 +1386,268 @@ public class CreateNatFirewallControlPolicyResponse : Tea.TeaModel {
     }
 }
 
+public class CreateSecurityProxyRequest : Tea.TeaModel {
+    public class NatRouteEntryList : Tea.TeaModel {
+        public var destinationCidr: String?
+
+        public var nextHopId: String?
+
+        public var nextHopType: String?
+
+        public var routeTableId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.destinationCidr != nil {
+                map["DestinationCidr"] = self.destinationCidr!
+            }
+            if self.nextHopId != nil {
+                map["NextHopId"] = self.nextHopId!
+            }
+            if self.nextHopType != nil {
+                map["NextHopType"] = self.nextHopType!
+            }
+            if self.routeTableId != nil {
+                map["RouteTableId"] = self.routeTableId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DestinationCidr") && dict["DestinationCidr"] != nil {
+                self.destinationCidr = dict["DestinationCidr"] as! String
+            }
+            if dict.keys.contains("NextHopId") && dict["NextHopId"] != nil {
+                self.nextHopId = dict["NextHopId"] as! String
+            }
+            if dict.keys.contains("NextHopType") && dict["NextHopType"] != nil {
+                self.nextHopType = dict["NextHopType"] as! String
+            }
+            if dict.keys.contains("RouteTableId") && dict["RouteTableId"] != nil {
+                self.routeTableId = dict["RouteTableId"] as! String
+            }
+        }
+    }
+    public var firewallSwitch: String?
+
+    public var lang: String?
+
+    public var natGatewayId: String?
+
+    public var natRouteEntryList: [CreateSecurityProxyRequest.NatRouteEntryList]?
+
+    public var proxyName: String?
+
+    public var regionNo: String?
+
+    public var strictMode: Int32?
+
+    public var vpcId: String?
+
+    public var vswitchAuto: String?
+
+    public var vswitchCidr: String?
+
+    public var vswitchId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.firewallSwitch != nil {
+            map["FirewallSwitch"] = self.firewallSwitch!
+        }
+        if self.lang != nil {
+            map["Lang"] = self.lang!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.natRouteEntryList != nil {
+            var tmp : [Any] = []
+            for k in self.natRouteEntryList! {
+                tmp.append(k.toMap())
+            }
+            map["NatRouteEntryList"] = tmp
+        }
+        if self.proxyName != nil {
+            map["ProxyName"] = self.proxyName!
+        }
+        if self.regionNo != nil {
+            map["RegionNo"] = self.regionNo!
+        }
+        if self.strictMode != nil {
+            map["StrictMode"] = self.strictMode!
+        }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
+        if self.vswitchAuto != nil {
+            map["VswitchAuto"] = self.vswitchAuto!
+        }
+        if self.vswitchCidr != nil {
+            map["VswitchCidr"] = self.vswitchCidr!
+        }
+        if self.vswitchId != nil {
+            map["VswitchId"] = self.vswitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("FirewallSwitch") && dict["FirewallSwitch"] != nil {
+            self.firewallSwitch = dict["FirewallSwitch"] as! String
+        }
+        if dict.keys.contains("Lang") && dict["Lang"] != nil {
+            self.lang = dict["Lang"] as! String
+        }
+        if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("NatRouteEntryList") && dict["NatRouteEntryList"] != nil {
+            var tmp : [CreateSecurityProxyRequest.NatRouteEntryList] = []
+            for v in dict["NatRouteEntryList"] as! [Any] {
+                var model = CreateSecurityProxyRequest.NatRouteEntryList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.natRouteEntryList = tmp
+        }
+        if dict.keys.contains("ProxyName") && dict["ProxyName"] != nil {
+            self.proxyName = dict["ProxyName"] as! String
+        }
+        if dict.keys.contains("RegionNo") && dict["RegionNo"] != nil {
+            self.regionNo = dict["RegionNo"] as! String
+        }
+        if dict.keys.contains("StrictMode") && dict["StrictMode"] != nil {
+            self.strictMode = dict["StrictMode"] as! Int32
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
+        }
+        if dict.keys.contains("VswitchAuto") && dict["VswitchAuto"] != nil {
+            self.vswitchAuto = dict["VswitchAuto"] as! String
+        }
+        if dict.keys.contains("VswitchCidr") && dict["VswitchCidr"] != nil {
+            self.vswitchCidr = dict["VswitchCidr"] as! String
+        }
+        if dict.keys.contains("VswitchId") && dict["VswitchId"] != nil {
+            self.vswitchId = dict["VswitchId"] as! String
+        }
+    }
+}
+
+public class CreateSecurityProxyResponseBody : Tea.TeaModel {
+    public var proxyId: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.proxyId != nil {
+            map["ProxyId"] = self.proxyId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ProxyId") && dict["ProxyId"] != nil {
+            self.proxyId = dict["ProxyId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CreateSecurityProxyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateSecurityProxyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateSecurityProxyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateTrFirewallV2Request : Tea.TeaModel {
     public var cenId: String?
 
