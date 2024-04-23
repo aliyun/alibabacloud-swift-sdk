@@ -5447,6 +5447,8 @@ public class GetInstanceListRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var series: String?
+
     public var tag: [GetInstanceListRequest.Tag]?
 
     public override init() {
@@ -5475,6 +5477,9 @@ public class GetInstanceListRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.series != nil {
+            map["Series"] = self.series!
+        }
         if self.tag != nil {
             var tmp : [Any] = []
             for k in self.tag! {
@@ -5497,6 +5502,9 @@ public class GetInstanceListRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("Series") && dict["Series"] != nil {
+            self.series = dict["Series"] as! String
         }
         if dict.keys.contains("Tag") && dict["Tag"] != nil {
             var tmp : [GetInstanceListRequest.Tag] = []
@@ -5837,6 +5845,8 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
 
             public var securityGroup: String?
 
+            public var series: String?
+
             public var serviceStatus: Int32?
 
             public var specType: String?
@@ -5958,6 +5968,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if self.securityGroup != nil {
                     map["SecurityGroup"] = self.securityGroup!
+                }
+                if self.series != nil {
+                    map["Series"] = self.series!
                 }
                 if self.serviceStatus != nil {
                     map["ServiceStatus"] = self.serviceStatus!
@@ -6084,6 +6097,9 @@ public class GetInstanceListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SecurityGroup") && dict["SecurityGroup"] != nil {
                     self.securityGroup = dict["SecurityGroup"] as! String
+                }
+                if dict.keys.contains("Series") && dict["Series"] != nil {
+                    self.series = dict["Series"] as! String
                 }
                 if dict.keys.contains("ServiceStatus") && dict["ServiceStatus"] != nil {
                     self.serviceStatus = dict["ServiceStatus"] as! Int32
