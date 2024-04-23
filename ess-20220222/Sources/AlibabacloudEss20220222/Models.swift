@@ -510,6 +510,8 @@ public class AttachAlbServerGroupsResponse : Tea.TeaModel {
 }
 
 public class AttachDBInstancesRequest : Tea.TeaModel {
+    public var attachMode: String?
+
     public var clientToken: String?
 
     public var DBInstances: [String]?
@@ -523,6 +525,8 @@ public class AttachDBInstancesRequest : Tea.TeaModel {
     public var resourceOwnerAccount: String?
 
     public var scalingGroupId: String?
+
+    public var type: String?
 
     public override init() {
         super.init()
@@ -538,6 +542,9 @@ public class AttachDBInstancesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.attachMode != nil {
+            map["AttachMode"] = self.attachMode!
+        }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
@@ -559,10 +566,16 @@ public class AttachDBInstancesRequest : Tea.TeaModel {
         if self.scalingGroupId != nil {
             map["ScalingGroupId"] = self.scalingGroupId!
         }
+        if self.type != nil {
+            map["Type"] = self.type!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AttachMode") && dict["AttachMode"] != nil {
+            self.attachMode = dict["AttachMode"] as! String
+        }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
         }
@@ -583,6 +596,9 @@ public class AttachDBInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ScalingGroupId") && dict["ScalingGroupId"] != nil {
             self.scalingGroupId = dict["ScalingGroupId"] as! String
+        }
+        if dict.keys.contains("Type") && dict["Type"] != nil {
+            self.type = dict["Type"] as! String
         }
     }
 }
@@ -5730,6 +5746,8 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
 
     public var dataDisks: [CreateScalingConfigurationRequest.DataDisks]?
 
+    public var dedicatedHostClusterId: String?
+
     public var dedicatedHostId: String?
 
     public var deletionProtection: Bool?
@@ -5875,6 +5893,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisks"] = tmp
+        }
+        if self.dedicatedHostClusterId != nil {
+            map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
         }
         if self.dedicatedHostId != nil {
             map["DedicatedHostId"] = self.dedicatedHostId!
@@ -6085,6 +6106,9 @@ public class CreateScalingConfigurationRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.dataDisks = tmp
+        }
+        if dict.keys.contains("DedicatedHostClusterId") && dict["DedicatedHostClusterId"] != nil {
+            self.dedicatedHostClusterId = dict["DedicatedHostClusterId"] as! String
         }
         if dict.keys.contains("DedicatedHostId") && dict["DedicatedHostId"] != nil {
             self.dedicatedHostId = dict["DedicatedHostId"] as! String
@@ -6830,6 +6854,8 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var dataDisks: [CreateScalingConfigurationShrinkRequest.DataDisks]?
 
+    public var dedicatedHostClusterId: String?
+
     public var dedicatedHostId: String?
 
     public var deletionProtection: Bool?
@@ -6975,6 +7001,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisks"] = tmp
+        }
+        if self.dedicatedHostClusterId != nil {
+            map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
         }
         if self.dedicatedHostId != nil {
             map["DedicatedHostId"] = self.dedicatedHostId!
@@ -7185,6 +7214,9 @@ public class CreateScalingConfigurationShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.dataDisks = tmp
+        }
+        if dict.keys.contains("DedicatedHostClusterId") && dict["DedicatedHostClusterId"] != nil {
+            self.dedicatedHostClusterId = dict["DedicatedHostClusterId"] as! String
         }
         if dict.keys.contains("DedicatedHostId") && dict["DedicatedHostId"] != nil {
             self.dedicatedHostId = dict["DedicatedHostId"] as! String
@@ -7492,6 +7524,51 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
             }
             if dict.keys.contains("Weight") && dict["Weight"] != nil {
                 self.weight = dict["Weight"] as! Int32
+            }
+        }
+    }
+    public class DBInstances : Tea.TeaModel {
+        public var attachMode: String?
+
+        public var DBInstanceId: String?
+
+        public var type: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.attachMode != nil {
+                map["AttachMode"] = self.attachMode!
+            }
+            if self.DBInstanceId != nil {
+                map["DBInstanceId"] = self.DBInstanceId!
+            }
+            if self.type != nil {
+                map["Type"] = self.type!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AttachMode") && dict["AttachMode"] != nil {
+                self.attachMode = dict["AttachMode"] as! String
+            }
+            if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+                self.DBInstanceId = dict["DBInstanceId"] as! String
+            }
+            if dict.keys.contains("Type") && dict["Type"] != nil {
+                self.type = dict["Type"] as! String
             }
         }
     }
@@ -7854,6 +7931,8 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
 
     public var DBInstanceIds: String?
 
+    public var DBInstances: [CreateScalingGroupRequest.DBInstances]?
+
     public var defaultCooldown: Int32?
 
     public var desiredCapacity: Int32?
@@ -7967,6 +8046,13 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if self.DBInstanceIds != nil {
             map["DBInstanceIds"] = self.DBInstanceIds!
+        }
+        if self.DBInstances != nil {
+            var tmp : [Any] = []
+            for k in self.DBInstances! {
+                tmp.append(k.toMap())
+            }
+            map["DBInstances"] = tmp
         }
         if self.defaultCooldown != nil {
             map["DefaultCooldown"] = self.defaultCooldown!
@@ -8135,6 +8221,17 @@ public class CreateScalingGroupRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DBInstanceIds") && dict["DBInstanceIds"] != nil {
             self.DBInstanceIds = dict["DBInstanceIds"] as! String
+        }
+        if dict.keys.contains("DBInstances") && dict["DBInstances"] != nil {
+            var tmp : [CreateScalingGroupRequest.DBInstances] = []
+            for v in dict["DBInstances"] as! [Any] {
+                var model = CreateScalingGroupRequest.DBInstances()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.DBInstances = tmp
         }
         if dict.keys.contains("DefaultCooldown") && dict["DefaultCooldown"] != nil {
             self.defaultCooldown = dict["DefaultCooldown"] as! Int32
@@ -17630,6 +17727,8 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
 
         public var dataDisks: [DescribeScalingConfigurationsResponseBody.ScalingConfigurations.DataDisks]?
 
+        public var dedicatedHostClusterId: String?
+
         public var dedicatedHostId: String?
 
         public var deletionProtection: Bool?
@@ -17792,6 +17891,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                     tmp.append(k.toMap())
                 }
                 map["DataDisks"] = tmp
+            }
+            if self.dedicatedHostClusterId != nil {
+                map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
             }
             if self.dedicatedHostId != nil {
                 map["DedicatedHostId"] = self.dedicatedHostId!
@@ -18029,6 +18131,9 @@ public class DescribeScalingConfigurationsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.dataDisks = tmp
+            }
+            if dict.keys.contains("DedicatedHostClusterId") && dict["DedicatedHostClusterId"] != nil {
+                self.dedicatedHostClusterId = dict["DedicatedHostClusterId"] as! String
             }
             if dict.keys.contains("DedicatedHostId") && dict["DedicatedHostId"] != nil {
                 self.dedicatedHostId = dict["DedicatedHostId"] as! String
@@ -19629,6 +19734,51 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public class DBInstances : Tea.TeaModel {
+            public var DBInstanceId: String?
+
+            public var securityGroupIds: [String]?
+
+            public var type: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.DBInstanceId != nil {
+                    map["DBInstanceId"] = self.DBInstanceId!
+                }
+                if self.securityGroupIds != nil {
+                    map["SecurityGroupIds"] = self.securityGroupIds!
+                }
+                if self.type != nil {
+                    map["Type"] = self.type!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DBInstanceId") && dict["DBInstanceId"] != nil {
+                    self.DBInstanceId = dict["DBInstanceId"] as! String
+                }
+                if dict.keys.contains("SecurityGroupIds") && dict["SecurityGroupIds"] != nil {
+                    self.securityGroupIds = dict["SecurityGroupIds"] as! [String]
+                }
+                if dict.keys.contains("Type") && dict["Type"] != nil {
+                    self.type = dict["Type"] as! String
+                }
+            }
+        }
         public class LaunchTemplateOverrides : Tea.TeaModel {
             public var instanceType: String?
 
@@ -19923,6 +20073,8 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
 
         public var DBInstanceIds: [String]?
 
+        public var DBInstances: [DescribeScalingGroupsResponseBody.ScalingGroups.DBInstances]?
+
         public var defaultCooldown: Int32?
 
         public var desiredCapacity: Int32?
@@ -20068,6 +20220,13 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if self.DBInstanceIds != nil {
                 map["DBInstanceIds"] = self.DBInstanceIds!
+            }
+            if self.DBInstances != nil {
+                var tmp : [Any] = []
+                for k in self.DBInstances! {
+                    tmp.append(k.toMap())
+                }
+                map["DBInstances"] = tmp
             }
             if self.defaultCooldown != nil {
                 map["DefaultCooldown"] = self.defaultCooldown!
@@ -20277,6 +20436,17 @@ public class DescribeScalingGroupsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DBInstanceIds") && dict["DBInstanceIds"] != nil {
                 self.DBInstanceIds = dict["DBInstanceIds"] as! [String]
+            }
+            if dict.keys.contains("DBInstances") && dict["DBInstances"] != nil {
+                var tmp : [DescribeScalingGroupsResponseBody.ScalingGroups.DBInstances] = []
+                for v in dict["DBInstances"] as! [Any] {
+                    var model = DescribeScalingGroupsResponseBody.ScalingGroups.DBInstances()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.DBInstances = tmp
             }
             if dict.keys.contains("DefaultCooldown") && dict["DefaultCooldown"] != nil {
                 self.defaultCooldown = dict["DefaultCooldown"] as! Int32
@@ -22364,6 +22534,8 @@ public class DetachDBInstancesRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var removeSecurityGroup: Bool?
+
     public var resourceOwnerAccount: String?
 
     public var scalingGroupId: String?
@@ -22397,6 +22569,9 @@ public class DetachDBInstancesRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.removeSecurityGroup != nil {
+            map["RemoveSecurityGroup"] = self.removeSecurityGroup!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -22421,6 +22596,9 @@ public class DetachDBInstancesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RemoveSecurityGroup") && dict["RemoveSecurityGroup"] != nil {
+            self.removeSecurityGroup = dict["RemoveSecurityGroup"] as! Bool
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
@@ -29219,6 +29397,8 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
 
     public var dataDisks: [ModifyScalingConfigurationRequest.DataDisks]?
 
+    public var dedicatedHostClusterId: String?
+
     public var dedicatedHostId: String?
 
     public var deletionProtection: Bool?
@@ -29355,6 +29535,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisks"] = tmp
+        }
+        if self.dedicatedHostClusterId != nil {
+            map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
         }
         if self.dedicatedHostId != nil {
             map["DedicatedHostId"] = self.dedicatedHostId!
@@ -29553,6 +29736,9 @@ public class ModifyScalingConfigurationRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.dataDisks = tmp
+        }
+        if dict.keys.contains("DedicatedHostClusterId") && dict["DedicatedHostClusterId"] != nil {
+            self.dedicatedHostClusterId = dict["DedicatedHostClusterId"] as! String
         }
         if dict.keys.contains("DedicatedHostId") && dict["DedicatedHostId"] != nil {
             self.dedicatedHostId = dict["DedicatedHostId"] as! String
@@ -30287,6 +30473,8 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
 
     public var dataDisks: [ModifyScalingConfigurationShrinkRequest.DataDisks]?
 
+    public var dedicatedHostClusterId: String?
+
     public var dedicatedHostId: String?
 
     public var deletionProtection: Bool?
@@ -30423,6 +30611,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["DataDisks"] = tmp
+        }
+        if self.dedicatedHostClusterId != nil {
+            map["DedicatedHostClusterId"] = self.dedicatedHostClusterId!
         }
         if self.dedicatedHostId != nil {
             map["DedicatedHostId"] = self.dedicatedHostId!
@@ -30621,6 +30812,9 @@ public class ModifyScalingConfigurationShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.dataDisks = tmp
+        }
+        if dict.keys.contains("DedicatedHostClusterId") && dict["DedicatedHostClusterId"] != nil {
+            self.dedicatedHostClusterId = dict["DedicatedHostClusterId"] as! String
         }
         if dict.keys.contains("DedicatedHostId") && dict["DedicatedHostId"] != nil {
             self.dedicatedHostId = dict["DedicatedHostId"] as! String
