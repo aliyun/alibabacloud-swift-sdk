@@ -180,6 +180,61 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createArtifactLifecycleRuleWithOptions(_ request: CreateArtifactLifecycleRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateArtifactLifecycleRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auto)) {
+            query["Auto"] = request.auto!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableDeleteTag)) {
+            query["EnableDeleteTag"] = request.enableDeleteTag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceName)) {
+            query["NamespaceName"] = request.namespaceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoName)) {
+            query["RepoName"] = request.repoName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retentionTagCount)) {
+            query["RetentionTagCount"] = request.retentionTagCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleTime)) {
+            query["ScheduleTime"] = request.scheduleTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scope)) {
+            query["Scope"] = request.scope ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagRegexp)) {
+            query["TagRegexp"] = request.tagRegexp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateArtifactLifecycleRule",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateArtifactLifecycleRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createArtifactLifecycleRule(_ request: CreateArtifactLifecycleRuleRequest) async throws -> CreateArtifactLifecycleRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createArtifactLifecycleRuleWithOptions(request as! CreateArtifactLifecycleRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createBuildRecordByRecordWithOptions(_ request: CreateBuildRecordByRecordRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateBuildRecordByRecordResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -962,6 +1017,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteArtifactLifecycleRuleWithOptions(_ request: DeleteArtifactLifecycleRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteArtifactLifecycleRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteArtifactLifecycleRule",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteArtifactLifecycleRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteArtifactLifecycleRule(_ request: DeleteArtifactLifecycleRuleRequest) async throws -> DeleteArtifactLifecycleRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteArtifactLifecycleRuleWithOptions(request as! DeleteArtifactLifecycleRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteChainWithOptions(_ request: DeleteChainRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteChainResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1496,6 +1585,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getArtifactBuildTask(_ request: GetArtifactBuildTaskRequest) async throws -> GetArtifactBuildTaskResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getArtifactBuildTaskWithOptions(request as! GetArtifactBuildTaskRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getArtifactLifecycleRuleWithOptions(_ request: GetArtifactLifecycleRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetArtifactLifecycleRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetArtifactLifecycleRule",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetArtifactLifecycleRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getArtifactLifecycleRule(_ request: GetArtifactLifecycleRuleRequest) async throws -> GetArtifactLifecycleRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getArtifactLifecycleRuleWithOptions(request as! GetArtifactLifecycleRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2227,6 +2344,34 @@ open class Client : AlibabacloudOpenApi.Client {
     public func listArtifactBuildTaskLog(_ request: ListArtifactBuildTaskLogRequest) async throws -> ListArtifactBuildTaskLogResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await listArtifactBuildTaskLogWithOptions(request as! ListArtifactBuildTaskLogRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listArtifactLifecycleRuleWithOptions(_ request: ListArtifactLifecycleRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ListArtifactLifecycleRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: String] = AlibabaCloudOpenApiUtil.Client.query(TeaUtils.Client.toMap(request))
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ListArtifactLifecycleRule",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "GET",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ListArtifactLifecycleRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func listArtifactLifecycleRule(_ request: ListArtifactLifecycleRuleRequest) async throws -> ListArtifactLifecycleRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await listArtifactLifecycleRuleWithOptions(request as! ListArtifactLifecycleRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -3273,6 +3418,64 @@ open class Client : AlibabacloudOpenApi.Client {
     public func untagResources(_ request: UntagResourcesRequest) async throws -> UntagResourcesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await untagResourcesWithOptions(request as! UntagResourcesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateArtifactLifecycleRuleWithOptions(_ request: UpdateArtifactLifecycleRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateArtifactLifecycleRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.auto)) {
+            query["Auto"] = request.auto!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableDeleteTag)) {
+            query["EnableDeleteTag"] = request.enableDeleteTag!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.namespaceName)) {
+            query["NamespaceName"] = request.namespaceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repoName)) {
+            query["RepoName"] = request.repoName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.retentionTagCount)) {
+            query["RetentionTagCount"] = request.retentionTagCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleId)) {
+            query["RuleId"] = request.ruleId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleTime)) {
+            query["ScheduleTime"] = request.scheduleTime ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scope)) {
+            query["Scope"] = request.scope ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.tagRegexp)) {
+            query["TagRegexp"] = request.tagRegexp ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateArtifactLifecycleRule",
+            "version": "2018-12-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateArtifactLifecycleRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateArtifactLifecycleRule(_ request: UpdateArtifactLifecycleRuleRequest) async throws -> UpdateArtifactLifecycleRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateArtifactLifecycleRuleWithOptions(request as! UpdateArtifactLifecycleRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

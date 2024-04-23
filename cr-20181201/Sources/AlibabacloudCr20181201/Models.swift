@@ -631,6 +631,203 @@ public class CreateArtifactBuildRuleResponse : Tea.TeaModel {
     }
 }
 
+public class CreateArtifactLifecycleRuleRequest : Tea.TeaModel {
+    public var auto: Bool?
+
+    public var enableDeleteTag: Bool?
+
+    public var instanceId: String?
+
+    public var namespaceName: String?
+
+    public var repoName: String?
+
+    public var retentionTagCount: Int64?
+
+    public var scheduleTime: String?
+
+    public var scope: String?
+
+    public var tagRegexp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.auto != nil {
+            map["Auto"] = self.auto!
+        }
+        if self.enableDeleteTag != nil {
+            map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.namespaceName != nil {
+            map["NamespaceName"] = self.namespaceName!
+        }
+        if self.repoName != nil {
+            map["RepoName"] = self.repoName!
+        }
+        if self.retentionTagCount != nil {
+            map["RetentionTagCount"] = self.retentionTagCount!
+        }
+        if self.scheduleTime != nil {
+            map["ScheduleTime"] = self.scheduleTime!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.tagRegexp != nil {
+            map["TagRegexp"] = self.tagRegexp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Auto") && dict["Auto"] != nil {
+            self.auto = dict["Auto"] as! Bool
+        }
+        if dict.keys.contains("EnableDeleteTag") && dict["EnableDeleteTag"] != nil {
+            self.enableDeleteTag = dict["EnableDeleteTag"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NamespaceName") && dict["NamespaceName"] != nil {
+            self.namespaceName = dict["NamespaceName"] as! String
+        }
+        if dict.keys.contains("RepoName") && dict["RepoName"] != nil {
+            self.repoName = dict["RepoName"] as! String
+        }
+        if dict.keys.contains("RetentionTagCount") && dict["RetentionTagCount"] != nil {
+            self.retentionTagCount = dict["RetentionTagCount"] as! Int64
+        }
+        if dict.keys.contains("ScheduleTime") && dict["ScheduleTime"] != nil {
+            self.scheduleTime = dict["ScheduleTime"] as! String
+        }
+        if dict.keys.contains("Scope") && dict["Scope"] != nil {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("TagRegexp") && dict["TagRegexp"] != nil {
+            self.tagRegexp = dict["TagRegexp"] as! String
+        }
+    }
+}
+
+public class CreateArtifactLifecycleRuleResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var isSuccess: Bool?
+
+    public var requestId: String?
+
+    public var ruleId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! String
+        }
+    }
+}
+
+public class CreateArtifactLifecycleRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateArtifactLifecycleRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateArtifactLifecycleRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateBuildRecordByRecordRequest : Tea.TeaModel {
     public var buildRecordId: String?
 
@@ -3516,6 +3713,139 @@ public class CreateRepositoryResponse : Tea.TeaModel {
     }
 }
 
+public class DeleteArtifactLifecycleRuleRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var ruleId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! String
+        }
+    }
+}
+
+public class DeleteArtifactLifecycleRuleResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var isSuccess: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DeleteArtifactLifecycleRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteArtifactLifecycleRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteArtifactLifecycleRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DeleteChainRequest : Tea.TeaModel {
     public var chainId: String?
 
@@ -5857,6 +6187,243 @@ public class GetArtifactBuildTaskResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetArtifactBuildTaskResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetArtifactLifecycleRuleRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var ruleId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! String
+        }
+    }
+}
+
+public class GetArtifactLifecycleRuleResponseBody : Tea.TeaModel {
+    public var auto: Bool?
+
+    public var code: String?
+
+    public var createTime: Int64?
+
+    public var enableDeleteTag: Bool?
+
+    public var instanceId: String?
+
+    public var isSuccess: Bool?
+
+    public var modifiedTime: Int64?
+
+    public var namespaceName: String?
+
+    public var nextTime: Int64?
+
+    public var repoName: String?
+
+    public var requestId: String?
+
+    public var retentionTagCount: Int64?
+
+    public var ruleId: String?
+
+    public var scheduleTime: String?
+
+    public var scope: String?
+
+    public var tagRegexp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.auto != nil {
+            map["Auto"] = self.auto!
+        }
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.createTime != nil {
+            map["CreateTime"] = self.createTime!
+        }
+        if self.enableDeleteTag != nil {
+            map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.modifiedTime != nil {
+            map["ModifiedTime"] = self.modifiedTime!
+        }
+        if self.namespaceName != nil {
+            map["NamespaceName"] = self.namespaceName!
+        }
+        if self.nextTime != nil {
+            map["NextTime"] = self.nextTime!
+        }
+        if self.repoName != nil {
+            map["RepoName"] = self.repoName!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.retentionTagCount != nil {
+            map["RetentionTagCount"] = self.retentionTagCount!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        if self.scheduleTime != nil {
+            map["ScheduleTime"] = self.scheduleTime!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.tagRegexp != nil {
+            map["TagRegexp"] = self.tagRegexp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Auto") && dict["Auto"] != nil {
+            self.auto = dict["Auto"] as! Bool
+        }
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+            self.createTime = dict["CreateTime"] as! Int64
+        }
+        if dict.keys.contains("EnableDeleteTag") && dict["EnableDeleteTag"] != nil {
+            self.enableDeleteTag = dict["EnableDeleteTag"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("ModifiedTime") && dict["ModifiedTime"] != nil {
+            self.modifiedTime = dict["ModifiedTime"] as! Int64
+        }
+        if dict.keys.contains("NamespaceName") && dict["NamespaceName"] != nil {
+            self.namespaceName = dict["NamespaceName"] as! String
+        }
+        if dict.keys.contains("NextTime") && dict["NextTime"] != nil {
+            self.nextTime = dict["NextTime"] as! Int64
+        }
+        if dict.keys.contains("RepoName") && dict["RepoName"] != nil {
+            self.repoName = dict["RepoName"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RetentionTagCount") && dict["RetentionTagCount"] != nil {
+            self.retentionTagCount = dict["RetentionTagCount"] as! Int64
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! String
+        }
+        if dict.keys.contains("ScheduleTime") && dict["ScheduleTime"] != nil {
+            self.scheduleTime = dict["ScheduleTime"] as! String
+        }
+        if dict.keys.contains("Scope") && dict["Scope"] != nil {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("TagRegexp") && dict["TagRegexp"] != nil {
+            self.tagRegexp = dict["TagRegexp"] as! String
+        }
+    }
+}
+
+public class GetArtifactLifecycleRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetArtifactLifecycleRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetArtifactLifecycleRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -11025,6 +11592,324 @@ public class ListArtifactBuildTaskLogResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ListArtifactBuildTaskLogResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ListArtifactLifecycleRuleRequest : Tea.TeaModel {
+    public var enableDeleteTag: Bool?
+
+    public var instanceId: String?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableDeleteTag != nil {
+            map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableDeleteTag") && dict["EnableDeleteTag"] != nil {
+            self.enableDeleteTag = dict["EnableDeleteTag"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+    }
+}
+
+public class ListArtifactLifecycleRuleResponseBody : Tea.TeaModel {
+    public class Rules : Tea.TeaModel {
+        public var auto: Bool?
+
+        public var createTime: Int64?
+
+        public var enableDeleteTag: Bool?
+
+        public var instanceId: String?
+
+        public var modifiedTime: Int64?
+
+        public var namespaceName: String?
+
+        public var nextTime: Int64?
+
+        public var repoName: String?
+
+        public var retentionTagCount: Int64?
+
+        public var ruleId: String?
+
+        public var scheduleTime: String?
+
+        public var scope: String?
+
+        public var tagRegexp: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.auto != nil {
+                map["Auto"] = self.auto!
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
+            }
+            if self.enableDeleteTag != nil {
+                map["EnableDeleteTag"] = self.enableDeleteTag!
+            }
+            if self.instanceId != nil {
+                map["InstanceId"] = self.instanceId!
+            }
+            if self.modifiedTime != nil {
+                map["ModifiedTime"] = self.modifiedTime!
+            }
+            if self.namespaceName != nil {
+                map["NamespaceName"] = self.namespaceName!
+            }
+            if self.nextTime != nil {
+                map["NextTime"] = self.nextTime!
+            }
+            if self.repoName != nil {
+                map["RepoName"] = self.repoName!
+            }
+            if self.retentionTagCount != nil {
+                map["RetentionTagCount"] = self.retentionTagCount!
+            }
+            if self.ruleId != nil {
+                map["RuleId"] = self.ruleId!
+            }
+            if self.scheduleTime != nil {
+                map["ScheduleTime"] = self.scheduleTime!
+            }
+            if self.scope != nil {
+                map["Scope"] = self.scope!
+            }
+            if self.tagRegexp != nil {
+                map["TagRegexp"] = self.tagRegexp!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Auto") && dict["Auto"] != nil {
+                self.auto = dict["Auto"] as! Bool
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! Int64
+            }
+            if dict.keys.contains("EnableDeleteTag") && dict["EnableDeleteTag"] != nil {
+                self.enableDeleteTag = dict["EnableDeleteTag"] as! Bool
+            }
+            if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+                self.instanceId = dict["InstanceId"] as! String
+            }
+            if dict.keys.contains("ModifiedTime") && dict["ModifiedTime"] != nil {
+                self.modifiedTime = dict["ModifiedTime"] as! Int64
+            }
+            if dict.keys.contains("NamespaceName") && dict["NamespaceName"] != nil {
+                self.namespaceName = dict["NamespaceName"] as! String
+            }
+            if dict.keys.contains("NextTime") && dict["NextTime"] != nil {
+                self.nextTime = dict["NextTime"] as! Int64
+            }
+            if dict.keys.contains("RepoName") && dict["RepoName"] != nil {
+                self.repoName = dict["RepoName"] as! String
+            }
+            if dict.keys.contains("RetentionTagCount") && dict["RetentionTagCount"] != nil {
+                self.retentionTagCount = dict["RetentionTagCount"] as! Int64
+            }
+            if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+                self.ruleId = dict["RuleId"] as! String
+            }
+            if dict.keys.contains("ScheduleTime") && dict["ScheduleTime"] != nil {
+                self.scheduleTime = dict["ScheduleTime"] as! String
+            }
+            if dict.keys.contains("Scope") && dict["Scope"] != nil {
+                self.scope = dict["Scope"] as! String
+            }
+            if dict.keys.contains("TagRegexp") && dict["TagRegexp"] != nil {
+                self.tagRegexp = dict["TagRegexp"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var isSuccess: Bool?
+
+    public var pageNo: Int32?
+
+    public var pageSize: Int32?
+
+    public var requestId: String?
+
+    public var rules: [ListArtifactLifecycleRuleResponseBody.Rules]?
+
+    public var totalCount: Int32?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.pageNo != nil {
+            map["PageNo"] = self.pageNo!
+        }
+        if self.pageSize != nil {
+            map["PageSize"] = self.pageSize!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.rules != nil {
+            var tmp : [Any] = []
+            for k in self.rules! {
+                tmp.append(k.toMap())
+            }
+            map["Rules"] = tmp
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("PageNo") && dict["PageNo"] != nil {
+            self.pageNo = dict["PageNo"] as! Int32
+        }
+        if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
+            self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Rules") && dict["Rules"] != nil {
+            var tmp : [ListArtifactLifecycleRuleResponseBody.Rules] = []
+            for v in dict["Rules"] as! [Any] {
+                var model = ListArtifactLifecycleRuleResponseBody.Rules()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.rules = tmp
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int32
+        }
+    }
+}
+
+public class ListArtifactLifecycleRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ListArtifactLifecycleRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ListArtifactLifecycleRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -18528,6 +19413,203 @@ public class UntagResourcesResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = UntagResourcesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class UpdateArtifactLifecycleRuleRequest : Tea.TeaModel {
+    public var auto: Bool?
+
+    public var enableDeleteTag: Bool?
+
+    public var instanceId: String?
+
+    public var namespaceName: String?
+
+    public var repoName: String?
+
+    public var retentionTagCount: Int64?
+
+    public var ruleId: String?
+
+    public var scheduleTime: String?
+
+    public var scope: String?
+
+    public var tagRegexp: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.auto != nil {
+            map["Auto"] = self.auto!
+        }
+        if self.enableDeleteTag != nil {
+            map["EnableDeleteTag"] = self.enableDeleteTag!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.namespaceName != nil {
+            map["NamespaceName"] = self.namespaceName!
+        }
+        if self.repoName != nil {
+            map["RepoName"] = self.repoName!
+        }
+        if self.retentionTagCount != nil {
+            map["RetentionTagCount"] = self.retentionTagCount!
+        }
+        if self.ruleId != nil {
+            map["RuleId"] = self.ruleId!
+        }
+        if self.scheduleTime != nil {
+            map["ScheduleTime"] = self.scheduleTime!
+        }
+        if self.scope != nil {
+            map["Scope"] = self.scope!
+        }
+        if self.tagRegexp != nil {
+            map["TagRegexp"] = self.tagRegexp!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Auto") && dict["Auto"] != nil {
+            self.auto = dict["Auto"] as! Bool
+        }
+        if dict.keys.contains("EnableDeleteTag") && dict["EnableDeleteTag"] != nil {
+            self.enableDeleteTag = dict["EnableDeleteTag"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("NamespaceName") && dict["NamespaceName"] != nil {
+            self.namespaceName = dict["NamespaceName"] as! String
+        }
+        if dict.keys.contains("RepoName") && dict["RepoName"] != nil {
+            self.repoName = dict["RepoName"] as! String
+        }
+        if dict.keys.contains("RetentionTagCount") && dict["RetentionTagCount"] != nil {
+            self.retentionTagCount = dict["RetentionTagCount"] as! Int64
+        }
+        if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+            self.ruleId = dict["RuleId"] as! String
+        }
+        if dict.keys.contains("ScheduleTime") && dict["ScheduleTime"] != nil {
+            self.scheduleTime = dict["ScheduleTime"] as! String
+        }
+        if dict.keys.contains("Scope") && dict["Scope"] != nil {
+            self.scope = dict["Scope"] as! String
+        }
+        if dict.keys.contains("TagRegexp") && dict["TagRegexp"] != nil {
+            self.tagRegexp = dict["TagRegexp"] as! String
+        }
+    }
+}
+
+public class UpdateArtifactLifecycleRuleResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var isSuccess: Bool?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.isSuccess != nil {
+            map["IsSuccess"] = self.isSuccess!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("IsSuccess") && dict["IsSuccess"] != nil {
+            self.isSuccess = dict["IsSuccess"] as! Bool
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateArtifactLifecycleRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateArtifactLifecycleRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateArtifactLifecycleRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
