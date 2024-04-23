@@ -1470,9 +1470,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeClusterAddonMetadataWithOptions(_ clusterId: String, _ componentId: String, _ version: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterAddonMetadataResponse {
+    public func describeClusterAddonMetadataWithOptions(_ clusterId: String, _ componentId: String, _ request: DescribeClusterAddonMetadataRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterAddonMetadataResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.version)) {
+            query["version"] = request.version ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DescribeClusterAddonMetadata",
@@ -1490,10 +1496,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeClusterAddonMetadata(_ clusterId: String, _ componentId: String, _ version: String) async throws -> DescribeClusterAddonMetadataResponse {
+    public func describeClusterAddonMetadata(_ clusterId: String, _ componentId: String, _ request: DescribeClusterAddonMetadataRequest) async throws -> DescribeClusterAddonMetadataResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeClusterAddonMetadataWithOptions(clusterId as! String, componentId as! String, version as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeClusterAddonMetadataWithOptions(clusterId as! String, componentId as! String, request as! DescribeClusterAddonMetadataRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

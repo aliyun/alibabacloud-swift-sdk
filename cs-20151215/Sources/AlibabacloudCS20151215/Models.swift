@@ -7801,6 +7801,36 @@ public class DescribeClusterAddonInstanceResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeClusterAddonMetadataRequest : Tea.TeaModel {
+    public var version: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.version != nil {
+            map["version"] = self.version!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("version") && dict["version"] != nil {
+            self.version = dict["version"] as! String
+        }
+    }
+}
+
 public class DescribeClusterAddonMetadataResponseBody : Tea.TeaModel {
     public var configSchema: String?
 
