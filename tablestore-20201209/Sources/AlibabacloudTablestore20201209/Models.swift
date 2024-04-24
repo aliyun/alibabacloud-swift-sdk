@@ -90,9 +90,6 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -165,6 +162,8 @@ public class CreateInstanceRequest : Tea.TeaModel {
     }
     public var clusterType: String?
 
+    public var disableReplication: Bool?
+
     public var instanceDescription: String?
 
     public var instanceName: String?
@@ -197,6 +196,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.clusterType != nil {
             map["ClusterType"] = self.clusterType!
+        }
+        if self.disableReplication != nil {
+            map["DisableReplication"] = self.disableReplication!
         }
         if self.instanceDescription != nil {
             map["InstanceDescription"] = self.instanceDescription!
@@ -232,6 +234,9 @@ public class CreateInstanceRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClusterType") && dict["ClusterType"] != nil {
             self.clusterType = dict["ClusterType"] as! String
+        }
+        if dict.keys.contains("DisableReplication") && dict["DisableReplication"] != nil {
+            self.disableReplication = dict["DisableReplication"] as! Bool
         }
         if dict.keys.contains("InstanceDescription") && dict["InstanceDescription"] != nil {
             self.instanceDescription = dict["InstanceDescription"] as! String
@@ -331,9 +336,6 @@ public class CreateInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -443,9 +445,6 @@ public class DeleteInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -612,9 +611,6 @@ public class DescribeRegionsResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -679,9 +675,13 @@ public class GetInstanceRequest : Tea.TeaModel {
 
 public class GetInstanceResponseBody : Tea.TeaModel {
     public class Tags : Tea.TeaModel {
+        public var key: String?
+
         public var tagKey: String?
 
         public var tagValue: String?
+
+        public var value: String?
 
         public override init() {
             super.init()
@@ -697,21 +697,33 @@ public class GetInstanceResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.key != nil {
+                map["Key"] = self.key!
+            }
             if self.tagKey != nil {
                 map["TagKey"] = self.tagKey!
             }
             if self.tagValue != nil {
                 map["TagValue"] = self.tagValue!
             }
+            if self.value != nil {
+                map["Value"] = self.value!
+            }
             return map
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Key") && dict["Key"] != nil {
+                self.key = dict["Key"] as! String
+            }
             if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
                 self.tagKey = dict["TagKey"] as! String
             }
             if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
                 self.tagValue = dict["TagValue"] as! String
+            }
+            if dict.keys.contains("Value") && dict["Value"] != nil {
+                self.value = dict["Value"] as! String
             }
         }
     }
@@ -933,9 +945,6 @@ public class GetInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1238,9 +1247,6 @@ public class ListInstancesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1582,9 +1588,6 @@ public class ListTagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1759,9 +1762,6 @@ public class TagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -1895,9 +1895,6 @@ public class UntagResourcesResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 
@@ -2047,9 +2044,6 @@ public class UpdateInstanceResponse : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
-        try self.validateRequired(self.headers, "headers")
-        try self.validateRequired(self.statusCode, "statusCode")
-        try self.validateRequired(self.body, "body")
         try self.body?.validate()
     }
 

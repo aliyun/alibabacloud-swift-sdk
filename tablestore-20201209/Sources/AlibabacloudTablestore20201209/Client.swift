@@ -66,6 +66,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clusterType)) {
             body["ClusterType"] = request.clusterType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.disableReplication)) {
+            body["DisableReplication"] = request.disableReplication!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceDescription)) {
             body["InstanceDescription"] = request.instanceDescription ?? "";
         }
