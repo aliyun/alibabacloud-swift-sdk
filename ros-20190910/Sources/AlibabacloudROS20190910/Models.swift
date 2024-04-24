@@ -2912,6 +2912,8 @@ public class CreateTemplateScratchRequest : Tea.TeaModel {
     public class SourceResources : Tea.TeaModel {
         public var regionId: String?
 
+        public var relatedResourceTypeFilter: [String]?
+
         public var resourceId: String?
 
         public var resourceType: String?
@@ -2933,6 +2935,9 @@ public class CreateTemplateScratchRequest : Tea.TeaModel {
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
             }
+            if self.relatedResourceTypeFilter != nil {
+                map["RelatedResourceTypeFilter"] = self.relatedResourceTypeFilter!
+            }
             if self.resourceId != nil {
                 map["ResourceId"] = self.resourceId!
             }
@@ -2945,6 +2950,9 @@ public class CreateTemplateScratchRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("RelatedResourceTypeFilter") && dict["RelatedResourceTypeFilter"] != nil {
+                self.relatedResourceTypeFilter = dict["RelatedResourceTypeFilter"] as! [String]
             }
             if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
                 self.resourceId = dict["ResourceId"] as! String
@@ -12889,6 +12897,8 @@ public class GetTemplateScratchResponseBody : Tea.TeaModel {
             }
         }
         public class SourceResources : Tea.TeaModel {
+            public var relatedResourceTypeFilter: [String]?
+
             public var resourceId: String?
 
             public var resourceType: String?
@@ -12907,6 +12917,9 @@ public class GetTemplateScratchResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.relatedResourceTypeFilter != nil {
+                    map["RelatedResourceTypeFilter"] = self.relatedResourceTypeFilter!
+                }
                 if self.resourceId != nil {
                     map["ResourceId"] = self.resourceId!
                 }
@@ -12917,6 +12930,9 @@ public class GetTemplateScratchResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("RelatedResourceTypeFilter") && dict["RelatedResourceTypeFilter"] != nil {
+                    self.relatedResourceTypeFilter = dict["RelatedResourceTypeFilter"] as! [String]
+                }
                 if dict.keys.contains("ResourceId") && dict["ResourceId"] != nil {
                     self.resourceId = dict["ResourceId"] as! String
                 }
