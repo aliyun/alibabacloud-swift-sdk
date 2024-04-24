@@ -3311,6 +3311,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.accessControlList)) {
             body["access_control_list"] = request.accessControlList ?? [];
         }
+        if (!TeaUtils.Client.isUnset(request.apiServerCustomCertSans)) {
+            body["api_server_custom_cert_sans"] = request.apiServerCustomCertSans!;
+        }
         if (!TeaUtils.Client.isUnset(request.apiServerEip)) {
             body["api_server_eip"] = request.apiServerEip!;
         }

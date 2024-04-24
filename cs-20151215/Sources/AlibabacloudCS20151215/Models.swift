@@ -21280,6 +21280,43 @@ public class MigrateClusterResponse : Tea.TeaModel {
 }
 
 public class ModifyClusterRequest : Tea.TeaModel {
+    public class ApiServerCustomCertSans : Tea.TeaModel {
+        public var action: String?
+
+        public var subjectAlternativeNames: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.action != nil {
+                map["action"] = self.action!
+            }
+            if self.subjectAlternativeNames != nil {
+                map["subject_alternative_names"] = self.subjectAlternativeNames!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("action") && dict["action"] != nil {
+                self.action = dict["action"] as! String
+            }
+            if dict.keys.contains("subject_alternative_names") && dict["subject_alternative_names"] != nil {
+                self.subjectAlternativeNames = dict["subject_alternative_names"] as! [String]
+            }
+        }
+    }
     public class OperationPolicy : Tea.TeaModel {
         public class ClusterAutoUpgrade : Tea.TeaModel {
             public var channel: String?
@@ -21388,6 +21425,8 @@ public class ModifyClusterRequest : Tea.TeaModel {
     }
     public var accessControlList: [String]?
 
+    public var apiServerCustomCertSans: ModifyClusterRequest.ApiServerCustomCertSans?
+
     public var apiServerEip: Bool?
 
     public var apiServerEipId: String?
@@ -21422,6 +21461,7 @@ public class ModifyClusterRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.apiServerCustomCertSans?.validate()
         try self.maintenanceWindow?.validate()
         try self.operationPolicy?.validate()
         try self.systemEventsLogging?.validate()
@@ -21431,6 +21471,9 @@ public class ModifyClusterRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.accessControlList != nil {
             map["access_control_list"] = self.accessControlList!
+        }
+        if self.apiServerCustomCertSans != nil {
+            map["api_server_custom_cert_sans"] = self.apiServerCustomCertSans?.toMap()
         }
         if self.apiServerEip != nil {
             map["api_server_eip"] = self.apiServerEip!
@@ -21474,6 +21517,11 @@ public class ModifyClusterRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("access_control_list") && dict["access_control_list"] != nil {
             self.accessControlList = dict["access_control_list"] as! [String]
+        }
+        if dict.keys.contains("api_server_custom_cert_sans") && dict["api_server_custom_cert_sans"] != nil {
+            var model = ModifyClusterRequest.ApiServerCustomCertSans()
+            model.fromMap(dict["api_server_custom_cert_sans"] as! [String: Any])
+            self.apiServerCustomCertSans = model
         }
         if dict.keys.contains("api_server_eip") && dict["api_server_eip"] != nil {
             self.apiServerEip = dict["api_server_eip"] as! Bool
