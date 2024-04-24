@@ -8302,6 +8302,155 @@ public class CloneNacosConfigResponse : Tea.TeaModel {
     }
 }
 
+public class CloneSentinelRuleFromAhasRequest : Tea.TeaModel {
+    public var acceptLanguage: String?
+
+    public var ahasNamespace: String?
+
+    public var appName: String?
+
+    public var isAHASPublicRegion: Bool?
+
+    public var namespace: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.acceptLanguage != nil {
+            map["AcceptLanguage"] = self.acceptLanguage!
+        }
+        if self.ahasNamespace != nil {
+            map["AhasNamespace"] = self.ahasNamespace!
+        }
+        if self.appName != nil {
+            map["AppName"] = self.appName!
+        }
+        if self.isAHASPublicRegion != nil {
+            map["IsAHASPublicRegion"] = self.isAHASPublicRegion!
+        }
+        if self.namespace != nil {
+            map["Namespace"] = self.namespace!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AcceptLanguage") && dict["AcceptLanguage"] != nil {
+            self.acceptLanguage = dict["AcceptLanguage"] as! String
+        }
+        if dict.keys.contains("AhasNamespace") && dict["AhasNamespace"] != nil {
+            self.ahasNamespace = dict["AhasNamespace"] as! String
+        }
+        if dict.keys.contains("AppName") && dict["AppName"] != nil {
+            self.appName = dict["AppName"] as! String
+        }
+        if dict.keys.contains("IsAHASPublicRegion") && dict["IsAHASPublicRegion"] != nil {
+            self.isAHASPublicRegion = dict["IsAHASPublicRegion"] as! Bool
+        }
+        if dict.keys.contains("Namespace") && dict["Namespace"] != nil {
+            self.namespace = dict["Namespace"] as! String
+        }
+    }
+}
+
+public class CloneSentinelRuleFromAhasResponseBody : Tea.TeaModel {
+    public var data: [String: [String]]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! [String: [String]]
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class CloneSentinelRuleFromAhasResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CloneSentinelRuleFromAhasResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CloneSentinelRuleFromAhasResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateApplicationRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 

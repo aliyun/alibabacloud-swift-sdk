@@ -1195,6 +1195,49 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cloneSentinelRuleFromAhasWithOptions(_ request: CloneSentinelRuleFromAhasRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CloneSentinelRuleFromAhasResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.acceptLanguage)) {
+            query["AcceptLanguage"] = request.acceptLanguage ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ahasNamespace)) {
+            query["AhasNamespace"] = request.ahasNamespace ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.appName)) {
+            query["AppName"] = request.appName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.isAHASPublicRegion)) {
+            query["IsAHASPublicRegion"] = request.isAHASPublicRegion!;
+        }
+        if (!TeaUtils.Client.isUnset(request.namespace)) {
+            query["Namespace"] = request.namespace ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CloneSentinelRuleFromAhas",
+            "version": "2019-05-31",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CloneSentinelRuleFromAhasResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func cloneSentinelRuleFromAhas(_ request: CloneSentinelRuleFromAhasRequest) async throws -> CloneSentinelRuleFromAhasResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await cloneSentinelRuleFromAhasWithOptions(request as! CloneSentinelRuleFromAhasRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createApplicationWithOptions(_ request: CreateApplicationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateApplicationResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
