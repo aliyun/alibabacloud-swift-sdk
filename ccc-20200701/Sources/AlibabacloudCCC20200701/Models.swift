@@ -46232,11 +46232,31 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
 
                 public var averageWorkTime: Int64?
 
+                public var callsAbandoned: Int64?
+
+                public var callsAgentHandled: Int64?
+
                 public var callsAnswered: Int64?
 
                 public var callsDialed: Int64?
 
+                public var callsOffered: Int64?
+
+                public var callsQueuingCancelled: Int64?
+
+                public var callsQueuingFailed: Int64?
+
+                public var callsQueuingFailure: Int64?
+
+                public var callsQueuingOverflow: Int64?
+
+                public var callsQueuingRerouted: Int64?
+
+                public var callsQueuingTimeout: Int64?
+
                 public var callsServiceLevel30: String?
+
+                public var callsServiceLevel30V2: Int64?
 
                 public var maxDialingTime: Int64?
 
@@ -46253,6 +46273,8 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                 public var totalDialingTime: Int64?
 
                 public var totalTalkTime: Int64?
+
+                public var totalWaitTime: Int64?
 
                 public var totalWorkTime: Int64?
 
@@ -46282,14 +46304,44 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if self.averageWorkTime != nil {
                         map["AverageWorkTime"] = self.averageWorkTime!
                     }
+                    if self.callsAbandoned != nil {
+                        map["CallsAbandoned"] = self.callsAbandoned!
+                    }
+                    if self.callsAgentHandled != nil {
+                        map["CallsAgentHandled"] = self.callsAgentHandled!
+                    }
                     if self.callsAnswered != nil {
                         map["CallsAnswered"] = self.callsAnswered!
                     }
                     if self.callsDialed != nil {
                         map["CallsDialed"] = self.callsDialed!
                     }
+                    if self.callsOffered != nil {
+                        map["CallsOffered"] = self.callsOffered!
+                    }
+                    if self.callsQueuingCancelled != nil {
+                        map["CallsQueuingCancelled"] = self.callsQueuingCancelled!
+                    }
+                    if self.callsQueuingFailed != nil {
+                        map["CallsQueuingFailed"] = self.callsQueuingFailed!
+                    }
+                    if self.callsQueuingFailure != nil {
+                        map["CallsQueuingFailure"] = self.callsQueuingFailure!
+                    }
+                    if self.callsQueuingOverflow != nil {
+                        map["CallsQueuingOverflow"] = self.callsQueuingOverflow!
+                    }
+                    if self.callsQueuingRerouted != nil {
+                        map["CallsQueuingRerouted"] = self.callsQueuingRerouted!
+                    }
+                    if self.callsQueuingTimeout != nil {
+                        map["CallsQueuingTimeout"] = self.callsQueuingTimeout!
+                    }
                     if self.callsServiceLevel30 != nil {
                         map["CallsServiceLevel30"] = self.callsServiceLevel30!
+                    }
+                    if self.callsServiceLevel30V2 != nil {
+                        map["CallsServiceLevel30V2"] = self.callsServiceLevel30V2!
                     }
                     if self.maxDialingTime != nil {
                         map["MaxDialingTime"] = self.maxDialingTime!
@@ -46315,6 +46367,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if self.totalTalkTime != nil {
                         map["TotalTalkTime"] = self.totalTalkTime!
                     }
+                    if self.totalWaitTime != nil {
+                        map["TotalWaitTime"] = self.totalWaitTime!
+                    }
                     if self.totalWorkTime != nil {
                         map["TotalWorkTime"] = self.totalWorkTime!
                     }
@@ -46334,14 +46389,44 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if dict.keys.contains("AverageWorkTime") && dict["AverageWorkTime"] != nil {
                         self.averageWorkTime = dict["AverageWorkTime"] as! Int64
                     }
+                    if dict.keys.contains("CallsAbandoned") && dict["CallsAbandoned"] != nil {
+                        self.callsAbandoned = dict["CallsAbandoned"] as! Int64
+                    }
+                    if dict.keys.contains("CallsAgentHandled") && dict["CallsAgentHandled"] != nil {
+                        self.callsAgentHandled = dict["CallsAgentHandled"] as! Int64
+                    }
                     if dict.keys.contains("CallsAnswered") && dict["CallsAnswered"] != nil {
                         self.callsAnswered = dict["CallsAnswered"] as! Int64
                     }
                     if dict.keys.contains("CallsDialed") && dict["CallsDialed"] != nil {
                         self.callsDialed = dict["CallsDialed"] as! Int64
                     }
+                    if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
+                        self.callsOffered = dict["CallsOffered"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingCancelled") && dict["CallsQueuingCancelled"] != nil {
+                        self.callsQueuingCancelled = dict["CallsQueuingCancelled"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingFailed") && dict["CallsQueuingFailed"] != nil {
+                        self.callsQueuingFailed = dict["CallsQueuingFailed"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingFailure") && dict["CallsQueuingFailure"] != nil {
+                        self.callsQueuingFailure = dict["CallsQueuingFailure"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingOverflow") && dict["CallsQueuingOverflow"] != nil {
+                        self.callsQueuingOverflow = dict["CallsQueuingOverflow"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingRerouted") && dict["CallsQueuingRerouted"] != nil {
+                        self.callsQueuingRerouted = dict["CallsQueuingRerouted"] as! Int64
+                    }
+                    if dict.keys.contains("CallsQueuingTimeout") && dict["CallsQueuingTimeout"] != nil {
+                        self.callsQueuingTimeout = dict["CallsQueuingTimeout"] as! Int64
+                    }
                     if dict.keys.contains("CallsServiceLevel30") && dict["CallsServiceLevel30"] != nil {
                         self.callsServiceLevel30 = dict["CallsServiceLevel30"] as! String
+                    }
+                    if dict.keys.contains("CallsServiceLevel30V2") && dict["CallsServiceLevel30V2"] != nil {
+                        self.callsServiceLevel30V2 = dict["CallsServiceLevel30V2"] as! Int64
                     }
                     if dict.keys.contains("MaxDialingTime") && dict["MaxDialingTime"] != nil {
                         self.maxDialingTime = dict["MaxDialingTime"] as! Int64
@@ -46366,6 +46451,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if dict.keys.contains("TotalTalkTime") && dict["TotalTalkTime"] != nil {
                         self.totalTalkTime = dict["TotalTalkTime"] as! Int64
+                    }
+                    if dict.keys.contains("TotalWaitTime") && dict["TotalWaitTime"] != nil {
+                        self.totalWaitTime = dict["TotalWaitTime"] as! Int64
                     }
                     if dict.keys.contains("TotalWorkTime") && dict["TotalWorkTime"] != nil {
                         self.totalWorkTime = dict["TotalWorkTime"] as! Int64
