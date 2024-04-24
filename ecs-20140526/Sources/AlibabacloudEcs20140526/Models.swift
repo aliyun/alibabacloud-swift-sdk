@@ -54371,6 +54371,35 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class SupportedBootModes : Tea.TeaModel {
+                public var supportedBootMode: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.supportedBootMode != nil {
+                        map["SupportedBootMode"] = self.supportedBootMode!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("SupportedBootMode") && dict["SupportedBootMode"] != nil {
+                        self.supportedBootMode = dict["SupportedBootMode"] as! [String]
+                    }
+                }
+            }
             public var baselineCredit: Int32?
 
             public var cpuArchitecture: String?
@@ -54445,6 +54474,8 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public var secondaryEniQueueNumber: Int32?
 
+            public var supportedBootModes: DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.SupportedBootModes?
+
             public var totalEniQueueQuantity: Int32?
 
             public override init() {
@@ -54458,6 +54489,7 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.networkCards?.validate()
+                try self.supportedBootModes?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -54572,6 +54604,9 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if self.secondaryEniQueueNumber != nil {
                     map["SecondaryEniQueueNumber"] = self.secondaryEniQueueNumber!
+                }
+                if self.supportedBootModes != nil {
+                    map["SupportedBootModes"] = self.supportedBootModes?.toMap()
                 }
                 if self.totalEniQueueQuantity != nil {
                     map["TotalEniQueueQuantity"] = self.totalEniQueueQuantity!
@@ -54692,6 +54727,11 @@ public class DescribeInstanceTypesResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SecondaryEniQueueNumber") && dict["SecondaryEniQueueNumber"] != nil {
                     self.secondaryEniQueueNumber = dict["SecondaryEniQueueNumber"] as! Int32
+                }
+                if dict.keys.contains("SupportedBootModes") && dict["SupportedBootModes"] != nil {
+                    var model = DescribeInstanceTypesResponseBody.InstanceTypes.InstanceType.SupportedBootModes()
+                    model.fromMap(dict["SupportedBootModes"] as! [String: Any])
+                    self.supportedBootModes = model
                 }
                 if dict.keys.contains("TotalEniQueueQuantity") && dict["TotalEniQueueQuantity"] != nil {
                     self.totalEniQueueQuantity = dict["TotalEniQueueQuantity"] as! Int32
