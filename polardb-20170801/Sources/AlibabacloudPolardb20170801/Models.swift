@@ -32608,6 +32608,171 @@ public class ResetGlobalDatabaseNetworkResponse : Tea.TeaModel {
     }
 }
 
+public class RestartDBLinkRequest : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public var securityToken: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.securityToken != nil {
+            map["SecurityToken"] = self.securityToken!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("SecurityToken") && dict["SecurityToken"] != nil {
+            self.securityToken = dict["SecurityToken"] as! String
+        }
+    }
+}
+
+public class RestartDBLinkResponseBody : Tea.TeaModel {
+    public var DBClusterId: String?
+
+    public var requestId: String?
+
+    public var taskId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.DBClusterId != nil {
+            map["DBClusterId"] = self.DBClusterId!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["TaskId"] = self.taskId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DBClusterId") && dict["DBClusterId"] != nil {
+            self.DBClusterId = dict["DBClusterId"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TaskId") && dict["TaskId"] != nil {
+            self.taskId = dict["TaskId"] as! String
+        }
+    }
+}
+
+public class RestartDBLinkResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: RestartDBLinkResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = RestartDBLinkResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class RestartDBNodeRequest : Tea.TeaModel {
     public var DBNodeId: String?
 

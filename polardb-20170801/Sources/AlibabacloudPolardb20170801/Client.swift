@@ -7207,6 +7207,52 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func restartDBLinkWithOptions(_ request: RestartDBLinkRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartDBLinkResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.DBClusterId)) {
+            query["DBClusterId"] = request.DBClusterId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
+            query["OwnerAccount"] = request.ownerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ownerId)) {
+            query["OwnerId"] = request.ownerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
+            query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
+            query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.securityToken)) {
+            query["SecurityToken"] = request.securityToken ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "RestartDBLink",
+            "version": "2017-08-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(RestartDBLinkResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func restartDBLink(_ request: RestartDBLinkRequest) async throws -> RestartDBLinkResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await restartDBLinkWithOptions(request as! RestartDBLinkRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func restartDBNodeWithOptions(_ request: RestartDBNodeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> RestartDBNodeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
