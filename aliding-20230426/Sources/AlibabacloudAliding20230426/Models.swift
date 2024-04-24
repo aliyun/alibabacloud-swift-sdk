@@ -43057,11 +43057,50 @@ public class InviteUsersRequest : Tea.TeaModel {
             }
         }
     }
+    public class PhoneInviteeList : Tea.TeaModel {
+        public var nick: String?
+
+        public var phoneNumber: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.nick != nil {
+                map["Nick"] = self.nick!
+            }
+            if self.phoneNumber != nil {
+                map["PhoneNumber"] = self.phoneNumber!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Nick") && dict["Nick"] != nil {
+                self.nick = dict["Nick"] as! String
+            }
+            if dict.keys.contains("PhoneNumber") && dict["PhoneNumber"] != nil {
+                self.phoneNumber = dict["PhoneNumber"] as! String
+            }
+        }
+    }
     public var inviteeList: [InviteUsersRequest.InviteeList]?
 
     public var tenantContext: InviteUsersRequest.TenantContext?
 
     public var conferenceId: String?
+
+    public var phoneInviteeList: [InviteUsersRequest.PhoneInviteeList]?
 
     public override init() {
         super.init()
@@ -43091,6 +43130,13 @@ public class InviteUsersRequest : Tea.TeaModel {
         if self.conferenceId != nil {
             map["conferenceId"] = self.conferenceId!
         }
+        if self.phoneInviteeList != nil {
+            var tmp : [Any] = []
+            for k in self.phoneInviteeList! {
+                tmp.append(k.toMap())
+            }
+            map["phoneInviteeList"] = tmp
+        }
         return map
     }
 
@@ -43114,6 +43160,17 @@ public class InviteUsersRequest : Tea.TeaModel {
         if dict.keys.contains("conferenceId") && dict["conferenceId"] != nil {
             self.conferenceId = dict["conferenceId"] as! String
         }
+        if dict.keys.contains("phoneInviteeList") && dict["phoneInviteeList"] != nil {
+            var tmp : [InviteUsersRequest.PhoneInviteeList] = []
+            for v in dict["phoneInviteeList"] as! [Any] {
+                var model = InviteUsersRequest.PhoneInviteeList()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.phoneInviteeList = tmp
+        }
     }
 }
 
@@ -43123,6 +43180,8 @@ public class InviteUsersShrinkRequest : Tea.TeaModel {
     public var tenantContextShrink: String?
 
     public var conferenceId: String?
+
+    public var phoneInviteeListShrink: String?
 
     public override init() {
         super.init()
@@ -43147,6 +43206,9 @@ public class InviteUsersShrinkRequest : Tea.TeaModel {
         if self.conferenceId != nil {
             map["conferenceId"] = self.conferenceId!
         }
+        if self.phoneInviteeListShrink != nil {
+            map["phoneInviteeList"] = self.phoneInviteeListShrink!
+        }
         return map
     }
 
@@ -43159,6 +43221,9 @@ public class InviteUsersShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("conferenceId") && dict["conferenceId"] != nil {
             self.conferenceId = dict["conferenceId"] as! String
+        }
+        if dict.keys.contains("phoneInviteeList") && dict["phoneInviteeList"] != nil {
+            self.phoneInviteeListShrink = dict["phoneInviteeList"] as! String
         }
     }
 }
@@ -68792,6 +68857,8 @@ public class StartInstanceRequest : Tea.TeaModel {
 
     public var processCode: String?
 
+    public var processData: String?
+
     public var systemToken: String?
 
     public override init() {
@@ -68826,6 +68893,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         if self.processCode != nil {
             map["ProcessCode"] = self.processCode!
         }
+        if self.processData != nil {
+            map["ProcessData"] = self.processData!
+        }
         if self.systemToken != nil {
             map["SystemToken"] = self.systemToken!
         }
@@ -68850,6 +68920,9 @@ public class StartInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ProcessCode") && dict["ProcessCode"] != nil {
             self.processCode = dict["ProcessCode"] as! String
+        }
+        if dict.keys.contains("ProcessData") && dict["ProcessData"] != nil {
+            self.processData = dict["ProcessData"] as! String
         }
         if dict.keys.contains("SystemToken") && dict["SystemToken"] != nil {
             self.systemToken = dict["SystemToken"] as! String
@@ -73081,6 +73154,8 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
         public class MoziConfVirtualExtraSetting : Tea.TeaModel {
             public var enableChat: Int32?
 
+            public var enableWebAnonymousJoin: Bool?
+
             public var joinBeforeHost: Int32?
 
             public var lockMediaStatusMicMute: Int32?
@@ -73106,6 +73181,9 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
                 if self.enableChat != nil {
                     map["EnableChat"] = self.enableChat!
                 }
+                if self.enableWebAnonymousJoin != nil {
+                    map["EnableWebAnonymousJoin"] = self.enableWebAnonymousJoin!
+                }
                 if self.joinBeforeHost != nil {
                     map["JoinBeforeHost"] = self.joinBeforeHost!
                 }
@@ -73124,6 +73202,9 @@ public class UpdateScheduleConfSettingsRequest : Tea.TeaModel {
             public override func fromMap(_ dict: [String: Any]) -> Void {
                 if dict.keys.contains("EnableChat") && dict["EnableChat"] != nil {
                     self.enableChat = dict["EnableChat"] as! Int32
+                }
+                if dict.keys.contains("EnableWebAnonymousJoin") && dict["EnableWebAnonymousJoin"] != nil {
+                    self.enableWebAnonymousJoin = dict["EnableWebAnonymousJoin"] as! Bool
                 }
                 if dict.keys.contains("JoinBeforeHost") && dict["JoinBeforeHost"] != nil {
                     self.joinBeforeHost = dict["JoinBeforeHost"] as! Int32

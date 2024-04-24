@@ -6110,6 +6110,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(tmpReq.tenantContext)) {
             request.tenantContextShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.tenantContext, "TenantContext", "json")
         }
+        if (!TeaUtils.Client.isUnset(tmpReq.phoneInviteeList)) {
+            request.phoneInviteeListShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.phoneInviteeList, "phoneInviteeList", "json")
+        }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.inviteeListShrink)) {
             body["InviteeList"] = request.inviteeListShrink ?? "";
@@ -6119,6 +6122,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.conferenceId)) {
             body["conferenceId"] = request.conferenceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.phoneInviteeListShrink)) {
+            body["phoneInviteeList"] = request.phoneInviteeListShrink ?? "";
         }
         var realHeaders: [String: String] = [:]
         if (!TeaUtils.Client.isUnset(headers.commonHeaders)) {
@@ -9329,6 +9335,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.processCode)) {
             body["ProcessCode"] = request.processCode ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.processData)) {
+            body["ProcessData"] = request.processData ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.systemToken)) {
             body["SystemToken"] = request.systemToken ?? "";
