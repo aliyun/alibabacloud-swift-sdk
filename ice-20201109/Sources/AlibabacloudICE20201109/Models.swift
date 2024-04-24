@@ -16237,6 +16237,8 @@ public class GetMediaInfoRequest : Tea.TeaModel {
 
     public var outputType: String?
 
+    public var returnDetailedInfo: String?
+
     public override init() {
         super.init()
     }
@@ -16260,6 +16262,9 @@ public class GetMediaInfoRequest : Tea.TeaModel {
         if self.outputType != nil {
             map["OutputType"] = self.outputType!
         }
+        if self.returnDetailedInfo != nil {
+            map["ReturnDetailedInfo"] = self.returnDetailedInfo!
+        }
         return map
     }
 
@@ -16273,12 +16278,117 @@ public class GetMediaInfoRequest : Tea.TeaModel {
         if dict.keys.contains("OutputType") && dict["OutputType"] != nil {
             self.outputType = dict["OutputType"] as! String
         }
+        if dict.keys.contains("ReturnDetailedInfo") && dict["ReturnDetailedInfo"] != nil {
+            self.returnDetailedInfo = dict["ReturnDetailedInfo"] as! String
+        }
     }
 }
 
 public class GetMediaInfoResponseBody : Tea.TeaModel {
     public class MediaInfo : Tea.TeaModel {
         public class AiRoughData : Tea.TeaModel {
+            public class StandardSmartTagJob : Tea.TeaModel {
+                public class Results : Tea.TeaModel {
+                    public var data: String?
+
+                    public var type: String?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.data != nil {
+                            map["Data"] = self.data!
+                        }
+                        if self.type != nil {
+                            map["Type"] = self.type!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("Data") && dict["Data"] != nil {
+                            self.data = dict["Data"] as! String
+                        }
+                        if dict.keys.contains("Type") && dict["Type"] != nil {
+                            self.type = dict["Type"] as! String
+                        }
+                    }
+                }
+                public var aiJobId: String?
+
+                public var resultUrl: String?
+
+                public var results: [GetMediaInfoResponseBody.MediaInfo.AiRoughData.StandardSmartTagJob.Results]?
+
+                public var status: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.aiJobId != nil {
+                        map["AiJobId"] = self.aiJobId!
+                    }
+                    if self.resultUrl != nil {
+                        map["ResultUrl"] = self.resultUrl!
+                    }
+                    if self.results != nil {
+                        var tmp : [Any] = []
+                        for k in self.results! {
+                            tmp.append(k.toMap())
+                        }
+                        map["Results"] = tmp
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("AiJobId") && dict["AiJobId"] != nil {
+                        self.aiJobId = dict["AiJobId"] as! String
+                    }
+                    if dict.keys.contains("ResultUrl") && dict["ResultUrl"] != nil {
+                        self.resultUrl = dict["ResultUrl"] as! String
+                    }
+                    if dict.keys.contains("Results") && dict["Results"] != nil {
+                        var tmp : [GetMediaInfoResponseBody.MediaInfo.AiRoughData.StandardSmartTagJob.Results] = []
+                        for v in dict["Results"] as! [Any] {
+                            var model = GetMediaInfoResponseBody.MediaInfo.AiRoughData.StandardSmartTagJob.Results()
+                            if v != nil {
+                                model.fromMap(v as! [String: Any])
+                            }
+                            tmp.append(model)
+                        }
+                        self.results = tmp
+                    }
+                    if dict.keys.contains("Status") && dict["Status"] != nil {
+                        self.status = dict["Status"] as! String
+                    }
+                }
+            }
             public var aiCategory: String?
 
             public var aiJobId: String?
@@ -16286,6 +16396,8 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
             public var result: String?
 
             public var saveType: String?
+
+            public var standardSmartTagJob: GetMediaInfoResponseBody.MediaInfo.AiRoughData.StandardSmartTagJob?
 
             public var status: String?
 
@@ -16299,6 +16411,7 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.standardSmartTagJob?.validate()
             }
 
             public override func toMap() -> [String : Any] {
@@ -16314,6 +16427,9 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
                 }
                 if self.saveType != nil {
                     map["SaveType"] = self.saveType!
+                }
+                if self.standardSmartTagJob != nil {
+                    map["StandardSmartTagJob"] = self.standardSmartTagJob?.toMap()
                 }
                 if self.status != nil {
                     map["Status"] = self.status!
@@ -16333,6 +16449,11 @@ public class GetMediaInfoResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("SaveType") && dict["SaveType"] != nil {
                     self.saveType = dict["SaveType"] as! String
+                }
+                if dict.keys.contains("StandardSmartTagJob") && dict["StandardSmartTagJob"] != nil {
+                    var model = GetMediaInfoResponseBody.MediaInfo.AiRoughData.StandardSmartTagJob()
+                    model.fromMap(dict["StandardSmartTagJob"] as! [String: Any])
+                    self.standardSmartTagJob = model
                 }
                 if dict.keys.contains("Status") && dict["Status"] != nil {
                     self.status = dict["Status"] as! String
@@ -43285,6 +43406,8 @@ public class RegisterMediaInfoRequest : Tea.TeaModel {
 
     public var registerConfig: String?
 
+    public var smartTagTemplateId: String?
+
     public var title: String?
 
     public var userData: String?
@@ -43338,6 +43461,9 @@ public class RegisterMediaInfoRequest : Tea.TeaModel {
         if self.registerConfig != nil {
             map["RegisterConfig"] = self.registerConfig!
         }
+        if self.smartTagTemplateId != nil {
+            map["SmartTagTemplateId"] = self.smartTagTemplateId!
+        }
         if self.title != nil {
             map["Title"] = self.title!
         }
@@ -43383,6 +43509,9 @@ public class RegisterMediaInfoRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegisterConfig") && dict["RegisterConfig"] != nil {
             self.registerConfig = dict["RegisterConfig"] as! String
+        }
+        if dict.keys.contains("SmartTagTemplateId") && dict["SmartTagTemplateId"] != nil {
+            self.smartTagTemplateId = dict["SmartTagTemplateId"] as! String
         }
         if dict.keys.contains("Title") && dict["Title"] != nil {
             self.title = dict["Title"] as! String
