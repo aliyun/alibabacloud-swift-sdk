@@ -3370,6 +3370,59 @@ public class GetLoginTokenRequest : Tea.TeaModel {
 }
 
 public class GetLoginTokenResponseBody : Tea.TeaModel {
+    public class RiskVerifyInfo : Tea.TeaModel {
+        public var email: String?
+
+        public var lastLockDuration: Int64?
+
+        public var locked: String?
+
+        public var phone: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.email != nil {
+                map["Email"] = self.email!
+            }
+            if self.lastLockDuration != nil {
+                map["LastLockDuration"] = self.lastLockDuration!
+            }
+            if self.locked != nil {
+                map["Locked"] = self.locked!
+            }
+            if self.phone != nil {
+                map["Phone"] = self.phone!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Email") && dict["Email"] != nil {
+                self.email = dict["Email"] as! String
+            }
+            if dict.keys.contains("LastLockDuration") && dict["LastLockDuration"] != nil {
+                self.lastLockDuration = dict["LastLockDuration"] as! Int64
+            }
+            if dict.keys.contains("Locked") && dict["Locked"] != nil {
+                self.locked = dict["Locked"] as! String
+            }
+            if dict.keys.contains("Phone") && dict["Phone"] != nil {
+                self.phone = dict["Phone"] as! String
+            }
+        }
+    }
     public var email: String?
 
     public var endUserId: String?
@@ -3392,6 +3445,8 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var riskVerifyInfo: GetLoginTokenResponseBody.RiskVerifyInfo?
+
     public var secret: String?
 
     public var sessionId: String?
@@ -3410,6 +3465,7 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.riskVerifyInfo?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -3446,6 +3502,9 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
+        }
+        if self.riskVerifyInfo != nil {
+            map["RiskVerifyInfo"] = self.riskVerifyInfo?.toMap()
         }
         if self.secret != nil {
             map["Secret"] = self.secret!
@@ -3495,6 +3554,11 @@ public class GetLoginTokenResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("RiskVerifyInfo") && dict["RiskVerifyInfo"] != nil {
+            var model = GetLoginTokenResponseBody.RiskVerifyInfo()
+            model.fromMap(dict["RiskVerifyInfo"] as! [String: Any])
+            self.riskVerifyInfo = model
         }
         if dict.keys.contains("Secret") && dict["Secret"] != nil {
             self.secret = dict["Secret"] as! String
@@ -3893,6 +3957,8 @@ public class RebootDesktopsRequest : Tea.TeaModel {
 
     public var sessionToken: String?
 
+    public var uuid: String?
+
     public override init() {
         super.init()
     }
@@ -3934,6 +4000,9 @@ public class RebootDesktopsRequest : Tea.TeaModel {
         if self.sessionToken != nil {
             map["SessionToken"] = self.sessionToken!
         }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
         return map
     }
 
@@ -3964,6 +4033,9 @@ public class RebootDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionToken") && dict["SessionToken"] != nil {
             self.sessionToken = dict["SessionToken"] as! String
+        }
+        if dict.keys.contains("Uuid") && dict["Uuid"] != nil {
+            self.uuid = dict["Uuid"] as! String
         }
     }
 }
@@ -5328,6 +5400,8 @@ public class StartDesktopsRequest : Tea.TeaModel {
 
     public var sessionId: String?
 
+    public var uuid: String?
+
     public override init() {
         super.init()
     }
@@ -5366,6 +5440,9 @@ public class StartDesktopsRequest : Tea.TeaModel {
         if self.sessionId != nil {
             map["SessionId"] = self.sessionId!
         }
+        if self.uuid != nil {
+            map["Uuid"] = self.uuid!
+        }
         return map
     }
 
@@ -5393,6 +5470,9 @@ public class StartDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SessionId") && dict["SessionId"] != nil {
             self.sessionId = dict["SessionId"] as! String
+        }
+        if dict.keys.contains("Uuid") && dict["Uuid"] != nil {
+            self.uuid = dict["Uuid"] as! String
         }
     }
 }
