@@ -4821,6 +4821,8 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
 
     public var secondaryCidrBlock: String?
 
+    public var secondaryCidrMask: Int32?
+
     public var vpcId: String?
 
     public override init() {
@@ -4867,6 +4869,9 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
         if self.secondaryCidrBlock != nil {
             map["SecondaryCidrBlock"] = self.secondaryCidrBlock!
         }
+        if self.secondaryCidrMask != nil {
+            map["SecondaryCidrMask"] = self.secondaryCidrMask!
+        }
         if self.vpcId != nil {
             map["VpcId"] = self.vpcId!
         }
@@ -4903,6 +4908,9 @@ public class AssociateVpcCidrBlockRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecondaryCidrBlock") && dict["SecondaryCidrBlock"] != nil {
             self.secondaryCidrBlock = dict["SecondaryCidrBlock"] as! String
+        }
+        if dict.keys.contains("SecondaryCidrMask") && dict["SecondaryCidrMask"] != nil {
+            self.secondaryCidrMask = dict["SecondaryCidrMask"] as! Int32
         }
         if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
             self.vpcId = dict["VpcId"] as! String
@@ -20453,6 +20461,8 @@ public class CreateVpcRequest : Tea.TeaModel {
 
     public var enableIpv6: Bool?
 
+    public var ipv4CidrMask: Int32?
+
     public var ipv4IpamPoolId: String?
 
     public var ipv6CidrBlock: String?
@@ -20505,6 +20515,9 @@ public class CreateVpcRequest : Tea.TeaModel {
         }
         if self.enableIpv6 != nil {
             map["EnableIpv6"] = self.enableIpv6!
+        }
+        if self.ipv4CidrMask != nil {
+            map["Ipv4CidrMask"] = self.ipv4CidrMask!
         }
         if self.ipv4IpamPoolId != nil {
             map["Ipv4IpamPoolId"] = self.ipv4IpamPoolId!
@@ -20564,6 +20577,9 @@ public class CreateVpcRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableIpv6") && dict["EnableIpv6"] != nil {
             self.enableIpv6 = dict["EnableIpv6"] as! Bool
+        }
+        if dict.keys.contains("Ipv4CidrMask") && dict["Ipv4CidrMask"] != nil {
+            self.ipv4CidrMask = dict["Ipv4CidrMask"] as! Int32
         }
         if dict.keys.contains("Ipv4IpamPoolId") && dict["Ipv4IpamPoolId"] != nil {
             self.ipv4IpamPoolId = dict["Ipv4IpamPoolId"] as! String

@@ -1573,6 +1573,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.secondaryCidrBlock)) {
             query["SecondaryCidrBlock"] = request.secondaryCidrBlock ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.secondaryCidrMask)) {
+            query["SecondaryCidrMask"] = request.secondaryCidrMask!;
+        }
         if (!TeaUtils.Client.isUnset(request.vpcId)) {
             query["VpcId"] = request.vpcId ?? "";
         }
@@ -5625,6 +5628,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableIpv6)) {
             query["EnableIpv6"] = request.enableIpv6!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ipv4CidrMask)) {
+            query["Ipv4CidrMask"] = request.ipv4CidrMask!;
         }
         if (!TeaUtils.Client.isUnset(request.ipv4IpamPoolId)) {
             query["Ipv4IpamPoolId"] = request.ipv4IpamPoolId ?? "";
