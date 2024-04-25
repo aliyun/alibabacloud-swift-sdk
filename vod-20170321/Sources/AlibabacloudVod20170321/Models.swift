@@ -10214,6 +10214,187 @@ public class DescribeVodDomainRealTimeByteHitRateDataResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeVodDomainRealTimeDetailDataRequest : Tea.TeaModel {
+    public var domainName: String?
+
+    public var endTime: String?
+
+    public var field: String?
+
+    public var ispNameEn: String?
+
+    public var locationNameEn: String?
+
+    public var merge: String?
+
+    public var mergeLocIsp: String?
+
+    public var ownerId: Int64?
+
+    public var startTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.domainName != nil {
+            map["DomainName"] = self.domainName!
+        }
+        if self.endTime != nil {
+            map["EndTime"] = self.endTime!
+        }
+        if self.field != nil {
+            map["Field"] = self.field!
+        }
+        if self.ispNameEn != nil {
+            map["IspNameEn"] = self.ispNameEn!
+        }
+        if self.locationNameEn != nil {
+            map["LocationNameEn"] = self.locationNameEn!
+        }
+        if self.merge != nil {
+            map["Merge"] = self.merge!
+        }
+        if self.mergeLocIsp != nil {
+            map["MergeLocIsp"] = self.mergeLocIsp!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.startTime != nil {
+            map["StartTime"] = self.startTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DomainName") && dict["DomainName"] != nil {
+            self.domainName = dict["DomainName"] as! String
+        }
+        if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+            self.endTime = dict["EndTime"] as! String
+        }
+        if dict.keys.contains("Field") && dict["Field"] != nil {
+            self.field = dict["Field"] as! String
+        }
+        if dict.keys.contains("IspNameEn") && dict["IspNameEn"] != nil {
+            self.ispNameEn = dict["IspNameEn"] as! String
+        }
+        if dict.keys.contains("LocationNameEn") && dict["LocationNameEn"] != nil {
+            self.locationNameEn = dict["LocationNameEn"] as! String
+        }
+        if dict.keys.contains("Merge") && dict["Merge"] != nil {
+            self.merge = dict["Merge"] as! String
+        }
+        if dict.keys.contains("MergeLocIsp") && dict["MergeLocIsp"] != nil {
+            self.mergeLocIsp = dict["MergeLocIsp"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+            self.startTime = dict["StartTime"] as! String
+        }
+    }
+}
+
+public class DescribeVodDomainRealTimeDetailDataResponseBody : Tea.TeaModel {
+    public var data: String?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribeVodDomainRealTimeDetailDataResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeVodDomainRealTimeDetailDataResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeVodDomainRealTimeDetailDataResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeVodDomainRealTimeHttpCodeDataRequest : Tea.TeaModel {
     public var domainName: String?
 
