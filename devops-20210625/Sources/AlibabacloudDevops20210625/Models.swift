@@ -18407,6 +18407,10 @@ public class GetApplicationRequest : Tea.TeaModel {
 }
 
 public class GetApplicationResponseBody : Tea.TeaModel {
+    public var appTemplateDisplayName: String?
+
+    public var appTemplateName: String?
+
     public var creatorAccountId: String?
 
     public var description_: String?
@@ -18431,6 +18435,12 @@ public class GetApplicationResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.appTemplateDisplayName != nil {
+            map["appTemplateDisplayName"] = self.appTemplateDisplayName!
+        }
+        if self.appTemplateName != nil {
+            map["appTemplateName"] = self.appTemplateName!
+        }
         if self.creatorAccountId != nil {
             map["creatorAccountId"] = self.creatorAccountId!
         }
@@ -18450,6 +18460,12 @@ public class GetApplicationResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("appTemplateDisplayName") && dict["appTemplateDisplayName"] != nil {
+            self.appTemplateDisplayName = dict["appTemplateDisplayName"] as! String
+        }
+        if dict.keys.contains("appTemplateName") && dict["appTemplateName"] != nil {
+            self.appTemplateName = dict["appTemplateName"] as! String
+        }
         if dict.keys.contains("creatorAccountId") && dict["creatorAccountId"] != nil {
             self.creatorAccountId = dict["creatorAccountId"] as! String
         }
