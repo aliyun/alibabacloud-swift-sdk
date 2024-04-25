@@ -511,187 +511,6 @@ public class CheckResultResponse : Tea.TeaModel {
     }
 }
 
-public class DeletePictureRequest : Tea.TeaModel {
-    public var deletePicAfterQuery: String?
-
-    public var transactionId: String?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.deletePicAfterQuery != nil {
-            map["DeletePicAfterQuery"] = self.deletePicAfterQuery!
-        }
-        if self.transactionId != nil {
-            map["TransactionId"] = self.transactionId!
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("DeletePicAfterQuery") && dict["DeletePicAfterQuery"] != nil {
-            self.deletePicAfterQuery = dict["DeletePicAfterQuery"] as! String
-        }
-        if dict.keys.contains("TransactionId") && dict["TransactionId"] != nil {
-            self.transactionId = dict["TransactionId"] as! String
-        }
-    }
-}
-
-public class DeletePictureResponseBody : Tea.TeaModel {
-    public class Result : Tea.TeaModel {
-        public var deleteResult: String?
-
-        public var transactionId: String?
-
-        public override init() {
-            super.init()
-        }
-
-        public init(_ dict: [String: Any]) {
-            super.init()
-            self.fromMap(dict)
-        }
-
-        public override func validate() throws -> Void {
-        }
-
-        public override func toMap() -> [String : Any] {
-            var map = super.toMap()
-            if self.deleteResult != nil {
-                map["DeleteResult"] = self.deleteResult!
-            }
-            if self.transactionId != nil {
-                map["TransactionId"] = self.transactionId!
-            }
-            return map
-        }
-
-        public override func fromMap(_ dict: [String: Any]) -> Void {
-            if dict.keys.contains("DeleteResult") && dict["DeleteResult"] != nil {
-                self.deleteResult = dict["DeleteResult"] as! String
-            }
-            if dict.keys.contains("TransactionId") && dict["TransactionId"] != nil {
-                self.transactionId = dict["TransactionId"] as! String
-            }
-        }
-    }
-    public var code: String?
-
-    public var message: String?
-
-    public var requestId: String?
-
-    public var result: DeletePictureResponseBody.Result?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.result?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.code != nil {
-            map["Code"] = self.code!
-        }
-        if self.message != nil {
-            map["Message"] = self.message!
-        }
-        if self.requestId != nil {
-            map["RequestId"] = self.requestId!
-        }
-        if self.result != nil {
-            map["Result"] = self.result?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("Code") && dict["Code"] != nil {
-            self.code = dict["Code"] as! String
-        }
-        if dict.keys.contains("Message") && dict["Message"] != nil {
-            self.message = dict["Message"] as! String
-        }
-        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
-            self.requestId = dict["RequestId"] as! String
-        }
-        if dict.keys.contains("Result") && dict["Result"] != nil {
-            var model = DeletePictureResponseBody.Result()
-            model.fromMap(dict["Result"] as! [String: Any])
-            self.result = model
-        }
-    }
-}
-
-public class DeletePictureResponse : Tea.TeaModel {
-    public var headers: [String: String]?
-
-    public var statusCode: Int32?
-
-    public var body: DeletePictureResponseBody?
-
-    public override init() {
-        super.init()
-    }
-
-    public init(_ dict: [String: Any]) {
-        super.init()
-        self.fromMap(dict)
-    }
-
-    public override func validate() throws -> Void {
-        try self.body?.validate()
-    }
-
-    public override func toMap() -> [String : Any] {
-        var map = super.toMap()
-        if self.headers != nil {
-            map["headers"] = self.headers!
-        }
-        if self.statusCode != nil {
-            map["statusCode"] = self.statusCode!
-        }
-        if self.body != nil {
-            map["body"] = self.body?.toMap()
-        }
-        return map
-    }
-
-    public override func fromMap(_ dict: [String: Any]) -> Void {
-        if dict.keys.contains("headers") && dict["headers"] != nil {
-            self.headers = dict["headers"] as! [String: String]
-        }
-        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
-            self.statusCode = dict["statusCode"] as! Int32
-        }
-        if dict.keys.contains("body") && dict["body"] != nil {
-            var model = DeletePictureResponseBody()
-            model.fromMap(dict["body"] as! [String: Any])
-            self.body = model
-        }
-    }
-}
-
 public class DeleteVerifyResultRequest : Tea.TeaModel {
     public var deleteAfterQuery: String?
 
@@ -4832,8 +4651,6 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var facePictureUrl: String?
 
-    public var flowType: String?
-
     public var idFaceQuality: String?
 
     public var idSpoof: String?
@@ -4848,13 +4665,7 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var ocr: String?
 
-    public var operationMode: String?
-
-    public var pages: String?
-
     public var productCode: String?
-
-    public var productConfig: String?
 
     public var productFlow: String?
 
@@ -4864,7 +4675,7 @@ public class InitializeRequest : Tea.TeaModel {
 
     public var securityLevel: String?
 
-    public var serviceLevel: String?
+    public var styleConfig: String?
 
     public override init() {
         super.init()
@@ -4904,9 +4715,6 @@ public class InitializeRequest : Tea.TeaModel {
         if self.facePictureUrl != nil {
             map["FacePictureUrl"] = self.facePictureUrl!
         }
-        if self.flowType != nil {
-            map["FlowType"] = self.flowType!
-        }
         if self.idFaceQuality != nil {
             map["IdFaceQuality"] = self.idFaceQuality!
         }
@@ -4928,17 +4736,8 @@ public class InitializeRequest : Tea.TeaModel {
         if self.ocr != nil {
             map["Ocr"] = self.ocr!
         }
-        if self.operationMode != nil {
-            map["OperationMode"] = self.operationMode!
-        }
-        if self.pages != nil {
-            map["Pages"] = self.pages!
-        }
         if self.productCode != nil {
             map["ProductCode"] = self.productCode!
-        }
-        if self.productConfig != nil {
-            map["ProductConfig"] = self.productConfig!
         }
         if self.productFlow != nil {
             map["ProductFlow"] = self.productFlow!
@@ -4952,8 +4751,8 @@ public class InitializeRequest : Tea.TeaModel {
         if self.securityLevel != nil {
             map["SecurityLevel"] = self.securityLevel!
         }
-        if self.serviceLevel != nil {
-            map["ServiceLevel"] = self.serviceLevel!
+        if self.styleConfig != nil {
+            map["StyleConfig"] = self.styleConfig!
         }
         return map
     }
@@ -4983,9 +4782,6 @@ public class InitializeRequest : Tea.TeaModel {
         if dict.keys.contains("FacePictureUrl") && dict["FacePictureUrl"] != nil {
             self.facePictureUrl = dict["FacePictureUrl"] as! String
         }
-        if dict.keys.contains("FlowType") && dict["FlowType"] != nil {
-            self.flowType = dict["FlowType"] as! String
-        }
         if dict.keys.contains("IdFaceQuality") && dict["IdFaceQuality"] != nil {
             self.idFaceQuality = dict["IdFaceQuality"] as! String
         }
@@ -5007,17 +4803,8 @@ public class InitializeRequest : Tea.TeaModel {
         if dict.keys.contains("Ocr") && dict["Ocr"] != nil {
             self.ocr = dict["Ocr"] as! String
         }
-        if dict.keys.contains("OperationMode") && dict["OperationMode"] != nil {
-            self.operationMode = dict["OperationMode"] as! String
-        }
-        if dict.keys.contains("Pages") && dict["Pages"] != nil {
-            self.pages = dict["Pages"] as! String
-        }
         if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
             self.productCode = dict["ProductCode"] as! String
-        }
-        if dict.keys.contains("ProductConfig") && dict["ProductConfig"] != nil {
-            self.productConfig = dict["ProductConfig"] as! String
         }
         if dict.keys.contains("ProductFlow") && dict["ProductFlow"] != nil {
             self.productFlow = dict["ProductFlow"] as! String
@@ -5031,8 +4818,8 @@ public class InitializeRequest : Tea.TeaModel {
         if dict.keys.contains("SecurityLevel") && dict["SecurityLevel"] != nil {
             self.securityLevel = dict["SecurityLevel"] as! String
         }
-        if dict.keys.contains("ServiceLevel") && dict["ServiceLevel"] != nil {
-            self.serviceLevel = dict["ServiceLevel"] as! String
+        if dict.keys.contains("StyleConfig") && dict["StyleConfig"] != nil {
+            self.styleConfig = dict["StyleConfig"] as! String
         }
     }
 }

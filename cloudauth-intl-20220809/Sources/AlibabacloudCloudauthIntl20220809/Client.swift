@@ -124,40 +124,6 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deletePictureWithOptions(_ request: DeletePictureRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeletePictureResponse {
-        try TeaUtils.Client.validateModel(request)
-        var query: [String: Any] = [:]
-        if (!TeaUtils.Client.isUnset(request.deletePicAfterQuery)) {
-            query["DeletePicAfterQuery"] = request.deletePicAfterQuery ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.transactionId)) {
-            query["TransactionId"] = request.transactionId ?? "";
-        }
-        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "query": AlibabaCloudOpenApiUtil.Client.query(query)
-        ])
-        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
-            "action": "DeletePicture",
-            "version": "2022-08-09",
-            "protocol": "HTTPS",
-            "pathname": "/",
-            "method": "POST",
-            "authType": "AK",
-            "style": "RPC",
-            "reqBodyType": "formData",
-            "bodyType": "json"
-        ])
-        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
-        return Tea.TeaConverter.fromMap(DeletePictureResponse(), tmp)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func deletePicture(_ request: DeletePictureRequest) async throws -> DeletePictureResponse {
-        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
-        return try await deletePictureWithOptions(request as! DeletePictureRequest, runtime as! TeaUtils.RuntimeOptions)
-    }
-
-    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteVerifyResultWithOptions(_ request: DeleteVerifyResultRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteVerifyResultResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -838,9 +804,6 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.facePictureUrl)) {
             query["FacePictureUrl"] = request.facePictureUrl ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.flowType)) {
-            query["FlowType"] = request.flowType ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.idFaceQuality)) {
             query["IdFaceQuality"] = request.idFaceQuality ?? "";
         }
@@ -862,17 +825,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.ocr)) {
             query["Ocr"] = request.ocr ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.operationMode)) {
-            query["OperationMode"] = request.operationMode ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.pages)) {
-            query["Pages"] = request.pages ?? "";
-        }
         if (!TeaUtils.Client.isUnset(request.productCode)) {
             query["ProductCode"] = request.productCode ?? "";
-        }
-        if (!TeaUtils.Client.isUnset(request.productConfig)) {
-            query["ProductConfig"] = request.productConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.productFlow)) {
             query["ProductFlow"] = request.productFlow ?? "";
@@ -886,8 +840,8 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.securityLevel)) {
             query["SecurityLevel"] = request.securityLevel ?? "";
         }
-        if (!TeaUtils.Client.isUnset(request.serviceLevel)) {
-            query["ServiceLevel"] = request.serviceLevel ?? "";
+        if (!TeaUtils.Client.isUnset(request.styleConfig)) {
+            query["StyleConfig"] = request.styleConfig ?? "";
         }
         var body: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.facePictureBase64)) {
