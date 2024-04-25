@@ -4644,6 +4644,8 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
 
     public var vSwitchId: String?
 
+    public var whitelistTemplateList: String?
+
     public var zoneId: String?
 
     public var zoneIdSlave1: String?
@@ -4825,6 +4827,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.whitelistTemplateList != nil {
+            map["WhitelistTemplateList"] = self.whitelistTemplateList!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -5004,6 +5009,9 @@ public class CreateDBInstanceRequest : Tea.TeaModel {
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
         }
+        if dict.keys.contains("WhitelistTemplateList") && dict["WhitelistTemplateList"] != nil {
+            self.whitelistTemplateList = dict["WhitelistTemplateList"] as! String
+        }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
         }
@@ -5157,6 +5165,8 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
     public var VPCId: String?
 
     public var vSwitchId: String?
+
+    public var whitelistTemplateList: String?
 
     public var zoneId: String?
 
@@ -5338,6 +5348,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         if self.vSwitchId != nil {
             map["VSwitchId"] = self.vSwitchId!
         }
+        if self.whitelistTemplateList != nil {
+            map["WhitelistTemplateList"] = self.whitelistTemplateList!
+        }
         if self.zoneId != nil {
             map["ZoneId"] = self.zoneId!
         }
@@ -5514,6 +5527,9 @@ public class CreateDBInstanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
             self.vSwitchId = dict["VSwitchId"] as! String
+        }
+        if dict.keys.contains("WhitelistTemplateList") && dict["WhitelistTemplateList"] != nil {
+            self.whitelistTemplateList = dict["WhitelistTemplateList"] as! String
         }
         if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
             self.zoneId = dict["ZoneId"] as! String
@@ -65538,6 +65554,8 @@ public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var vSwitchIds: String?
+
     public override init() {
         super.init()
     }
@@ -65582,6 +65600,9 @@ public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
         }
+        if self.vSwitchIds != nil {
+            map["VSwitchIds"] = self.vSwitchIds!
+        }
         return map
     }
 
@@ -65615,6 +65636,9 @@ public class ModifyDBProxyInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("VSwitchIds") && dict["VSwitchIds"] != nil {
+            self.vSwitchIds = dict["VSwitchIds"] as! String
         }
     }
 }
