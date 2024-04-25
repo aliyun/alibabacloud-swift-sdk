@@ -7881,6 +7881,381 @@ public class DescribeEventsResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeLensMonitorDisksRequest : Tea.TeaModel {
+    public var diskCategory: String?
+
+    public var diskIds: [String]?
+
+    public var lensTags: [String]?
+
+    public var maxResults: Int32?
+
+    public var nextToken: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskCategory != nil {
+            map["DiskCategory"] = self.diskCategory!
+        }
+        if self.diskIds != nil {
+            map["DiskIds"] = self.diskIds!
+        }
+        if self.lensTags != nil {
+            map["LensTags"] = self.lensTags!
+        }
+        if self.maxResults != nil {
+            map["MaxResults"] = self.maxResults!
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DiskCategory") && dict["DiskCategory"] != nil {
+            self.diskCategory = dict["DiskCategory"] as! String
+        }
+        if dict.keys.contains("DiskIds") && dict["DiskIds"] != nil {
+            self.diskIds = dict["DiskIds"] as! [String]
+        }
+        if dict.keys.contains("LensTags") && dict["LensTags"] != nil {
+            self.lensTags = dict["LensTags"] as! [String]
+        }
+        if dict.keys.contains("MaxResults") && dict["MaxResults"] != nil {
+            self.maxResults = dict["MaxResults"] as! Int32
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class DescribeLensMonitorDisksResponseBody : Tea.TeaModel {
+    public class DiskInfos : Tea.TeaModel {
+        public class Tags : Tea.TeaModel {
+            public var tagKey: String?
+
+            public var tagValue: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.tagKey != nil {
+                    map["TagKey"] = self.tagKey!
+                }
+                if self.tagValue != nil {
+                    map["TagValue"] = self.tagValue!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("TagKey") && dict["TagKey"] != nil {
+                    self.tagKey = dict["TagKey"] as! String
+                }
+                if dict.keys.contains("TagValue") && dict["TagValue"] != nil {
+                    self.tagValue = dict["TagValue"] as! String
+                }
+            }
+        }
+        public var bps: Int32?
+
+        public var burstingEnabled: Bool?
+
+        public var diskCategory: String?
+
+        public var diskId: String?
+
+        public var diskName: String?
+
+        public var diskStatus: String?
+
+        public var diskType: String?
+
+        public var iops: Int32?
+
+        public var lensTags: [String]?
+
+        public var performanceLevel: String?
+
+        public var provisionedIops: Int32?
+
+        public var regionId: String?
+
+        public var size: Int32?
+
+        public var tags: [DescribeLensMonitorDisksResponseBody.DiskInfos.Tags]?
+
+        public var zoneId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.bps != nil {
+                map["Bps"] = self.bps!
+            }
+            if self.burstingEnabled != nil {
+                map["BurstingEnabled"] = self.burstingEnabled!
+            }
+            if self.diskCategory != nil {
+                map["DiskCategory"] = self.diskCategory!
+            }
+            if self.diskId != nil {
+                map["DiskId"] = self.diskId!
+            }
+            if self.diskName != nil {
+                map["DiskName"] = self.diskName!
+            }
+            if self.diskStatus != nil {
+                map["DiskStatus"] = self.diskStatus!
+            }
+            if self.diskType != nil {
+                map["DiskType"] = self.diskType!
+            }
+            if self.iops != nil {
+                map["Iops"] = self.iops!
+            }
+            if self.lensTags != nil {
+                map["LensTags"] = self.lensTags!
+            }
+            if self.performanceLevel != nil {
+                map["PerformanceLevel"] = self.performanceLevel!
+            }
+            if self.provisionedIops != nil {
+                map["ProvisionedIops"] = self.provisionedIops!
+            }
+            if self.regionId != nil {
+                map["RegionId"] = self.regionId!
+            }
+            if self.size != nil {
+                map["Size"] = self.size!
+            }
+            if self.tags != nil {
+                var tmp : [Any] = []
+                for k in self.tags! {
+                    tmp.append(k.toMap())
+                }
+                map["Tags"] = tmp
+            }
+            if self.zoneId != nil {
+                map["ZoneId"] = self.zoneId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Bps") && dict["Bps"] != nil {
+                self.bps = dict["Bps"] as! Int32
+            }
+            if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
+                self.burstingEnabled = dict["BurstingEnabled"] as! Bool
+            }
+            if dict.keys.contains("DiskCategory") && dict["DiskCategory"] != nil {
+                self.diskCategory = dict["DiskCategory"] as! String
+            }
+            if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
+                self.diskId = dict["DiskId"] as! String
+            }
+            if dict.keys.contains("DiskName") && dict["DiskName"] != nil {
+                self.diskName = dict["DiskName"] as! String
+            }
+            if dict.keys.contains("DiskStatus") && dict["DiskStatus"] != nil {
+                self.diskStatus = dict["DiskStatus"] as! String
+            }
+            if dict.keys.contains("DiskType") && dict["DiskType"] != nil {
+                self.diskType = dict["DiskType"] as! String
+            }
+            if dict.keys.contains("Iops") && dict["Iops"] != nil {
+                self.iops = dict["Iops"] as! Int32
+            }
+            if dict.keys.contains("LensTags") && dict["LensTags"] != nil {
+                self.lensTags = dict["LensTags"] as! [String]
+            }
+            if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
+                self.performanceLevel = dict["PerformanceLevel"] as! String
+            }
+            if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+                self.provisionedIops = dict["ProvisionedIops"] as! Int32
+            }
+            if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+                self.regionId = dict["RegionId"] as! String
+            }
+            if dict.keys.contains("Size") && dict["Size"] != nil {
+                self.size = dict["Size"] as! Int32
+            }
+            if dict.keys.contains("Tags") && dict["Tags"] != nil {
+                var tmp : [DescribeLensMonitorDisksResponseBody.DiskInfos.Tags] = []
+                for v in dict["Tags"] as! [Any] {
+                    var model = DescribeLensMonitorDisksResponseBody.DiskInfos.Tags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.tags = tmp
+            }
+            if dict.keys.contains("ZoneId") && dict["ZoneId"] != nil {
+                self.zoneId = dict["ZoneId"] as! String
+            }
+        }
+    }
+    public var diskInfos: [DescribeLensMonitorDisksResponseBody.DiskInfos]?
+
+    public var nextToken: String?
+
+    public var requestId: String?
+
+    public var totalCount: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.diskInfos != nil {
+            var tmp : [Any] = []
+            for k in self.diskInfos! {
+                tmp.append(k.toMap())
+            }
+            map["DiskInfos"] = tmp
+        }
+        if self.nextToken != nil {
+            map["NextToken"] = self.nextToken!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.totalCount != nil {
+            map["TotalCount"] = self.totalCount!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DiskInfos") && dict["DiskInfos"] != nil {
+            var tmp : [DescribeLensMonitorDisksResponseBody.DiskInfos] = []
+            for v in dict["DiskInfos"] as! [Any] {
+                var model = DescribeLensMonitorDisksResponseBody.DiskInfos()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.diskInfos = tmp
+        }
+        if dict.keys.contains("NextToken") && dict["NextToken"] != nil {
+            self.nextToken = dict["NextToken"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("TotalCount") && dict["TotalCount"] != nil {
+            self.totalCount = dict["TotalCount"] as! Int64
+        }
+    }
+}
+
+public class DescribeLensMonitorDisksResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribeLensMonitorDisksResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribeLensMonitorDisksResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeLensServiceStatusResponseBody : Tea.TeaModel {
     public var requestId: String?
 
