@@ -30369,6 +30369,625 @@ public class GetTableDBTopologyResponse : Tea.TeaModel {
     }
 }
 
+public class GetTableDesignProjectFlowRequest : Tea.TeaModel {
+    public var orderId: Int64?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class GetTableDesignProjectFlowResponseBody : Tea.TeaModel {
+    public class ProjectFlow : Tea.TeaModel {
+        public class FlowNodeArray : Tea.TeaModel {
+            public var backToDesign: Bool?
+
+            public var canSkip: Bool?
+
+            public var nodeRole: String?
+
+            public var nodeTitle: String?
+
+            public var position: Int32?
+
+            public var publishAnchor: Bool?
+
+            public var publishStrategies: [String]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.backToDesign != nil {
+                    map["BackToDesign"] = self.backToDesign!
+                }
+                if self.canSkip != nil {
+                    map["CanSkip"] = self.canSkip!
+                }
+                if self.nodeRole != nil {
+                    map["NodeRole"] = self.nodeRole!
+                }
+                if self.nodeTitle != nil {
+                    map["NodeTitle"] = self.nodeTitle!
+                }
+                if self.position != nil {
+                    map["Position"] = self.position!
+                }
+                if self.publishAnchor != nil {
+                    map["PublishAnchor"] = self.publishAnchor!
+                }
+                if self.publishStrategies != nil {
+                    map["PublishStrategies"] = self.publishStrategies!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BackToDesign") && dict["BackToDesign"] != nil {
+                    self.backToDesign = dict["BackToDesign"] as! Bool
+                }
+                if dict.keys.contains("CanSkip") && dict["CanSkip"] != nil {
+                    self.canSkip = dict["CanSkip"] as! Bool
+                }
+                if dict.keys.contains("NodeRole") && dict["NodeRole"] != nil {
+                    self.nodeRole = dict["NodeRole"] as! String
+                }
+                if dict.keys.contains("NodeTitle") && dict["NodeTitle"] != nil {
+                    self.nodeTitle = dict["NodeTitle"] as! String
+                }
+                if dict.keys.contains("Position") && dict["Position"] != nil {
+                    self.position = dict["Position"] as! Int32
+                }
+                if dict.keys.contains("PublishAnchor") && dict["PublishAnchor"] != nil {
+                    self.publishAnchor = dict["PublishAnchor"] as! Bool
+                }
+                if dict.keys.contains("PublishStrategies") && dict["PublishStrategies"] != nil {
+                    self.publishStrategies = dict["PublishStrategies"] as! [String]
+                }
+            }
+        }
+        public var currentPosition: Int32?
+
+        public var flowNodeArray: [GetTableDesignProjectFlowResponseBody.ProjectFlow.FlowNodeArray]?
+
+        public var ruleComment: String?
+
+        public var ruleName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.currentPosition != nil {
+                map["CurrentPosition"] = self.currentPosition!
+            }
+            if self.flowNodeArray != nil {
+                var tmp : [Any] = []
+                for k in self.flowNodeArray! {
+                    tmp.append(k.toMap())
+                }
+                map["FlowNodeArray"] = tmp
+            }
+            if self.ruleComment != nil {
+                map["RuleComment"] = self.ruleComment!
+            }
+            if self.ruleName != nil {
+                map["RuleName"] = self.ruleName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CurrentPosition") && dict["CurrentPosition"] != nil {
+                self.currentPosition = dict["CurrentPosition"] as! Int32
+            }
+            if dict.keys.contains("FlowNodeArray") && dict["FlowNodeArray"] != nil {
+                var tmp : [GetTableDesignProjectFlowResponseBody.ProjectFlow.FlowNodeArray] = []
+                for v in dict["FlowNodeArray"] as! [Any] {
+                    var model = GetTableDesignProjectFlowResponseBody.ProjectFlow.FlowNodeArray()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.flowNodeArray = tmp
+            }
+            if dict.keys.contains("RuleComment") && dict["RuleComment"] != nil {
+                self.ruleComment = dict["RuleComment"] as! String
+            }
+            if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+                self.ruleName = dict["RuleName"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var projectFlow: GetTableDesignProjectFlowResponseBody.ProjectFlow?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.projectFlow?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.projectFlow != nil {
+            map["ProjectFlow"] = self.projectFlow?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("ProjectFlow") && dict["ProjectFlow"] != nil {
+            var model = GetTableDesignProjectFlowResponseBody.ProjectFlow()
+            model.fromMap(dict["ProjectFlow"] as! [String: Any])
+            self.projectFlow = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetTableDesignProjectFlowResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetTableDesignProjectFlowResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetTableDesignProjectFlowResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetTableDesignProjectInfoRequest : Tea.TeaModel {
+    public var orderId: Int64?
+
+    public var tid: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
+        if self.tid != nil {
+            map["Tid"] = self.tid!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! Int64
+        }
+        if dict.keys.contains("Tid") && dict["Tid"] != nil {
+            self.tid = dict["Tid"] as! Int64
+        }
+    }
+}
+
+public class GetTableDesignProjectInfoResponseBody : Tea.TeaModel {
+    public class ProjectInfo : Tea.TeaModel {
+        public class BaseDatabase : Tea.TeaModel {
+            public var alias: String?
+
+            public var dbId: Int32?
+
+            public var dbType: String?
+
+            public var envType: String?
+
+            public var logic: Bool?
+
+            public var schemaName: String?
+
+            public var searchName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.alias != nil {
+                    map["Alias"] = self.alias!
+                }
+                if self.dbId != nil {
+                    map["DbId"] = self.dbId!
+                }
+                if self.dbType != nil {
+                    map["DbType"] = self.dbType!
+                }
+                if self.envType != nil {
+                    map["EnvType"] = self.envType!
+                }
+                if self.logic != nil {
+                    map["Logic"] = self.logic!
+                }
+                if self.schemaName != nil {
+                    map["SchemaName"] = self.schemaName!
+                }
+                if self.searchName != nil {
+                    map["SearchName"] = self.searchName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Alias") && dict["Alias"] != nil {
+                    self.alias = dict["Alias"] as! String
+                }
+                if dict.keys.contains("DbId") && dict["DbId"] != nil {
+                    self.dbId = dict["DbId"] as! Int32
+                }
+                if dict.keys.contains("DbType") && dict["DbType"] != nil {
+                    self.dbType = dict["DbType"] as! String
+                }
+                if dict.keys.contains("EnvType") && dict["EnvType"] != nil {
+                    self.envType = dict["EnvType"] as! String
+                }
+                if dict.keys.contains("Logic") && dict["Logic"] != nil {
+                    self.logic = dict["Logic"] as! Bool
+                }
+                if dict.keys.contains("SchemaName") && dict["SchemaName"] != nil {
+                    self.schemaName = dict["SchemaName"] as! String
+                }
+                if dict.keys.contains("SearchName") && dict["SearchName"] != nil {
+                    self.searchName = dict["SearchName"] as! String
+                }
+            }
+        }
+        public var baseDatabase: GetTableDesignProjectInfoResponseBody.ProjectInfo.BaseDatabase?
+
+        public var creatorId: Int64?
+
+        public var description_: String?
+
+        public var gmtCreate: String?
+
+        public var gmtModified: String?
+
+        public var orderId: Int64?
+
+        public var projectId: Int64?
+
+        public var status: String?
+
+        public var title: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.baseDatabase?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.baseDatabase != nil {
+                map["BaseDatabase"] = self.baseDatabase?.toMap()
+            }
+            if self.creatorId != nil {
+                map["CreatorId"] = self.creatorId!
+            }
+            if self.description_ != nil {
+                map["Description"] = self.description_!
+            }
+            if self.gmtCreate != nil {
+                map["GmtCreate"] = self.gmtCreate!
+            }
+            if self.gmtModified != nil {
+                map["GmtModified"] = self.gmtModified!
+            }
+            if self.orderId != nil {
+                map["OrderId"] = self.orderId!
+            }
+            if self.projectId != nil {
+                map["ProjectId"] = self.projectId!
+            }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
+            if self.title != nil {
+                map["Title"] = self.title!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BaseDatabase") && dict["BaseDatabase"] != nil {
+                var model = GetTableDesignProjectInfoResponseBody.ProjectInfo.BaseDatabase()
+                model.fromMap(dict["BaseDatabase"] as! [String: Any])
+                self.baseDatabase = model
+            }
+            if dict.keys.contains("CreatorId") && dict["CreatorId"] != nil {
+                self.creatorId = dict["CreatorId"] as! Int64
+            }
+            if dict.keys.contains("Description") && dict["Description"] != nil {
+                self.description_ = dict["Description"] as! String
+            }
+            if dict.keys.contains("GmtCreate") && dict["GmtCreate"] != nil {
+                self.gmtCreate = dict["GmtCreate"] as! String
+            }
+            if dict.keys.contains("GmtModified") && dict["GmtModified"] != nil {
+                self.gmtModified = dict["GmtModified"] as! String
+            }
+            if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+                self.orderId = dict["OrderId"] as! Int64
+            }
+            if dict.keys.contains("ProjectId") && dict["ProjectId"] != nil {
+                self.projectId = dict["ProjectId"] as! Int64
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
+            }
+            if dict.keys.contains("Title") && dict["Title"] != nil {
+                self.title = dict["Title"] as! String
+            }
+        }
+    }
+    public var errorCode: String?
+
+    public var errorMessage: String?
+
+    public var projectInfo: GetTableDesignProjectInfoResponseBody.ProjectInfo?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.projectInfo?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.errorCode != nil {
+            map["ErrorCode"] = self.errorCode!
+        }
+        if self.errorMessage != nil {
+            map["ErrorMessage"] = self.errorMessage!
+        }
+        if self.projectInfo != nil {
+            map["ProjectInfo"] = self.projectInfo?.toMap()
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ErrorCode") && dict["ErrorCode"] != nil {
+            self.errorCode = dict["ErrorCode"] as! String
+        }
+        if dict.keys.contains("ErrorMessage") && dict["ErrorMessage"] != nil {
+            self.errorMessage = dict["ErrorMessage"] as! String
+        }
+        if dict.keys.contains("ProjectInfo") && dict["ProjectInfo"] != nil {
+            var model = GetTableDesignProjectInfoResponseBody.ProjectInfo()
+            model.fromMap(dict["ProjectInfo"] as! [String: Any])
+            self.projectInfo = model
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetTableDesignProjectInfoResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetTableDesignProjectInfoResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetTableDesignProjectInfoResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetTableTopologyRequest : Tea.TeaModel {
     public var tableGuid: String?
 
