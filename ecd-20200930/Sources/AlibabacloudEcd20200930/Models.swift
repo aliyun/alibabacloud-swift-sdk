@@ -6933,6 +6933,51 @@ public class CreateDesktopsRequest : Tea.TeaModel {
             }
         }
     }
+    public class MonthDesktopSetting : Tea.TeaModel {
+        public var buyerId: Int64?
+
+        public var desktopId: String?
+
+        public var useDuration: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.buyerId != nil {
+                map["BuyerId"] = self.buyerId!
+            }
+            if self.desktopId != nil {
+                map["DesktopId"] = self.desktopId!
+            }
+            if self.useDuration != nil {
+                map["UseDuration"] = self.useDuration!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("BuyerId") && dict["BuyerId"] != nil {
+                self.buyerId = dict["BuyerId"] as! Int64
+            }
+            if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
+                self.desktopId = dict["DesktopId"] as! String
+            }
+            if dict.keys.contains("UseDuration") && dict["UseDuration"] != nil {
+                self.useDuration = dict["UseDuration"] as! Int32
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -7043,6 +7088,8 @@ public class CreateDesktopsRequest : Tea.TeaModel {
 
     public var hostname: String?
 
+    public var monthDesktopSetting: CreateDesktopsRequest.MonthDesktopSetting?
+
     public var officeSiteId: String?
 
     public var period: Int32?
@@ -7079,6 +7126,7 @@ public class CreateDesktopsRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.monthDesktopSetting?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -7132,6 +7180,9 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if self.hostname != nil {
             map["Hostname"] = self.hostname!
+        }
+        if self.monthDesktopSetting != nil {
+            map["MonthDesktopSetting"] = self.monthDesktopSetting?.toMap()
         }
         if self.officeSiteId != nil {
             map["OfficeSiteId"] = self.officeSiteId!
@@ -7241,6 +7292,11 @@ public class CreateDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Hostname") && dict["Hostname"] != nil {
             self.hostname = dict["Hostname"] as! String
+        }
+        if dict.keys.contains("MonthDesktopSetting") && dict["MonthDesktopSetting"] != nil {
+            var model = CreateDesktopsRequest.MonthDesktopSetting()
+            model.fromMap(dict["MonthDesktopSetting"] as! [String: Any])
+            self.monthDesktopSetting = model
         }
         if dict.keys.contains("OfficeSiteId") && dict["OfficeSiteId"] != nil {
             self.officeSiteId = dict["OfficeSiteId"] as! String
@@ -23817,6 +23873,10 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
 
         public var adHostname: String?
 
+        public var backupDCHostname: String?
+
+        public var backupDns: String?
+
         public var bandwidth: Int32?
 
         public var cenAttachStatus: String?
@@ -23852,6 +23912,8 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
         public var enableCrossDesktopAccess: Bool?
 
         public var enableInternetAccess: Bool?
+
+        public var enableServiceRoute: Bool?
 
         public var fileSystemIds: [String]?
 
@@ -23927,6 +23989,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if self.adHostname != nil {
                 map["AdHostname"] = self.adHostname!
             }
+            if self.backupDCHostname != nil {
+                map["BackupDCHostname"] = self.backupDCHostname!
+            }
+            if self.backupDns != nil {
+                map["BackupDns"] = self.backupDns!
+            }
             if self.bandwidth != nil {
                 map["Bandwidth"] = self.bandwidth!
             }
@@ -23980,6 +24048,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if self.enableInternetAccess != nil {
                 map["EnableInternetAccess"] = self.enableInternetAccess!
+            }
+            if self.enableServiceRoute != nil {
+                map["EnableServiceRoute"] = self.enableServiceRoute!
             }
             if self.fileSystemIds != nil {
                 map["FileSystemIds"] = self.fileSystemIds!
@@ -24078,6 +24149,12 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             if dict.keys.contains("AdHostname") && dict["AdHostname"] != nil {
                 self.adHostname = dict["AdHostname"] as! String
             }
+            if dict.keys.contains("BackupDCHostname") && dict["BackupDCHostname"] != nil {
+                self.backupDCHostname = dict["BackupDCHostname"] as! String
+            }
+            if dict.keys.contains("BackupDns") && dict["BackupDns"] != nil {
+                self.backupDns = dict["BackupDns"] as! String
+            }
             if dict.keys.contains("Bandwidth") && dict["Bandwidth"] != nil {
                 self.bandwidth = dict["Bandwidth"] as! Int32
             }
@@ -24131,6 +24208,9 @@ public class DescribeOfficeSitesResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EnableInternetAccess") && dict["EnableInternetAccess"] != nil {
                 self.enableInternetAccess = dict["EnableInternetAccess"] as! Bool
+            }
+            if dict.keys.contains("EnableServiceRoute") && dict["EnableServiceRoute"] != nil {
+                self.enableServiceRoute = dict["EnableServiceRoute"] as! Bool
             }
             if dict.keys.contains("FileSystemIds") && dict["FileSystemIds"] != nil {
                 self.fileSystemIds = dict["FileSystemIds"] as! [String]
@@ -42949,6 +43029,8 @@ public class RenewDesktopsRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var resourceType: String?
+
     public override init() {
         super.init()
     }
@@ -42981,6 +43063,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.resourceType != nil {
+            map["ResourceType"] = self.resourceType!
+        }
         return map
     }
 
@@ -43002,6 +43087,9 @@ public class RenewDesktopsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceType") && dict["ResourceType"] != nil {
+            self.resourceType = dict["ResourceType"] as! String
         }
     }
 }
