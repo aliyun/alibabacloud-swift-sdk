@@ -3968,6 +3968,8 @@ public class GetAccountResponseBody : Tea.TeaModel {
 
         public var folderId: String?
 
+        public var hasSecureMobilePhone: Bool?
+
         public var identityInformation: String?
 
         public var joinMethod: String?
@@ -4016,6 +4018,9 @@ public class GetAccountResponseBody : Tea.TeaModel {
             }
             if self.folderId != nil {
                 map["FolderId"] = self.folderId!
+            }
+            if self.hasSecureMobilePhone != nil {
+                map["HasSecureMobilePhone"] = self.hasSecureMobilePhone!
             }
             if self.identityInformation != nil {
                 map["IdentityInformation"] = self.identityInformation!
@@ -4069,6 +4074,9 @@ public class GetAccountResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("FolderId") && dict["FolderId"] != nil {
                 self.folderId = dict["FolderId"] as! String
+            }
+            if dict.keys.contains("HasSecureMobilePhone") && dict["HasSecureMobilePhone"] != nil {
+                self.hasSecureMobilePhone = dict["HasSecureMobilePhone"] as! Bool
             }
             if dict.keys.contains("IdentityInformation") && dict["IdentityInformation"] != nil {
                 self.identityInformation = dict["IdentityInformation"] as! String
