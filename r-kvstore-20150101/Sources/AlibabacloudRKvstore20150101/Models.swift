@@ -1233,6 +1233,8 @@ public class CreateCacheAnalysisTaskResponse : Tea.TeaModel {
 }
 
 public class CreateGlobalDistributeCacheRequest : Tea.TeaModel {
+    public var effectiveTime: String?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -1261,6 +1263,9 @@ public class CreateGlobalDistributeCacheRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.effectiveTime != nil {
+            map["EffectiveTime"] = self.effectiveTime!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -1286,6 +1291,9 @@ public class CreateGlobalDistributeCacheRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EffectiveTime") && dict["EffectiveTime"] != nil {
+            self.effectiveTime = dict["EffectiveTime"] as! String
+        }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
         }
@@ -2662,6 +2670,8 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
 
     public var resourceOwnerId: Int64?
 
+    public var restoreTime: String?
+
     public var secondaryZoneId: String?
 
     public var securityToken: String?
@@ -2786,6 +2796,9 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
         }
         if self.resourceOwnerId != nil {
             map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        if self.restoreTime != nil {
+            map["RestoreTime"] = self.restoreTime!
         }
         if self.secondaryZoneId != nil {
             map["SecondaryZoneId"] = self.secondaryZoneId!
@@ -2917,6 +2930,9 @@ public class CreateTairInstanceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
             self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+        if dict.keys.contains("RestoreTime") && dict["RestoreTime"] != nil {
+            self.restoreTime = dict["RestoreTime"] as! String
         }
         if dict.keys.contains("SecondaryZoneId") && dict["SecondaryZoneId"] != nil {
             self.secondaryZoneId = dict["SecondaryZoneId"] as! String
@@ -6949,11 +6965,11 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
 
             public var backupEndTime: String?
 
-            public var backupId: Int32?
+            public var backupId: Int64?
 
             public var backupIntranetDownloadURL: String?
 
-            public var backupJobID: Int32?
+            public var backupJobID: Int64?
 
             public var backupMethod: String?
 
@@ -7041,13 +7057,13 @@ public class DescribeBackupsResponseBody : Tea.TeaModel {
                     self.backupEndTime = dict["BackupEndTime"] as! String
                 }
                 if dict.keys.contains("BackupId") && dict["BackupId"] != nil {
-                    self.backupId = dict["BackupId"] as! Int32
+                    self.backupId = dict["BackupId"] as! Int64
                 }
                 if dict.keys.contains("BackupIntranetDownloadURL") && dict["BackupIntranetDownloadURL"] != nil {
                     self.backupIntranetDownloadURL = dict["BackupIntranetDownloadURL"] as! String
                 }
                 if dict.keys.contains("BackupJobID") && dict["BackupJobID"] != nil {
-                    self.backupJobID = dict["BackupJobID"] as! Int32
+                    self.backupJobID = dict["BackupJobID"] as! Int64
                 }
                 if dict.keys.contains("BackupMethod") && dict["BackupMethod"] != nil {
                     self.backupMethod = dict["BackupMethod"] as! String
@@ -10784,6 +10800,8 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
 
     public var isNewSSLMode: String?
 
+    public var isOpenNGLB: String?
+
     public var isRedisCompatibleVersion: String?
 
     public var isSSLEnable: String?
@@ -10840,6 +10858,9 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
         if self.isNewSSLMode != nil {
             map["IsNewSSLMode"] = self.isNewSSLMode!
         }
+        if self.isOpenNGLB != nil {
+            map["IsOpenNGLB"] = self.isOpenNGLB!
+        }
         if self.isRedisCompatibleVersion != nil {
             map["IsRedisCompatibleVersion"] = self.isRedisCompatibleVersion!
         }
@@ -10893,6 +10914,9 @@ public class DescribeEngineVersionResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("IsNewSSLMode") && dict["IsNewSSLMode"] != nil {
             self.isNewSSLMode = dict["IsNewSSLMode"] as! String
+        }
+        if dict.keys.contains("IsOpenNGLB") && dict["IsOpenNGLB"] != nil {
+            self.isOpenNGLB = dict["IsOpenNGLB"] as! String
         }
         if dict.keys.contains("IsRedisCompatibleVersion") && dict["IsRedisCompatibleVersion"] != nil {
             self.isRedisCompatibleVersion = dict["IsRedisCompatibleVersion"] as! String
@@ -18133,6 +18157,107 @@ public class DescribePriceResponseBody : Tea.TeaModel {
             }
             public class ModuleInstance : Tea.TeaModel {
                 public class ModuleInstance : Tea.TeaModel {
+                    public class DepreciateInfo : Tea.TeaModel {
+                        public var cheapRate: Double?
+
+                        public var cheapStandAmount: Double?
+
+                        public var differential: Double?
+
+                        public var differentialName: String?
+
+                        public var isContractActivity: Bool?
+
+                        public var isShow: Bool?
+
+                        public var listPrice: Double?
+
+                        public var monthPrice: Double?
+
+                        public var originalStandAmount: Double?
+
+                        public var startTime: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.cheapRate != nil {
+                                map["CheapRate"] = self.cheapRate!
+                            }
+                            if self.cheapStandAmount != nil {
+                                map["CheapStandAmount"] = self.cheapStandAmount!
+                            }
+                            if self.differential != nil {
+                                map["Differential"] = self.differential!
+                            }
+                            if self.differentialName != nil {
+                                map["DifferentialName"] = self.differentialName!
+                            }
+                            if self.isContractActivity != nil {
+                                map["IsContractActivity"] = self.isContractActivity!
+                            }
+                            if self.isShow != nil {
+                                map["IsShow"] = self.isShow!
+                            }
+                            if self.listPrice != nil {
+                                map["ListPrice"] = self.listPrice!
+                            }
+                            if self.monthPrice != nil {
+                                map["MonthPrice"] = self.monthPrice!
+                            }
+                            if self.originalStandAmount != nil {
+                                map["OriginalStandAmount"] = self.originalStandAmount!
+                            }
+                            if self.startTime != nil {
+                                map["StartTime"] = self.startTime!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("CheapRate") && dict["CheapRate"] != nil {
+                                self.cheapRate = dict["CheapRate"] as! Double
+                            }
+                            if dict.keys.contains("CheapStandAmount") && dict["CheapStandAmount"] != nil {
+                                self.cheapStandAmount = dict["CheapStandAmount"] as! Double
+                            }
+                            if dict.keys.contains("Differential") && dict["Differential"] != nil {
+                                self.differential = dict["Differential"] as! Double
+                            }
+                            if dict.keys.contains("DifferentialName") && dict["DifferentialName"] != nil {
+                                self.differentialName = dict["DifferentialName"] as! String
+                            }
+                            if dict.keys.contains("IsContractActivity") && dict["IsContractActivity"] != nil {
+                                self.isContractActivity = dict["IsContractActivity"] as! Bool
+                            }
+                            if dict.keys.contains("IsShow") && dict["IsShow"] != nil {
+                                self.isShow = dict["IsShow"] as! Bool
+                            }
+                            if dict.keys.contains("ListPrice") && dict["ListPrice"] != nil {
+                                self.listPrice = dict["ListPrice"] as! Double
+                            }
+                            if dict.keys.contains("MonthPrice") && dict["MonthPrice"] != nil {
+                                self.monthPrice = dict["MonthPrice"] as! Double
+                            }
+                            if dict.keys.contains("OriginalStandAmount") && dict["OriginalStandAmount"] != nil {
+                                self.originalStandAmount = dict["OriginalStandAmount"] as! Double
+                            }
+                            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                                self.startTime = dict["StartTime"] as! String
+                            }
+                        }
+                    }
                     public class ModuleAttrs : Tea.TeaModel {
                         public class ModuleAttr : Tea.TeaModel {
                             public var code: String?
@@ -18229,6 +18354,8 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     }
                     public var contractActivity: Bool?
 
+                    public var depreciateInfo: DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.DepreciateInfo?
+
                     public var discountFee: Double?
 
                     public var moduleAttrs: DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.ModuleAttrs?
@@ -18259,6 +18386,7 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     }
 
                     public override func validate() throws -> Void {
+                        try self.depreciateInfo?.validate()
                         try self.moduleAttrs?.validate()
                     }
 
@@ -18266,6 +18394,9 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                         var map = super.toMap()
                         if self.contractActivity != nil {
                             map["ContractActivity"] = self.contractActivity!
+                        }
+                        if self.depreciateInfo != nil {
+                            map["DepreciateInfo"] = self.depreciateInfo?.toMap()
                         }
                         if self.discountFee != nil {
                             map["DiscountFee"] = self.discountFee!
@@ -18303,6 +18434,11 @@ public class DescribePriceResponseBody : Tea.TeaModel {
                     public override func fromMap(_ dict: [String: Any]) -> Void {
                         if dict.keys.contains("ContractActivity") && dict["ContractActivity"] != nil {
                             self.contractActivity = dict["ContractActivity"] as! Bool
+                        }
+                        if dict.keys.contains("DepreciateInfo") && dict["DepreciateInfo"] != nil {
+                            var model = DescribePriceResponseBody.SubOrders.SubOrder.ModuleInstance.ModuleInstance.DepreciateInfo()
+                            model.fromMap(dict["DepreciateInfo"] as! [String: Any])
+                            self.depreciateInfo = model
                         }
                         if dict.keys.contains("DiscountFee") && dict["DiscountFee"] != nil {
                             self.discountFee = dict["DiscountFee"] as! Double

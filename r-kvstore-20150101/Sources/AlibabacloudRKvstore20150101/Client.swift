@@ -447,6 +447,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func createGlobalDistributeCacheWithOptions(_ request: CreateGlobalDistributeCacheRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateGlobalDistributeCacheResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.effectiveTime)) {
+            query["EffectiveTime"] = request.effectiveTime ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";
         }
@@ -867,6 +870,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerId)) {
             query["ResourceOwnerId"] = request.resourceOwnerId!;
+        }
+        if (!TeaUtils.Client.isUnset(request.restoreTime)) {
+            query["RestoreTime"] = request.restoreTime ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.secondaryZoneId)) {
             query["SecondaryZoneId"] = request.secondaryZoneId ?? "";
