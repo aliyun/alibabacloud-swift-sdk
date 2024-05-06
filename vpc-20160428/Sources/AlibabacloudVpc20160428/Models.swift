@@ -54359,6 +54359,8 @@ public class DescribeSnatTableEntriesRequest : Tea.TeaModel {
 public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
     public class SnatTableEntries : Tea.TeaModel {
         public class SnatTableEntry : Tea.TeaModel {
+            public var eipAffinity: String?
+
             public var natGatewayId: String?
 
             public var snatEntryId: String?
@@ -54389,6 +54391,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.eipAffinity != nil {
+                    map["EipAffinity"] = self.eipAffinity!
+                }
                 if self.natGatewayId != nil {
                     map["NatGatewayId"] = self.natGatewayId!
                 }
@@ -54417,6 +54422,9 @@ public class DescribeSnatTableEntriesResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("EipAffinity") && dict["EipAffinity"] != nil {
+                    self.eipAffinity = dict["EipAffinity"] as! String
+                }
                 if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
                     self.natGatewayId = dict["NatGatewayId"] as! String
                 }
@@ -65586,6 +65594,35 @@ public class DescribeVpnGatewayRequest : Tea.TeaModel {
 }
 
 public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
+    public class EniInstanceIds : Tea.TeaModel {
+        public var eniInstanceId: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.eniInstanceId != nil {
+                map["EniInstanceId"] = self.eniInstanceId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("EniInstanceId") && dict["EniInstanceId"] != nil {
+                self.eniInstanceId = dict["EniInstanceId"] as! [String]
+            }
+        }
+    }
     public class ReservationData : Tea.TeaModel {
         public var reservationEndTime: String?
 
@@ -65759,6 +65796,8 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
 
     public var endTime: Int64?
 
+    public var eniInstanceIds: DescribeVpnGatewayResponseBody.EniInstanceIds?
+
     public var internetIp: String?
 
     public var ipsecVpn: String?
@@ -65805,6 +65844,7 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.eniInstanceIds?.validate()
         try self.reservationData?.validate()
         try self.tags?.validate()
     }
@@ -65837,6 +65877,9 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
         }
         if self.endTime != nil {
             map["EndTime"] = self.endTime!
+        }
+        if self.eniInstanceIds != nil {
+            map["EniInstanceIds"] = self.eniInstanceIds?.toMap()
         }
         if self.internetIp != nil {
             map["InternetIp"] = self.internetIp!
@@ -65922,6 +65965,11 @@ public class DescribeVpnGatewayResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
             self.endTime = dict["EndTime"] as! Int64
+        }
+        if dict.keys.contains("EniInstanceIds") && dict["EniInstanceIds"] != nil {
+            var model = DescribeVpnGatewayResponseBody.EniInstanceIds()
+            model.fromMap(dict["EniInstanceIds"] as! [String: Any])
+            self.eniInstanceIds = model
         }
         if dict.keys.contains("InternetIp") && dict["InternetIp"] != nil {
             self.internetIp = dict["InternetIp"] as! String
@@ -66441,6 +66489,35 @@ public class DescribeVpnGatewaysRequest : Tea.TeaModel {
 public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
     public class VpnGateways : Tea.TeaModel {
         public class VpnGateway : Tea.TeaModel {
+            public class EniInstanceIds : Tea.TeaModel {
+                public var eniInstanceId: [String]?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.eniInstanceId != nil {
+                        map["EniInstanceId"] = self.eniInstanceId!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("EniInstanceId") && dict["EniInstanceId"] != nil {
+                        self.eniInstanceId = dict["EniInstanceId"] as! [String]
+                    }
+                }
+            }
             public class ReservationData : Tea.TeaModel {
                 public var reservationEndTime: String?
 
@@ -66614,6 +66691,8 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
 
             public var endTime: Int64?
 
+            public var eniInstanceIds: DescribeVpnGatewaysResponseBody.VpnGateways.VpnGateway.EniInstanceIds?
+
             public var internetIp: String?
 
             public var ipsecVpn: String?
@@ -66658,6 +66737,7 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
             }
 
             public override func validate() throws -> Void {
+                try self.eniInstanceIds?.validate()
                 try self.reservationData?.validate()
                 try self.tags?.validate()
             }
@@ -66690,6 +66770,9 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
                 }
                 if self.endTime != nil {
                     map["EndTime"] = self.endTime!
+                }
+                if self.eniInstanceIds != nil {
+                    map["EniInstanceIds"] = self.eniInstanceIds?.toMap()
                 }
                 if self.internetIp != nil {
                     map["InternetIp"] = self.internetIp!
@@ -66772,6 +66855,11 @@ public class DescribeVpnGatewaysResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
                     self.endTime = dict["EndTime"] as! Int64
+                }
+                if dict.keys.contains("EniInstanceIds") && dict["EniInstanceIds"] != nil {
+                    var model = DescribeVpnGatewaysResponseBody.VpnGateways.VpnGateway.EniInstanceIds()
+                    model.fromMap(dict["EniInstanceIds"] as! [String: Any])
+                    self.eniInstanceIds = model
                 }
                 if dict.keys.contains("InternetIp") && dict["InternetIp"] != nil {
                     self.internetIp = dict["InternetIp"] as! String
@@ -90307,6 +90395,8 @@ public class ModifyRouterInterfaceSpecResponse : Tea.TeaModel {
 public class ModifySnatEntryRequest : Tea.TeaModel {
     public var clientToken: String?
 
+    public var eipAffinity: Int32?
+
     public var ownerAccount: String?
 
     public var ownerId: Int64?
@@ -90342,6 +90432,9 @@ public class ModifySnatEntryRequest : Tea.TeaModel {
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
         }
+        if self.eipAffinity != nil {
+            map["EipAffinity"] = self.eipAffinity!
+        }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
         }
@@ -90375,6 +90468,9 @@ public class ModifySnatEntryRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("EipAffinity") && dict["EipAffinity"] != nil {
+            self.eipAffinity = dict["EipAffinity"] as! Int32
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
