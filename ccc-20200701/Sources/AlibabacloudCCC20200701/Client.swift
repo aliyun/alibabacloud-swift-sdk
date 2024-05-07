@@ -392,6 +392,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func analyzeConversationWithOptions(_ request: AnalyzeConversationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AnalyzeConversationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.contactId)) {
+            query["ContactId"] = request.contactId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.fieldListJson)) {
+            query["FieldListJson"] = request.fieldListJson ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.taskListJson)) {
+            query["TaskListJson"] = request.taskListJson ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "AnalyzeConversation",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(AnalyzeConversationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func analyzeConversation(_ request: AnalyzeConversationRequest) async throws -> AnalyzeConversationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await analyzeConversationWithOptions(request as! AnalyzeConversationRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func answerCallWithOptions(_ request: AnswerCallRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> AnswerCallResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
