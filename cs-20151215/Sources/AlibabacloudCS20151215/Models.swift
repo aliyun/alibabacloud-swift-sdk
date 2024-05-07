@@ -10422,6 +10422,36 @@ public class DescribeClusterNodePoolDetailResponse : Tea.TeaModel {
     }
 }
 
+public class DescribeClusterNodePoolsRequest : Tea.TeaModel {
+    public var nodepoolName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.nodepoolName != nil {
+            map["NodepoolName"] = self.nodepoolName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("NodepoolName") && dict["NodepoolName"] != nil {
+            self.nodepoolName = dict["NodepoolName"] as! String
+        }
+    }
+}
+
 public class DescribeClusterNodePoolsResponseBody : Tea.TeaModel {
     public class Nodepools : Tea.TeaModel {
         public class AutoScaling : Tea.TeaModel {

@@ -1763,9 +1763,15 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeClusterNodePoolsWithOptions(_ ClusterId: String, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterNodePoolsResponse {
+    public func describeClusterNodePoolsWithOptions(_ ClusterId: String, _ request: DescribeClusterNodePoolsRequest, _ headers: [String: String], _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeClusterNodePoolsResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.nodepoolName)) {
+            query["NodepoolName"] = request.nodepoolName ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
-            "headers": headers as! [String: String]
+            "headers": headers as! [String: String],
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])
         var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
             "action": "DescribeClusterNodePools",
@@ -1783,10 +1789,10 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func describeClusterNodePools(_ ClusterId: String) async throws -> DescribeClusterNodePoolsResponse {
+    public func describeClusterNodePools(_ ClusterId: String, _ request: DescribeClusterNodePoolsRequest) async throws -> DescribeClusterNodePoolsResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         var headers: [String: String] = [:]
-        return try await describeClusterNodePoolsWithOptions(ClusterId as! String, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
+        return try await describeClusterNodePoolsWithOptions(ClusterId as! String, request as! DescribeClusterNodePoolsRequest, headers as! [String: String], runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
