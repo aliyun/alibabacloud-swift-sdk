@@ -26325,6 +26325,8 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
 
         public var ports: [Int32]?
 
+        public var serviceFQDN: String?
+
         public var serviceNameInRegistry: String?
 
         public var serviceProtocol: String?
@@ -26407,6 +26409,9 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
             }
             if self.ports != nil {
                 map["Ports"] = self.ports!
+            }
+            if self.serviceFQDN != nil {
+                map["ServiceFQDN"] = self.serviceFQDN!
             }
             if self.serviceNameInRegistry != nil {
                 map["ServiceNameInRegistry"] = self.serviceNameInRegistry!
@@ -26503,6 +26508,9 @@ public class GetGatewayServiceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Ports") && dict["Ports"] != nil {
                 self.ports = dict["Ports"] as! [Int32]
+            }
+            if dict.keys.contains("ServiceFQDN") && dict["ServiceFQDN"] != nil {
+                self.serviceFQDN = dict["ServiceFQDN"] as! String
             }
             if dict.keys.contains("ServiceNameInRegistry") && dict["ServiceNameInRegistry"] != nil {
                 self.serviceNameInRegistry = dict["ServiceNameInRegistry"] as! String
@@ -28052,6 +28060,8 @@ public class GetMseSourceRequest : Tea.TeaModel {
 
     public var type: String?
 
+    public var vpcId: String?
+
     public override init() {
         super.init()
     }
@@ -28075,6 +28085,9 @@ public class GetMseSourceRequest : Tea.TeaModel {
         if self.type != nil {
             map["Type"] = self.type!
         }
+        if self.vpcId != nil {
+            map["VpcId"] = self.vpcId!
+        }
         return map
     }
 
@@ -28087,6 +28100,9 @@ public class GetMseSourceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Type") && dict["Type"] != nil {
             self.type = dict["Type"] as! String
+        }
+        if dict.keys.contains("VpcId") && dict["VpcId"] != nil {
+            self.vpcId = dict["VpcId"] as! String
         }
     }
 }
@@ -46304,6 +46320,8 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
 
             public var ports: [Int32]?
 
+            public var serviceFQDN: String?
+
             public var serviceNameInRegistry: String?
 
             public var servicePort: Int64?
@@ -46381,6 +46399,9 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
                 }
                 if self.ports != nil {
                     map["Ports"] = self.ports!
+                }
+                if self.serviceFQDN != nil {
+                    map["ServiceFQDN"] = self.serviceFQDN!
                 }
                 if self.serviceNameInRegistry != nil {
                     map["ServiceNameInRegistry"] = self.serviceNameInRegistry!
@@ -46462,6 +46483,9 @@ public class ListGatewayServiceResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Ports") && dict["Ports"] != nil {
                     self.ports = dict["Ports"] as! [Int32]
+                }
+                if dict.keys.contains("ServiceFQDN") && dict["ServiceFQDN"] != nil {
+                    self.serviceFQDN = dict["ServiceFQDN"] as! String
                 }
                 if dict.keys.contains("ServiceNameInRegistry") && dict["ServiceNameInRegistry"] != nil {
                     self.serviceNameInRegistry = dict["ServiceNameInRegistry"] as! String
