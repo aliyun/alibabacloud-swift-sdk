@@ -47051,6 +47051,8 @@ public class DescribeNatGatewaysResponseBody : Tea.TeaModel {
 
             public var eipBindMode: String?
 
+            public var enableSessionLog: String?
+
             public var expiredTime: String?
 
             public var forwardTableIds: DescribeNatGatewaysResponseBody.NatGateways.NatGateway.ForwardTableIds?
@@ -47135,6 +47137,9 @@ public class DescribeNatGatewaysResponseBody : Tea.TeaModel {
                 }
                 if self.eipBindMode != nil {
                     map["EipBindMode"] = self.eipBindMode!
+                }
+                if self.enableSessionLog != nil {
+                    map["EnableSessionLog"] = self.enableSessionLog!
                 }
                 if self.expiredTime != nil {
                     map["ExpiredTime"] = self.expiredTime!
@@ -47226,6 +47231,9 @@ public class DescribeNatGatewaysResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("EipBindMode") && dict["EipBindMode"] != nil {
                     self.eipBindMode = dict["EipBindMode"] as! String
+                }
+                if dict.keys.contains("EnableSessionLog") && dict["EnableSessionLog"] != nil {
+                    self.enableSessionLog = dict["EnableSessionLog"] as! String
                 }
                 if dict.keys.contains("ExpiredTime") && dict["ExpiredTime"] != nil {
                     self.expiredTime = dict["ExpiredTime"] as! String
@@ -72043,6 +72051,59 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class LogDelivery : Tea.TeaModel {
+        public var deliverLogsErrorMessage: String?
+
+        public var deliveryStatus: String?
+
+        public var logDeliveryType: String?
+
+        public var logDestination: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deliverLogsErrorMessage != nil {
+                map["DeliverLogsErrorMessage"] = self.deliverLogsErrorMessage!
+            }
+            if self.deliveryStatus != nil {
+                map["DeliveryStatus"] = self.deliveryStatus!
+            }
+            if self.logDeliveryType != nil {
+                map["LogDeliveryType"] = self.logDeliveryType!
+            }
+            if self.logDestination != nil {
+                map["LogDestination"] = self.logDestination!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DeliverLogsErrorMessage") && dict["DeliverLogsErrorMessage"] != nil {
+                self.deliverLogsErrorMessage = dict["DeliverLogsErrorMessage"] as! String
+            }
+            if dict.keys.contains("DeliveryStatus") && dict["DeliveryStatus"] != nil {
+                self.deliveryStatus = dict["DeliveryStatus"] as! String
+            }
+            if dict.keys.contains("LogDeliveryType") && dict["LogDeliveryType"] != nil {
+                self.logDeliveryType = dict["LogDeliveryType"] as! String
+            }
+            if dict.keys.contains("LogDestination") && dict["LogDestination"] != nil {
+                self.logDestination = dict["LogDestination"] as! String
+            }
+        }
+    }
     public class PrivateInfo : Tea.TeaModel {
         public var eniInstanceId: String?
 
@@ -72153,6 +72214,8 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
 
     public var ecsMetricEnabled: Bool?
 
+    public var enableSessionLog: Bool?
+
     public var expiredTime: String?
 
     public var forwardTable: GetNatGatewayAttributeResponseBody.ForwardTable?
@@ -72160,6 +72223,8 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
     public var fullNatTable: GetNatGatewayAttributeResponseBody.FullNatTable?
 
     public var ipList: [GetNatGatewayAttributeResponseBody.IpList]?
+
+    public var logDelivery: GetNatGatewayAttributeResponseBody.LogDelivery?
 
     public var name: String?
 
@@ -72201,6 +72266,7 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
         try self.deletionProtectionInfo?.validate()
         try self.forwardTable?.validate()
         try self.fullNatTable?.validate()
+        try self.logDelivery?.validate()
         try self.privateInfo?.validate()
         try self.snatTable?.validate()
     }
@@ -72225,6 +72291,9 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
         if self.ecsMetricEnabled != nil {
             map["EcsMetricEnabled"] = self.ecsMetricEnabled!
         }
+        if self.enableSessionLog != nil {
+            map["EnableSessionLog"] = self.enableSessionLog!
+        }
         if self.expiredTime != nil {
             map["ExpiredTime"] = self.expiredTime!
         }
@@ -72240,6 +72309,9 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["IpList"] = tmp
+        }
+        if self.logDelivery != nil {
+            map["LogDelivery"] = self.logDelivery?.toMap()
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -72306,6 +72378,9 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
         if dict.keys.contains("EcsMetricEnabled") && dict["EcsMetricEnabled"] != nil {
             self.ecsMetricEnabled = dict["EcsMetricEnabled"] as! Bool
         }
+        if dict.keys.contains("EnableSessionLog") && dict["EnableSessionLog"] != nil {
+            self.enableSessionLog = dict["EnableSessionLog"] as! Bool
+        }
         if dict.keys.contains("ExpiredTime") && dict["ExpiredTime"] != nil {
             self.expiredTime = dict["ExpiredTime"] as! String
         }
@@ -72329,6 +72404,11 @@ public class GetNatGatewayAttributeResponseBody : Tea.TeaModel {
                 tmp.append(model)
             }
             self.ipList = tmp
+        }
+        if dict.keys.contains("LogDelivery") && dict["LogDelivery"] != nil {
+            var model = GetNatGatewayAttributeResponseBody.LogDelivery()
+            model.fromMap(dict["LogDelivery"] as! [String: Any])
+            self.logDelivery = model
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
@@ -88519,11 +88599,173 @@ public class ModifyIpv6InternetBandwidthResponse : Tea.TeaModel {
 }
 
 public class ModifyNatGatewayAttributeRequest : Tea.TeaModel {
+    public class LogDelivery : Tea.TeaModel {
+        public var logDeliveryType: String?
+
+        public var logDestination: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.logDeliveryType != nil {
+                map["LogDeliveryType"] = self.logDeliveryType!
+            }
+            if self.logDestination != nil {
+                map["LogDestination"] = self.logDestination!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("LogDeliveryType") && dict["LogDeliveryType"] != nil {
+                self.logDeliveryType = dict["LogDeliveryType"] as! String
+            }
+            if dict.keys.contains("LogDestination") && dict["LogDestination"] != nil {
+                self.logDestination = dict["LogDestination"] as! String
+            }
+        }
+    }
     public var description_: String?
 
     public var eipBindMode: String?
 
+    public var enableSessionLog: Bool?
+
     public var icmpReplyEnabled: Bool?
+
+    public var logDelivery: ModifyNatGatewayAttributeRequest.LogDelivery?
+
+    public var name: String?
+
+    public var natGatewayId: String?
+
+    public var ownerAccount: String?
+
+    public var ownerId: Int64?
+
+    public var regionId: String?
+
+    public var resourceOwnerAccount: String?
+
+    public var resourceOwnerId: Int64?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.logDelivery?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.description_ != nil {
+            map["Description"] = self.description_!
+        }
+        if self.eipBindMode != nil {
+            map["EipBindMode"] = self.eipBindMode!
+        }
+        if self.enableSessionLog != nil {
+            map["EnableSessionLog"] = self.enableSessionLog!
+        }
+        if self.icmpReplyEnabled != nil {
+            map["IcmpReplyEnabled"] = self.icmpReplyEnabled!
+        }
+        if self.logDelivery != nil {
+            map["LogDelivery"] = self.logDelivery?.toMap()
+        }
+        if self.name != nil {
+            map["Name"] = self.name!
+        }
+        if self.natGatewayId != nil {
+            map["NatGatewayId"] = self.natGatewayId!
+        }
+        if self.ownerAccount != nil {
+            map["OwnerAccount"] = self.ownerAccount!
+        }
+        if self.ownerId != nil {
+            map["OwnerId"] = self.ownerId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.resourceOwnerAccount != nil {
+            map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
+        }
+        if self.resourceOwnerId != nil {
+            map["ResourceOwnerId"] = self.resourceOwnerId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Description") && dict["Description"] != nil {
+            self.description_ = dict["Description"] as! String
+        }
+        if dict.keys.contains("EipBindMode") && dict["EipBindMode"] != nil {
+            self.eipBindMode = dict["EipBindMode"] as! String
+        }
+        if dict.keys.contains("EnableSessionLog") && dict["EnableSessionLog"] != nil {
+            self.enableSessionLog = dict["EnableSessionLog"] as! Bool
+        }
+        if dict.keys.contains("IcmpReplyEnabled") && dict["IcmpReplyEnabled"] != nil {
+            self.icmpReplyEnabled = dict["IcmpReplyEnabled"] as! Bool
+        }
+        if dict.keys.contains("LogDelivery") && dict["LogDelivery"] != nil {
+            var model = ModifyNatGatewayAttributeRequest.LogDelivery()
+            model.fromMap(dict["LogDelivery"] as! [String: Any])
+            self.logDelivery = model
+        }
+        if dict.keys.contains("Name") && dict["Name"] != nil {
+            self.name = dict["Name"] as! String
+        }
+        if dict.keys.contains("NatGatewayId") && dict["NatGatewayId"] != nil {
+            self.natGatewayId = dict["NatGatewayId"] as! String
+        }
+        if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
+            self.ownerAccount = dict["OwnerAccount"] as! String
+        }
+        if dict.keys.contains("OwnerId") && dict["OwnerId"] != nil {
+            self.ownerId = dict["OwnerId"] as! Int64
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
+            self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
+        }
+        if dict.keys.contains("ResourceOwnerId") && dict["ResourceOwnerId"] != nil {
+            self.resourceOwnerId = dict["ResourceOwnerId"] as! Int64
+        }
+    }
+}
+
+public class ModifyNatGatewayAttributeShrinkRequest : Tea.TeaModel {
+    public var description_: String?
+
+    public var eipBindMode: String?
+
+    public var enableSessionLog: Bool?
+
+    public var icmpReplyEnabled: Bool?
+
+    public var logDeliveryShrink: String?
 
     public var name: String?
 
@@ -88559,8 +88801,14 @@ public class ModifyNatGatewayAttributeRequest : Tea.TeaModel {
         if self.eipBindMode != nil {
             map["EipBindMode"] = self.eipBindMode!
         }
+        if self.enableSessionLog != nil {
+            map["EnableSessionLog"] = self.enableSessionLog!
+        }
         if self.icmpReplyEnabled != nil {
             map["IcmpReplyEnabled"] = self.icmpReplyEnabled!
+        }
+        if self.logDeliveryShrink != nil {
+            map["LogDelivery"] = self.logDeliveryShrink!
         }
         if self.name != nil {
             map["Name"] = self.name!
@@ -88593,8 +88841,14 @@ public class ModifyNatGatewayAttributeRequest : Tea.TeaModel {
         if dict.keys.contains("EipBindMode") && dict["EipBindMode"] != nil {
             self.eipBindMode = dict["EipBindMode"] as! String
         }
+        if dict.keys.contains("EnableSessionLog") && dict["EnableSessionLog"] != nil {
+            self.enableSessionLog = dict["EnableSessionLog"] as! Bool
+        }
         if dict.keys.contains("IcmpReplyEnabled") && dict["IcmpReplyEnabled"] != nil {
             self.icmpReplyEnabled = dict["IcmpReplyEnabled"] as! Bool
+        }
+        if dict.keys.contains("LogDelivery") && dict["LogDelivery"] != nil {
+            self.logDeliveryShrink = dict["LogDelivery"] as! String
         }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String

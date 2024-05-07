@@ -17789,8 +17789,13 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
-    public func modifyNatGatewayAttributeWithOptions(_ request: ModifyNatGatewayAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNatGatewayAttributeResponse {
-        try TeaUtils.Client.validateModel(request)
+    public func modifyNatGatewayAttributeWithOptions(_ tmpReq: ModifyNatGatewayAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNatGatewayAttributeResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: ModifyNatGatewayAttributeShrinkRequest = ModifyNatGatewayAttributeShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.logDelivery)) {
+            request.logDeliveryShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.logDelivery, "LogDelivery", "json")
+        }
         var query: [String: Any] = [:]
         if (!TeaUtils.Client.isUnset(request.description_)) {
             query["Description"] = request.description_ ?? "";
@@ -17798,8 +17803,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.eipBindMode)) {
             query["EipBindMode"] = request.eipBindMode ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.enableSessionLog)) {
+            query["EnableSessionLog"] = request.enableSessionLog!;
+        }
         if (!TeaUtils.Client.isUnset(request.icmpReplyEnabled)) {
             query["IcmpReplyEnabled"] = request.icmpReplyEnabled!;
+        }
+        if (!TeaUtils.Client.isUnset(request.logDeliveryShrink)) {
+            query["LogDelivery"] = request.logDeliveryShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.name)) {
             query["Name"] = request.name ?? "";
