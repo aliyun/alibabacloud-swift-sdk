@@ -6638,6 +6638,8 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
         }
         public class DataDisk : Tea.TeaModel {
+            public var burstingEnabled: Bool?
+
             public var category: String?
 
             public var deleteWithInstance: Bool?
@@ -6648,11 +6650,15 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
             public var diskName: String?
 
+            public var encryptAlgorithm: String?
+
             public var encrypted: Bool?
 
             public var kmsKeyId: String?
 
             public var performanceLevel: String?
+
+            public var provisionedIops: Int64?
 
             public var size: Int32?
 
@@ -6672,6 +6678,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.burstingEnabled != nil {
+                    map["BurstingEnabled"] = self.burstingEnabled!
+                }
                 if self.category != nil {
                     map["Category"] = self.category!
                 }
@@ -6687,6 +6696,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 if self.diskName != nil {
                     map["DiskName"] = self.diskName!
                 }
+                if self.encryptAlgorithm != nil {
+                    map["EncryptAlgorithm"] = self.encryptAlgorithm!
+                }
                 if self.encrypted != nil {
                     map["Encrypted"] = self.encrypted!
                 }
@@ -6695,6 +6707,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 }
                 if self.performanceLevel != nil {
                     map["PerformanceLevel"] = self.performanceLevel!
+                }
+                if self.provisionedIops != nil {
+                    map["ProvisionedIops"] = self.provisionedIops!
                 }
                 if self.size != nil {
                     map["Size"] = self.size!
@@ -6706,6 +6721,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
+                    self.burstingEnabled = dict["BurstingEnabled"] as! Bool
+                }
                 if dict.keys.contains("Category") && dict["Category"] != nil {
                     self.category = dict["Category"] as! String
                 }
@@ -6721,6 +6739,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 if dict.keys.contains("DiskName") && dict["DiskName"] != nil {
                     self.diskName = dict["DiskName"] as! String
                 }
+                if dict.keys.contains("EncryptAlgorithm") && dict["EncryptAlgorithm"] != nil {
+                    self.encryptAlgorithm = dict["EncryptAlgorithm"] as! String
+                }
                 if dict.keys.contains("Encrypted") && dict["Encrypted"] != nil {
                     self.encrypted = dict["Encrypted"] as! Bool
                 }
@@ -6729,6 +6750,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
                     self.performanceLevel = dict["PerformanceLevel"] as! String
+                }
+                if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+                    self.provisionedIops = dict["ProvisionedIops"] as! Int64
                 }
                 if dict.keys.contains("Size") && dict["Size"] != nil {
                     self.size = dict["Size"] as! Int32
@@ -6739,11 +6763,15 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
             }
         }
         public class SystemDisk : Tea.TeaModel {
+            public var burstingEnabled: Bool?
+
             public var encryptAlgorithm: String?
 
             public var encrypted: String?
 
             public var KMSKeyId: String?
+
+            public var provisionedIops: Int64?
 
             public override init() {
                 super.init()
@@ -6759,6 +6787,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.burstingEnabled != nil {
+                    map["BurstingEnabled"] = self.burstingEnabled!
+                }
                 if self.encryptAlgorithm != nil {
                     map["EncryptAlgorithm"] = self.encryptAlgorithm!
                 }
@@ -6768,10 +6799,16 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 if self.KMSKeyId != nil {
                     map["KMSKeyId"] = self.KMSKeyId!
                 }
+                if self.provisionedIops != nil {
+                    map["ProvisionedIops"] = self.provisionedIops!
+                }
                 return map
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("BurstingEnabled") && dict["BurstingEnabled"] != nil {
+                    self.burstingEnabled = dict["BurstingEnabled"] as! Bool
+                }
                 if dict.keys.contains("EncryptAlgorithm") && dict["EncryptAlgorithm"] != nil {
                     self.encryptAlgorithm = dict["EncryptAlgorithm"] as! String
                 }
@@ -6780,6 +6817,9 @@ public class CreateAutoProvisioningGroupRequest : Tea.TeaModel {
                 }
                 if dict.keys.contains("KMSKeyId") && dict["KMSKeyId"] != nil {
                     self.KMSKeyId = dict["KMSKeyId"] as! String
+                }
+                if dict.keys.contains("ProvisionedIops") && dict["ProvisionedIops"] != nil {
+                    self.provisionedIops = dict["ProvisionedIops"] as! Int64
                 }
             }
         }
@@ -15573,6 +15613,51 @@ public class CreateNatGatewayResponse : Tea.TeaModel {
 }
 
 public class CreateNetworkInterfaceRequest : Tea.TeaModel {
+    public class ConnectionTrackingConfiguration : Tea.TeaModel {
+        public var tcpClosedAndTimeWaitTimeout: Int32?
+
+        public var tcpEstablishedTimeout: Int32?
+
+        public var udpTimeout: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tcpClosedAndTimeWaitTimeout != nil {
+                map["TcpClosedAndTimeWaitTimeout"] = self.tcpClosedAndTimeWaitTimeout!
+            }
+            if self.tcpEstablishedTimeout != nil {
+                map["TcpEstablishedTimeout"] = self.tcpEstablishedTimeout!
+            }
+            if self.udpTimeout != nil {
+                map["UdpTimeout"] = self.udpTimeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TcpClosedAndTimeWaitTimeout") && dict["TcpClosedAndTimeWaitTimeout"] != nil {
+                self.tcpClosedAndTimeWaitTimeout = dict["TcpClosedAndTimeWaitTimeout"] as! Int32
+            }
+            if dict.keys.contains("TcpEstablishedTimeout") && dict["TcpEstablishedTimeout"] != nil {
+                self.tcpEstablishedTimeout = dict["TcpEstablishedTimeout"] as! Int32
+            }
+            if dict.keys.contains("UdpTimeout") && dict["UdpTimeout"] != nil {
+                self.udpTimeout = dict["UdpTimeout"] as! Int32
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -15613,6 +15698,8 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
     public var businessType: String?
 
     public var clientToken: String?
+
+    public var connectionTrackingConfiguration: CreateNetworkInterfaceRequest.ConnectionTrackingConfiguration?
 
     public var deleteOnRelease: Bool?
 
@@ -15682,6 +15769,7 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.connectionTrackingConfiguration?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15691,6 +15779,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if self.clientToken != nil {
             map["ClientToken"] = self.clientToken!
+        }
+        if self.connectionTrackingConfiguration != nil {
+            map["ConnectionTrackingConfiguration"] = self.connectionTrackingConfiguration?.toMap()
         }
         if self.deleteOnRelease != nil {
             map["DeleteOnRelease"] = self.deleteOnRelease!
@@ -15792,6 +15883,11 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
             self.clientToken = dict["ClientToken"] as! String
+        }
+        if dict.keys.contains("ConnectionTrackingConfiguration") && dict["ConnectionTrackingConfiguration"] != nil {
+            var model = CreateNetworkInterfaceRequest.ConnectionTrackingConfiguration()
+            model.fromMap(dict["ConnectionTrackingConfiguration"] as! [String: Any])
+            self.connectionTrackingConfiguration = model
         }
         if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
             self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
@@ -63436,6 +63532,51 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class ConnectionTrackingConfiguration : Tea.TeaModel {
+        public var tcpClosedAndTimeWaitTimeout: Int32?
+
+        public var tcpEstablishedTimeout: Int32?
+
+        public var udpTimeout: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tcpClosedAndTimeWaitTimeout != nil {
+                map["TcpClosedAndTimeWaitTimeout"] = self.tcpClosedAndTimeWaitTimeout!
+            }
+            if self.tcpEstablishedTimeout != nil {
+                map["TcpEstablishedTimeout"] = self.tcpEstablishedTimeout!
+            }
+            if self.udpTimeout != nil {
+                map["UdpTimeout"] = self.udpTimeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TcpClosedAndTimeWaitTimeout") && dict["TcpClosedAndTimeWaitTimeout"] != nil {
+                self.tcpClosedAndTimeWaitTimeout = dict["TcpClosedAndTimeWaitTimeout"] as! Int32
+            }
+            if dict.keys.contains("TcpEstablishedTimeout") && dict["TcpEstablishedTimeout"] != nil {
+                self.tcpEstablishedTimeout = dict["TcpEstablishedTimeout"] as! Int32
+            }
+            if dict.keys.contains("UdpTimeout") && dict["UdpTimeout"] != nil {
+                self.udpTimeout = dict["UdpTimeout"] as! Int32
+            }
+        }
+    }
     public class Ipv4PrefixSets : Tea.TeaModel {
         public class Ipv4PrefixSet : Tea.TeaModel {
             public var ipv4Prefix: String?
@@ -63930,6 +64071,8 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
 
     public var bondInterfaceSpecification: DescribeNetworkInterfaceAttributeResponseBody.BondInterfaceSpecification?
 
+    public var connectionTrackingConfiguration: DescribeNetworkInterfaceAttributeResponseBody.ConnectionTrackingConfiguration?
+
     public var creationTime: String?
 
     public var deleteOnRelease: Bool?
@@ -64001,6 +64144,7 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         try self.associatedPublicIp?.validate()
         try self.attachment?.validate()
         try self.bondInterfaceSpecification?.validate()
+        try self.connectionTrackingConfiguration?.validate()
         try self.ipv4PrefixSets?.validate()
         try self.ipv6PrefixSets?.validate()
         try self.ipv6Sets?.validate()
@@ -64020,6 +64164,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
         if self.bondInterfaceSpecification != nil {
             map["BondInterfaceSpecification"] = self.bondInterfaceSpecification?.toMap()
+        }
+        if self.connectionTrackingConfiguration != nil {
+            map["ConnectionTrackingConfiguration"] = self.connectionTrackingConfiguration?.toMap()
         }
         if self.creationTime != nil {
             map["CreationTime"] = self.creationTime!
@@ -64126,6 +64273,11 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             var model = DescribeNetworkInterfaceAttributeResponseBody.BondInterfaceSpecification()
             model.fromMap(dict["BondInterfaceSpecification"] as! [String: Any])
             self.bondInterfaceSpecification = model
+        }
+        if dict.keys.contains("ConnectionTrackingConfiguration") && dict["ConnectionTrackingConfiguration"] != nil {
+            var model = DescribeNetworkInterfaceAttributeResponseBody.ConnectionTrackingConfiguration()
+            model.fromMap(dict["ConnectionTrackingConfiguration"] as! [String: Any])
+            self.connectionTrackingConfiguration = model
         }
         if dict.keys.contains("CreationTime") && dict["CreationTime"] != nil {
             self.creationTime = dict["CreationTime"] as! String
@@ -99531,6 +99683,53 @@ public class ModifyManagedInstanceResponse : Tea.TeaModel {
 }
 
 public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
+    public class ConnectionTrackingConfiguration : Tea.TeaModel {
+        public var tcpClosedAndTimeWaitTimeout: Int32?
+
+        public var tcpEstablishedTimeout: Int32?
+
+        public var udpTimeout: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tcpClosedAndTimeWaitTimeout != nil {
+                map["TcpClosedAndTimeWaitTimeout"] = self.tcpClosedAndTimeWaitTimeout!
+            }
+            if self.tcpEstablishedTimeout != nil {
+                map["TcpEstablishedTimeout"] = self.tcpEstablishedTimeout!
+            }
+            if self.udpTimeout != nil {
+                map["UdpTimeout"] = self.udpTimeout!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("TcpClosedAndTimeWaitTimeout") && dict["TcpClosedAndTimeWaitTimeout"] != nil {
+                self.tcpClosedAndTimeWaitTimeout = dict["TcpClosedAndTimeWaitTimeout"] as! Int32
+            }
+            if dict.keys.contains("TcpEstablishedTimeout") && dict["TcpEstablishedTimeout"] != nil {
+                self.tcpEstablishedTimeout = dict["TcpEstablishedTimeout"] as! Int32
+            }
+            if dict.keys.contains("UdpTimeout") && dict["UdpTimeout"] != nil {
+                self.udpTimeout = dict["UdpTimeout"] as! Int32
+            }
+        }
+    }
+    public var connectionTrackingConfiguration: ModifyNetworkInterfaceAttributeRequest.ConnectionTrackingConfiguration?
+
     public var deleteOnRelease: Bool?
 
     public var description_: String?
@@ -99567,10 +99766,14 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
     }
 
     public override func validate() throws -> Void {
+        try self.connectionTrackingConfiguration?.validate()
     }
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.connectionTrackingConfiguration != nil {
+            map["ConnectionTrackingConfiguration"] = self.connectionTrackingConfiguration?.toMap()
+        }
         if self.deleteOnRelease != nil {
             map["DeleteOnRelease"] = self.deleteOnRelease!
         }
@@ -99614,6 +99817,11 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ConnectionTrackingConfiguration") && dict["ConnectionTrackingConfiguration"] != nil {
+            var model = ModifyNetworkInterfaceAttributeRequest.ConnectionTrackingConfiguration()
+            model.fromMap(dict["ConnectionTrackingConfiguration"] as! [String: Any])
+            self.connectionTrackingConfiguration = model
+        }
         if dict.keys.contains("DeleteOnRelease") && dict["DeleteOnRelease"] != nil {
             self.deleteOnRelease = dict["DeleteOnRelease"] as! Bool
         }

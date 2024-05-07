@@ -3737,6 +3737,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.clientToken)) {
             query["ClientToken"] = request.clientToken ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.connectionTrackingConfiguration)) {
+            query["ConnectionTrackingConfiguration"] = request.connectionTrackingConfiguration!;
+        }
         if (!TeaUtils.Client.isUnset(request.deleteOnRelease)) {
             query["DeleteOnRelease"] = request.deleteOnRelease!;
         }
@@ -17708,6 +17711,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyNetworkInterfaceAttributeWithOptions(_ request: ModifyNetworkInterfaceAttributeRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyNetworkInterfaceAttributeResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.connectionTrackingConfiguration)) {
+            query["ConnectionTrackingConfiguration"] = request.connectionTrackingConfiguration!;
+        }
         if (!TeaUtils.Client.isUnset(request.deleteOnRelease)) {
             query["DeleteOnRelease"] = request.deleteOnRelease!;
         }
