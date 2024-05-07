@@ -15833,6 +15833,8 @@ public class DescribeDesktopInfoResponseBody : Tea.TeaModel {
 
         public var currentAppVersion: String?
 
+        public var desktopGroupId: String?
+
         public var desktopId: String?
 
         public var desktopStatus: String?
@@ -15867,6 +15869,9 @@ public class DescribeDesktopInfoResponseBody : Tea.TeaModel {
             if self.currentAppVersion != nil {
                 map["CurrentAppVersion"] = self.currentAppVersion!
             }
+            if self.desktopGroupId != nil {
+                map["DesktopGroupId"] = self.desktopGroupId!
+            }
             if self.desktopId != nil {
                 map["DesktopId"] = self.desktopId!
             }
@@ -15897,6 +15902,9 @@ public class DescribeDesktopInfoResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("CurrentAppVersion") && dict["CurrentAppVersion"] != nil {
                 self.currentAppVersion = dict["CurrentAppVersion"] as! String
+            }
+            if dict.keys.contains("DesktopGroupId") && dict["DesktopGroupId"] != nil {
+                self.desktopGroupId = dict["DesktopGroupId"] as! String
             }
             if dict.keys.contains("DesktopId") && dict["DesktopId"] != nil {
                 self.desktopId = dict["DesktopId"] as! String
