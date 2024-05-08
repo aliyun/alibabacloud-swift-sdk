@@ -2337,7 +2337,11 @@ public class ListTopicResponseBody : Tea.TeaModel {
 
             public var messageRetentionPeriod: Int64?
 
+            public var topicInnerUrl: String?
+
             public var topicName: String?
+
+            public var topicUrl: String?
 
             public override init() {
                 super.init()
@@ -2371,8 +2375,14 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 if self.messageRetentionPeriod != nil {
                     map["MessageRetentionPeriod"] = self.messageRetentionPeriod!
                 }
+                if self.topicInnerUrl != nil {
+                    map["TopicInnerUrl"] = self.topicInnerUrl!
+                }
                 if self.topicName != nil {
                     map["TopicName"] = self.topicName!
+                }
+                if self.topicUrl != nil {
+                    map["TopicUrl"] = self.topicUrl!
                 }
                 return map
             }
@@ -2396,8 +2406,14 @@ public class ListTopicResponseBody : Tea.TeaModel {
                 if dict.keys.contains("MessageRetentionPeriod") && dict["MessageRetentionPeriod"] != nil {
                     self.messageRetentionPeriod = dict["MessageRetentionPeriod"] as! Int64
                 }
+                if dict.keys.contains("TopicInnerUrl") && dict["TopicInnerUrl"] != nil {
+                    self.topicInnerUrl = dict["TopicInnerUrl"] as! String
+                }
                 if dict.keys.contains("TopicName") && dict["TopicName"] != nil {
                     self.topicName = dict["TopicName"] as! String
+                }
+                if dict.keys.contains("TopicUrl") && dict["TopicUrl"] != nil {
+                    self.topicUrl = dict["TopicUrl"] as! String
                 }
             }
         }
