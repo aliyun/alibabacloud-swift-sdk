@@ -1295,6 +1295,8 @@ public class CreateAccessControlListRequest : Tea.TeaModel {
 }
 
 public class CreateAccessControlListResponseBody : Tea.TeaModel {
+    public var aclId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -1311,6 +1313,9 @@ public class CreateAccessControlListResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.aclId != nil {
+            map["AclId"] = self.aclId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -1318,6 +1323,9 @@ public class CreateAccessControlListResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AclId") && dict["AclId"] != nil {
+            self.aclId = dict["AclId"] as! String
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
@@ -8260,6 +8268,8 @@ public class DescribeAccessControlListAttributeResponseBody : Tea.TeaModel {
 
     public var aclName: String?
 
+    public var addressIPVersion: String?
+
     public var requestId: String?
 
     public override init() {
@@ -8286,6 +8296,9 @@ public class DescribeAccessControlListAttributeResponseBody : Tea.TeaModel {
         if self.aclName != nil {
             map["AclName"] = self.aclName!
         }
+        if self.addressIPVersion != nil {
+            map["AddressIPVersion"] = self.addressIPVersion!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -8303,6 +8316,9 @@ public class DescribeAccessControlListAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("AclName") && dict["AclName"] != nil {
             self.aclName = dict["AclName"] as! String
+        }
+        if dict.keys.contains("AddressIPVersion") && dict["AddressIPVersion"] != nil {
+            self.addressIPVersion = dict["AddressIPVersion"] as! String
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
