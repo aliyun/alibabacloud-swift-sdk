@@ -598,6 +598,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.origin)) {
             query["Origin"] = request.origin ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            query["Policy"] = request.policy ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.protectionLevel)) {
             query["ProtectionLevel"] = request.protectionLevel ?? "";
         }
@@ -771,6 +774,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.extendedConfigShrink)) {
             query["ExtendedConfig"] = request.extendedConfigShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            query["Policy"] = request.policy ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.rotationInterval)) {
             query["RotationInterval"] = request.rotationInterval ?? "";
@@ -1737,6 +1743,40 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKeyPolicyWithOptions(_ request: GetKeyPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKeyPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyId)) {
+            query["KeyId"] = request.keyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyName)) {
+            query["PolicyName"] = request.policyName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetKeyPolicy",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetKeyPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getKeyPolicy(_ request: GetKeyPolicyRequest) async throws -> GetKeyPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getKeyPolicyWithOptions(request as! GetKeyPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func getKmsInstanceWithOptions(_ request: GetKmsInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetKmsInstanceResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1885,6 +1925,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRandomPassword(_ request: GetRandomPasswordRequest) async throws -> GetRandomPasswordResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getRandomPasswordWithOptions(request as! GetRandomPasswordRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSecretPolicyWithOptions(_ request: GetSecretPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSecretPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.policyName)) {
+            query["PolicyName"] = request.policyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secretName)) {
+            query["SecretName"] = request.secretName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSecretPolicy",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSecretPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSecretPolicy(_ request: GetSecretPolicyRequest) async throws -> GetSecretPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getSecretPolicyWithOptions(request as! GetSecretPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2688,6 +2762,80 @@ open class Client : AlibabacloudOpenApi.Client {
     public func setDeletionProtection(_ request: SetDeletionProtectionRequest) async throws -> SetDeletionProtectionResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await setDeletionProtectionWithOptions(request as! SetDeletionProtectionRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setKeyPolicyWithOptions(_ request: SetKeyPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetKeyPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.keyId)) {
+            query["KeyId"] = request.keyId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            query["Policy"] = request.policy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyName)) {
+            query["PolicyName"] = request.policyName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetKeyPolicy",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetKeyPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setKeyPolicy(_ request: SetKeyPolicyRequest) async throws -> SetKeyPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setKeyPolicyWithOptions(request as! SetKeyPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setSecretPolicyWithOptions(_ request: SetSecretPolicyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> SetSecretPolicyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.policy)) {
+            query["Policy"] = request.policy ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.policyName)) {
+            query["PolicyName"] = request.policyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.secretName)) {
+            query["SecretName"] = request.secretName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "SetSecretPolicy",
+            "version": "2016-01-20",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(SetSecretPolicyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func setSecretPolicy(_ request: SetSecretPolicyRequest) async throws -> SetSecretPolicyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await setSecretPolicyWithOptions(request as! SetSecretPolicyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
