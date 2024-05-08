@@ -11010,6 +11010,209 @@ public class UpdateServiceInstanceAttributeResponse : Tea.TeaModel {
     }
 }
 
+public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
+    public var enableUserPrometheus: Bool?
+
+    public var operationName: String?
+
+    public var parameters: [String: Any]?
+
+    public var predefinedParametersName: String?
+
+    public var serviceInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableUserPrometheus != nil {
+            map["EnableUserPrometheus"] = self.enableUserPrometheus!
+        }
+        if self.operationName != nil {
+            map["OperationName"] = self.operationName!
+        }
+        if self.parameters != nil {
+            map["Parameters"] = self.parameters!
+        }
+        if self.predefinedParametersName != nil {
+            map["PredefinedParametersName"] = self.predefinedParametersName!
+        }
+        if self.serviceInstanceId != nil {
+            map["ServiceInstanceId"] = self.serviceInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableUserPrometheus") && dict["EnableUserPrometheus"] != nil {
+            self.enableUserPrometheus = dict["EnableUserPrometheus"] as! Bool
+        }
+        if dict.keys.contains("OperationName") && dict["OperationName"] != nil {
+            self.operationName = dict["OperationName"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parameters = dict["Parameters"] as! [String: Any]
+        }
+        if dict.keys.contains("PredefinedParametersName") && dict["PredefinedParametersName"] != nil {
+            self.predefinedParametersName = dict["PredefinedParametersName"] as! String
+        }
+        if dict.keys.contains("ServiceInstanceId") && dict["ServiceInstanceId"] != nil {
+            self.serviceInstanceId = dict["ServiceInstanceId"] as! String
+        }
+    }
+}
+
+public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
+    public var enableUserPrometheus: Bool?
+
+    public var operationName: String?
+
+    public var parametersShrink: String?
+
+    public var predefinedParametersName: String?
+
+    public var serviceInstanceId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enableUserPrometheus != nil {
+            map["EnableUserPrometheus"] = self.enableUserPrometheus!
+        }
+        if self.operationName != nil {
+            map["OperationName"] = self.operationName!
+        }
+        if self.parametersShrink != nil {
+            map["Parameters"] = self.parametersShrink!
+        }
+        if self.predefinedParametersName != nil {
+            map["PredefinedParametersName"] = self.predefinedParametersName!
+        }
+        if self.serviceInstanceId != nil {
+            map["ServiceInstanceId"] = self.serviceInstanceId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("EnableUserPrometheus") && dict["EnableUserPrometheus"] != nil {
+            self.enableUserPrometheus = dict["EnableUserPrometheus"] as! Bool
+        }
+        if dict.keys.contains("OperationName") && dict["OperationName"] != nil {
+            self.operationName = dict["OperationName"] as! String
+        }
+        if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
+            self.parametersShrink = dict["Parameters"] as! String
+        }
+        if dict.keys.contains("PredefinedParametersName") && dict["PredefinedParametersName"] != nil {
+            self.predefinedParametersName = dict["PredefinedParametersName"] as! String
+        }
+        if dict.keys.contains("ServiceInstanceId") && dict["ServiceInstanceId"] != nil {
+            self.serviceInstanceId = dict["ServiceInstanceId"] as! String
+        }
+    }
+}
+
+public class UpdateServiceInstanceSpecResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class UpdateServiceInstanceSpecResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: UpdateServiceInstanceSpecResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = UpdateServiceInstanceSpecResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class UpgradeServiceInstanceRequest : Tea.TeaModel {
     public var clientToken: String?
 

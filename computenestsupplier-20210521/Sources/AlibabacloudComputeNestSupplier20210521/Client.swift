@@ -1406,6 +1406,54 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceInstanceSpecWithOptions(_ tmpReq: UpdateServiceInstanceSpecRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpdateServiceInstanceSpecResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: UpdateServiceInstanceSpecShrinkRequest = UpdateServiceInstanceSpecShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.parameters)) {
+            request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enableUserPrometheus)) {
+            query["EnableUserPrometheus"] = request.enableUserPrometheus!;
+        }
+        if (!TeaUtils.Client.isUnset(request.operationName)) {
+            query["OperationName"] = request.operationName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.parametersShrink)) {
+            query["Parameters"] = request.parametersShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.predefinedParametersName)) {
+            query["PredefinedParametersName"] = request.predefinedParametersName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceInstanceId)) {
+            query["ServiceInstanceId"] = request.serviceInstanceId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "UpdateServiceInstanceSpec",
+            "version": "2021-05-21",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(UpdateServiceInstanceSpecResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func updateServiceInstanceSpec(_ request: UpdateServiceInstanceSpecRequest) async throws -> UpdateServiceInstanceSpecResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await updateServiceInstanceSpecWithOptions(request as! UpdateServiceInstanceSpecRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func upgradeServiceInstanceWithOptions(_ tmpReq: UpgradeServiceInstanceRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> UpgradeServiceInstanceResponse {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: UpgradeServiceInstanceShrinkRequest = UpgradeServiceInstanceShrinkRequest([:])
