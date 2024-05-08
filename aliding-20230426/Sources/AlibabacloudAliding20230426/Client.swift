@@ -9655,6 +9655,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dingType)) {
             body["DingType"] = request.dingType ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.isDimission)) {
+            body["IsDimission"] = request.isDimission ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.source)) {
             body["Source"] = request.source ?? "";
         }

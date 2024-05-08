@@ -70778,6 +70778,8 @@ public class SyncDingTypeRequest : Tea.TeaModel {
     }
     public var dingType: String?
 
+    public var isDimission: String?
+
     public var source: String?
 
     public var tenantContext: SyncDingTypeRequest.TenantContext?
@@ -70802,6 +70804,9 @@ public class SyncDingTypeRequest : Tea.TeaModel {
         if self.dingType != nil {
             map["DingType"] = self.dingType!
         }
+        if self.isDimission != nil {
+            map["IsDimission"] = self.isDimission!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -70817,6 +70822,9 @@ public class SyncDingTypeRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DingType") && dict["DingType"] != nil {
             self.dingType = dict["DingType"] as! String
+        }
+        if dict.keys.contains("IsDimission") && dict["IsDimission"] != nil {
+            self.isDimission = dict["IsDimission"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
@@ -70834,6 +70842,8 @@ public class SyncDingTypeRequest : Tea.TeaModel {
 
 public class SyncDingTypeShrinkRequest : Tea.TeaModel {
     public var dingType: String?
+
+    public var isDimission: String?
 
     public var source: String?
 
@@ -70858,6 +70868,9 @@ public class SyncDingTypeShrinkRequest : Tea.TeaModel {
         if self.dingType != nil {
             map["DingType"] = self.dingType!
         }
+        if self.isDimission != nil {
+            map["IsDimission"] = self.isDimission!
+        }
         if self.source != nil {
             map["Source"] = self.source!
         }
@@ -70873,6 +70886,9 @@ public class SyncDingTypeShrinkRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DingType") && dict["DingType"] != nil {
             self.dingType = dict["DingType"] as! String
+        }
+        if dict.keys.contains("IsDimission") && dict["IsDimission"] != nil {
+            self.isDimission = dict["IsDimission"] as! String
         }
         if dict.keys.contains("Source") && dict["Source"] != nil {
             self.source = dict["Source"] as! String
