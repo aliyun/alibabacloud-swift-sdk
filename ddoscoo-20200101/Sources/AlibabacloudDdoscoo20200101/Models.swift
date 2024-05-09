@@ -560,6 +560,8 @@ public class ConfigL7RsPolicyRequest : Tea.TeaModel {
 
     public var resourceGroupId: String?
 
+    public var upstreamRetry: Int32?
+
     public override init() {
         super.init()
     }
@@ -583,6 +585,9 @@ public class ConfigL7RsPolicyRequest : Tea.TeaModel {
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
         }
+        if self.upstreamRetry != nil {
+            map["UpstreamRetry"] = self.upstreamRetry!
+        }
         return map
     }
 
@@ -595,6 +600,9 @@ public class ConfigL7RsPolicyRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
+        }
+        if dict.keys.contains("UpstreamRetry") && dict["UpstreamRetry"] != nil {
+            self.upstreamRetry = dict["UpstreamRetry"] as! Int32
         }
     }
 }
@@ -14284,6 +14292,18 @@ public class DescribeL7RsPolicyRequest : Tea.TeaModel {
 public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
     public class Attributes : Tea.TeaModel {
         public class Attribute : Tea.TeaModel {
+            public var connectTimeout: Int32?
+
+            public var failTimeout: Int32?
+
+            public var maxFails: Int32?
+
+            public var mode: String?
+
+            public var readTimeout: Int32?
+
+            public var sendTimeout: Int32?
+
             public var weight: Int32?
 
             public override init() {
@@ -14300,6 +14320,24 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.connectTimeout != nil {
+                    map["ConnectTimeout"] = self.connectTimeout!
+                }
+                if self.failTimeout != nil {
+                    map["FailTimeout"] = self.failTimeout!
+                }
+                if self.maxFails != nil {
+                    map["MaxFails"] = self.maxFails!
+                }
+                if self.mode != nil {
+                    map["Mode"] = self.mode!
+                }
+                if self.readTimeout != nil {
+                    map["ReadTimeout"] = self.readTimeout!
+                }
+                if self.sendTimeout != nil {
+                    map["SendTimeout"] = self.sendTimeout!
+                }
                 if self.weight != nil {
                     map["Weight"] = self.weight!
                 }
@@ -14307,6 +14345,24 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ConnectTimeout") && dict["ConnectTimeout"] != nil {
+                    self.connectTimeout = dict["ConnectTimeout"] as! Int32
+                }
+                if dict.keys.contains("FailTimeout") && dict["FailTimeout"] != nil {
+                    self.failTimeout = dict["FailTimeout"] as! Int32
+                }
+                if dict.keys.contains("MaxFails") && dict["MaxFails"] != nil {
+                    self.maxFails = dict["MaxFails"] as! Int32
+                }
+                if dict.keys.contains("Mode") && dict["Mode"] != nil {
+                    self.mode = dict["Mode"] as! String
+                }
+                if dict.keys.contains("ReadTimeout") && dict["ReadTimeout"] != nil {
+                    self.readTimeout = dict["ReadTimeout"] as! Int32
+                }
+                if dict.keys.contains("SendTimeout") && dict["SendTimeout"] != nil {
+                    self.sendTimeout = dict["SendTimeout"] as! Int32
+                }
                 if dict.keys.contains("Weight") && dict["Weight"] != nil {
                     self.weight = dict["Weight"] as! Int32
                 }
@@ -14365,6 +14421,8 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
 
     public var requestId: String?
 
+    public var upstreamRetry: Int32?
+
     public override init() {
         super.init()
     }
@@ -14392,6 +14450,9 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.upstreamRetry != nil {
+            map["UpstreamRetry"] = self.upstreamRetry!
+        }
         return map
     }
 
@@ -14412,6 +14473,9 @@ public class DescribeL7RsPolicyResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("UpstreamRetry") && dict["UpstreamRetry"] != nil {
+            self.upstreamRetry = dict["UpstreamRetry"] as! Int32
         }
     }
 }
