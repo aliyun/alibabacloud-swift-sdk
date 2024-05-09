@@ -1022,10 +1022,16 @@ open class Client : AlibabacloudOpenApi.Client {
         try TeaUtils.Client.validateModel(tmpReq)
         var request: DeleteClusterShrinkRequest = DeleteClusterShrinkRequest([:])
         AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.deleteOptions)) {
+            request.deleteOptionsShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.deleteOptions, "delete_options", "json")
+        }
         if (!TeaUtils.Client.isUnset(tmpReq.retainResources)) {
             request.retainResourcesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.retainResources, "retain_resources", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.deleteOptionsShrink)) {
+            query["delete_options"] = request.deleteOptionsShrink ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.keepSlb)) {
             query["keep_slb"] = request.keepSlb!;
         }

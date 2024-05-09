@@ -6150,6 +6150,45 @@ public class DeleteAlertContactGroupResponse : Tea.TeaModel {
 }
 
 public class DeleteClusterRequest : Tea.TeaModel {
+    public class DeleteOptions : Tea.TeaModel {
+        public var deleteMode: String?
+
+        public var resourceType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.deleteMode != nil {
+                map["delete_mode"] = self.deleteMode!
+            }
+            if self.resourceType != nil {
+                map["resource_type"] = self.resourceType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("delete_mode") && dict["delete_mode"] != nil {
+                self.deleteMode = dict["delete_mode"] as! String
+            }
+            if dict.keys.contains("resource_type") && dict["resource_type"] != nil {
+                self.resourceType = dict["resource_type"] as! String
+            }
+        }
+    }
+    public var deleteOptions: [DeleteClusterRequest.DeleteOptions]?
+
     public var keepSlb: Bool?
 
     public var retainAllResources: Bool?
@@ -6170,6 +6209,13 @@ public class DeleteClusterRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteOptions != nil {
+            var tmp : [Any] = []
+            for k in self.deleteOptions! {
+                tmp.append(k.toMap())
+            }
+            map["delete_options"] = tmp
+        }
         if self.keepSlb != nil {
             map["keep_slb"] = self.keepSlb!
         }
@@ -6183,6 +6229,17 @@ public class DeleteClusterRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("delete_options") && dict["delete_options"] != nil {
+            var tmp : [DeleteClusterRequest.DeleteOptions] = []
+            for v in dict["delete_options"] as! [Any] {
+                var model = DeleteClusterRequest.DeleteOptions()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.deleteOptions = tmp
+        }
         if dict.keys.contains("keep_slb") && dict["keep_slb"] != nil {
             self.keepSlb = dict["keep_slb"] as! Bool
         }
@@ -6196,6 +6253,8 @@ public class DeleteClusterRequest : Tea.TeaModel {
 }
 
 public class DeleteClusterShrinkRequest : Tea.TeaModel {
+    public var deleteOptionsShrink: String?
+
     public var keepSlb: Bool?
 
     public var retainAllResources: Bool?
@@ -6216,6 +6275,9 @@ public class DeleteClusterShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.deleteOptionsShrink != nil {
+            map["delete_options"] = self.deleteOptionsShrink!
+        }
         if self.keepSlb != nil {
             map["keep_slb"] = self.keepSlb!
         }
@@ -6229,6 +6291,9 @@ public class DeleteClusterShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("delete_options") && dict["delete_options"] != nil {
+            self.deleteOptionsShrink = dict["delete_options"] as! String
+        }
         if dict.keys.contains("keep_slb") && dict["keep_slb"] != nil {
             self.keepSlb = dict["keep_slb"] as! Bool
         }
