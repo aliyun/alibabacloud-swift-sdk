@@ -344,8 +344,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.period)) {
             query["Period"] = request.period ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.productForm)) {
+            query["ProductForm"] = request.productForm ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedNodeCount)) {
+            query["ReservedNodeCount"] = request.reservedNodeCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedNodeSize)) {
+            query["ReservedNodeSize"] = request.reservedNodeSize ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceGroupId)) {
             query["ResourceGroupId"] = request.resourceGroupId ?? "";
@@ -1882,11 +1891,17 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.DBClusterStatus)) {
             query["DBClusterStatus"] = request.DBClusterStatus ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.DBClusterVersion)) {
+            query["DBClusterVersion"] = request.DBClusterVersion ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;
         }
         if (!TeaUtils.Client.isUnset(request.pageSize)) {
             query["PageSize"] = request.pageSize!;
+        }
+        if (!TeaUtils.Client.isUnset(request.productVersion)) {
+            query["ProductVersion"] = request.productVersion ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
@@ -4447,6 +4462,12 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.regionId)) {
             query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedNodeCount)) {
+            query["ReservedNodeCount"] = request.reservedNodeCount!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedNodeSize)) {
+            query["ReservedNodeSize"] = request.reservedNodeSize ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.resourceOwnerAccount)) {
             query["ResourceOwnerAccount"] = request.resourceOwnerAccount ?? "";

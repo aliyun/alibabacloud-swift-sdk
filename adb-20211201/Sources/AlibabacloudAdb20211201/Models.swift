@@ -3390,7 +3390,13 @@ public class CreateDBClusterRequest : Tea.TeaModel {
 
     public var period: String?
 
+    public var productForm: String?
+
     public var regionId: String?
+
+    public var reservedNodeCount: Int32?
+
+    public var reservedNodeSize: String?
 
     public var resourceGroupId: String?
 
@@ -3450,8 +3456,17 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         if self.period != nil {
             map["Period"] = self.period!
         }
+        if self.productForm != nil {
+            map["ProductForm"] = self.productForm!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
+        }
+        if self.reservedNodeCount != nil {
+            map["ReservedNodeCount"] = self.reservedNodeCount!
+        }
+        if self.reservedNodeSize != nil {
+            map["ReservedNodeSize"] = self.reservedNodeSize!
         }
         if self.resourceGroupId != nil {
             map["ResourceGroupId"] = self.resourceGroupId!
@@ -3515,8 +3530,17 @@ public class CreateDBClusterRequest : Tea.TeaModel {
         if dict.keys.contains("Period") && dict["Period"] != nil {
             self.period = dict["Period"] as! String
         }
+        if dict.keys.contains("ProductForm") && dict["ProductForm"] != nil {
+            self.productForm = dict["ProductForm"] as! String
+        }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ReservedNodeCount") && dict["ReservedNodeCount"] != nil {
+            self.reservedNodeCount = dict["ReservedNodeCount"] as! Int32
+        }
+        if dict.keys.contains("ReservedNodeSize") && dict["ReservedNodeSize"] != nil {
+            self.reservedNodeSize = dict["ReservedNodeSize"] as! String
         }
         if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
             self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -10902,9 +10926,15 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
             public var port: Int32?
 
+            public var productForm: String?
+
             public var regionId: String?
 
             public var reservedACU: String?
+
+            public var reservedNodeCount: Int32?
+
+            public var reservedNodeSize: String?
 
             public var resourceGroupId: String?
 
@@ -11002,11 +11032,20 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 if self.port != nil {
                     map["Port"] = self.port!
                 }
+                if self.productForm != nil {
+                    map["ProductForm"] = self.productForm!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
                 if self.reservedACU != nil {
                     map["ReservedACU"] = self.reservedACU!
+                }
+                if self.reservedNodeCount != nil {
+                    map["ReservedNodeCount"] = self.reservedNodeCount!
+                }
+                if self.reservedNodeSize != nil {
+                    map["ReservedNodeSize"] = self.reservedNodeSize!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
@@ -11102,11 +11141,20 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Port") && dict["Port"] != nil {
                     self.port = dict["Port"] as! Int32
                 }
+                if dict.keys.contains("ProductForm") && dict["ProductForm"] != nil {
+                    self.productForm = dict["ProductForm"] as! String
+                }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
                 }
                 if dict.keys.contains("ReservedACU") && dict["ReservedACU"] != nil {
                     self.reservedACU = dict["ReservedACU"] as! String
+                }
+                if dict.keys.contains("ReservedNodeCount") && dict["ReservedNodeCount"] != nil {
+                    self.reservedNodeCount = dict["ReservedNodeCount"] as! Int32
+                }
+                if dict.keys.contains("ReservedNodeSize") && dict["ReservedNodeSize"] != nil {
+                    self.reservedNodeSize = dict["ReservedNodeSize"] as! String
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -12446,9 +12494,13 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
 
     public var DBClusterStatus: String?
 
+    public var DBClusterVersion: String?
+
     public var pageNumber: Int32?
 
     public var pageSize: Int32?
+
+    public var productVersion: String?
 
     public var regionId: String?
 
@@ -12479,11 +12531,17 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
         if self.DBClusterStatus != nil {
             map["DBClusterStatus"] = self.DBClusterStatus!
         }
+        if self.DBClusterVersion != nil {
+            map["DBClusterVersion"] = self.DBClusterVersion!
+        }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
         }
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
+        }
+        if self.productVersion != nil {
+            map["ProductVersion"] = self.productVersion!
         }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
@@ -12511,11 +12569,17 @@ public class DescribeDBClustersRequest : Tea.TeaModel {
         if dict.keys.contains("DBClusterStatus") && dict["DBClusterStatus"] != nil {
             self.DBClusterStatus = dict["DBClusterStatus"] as! String
         }
+        if dict.keys.contains("DBClusterVersion") && dict["DBClusterVersion"] != nil {
+            self.DBClusterVersion = dict["DBClusterVersion"] as! String
+        }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int32
         }
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
+        }
+        if dict.keys.contains("ProductVersion") && dict["ProductVersion"] != nil {
+            self.productVersion = dict["ProductVersion"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -12618,6 +12682,174 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class TaskInfo : Tea.TeaModel {
+                public class StepList : Tea.TeaModel {
+                    public class StepList : Tea.TeaModel {
+                        public var endTime: String?
+
+                        public var startTime: String?
+
+                        public var stepDesc: String?
+
+                        public var stepName: String?
+
+                        public var stepProgress: String?
+
+                        public var stepStatus: String?
+
+                        public override init() {
+                            super.init()
+                        }
+
+                        public init(_ dict: [String: Any]) {
+                            super.init()
+                            self.fromMap(dict)
+                        }
+
+                        public override func validate() throws -> Void {
+                        }
+
+                        public override func toMap() -> [String : Any] {
+                            var map = super.toMap()
+                            if self.endTime != nil {
+                                map["EndTime"] = self.endTime!
+                            }
+                            if self.startTime != nil {
+                                map["StartTime"] = self.startTime!
+                            }
+                            if self.stepDesc != nil {
+                                map["StepDesc"] = self.stepDesc!
+                            }
+                            if self.stepName != nil {
+                                map["StepName"] = self.stepName!
+                            }
+                            if self.stepProgress != nil {
+                                map["StepProgress"] = self.stepProgress!
+                            }
+                            if self.stepStatus != nil {
+                                map["StepStatus"] = self.stepStatus!
+                            }
+                            return map
+                        }
+
+                        public override func fromMap(_ dict: [String: Any]) -> Void {
+                            if dict.keys.contains("EndTime") && dict["EndTime"] != nil {
+                                self.endTime = dict["EndTime"] as! String
+                            }
+                            if dict.keys.contains("StartTime") && dict["StartTime"] != nil {
+                                self.startTime = dict["StartTime"] as! String
+                            }
+                            if dict.keys.contains("StepDesc") && dict["StepDesc"] != nil {
+                                self.stepDesc = dict["StepDesc"] as! String
+                            }
+                            if dict.keys.contains("StepName") && dict["StepName"] != nil {
+                                self.stepName = dict["StepName"] as! String
+                            }
+                            if dict.keys.contains("StepProgress") && dict["StepProgress"] != nil {
+                                self.stepProgress = dict["StepProgress"] as! String
+                            }
+                            if dict.keys.contains("StepStatus") && dict["StepStatus"] != nil {
+                                self.stepStatus = dict["StepStatus"] as! String
+                            }
+                        }
+                    }
+                    public var stepList: [DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo.StepList.StepList]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.stepList != nil {
+                            var tmp : [Any] = []
+                            for k in self.stepList! {
+                                tmp.append(k.toMap())
+                            }
+                            map["StepList"] = tmp
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("StepList") && dict["StepList"] != nil {
+                            var tmp : [DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo.StepList.StepList] = []
+                            for v in dict["StepList"] as! [Any] {
+                                var model = DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo.StepList.StepList()
+                                if v != nil {
+                                    model.fromMap(v as! [String: Any])
+                                }
+                                tmp.append(model)
+                            }
+                            self.stepList = tmp
+                        }
+                    }
+                }
+                public var name: String?
+
+                public var progress: String?
+
+                public var status: String?
+
+                public var stepList: DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo.StepList?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.stepList?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.progress != nil {
+                        map["Progress"] = self.progress!
+                    }
+                    if self.status != nil {
+                        map["Status"] = self.status!
+                    }
+                    if self.stepList != nil {
+                        map["StepList"] = self.stepList?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Progress") && dict["Progress"] != nil {
+                        self.progress = dict["Progress"] as! String
+                    }
+                    if dict.keys.contains("Status") && dict["Status"] != nil {
+                        self.status = dict["Status"] as! String
+                    }
+                    if dict.keys.contains("StepList") && dict["StepList"] != nil {
+                        var model = DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo.StepList()
+                        model.fromMap(dict["StepList"] as! [String: Any])
+                        self.stepList = model
+                    }
+                }
+            }
+            public var category: String?
+
             public var commodityCode: String?
 
             public var computeResource: String?
@@ -12636,13 +12868,31 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var DBClusterType: String?
 
+            public var DBNodeClass: String?
+
+            public var DBNodeCount: Int64?
+
+            public var DBNodeStorage: Int64?
+
             public var DBVersion: String?
 
+            public var diskType: String?
+
+            public var dtsJobId: String?
+
+            public var elasticIOResource: Int32?
+
             public var engine: String?
+
+            public var executorCount: String?
 
             public var expireTime: String?
 
             public var expired: String?
+
+            public var innerIp: String?
+
+            public var innerPort: String?
 
             public var lockMode: String?
 
@@ -12654,15 +12904,27 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public var port: String?
 
+            public var productForm: String?
+
+            public var rdsInstanceId: String?
+
             public var regionId: String?
 
             public var reservedACU: String?
+
+            public var reservedNodeCount: Int32?
+
+            public var reservedNodeSize: String?
 
             public var resourceGroupId: String?
 
             public var storageResource: String?
 
             public var tags: DescribeDBClustersResponseBody.Items.DBCluster.Tags?
+
+            public var taskInfo: DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo?
+
+            public var VPCCloudInstanceId: String?
 
             public var VPCId: String?
 
@@ -12681,10 +12943,14 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
 
             public override func validate() throws -> Void {
                 try self.tags?.validate()
+                try self.taskInfo?.validate()
             }
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.category != nil {
+                    map["Category"] = self.category!
+                }
                 if self.commodityCode != nil {
                     map["CommodityCode"] = self.commodityCode!
                 }
@@ -12712,17 +12978,44 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if self.DBClusterType != nil {
                     map["DBClusterType"] = self.DBClusterType!
                 }
+                if self.DBNodeClass != nil {
+                    map["DBNodeClass"] = self.DBNodeClass!
+                }
+                if self.DBNodeCount != nil {
+                    map["DBNodeCount"] = self.DBNodeCount!
+                }
+                if self.DBNodeStorage != nil {
+                    map["DBNodeStorage"] = self.DBNodeStorage!
+                }
                 if self.DBVersion != nil {
                     map["DBVersion"] = self.DBVersion!
                 }
+                if self.diskType != nil {
+                    map["DiskType"] = self.diskType!
+                }
+                if self.dtsJobId != nil {
+                    map["DtsJobId"] = self.dtsJobId!
+                }
+                if self.elasticIOResource != nil {
+                    map["ElasticIOResource"] = self.elasticIOResource!
+                }
                 if self.engine != nil {
                     map["Engine"] = self.engine!
+                }
+                if self.executorCount != nil {
+                    map["ExecutorCount"] = self.executorCount!
                 }
                 if self.expireTime != nil {
                     map["ExpireTime"] = self.expireTime!
                 }
                 if self.expired != nil {
                     map["Expired"] = self.expired!
+                }
+                if self.innerIp != nil {
+                    map["InnerIp"] = self.innerIp!
+                }
+                if self.innerPort != nil {
+                    map["InnerPort"] = self.innerPort!
                 }
                 if self.lockMode != nil {
                     map["LockMode"] = self.lockMode!
@@ -12739,11 +13032,23 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if self.port != nil {
                     map["Port"] = self.port!
                 }
+                if self.productForm != nil {
+                    map["ProductForm"] = self.productForm!
+                }
+                if self.rdsInstanceId != nil {
+                    map["RdsInstanceId"] = self.rdsInstanceId!
+                }
                 if self.regionId != nil {
                     map["RegionId"] = self.regionId!
                 }
                 if self.reservedACU != nil {
                     map["ReservedACU"] = self.reservedACU!
+                }
+                if self.reservedNodeCount != nil {
+                    map["ReservedNodeCount"] = self.reservedNodeCount!
+                }
+                if self.reservedNodeSize != nil {
+                    map["ReservedNodeSize"] = self.reservedNodeSize!
                 }
                 if self.resourceGroupId != nil {
                     map["ResourceGroupId"] = self.resourceGroupId!
@@ -12753,6 +13058,12 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 }
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
+                }
+                if self.taskInfo != nil {
+                    map["TaskInfo"] = self.taskInfo?.toMap()
+                }
+                if self.VPCCloudInstanceId != nil {
+                    map["VPCCloudInstanceId"] = self.VPCCloudInstanceId!
                 }
                 if self.VPCId != nil {
                     map["VPCId"] = self.VPCId!
@@ -12767,6 +13078,9 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Category") && dict["Category"] != nil {
+                    self.category = dict["Category"] as! String
+                }
                 if dict.keys.contains("CommodityCode") && dict["CommodityCode"] != nil {
                     self.commodityCode = dict["CommodityCode"] as! String
                 }
@@ -12794,17 +13108,44 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if dict.keys.contains("DBClusterType") && dict["DBClusterType"] != nil {
                     self.DBClusterType = dict["DBClusterType"] as! String
                 }
+                if dict.keys.contains("DBNodeClass") && dict["DBNodeClass"] != nil {
+                    self.DBNodeClass = dict["DBNodeClass"] as! String
+                }
+                if dict.keys.contains("DBNodeCount") && dict["DBNodeCount"] != nil {
+                    self.DBNodeCount = dict["DBNodeCount"] as! Int64
+                }
+                if dict.keys.contains("DBNodeStorage") && dict["DBNodeStorage"] != nil {
+                    self.DBNodeStorage = dict["DBNodeStorage"] as! Int64
+                }
                 if dict.keys.contains("DBVersion") && dict["DBVersion"] != nil {
                     self.DBVersion = dict["DBVersion"] as! String
                 }
+                if dict.keys.contains("DiskType") && dict["DiskType"] != nil {
+                    self.diskType = dict["DiskType"] as! String
+                }
+                if dict.keys.contains("DtsJobId") && dict["DtsJobId"] != nil {
+                    self.dtsJobId = dict["DtsJobId"] as! String
+                }
+                if dict.keys.contains("ElasticIOResource") && dict["ElasticIOResource"] != nil {
+                    self.elasticIOResource = dict["ElasticIOResource"] as! Int32
+                }
                 if dict.keys.contains("Engine") && dict["Engine"] != nil {
                     self.engine = dict["Engine"] as! String
+                }
+                if dict.keys.contains("ExecutorCount") && dict["ExecutorCount"] != nil {
+                    self.executorCount = dict["ExecutorCount"] as! String
                 }
                 if dict.keys.contains("ExpireTime") && dict["ExpireTime"] != nil {
                     self.expireTime = dict["ExpireTime"] as! String
                 }
                 if dict.keys.contains("Expired") && dict["Expired"] != nil {
                     self.expired = dict["Expired"] as! String
+                }
+                if dict.keys.contains("InnerIp") && dict["InnerIp"] != nil {
+                    self.innerIp = dict["InnerIp"] as! String
+                }
+                if dict.keys.contains("InnerPort") && dict["InnerPort"] != nil {
+                    self.innerPort = dict["InnerPort"] as! String
                 }
                 if dict.keys.contains("LockMode") && dict["LockMode"] != nil {
                     self.lockMode = dict["LockMode"] as! String
@@ -12821,11 +13162,23 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                 if dict.keys.contains("Port") && dict["Port"] != nil {
                     self.port = dict["Port"] as! String
                 }
+                if dict.keys.contains("ProductForm") && dict["ProductForm"] != nil {
+                    self.productForm = dict["ProductForm"] as! String
+                }
+                if dict.keys.contains("RdsInstanceId") && dict["RdsInstanceId"] != nil {
+                    self.rdsInstanceId = dict["RdsInstanceId"] as! String
+                }
                 if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                     self.regionId = dict["RegionId"] as! String
                 }
                 if dict.keys.contains("ReservedACU") && dict["ReservedACU"] != nil {
                     self.reservedACU = dict["ReservedACU"] as! String
+                }
+                if dict.keys.contains("ReservedNodeCount") && dict["ReservedNodeCount"] != nil {
+                    self.reservedNodeCount = dict["ReservedNodeCount"] as! Int32
+                }
+                if dict.keys.contains("ReservedNodeSize") && dict["ReservedNodeSize"] != nil {
+                    self.reservedNodeSize = dict["ReservedNodeSize"] as! String
                 }
                 if dict.keys.contains("ResourceGroupId") && dict["ResourceGroupId"] != nil {
                     self.resourceGroupId = dict["ResourceGroupId"] as! String
@@ -12837,6 +13190,14 @@ public class DescribeDBClustersResponseBody : Tea.TeaModel {
                     var model = DescribeDBClustersResponseBody.Items.DBCluster.Tags()
                     model.fromMap(dict["Tags"] as! [String: Any])
                     self.tags = model
+                }
+                if dict.keys.contains("TaskInfo") && dict["TaskInfo"] != nil {
+                    var model = DescribeDBClustersResponseBody.Items.DBCluster.TaskInfo()
+                    model.fromMap(dict["TaskInfo"] as! [String: Any])
+                    self.taskInfo = model
+                }
+                if dict.keys.contains("VPCCloudInstanceId") && dict["VPCCloudInstanceId"] != nil {
+                    self.VPCCloudInstanceId = dict["VPCCloudInstanceId"] as! String
                 }
                 if dict.keys.contains("VPCId") && dict["VPCId"] != nil {
                     self.VPCId = dict["VPCId"] as! String
@@ -25703,6 +26064,10 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
 
     public var regionId: String?
 
+    public var reservedNodeCount: Int32?
+
+    public var reservedNodeSize: String?
+
     public var resourceOwnerAccount: String?
 
     public var storageResource: String?
@@ -25739,6 +26104,12 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
+        if self.reservedNodeCount != nil {
+            map["ReservedNodeCount"] = self.reservedNodeCount!
+        }
+        if self.reservedNodeSize != nil {
+            map["ReservedNodeSize"] = self.reservedNodeSize!
+        }
         if self.resourceOwnerAccount != nil {
             map["ResourceOwnerAccount"] = self.resourceOwnerAccount!
         }
@@ -25766,6 +26137,12 @@ public class ModifyDBClusterRequest : Tea.TeaModel {
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("ReservedNodeCount") && dict["ReservedNodeCount"] != nil {
+            self.reservedNodeCount = dict["ReservedNodeCount"] as! Int32
+        }
+        if dict.keys.contains("ReservedNodeSize") && dict["ReservedNodeSize"] != nil {
+            self.reservedNodeSize = dict["ReservedNodeSize"] as! String
         }
         if dict.keys.contains("ResourceOwnerAccount") && dict["ResourceOwnerAccount"] != nil {
             self.resourceOwnerAccount = dict["ResourceOwnerAccount"] as! String
