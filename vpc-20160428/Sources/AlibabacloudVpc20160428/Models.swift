@@ -17362,6 +17362,8 @@ public class CreateSslVpnServerRequest : Tea.TeaModel {
 
     public var enableMultiFactorAuth: Bool?
 
+    public var IDaaSApplicationId: String?
+
     public var IDaaSInstanceId: String?
 
     public var IDaaSRegionId: String?
@@ -17414,6 +17416,9 @@ public class CreateSslVpnServerRequest : Tea.TeaModel {
         }
         if self.enableMultiFactorAuth != nil {
             map["EnableMultiFactorAuth"] = self.enableMultiFactorAuth!
+        }
+        if self.IDaaSApplicationId != nil {
+            map["IDaaSApplicationId"] = self.IDaaSApplicationId!
         }
         if self.IDaaSInstanceId != nil {
             map["IDaaSInstanceId"] = self.IDaaSInstanceId!
@@ -17469,6 +17474,9 @@ public class CreateSslVpnServerRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EnableMultiFactorAuth") && dict["EnableMultiFactorAuth"] != nil {
             self.enableMultiFactorAuth = dict["EnableMultiFactorAuth"] as! Bool
+        }
+        if dict.keys.contains("IDaaSApplicationId") && dict["IDaaSApplicationId"] != nil {
+            self.IDaaSApplicationId = dict["IDaaSApplicationId"] as! String
         }
         if dict.keys.contains("IDaaSInstanceId") && dict["IDaaSInstanceId"] != nil {
             self.IDaaSInstanceId = dict["IDaaSInstanceId"] as! String
@@ -55642,7 +55650,11 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
 
             public var enableMultiFactorAuth: Bool?
 
+            public var IDaaSApplicationId: String?
+
             public var IDaaSInstanceId: String?
+
+            public var IDaaSInstanceVersion: String?
 
             public var IDaaSRegionId: String?
 
@@ -55698,8 +55710,14 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
                 if self.enableMultiFactorAuth != nil {
                     map["EnableMultiFactorAuth"] = self.enableMultiFactorAuth!
                 }
+                if self.IDaaSApplicationId != nil {
+                    map["IDaaSApplicationId"] = self.IDaaSApplicationId!
+                }
                 if self.IDaaSInstanceId != nil {
                     map["IDaaSInstanceId"] = self.IDaaSInstanceId!
+                }
+                if self.IDaaSInstanceVersion != nil {
+                    map["IDaaSInstanceVersion"] = self.IDaaSInstanceVersion!
                 }
                 if self.IDaaSRegionId != nil {
                     map["IDaaSRegionId"] = self.IDaaSRegionId!
@@ -55756,8 +55774,14 @@ public class DescribeSslVpnServersResponseBody : Tea.TeaModel {
                 if dict.keys.contains("EnableMultiFactorAuth") && dict["EnableMultiFactorAuth"] != nil {
                     self.enableMultiFactorAuth = dict["EnableMultiFactorAuth"] as! Bool
                 }
+                if dict.keys.contains("IDaaSApplicationId") && dict["IDaaSApplicationId"] != nil {
+                    self.IDaaSApplicationId = dict["IDaaSApplicationId"] as! String
+                }
                 if dict.keys.contains("IDaaSInstanceId") && dict["IDaaSInstanceId"] != nil {
                     self.IDaaSInstanceId = dict["IDaaSInstanceId"] as! String
+                }
+                if dict.keys.contains("IDaaSInstanceVersion") && dict["IDaaSInstanceVersion"] != nil {
+                    self.IDaaSInstanceVersion = dict["IDaaSInstanceVersion"] as! String
                 }
                 if dict.keys.contains("IDaaSRegionId") && dict["IDaaSRegionId"] != nil {
                     self.IDaaSRegionId = dict["IDaaSRegionId"] as! String
@@ -91027,6 +91051,8 @@ public class ModifySslVpnServerRequest : Tea.TeaModel {
 
     public var enableMultiFactorAuth: Bool?
 
+    public var IDaaSApplicationId: String?
+
     public var IDaaSInstanceId: String?
 
     public var IDaaSRegionId: String?
@@ -91079,6 +91105,9 @@ public class ModifySslVpnServerRequest : Tea.TeaModel {
         }
         if self.enableMultiFactorAuth != nil {
             map["EnableMultiFactorAuth"] = self.enableMultiFactorAuth!
+        }
+        if self.IDaaSApplicationId != nil {
+            map["IDaaSApplicationId"] = self.IDaaSApplicationId!
         }
         if self.IDaaSInstanceId != nil {
             map["IDaaSInstanceId"] = self.IDaaSInstanceId!
@@ -91135,6 +91164,9 @@ public class ModifySslVpnServerRequest : Tea.TeaModel {
         if dict.keys.contains("EnableMultiFactorAuth") && dict["EnableMultiFactorAuth"] != nil {
             self.enableMultiFactorAuth = dict["EnableMultiFactorAuth"] as! Bool
         }
+        if dict.keys.contains("IDaaSApplicationId") && dict["IDaaSApplicationId"] != nil {
+            self.IDaaSApplicationId = dict["IDaaSApplicationId"] as! String
+        }
         if dict.keys.contains("IDaaSInstanceId") && dict["IDaaSInstanceId"] != nil {
             self.IDaaSInstanceId = dict["IDaaSInstanceId"] as! String
         }
@@ -91187,7 +91219,11 @@ public class ModifySslVpnServerResponseBody : Tea.TeaModel {
 
     public var enableMultiFactorAuth: Bool?
 
+    public var IDaaSApplicationId: String?
+
     public var IDaaSInstanceId: String?
+
+    public var IDaaSInstanceVersion: String?
 
     public var internetIp: String?
 
@@ -91243,8 +91279,14 @@ public class ModifySslVpnServerResponseBody : Tea.TeaModel {
         if self.enableMultiFactorAuth != nil {
             map["EnableMultiFactorAuth"] = self.enableMultiFactorAuth!
         }
+        if self.IDaaSApplicationId != nil {
+            map["IDaaSApplicationId"] = self.IDaaSApplicationId!
+        }
         if self.IDaaSInstanceId != nil {
             map["IDaaSInstanceId"] = self.IDaaSInstanceId!
+        }
+        if self.IDaaSInstanceVersion != nil {
+            map["IDaaSInstanceVersion"] = self.IDaaSInstanceVersion!
         }
         if self.internetIp != nil {
             map["InternetIp"] = self.internetIp!
@@ -91301,8 +91343,14 @@ public class ModifySslVpnServerResponseBody : Tea.TeaModel {
         if dict.keys.contains("EnableMultiFactorAuth") && dict["EnableMultiFactorAuth"] != nil {
             self.enableMultiFactorAuth = dict["EnableMultiFactorAuth"] as! Bool
         }
+        if dict.keys.contains("IDaaSApplicationId") && dict["IDaaSApplicationId"] != nil {
+            self.IDaaSApplicationId = dict["IDaaSApplicationId"] as! String
+        }
         if dict.keys.contains("IDaaSInstanceId") && dict["IDaaSInstanceId"] != nil {
             self.IDaaSInstanceId = dict["IDaaSInstanceId"] as! String
+        }
+        if dict.keys.contains("IDaaSInstanceVersion") && dict["IDaaSInstanceVersion"] != nil {
+            self.IDaaSInstanceVersion = dict["IDaaSInstanceVersion"] as! String
         }
         if dict.keys.contains("InternetIp") && dict["InternetIp"] != nil {
             self.internetIp = dict["InternetIp"] as! String

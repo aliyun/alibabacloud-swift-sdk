@@ -10,15 +10,7 @@ open class Client : AlibabacloudOpenApi.Client {
         try super.init(config)
         self._endpointRule = "regional"
         self._endpointMap = [
-            "cn-qingdao": "vpc.aliyuncs.com",
-            "cn-beijing": "vpc.aliyuncs.com",
             "cn-hangzhou": "vpc.aliyuncs.com",
-            "cn-shanghai": "vpc.aliyuncs.com",
-            "cn-shenzhen": "vpc.aliyuncs.com",
-            "cn-hongkong": "vpc.aliyuncs.com",
-            "ap-southeast-1": "vpc.aliyuncs.com",
-            "us-east-1": "vpc.aliyuncs.com",
-            "us-west-1": "vpc.aliyuncs.com",
             "cn-shanghai-finance-1": "vpc.aliyuncs.com",
             "cn-shenzhen-finance-1": "vpc.aliyuncs.com",
             "cn-north-2-gov-1": "vpc.aliyuncs.com",
@@ -32,17 +24,17 @@ open class Client : AlibabacloudOpenApi.Client {
             "cn-hangzhou-bj-b01": "vpc.aliyuncs.com",
             "cn-hangzhou-finance": "vpc.aliyuncs.com",
             "cn-hangzhou-internal-prod-1": "vpc.aliyuncs.com",
-            "cn-hangzhou-internal-test-1": "vpc.aliyuncs.com",
-            "cn-hangzhou-internal-test-2": "vpc.aliyuncs.com",
-            "cn-hangzhou-internal-test-3": "vpc.aliyuncs.com",
-            "cn-hangzhou-test-306": "vpc.aliyuncs.com",
+            "cn-hangzhou-internal-test-1": "vpc-pre.cn-hangzhou.aliyuncs.com",
+            "cn-hangzhou-internal-test-2": "vpc-inner-pre.cn-hangzhou.aliyuncs.com",
+            "cn-hangzhou-internal-test-3": "vpc-pre.cn-hangzhou.aliyuncs.com",
+            "cn-hangzhou-test-306": "vpc-pre.cn-hangzhou.aliyuncs.com",
             "cn-hongkong-finance-pop": "vpc.aliyuncs.com",
             "cn-huhehaote-nebula-1": "vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
             "cn-qingdao-nebula": "vpc-nebula.cn-qingdao-nebula.aliyuncs.com",
-            "cn-shanghai-et15-b01": "vpc.aliyuncs.com",
+            "cn-shanghai-et15-b01": "vpc-pre.cn-hangzhou.aliyuncs.com",
             "cn-shanghai-et2-b01": "vpc.aliyuncs.com",
             "cn-shanghai-inner": "vpc.aliyuncs.com",
-            "cn-shanghai-internal-test-1": "vpc.aliyuncs.com",
+            "cn-shanghai-internal-test-1": "vpc-pre.cn-hangzhou.aliyuncs.com",
             "cn-shenzhen-inner": "vpc.aliyuncs.com",
             "cn-shenzhen-st4-d01": "vpc.aliyuncs.com",
             "cn-shenzhen-su18-b01": "vpc.aliyuncs.com",
@@ -4916,6 +4908,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableMultiFactorAuth)) {
             query["EnableMultiFactorAuth"] = request.enableMultiFactorAuth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.IDaaSApplicationId)) {
+            query["IDaaSApplicationId"] = request.IDaaSApplicationId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.IDaaSInstanceId)) {
             query["IDaaSInstanceId"] = request.IDaaSInstanceId ?? "";
@@ -18543,6 +18538,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.enableMultiFactorAuth)) {
             query["EnableMultiFactorAuth"] = request.enableMultiFactorAuth!;
+        }
+        if (!TeaUtils.Client.isUnset(request.IDaaSApplicationId)) {
+            query["IDaaSApplicationId"] = request.IDaaSApplicationId ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.IDaaSInstanceId)) {
             query["IDaaSInstanceId"] = request.IDaaSInstanceId ?? "";
