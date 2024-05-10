@@ -9697,6 +9697,8 @@ public class GetStackGroupResponseBody : Tea.TeaModel {
 
         public var autoDeployment: GetStackGroupResponseBody.StackGroup.AutoDeployment?
 
+        public var createTime: String?
+
         public var description_: String?
 
         public var executionRoleName: String?
@@ -9721,6 +9723,8 @@ public class GetStackGroupResponseBody : Tea.TeaModel {
 
         public var templateContent: String?
 
+        public var updateTime: String?
+
         public override init() {
             super.init()
         }
@@ -9742,6 +9746,9 @@ public class GetStackGroupResponseBody : Tea.TeaModel {
             }
             if self.autoDeployment != nil {
                 map["AutoDeployment"] = self.autoDeployment?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -9783,6 +9790,9 @@ public class GetStackGroupResponseBody : Tea.TeaModel {
             if self.templateContent != nil {
                 map["TemplateContent"] = self.templateContent!
             }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
             return map
         }
 
@@ -9794,6 +9804,9 @@ public class GetStackGroupResponseBody : Tea.TeaModel {
                 var model = GetStackGroupResponseBody.StackGroup.AutoDeployment()
                 model.fromMap(dict["AutoDeployment"] as! [String: Any])
                 self.autoDeployment = model
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
@@ -9840,6 +9853,9 @@ public class GetStackGroupResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("TemplateContent") && dict["TemplateContent"] != nil {
                 self.templateContent = dict["TemplateContent"] as! String
+            }
+            if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
+                self.updateTime = dict["UpdateTime"] as! String
             }
         }
     }
@@ -15970,6 +15986,8 @@ public class ListStackGroupsResponseBody : Tea.TeaModel {
         }
         public var autoDeployment: ListStackGroupsResponseBody.StackGroups.AutoDeployment?
 
+        public var createTime: String?
+
         public var description_: String?
 
         public var driftDetectionTime: String?
@@ -15988,6 +16006,8 @@ public class ListStackGroupsResponseBody : Tea.TeaModel {
 
         public var tags: [ListStackGroupsResponseBody.StackGroups.Tags]?
 
+        public var updateTime: String?
+
         public override init() {
             super.init()
         }
@@ -16005,6 +16025,9 @@ public class ListStackGroupsResponseBody : Tea.TeaModel {
             var map = super.toMap()
             if self.autoDeployment != nil {
                 map["AutoDeployment"] = self.autoDeployment?.toMap()
+            }
+            if self.createTime != nil {
+                map["CreateTime"] = self.createTime!
             }
             if self.description_ != nil {
                 map["Description"] = self.description_!
@@ -16037,6 +16060,9 @@ public class ListStackGroupsResponseBody : Tea.TeaModel {
                 }
                 map["Tags"] = tmp
             }
+            if self.updateTime != nil {
+                map["UpdateTime"] = self.updateTime!
+            }
             return map
         }
 
@@ -16045,6 +16071,9 @@ public class ListStackGroupsResponseBody : Tea.TeaModel {
                 var model = ListStackGroupsResponseBody.StackGroups.AutoDeployment()
                 model.fromMap(dict["AutoDeployment"] as! [String: Any])
                 self.autoDeployment = model
+            }
+            if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
+                self.createTime = dict["CreateTime"] as! String
             }
             if dict.keys.contains("Description") && dict["Description"] != nil {
                 self.description_ = dict["Description"] as! String
@@ -16080,6 +16109,9 @@ public class ListStackGroupsResponseBody : Tea.TeaModel {
                     tmp.append(model)
                 }
                 self.tags = tmp
+            }
+            if dict.keys.contains("UpdateTime") && dict["UpdateTime"] != nil {
+                self.updateTime = dict["UpdateTime"] as! String
             }
         }
     }
