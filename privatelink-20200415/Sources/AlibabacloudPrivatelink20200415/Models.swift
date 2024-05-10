@@ -914,6 +914,8 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
 
     public var endpointType: String?
 
+    public var policyDocument: String?
+
     public var protectedEnabled: Bool?
 
     public var regionId: String?
@@ -962,6 +964,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
         if self.endpointType != nil {
             map["EndpointType"] = self.endpointType!
+        }
+        if self.policyDocument != nil {
+            map["PolicyDocument"] = self.policyDocument!
         }
         if self.protectedEnabled != nil {
             map["ProtectedEnabled"] = self.protectedEnabled!
@@ -1019,6 +1024,9 @@ public class CreateVpcEndpointRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndpointType") && dict["EndpointType"] != nil {
             self.endpointType = dict["EndpointType"] as! String
+        }
+        if dict.keys.contains("PolicyDocument") && dict["PolicyDocument"] != nil {
+            self.policyDocument = dict["PolicyDocument"] as! String
         }
         if dict.keys.contains("ProtectedEnabled") && dict["ProtectedEnabled"] != nil {
             self.protectedEnabled = dict["ProtectedEnabled"] as! Bool
@@ -3260,6 +3268,8 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
 
     public var payer: String?
 
+    public var policyDocument: String?
+
     public var regionId: String?
 
     public var requestId: String?
@@ -3325,6 +3335,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         if self.payer != nil {
             map["Payer"] = self.payer!
         }
+        if self.policyDocument != nil {
+            map["PolicyDocument"] = self.policyDocument!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -3388,6 +3401,9 @@ public class GetVpcEndpointAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("Payer") && dict["Payer"] != nil {
             self.payer = dict["Payer"] as! String
+        }
+        if dict.keys.contains("PolicyDocument") && dict["PolicyDocument"] != nil {
+            self.policyDocument = dict["PolicyDocument"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
@@ -6626,6 +6642,8 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
 
         public var endpointType: String?
 
+        public var policyDocument: String?
+
         public var regionId: String?
 
         public var resourceGroupId: String?
@@ -6685,6 +6703,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if self.endpointType != nil {
                 map["EndpointType"] = self.endpointType!
+            }
+            if self.policyDocument != nil {
+                map["PolicyDocument"] = self.policyDocument!
             }
             if self.regionId != nil {
                 map["RegionId"] = self.regionId!
@@ -6747,6 +6768,9 @@ public class ListVpcEndpointsResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("EndpointType") && dict["EndpointType"] != nil {
                 self.endpointType = dict["EndpointType"] as! String
+            }
+            if dict.keys.contains("PolicyDocument") && dict["PolicyDocument"] != nil {
+                self.policyDocument = dict["PolicyDocument"] as! String
             }
             if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
                 self.regionId = dict["RegionId"] as! String
@@ -7677,6 +7701,8 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
 
     public var endpointName: String?
 
+    public var policyDocument: String?
+
     public var regionId: String?
 
     public override init() {
@@ -7708,6 +7734,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
         if self.endpointName != nil {
             map["EndpointName"] = self.endpointName!
         }
+        if self.policyDocument != nil {
+            map["PolicyDocument"] = self.policyDocument!
+        }
         if self.regionId != nil {
             map["RegionId"] = self.regionId!
         }
@@ -7729,6 +7758,9 @@ public class UpdateVpcEndpointAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("EndpointName") && dict["EndpointName"] != nil {
             self.endpointName = dict["EndpointName"] as! String
+        }
+        if dict.keys.contains("PolicyDocument") && dict["PolicyDocument"] != nil {
+            self.policyDocument = dict["PolicyDocument"] as! String
         }
         if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
             self.regionId = dict["RegionId"] as! String
