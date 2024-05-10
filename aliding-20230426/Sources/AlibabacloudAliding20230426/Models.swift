@@ -23100,6 +23100,341 @@ public class GetDocContentResponse : Tea.TeaModel {
     }
 }
 
+public class GetDocContentTakIdHeaders : Tea.TeaModel {
+    public class AccountContext : Tea.TeaModel {
+        public var accountId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.accountId != nil {
+                map["accountId"] = self.accountId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("accountId") && dict["accountId"] != nil {
+                self.accountId = dict["accountId"] as! String
+            }
+        }
+    }
+    public var commonHeaders: [String: String]?
+
+    public var accountContext: GetDocContentTakIdHeaders.AccountContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.accountContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContext != nil {
+            map["AccountContext"] = self.accountContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") && dict["AccountContext"] != nil {
+            var model = GetDocContentTakIdHeaders.AccountContext()
+            model.fromMap(dict["AccountContext"] as! [String: Any])
+            self.accountContext = model
+        }
+    }
+}
+
+public class GetDocContentTakIdShrinkHeaders : Tea.TeaModel {
+    public var commonHeaders: [String: String]?
+
+    public var accountContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.commonHeaders != nil {
+            map["commonHeaders"] = self.commonHeaders!
+        }
+        if self.accountContextShrink != nil {
+            map["AccountContext"] = self.accountContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("commonHeaders") && dict["commonHeaders"] != nil {
+            self.commonHeaders = dict["commonHeaders"] as! [String: String]
+        }
+        if dict.keys.contains("AccountContext") && dict["AccountContext"] != nil {
+            self.accountContextShrink = dict["AccountContext"] as! String
+        }
+    }
+}
+
+public class GetDocContentTakIdRequest : Tea.TeaModel {
+    public class TenantContext : Tea.TeaModel {
+        public var tenantId: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.tenantId != nil {
+                map["tenantId"] = self.tenantId!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("tenantId") && dict["tenantId"] != nil {
+                self.tenantId = dict["tenantId"] as! String
+            }
+        }
+    }
+    public var dentryUuid: String?
+
+    public var targetFormat: String?
+
+    public var tenantContext: GetDocContentTakIdRequest.TenantContext?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.tenantContext?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["DentryUuid"] = self.dentryUuid!
+        }
+        if self.targetFormat != nil {
+            map["TargetFormat"] = self.targetFormat!
+        }
+        if self.tenantContext != nil {
+            map["TenantContext"] = self.tenantContext?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DentryUuid") && dict["DentryUuid"] != nil {
+            self.dentryUuid = dict["DentryUuid"] as! String
+        }
+        if dict.keys.contains("TargetFormat") && dict["TargetFormat"] != nil {
+            self.targetFormat = dict["TargetFormat"] as! String
+        }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            var model = GetDocContentTakIdRequest.TenantContext()
+            model.fromMap(dict["TenantContext"] as! [String: Any])
+            self.tenantContext = model
+        }
+    }
+}
+
+public class GetDocContentTakIdShrinkRequest : Tea.TeaModel {
+    public var dentryUuid: String?
+
+    public var targetFormat: String?
+
+    public var tenantContextShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.dentryUuid != nil {
+            map["DentryUuid"] = self.dentryUuid!
+        }
+        if self.targetFormat != nil {
+            map["TargetFormat"] = self.targetFormat!
+        }
+        if self.tenantContextShrink != nil {
+            map["TenantContext"] = self.tenantContextShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DentryUuid") && dict["DentryUuid"] != nil {
+            self.dentryUuid = dict["DentryUuid"] as! String
+        }
+        if dict.keys.contains("TargetFormat") && dict["TargetFormat"] != nil {
+            self.targetFormat = dict["TargetFormat"] as! String
+        }
+        if dict.keys.contains("TenantContext") && dict["TenantContext"] != nil {
+            self.tenantContextShrink = dict["TenantContext"] as! String
+        }
+    }
+}
+
+public class GetDocContentTakIdResponseBody : Tea.TeaModel {
+    public var requestId: String?
+
+    public var taskId: Int64?
+
+    public var vendorRequestId: String?
+
+    public var vendorType: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.requestId != nil {
+            map["requestId"] = self.requestId!
+        }
+        if self.taskId != nil {
+            map["taskId"] = self.taskId!
+        }
+        if self.vendorRequestId != nil {
+            map["vendorRequestId"] = self.vendorRequestId!
+        }
+        if self.vendorType != nil {
+            map["vendorType"] = self.vendorType!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("requestId") && dict["requestId"] != nil {
+            self.requestId = dict["requestId"] as! String
+        }
+        if dict.keys.contains("taskId") && dict["taskId"] != nil {
+            self.taskId = dict["taskId"] as! Int64
+        }
+        if dict.keys.contains("vendorRequestId") && dict["vendorRequestId"] != nil {
+            self.vendorRequestId = dict["vendorRequestId"] as! String
+        }
+        if dict.keys.contains("vendorType") && dict["vendorType"] != nil {
+            self.vendorType = dict["vendorType"] as! String
+        }
+    }
+}
+
+public class GetDocContentTakIdResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetDocContentTakIdResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetDocContentTakIdResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class GetEventHeaders : Tea.TeaModel {
     public class AccountContext : Tea.TeaModel {
         public var accountId: String?
