@@ -2036,6 +2036,99 @@ public class ImageModerationRequest : Tea.TeaModel {
 public class ImageModerationResponseBody : Tea.TeaModel {
     public class Data : Tea.TeaModel {
         public class Ext : Tea.TeaModel {
+            public class OcrResult : Tea.TeaModel {
+                public class Location : Tea.TeaModel {
+                    public var h: Int32?
+
+                    public var w: Int32?
+
+                    public var x: Int32?
+
+                    public var y: Int32?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.h != nil {
+                            map["H"] = self.h!
+                        }
+                        if self.w != nil {
+                            map["W"] = self.w!
+                        }
+                        if self.x != nil {
+                            map["X"] = self.x!
+                        }
+                        if self.y != nil {
+                            map["Y"] = self.y!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("H") && dict["H"] != nil {
+                            self.h = dict["H"] as! Int32
+                        }
+                        if dict.keys.contains("W") && dict["W"] != nil {
+                            self.w = dict["W"] as! Int32
+                        }
+                        if dict.keys.contains("X") && dict["X"] != nil {
+                            self.x = dict["X"] as! Int32
+                        }
+                        if dict.keys.contains("Y") && dict["Y"] != nil {
+                            self.y = dict["Y"] as! Int32
+                        }
+                    }
+                }
+                public var location: ImageModerationResponseBody.Data.Ext.OcrResult.Location?
+
+                public var text: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.location?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.location != nil {
+                        map["Location"] = self.location?.toMap()
+                    }
+                    if self.text != nil {
+                        map["Text"] = self.text!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Location") && dict["Location"] != nil {
+                        var model = ImageModerationResponseBody.Data.Ext.OcrResult.Location()
+                        model.fromMap(dict["Location"] as! [String: Any])
+                        self.location = model
+                    }
+                    if dict.keys.contains("Text") && dict["Text"] != nil {
+                        self.text = dict["Text"] as! String
+                    }
+                }
+            }
             public class Recognition : Tea.TeaModel {
                 public var classification: String?
 
@@ -2073,6 +2166,8 @@ public class ImageModerationResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public var ocrResult: [ImageModerationResponseBody.Data.Ext.OcrResult]?
+
             public var recognition: [ImageModerationResponseBody.Data.Ext.Recognition]?
 
             public override init() {
@@ -2089,6 +2184,13 @@ public class ImageModerationResponseBody : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.ocrResult != nil {
+                    var tmp : [Any] = []
+                    for k in self.ocrResult! {
+                        tmp.append(k.toMap())
+                    }
+                    map["OcrResult"] = tmp
+                }
                 if self.recognition != nil {
                     var tmp : [Any] = []
                     for k in self.recognition! {
@@ -2100,6 +2202,17 @@ public class ImageModerationResponseBody : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("OcrResult") && dict["OcrResult"] != nil {
+                    var tmp : [ImageModerationResponseBody.Data.Ext.OcrResult] = []
+                    for v in dict["OcrResult"] as! [Any] {
+                        var model = ImageModerationResponseBody.Data.Ext.OcrResult()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.ocrResult = tmp
+                }
                 if dict.keys.contains("Recognition") && dict["Recognition"] != nil {
                     var tmp : [ImageModerationResponseBody.Data.Ext.Recognition] = []
                     for v in dict["Recognition"] as! [Any] {
