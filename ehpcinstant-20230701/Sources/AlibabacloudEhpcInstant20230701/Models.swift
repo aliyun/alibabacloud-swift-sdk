@@ -1106,9 +1106,48 @@ public class CreateJobShrinkRequest : Tea.TeaModel {
 }
 
 public class CreateJobResponseBody : Tea.TeaModel {
+    public class Tasks : Tea.TeaModel {
+        public var executorIds: [String]?
+
+        public var taskName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.executorIds != nil {
+                map["ExecutorIds"] = self.executorIds!
+            }
+            if self.taskName != nil {
+                map["TaskName"] = self.taskName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ExecutorIds") && dict["ExecutorIds"] != nil {
+                self.executorIds = dict["ExecutorIds"] as! [String]
+            }
+            if dict.keys.contains("TaskName") && dict["TaskName"] != nil {
+                self.taskName = dict["TaskName"] as! String
+            }
+        }
+    }
     public var jobId: String?
 
     public var requestId: String?
+
+    public var tasks: [CreateJobResponseBody.Tasks]?
 
     public override init() {
         super.init()
@@ -1130,6 +1169,13 @@ public class CreateJobResponseBody : Tea.TeaModel {
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
+        if self.tasks != nil {
+            var tmp : [Any] = []
+            for k in self.tasks! {
+                tmp.append(k.toMap())
+            }
+            map["Tasks"] = tmp
+        }
         return map
     }
 
@@ -1139,6 +1185,17 @@ public class CreateJobResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Tasks") && dict["Tasks"] != nil {
+            var tmp : [CreateJobResponseBody.Tasks] = []
+            for v in dict["Tasks"] as! [Any] {
+                var model = CreateJobResponseBody.Tasks()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.tasks = tmp
         }
     }
 }
