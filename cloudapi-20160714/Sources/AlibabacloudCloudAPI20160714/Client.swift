@@ -5563,6 +5563,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func describeVpcAccessesWithOptions(_ request: DescribeVpcAccessesRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DescribeVpcAccessesResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.accurateQuery)) {
+            query["AccurateQuery"] = request.accurateQuery!;
+        }
         if (!TeaUtils.Client.isUnset(request.instanceId)) {
             query["InstanceId"] = request.instanceId ?? "";
         }

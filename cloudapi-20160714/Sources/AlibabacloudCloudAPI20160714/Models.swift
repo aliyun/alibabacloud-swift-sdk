@@ -38301,6 +38301,8 @@ public class DescribeVpcAccessesRequest : Tea.TeaModel {
             }
         }
     }
+    public var accurateQuery: Bool?
+
     public var instanceId: String?
 
     public var name: String?
@@ -38333,6 +38335,9 @@ public class DescribeVpcAccessesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.accurateQuery != nil {
+            map["AccurateQuery"] = self.accurateQuery!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -38368,6 +38373,9 @@ public class DescribeVpcAccessesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AccurateQuery") && dict["AccurateQuery"] != nil {
+            self.accurateQuery = dict["AccurateQuery"] as! Bool
+        }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
         }
