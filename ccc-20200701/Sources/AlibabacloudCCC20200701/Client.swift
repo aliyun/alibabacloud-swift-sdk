@@ -1509,6 +1509,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSchemaPropertyWithOptions(_ request: DeleteSchemaPropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSchemaPropertyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertyName)) {
+            body["PropertyName"] = request.propertyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaId)) {
+            body["SchemaId"] = request.schemaId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteSchemaProperty",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteSchemaPropertyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteSchemaProperty(_ request: DeleteSchemaPropertyRequest) async throws -> DeleteSchemaPropertyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteSchemaPropertyWithOptions(request as! DeleteSchemaPropertyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func deleteSkillGroupWithOptions(_ request: DeleteSkillGroupRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteSkillGroupResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1546,6 +1586,46 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableSchemaPropertyWithOptions(_ request: DisableSchemaPropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DisableSchemaPropertyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertyName)) {
+            body["PropertyName"] = request.propertyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaId)) {
+            body["SchemaId"] = request.schemaId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DisableSchemaProperty",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DisableSchemaPropertyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func disableSchemaProperty(_ request: DisableSchemaPropertyRequest) async throws -> DisableSchemaPropertyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await disableSchemaPropertyWithOptions(request as! DisableSchemaPropertyRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func discardEditingContactFlowWithOptions(_ request: DiscardEditingContactFlowRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DiscardEditingContactFlowResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -1580,6 +1660,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func discardEditingContactFlow(_ request: DiscardEditingContactFlowRequest) async throws -> DiscardEditingContactFlowResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await discardEditingContactFlowWithOptions(request as! DiscardEditingContactFlowRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableSchemaPropertyWithOptions(_ request: EnableSchemaPropertyRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> EnableSchemaPropertyResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.propertyName)) {
+            body["PropertyName"] = request.propertyName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaId)) {
+            body["SchemaId"] = request.schemaId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "EnableSchemaProperty",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(EnableSchemaPropertyResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func enableSchemaProperty(_ request: EnableSchemaPropertyRequest) async throws -> EnableSchemaPropertyResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await enableSchemaPropertyWithOptions(request as! EnableSchemaPropertyRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -2473,6 +2593,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getRealtimeInstanceStates(_ request: GetRealtimeInstanceStatesRequest) async throws -> GetRealtimeInstanceStatesResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getRealtimeInstanceStatesWithOptions(request as! GetRealtimeInstanceStatesRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSchemaWithOptions(_ request: GetSchemaRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetSchemaResponse {
+        try TeaUtils.Client.validateModel(request)
+        var body: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            body["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.requestId)) {
+            body["RequestId"] = request.requestId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.schemaId)) {
+            body["SchemaId"] = request.schemaId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "body": AlibabaCloudOpenApiUtil.Client.parseToMap(body)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetSchema",
+            "version": "2020-07-01",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetSchemaResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getSchema(_ request: GetSchemaRequest) async throws -> GetSchemaResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getSchemaWithOptions(request as! GetSchemaRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
