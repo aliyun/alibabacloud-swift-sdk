@@ -4064,6 +4064,8 @@ public class CreateDataArchiveOrderRequest : Tea.TeaModel {
 
         public var cronStr: String?
 
+        public var databaseId: String?
+
         public var logic: Bool?
 
         public var orderAfter: [String]?
@@ -4103,6 +4105,9 @@ public class CreateDataArchiveOrderRequest : Tea.TeaModel {
             }
             if self.cronStr != nil {
                 map["CronStr"] = self.cronStr!
+            }
+            if self.databaseId != nil {
+                map["DatabaseId"] = self.databaseId!
             }
             if self.logic != nil {
                 map["Logic"] = self.logic!
@@ -4151,6 +4156,9 @@ public class CreateDataArchiveOrderRequest : Tea.TeaModel {
             }
             if dict.keys.contains("CronStr") && dict["CronStr"] != nil {
                 self.cronStr = dict["CronStr"] as! String
+            }
+            if dict.keys.contains("DatabaseId") && dict["DatabaseId"] != nil {
+                self.databaseId = dict["DatabaseId"] as! String
             }
             if dict.keys.contains("Logic") && dict["Logic"] != nil {
                 self.logic = dict["Logic"] as! Bool
