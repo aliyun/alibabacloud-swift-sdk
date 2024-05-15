@@ -2324,6 +2324,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.profile)) {
             query["Profile"] = request.profile ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.queryUpgradableVersion)) {
+            query["QueryUpgradableVersion"] = request.queryUpgradableVersion!;
+        }
         if (!TeaUtils.Client.isUnset(request.region)) {
             query["Region"] = request.region ?? "";
         }

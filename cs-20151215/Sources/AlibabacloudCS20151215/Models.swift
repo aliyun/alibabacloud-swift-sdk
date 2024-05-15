@@ -15512,6 +15512,8 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
 
     public var profile: String?
 
+    public var queryUpgradableVersion: Bool?
+
     public var region: String?
 
     public var runtime: String?
@@ -15542,6 +15544,9 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
         if self.profile != nil {
             map["Profile"] = self.profile!
         }
+        if self.queryUpgradableVersion != nil {
+            map["QueryUpgradableVersion"] = self.queryUpgradableVersion!
+        }
         if self.region != nil {
             map["Region"] = self.region!
         }
@@ -15563,6 +15568,9 @@ public class DescribeKubernetesVersionMetadataRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Profile") && dict["Profile"] != nil {
             self.profile = dict["Profile"] as! String
+        }
+        if dict.keys.contains("QueryUpgradableVersion") && dict["QueryUpgradableVersion"] != nil {
+            self.queryUpgradableVersion = dict["QueryUpgradableVersion"] as! Bool
         }
         if dict.keys.contains("Region") && dict["Region"] != nil {
             self.region = dict["Region"] as! String
@@ -15676,6 +15684,8 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
 
         public var creatable: Bool?
 
+        public var upgradableVersions: [String]?
+
         public override init() {
             super.init()
         }
@@ -15722,6 +15732,9 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
             if self.creatable != nil {
                 map["creatable"] = self.creatable!
             }
+            if self.upgradableVersions != nil {
+                map["upgradable_versions"] = self.upgradableVersions!
+            }
             return map
         }
 
@@ -15765,6 +15778,9 @@ public class DescribeKubernetesVersionMetadataResponse : Tea.TeaModel {
             }
             if dict.keys.contains("creatable") && dict["creatable"] != nil {
                 self.creatable = dict["creatable"] as! Bool
+            }
+            if dict.keys.contains("upgradable_versions") && dict["upgradable_versions"] != nil {
+                self.upgradableVersions = dict["upgradable_versions"] as! [String]
             }
         }
     }
