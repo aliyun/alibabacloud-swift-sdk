@@ -866,11 +866,11 @@ public class AddImageRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var imageVersion: String?
+
     public var name: String?
 
     public var VMImageSpec: AddImageRequest.VMImageSpec?
-
-    public var version: String?
 
     public override init() {
         super.init()
@@ -894,14 +894,14 @@ public class AddImageRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.imageVersion != nil {
+            map["ImageVersion"] = self.imageVersion!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
         if self.VMImageSpec != nil {
             map["VMImageSpec"] = self.VMImageSpec?.toMap()
-        }
-        if self.version != nil {
-            map["Version"] = self.version!
         }
         return map
     }
@@ -915,6 +915,9 @@ public class AddImageRequest : Tea.TeaModel {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("ImageVersion") && dict["ImageVersion"] != nil {
+            self.imageVersion = dict["ImageVersion"] as! String
+        }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
         }
@@ -922,9 +925,6 @@ public class AddImageRequest : Tea.TeaModel {
             var model = AddImageRequest.VMImageSpec()
             model.fromMap(dict["VMImageSpec"] as! [String: Any])
             self.VMImageSpec = model
-        }
-        if dict.keys.contains("Version") && dict["Version"] != nil {
-            self.version = dict["Version"] as! String
         }
     }
 }
@@ -934,11 +934,11 @@ public class AddImageShrinkRequest : Tea.TeaModel {
 
     public var description_: String?
 
+    public var imageVersion: String?
+
     public var name: String?
 
     public var VMImageSpecShrink: String?
-
-    public var version: String?
 
     public override init() {
         super.init()
@@ -960,14 +960,14 @@ public class AddImageShrinkRequest : Tea.TeaModel {
         if self.description_ != nil {
             map["Description"] = self.description_!
         }
+        if self.imageVersion != nil {
+            map["ImageVersion"] = self.imageVersion!
+        }
         if self.name != nil {
             map["Name"] = self.name!
         }
         if self.VMImageSpecShrink != nil {
             map["VMImageSpec"] = self.VMImageSpecShrink!
-        }
-        if self.version != nil {
-            map["Version"] = self.version!
         }
         return map
     }
@@ -979,14 +979,14 @@ public class AddImageShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Description") && dict["Description"] != nil {
             self.description_ = dict["Description"] as! String
         }
+        if dict.keys.contains("ImageVersion") && dict["ImageVersion"] != nil {
+            self.imageVersion = dict["ImageVersion"] as! String
+        }
         if dict.keys.contains("Name") && dict["Name"] != nil {
             self.name = dict["Name"] as! String
         }
         if dict.keys.contains("VMImageSpec") && dict["VMImageSpec"] != nil {
             self.VMImageSpecShrink = dict["VMImageSpec"] as! String
-        }
-        if dict.keys.contains("Version") && dict["Version"] != nil {
-            self.version = dict["Version"] as! String
         }
     }
 }
