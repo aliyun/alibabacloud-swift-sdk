@@ -2689,6 +2689,8 @@ public class AttachDiskRequest : Tea.TeaModel {
 
     public var diskId: String?
 
+    public var force: Bool?
+
     public var instanceId: String?
 
     public var keyPairName: String?
@@ -2729,6 +2731,9 @@ public class AttachDiskRequest : Tea.TeaModel {
         if self.diskId != nil {
             map["DiskId"] = self.diskId!
         }
+        if self.force != nil {
+            map["Force"] = self.force!
+        }
         if self.instanceId != nil {
             map["InstanceId"] = self.instanceId!
         }
@@ -2765,6 +2770,9 @@ public class AttachDiskRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DiskId") && dict["DiskId"] != nil {
             self.diskId = dict["DiskId"] as! String
+        }
+        if dict.keys.contains("Force") && dict["Force"] != nil {
+            self.force = dict["Force"] as! Bool
         }
         if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
             self.instanceId = dict["InstanceId"] as! String
@@ -40769,6 +40777,35 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                     }
                 }
             }
+            public class Placement : Tea.TeaModel {
+                public var zoneIds: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.zoneIds != nil {
+                        map["ZoneIds"] = self.zoneIds!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("ZoneIds") && dict["ZoneIds"] != nil {
+                        self.zoneIds = dict["ZoneIds"] as! String
+                    }
+                }
+            }
             public class Tags : Tea.TeaModel {
                 public class Tag : Tea.TeaModel {
                     public var tagKey: String?
@@ -40907,6 +40944,8 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
 
             public var performanceLevel: String?
 
+            public var placement: DescribeDisksResponseBody.Disks.Disk.Placement?
+
             public var portable: Bool?
 
             public var productCode: String?
@@ -40956,6 +40995,7 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 try self.attachments?.validate()
                 try self.mountInstances?.validate()
                 try self.operationLocks?.validate()
+                try self.placement?.validate()
                 try self.tags?.validate()
             }
 
@@ -41050,6 +41090,9 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if self.performanceLevel != nil {
                     map["PerformanceLevel"] = self.performanceLevel!
+                }
+                if self.placement != nil {
+                    map["Placement"] = self.placement?.toMap()
                 }
                 if self.portable != nil {
                     map["Portable"] = self.portable!
@@ -41204,6 +41247,11 @@ public class DescribeDisksResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("PerformanceLevel") && dict["PerformanceLevel"] != nil {
                     self.performanceLevel = dict["PerformanceLevel"] as! String
+                }
+                if dict.keys.contains("Placement") && dict["Placement"] != nil {
+                    var model = DescribeDisksResponseBody.Disks.Disk.Placement()
+                    model.fromMap(dict["Placement"] as! [String: Any])
+                    self.placement = model
                 }
                 if dict.keys.contains("Portable") && dict["Portable"] != nil {
                     self.portable = dict["Portable"] as! Bool
@@ -58642,6 +58690,8 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
 
                 public var tags: DescribeInvocationResultsResponseBody.Invocation.InvocationResults.InvocationResult.Tags?
 
+                public var terminationMode: String?
+
                 public var username: String?
 
                 public override init() {
@@ -58710,6 +58760,9 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                     if self.tags != nil {
                         map["Tags"] = self.tags?.toMap()
                     }
+                    if self.terminationMode != nil {
+                        map["TerminationMode"] = self.terminationMode!
+                    }
                     if self.username != nil {
                         map["Username"] = self.username!
                     }
@@ -58769,6 +58822,9 @@ public class DescribeInvocationResultsResponseBody : Tea.TeaModel {
                         var model = DescribeInvocationResultsResponseBody.Invocation.InvocationResults.InvocationResult.Tags()
                         model.fromMap(dict["Tags"] as! [String: Any])
                         self.tags = model
+                    }
+                    if dict.keys.contains("TerminationMode") && dict["TerminationMode"] != nil {
+                        self.terminationMode = dict["TerminationMode"] as! String
                     }
                     if dict.keys.contains("Username") && dict["Username"] != nil {
                         self.username = dict["Username"] as! String
@@ -59501,6 +59557,8 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
 
             public var tags: DescribeInvocationsResponseBody.Invocations.Invocation.Tags?
 
+            public var terminationMode: String?
+
             public var timed: Bool?
 
             public var timeout: Int64?
@@ -59573,6 +59631,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                 if self.tags != nil {
                     map["Tags"] = self.tags?.toMap()
                 }
+                if self.terminationMode != nil {
+                    map["TerminationMode"] = self.terminationMode!
+                }
                 if self.timed != nil {
                     map["Timed"] = self.timed!
                 }
@@ -59640,6 +59701,9 @@ public class DescribeInvocationsResponseBody : Tea.TeaModel {
                     var model = DescribeInvocationsResponseBody.Invocations.Invocation.Tags()
                     model.fromMap(dict["Tags"] as! [String: Any])
                     self.tags = model
+                }
+                if dict.keys.contains("TerminationMode") && dict["TerminationMode"] != nil {
+                    self.terminationMode = dict["TerminationMode"] as! String
                 }
                 if dict.keys.contains("Timed") && dict["Timed"] != nil {
                     self.timed = dict["Timed"] as! Bool
@@ -88700,6 +88764,8 @@ public class InvokeCommandRequest : Tea.TeaModel {
 
     public var tag: [InvokeCommandRequest.Tag]?
 
+    public var terminationMode: String?
+
     public var timed: Bool?
 
     public var timeout: Int64?
@@ -88777,6 +88843,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.terminationMode != nil {
+            map["TerminationMode"] = self.terminationMode!
         }
         if self.timed != nil {
             map["Timed"] = self.timed!
@@ -88857,6 +88926,9 @@ public class InvokeCommandRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TerminationMode") && dict["TerminationMode"] != nil {
+            self.terminationMode = dict["TerminationMode"] as! String
         }
         if dict.keys.contains("Timed") && dict["Timed"] != nil {
             self.timed = dict["Timed"] as! Bool
@@ -88980,6 +89052,8 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
 
     public var tag: [InvokeCommandShrinkRequest.Tag]?
 
+    public var terminationMode: String?
+
     public var timed: Bool?
 
     public var timeout: Int64?
@@ -89057,6 +89131,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.terminationMode != nil {
+            map["TerminationMode"] = self.terminationMode!
         }
         if self.timed != nil {
             map["Timed"] = self.timed!
@@ -89137,6 +89214,9 @@ public class InvokeCommandShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TerminationMode") && dict["TerminationMode"] != nil {
+            self.terminationMode = dict["TerminationMode"] as! String
         }
         if dict.keys.contains("Timed") && dict["Timed"] != nil {
             self.timed = dict["Timed"] as! Bool
@@ -110048,6 +110128,8 @@ public class RunCommandRequest : Tea.TeaModel {
 
     public var tag: [RunCommandRequest.Tag]?
 
+    public var terminationMode: String?
+
     public var timed: Bool?
 
     public var timeout: Int64?
@@ -110144,6 +110226,9 @@ public class RunCommandRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.terminationMode != nil {
+            map["TerminationMode"] = self.terminationMode!
         }
         if self.timed != nil {
             map["Timed"] = self.timed!
@@ -110245,6 +110330,9 @@ public class RunCommandRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TerminationMode") && dict["TerminationMode"] != nil {
+            self.terminationMode = dict["TerminationMode"] as! String
         }
         if dict.keys.contains("Timed") && dict["Timed"] != nil {
             self.timed = dict["Timed"] as! Bool
@@ -110384,6 +110472,8 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
 
     public var tag: [RunCommandShrinkRequest.Tag]?
 
+    public var terminationMode: String?
+
     public var timed: Bool?
 
     public var timeout: Int64?
@@ -110480,6 +110570,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
                 tmp.append(k.toMap())
             }
             map["Tag"] = tmp
+        }
+        if self.terminationMode != nil {
+            map["TerminationMode"] = self.terminationMode!
         }
         if self.timed != nil {
             map["Timed"] = self.timed!
@@ -110581,6 +110674,9 @@ public class RunCommandShrinkRequest : Tea.TeaModel {
                 tmp.append(model)
             }
             self.tag = tmp
+        }
+        if dict.keys.contains("TerminationMode") && dict["TerminationMode"] != nil {
+            self.terminationMode = dict["TerminationMode"] as! String
         }
         if dict.keys.contains("Timed") && dict["Timed"] != nil {
             self.timed = dict["Timed"] as! Bool
