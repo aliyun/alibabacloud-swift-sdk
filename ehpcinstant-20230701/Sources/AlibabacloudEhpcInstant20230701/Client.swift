@@ -255,8 +255,14 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getImageWithOptions(_ request: GetImageRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetImageResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageCategory)) {
+            query["ImageCategory"] = request.imageCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageId)) {
             query["ImageId"] = request.imageId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageType)) {
+            query["ImageType"] = request.imageType ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
@@ -367,11 +373,17 @@ open class Client : AlibabacloudOpenApi.Client {
             request.imageNamesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.imageNames, "ImageNames", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.imageCategory)) {
+            query["ImageCategory"] = request.imageCategory ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.imageIdsShrink)) {
             query["ImageIds"] = request.imageIdsShrink ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.imageNamesShrink)) {
             query["ImageNames"] = request.imageNamesShrink ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.imageType)) {
+            query["ImageType"] = request.imageType ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.pageNumber)) {
             query["PageNumber"] = request.pageNumber!;

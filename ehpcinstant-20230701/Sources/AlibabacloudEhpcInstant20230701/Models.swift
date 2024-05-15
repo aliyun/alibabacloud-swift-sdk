@@ -658,6 +658,8 @@ public class CreateJobRequest : Tea.TeaModel {
                             }
                         }
                     }
+                    public var appId: String?
+
                     public var command: [String]?
 
                     public var environmentVars: [CreateJobRequest.Tasks.TaskSpec.TaskExecutor.Container.EnvironmentVars]?
@@ -680,6 +682,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.appId != nil {
+                            map["AppId"] = self.appId!
+                        }
                         if self.command != nil {
                             map["Command"] = self.command!
                         }
@@ -700,6 +705,9 @@ public class CreateJobRequest : Tea.TeaModel {
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                            self.appId = dict["AppId"] as! String
+                        }
                         if dict.keys.contains("Command") && dict["Command"] != nil {
                             self.command = dict["Command"] as! [String]
                         }
@@ -723,6 +731,8 @@ public class CreateJobRequest : Tea.TeaModel {
                     }
                 }
                 public class VM : Tea.TeaModel {
+                    public var appId: String?
+
                     public var image: String?
 
                     public var prologScript: String?
@@ -743,6 +753,9 @@ public class CreateJobRequest : Tea.TeaModel {
 
                     public override func toMap() -> [String : Any] {
                         var map = super.toMap()
+                        if self.appId != nil {
+                            map["AppId"] = self.appId!
+                        }
                         if self.image != nil {
                             map["Image"] = self.image!
                         }
@@ -756,6 +769,9 @@ public class CreateJobRequest : Tea.TeaModel {
                     }
 
                     public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                            self.appId = dict["AppId"] as! String
+                        }
                         if dict.keys.contains("Image") && dict["Image"] != nil {
                             self.image = dict["Image"] as! String
                         }
@@ -1934,7 +1950,11 @@ public class DescribeJobMetricLastResponse : Tea.TeaModel {
 }
 
 public class GetImageRequest : Tea.TeaModel {
+    public var imageCategory: String?
+
     public var imageId: String?
+
+    public var imageType: String?
 
     public override init() {
         super.init()
@@ -1950,15 +1970,27 @@ public class GetImageRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
         if self.imageId != nil {
             map["ImageId"] = self.imageId!
+        }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
         }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageCategory") && dict["ImageCategory"] != nil {
+            self.imageCategory = dict["ImageCategory"] as! String
+        }
         if dict.keys.contains("ImageId") && dict["ImageId"] != nil {
             self.imageId = dict["ImageId"] as! String
+        }
+        if dict.keys.contains("ImageType") && dict["ImageType"] != nil {
+            self.imageType = dict["ImageType"] as! String
         }
     }
 }
@@ -2127,6 +2159,8 @@ public class GetImageResponseBody : Tea.TeaModel {
                 }
             }
         }
+        public var appId: String?
+
         public var containerImageSpec: GetImageResponseBody.Image.ContainerImageSpec?
 
         public var createTime: String?
@@ -2138,6 +2172,8 @@ public class GetImageResponseBody : Tea.TeaModel {
         public var name: String?
 
         public var size: String?
+
+        public var status: String?
 
         public var VMImageSpec: GetImageResponseBody.Image.VMImageSpec?
 
@@ -2159,6 +2195,9 @@ public class GetImageResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
             if self.containerImageSpec != nil {
                 map["ContainerImageSpec"] = self.containerImageSpec?.toMap()
             }
@@ -2177,6 +2216,9 @@ public class GetImageResponseBody : Tea.TeaModel {
             if self.size != nil {
                 map["Size"] = self.size!
             }
+            if self.status != nil {
+                map["Status"] = self.status!
+            }
             if self.VMImageSpec != nil {
                 map["VMImageSpec"] = self.VMImageSpec?.toMap()
             }
@@ -2187,6 +2229,9 @@ public class GetImageResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                self.appId = dict["AppId"] as! String
+            }
             if dict.keys.contains("ContainerImageSpec") && dict["ContainerImageSpec"] != nil {
                 var model = GetImageResponseBody.Image.ContainerImageSpec()
                 model.fromMap(dict["ContainerImageSpec"] as! [String: Any])
@@ -2206,6 +2251,9 @@ public class GetImageResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("Size") && dict["Size"] != nil {
                 self.size = dict["Size"] as! String
+            }
+            if dict.keys.contains("Status") && dict["Status"] != nil {
+                self.status = dict["Status"] as! String
             }
             if dict.keys.contains("VMImageSpec") && dict["VMImageSpec"] != nil {
                 var model = GetImageResponseBody.Image.VMImageSpec()
@@ -3464,9 +3512,13 @@ public class ListExecutorsResponse : Tea.TeaModel {
 }
 
 public class ListImagesRequest : Tea.TeaModel {
+    public var imageCategory: String?
+
     public var imageIds: [String]?
 
     public var imageNames: [String]?
+
+    public var imageType: String?
 
     public var pageNumber: Int64?
 
@@ -3486,11 +3538,17 @@ public class ListImagesRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
         if self.imageIds != nil {
             map["ImageIds"] = self.imageIds!
         }
         if self.imageNames != nil {
             map["ImageNames"] = self.imageNames!
+        }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -3502,11 +3560,17 @@ public class ListImagesRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageCategory") && dict["ImageCategory"] != nil {
+            self.imageCategory = dict["ImageCategory"] as! String
+        }
         if dict.keys.contains("ImageIds") && dict["ImageIds"] != nil {
             self.imageIds = dict["ImageIds"] as! [String]
         }
         if dict.keys.contains("ImageNames") && dict["ImageNames"] != nil {
             self.imageNames = dict["ImageNames"] as! [String]
+        }
+        if dict.keys.contains("ImageType") && dict["ImageType"] != nil {
+            self.imageType = dict["ImageType"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int64
@@ -3518,9 +3582,13 @@ public class ListImagesRequest : Tea.TeaModel {
 }
 
 public class ListImagesShrinkRequest : Tea.TeaModel {
+    public var imageCategory: String?
+
     public var imageIdsShrink: String?
 
     public var imageNamesShrink: String?
+
+    public var imageType: String?
 
     public var pageNumber: Int64?
 
@@ -3540,11 +3608,17 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.imageCategory != nil {
+            map["ImageCategory"] = self.imageCategory!
+        }
         if self.imageIdsShrink != nil {
             map["ImageIds"] = self.imageIdsShrink!
         }
         if self.imageNamesShrink != nil {
             map["ImageNames"] = self.imageNamesShrink!
+        }
+        if self.imageType != nil {
+            map["ImageType"] = self.imageType!
         }
         if self.pageNumber != nil {
             map["PageNumber"] = self.pageNumber!
@@ -3556,11 +3630,17 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ImageCategory") && dict["ImageCategory"] != nil {
+            self.imageCategory = dict["ImageCategory"] as! String
+        }
         if dict.keys.contains("ImageIds") && dict["ImageIds"] != nil {
             self.imageIdsShrink = dict["ImageIds"] as! String
         }
         if dict.keys.contains("ImageNames") && dict["ImageNames"] != nil {
             self.imageNamesShrink = dict["ImageNames"] as! String
+        }
+        if dict.keys.contains("ImageType") && dict["ImageType"] != nil {
+            self.imageType = dict["ImageType"] as! String
         }
         if dict.keys.contains("PageNumber") && dict["PageNumber"] != nil {
             self.pageNumber = dict["PageNumber"] as! Int64
@@ -3573,6 +3653,8 @@ public class ListImagesShrinkRequest : Tea.TeaModel {
 
 public class ListImagesResponseBody : Tea.TeaModel {
     public class Images : Tea.TeaModel {
+        public var appId: String?
+
         public var createTime: String?
 
         public var description_: String?
@@ -3599,6 +3681,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.appId != nil {
+                map["AppId"] = self.appId!
+            }
             if self.createTime != nil {
                 map["CreateTime"] = self.createTime!
             }
@@ -3621,6 +3706,9 @@ public class ListImagesResponseBody : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AppId") && dict["AppId"] != nil {
+                self.appId = dict["AppId"] as! String
+            }
             if dict.keys.contains("CreateTime") && dict["CreateTime"] != nil {
                 self.createTime = dict["CreateTime"] as! String
             }
