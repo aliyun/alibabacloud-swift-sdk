@@ -92,6 +92,100 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
     }
     public class Parameters : Tea.TeaModel {
+        public class CustomPrompt : Tea.TeaModel {
+            public class Contents : Tea.TeaModel {
+                public var model: String?
+
+                public var name: String?
+
+                public var prompt: String?
+
+                public var transType: String?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.model != nil {
+                        map["Model"] = self.model!
+                    }
+                    if self.name != nil {
+                        map["Name"] = self.name!
+                    }
+                    if self.prompt != nil {
+                        map["Prompt"] = self.prompt!
+                    }
+                    if self.transType != nil {
+                        map["TransType"] = self.transType!
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("Model") && dict["Model"] != nil {
+                        self.model = dict["Model"] as! String
+                    }
+                    if dict.keys.contains("Name") && dict["Name"] != nil {
+                        self.name = dict["Name"] as! String
+                    }
+                    if dict.keys.contains("Prompt") && dict["Prompt"] != nil {
+                        self.prompt = dict["Prompt"] as! String
+                    }
+                    if dict.keys.contains("TransType") && dict["TransType"] != nil {
+                        self.transType = dict["TransType"] as! String
+                    }
+                }
+            }
+            public var contents: [CreateTaskRequest.Parameters.CustomPrompt.Contents]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.contents != nil {
+                    var tmp : [Any] = []
+                    for k in self.contents! {
+                        tmp.append(k.toMap())
+                    }
+                    map["Contents"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("Contents") && dict["Contents"] != nil {
+                    var tmp : [CreateTaskRequest.Parameters.CustomPrompt.Contents] = []
+                    for v in dict["Contents"] as! [Any] {
+                        var model = CreateTaskRequest.Parameters.CustomPrompt.Contents()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.contents = tmp
+                }
+            }
+        }
         public class ExtraParams : Tea.TeaModel {
             public var nfixEnabled: Bool?
 
@@ -380,6 +474,10 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
         public var autoChaptersEnabled: Bool?
 
+        public var customPrompt: CreateTaskRequest.Parameters.CustomPrompt?
+
+        public var customPromptEnabled: Bool?
+
         public var extraParams: CreateTaskRequest.Parameters.ExtraParams?
 
         public var meetingAssistance: CreateTaskRequest.Parameters.MeetingAssistance?
@@ -412,6 +510,7 @@ public class CreateTaskRequest : Tea.TeaModel {
         }
 
         public override func validate() throws -> Void {
+            try self.customPrompt?.validate()
             try self.extraParams?.validate()
             try self.meetingAssistance?.validate()
             try self.summarization?.validate()
@@ -424,6 +523,12 @@ public class CreateTaskRequest : Tea.TeaModel {
             var map = super.toMap()
             if self.autoChaptersEnabled != nil {
                 map["AutoChaptersEnabled"] = self.autoChaptersEnabled!
+            }
+            if self.customPrompt != nil {
+                map["CustomPrompt"] = self.customPrompt?.toMap()
+            }
+            if self.customPromptEnabled != nil {
+                map["CustomPromptEnabled"] = self.customPromptEnabled!
             }
             if self.extraParams != nil {
                 map["ExtraParams"] = self.extraParams?.toMap()
@@ -464,6 +569,14 @@ public class CreateTaskRequest : Tea.TeaModel {
         public override func fromMap(_ dict: [String: Any]) -> Void {
             if dict.keys.contains("AutoChaptersEnabled") && dict["AutoChaptersEnabled"] != nil {
                 self.autoChaptersEnabled = dict["AutoChaptersEnabled"] as! Bool
+            }
+            if dict.keys.contains("CustomPrompt") && dict["CustomPrompt"] != nil {
+                var model = CreateTaskRequest.Parameters.CustomPrompt()
+                model.fromMap(dict["CustomPrompt"] as! [String: Any])
+                self.customPrompt = model
+            }
+            if dict.keys.contains("CustomPromptEnabled") && dict["CustomPromptEnabled"] != nil {
+                self.customPromptEnabled = dict["CustomPromptEnabled"] as! Bool
             }
             if dict.keys.contains("ExtraParams") && dict["ExtraParams"] != nil {
                 var model = CreateTaskRequest.Parameters.ExtraParams()
