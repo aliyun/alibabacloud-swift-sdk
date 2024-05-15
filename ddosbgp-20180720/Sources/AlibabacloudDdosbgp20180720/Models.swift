@@ -4691,6 +4691,10 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
 
         public var memberUid: String?
 
+        public var nsmExpireAt: Int64?
+
+        public var nsmStartAt: Int64?
+
         public var nsmStatus: Int32?
 
         public var product: String?
@@ -4721,6 +4725,12 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
             if self.memberUid != nil {
                 map["MemberUid"] = self.memberUid!
             }
+            if self.nsmExpireAt != nil {
+                map["NsmExpireAt"] = self.nsmExpireAt!
+            }
+            if self.nsmStartAt != nil {
+                map["NsmStartAt"] = self.nsmStartAt!
+            }
             if self.nsmStatus != nil {
                 map["NsmStatus"] = self.nsmStatus!
             }
@@ -4745,6 +4755,12 @@ public class DescribePackIpListResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("MemberUid") && dict["MemberUid"] != nil {
                 self.memberUid = dict["MemberUid"] as! String
+            }
+            if dict.keys.contains("NsmExpireAt") && dict["NsmExpireAt"] != nil {
+                self.nsmExpireAt = dict["NsmExpireAt"] as! Int64
+            }
+            if dict.keys.contains("NsmStartAt") && dict["NsmStartAt"] != nil {
+                self.nsmStartAt = dict["NsmStartAt"] as! Int64
             }
             if dict.keys.contains("NsmStatus") && dict["NsmStatus"] != nil {
                 self.nsmStatus = dict["NsmStatus"] as! Int32
