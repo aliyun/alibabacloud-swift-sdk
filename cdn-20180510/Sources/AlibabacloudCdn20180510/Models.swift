@@ -725,6 +725,8 @@ public class BatchDeleteCdnDomainConfigResponse : Tea.TeaModel {
 public class BatchDescribeCdnIpInfoRequest : Tea.TeaModel {
     public var ipAddrList: String?
 
+    public var language: String?
+
     public override init() {
         super.init()
     }
@@ -742,12 +744,18 @@ public class BatchDescribeCdnIpInfoRequest : Tea.TeaModel {
         if self.ipAddrList != nil {
             map["IpAddrList"] = self.ipAddrList!
         }
+        if self.language != nil {
+            map["Language"] = self.language!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("IpAddrList") && dict["IpAddrList"] != nil {
             self.ipAddrList = dict["IpAddrList"] as! String
+        }
+        if dict.keys.contains("Language") && dict["Language"] != nil {
+            self.language = dict["Language"] as! String
         }
     }
 }
