@@ -398,6 +398,75 @@ open class Client : AlibabacloudOpenApi.Client {
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createScheduledScalingRuleWithOptions(_ tmpReq: CreateScheduledScalingRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateScheduledScalingRuleResponse {
+        try TeaUtils.Client.validateModel(tmpReq)
+        var request: CreateScheduledScalingRuleShrinkRequest = CreateScheduledScalingRuleShrinkRequest([:])
+        AlibabaCloudOpenApiUtil.Client.convert(tmpReq, request)
+        if (!TeaUtils.Client.isUnset(tmpReq.weeklyTypes)) {
+            request.weeklyTypesShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.weeklyTypes, "WeeklyTypes", "json")
+        }
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.durationMinutes)) {
+            query["DurationMinutes"] = request.durationMinutes!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.firstScheduledTime)) {
+            query["FirstScheduledTime"] = request.firstScheduledTime!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.repeatType)) {
+            query["RepeatType"] = request.repeatType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedPubFlow)) {
+            query["ReservedPubFlow"] = request.reservedPubFlow!;
+        }
+        if (!TeaUtils.Client.isUnset(request.reservedSubFlow)) {
+            query["ReservedSubFlow"] = request.reservedSubFlow!;
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.scheduleType)) {
+            query["ScheduleType"] = request.scheduleType ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.timeZone)) {
+            query["TimeZone"] = request.timeZone ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.weeklyTypesShrink)) {
+            query["WeeklyTypes"] = request.weeklyTypesShrink ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "CreateScheduledScalingRule",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(CreateScheduledScalingRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func createScheduledScalingRule(_ request: CreateScheduledScalingRuleRequest) async throws -> CreateScheduledScalingRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await createScheduledScalingRuleWithOptions(request as! CreateScheduledScalingRuleRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
     public func createTopicWithOptions(_ request: CreateTopicRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> CreateTopicResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
@@ -628,6 +697,43 @@ open class Client : AlibabacloudOpenApi.Client {
     public func deleteSaslUser(_ request: DeleteSaslUserRequest) async throws -> DeleteSaslUserResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await deleteSaslUserWithOptions(request as! DeleteSaslUserRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteScheduledScalingRuleWithOptions(_ request: DeleteScheduledScalingRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> DeleteScheduledScalingRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "DeleteScheduledScalingRule",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(DeleteScheduledScalingRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func deleteScheduledScalingRule(_ request: DeleteScheduledScalingRuleRequest) async throws -> DeleteScheduledScalingRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await deleteScheduledScalingRuleWithOptions(request as! DeleteScheduledScalingRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -896,6 +1002,40 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getAllowedIpList(_ request: GetAllowedIpListRequest) async throws -> GetAllowedIpListResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await getAllowedIpListWithOptions(request as! GetAllowedIpListRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutoScalingConfigurationWithOptions(_ request: GetAutoScalingConfigurationRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetAutoScalingConfigurationResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "GetAutoScalingConfiguration",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(GetAutoScalingConfigurationResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func getAutoScalingConfiguration(_ request: GetAutoScalingConfigurationRequest) async throws -> GetAutoScalingConfigurationResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await getAutoScalingConfigurationWithOptions(request as! GetAutoScalingConfigurationRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
@@ -1293,6 +1433,46 @@ open class Client : AlibabacloudOpenApi.Client {
     public func modifyPartitionNum(_ request: ModifyPartitionNumRequest) async throws -> ModifyPartitionNumResponse {
         var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
         return try await modifyPartitionNumWithOptions(request as! ModifyPartitionNumRequest, runtime as! TeaUtils.RuntimeOptions)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyScheduledScalingRuleWithOptions(_ request: ModifyScheduledScalingRuleRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> ModifyScheduledScalingRuleResponse {
+        try TeaUtils.Client.validateModel(request)
+        var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.enable)) {
+            query["Enable"] = request.enable!;
+        }
+        if (!TeaUtils.Client.isUnset(request.instanceId)) {
+            query["InstanceId"] = request.instanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.regionId)) {
+            query["RegionId"] = request.regionId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.ruleName)) {
+            query["RuleName"] = request.ruleName ?? "";
+        }
+        var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
+            "query": AlibabaCloudOpenApiUtil.Client.query(query)
+        ])
+        var params: AlibabacloudOpenApi.Params = AlibabacloudOpenApi.Params([
+            "action": "ModifyScheduledScalingRule",
+            "version": "2019-09-16",
+            "protocol": "HTTPS",
+            "pathname": "/",
+            "method": "POST",
+            "authType": "AK",
+            "style": "RPC",
+            "reqBodyType": "formData",
+            "bodyType": "json"
+        ])
+        var tmp: [String: Any] = try await callApi(params as! AlibabacloudOpenApi.Params, req as! AlibabacloudOpenApi.OpenApiRequest, runtime as! TeaUtils.RuntimeOptions)
+        return Tea.TeaConverter.fromMap(ModifyScheduledScalingRuleResponse(), tmp)
+    }
+
+    @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
+    public func modifyScheduledScalingRule(_ request: ModifyScheduledScalingRuleRequest) async throws -> ModifyScheduledScalingRuleResponse {
+        var runtime: TeaUtils.RuntimeOptions = TeaUtils.RuntimeOptions([:])
+        return try await modifyScheduledScalingRuleWithOptions(request as! ModifyScheduledScalingRuleRequest, runtime as! TeaUtils.RuntimeOptions)
     }
 
     @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)

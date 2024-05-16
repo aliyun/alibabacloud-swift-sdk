@@ -2089,6 +2089,345 @@ public class CreateSaslUserResponse : Tea.TeaModel {
     }
 }
 
+public class CreateScheduledScalingRuleRequest : Tea.TeaModel {
+    public var durationMinutes: Int32?
+
+    public var enable: Bool?
+
+    public var firstScheduledTime: Int64?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var repeatType: String?
+
+    public var reservedPubFlow: Int32?
+
+    public var reservedSubFlow: Int32?
+
+    public var ruleName: String?
+
+    public var scheduleType: String?
+
+    public var timeZone: String?
+
+    public var weeklyTypes: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.durationMinutes != nil {
+            map["DurationMinutes"] = self.durationMinutes!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.firstScheduledTime != nil {
+            map["FirstScheduledTime"] = self.firstScheduledTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
+        if self.reservedPubFlow != nil {
+            map["ReservedPubFlow"] = self.reservedPubFlow!
+        }
+        if self.reservedSubFlow != nil {
+            map["ReservedSubFlow"] = self.reservedSubFlow!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.scheduleType != nil {
+            map["ScheduleType"] = self.scheduleType!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        if self.weeklyTypes != nil {
+            map["WeeklyTypes"] = self.weeklyTypes!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DurationMinutes") && dict["DurationMinutes"] != nil {
+            self.durationMinutes = dict["DurationMinutes"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("FirstScheduledTime") && dict["FirstScheduledTime"] != nil {
+            self.firstScheduledTime = dict["FirstScheduledTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
+        if dict.keys.contains("ReservedPubFlow") && dict["ReservedPubFlow"] != nil {
+            self.reservedPubFlow = dict["ReservedPubFlow"] as! Int32
+        }
+        if dict.keys.contains("ReservedSubFlow") && dict["ReservedSubFlow"] != nil {
+            self.reservedSubFlow = dict["ReservedSubFlow"] as! Int32
+        }
+        if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+            self.ruleName = dict["RuleName"] as! String
+        }
+        if dict.keys.contains("ScheduleType") && dict["ScheduleType"] != nil {
+            self.scheduleType = dict["ScheduleType"] as! String
+        }
+        if dict.keys.contains("TimeZone") && dict["TimeZone"] != nil {
+            self.timeZone = dict["TimeZone"] as! String
+        }
+        if dict.keys.contains("WeeklyTypes") && dict["WeeklyTypes"] != nil {
+            self.weeklyTypes = dict["WeeklyTypes"] as! [String]
+        }
+    }
+}
+
+public class CreateScheduledScalingRuleShrinkRequest : Tea.TeaModel {
+    public var durationMinutes: Int32?
+
+    public var enable: Bool?
+
+    public var firstScheduledTime: Int64?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var repeatType: String?
+
+    public var reservedPubFlow: Int32?
+
+    public var reservedSubFlow: Int32?
+
+    public var ruleName: String?
+
+    public var scheduleType: String?
+
+    public var timeZone: String?
+
+    public var weeklyTypesShrink: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.durationMinutes != nil {
+            map["DurationMinutes"] = self.durationMinutes!
+        }
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.firstScheduledTime != nil {
+            map["FirstScheduledTime"] = self.firstScheduledTime!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.repeatType != nil {
+            map["RepeatType"] = self.repeatType!
+        }
+        if self.reservedPubFlow != nil {
+            map["ReservedPubFlow"] = self.reservedPubFlow!
+        }
+        if self.reservedSubFlow != nil {
+            map["ReservedSubFlow"] = self.reservedSubFlow!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        if self.scheduleType != nil {
+            map["ScheduleType"] = self.scheduleType!
+        }
+        if self.timeZone != nil {
+            map["TimeZone"] = self.timeZone!
+        }
+        if self.weeklyTypesShrink != nil {
+            map["WeeklyTypes"] = self.weeklyTypesShrink!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("DurationMinutes") && dict["DurationMinutes"] != nil {
+            self.durationMinutes = dict["DurationMinutes"] as! Int32
+        }
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("FirstScheduledTime") && dict["FirstScheduledTime"] != nil {
+            self.firstScheduledTime = dict["FirstScheduledTime"] as! Int64
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+            self.repeatType = dict["RepeatType"] as! String
+        }
+        if dict.keys.contains("ReservedPubFlow") && dict["ReservedPubFlow"] != nil {
+            self.reservedPubFlow = dict["ReservedPubFlow"] as! Int32
+        }
+        if dict.keys.contains("ReservedSubFlow") && dict["ReservedSubFlow"] != nil {
+            self.reservedSubFlow = dict["ReservedSubFlow"] as! Int32
+        }
+        if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+            self.ruleName = dict["RuleName"] as! String
+        }
+        if dict.keys.contains("ScheduleType") && dict["ScheduleType"] != nil {
+            self.scheduleType = dict["ScheduleType"] as! String
+        }
+        if dict.keys.contains("TimeZone") && dict["TimeZone"] != nil {
+            self.timeZone = dict["TimeZone"] as! String
+        }
+        if dict.keys.contains("WeeklyTypes") && dict["WeeklyTypes"] != nil {
+            self.weeklyTypesShrink = dict["WeeklyTypes"] as! String
+        }
+    }
+}
+
+public class CreateScheduledScalingRuleResponseBody : Tea.TeaModel {
+    public var code: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class CreateScheduledScalingRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateScheduledScalingRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateScheduledScalingRuleResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateTopicRequest : Tea.TeaModel {
     public class Tag : Tea.TeaModel {
         public var key: String?
@@ -3005,6 +3344,155 @@ public class DeleteSaslUserResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DeleteSaslUserResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class DeleteScheduledScalingRuleRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var ruleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+            self.ruleName = dict["RuleName"] as! String
+        }
+    }
+}
+
+public class DeleteScheduledScalingRuleResponseBody : Tea.TeaModel {
+    public var code: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class DeleteScheduledScalingRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DeleteScheduledScalingRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DeleteScheduledScalingRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -4484,6 +4972,388 @@ public class GetAllowedIpListResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = GetAllowedIpListResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class GetAutoScalingConfigurationRequest : Tea.TeaModel {
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+    }
+}
+
+public class GetAutoScalingConfigurationResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class ScheduledScalingRules : Tea.TeaModel {
+            public class ScheduledScalingRules : Tea.TeaModel {
+                public class WeeklyTypes : Tea.TeaModel {
+                    public var weeklyTypes: [String]?
+
+                    public override init() {
+                        super.init()
+                    }
+
+                    public init(_ dict: [String: Any]) {
+                        super.init()
+                        self.fromMap(dict)
+                    }
+
+                    public override func validate() throws -> Void {
+                    }
+
+                    public override func toMap() -> [String : Any] {
+                        var map = super.toMap()
+                        if self.weeklyTypes != nil {
+                            map["WeeklyTypes"] = self.weeklyTypes!
+                        }
+                        return map
+                    }
+
+                    public override func fromMap(_ dict: [String: Any]) -> Void {
+                        if dict.keys.contains("WeeklyTypes") && dict["WeeklyTypes"] != nil {
+                            self.weeklyTypes = dict["WeeklyTypes"] as! [String]
+                        }
+                    }
+                }
+                public var durationMinutes: Int64?
+
+                public var enable: Bool?
+
+                public var estimatedElasticScalingDownTimeSecs: Int64?
+
+                public var estimatedElasticScalingUpTimeSecs: Int64?
+
+                public var firstScheduledTime: Int64?
+
+                public var repeatType: String?
+
+                public var reservedPubFlow: Int64?
+
+                public var reservedSubFlow: Int64?
+
+                public var ruleId: Int64?
+
+                public var ruleName: String?
+
+                public var scheduleType: String?
+
+                public var timeZone: String?
+
+                public var weeklyTypes: GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules.ScheduledScalingRules.WeeklyTypes?
+
+                public override init() {
+                    super.init()
+                }
+
+                public init(_ dict: [String: Any]) {
+                    super.init()
+                    self.fromMap(dict)
+                }
+
+                public override func validate() throws -> Void {
+                    try self.weeklyTypes?.validate()
+                }
+
+                public override func toMap() -> [String : Any] {
+                    var map = super.toMap()
+                    if self.durationMinutes != nil {
+                        map["DurationMinutes"] = self.durationMinutes!
+                    }
+                    if self.enable != nil {
+                        map["Enable"] = self.enable!
+                    }
+                    if self.estimatedElasticScalingDownTimeSecs != nil {
+                        map["EstimatedElasticScalingDownTimeSecs"] = self.estimatedElasticScalingDownTimeSecs!
+                    }
+                    if self.estimatedElasticScalingUpTimeSecs != nil {
+                        map["EstimatedElasticScalingUpTimeSecs"] = self.estimatedElasticScalingUpTimeSecs!
+                    }
+                    if self.firstScheduledTime != nil {
+                        map["FirstScheduledTime"] = self.firstScheduledTime!
+                    }
+                    if self.repeatType != nil {
+                        map["RepeatType"] = self.repeatType!
+                    }
+                    if self.reservedPubFlow != nil {
+                        map["ReservedPubFlow"] = self.reservedPubFlow!
+                    }
+                    if self.reservedSubFlow != nil {
+                        map["ReservedSubFlow"] = self.reservedSubFlow!
+                    }
+                    if self.ruleId != nil {
+                        map["RuleId"] = self.ruleId!
+                    }
+                    if self.ruleName != nil {
+                        map["RuleName"] = self.ruleName!
+                    }
+                    if self.scheduleType != nil {
+                        map["ScheduleType"] = self.scheduleType!
+                    }
+                    if self.timeZone != nil {
+                        map["TimeZone"] = self.timeZone!
+                    }
+                    if self.weeklyTypes != nil {
+                        map["WeeklyTypes"] = self.weeklyTypes?.toMap()
+                    }
+                    return map
+                }
+
+                public override func fromMap(_ dict: [String: Any]) -> Void {
+                    if dict.keys.contains("DurationMinutes") && dict["DurationMinutes"] != nil {
+                        self.durationMinutes = dict["DurationMinutes"] as! Int64
+                    }
+                    if dict.keys.contains("Enable") && dict["Enable"] != nil {
+                        self.enable = dict["Enable"] as! Bool
+                    }
+                    if dict.keys.contains("EstimatedElasticScalingDownTimeSecs") && dict["EstimatedElasticScalingDownTimeSecs"] != nil {
+                        self.estimatedElasticScalingDownTimeSecs = dict["EstimatedElasticScalingDownTimeSecs"] as! Int64
+                    }
+                    if dict.keys.contains("EstimatedElasticScalingUpTimeSecs") && dict["EstimatedElasticScalingUpTimeSecs"] != nil {
+                        self.estimatedElasticScalingUpTimeSecs = dict["EstimatedElasticScalingUpTimeSecs"] as! Int64
+                    }
+                    if dict.keys.contains("FirstScheduledTime") && dict["FirstScheduledTime"] != nil {
+                        self.firstScheduledTime = dict["FirstScheduledTime"] as! Int64
+                    }
+                    if dict.keys.contains("RepeatType") && dict["RepeatType"] != nil {
+                        self.repeatType = dict["RepeatType"] as! String
+                    }
+                    if dict.keys.contains("ReservedPubFlow") && dict["ReservedPubFlow"] != nil {
+                        self.reservedPubFlow = dict["ReservedPubFlow"] as! Int64
+                    }
+                    if dict.keys.contains("ReservedSubFlow") && dict["ReservedSubFlow"] != nil {
+                        self.reservedSubFlow = dict["ReservedSubFlow"] as! Int64
+                    }
+                    if dict.keys.contains("RuleId") && dict["RuleId"] != nil {
+                        self.ruleId = dict["RuleId"] as! Int64
+                    }
+                    if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+                        self.ruleName = dict["RuleName"] as! String
+                    }
+                    if dict.keys.contains("ScheduleType") && dict["ScheduleType"] != nil {
+                        self.scheduleType = dict["ScheduleType"] as! String
+                    }
+                    if dict.keys.contains("TimeZone") && dict["TimeZone"] != nil {
+                        self.timeZone = dict["TimeZone"] as! String
+                    }
+                    if dict.keys.contains("WeeklyTypes") && dict["WeeklyTypes"] != nil {
+                        var model = GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules.ScheduledScalingRules.WeeklyTypes()
+                        model.fromMap(dict["WeeklyTypes"] as! [String: Any])
+                        self.weeklyTypes = model
+                    }
+                }
+            }
+            public var scheduledScalingRules: [GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules.ScheduledScalingRules]?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.scheduledScalingRules != nil {
+                    var tmp : [Any] = []
+                    for k in self.scheduledScalingRules! {
+                        tmp.append(k.toMap())
+                    }
+                    map["ScheduledScalingRules"] = tmp
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("ScheduledScalingRules") && dict["ScheduledScalingRules"] != nil {
+                    var tmp : [GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules.ScheduledScalingRules] = []
+                    for v in dict["ScheduledScalingRules"] as! [Any] {
+                        var model = GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules.ScheduledScalingRules()
+                        if v != nil {
+                            model.fromMap(v as! [String: Any])
+                        }
+                        tmp.append(model)
+                    }
+                    self.scheduledScalingRules = tmp
+                }
+            }
+        }
+        public var scheduledScalingRules: GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+            try self.scheduledScalingRules?.validate()
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.scheduledScalingRules != nil {
+                map["ScheduledScalingRules"] = self.scheduledScalingRules?.toMap()
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ScheduledScalingRules") && dict["ScheduledScalingRules"] != nil {
+                var model = GetAutoScalingConfigurationResponseBody.Data.ScheduledScalingRules()
+                model.fromMap(dict["ScheduledScalingRules"] as! [String: Any])
+                self.scheduledScalingRules = model
+            }
+        }
+    }
+    public var code: Int64?
+
+    public var data: GetAutoScalingConfigurationResponseBody.Data?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = GetAutoScalingConfigurationResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class GetAutoScalingConfigurationResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: GetAutoScalingConfigurationResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = GetAutoScalingConfigurationResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
@@ -6733,6 +7603,8 @@ public class GetTopicListResponseBody : Tea.TeaModel {
 
             public var topic: String?
 
+            public var topicConfig: String?
+
             public override init() {
                 super.init()
             }
@@ -6784,6 +7656,9 @@ public class GetTopicListResponseBody : Tea.TeaModel {
                 if self.topic != nil {
                     map["Topic"] = self.topic!
                 }
+                if self.topicConfig != nil {
+                    map["TopicConfig"] = self.topicConfig!
+                }
                 return map
             }
 
@@ -6825,6 +7700,9 @@ public class GetTopicListResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("Topic") && dict["Topic"] != nil {
                     self.topic = dict["Topic"] as! String
+                }
+                if dict.keys.contains("TopicConfig") && dict["TopicConfig"] != nil {
+                    self.topicConfig = dict["TopicConfig"] as! String
                 }
             }
         }
@@ -8115,6 +8993,163 @@ public class ModifyPartitionNumResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = ModifyPartitionNumResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyScheduledScalingRuleRequest : Tea.TeaModel {
+    public var enable: Bool?
+
+    public var instanceId: String?
+
+    public var regionId: String?
+
+    public var ruleName: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.enable != nil {
+            map["Enable"] = self.enable!
+        }
+        if self.instanceId != nil {
+            map["InstanceId"] = self.instanceId!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.ruleName != nil {
+            map["RuleName"] = self.ruleName!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Enable") && dict["Enable"] != nil {
+            self.enable = dict["Enable"] as! Bool
+        }
+        if dict.keys.contains("InstanceId") && dict["InstanceId"] != nil {
+            self.instanceId = dict["InstanceId"] as! String
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("RuleName") && dict["RuleName"] != nil {
+            self.ruleName = dict["RuleName"] as! String
+        }
+    }
+}
+
+public class ModifyScheduledScalingRuleResponseBody : Tea.TeaModel {
+    public var code: Int64?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: Bool?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! Int64
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! Bool
+        }
+    }
+}
+
+public class ModifyScheduledScalingRuleResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyScheduledScalingRuleResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyScheduledScalingRuleResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
