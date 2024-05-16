@@ -16335,6 +16335,292 @@ public class DescribeNotificationTypesResponse : Tea.TeaModel {
     }
 }
 
+public class DescribePatternTypesRequest : Tea.TeaModel {
+    public var architecture: [String]?
+
+    public var burstablePerformance: String?
+
+    public var channelId: Int64?
+
+    public var cores: Int32?
+
+    public var coresList: [Int32]?
+
+    public var excludedInstanceType: [String]?
+
+    public var instanceFamilyLevel: String?
+
+    public var maxPrice: Double?
+
+    public var memory: Double?
+
+    public var memoryList: [Double]?
+
+    public var regionId: String?
+
+    public var spotStrategy: String?
+
+    public var vSwitchId: [String]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.architecture != nil {
+            map["Architecture"] = self.architecture!
+        }
+        if self.burstablePerformance != nil {
+            map["BurstablePerformance"] = self.burstablePerformance!
+        }
+        if self.channelId != nil {
+            map["ChannelId"] = self.channelId!
+        }
+        if self.cores != nil {
+            map["Cores"] = self.cores!
+        }
+        if self.coresList != nil {
+            map["CoresList"] = self.coresList!
+        }
+        if self.excludedInstanceType != nil {
+            map["ExcludedInstanceType"] = self.excludedInstanceType!
+        }
+        if self.instanceFamilyLevel != nil {
+            map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
+        }
+        if self.maxPrice != nil {
+            map["MaxPrice"] = self.maxPrice!
+        }
+        if self.memory != nil {
+            map["Memory"] = self.memory!
+        }
+        if self.memoryList != nil {
+            map["MemoryList"] = self.memoryList!
+        }
+        if self.regionId != nil {
+            map["RegionId"] = self.regionId!
+        }
+        if self.spotStrategy != nil {
+            map["SpotStrategy"] = self.spotStrategy!
+        }
+        if self.vSwitchId != nil {
+            map["VSwitchId"] = self.vSwitchId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Architecture") && dict["Architecture"] != nil {
+            self.architecture = dict["Architecture"] as! [String]
+        }
+        if dict.keys.contains("BurstablePerformance") && dict["BurstablePerformance"] != nil {
+            self.burstablePerformance = dict["BurstablePerformance"] as! String
+        }
+        if dict.keys.contains("ChannelId") && dict["ChannelId"] != nil {
+            self.channelId = dict["ChannelId"] as! Int64
+        }
+        if dict.keys.contains("Cores") && dict["Cores"] != nil {
+            self.cores = dict["Cores"] as! Int32
+        }
+        if dict.keys.contains("CoresList") && dict["CoresList"] != nil {
+            self.coresList = dict["CoresList"] as! [Int32]
+        }
+        if dict.keys.contains("ExcludedInstanceType") && dict["ExcludedInstanceType"] != nil {
+            self.excludedInstanceType = dict["ExcludedInstanceType"] as! [String]
+        }
+        if dict.keys.contains("InstanceFamilyLevel") && dict["InstanceFamilyLevel"] != nil {
+            self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
+        }
+        if dict.keys.contains("MaxPrice") && dict["MaxPrice"] != nil {
+            self.maxPrice = dict["MaxPrice"] as! Double
+        }
+        if dict.keys.contains("Memory") && dict["Memory"] != nil {
+            self.memory = dict["Memory"] as! Double
+        }
+        if dict.keys.contains("MemoryList") && dict["MemoryList"] != nil {
+            self.memoryList = dict["MemoryList"] as! [Double]
+        }
+        if dict.keys.contains("RegionId") && dict["RegionId"] != nil {
+            self.regionId = dict["RegionId"] as! String
+        }
+        if dict.keys.contains("SpotStrategy") && dict["SpotStrategy"] != nil {
+            self.spotStrategy = dict["SpotStrategy"] as! String
+        }
+        if dict.keys.contains("VSwitchId") && dict["VSwitchId"] != nil {
+            self.vSwitchId = dict["VSwitchId"] as! [String]
+        }
+    }
+}
+
+public class DescribePatternTypesResponseBody : Tea.TeaModel {
+    public class PatternTypes : Tea.TeaModel {
+        public var cores: Int32?
+
+        public var instanceFamilyLevel: String?
+
+        public var instanceType: String?
+
+        public var instanceTypeFamily: String?
+
+        public var memory: Double?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.cores != nil {
+                map["Cores"] = self.cores!
+            }
+            if self.instanceFamilyLevel != nil {
+                map["InstanceFamilyLevel"] = self.instanceFamilyLevel!
+            }
+            if self.instanceType != nil {
+                map["InstanceType"] = self.instanceType!
+            }
+            if self.instanceTypeFamily != nil {
+                map["InstanceTypeFamily"] = self.instanceTypeFamily!
+            }
+            if self.memory != nil {
+                map["Memory"] = self.memory!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("Cores") && dict["Cores"] != nil {
+                self.cores = dict["Cores"] as! Int32
+            }
+            if dict.keys.contains("InstanceFamilyLevel") && dict["InstanceFamilyLevel"] != nil {
+                self.instanceFamilyLevel = dict["InstanceFamilyLevel"] as! String
+            }
+            if dict.keys.contains("InstanceType") && dict["InstanceType"] != nil {
+                self.instanceType = dict["InstanceType"] as! String
+            }
+            if dict.keys.contains("InstanceTypeFamily") && dict["InstanceTypeFamily"] != nil {
+                self.instanceTypeFamily = dict["InstanceTypeFamily"] as! String
+            }
+            if dict.keys.contains("Memory") && dict["Memory"] != nil {
+                self.memory = dict["Memory"] as! Double
+            }
+        }
+    }
+    public var patternTypes: [DescribePatternTypesResponseBody.PatternTypes]?
+
+    public var requestId: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.patternTypes != nil {
+            var tmp : [Any] = []
+            for k in self.patternTypes! {
+                tmp.append(k.toMap())
+            }
+            map["PatternTypes"] = tmp
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("PatternTypes") && dict["PatternTypes"] != nil {
+            var tmp : [DescribePatternTypesResponseBody.PatternTypes] = []
+            for v in dict["PatternTypes"] as! [Any] {
+                var model = DescribePatternTypesResponseBody.PatternTypes()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.patternTypes = tmp
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+    }
+}
+
+public class DescribePatternTypesResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: DescribePatternTypesResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = DescribePatternTypesResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class DescribeRegionsRequest : Tea.TeaModel {
     public var acceptLanguage: String?
 
