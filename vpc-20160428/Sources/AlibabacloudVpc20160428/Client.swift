@@ -12483,6 +12483,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
         }
+        if (!TeaUtils.Client.isUnset(request.enableIpv6)) {
+            query["EnableIpv6"] = request.enableIpv6!;
+        }
         if (!TeaUtils.Client.isUnset(request.isDefault)) {
             query["IsDefault"] = request.isDefault!;
         }
@@ -12836,6 +12839,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.dryRun)) {
             query["DryRun"] = request.dryRun!;
+        }
+        if (!TeaUtils.Client.isUnset(request.enableIpv6)) {
+            query["EnableIpv6"] = request.enableIpv6!;
         }
         if (!TeaUtils.Client.isUnset(request.isDefault)) {
             query["IsDefault"] = request.isDefault!;

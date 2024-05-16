@@ -57666,6 +57666,8 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
     }
     public var dryRun: Bool?
 
+    public var enableIpv6: Bool?
+
     public var isDefault: Bool?
 
     public var ownerAccount: String?
@@ -57714,6 +57716,9 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
         var map = super.toMap()
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.enableIpv6 != nil {
+            map["EnableIpv6"] = self.enableIpv6!
         }
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
@@ -57773,6 +57778,9 @@ public class DescribeVSwitchesRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("EnableIpv6") && dict["EnableIpv6"] != nil {
+            self.enableIpv6 = dict["EnableIpv6"] as! Bool
         }
         if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
             self.isDefault = dict["IsDefault"] as! Bool
@@ -61331,6 +61339,8 @@ public class DescribeVpcsRequest : Tea.TeaModel {
 
     public var dryRun: Bool?
 
+    public var enableIpv6: Bool?
+
     public var isDefault: Bool?
 
     public var ownerAccount: String?
@@ -61376,6 +61386,9 @@ public class DescribeVpcsRequest : Tea.TeaModel {
         }
         if self.dryRun != nil {
             map["DryRun"] = self.dryRun!
+        }
+        if self.enableIpv6 != nil {
+            map["EnableIpv6"] = self.enableIpv6!
         }
         if self.isDefault != nil {
             map["IsDefault"] = self.isDefault!
@@ -61429,6 +61442,9 @@ public class DescribeVpcsRequest : Tea.TeaModel {
         }
         if dict.keys.contains("DryRun") && dict["DryRun"] != nil {
             self.dryRun = dict["DryRun"] as! Bool
+        }
+        if dict.keys.contains("EnableIpv6") && dict["EnableIpv6"] != nil {
+            self.enableIpv6 = dict["EnableIpv6"] as! Bool
         }
         if dict.keys.contains("IsDefault") && dict["IsDefault"] != nil {
             self.isDefault = dict["IsDefault"] as! Bool
