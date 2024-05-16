@@ -8489,6 +8489,8 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
 
     public var maxBandwidthTime: Int64?
 
+    public var maxDayExceedBytes: Int64?
+
     public var maxInBps: Int64?
 
     public var maxOutBps: Int64?
@@ -8500,6 +8502,8 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
     public var requestId: String?
 
     public var totalBytes: Int64?
+
+    public var totalExceedBytes: Int64?
 
     public var totalInBytes: Int64?
 
@@ -8543,6 +8547,9 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
         if self.maxBandwidthTime != nil {
             map["MaxBandwidthTime"] = self.maxBandwidthTime!
         }
+        if self.maxDayExceedBytes != nil {
+            map["MaxDayExceedBytes"] = self.maxDayExceedBytes!
+        }
         if self.maxInBps != nil {
             map["MaxInBps"] = self.maxInBps!
         }
@@ -8560,6 +8567,9 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
         }
         if self.totalBytes != nil {
             map["TotalBytes"] = self.totalBytes!
+        }
+        if self.totalExceedBytes != nil {
+            map["TotalExceedBytes"] = self.totalExceedBytes!
         }
         if self.totalInBytes != nil {
             map["TotalInBytes"] = self.totalInBytes!
@@ -8600,6 +8610,9 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
         if dict.keys.contains("MaxBandwidthTime") && dict["MaxBandwidthTime"] != nil {
             self.maxBandwidthTime = dict["MaxBandwidthTime"] as! Int64
         }
+        if dict.keys.contains("MaxDayExceedBytes") && dict["MaxDayExceedBytes"] != nil {
+            self.maxDayExceedBytes = dict["MaxDayExceedBytes"] as! Int64
+        }
         if dict.keys.contains("MaxInBps") && dict["MaxInBps"] != nil {
             self.maxInBps = dict["MaxInBps"] as! Int64
         }
@@ -8617,6 +8630,9 @@ public class DescribeInternetTrafficTrendResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("TotalBytes") && dict["TotalBytes"] != nil {
             self.totalBytes = dict["TotalBytes"] as! Int64
+        }
+        if dict.keys.contains("TotalExceedBytes") && dict["TotalExceedBytes"] != nil {
+            self.totalExceedBytes = dict["TotalExceedBytes"] as! Int64
         }
         if dict.keys.contains("TotalInBytes") && dict["TotalInBytes"] != nil {
             self.totalInBytes = dict["TotalInBytes"] as! Int64
