@@ -12455,6 +12455,8 @@ public class ListUserDevicesRequest : Tea.TeaModel {
 
     public var iaStatuses: [String]?
 
+    public var innerIp: String?
+
     public var mac: String?
 
     public var nacStatuses: [String]?
@@ -12515,6 +12517,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         if self.iaStatuses != nil {
             map["IaStatuses"] = self.iaStatuses!
         }
+        if self.innerIp != nil {
+            map["InnerIp"] = self.innerIp!
+        }
         if self.mac != nil {
             map["Mac"] = self.mac!
         }
@@ -12572,6 +12577,9 @@ public class ListUserDevicesRequest : Tea.TeaModel {
         }
         if dict.keys.contains("IaStatuses") && dict["IaStatuses"] != nil {
             self.iaStatuses = dict["IaStatuses"] as! [String]
+        }
+        if dict.keys.contains("InnerIp") && dict["InnerIp"] != nil {
+            self.innerIp = dict["InnerIp"] as! String
         }
         if dict.keys.contains("Mac") && dict["Mac"] != nil {
             self.mac = dict["Mac"] as! String
