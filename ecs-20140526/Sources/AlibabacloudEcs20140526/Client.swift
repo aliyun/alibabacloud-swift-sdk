@@ -3773,6 +3773,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.networkInterfaceName)) {
             query["NetworkInterfaceName"] = request.networkInterfaceName ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.networkInterfaceTrafficConfig)) {
+            query["NetworkInterfaceTrafficConfig"] = request.networkInterfaceTrafficConfig!;
+        }
         if (!TeaUtils.Client.isUnset(request.networkInterfaceTrafficMode)) {
             query["NetworkInterfaceTrafficMode"] = request.networkInterfaceTrafficMode ?? "";
         }
@@ -17731,6 +17734,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.networkInterfaceName)) {
             query["NetworkInterfaceName"] = request.networkInterfaceName ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.networkInterfaceTrafficConfig)) {
+            query["NetworkInterfaceTrafficConfig"] = request.networkInterfaceTrafficConfig!;
         }
         if (!TeaUtils.Client.isUnset(request.ownerAccount)) {
             query["OwnerAccount"] = request.ownerAccount ?? "";

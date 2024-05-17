@@ -15666,6 +15666,67 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaceTrafficConfig : Tea.TeaModel {
+        public var networkInterfaceTrafficMode: String?
+
+        public var queueNumber: Int32?
+
+        public var queuePairNumber: Int32?
+
+        public var rxQueueSize: Int32?
+
+        public var txQueueSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.queueNumber != nil {
+                map["QueueNumber"] = self.queueNumber!
+            }
+            if self.queuePairNumber != nil {
+                map["QueuePairNumber"] = self.queuePairNumber!
+            }
+            if self.rxQueueSize != nil {
+                map["RxQueueSize"] = self.rxQueueSize!
+            }
+            if self.txQueueSize != nil {
+                map["TxQueueSize"] = self.txQueueSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("QueueNumber") && dict["QueueNumber"] != nil {
+                self.queueNumber = dict["QueueNumber"] as! Int32
+            }
+            if dict.keys.contains("QueuePairNumber") && dict["QueuePairNumber"] != nil {
+                self.queuePairNumber = dict["QueuePairNumber"] as! Int32
+            }
+            if dict.keys.contains("RxQueueSize") && dict["RxQueueSize"] != nil {
+                self.rxQueueSize = dict["RxQueueSize"] as! Int32
+            }
+            if dict.keys.contains("TxQueueSize") && dict["TxQueueSize"] != nil {
+                self.txQueueSize = dict["TxQueueSize"] as! Int32
+            }
+        }
+    }
     public class Tag : Tea.TeaModel {
         public var key: String?
 
@@ -15729,6 +15790,8 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
     public var networkInterfaceName: String?
 
+    public var networkInterfaceTrafficConfig: CreateNetworkInterfaceRequest.NetworkInterfaceTrafficConfig?
+
     public var networkInterfaceTrafficMode: String?
 
     public var ownerAccount: String?
@@ -15778,6 +15841,7 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.connectionTrackingConfiguration?.validate()
+        try self.networkInterfaceTrafficConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -15820,6 +15884,9 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if self.networkInterfaceName != nil {
             map["NetworkInterfaceName"] = self.networkInterfaceName!
+        }
+        if self.networkInterfaceTrafficConfig != nil {
+            map["NetworkInterfaceTrafficConfig"] = self.networkInterfaceTrafficConfig?.toMap()
         }
         if self.networkInterfaceTrafficMode != nil {
             map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
@@ -15926,6 +15993,11 @@ public class CreateNetworkInterfaceRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NetworkInterfaceName") && dict["NetworkInterfaceName"] != nil {
             self.networkInterfaceName = dict["NetworkInterfaceName"] as! String
+        }
+        if dict.keys.contains("NetworkInterfaceTrafficConfig") && dict["NetworkInterfaceTrafficConfig"] != nil {
+            var model = CreateNetworkInterfaceRequest.NetworkInterfaceTrafficConfig()
+            model.fromMap(dict["NetworkInterfaceTrafficConfig"] as! [String: Any])
+            self.networkInterfaceTrafficConfig = model
         }
         if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
             self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
@@ -63851,6 +63923,51 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaceTrafficConfig : Tea.TeaModel {
+        public var networkInterfaceTrafficMode: String?
+
+        public var queueNumber: Int32?
+
+        public var queuePairNumber: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.queueNumber != nil {
+                map["QueueNumber"] = self.queueNumber!
+            }
+            if self.queuePairNumber != nil {
+                map["QueuePairNumber"] = self.queuePairNumber!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("QueueNumber") && dict["QueueNumber"] != nil {
+                self.queueNumber = dict["QueueNumber"] as! Int32
+            }
+            if dict.keys.contains("QueuePairNumber") && dict["QueuePairNumber"] != nil {
+                self.queuePairNumber = dict["QueuePairNumber"] as! Int32
+            }
+        }
+    }
     public class PrivateIpSets : Tea.TeaModel {
         public class PrivateIpSet : Tea.TeaModel {
             public class AssociatedPublicIp : Tea.TeaModel {
@@ -64157,6 +64274,8 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
 
     public var networkInterfaceName: String?
 
+    public var networkInterfaceTrafficConfig: DescribeNetworkInterfaceAttributeResponseBody.NetworkInterfaceTrafficConfig?
+
     public var networkInterfaceTrafficMode: String?
 
     public var ownerId: String?
@@ -64212,6 +64331,7 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         try self.ipv4PrefixSets?.validate()
         try self.ipv6PrefixSets?.validate()
         try self.ipv6Sets?.validate()
+        try self.networkInterfaceTrafficConfig?.validate()
         try self.privateIpSets?.validate()
         try self.securityGroupIds?.validate()
         try self.slaveInterfaceSpecification?.validate()
@@ -64261,6 +64381,9 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
         if self.networkInterfaceName != nil {
             map["NetworkInterfaceName"] = self.networkInterfaceName!
+        }
+        if self.networkInterfaceTrafficConfig != nil {
+            map["NetworkInterfaceTrafficConfig"] = self.networkInterfaceTrafficConfig?.toMap()
         }
         if self.networkInterfaceTrafficMode != nil {
             map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
@@ -64378,6 +64501,11 @@ public class DescribeNetworkInterfaceAttributeResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("NetworkInterfaceName") && dict["NetworkInterfaceName"] != nil {
             self.networkInterfaceName = dict["NetworkInterfaceName"] as! String
+        }
+        if dict.keys.contains("NetworkInterfaceTrafficConfig") && dict["NetworkInterfaceTrafficConfig"] != nil {
+            var model = DescribeNetworkInterfaceAttributeResponseBody.NetworkInterfaceTrafficConfig()
+            model.fromMap(dict["NetworkInterfaceTrafficConfig"] as! [String: Any])
+            self.networkInterfaceTrafficConfig = model
         }
         if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
             self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
@@ -99808,6 +99936,67 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
             }
         }
     }
+    public class NetworkInterfaceTrafficConfig : Tea.TeaModel {
+        public var networkInterfaceTrafficMode: String?
+
+        public var queueNumber: Int32?
+
+        public var queuePairNumber: Int32?
+
+        public var rxQueueSize: Int32?
+
+        public var txQueueSize: Int32?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.networkInterfaceTrafficMode != nil {
+                map["NetworkInterfaceTrafficMode"] = self.networkInterfaceTrafficMode!
+            }
+            if self.queueNumber != nil {
+                map["QueueNumber"] = self.queueNumber!
+            }
+            if self.queuePairNumber != nil {
+                map["QueuePairNumber"] = self.queuePairNumber!
+            }
+            if self.rxQueueSize != nil {
+                map["RxQueueSize"] = self.rxQueueSize!
+            }
+            if self.txQueueSize != nil {
+                map["TxQueueSize"] = self.txQueueSize!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("NetworkInterfaceTrafficMode") && dict["NetworkInterfaceTrafficMode"] != nil {
+                self.networkInterfaceTrafficMode = dict["NetworkInterfaceTrafficMode"] as! String
+            }
+            if dict.keys.contains("QueueNumber") && dict["QueueNumber"] != nil {
+                self.queueNumber = dict["QueueNumber"] as! Int32
+            }
+            if dict.keys.contains("QueuePairNumber") && dict["QueuePairNumber"] != nil {
+                self.queuePairNumber = dict["QueuePairNumber"] as! Int32
+            }
+            if dict.keys.contains("RxQueueSize") && dict["RxQueueSize"] != nil {
+                self.rxQueueSize = dict["RxQueueSize"] as! Int32
+            }
+            if dict.keys.contains("TxQueueSize") && dict["TxQueueSize"] != nil {
+                self.txQueueSize = dict["TxQueueSize"] as! Int32
+            }
+        }
+    }
     public var connectionTrackingConfiguration: ModifyNetworkInterfaceAttributeRequest.ConnectionTrackingConfiguration?
 
     public var deleteOnRelease: Bool?
@@ -99817,6 +100006,8 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
     public var networkInterfaceId: String?
 
     public var networkInterfaceName: String?
+
+    public var networkInterfaceTrafficConfig: ModifyNetworkInterfaceAttributeRequest.NetworkInterfaceTrafficConfig?
 
     public var ownerAccount: String?
 
@@ -99847,6 +100038,7 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
 
     public override func validate() throws -> Void {
         try self.connectionTrackingConfiguration?.validate()
+        try self.networkInterfaceTrafficConfig?.validate()
     }
 
     public override func toMap() -> [String : Any] {
@@ -99865,6 +100057,9 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
         }
         if self.networkInterfaceName != nil {
             map["NetworkInterfaceName"] = self.networkInterfaceName!
+        }
+        if self.networkInterfaceTrafficConfig != nil {
+            map["NetworkInterfaceTrafficConfig"] = self.networkInterfaceTrafficConfig?.toMap()
         }
         if self.ownerAccount != nil {
             map["OwnerAccount"] = self.ownerAccount!
@@ -99913,6 +100108,11 @@ public class ModifyNetworkInterfaceAttributeRequest : Tea.TeaModel {
         }
         if dict.keys.contains("NetworkInterfaceName") && dict["NetworkInterfaceName"] != nil {
             self.networkInterfaceName = dict["NetworkInterfaceName"] as! String
+        }
+        if dict.keys.contains("NetworkInterfaceTrafficConfig") && dict["NetworkInterfaceTrafficConfig"] != nil {
+            var model = ModifyNetworkInterfaceAttributeRequest.NetworkInterfaceTrafficConfig()
+            model.fromMap(dict["NetworkInterfaceTrafficConfig"] as! [String: Any])
+            self.networkInterfaceTrafficConfig = model
         }
         if dict.keys.contains("OwnerAccount") && dict["OwnerAccount"] != nil {
             self.ownerAccount = dict["OwnerAccount"] as! String
