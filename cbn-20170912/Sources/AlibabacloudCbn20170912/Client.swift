@@ -7603,6 +7603,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.bandwidthLimit)) {
             query["BandwidthLimit"] = request.bandwidthLimit!;
         }
+        if (!TeaUtils.Client.isUnset(request.bandwidthType)) {
+            query["BandwidthType"] = request.bandwidthType ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.cenId)) {
             query["CenId"] = request.cenId ?? "";
         }

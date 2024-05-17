@@ -14074,6 +14074,8 @@ public class DescribeCenInterRegionBandwidthLimitsResponseBody : Tea.TeaModel {
 
             public var bandwidthPackageId: String?
 
+            public var bandwidthType: String?
+
             public var cenId: String?
 
             public var geographicSpanId: String?
@@ -14104,6 +14106,9 @@ public class DescribeCenInterRegionBandwidthLimitsResponseBody : Tea.TeaModel {
                 if self.bandwidthPackageId != nil {
                     map["BandwidthPackageId"] = self.bandwidthPackageId!
                 }
+                if self.bandwidthType != nil {
+                    map["BandwidthType"] = self.bandwidthType!
+                }
                 if self.cenId != nil {
                     map["CenId"] = self.cenId!
                 }
@@ -14128,6 +14133,9 @@ public class DescribeCenInterRegionBandwidthLimitsResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("BandwidthPackageId") && dict["BandwidthPackageId"] != nil {
                     self.bandwidthPackageId = dict["BandwidthPackageId"] as! String
+                }
+                if dict.keys.contains("BandwidthType") && dict["BandwidthType"] != nil {
+                    self.bandwidthType = dict["BandwidthType"] as! String
                 }
                 if dict.keys.contains("CenId") && dict["CenId"] != nil {
                     self.cenId = dict["CenId"] as! String
@@ -34948,6 +34956,8 @@ public class RoutePrivateZoneInCenToVpcResponse : Tea.TeaModel {
 public class SetCenInterRegionBandwidthLimitRequest : Tea.TeaModel {
     public var bandwidthLimit: Int64?
 
+    public var bandwidthType: String?
+
     public var cenId: String?
 
     public var localRegionId: String?
@@ -34979,6 +34989,9 @@ public class SetCenInterRegionBandwidthLimitRequest : Tea.TeaModel {
         if self.bandwidthLimit != nil {
             map["BandwidthLimit"] = self.bandwidthLimit!
         }
+        if self.bandwidthType != nil {
+            map["BandwidthType"] = self.bandwidthType!
+        }
         if self.cenId != nil {
             map["CenId"] = self.cenId!
         }
@@ -35006,6 +35019,9 @@ public class SetCenInterRegionBandwidthLimitRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("BandwidthLimit") && dict["BandwidthLimit"] != nil {
             self.bandwidthLimit = dict["BandwidthLimit"] as! Int64
+        }
+        if dict.keys.contains("BandwidthType") && dict["BandwidthType"] != nil {
+            self.bandwidthType = dict["BandwidthType"] as! String
         }
         if dict.keys.contains("CenId") && dict["CenId"] != nil {
             self.cenId = dict["CenId"] as! String
