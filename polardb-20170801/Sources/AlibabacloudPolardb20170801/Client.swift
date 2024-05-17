@@ -6100,6 +6100,15 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.secondsUntilAutoPause)) {
             query["SecondsUntilAutoPause"] = request.secondsUntilAutoPause ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.serverlessRuleCpuEnlargeThreshold)) {
+            query["ServerlessRuleCpuEnlargeThreshold"] = request.serverlessRuleCpuEnlargeThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessRuleCpuShrinkThreshold)) {
+            query["ServerlessRuleCpuShrinkThreshold"] = request.serverlessRuleCpuShrinkThreshold ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serverlessRuleMode)) {
+            query["ServerlessRuleMode"] = request.serverlessRuleMode ?? "";
+        }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "query": AlibabaCloudOpenApiUtil.Client.query(query)
         ])

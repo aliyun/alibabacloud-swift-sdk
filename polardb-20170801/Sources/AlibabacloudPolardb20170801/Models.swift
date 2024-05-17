@@ -13063,6 +13063,12 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
 
     public var secondsUntilAutoPause: String?
 
+    public var serverlessRuleCpuEnlargeThreshold: String?
+
+    public var serverlessRuleCpuShrinkThreshold: String?
+
+    public var serverlessRuleMode: String?
+
     public var switchs: String?
 
     public override init() {
@@ -13109,6 +13115,15 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         if self.secondsUntilAutoPause != nil {
             map["SecondsUntilAutoPause"] = self.secondsUntilAutoPause!
         }
+        if self.serverlessRuleCpuEnlargeThreshold != nil {
+            map["ServerlessRuleCpuEnlargeThreshold"] = self.serverlessRuleCpuEnlargeThreshold!
+        }
+        if self.serverlessRuleCpuShrinkThreshold != nil {
+            map["ServerlessRuleCpuShrinkThreshold"] = self.serverlessRuleCpuShrinkThreshold!
+        }
+        if self.serverlessRuleMode != nil {
+            map["ServerlessRuleMode"] = self.serverlessRuleMode!
+        }
         if self.switchs != nil {
             map["Switchs"] = self.switchs!
         }
@@ -13145,6 +13160,15 @@ public class DescribeDBClusterServerlessConfResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("SecondsUntilAutoPause") && dict["SecondsUntilAutoPause"] != nil {
             self.secondsUntilAutoPause = dict["SecondsUntilAutoPause"] as! String
+        }
+        if dict.keys.contains("ServerlessRuleCpuEnlargeThreshold") && dict["ServerlessRuleCpuEnlargeThreshold"] != nil {
+            self.serverlessRuleCpuEnlargeThreshold = dict["ServerlessRuleCpuEnlargeThreshold"] as! String
+        }
+        if dict.keys.contains("ServerlessRuleCpuShrinkThreshold") && dict["ServerlessRuleCpuShrinkThreshold"] != nil {
+            self.serverlessRuleCpuShrinkThreshold = dict["ServerlessRuleCpuShrinkThreshold"] as! String
+        }
+        if dict.keys.contains("ServerlessRuleMode") && dict["ServerlessRuleMode"] != nil {
+            self.serverlessRuleMode = dict["ServerlessRuleMode"] as! String
         }
         if dict.keys.contains("Switchs") && dict["Switchs"] != nil {
             self.switchs = dict["Switchs"] as! String
@@ -28612,6 +28636,12 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
 
     public var secondsUntilAutoPause: String?
 
+    public var serverlessRuleCpuEnlargeThreshold: String?
+
+    public var serverlessRuleCpuShrinkThreshold: String?
+
+    public var serverlessRuleMode: String?
+
     public override init() {
         super.init()
     }
@@ -28674,6 +28704,15 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
         if self.secondsUntilAutoPause != nil {
             map["SecondsUntilAutoPause"] = self.secondsUntilAutoPause!
         }
+        if self.serverlessRuleCpuEnlargeThreshold != nil {
+            map["ServerlessRuleCpuEnlargeThreshold"] = self.serverlessRuleCpuEnlargeThreshold!
+        }
+        if self.serverlessRuleCpuShrinkThreshold != nil {
+            map["ServerlessRuleCpuShrinkThreshold"] = self.serverlessRuleCpuShrinkThreshold!
+        }
+        if self.serverlessRuleMode != nil {
+            map["ServerlessRuleMode"] = self.serverlessRuleMode!
+        }
         return map
     }
 
@@ -28725,6 +28764,15 @@ public class ModifyDBClusterServerlessConfRequest : Tea.TeaModel {
         }
         if dict.keys.contains("SecondsUntilAutoPause") && dict["SecondsUntilAutoPause"] != nil {
             self.secondsUntilAutoPause = dict["SecondsUntilAutoPause"] as! String
+        }
+        if dict.keys.contains("ServerlessRuleCpuEnlargeThreshold") && dict["ServerlessRuleCpuEnlargeThreshold"] != nil {
+            self.serverlessRuleCpuEnlargeThreshold = dict["ServerlessRuleCpuEnlargeThreshold"] as! String
+        }
+        if dict.keys.contains("ServerlessRuleCpuShrinkThreshold") && dict["ServerlessRuleCpuShrinkThreshold"] != nil {
+            self.serverlessRuleCpuShrinkThreshold = dict["ServerlessRuleCpuShrinkThreshold"] as! String
+        }
+        if dict.keys.contains("ServerlessRuleMode") && dict["ServerlessRuleMode"] != nil {
+            self.serverlessRuleMode = dict["ServerlessRuleMode"] as! String
         }
     }
 }
