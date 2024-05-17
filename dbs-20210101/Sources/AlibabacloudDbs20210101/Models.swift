@@ -1419,6 +1419,8 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
 
             public var filterValue: String?
 
+            public var policyId: String?
+
             public var retentionType: String?
 
             public var retentionValue: String?
@@ -1467,6 +1469,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
                 if self.filterValue != nil {
                     map["FilterValue"] = self.filterValue!
                 }
+                if self.policyId != nil {
+                    map["PolicyId"] = self.policyId!
+                }
                 if self.retentionType != nil {
                     map["RetentionType"] = self.retentionType!
                 }
@@ -1509,6 +1514,9 @@ public class DescribeBackupPolicyResponseBody : Tea.TeaModel {
                 }
                 if dict.keys.contains("FilterValue") && dict["FilterValue"] != nil {
                     self.filterValue = dict["FilterValue"] as! String
+                }
+                if dict.keys.contains("PolicyId") && dict["PolicyId"] != nil {
+                    self.policyId = dict["PolicyId"] as! String
                 }
                 if dict.keys.contains("RetentionType") && dict["RetentionType"] != nil {
                     self.retentionType = dict["RetentionType"] as! String
