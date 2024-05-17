@@ -49488,11 +49488,15 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
 
                 public var callsOffered: Int64?
 
+                public var callsQueuingTimeout: Int64?
+
                 public var callsServiceLevel10: Int64?
 
                 public var callsServiceLevel20: Int64?
 
                 public var callsServiceLevel30: Int64?
+
+                public var callsTimeout: Int64?
 
                 public var giveUpByAgentOfQueueCount: Int64?
 
@@ -49573,6 +49577,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if self.callsOffered != nil {
                         map["CallsOffered"] = self.callsOffered!
                     }
+                    if self.callsQueuingTimeout != nil {
+                        map["CallsQueuingTimeout"] = self.callsQueuingTimeout!
+                    }
                     if self.callsServiceLevel10 != nil {
                         map["CallsServiceLevel10"] = self.callsServiceLevel10!
                     }
@@ -49581,6 +49588,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if self.callsServiceLevel30 != nil {
                         map["CallsServiceLevel30"] = self.callsServiceLevel30!
+                    }
+                    if self.callsTimeout != nil {
+                        map["CallsTimeout"] = self.callsTimeout!
                     }
                     if self.giveUpByAgentOfQueueCount != nil {
                         map["GiveUpByAgentOfQueueCount"] = self.giveUpByAgentOfQueueCount!
@@ -49667,6 +49677,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     if dict.keys.contains("CallsOffered") && dict["CallsOffered"] != nil {
                         self.callsOffered = dict["CallsOffered"] as! Int64
                     }
+                    if dict.keys.contains("CallsQueuingTimeout") && dict["CallsQueuingTimeout"] != nil {
+                        self.callsQueuingTimeout = dict["CallsQueuingTimeout"] as! Int64
+                    }
                     if dict.keys.contains("CallsServiceLevel10") && dict["CallsServiceLevel10"] != nil {
                         self.callsServiceLevel10 = dict["CallsServiceLevel10"] as! Int64
                     }
@@ -49675,6 +49688,9 @@ public class ListSkillGroupSummaryReportsSinceMidnightResponseBody : Tea.TeaMode
                     }
                     if dict.keys.contains("CallsServiceLevel30") && dict["CallsServiceLevel30"] != nil {
                         self.callsServiceLevel30 = dict["CallsServiceLevel30"] as! Int64
+                    }
+                    if dict.keys.contains("CallsTimeout") && dict["CallsTimeout"] != nil {
+                        self.callsTimeout = dict["CallsTimeout"] as! Int64
                     }
                     if dict.keys.contains("GiveUpByAgentOfQueueCount") && dict["GiveUpByAgentOfQueueCount"] != nil {
                         self.giveUpByAgentOfQueueCount = dict["GiveUpByAgentOfQueueCount"] as! Int64
