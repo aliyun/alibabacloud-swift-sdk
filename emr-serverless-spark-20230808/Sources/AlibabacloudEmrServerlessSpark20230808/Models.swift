@@ -226,6 +226,93 @@ public class Configuration : Tea.TeaModel {
     }
 }
 
+public class ConfigurationOverrides : Tea.TeaModel {
+    public class Configurations : Tea.TeaModel {
+        public var configFileName: String?
+
+        public var configItemKey: String?
+
+        public var configItemValue: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.configFileName != nil {
+                map["configFileName"] = self.configFileName!
+            }
+            if self.configItemKey != nil {
+                map["configItemKey"] = self.configItemKey!
+            }
+            if self.configItemValue != nil {
+                map["configItemValue"] = self.configItemValue!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("configFileName") && dict["configFileName"] != nil {
+                self.configFileName = dict["configFileName"] as! String
+            }
+            if dict.keys.contains("configItemKey") && dict["configItemKey"] != nil {
+                self.configItemKey = dict["configItemKey"] as! String
+            }
+            if dict.keys.contains("configItemValue") && dict["configItemValue"] != nil {
+                self.configItemValue = dict["configItemValue"] as! String
+            }
+        }
+    }
+    public var configurations: [ConfigurationOverrides.Configurations]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.configurations != nil {
+            var tmp : [Any] = []
+            for k in self.configurations! {
+                tmp.append(k.toMap())
+            }
+            map["configurations"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("configurations") && dict["configurations"] != nil {
+            var tmp : [ConfigurationOverrides.Configurations] = []
+            for v in dict["configurations"] as! [Any] {
+                var model = ConfigurationOverrides.Configurations()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.configurations = tmp
+        }
+    }
+}
+
 public class Credential : Tea.TeaModel {
     public var accessId: String?
 
@@ -467,9 +554,13 @@ public class ReleaseVersionImage : Tea.TeaModel {
 }
 
 public class RunLog : Tea.TeaModel {
+    public var driverStartup: String?
+
     public var driverStdError: String?
 
     public var driverStdOut: String?
+
+    public var driverSyslog: String?
 
     public override init() {
         super.init()
@@ -485,21 +576,33 @@ public class RunLog : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.driverStartup != nil {
+            map["driverStartup"] = self.driverStartup!
+        }
         if self.driverStdError != nil {
             map["driverStdError"] = self.driverStdError!
         }
         if self.driverStdOut != nil {
             map["driverStdOut"] = self.driverStdOut!
         }
+        if self.driverSyslog != nil {
+            map["driverSyslog"] = self.driverSyslog!
+        }
         return map
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("driverStartup") && dict["driverStartup"] != nil {
+            self.driverStartup = dict["driverStartup"] as! String
+        }
         if dict.keys.contains("driverStdError") && dict["driverStdError"] != nil {
             self.driverStdError = dict["driverStdError"] as! String
         }
         if dict.keys.contains("driverStdOut") && dict["driverStdOut"] != nil {
             self.driverStdOut = dict["driverStdOut"] as! String
+        }
+        if dict.keys.contains("driverSyslog") && dict["driverSyslog"] != nil {
+            self.driverSyslog = dict["driverSyslog"] as! String
         }
     }
 }
@@ -749,6 +852,8 @@ public class Tag : Tea.TeaModel {
 }
 
 public class Task : Tea.TeaModel {
+    public var archives: [String]?
+
     public var artifactUrl: String?
 
     public var bizId: String?
@@ -769,6 +874,10 @@ public class Task : Tea.TeaModel {
 
     public var extraArtifactIds: [String]?
 
+    public var extraSparkSubmitParams: String?
+
+    public var files: [String]?
+
     public var gmtCreated: String?
 
     public var gmtModified: String?
@@ -776,6 +885,8 @@ public class Task : Tea.TeaModel {
     public var hasChanged: Bool?
 
     public var hasCommited: Bool?
+
+    public var jars: [String]?
 
     public var lastRunResourceQueueId: String?
 
@@ -823,6 +934,9 @@ public class Task : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.archives != nil {
+            map["archives"] = self.archives!
+        }
         if self.artifactUrl != nil {
             map["artifactUrl"] = self.artifactUrl!
         }
@@ -853,6 +967,12 @@ public class Task : Tea.TeaModel {
         if self.extraArtifactIds != nil {
             map["extraArtifactIds"] = self.extraArtifactIds!
         }
+        if self.extraSparkSubmitParams != nil {
+            map["extraSparkSubmitParams"] = self.extraSparkSubmitParams!
+        }
+        if self.files != nil {
+            map["files"] = self.files!
+        }
         if self.gmtCreated != nil {
             map["gmtCreated"] = self.gmtCreated!
         }
@@ -864,6 +984,9 @@ public class Task : Tea.TeaModel {
         }
         if self.hasCommited != nil {
             map["hasCommited"] = self.hasCommited!
+        }
+        if self.jars != nil {
+            map["jars"] = self.jars!
         }
         if self.lastRunResourceQueueId != nil {
             map["lastRunResourceQueueId"] = self.lastRunResourceQueueId!
@@ -921,6 +1044,9 @@ public class Task : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("archives") && dict["archives"] != nil {
+            self.archives = dict["archives"] as! [String]
+        }
         if dict.keys.contains("artifactUrl") && dict["artifactUrl"] != nil {
             self.artifactUrl = dict["artifactUrl"] as! String
         }
@@ -951,6 +1077,12 @@ public class Task : Tea.TeaModel {
         if dict.keys.contains("extraArtifactIds") && dict["extraArtifactIds"] != nil {
             self.extraArtifactIds = dict["extraArtifactIds"] as! [String]
         }
+        if dict.keys.contains("extraSparkSubmitParams") && dict["extraSparkSubmitParams"] != nil {
+            self.extraSparkSubmitParams = dict["extraSparkSubmitParams"] as! String
+        }
+        if dict.keys.contains("files") && dict["files"] != nil {
+            self.files = dict["files"] as! [String]
+        }
         if dict.keys.contains("gmtCreated") && dict["gmtCreated"] != nil {
             self.gmtCreated = dict["gmtCreated"] as! String
         }
@@ -962,6 +1094,9 @@ public class Task : Tea.TeaModel {
         }
         if dict.keys.contains("hasCommited") && dict["hasCommited"] != nil {
             self.hasCommited = dict["hasCommited"] as! Bool
+        }
+        if dict.keys.contains("jars") && dict["jars"] != nil {
+            self.jars = dict["jars"] as! [String]
         }
         if dict.keys.contains("lastRunResourceQueueId") && dict["lastRunResourceQueueId"] != nil {
             self.lastRunResourceQueueId = dict["lastRunResourceQueueId"] as! String
