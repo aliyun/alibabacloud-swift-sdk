@@ -1422,6 +1422,9 @@ open class Client : AlibabacloudOpenApi.Client {
             request.parametersShrink = AlibabaCloudOpenApiUtil.Client.arrayToStringWithSpecifiedStyle(tmpReq.parameters, "Parameters", "json")
         }
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.clientToken)) {
+            query["ClientToken"] = request.clientToken ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.enableUserPrometheus)) {
             query["EnableUserPrometheus"] = request.enableUserPrometheus!;
         }

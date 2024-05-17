@@ -11387,6 +11387,8 @@ public class UpdateServiceInstanceAttributeResponse : Tea.TeaModel {
 }
 
 public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var enableUserPrometheus: Bool?
 
     public var operationName: String?
@@ -11411,6 +11413,9 @@ public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.enableUserPrometheus != nil {
             map["EnableUserPrometheus"] = self.enableUserPrometheus!
         }
@@ -11430,6 +11435,9 @@ public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("EnableUserPrometheus") && dict["EnableUserPrometheus"] != nil {
             self.enableUserPrometheus = dict["EnableUserPrometheus"] as! Bool
         }
@@ -11449,6 +11457,8 @@ public class UpdateServiceInstanceSpecRequest : Tea.TeaModel {
 }
 
 public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
+    public var clientToken: String?
+
     public var enableUserPrometheus: Bool?
 
     public var operationName: String?
@@ -11473,6 +11483,9 @@ public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.clientToken != nil {
+            map["ClientToken"] = self.clientToken!
+        }
         if self.enableUserPrometheus != nil {
             map["EnableUserPrometheus"] = self.enableUserPrometheus!
         }
@@ -11492,6 +11505,9 @@ public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ClientToken") && dict["ClientToken"] != nil {
+            self.clientToken = dict["ClientToken"] as! String
+        }
         if dict.keys.contains("EnableUserPrometheus") && dict["EnableUserPrometheus"] != nil {
             self.enableUserPrometheus = dict["EnableUserPrometheus"] as! Bool
         }
@@ -11511,6 +11527,8 @@ public class UpdateServiceInstanceSpecShrinkRequest : Tea.TeaModel {
 }
 
 public class UpdateServiceInstanceSpecResponseBody : Tea.TeaModel {
+    public var orderId: String?
+
     public var requestId: String?
 
     public override init() {
@@ -11527,6 +11545,9 @@ public class UpdateServiceInstanceSpecResponseBody : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.orderId != nil {
+            map["OrderId"] = self.orderId!
+        }
         if self.requestId != nil {
             map["RequestId"] = self.requestId!
         }
@@ -11534,6 +11555,9 @@ public class UpdateServiceInstanceSpecResponseBody : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("OrderId") && dict["OrderId"] != nil {
+            self.orderId = dict["OrderId"] as! String
+        }
         if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
             self.requestId = dict["RequestId"] as! String
         }
