@@ -194,6 +194,171 @@ public class ChangeResourceGroupResponse : Tea.TeaModel {
     }
 }
 
+public class CreateAdvancedPolicyRequest : Tea.TeaModel {
+    public var instanceName: String?
+
+    public var regionCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.regionCode != nil {
+            map["RegionCode"] = self.regionCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
+            self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("RegionCode") && dict["RegionCode"] != nil {
+            self.regionCode = dict["RegionCode"] as! String
+        }
+    }
+}
+
+public class CreateAdvancedPolicyResponseBody : Tea.TeaModel {
+    public var code: String?
+
+    public var data: Bool?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data!
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            self.data = dict["Data"] as! Bool
+        }
+        if dict.keys.contains("ErrCode") && dict["ErrCode"] != nil {
+            self.errCode = dict["ErrCode"] as! String
+        }
+        if dict.keys.contains("ErrMessage") && dict["ErrMessage"] != nil {
+            self.errMessage = dict["ErrMessage"] as! String
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class CreateAdvancedPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: CreateAdvancedPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = CreateAdvancedPolicyResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
 public class CreateDownloadRequest : Tea.TeaModel {
     public var bakSetId: String?
 
@@ -3889,6 +4054,501 @@ public class DescribeSandboxRecoveryTimeResponse : Tea.TeaModel {
         }
         if dict.keys.contains("body") && dict["body"] != nil {
             var model = DescribeSandboxRecoveryTimeResponseBody()
+            model.fromMap(dict["body"] as! [String: Any])
+            self.body = model
+        }
+    }
+}
+
+public class ModifyBackupPolicyRequest : Tea.TeaModel {
+    public class AdvanceDataPolicies : Tea.TeaModel {
+        public var actionType: String?
+
+        public var destRegion: String?
+
+        public var destType: String?
+
+        public var filterKey: String?
+
+        public var filterType: String?
+
+        public var filterTypeCopy: String?
+
+        public var filterValue: String?
+
+        public var policyId: String?
+
+        public var retentionType: String?
+
+        public var retentionValue: String?
+
+        public var srcRegion: String?
+
+        public var srcType: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.actionType != nil {
+                map["ActionType"] = self.actionType!
+            }
+            if self.destRegion != nil {
+                map["DestRegion"] = self.destRegion!
+            }
+            if self.destType != nil {
+                map["DestType"] = self.destType!
+            }
+            if self.filterKey != nil {
+                map["FilterKey"] = self.filterKey!
+            }
+            if self.filterType != nil {
+                map["FilterType"] = self.filterType!
+            }
+            if self.filterTypeCopy != nil {
+                map["FilterType-copy"] = self.filterTypeCopy!
+            }
+            if self.filterValue != nil {
+                map["FilterValue"] = self.filterValue!
+            }
+            if self.policyId != nil {
+                map["PolicyId"] = self.policyId!
+            }
+            if self.retentionType != nil {
+                map["RetentionType"] = self.retentionType!
+            }
+            if self.retentionValue != nil {
+                map["RetentionValue"] = self.retentionValue!
+            }
+            if self.srcRegion != nil {
+                map["SrcRegion"] = self.srcRegion!
+            }
+            if self.srcType != nil {
+                map["SrcType"] = self.srcType!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("ActionType") && dict["ActionType"] != nil {
+                self.actionType = dict["ActionType"] as! String
+            }
+            if dict.keys.contains("DestRegion") && dict["DestRegion"] != nil {
+                self.destRegion = dict["DestRegion"] as! String
+            }
+            if dict.keys.contains("DestType") && dict["DestType"] != nil {
+                self.destType = dict["DestType"] as! String
+            }
+            if dict.keys.contains("FilterKey") && dict["FilterKey"] != nil {
+                self.filterKey = dict["FilterKey"] as! String
+            }
+            if dict.keys.contains("FilterType") && dict["FilterType"] != nil {
+                self.filterType = dict["FilterType"] as! String
+            }
+            if dict.keys.contains("FilterType-copy") && dict["FilterType-copy"] != nil {
+                self.filterTypeCopy = dict["FilterType-copy"] as! String
+            }
+            if dict.keys.contains("FilterValue") && dict["FilterValue"] != nil {
+                self.filterValue = dict["FilterValue"] as! String
+            }
+            if dict.keys.contains("PolicyId") && dict["PolicyId"] != nil {
+                self.policyId = dict["PolicyId"] as! String
+            }
+            if dict.keys.contains("RetentionType") && dict["RetentionType"] != nil {
+                self.retentionType = dict["RetentionType"] as! String
+            }
+            if dict.keys.contains("RetentionValue") && dict["RetentionValue"] != nil {
+                self.retentionValue = dict["RetentionValue"] as! String
+            }
+            if dict.keys.contains("SrcRegion") && dict["SrcRegion"] != nil {
+                self.srcRegion = dict["SrcRegion"] as! String
+            }
+            if dict.keys.contains("SrcType") && dict["SrcType"] != nil {
+                self.srcType = dict["SrcType"] as! String
+            }
+        }
+    }
+    public var advanceDataPolicies: [ModifyBackupPolicyRequest.AdvanceDataPolicies]?
+
+    public var instanceName: String?
+
+    public var preferredBackupWindowBegin: String?
+
+    public var regionCode: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.advanceDataPolicies != nil {
+            var tmp : [Any] = []
+            for k in self.advanceDataPolicies! {
+                tmp.append(k.toMap())
+            }
+            map["AdvanceDataPolicies"] = tmp
+        }
+        if self.instanceName != nil {
+            map["InstanceName"] = self.instanceName!
+        }
+        if self.preferredBackupWindowBegin != nil {
+            map["PreferredBackupWindowBegin"] = self.preferredBackupWindowBegin!
+        }
+        if self.regionCode != nil {
+            map["RegionCode"] = self.regionCode!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AdvanceDataPolicies") && dict["AdvanceDataPolicies"] != nil {
+            var tmp : [ModifyBackupPolicyRequest.AdvanceDataPolicies] = []
+            for v in dict["AdvanceDataPolicies"] as! [Any] {
+                var model = ModifyBackupPolicyRequest.AdvanceDataPolicies()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.advanceDataPolicies = tmp
+        }
+        if dict.keys.contains("InstanceName") && dict["InstanceName"] != nil {
+            self.instanceName = dict["InstanceName"] as! String
+        }
+        if dict.keys.contains("PreferredBackupWindowBegin") && dict["PreferredBackupWindowBegin"] != nil {
+            self.preferredBackupWindowBegin = dict["PreferredBackupWindowBegin"] as! String
+        }
+        if dict.keys.contains("RegionCode") && dict["RegionCode"] != nil {
+            self.regionCode = dict["RegionCode"] as! String
+        }
+    }
+}
+
+public class ModifyBackupPolicyResponseBody : Tea.TeaModel {
+    public class Data : Tea.TeaModel {
+        public class AdvanceDataPolicies : Tea.TeaModel {
+            public var autoCreated: Bool?
+
+            public var bakType: String?
+
+            public var destRegion: String?
+
+            public var destType: String?
+
+            public var dumpAction: String?
+
+            public var filterKey: String?
+
+            public var filterType: String?
+
+            public var filterValue: String?
+
+            public var policyId: String?
+
+            public var retentionType: String?
+
+            public var retentionValue: String?
+
+            public var srcRegion: String?
+
+            public var srcType: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.autoCreated != nil {
+                    map["AutoCreated"] = self.autoCreated!
+                }
+                if self.bakType != nil {
+                    map["BakType"] = self.bakType!
+                }
+                if self.destRegion != nil {
+                    map["DestRegion"] = self.destRegion!
+                }
+                if self.destType != nil {
+                    map["DestType"] = self.destType!
+                }
+                if self.dumpAction != nil {
+                    map["DumpAction"] = self.dumpAction!
+                }
+                if self.filterKey != nil {
+                    map["FilterKey"] = self.filterKey!
+                }
+                if self.filterType != nil {
+                    map["FilterType"] = self.filterType!
+                }
+                if self.filterValue != nil {
+                    map["FilterValue"] = self.filterValue!
+                }
+                if self.policyId != nil {
+                    map["PolicyId"] = self.policyId!
+                }
+                if self.retentionType != nil {
+                    map["RetentionType"] = self.retentionType!
+                }
+                if self.retentionValue != nil {
+                    map["RetentionValue"] = self.retentionValue!
+                }
+                if self.srcRegion != nil {
+                    map["SrcRegion"] = self.srcRegion!
+                }
+                if self.srcType != nil {
+                    map["SrcType"] = self.srcType!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("AutoCreated") && dict["AutoCreated"] != nil {
+                    self.autoCreated = dict["AutoCreated"] as! Bool
+                }
+                if dict.keys.contains("BakType") && dict["BakType"] != nil {
+                    self.bakType = dict["BakType"] as! String
+                }
+                if dict.keys.contains("DestRegion") && dict["DestRegion"] != nil {
+                    self.destRegion = dict["DestRegion"] as! String
+                }
+                if dict.keys.contains("DestType") && dict["DestType"] != nil {
+                    self.destType = dict["DestType"] as! String
+                }
+                if dict.keys.contains("DumpAction") && dict["DumpAction"] != nil {
+                    self.dumpAction = dict["DumpAction"] as! String
+                }
+                if dict.keys.contains("FilterKey") && dict["FilterKey"] != nil {
+                    self.filterKey = dict["FilterKey"] as! String
+                }
+                if dict.keys.contains("FilterType") && dict["FilterType"] != nil {
+                    self.filterType = dict["FilterType"] as! String
+                }
+                if dict.keys.contains("FilterValue") && dict["FilterValue"] != nil {
+                    self.filterValue = dict["FilterValue"] as! String
+                }
+                if dict.keys.contains("PolicyId") && dict["PolicyId"] != nil {
+                    self.policyId = dict["PolicyId"] as! String
+                }
+                if dict.keys.contains("RetentionType") && dict["RetentionType"] != nil {
+                    self.retentionType = dict["RetentionType"] as! String
+                }
+                if dict.keys.contains("RetentionValue") && dict["RetentionValue"] != nil {
+                    self.retentionValue = dict["RetentionValue"] as! String
+                }
+                if dict.keys.contains("SrcRegion") && dict["SrcRegion"] != nil {
+                    self.srcRegion = dict["SrcRegion"] as! String
+                }
+                if dict.keys.contains("SrcType") && dict["SrcType"] != nil {
+                    self.srcType = dict["SrcType"] as! String
+                }
+            }
+        }
+        public var advanceDataPolicies: [ModifyBackupPolicyResponseBody.Data.AdvanceDataPolicies]?
+
+        public var preferredBackupWindow: String?
+
+        public var preferredBackupWindowBegin: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.advanceDataPolicies != nil {
+                var tmp : [Any] = []
+                for k in self.advanceDataPolicies! {
+                    tmp.append(k.toMap())
+                }
+                map["AdvanceDataPolicies"] = tmp
+            }
+            if self.preferredBackupWindow != nil {
+                map["PreferredBackupWindow"] = self.preferredBackupWindow!
+            }
+            if self.preferredBackupWindowBegin != nil {
+                map["PreferredBackupWindowBegin"] = self.preferredBackupWindowBegin!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("AdvanceDataPolicies") && dict["AdvanceDataPolicies"] != nil {
+                var tmp : [ModifyBackupPolicyResponseBody.Data.AdvanceDataPolicies] = []
+                for v in dict["AdvanceDataPolicies"] as! [Any] {
+                    var model = ModifyBackupPolicyResponseBody.Data.AdvanceDataPolicies()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.advanceDataPolicies = tmp
+            }
+            if dict.keys.contains("PreferredBackupWindow") && dict["PreferredBackupWindow"] != nil {
+                self.preferredBackupWindow = dict["PreferredBackupWindow"] as! String
+            }
+            if dict.keys.contains("PreferredBackupWindowBegin") && dict["PreferredBackupWindowBegin"] != nil {
+                self.preferredBackupWindowBegin = dict["PreferredBackupWindowBegin"] as! String
+            }
+        }
+    }
+    public var code: String?
+
+    public var data: ModifyBackupPolicyResponseBody.Data?
+
+    public var errCode: String?
+
+    public var errMessage: String?
+
+    public var message: String?
+
+    public var requestId: String?
+
+    public var success: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.data?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.code != nil {
+            map["Code"] = self.code!
+        }
+        if self.data != nil {
+            map["Data"] = self.data?.toMap()
+        }
+        if self.errCode != nil {
+            map["ErrCode"] = self.errCode!
+        }
+        if self.errMessage != nil {
+            map["ErrMessage"] = self.errMessage!
+        }
+        if self.message != nil {
+            map["Message"] = self.message!
+        }
+        if self.requestId != nil {
+            map["RequestId"] = self.requestId!
+        }
+        if self.success != nil {
+            map["Success"] = self.success!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Code") && dict["Code"] != nil {
+            self.code = dict["Code"] as! String
+        }
+        if dict.keys.contains("Data") && dict["Data"] != nil {
+            var model = ModifyBackupPolicyResponseBody.Data()
+            model.fromMap(dict["Data"] as! [String: Any])
+            self.data = model
+        }
+        if dict.keys.contains("ErrCode") && dict["ErrCode"] != nil {
+            self.errCode = dict["ErrCode"] as! String
+        }
+        if dict.keys.contains("ErrMessage") && dict["ErrMessage"] != nil {
+            self.errMessage = dict["ErrMessage"] as! String
+        }
+        if dict.keys.contains("Message") && dict["Message"] != nil {
+            self.message = dict["Message"] as! String
+        }
+        if dict.keys.contains("RequestId") && dict["RequestId"] != nil {
+            self.requestId = dict["RequestId"] as! String
+        }
+        if dict.keys.contains("Success") && dict["Success"] != nil {
+            self.success = dict["Success"] as! String
+        }
+    }
+}
+
+public class ModifyBackupPolicyResponse : Tea.TeaModel {
+    public var headers: [String: String]?
+
+    public var statusCode: Int32?
+
+    public var body: ModifyBackupPolicyResponseBody?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+        try self.body?.validate()
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.headers != nil {
+            map["headers"] = self.headers!
+        }
+        if self.statusCode != nil {
+            map["statusCode"] = self.statusCode!
+        }
+        if self.body != nil {
+            map["body"] = self.body?.toMap()
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("headers") && dict["headers"] != nil {
+            self.headers = dict["headers"] as! [String: String]
+        }
+        if dict.keys.contains("statusCode") && dict["statusCode"] != nil {
+            self.statusCode = dict["statusCode"] as! Int32
+        }
+        if dict.keys.contains("body") && dict["body"] != nil {
+            var model = ModifyBackupPolicyResponseBody()
             model.fromMap(dict["body"] as! [String: Any])
             self.body = model
         }
