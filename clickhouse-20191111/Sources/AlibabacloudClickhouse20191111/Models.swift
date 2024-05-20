@@ -6537,6 +6537,8 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
 
         public var appointmentRestartTime: String?
 
+        public var availableUpgradeMajorVersion: [String: Any]?
+
         public var bid: String?
 
         public var category: String?
@@ -6656,6 +6658,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if self.appointmentRestartTime != nil {
                 map["AppointmentRestartTime"] = self.appointmentRestartTime!
+            }
+            if self.availableUpgradeMajorVersion != nil {
+                map["AvailableUpgradeMajorVersion"] = self.availableUpgradeMajorVersion!
             }
             if self.bid != nil {
                 map["Bid"] = self.bid!
@@ -6813,6 +6818,9 @@ public class DescribeDBClusterAttributeResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AppointmentRestartTime") && dict["AppointmentRestartTime"] != nil {
                 self.appointmentRestartTime = dict["AppointmentRestartTime"] as! String
+            }
+            if dict.keys.contains("AvailableUpgradeMajorVersion") && dict["AvailableUpgradeMajorVersion"] != nil {
+                self.availableUpgradeMajorVersion = dict["AvailableUpgradeMajorVersion"] as! [String: Any]
             }
             if dict.keys.contains("Bid") && dict["Bid"] != nil {
                 self.bid = dict["Bid"] as! String
