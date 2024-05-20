@@ -1470,6 +1470,12 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.appId)) {
             query["AppId"] = request.appId ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.nacosInstanceId)) {
+            query["NacosInstanceId"] = request.nacosInstanceId ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.nacosNamespaceId)) {
+            query["NacosNamespaceId"] = request.nacosNamespaceId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.serviceGroup)) {
             query["ServiceGroup"] = request.serviceGroup ?? "";
         }

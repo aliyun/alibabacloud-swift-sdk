@@ -5407,6 +5407,68 @@ public class PathConfig : Tea.TeaModel {
     }
 }
 
+public class PermissionAssistantApi : Tea.TeaModel {
+    public var createTime: String?
+
+    public var id: Int64?
+
+    public var name: String?
+
+    public var resourceType: String?
+
+    public var updateTime: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.createTime != nil {
+            map["createTime"] = self.createTime!
+        }
+        if self.id != nil {
+            map["id"] = self.id!
+        }
+        if self.name != nil {
+            map["name"] = self.name!
+        }
+        if self.resourceType != nil {
+            map["resourceType"] = self.resourceType!
+        }
+        if self.updateTime != nil {
+            map["updateTime"] = self.updateTime!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("createTime") && dict["createTime"] != nil {
+            self.createTime = dict["createTime"] as! String
+        }
+        if dict.keys.contains("id") && dict["id"] != nil {
+            self.id = dict["id"] as! Int64
+        }
+        if dict.keys.contains("name") && dict["name"] != nil {
+            self.name = dict["name"] as! String
+        }
+        if dict.keys.contains("resourceType") && dict["resourceType"] != nil {
+            self.resourceType = dict["resourceType"] as! String
+        }
+        if dict.keys.contains("updateTime") && dict["updateTime"] != nil {
+            self.updateTime = dict["updateTime"] as! String
+        }
+    }
+}
+
 public class PolicyItem : Tea.TeaModel {
     public var key: String?
 
@@ -6779,6 +6841,137 @@ public class StaticsInfo : Tea.TeaModel {
         }
         if dict.keys.contains("serviceName") && dict["serviceName"] != nil {
             self.serviceName = dict["serviceName"] as! String
+        }
+    }
+}
+
+public class Submenu : Tea.TeaModel {
+    public class Items : Tea.TeaModel {
+        public var defaultSelected: Bool?
+
+        public var itemDesc: String?
+
+        public var itemType: String?
+
+        public var relatingItems: [String]?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultSelected != nil {
+                map["DefaultSelected"] = self.defaultSelected!
+            }
+            if self.itemDesc != nil {
+                map["ItemDesc"] = self.itemDesc!
+            }
+            if self.itemType != nil {
+                map["ItemType"] = self.itemType!
+            }
+            if self.relatingItems != nil {
+                map["RelatingItems"] = self.relatingItems!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultSelected") && dict["DefaultSelected"] != nil {
+                self.defaultSelected = dict["DefaultSelected"] as! Bool
+            }
+            if dict.keys.contains("ItemDesc") && dict["ItemDesc"] != nil {
+                self.itemDesc = dict["ItemDesc"] as! String
+            }
+            if dict.keys.contains("ItemType") && dict["ItemType"] != nil {
+                self.itemType = dict["ItemType"] as! String
+            }
+            if dict.keys.contains("RelatingItems") && dict["RelatingItems"] != nil {
+                self.relatingItems = dict["RelatingItems"] as! [String]
+            }
+        }
+    }
+    public var items: [Submenu.Items]?
+
+    public var submenuDesc: String?
+
+    public var submenuType: String?
+
+    public var submenus: [Submenu]?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.items != nil {
+            var tmp : [Any] = []
+            for k in self.items! {
+                tmp.append(k.toMap())
+            }
+            map["Items"] = tmp
+        }
+        if self.submenuDesc != nil {
+            map["SubmenuDesc"] = self.submenuDesc!
+        }
+        if self.submenuType != nil {
+            map["SubmenuType"] = self.submenuType!
+        }
+        if self.submenus != nil {
+            var tmp : [Any] = []
+            for k in self.submenus! {
+                tmp.append(k.toMap())
+            }
+            map["Submenus"] = tmp
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("Items") && dict["Items"] != nil {
+            var tmp : [Submenu.Items] = []
+            for v in dict["Items"] as! [Any] {
+                var model = Submenu.Items()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.items = tmp
+        }
+        if dict.keys.contains("SubmenuDesc") && dict["SubmenuDesc"] != nil {
+            self.submenuDesc = dict["SubmenuDesc"] as! String
+        }
+        if dict.keys.contains("SubmenuType") && dict["SubmenuType"] != nil {
+            self.submenuType = dict["SubmenuType"] as! String
+        }
+        if dict.keys.contains("Submenus") && dict["Submenus"] != nil {
+            var tmp : [Submenu] = []
+            for v in dict["Submenus"] as! [Any] {
+                var model = Submenu()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.submenus = tmp
         }
     }
 }
@@ -14405,6 +14598,10 @@ public class DeployApplicationResponse : Tea.TeaModel {
 public class DescribeAppServiceDetailRequest : Tea.TeaModel {
     public var appId: String?
 
+    public var nacosInstanceId: String?
+
+    public var nacosNamespaceId: String?
+
     public var serviceGroup: String?
 
     public var serviceName: String?
@@ -14430,6 +14627,12 @@ public class DescribeAppServiceDetailRequest : Tea.TeaModel {
         if self.appId != nil {
             map["AppId"] = self.appId!
         }
+        if self.nacosInstanceId != nil {
+            map["NacosInstanceId"] = self.nacosInstanceId!
+        }
+        if self.nacosNamespaceId != nil {
+            map["NacosNamespaceId"] = self.nacosNamespaceId!
+        }
         if self.serviceGroup != nil {
             map["ServiceGroup"] = self.serviceGroup!
         }
@@ -14448,6 +14651,12 @@ public class DescribeAppServiceDetailRequest : Tea.TeaModel {
     public override func fromMap(_ dict: [String: Any]) -> Void {
         if dict.keys.contains("AppId") && dict["AppId"] != nil {
             self.appId = dict["AppId"] as! String
+        }
+        if dict.keys.contains("NacosInstanceId") && dict["NacosInstanceId"] != nil {
+            self.nacosInstanceId = dict["NacosInstanceId"] as! String
+        }
+        if dict.keys.contains("NacosNamespaceId") && dict["NacosNamespaceId"] != nil {
+            self.nacosNamespaceId = dict["NacosNamespaceId"] as! String
         }
         if dict.keys.contains("ServiceGroup") && dict["ServiceGroup"] != nil {
             self.serviceGroup = dict["ServiceGroup"] as! String
@@ -14636,6 +14845,12 @@ public class DescribeAppServiceDetailResponseBody : Tea.TeaModel {
 
         public var serviceName: String?
 
+        public var servicePorts: [Int64]?
+
+        public var serviceProtocol: String?
+
+        public var serviceTags: [String]?
+
         public var serviceType: String?
 
         public var springApplicationName: String?
@@ -14678,6 +14893,15 @@ public class DescribeAppServiceDetailResponseBody : Tea.TeaModel {
             if self.serviceName != nil {
                 map["ServiceName"] = self.serviceName!
             }
+            if self.servicePorts != nil {
+                map["ServicePorts"] = self.servicePorts!
+            }
+            if self.serviceProtocol != nil {
+                map["ServiceProtocol"] = self.serviceProtocol!
+            }
+            if self.serviceTags != nil {
+                map["ServiceTags"] = self.serviceTags!
+            }
             if self.serviceType != nil {
                 map["ServiceType"] = self.serviceType!
             }
@@ -14716,6 +14940,15 @@ public class DescribeAppServiceDetailResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("ServiceName") && dict["ServiceName"] != nil {
                 self.serviceName = dict["ServiceName"] as! String
+            }
+            if dict.keys.contains("ServicePorts") && dict["ServicePorts"] != nil {
+                self.servicePorts = dict["ServicePorts"] as! [Int64]
+            }
+            if dict.keys.contains("ServiceProtocol") && dict["ServiceProtocol"] != nil {
+                self.serviceProtocol = dict["ServiceProtocol"] as! String
+            }
+            if dict.keys.contains("ServiceTags") && dict["ServiceTags"] != nil {
+                self.serviceTags = dict["ServiceTags"] as! [String]
             }
             if dict.keys.contains("ServiceType") && dict["ServiceType"] != nil {
                 self.serviceType = dict["ServiceType"] as! String
