@@ -13,6 +13,8 @@ public class CreateTaskRequest : Tea.TeaModel {
 
         public var multipleStreamsEnabled: Bool?
 
+        public var outputPath: String?
+
         public var progressiveCallbacksEnabled: Bool?
 
         public var sampleRate: Int32?
@@ -46,6 +48,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             if self.multipleStreamsEnabled != nil {
                 map["MultipleStreamsEnabled"] = self.multipleStreamsEnabled!
             }
+            if self.outputPath != nil {
+                map["OutputPath"] = self.outputPath!
+            }
             if self.progressiveCallbacksEnabled != nil {
                 map["ProgressiveCallbacksEnabled"] = self.progressiveCallbacksEnabled!
             }
@@ -73,6 +78,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
             if dict.keys.contains("MultipleStreamsEnabled") && dict["MultipleStreamsEnabled"] != nil {
                 self.multipleStreamsEnabled = dict["MultipleStreamsEnabled"] as! Bool
+            }
+            if dict.keys.contains("OutputPath") && dict["OutputPath"] != nil {
+                self.outputPath = dict["OutputPath"] as! String
             }
             if dict.keys.contains("ProgressiveCallbacksEnabled") && dict["ProgressiveCallbacksEnabled"] != nil {
                 self.progressiveCallbacksEnabled = dict["ProgressiveCallbacksEnabled"] as! Bool
@@ -187,6 +195,8 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
         }
         public class ExtraParams : Tea.TeaModel {
+            public var maxKeywords: Int32?
+
             public var nfixEnabled: Bool?
 
             public override init() {
@@ -203,6 +213,9 @@ public class CreateTaskRequest : Tea.TeaModel {
 
             public override func toMap() -> [String : Any] {
                 var map = super.toMap()
+                if self.maxKeywords != nil {
+                    map["MaxKeywords"] = self.maxKeywords!
+                }
                 if self.nfixEnabled != nil {
                     map["NfixEnabled"] = self.nfixEnabled!
                 }
@@ -210,6 +223,9 @@ public class CreateTaskRequest : Tea.TeaModel {
             }
 
             public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("MaxKeywords") && dict["MaxKeywords"] != nil {
+                    self.maxKeywords = dict["MaxKeywords"] as! Int32
+                }
                 if dict.keys.contains("NfixEnabled") && dict["NfixEnabled"] != nil {
                     self.nfixEnabled = dict["NfixEnabled"] as! Bool
                 }

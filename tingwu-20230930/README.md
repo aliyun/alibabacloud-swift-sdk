@@ -17,7 +17,7 @@ English | [简体中文](README-CN.md)
 To integrate `AlibabacloudTingwu20230930` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "alibabacloud-sdk-swift/tingwu-20230930" "2.0.8"
+github "alibabacloud-sdk-swift/tingwu-20230930" "2.0.9"
 ```
 
 ### Swift Package Manager
@@ -26,7 +26,7 @@ To integrate `AlibabacloudTingwu20230930` into your Xcode project using [Swift P
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/alibabacloud-sdk-swift/tingwu-20230930.git", from: "2.0.8")
+    .package(url: "https://github.com/alibabacloud-sdk-swift/tingwu-20230930.git", from: "2.0.9")
 ]
 ```
 
