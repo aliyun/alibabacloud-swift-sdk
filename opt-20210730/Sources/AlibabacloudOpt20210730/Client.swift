@@ -51,6 +51,9 @@ open class Client : AlibabacloudOpenApi.Client {
     public func getOrderInfoWithOptions(_ request: GetOrderInfoRequest, _ runtime: TeaUtils.RuntimeOptions) async throws -> GetOrderInfoResponse {
         try TeaUtils.Client.validateModel(request)
         var query: [String: Any] = [:]
+        if (!TeaUtils.Client.isUnset(request.listReleased)) {
+            query["ListReleased"] = request.listReleased!;
+        }
         if (!TeaUtils.Client.isUnset(request.relService)) {
             query["RelService"] = request.relService ?? "";
         }

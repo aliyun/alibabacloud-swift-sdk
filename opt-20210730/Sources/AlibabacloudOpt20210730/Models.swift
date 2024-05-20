@@ -117,6 +117,8 @@ public class GetOpenStatusResponse : Tea.TeaModel {
 }
 
 public class GetOrderInfoRequest : Tea.TeaModel {
+    public var listReleased: Bool?
+
     public var relService: String?
 
     public var resourceType: Int32?
@@ -135,6 +137,9 @@ public class GetOrderInfoRequest : Tea.TeaModel {
 
     public override func toMap() -> [String : Any] {
         var map = super.toMap()
+        if self.listReleased != nil {
+            map["ListReleased"] = self.listReleased!
+        }
         if self.relService != nil {
             map["RelService"] = self.relService!
         }
@@ -145,6 +150,9 @@ public class GetOrderInfoRequest : Tea.TeaModel {
     }
 
     public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("ListReleased") && dict["ListReleased"] != nil {
+            self.listReleased = dict["ListReleased"] as! Bool
+        }
         if dict.keys.contains("RelService") && dict["RelService"] != nil {
             self.relService = dict["RelService"] as! String
         }
