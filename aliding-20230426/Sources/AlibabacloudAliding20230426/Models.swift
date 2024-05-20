@@ -13839,6 +13839,10 @@ public class CreateSubscribedCalendarShrinkHeaders : Tea.TeaModel {
 
 public class CreateSubscribedCalendarRequest : Tea.TeaModel {
     public class SubscribeScope : Tea.TeaModel {
+        public var corpIds: [String]?
+
+        public var openConversationIds: [String]?
+
         public var userIds: [String]?
 
         public override init() {
@@ -13855,6 +13859,12 @@ public class CreateSubscribedCalendarRequest : Tea.TeaModel {
 
         public override func toMap() -> [String : Any] {
             var map = super.toMap()
+            if self.corpIds != nil {
+                map["CorpIds"] = self.corpIds!
+            }
+            if self.openConversationIds != nil {
+                map["OpenConversationIds"] = self.openConversationIds!
+            }
             if self.userIds != nil {
                 map["UserIds"] = self.userIds!
             }
@@ -13862,6 +13872,12 @@ public class CreateSubscribedCalendarRequest : Tea.TeaModel {
         }
 
         public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("CorpIds") && dict["CorpIds"] != nil {
+                self.corpIds = dict["CorpIds"] as! [String]
+            }
+            if dict.keys.contains("OpenConversationIds") && dict["OpenConversationIds"] != nil {
+                self.openConversationIds = dict["OpenConversationIds"] as! [String]
+            }
             if dict.keys.contains("UserIds") && dict["UserIds"] != nil {
                 self.userIds = dict["UserIds"] as! [String]
             }
