@@ -564,6 +564,8 @@ public class DeleteServiceDataByConditionsRequest : Tea.TeaModel {
 
     public var serviceId: Int64?
 
+    public var xDashScopeOpenAPISource: String?
+
     public override init() {
         super.init()
     }
@@ -584,6 +586,9 @@ public class DeleteServiceDataByConditionsRequest : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.xDashScopeOpenAPISource != nil {
+            map["X-DashScope-OpenAPISource"] = self.xDashScopeOpenAPISource!
+        }
         return map
     }
 
@@ -594,6 +599,9 @@ public class DeleteServiceDataByConditionsRequest : Tea.TeaModel {
         if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
             self.serviceId = dict["ServiceId"] as! Int64
         }
+        if dict.keys.contains("X-DashScope-OpenAPISource") && dict["X-DashScope-OpenAPISource"] != nil {
+            self.xDashScopeOpenAPISource = dict["X-DashScope-OpenAPISource"] as! String
+        }
     }
 }
 
@@ -601,6 +609,8 @@ public class DeleteServiceDataByConditionsShrinkRequest : Tea.TeaModel {
     public var conditionsShrink: String?
 
     public var serviceId: Int64?
+
+    public var xDashScopeOpenAPISource: String?
 
     public override init() {
         super.init()
@@ -622,6 +632,9 @@ public class DeleteServiceDataByConditionsShrinkRequest : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.xDashScopeOpenAPISource != nil {
+            map["X-DashScope-OpenAPISource"] = self.xDashScopeOpenAPISource!
+        }
         return map
     }
 
@@ -631,6 +644,9 @@ public class DeleteServiceDataByConditionsShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
             self.serviceId = dict["ServiceId"] as! Int64
+        }
+        if dict.keys.contains("X-DashScope-OpenAPISource") && dict["X-DashScope-OpenAPISource"] != nil {
+            self.xDashScopeOpenAPISource = dict["X-DashScope-OpenAPISource"] as! String
         }
     }
 }
@@ -8350,9 +8366,9 @@ public class PostISConvRewriterRequest : Tea.TeaModel {
 
     public var input: [String: Any]?
 
-    public var parameters: [String: Any]?
+    public var model: String?
 
-    public var version: String?
+    public var parameters: [String: Any]?
 
     public override init() {
         super.init()
@@ -8377,11 +8393,11 @@ public class PostISConvRewriterRequest : Tea.TeaModel {
         if self.input != nil {
             map["Input"] = self.input!
         }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
-        }
-        if self.version != nil {
-            map["Version"] = self.version!
         }
         return map
     }
@@ -8396,11 +8412,11 @@ public class PostISConvRewriterRequest : Tea.TeaModel {
         if dict.keys.contains("Input") && dict["Input"] != nil {
             self.input = dict["Input"] as! [String: Any]
         }
+        if dict.keys.contains("Model") && dict["Model"] != nil {
+            self.model = dict["Model"] as! String
+        }
         if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
             self.parameters = dict["Parameters"] as! [String: Any]
-        }
-        if dict.keys.contains("Version") && dict["Version"] != nil {
-            self.version = dict["Version"] as! String
         }
     }
 }
@@ -8412,9 +8428,9 @@ public class PostISConvRewriterShrinkRequest : Tea.TeaModel {
 
     public var inputShrink: String?
 
-    public var parametersShrink: String?
+    public var model: String?
 
-    public var version: String?
+    public var parametersShrink: String?
 
     public override init() {
         super.init()
@@ -8439,11 +8455,11 @@ public class PostISConvRewriterShrinkRequest : Tea.TeaModel {
         if self.inputShrink != nil {
             map["Input"] = self.inputShrink!
         }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
         if self.parametersShrink != nil {
             map["Parameters"] = self.parametersShrink!
-        }
-        if self.version != nil {
-            map["Version"] = self.version!
         }
         return map
     }
@@ -8458,11 +8474,11 @@ public class PostISConvRewriterShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Input") && dict["Input"] != nil {
             self.inputShrink = dict["Input"] as! String
         }
+        if dict.keys.contains("Model") && dict["Model"] != nil {
+            self.model = dict["Model"] as! String
+        }
         if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
             self.parametersShrink = dict["Parameters"] as! String
-        }
-        if dict.keys.contains("Version") && dict["Version"] != nil {
-            self.version = dict["Version"] as! String
         }
     }
 }
@@ -8585,9 +8601,9 @@ public class PostISRetrieveRouterRequest : Tea.TeaModel {
 
     public var input: [String: Any]?
 
-    public var parameters: [String: Any]?
+    public var model: String?
 
-    public var version: String?
+    public var parameters: [String: Any]?
 
     public override init() {
         super.init()
@@ -8612,11 +8628,11 @@ public class PostISRetrieveRouterRequest : Tea.TeaModel {
         if self.input != nil {
             map["Input"] = self.input!
         }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
         if self.parameters != nil {
             map["Parameters"] = self.parameters!
-        }
-        if self.version != nil {
-            map["Version"] = self.version!
         }
         return map
     }
@@ -8631,11 +8647,11 @@ public class PostISRetrieveRouterRequest : Tea.TeaModel {
         if dict.keys.contains("Input") && dict["Input"] != nil {
             self.input = dict["Input"] as! [String: Any]
         }
+        if dict.keys.contains("Model") && dict["Model"] != nil {
+            self.model = dict["Model"] as! String
+        }
         if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
             self.parameters = dict["Parameters"] as! [String: Any]
-        }
-        if dict.keys.contains("Version") && dict["Version"] != nil {
-            self.version = dict["Version"] as! String
         }
     }
 }
@@ -8647,9 +8663,9 @@ public class PostISRetrieveRouterShrinkRequest : Tea.TeaModel {
 
     public var inputShrink: String?
 
-    public var parametersShrink: String?
+    public var model: String?
 
-    public var version: String?
+    public var parametersShrink: String?
 
     public override init() {
         super.init()
@@ -8674,11 +8690,11 @@ public class PostISRetrieveRouterShrinkRequest : Tea.TeaModel {
         if self.inputShrink != nil {
             map["Input"] = self.inputShrink!
         }
+        if self.model != nil {
+            map["Model"] = self.model!
+        }
         if self.parametersShrink != nil {
             map["Parameters"] = self.parametersShrink!
-        }
-        if self.version != nil {
-            map["Version"] = self.version!
         }
         return map
     }
@@ -8693,11 +8709,11 @@ public class PostISRetrieveRouterShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Input") && dict["Input"] != nil {
             self.inputShrink = dict["Input"] as! String
         }
+        if dict.keys.contains("Model") && dict["Model"] != nil {
+            self.model = dict["Model"] as! String
+        }
         if dict.keys.contains("Parameters") && dict["Parameters"] != nil {
             self.parametersShrink = dict["Parameters"] as! String
-        }
-        if dict.keys.contains("Version") && dict["Version"] != nil {
-            self.version = dict["Version"] as! String
         }
     }
 }
@@ -8939,6 +8955,8 @@ public class PostMSDataProcessingCountRequest : Tea.TeaModel {
 
     public var serviceId: Int64?
 
+    public var xDashScopeOpenAPISource: String?
+
     public override init() {
         super.init()
     }
@@ -8962,6 +8980,9 @@ public class PostMSDataProcessingCountRequest : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.xDashScopeOpenAPISource != nil {
+            map["X-DashScope-OpenAPISource"] = self.xDashScopeOpenAPISource!
+        }
         return map
     }
 
@@ -8975,6 +8996,9 @@ public class PostMSDataProcessingCountRequest : Tea.TeaModel {
         if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
             self.serviceId = dict["ServiceId"] as! Int64
         }
+        if dict.keys.contains("X-DashScope-OpenAPISource") && dict["X-DashScope-OpenAPISource"] != nil {
+            self.xDashScopeOpenAPISource = dict["X-DashScope-OpenAPISource"] as! String
+        }
     }
 }
 
@@ -8984,6 +9008,8 @@ public class PostMSDataProcessingCountShrinkRequest : Tea.TeaModel {
     public var dataImportId: Int64?
 
     public var serviceId: Int64?
+
+    public var xDashScopeOpenAPISource: String?
 
     public override init() {
         super.init()
@@ -9008,6 +9034,9 @@ public class PostMSDataProcessingCountShrinkRequest : Tea.TeaModel {
         if self.serviceId != nil {
             map["ServiceId"] = self.serviceId!
         }
+        if self.xDashScopeOpenAPISource != nil {
+            map["X-DashScope-OpenAPISource"] = self.xDashScopeOpenAPISource!
+        }
         return map
     }
 
@@ -9020,6 +9049,9 @@ public class PostMSDataProcessingCountShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("ServiceId") && dict["ServiceId"] != nil {
             self.serviceId = dict["ServiceId"] as! Int64
+        }
+        if dict.keys.contains("X-DashScope-OpenAPISource") && dict["X-DashScope-OpenAPISource"] != nil {
+            self.xDashScopeOpenAPISource = dict["X-DashScope-OpenAPISource"] as! String
         }
     }
 }
@@ -9350,6 +9382,8 @@ public class PostMSSearchEnhanceRequest : Tea.TeaModel {
 
     public var uq: String?
 
+    public var xDashScopeOpenAPISource: String?
+
     public override init() {
         super.init()
     }
@@ -9406,6 +9440,9 @@ public class PostMSSearchEnhanceRequest : Tea.TeaModel {
         if self.uq != nil {
             map["Uq"] = self.uq!
         }
+        if self.xDashScopeOpenAPISource != nil {
+            map["X-DashScope-OpenAPISource"] = self.xDashScopeOpenAPISource!
+        }
         return map
     }
 
@@ -9452,6 +9489,9 @@ public class PostMSSearchEnhanceRequest : Tea.TeaModel {
         if dict.keys.contains("Uq") && dict["Uq"] != nil {
             self.uq = dict["Uq"] as! String
         }
+        if dict.keys.contains("X-DashScope-OpenAPISource") && dict["X-DashScope-OpenAPISource"] != nil {
+            self.xDashScopeOpenAPISource = dict["X-DashScope-OpenAPISource"] as! String
+        }
     }
 }
 
@@ -9483,6 +9523,8 @@ public class PostMSSearchEnhanceShrinkRequest : Tea.TeaModel {
     public var type: String?
 
     public var uq: String?
+
+    public var xDashScopeOpenAPISource: String?
 
     public override init() {
         super.init()
@@ -9540,6 +9582,9 @@ public class PostMSSearchEnhanceShrinkRequest : Tea.TeaModel {
         if self.uq != nil {
             map["Uq"] = self.uq!
         }
+        if self.xDashScopeOpenAPISource != nil {
+            map["X-DashScope-OpenAPISource"] = self.xDashScopeOpenAPISource!
+        }
         return map
     }
 
@@ -9585,6 +9630,9 @@ public class PostMSSearchEnhanceShrinkRequest : Tea.TeaModel {
         }
         if dict.keys.contains("Uq") && dict["Uq"] != nil {
             self.uq = dict["Uq"] as! String
+        }
+        if dict.keys.contains("X-DashScope-OpenAPISource") && dict["X-DashScope-OpenAPISource"] != nil {
+            self.xDashScopeOpenAPISource = dict["X-DashScope-OpenAPISource"] as! String
         }
     }
 }
