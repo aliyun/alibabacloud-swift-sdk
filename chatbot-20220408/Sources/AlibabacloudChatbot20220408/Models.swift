@@ -2706,7 +2706,11 @@ public class CreateDocRequest : Tea.TeaModel {
 
     public var startDate: String?
 
+    public var tagIds: [Int64]?
+
     public var title: String?
+
+    public var url: String?
 
     public override init() {
         super.init()
@@ -2743,8 +2747,14 @@ public class CreateDocRequest : Tea.TeaModel {
         if self.startDate != nil {
             map["StartDate"] = self.startDate!
         }
+        if self.tagIds != nil {
+            map["TagIds"] = self.tagIds!
+        }
         if self.title != nil {
             map["Title"] = self.title!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
         }
         return map
     }
@@ -2771,8 +2781,116 @@ public class CreateDocRequest : Tea.TeaModel {
         if dict.keys.contains("StartDate") && dict["StartDate"] != nil {
             self.startDate = dict["StartDate"] as! String
         }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIds = dict["TagIds"] as! [Int64]
+        }
         if dict.keys.contains("Title") && dict["Title"] != nil {
             self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("Url") && dict["Url"] != nil {
+            self.url = dict["Url"] as! String
+        }
+    }
+}
+
+public class CreateDocShrinkRequest : Tea.TeaModel {
+    public var agentKey: String?
+
+    public var categoryId: Int64?
+
+    public var config: String?
+
+    public var content: String?
+
+    public var endDate: String?
+
+    public var meta: String?
+
+    public var startDate: String?
+
+    public var tagIdsShrink: String?
+
+    public var title: String?
+
+    public var url: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentKey != nil {
+            map["AgentKey"] = self.agentKey!
+        }
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.meta != nil {
+            map["Meta"] = self.meta!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.tagIdsShrink != nil {
+            map["TagIds"] = self.tagIdsShrink!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        if self.url != nil {
+            map["Url"] = self.url!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentKey") && dict["AgentKey"] != nil {
+            self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("CategoryId") && dict["CategoryId"] != nil {
+            self.categoryId = dict["CategoryId"] as! Int64
+        }
+        if dict.keys.contains("Config") && dict["Config"] != nil {
+            self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("EndDate") && dict["EndDate"] != nil {
+            self.endDate = dict["EndDate"] as! String
+        }
+        if dict.keys.contains("Meta") && dict["Meta"] != nil {
+            self.meta = dict["Meta"] as! String
+        }
+        if dict.keys.contains("StartDate") && dict["StartDate"] != nil {
+            self.startDate = dict["StartDate"] as! String
+        }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIdsShrink = dict["TagIds"] as! String
+        }
+        if dict.keys.contains("Title") && dict["Title"] != nil {
+            self.title = dict["Title"] as! String
+        }
+        if dict.keys.contains("Url") && dict["Url"] != nil {
+            self.url = dict["Url"] as! String
         }
     }
 }
@@ -7044,6 +7162,67 @@ public class DescribeDocResponseBody : Tea.TeaModel {
             }
         }
     }
+    public class DocTags : Tea.TeaModel {
+        public var defaultTag: Bool?
+
+        public var groupId: Int64?
+
+        public var groupName: String?
+
+        public var tagId: Int64?
+
+        public var tagName: String?
+
+        public override init() {
+            super.init()
+        }
+
+        public init(_ dict: [String: Any]) {
+            super.init()
+            self.fromMap(dict)
+        }
+
+        public override func validate() throws -> Void {
+        }
+
+        public override func toMap() -> [String : Any] {
+            var map = super.toMap()
+            if self.defaultTag != nil {
+                map["DefaultTag"] = self.defaultTag!
+            }
+            if self.groupId != nil {
+                map["GroupId"] = self.groupId!
+            }
+            if self.groupName != nil {
+                map["GroupName"] = self.groupName!
+            }
+            if self.tagId != nil {
+                map["TagId"] = self.tagId!
+            }
+            if self.tagName != nil {
+                map["TagName"] = self.tagName!
+            }
+            return map
+        }
+
+        public override func fromMap(_ dict: [String: Any]) -> Void {
+            if dict.keys.contains("DefaultTag") && dict["DefaultTag"] != nil {
+                self.defaultTag = dict["DefaultTag"] as! Bool
+            }
+            if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
+                self.groupId = dict["GroupId"] as! Int64
+            }
+            if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                self.groupName = dict["GroupName"] as! String
+            }
+            if dict.keys.contains("TagId") && dict["TagId"] != nil {
+                self.tagId = dict["TagId"] as! Int64
+            }
+            if dict.keys.contains("TagName") && dict["TagName"] != nil {
+                self.tagName = dict["TagName"] as! String
+            }
+        }
+    }
     public var bizCode: String?
 
     public var categoryId: Int64?
@@ -7059,6 +7238,8 @@ public class DescribeDocResponseBody : Tea.TeaModel {
     public var docInfo: DescribeDocResponseBody.DocInfo?
 
     public var docName: String?
+
+    public var docTags: [DescribeDocResponseBody.DocTags]?
 
     public var effectStatus: Int32?
 
@@ -7128,6 +7309,13 @@ public class DescribeDocResponseBody : Tea.TeaModel {
         }
         if self.docName != nil {
             map["DocName"] = self.docName!
+        }
+        if self.docTags != nil {
+            var tmp : [Any] = []
+            for k in self.docTags! {
+                tmp.append(k.toMap())
+            }
+            map["DocTags"] = tmp
         }
         if self.effectStatus != nil {
             map["EffectStatus"] = self.effectStatus!
@@ -7203,6 +7391,17 @@ public class DescribeDocResponseBody : Tea.TeaModel {
         }
         if dict.keys.contains("DocName") && dict["DocName"] != nil {
             self.docName = dict["DocName"] as! String
+        }
+        if dict.keys.contains("DocTags") && dict["DocTags"] != nil {
+            var tmp : [DescribeDocResponseBody.DocTags] = []
+            for v in dict["DocTags"] as! [Any] {
+                var model = DescribeDocResponseBody.DocTags()
+                if v != nil {
+                    model.fromMap(v as! [String: Any])
+                }
+                tmp.append(model)
+            }
+            self.docTags = tmp
         }
         if dict.keys.contains("EffectStatus") && dict["EffectStatus"] != nil {
             self.effectStatus = dict["EffectStatus"] as! Int32
@@ -9807,8 +10006,6 @@ public class ListAgentRequest : Tea.TeaModel {
 
     public var pageSize: Int32?
 
-    public var productCode: String?
-
     public override init() {
         super.init()
     }
@@ -9835,9 +10032,6 @@ public class ListAgentRequest : Tea.TeaModel {
         if self.pageSize != nil {
             map["PageSize"] = self.pageSize!
         }
-        if self.productCode != nil {
-            map["ProductCode"] = self.productCode!
-        }
         return map
     }
 
@@ -9854,9 +10048,6 @@ public class ListAgentRequest : Tea.TeaModel {
         if dict.keys.contains("PageSize") && dict["PageSize"] != nil {
             self.pageSize = dict["PageSize"] as! Int32
         }
-        if dict.keys.contains("ProductCode") && dict["ProductCode"] != nil {
-            self.productCode = dict["ProductCode"] as! String
-        }
     }
 }
 
@@ -9867,8 +10058,6 @@ public class ListAgentResponseBody : Tea.TeaModel {
         public var agentKey: String?
 
         public var agentName: String?
-
-        public var defaultAgent: Bool?
 
         public var instanceInfos: [String: Any]?
 
@@ -9895,9 +10084,6 @@ public class ListAgentResponseBody : Tea.TeaModel {
             if self.agentName != nil {
                 map["AgentName"] = self.agentName!
             }
-            if self.defaultAgent != nil {
-                map["DefaultAgent"] = self.defaultAgent!
-            }
             if self.instanceInfos != nil {
                 map["InstanceInfos"] = self.instanceInfos!
             }
@@ -9913,9 +10099,6 @@ public class ListAgentResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("AgentName") && dict["AgentName"] != nil {
                 self.agentName = dict["AgentName"] as! String
-            }
-            if dict.keys.contains("DefaultAgent") && dict["DefaultAgent"] != nil {
-                self.defaultAgent = dict["DefaultAgent"] as! Bool
             }
             if dict.keys.contains("InstanceInfos") && dict["InstanceInfos"] != nil {
                 self.instanceInfos = dict["InstanceInfos"] as! [String: Any]
@@ -14175,6 +14358,8 @@ public class SearchDocRequest : Tea.TeaModel {
 
     public var status: Int32?
 
+    public var tagIds: [Int64]?
+
     public override init() {
         super.init()
     }
@@ -14243,6 +14428,9 @@ public class SearchDocRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tagIds != nil {
+            map["TagIds"] = self.tagIds!
+        }
         return map
     }
 
@@ -14301,6 +14489,9 @@ public class SearchDocRequest : Tea.TeaModel {
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! Int32
         }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIds = dict["TagIds"] as! [Int64]
+        }
     }
 }
 
@@ -14340,6 +14531,8 @@ public class SearchDocShrinkRequest : Tea.TeaModel {
     public var startTimeEnd: String?
 
     public var status: Int32?
+
+    public var tagIdsShrink: String?
 
     public override init() {
         super.init()
@@ -14409,6 +14602,9 @@ public class SearchDocShrinkRequest : Tea.TeaModel {
         if self.status != nil {
             map["Status"] = self.status!
         }
+        if self.tagIdsShrink != nil {
+            map["TagIds"] = self.tagIdsShrink!
+        }
         return map
     }
 
@@ -14467,11 +14663,75 @@ public class SearchDocShrinkRequest : Tea.TeaModel {
         if dict.keys.contains("Status") && dict["Status"] != nil {
             self.status = dict["Status"] as! Int32
         }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIdsShrink = dict["TagIds"] as! String
+        }
     }
 }
 
 public class SearchDocResponseBody : Tea.TeaModel {
     public class DocHits : Tea.TeaModel {
+        public class DocTags : Tea.TeaModel {
+            public var defaultTag: Bool?
+
+            public var groupId: Int64?
+
+            public var groupName: String?
+
+            public var tagId: Int64?
+
+            public var tagName: String?
+
+            public override init() {
+                super.init()
+            }
+
+            public init(_ dict: [String: Any]) {
+                super.init()
+                self.fromMap(dict)
+            }
+
+            public override func validate() throws -> Void {
+            }
+
+            public override func toMap() -> [String : Any] {
+                var map = super.toMap()
+                if self.defaultTag != nil {
+                    map["DefaultTag"] = self.defaultTag!
+                }
+                if self.groupId != nil {
+                    map["GroupId"] = self.groupId!
+                }
+                if self.groupName != nil {
+                    map["GroupName"] = self.groupName!
+                }
+                if self.tagId != nil {
+                    map["TagId"] = self.tagId!
+                }
+                if self.tagName != nil {
+                    map["TagName"] = self.tagName!
+                }
+                return map
+            }
+
+            public override func fromMap(_ dict: [String: Any]) -> Void {
+                if dict.keys.contains("DefaultTag") && dict["DefaultTag"] != nil {
+                    self.defaultTag = dict["DefaultTag"] as! Bool
+                }
+                if dict.keys.contains("GroupId") && dict["GroupId"] != nil {
+                    self.groupId = dict["GroupId"] as! Int64
+                }
+                if dict.keys.contains("GroupName") && dict["GroupName"] != nil {
+                    self.groupName = dict["GroupName"] as! String
+                }
+                if dict.keys.contains("TagId") && dict["TagId"] != nil {
+                    self.tagId = dict["TagId"] as! Int64
+                }
+                if dict.keys.contains("TagName") && dict["TagName"] != nil {
+                    self.tagName = dict["TagName"] as! String
+                }
+            }
+        }
         public var bizCode: String?
 
         public var categoryId: Int64?
@@ -14485,6 +14745,8 @@ public class SearchDocResponseBody : Tea.TeaModel {
         public var createUserName: String?
 
         public var docName: String?
+
+        public var docTags: [SearchDocResponseBody.DocHits.DocTags]?
 
         public var effectStatus: Int32?
 
@@ -14546,6 +14808,13 @@ public class SearchDocResponseBody : Tea.TeaModel {
             }
             if self.docName != nil {
                 map["DocName"] = self.docName!
+            }
+            if self.docTags != nil {
+                var tmp : [Any] = []
+                for k in self.docTags! {
+                    tmp.append(k.toMap())
+                }
+                map["DocTags"] = tmp
             }
             if self.effectStatus != nil {
                 map["EffectStatus"] = self.effectStatus!
@@ -14610,6 +14879,17 @@ public class SearchDocResponseBody : Tea.TeaModel {
             }
             if dict.keys.contains("DocName") && dict["DocName"] != nil {
                 self.docName = dict["DocName"] as! String
+            }
+            if dict.keys.contains("DocTags") && dict["DocTags"] != nil {
+                var tmp : [SearchDocResponseBody.DocHits.DocTags] = []
+                for v in dict["DocTags"] as! [Any] {
+                    var model = SearchDocResponseBody.DocHits.DocTags()
+                    if v != nil {
+                        model.fromMap(v as! [String: Any])
+                    }
+                    tmp.append(model)
+                }
+                self.docTags = tmp
             }
             if dict.keys.contains("EffectStatus") && dict["EffectStatus"] != nil {
                 self.effectStatus = dict["EffectStatus"] as! Int32
@@ -15991,6 +16271,8 @@ public class UpdateDocRequest : Tea.TeaModel {
 
     public var startDate: String?
 
+    public var tagIds: [Int64]?
+
     public var title: String?
 
     public override init() {
@@ -16034,6 +16316,9 @@ public class UpdateDocRequest : Tea.TeaModel {
         if self.startDate != nil {
             map["StartDate"] = self.startDate!
         }
+        if self.tagIds != nil {
+            map["TagIds"] = self.tagIds!
+        }
         if self.title != nil {
             map["Title"] = self.title!
         }
@@ -16067,6 +16352,119 @@ public class UpdateDocRequest : Tea.TeaModel {
         }
         if dict.keys.contains("StartDate") && dict["StartDate"] != nil {
             self.startDate = dict["StartDate"] as! String
+        }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIds = dict["TagIds"] as! [Int64]
+        }
+        if dict.keys.contains("Title") && dict["Title"] != nil {
+            self.title = dict["Title"] as! String
+        }
+    }
+}
+
+public class UpdateDocShrinkRequest : Tea.TeaModel {
+    public var agentKey: String?
+
+    public var categoryId: Int64?
+
+    public var config: String?
+
+    public var content: String?
+
+    public var docName: String?
+
+    public var endDate: String?
+
+    public var knowledgeId: Int64?
+
+    public var meta: String?
+
+    public var startDate: String?
+
+    public var tagIdsShrink: String?
+
+    public var title: String?
+
+    public override init() {
+        super.init()
+    }
+
+    public init(_ dict: [String: Any]) {
+        super.init()
+        self.fromMap(dict)
+    }
+
+    public override func validate() throws -> Void {
+    }
+
+    public override func toMap() -> [String : Any] {
+        var map = super.toMap()
+        if self.agentKey != nil {
+            map["AgentKey"] = self.agentKey!
+        }
+        if self.categoryId != nil {
+            map["CategoryId"] = self.categoryId!
+        }
+        if self.config != nil {
+            map["Config"] = self.config!
+        }
+        if self.content != nil {
+            map["Content"] = self.content!
+        }
+        if self.docName != nil {
+            map["DocName"] = self.docName!
+        }
+        if self.endDate != nil {
+            map["EndDate"] = self.endDate!
+        }
+        if self.knowledgeId != nil {
+            map["KnowledgeId"] = self.knowledgeId!
+        }
+        if self.meta != nil {
+            map["Meta"] = self.meta!
+        }
+        if self.startDate != nil {
+            map["StartDate"] = self.startDate!
+        }
+        if self.tagIdsShrink != nil {
+            map["TagIds"] = self.tagIdsShrink!
+        }
+        if self.title != nil {
+            map["Title"] = self.title!
+        }
+        return map
+    }
+
+    public override func fromMap(_ dict: [String: Any]) -> Void {
+        if dict.keys.contains("AgentKey") && dict["AgentKey"] != nil {
+            self.agentKey = dict["AgentKey"] as! String
+        }
+        if dict.keys.contains("CategoryId") && dict["CategoryId"] != nil {
+            self.categoryId = dict["CategoryId"] as! Int64
+        }
+        if dict.keys.contains("Config") && dict["Config"] != nil {
+            self.config = dict["Config"] as! String
+        }
+        if dict.keys.contains("Content") && dict["Content"] != nil {
+            self.content = dict["Content"] as! String
+        }
+        if dict.keys.contains("DocName") && dict["DocName"] != nil {
+            self.docName = dict["DocName"] as! String
+        }
+        if dict.keys.contains("EndDate") && dict["EndDate"] != nil {
+            self.endDate = dict["EndDate"] as! String
+        }
+        if dict.keys.contains("KnowledgeId") && dict["KnowledgeId"] != nil {
+            self.knowledgeId = dict["KnowledgeId"] as! Int64
+        }
+        if dict.keys.contains("Meta") && dict["Meta"] != nil {
+            self.meta = dict["Meta"] as! String
+        }
+        if dict.keys.contains("StartDate") && dict["StartDate"] != nil {
+            self.startDate = dict["StartDate"] as! String
+        }
+        if dict.keys.contains("TagIds") && dict["TagIds"] != nil {
+            self.tagIdsShrink = dict["TagIds"] as! String
         }
         if dict.keys.contains("Title") && dict["Title"] != nil {
             self.title = dict["Title"] as! String
