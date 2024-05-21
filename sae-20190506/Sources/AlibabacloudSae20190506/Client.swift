@@ -409,8 +409,14 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.associateEip)) {
             body["AssociateEip"] = request.associateEip!;
         }
+        if (!TeaUtils.Client.isUnset(request.baseAppId)) {
+            body["BaseAppId"] = request.baseAppId ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.configMapMountDesc)) {
             body["ConfigMapMountDesc"] = request.configMapMountDesc ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.microRegistrationConfig)) {
+            body["MicroRegistrationConfig"] = request.microRegistrationConfig ?? "";
         }
         if (!TeaUtils.Client.isUnset(request.ossAkId)) {
             body["OssAkId"] = request.ossAkId ?? "";
@@ -426,6 +432,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.phpConfig)) {
             body["PhpConfig"] = request.phpConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceTags)) {
+            body["ServiceTags"] = request.serviceTags ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
@@ -1421,6 +1430,9 @@ open class Client : AlibabacloudOpenApi.Client {
         if (!TeaUtils.Client.isUnset(request.configMapMountDesc)) {
             body["ConfigMapMountDesc"] = request.configMapMountDesc ?? "";
         }
+        if (!TeaUtils.Client.isUnset(request.microRegistrationConfig)) {
+            body["MicroRegistrationConfig"] = request.microRegistrationConfig ?? "";
+        }
         if (!TeaUtils.Client.isUnset(request.ossAkId)) {
             body["OssAkId"] = request.ossAkId ?? "";
         }
@@ -1435,6 +1447,9 @@ open class Client : AlibabacloudOpenApi.Client {
         }
         if (!TeaUtils.Client.isUnset(request.phpConfig)) {
             body["PhpConfig"] = request.phpConfig ?? "";
+        }
+        if (!TeaUtils.Client.isUnset(request.serviceTags)) {
+            body["ServiceTags"] = request.serviceTags ?? "";
         }
         var req: AlibabacloudOpenApi.OpenApiRequest = AlibabacloudOpenApi.OpenApiRequest([
             "headers": headers as! [String: String],
